@@ -5,6 +5,7 @@
 # See https://aboutcode.org for more information about nexB OSS projects.
 #
 
+import argparse
 import json
 import sys
 from datetime import date, datetime, timedelta, timezone
@@ -41,11 +42,9 @@ class EuvdCatalogMirror(BasePipeline):
         return (cls.collect_catalog,)
 
     def collect_catalog(self) -> None:
-        mode = getattr(self, "mode", "backfill")
-        if mode == "daily":
-            self.sync_yesterday()
-        else:
-            self.backfill_from_year(DEFAULT_START_YEAR)
+        if getattr(self, "mode", "backfill") == "daily":
+            return self.sync_yesterday()
+        self.backfill_from_year(DEFAULT_START_YEAR)
 
     def backfill_from_year(self, start_year: int) -> None:
         today = date.today()
@@ -59,15 +58,17 @@ class EuvdCatalogMirror(BasePipeline):
             months.append((current.year, current.month))
             if current.month == 12:
                 current = date(current.year + 1, 1, 1)
-            else:
-                current = date(current.year, current.month + 1, 1)
+                continue
+
+            current = date(current.year, current.month + 1, 1)
 
         progress = LoopProgress(total_iterations=len(months), logger=self.log)
 
         for year, month in progress.iter(months):
+            month_start = date(year, month, 1)
+            day_token = month_start.isoformat()
+
             if year == backfill_end.year and month == backfill_end.month:
-                month_start = date(year, month, 1)
-                day_token = month_start.isoformat()
                 self.log(f"backfill {year}-{month:02d}: {month_start} to {backfill_end}")
                 self._collect_paginated(
                     start=month_start,
@@ -76,33 +77,25 @@ class EuvdCatalogMirror(BasePipeline):
                     month=month,
                     day_token=day_token,
                 )
+                continue
+
+            if month == 12:
+                next_month = date(year + 1, 1, 1)
             else:
-                self.collect_month(year, month)
+                next_month = date(year, month + 1, 1)
+            month_end = next_month - timedelta(days=1)
+
+            self.log(f"month {year}-{month:02d}: {month_start} to {month_end}")
+            self._collect_paginated(
+                start=month_start,
+                end=month_end,
+                year=year,
+                month=month,
+                day_token=day_token,
+            )
 
     def sync_yesterday(self) -> None:
         target_date = date.today() - timedelta(days=1)
-        self.collect_single_day(target_date)
-
-    def collect_month(self, year: int, month: int) -> None:
-        month_start = date(year, month, 1)
-        if month == 12:
-            next_month = date(year + 1, 1, 1)
-        else:
-            next_month = date(year, month + 1, 1)
-        month_end = next_month - timedelta(days=1)
-
-        self.log(f"month {year}-{month:02d}: {month_start} to {month_end}")
-        day_token = month_start.isoformat()
-
-        self._collect_paginated(
-            start=month_start,
-            end=month_end,
-            year=year,
-            month=month,
-            day_token=day_token,
-        )
-
-    def collect_single_day(self, target_date: date) -> None:
         self.log(f"day {target_date}: updated_on={target_date}")
         day_token = target_date.isoformat()
 
@@ -122,6 +115,9 @@ class EuvdCatalogMirror(BasePipeline):
         month: int,
         day_token: str,
     ) -> None:
+        """
+        Fetches all results from the EUVD API for the given date range, handling pagination.Each page of results is saved as a separate JSON file under the appropriate year/month directory. Fetching stops when a page returns fewer results than PAGE_SIZE, meaning there are no more results to fetch.
+        """
         page = 0
 
         while True:
@@ -184,17 +180,21 @@ class EuvdCatalogMirror(BasePipeline):
 
     def fetch_page(self, params: Dict[str, Any]) -> Dict[str, Any]:
         self.log(f"GET {API_URL} {params}")
-        response = self.session.get(
-            API_URL,
-            params=params,
-            headers=HEADERS,
-            timeout=REQUEST_TIMEOUT,
-        )
-        response.raise_for_status()
-        data: Any = response.json()
-        if not isinstance(data, dict):
-            return {}
-        return data
+        try:
+            response = self.session.get(
+                API_URL,
+                params=params,
+                headers=HEADERS,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            data: Any = response.json()
+            if not isinstance(data, dict):
+                return {}
+            return data
+        except requests.exceptions.RequestException as e:
+            self.log(f"Request failed: {e}")
+            raise
 
     def log(self, message: str) -> None:
         now = datetime.now(timezone.utc).astimezone()
@@ -203,12 +203,18 @@ class EuvdCatalogMirror(BasePipeline):
 
 
 if __name__ == "__main__":
-    mode = "backfill"
-    if len(sys.argv) >= 2:
-        mode = sys.argv[1]
+    parser = argparse.ArgumentParser(description="EUVD Catalog Mirror")
+    parser.add_argument(
+        "mode",
+        nargs="?",
+        default="daily",
+        choices=["backfill", "daily"],
+        help="Sync mode: 'backfill' for full history, 'daily' for yesterday only",
+    )
+    args = parser.parse_args()
 
     mirror = EuvdCatalogMirror()
-    mirror.mode = mode
+    mirror.mode = args.mode
 
     status_code, error_message = mirror.execute()
     if error_message:
