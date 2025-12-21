@@ -190,6 +190,7 @@ class EuvdCatalogMirror(BasePipeline):
             response.raise_for_status()
             data: Any = response.json()
             if not isinstance(data, dict):
+                self.log(f"Unexpected API response type: {type(data).__name__}, expected dict")
                 return {}
             return data
         except requests.exceptions.RequestException as e:
