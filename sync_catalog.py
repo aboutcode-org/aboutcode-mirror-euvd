@@ -32,11 +32,7 @@ DEFAULT_START_YEAR = 1970
 REQUEST_TIMEOUT = 10
 
 
-class EuvdCatalogMirror(BasePipeline):
-    def __init__(self) -> None:
-        super().__init__()
-        self.session = requests.Session()
-
+class EUVDCatalogMirror(BasePipeline):
     @classmethod
     def steps(cls):
         return (cls.collect_catalog,)
@@ -59,8 +55,9 @@ class EuvdCatalogMirror(BasePipeline):
             if current.month == 12:
                 current = date(current.year + 1, 1, 1)
                 continue
-
             current = date(current.year, current.month + 1, 1)
+
+        self.log(f"Starting backfill for {len(months)} months")
 
         progress = LoopProgress(total_iterations=len(months), logger=self.log)
 
@@ -69,7 +66,6 @@ class EuvdCatalogMirror(BasePipeline):
             day_token = month_start.isoformat()
 
             if year == backfill_end.year and month == backfill_end.month:
-                self.log(f"backfill {year}-{month:02d}: {month_start} to {backfill_end}")
                 self._collect_paginated(
                     start=month_start,
                     end=backfill_end,
@@ -85,7 +81,6 @@ class EuvdCatalogMirror(BasePipeline):
                 next_month = date(year, month + 1, 1)
             month_end = next_month - timedelta(days=1)
 
-            self.log(f"month {year}-{month:02d}: {month_start} to {month_end}")
             self._collect_paginated(
                 start=month_start,
                 end=month_end,
@@ -94,18 +89,45 @@ class EuvdCatalogMirror(BasePipeline):
                 day_token=day_token,
             )
 
+        self.log("Backfill completed")
+
     def sync_yesterday(self) -> None:
         target_date = date.today() - timedelta(days=1)
-        self.log(f"day {target_date}: updated_on={target_date}")
-        day_token = target_date.isoformat()
 
-        self._collect_paginated(
-            start=target_date,
-            end=target_date,
-            year=target_date.year,
-            month=target_date.month,
-            day_token=day_token,
+        first_page = self.fetch_page(
+            {
+                "fromUpdatedDate": target_date.isoformat(),
+                "toUpdatedDate": target_date.isoformat(),
+                "size": PAGE_SIZE,
+                "page": 0,
+            }
         )
+
+        total = first_page.get("total", 0)
+        total_pages = (total + PAGE_SIZE - 1) // PAGE_SIZE
+
+        progress = LoopProgress(total_iterations=total_pages, logger=self.log)
+
+        for page in progress.iter(range(total_pages)):
+            if page == 0:
+                data = first_page
+            else:
+                data = self.fetch_page(
+                    {
+                        "fromUpdatedDate": target_date.isoformat(),
+                        "toUpdatedDate": target_date.isoformat(),
+                        "size": PAGE_SIZE,
+                        "page": page,
+                    }
+                )
+
+            self.write_page_file(
+                year=target_date.year,
+                month=target_date.month,
+                day_token=target_date.isoformat(),
+                page_number=page + 1,
+                payload=data,
+            )
 
     def _collect_paginated(
         self,
@@ -116,40 +138,41 @@ class EuvdCatalogMirror(BasePipeline):
         day_token: str,
     ) -> None:
         """
-        Fetches all results from the EUVD API for the given date range, handling pagination.Each page of results is saved as a separate JSON file under the appropriate year/month directory. Fetching stops when a page returns fewer results than PAGE_SIZE, meaning there are no more results to fetch.
+        Fetch all EUVD results for the given date range using paginated requests.The total number of results is read from the API response and used to determine how many pages to fetch. Each page is written as a separate JSON file under the corresponding year/month directory.
         """
-        page = 0
 
-        while True:
-            params = {
+        first_page = self.fetch_page(
+            {
                 "fromUpdatedDate": start.isoformat(),
                 "toUpdatedDate": end.isoformat(),
                 "size": PAGE_SIZE,
-                "page": page,
+                "page": 0,
             }
+        )
 
-            data = self.fetch_page(params)
-            items = data.get("items") or []
-            count = len(items)
+        total = first_page.get("total", 0)
+        total_pages = (total + PAGE_SIZE - 1) // PAGE_SIZE
 
-            if count == 0:
-                self.log(f"no results for {start}–{end} on page {page}, stopping")
-                break
+        for page in range(total_pages):
+            if page == 0:
+                data = first_page
+            else:
+                data = self.fetch_page(
+                    {
+                        "fromUpdatedDate": start.isoformat(),
+                        "toUpdatedDate": end.isoformat(),
+                        "size": PAGE_SIZE,
+                        "page": page,
+                    }
+                )
 
-            page_number = page + 1
             self.write_page_file(
                 year=year,
                 month=month,
                 day_token=day_token,
-                page_number=page_number,
+                page_number=page + 1,
                 payload=data,
             )
-
-            if count < PAGE_SIZE:
-                self.log(f"finished {start}–{end} at page {page} ({count} items)")
-                break
-
-            page += 1
 
     def write_page_file(
         self,
@@ -170,32 +193,23 @@ class EuvdCatalogMirror(BasePipeline):
         path = dir_path / filename
 
         if path.exists():
-            self.log(f"skip existing file: {path}")
             return
 
         with path.open("w", encoding="utf-8") as output:
             json.dump(payload, output, indent=2)
 
-        self.log(f"saved {path}")
-
     def fetch_page(self, params: Dict[str, Any]) -> Dict[str, Any]:
-        self.log(f"GET {API_URL} {params}")
-        try:
-            response = self.session.get(
-                API_URL,
-                params=params,
-                headers=HEADERS,
-                timeout=REQUEST_TIMEOUT,
-            )
-            response.raise_for_status()
-            data: Any = response.json()
-            if not isinstance(data, dict):
-                self.log(f"Unexpected API response type: {type(data).__name__}, expected dict")
-                return {}
-            return data
-        except requests.exceptions.RequestException as e:
-            self.log(f"Request failed: {e}")
-            raise
+        response = requests.get(
+            API_URL,
+            params=params,
+            headers=HEADERS,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        data: Any = response.json()
+        if not isinstance(data, dict):
+            return {}
+        return data
 
     def log(self, message: str) -> None:
         now = datetime.now(timezone.utc).astimezone()
@@ -214,7 +228,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    mirror = EuvdCatalogMirror()
+    mirror = EUVDCatalogMirror()
     mirror.mode = args.mode
 
     status_code, error_message = mirror.execute()
