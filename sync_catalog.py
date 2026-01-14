@@ -43,6 +43,9 @@ class EUVDCatalogMirror(BasePipeline):
         self.backfill_from_year(DEFAULT_START_YEAR)
 
     def backfill_from_year(self, start_year: int) -> None:
+        """
+        Backfill EUVD catalog data starting from the given year(DEFAULT_START_YEAR) up to today. Data is collected month by month and stored in year/month directories as JSON files.
+        """
         today = date.today()
         backfill_start = date(start_year, 1, 1)
         backfill_end = today
@@ -98,7 +101,7 @@ class EUVDCatalogMirror(BasePipeline):
             {
                 "fromUpdatedDate": target_date.isoformat(),
                 "toUpdatedDate": target_date.isoformat(),
-                "size": PAGE_SIZE,
+                "size": 1,
                 "page": 0,
             }
         )
@@ -109,17 +112,14 @@ class EUVDCatalogMirror(BasePipeline):
         progress = LoopProgress(total_iterations=total_pages, logger=self.log)
 
         for page in progress.iter(range(total_pages)):
-            if page == 0:
-                data = first_page
-            else:
-                data = self.fetch_page(
-                    {
-                        "fromUpdatedDate": target_date.isoformat(),
-                        "toUpdatedDate": target_date.isoformat(),
-                        "size": PAGE_SIZE,
-                        "page": page,
-                    }
-                )
+            data = self.fetch_page(
+                {
+                    "fromUpdatedDate": target_date.isoformat(),
+                    "toUpdatedDate": target_date.isoformat(),
+                    "size": PAGE_SIZE,
+                    "page": page,
+                }
+            )
 
             self.write_page_file(
                 year=target_date.year,
@@ -145,7 +145,7 @@ class EUVDCatalogMirror(BasePipeline):
             {
                 "fromUpdatedDate": start.isoformat(),
                 "toUpdatedDate": end.isoformat(),
-                "size": PAGE_SIZE,
+                "size": 1,
                 "page": 0,
             }
         )
@@ -154,17 +154,14 @@ class EUVDCatalogMirror(BasePipeline):
         total_pages = (total + PAGE_SIZE - 1) // PAGE_SIZE
 
         for page in range(total_pages):
-            if page == 0:
-                data = first_page
-            else:
-                data = self.fetch_page(
-                    {
-                        "fromUpdatedDate": start.isoformat(),
-                        "toUpdatedDate": end.isoformat(),
-                        "size": PAGE_SIZE,
-                        "page": page,
-                    }
-                )
+            data = self.fetch_page(
+                {
+                    "fromUpdatedDate": start.isoformat(),
+                    "toUpdatedDate": end.isoformat(),
+                    "size": PAGE_SIZE,
+                    "page": page,
+                }
+            )
 
             self.write_page_file(
                 year=year,
@@ -235,3 +232,4 @@ if __name__ == "__main__":
     if error_message:
         print(error_message)
     sys.exit(status_code)
+    
