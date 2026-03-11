@@ -26,7 +26,7 @@ HEADERS = {
 }
 
 PAGE_SIZE = 100
-REQUEST_TIMEOUT = 10
+REQUEST_TIMEOUT = 15
 
 
 class EUVDAdvisoryMirror(BasePipeline):
