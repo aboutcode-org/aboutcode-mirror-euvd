@@ -30,7 +30,6 @@ REQUEST_TIMEOUT = 15
 
 
 class EUVDAdvisoryMirror(BasePipeline):
-
     url = "https://euvdservices.enisa.europa.eu/api/search"
 
     @classmethod
