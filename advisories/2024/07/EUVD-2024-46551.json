@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-46551",
+  "enisaUuid": "53265716-20bf-33cf-b5bf-27163cfb345c",
+  "description": "The Form Vibes plugin for WordPress is vulnerable to SQL Injection via the \u2018fv_export_data\u2019 parameter in all versions up to, and including, 1.4.10 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "datePublished": "Jul 12, 2024, 3:31:30 PM",
+  "dateUpdated": "Jul 10, 2025, 6:31:12 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a3311097-d477-441e-9bf3-3f991a9b6af9?source=cve\nhttps://plugins.trac.wordpress.org/changeset/3115288/form-vibes/trunk/inc/classes/query.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-5325\n",
+  "aliases": "CVE-2024-5325\nGHSA-98qh-gr88-4vgm\n",
+  "assigner": "Wordfence",
+  "epss": 1.03,
+  "enisaIdProduct": [
+    {
+      "id": "46d7a33a-7221-3e65-8389-a49a4ec9d9d9",
+      "product": {
+        "name": "Form Vibes \u2013 Database Manager for Forms"
+      },
+      "product_version": "* \u22641.4.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "19b46619-13ad-3ee4-aa7c-877bc0d9500b",
+      "vendor": {
+        "name": "WPVibes"
+      }
+    }
+  ]
+}

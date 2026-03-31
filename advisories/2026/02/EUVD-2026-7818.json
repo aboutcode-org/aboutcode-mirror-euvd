@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7818",
+  "enisaUuid": "94886cf3-e57c-308a-891e-8406d465a412",
+  "description": "The EventPrime plugin for WordPress is vulnerable to unauthorized image file upload in all versions up to, and including, 4.2.8.4. This is due to the plugin registering the upload_file_media AJAX action as publicly accessible (nopriv-enabled) without implementing any authentication, authorization, or nonce verification despite a nonce being created. This makes it possible for unauthenticated attackers to upload image files to the WordPress uploads directory and create Media Library attachments via the ep_upload_file_media endpoint.",
+  "datePublished": "Feb 17, 2026, 6:31:26 AM",
+  "dateUpdated": "Feb 17, 2026, 6:31:26 AM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/42aa82ff-0d37-4040-b8fc-84d29534a4b7?source=cve\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/trunk/includes/class-ep-ajax.php#L1659\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/tags/4.2.8.1/includes/class-ep-ajax.php#L1659\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/trunk/includes/class-eventprime-event-calendar-management.php#L557\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/tags/4.2.8.1/includes/class-eventprime-event-calendar-management.php#L557\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3455239%40eventprime-event-calendar-management%2Ftrunk&old=3452796%40eventprime-event-calendar-management%2Ftrunk&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1657\n",
+  "aliases": "CVE-2026-1657\nGHSA-4x73-7vhc-g4xh\n",
+  "assigner": "Wordfence",
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "c446a7d4-1a67-46ee-84a8-931ed6b4bff0",
+      "product": {
+        "name": "EventPrime \u2013 Events Calendar, Bookings and Tickets"
+      },
+      "product_version": "* \u22644.2.8.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ce6be7de-74cf-4bf2-8075-b05f6e511336",
+      "vendor": {
+        "name": "Metagauss"
+      }
+    }
+  ]
+}

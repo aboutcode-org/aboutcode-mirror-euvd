@@ -1,0 +1,112 @@
+{
+  "id": "EUVD-2024-24178",
+  "enisaUuid": "bf501d00-fb42-3e0f-b4ef-50afa60db5d0",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"drm/amd: flush any delayed gfxoff on suspend entry\"\n\ncommit ab4750332dbe (\"drm/amdgpu/sdma5.2: add begin/end_use ring\ncallbacks\") caused GFXOFF control to be used more heavily and the\ncodepath that was removed from commit 0dee72639533 (\"drm/amd: flush any\ndelayed gfxoff on suspend entry\") now can be exercised at suspend again.\n\nUsers report that by using GNOME to suspend the lockscreen trigger will\ncause SDMA traffic and the system can deadlock.\n\nThis reverts commit 0dee726395333fea833eaaf838bc80962df886c8.",
+  "datePublished": "Apr 17, 2024, 6:31:32 PM",
+  "dateUpdated": "Sep 16, 2025, 6:31:18 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/65158edb0a3a8df23197d52cd24287e39eaf95d6\nhttps://git.kernel.org/stable/c/ff70e6ff6fc2413caf33410af7462d1f584d927e\nhttps://git.kernel.org/stable/c/caa2565a2e13899be31f7b1e069e6465d3e2adb0\nhttps://git.kernel.org/stable/c/d855ceb6a5fde668c5431156bc60fae0cc52b764\nhttps://git.kernel.org/stable/c/916361685319098f696b798ef1560f69ed96e934\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26916\n",
+  "aliases": "CVE-2024-26916\nGHSA-5xq3-rmw6-5p48\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "01fe2655-34c0-39db-817c-8ea0cd4f99ae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.79"
+    },
+    {
+      "id": "04269bf4-3d93-3568-b91d-a8126fef0d7a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f94942885e8416ce9de84d8fae93684002682b5d <65158edb0a3a8df23197d52cd24287e39eaf95d6"
+    },
+    {
+      "id": "21e351fc-c73a-3a9d-80f2-a83f91737753",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.7"
+    },
+    {
+      "id": "26073208-b5f6-308d-bc52-fbd5bc1d922e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ab4750332dbe535243def5dcebc24ca00c1f98ac <916361685319098f696b798ef1560f69ed96e934"
+    },
+    {
+      "id": "2a102aa5-f197-38ef-8524-89f4e1433377",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ab4750332dbe535243def5dcebc24ca00c1f98ac <d855ceb6a5fde668c5431156bc60fae0cc52b764"
+    },
+    {
+      "id": "47be36f8-f1a7-3133-aafb-901e3e4ef50a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3aae4ef4d799fb3d0381157640fdb251008cf0ae <caa2565a2e13899be31f7b1e069e6465d3e2adb0"
+    },
+    {
+      "id": "49628088-bf14-3052-b2e9-fe8b35a9fc72",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.6"
+    },
+    {
+      "id": "55f790a7-fa7d-3020-bd7e-2b671dc76e6d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "6cde51e3-348d-3d05-b302-9b7ec1dd572b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.149"
+    },
+    {
+      "id": "92e933a8-5e78-337c-8ef0-1907f7e9cbcd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "78b2ba39beef21c8baebb1868569c2026ad76de0 <ff70e6ff6fc2413caf33410af7462d1f584d927e"
+    },
+    {
+      "id": "9f273e4b-b30c-3589-b4a4-293f8c779a00",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "a8d93191-84d3-3d39-a216-433602270655",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "f842b1b9-b0df-38ad-9dba-a5e14aec1098",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.18"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9f273e4b-b30c-3589-b4a4-293f8c779a00",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

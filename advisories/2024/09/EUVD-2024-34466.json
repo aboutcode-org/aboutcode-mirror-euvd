@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2024-34466",
+  "enisaUuid": "24910fcc-c045-32a2-a179-fe59f26329ab",
+  "description": "An insufficient boundary validation in the USB code could lead to an out-of-bounds write on the heap, with data controlled by the caller.\n\nA malicious, privileged software running in a guest VM can exploit the vulnerability to achieve code execution on the host in the bhyve userspace process, which typically runs as root. Note that bhyve runs in a Capsicum sandbox, so malicious code is constrained by the capabilities available to the bhyve process.",
+  "datePublished": "Sep 5, 2024, 6:31:34 AM",
+  "dateUpdated": "Sep 5, 2024, 3:33:35 PM",
+  "baseScore": -1.0,
+  "references": "https://security.freebsd.org/advisories/FreeBSD-SA-24:12.bhyve.asc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-32668\n",
+  "aliases": "GHSA-94j5-29m8-f8jq\nCVE-2024-32668\n",
+  "assigner": "freebsd",
+  "epss": 0.11,
+  "enisaIdProduct": [
+    {
+      "id": "bea4c1f8-09f7-3bdd-b409-e2a9af21a33d",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.0-RELEASE <p10"
+    },
+    {
+      "id": "c0b8dfaa-05fb-3127-8d16-532e37f2fea2",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "13.3-RELEASE <p6"
+    },
+    {
+      "id": "d5a958a9-9842-32d5-b349-eadf37b6238c",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.1-RELEASE <p4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "eeec3f62-ca02-3b8f-beb4-98c2aa1a1765",
+      "vendor": {
+        "name": "FreeBSD"
+      }
+    }
+  ]
+}

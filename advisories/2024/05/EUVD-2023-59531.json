@@ -1,0 +1,141 @@
+{
+  "id": "EUVD-2023-59531",
+  "enisaUuid": "e1e9f431-daa2-3f1a-a226-74e2ad04a5f5",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vkms: fix a possible null pointer dereference\n\nIn amdgpu_vkms_conn_get_modes(), the return value of drm_cvt_mode()\nis assigned to mode, which will lead to a NULL pointer dereference\non failure of drm_cvt_mode(). Add a check to avoid null pointer\ndereference.",
+  "datePublished": "May 21, 2024, 6:31:21 PM",
+  "dateUpdated": "Jun 3, 2024, 6:55:27 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/eaa03ea366c85ae3cb69c8d4bbc67c8bc2167a27\nhttps://git.kernel.org/stable/c/33fb1a555354bd593f785935ddcb5d9dd4d3847f\nhttps://git.kernel.org/stable/c/8c6c85a073768df68c1a3fea143d013a38c66d34\nhttps://git.kernel.org/stable/c/70f831f21155c692bb336c434936fd6f24f3f81a\nhttps://git.kernel.org/stable/c/cd90511557fdfb394bb4ac4c3b539b007383914c\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52815\n",
+  "aliases": "CVE-2023-52815\nGHSA-76vc-7xw6-g8mf\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "027aff8a-0a55-3adb-ad13-d0aa16b3d9e6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <eaa03ea366c85ae3cb69c8d4bbc67c8bc2167a27"
+    },
+    {
+      "id": "1abdb658-f103-399a-bda4-f16d8fbca743",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7"
+    },
+    {
+      "id": "20db386e-8de4-3a27-a37b-8b964b68e359",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.2"
+    },
+    {
+      "id": "3a2afed9-d3e2-3e22-81ce-e1255c4c8ea1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <cd90511557fdfb394bb4ac4c3b539b007383914c"
+    },
+    {
+      "id": "3a4884e8-981a-3c53-845f-c7f79c03251f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <eaa03ea366c85ae3cb69c8d4bbc67c8bc2167a27"
+    },
+    {
+      "id": "48815a7a-01d0-3f80-bf5c-d8eb23ae526f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.3"
+    },
+    {
+      "id": "49bfa3a7-02cc-3a79-bce0-d4a27dfa6b2b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <70f831f21155c692bb336c434936fd6f24f3f81a"
+    },
+    {
+      "id": "890eec31-a36d-354f-8034-eb5daace8a56",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <33fb1a555354bd593f785935ddcb5d9dd4d3847f"
+    },
+    {
+      "id": "91d220e3-ff45-32d2-870e-cce403a8bd6f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <8c6c85a073768df68c1a3fea143d013a38c66d34"
+    },
+    {
+      "id": "99a29df6-5835-3c6c-9ac1-971aeca91ccf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <70f831f21155c692bb336c434936fd6f24f3f81a"
+    },
+    {
+      "id": "a83e528e-4f32-3b29-8491-3b086f09708e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.64"
+    },
+    {
+      "id": "a8f74b19-2948-3c4b-b8ec-706c90b6a070",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.13"
+    },
+    {
+      "id": "b7bc6be4-585c-367a-9e42-39be7cdf400e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.140"
+    },
+    {
+      "id": "c521b465-71d3-320e-bb9a-9711877aa800",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8c6c85a073768df68c1a3fea143d013a38c66d34"
+    },
+    {
+      "id": "ead0cdb9-924a-3cdd-88ad-09208a2e4c79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <33fb1a555354bd593f785935ddcb5d9dd4d3847f"
+    },
+    {
+      "id": "f517884d-54aa-370e-9a53-db87f97f5d71",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cd90511557fdfb394bb4ac4c3b539b007383914c"
+    },
+    {
+      "id": "f8a0af71-66bd-3724-876d-23d1a81eb584",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6a927dc2-b77c-37f7-a31b-95b93a6071b8",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

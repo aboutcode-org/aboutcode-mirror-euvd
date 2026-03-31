@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207832",
+  "enisaUuid": "9ffd9dcd-ce47-3c65-ae44-ca67b1b1b343",
+  "description": "The RegistrationMagic \u2013 Custom Registration Forms, User Registration, Payment, and User Login plugin for WordPress is vulnerable to payment bypass due to insufficient verification of data authenticity on the 'process_paypal_sdk_payment' function in all versions up to, and including, 6.0.6.9. This is due to the plugin trusting client-supplied values for payment verification without validating that the payment actually went through PayPal. This makes it possible for unauthenticated attackers to bypass paid registration by manipulating payment status and activating their account without completing a real PayPal payment.",
+  "datePublished": "Feb 18, 2026, 12:31:10 PM",
+  "dateUpdated": "Feb 18, 2026, 12:31:11 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0633bf06-6580-4feb-b98a-c465df3e2bed?source=cve\nhttps://plugins.trac.wordpress.org/browser/custom-registration-form-builder-with-submission-manager/trunk/services/class_rm_paypal_service.php#L324\nhttps://plugins.trac.wordpress.org/browser/custom-registration-form-builder-with-submission-manager/tags/6.0.6.7/services/class_rm_paypal_service.php#L324\nhttps://plugins.trac.wordpress.org/browser/custom-registration-form-builder-with-submission-manager/tags/6.0.6.7/includes/class_registration_magic.php#L232\nhttps://plugins.trac.wordpress.org/changeset/3426151\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-14444\n",
+  "aliases": "GHSA-fq68-cwcx-p92f\nCVE-2025-14444\n",
+  "assigner": "Wordfence",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "e8e892d2-dfb8-4f9d-8d03-d2a0e37ae918",
+      "product": {
+        "name": "RegistrationMagic \u2013 Custom Registration Forms, User Registration, Payment, and User Login"
+      },
+      "product_version": "* \u22646.0.6.9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ca02e807-5753-4104-9b98-42af4ae7159e",
+      "vendor": {
+        "name": "Metagauss"
+      }
+    }
+  ]
+}

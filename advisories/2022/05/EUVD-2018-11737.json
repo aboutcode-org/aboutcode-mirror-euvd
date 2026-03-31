@@ -1,0 +1,59 @@
+{
+  "id": "EUVD-2018-11737",
+  "enisaUuid": "f3c70e34-20c6-3026-87b0-d958398ed647",
+  "description": "kernel KVM before versions kernel 4.16, kernel 4.16-rc7, kernel 4.17-rc1, kernel 4.17-rc2 and kernel 4.17-rc3 is vulnerable to a flaw in the way the Linux kernel's KVM hypervisor handled exceptions delivered after a stack switch operation via Mov SS or Pop SS instructions. During the stack switch operation, the processor did not deliver interrupts and exceptions, rather they are delivered once the first instruction after the stack switch is executed. An unprivileged KVM guest user could use this flaw to crash the guest or, potentially, escalate their privileges in the guest.",
+  "datePublished": "May 13, 2022, 1:33:33 AM",
+  "dateUpdated": "May 13, 2022, 1:33:33 AM",
+  "baseScore": 8.0,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2018-1087.html\nhttps://www.debian.org/security/2018/dsa-4196\nhttps://access.redhat.com/errata/RHSA-2018:1711\nhttps://access.redhat.com/errata/RHSA-2018:1710\nhttps://access.redhat.com/errata/RHSA-2018:1524\nhttps://access.redhat.com/errata/RHSA-2018:1355\nhttps://access.redhat.com/errata/RHSA-2018:1348\nhttps://access.redhat.com/errata/RHSA-2018:1347\nhttps://access.redhat.com/errata/RHSA-2018:1345\nhttps://access.redhat.com/errata/RHSA-2018:1318\nhttps://ubuntu.com/security/CVE-2018-1087\nhttps://advisories.mageia.org/CVE-2018-1087.html\nhttps://alas.aws.amazon.com/cve/html/CVE-2018-1087.html\nhttps://linux.oracle.com/cve/CVE-2018-1087.html\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2018-1087\nhttp://www.securitytracker.com/id/1040862\nhttps://access.redhat.com/security/vulnerabilities/pop_ss\nhttp://www.openwall.com/lists/oss-security/2018/05/08/5\nhttp://www.securityfocus.com/bid/104127\nhttps://usn.ubuntu.com/3641-2/\nhttps://usn.ubuntu.com/3641-1/\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-1087\n",
+  "aliases": "CVE-2018-1087\nGHSA-j658-wqr4-q3w7\n",
+  "assigner": "redhat",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "0767fc21-e1ad-3357-89a7-fb9c8fb69417",
+      "product": {
+        "name": "KVM"
+      },
+      "product_version": "kernel 4.16-rc7"
+    },
+    {
+      "id": "303df66c-ac99-3179-ae2c-6c93d2ff852d",
+      "product": {
+        "name": "KVM"
+      },
+      "product_version": "kernel 4.16"
+    },
+    {
+      "id": "6c3442d0-ad82-30a6-bfa6-050cd3071c19",
+      "product": {
+        "name": "KVM"
+      },
+      "product_version": "kernel 4.17-rc3"
+    },
+    {
+      "id": "8e8ce0ab-88b4-3bbf-95d8-2ad5edea52d0",
+      "product": {
+        "name": "KVM"
+      },
+      "product_version": "kernel 4.17-rc2"
+    },
+    {
+      "id": "d1c9bbb7-a9b3-3bcd-a5a5-e174ddf6a375",
+      "product": {
+        "name": "KVM"
+      },
+      "product_version": "kernel 4.17-rc1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8858a92c-186b-3db3-a5e7-4635bb6db615",
+      "vendor": {
+        "name": "kernel"
+      }
+    }
+  ]
+}

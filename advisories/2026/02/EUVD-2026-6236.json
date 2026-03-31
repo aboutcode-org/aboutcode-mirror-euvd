@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-6236",
+  "enisaUuid": "c7bf8eab-d450-3f6b-894a-db8484aef43d",
+  "description": "MiniGal Nano version 0.3.5 and prior contain a reflected cross-site scripting (XSS) vulnerability in index.php via the dir parameter. The application constructs $currentdir from user-controlled input and embeds it into an error message without output encoding, allowing an attacker to supply HTML/JavaScript that is reflected in the response. Successful exploitation can lead to execution of arbitrary script in a victim's browser in the context of the vulnerable application.",
+  "datePublished": "Feb 11, 2026, 6:31:28 PM",
+  "dateUpdated": "Feb 11, 2026, 6:31:29 PM",
+  "baseScore": 5.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+  "references": "https://web.archive.org/web/20180330004313/http://www.minigal.dk/minigal-nano.html\nhttps://sourceforge.net/projects/minigalnano/\nhttps://www.vulncheck.com/advisories/minigal-nano-reflected-xss-via-dir-parameter\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-25868\n",
+  "aliases": "GHSA-6wm3-23gq-r92x\nCVE-2026-25868\n",
+  "assigner": "VulnCheck",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "00ce22d5-16f7-4973-af29-81731e1cff20",
+      "product": {
+        "name": "MiniGal Nano"
+      },
+      "product_version": "0 \u22640.3.5"
+    },
+    {
+      "id": "a9f6b290-76be-3f80-97df-c764df502a99",
+      "product": {
+        "name": "MiniGal Nano"
+      },
+      "product_version": "0 \u22640.3.5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0e980d64-764b-3a35-a7ad-e15f4ee51015",
+      "vendor": {
+        "name": "MiniGal"
+      }
+    },
+    {
+      "id": "bff462c5-b4f5-4a8d-911e-4bdda736e231",
+      "vendor": {
+        "name": "MiniGal"
+      }
+    }
+  ]
+}

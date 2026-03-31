@@ -1,0 +1,119 @@
+{
+  "id": "EUVD-2023-57193",
+  "enisaUuid": "93b6f296-c6d3-344e-b4d2-ae6ad74f2675",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: remove BUG() after failure to insert delayed dir index item\n\nInstead of calling BUG() when we fail to insert a delayed dir index item\ninto the delayed node's tree, we can just release all the resources we\nhave allocated/acquired before and return the error to the caller. This is\nfine because all existing call chains undo anything they have done before\ncalling btrfs_insert_delayed_dir_index() or BUG_ON (when creating pending\nsnapshots in the transaction commit path).\n\nSo remove the BUG() call and do proper error handling.\n\nThis relates to a syzbot report linked below, but does not fix it because\nit only prevents hitting a BUG(), it does not fix the issue where somehow\nwe attempt to use twice the same index number for different index items.",
+  "datePublished": "Mar 3, 2024, 12:30:32 AM",
+  "dateUpdated": "Jan 16, 2025, 6:30:57 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/39c4a9522db0072570d602e9b365119e17fb9f4f\nhttps://git.kernel.org/stable/c/d10fd53393cc5de4b9cf1a4b8f9984f0a037aa51\nhttps://git.kernel.org/stable/c/2c58c3931ede7cd08cbecf1f1a4acaf0a04a41a9\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52569\n",
+  "aliases": "GHSA-484w-f535-whcj\nCVE-2023-52569\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0da2e4ca-500b-3792-ab00-0f75338fd7c8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5441532ffc9c8c9f7cab0f8722e6d60a0b5e1259"
+    },
+    {
+      "id": "1a5b9b85-8840-34a7-b927-5d5053a9fb17",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.6"
+    },
+    {
+      "id": "2ec3e646-c0b0-38b6-8281-0553e4d21c71",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.56"
+    },
+    {
+      "id": "32a9c650-f15c-353e-860d-463f94a7645f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2aa515b5b5011a7e7182af7eda89fb3bf5995c65 <39c4a9522db0072570d602e9b365119e17fb9f4f"
+    },
+    {
+      "id": "42407368-ee52-3c36-9196-e2bd534ac48a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6"
+    },
+    {
+      "id": "4a2216b4-5171-329f-a2d0-3ca922e2200f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "804d726b-24d2-3ecd-bca2-9b7301d4f8d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d10fd53393cc5de4b9cf1a4b8f9984f0a037aa51"
+    },
+    {
+      "id": "8927dfb4-6237-37be-aae5-80bcd16c7cb3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "79cf35e16dd5b8639909d4df957503b84de30406"
+    },
+    {
+      "id": "b0e649ae-3f30-3d6c-80e0-c344b57a312b",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "b883d601-3cfb-374b-87e7-db9ca0fffeaf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.5"
+    },
+    {
+      "id": "c1054a97-7a4d-31b9-a811-5455dd803aad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9b378f6ad48cfa195ed868db9123c09ee7ec5ea2 <2c58c3931ede7cd08cbecf1f1a4acaf0a04a41a9"
+    },
+    {
+      "id": "d71d8b28-8fce-3eca-aca2-4c1e17e87eb4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9b378f6ad48cfa195ed868db9123c09ee7ec5ea2 <d10fd53393cc5de4b9cf1a4b8f9984f0a037aa51"
+    },
+    {
+      "id": "eea2c19c-42c9-380e-8423-b3d8419e3eae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <39c4a9522db0072570d602e9b365119e17fb9f4f"
+    },
+    {
+      "id": "f599fd4b-94d0-365b-a352-d6442c084c4f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2c58c3931ede7cd08cbecf1f1a4acaf0a04a41a9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b0e649ae-3f30-3d6c-80e0-c344b57a312b",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

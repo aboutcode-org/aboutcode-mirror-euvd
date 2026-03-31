@@ -1,0 +1,28 @@
+{
+  "id": "EUVD-2024-17400",
+  "enisaUuid": "123fe8be-e2b5-3700-8df1-a95163b5268a",
+  "description": "lunary-ai/lunary version 1.0.0 is vulnerable to unauthorized evaluation creation due to missing server-side checks for user account status during evaluation creation. While the web UI restricts evaluation creation to paid accounts, the server-side API endpoint '/v1/evaluations' does not verify if the user has a paid account, allowing users with free or self-hosted accounts to create unlimited evaluations without upgrading their account. This vulnerability is due to the lack of account status validation in the evaluation creation process.",
+  "datePublished": "Apr 16, 2024, 12:30:33 AM",
+  "dateUpdated": "Apr 16, 2024, 12:30:33 AM",
+  "baseScore": -1.0,
+  "references": "https://huntr.com/bounties/c0e6299e-ea45-435c-b849-53d50ffc0e83\nhttps://github.com/lunary-ai/lunary/commit/c57cd50fa0477fd2a2efe60810c0099eebd66f54\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-1665\n",
+  "aliases": "CVE-2024-1665\nGHSA-xh3c-49q5-vp78\n",
+  "assigner": "@huntr_ai",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "50bad95b-b8f8-3cdd-8c7b-599746a7f626",
+      "product": {
+        "name": "lunary-ai/lunary"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c94500c2-b6af-31c1-b10f-877be134d0b8",
+      "vendor": {
+        "name": "lunary-ai"
+      }
+    }
+  ]
+}

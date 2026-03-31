@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-29764",
+  "enisaUuid": "4ebd7ac5-a108-3362-9237-64370478ef80",
+  "description": "esm.sh is a nobuild content delivery network(CDN) for modern web development. In 136 and earlier, a path-traversal flaw in the handling of the X-Zone-Id HTTP header allows an attacker to cause the application to write files outside the intended storage location. The header value is used to build a filesystem path but is not properly canonicalized or restricted to the application\u2019s storage base directory. As a result, supplying ../ sequences in X-Zone-Id causes files to be written to arbitrary directories. Version 136.1 contains a patch.",
+  "datePublished": "Sep 17, 2025, 5:59:34 PM",
+  "dateUpdated": "Jan 14, 2026, 3:52:09 PM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:P",
+  "references": "https://github.com/esm-dev/esm.sh/security/advisories/GHSA-g2h5-cvvr-7gmw\nhttps://github.com/esm-dev/esm.sh/blob/main/server/router.go#L116\nhttps://github.com/esm-dev/esm.sh/blob/main/server/router.go#L411\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-59342\nhttps://github.com/esm-dev/esm.sh/commit/833a29f42aeb0acbd7089a71be11dd0a292d3151\nhttps://pkg.go.dev/vuln/GO-2025-3967\n",
+  "aliases": "CVE-2025-59342\nGHSA-g2h5-cvvr-7gmw\n",
+  "assigner": "GitHub_M",
+  "epss": 1.21,
+  "enisaIdProduct": [
+    {
+      "id": "f8fcd17c-0ad2-3250-a4ad-3c77487e2a78",
+      "product": {
+        "name": "esm.sh"
+      },
+      "product_version": "\u2264 136"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9d4e3f70-144f-3999-813a-a074723a31b0",
+      "vendor": {
+        "name": "esm-dev"
+      }
+    }
+  ]
+}

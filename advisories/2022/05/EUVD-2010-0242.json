@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2010-0242",
+  "enisaUuid": "0817eca5-bcbc-343e-85f5-cae11e676d29",
+  "description": "The slap_modrdn2mods function in modrdn.c in OpenLDAP 2.4.22 does not check the return value of a call to the smr_normalize function, which allows remote attackers to cause a denial of service (segmentation fault) and possibly execute arbitrary code via a modrdn call with an RDN string containing invalid UTF-8 sequences, which triggers a free of an invalid, uninitialized pointer in the slap_mods_free function, as demonstrated using the Codenomicon LDAPv3 test suite.",
+  "datePublished": "May 2, 2022, 6:10:57 AM",
+  "dateUpdated": "Jan 21, 2024, 3:30:24 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2010-0211.html\nhttps://www.debian.org/security/2010/dsa-2077\nhttps://access.redhat.com/errata/RHSA-2010:0543\nhttps://access.redhat.com/errata/RHSA-2010:0542\nhttps://linux.oracle.com/cve/CVE-2010-0211.html\nhttp://www.securitytracker.com/id?1024221\nhttp://support.apple.com/kb/HT4435\nhttp://security.gentoo.org/glsa/glsa-201406-36.xml\nhttp://www.openldap.org/its/index.cgi/Software%20Bugs?id=6570\nhttp://www.vmware.com/security/advisories/VMSA-2011-0001.html\nhttp://www.vupen.com/english/advisories/2010/1858\nhttp://secunia.com/advisories/40677\nhttp://lists.apple.com/archives/security-announce/2010//Nov/msg00000.html\nhttp://www.vupen.com/english/advisories/2010/1849\nhttp://www.securityfocus.com/bid/41770\nhttp://www.redhat.com/support/errata/RHSA-2010-0542.html\nhttp://secunia.com/advisories/40687\nhttp://www.securityfocus.com/archive/1/515545/100/0/threaded\nhttp://lists.opensuse.org/opensuse-security-announce/2010-08/msg00001.html\nhttp://www.redhat.com/support/errata/RHSA-2010-0543.html\nhttp://kb.juniper.net/InfoCenter/index?page=content&id=JSA10705\nhttp://secunia.com/advisories/40639\nhttp://secunia.com/advisories/42787\nhttp://www.vupen.com/english/advisories/2011/0025\nhttps://nvd.nist.gov/vuln/detail/CVE-2010-0211\n",
+  "aliases": "GHSA-m9h3-f3g9-fqrf\nCVE-2010-0211\n",
+  "assigner": "certcc",
+  "epss": 42.63,
+  "enisaIdProduct": [
+    {
+      "id": "e40787de-ca1b-31c7-9438-17b66c245a15",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a6a3a9f2-026c-31c0-97db-fc75bbede347",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

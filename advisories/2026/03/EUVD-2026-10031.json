@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-10031",
+  "enisaUuid": "7d5724d8-0d46-3a76-a150-4ffee901bfaf",
+  "description": "The WebSocket backend uses charging station identifiers to uniquely associate sessions but allows multiple endpoints to connect using the same session identifier. This implementation results in predictable session identifiers and enables session hijacking or shadowing, where the most recent connection displaces the legitimate charging station and receives backend commands intended for that station. This vulnerability may allow unauthorized users to authenticate as other users or enable\u00a0a malicious actor to cause a denial-of-service condition by overwhelming the backend with valid session requests.",
+  "datePublished": "Mar 6, 2026, 6:31:13 PM",
+  "dateUpdated": "Mar 6, 2026, 6:31:13 PM",
+  "baseScore": 6.9,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N",
+  "references": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-062-08\nhttps://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-062-08.json\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-20748\n",
+  "aliases": "GHSA-35c6-2wx7-593f\nCVE-2026-20748\n",
+  "assigner": "icscert",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "5b2e751a-6de1-3837-9533-cd74831dacbe",
+      "product": {
+        "name": "api.everon.io"
+      },
+      "product_version": "All versions"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1bbe0112-ed66-325b-b9bd-882674578008",
+      "vendor": {
+        "name": "Everon"
+      }
+    }
+  ]
+}

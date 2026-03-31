@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-35624",
+  "enisaUuid": "a44a56d2-723c-38a2-af16-bb85b4d7a083",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Send DTBCLK disable message on first commit\n\n[Why]\nPrevious patch to allow DTBCLK disable didn't address boot case. Driver\nthinks DTBCLK is disabled by default, so we don't send disable message to\nPMFW. DTBCLK is then enabled at idle desktop on boot, burning power.\n\n[How]\nSet dtbclk_en to true on boot so that disable message is sent during first\ncommit.",
+  "datePublished": "May 19, 2024, 9:34:47 AM",
+  "dateUpdated": "May 19, 2024, 9:34:47 AM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-35906\nhttps://git.kernel.org/stable/c/0dab75b433ed2480d57ae4f8f725186a46223e42\nhttps://git.kernel.org/stable/c/f341055b10bd8be55c3c995dff5f770b236b8ca9\n",
+  "aliases": "GHSA-jjw8-r4h6-8x47\nCVE-2024-35906\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

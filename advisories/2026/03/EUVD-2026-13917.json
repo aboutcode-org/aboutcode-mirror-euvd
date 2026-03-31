@@ -1,0 +1,97 @@
+{
+  "id": "EUVD-2026-13917",
+  "enisaUuid": "c471a736-2dce-3995-8242-026a3a0ce8d9",
+  "description": "Ory Hydra is an OAuth 2.0 Server and OpenID Connect Provider. Prior to version 26.2.0, the listOAuth2Clients, listOAuth2ConsentSessions, and listTrustedOAuth2JwtGrantIssuers Admin APIs in Ory Hydra are vulnerable to SQL injection due to flaws in its pagination implementation. Pagination tokens are encrypted using the secret configured in `secrets.pagination`. If this value is not set, Hydra falls back to using `secrets.system`. An attacker who knows this secret can craft their own tokens, including malicious tokens that lead to SQL injection. This issue can be exploited when one or more admin APIs listed above are directly or indirectly accessible to the attacker; the attacker can pass a raw pagination token to the affected API; and the configuration value `secrets.pagination` is set and known to the attacker, or `secrets.pagination` is not set and `secrets.system` is known to the attacker. An attacker can execute arbitrary SQL queries through forged pagination tokens. As a first line of defense, immediately configure a custom value for `secrets.pagination` by generating a cryptographically secure random secret. Next, upgrade Hydra to the fixed version, 26.2.0 as soon as possible.",
+  "datePublished": "Mar 26, 2026, 5:38:10 PM",
+  "dateUpdated": "Mar 26, 2026, 5:38:10 PM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cc09377b-f30b-414b-a551-d3689ddcc5a4?source=cve\nhttps://plugins.trac.wordpress.org/browser/alt-manager/tags/1.8.2/inc/alm-empty-generator.php#L150\nhttps://plugins.trac.wordpress.org/browser/alt-manager/tags/1.8.2/inc/alm-empty-generator.php#L295\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3479531%40alt-manager&new=3479531%40alt-manager&sfp_email=&sfph_mail=\nhttps://github.com/parse-community/parse-server/security/advisories/GHSA-6qh5-m6g3-xhq6\nhttps://github.com/parse-community/parse-server/pull/10259\nhttps://github.com/parse-community/parse-server/pull/10260\nhttps://github.com/WWBN/AVideo/security/advisories/GHSA-96qp-8cmq-jvq8\nhttps://github.com/ory/kratos/security/advisories/GHSA-hgx2-28f8-6g2r\nhttps://github.com/pyload/pyload/security/advisories/GHSA-r7mc-x6x7-cqxx\nhttps://github.com/pyload/pyload/commit/f5e284fcdfeaf08436bb03e5fcf697aaac659d8b\nhttps://github.com/ory/hydra/security/advisories/GHSA-r9w3-57w2-gch2\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-3350\nhttps://github.com/WWBN/AVideo/commit/b583acdc9a9d1eab461543caa363e1a104fb4516\nhttps://github.com/WWBN/AVideo/commit/dc3c825734628bb32550d0daa125f05bacb6829c\nhttps://github.com/parse-community/parse-server/commit/060d27053fb0fadf613c25aabab7fe0c82b7a899\nhttps://github.com/parse-community/parse-server/commit/2126fe4e12f9b399dc6b4b6a3fa70cb1825f159b\n",
+  "aliases": "CVE-2026-33508\nCVE-2026-33504\nGHSA-r7mc-x6x7-cqxx\nCVE-2026-33509\nGHSA-6qh5-m6g3-xhq6\nCVE-2026-33501\nCVE-2026-33503\nGHSA-96qp-8cmq-jvq8\nGHSA-hgx2-28f8-6g2r\nGHSA-v2hr-chj5-35fh\n",
+  "assigner": "GitHub_M",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "0b370b33-faf6-3067-8de2-4e75435d8e5a",
+      "product": {
+        "name": "Image Alt Text Manager \u2013 Bulk & Dynamic Alt Tags For image SEO Optimization + AI"
+      },
+      "product_version": "* \u22641.8.2"
+    },
+    {
+      "id": "7975608a-ffb6-378f-adaf-548808cdedf3",
+      "product": {
+        "name": "hydra"
+      },
+      "product_version": "< 26.2.0"
+    },
+    {
+      "id": "afd0f895-1261-32e2-bbc0-bbac76896f86",
+      "product": {
+        "name": "parse-server"
+      },
+      "product_version": "9.0.0, < 9.6.0-alpha.45"
+    },
+    {
+      "id": "bbd72e2d-abe5-3b15-8640-0793c0aef59e",
+      "product": {
+        "name": "parse-server"
+      },
+      "product_version": "< 8.6.56"
+    },
+    {
+      "id": "dafc3d8b-e289-385e-abb9-b9488b24fb90",
+      "product": {
+        "name": "kratos"
+      },
+      "product_version": "< 26.2.0"
+    },
+    {
+      "id": "dcba77d5-11a1-38b8-a2cd-0923e107cc41",
+      "product": {
+        "name": "pyload"
+      },
+      "product_version": "0.4.0, < 0.5.0b3.dev97"
+    },
+    {
+      "id": "dd3503f9-a210-39ae-b2ab-0d7c6b64b773",
+      "product": {
+        "name": "AVideo"
+      },
+      "product_version": "\u2264 26.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "030567a6-2c62-3f43-9ed6-70565a4b6d25",
+      "vendor": {
+        "name": "ory"
+      }
+    },
+    {
+      "id": "18c9fa4b-8958-33e0-ac83-b066e37b8a2b",
+      "vendor": {
+        "name": "WWBN"
+      }
+    },
+    {
+      "id": "6ec9a435-223e-3270-b4d8-75da4cdcde2e",
+      "vendor": {
+        "name": "pyload"
+      }
+    },
+    {
+      "id": "bfc8cc5f-a335-30ed-985f-57dc684cf073",
+      "vendor": {
+        "name": "parse-community"
+      }
+    },
+    {
+      "id": "c5cd50a5-6b00-3e20-a87e-af1af070c7b1",
+      "vendor": {
+        "name": "WPSAAD"
+      }
+    }
+  ]
+}

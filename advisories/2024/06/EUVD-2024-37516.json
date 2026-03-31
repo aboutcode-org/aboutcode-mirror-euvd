@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-37516",
+  "enisaUuid": "fa4c2d9d-cf58-38e6-b834-04ea944de735",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix list corruption from resetting io stat\n\nSince commit 3b8cc6298724 (\"blk-cgroup: Optimize blkcg_rstat_flush()\"),\neach iostat instance is added to blkcg percpu list, so blkcg_reset_stats()\ncan't reset the stat instance by memset(), otherwise the llist may be\ncorrupted.\n\nFix the issue by only resetting the counter part.",
+  "datePublished": "Jun 24, 2024, 3:31:45 PM",
+  "dateUpdated": "Oct 3, 2025, 3:31:13 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d4a60298ac34f027a09f8f893fdbd9e06279bb24\nhttps://git.kernel.org/stable/c/89bb36c72e1951843f9e04dc84412e31fcc849a9\nhttps://git.kernel.org/stable/c/6da6680632792709cecf2b006f2fe3ca7857e791\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-38663\n",
+  "aliases": "CVE-2024-38663\nGHSA-jw6j-6fr8-787w\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "0a694468-1f51-3679-8ba6-dce37139bb75",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3b8cc6298724021da845f2f9fd7dd4b6829a6817 <d4a60298ac34f027a09f8f893fdbd9e06279bb24"
+    },
+    {
+      "id": "2077c412-824d-39ad-890d-352b4f43b158",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3b8cc6298724021da845f2f9fd7dd4b6829a6817 <6da6680632792709cecf2b006f2fe3ca7857e791"
+    },
+    {
+      "id": "403a50c2-014e-32b0-b129-f8621b94d14c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "84f5250c-ada0-3c37-8f0b-2355d2806dd0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.2"
+    },
+    {
+      "id": "92ed2016-3549-3e25-bf0d-c0dcb3ed57f7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.33"
+    },
+    {
+      "id": "95b2cc4f-5640-35f3-a52d-9b91fbb73fc9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "adb6630c-d351-3d7d-b444-2eb761fbd903",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3b8cc6298724021da845f2f9fd7dd4b6829a6817 <89bb36c72e1951843f9e04dc84412e31fcc849a9"
+    },
+    {
+      "id": "b303f692-93b6-38b2-adde-2af60beef4c0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7df6218b-702d-3870-a22e-aad17d396496",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

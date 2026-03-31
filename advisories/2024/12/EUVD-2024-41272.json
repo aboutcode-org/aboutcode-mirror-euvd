@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2024-41272",
+  "enisaUuid": "893a09ed-6e83-3a90-8389-717639921138",
+  "description": "The hypervisor contains code to accelerate VGA memory accesses for HVM\nguests, when the (virtual) VGA is in \"standard\" mode.  Locking involved\nthere has an unusual discipline, leaving a lock acquired past the\nreturn from the function that acquired it.  This behavior results in a\nproblem when emulating an instruction with two memory accesses, both of\nwhich touch VGA memory (plus some further constraints which aren't\nrelevant here).  When emulating the 2nd access, the lock that is already\nbeing held would be attempted to be re-acquired, resulting in a\ndeadlock.\n\nThis deadlock was already found when the code was first introduced, but\nwas analysed incorrectly and the fix was incomplete.  Analysis in light\nof the new finding cannot find a way to make the existing locking\ndiscipline work.\n\nIn staging, this logic has all been removed because it was discovered\nto be accidentally disabled since Xen 4.7.  Therefore, we are fixing the\nlocking problem by backporting the removal of most of the feature.  Note\nthat even with the feature disabled, the lock would still be acquired\nfor any accesses to the VGA MMIO region.",
+  "datePublished": "Dec 19, 2024, 12:32:40 PM",
+  "dateUpdated": "Dec 31, 2024, 9:30:45 PM",
+  "baseScore": -1.0,
+  "references": "https://xenbits.xenproject.org/xsa/advisory-463.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-45818\nhttp://www.openwall.com/lists/oss-security/2024/11/12/2\nhttp://xenbits.xen.org/xsa/advisory-463.html\n",
+  "aliases": "CVE-2024-45818\nGHSA-9ppw-wh7x-2qc9\n",
+  "assigner": "XEN",
+  "epss": 0.17,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "f32a55c0-177f-3a10-9ac0-4595ab3fa614",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

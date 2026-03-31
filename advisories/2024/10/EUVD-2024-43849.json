@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-43849",
+  "enisaUuid": "2112b76b-a01f-3868-95c4-c4d6fcf2722b",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: avoid reading out of bounds when loading TX power FW elements\n\nBecause the loop-expression will do one more time before getting false from\ncond-expression, the original code copied one more entry size beyond valid\nregion.\n\nFix it by moving the entry copy to loop-body.",
+  "datePublished": "Oct 21, 2024, 6:30:58 PM",
+  "dateUpdated": "Oct 25, 2024, 3:31:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/83c84cdb75572048b67d6a3916283aeac865996e\nhttps://git.kernel.org/stable/c/4007c3d2da31d0c755ea3fcf55e395118e5d5621\nhttps://git.kernel.org/stable/c/ed2e4bb17a4884cf29c3347353d8aabb7265b46c\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49928\n",
+  "aliases": "GHSA-8w32-7xxp-mvxc\nCVE-2024-49928\n",
+  "assigner": "Linux",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "02cd176c-0c84-3867-a9f5-58b3673c99d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.16"
+    },
+    {
+      "id": "3f40b85d-04f9-3096-80e2-014becacf684",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e3ec7017f6a20d12ddd9fe23d345ebb7b8c104dd <83c84cdb75572048b67d6a3916283aeac865996e"
+    },
+    {
+      "id": "61a4b392-c89f-3076-af47-b241b5f3eef0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.14"
+    },
+    {
+      "id": "7853fa27-3f14-3ce1-b7ca-991c4c4413ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "b429293c-c032-3c6c-af51-91b0f4caaf6c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e3ec7017f6a20d12ddd9fe23d345ebb7b8c104dd <4007c3d2da31d0c755ea3fcf55e395118e5d5621"
+    },
+    {
+      "id": "cbd7d219-802e-3b86-a120-487877d7d8bc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f4b58263-4241-35b2-89b3-a3d4fff2b3b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e3ec7017f6a20d12ddd9fe23d345ebb7b8c104dd <ed2e4bb17a4884cf29c3347353d8aabb7265b46c"
+    },
+    {
+      "id": "fb173288-d318-38e8-a7ab-a54784b040d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ca39cd77-4290-3743-af2e-ec3675004eef",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

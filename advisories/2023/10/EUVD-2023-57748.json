@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2023-57748",
+  "enisaUuid": "d15aa6d5-e2ba-36c2-b522-8e204712d814",
+  "description": "The Message ticker plugin for WordPress is vulnerable to SQL Injection via the plugin's shortcode in versions up to, and including, 9.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers with subscriber-level and above permissions to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "datePublished": "Oct 31, 2023, 9:30:53 AM",
+  "dateUpdated": "Nov 6, 2023, 9:31:07 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d0b1fa88-2fc6-41af-bd39-12af92dc6533?source=cve\nhttps://plugins.trac.wordpress.org/browser/message-ticker/trunk/message-ticker.php?rev=2827131#L142\nhttps://plugins.trac.wordpress.org/changeset/2985499/message-ticker#file1\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-5433\n",
+  "aliases": "GHSA-g6gr-m9fq-gqh9\nCVE-2023-5433\n",
+  "assigner": "Wordfence",
+  "epss": 0.17,
+  "enisaIdProduct": [
+    {
+      "id": "854447cb-83f3-356f-b10c-5c4801cdbf96",
+      "product": {
+        "name": "Message ticker"
+      },
+      "product_version": "* \u22649.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "54d49a30-6d09-36ea-b086-df3d3ec2ecc5",
+      "vendor": {
+        "name": "gopiplus"
+      }
+    }
+  ]
+}

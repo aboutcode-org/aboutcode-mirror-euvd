@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-31337",
+  "enisaUuid": "954a8e9b-0d19-3ca1-a151-c4ee53563b84",
+  "description": "nscd: Null pointer crashes after notfound response\n\nIf the Name Service Cache Daemon's (nscd) cache fails to add a not-found\nnetgroup response to the cache, the client request can result in a null\npointer dereference.  This flaw was introduced in glibc 2.15 when the\ncache was added to nscd.\n\nThis vulnerability is only present in the nscd binary.",
+  "datePublished": "May 6, 2024, 9:30:38 PM",
+  "dateUpdated": "Mar 27, 2025, 3:30:58 PM",
+  "baseScore": -1.0,
+  "references": "https://sourceware.org/git/?p=glibc.git;a=blob;f=advisories/GLIBC-SA-2024-0006\nhttps://security.netapp.com/advisory/ntap-20240524-0013/\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00026.html\nhttp://www.openwall.com/lists/oss-security/2024/07/22/5\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-33600\n",
+  "aliases": "GHSA-jv3g-6pg3-v9j8\nCVE-2024-33600\n",
+  "assigner": "glibc",
+  "epss": 0.23,
+  "enisaIdProduct": [
+    {
+      "id": "9fa7912f-2353-3068-995a-663ff100cfcb",
+      "product": {
+        "name": "glibc"
+      },
+      "product_version": "2.15 <2.40"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c944e23a-3ff0-359b-b972-abebc0feb4b1",
+      "vendor": {
+        "name": "The GNU C Library"
+      }
+    }
+  ]
+}

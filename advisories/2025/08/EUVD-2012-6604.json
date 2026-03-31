@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2012-6604",
+  "enisaUuid": "104c5857-ae33-3ec4-a016-4a925cae062c",
+  "description": "Lattice Semiconductor ispVM System v18.0.2 contains a buffer overflow vulnerability in its handling of .xcf project files. When parsing the version attribute of the ispXCF XML tag, the application fails to properly validate input length, allowing a specially crafted file to overwrite memory on the stack. This can result in arbitrary code execution under the context of the user who opens the file. The vulnerability is triggered locally by opening a malicious .xcf file and does not require elevated privileges.",
+  "datePublished": "Aug 13, 2025, 9:30:30 PM",
+  "dateUpdated": "Aug 13, 2025, 9:30:30 PM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/fileformat/ispvm_xcf_ispxcf.rb\nhttps://www.exploit-db.com/exploits/18947\nhttps://web.archive.org/web/20121014002756/http://secunia.com/advisories/48740/\nhttps://www.latticesemi.com/ispvm\nhttps://www.vulncheck.com/advisories/lattice-semiconductor-ispvm-system-xcf-file-handling-buffer-overflow\nhttps://nvd.nist.gov/vuln/detail/CVE-2012-10057\n",
+  "aliases": "GHSA-c3xf-7jfj-cpqv\nCVE-2012-10057\n",
+  "assigner": "VulnCheck",
+  "epss": 1.92,
+  "enisaIdProduct": [
+    {
+      "id": "007e1980-b499-34dd-af51-69f691131b11",
+      "product": {
+        "name": "ispVM System"
+      },
+      "product_version": "18.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5093451f-bf8e-3c6d-8494-099efccb006a",
+      "vendor": {
+        "name": "Lattice Semiconductor"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-7835",
+  "enisaUuid": "749c3eaf-75e9-3362-9749-42fd22b52e78",
+  "description": "OpenS100 (the reference implementation S-100 viewer) prior to commit 753cf29 contain a remote code execution vulnerability via an unrestricted Lua interpreter. The Portrayal Engine initializes Lua using luaL_openlibs() without sandboxing or capability restrictions, exposing standard libraries such as 'os' and 'io' to untrusted portrayal catalogues. An attacker can provide a malicious S-100 portrayal catalogue containing Lua scripts that execute arbitrary commands with the privileges of the OpenS100 process when a user imports the catalogue and loads a chart.",
+  "datePublished": "Feb 17, 2026, 3:31:35 PM",
+  "dateUpdated": "Feb 17, 2026, 9:31:13 PM",
+  "baseScore": 9.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://www.mdpi.com/1424-8220/26/4/1246\nhttps://github.com/S-100ExpertTeam/OpenS100/commit/753cf294434e8d3961f20a567c4d99151e3b530d\nhttps://www.vulncheck.com/advisories/opens100-portrayal-engine-unrestricted-lua-standard-library-access\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-22208\n",
+  "aliases": "CVE-2026-22208\nGHSA-vq48-824m-7qhf\n",
+  "assigner": "VulnCheck",
+  "epss": 0.2,
+  "enisaIdProduct": [
+    {
+      "id": "34abb769-f1f4-4410-8572-fe486039a1e0",
+      "product": {
+        "name": "OpenS100"
+      },
+      "product_version": "0 <commit 753cf29"
+    },
+    {
+      "id": "5445f52e-3847-3a61-9c38-f079fc903361",
+      "product": {
+        "name": "OpenS100"
+      },
+      "product_version": "0 <753cf294434e8d3961f20a567c4d99151e3b530d"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "09c106c8-1699-44ac-b0d6-b2d708b03db7",
+      "vendor": {
+        "name": "OpenS100 Project"
+      }
+    },
+    {
+      "id": "7079008d-2550-35f5-a2fa-c85e5f0e6bcf",
+      "vendor": {
+        "name": "OpenS100 Project"
+      }
+    }
+  ]
+}

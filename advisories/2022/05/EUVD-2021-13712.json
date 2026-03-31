@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-13712",
+  "enisaUuid": "83f188eb-6960-3104-a7c8-42c75fbbbdf3",
+  "description": "An issue was discovered in the Linux kernel 3.11 through 5.10.16, as used by Xen. To service requests to the PV backend, the driver maps grant references provided by the frontend. In this process, errors may be encountered. In one case, an error encountered earlier might be discarded by later processing, resulting in the caller assuming successful mapping, and hence subsequent operations trying to access space that wasn't mapped. In another case, internal state would be insufficiently updated, preventing safe recovery from the error. This affects drivers/block/xen-blkback/blkback.c.",
+  "datePublished": "May 24, 2022, 5:42:34 PM",
+  "dateUpdated": "Mar 25, 2024, 3:31:41 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-26930.html\nhttps://ubuntu.com/security/CVE-2021-26930\nhttps://advisories.mageia.org/CVE-2021-26930.html\nhttps://security.archlinux.org/CVE-2021-26930\nhttps://alas.aws.amazon.com/cve/html/CVE-2021-26930.html\nhttps://linux.oracle.com/cve/CVE-2021-26930.html\nhttp://xenbits.xen.org/xsa/advisory-365.html\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2XQR52ICKRK3GC4HDWLMWF2U55YGAR63/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GWQWPWYZRXVFJI5M3VCM72X27IB7CKOB/\nhttps://lists.debian.org/debian-lts-announce/2021/03/msg00010.html\nhttps://security.netapp.com/advisory/ntap-20210326-0001/\nhttps://lists.debian.org/debian-lts-announce/2021/03/msg00035.html\nhttps://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=871997bc9e423f05c7da7c9178e62dde5df2a7f8\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-26930\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/2XQR52ICKRK3GC4HDWLMWF2U55YGAR63\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/GWQWPWYZRXVFJI5M3VCM72X27IB7CKOB\n",
+  "aliases": "GHSA-2q89-537g-gjqw\nCVE-2021-26930\n",
+  "assigner": "mitre",
+  "epss": 0.08,
+  "enisaIdProduct": [
+    {
+      "id": "4c339ac0-ddc2-3457-af2d-599b814efad4",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "62bd120f-e963-34a1-b038-c15e7c14bb71",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

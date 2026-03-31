@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-45394",
+  "enisaUuid": "cfb60bdb-7006-3cff-9122-1b074a5acfa7",
+  "description": "Xenstore: Guests can cause Xenstore to not free temporary memory When working on a request of a guest, xenstored might need to allocate quite large amounts of memory temporarily. This memory is freed only after the request has been finished completely. A request is regarded to be finished only after the guest has read the response message of the request from the ring page. Thus a guest not reading the response can cause xenstored to not free the temporary memory. This can result in memory shortages causing Denial of Service (DoS) of xenstored.",
+  "datePublished": "Nov 1, 2022, 7:00:30 PM",
+  "dateUpdated": "Nov 3, 2022, 12:00:31 PM",
+  "baseScore": -1.0,
+  "references": "https://www.debian.org/security/2022/dsa-5272\nhttps://www.suse.com/security/cve/CVE-2022-42319.html\nhttps://xenbits.xenproject.org/xsa/advisory-416.txt\nhttp://xenbits.xen.org/xsa/advisory-416.html\nhttp://www.openwall.com/lists/oss-security/2022/11/01/6\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZLI2NPNEH7CNJO3VZGQNOI4M4EWLNKPZ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YZVXG7OOOXCX6VIPEMLFDPIPUTFAYWPE/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YTMITQBGC23MSDHUCAPCVGLMVXIBXQTQ/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-42319\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/YTMITQBGC23MSDHUCAPCVGLMVXIBXQTQ\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/YZVXG7OOOXCX6VIPEMLFDPIPUTFAYWPE\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZLI2NPNEH7CNJO3VZGQNOI4M4EWLNKPZ\n",
+  "aliases": "GHSA-jxpc-fxw3-65cc\nCVE-2022-42319\n",
+  "assigner": "XEN",
+  "epss": 0.03,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "41fd2637-dac9-3314-97c3-b6686780e6ff",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

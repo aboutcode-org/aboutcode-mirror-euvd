@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207872",
+  "enisaUuid": "4a66b6d1-dfeb-3723-8116-4f8fd58e1533",
+  "description": "The Two Factor (2FA) Authentication via Email plugin for WordPress is vulnerable to Two-Factor Authentication Bypass in versions up to, and including, 1.9.8. This is because the SS88_2FAVE::wp_login() method only enforces the 2FA requirement if the 'token' HTTP GET parameter is undefined, which makes it possible to bypass two-factor authentication by supplying any value in the 'token' parameter during login, including an empty one.",
+  "datePublished": "Feb 19, 2026, 6:31:49 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:49 PM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/11fbe76c-dc5c-413c-b6a8-d0f4aa56935d?source=cve\nhttps://plugins.trac.wordpress.org/browser/two-factor-2fa-via-email/trunk/ss88-two-factor-via-email.php#L218\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3408531%40two-factor-2fa-via-email&new=3408531%40two-factor-2fa-via-email&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-13587\n",
+  "aliases": "CVE-2025-13587\nGHSA-87q3-cqqr-mvcg\n",
+  "assigner": "Wordfence",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "ca713fb1-165f-4e22-98b1-85a80e7db0e1",
+      "product": {
+        "name": "Two Factor (2FA) Authentication via Email"
+      },
+      "product_version": "* \u22641.9.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c0257619-7144-4110-a07a-170a3c973e9f",
+      "vendor": {
+        "name": "ss88_uk"
+      }
+    }
+  ]
+}

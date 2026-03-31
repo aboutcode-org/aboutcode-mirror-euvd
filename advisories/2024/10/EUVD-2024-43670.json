@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-43670",
+  "enisaUuid": "48cfc138-b324-3270-9e90-e2f24c0dab67",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: guard against string buffer overrun\n\nSmatch reports that copying media_name and if_name to name_parts may\noverwrite the destination.\n\n .../bearer.c:166 bearer_name_validate() error: strcpy() 'media_name' too large for 'name_parts->media_name' (32 vs 16)\n .../bearer.c:167 bearer_name_validate() error: strcpy() 'if_name' too large for 'name_parts->if_name' (1010102 vs 16)\n\nThis does seem to be the case so guard against this possibility by using\nstrscpy() and failing if truncation occurs.\n\nIntroduced by commit b97bf3fd8f6a (\"[TIPC] Initial merge\")\n\nCompile tested only.",
+  "datePublished": "Oct 21, 2024, 6:30:59 PM",
+  "dateUpdated": "Nov 8, 2024, 6:30:46 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/8298b6e45fb4d8944f356b08e4ea3e54df5e0488\nhttps://git.kernel.org/stable/c/c79768ffba5b6e95569a463a69b3101c95694867\nhttps://git.kernel.org/stable/c/e2b2558971e02ca33eb637a8350d68a48b3e8e46\nhttps://git.kernel.org/stable/c/54dae0e9063ed23c9acf8d5ab9b18d3426a8ac18\nhttps://git.kernel.org/stable/c/80c0be7bcf940ce9308311575c3aff8983c9b97a\nhttps://git.kernel.org/stable/c/12d26aa7fd3cbdbc5149b6e516563478d575026e\nhttps://git.kernel.org/stable/c/2ed7f42dfd3edb387034128ca5b0f639836d4ddd\nhttps://git.kernel.org/stable/c/a18c7b239d02aafb791ae2c45226f6bb40641792\nhttps://git.kernel.org/stable/c/6555a2a9212be6983d2319d65276484f7c5f431a\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49995\n",
+  "aliases": "GHSA-c8jq-9f5m-r697\nCVE-2024-49995\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "0bd8cbdb-ffc2-3107-956a-1f0090e38360",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.55"
+    },
+    {
+      "id": "1963916f-40b1-3948-a872-befa2cf0a618",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a18c7b239d02aafb791ae2c45226f6bb40641792"
+    },
+    {
+      "id": "28313198-9fa5-3ed9-a469-aad4697f517e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.168"
+    },
+    {
+      "id": "29c8d351-c248-340c-b28d-99585ee7d368",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "2aebe594-2f65-3568-87a8-a1cd1ca3d66b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.14"
+    },
+    {
+      "id": "30bb5b3e-ec8c-34f0-9391-aafad8e30ec6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6555a2a9212be6983d2319d65276484f7c5f431a"
+    },
+    {
+      "id": "3f3a7186-eb59-3e5e-a524-74439bba5751",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.113"
+    },
+    {
+      "id": "41117e15-8b91-393d-a438-904c6638b4fc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.227"
+    },
+    {
+      "id": "52bcda03-c8e9-3c20-9959-1f563ec115ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e2b2558971e02ca33eb637a8350d68a48b3e8e46"
+    },
+    {
+      "id": "54a57c92-eba6-3151-a149-ef6201d1dfef",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2ed7f42dfd3edb387034128ca5b0f639836d4ddd"
+    },
+    {
+      "id": "61860185-5a70-3d74-854b-bc047785b266",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <12d26aa7fd3cbdbc5149b6e516563478d575026e"
+    },
+    {
+      "id": "6960dff1-ea03-364a-bf6c-51b20f2b7389",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.285"
+    },
+    {
+      "id": "70b914bb-5764-3257-b1d1-f4add865dff6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <54dae0e9063ed23c9acf8d5ab9b18d3426a8ac18"
+    },
+    {
+      "id": "7783603a-cbe0-3ddc-8e1d-9d399f91b603",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.323"
+    },
+    {
+      "id": "90b0bfa2-8e0e-3bd3-838c-1b3f26f9b854",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c79768ffba5b6e95569a463a69b3101c95694867"
+    },
+    {
+      "id": "90f5534f-c407-3a31-a632-a3abc4e4a83e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <80c0be7bcf940ce9308311575c3aff8983c9b97a"
+    },
+    {
+      "id": "a98bd65f-4a99-33e9-aa4b-981de0f41e37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "f256887d-6469-3630-9679-ad7bdf5adf7b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8298b6e45fb4d8944f356b08e4ea3e54df5e0488"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "067ff51c-d33d-33ef-bdfb-ad9c08c71526",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

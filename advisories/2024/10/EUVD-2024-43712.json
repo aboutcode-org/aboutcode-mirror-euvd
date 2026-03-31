@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-43712",
+  "enisaUuid": "36a99dde-d080-33d3-9e42-264742026a2e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: set the cipher for secured NDP ranging\n\nThe cipher pointer is not set, but is derefereced trying to set its\ncontent, which leads to a NULL pointer dereference.\nFix it by pointing to the cipher parameter before dereferencing.",
+  "datePublished": "Oct 21, 2024, 3:32:27 PM",
+  "dateUpdated": "Oct 22, 2024, 6:32:10 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b3322a6d6aa9bc17b395c4b38d3b97578887aa8a\nhttps://git.kernel.org/stable/c/a949075d4bbf1ca83ccdeaa6ef4ac2ce7526c5f4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49857\n",
+  "aliases": "CVE-2024-49857\nGHSA-fg94-xg7j-w3vf\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "36ab2d55-0659-3a8e-970b-b0ba3b5097a6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "626be4bf99f6250cd66da5d311a72ad7455c5a64 <a949075d4bbf1ca83ccdeaa6ef4ac2ce7526c5f4"
+    },
+    {
+      "id": "5ea74ce4-539a-3e02-b511-dce138d51509",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.2"
+    },
+    {
+      "id": "7cbc6e98-ae8f-3432-9715-f129623c6b35",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ce220e41-f2f3-3f37-bbc6-357f99ddda67",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.11"
+    },
+    {
+      "id": "d71c3312-8cd0-382e-8eea-e948ebc0643d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "626be4bf99f6250cd66da5d311a72ad7455c5a64 <b3322a6d6aa9bc17b395c4b38d3b97578887aa8a"
+    },
+    {
+      "id": "f26bb28e-7d62-329d-b8df-a90477d23791",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "127d8714-abfa-3de7-9796-951f48c683a3",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

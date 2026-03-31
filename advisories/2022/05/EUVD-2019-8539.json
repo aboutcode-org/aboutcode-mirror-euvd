@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2019-8539",
+  "enisaUuid": "9948d5d3-b93c-355e-80d3-06e359a62a54",
+  "description": "An issue was discovered in Envoy 1.12.0. Upon receipt of a malformed HTTP request without a Host header, it sends an internally generated \"Invalid request\" response. This internally generated response is dispatched through the configured encoder filter chain before being sent to the client. An encoder filter that invokes route manager APIs that access a request's Host header causes a NULL pointer dereference, resulting in abnormal termination of the Envoy process.",
+  "datePublished": "May 24, 2022, 5:03:36 PM",
+  "dateUpdated": "Apr 4, 2024, 2:43:23 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2019-18838.html\nhttps://access.redhat.com/errata/RHSA-2019:4222\nhttps://github.com/envoyproxy/envoy/commits/master\nhttps://groups.google.com/forum/#%21forum/envoy-users\nhttps://blog.envoyproxy.io\nhttps://github.com/envoyproxy/envoy/security/advisories/GHSA-f2rv-4w6x-rwhc\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-18838\nhttps://groups.google.com/forum/#!forum/envoy-users\n",
+  "aliases": "GHSA-m3j5-qf4q-m73w\nCVE-2019-18838\n",
+  "assigner": "mitre",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "bde1b480-275d-39cc-896c-2dc550f2d0be",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "803da66b-3dbe-393e-b652-173a7e45abe5",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

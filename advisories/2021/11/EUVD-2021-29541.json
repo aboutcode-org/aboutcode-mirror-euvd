@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-29541",
+  "enisaUuid": "ccfaf9ea-33d6-3f79-a531-54b46b8a9894",
+  "description": "An issue was discovered in the Bidirectional Algorithm in the Unicode Specification through 14.0. It permits the visual reordering of characters via control sequences, which can be used to craft source code that renders different logic than the logical ordering of tokens ingested by compilers and interpreters. Adversaries can leverage this to encode source code for compilers accepting Unicode such that targeted vulnerabilities are introduced invisibly to human reviewers. NOTE: the Unicode Consortium offers the following alternative approach to presenting this concern. An issue is noted in the nature of international text that can affect applications that implement support for The Unicode Standard and the Unicode Bidirectional Algorithm (all versions). Due to text display behavior when text includes left-to-right and right-to-left characters, the visual order of tokens may be different from their logical order. Additionally, control characters needed to fully support the requirements of bidirectional text can further obfuscate the logical order of tokens. Unless mitigated, an adversary could craft source code such that the ordering of tokens perceived by human reviewers does not match what will be processed by a compiler/interpreter/etc. The Unicode Consortium has documented this class of vulnerability in its document, Unicode Technical Report #36, Unicode Security Considerations. The Unicode Consortium also provides guidance on mitigations for this class of issues in Unicode Technical Standard #39, Unicode Security Mechanisms, and in Unicode Standard Annex #31, Unicode Identifier and Pattern Syntax. Also, the BIDI specification allows applications to tailor the implementation in ways that can mitigate misleading visual reordering in program text; see HL4 in Unicode Standard Annex #9, Unicode Bidirectional Algorithm.",
+  "datePublished": "Nov 1, 2021, 12:00:00 AM",
+  "dateUpdated": "Aug 4, 2024, 3:38:49 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-42574.html\nhttps://access.redhat.com/errata/RHSA-2021:4743\nhttps://access.redhat.com/errata/RHSA-2021:4730\nhttps://access.redhat.com/errata/RHSA-2021:4729\nhttps://access.redhat.com/errata/RHSA-2021:4724\nhttps://access.redhat.com/errata/RHSA-2021:4723\nhttps://access.redhat.com/errata/RHSA-2021:4694\nhttps://access.redhat.com/errata/RHSA-2021:4669\nhttps://access.redhat.com/errata/RHSA-2021:4649\nhttps://access.redhat.com/errata/RHSA-2021:4602\nhttps://access.redhat.com/errata/RHSA-2021:4601\nhttps://access.redhat.com/errata/RHSA-2021:4600\nhttps://access.redhat.com/errata/RHSA-2021:4599\nhttps://access.redhat.com/errata/RHSA-2021:4598\nhttps://access.redhat.com/errata/RHSA-2021:4596\nhttps://access.redhat.com/errata/RHSA-2021:4595\nhttps://access.redhat.com/errata/RHSA-2021:4594\nhttps://access.redhat.com/errata/RHSA-2021:4593\nhttps://access.redhat.com/errata/RHSA-2021:4592\nhttps://access.redhat.com/errata/RHSA-2021:4591\nhttps://access.redhat.com/errata/RHSA-2021:4590\nhttps://access.redhat.com/errata/RHSA-2021:4589\nhttps://access.redhat.com/errata/RHSA-2021:4588\nhttps://access.redhat.com/errata/RHSA-2021:4587\nhttps://access.redhat.com/errata/RHSA-2021:4586\nhttps://access.redhat.com/errata/RHSA-2021:4585\nhttps://access.redhat.com/errata/RHSA-2021:4039\nhttps://access.redhat.com/errata/RHSA-2021:4038\nhttps://access.redhat.com/errata/RHSA-2021:4037\nhttps://access.redhat.com/errata/RHSA-2021:4036\nhttps://access.redhat.com/errata/RHSA-2021:4035\nhttps://access.redhat.com/errata/RHSA-2021:4034\nhttps://access.redhat.com/errata/RHSA-2021:4033\nhttps://advisories.mageia.org/CVE-2021-42574.html\nhttps://security.archlinux.org/CVE-2021-42574\nhttps://linux.oracle.com/cve/CVE-2021-42574.html\nhttp://www.unicode.org/versions/Unicode14.0.0/\nhttps://trojansource.codes\nhttp://www.openwall.com/lists/oss-security/2021/11/01/1\nhttp://www.openwall.com/lists/oss-security/2021/11/01/4\nhttp://www.openwall.com/lists/oss-security/2021/11/01/6\nhttp://www.openwall.com/lists/oss-security/2021/11/01/5\nhttp://www.openwall.com/lists/oss-security/2021/11/02/10\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QUPA37D57VPTDLSXOOGF4UXUEADOC4PQ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LQNTFF24ROHLVPLUOEISBN3F7QM27L4U/\nhttps://www.kb.cert.org/vuls/id/999008\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IH2RG5YTR6ZZOLUV3EUPZEIJR7XHJLVD/\nhttps://www.scyon.nl/post/trojans-in-your-source-code\nhttps://www.unicode.org/reports/tr36/\nhttps://www.unicode.org/reports/tr39/\nhttps://www.unicode.org/reports/tr31/\nhttps://www.unicode.org/reports/tr9/tr9-44.html#HL4\nhttps://www.starwindsoftware.com/security/sw-20220804-0002/\nhttps://security.gentoo.org/glsa/202210-09\n",
+  "aliases": "CVE-2021-42574\n",
+  "assigner": "mitre",
+  "epss": 25.47,
+  "enisaIdProduct": [
+    {
+      "id": "ecc4e503-ca3d-37e2-a6ee-b31566162611",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "625f645f-3869-3788-84f1-4055c4884ee2",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

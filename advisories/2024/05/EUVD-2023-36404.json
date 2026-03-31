@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2023-36404",
+  "enisaUuid": "6582b158-955c-33ee-9a51-0a72c2f68e0e",
+  "description": "D-Link DAP-1360 webproc var:menu Stack-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of D-Link DAP-1360 routers. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling requests to the /cgi-bin/webproc endpoint. When parsing the var:menu parameter, the process does not properly validate the length of user-supplied data prior to copying it to a fixed-length stack-based buffer. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-18414.",
+  "datePublished": "May 3, 2024, 3:30:50 AM",
+  "dateUpdated": "May 3, 2024, 3:30:50 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.zerodayinitiative.com/advisories/ZDI-23-528/\nhttps://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10324\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-32136\n",
+  "aliases": "CVE-2023-32136\nGHSA-9vrg-cpf5-hchw\n",
+  "assigner": "zdi",
+  "epss": 0.63,
+  "enisaIdProduct": [
+    {
+      "id": "0df0d347-2422-35de-a55c-0cb2acfe3581",
+      "product": {
+        "name": "DAP-1360"
+      },
+      "product_version": "6.14B01 EU HOTFIX"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b0bdddbf-0d29-3959-8390-f80916817e16",
+      "vendor": {
+        "name": "D-Link"
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2023-57256",
+  "enisaUuid": "6f8c647a-e9d1-324f-ba4d-7490cffccc11",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix lock dependency warning with srcu\n\n======================================================\nWARNING: possible circular locking dependency detected\n6.5.0-kfd-yangp #2289 Not tainted\n------------------------------------------------------\nkworker/0:2/996 is trying to acquire lock:\n        (srcu){.+.+}-{0:0}, at: __synchronize_srcu+0x5/0x1a0\n\nbut task is already holding lock:\n        ((work_completion)(&svms->deferred_list_work)){+.+.}-{0:0}, at:\n\tprocess_one_work+0x211/0x560\n\nwhich lock already depends on the new lock.\n\nthe existing dependency chain (in reverse order) is:\n\n-> #3 ((work_completion)(&svms->deferred_list_work)){+.+.}-{0:0}:\n        __flush_work+0x88/0x4f0\n        svm_range_list_lock_and_flush_work+0x3d/0x110 [amdgpu]\n        svm_range_set_attr+0xd6/0x14c0 [amdgpu]\n        kfd_ioctl+0x1d1/0x630 [amdgpu]\n        __x64_sys_ioctl+0x88/0xc0\n\n-> #2 (&info->lock#2){+.+.}-{3:3}:\n        __mutex_lock+0x99/0xc70\n        amdgpu_amdkfd_gpuvm_restore_process_bos+0x54/0x740 [amdgpu]\n        restore_process_helper+0x22/0x80 [amdgpu]\n        restore_process_worker+0x2d/0xa0 [amdgpu]\n        process_one_work+0x29b/0x560\n        worker_thread+0x3d/0x3d0\n\n-> #1 ((work_completion)(&(&process->restore_work)->work)){+.+.}-{0:0}:\n        __flush_work+0x88/0x4f0\n        __cancel_work_timer+0x12c/0x1c0\n        kfd_process_notifier_release_internal+0x37/0x1f0 [amdgpu]\n        __mmu_notifier_release+0xad/0x240\n        exit_mmap+0x6a/0x3a0\n        mmput+0x6a/0x120\n        do_exit+0x322/0xb90\n        do_group_exit+0x37/0xa0\n        __x64_sys_exit_group+0x18/0x20\n        do_syscall_64+0x38/0x80\n\n-> #0 (srcu){.+.+}-{0:0}:\n        __lock_acquire+0x1521/0x2510\n        lock_sync+0x5f/0x90\n        __synchronize_srcu+0x4f/0x1a0\n        __mmu_notifier_release+0x128/0x240\n        exit_mmap+0x6a/0x3a0\n        mmput+0x6a/0x120\n        svm_range_deferred_list_work+0x19f/0x350 [amdgpu]\n        process_one_work+0x29b/0x560\n        worker_thread+0x3d/0x3d0\n\nother info that might help us debug this:\nChain exists of:\n  srcu --> &info->lock#2 --> (work_completion)(&svms->deferred_list_work)\n\nPossible unsafe locking scenario:\n\n        CPU0                    CPU1\n        ----                    ----\n        lock((work_completion)(&svms->deferred_list_work));\n                        lock(&info->lock#2);\n\t\t\tlock((work_completion)(&svms->deferred_list_work));\n        sync(srcu);",
+  "datePublished": "Apr 2, 2024, 6:49:10 AM",
+  "dateUpdated": "Apr 1, 2025, 3:06:40 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b602f098f716723fa5c6c96a486e0afba83b7b94\nhttps://git.kernel.org/stable/c/752312f6a79440086ac0f9b08d7776870037323c\nhttps://git.kernel.org/stable/c/1556c242e64cdffe58736aa650b0b395854fe4d4\nhttps://git.kernel.org/stable/c/2a9de42e8d3c82c6990d226198602be44f43f340\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52632\n",
+  "aliases": "CVE-2023-52632\nGHSA-6246-6gx2-c2hw\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "07d244e3-634f-3e66-bc18-4c9739f79e70",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "08e2b33f-0855-3336-b287-571474dd28c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <752312f6a79440086ac0f9b08d7776870037323c"
+    },
+    {
+      "id": "0f7c9824-390e-3765-b243-c4f87f942e0e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b602f098f716723fa5c6c96a486e0afba83b7b94"
+    },
+    {
+      "id": "114ca763-f515-317c-8ddf-2d632fe3aec8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "42de677f79999791bee4e21be318c32d90ab62c6 <1556c242e64cdffe58736aa650b0b395854fe4d4"
+    },
+    {
+      "id": "17907ad3-d3e9-3b93-81e6-b565a824ad39",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": ""
+    },
+    {
+      "id": "21eb3450-b5f6-3c52-b01a-94aeefc81ccb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "25951e0b-1d0c-3a99-959d-487cfd7277b2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.14"
+    },
+    {
+      "id": "44e7831c-8be1-3712-a71c-955e8ecb86bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "c009838d-9a83-352f-9267-dc2c8090a992",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "42de677f79999791bee4e21be318c32d90ab62c6 <752312f6a79440086ac0f9b08d7776870037323c"
+    },
+    {
+      "id": "d3682f1f-6e43-3e19-bcab-94f0adb60ebf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1556c242e64cdffe58736aa650b0b395854fe4d4"
+    },
+    {
+      "id": "ebe0be1b-d4d3-3afd-80d4-15e5cce66574",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "42de677f79999791bee4e21be318c32d90ab62c6 <2a9de42e8d3c82c6990d226198602be44f43f340"
+    },
+    {
+      "id": "ec2b8894-0a8a-3aaf-bbe2-659728d81dbd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    },
+    {
+      "id": "f8729806-a993-3588-803e-0d608e67cd6f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "42de677f79999791bee4e21be318c32d90ab62c6 <b602f098f716723fa5c6c96a486e0afba83b7b94"
+    },
+    {
+      "id": "fa91e67b-0dd5-3f35-8520-4e5fe20d0d46",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2a9de42e8d3c82c6990d226198602be44f43f340"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "17907ad3-d3e9-3b93-81e6-b565a824ad39",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

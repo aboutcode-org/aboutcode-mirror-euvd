@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-46548",
+  "enisaUuid": "9fb1b8f1-da41-366a-b844-3a288af15941",
+  "description": "A vulnerability exists in curl <7.87.0 HSTS check that could be bypassed to trick it to keep using HTTP. Using its HSTS support, curl can be instructed to use HTTPS instead of using an insecure clear-text HTTP step even when HTTP is provided in the URL. However, the HSTS mechanism could be bypassed if the host name in the given URL first uses IDN characters that get replaced to ASCII counterparts as part of the IDN conversion. Like using the character UTF-8 U+3002 (IDEOGRAPHIC FULL STOP) instead of the common ASCII full stop (U+002E) `.`. Then in a subsequent request, it does not detect the HSTS state and makes a clear text transfer. Because it would store the info IDN encoded but look for it IDN decoded.",
+  "datePublished": "Dec 23, 2022, 3:30:24 PM",
+  "dateUpdated": "Mar 27, 2024, 3:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://advisories.mageia.org/CVE-2022-43551.html\nhttps://www.suse.com/security/cve/CVE-2022-43551.html\nhttps://ubuntu.com/security/CVE-2022-43551\nhttps://hackerone.com/reports/1755083\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TVWZW5CNSJ7UYAF2BGSYAWAEXDJYUBHA/\nhttps://security.netapp.com/advisory/ntap-20230427-0007/\nhttps://security.gentoo.org/glsa/202310-12\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-43551\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/TVWZW5CNSJ7UYAF2BGSYAWAEXDJYUBHA\n",
+  "aliases": "CVE-2022-43551\nGHSA-25m2-mpq4-29vh\n",
+  "assigner": "hackerone",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "f296436e-3614-3f07-bb98-f2b149def865",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

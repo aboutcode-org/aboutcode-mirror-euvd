@@ -1,0 +1,147 @@
+{
+  "id": "EUVD-2021-33818",
+  "enisaUuid": "15b9a936-1603-3a32-b0e9-6d4f13b1a216",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: usbfs: Don't WARN about excessively large memory allocations\n\nSyzbot found that the kernel generates a WARNing if the user tries to\nsubmit a bulk transfer through usbfs with a buffer that is way too\nlarge.  This isn't a bug in the kernel; it's merely an invalid request\nfrom the user and the usbfs code does handle it correctly.\n\nIn theory the same thing can happen with async transfers, or with the\npacket descriptor table for isochronous transfers.\n\nTo prevent the MM subsystem from complaining about these bad\nallocation requests, add the __GFP_NOWARN flag to the kmalloc calls\nfor these buffers.",
+  "datePublished": "Mar 25, 2024, 9:16:22 AM",
+  "dateUpdated": "Dec 18, 2025, 11:35:47 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/2ab21d6e1411999b5fb43434f421f00bf50002eb\nhttps://git.kernel.org/stable/c/2c835fede13e03f2743a333e4370b5ed2db91e83\nhttps://git.kernel.org/stable/c/8d83f109e920d2776991fa142bb904d985dca2ed\nhttps://git.kernel.org/stable/c/9f7cb3f01a10d9064cf13b3d26fb7e7a5827d098\nhttps://git.kernel.org/stable/c/4f2629ea67e7225c3fd292c7fe4f5b3c9d6392de\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47170\n",
+  "aliases": "GHSA-c673-578f-v4xm\nCVE-2021-47170\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0f9f4362-9bcd-309e-aaff-241ef3a69778",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.124"
+    },
+    {
+      "id": "360a9193-96c4-3b0a-b304-9f531b1800e3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "36d0c11f-4988-367b-8744-b88dd8c9ae82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8d83f109e920d2776991fa142bb904d985dca2ed"
+    },
+    {
+      "id": "3aac2b8d-baf6-3837-8f67-5a7e66988232",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.9"
+    },
+    {
+      "id": "4f78d4ad-f448-3521-9f58-1afb67186ca3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "59609216-10e8-30e3-8c19-ee19d0a9948f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2c835fede13e03f2743a333e4370b5ed2db91e83"
+    },
+    {
+      "id": "6a3eac9d-263f-3b77-9e28-3d4e0b2bb7e7",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "7765b58b-5074-3004-b74d-58e7df6bef2b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "add1aaeabe6b08ed26381a2a06e505b2f09c3ba5 <2c835fede13e03f2743a333e4370b5ed2db91e83"
+    },
+    {
+      "id": "787ef8d0-cae6-36c3-a897-40467b537e6e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "add1aaeabe6b08ed26381a2a06e505b2f09c3ba5 <4f2629ea67e7225c3fd292c7fe4f5b3c9d6392de"
+    },
+    {
+      "id": "a1d2f8f4-f0d4-3c16-bc17-4bbc2b9ba416",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9f7cb3f01a10d9064cf13b3d26fb7e7a5827d098"
+    },
+    {
+      "id": "a4ef4aa4-b4d7-370b-bc49-3092db1a4e94",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "add1aaeabe6b08ed26381a2a06e505b2f09c3ba5 <8d83f109e920d2776991fa142bb904d985dca2ed"
+    },
+    {
+      "id": "bc2e1414-63d4-3d35-91a5-195bfaae1bd4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2ab21d6e1411999b5fb43434f421f00bf50002eb"
+    },
+    {
+      "id": "bd4eca40-66d6-3292-9b2a-5de40af8a93f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.193"
+    },
+    {
+      "id": "bf942bb2-c68a-3d03-90c0-c8cecc6579da",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "add1aaeabe6b08ed26381a2a06e505b2f09c3ba5 <9f7cb3f01a10d9064cf13b3d26fb7e7a5827d098"
+    },
+    {
+      "id": "c11e0da5-d4af-3001-8098-adfe07700430",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.42"
+    },
+    {
+      "id": "c20f8e6e-5705-3510-8de9-775043cc5d58",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.3"
+    },
+    {
+      "id": "d0cde3e9-8162-312d-b611-a6a45d13c40c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "add1aaeabe6b08ed26381a2a06e505b2f09c3ba5 <2ab21d6e1411999b5fb43434f421f00bf50002eb"
+    },
+    {
+      "id": "f1f8d093-f685-377a-af8e-575dbd720668",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4f2629ea67e7225c3fd292c7fe4f5b3c9d6392de"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6a3eac9d-263f-3b77-9e28-3d4e0b2bb7e7",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

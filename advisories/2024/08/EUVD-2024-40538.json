@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-40538",
+  "enisaUuid": "81cbef26-4764-3c14-8aa3-07f604c0bd40",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: list_lru: fix UAF for memory cgroup\n\nThe mem_cgroup_from_slab_obj() is supposed to be called under rcu lock or\ncgroup_mutex or others which could prevent returned memcg from being\nfreed.  Fix it by adding missing rcu read lock.\n\nFound by code inspection.\n\n[songmuchun@bytedance.com: only grab rcu lock when necessary, per Vlastimil]\n  Link: https://lkml.kernel.org/r/20240801024603.1865-1-songmuchun@bytedance.com",
+  "datePublished": "Aug 26, 2024, 12:31:19 PM",
+  "dateUpdated": "Aug 27, 2024, 3:32:43 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4589f77c18dd98b65f45617b6d1e95313cf6fcab\nhttps://git.kernel.org/stable/c/5161b48712dcd08ec427c450399d4d1483e21dea\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-43888\n",
+  "aliases": "GHSA-wm87-x2vw-r6ch\nCVE-2024-43888\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0966bf23-2db2-3c25-a793-63a10a604ac8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0a97c01cd20bb96359d8c9dedad92a061ed34e0b <4589f77c18dd98b65f45617b6d1e95313cf6fcab"
+    },
+    {
+      "id": "0effb5c9-4e94-3083-b085-a42feaa55b73",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "5bc2a2bc-2996-3084-a0e0-41c9f5fa1764",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0a97c01cd20bb96359d8c9dedad92a061ed34e0b <5161b48712dcd08ec427c450399d4d1483e21dea"
+    },
+    {
+      "id": "c3a7acf3-81c5-335e-abcf-1876732b3099",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.5"
+    },
+    {
+      "id": "d35ef8be-7698-396e-82d5-32e79cc3bbf1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8"
+    },
+    {
+      "id": "e53d2bd9-fa43-3c4d-9bb3-0442dba5b5c4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cd240b3a-c184-3b63-ade0-d2f18b41b1bf",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

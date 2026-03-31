@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8606",
+  "enisaUuid": "ddc16744-8110-32a9-acba-49e14b6e5a6f",
+  "description": "The SPIP jeux plugin versions prior to\u00a04.1.1 contain a reflected cross-site scripting (XSS) vulnerability in the pre_propre pipeline. The plugin incorporates untrusted request parameters into HTML output without proper output encoding, allowing attackers to inject arbitrary script content into pages that render a jeux block. When a victim is induced to visit a crafted URL, the injected content is reflected into the response and executed in the victim's browser context.",
+  "datePublished": "Feb 25, 2026, 6:31:15 AM",
+  "dateUpdated": "Feb 25, 2026, 6:31:37 PM",
+  "baseScore": 5.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+  "references": "https://plugins.spip.net/jeux\nhttps://git.spip.net/spip-contrib-extensions/jeux/-/commit/3d240cffb258491acd72f8b37579e8a7417740ff\nhttps://www.vulncheck.com/advisories/spip-jeux-reflected-xss-via-index-parameters\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27746\nhttps://chocapikk.com/posts/2026/spip-plugins-vulnerabilities\n",
+  "aliases": "CVE-2026-27746\nGHSA-8vx8-439w-j8j5\n",
+  "assigner": "VulnCheck",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "b49990d9-025e-472d-b5b7-98002cbc47eb",
+      "product": {
+        "name": "jeux"
+      },
+      "product_version": "0 <4.1.1"
+    },
+    {
+      "id": "c4f0fe08-4bb7-3f1c-a702-5497e775f76a",
+      "product": {
+        "name": "jeux"
+      },
+      "product_version": "0 <4.1.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d416e140-4daa-440c-b99c-8bb4d2acf05c",
+      "vendor": {
+        "name": "SPIP"
+      }
+    },
+    {
+      "id": "eeb5e1ef-db12-3569-b56a-21e9b0f466b7",
+      "vendor": {
+        "name": "SPIP"
+      }
+    }
+  ]
+}

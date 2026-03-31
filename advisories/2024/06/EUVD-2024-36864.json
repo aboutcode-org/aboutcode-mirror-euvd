@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-36864",
+  "enisaUuid": "ce20e2c6-4ef0-34d5-9735-1d7fc18267cb",
+  "description": "The Kyber reference implementation before 9b8d306, when compiled by LLVM Clang through 18.x with some common optimization options, has a timing side channel that allows attackers to recover an ML-KEM 512 secret key in minutes. This occurs because poly_frommsg in poly.c does not prevent Clang from emitting a vulnerable secret-dependent branch.",
+  "datePublished": "Jun 10, 2024, 3:30:46 AM",
+  "dateUpdated": "Jun 12, 2024, 6:30:38 PM",
+  "baseScore": -1.0,
+  "references": "https://pqshield.com/pqshield-plugs-timing-leaks-in-kyber-ml-kem-to-improve-pqc-implementation-maturity/\nhttps://github.com/antoonpurnal/clangover\nhttps://github.com/pq-crystals/kyber/commit/9b8d30698a3e7449aeb34e62339d4176f11e3c6c\nhttps://news.ycombinator.com/item?id=40577486\nhttps://twitter.com/purnaltoon/status/1797644696568959476\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-37880\n",
+  "aliases": "GHSA-58rr-w6gv-4p4h\nCVE-2024-37880\n",
+  "assigner": "mitre",
+  "epss": 0.14,
+  "enisaIdProduct": [
+    {
+      "id": "6370711d-a9f4-3d4e-9904-9f953261769e",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "71f4bfc5-6255-3106-b9f9-3c178fab0f79",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

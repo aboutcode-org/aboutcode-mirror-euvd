@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-38796",
+  "enisaUuid": "8f539885-4826-3fc2-9b4d-c5901ecfb87e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq: amd-pstate: fix memory leak on CPU EPP exit\n\nThe cpudata memory from kzalloc() in amd_pstate_epp_cpu_init() is\nnot freed in the analogous exit function, so fix that.\n\n[ rjw: Subject and changelog edits ]",
+  "datePublished": "Jul 12, 2024, 3:31:29 PM",
+  "dateUpdated": "Aug 21, 2024, 6:31:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/448efb7ea0bfa2c4e27c5a2eb5684fd225cd12cd\nhttps://git.kernel.org/stable/c/8015c17fe11a8608cc3eb83d0ab831e1845a9582\nhttps://git.kernel.org/stable/c/cea04f3d9aeebda9d9c063c0dfa71e739c322c81\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-40997\n",
+  "aliases": "GHSA-4p9w-ppgq-rm99\nCVE-2024-40997\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "38107234-ce5d-3e60-b091-9057c4e50ef5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.7"
+    },
+    {
+      "id": "54bf2264-1f79-3c79-a60c-27eeb41bae34",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "66efc3ac-0b9d-3ea0-ac6f-6ccc7a104527",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec437d71db77a181227bf6d0ac9d4a80e58ecf0f <8015c17fe11a8608cc3eb83d0ab831e1845a9582"
+    },
+    {
+      "id": "868b7e7f-bec6-362a-97a1-a4ac0fad5e31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec437d71db77a181227bf6d0ac9d4a80e58ecf0f <cea04f3d9aeebda9d9c063c0dfa71e739c322c81"
+    },
+    {
+      "id": "ae46fca3-e65a-35cb-8d1e-35361fac8bcf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec437d71db77a181227bf6d0ac9d4a80e58ecf0f <448efb7ea0bfa2c4e27c5a2eb5684fd225cd12cd"
+    },
+    {
+      "id": "c323f5a9-49f3-346c-af37-a2f4046cab18",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "de1321a2-1741-33dd-bf35-f71543728882",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.36"
+    },
+    {
+      "id": "f48195f9-6594-33a5-90ba-2476fc5aab7a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.17"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f37133ee-a543-3fed-959c-29734e6c16d2",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

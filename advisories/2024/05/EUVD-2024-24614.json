@@ -1,0 +1,155 @@
+{
+  "id": "EUVD-2024-24614",
+  "enisaUuid": "57f37bf0-4167-3332-ae26-82fac9337a9c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: reject iftype change with mesh ID change\n\nIt's currently possible to change the mesh ID when the\ninterface isn't yet in mesh mode, at the same time as\nchanging it into mesh mode. This leads to an overwrite\nof data in the wdev->u union for the interface type it\ncurrently has, causing cfg80211_change_iface() to do\nwrong things when switching.\n\nWe could probably allow setting an interface to mesh\nwhile setting the mesh ID at the same time by doing a\ndifferent order of operations here, but realistically\nthere's no userspace that's going to do this, so just\ndisallow changes in iftype when setting mesh ID.",
+  "datePublished": "May 17, 2024, 12:31:00 PM",
+  "dateUpdated": "Dec 17, 2025, 9:30:27 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d38d31bbbb9dc0d4d71a45431eafba03d0bc150d\nhttps://git.kernel.org/stable/c/0cfbb26ee5e7b3d6483a73883f9f6157bca22ec9\nhttps://git.kernel.org/stable/c/99eb2159680af8786104dac80528acd5acd45980\nhttps://git.kernel.org/stable/c/063715c33b4c37587aeca2c83cf08ead0c542995\nhttps://git.kernel.org/stable/c/930e826962d9f01dcd2220176134427358d112f2\nhttps://git.kernel.org/stable/c/177d574be4b58f832354ab1ef5a297aa0c9aa2df\nhttps://git.kernel.org/stable/c/a2add961a5ed25cfd6a74f9ffb9e7ab6d6ded838\nhttps://git.kernel.org/stable/c/f78c1375339a291cba492a70eaf12ec501d28a8e\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27410\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00020.html\n",
+  "aliases": "GHSA-9vv7-jc87-x8x5\nCVE-2024-27410\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0d0cd99c-7924-3552-90de-fc6a4d33566c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <177d574be4b58f832354ab1ef5a297aa0c9aa2df"
+    },
+    {
+      "id": "13e6b495-54e0-3fb2-89f1-3c9a5334fc51",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <a2add961a5ed25cfd6a74f9ffb9e7ab6d6ded838"
+    },
+    {
+      "id": "19be2e87-94a5-3ff6-8f3f-a40caf276279",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7a53ad13c09150076b7ddde96c2dfc5622c90b45"
+    },
+    {
+      "id": "2026c6c8-940b-32cf-b5b1-dc05e788292b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <d38d31bbbb9dc0d4d71a45431eafba03d0bc150d"
+    },
+    {
+      "id": "28089a88-98bb-3395-b0dc-5e9c64c2ce5c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <f78c1375339a291cba492a70eaf12ec501d28a8e"
+    },
+    {
+      "id": "38688203-1e98-31c3-9157-f0eb1b5d009f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "48409603-a086-320b-b66c-91b7f9b9880a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <99eb2159680af8786104dac80528acd5acd45980"
+    },
+    {
+      "id": "4896e014-4a39-3e2f-b2a2-c6add56943ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.309"
+    },
+    {
+      "id": "56694cbb-f03b-3286-ba24-322b7b9fde22",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "8075c830-995c-3663-98c6-1ab076e297b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.212"
+    },
+    {
+      "id": "85f34b3a-dbea-3229-8c11-560e7bc512ef",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.81"
+    },
+    {
+      "id": "8de946d4-0cdf-3b8c-8c86-b44af0714d09",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.271"
+    },
+    {
+      "id": "a86f6183-abcb-3156-bdf5-88a8bc5ce510",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.0"
+    },
+    {
+      "id": "aa883920-546d-30bf-9f0a-4a3f5f78eeb7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <0cfbb26ee5e7b3d6483a73883f9f6157bca22ec9"
+    },
+    {
+      "id": "ba2c6a4b-1696-3806-80b8-9530da62b135",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.9"
+    },
+    {
+      "id": "c951fbff-1dfc-3104-8de5-4a11100d9c17",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <930e826962d9f01dcd2220176134427358d112f2"
+    },
+    {
+      "id": "cc1486e6-5400-3daf-8a14-2b2f8a54eacc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.151"
+    },
+    {
+      "id": "e6029fd6-3134-36e5-8666-c90c8d070709",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7b0a0e3c3a88260b6fcb017e49f198463aa62ed1 <063715c33b4c37587aeca2c83cf08ead0c542995"
+    },
+    {
+      "id": "f93b4283-0e5d-316e-97fc-eaffa06fb17a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.21"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "21844096-0ede-3d3b-ad2e-2a23bbabe147",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

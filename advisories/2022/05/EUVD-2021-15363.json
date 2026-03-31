@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2021-15363",
+  "enisaUuid": "ef142f92-7258-3006-845f-57f054de9031",
+  "description": "guests may exceed their designated memory limit When a guest is permitted to have close to 16TiB of memory, it may be able to issue hypercalls to increase its memory allocation beyond the administrator established limit. This is a result of a calculation done with 32-bit precision, which may overflow. It would then only be the overflowed (and hence small) number which gets compared against the established upper bound.",
+  "datePublished": "May 24, 2022, 7:21:18 PM",
+  "dateUpdated": "Feb 4, 2024, 9:30:31 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-28706.html\nhttps://www.debian.org/security/2021/dsa-5017\nhttps://linux.oracle.com/cve/CVE-2021-28706.html\nhttps://xenbits.xenproject.org/xsa/advisory-385.txt\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-28706\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF\n",
+  "aliases": "CVE-2021-28706\nGHSA-x89c-76jf-xx4h\n",
+  "assigner": "XEN",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "1aef97f2-bf65-3a07-a8a4-7f9bd1d8f0ec",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.13.x"
+    },
+    {
+      "id": "1ef1e937-eb9b-3849-93f7-3b4b7c452ced",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.14.x <unspecified"
+    },
+    {
+      "id": "3c9c9f3f-15c7-3445-a2e6-b78763b50c0e",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "xen-unstable"
+    },
+    {
+      "id": "c86855cf-0735-3bee-b5b1-33266eab8f3a",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.12.x"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "99365cc0-9c78-3bcf-9cce-50ff3a022596",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

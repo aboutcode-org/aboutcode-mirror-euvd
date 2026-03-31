@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-7716",
+  "enisaUuid": "6eb2af3a-b5f6-363a-a241-896518f88639",
+  "description": "An authentication flaw was found in ceph in versions before 14.2.20. When the monitor handles CEPHX_GET_AUTH_SESSION_KEY requests, it doesn't sanitize other_keys, allowing key reuse. An attacker who can request a global_id can exploit the ability of any user to request a global_id previously associated with another user, as ceph does not force the reuse of old keys to generate new ones. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability.",
+  "datePublished": "May 24, 2022, 5:47:40 PM",
+  "dateUpdated": "Feb 16, 2024, 9:31:30 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-20288.html\nhttps://access.redhat.com/errata/RHSA-2021:2445\nhttps://ubuntu.com/security/CVE-2021-20288\nhttps://advisories.mageia.org/CVE-2021-20288.html\nhttps://security.archlinux.org/CVE-2021-20288\nhttps://access.redhat.com/errata/RHSA-2022:1394\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1938031\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/362CEPPYF3YMJZBEJQUT3KDE2EHYYIYQ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5BPIAYTRCWAU4XWCDBK2THEFVXSC4XGK/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JVWUKUUS5BCIFWRV3JCUQMAPJ4HIWSED/\nhttps://security.gentoo.org/glsa/202105-39\nhttps://lists.debian.org/debian-lts-announce/2023/10/msg00034.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-20288\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/362CEPPYF3YMJZBEJQUT3KDE2EHYYIYQ\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/5BPIAYTRCWAU4XWCDBK2THEFVXSC4XGK\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JVWUKUUS5BCIFWRV3JCUQMAPJ4HIWSED\n",
+  "aliases": "GHSA-39jx-6759-44c6\nCVE-2021-20288\n",
+  "assigner": "redhat",
+  "epss": 0.2,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "e39b48cc-82e6-39ba-99ae-804f8792ff8f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

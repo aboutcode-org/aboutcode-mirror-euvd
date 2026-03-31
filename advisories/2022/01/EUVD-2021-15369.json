@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2021-15369",
+  "enisaUuid": "34df2867-1945-30ba-924b-9032d90641ce",
+  "description": "Rogue backends can cause DoS of guests via high frequency events T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Xen offers the ability to run PV backends in regular unprivileged guests, typically referred to as \"driver domains\". Running PV backends in driver domains has one primary security advantage: if a driver domain gets compromised, it doesn't have the privileges to take over the system. However, a malicious driver domain could try to attack other guests via sending events at a high frequency leading to a Denial of Service in the guest due to trying to service interrupts for elongated amounts of time. There are three affected backends: * blkfront patch 1, CVE-2021-28711 * netfront patch 2, CVE-2021-28712 * hvc_xen (console) patch 3, CVE-2021-28713",
+  "datePublished": "Jan 6, 2022, 12:00:30 AM",
+  "dateUpdated": "Mar 17, 2022, 12:06:18 AM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-28712.html\nhttps://www.debian.org/security/2022/dsa-5050\nhttps://www.debian.org/security/2022/dsa-5096\nhttps://ubuntu.com/security/CVE-2021-28712\nhttps://advisories.mageia.org/CVE-2021-28712.html\nhttps://alas.aws.amazon.com/cve/html/CVE-2021-28712.html\nhttps://xenbits.xenproject.org/xsa/advisory-391.txt\nhttps://lists.debian.org/debian-lts-announce/2022/03/msg00011.html\nhttps://lists.debian.org/debian-lts-announce/2022/03/msg00012.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-28712\n",
+  "aliases": "GHSA-9345-957r-vw5m\nCVE-2021-28712\n",
+  "assigner": "XEN",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "e4d888db-716d-38f8-bc55-a4639cbc6cce",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

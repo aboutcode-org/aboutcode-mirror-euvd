@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-12241",
+  "enisaUuid": "7c9de4d0-aa54-3a48-8f6a-bd881e173db6",
+  "description": "The WordPress Simple Shopping Cart plugin for WordPress is vulnerable to product price manipulation in all versions up to, and including, 5.1.2. This is due to a logic flaw involving the inconsistent use of parameters during the cart addition process. The plugin uses the parameter 'product_tmp_two' for computing a security hash against price tampering while using 'wspsc_product' to display the product, allowing an unauthenticated attacker to substitute details from a cheaper product and bypass payment for a more expensive item.",
+  "datePublished": "Apr 23, 2025, 7:06:49 AM",
+  "dateUpdated": "Apr 23, 2025, 4:31:12 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2025-3530\nhttps://plugins.trac.wordpress.org/browser/wordpress-simple-paypal-shopping-cart/tags/5.1.2/wp_shopping_cart.php#L156\nhttps://plugins.trac.wordpress.org/browser/wordpress-simple-paypal-shopping-cart/tags/5.1.2/wp_shopping_cart.php#L165\nhttps://plugins.trac.wordpress.org/browser/wordpress-simple-paypal-shopping-cart/tags/5.1.2/wp_shopping_cart.php#L171\nhttps://plugins.trac.wordpress.org/browser/wordpress-simple-paypal-shopping-cart/tags/5.1.2/wp_shopping_cart.php#L261\nhttps://plugins.trac.wordpress.org/changeset/3275373\nhttps://www.tipsandtricks-hq.com/wordpress-simple-paypal-shopping-cart-plugin-768\nhttps://www.wordfence.com/threat-intel/vulnerabilities/id/e0a3910b-adc4-4633-a6a1-32ba50894be4?source=cve\nhttps://plugins.trac.wordpress.org/changeset/3275373/\n",
+  "aliases": "GHSA-w4q5-363g-q68q\nCVE-2025-3530\n",
+  "assigner": "Wordfence",
+  "epss": 1.18,
+  "enisaIdProduct": [
+    {
+      "id": "1d7ebf3c-3de8-3aa3-be09-8d72003ccd31",
+      "product": {
+        "name": "WordPress Simple Shopping Cart"
+      },
+      "product_version": "* \u22645.1.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9c6125a1-dea2-3b33-b44f-aff2cc062750",
+      "vendor": {
+        "name": "mra13"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2023-2040",
+  "enisaUuid": "8071d490-d639-3955-bf0a-1585bda86c50",
+  "description": "The fix for CVE-2023-24998 was incomplete for Apache Tomcat 11.0.0-M2 to 11.0.0-M4, 10.1.5 to 10.1.7, 9.0.71 to 9.0.73 and 8.5.85 to 8.5.87. If non-default HTTP       connector settings were used such that the maxParameterCount\u00a0could be reached using query string parameters and a request was       submitted that supplied exactly maxParameterCount parameters\u00a0in the query string, the limit for uploaded request parts could be\u00a0bypassed with the potential for a denial of service to occur.",
+  "datePublished": "May 22, 2023, 10:08:49 AM",
+  "dateUpdated": "Feb 13, 2025, 4:48:49 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-28709\nhttps://github.com/apache/tomcat/commit/5badf94e79e5de206fc0ef3054fd536b1bb787cd\nhttps://github.com/apache/tomcat/commit/ba848da71c523d94950d3c53c19ea155189df9dc\nhttps://github.com/apache/tomcat/commit/d53d8e7f77042cc32a3b98f589496a1ef5088e38\nhttps://github.com/apache/tomcat/commit/fbd81421629afe8b8a3922d59020cde81caea861\nhttps://github.com/apache/tomcat\nhttps://lists.apache.org/thread/7wvxonzwb7k9hx9jt3q33cmy7j97jo3j\nhttps://security.gentoo.org/glsa/202305-37\nhttps://security.netapp.com/advisory/ntap-20230616-0004\nhttps://tomcat.apache.org/security-10.html\nhttps://tomcat.apache.org/security-11.html\nhttps://tomcat.apache.org/security-8.html\nhttps://tomcat.apache.org/security-9.html\nhttps://www.debian.org/security/2023/dsa-5521\nhttp://www.openwall.com/lists/oss-security/2023/05/22/1\nhttps://security.netapp.com/advisory/ntap-20230616-0004/\n",
+  "aliases": "CVE-2023-28709\nGHSA-cx6h-86xw-9x34\n",
+  "assigner": "apache",
+  "epss": 0.38,
+  "enisaIdProduct": [
+    {
+      "id": "20bc0d2a-a459-38cc-8744-9ecec865469b",
+      "product": {
+        "name": "Apache Tomcat"
+      },
+      "product_version": "11.0.0-M2 \u226411.0.0-M4"
+    },
+    {
+      "id": "604ab046-c889-3a7a-8bf0-a35d195e9ff8",
+      "product": {
+        "name": "Apache Tomcat"
+      },
+      "product_version": "9.0.71 \u22649.0.73"
+    },
+    {
+      "id": "8586925c-b804-31fe-92b3-a5c9a526fb3f",
+      "product": {
+        "name": "Apache Tomcat"
+      },
+      "product_version": "8.5.85 \u22648.5.87"
+    },
+    {
+      "id": "8e8312e2-dbea-3164-9d64-b4e51ab56c78",
+      "product": {
+        "name": "Apache Tomcat"
+      },
+      "product_version": "10.1.5 \u226410.1.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "60b6c4c5-1c7f-31f9-93bf-8951ddda3980",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

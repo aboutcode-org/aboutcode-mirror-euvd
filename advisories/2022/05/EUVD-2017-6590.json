@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2017-6590",
+  "enisaUuid": "cc6b534c-8d32-39b8-af26-e81d1eef96bc",
+  "description": "A use-after-free vulnerability was found in network namespaces code affecting the Linux kernel before 4.14.11. The function get_net_ns_by_id() in net/core/net_namespace.c does not check for the net::count value after it has found a peer network in netns_ids idr, which could lead to double free and memory corruption. This vulnerability could allow an unprivileged local user to induce kernel memory corruption on the system, leading to a crash. Due to the nature of the flaw, privilege escalation cannot be fully ruled out, although it is thought to be unlikely.",
+  "datePublished": "May 14, 2022, 3:27:13 AM",
+  "dateUpdated": "May 14, 2022, 3:27:13 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2017-15129.html\nhttps://access.redhat.com/errata/RHSA-2019:1946\nhttps://access.redhat.com/errata/RHSA-2018:1062\nhttps://access.redhat.com/errata/RHSA-2018:0676\nhttps://access.redhat.com/errata/RHSA-2018:0654\nhttps://ubuntu.com/security/CVE-2017-15129\nhttps://advisories.mageia.org/CVE-2017-15129.html\nhttps://linux.oracle.com/cve/CVE-2017-15129.html\nhttps://usn.ubuntu.com/3617-1/\nhttps://usn.ubuntu.com/3619-2/\nhttps://usn.ubuntu.com/3617-3/\nhttps://marc.info/?l=linux-netdev&m=151370451121029&w=2\nhttps://marc.info/?t=151370468900001&r=1&w=2\nhttps://usn.ubuntu.com/3632-1/\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1531174\nhttps://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.14.11\nhttps://github.com/torvalds/linux/commit/21b5944350052d2583e82dd59b19a9ba94a007f0\nhttps://access.redhat.com/security/cve/CVE-2017-15129\nhttp://www.securityfocus.com/bid/102485\nhttp://seclists.org/oss-sec/2018/q1/7\nhttp://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=21b5944350052d2583e82dd59b19a9ba94a007f0\nhttps://usn.ubuntu.com/3617-2/\nhttps://usn.ubuntu.com/3619-1/\nhttps://nvd.nist.gov/vuln/detail/CVE-2017-15129\n",
+  "aliases": "GHSA-9324-w9gg-mxf6\nCVE-2017-15129\n",
+  "assigner": "redhat",
+  "epss": 0.08,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "bff81087-483f-3b54-8999-91be22df7f8f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

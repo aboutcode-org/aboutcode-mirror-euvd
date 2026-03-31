@@ -1,0 +1,112 @@
+{
+  "id": "EUVD-2024-24038",
+  "enisaUuid": "f34b1ced-c391-3f80-a645-b3bec6885194",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: hisi-sfc-v3xx: Return IRQ_NONE if no interrupts were detected\n\nReturn IRQ_NONE from the interrupt handler when no interrupt was\ndetected. Because an empty interrupt will cause a null pointer error:\n\n    Unable to handle kernel NULL pointer dereference at virtual\n  address 0000000000000008\n    Call trace:\n        complete+0x54/0x100\n        hisi_sfc_v3xx_isr+0x2c/0x40 [spi_hisi_sfc_v3xx]\n        __handle_irq_event_percpu+0x64/0x1e0\n        handle_irq_event+0x7c/0x1cc",
+  "datePublished": "Apr 3, 2024, 6:30:43 PM",
+  "dateUpdated": "Feb 27, 2025, 3:31:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/e94da8aca2e78ef9ecca02eb211869eacd5504e5\nhttps://git.kernel.org/stable/c/0399d7eba41d9b28f5bdd7757ec21a5b7046858d\nhttps://git.kernel.org/stable/c/f19361d570c67e7e014896fa2dacd7d721bf0aa8\nhttps://git.kernel.org/stable/c/d637b5118274701e8448f35953877daf04df18b4\nhttps://git.kernel.org/stable/c/e4168ac25b4bd378bd7dda322d589482a136c1fd\nhttps://git.kernel.org/stable/c/de8b6e1c231a95abf95ad097b993d34b31458ec9\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26776\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\n",
+  "aliases": "CVE-2024-26776\nGHSA-3jw4-rrq4-7g22\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "124fc927-872f-3e84-a895-f8963a8ac448",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.7"
+    },
+    {
+      "id": "344a940e-276c-3dcf-847d-dea095cb92d4",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "348ac42e-be64-35bf-ab4a-3c7e6bb23818",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.80"
+    },
+    {
+      "id": "36483d8d-28a4-3482-8150-1df88792eb0d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "36da0202-eca2-3914-a235-c105dc68591d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <de8b6e1c231a95abf95ad097b993d34b31458ec9"
+    },
+    {
+      "id": "4f20cca6-0b4c-3324-9fc0-ad0d32d2f3a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0399d7eba41d9b28f5bdd7757ec21a5b7046858d"
+    },
+    {
+      "id": "6948b15e-cd88-31ac-b14d-f9ee729765d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.150"
+    },
+    {
+      "id": "8a0a94e9-7280-3625-ad7a-63235bc1528f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e4168ac25b4bd378bd7dda322d589482a136c1fd"
+    },
+    {
+      "id": "8ca3213c-aa8a-32ad-b278-1ce183b49484",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.19"
+    },
+    {
+      "id": "9307419a-e472-3420-a3dc-a26a3d477886",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d637b5118274701e8448f35953877daf04df18b4"
+    },
+    {
+      "id": "e2236b7d-9ad9-349b-8663-952614f140a8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.211"
+    },
+    {
+      "id": "ebf7f761-1adf-321c-99f1-1d52422e181f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f19361d570c67e7e014896fa2dacd7d721bf0aa8"
+    },
+    {
+      "id": "fac9f455-59d6-3948-8d12-3e02b3f72a05",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e94da8aca2e78ef9ecca02eb211869eacd5504e5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "344a940e-276c-3dcf-847d-dea095cb92d4",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2024-0092",
+  "enisaUuid": "672e6029-3154-30db-8bb5-9c451957ef84",
+  "description": "Lektor before 3.3.11 does not sanitize DB path traversal. Thus, shell commands might be executed via a file that is added to the templates directory, if the victim's web browser accesses an untrusted website that uses JavaScript to send requests to localhost port 5000, and the web browser is running on the same machine as the \\\"lektor server\\\" command.",
+  "datePublished": "Mar 27, 2024, 8:15:00 AM",
+  "dateUpdated": "Mar 27, 2024, 1:18:36 AM",
+  "baseScore": -1.0,
+  "references": "https://github.com/lektor/lektor/pull/1179/commits/8f38b9713d152622b69ff5e3b1e6a0d7bb7fa800\nhttps://github.com/lektor/lektor/releases/tag/v3.3.11\nhttps://cxsecurity.com/issue/WLB-2024030043\nhttps://packetstormsecurity.com/files/177708/Lektor-Static-CMS-3.3.10-Arbitrary-File-Upload-Remote-Code-Execution.html\nhttps://getlektor.com/docs/quickstart\nhttps://brave.com/privacy-updates/27-localhost-permission/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-28335\nhttps://github.com/lektor/lektor/commit/7393d87bd354e43120937789956175064e4610a0\nhttps://github.com/pypa/advisory-database/tree/main/vulns/lektor/PYSEC-2024-49.yaml\n",
+  "aliases": "CVE-2024-28335\nGHSA-wv28-7fpw-fj49\nPYSEC-2024-49\n",
+  "assigner": "mitre",
+  "epss": 0.3,
+  "enisaIdProduct": [
+    {
+      "id": "5c0511c2-58d6-3cca-8973-c1f819216f55",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    },
+    {
+      "id": "894c53d3-0a3b-3bc8-aab3-b28844ff138f",
+      "product": {
+        "name": "n/a"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "894c53d3-0a3b-3bc8-aab3-b28844ff138f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

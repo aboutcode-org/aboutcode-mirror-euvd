@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-42084",
+  "enisaUuid": "1c69805d-40b4-3e49-9045-6d2b14829278",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkunit/overflow: Fix UB in overflow_allocation_test\n\nThe 'device_name' array doesn't exist out of the\n'overflow_allocation_test' function scope. However, it is being used as\na driver name when calling 'kunit_driver_create' from\n'kunit_device_register'. It produces the kernel panic with KASAN\nenabled.\n\nSince this variable is used in one place only, remove it and pass the\ndevice name into kunit_device_register directly as an ascii string.",
+  "datePublished": "Sep 27, 2024, 3:30:33 PM",
+  "dateUpdated": "Nov 3, 2025, 9:31:14 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d1207f07decc66546a7fa463d2f335a856c986ef\nhttps://git.kernel.org/stable/c/92e9bac18124682c4b99ede9ee3bcdd68f121e92\nhttps://git.kernel.org/stable/c/cacce7faa7c475cea55e82cc3a27794561fac157\nhttps://git.kernel.org/stable/c/99ddb9c58511f1b71e23d02a06082bf6d2dd2133\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46823\nhttps://lists.debian.org/debian-lts-announce/2025/05/msg00045.html\n",
+  "aliases": "GHSA-hm28-rwr4-j8f5\nCVE-2024-46823\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "13e49ee4-f996-3505-9abf-a6ea663195b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d1207f07decc66546a7fa463d2f335a856c986ef"
+    },
+    {
+      "id": "17b61758-1daf-379e-9e61-16ed6a3443e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cacce7faa7c475cea55e82cc3a27794561fac157"
+    },
+    {
+      "id": "1e795115-7c15-3eb3-b21c-31e745fd56c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "90f8caa9-0d24-3828-a375-48fed49dcdad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.134"
+    },
+    {
+      "id": "a871cbcc-18e5-3a13-8ed1-a0ca0ff5ed83",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <99ddb9c58511f1b71e23d02a06082bf6d2dd2133"
+    },
+    {
+      "id": "c1740afd-db18-3fae-b5f5-2f3fdee2c973",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.87"
+    },
+    {
+      "id": "d6fdc813-a85e-37a6-b6e5-c694ad724eeb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <92e9bac18124682c4b99ede9ee3bcdd68f121e92"
+    },
+    {
+      "id": "ea9d1eda-31ff-3699-a378-21d952c869fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e10fae4f-f0d9-34c4-a2ec-e2738b2cf67b",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

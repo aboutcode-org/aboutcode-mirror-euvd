@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-30841",
+  "enisaUuid": "725785e6-d575-3145-a9e0-e2ac264b6b7d",
+  "description": "** DISPUTED ** Styra Open Policy Agent (OPA) Gatekeeper through 3.7.0 mishandles concurrency, sometimes resulting in incorrect access control. The data replication mechanism allows policies to access the Kubernetes cluster state. During data replication, OPA/Gatekeeper does not wait for the replication to finish before processing a request, which might cause inconsistencies between the replicated resources in OPA/Gatekeeper and the resources actually present in the cluster. Inconsistency can later be reflected in a policy bypass. NOTE: the vendor disagrees that this is a vulnerability, because Kubernetes states are only eventually consistent.",
+  "datePublished": "May 24, 2022, 7:21:01 PM",
+  "dateUpdated": "Jul 13, 2022, 12:01:49 AM",
+  "baseScore": -1.0,
+  "references": "https://github.com/hkerma/opa-gatekeeper-concurrency-issue\nhttps://github.com/open-policy-agent/gatekeeper/releases\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-43979\n",
+  "aliases": "GHSA-v8hv-78vf-x9fr\nCVE-2021-43979\n",
+  "assigner": "mitre",
+  "epss": 0.23,
+  "enisaIdProduct": [
+    {
+      "id": "778502ab-e1f0-30b6-9811-9a6b7050bcc5",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fdf5feee-3ca9-34a4-9095-ad1c8983ddec",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

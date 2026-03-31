@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207873",
+  "enisaUuid": "24e659a1-8c51-3a44-acce-61b2ac708d44",
+  "description": "The Razorpay for WooCommerce plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the getCouponList() function in all versions up to, and including, 4.7.8. This is due to the checkAuthCredentials() permission callback always returning true, providing no actual authentication. This makes it possible for unauthenticated attackers to modify the billing and shipping contact information (email and phone) of any WooCommerce order by knowing or guessing the order ID.",
+  "datePublished": "Feb 19, 2026, 6:31:49 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:49 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/163d42df-148f-431c-891e-dbdc09bf2ae1?source=cve\nhttps://plugins.trac.wordpress.org/browser/woo-razorpay/trunk/includes/api/auth.php#L7\nhttps://plugins.trac.wordpress.org/browser/woo-razorpay/trunk/includes/api/api.php#L33\nhttps://plugins.trac.wordpress.org/browser/woo-razorpay/trunk/includes/api/coupon-get.php#L58\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3436262%40woo-razorpay&new=3436262%40woo-razorpay&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-14294\n",
+  "aliases": "GHSA-67hm-gm63-c6j6\nCVE-2025-14294\n",
+  "assigner": "Wordfence",
+  "epss": 0.21,
+  "enisaIdProduct": [
+    {
+      "id": "4e019aae-cf78-493e-a649-faa6d8765d1c",
+      "product": {
+        "name": "Razorpay for WooCommerce"
+      },
+      "product_version": "* \u22644.7.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8e2d46e3-f656-4b09-b6e3-ccf86d22cf58",
+      "vendor": {
+        "name": "razorpay"
+      }
+    }
+  ]
+}

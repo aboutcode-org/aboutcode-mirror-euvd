@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-2523",
+  "enisaUuid": "62c68768-9829-3f9c-8cdf-4981e28cac2b",
+  "description": "RunC allowed additional container processes via 'runc exec' to be ptraced by the pid 1 of the container.  This allows the main processes of the container, if running as root, to gain access to file-descriptors of these new processes during the initialization and can lead to container escapes or modification of runC state before the process is fully placed inside the container.",
+  "datePublished": "Jan 31, 2017, 10:00:00 PM",
+  "dateUpdated": "Aug 6, 2024, 3:07:31 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2016-9962\nhttps://github.com/opencontainers/runc/commit/50a19c6ff828c58e5dab13830bd3dacde268afe5\nhttps://github.com/opencontainers/runc/commit/5d93fed3d27f1e2bab58bad13b180a7a81d0b378\nhttps://access.redhat.com/security/vulnerabilities/cve-2016-9962\nhttps://bugzilla.suse.com/show_bug.cgi?id=1012568#c6\nhttps://github.com/docker/docker/releases/tag/v1.12.6\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/BQAXJMMLRU7DD2IMG47SR2K4BOFFG7FZ\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/FINGBFMIXBG6B6ZWYH3TMRP5V3PDBNXR\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UVM7FCOQMPKOFLDTUYSS4ES76DDM56VP\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/WUQ3MQNEL5IBZZLMLR72Q4YDCL2SCKRK\nhttps://security.gentoo.org/glsa/201701-34\nhttps://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9962\nhttp://rhn.redhat.com/errata/RHSA-2017-0116.html\nhttp://rhn.redhat.com/errata/RHSA-2017-0123.html\nhttp://rhn.redhat.com/errata/RHSA-2017-0127.html\nhttp://seclists.org/fulldisclosure/2017/Jan/21\nhttp://seclists.org/fulldisclosure/2017/Jan/29\nhttp://www.securityfocus.com/archive/1/540001/100/0/threaded\nhttp://www.securityfocus.com/bid/95361\nhttps://www.suse.com/security/cve/CVE-2016-9962.html\nhttps://access.redhat.com/errata/RHSA-2017:0127\nhttps://access.redhat.com/errata/RHSA-2017:0123\nhttps://access.redhat.com/errata/RHSA-2017:0116\nhttps://advisories.mageia.org/CVE-2016-9962.html\nhttps://security.archlinux.org/CVE-2016-9962\nhttps://alas.aws.amazon.com/cve/html/CVE-2016-9962.html\nhttps://linux.oracle.com/cve/CVE-2016-9962.html\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WUQ3MQNEL5IBZZLMLR72Q4YDCL2SCKRK/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FINGBFMIXBG6B6ZWYH3TMRP5V3PDBNXR/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BQAXJMMLRU7DD2IMG47SR2K4BOFFG7FZ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UVM7FCOQMPKOFLDTUYSS4ES76DDM56VP/\n",
+  "aliases": "GHSA-gp4j-w3vj-7299\nCVE-2016-9962\n",
+  "assigner": "mitre",
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "0383006b-bba9-312e-aca5-9bcae2a2419e",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e19f3474-dce0-3446-9569-abc3a3278873",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

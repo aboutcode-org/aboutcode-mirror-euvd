@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2022-1125",
+  "enisaUuid": "a89899a2-1fbe-3ead-a1b2-2eb52ff8006e",
+  "description": "Jenkins Pipeline: Shared Groovy Libraries Plugin 552.vd9cc05b8a2e1 and earlier uses the names of Pipeline libraries to create cache directories without any sanitization, allowing attackers with Item/Configure permission to execute arbitrary code in the context of the Jenkins controller JVM using specially crafted library names if a global Pipeline library configured to use caching already exists.",
+  "datePublished": "Feb 15, 2022, 4:11:07 PM",
+  "dateUpdated": "Aug 3, 2024, 4:36:06 AM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2022-25183\nhttps://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365\nhttps://www.jenkins.io/security/advisory/2022-02-15/#SECURITY-2586\nhttps://access.redhat.com/errata/RHSA-2022:1021\nhttps://access.redhat.com/errata/RHSA-2022:1025\nhttps://access.redhat.com/errata/RHSA-2022:1248\nhttps://access.redhat.com/errata/RHSA-2022:1420\nhttps://access.redhat.com/errata/RHSA-2022:1620\nhttps://access.redhat.com/errata/RHSA-2022:0871\n",
+  "aliases": "GHSA-pfwp-q984-w7wh\nCVE-2022-25183\n",
+  "assigner": "jenkins",
+  "epss": 0.4,
+  "enisaIdProduct": [
+    {
+      "id": "782d9394-014a-36b2-8829-b946c22df142",
+      "product": {
+        "name": "Jenkins Pipeline: Shared Groovy Libraries Plugin"
+      },
+      "product_version": "2.21 <unspecified"
+    },
+    {
+      "id": "b5671850-a04c-3e1b-978c-ab96cef38c1e",
+      "product": {
+        "name": "Jenkins Pipeline: Shared Groovy Libraries Plugin"
+      },
+      "product_version": "unspecified \u2264552.vd9cc05b8a2e1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1c4cb785-fa77-3c10-9e72-5b2b74e6b714",
+      "vendor": {
+        "name": "Jenkins Project"
+      }
+    }
+  ]
+}

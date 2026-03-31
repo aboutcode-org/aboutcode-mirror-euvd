@@ -1,0 +1,1618 @@
+{
+  "id": "EUVD-2023-24382",
+  "enisaUuid": "f9e8ca95-315e-3787-85ec-711959061a25",
+  "description": "Multiple vulnerabilities in the web-based management interface of Cisco Prime Infrastructure and Cisco Evolved Programmable Network Manager (EPNM) could allow an authenticated, remote attacker to conduct a stored cross-site scripting (XSS) attack against a user of the interface on an affected device.\n\n These vulnerabilities are due to insufficient validation of user-supplied input. An attacker could exploit these vulnerabilities by persuading a user of an affected interface to view a page containing malicious HTML or script content. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface or access sensitive, browser-based information. To exploit these vulnerabilities, the attacker must have valid credentials to access the web-based management interface of the affected device.",
+  "datePublished": "Aug 17, 2023, 12:30:26 AM",
+  "dateUpdated": "Jan 25, 2024, 6:30:38 PM",
+  "baseScore": -1.0,
+  "references": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-pi-epnm-BFjSRJP5\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-20203\n",
+  "aliases": "CVE-2023-20203\nGHSA-73pq-mp5p-r574\n",
+  "assigner": "cisco",
+  "epss": 0.09,
+  "enisaIdProduct": [
+    {
+      "id": "01217174-17e7-3ef7-886b-793872d1dbfa",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7_DP2"
+    },
+    {
+      "id": "0399572f-c752-34d2-93a5-e0fec4e2a69f",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.0.2"
+    },
+    {
+      "id": "0613b5a9-5ecd-3be7-9875-6c31b0ccfa05",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.1"
+    },
+    {
+      "id": "064835cb-57ce-33f7-b9be-704fd9a8f3a5",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2_DP3"
+    },
+    {
+      "id": "087ee407-eb27-3adc-8041-96a6676866a9",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP5"
+    },
+    {
+      "id": "099020dc-8c43-3322-9f3c-b94ebeb18589",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP8"
+    },
+    {
+      "id": "0a960a81-b617-35c2-9cdf-419f083e47a2",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.3"
+    },
+    {
+      "id": "0cb9d7fc-bb29-3f9c-9bb1-0f5ab00fa230",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1"
+    },
+    {
+      "id": "0cf1a97b-7797-336b-87a3-f58e9d87cb03",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.1"
+    },
+    {
+      "id": "0edc4700-479c-3e12-a770-ff3d14fd4028",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8_DP1"
+    },
+    {
+      "id": "107bc5a7-1f11-30b1-97d6-17b2d64c013c",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.2"
+    },
+    {
+      "id": "11b83e83-a53d-3d97-ac1d-9df1d74f92ef",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.1.1"
+    },
+    {
+      "id": "12d5f607-30c5-3b38-a4d8-f30140502bd2",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.3"
+    },
+    {
+      "id": "161b1c2e-6492-336a-98ad-8db3fcea99e2",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.1.3"
+    },
+    {
+      "id": "17bfdfcb-6c35-386e-b28b-0c72b32cfa00",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP13"
+    },
+    {
+      "id": "1b165bd7-afdd-35d6-af47-feb4610eacc7",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2"
+    },
+    {
+      "id": "1c869229-887b-321b-aee2-cf803f2acc0a",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.0.1"
+    },
+    {
+      "id": "1d39897e-5cf4-311c-8f49-3a18fcfacffb",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.0.39"
+    },
+    {
+      "id": "1df5314a-4cb8-3d97-9df2-c8e0e5f3f0c5",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.1 Update 02"
+    },
+    {
+      "id": "1dfb030b-3614-3fae-b869-b1b2c750ed27",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.0.3.1"
+    },
+    {
+      "id": "1f3ed043-a640-3935-ab20-aa46e82323a9",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.5"
+    },
+    {
+      "id": "22536203-2d50-3cc5-8ec6-d300a195add2",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2.2"
+    },
+    {
+      "id": "2313c76a-30be-3de1-916c-6d15bf17da8b",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.3.4"
+    },
+    {
+      "id": "2379da2f-3c24-31eb-b9f4-cfef25ccca58",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.4.1"
+    },
+    {
+      "id": "267a6f2d-ada0-3d90-b984-c24a9b71e3d3",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.1 Update 02"
+    },
+    {
+      "id": "2a974cf9-1c5e-34be-bc18-b177bf3dfaaf",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP3"
+    },
+    {
+      "id": "2b141a30-5a18-32e9-8b51-3693dd3052df",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP6"
+    },
+    {
+      "id": "2b73262e-e951-3095-a0d9-ba511121e994",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2.5"
+    },
+    {
+      "id": "2bc7b958-c7cc-3dd3-bd90-2cb4a8db8f0e",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.0"
+    },
+    {
+      "id": "2f06eeb7-dd17-3dd2-b046-489110fb55f0",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2_DP1"
+    },
+    {
+      "id": "2f3450bb-f4e2-3093-ad2c-a9652036e9ae",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 01"
+    },
+    {
+      "id": "316545cd-98c0-30da-88e2-3ef54f3e670b",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.1.1"
+    },
+    {
+      "id": "37336b0f-64c5-322f-82c6-f267bcac270f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.0"
+    },
+    {
+      "id": "388cad7f-bcd0-3733-9db3-3aa981e37732",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.2 Update 03"
+    },
+    {
+      "id": "38a590a4-74a9-3c99-8d2a-341417fde5d5",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.5"
+    },
+    {
+      "id": "39902633-5715-3337-8318-b17458445828",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.1"
+    },
+    {
+      "id": "3bf8e1f2-4fa0-35d8-9a0b-25e8360874fd",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.3.3"
+    },
+    {
+      "id": "3c219a7d-b530-33e4-ac99-7ca87a623bd0",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.1.1"
+    },
+    {
+      "id": "3d2022c5-a209-3d16-b7a5-b2beb7855b85",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP15"
+    },
+    {
+      "id": "40a4ceda-7979-3a55-aaed-c5fdc1f24870",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.1.1.2"
+    },
+    {
+      "id": "41cb7041-2be6-33d0-9421-c5b92f78dd11",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.0 Update 03"
+    },
+    {
+      "id": "42c7d4e6-eb46-3d1a-9aa3-ce42b4e40e61",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.4.2"
+    },
+    {
+      "id": "43ef482c-2a61-38f1-9e30-b7bae4447638",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.2"
+    },
+    {
+      "id": "4409de8c-b827-37b0-9234-97ab23897417",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10_DP1"
+    },
+    {
+      "id": "443cd724-2846-33ba-a3d0-362e9ce07cda",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.4"
+    },
+    {
+      "id": "443fdab2-fbd4-3ee4-8288-8474162c382c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3 Update 04"
+    },
+    {
+      "id": "4555a47d-80cd-35f2-9648-de7952ed1d0f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3 Update 02"
+    },
+    {
+      "id": "4590d6cb-6edf-36f8-b6ac-d45f927dedd3",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 06"
+    },
+    {
+      "id": "45eb65b5-a132-3b4e-b451-f33da22fb5cc",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.1.4"
+    },
+    {
+      "id": "4787dd5e-b596-37fc-9d7b-dc5d5e073e3d",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.1.2"
+    },
+    {
+      "id": "47fdd941-4402-3a39-b656-54c58b841448",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.3"
+    },
+    {
+      "id": "484102fd-577d-333e-aaf1-dc31111e144a",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.0"
+    },
+    {
+      "id": "4a747c1b-87cf-3054-a76c-f9a9b404ead0",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2.3"
+    },
+    {
+      "id": "4ec6cedc-8bad-3af4-9d09-0d8a5c51c6f4",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.10"
+    },
+    {
+      "id": "4f9ad6ba-ca17-351b-a322-23b904a0b27f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2_DP2"
+    },
+    {
+      "id": "50998c63-a327-3071-b0c4-0f16f21b0e30",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP7"
+    },
+    {
+      "id": "510aae08-283d-36dd-8382-00993b635080",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3_DP3"
+    },
+    {
+      "id": "556fc698-8a1b-3c8c-b9a9-9e1a9665deea",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3 Update 03"
+    },
+    {
+      "id": "56c068c4-408e-3257-ad4b-661097267f9f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.1.2"
+    },
+    {
+      "id": "56de5a07-13cf-3d0f-91d6-e020540e2ea9",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.0 Update 01"
+    },
+    {
+      "id": "590e6d73-7579-3925-89f7-7ee4a59c5b43",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3.0"
+    },
+    {
+      "id": "5984cf89-9cd5-3a20-acf3-5eae2006becc",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.1 Update 04"
+    },
+    {
+      "id": "5986398f-6996-3c5d-8f10-22120fd7d561",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP12"
+    },
+    {
+      "id": "599498ec-f846-31ce-bc0d-80702d5ab6ec",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.4"
+    },
+    {
+      "id": "5a566fbc-a641-3b42-8bdd-7cfd3b685bfe",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.0"
+    },
+    {
+      "id": "5a92d812-687c-3e8d-b9b1-f871c2ac386b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10 Update 01"
+    },
+    {
+      "id": "5b2a83bb-41a3-3e12-ad3c-fb40e0eb6bf8",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP8"
+    },
+    {
+      "id": "5ba853c4-ac0d-3ae2-86f0-b18d0610d7fe",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 04"
+    },
+    {
+      "id": "5bfc1f79-ef0b-362a-86c3-e5006342fa4f",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.1"
+    },
+    {
+      "id": "5c48eac2-814f-3551-ac58-868ab8a8d3b1",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.1.4"
+    },
+    {
+      "id": "5c9ad83b-64f3-35a6-bf93-6ab2fdb5f649",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.1"
+    },
+    {
+      "id": "600c2a79-3855-32fd-9a13-26c1e8be22b5",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.0.3"
+    },
+    {
+      "id": "6117d00b-88fc-307c-b131-158e4cfd4e84",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6.0 Update 01"
+    },
+    {
+      "id": "6134076d-fbb0-384b-8553-5f895e9593de",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.2"
+    },
+    {
+      "id": "661a3931-7384-3f04-8f96-3dcd6e6028c3",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 07"
+    },
+    {
+      "id": "6751b1cf-93e1-343f-910c-37c401d6bfb2",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.2"
+    },
+    {
+      "id": "6a0fc1b8-3505-323e-9fe6-42e10c0023a6",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.5"
+    },
+    {
+      "id": "6a58390d-ecd9-3fd8-8c1f-fd91376f2016",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP4"
+    },
+    {
+      "id": "6b21de0b-0c53-3d12-854a-f36232e5c4c2",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.3.5"
+    },
+    {
+      "id": "6c8b991f-5316-3789-97fd-029b9764c24c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3.0 Update 01"
+    },
+    {
+      "id": "6faa2ab3-2326-3c28-a87a-d79314aff03e",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2"
+    },
+    {
+      "id": "70294445-a9f9-3576-9e86-45f38cf9a9db",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10.0"
+    },
+    {
+      "id": "712c3733-f90b-30d6-aff3-64b019554f8e",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.0 Update 02"
+    },
+    {
+      "id": "71e67fa1-9a10-3a94-b4bb-b518a9a20cfb",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5_DP1"
+    },
+    {
+      "id": "71f666a1-f579-3180-9ec4-e2cdf9703548",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.2.3"
+    },
+    {
+      "id": "7288783b-7d0b-3a41-9412-c1c123b7abed",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.5"
+    },
+    {
+      "id": "72f1f866-96ee-31ca-8e84-0195b6de62a8",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.1"
+    },
+    {
+      "id": "74d32ceb-7d0d-38f4-8636-23dcd50d4524",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6.0 Update 03"
+    },
+    {
+      "id": "75c5c7f2-2bdf-3bd2-967f-c3ba88131fa7",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.1.1"
+    },
+    {
+      "id": "784b4627-245e-3f3d-923c-11d7219c68c2",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.0"
+    },
+    {
+      "id": "7a93b54c-00cd-3f3e-9bde-0e431f360212",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6.0 Update 04"
+    },
+    {
+      "id": "7aa30749-8c5c-386c-bd47-79f7fb60e2d9",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10.1"
+    },
+    {
+      "id": "7db95f39-b476-3165-9c73-dee223e721e9",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.2.4"
+    },
+    {
+      "id": "7f15ae18-54e0-3fae-8f70-59d284089bea",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.4"
+    },
+    {
+      "id": "7f63273a-cc92-36c3-9f0c-a6cdaa71c6cc",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3_DP1"
+    },
+    {
+      "id": "84201b39-7505-3eab-a4f4-6ab0276590e5",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3_DP2"
+    },
+    {
+      "id": "8476be29-3f3f-30f0-bdff-0f5b474c5c7b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2"
+    },
+    {
+      "id": "8539f910-9fa6-3475-9717-b69d15bac862",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.0"
+    },
+    {
+      "id": "85f75596-ebd2-3864-9828-54e6dbc074c5",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.2"
+    },
+    {
+      "id": "86b515b3-0637-3d23-a565-9f04738fd57f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 05"
+    },
+    {
+      "id": "87270065-6bee-329f-acaf-4951d500af95",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 03"
+    },
+    {
+      "id": "87797a58-2bfe-3085-88dd-fd3850b6d188",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.4.3"
+    },
+    {
+      "id": "87e2bb33-27e4-30f4-ab04-b99364135385",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.0.1"
+    },
+    {
+      "id": "88455140-6a5a-3006-974c-d0a048f7711f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.9"
+    },
+    {
+      "id": "886bb453-e79f-3677-811d-93540adbf37e",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.5"
+    },
+    {
+      "id": "889ad459-b36d-3e20-8b8d-097d97d5f6e9",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.1"
+    },
+    {
+      "id": "88fef95b-bfcc-3748-a4e2-66029c9975f4",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.1.1.1"
+    },
+    {
+      "id": "89d73394-7f55-38a6-a434-9a74d9f10e17",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.1 Update 01"
+    },
+    {
+      "id": "8aaa7e33-c791-323b-ab02-0859af754702",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.1 Update 03"
+    },
+    {
+      "id": "8ae957c6-ef6d-37d2-948b-b0c9a52c64ab",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.6"
+    },
+    {
+      "id": "8d6ef794-d757-3119-affd-f0ecaf84074d",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.1"
+    },
+    {
+      "id": "8da2467d-fd56-3327-960b-d7391f27effa",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.0"
+    },
+    {
+      "id": "8e548816-e5ee-3c50-ac7b-ad3ea068a824",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.3"
+    },
+    {
+      "id": "8fdd7f17-7a83-3e77-9157-9c0d599cb3b1",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.1 Update 03"
+    },
+    {
+      "id": "8fe59c86-1e2b-31f0-b4b2-d708cce24386",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.1.1"
+    },
+    {
+      "id": "90dc19cf-c2cc-39e8-a957-0c4900f5b920",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.1.1.1"
+    },
+    {
+      "id": "918d634e-6cda-3e85-8d40-8754f0847272",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.1.0"
+    },
+    {
+      "id": "9608ca49-ee4d-3e50-8196-688392060387",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3 Update 05"
+    },
+    {
+      "id": "97c97e59-a145-3f9e-bf75-2256d4f8f663",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.3"
+    },
+    {
+      "id": "98a9f781-9602-346d-a068-013ee6891fd4",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10.3"
+    },
+    {
+      "id": "9b715d42-7590-341e-b844-11f00d938864",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP10"
+    },
+    {
+      "id": "9c536614-59c7-3316-b254-689e68e968be",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0"
+    },
+    {
+      "id": "9c8385c3-8b07-3581-9839-8374ab7519c0",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.0 Update 01"
+    },
+    {
+      "id": "9c9bfd49-47d6-3905-856e-0ec90f077aec",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.1.1"
+    },
+    {
+      "id": "9c9fc33c-c954-3dca-9bec-8c80b703b3cb",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.2 Update 01"
+    },
+    {
+      "id": "9cd6b287-dc4b-34c1-83d0-fb30ac685867",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.2 Update 04"
+    },
+    {
+      "id": "9dde8ae7-74ca-37d7-a9ec-3c9b656cb1cd",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.4"
+    },
+    {
+      "id": "9df0c6aa-c513-351e-9bfc-51ca3541bd45",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "7.0.0"
+    },
+    {
+      "id": "9fec8565-4f03-3298-89ca-e2389b54a3fe",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.7"
+    },
+    {
+      "id": "a0bee388-157f-3a31-ab3d-0fb049c5de6e",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.1.2"
+    },
+    {
+      "id": "a0d11b12-d337-3057-9f04-f933d187757a",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.0.2.1"
+    },
+    {
+      "id": "a163dc92-99a3-3311-bf73-5dc31138d030",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5_DP2"
+    },
+    {
+      "id": "a1e21175-9f70-35e0-9b5f-e8cf49c7d94c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.0 Update 01"
+    },
+    {
+      "id": "a28cb0c9-e86b-3f3c-9970-b50317901f19",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2"
+    },
+    {
+      "id": "a2f73f62-af22-3c7b-8743-47197d95b939",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.1 Update 02"
+    },
+    {
+      "id": "a6da0869-fe59-37d4-bcdd-7c9d89a06e09",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.1 Update 01"
+    },
+    {
+      "id": "a87f9883-44a3-3bee-a57c-b848c02ff098",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.1"
+    },
+    {
+      "id": "a916b26c-e980-3fbc-9f13-29a21a07125f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.7"
+    },
+    {
+      "id": "aa54b0b9-227b-3226-9c98-03a7ff436e37",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP9"
+    },
+    {
+      "id": "abd277a4-b5a7-357b-83c9-d15d9518cf71",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6.0 Update 02"
+    },
+    {
+      "id": "ad7e6e14-93ba-3675-a6d3-0ad837f62d13",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2"
+    },
+    {
+      "id": "adf55d3c-38c7-37d8-ab46-33574d57b47b",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.1.3"
+    },
+    {
+      "id": "ae96473c-da32-38ab-a6f8-25a74f64e7b8",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.1 Update 01"
+    },
+    {
+      "id": "afc9a4a8-55e6-32f7-a6a7-a2309121c89f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.10.2"
+    },
+    {
+      "id": "b042d787-5083-3858-869d-32ddc4ae6432",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.1"
+    },
+    {
+      "id": "b07fa253-9f88-335c-ac11-ddbe3590fa8b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5_DP4"
+    },
+    {
+      "id": "b0f2d272-3ed7-3989-821a-bf690153d1f0",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.1 Update 04"
+    },
+    {
+      "id": "b1428fde-41aa-328c-b3f1-f44d72049915",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9_DP1"
+    },
+    {
+      "id": "b46249b5-5b97-3a7c-9675-477b639a0983",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.4"
+    },
+    {
+      "id": "b4667cef-528d-3d44-b536-cdbd4007662d",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP11"
+    },
+    {
+      "id": "b5091c3b-f88c-3ce9-9533-7b2737df468c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP4"
+    },
+    {
+      "id": "b6e6ad7a-a21f-343c-b6a3-11513258d71c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.1 Update 02"
+    },
+    {
+      "id": "b7374444-b298-3e44-9bd1-e253c870204d",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP14"
+    },
+    {
+      "id": "b84e6168-2862-362a-a806-0301eb0f4e82",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP1"
+    },
+    {
+      "id": "b894c3d9-0565-3408-a1f4-71e660107eef",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1 Update 02"
+    },
+    {
+      "id": "b8c5cc9f-fde7-364b-b178-a18048d19870",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1"
+    },
+    {
+      "id": "b9f1ebbd-f51e-3d0d-820c-4603710d5fed",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.1"
+    },
+    {
+      "id": "bcb7f62d-2999-3595-a1ce-084a99e5a2c2",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.1.2"
+    },
+    {
+      "id": "bd2debcb-2497-3dd6-a7db-d0e0e5a85668",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.4.2"
+    },
+    {
+      "id": "c08c9e3e-24a5-3e1d-b14c-bcd392008565",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.1.1"
+    },
+    {
+      "id": "c28e1efb-3356-39ae-99ce-fe4962ad1614",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.1 Update 01"
+    },
+    {
+      "id": "c2a38699-76a2-3b5d-8c96-67d6accc9e90",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2.1"
+    },
+    {
+      "id": "c2b6657b-8acd-335c-a80a-05ef3ffdb623",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.0.0"
+    },
+    {
+      "id": "c2bc0505-e728-30db-ae0d-f51c8a56c50f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2.0-FIPS"
+    },
+    {
+      "id": "c339f947-d383-328d-8c2a-98bed910e8af",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.1"
+    },
+    {
+      "id": "c356e90b-7d1b-3c33-aad1-55f672dbd2f1",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.1"
+    },
+    {
+      "id": "c398f7ee-6223-3f97-acac-35a77b5fbc30",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.6"
+    },
+    {
+      "id": "c4528332-d86c-38db-8610-d9006f8d2d2d",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.1.3"
+    },
+    {
+      "id": "c4f17627-d161-3b93-8d4c-d49a530cd722",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP5"
+    },
+    {
+      "id": "c60634bd-8cae-34f5-89a7-fa39be652a73",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.3"
+    },
+    {
+      "id": "c63155dd-b748-3a72-8ce6-d873ef9975d5",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.8"
+    },
+    {
+      "id": "c806a340-fd03-31e6-b059-3d7f6363f91d",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.0"
+    },
+    {
+      "id": "c9c08fbf-7e3c-345b-b954-75b63991879c",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.3.2"
+    },
+    {
+      "id": "ca0e9bb2-7f6a-3ddf-b1db-4dd6b0e22729",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5.0"
+    },
+    {
+      "id": "ca77ad8d-c037-3bc5-b1e7-c9fd57a32dfc",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.1 Update 01"
+    },
+    {
+      "id": "ca7c3d80-874b-3b11-93e4-e4f060370178",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.2"
+    },
+    {
+      "id": "cc4a8573-f6a9-325f-9693-ca41929963b4",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.0.10"
+    },
+    {
+      "id": "cd6be359-b91c-39d1-927a-22a69822a3db",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP11"
+    },
+    {
+      "id": "ce7e8f86-5fa9-39c0-bf7a-b38d712ec0e9",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.0.3"
+    },
+    {
+      "id": "d1a5a201-44d1-3093-af4d-93287e6ddf1e",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.2_DP4"
+    },
+    {
+      "id": "d1bf5e62-e374-3adb-b6c7-ff1f584960e3",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7.0 Update 03"
+    },
+    {
+      "id": "d1cec6f3-ffd0-3b7b-a983-714f3a13c98a",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3_DP4"
+    },
+    {
+      "id": "d2d0ebd5-6811-3a8e-9e43-086bac4e4775",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP16"
+    },
+    {
+      "id": "d4899d4b-6178-37b4-becb-91e01e7614ef",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.3"
+    },
+    {
+      "id": "d4fa09f2-7392-36c9-b6d2-dc2b8f5b1b03",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.3.1"
+    },
+    {
+      "id": "d52d3f5c-6c04-36ed-9bf8-96d6312d5b19",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2.1"
+    },
+    {
+      "id": "d5e66380-1ce9-3809-82e8-2ef34e76855c",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.7_DP1"
+    },
+    {
+      "id": "d5e88a62-2937-357a-b4e7-962437c0496d",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.4"
+    },
+    {
+      "id": "d6453e41-b03d-3914-abc9-6b0793944705",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.3.2"
+    },
+    {
+      "id": "d66f11cc-b90b-31a5-92dc-90d09ccf5c67",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "6.1"
+    },
+    {
+      "id": "d87f5887-a55d-3235-b317-809802ffe01f",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.1"
+    },
+    {
+      "id": "d9010756-d5f8-328e-9b79-c010d65f4658",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.4.2"
+    },
+    {
+      "id": "d91ec5b8-b644-3036-a5ce-ab3cd0a7ebbf",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.1"
+    },
+    {
+      "id": "db66aa1f-36ab-3d6b-9f05-6c59ea98ff5f",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.2.1"
+    },
+    {
+      "id": "dc5fb511-a6ba-3f9e-9205-b161edd86665",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.7"
+    },
+    {
+      "id": "de6d3813-6b6e-38bb-a64d-f11d70968197",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.4.1"
+    },
+    {
+      "id": "e1ae15c9-9b45-3d57-83b3-b3833002afa9",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.1"
+    },
+    {
+      "id": "e3010a1a-d4c7-392c-a2d9-ac257b6cc478",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6_DP1"
+    },
+    {
+      "id": "e33172ac-6aac-3825-8646-8244b6167c97",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.0.6"
+    },
+    {
+      "id": "e3c8fbea-a45f-3811-9840-7d6247c6de08",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3 Update 06"
+    },
+    {
+      "id": "e3d5a09b-cfe9-306f-b398-58430dfffac3",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.9.1 Update 03"
+    },
+    {
+      "id": "e4950f40-3e66-3de1-9533-bdf226ab283f",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.1"
+    },
+    {
+      "id": "e538f663-eadc-3bdc-89d3-975b3b3f356b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1.0"
+    },
+    {
+      "id": "ea523091-19b5-34f6-ab49-72fa9a898212",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP9"
+    },
+    {
+      "id": "eb3af20b-ff8b-30e9-9b48-8bd35aa68790",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP10"
+    },
+    {
+      "id": "ebe3bb26-261b-3650-ab3d-fe1dcddae4ab",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.1.1"
+    },
+    {
+      "id": "ed20c103-6c7b-36b6-99e7-fd106de7b8fb",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.4"
+    },
+    {
+      "id": "ee19506f-2e7d-3e55-8762-ee322b1a71ca",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.1_DP7"
+    },
+    {
+      "id": "ef8f5694-e4e8-357b-9a85-35883d41ac39",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.0.4"
+    },
+    {
+      "id": "efe1ae9b-a86a-3153-8eea-e60e60960b37",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.8.0 Update 02"
+    },
+    {
+      "id": "f0663263-b819-318b-a291-92f6c85c275e",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.1.2"
+    },
+    {
+      "id": "f08542ea-90c2-3f17-be25-69b8a27ad7b2",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.6.0"
+    },
+    {
+      "id": "f1731916-647a-3cc1-9799-55d10762c2b7",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "1.2.7"
+    },
+    {
+      "id": "f22e1969-fd44-34ad-a619-b0d249ff4e65",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.5_DP3"
+    },
+    {
+      "id": "f57acfc6-3150-3f68-a76a-f0a3fb81343d",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.2"
+    },
+    {
+      "id": "f59e841e-8c80-3a6a-85f6-b5fa1caa1380",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP2"
+    },
+    {
+      "id": "f5e6f80e-68b6-3752-8ea0-e6772e83d29b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.2.3"
+    },
+    {
+      "id": "f761c74c-f919-302b-b22a-3c7e68e1cb3d",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2.2"
+    },
+    {
+      "id": "f7ecb65a-8b3b-3d3c-83d7-ef9a578b6c73",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.1.2.2"
+    },
+    {
+      "id": "f8c69d85-ccbd-33a3-9fe7-19eabaa52604",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "2.2.3"
+    },
+    {
+      "id": "f91745cc-da69-3ba8-b7ff-65b1a2ef814b",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4_DP6"
+    },
+    {
+      "id": "f97d2355-994c-3a88-829a-6aebb1b5be89",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "4.0"
+    },
+    {
+      "id": "f9d47eaf-337e-38f8-8de3-53973b3afe0f",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.3.1"
+    },
+    {
+      "id": "f9f358cf-4c08-381f-ad7c-96859f14ee95",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "3.4.2"
+    },
+    {
+      "id": "fa03f9bd-aa51-3673-92ed-359fd08f9981",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0.2.4"
+    },
+    {
+      "id": "fa15daa5-30f7-3344-bc6b-3cc9f43ad5aa",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "5.0"
+    },
+    {
+      "id": "ffa73840-d44f-3351-a1b3-0b680069f868",
+      "product": {
+        "name": "Cisco Prime Infrastructure"
+      },
+      "product_version": "2.1.56"
+    },
+    {
+      "id": "ffd9e559-daf2-374d-8220-20cdf7dbf6dd",
+      "product": {
+        "name": "Cisco Evolved Programmable Network Manager (EPNM)"
+      },
+      "product_version": "3.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0d76b567-82d7-3106-acce-0c0a684219d2",
+      "vendor": {
+        "name": "Cisco"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207864",
+  "enisaUuid": "f4910b88-9a3e-3e1b-97c4-8245b46aa6dd",
+  "description": "The Breeze - WordPress Cache Plugin plugin for WordPress is vulnerable to unauthorized cache clearing in all versions up to, and including, 2.2.21. This is due to the REST API endpoint `/wp-json/breeze/v1/clear-all-cache` being registered with `permission_callback => '__return_true'` and authentication being disabled by default when the API is enabled. This makes it possible for unauthenticated attackers to clear all site caches (page cache, Varnish, and Cloudflare) via a simple POST request, granted the administrator has enabled the API integration feature.",
+  "datePublished": "Feb 19, 2026, 6:31:49 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:49 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5a3c16a5-65e5-4fe9-b7f0-2e021534c054?source=cve\nhttps://plugins.trac.wordpress.org/browser/breeze/tags/2.2.21/inc/class-breeze-api.php#L22\nhttps://plugins.trac.wordpress.org/browser/breeze/tags/2.2.21/inc/class-breeze-api.php#L19\nhttps://plugins.trac.wordpress.org/browser/breeze/tags/2.2.21/inc/breeze-admin.php#L749\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3425199%40breeze&new=3425199%40breeze&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-13864\n",
+  "aliases": "CVE-2025-13864\nGHSA-68gf-3qqh-xc9r\n",
+  "assigner": "Wordfence",
+  "epss": 0.21,
+  "enisaIdProduct": [
+    {
+      "id": "e6679e12-f8d0-463d-96fa-345f0b98b332",
+      "product": {
+        "name": "Breeze Cache"
+      },
+      "product_version": "* \u22642.2.21"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0de8cdda-caa1-4c93-816c-dac253f19288",
+      "vendor": {
+        "name": "Cloudways"
+      }
+    }
+  ]
+}

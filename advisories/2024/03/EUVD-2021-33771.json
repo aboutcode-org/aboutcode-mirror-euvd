@@ -1,0 +1,70 @@
+{
+  "id": "EUVD-2021-33771",
+  "enisaUuid": "670d6c88-c1db-3dfd-a47b-2ac8386c86d3",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix ltout double free on completion race\n\nAlways remove linked timeout on io_link_timeout_fn() from the master\nrequest link list, otherwise we may get use-after-free when first\nio_link_timeout_fn() puts linked timeout in the fail path, and then\nwill be found and put on master's free.",
+  "datePublished": "Mar 15, 2024, 9:30:44 PM",
+  "dateUpdated": "Jan 14, 2025, 3:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/1f64f5e903b9d1d157875721e02adadc9d6f0a5d\nhttps://git.kernel.org/stable/c/447c19f3b5074409c794b350b10306e1da1ef4ba\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47123\n",
+  "aliases": "CVE-2021-47123\nGHSA-j642-rp5q-w8w9\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "145ad596-ba17-3799-a878-ed9fdc0614b7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.10"
+    },
+    {
+      "id": "3e64b0b2-6e6f-3455-91ab-a051975af63d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "90cd7e424969d29aff653333b4dcb4e2e199d791 <447c19f3b5074409c794b350b10306e1da1ef4ba"
+    },
+    {
+      "id": "42627c30-a38b-3e62-923b-cee8da4ea857",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "a58ada8d-14a9-382c-b898-141244c06db1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.11"
+    },
+    {
+      "id": "d7457636-10cb-38d2-a629-301b39add885",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f7d609ad-bd7f-322d-9fc1-3dd4a9e46db3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "90cd7e424969d29aff653333b4dcb4e2e199d791 <1f64f5e903b9d1d157875721e02adadc9d6f0a5d"
+    },
+    {
+      "id": "fc940a3f-09ed-3aad-a751-7aa97eb10dee",
+      "product": {
+        "name": "Linux"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fc940a3f-09ed-3aad-a751-7aa97eb10dee",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

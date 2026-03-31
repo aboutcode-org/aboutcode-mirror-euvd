@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-0211",
+  "enisaUuid": "54d8e55e-1353-3fce-b217-a18c59dd5eac",
+  "description": "Server-Side Request Forgery (SSRF) vulnerability in Apache StreamPipes during installation process of pipeline elements.\\nPreviously, StreamPipes allowed users to configure custom endpoints from which to install additional pipeline elements. \\nThese endpoints were not properly validated, allowing an attacker to get StreamPipes to send an HTTP GET request to an arbitrary address.\\nThis issue affects Apache StreamPipes: through 0.93.0.\\n\\nUsers are recommended to upgrade to version 0.95.0, which fixes the issue.\\n\\n",
+  "datePublished": "Jul 17, 2024, 12:15:02 PM",
+  "dateUpdated": "Jan 19, 2025, 12:21:43 PM",
+  "baseScore": -1.0,
+  "references": "https://lists.apache.org/thread/8lryp3bxnby9kmk13odkz2jbfdjfvf0y\nhttps://lists.apache.org/thread/8lryp3bxnby9kmk13odkz2jbfdjfvf0y\nhttp://www.openwall.com/lists/oss-security/2024/07/16/11\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-31979\nhttps://github.com/apache/streampipes/commit/cd5a7b46e3383573f0f2b51da4b7306d4936aa3f\nhttps://github.com/apache/streampipes/releases/tag/release%2F0.95.0\nhttps://github.com/pypa/advisory-database/tree/main/vulns/streampipes/PYSEC-2024-174.yaml\n",
+  "aliases": "PYSEC-2024-174\nCVE-2024-31979\nGHSA-9gr7-gh74-qg9x\n",
+  "assigner": "apache",
+  "epss": 0.71,
+  "enisaIdProduct": [
+    {
+      "id": "3e681802-f401-358a-a8ad-0b5d67cf7307",
+      "product": {
+        "name": "Apache StreamPipes"
+      },
+      "product_version": "0 \u22640.93.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e7a8ef03-fc2d-3fad-a183-c2999940312c",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-38590",
+  "enisaUuid": "d02dd1c5-039d-3c89-9d31-9c1b0093dcd1",
+  "description": "A partial fix for\u00a0 CVE-2024-39884 in the core of Apache HTTP Server 2.4.61 ignores some use of the legacy content-type based configuration of handlers. \"AddType\" and similar configuration, under some circumstances where files are requested indirectly, result in source code disclosure of local content. For example, PHP scripts may be served instead of interpreted.\n\nUsers are recommended to upgrade to version 2.4.62, which fixes this issue.",
+  "datePublished": "Jul 18, 2024, 12:30:52 PM",
+  "dateUpdated": "Mar 14, 2025, 6:30:41 PM",
+  "baseScore": -1.0,
+  "references": "https://httpd.apache.org/security/vulnerabilities_24.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-40725\nhttps://security.netapp.com/advisory/ntap-20240808-0007\n",
+  "aliases": "GHSA-x749-289q-pg9q\nCVE-2024-40725\n",
+  "assigner": "apache",
+  "epss": 26.57,
+  "enisaIdProduct": [
+    {
+      "id": "794404ae-dceb-3f40-8052-0dca8e76a3d3",
+      "product": {
+        "name": "Apache HTTP Server"
+      },
+      "product_version": "2.4.60 \u22642.4.61"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "061bd3b2-800c-3090-b0c0-d93af5cc3efe",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

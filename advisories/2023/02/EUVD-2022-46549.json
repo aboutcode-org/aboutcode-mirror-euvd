@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-46549",
+  "enisaUuid": "887ecfca-5d39-3236-983f-2c2a7e716255",
+  "description": "A use after free vulnerability exists in curl <7.87.0. Curl can be asked to *tunnel* virtually all protocols it supports through an HTTP proxy. HTTP proxies can (and often do) deny such tunnel operations. When getting denied to tunnel the specific protocols SMB or TELNET, curl would use a heap-allocated struct after it had been freed, in its transfer shutdown code path.",
+  "datePublished": "Feb 9, 2023, 9:30:28 PM",
+  "dateUpdated": "Mar 27, 2024, 3:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://advisories.mageia.org/CVE-2022-43552.html\nhttps://www.suse.com/security/cve/CVE-2022-43552.html\nhttps://ubuntu.com/security/CVE-2022-43552\nhttps://www.debian.org/security/2023/dsa-5330\nhttps://hackerone.com/reports/1764858\nhttps://security.netapp.com/advisory/ntap-20230214-0002/\nhttps://support.apple.com/kb/HT213670\nhttp://seclists.org/fulldisclosure/2023/Mar/17\nhttps://security.gentoo.org/glsa/202310-12\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-43552\n",
+  "aliases": "GHSA-6342-4x32-pp8v\nCVE-2022-43552\n",
+  "assigner": "hackerone",
+  "epss": 0.2,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "55da7cbb-cbd3-3bbd-b3b7-4b18350d64fb",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

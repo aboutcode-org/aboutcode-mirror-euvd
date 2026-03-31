@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2022-46624",
+  "enisaUuid": "bf0446ae-7839-3d56-aee5-8bd6dea1ccd9",
+  "description": "This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of D-Link DIR-1935 1.03 routers. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed. The specific flaw exists within the handling of SetIPv6FirewallSettings requests to the web management portal. When parsing subelements within the IPv6FirewallRule element, the process does not properly validate a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-16148.",
+  "datePublished": "Mar 29, 2023, 9:30:19 PM",
+  "dateUpdated": "Apr 5, 2023, 9:30:23 PM",
+  "baseScore": 6.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10310\nhttps://www.zerodayinitiative.com/advisories/ZDI-22-1499/\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-43628\n",
+  "aliases": "GHSA-fv8v-x6r7-4jm8\nCVE-2022-43628\n",
+  "assigner": "zdi",
+  "epss": 0.25,
+  "enisaIdProduct": [
+    {
+      "id": "d45838a0-c526-3103-b03d-e81669c79149",
+      "product": {
+        "name": "DIR-1935"
+      },
+      "product_version": "1.03"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2b59eaee-2431-3f8d-8813-c252dd0259b2",
+      "vendor": {
+        "name": "D-Link"
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "id": "EUVD-2023-57246",
+  "enisaUuid": "b93b785a-40d4-3cd9-a8d3-ce5e97bd37e9",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: avoid online resizing failures due to oversized flex bg\n\nWhen we online resize an ext4 filesystem with a oversized flexbg_size,\n\n     mkfs.ext4 -F -G 67108864 $dev -b 4096 100M\n     mount $dev $dir\n     resize2fs $dev 16G\n\nthe following WARN_ON is triggered:\n==================================================================\nWARNING: CPU: 0 PID: 427 at mm/page_alloc.c:4402 __alloc_pages+0x411/0x550\nModules linked in: sg(E)\nCPU: 0 PID: 427 Comm: resize2fs Tainted: G  E  6.6.0-rc5+ #314\nRIP: 0010:__alloc_pages+0x411/0x550\nCall Trace:\n <TASK>\n __kmalloc_large_node+0xa2/0x200\n __kmalloc+0x16e/0x290\n ext4_resize_fs+0x481/0xd80\n __ext4_ioctl+0x1616/0x1d90\n ext4_ioctl+0x12/0x20\n __x64_sys_ioctl+0xf0/0x150\n do_syscall_64+0x3b/0x90\n==================================================================\n\nThis is because flexbg_size is too large and the size of the new_group_data\narray to be allocated exceeds MAX_ORDER. Currently, the minimum value of\nMAX_ORDER is 8, the minimum value of PAGE_SIZE is 4096, the corresponding\nmaximum number of groups that can be allocated is:\n\n (PAGE_SIZE << MAX_ORDER) / sizeof(struct ext4_new_group_data) \u2248 21845\n\nAnd the value that is down-aligned to the power of 2 is 16384. Therefore,\nthis value is defined as MAX_RESIZE_BG, and the number of groups added\neach time does not exceed this value during resizing, and is added multiple\ntimes to complete the online resizing. The difference is that the metadata\nin a flex_bg may be more dispersed.",
+  "datePublished": "Mar 26, 2024, 5:19:23 PM",
+  "dateUpdated": "Jan 5, 2026, 10:16:46 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/cd1f93ca97a9136989f3bd2bf90696732a2ed644\nhttps://git.kernel.org/stable/c/b183fe8702e78bba3dcef8e7193cab6898abee07\nhttps://git.kernel.org/stable/c/cfbbb3199e71b63fc26cee0ebff327c47128a1e8\nhttps://git.kernel.org/stable/c/d76c8d7ffe163c6bf2f1ef680b0539c2b3902b90\nhttps://git.kernel.org/stable/c/6d2cbf517dcabc093159cf138ad5712c9c7fa954\nhttps://git.kernel.org/stable/c/8b1413dbfe49646eda2c00c0f1144ee9d3368e0c\nhttps://git.kernel.org/stable/c/dc3e0f55bec4410f3d74352c4a7c79f518088ee2\nhttps://git.kernel.org/stable/c/5d1935ac02ca5aee364a449a35e2977ea84509b0\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52622\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00020.html\n",
+  "aliases": "CVE-2023-52622\nGHSA-25m9-3j97-v6cg\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "040abfaf-7116-3d5c-a0ba-2a03254b23e9",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "0ba92bf8-4e05-38f6-a87a-fb2d27d3a94c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    },
+    {
+      "id": "0dcc1786-e175-3d9f-94fd-e969df259da5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.307"
+    },
+    {
+      "id": "0de32276-8fe3-30be-b993-9fbff136d8fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "13dc46e0-6f0c-3977-80f5-c7681d45dcc2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b183fe8702e78bba3dcef8e7193cab6898abee07"
+    },
+    {
+      "id": "15f96e0f-6545-3a33-9135-a7df4fcd6ad8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cd1f93ca97a9136989f3bd2bf90696732a2ed644"
+    },
+    {
+      "id": "2a3088cb-ec82-327c-9a4a-7a690ae50580",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cfbbb3199e71b63fc26cee0ebff327c47128a1e8"
+    },
+    {
+      "id": "301eab20-5425-3b4a-9ddb-a2c73b72f311",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dc3e0f55bec4410f3d74352c4a7c79f518088ee2"
+    },
+    {
+      "id": "35739091-3bfc-3414-9084-f7610b2e94d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6d2cbf517dcabc093159cf138ad5712c9c7fa954"
+    },
+    {
+      "id": "3f7decc9-5b90-3a2e-9b89-508ddbb9a6ba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.210"
+    },
+    {
+      "id": "572bf11c-1204-3fab-88b8-3147cc9c5c3b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "64e76bfc-0e4c-367d-b157-9534417bb7f1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.3"
+    },
+    {
+      "id": "781c76a3-6708-3b3a-985a-9e765f7247c5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d76c8d7ffe163c6bf2f1ef680b0539c2b3902b90"
+    },
+    {
+      "id": "7dfd9480-d5a5-30ec-9ace-3be600120061",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.149"
+    },
+    {
+      "id": "7f83adaa-993d-38b6-94bf-69941841c401",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <cd1f93ca97a9136989f3bd2bf90696732a2ed644"
+    },
+    {
+      "id": "891e6304-5411-3956-ab70-6a796b56eca6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "8af26944-8191-3879-bbaa-2d84609043c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <cfbbb3199e71b63fc26cee0ebff327c47128a1e8"
+    },
+    {
+      "id": "baebd67d-bd83-3dee-a093-693f4498b413",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8b1413dbfe49646eda2c00c0f1144ee9d3368e0c"
+    },
+    {
+      "id": "bc032d2b-b3cf-3fb7-8fca-7bbf5afd6f1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.269"
+    },
+    {
+      "id": "c9c55805-2288-329f-b669-2797ae73a822",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "dbc9549e-5963-3490-8cd2-149f851d9525",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <6d2cbf517dcabc093159cf138ad5712c9c7fa954"
+    },
+    {
+      "id": "dc7296e7-2a08-3ec6-8665-d3807fdf68b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <d76c8d7ffe163c6bf2f1ef680b0539c2b3902b90"
+    },
+    {
+      "id": "f2f43329-9c1f-3abf-9011-d2d0fde35461",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <5d1935ac02ca5aee364a449a35e2977ea84509b0"
+    },
+    {
+      "id": "f352484c-c162-3035-a6c1-2f83f13a87f1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <8b1413dbfe49646eda2c00c0f1144ee9d3368e0c"
+    },
+    {
+      "id": "f986e19c-95c3-377f-8296-3e9ef0ccac0c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5d1935ac02ca5aee364a449a35e2977ea84509b0"
+    },
+    {
+      "id": "fd378258-ecc2-3068-b074-da2fad4727a2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <dc3e0f55bec4410f3d74352c4a7c79f518088ee2"
+    },
+    {
+      "id": "fdc29c40-1376-3719-9ccd-3d455dbb9b2e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28c7bac0091687e6116ebd6c179e154ae4053c90 <b183fe8702e78bba3dcef8e7193cab6898abee07"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "040abfaf-7116-3d5c-a0ba-2a03254b23e9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

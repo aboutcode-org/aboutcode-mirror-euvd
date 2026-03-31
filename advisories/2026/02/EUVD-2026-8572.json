@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8572",
+  "enisaUuid": "6c7e0f9e-667a-3585-a0af-355017be375d",
+  "description": "GetSimpleCMS Community Edition (CE) version 3.3.16 contains a stored cross-site scripting (XSS) vulnerability in the Theme to Components functionality within components.php. User-supplied input provided to the \"slug\" field of a component is stored without proper output encoding. While other fields are sanitized using safe_slash_html(), the slug parameter is written to XML and later rendered in the administrative interface without sanitation, resulting in persistent execution of arbitrary JavaScript. An authenticated administrator can inject malicious script content that executes whenever the affected Components page is viewed by any authenticated user, enabling session hijacking, unauthorized administrative actions, and persistent compromise of the CMS administrative interface.",
+  "datePublished": "Feb 25, 2026, 12:31:22 AM",
+  "dateUpdated": "Feb 25, 2026, 12:31:22 AM",
+  "baseScore": 4.8,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+  "references": "https://github.com/GetSimpleCMS-CE/GetSimpleCMS-CE/security/advisories/GHSA-95f7-vm92-8gpx\nhttps://github.com/GetSimpleCMS-CE/GetSimpleCMS-CE/releases/tag/v3.3.22\nhttps://getsimple-ce.ovh/\nhttps://www.vulncheck.com/advisories/getsimplecms-ce-stored-xss-via-components-php\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26351\n",
+  "aliases": "CVE-2026-26351\nGHSA-98hq-gxg8-fchj\n",
+  "assigner": "VulnCheck",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "a8bf3a83-1f67-4202-b64d-c22c425f3423",
+      "product": {
+        "name": "GetSimpleCMS-CE"
+      },
+      "product_version": "3.3.16"
+    },
+    {
+      "id": "f2112109-c71f-3252-833c-1ad411b57adf",
+      "product": {
+        "name": "GetSimpleCMS-CE"
+      },
+      "product_version": "3.3.16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4f4ef8f0-2759-3294-ab9e-71318449011e",
+      "vendor": {
+        "name": "GetSimpleCMS-CE"
+      }
+    },
+    {
+      "id": "c63fb7f7-84ed-4b06-9add-6f5b344aa04f",
+      "vendor": {
+        "name": "GetSimpleCMS-CE"
+      }
+    }
+  ]
+}

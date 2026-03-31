@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2026-8073",
+  "enisaUuid": "528d9122-3d3b-3030-91cb-d11a343d1972",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbonding: annotate data-races around slave->last_rx\n\nslave->last_rx and slave->target_last_arp_rx[...] can be read and written\nlocklessly. Add READ_ONCE() and WRITE_ONCE() annotations.\n\nsyzbot reported:\n\nBUG: KCSAN: data-race in bond_rcv_validate / bond_rcv_validate\n\nwrite to 0xffff888149f0d428 of 8 bytes by interrupt on cpu 1:\n  bond_rcv_validate+0x202/0x7a0 drivers/net/bonding/bond_main.c:3335\n  bond_handle_frame+0xde/0x5e0 drivers/net/bonding/bond_main.c:1533\n  __netif_receive_skb_core+0x5b1/0x1950 net/core/dev.c:6039\n  __netif_receive_skb_one_core net/core/dev.c:6150 [inline]\n  __netif_receive_skb+0x59/0x270 net/core/dev.c:6265\n  netif_receive_skb_internal net/core/dev.c:6351 [inline]\n  netif_receive_skb+0x4b/0x2d0 net/core/dev.c:6410\n...\n\nwrite to 0xffff888149f0d428 of 8 bytes by interrupt on cpu 0:\n  bond_rcv_validate+0x202/0x7a0 drivers/net/bonding/bond_main.c:3335\n  bond_handle_frame+0xde/0x5e0 drivers/net/bonding/bond_main.c:1533\n  __netif_receive_skb_core+0x5b1/0x1950 net/core/dev.c:6039\n  __netif_receive_skb_one_core net/core/dev.c:6150 [inline]\n  __netif_receive_skb+0x59/0x270 net/core/dev.c:6265\n  netif_receive_skb_internal net/core/dev.c:6351 [inline]\n  netif_receive_skb+0x4b/0x2d0 net/core/dev.c:6410\n  br_netif_receive_skb net/bridge/br_input.c:30 [inline]\n  NF_HOOK include/linux/netfilter.h:318 [inline]\n...\n\nvalue changed: 0x0000000100005365 -> 0x0000000100005366",
+  "datePublished": "Feb 18, 2026, 3:31:27 PM",
+  "dateUpdated": "Feb 18, 2026, 3:31:27 PM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/a7516cb0165926d308187e231ccd330e5e3ebff7\nhttps://git.kernel.org/stable/c/8c0be3277e7aefb2f900fc37ca3fe7df362e26f5\nhttps://git.kernel.org/stable/c/b956289b83887e0a306067b6003c3fcd81bfdf84\nhttps://git.kernel.org/stable/c/bd98324e327e41de04b13e372cc16f73150df254\nhttps://git.kernel.org/stable/c/f6c3665b6dc53c3ab7d31b585446a953a74340ef\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23212\n",
+  "aliases": "CVE-2026-23212\nGHSA-phqg-p332-q7vc\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0eba308e-208e-4df6-86c7-802fc14b216b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b2b966f032f22d3a289045a5afd4afa09f09c6 <8c0be3277e7aefb2f900fc37ca3fe7df362e26f5"
+    },
+    {
+      "id": "14018434-48a7-456c-bccc-6c3c27f476d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
+    },
+    {
+      "id": "29f5bf2a-bb42-426b-a8cb-6fe0f46c74ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.18.9"
+    },
+    {
+      "id": "2a034c3b-4d8d-4c96-b87a-efa9c9e78a1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b2b966f032f22d3a289045a5afd4afa09f09c6 <b956289b83887e0a306067b6003c3fcd81bfdf84"
+    },
+    {
+      "id": "611ba961-7b76-47e1-aa15-f8472e5170ac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.162"
+    },
+    {
+      "id": "69bd09fd-9d52-40ef-bcb2-8df492a5a431",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b2b966f032f22d3a289045a5afd4afa09f09c6 <bd98324e327e41de04b13e372cc16f73150df254"
+    },
+    {
+      "id": "89d6a60f-9bf2-4d17-a0d5-00c22f3b8fc9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.123"
+    },
+    {
+      "id": "ac6d56a5-0751-42fe-b951-4bb420fb5eab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b2b966f032f22d3a289045a5afd4afa09f09c6 <f6c3665b6dc53c3ab7d31b585446a953a74340ef"
+    },
+    {
+      "id": "d702c989-81f9-4bcf-956a-6739798755f6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b2b966f032f22d3a289045a5afd4afa09f09c6 <a7516cb0165926d308187e231ccd330e5e3ebff7"
+    },
+    {
+      "id": "f02246dd-6248-4016-a1e9-84a3c88fb3dd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f610f5a8-623e-4420-b814-0871030b315a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.19"
+    },
+    {
+      "id": "f957375c-f901-4be2-9f71-90244ccfaa9f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.69"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "baa90cfd-0315-484d-92f2-f3e922935c59",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

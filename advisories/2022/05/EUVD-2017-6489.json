@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2017-6489",
+  "enisaUuid": "5b9862f3-4dce-3f6c-b2ca-6a0be5459cb8",
+  "description": "OpenText Documentum Content Server (formerly EMC Documentum Content Server) through 7.3 contains the following design gap, which allows authenticated users to download arbitrary content files regardless of the attacker's repository permissions: When an authenticated user uploads content to the repository, he performs the following steps: (1) calls the START_PUSH RPC-command; (2) uploads the file to the content server; (3) calls the END_PUSH_V2 RPC-command (here, Content Server returns a DATA_TICKET integer, intended to identify the location of the uploaded file on the Content Server filesystem); (4) creates a dmr_content object in the repository, which has a value of data_ticket equal to the value of DATA_TICKET returned at the end of END_PUSH_V2 call. As the result of this design, any authenticated user may create his own dmr_content object, pointing to already existing content in the Content Server filesystem.",
+  "datePublished": "May 13, 2022, 1:43:36 AM",
+  "dateUpdated": "Apr 20, 2025, 3:46:45 AM",
+  "baseScore": 4.3,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+  "references": "https://packetstormsecurity.com/files/cve/CVE-2017-15014\nhttp://www.securityfocus.com/bid/101639\nhttps://www.exploit-db.com/exploits/43005/\nhttp://seclists.org/bugtraq/2017/Oct/19\nhttps://nvd.nist.gov/vuln/detail/CVE-2017-15014\n",
+  "aliases": "CVE-2017-15014\nGHSA-x7pm-v3pw-9hr3\n",
+  "assigner": "mitre",
+  "epss": 4.29,
+  "enisaIdProduct": [
+    {
+      "id": "ea34ab6b-561a-320a-8c26-ff5cf897c089",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "361c4e28-359f-3823-89e7-02d19afede75",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

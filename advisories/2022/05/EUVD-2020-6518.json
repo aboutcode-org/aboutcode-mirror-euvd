@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2020-6518",
+  "enisaUuid": "03c0f84d-d13d-3375-8272-f3201f9014b8",
+  "description": "An integer underflow in dpdk versions before 18.11.10 and before 19.11.5 in the `move_desc` function can lead to large amounts of CPU cycles being eaten up in a long running loop. An attacker could cause `move_desc` to get stuck in a 4,294,967,295-count iteration loop. Depending on how `vhost_crypto` is being used this could prevent other VMs or network tasks from being serviced by the busy DPDK lcore for an extended period.",
+  "datePublished": "May 24, 2022, 5:29:48 PM",
+  "dateUpdated": "Oct 7, 2022, 6:15:55 PM",
+  "baseScore": 3.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://www.suse.com/security/cve/CVE-2020-14378.html\nhttps://ubuntu.com/security/CVE-2020-14378\nhttps://www.openwall.com/lists/oss-security/2020/09/28/3\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1879473\nhttps://usn.ubuntu.com/4550-1/\nhttp://lists.opensuse.org/opensuse-security-announce/2020-10/msg00004.html\nhttp://lists.opensuse.org/opensuse-security-announce/2020-10/msg00006.html\nhttp://www.openwall.com/lists/oss-security/2021/01/04/5\nhttp://www.openwall.com/lists/oss-security/2021/01/04/1\nhttp://www.openwall.com/lists/oss-security/2021/01/04/2\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-14378\n",
+  "aliases": "GHSA-prw9-fq4w-jfrf\nCVE-2020-14378\n",
+  "assigner": "redhat",
+  "epss": 0.08,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "a2a01b16-2b25-3fa0-b737-a3df9923d3b0",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

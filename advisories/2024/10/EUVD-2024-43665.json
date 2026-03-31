@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-43665",
+  "enisaUuid": "560e7ee5-2675-3671-9497-d7ab869393ca",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpftool: Fix undefined behavior in qsort(NULL, 0, ...)\n\nWhen netfilter has no entry to display, qsort is called with\nqsort(NULL, 0, ...). This results in undefined behavior, as UBSan\nreports:\n\nnet.c:827:2: runtime error: null pointer passed as argument 1, which is declared to never be null\n\nAlthough the C standard does not explicitly state whether calling qsort\nwith a NULL pointer when the size is 0 constitutes undefined behavior,\nSection 7.1.4 of the C standard (Use of library functions) mentions:\n\n\"Each of the following statements applies unless explicitly stated\notherwise in the detailed descriptions that follow: If an argument to a\nfunction has an invalid value (such as a value outside the domain of\nthe function, or a pointer outside the address space of the program, or\na null pointer, or a pointer to non-modifiable storage when the\ncorresponding parameter is not const-qualified) or a type (after\npromotion) not expected by a function with variable number of\narguments, the behavior is undefined.\"\n\nTo avoid this, add an early return when nf_link_info is NULL to prevent\ncalling qsort with a NULL pointer.",
+  "datePublished": "Oct 21, 2024, 6:30:59 PM",
+  "dateUpdated": "Oct 28, 2024, 6:31:39 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c2d9f9a7837ab29ccae0c42252f17d436bf0a501\nhttps://git.kernel.org/stable/c/2e0f6f33f2aa87493b365a38a8fd87b8854b7734\nhttps://git.kernel.org/stable/c/c208b02827eb642758cef65641995fd3f38c89af\nhttps://git.kernel.org/stable/c/f04e2ad394e2755d0bb2d858ecb5598718bf00d5\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49987\n",
+  "aliases": "GHSA-qf5q-fm5c-hc2p\nCVE-2024-49987\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0f522e22-e76b-3a21-b0ba-6a4bae444fec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "378161d1-3135-3227-9da3-1b14735cc61c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c208b02827eb642758cef65641995fd3f38c89af"
+    },
+    {
+      "id": "3b84107c-cb9e-3b90-852b-69823213998c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.14"
+    },
+    {
+      "id": "5a637eba-81c1-38ae-82f9-44797efa8d05",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c2d9f9a7837ab29ccae0c42252f17d436bf0a501"
+    },
+    {
+      "id": "86534b5b-f4d8-3d4e-9860-ec0ca63a2b22",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f04e2ad394e2755d0bb2d858ecb5598718bf00d5"
+    },
+    {
+      "id": "8c4b6171-0df4-3131-8151-301d53c6118f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2e0f6f33f2aa87493b365a38a8fd87b8854b7734"
+    },
+    {
+      "id": "dfed2e9d-a5df-34c2-b143-b6a87fd25c6c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.55"
+    },
+    {
+      "id": "eae33937-227b-3c98-bf3d-ca91376acfdb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f1e8b5f6-b0c7-3d62-8543-bd15ec674ea6",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

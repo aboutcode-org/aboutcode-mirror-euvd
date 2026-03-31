@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-25703",
+  "enisaUuid": "f2164a5e-65c9-392e-9aad-c0949f22d0f1",
+  "description": "The ip-utils package through 2.4.0 for Node.js might allow SSRF because some IP addresses (such as 0x7f.1) are improperly categorized as globally routable via a falsy isPrivate return value.",
+  "datePublished": "Mar 11, 2025, 9:30:31 AM",
+  "dateUpdated": "Mar 11, 2025, 9:30:31 AM",
+  "baseScore": 2.9,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://github.com/librasean/IP-Utils/blob/4f88799f94f21efe6ea9135129ab2bbeb0c58edc/src/IsPrivate.ts#L4\nhttps://gist.github.com/aydinnyunus/4d71e7d9a433f3afc658724b903f4d23\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-28607\n",
+  "aliases": "GHSA-62ww-4cxc-jj93\nCVE-2024-28607\n",
+  "assigner": "mitre",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0d28e1cc-0be3-318e-95fb-5088783dbdae",
+      "product": {
+        "name": "IP-Utils"
+      },
+      "product_version": "0 \u22642.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f99f93ef-1e2c-39c4-aa7b-f146f4fe4a46",
+      "vendor": {
+        "name": "librasean"
+      }
+    }
+  ]
+}

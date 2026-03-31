@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2018-19043",
+  "enisaUuid": "179bd077-5f1c-3b83-8c05-082e0bf038bd",
+  "description": "** DISPUTED ** PrivateVPN 2.0.31 for macOS suffers from a root privilege escalation vulnerability. The software installs a privileged helper tool that runs as the root user. This privileged helper tool is installed as a LaunchDaemon and implements an XPC service. The XPC service is responsible for handling new VPN connection operations via the main PrivateVPN application. The privileged helper tool creates new VPN connections by executing the openvpn binary located in the /Applications/PrivateVPN.app/Contents/Resources directory. The openvpn binary can be overwritten by the default user, which allows an attacker that has already installed malicious software as the default user to replace the binary. When a new VPN connection is established, the privileged helper tool will launch this malicious binary, thus allowing an attacker to execute code as the root user. NOTE: the vendor has reportedly indicated that this behavior is \"an acceptable part of their software.\"",
+  "datePublished": "May 13, 2022, 1:27:06 AM",
+  "dateUpdated": "May 13, 2022, 1:27:06 AM",
+  "baseScore": -1.0,
+  "references": "https://github.com/VerSprite/research/blob/master/advisories/VS-2018-004.md\nhttps://github.com/VerSprite/research/blob/eba22c8b506be6f7128ef5356281915d5667bfff/advisories/VS-2018-004.md\nhttps://gist.github.com/anonymous/cfc3f3419804b22ee9e82ee8d16a661d\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-7311\n",
+  "aliases": "CVE-2018-7311\nGHSA-5m2f-4r3g-v997\n",
+  "assigner": "mitre",
+  "epss": 0.61,
+  "enisaIdProduct": [
+    {
+      "id": "9c8c987f-1be8-3983-96cd-e62bde9d58e8",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "87f7f196-4587-3374-960c-04d8a781a350",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

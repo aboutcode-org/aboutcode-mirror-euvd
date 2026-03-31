@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-38027",
+  "enisaUuid": "4f845c42-1110-3345-b1a7-fcecdfc456bd",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers: core: synchronize really_probe() and dev_uevent()\n\nSynchronize the dev->driver usage in really_probe() and dev_uevent().\nThese can run in different threads, what can result in the following\nrace condition for dev->driver uninitialization:\n\nThread #1:\n==========\n\nreally_probe() {\n...\nprobe_failed:\n...\ndevice_unbind_cleanup(dev) {\n    ...\n    dev->driver = NULL;   // <= Failed probe sets dev->driver to NULL\n    ...\n    }\n...\n}\n\nThread #2:\n==========\n\ndev_uevent() {\n...\nif (dev->driver)\n      // If dev->driver is NULLed from really_probe() from here on,\n      // after above check, the system crashes\n      add_uevent_var(env, \"DRIVER=%s\", dev->driver->name);\n...\n}\n\nreally_probe() holds the lock, already. So nothing needs to be done\nthere. dev_uevent() is called with lock held, often, too. But not\nalways. What implies that we can't add any locking in dev_uevent()\nitself. So fix this race by adding the lock to the non-protected\npath. This is the path where above race is observed:\n\n dev_uevent+0x235/0x380\n uevent_show+0x10c/0x1f0  <= Add lock here\n dev_attr_show+0x3a/0xa0\n sysfs_kf_seq_show+0x17c/0x250\n kernfs_seq_show+0x7c/0x90\n seq_read_iter+0x2d7/0x940\n kernfs_fop_read_iter+0xc6/0x310\n vfs_read+0x5bc/0x6b0\n ksys_read+0xeb/0x1b0\n __x64_sys_read+0x42/0x50\n x64_sys_call+0x27ad/0x2d30\n do_syscall_64+0xcd/0x1d0\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nSimilar cases are reported by syzkaller in\n\nhttps://syzkaller.appspot.com/bug?extid=ffa8143439596313a85a\n\nBut these are regarding the *initialization* of dev->driver\n\ndev->driver = drv;\n\nAs this switches dev->driver to non-NULL these reports can be considered\nto be false-positives (which should be \"fixed\" by this commit, as well,\nthough).\n\nThe same issue was reported and tried to be fixed back in 2015 in\n\nhttps://lore.kernel.org/lkml/1421259054-2574-1-git-send-email-a.sangwan@samsung.com/\n\nalready.",
+  "datePublished": "Jul 12, 2024, 3:31:26 PM",
+  "dateUpdated": "Jul 12, 2024, 3:31:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/bb3641a5831789d83a58a39ed4a928bcbece7080\nhttps://git.kernel.org/stable/c/13d25e82b6d00d743c7961dcb260329f86bedf7c\nhttps://git.kernel.org/stable/c/760603e30bf19d7b4c28e9d81f18b54fa3b745ad\nhttps://git.kernel.org/stable/c/ec772ed7cb21b46fb132f89241682553efd0b721\nhttps://git.kernel.org/stable/c/08891eeaa97c079b7f95d60b62dcf0e3ce034b69\nhttps://git.kernel.org/stable/c/a42b0060d6ff2f7e59290a26d5f162a3c6329b90\nhttps://git.kernel.org/stable/c/95d03d369ea647b89e950667f1c3363ea6f564e6\nhttps://git.kernel.org/stable/c/c0a40097f0bc81deafc15f9195d1fb54595cd6d0\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-39501\n",
+  "aliases": "CVE-2024-39501\nGHSA-f269-fccg-h65r\n",
+  "assigner": "Linux",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "117d92d0-88bd-3cae-8c83-19526537758e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.221"
+    },
+    {
+      "id": "4361d803-30c5-3277-8475-74de1956dd37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <08891eeaa97c079b7f95d60b62dcf0e3ce034b69"
+    },
+    {
+      "id": "4ff6e8ee-15a5-363e-a11f-5c1e2592feec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <bb3641a5831789d83a58a39ed4a928bcbece7080"
+    },
+    {
+      "id": "6662185f-4105-375f-9b0b-38c11c10cd25",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <760603e30bf19d7b4c28e9d81f18b54fa3b745ad"
+    },
+    {
+      "id": "774cd29a-bdea-39f0-a055-293fc8ac0197",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.6"
+    },
+    {
+      "id": "8cbc02f8-9fb2-38e9-ad4c-c6a330685bd9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <95d03d369ea647b89e950667f1c3363ea6f564e6"
+    },
+    {
+      "id": "956f96b3-d2ec-368e-9b88-065fd7713c04",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.21"
+    },
+    {
+      "id": "9589cf0f-4a5f-39d6-99b6-8f9766c841b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "9a93141d-c060-348d-8ae3-23151ed34e54",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.95"
+    },
+    {
+      "id": "9b709a6e-afec-3ac1-81a9-f364d3a07c23",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.317"
+    },
+    {
+      "id": "aee46792-3716-33d0-b0a2-5b36b8e29025",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <c0a40097f0bc81deafc15f9195d1fb54595cd6d0"
+    },
+    {
+      "id": "aff6920f-9fc5-33c6-bee2-08a536e34e9d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <ec772ed7cb21b46fb132f89241682553efd0b721"
+    },
+    {
+      "id": "b0973d1d-3faa-36ba-be1a-ab6de84a7749",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.162"
+    },
+    {
+      "id": "bc6d247f-2b21-3160-a64b-26b1c942e2fc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "c03ac167-503a-344e-8e8f-68b6f6b9aa7c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.35"
+    },
+    {
+      "id": "d2df615b-302b-3dab-a161-b17733df14b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.279"
+    },
+    {
+      "id": "e8a952a7-61be-383b-8216-85c2aaccc33f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <13d25e82b6d00d743c7961dcb260329f86bedf7c"
+    },
+    {
+      "id": "fc656442-3435-3599-a107-e8beecfa5d70",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "239378f16aa1ab5c502e42a06359d2de4f88ebb4 <a42b0060d6ff2f7e59290a26d5f162a3c6329b90"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cc0369f1-25f0-3aa6-ae74-a15f479ff835",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

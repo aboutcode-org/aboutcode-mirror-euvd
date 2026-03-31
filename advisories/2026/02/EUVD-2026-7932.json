@@ -1,0 +1,66 @@
+{
+  "id": "EUVD-2026-7932",
+  "enisaUuid": "ad4595e4-ed21-3df9-9dbf-019df9fe1aae",
+  "description": "An URL redirection vulnerability was identified in GitHub Enterprise Server that allowed attacker-controlled redirects to leak sensitive authorization tokens. The repository_pages API insecurely followed HTTP redirects when fetching artifact URLs, preserving the authorization header containing a privileged JWT. An authenticated user could redirect these requests to an attacker-controlled domain, exfiltrate the Actions.ManageOrgs JWT, and leverage it for potential remote code execution. Attackers would require access to the target GitHub Enterprise Server instance and the ability to exploit a legacy redirect to an attacker-controlled domain. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.19 and was fixed in versions 3.19.2, 3.18.4, 3.17.10, 3.16.13, 3.15.17, and 3.14.22. This vulnerability was reported via the GitHub Bug Bounty program.",
+  "datePublished": "Feb 18, 2026, 9:31:23 PM",
+  "dateUpdated": "Feb 20, 2026, 12:31:52 AM",
+  "baseScore": 7.6,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://docs.github.com/en/enterprise-server@3.14/admin/release-notes#3.14.22\nhttps://docs.github.com/en/enterprise-server@3.15/admin/release-notes#3.15.17\nhttps://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.13\nhttps://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.10\nhttps://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.4\nhttps://docs.github.com/en/enterprise-server@3.19/admin/release-notes#3.19.2\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-0573\n",
+  "aliases": "CVE-2026-0573\nGHSA-p546-7whm-cxpm\n",
+  "assigner": "GitHub_P",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "2ae0b0c6-50e5-4bf0-b3f8-380de92f93ef",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.15 \u22643.15.16"
+    },
+    {
+      "id": "33e9e9ac-ffe8-4515-9214-396e02c11d80",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.16 \u22643.16.12"
+    },
+    {
+      "id": "639dd32a-7f79-42d8-9986-a9a76792a932",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.17 \u22643.17.9"
+    },
+    {
+      "id": "708cdaff-bb7e-4860-b4f2-72a0371911bc",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.19 \u22643.19.1"
+    },
+    {
+      "id": "898981a4-24b5-4883-b66c-116ff6718f1d",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.14 \u22643.14.21"
+    },
+    {
+      "id": "ba92c989-f0f4-40e1-8b63-0841f290b4a1",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.18 \u22643.18.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4e88591d-5a7d-44bc-baad-5a6e035b78c0",
+      "vendor": {
+        "name": "GitHub"
+      }
+    }
+  ]
+}

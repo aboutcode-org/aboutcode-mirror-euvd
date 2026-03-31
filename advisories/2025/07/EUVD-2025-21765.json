@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-21765",
+  "enisaUuid": "55d0d1aa-05e6-33eb-a3d7-09564cee3c5a",
+  "description": "When setting up interrupt remapping for legacy PCI(-X) devices,\nincluding PCI(-X) bridges, a lookup of the upstream bridge is required.\nThis lookup, itself involving acquiring of a lock, is done in a context\nwhere acquiring that lock is unsafe.  This can lead to a deadlock.",
+  "datePublished": "Jul 17, 2025, 3:32:15 PM",
+  "dateUpdated": "Jul 17, 2025, 3:32:15 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://xenbits.xenproject.org/xsa/advisory-467.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-1713\nhttp://www.openwall.com/lists/oss-security/2025/02/27/1\nhttp://www.openwall.com/lists/oss-security/2025/02/27/3\nhttp://www.openwall.com/lists/oss-security/2025/02/28/1\nhttp://xenbits.xen.org/xsa/advisory-467.html\n",
+  "aliases": "GHSA-h63j-vf47-m3ch\nCVE-2025-1713\n",
+  "assigner": "XEN",
+  "epss": 0.14,
+  "enisaIdProduct": [
+    {
+      "id": "0fe76141-5556-3242-99c6-4f6288b33a02",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": ""
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0fe76141-5556-3242-99c6-4f6288b33a02",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

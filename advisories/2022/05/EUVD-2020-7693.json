@@ -1,0 +1,52 @@
+{
+  "id": "EUVD-2020-7693",
+  "enisaUuid": "dbf9e71b-89ec-3fcc-9aee-11560ef25ec7",
+  "description": "Integer overflows were discovered in the functions grub_cmd_initrd and grub_initrd_init in the efilinux component of GRUB2, as shipped in Debian, Red Hat, and Ubuntu (the functionality is not included in GRUB2 upstream), leading to a heap-based buffer overflow. These could be triggered by an extremely large number of arguments to the initrd command on 32-bit architectures, or a crafted filesystem with very large files on any architecture. An attacker could use this to execute arbitrary code and bypass UEFI Secure Boot restrictions. This issue affects GRUB2 version 2.04 and prior versions.",
+  "datePublished": "May 24, 2022, 5:24:37 PM",
+  "dateUpdated": "May 24, 2022, 5:24:37 PM",
+  "baseScore": 5.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2020-15707.html\nhttps://www.debian.org/security/2020/dsa-4735\nhttps://access.redhat.com/errata/RHSA-2020:3276\nhttps://access.redhat.com/errata/RHSA-2020:3275\nhttps://access.redhat.com/errata/RHSA-2020:3274\nhttps://access.redhat.com/errata/RHSA-2020:3271\nhttps://access.redhat.com/errata/RHSA-2020:3227\nhttps://access.redhat.com/errata/RHSA-2020:3223\nhttps://access.redhat.com/errata/RHSA-2020:3217\nhttps://access.redhat.com/errata/RHSA-2020:3216\nhttps://ubuntu.com/security/CVE-2020-15707\nhttps://advisories.mageia.org/CVE-2020-15707.html\nhttps://linux.oracle.com/cve/CVE-2020-15707.html\nhttps://www.eclypsium.com/2020/07/29/theres-a-hole-in-the-boot/\nhttps://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/GRUB2SecureBootBypass\nhttp://ubuntu.com/security/notices/USN-4432-1\nhttps://www.debian.org/security/2020-GRUB-UEFI-SecureBoot\nhttps://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV200011\nhttps://access.redhat.com/security/vulnerabilities/grub2bootloader\nhttps://www.suse.com/c/suse-addresses-grub2-secure-boot-issue/\nhttps://www.suse.com/support/kb/doc/?id=000019673\nhttps://www.openwall.com/lists/oss-security/2020/07/29/3\nhttps://lists.gnu.org/archive/html/grub-devel/2020-07/msg00034.html\nhttp://www.openwall.com/lists/oss-security/2020/07/29/3\nhttps://security.netapp.com/advisory/ntap-20200731-0008/\nhttps://usn.ubuntu.com/4432-1/\nhttp://lists.opensuse.org/opensuse-security-announce/2020-08/msg00017.html\nhttp://lists.opensuse.org/opensuse-security-announce/2020-08/msg00016.html\nhttps://security.gentoo.org/glsa/202104-05\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-15707\n",
+  "aliases": "CVE-2020-15707\nGHSA-mf72-cf87-p3p2\n",
+  "assigner": "canonical",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "9f14f29e-c01b-3d9c-975c-e946c3392e9a",
+      "product": {
+        "name": "grub2 in Ubuntu"
+      },
+      "product_version": "14.04 ESM <2.02~beta2-9ubuntu1.20"
+    },
+    {
+      "id": "d6426c55-a417-3dde-8734-a2948dbf9be7",
+      "product": {
+        "name": "grub2 in Ubuntu"
+      },
+      "product_version": "16.04 LTS <2.02~beta2-36ubuntu3.26"
+    },
+    {
+      "id": "dbc62f13-0904-33dd-aa51-a46b9c2ea06c",
+      "product": {
+        "name": "grub2 in Ubuntu"
+      },
+      "product_version": "20.04 LTS <2.04-1ubuntu26.1"
+    },
+    {
+      "id": "fa29d1d7-08b5-361c-bd29-04e5a907b553",
+      "product": {
+        "name": "grub2 in Ubuntu"
+      },
+      "product_version": "18.04 LTS <2.02-2ubuntu8.16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5e0aa96e-c4f5-3817-98d2-9898eb4d2dda",
+      "vendor": {
+        "name": "Ubuntu"
+      }
+    }
+  ]
+}

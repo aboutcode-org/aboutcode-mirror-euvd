@@ -1,0 +1,127 @@
+{
+  "id": "EUVD-2022-53796",
+  "enisaUuid": "e4480b5b-cb1c-3ae3-941c-221b0213c868",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: ops: Shift tested values in snd_soc_put_volsw() by +min\n\nWhile the $val/$val2 values passed in from userspace are always >= 0\nintegers, the limits of the control can be signed integers and the $min\ncan be non-zero and less than zero. To correctly validate $val/$val2\nagainst platform_max, add the $min offset to val first.",
+  "datePublished": "Aug 22, 2024, 3:31:34 AM",
+  "dateUpdated": "Sep 12, 2024, 3:32:59 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/69f42e41256d5a234d3ae0d35fa66dc6d8171846\nhttps://git.kernel.org/stable/c/7e0e4bc93811cf600508ff36f07abea7b40643ed\nhttps://git.kernel.org/stable/c/0b2ecc9163472128e7f30b517bee92dcd27ffc34\nhttps://git.kernel.org/stable/c/f3537f1b2bfd3b1df15723df49fc26eccd5112fe\nhttps://git.kernel.org/stable/c/6951a5888165a38bb7c39a2d18f5668b2f1241c7\nhttps://git.kernel.org/stable/c/050b1821f27c5d4fd5a298f6e62c3d3c9335e622\nhttps://git.kernel.org/stable/c/70712d5afbbea898d5f51fa02e315fe0a4835043\nhttps://git.kernel.org/stable/c/9bdd10d57a8807dba0003af0325191f3cec0f11c\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48917\n",
+  "aliases": "CVE-2022-48917\nGHSA-mprm-vjq4-3rh2\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "097d8be6-719e-3745-bdad-0b6749db3df3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "817f7c9335ec01e0f5e8caffc4f1dcd5e458a4c0 <9bdd10d57a8807dba0003af0325191f3cec0f11c"
+    },
+    {
+      "id": "0b19d764-678f-3599-bd00-391c31219133",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.9.300 <4.9.305"
+    },
+    {
+      "id": "0d25ad83-7c34-35e0-a36d-5be109d2521c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "586ef863c94354a7e00e5ae5ef01443d1dc99bc7 <7e0e4bc93811cf600508ff36f07abea7b40643ed"
+    },
+    {
+      "id": "237fe49b-8b9c-3fe2-8ba4-d5def3444d04",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "68fd718724284788fc5f379e0b7cac541429ece7 <f3537f1b2bfd3b1df15723df49fc26eccd5112fe"
+    },
+    {
+      "id": "28b929cd-ad2d-38fa-93ec-375962bd95d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.19.228 <4.19.233"
+    },
+    {
+      "id": "2a481c8f-abfe-3505-a3d1-16a74dfed1c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "bb72d2dda85564c66d909108ea6903937a41679d <70712d5afbbea898d5f51fa02e315fe0a4835043"
+    },
+    {
+      "id": "5bea4646-eab0-30b2-b48d-35f0712983ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "65a61b1f56f5386486757930069fbdce94af08bf <0b2ecc9163472128e7f30b517bee92dcd27ffc34"
+    },
+    {
+      "id": "88bb3db0-78bb-3ba4-89cf-d15a57dcf3a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15.22 <5.15.27"
+    },
+    {
+      "id": "9eb20037-8b71-3982-a768-b4c87ec03c21",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.4.178 <5.4.183"
+    },
+    {
+      "id": "ae49c691-8dd5-3b1c-a04e-e47d7687518c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9e8895f1b3d4433f6d78aa6578e9db61ca6e6830 <050b1821f27c5d4fd5a298f6e62c3d3c9335e622"
+    },
+    {
+      "id": "b05542e0-136c-3355-83bb-ad984a91b221",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.16.8 <5.16.13"
+    },
+    {
+      "id": "cc9fb1f3-cc20-3fc2-9c4c-20346f86f067",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "40f598698129b5ceaf31012f9501b775c7b6e57d <69f42e41256d5a234d3ae0d35fa66dc6d8171846"
+    },
+    {
+      "id": "d5892613-d34c-3f35-b7d7-ae48997d635e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.10.99 <5.10.104"
+    },
+    {
+      "id": "d7440366-c42d-31d2-8d6d-efcc00c84290",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a9394f21fba027147bf275b083c77955864c366a <6951a5888165a38bb7c39a2d18f5668b2f1241c7"
+    },
+    {
+      "id": "de2f35ea-5e5f-396a-86ba-2bd4ad616de0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.14.265 <4.14.270"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7fea547c-c069-361d-9eed-0662d59bc4cd",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

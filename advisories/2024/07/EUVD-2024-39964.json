@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-39964",
+  "enisaUuid": "083fc9c9-fa67-3874-9165-4512b9e499a5",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbluetooth/hci: disallow setting handle bigger than HCI_CONN_HANDLE_MAX\n\nSyzbot hit warning in hci_conn_del() caused by freeing handle that was\nnot allocated using ida allocator.\n\nThis is caused by handle bigger than HCI_CONN_HANDLE_MAX passed by\nhci_le_big_sync_established_evt(), which makes code think it's unset\nconnection.\n\nAdd same check for handle upper bound as in hci_conn_set_handle() to\nprevent warning.",
+  "datePublished": "Jul 30, 2024, 9:32:01 AM",
+  "dateUpdated": "Dec 11, 2024, 6:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4970e48f83dbd21d2a6a7cdaaafc2a71f7f45dc4\nhttps://git.kernel.org/stable/c/d311036696fed778301d08a71a4bef737b86d8c5\nhttps://git.kernel.org/stable/c/1cc18c2ab2e8c54c355ea7c0423a636e415a0c23\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42132\n",
+  "aliases": "CVE-2024-42132\nGHSA-6fvx-97p6-hw44\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "39eed7fc-7651-3473-a86b-1a56eceb825b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "621f74fc-f709-388d-af62-fbe55b03d202",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "181a42edddf51d5d9697ecdf365d72ebeab5afb0 <1cc18c2ab2e8c54c355ea7c0423a636e415a0c23"
+    },
+    {
+      "id": "65b18658-77f9-3b63-80ad-cf583706cdc8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "786c9ba9-aa23-315d-88e1-3df3cb92a759",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.7"
+    },
+    {
+      "id": "8227fa52-e07b-3e58-b2f3-00a3c566502b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "84cb0143fb8a03bf941c7aaedd56c938c99dafad <4970e48f83dbd21d2a6a7cdaaafc2a71f7f45dc4"
+    },
+    {
+      "id": "96a7b681-5893-3d37-b3a2-2587a5ec97b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.39"
+    },
+    {
+      "id": "b66c18c0-ab4c-3d3c-a824-df181ff29851",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.9"
+    },
+    {
+      "id": "dbf1a620-59d5-3835-bcb9-423028d93c10",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "181a42edddf51d5d9697ecdf365d72ebeab5afb0 <d311036696fed778301d08a71a4bef737b86d8c5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9ab17e08-0696-3c80-83f8-1440e1c3c2fa",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

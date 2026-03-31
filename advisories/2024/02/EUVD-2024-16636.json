@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2024-16636",
+  "enisaUuid": "cc80f640-8a78-3a17-9dc4-c04756b7e117",
+  "description": "curl inadvertently kept the SSL session ID for connections in its cache even when the verify status (*OCSP stapling*) test failed. A subsequent transfer to\nthe same hostname could then succeed if the session ID cache was still fresh, which then skipped the verify status check.",
+  "datePublished": "Feb 3, 2024, 3:30:28 PM",
+  "dateUpdated": "May 3, 2024, 3:30:35 PM",
+  "baseScore": -1.0,
+  "references": "https://curl.se/docs/CVE-2024-0853.json\nhttps://curl.se/docs/CVE-2024-0853.html\nhttps://hackerone.com/reports/2298922\nhttps://security.netapp.com/advisory/ntap-20240307-0004/\nhttps://security.netapp.com/advisory/ntap-20240426-0009/\nhttps://security.netapp.com/advisory/ntap-20240503-0012/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-0853\n",
+  "aliases": "CVE-2024-0853\nGHSA-697h-9h25-w4fm\n",
+  "assigner": "curl",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "755d5153-b0f3-3f1a-95b6-e016022f9121",
+      "product": {
+        "name": "curl"
+      }
+    },
+    {
+      "id": "fd668c43-ebad-3afa-a392-7cf44e7747ec",
+      "product": {
+        "name": "curl"
+      },
+      "product_version": "8.5.0 \u22648.5.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "755d5153-b0f3-3f1a-95b6-e016022f9121",
+      "vendor": {
+        "name": "curl"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2022-30921",
+  "enisaUuid": "943e43f5-3c91-35d2-b77c-20e2f26ee037",
+  "description": "x86 pv: Race condition in typeref acquisition Xen maintains a type reference count for pages, in addition to a regular reference count. This scheme is used to maintain invariants required for Xen's safety, e.g. PV guests may not have direct writeable access to pagetables; updates need auditing by Xen. Unfortunately, the logic for acquiring a type reference has a race condition, whereby a safely TLB flush is issued too early and creates a window where the guest can re-establish the read/write mapping before writeability is prohibited.",
+  "datePublished": "Jun 10, 2022, 12:00:55 AM",
+  "dateUpdated": "Jun 22, 2022, 12:00:57 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2022-26362.html\nhttps://www.debian.org/security/2022/dsa-5184\nhttps://xenbits.xenproject.org/xsa/advisory-401.txt\nhttp://xenbits.xen.org/xsa/advisory-401.html\nhttp://www.openwall.com/lists/oss-security/2022/06/09/3\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OH65U6FTTB5MLH5A6Q3TW7KVCGOG4MYI/\nhttp://packetstormsecurity.com/files/167718/Xen-TLB-Flush-Bypass.html\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/RKRXZ4LHGCGMOG24ZCEJNY6R2BTS4S2Q/\nhttps://security.gentoo.org/glsa/202208-23\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-26362\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/OH65U6FTTB5MLH5A6Q3TW7KVCGOG4MYI\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/RKRXZ4LHGCGMOG24ZCEJNY6R2BTS4S2Q\n",
+  "aliases": "GHSA-2mfj-vmvj-q937\nCVE-2022-26362\n",
+  "assigner": "XEN",
+  "epss": 0.05,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "fd0c143f-ec72-341e-9f64-a16466409c8d",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

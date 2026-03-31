@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-42117",
+  "enisaUuid": "8b088cb0-d11f-3074-8a1c-afd0e03a8b46",
+  "description": "Various software builds for the following TCL devices (30Z, A3X, 20XE, 10L) leak the device IMEI to a system property that can be accessed by any local app on the device without any permissions or special privileges. Google restricted third-party apps from directly obtaining non-resettable device identifiers in Android 10 and higher, but in these instances they are leaked by a high-privilege process and can be obtained indirectly. The software build fingerprints for each confirmed vulnerable device are as follows: TCL 30Z (TCL/4188R/Jetta_ATT:12/SP1A.210812.016/LV8E:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU5P:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU61:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU66:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU68:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU6P:user/release-keys, and TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU6X:user/release-keys); TCL A3X (TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAAZ:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAB3:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAB7:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABA:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABM:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABP:user/release-keys, and TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABS:user/release-keys); TCL 20XE (TCL/5087Z_BO/Doha_TMO:11/RP1A.200720.011/PB7I-0:user/release-keys and TCL/5087Z_BO/Doha_TMO:11/RP1A.200720.011/PB83-0:user/release-keys); and TCL 10L (TCL/T770B/T1_LITE:10/QKQ1.200329.002/3CJ0:user/release-keys and TCL/T770B/T1_LITE:11/RKQ1.210107.001/8BIC:user/release-keys). This malicious app reads from the \"gsm.device.imei0\" system property to indirectly obtain the device IMEI.",
+  "datePublished": "Apr 22, 2024, 3:30:42 PM",
+  "dateUpdated": "Jul 3, 2024, 6:36:28 PM",
+  "baseScore": -1.0,
+  "references": "https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Ryan%20Johnson%20Mohamed%20Elsabagh%20Angelos%20Stavrou%20-%20Still%20Vulnerable%20Out%20of%20the%20Box%20Revisiting%20the%20Security%20of%20Prepaid%20Android%20Carrier%20Devices.pdf\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-38298\n",
+  "aliases": "GHSA-mr38-8f53-xh3h\nCVE-2023-38298\n",
+  "assigner": "mitre",
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "fd6512d7-6f39-36d6-89af-6939f5b018f1",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9210d8a0-1645-39fd-bffa-14ed311a8640",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

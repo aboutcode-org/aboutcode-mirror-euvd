@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-43780",
+  "enisaUuid": "2a40045e-7b5e-3d08-aa7f-b70a9d22e604",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/vm: move xa_alloc to prevent UAF\n\nEvil user can guess the next id of the vm before the ioctl completes and\nthen call vm destroy ioctl to trigger UAF since create ioctl is still\nreferencing the same vm. Move the xa_alloc all the way to the end to\nprevent this.\n\nv2:\n - Rebase\n\n(cherry picked from commit dcfd3971327f3ee92765154baebbaece833d3ca9)",
+  "datePublished": "Oct 21, 2024, 6:30:56 PM",
+  "dateUpdated": "Oct 24, 2024, 6:30:28 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/09cf8901fc0225898311b375cfcc67bae37ed5da\nhttps://git.kernel.org/stable/c/74231870cf4976f69e83aa24f48edb16619f652f\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49865\n",
+  "aliases": "CVE-2024-49865\nGHSA-533j-v9v8-3c94\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "10ba8c6a-852d-3438-a5ee-e3cb9cb20fe5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8"
+    },
+    {
+      "id": "537df3d9-d319-318e-b038-c7fe7861cac9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dd08ebf6c3525a7ea2186e636df064ea47281987 <74231870cf4976f69e83aa24f48edb16619f652f"
+    },
+    {
+      "id": "6c880b90-9f33-3c54-8b65-4eb97493b775",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "828c7e1e-9edd-3ba6-b0c2-334fafe3fde1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dd08ebf6c3525a7ea2186e636df064ea47281987 <09cf8901fc0225898311b375cfcc67bae37ed5da"
+    },
+    {
+      "id": "924f2d0a-d799-3c1f-975a-05871e168ec5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9d37353b-7fd3-3e0e-91b4-177d2fa2bca3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f4bec759-c671-32b1-8c43-9965e8fa56ba",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

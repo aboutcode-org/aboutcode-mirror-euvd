@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2021-34506",
+  "enisaUuid": "f3f6fbff-9372-36e2-ba43-09277deba9ce",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wcd934x: handle channel mappping list correctly\n\nCurrently each channel is added as list to dai channel list, however\nthere is danger of adding same channel to multiple dai channel list\nwhich endups corrupting the other list where its already added.\n\nThis patch ensures that the channel is actually free before adding to\nthe dai channel list and also ensures that the channel is on the list\nbefore deleting it.\n\nThis check was missing previously, and we did not hit this issue as\nwe were testing very simple usecases with sequence of amixer commands.",
+  "datePublished": "May 24, 2024, 3:01:49 PM",
+  "dateUpdated": "Dec 19, 2024, 7:43:41 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/1089dac26c6b4b833323ae6c0ceab29fb30ede72\nhttps://git.kernel.org/stable/c/339ffb5b56005582aacc860524d2d208604049d1\nhttps://git.kernel.org/stable/c/23ba28616d3063bd4c4953598ed5e439ca891101\n",
+  "aliases": "CVE-2021-47502\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "063784c8-2491-3370-b282-24fc829cf959",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.6"
+    },
+    {
+      "id": "14706dda-16e8-3d82-86c0-e894574342ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "3cf50273-e960-38c5-a5ab-7c2e13c5bc0f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.85"
+    },
+    {
+      "id": "7029e045-d654-33da-9422-78bb1a262dfa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    },
+    {
+      "id": "7ab0c461-37be-345d-9ba2-81f3ad43a960",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a70d9245759a48e57bb1dc9f63213dcf3017db32 <339ffb5b56005582aacc860524d2d208604049d1"
+    },
+    {
+      "id": "7ab34af7-b662-3e3e-96eb-a61bf637b8c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a70d9245759a48e57bb1dc9f63213dcf3017db32 <1089dac26c6b4b833323ae6c0ceab29fb30ede72"
+    },
+    {
+      "id": "c3db0cab-c1b1-3142-b058-f4d90bd71b6e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.8"
+    },
+    {
+      "id": "eb8ecb12-70ea-3c39-be90-87390ac0ad35",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a70d9245759a48e57bb1dc9f63213dcf3017db32 <23ba28616d3063bd4c4953598ed5e439ca891101"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "89d50449-ea3e-3a68-a62f-92092974242d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

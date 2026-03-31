@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207876",
+  "enisaUuid": "26278669-d06a-301e-a653-4eb639cb4ad2",
+  "description": "The Checkout Field Manager (Checkout Manager) for WooCommerce plugin for WordPress is vulnerable to unauthenticated limited file upload in all versions up to, and including, 7.8.1. This is due to the plugin not properly verifying that a user is authorized to perform file upload actions via the \"ajax_checkout_attachment_upload\" function. This makes it possible for unauthenticated attackers to upload files to the server, though file types are limited to WordPress's default allowed MIME types (images, documents, etc.).",
+  "datePublished": "Feb 19, 2026, 6:31:49 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:49 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e807480b-00c9-4340-bd05-b695b56e27ec?source=cve\nhttps://plugins.trac.wordpress.org/browser/woocommerce-checkout-manager/tags/7.8.0/lib/class-upload.php#L19\nhttps://plugins.trac.wordpress.org/browser/woocommerce-checkout-manager/tags/7.8.0/lib/class-upload.php#L30\nhttps://plugins.trac.wordpress.org/browser/woocommerce-checkout-manager/tags/7.8.0/lib/class-upload.php#L143\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3404371%40woocommerce-checkout-manager&new=3404371%40woocommerce-checkout-manager&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-12500\n",
+  "aliases": "GHSA-cq95-5r52-wxw4\nCVE-2025-12500\n",
+  "assigner": "Wordfence",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "c1c8e93b-62ce-4c21-bf2e-6e448f352b4c",
+      "product": {
+        "name": "Checkout Field Manager (Checkout Manager) for WooCommerce"
+      },
+      "product_version": "* \u22647.8.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "00c560f0-56e2-4e60-912b-13967e683141",
+      "vendor": {
+        "name": "quadlayers"
+      }
+    }
+  ]
+}

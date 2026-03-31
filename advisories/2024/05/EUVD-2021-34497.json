@@ -1,0 +1,127 @@
+{
+  "id": "EUVD-2021-34497",
+  "enisaUuid": "2723e7c4-2d59-356c-82cb-298f8890cb24",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: fix race between searching chunks and release journal_head from buffer_head\n\nEncountered a race between ocfs2_test_bg_bit_allocatable() and\njbd2_journal_put_journal_head() resulting in the below vmcore.\n\n  PID: 106879  TASK: ffff880244ba9c00  CPU: 2   COMMAND: \"loop3\"\n  Call trace:\n    panic\n    oops_end\n    no_context\n    __bad_area_nosemaphore\n    bad_area_nosemaphore\n    __do_page_fault\n    do_page_fault\n    page_fault\n      [exception RIP: ocfs2_block_group_find_clear_bits+316]\n    ocfs2_block_group_find_clear_bits [ocfs2]\n    ocfs2_cluster_group_search [ocfs2]\n    ocfs2_search_chain [ocfs2]\n    ocfs2_claim_suballoc_bits [ocfs2]\n    __ocfs2_claim_clusters [ocfs2]\n    ocfs2_claim_clusters [ocfs2]\n    ocfs2_local_alloc_slide_window [ocfs2]\n    ocfs2_reserve_local_alloc_bits [ocfs2]\n    ocfs2_reserve_clusters_with_limit [ocfs2]\n    ocfs2_reserve_clusters [ocfs2]\n    ocfs2_lock_refcount_allocators [ocfs2]\n    ocfs2_make_clusters_writable [ocfs2]\n    ocfs2_replace_cow [ocfs2]\n    ocfs2_refcount_cow [ocfs2]\n    ocfs2_file_write_iter [ocfs2]\n    lo_rw_aio\n    loop_queue_work\n    kthread_worker_fn\n    kthread\n    ret_from_fork\n\nWhen ocfs2_test_bg_bit_allocatable() called bh2jh(bg_bh), the\nbg_bh->b_private NULL as jbd2_journal_put_journal_head() raced and\nreleased the jounal head from the buffer head.  Needed to take bit lock\nfor the bit 'BH_JournalHead' to fix this race.",
+  "datePublished": "May 22, 2024, 8:19:41 AM",
+  "dateUpdated": "Dec 18, 2025, 11:37:41 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/5043fbd294f5909a080ade0f04b70a4da9e122b7\nhttps://git.kernel.org/stable/c/2e382600e8856ea654677b5134ee66e03ea72bc2\nhttps://git.kernel.org/stable/c/6f1b228529ae49b0f85ab89bcdb6c365df401558\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47493\n",
+  "aliases": "CVE-2021-47493\nGHSA-gr8j-3pfp-wwr2\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "00b64eae-6e7b-382b-8358-555306413958",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15"
+    },
+    {
+      "id": "38544cab-fbcd-3cd1-963f-b9bb2a07d979",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "464170647b5648bb81f3615567485fcb9a685bed <5043fbd294f5909a080ade0f04b70a4da9e122b7"
+    },
+    {
+      "id": "414cbba9-2f88-3689-a66d-a8cefd1ddabc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2e382600e8856ea654677b5134ee66e03ea72bc2"
+    },
+    {
+      "id": "415241ec-b2d8-3e1b-98b9-98e7d4cd793b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "464170647b5648bb81f3615567485fcb9a685bed <2e382600e8856ea654677b5134ee66e03ea72bc2"
+    },
+    {
+      "id": "62595aa6-e0c9-3e95-abcf-6481911c1c78",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.77"
+    },
+    {
+      "id": "638061c5-88ac-3e39-8abc-bb813a58ede5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.5"
+    },
+    {
+      "id": "865b0c3e-c180-348a-9487-82ecbc7b5a96",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "936a97c7-1e10-3b15-91e7-09fba250569d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ccd979bdbce9fba8412beb3f1de68a9d0171b12c <2e382600e8856ea654677b5134ee66e03ea72bc2"
+    },
+    {
+      "id": "a8ec2544-366a-3857-934b-11299ae42c2d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "464170647b5648bb81f3615567485fcb9a685bed <6f1b228529ae49b0f85ab89bcdb6c365df401558"
+    },
+    {
+      "id": "c586e232-88ec-3661-ae61-995316c09555",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5043fbd294f5909a080ade0f04b70a4da9e122b7"
+    },
+    {
+      "id": "d3b8a9ec-230f-3691-b94e-131d462bca1f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.14.16"
+    },
+    {
+      "id": "d4d1f1e2-835d-300d-92bc-23856b270faa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6f1b228529ae49b0f85ab89bcdb6c365df401558"
+    },
+    {
+      "id": "e0824140-84a5-35e3-b3e8-891a7bd1916f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.16"
+    },
+    {
+      "id": "f0819e37-c5d6-310d-a842-56e22dc01450",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ccd979bdbce9fba8412beb3f1de68a9d0171b12c <5043fbd294f5909a080ade0f04b70a4da9e122b7"
+    },
+    {
+      "id": "f5145b92-5be4-3a66-af7d-eac16c65750d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ccd979bdbce9fba8412beb3f1de68a9d0171b12c <6f1b228529ae49b0f85ab89bcdb6c365df401558"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b87fc7bf-7cf1-38cb-ab41-97dbfe330d2c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

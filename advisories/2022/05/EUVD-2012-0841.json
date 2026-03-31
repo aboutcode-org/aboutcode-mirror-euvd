@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2012-0841",
+  "enisaUuid": "4463f27b-4806-38e1-8555-2cc37571b1eb",
+  "description": "The auth_parse_options function in auth-options.c in sshd in OpenSSH before 5.7 provides debug messages containing authorized_keys command options, which allows remote authenticated users to obtain potentially sensitive information by reading these messages, as demonstrated by the shared user account required by Gitolite.  NOTE: this can cross privilege boundaries because a user account may intentionally have no shell or filesystem access, and therefore may have no supported way to read an authorized_keys file in its own home directory.",
+  "datePublished": "May 17, 2022, 1:49:59 AM",
+  "dateUpdated": "May 17, 2022, 1:49:59 AM",
+  "baseScore": 3.5,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:N/AC:M/Au:S/C:P/I:N/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2012-0814.html\nhttp://www.securityfocus.com/bid/51702\nhttp://openwall.com/lists/oss-security/2012/01/27/4\nhttp://kb.juniper.net/InfoCenter/index?page=content&id=JSA10673\nhttp://openwall.com/lists/oss-security/2012/01/26/15\nhttp://osvdb.org/78706\nhttps://exchange.xforce.ibmcloud.com/vulnerabilities/72756\nhttp://bugs.debian.org/cgi-bin/bugreport.cgi?bug=657445\nhttp://openwall.com/lists/oss-security/2012/01/26/16\nhttp://openwall.com/lists/oss-security/2012/01/27/1\nhttp://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/auth-options.c\nhttp://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/auth-options.c.diff?r1=1.53%3Br2=1.54\nhttps://nvd.nist.gov/vuln/detail/CVE-2012-0814\nhttp://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/auth-options.c.diff?r1=1.53;r2=1.54\n",
+  "aliases": "CVE-2012-0814\nGHSA-cc7q-859r-mjj2\n",
+  "assigner": "redhat",
+  "epss": 0.26,
+  "enisaIdProduct": [
+    {
+      "id": "a608a897-aaf6-3ee7-8a3b-d425da2c7e50",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9f6c5403-9706-343c-adb2-f546fe127dd1",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

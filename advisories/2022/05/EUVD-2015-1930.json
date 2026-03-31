@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2015-1930",
+  "enisaUuid": "9ffa0c11-36f2-3880-9308-18b81367b283",
+  "description": "The (1) pipe_read and (2) pipe_write implementations in fs/pipe.c in the Linux kernel before 3.16 do not properly consider the side effects of failed __copy_to_user_inatomic and __copy_from_user_inatomic calls, which allows local users to cause a denial of service (system crash) or possibly gain privileges via a crafted application, aka an \"I/O vector array overrun.\"",
+  "datePublished": "May 14, 2022, 3:59:19 AM",
+  "dateUpdated": "May 14, 2022, 3:59:19 AM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:L/Au:N/C:C/I:C/A:C",
+  "references": "https://www.suse.com/security/cve/CVE-2015-1805.html\nhttps://www.debian.org/security/2015/dsa-3290\nhttps://access.redhat.com/errata/RHSA-2015:1211\nhttps://access.redhat.com/errata/RHSA-2015:1199\nhttps://access.redhat.com/errata/RHSA-2015:1190\nhttps://access.redhat.com/errata/RHSA-2015:1139\nhttps://access.redhat.com/errata/RHSA-2015:1138\nhttps://access.redhat.com/errata/RHSA-2015:1137\nhttps://access.redhat.com/errata/RHSA-2015:1120\nhttps://access.redhat.com/errata/RHSA-2015:1082\nhttps://access.redhat.com/errata/RHSA-2015:1081\nhttps://access.redhat.com/errata/RHSA-2015:1042\nhttps://ubuntu.com/security/CVE-2015-1805\nhttps://alas.aws.amazon.com/cve/html/CVE-2015-1805.html\nhttps://linux.oracle.com/cve/CVE-2015-1805.html\nhttp://rhn.redhat.com/errata/RHSA-2015-1211.html\nhttp://www.debian.org/security/2015/dsa-3290\nhttp://www.securitytracker.com/id/1032454\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00011.html\nhttp://www.securityfocus.com/bid/74951\nhttp://rhn.redhat.com/errata/RHSA-2015-1120.html\nhttp://www.ubuntu.com/usn/USN-2967-1\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00009.html\nhttp://source.android.com/security/bulletin/2016-05-01.html\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1202855\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00008.html\nhttp://www.ubuntu.com/usn/USN-2680-1\nhttp://rhn.redhat.com/errata/RHSA-2015-1082.html\nhttp://www.ubuntu.com/usn/USN-2679-1\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00021.html\nhttp://www.ubuntu.com/usn/USN-2967-2\nhttp://lists.opensuse.org/opensuse-security-announce/2015-07/msg00049.html\nhttp://rhn.redhat.com/errata/RHSA-2015-1138.html\nhttp://www.oracle.com/technetwork/topics/security/linuxbulletinoct2015-2719645.html\nhttp://rhn.redhat.com/errata/RHSA-2015-1190.html\nhttp://www.openwall.com/lists/oss-security/2015/06/06/2\nhttp://rhn.redhat.com/errata/RHSA-2015-1199.html\nhttp://www.ubuntu.com/usn/USN-2681-1\nhttp://rhn.redhat.com/errata/RHSA-2015-1042.html\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00004.html\nhttp://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f0d1bec9d58d4c038d0ac958c9af82be6eb18045\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00010.html\nhttp://source.android.com/security/bulletin/2016-04-02.html\nhttp://lists.opensuse.org/opensuse-security-announce/2015-07/msg00023.html\nhttp://rhn.redhat.com/errata/RHSA-2015-1137.html\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00007.html\nhttp://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=637b58c2887e5e57850865839cc75f59184b23d1\nhttp://lists.opensuse.org/opensuse-security-announce/2015-09/msg00018.html\nhttps://github.com/torvalds/linux/commit/f0d1bec9d58d4c038d0ac958c9af82be6eb18045\nhttps://github.com/torvalds/linux/commit/637b58c2887e5e57850865839cc75f59184b23d1\nhttp://rhn.redhat.com/errata/RHSA-2015-1081.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2015-1805\n",
+  "aliases": "GHSA-c8vr-r7wq-hc48\nCVE-2015-1805\n",
+  "assigner": "redhat",
+  "epss": 17.84,
+  "enisaIdProduct": [
+    {
+      "id": "b58012de-60a1-3fda-9e45-5087a9434fe3",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "aeaa6c16-bd67-37c7-a12d-33d589fbda48",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

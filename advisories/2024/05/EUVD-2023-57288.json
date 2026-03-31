@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2023-57288",
+  "enisaUuid": "9c0847cb-836b-31ba-903a-e113be5590cb",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atlantic: eliminate double free in error handling logic\n\nDriver has a logic leak in ring data allocation/free,\nwhere aq_ring_free could be called multiple times on same ring,\nif system is under stress and got memory allocation error.\n\nRing pointer was used as an indicator of failure, but this is\nnot correct since only ring data is allocated/deallocated.\nRing itself is an array member.\n\nChanging ring allocation functions to return error code directly.\nThis simplifies error handling and eliminates aq_ring_free\non higher layer.",
+  "datePublished": "May 17, 2024, 3:31:08 PM",
+  "dateUpdated": "Jan 7, 2025, 6:30:43 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/0edb3ae8bfa31cd544b0c195bdec00e036002b5d\nhttps://git.kernel.org/stable/c/c11a870a73a3bc4cc7df6dd877a45b181795fcbf\nhttps://git.kernel.org/stable/c/d1fde4a7e1dcc4d49cce285107a7a43c3030878d\nhttps://git.kernel.org/stable/c/b3cb7a830a24527877b0bc900b9bd74a96aea928\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52664\n",
+  "aliases": "GHSA-p7h5-86fq-j7r3\nCVE-2023-52664\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "15a958af-788b-3c48-bccd-06f5cf6d3abe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "29f81edd-a783-34d4-8e89-0dea54f6aa42",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "2b2cd9bf-2c34-343b-9479-f3f2a14de5c2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.11"
+    },
+    {
+      "id": "9be1d94c-735d-3cf7-a3bc-f7743496847a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9c5cf2f8-60fb-322b-be1d-5d7e4893b6c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "c0e410c1-d676-38c4-b380-d7ba04c62cf1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5015024ddfe5efccf1b964f14f078c2152b3b335 <c11a870a73a3bc4cc7df6dd877a45b181795fcbf"
+    },
+    {
+      "id": "c434fbc1-b19e-340d-b93d-3f1c0a6ef573",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5015024ddfe5efccf1b964f14f078c2152b3b335 <b3cb7a830a24527877b0bc900b9bd74a96aea928"
+    },
+    {
+      "id": "d4891c14-6b45-3562-ba7b-7a564cfc5953",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5015024ddfe5efccf1b964f14f078c2152b3b335 <d1fde4a7e1dcc4d49cce285107a7a43c3030878d"
+    },
+    {
+      "id": "ea73bd11-4ef6-32b1-834e-3a86de5cb344",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5015024ddfe5efccf1b964f14f078c2152b3b335 <0edb3ae8bfa31cd544b0c195bdec00e036002b5d"
+    },
+    {
+      "id": "f9697350-3c45-3c07-9380-f940bca8f323",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "08620be3-a089-3699-a318-b2f02cdd6bb8",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

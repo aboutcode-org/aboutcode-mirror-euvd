@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-50460",
+  "enisaUuid": "bd22da41-f301-33e2-baeb-738bfe2ce433",
+  "description": "This flaw allows a malicious HTTP server to set \"super cookies\" in curl that\nare then passed back to more origins than what is otherwise allowed or\npossible. This allows a site to set cookies that then would get sent to\ndifferent and unrelated sites and domains.\n\nIt could do this by exploiting a mixed case flaw in curl's function that\nverifies a given cookie domain against the Public Suffix List (PSL). For\nexample a cookie could be set with `domain=co.UK` when the URL used a lower\ncase hostname `curl.co.uk`, even though `co.uk` is listed as a PSL domain.",
+  "datePublished": "Dec 7, 2023, 1:10:34 AM",
+  "dateUpdated": "Feb 13, 2025, 5:14:19 PM",
+  "baseScore": -1.0,
+  "references": "https://hackerone.com/reports/2212193\nhttps://curl.se/docs/CVE-2023-46218.html\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/3ZX3VW67N4ACRAPMV2QS2LVYGD7H2MVE/\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UOGXU25FMMT2X6UUITQ7EZZYMJ42YWWD/\nhttps://lists.debian.org/debian-lts-announce/2023/12/msg00015.html\nhttps://www.debian.org/security/2023/dsa-5587\nhttps://security.netapp.com/advisory/ntap-20240125-0007/\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-46218\n",
+  "aliases": "CVE-2023-46218\nGHSA-59mm-6rr4-j9p2\n",
+  "assigner": "hackerone",
+  "epss": 0.43,
+  "enisaIdProduct": [
+    {
+      "id": "a0e6745a-b5b3-3c72-a870-68a1322862ca",
+      "product": {
+        "name": "curl"
+      },
+      "product_version": "8.4.0 \u22648.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e3fa7122-5eb4-3889-9527-087b156e2c30",
+      "vendor": {
+        "name": "curl"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2022-4851",
+  "enisaUuid": "57b04cf6-82b9-3824-99f6-f5a61bf848dc",
+  "description": "Apache Tomcat 6.x before 6.0.44, 7.x before 7.0.55, and 8.x before 8.0.9 does not properly handle cases where an HTTP response occurs before finishing the reading of an entire request body, which allows remote attackers to cause a denial of service (thread consumption) via a series of aborted upload attempts.",
+  "datePublished": "Jun 7, 2015, 11:00:00 PM",
+  "dateUpdated": "Aug 6, 2024, 9:05:39 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:N/AC:L/Au:N/C:N/I:N/A:C",
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2014-0230\nhttps://github.com/apache/tomcat/commit/6b2cfacf749be186ea77249a979af1d4863e47ba\nhttps://github.com/apache/tomcat/commit/812088583d0e60717a8fe9c6d14e12bcdc3e6c51\nhttps://github.com/apache/tomcat/commit/b1c8477e3e3ee635d19cc4d5987c2b157431e0c1\nhttps://github.com/apache/tomcat/commit/c1357e649641844109711d60cacb98e4b5fcd3cb\nhttps://github.com/apache/tomcat/commit/e28dd578fad90a6d5726ec34f3245c9f99d909a5\nhttps://github.com/apache/tomcat/commit/e3146f4b03a2386c3e57597e86134d4ed5c31303\nhttps://github.com/apache/tomcat/commit/fc049912464f0dcf9dede3761f38049369057e16\nhttps://github.com/apache/tomcat/commit/fdd9f11dc24b95e5425076abb58e968336f320a2\nhttps://lists.apache.org/thread.html/r9136ff5b13e4f1941360b5a309efee2c114a14855578c3a2cbe5d19c@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/r587e50b86c1a96ee301f751d50294072d142fd6dc08a8987ae9f3a9b@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/r03c597a64de790ba42c167efacfa23300c3d6c9fe589ab87fe02859c@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/b8a1bf18155b552dcf9a928ba808cbadad84c236d85eab3033662cfb@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/b84ad1258a89de5c9c853c7f2d3ad77e5b8b2930be9e132d5cef6b95@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/39ae1f0bd5867c15755a6f959b271ade1aea04ccdc3b2e639dcd903b@%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/37220405a377c0182d2afdbc36461c4783b2930fbeae3a17f1333113@%3Cdev.tomcat.apache.org%3E\nhttps://issues.jboss.org/browse/JWS-220\nhttps://issues.jboss.org/browse/JWS-219\nhttps://h20566.www2.hpe.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c05054964\nhttps://h20564.www2.hpe.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c04851013\nhttps://github.com/apache/tomcat\nhttps://access.redhat.com/errata/RHSA-2015:2660\nhttps://access.redhat.com/errata/RHSA-2015:2659\nhttp://mail-archives.apache.org/mod_mbox/tomcat-announce/201505.mbox/%3C554949D1.8030904%40apache.org%3E\nhttp://marc.info/?l=bugtraq&m=144498216801440&w=2\nhttp://marc.info/?l=bugtraq&m=145974991225029&w=2\nhttp://openwall.com/lists/oss-security/2015/04/10/1\nhttp://rhn.redhat.com/errata/RHSA-2015-1622.html\nhttp://rhn.redhat.com/errata/RHSA-2016-0595.html\nhttp://rhn.redhat.com/errata/RHSA-2016-0596.html\nhttp://rhn.redhat.com/errata/RHSA-2016-0597.html\nhttp://rhn.redhat.com/errata/RHSA-2016-0598.html\nhttp://svn.apache.org/viewvc?view=revision&revision=1603770\nhttp://svn.apache.org/viewvc?view=revision&revision=1603775\nhttp://svn.apache.org/viewvc?view=revision&revision=1603779\nhttp://tomcat.apache.org/security-6.html\nhttp://tomcat.apache.org/security-7.html\nhttp://tomcat.apache.org/security-8.html\nhttp://www.debian.org/security/2016/dsa-3447\nhttp://www.debian.org/security/2016/dsa-3530\nhttp://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html\nhttp://www.oracle.com/technetwork/topics/security/bulletinoct2015-2511968.html\nhttp://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html\nhttp://www.ubuntu.com/usn/USN-2654-1\nhttp://www.ubuntu.com/usn/USN-2655-1\nhttps://www.suse.com/security/cve/CVE-2014-0230.html\nhttps://www.debian.org/security/2016/dsa-3530\nhttps://access.redhat.com/errata/RHSA-2016:2599\nhttps://access.redhat.com/errata/RHSA-2016:0599\nhttps://access.redhat.com/errata/RHSA-2016:0598\nhttps://access.redhat.com/errata/RHSA-2016:0597\nhttps://access.redhat.com/errata/RHSA-2016:0596\nhttps://access.redhat.com/errata/RHSA-2016:0595\nhttps://access.redhat.com/errata/RHSA-2015:2661\nhttps://access.redhat.com/errata/RHEA-2015:1771\nhttps://access.redhat.com/errata/RHEA-2015:1770\nhttps://access.redhat.com/errata/RHSA-2015:1622\nhttps://access.redhat.com/errata/RHSA-2015:1621\nhttps://ubuntu.com/security/CVE-2014-0230\nhttps://alas.aws.amazon.com/cve/html/CVE-2014-0230.html\nhttp://rhn.redhat.com/errata/RHSA-2016-0599.html\nhttp://rhn.redhat.com/errata/RHSA-2015-2661.html\nhttp://rhn.redhat.com/errata/RHSA-2015-1621.html\nhttp://www.securityfocus.com/bid/74475\nhttps://lists.apache.org/thread.html/b8a1bf18155b552dcf9a928ba808cbadad84c236d85eab3033662cfb%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/39ae1f0bd5867c15755a6f959b271ade1aea04ccdc3b2e639dcd903b%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/37220405a377c0182d2afdbc36461c4783b2930fbeae3a17f1333113%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/b84ad1258a89de5c9c853c7f2d3ad77e5b8b2930be9e132d5cef6b95%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/r03c597a64de790ba42c167efacfa23300c3d6c9fe589ab87fe02859c%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/r9136ff5b13e4f1941360b5a309efee2c114a14855578c3a2cbe5d19c%40%3Cdev.tomcat.apache.org%3E\nhttps://lists.apache.org/thread.html/r587e50b86c1a96ee301f751d50294072d142fd6dc08a8987ae9f3a9b%40%3Cdev.tomcat.apache.org%3E\n",
+  "aliases": "GHSA-pxcx-cxq8-4mmw\nCVE-2014-0230\n",
+  "assigner": "redhat",
+  "epss": 5.66,
+  "enisaIdProduct": [
+    {
+      "id": "54506277-e4d6-3e54-9b4a-0decd38a257b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bafc3296-5cba-3440-9ff3-d7a9b57e28c6",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

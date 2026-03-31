@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-41249",
+  "enisaUuid": "d41fbc5a-8fca-34b5-afe9-0c5bbf00c908",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Don't refer to dc_sink in is_dsc_need_re_compute\n\n[Why]\nWhen unplug one of monitors connected after mst hub, encounter null pointer dereference.\n\nIt's due to dc_sink get released immediately in early_unregister() or detect_ctx(). When\ncommit new state which directly referring to info stored in dc_sink will cause null pointer\ndereference.\n\n[how]\nRemove redundant checking condition. Relevant condition should already be covered by checking\nif dsc_aux is null or not. Also reset dsc_aux to NULL when the connector is disconnected.",
+  "datePublished": "Sep 4, 2024, 9:30:31 PM",
+  "dateUpdated": "Dec 9, 2024, 3:31:33 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c7e65cab54a89f4df54110f0b44c4ade93d1a911\nhttps://git.kernel.org/stable/c/39b217193729aa45eded8de24d9245468a0c0263\nhttps://git.kernel.org/stable/c/fcf6a49d79923a234844b8efe830a61f3f0584e4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-44955\n",
+  "aliases": "CVE-2024-44955\nGHSA-qcm7-vmfg-h8xw\n",
+  "assigner": "Linux",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "490ff5e9-b008-361f-a2cf-903f06332aa4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <39b217193729aa45eded8de24d9245468a0c0263"
+    },
+    {
+      "id": "5d21abb9-9d5b-3ef6-854e-2e9b23c5a53b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.64"
+    },
+    {
+      "id": "5f3f7cb8-b952-304f-9e78-f2eb4352cfba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c7e65cab54a89f4df54110f0b44c4ade93d1a911"
+    },
+    {
+      "id": "a599d86b-b25b-3a94-8220-6c6a83d16dca",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.5"
+    },
+    {
+      "id": "b445059c-a186-3ba0-920f-4a7fa8f9dc7e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fcf6a49d79923a234844b8efe830a61f3f0584e4"
+    },
+    {
+      "id": "f13aebcc-79b9-328d-9c8c-46905fbf70b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "92f90950-a8ed-3077-a957-66d27c12c169",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

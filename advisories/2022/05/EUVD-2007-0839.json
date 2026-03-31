@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2007-0839",
+  "enisaUuid": "332be4bb-1234-34a8-9b73-5effbd78b5df",
+  "description": "The 64-bit versions of Microsoft Visual C++ 8.0 standard library (MSVCR80.DLL) time functions, including (1) localtime, (2) localtime_s, (3) gmtime, (4) gmtime_s, (5) ctime, (6) ctime_s, (7) wctime, (8) wctime_s, and (9) fstat, trigger an assertion error instead of a NULL pointer or EINVAL when processing a time argument later than Jan 1, 3000, which might allow context-dependent attackers to cause a denial of service (application exit) via large time values. NOTE: it could be argued that this is a design limitation of the functions, and the vulnerability lies with any application that does not validate arguments to these functions.  However, this behavior is inconsistent with documentation, which does not list assertions as a possible result of an error condition.",
+  "datePublished": "May 1, 2022, 5:47:30 PM",
+  "dateUpdated": "Mar 12, 2024, 6:31:08 PM",
+  "baseScore": -1.0,
+  "references": "https://exchange.xforce.ibmcloud.com/vulnerabilities/32454\nhttp://www.securityfocus.com/archive/1/459847/100/0/threaded\nhttp://securityreason.com/securityalert/2237\nhttp://msdn2.microsoft.com/en-us/library/a442x3ye(VS.80).aspx\nhttp://osvdb.org/33626\nhttp://msdn2.microsoft.com/en-us/library/a442x3ye%28VS.80%29.aspx\nhttps://nvd.nist.gov/vuln/detail/CVE-2007-0842\n",
+  "aliases": "GHSA-3qg5-3wgr-h9mq\nCVE-2007-0842\n",
+  "assigner": "mitre",
+  "epss": 10.5,
+  "enisaIdProduct": [
+    {
+      "id": "8b2058cd-ea2d-38a7-8bfa-631d003b15d5",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8a382944-a86a-32fa-9e05-e059d51ae841",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

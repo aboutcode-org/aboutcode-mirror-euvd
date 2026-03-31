@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2019-2195",
+  "enisaUuid": "792cd803-b190-31d4-aae7-f69d03890bfb",
+  "description": "A vulnerability has been found in PowerDNS Authoritative Server before versions 4.1.10, 4.0.8 allowing an authorized user to cause the server to exit by inserting a crafted record in a MASTER type zone under their control. The issue is due to the fact that the Authoritative Server will exit when it runs into a parsing error while looking up the NS/A/AAAA records it is about to use for an outgoing notify.",
+  "datePublished": "May 24, 2022, 4:51:49 PM",
+  "dateUpdated": "May 24, 2022, 4:51:49 PM",
+  "baseScore": 3.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:L",
+  "references": "https://www.suse.com/security/cve/CVE-2019-10162.html\nhttps://www.debian.org/security/2019/dsa-4470\nhttps://advisories.mageia.org/CVE-2019-10162.html\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2019-10162\nhttps://blog.powerdns.com/2019/06/21/powerdns-authoritative-server-4-0-8-and-4-1-10-released/\nhttps://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-04.html\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00036.html\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00054.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-10162\n",
+  "aliases": "GHSA-66xg-v84p-j4x5\nCVE-2019-10162\n",
+  "assigner": "redhat",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "85894726-210f-37b5-91bb-ec9ca1b14452",
+      "product": {
+        "name": "pdns"
+      },
+      "product_version": "fixed in 4.0.8"
+    },
+    {
+      "id": "e3590f34-fb93-3406-b898-d2079ab5354b",
+      "product": {
+        "name": "pdns"
+      },
+      "product_version": "fixed in 4.1.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e3730872-2188-3089-be02-846948d62cc7",
+      "vendor": {
+        "name": "PowerDNS"
+      }
+    }
+  ]
+}

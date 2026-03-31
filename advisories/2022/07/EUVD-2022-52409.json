@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-52409",
+  "enisaUuid": "9443822a-5c0c-350d-bb3f-985176244b5d",
+  "description": "An issue was discovered in the auth component in Dovecot 2.2 and 2.3 before 2.3.20. When two passdb configuration entries exist with the same driver and args settings, incorrect username_filter and mechanism settings can be applied to passdb definitions. These incorrectly applied settings can lead to an unintended security configuration and can permit privilege escalation in certain configurations. The documentation does not advise against the use of passdb definitions that have the same driver and args settings. One such configuration would be where an administrator wishes to use the same PAM configuration or passwd file for both normal and master users but use the username_filter setting to restrict which of the users is able to be a master user.",
+  "datePublished": "Jul 18, 2022, 12:00:32 AM",
+  "dateUpdated": "Oct 15, 2024, 9:30:32 PM",
+  "baseScore": -1.0,
+  "references": "https://dovecot.org/security\nhttps://www.dovecot.org/download/\nhttps://www.openwall.com/lists/oss-security/2022/07/08/1\nhttps://lists.debian.org/debian-lts-announce/2022/09/msg00032.html\nhttps://security.gentoo.org/glsa/202310-19\nhttps://www.suse.com/security/cve/CVE-2022-30550.html\nhttps://ubuntu.com/security/CVE-2022-30550\nhttps://security.archlinux.org/CVE-2022-30550\nhttps://advisories.mageia.org/CVE-2022-30550.html\nhttps://access.redhat.com/errata/RHSA-2022:7623\nhttps://access.redhat.com/errata/RHSA-2022:8208\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-30550\n",
+  "aliases": "CVE-2022-30550\nGHSA-cch8-vp96-g53m\n",
+  "assigner": "mitre",
+  "epss": 0.31,
+  "enisaIdProduct": [
+    {
+      "id": "29a1e7c8-88fb-39bb-98d7-7a01064c783c",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "944277f4-ed00-376c-bb16-0053c62acac5",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

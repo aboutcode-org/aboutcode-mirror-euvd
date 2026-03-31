@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2024-41694",
+  "enisaUuid": "0a50fdc7-f1b2-3696-b9a0-3e18bf2d6037",
+  "description": "In x86's APIC (Advanced Programmable Interrupt Controller) architecture,\nerror conditions are reported in a status register.  Furthermore, the OS\ncan opt to receive an interrupt when a new error occurs.\n\nIt is possible to configure the error interrupt with an illegal vector,\nwhich generates an error when an error interrupt is raised.\n\nThis case causes Xen to recurse through vlapic_error().  The recursion\nitself is bounded; errors accumulate in the the status register and only\ngenerate an interrupt when a new status bit becomes set.\n\nHowever, the lock protecting this state in Xen will try to be taken\nrecursively, and deadlock.",
+  "datePublished": "Sep 25, 2024, 12:30:40 PM",
+  "dateUpdated": "Jan 14, 2026, 6:31:11 PM",
+  "baseScore": -1.0,
+  "references": "https://xenbits.xenproject.org/xsa/advisory-462.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-45817\nhttp://www.openwall.com/lists/oss-security/2024/09/24/1\nhttp://xenbits.xen.org/xsa/advisory-462.html\n",
+  "aliases": "CVE-2024-45817\nGHSA-x9f9-xjf3-f3v6\n",
+  "assigner": "XEN",
+  "epss": 0.5,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "ece18075-3ebf-3ac3-8fae-29472ad1991d",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

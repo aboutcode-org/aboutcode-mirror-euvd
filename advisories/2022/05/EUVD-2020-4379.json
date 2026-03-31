@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2020-4379",
+  "enisaUuid": "4f50d69f-9dbd-38c3-aca5-74c22f835783",
+  "description": "** DISPUTED ** A certain Postfix 2.10.1-7 package could allow an attacker to send an email from an arbitrary-looking sender via a homoglyph attack, as demonstrated by the similarity of \\xce\\xbf to the 'o' character. This is potentially relevant when the /etc/postfix/sender_login feature is used, because a spoofed outbound message that uses a configured sender address is blocked with a \"Sender address rejected: not logged in\" error message, but a spoofed outbound message that uses a homoglyph of a configured sender address is not blocked. NOTE: some third parties argue that any missed blocking of spoofed outbound messages - except for exact matches to a sender address in the /etc/postfix/sender_login file - is outside the design goals of Postfix and thus cannot be considered a Postfix vulnerability.",
+  "datePublished": "May 24, 2022, 5:16:25 PM",
+  "dateUpdated": "May 24, 2022, 5:16:25 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2020-12063.html\nhttps://www.openwall.com/lists/oss-security/2020/04/23/3\nhttps://www.openwall.com/lists/oss-security/2020/04/23/12\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-12063\n",
+  "aliases": "GHSA-5wj2-9pm2-74vm\nCVE-2020-12063\n",
+  "assigner": "mitre",
+  "epss": 0.4,
+  "enisaIdProduct": [
+    {
+      "id": "9aae07ec-7d54-3c34-84ce-d1996489d09c",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b402b0dc-83e9-3638-af6c-65f560ba537a",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

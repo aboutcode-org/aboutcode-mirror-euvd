@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6749",
+  "enisaUuid": "29c63cce-7ded-3b38-bfe9-2ba256b8b31d",
+  "description": "EverShop is a TypeScript-first eCommerce platform. During category update and deletion event handling, the application embeds\npath / request_path values\u2014derived from the url_key stored in the database\u2014into SQL statements via string concatenation and passes them to execute(). As a result, if a malicious string is stored in url_key , subsequent event processing modifies and executes the SQL statement, leading to a second-order SQL injection. Patched from v2.1.1.",
+  "datePublished": "Feb 10, 2026, 5:43:38 PM",
+  "dateUpdated": "Feb 10, 2026, 7:29:56 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/evershopcommerce/evershop/security/advisories/GHSA-3h84-9rhc-j2ch\nhttp://github.com/evershopcommerce/evershop/commit/5c5bdf2c1ad5d16ae68e9e48b494563953b6d1cd\n",
+  "aliases": "CVE-2026-25993\n",
+  "assigner": "GitHub_M",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "ce31826b-acf9-4d3e-a172-9775e6b8d1e0",
+      "product": {
+        "name": "EverShop"
+      },
+      "product_version": "< 2.1.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f645f0d5-d99a-4011-aa7a-e1d25432ec0f",
+      "vendor": {
+        "name": "evershopcommerce"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2023-12518",
+  "enisaUuid": "7063ca69-c1b6-36ff-b48b-b880d45a7dc8",
+  "description": "A security vulnerability has been identified in all supported versions\n\nof OpenSSL related to the verification of X.509 certificate chains\nthat include policy constraints.  Attackers may be able to exploit this\nvulnerability by creating a malicious certificate chain that triggers\nexponential use of computational resources, leading to a denial-of-service\n(DoS) attack on affected systems.\n\nPolicy processing is disabled by default but can be enabled by passing\nthe `-policy' argument to the command line utilities or by calling the\n`X509_VERIFY_PARAM_set1_policies()' function.",
+  "datePublished": "Mar 22, 2023, 6:30:37 PM",
+  "dateUpdated": "May 5, 2025, 6:32:35 PM",
+  "baseScore": -1.0,
+  "references": "https://www.openssl.org/news/secadv/20230322.txt\nhttps://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545\nhttps://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1\nhttps://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b\nhttps://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e\nhttps://www.couchbase.com/alerts/\nhttps://www.debian.org/security/2023/dsa-5417\nhttps://lists.debian.org/debian-lts-announce/2023/06/msg00011.html\nhttps://security.gentoo.org/glsa/202402-08\nhttps://security.netapp.com/advisory/ntap-20240621-0006/\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-0464\nhttps://security.netapp.com/advisory/ntap-20230406-0006\n",
+  "aliases": "GHSA-w2w6-xp88-5cvw\nCVE-2023-0464\n",
+  "assigner": "openssl",
+  "epss": 0.86,
+  "enisaIdProduct": [
+    {
+      "id": "0b6629e0-f2c1-335b-85f2-c56a53c27e61",
+      "product": {
+        "name": "OpenSSL"
+      },
+      "product_version": "3.0.0 <3.0.9"
+    },
+    {
+      "id": "290c8992-112e-3871-a655-d97f000df24b",
+      "product": {
+        "name": "OpenSSL"
+      },
+      "product_version": "1.0.2 <1.0.2zh"
+    },
+    {
+      "id": "4d2080e9-c394-3ea3-b77f-79aa3186ef69",
+      "product": {
+        "name": "OpenSSL"
+      },
+      "product_version": "1.1.1 <1.1.1u"
+    },
+    {
+      "id": "ba8bb222-071f-38cd-9c02-c6b47f1a379b",
+      "product": {
+        "name": "OpenSSL"
+      },
+      "product_version": "3.1.0 <3.1.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f31013bb-b120-33a3-ab46-d7ef9c10692e",
+      "vendor": {
+        "name": "OpenSSL"
+      }
+    }
+  ]
+}

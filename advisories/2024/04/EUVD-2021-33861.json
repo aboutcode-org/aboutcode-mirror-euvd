@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2021-33861",
+  "enisaUuid": "ea43667d-2d19-3160-831f-557b5ff163d7",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix exposure in nfsd4_decode_bitmap()\n\nrtm@csail.mit.edu reports:\n> nfsd4_decode_bitmap4() will write beyond bmval[bmlen-1] if the RPC\n> directs it to do so. This can cause nfsd4_decode_state_protect4_a()\n> to write client-supplied data beyond the end of\n> nfsd4_exchange_id.spo_must_allow[] when called by\n> nfsd4_decode_exchange_id().\n\nRewrite the loops so nfsd4_decode_bitmap() cannot iterate beyond\n@bmlen.\n\nReported by: rtm@csail.mit.edu",
+  "datePublished": "Apr 10, 2024, 9:30:32 PM",
+  "dateUpdated": "Apr 10, 2024, 9:30:32 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2021-47213\nhttps://git.kernel.org/stable/c/10c22d9519f3f5939de61a1500aa3a926b778d3a\nhttps://git.kernel.org/stable/c/c0019b7db1d7ac62c711cda6b357a659d46428fe\n",
+  "aliases": "GHSA-r8r4-4w47-4w9x\nCVE-2021-47213\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

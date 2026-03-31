@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-10051",
+  "enisaUuid": "447b0397-d14a-3dfd-9d4c-aea4ca0f14a2",
+  "description": "When curl is instructed to download content using the metalink feature, thecontents is verified against a hash provided in the metalink XML file.The metalink XML file points out to the client how to get the same contentfrom a set of different URLs, potentially hosted by different servers and theclient can then download the file from one or several of them. In a serial orparallel manner.If one of the servers hosting the contents has been breached and the contentsof the specific file on that server is replaced with a modified payload, curlshould detect this when the hash of the file mismatches after a completeddownload. It should remove the contents and instead try getting the contentsfrom another URL. This is not done, and instead such a hash mismatch is onlymentioned in text and the potentially malicious content is kept in the file ondisk.",
+  "datePublished": "May 24, 2022, 7:10:06 PM",
+  "dateUpdated": "Mar 27, 2024, 3:30:33 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-22922.html\nhttps://access.redhat.com/errata/RHSA-2021:3903\nhttps://access.redhat.com/errata/RHSA-2021:3582\nhttps://advisories.mageia.org/CVE-2021-22922.html\nhttps://security.archlinux.org/CVE-2021-22922\nhttps://linux.oracle.com/cve/CVE-2021-22922.html\nhttps://hackerone.com/reports/1213175\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V/\nhttps://lists.apache.org/thread.html/r61db8e7dcb56dc000a5387a88f7a473bacec5ee01b9ff3f55308aacc%40%3Cdev.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/r61db8e7dcb56dc000a5387a88f7a473bacec5ee01b9ff3f55308aacc%40%3Cusers.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/rbf4ce74b0d1fa9810dec50ba3ace0caeea677af7c27a97111c06ccb7%40%3Cusers.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/rbf4ce74b0d1fa9810dec50ba3ace0caeea677af7c27a97111c06ccb7%40%3Cdev.kafka.apache.org%3E\nhttps://www.oracle.com/security-alerts/cpuoct2021.html\nhttps://security.netapp.com/advisory/ntap-20210902-0003/\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf\nhttps://security.gentoo.org/glsa/202212-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-22922\nhttps://lists.apache.org/thread.html/r61db8e7dcb56dc000a5387a88f7a473bacec5ee01b9ff3f55308aacc@%3Cdev.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/r61db8e7dcb56dc000a5387a88f7a473bacec5ee01b9ff3f55308aacc@%3Cusers.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/rbf4ce74b0d1fa9810dec50ba3ace0caeea677af7c27a97111c06ccb7@%3Cdev.kafka.apache.org%3E\nhttps://lists.apache.org/thread.html/rbf4ce74b0d1fa9810dec50ba3ace0caeea677af7c27a97111c06ccb7@%3Cusers.kafka.apache.org%3E\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V\n",
+  "aliases": "GHSA-975f-fvhv-8mhx\nCVE-2021-22922\n",
+  "assigner": "hackerone",
+  "epss": 0.15,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "67b0ac09-d114-3810-9010-460087f351f9",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

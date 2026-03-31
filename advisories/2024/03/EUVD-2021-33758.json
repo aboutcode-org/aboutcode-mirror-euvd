@@ -1,0 +1,126 @@
+{
+  "id": "EUVD-2021-33758",
+  "enisaUuid": "a70b2fff-acda-3018-a515-df5e107e2365",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/kvm: Disable kvmclock on all CPUs on shutdown\n\nCurrenly, we disable kvmclock from machine_shutdown() hook and this\nonly happens for boot CPU. We need to disable it for all CPUs to\nguard against memory corruption e.g. on restore from hibernate.\n\nNote, writing '0' to kvmclock MSR doesn't clear memory location, it\njust prevents hypervisor from updating the location so for the short\nwhile after write and while CPU is still alive, the clock remains usable\nand correct so we don't need to switch to some other clocksource.",
+  "datePublished": "Mar 15, 2024, 9:30:43 PM",
+  "dateUpdated": "Mar 13, 2025, 9:30:59 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9084fe1b3572664ad276f427dce575f580c9799a\nhttps://git.kernel.org/stable/c/3b0becf8b1ecf642a9edaf4c9628ffc641e490d6\nhttps://git.kernel.org/stable/c/1df2dc09926f61319116c80ee85701df33577d70\nhttps://git.kernel.org/stable/c/c02027b5742b5aa804ef08a4a9db433295533046\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47110\n",
+  "aliases": "GHSA-hx76-chvw-qr8x\nCVE-2021-47110\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0f8aad7b-3b1f-315a-99e9-34153af92c62",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.26"
+    },
+    {
+      "id": "129e4590-60d0-3154-99df-a2ae39b03e46",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e977aa12dd4f80688b1f243762212e75c6d7fe8 <9084fe1b3572664ad276f427dce575f580c9799a"
+    },
+    {
+      "id": "214b111f-dfb6-30d5-8ade-92517b4e4601",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e977aa12dd4f80688b1f243762212e75c6d7fe8 <c02027b5742b5aa804ef08a4a9db433295533046"
+    },
+    {
+      "id": "2c90aeda-e02f-3570-8cf8-da5df2b62564",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1df2dc09926f61319116c80ee85701df33577d70"
+    },
+    {
+      "id": "4108121d-26eb-338b-81cb-17519b90829e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e977aa12dd4f80688b1f243762212e75c6d7fe8 <3b0becf8b1ecf642a9edaf4c9628ffc641e490d6"
+    },
+    {
+      "id": "56b2efda-7322-3741-bc68-b4e861d572ba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.43"
+    },
+    {
+      "id": "5c593fd5-dec2-3a98-afe2-9a198652f9b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.125"
+    },
+    {
+      "id": "5c71dea0-9858-3d28-aa1e-9226d087b974",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.10"
+    },
+    {
+      "id": "60b2c04f-349c-38f8-9dee-fb523abb4250",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3b0becf8b1ecf642a9edaf4c9628ffc641e490d6"
+    },
+    {
+      "id": "779b33b4-668f-3de6-a33b-012c9e9fe9ab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e977aa12dd4f80688b1f243762212e75c6d7fe8 <1df2dc09926f61319116c80ee85701df33577d70"
+    },
+    {
+      "id": "8acffe93-3917-3d90-8a00-4d4bee736655",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c02027b5742b5aa804ef08a4a9db433295533046"
+    },
+    {
+      "id": "a081a485-77fd-3202-b7b5-fb40f78987bd",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "a133026d-043b-3035-83a4-7ebebb457a38",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9084fe1b3572664ad276f427dce575f580c9799a"
+    },
+    {
+      "id": "b0493987-fd31-3ad3-b725-e3c6734bee3b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "e96bbad0-fb95-31be-9d47-7e06490a5540",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a081a485-77fd-3202-b7b5-fb40f78987bd",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

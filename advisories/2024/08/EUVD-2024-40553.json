@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-40553",
+  "enisaUuid": "9d6254df-3391-33a0-b3b3-5f073ba82be7",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Add NULL check for 'afb' before dereferencing in amdgpu_dm_plane_handle_cursor_update\n\nThis commit adds a null check for the 'afb' variable in the\namdgpu_dm_plane_handle_cursor_update function. Previously, 'afb' was\nassumed to be null, but was used later in the code without a null check.\nThis could potentially lead to a null pointer dereference.\n\nFixes the below:\ndrivers/gpu/drm/amd/amdgpu/../display/amdgpu_dm/amdgpu_dm_plane.c:1298 amdgpu_dm_plane_handle_cursor_update() error: we previously assumed 'afb' could be null (see line 1252)",
+  "datePublished": "Aug 26, 2024, 12:31:19 PM",
+  "dateUpdated": "Aug 27, 2024, 3:32:44 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-43903\nhttps://git.kernel.org/stable/c/31a679a880102dee6e10985a7b1789af8dc328cc\nhttps://git.kernel.org/stable/c/38e6f715b02b572f74677eb2f29d3b4bc6f1ddff\nhttps://git.kernel.org/stable/c/94220b35aeba2b68da81deeefbb784d94eeb5c04\nhttps://git.kernel.org/stable/c/ce5d090af683137cb779ed7e3683839f9c778b35\n",
+  "aliases": "CVE-2024-43903\nGHSA-xxfg-vcwf-78fg\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

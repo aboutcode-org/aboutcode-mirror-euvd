@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-1391",
+  "enisaUuid": "9e04521e-bdbd-3a35-ac6d-d19d47180936",
+  "description": "btcd before 0.24.0 does not correctly implement the consensus rules outlined in BIP 68 and BIP 112, making it susceptible to consensus failures. Specifically, it uses the transaction version as a signed integer when it is supposed to be treated as unsigned. There can be a chain split and loss of funds.",
+  "datePublished": "May 5, 2024, 12:00:00 AM",
+  "dateUpdated": "Aug 7, 2024, 3:03:11 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-34478\nhttps://github.com/btcsuite/btcd/pull/1981\nhttps://github.com/btcsuite/btcd/commit/253b688c68b89eca7eb75d4d5443dbdbc928db3c\nhttps://delvingbitcoin.org/t/disclosure-btcd-consensus-bugs-due-to-usage-of-signed-transaction-version/455\nhttps://github.com/btcsuite/btcd\nhttps://github.com/btcsuite/btcd/blob/e4c88c3a3ecb1813529bf3dddc7a865bd418a6b8/blockchain/chain.go#L383C1-L392C3\nhttps://github.com/btcsuite/btcd/blob/e4c88c3a3ecb1813529bf3dddc7a865bd418a6b8/txscript/opcode.go#L1172C1-L1178C3\nhttps://pkg.go.dev/vuln/GO-2024-2818\n",
+  "aliases": "CVE-2024-34478\nGHSA-3jgf-r68h-xfqm\n",
+  "assigner": "mitre",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "1e5c3722-aba9-3793-b38c-1f1ec02016d9",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d88cc8cf-874f-3bf7-b2e9-6985b037aea7",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

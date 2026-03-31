@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-43599",
+  "enisaUuid": "f53d6b6c-1de0-3de4-910c-b8e1068d58b3",
+  "description": "An issue was discovered in bgpd in FRRouting (FRR) through 8.4. By crafting a BGP OPEN message with an option of type 0xff (Extended Length from RFC 9072), attackers may cause a denial of service (assertion failure and daemon restart, or out-of-bounds read). This is possible because of inconsistent boundary checks that do not account for reading 3 bytes (instead of 2) in this 0xff case.",
+  "datePublished": "May 3, 2023, 12:30:41 PM",
+  "dateUpdated": "Feb 1, 2024, 3:30:22 AM",
+  "baseScore": -1.0,
+  "references": "https://github.com/FRRouting/frr/releases\nhttps://www.debian.org/security/2023/dsa-5495\nhttps://lists.debian.org/debian-lts-announce/2023/09/msg00020.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-40302\n",
+  "aliases": "CVE-2022-40302\nGHSA-j7hm-p94x-q9pw\n",
+  "assigner": "mitre",
+  "epss": 0.2,
+  "enisaIdProduct": [
+    {
+      "id": "3afb0cf9-932a-3f52-9e3e-3802d1c596fd",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bfb64d64-3573-3c9f-b571-74498fa51441",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2023-27998",
+  "enisaUuid": "fce8ad4a-2e61-3185-a77d-3c2e3c6f445a",
+  "description": "An allocation of resources without limits or throttling vulnerability exists in curl <v7.88.0 based on the \"chained\" HTTP compression algorithms, meaning that a server response can be compressed multiple times and potentially with differentalgorithms. The number of acceptable \"links\" in this \"decompression chain\" wascapped, but the cap was implemented on a per-header basis allowing a maliciousserver to insert a virtually unlimited number of compression steps simply byusing many headers. The use of such a decompression chain could result in a \"malloc bomb\", making curl end up spending enormous amounts of allocated heap memory, or trying to and returning out of memory errors.",
+  "datePublished": "Feb 23, 2023, 9:30:16 PM",
+  "dateUpdated": "Feb 23, 2023, 9:30:16 PM",
+  "baseScore": -1.0,
+  "references": "https://www.debian.org/security/2023/dsa-5365\nhttps://advisories.mageia.org/CVE-2023-23916.html\nhttps://www.suse.com/security/cve/CVE-2023-23916.html\nhttps://ubuntu.com/security/CVE-2023-23916\nhttps://access.redhat.com/errata/RHSA-2023:1140\nhttps://hackerone.com/reports/1826048\nhttps://lists.debian.org/debian-lts-announce/2023/02/msg00035.html\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BQKE6TXYDHOTFHLTBZ5X73GTKI7II5KO/\nhttps://security.netapp.com/advisory/ntap-20230309-0006/\nhttps://security.gentoo.org/glsa/202310-12\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-23916\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/BQKE6TXYDHOTFHLTBZ5X73GTKI7II5KO\n",
+  "aliases": "GHSA-v8vq-prc2-j6gx\nCVE-2023-23916\n",
+  "assigner": "hackerone",
+  "epss": 0.09,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "7d3e117c-3500-3ef8-bd31-20b48fdebfc6",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

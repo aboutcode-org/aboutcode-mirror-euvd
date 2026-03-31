@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-50391",
+  "enisaUuid": "940b5ea4-54a6-3ff9-8765-ac5416cc645e",
+  "description": "Razer Synapse through 3.7.1209.121307 allows privilege escalation due to an unsafe installation path and improper privilege management. Attackers can place DLLs into %PROGRAMDATA%\\Razer\\Synapse3\\Service\\bin if they do so before the service is installed and if they deny write access for the SYSTEM user. Although the service will not start if it detects malicious DLLs in this directory, attackers can exploit a race condition and replace a valid DLL (i.e., a copy of a legitimate Razer DLL) with a malicious DLL after the service has already checked the file. As a result, local Windows users can abuse the Razer driver installer to obtain administrative privileges on Windows.",
+  "datePublished": "Sep 15, 2023, 12:30:29 AM",
+  "dateUpdated": "Feb 16, 2024, 6:31:04 PM",
+  "baseScore": -1.0,
+  "references": "https://www.syss.de/fileadmin/dokumente/Publikationen/Advisories/SYSS-2023-002.txt\nhttp://seclists.org/fulldisclosure/2023/Sep/6\nhttp://packetstormsecurity.com/files/174696/Razer-Synapse-Race-Condition-DLL-Hijacking.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-47631\n",
+  "aliases": "GHSA-5q3q-p4gq-p4rp\nCVE-2022-47631\n",
+  "assigner": "mitre",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "7242acd1-835a-3e8f-8d6c-d20f9f774c4e",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "488f5735-f636-3f16-a5b6-bafa68edc323",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

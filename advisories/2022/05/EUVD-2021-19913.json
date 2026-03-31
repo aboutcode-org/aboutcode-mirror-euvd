@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-19913",
+  "enisaUuid": "a4b728e7-4009-3dac-b831-28a8e4428ae8",
+  "description": "kernel/bpf/verifier.c in the Linux kernel through 5.12.7 enforces incorrect limits for pointer arithmetic operations, aka CID-bb01a1bba579. This can be abused to perform out-of-bounds reads and writes in kernel memory, leading to local privilege escalation to root. In particular, there is a corner case where the off reg causes a masking direction change, which then results in an incorrect final aux->alu_limit.",
+  "datePublished": "May 24, 2022, 7:03:28 PM",
+  "dateUpdated": "Mar 25, 2024, 3:31:42 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-33200.html\nhttps://access.redhat.com/errata/RHSA-2021:4356\nhttps://access.redhat.com/errata/RHSA-2021:4140\nhttps://ubuntu.com/security/CVE-2021-33200\nhttps://advisories.mageia.org/CVE-2021-33200.html\nhttps://security.archlinux.org/CVE-2021-33200\nhttps://alas.aws.amazon.com/cve/html/CVE-2021-33200.html\nhttps://linux.oracle.com/cve/CVE-2021-33200.html\nhttps://www.openwall.com/lists/oss-security/2021/05/27/1\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JJCABL43FT3FKRX5DBPZG25FNKR6CEK4/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7LR3OKKPHIBGOMHN476CMLW2T7UG53QX/\nhttps://security.netapp.com/advisory/ntap-20210706-0004/\nhttps://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=3d0220f6861d713213b015b582e9f21e5b28d2e0\nhttps://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=bb01a1bba579b4b1c5566af24d95f1767859771e\nhttps://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a7036191277f9fa68d92f2071ddc38c09b1e5ee5\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-33200\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/7LR3OKKPHIBGOMHN476CMLW2T7UG53QX\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JJCABL43FT3FKRX5DBPZG25FNKR6CEK4\n",
+  "aliases": "GHSA-594v-c36q-5p83\nCVE-2021-33200\n",
+  "assigner": "mitre",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "61fa4e8e-f4a2-3fb7-96e1-cde4706a3489",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2cf95cab-6c7c-3cf4-a35a-22b59e3c853d",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2024-42072",
+  "enisaUuid": "433700bd-9793-3530-bf11-250124a50389",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix index may exceed array range within fpu_update_bw_bounding_box\n\n[Why]\nCoverity reports OVERRUN warning. soc.num_states could\nbe 40. But array range of bw_params->clk_table.entries is 8.\n\n[How]\nAssert if soc.num_states greater than 8.",
+  "datePublished": "Sep 27, 2024, 3:30:33 PM",
+  "dateUpdated": "Oct 7, 2024, 3:31:38 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4003bac784380fed1f94f197350567eaa73a409d\nhttps://git.kernel.org/stable/c/aba188d6f4ebaf52acf13f204db2bd2c22072504\nhttps://git.kernel.org/stable/c/188fd1616ec43033cedbe343b6579e9921e2d898\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46811\n",
+  "aliases": "CVE-2024-46811\nGHSA-w9j6-gpc8-w3w8\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0c4aa8eb-09b2-319d-ac48-bc3a2d08807a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.9"
+    },
+    {
+      "id": "2bd7475f-29c0-30b6-aa7b-f82a95fd5bbb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <aba188d6f4ebaf52acf13f204db2bd2c22072504"
+    },
+    {
+      "id": "2f67221f-e8ac-39a4-8be9-20e0ece738d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.50"
+    },
+    {
+      "id": "3182093b-1789-35cc-a4c5-3b2a06e0d396",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "38126e6b-328b-386c-a7bb-ee4508f8e274",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <188fd1616ec43033cedbe343b6579e9921e2d898"
+    },
+    {
+      "id": "4ebd4824-b10d-34f9-9198-d9b46982c5f3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "5f22151d-e02b-317d-84da-3faad3f3d62c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <4003bac784380fed1f94f197350567eaa73a409d"
+    },
+    {
+      "id": "64e03c4e-d017-3f85-86f7-48dd4261e36f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <aba188d6f4ebaf52acf13f204db2bd2c22072504"
+    },
+    {
+      "id": "8be99503-4894-3b53-90d7-c5e1a7d0e8ba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "a34e8f14-66eb-3a14-9cde-cef9e76956e4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <188fd1616ec43033cedbe343b6579e9921e2d898"
+    },
+    {
+      "id": "d53b2cff-6af4-38b1-8c51-b7209302aff7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4003bac784380fed1f94f197350567eaa73a409d"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3840e7b3-9a2d-3a20-b214-e2fa737d54ed",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-14190",
+  "enisaUuid": "629781ab-ab52-3c42-bb6a-06354047549d",
+  "description": "The WP Games Embed plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the [game] shortcode in all versions up to and including 0.1beta. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes such as 'width', 'height', 'src', 'title', 'description', 'game_url', 'main', and 'thumb', which are all directly concatenated into HTML output without any escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "datePublished": "Mar 21, 2026, 6:30:25 AM",
+  "dateUpdated": "Mar 21, 2026, 6:30:25 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6a8cc968-01a5-45b8-bee8-86c858f86514?source=cve\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/trunk/wp-games-embed.php#L41\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/tags/0.1/wp-games-embed.php#L41\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/trunk/wp-games-embed.php#L32\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/tags/0.1/wp-games-embed.php#L32\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/trunk/wp-games-embed.php#L35\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/tags/0.1/wp-games-embed.php#L35\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/trunk/wp-games-embed.php#L14\nhttps://plugins.trac.wordpress.org/browser/wp-games-embed/tags/0.1/wp-games-embed.php#L14\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-3996\n",
+  "aliases": "GHSA-4274-9vhj-c283\nCVE-2026-3996\n",
+  "assigner": "Wordfence",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "ce3be41f-e695-3d63-8a53-a8edb9bcba06",
+      "product": {
+        "name": "WP Games Embed"
+      },
+      "product_version": "* \u22640.1beta"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2f31a148-1322-3e05-9845-f909de2662c6",
+      "vendor": {
+        "name": "sammyb"
+      }
+    }
+  ]
+}

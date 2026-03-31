@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2022-6068",
+  "enisaUuid": "cd027f54-b393-3082-9bb5-e86e74047318",
+  "description": "npm pack ignores root-level .gitignore and .npmignore file exclusion directives when run in a workspace or with a workspace flag (ie. `--workspaces`, `--workspace=<name>`). Anyone who has run `npm pack` or `npm publish` inside a workspace, as of v7.9.0 and v7.13.0 respectively, may be affected and have published files into the npm registry they did not intend to include. Users should upgrade to the latest, patched version of npm v8.11.0, run: npm i -g npm@latest . Node.js versions v16.15.1, v17.19.1, and v18.3.0 include the patched v8.11.0 version of npm.",
+  "datePublished": "Jun 13, 2022, 1:40:27 PM",
+  "dateUpdated": "Apr 23, 2025, 4:23:31 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://github.com/npm/cli/security/advisories/GHSA-hj9c-8jmm-8c52\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-29244\nhttps://github.com/nodejs/node/pull/43210\nhttps://github.com/nodejs/node/releases/tag/v16.15.1\nhttps://github.com/nodejs/node/releases/tag/v17.9.1\nhttps://github.com/nodejs/node/releases/tag/v18.3.0\nhttps://github.com/npm/cli\nhttps://github.com/npm/cli/releases/tag/v8.11.0\nhttps://github.com/npm/cli/tree/latest/workspaces/libnpmpack\nhttps://github.com/npm/cli/tree/latest/workspaces/libnpmpublish\nhttps://github.com/npm/npm-packlist\nhttps://security.netapp.com/advisory/ntap-20220722-0007\nhttps://www.suse.com/security/cve/CVE-2022-29244.html\nhttps://access.redhat.com/errata/RHSA-2022:6595\nhttps://security.netapp.com/advisory/ntap-20220722-0007/\n",
+  "aliases": "CVE-2022-29244\nGHSA-hj9c-8jmm-8c52\n",
+  "assigner": "GitHub_M",
+  "epss": 1.07,
+  "enisaIdProduct": [
+    {
+      "id": "182684f7-f068-388d-8c15-74c19a167681",
+      "product": {
+        "name": "NPM"
+      },
+      "product_version": "7.9.0 <7.9.0*"
+    },
+    {
+      "id": "ddcbfd2e-59d0-3738-b726-26b95b17bee0",
+      "product": {
+        "name": "NPM"
+      },
+      "product_version": "8.11.0 <8.11.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c51b45ef-bd30-308e-b44b-9f028b44459e",
+      "vendor": {
+        "name": "npm"
+      }
+    }
+  ]
+}

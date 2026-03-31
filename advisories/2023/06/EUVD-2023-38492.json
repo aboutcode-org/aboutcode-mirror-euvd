@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-38492",
+  "enisaUuid": "207e34f4-6783-3d6b-a27f-fa8d509fbb12",
+  "description": "When choosing a site-isolated process for a document loaded from a data: URL that was the result of a redirect, Firefox would load that document in the same process as the site that issued the redirect. This bypassed the site-isolation protections against Spectre-like attacks on sites that host an \"open redirect\". Firefox no longer follows HTTP redirects to data: URLs. This vulnerability affects Firefox < 114.",
+  "datePublished": "Jun 19, 2023, 12:30:22 PM",
+  "dateUpdated": "Jan 7, 2024, 12:30:29 PM",
+  "baseScore": -1.0,
+  "references": "https://bugzilla.mozilla.org/show_bug.cgi?id=1811999\nhttps://www.mozilla.org/security/advisories/mfsa2023-20/\nhttps://security.gentoo.org/glsa/202401-10\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-34415\n",
+  "aliases": "CVE-2023-34415\nGHSA-7wmp-qghr-8g7f\n",
+  "assigner": "mozilla",
+  "epss": 0.11,
+  "enisaIdProduct": [
+    {
+      "id": "b5aabf0a-4dd0-3c32-8d43-11bdeb37123f",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "unspecified <114"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e6092ba0-3fb3-3945-8c4c-19a893a813f5",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

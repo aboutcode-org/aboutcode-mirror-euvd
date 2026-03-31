@@ -1,0 +1,28 @@
+{
+  "id": "EUVD-2024-22226",
+  "enisaUuid": "e7a2237e-fa46-3700-ba6f-b79e6451b8c7",
+  "description": "In malidp_mw_connector_reset, new memory is allocated with kzalloc, but \nno check is performed. In order to prevent null pointer dereferencing, \nensure that mw_state is checked before calling \n__drm_atomic_helper_connector_reset.\n\n",
+  "datePublished": "Apr 14, 2024, 3:30:32 PM",
+  "dateUpdated": "Apr 14, 2024, 3:30:32 PM",
+  "baseScore": -1.0,
+  "references": "https://bugzilla.openanolis.cn/show_bug.cgi?id=8750\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-24863\n",
+  "aliases": "GHSA-q837-4wvg-jx7g\nCVE-2024-24863\n",
+  "assigner": "Anolis",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "1a078938-770b-3dc8-9bb8-251a5bdf2548",
+      "product": {
+        "name": "Linux kernel"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a21deecf-5865-3815-95ad-8fbe944c40ca",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

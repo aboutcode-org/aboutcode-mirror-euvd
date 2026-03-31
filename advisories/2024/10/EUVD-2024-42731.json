@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2024-42731",
+  "enisaUuid": "7d437044-5c92-369b-96fc-8e2027d56c5c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: stm32/cryp - call finalize with bh disabled\n\nThe finalize operation in interrupt mode produce a produces a spinlock\nrecursion warning. The reason is the fact that BH must be disabled\nduring this process.",
+  "datePublished": "Oct 9, 2024, 3:32:19 PM",
+  "dateUpdated": "Oct 23, 2024, 6:33:06 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d93a2f86b0a998aa1f0870c85a2a60a0771ef89a\nhttps://git.kernel.org/stable/c/5d734665cd5d93270731e0ff1dd673fec677f447\nhttps://git.kernel.org/stable/c/56ddb9aa3b324c2d9645b5a7343e46010cf3f6ce\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-47658\n",
+  "aliases": "CVE-2024-47658\nGHSA-q97h-2fjm-733c\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "1ffe4def-6586-34dd-a8d5-b4d47d58017e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.50"
+    },
+    {
+      "id": "44f490ec-f40b-3714-89a2-e3a9955f78cc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9e054ec21ef8344345b28603fb272fe999f735db <5d734665cd5d93270731e0ff1dd673fec677f447"
+    },
+    {
+      "id": "4b797764-b601-36ea-a19d-bf2c5fd66a64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9e054ec21ef8344345b28603fb272fe999f735db <d93a2f86b0a998aa1f0870c85a2a60a0771ef89a"
+    },
+    {
+      "id": "5b8530e2-4840-3ae0-9697-59cd3d14f536",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d93a2f86b0a998aa1f0870c85a2a60a0771ef89a"
+    },
+    {
+      "id": "8c7cbf97-b269-325e-99c2-f145044d17ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9ad94f5f-ce55-3856-9c02-9b2d1d363228",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <56ddb9aa3b324c2d9645b5a7343e46010cf3f6ce"
+    },
+    {
+      "id": "9b96decd-f275-300f-ab9e-2d26e1d0e2d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9e054ec21ef8344345b28603fb272fe999f735db <56ddb9aa3b324c2d9645b5a7343e46010cf3f6ce"
+    },
+    {
+      "id": "a72e390e-8897-37cc-9b1b-269c4998efab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "c3f85c5e-994d-3a2b-82fb-90314403c287",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.9"
+    },
+    {
+      "id": "ca2c961f-7fa0-3644-8c99-39971b91915c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.16"
+    },
+    {
+      "id": "d0bbede8-5cb4-304a-8698-d565cb186f79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5d734665cd5d93270731e0ff1dd673fec677f447"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5c5951bc-eef4-3afd-af2e-3b231a8398ab",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-7929",
+  "enisaUuid": "a61602e6-7dc9-3d40-b97d-9e86d4b54d6d",
+  "description": "MajorDoMo (aka Major Domestic Module) allows unauthenticated remote code execution via the admin panel's PHP console feature. An include order bug in modules/panel.class.php causes execution to continue past a redirect() call that lacks an exit statement, allowing unauthenticated requests to reach the ajax handler in inc_panel_ajax.php. The console handler within that file passes user-supplied input from GET parameters (via register_globals) directly to eval() without any authentication check. An attacker can execute arbitrary PHP code by sending a crafted GET request to /admin.php with ajax_panel, op, and command parameters.",
+  "datePublished": "Feb 19, 2026, 12:30:29 AM",
+  "dateUpdated": "Feb 19, 2026, 12:30:29 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/majordomo-revisited/\nhttps://github.com/sergejey/majordomo/pull/1177\nhttps://www.vulncheck.com/advisories/majordomo-unauthenticated-remote-code-execution-via-admin-console-eval\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27174\n",
+  "aliases": "GHSA-8p47-wg5j-hm56\nCVE-2026-27174\n",
+  "assigner": "VulnCheck",
+  "epss": 45.11,
+  "enisaIdProduct": [
+    {
+      "id": "2877c738-4d0b-4aec-adca-24b5d803e7a6",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    },
+    {
+      "id": "6929126d-9d03-36b2-ac6e-8635acf18e81",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "010a1007-13c7-31ef-9958-fc269bc97770",
+      "vendor": {
+        "name": "sergejey"
+      }
+    },
+    {
+      "id": "314ff2a1-3940-4e7c-97b6-85b7811f975a",
+      "vendor": {
+        "name": "sergejey"
+      }
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "EUVD-2026-7675",
+  "enisaUuid": "7a0887c6-8d18-3d3d-807c-8b5ba33254fd",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: add chann_lock to protect ksmbd_chann_list xarray\n\nksmbd_chann_list xarray lacks synchronization, allowing use-after-free in\nmulti-channel sessions (between lookup_chann_list() and ksmbd_chann_del).\n\nAdds rw_semaphore chann_lock to struct ksmbd_session and protects\nall xa_load/xa_store/xa_erase accesses.",
+  "datePublished": "Feb 18, 2026, 6:30:40 PM",
+  "dateUpdated": "Feb 23, 2026, 6:30:18 AM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/e4a8a96a93d08570e0405cfd989a8a07e5b6ff33\nhttps://git.kernel.org/stable/c/36ef605c0395b94b826a8c8d6f2697071173de6e\nhttps://git.kernel.org/stable/c/4f3a06cc57976cafa8c6f716646be6c79a99e485\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23226\n",
+  "aliases": "CVE-2026-23226\nGHSA-5jgq-pv8m-5cx7\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "035831ca-ebb1-3602-8f7d-66f6237d76c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1d9c4172110e645b383ff13eee759728d74f1a5d <4f3a06cc57976cafa8c6f716646be6c79a99e485"
+    },
+    {
+      "id": "0523690b-6245-3166-b943-8dea10cb9efc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19.1"
+    },
+    {
+      "id": "11529533-5c59-3eb1-9c9f-e99cc56700d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b1caecbf34b8c8260d851ec4efde71f3694460b7"
+    },
+    {
+      "id": "13d27a37-d6af-3f54-82a0-29380ce1eac6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.3"
+    },
+    {
+      "id": "15fe024a-2f27-30ce-9923-7daa9d95f3ad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1d9c4172110e645b383ff13eee759728d74f1a5d <4c2ca31608521895dd742a43beca4b4d29762345"
+    },
+    {
+      "id": "1e139646-8544-3da4-9d06-7f1d4f739f11",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1d9c4172110e645b383ff13eee759728d74f1a5d <36ef605c0395b94b826a8c8d6f2697071173de6e"
+    },
+    {
+      "id": "25ff1d7a-237d-3ac3-ba34-403337062b61",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "853c416710b075153c1e1421e099ffbe5dac68ce"
+    },
+    {
+      "id": "2d9787df-5ca6-3aff-9bde-a8b08617c020",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.18.11"
+    },
+    {
+      "id": "53e68bf7-b618-3d97-a22a-a31ed696fc39",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.77"
+    },
+    {
+      "id": "a7185e6f-1ae7-3482-bf18-52995dec4efc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1d9c4172110e645b383ff13eee759728d74f1a5d <e4a8a96a93d08570e0405cfd989a8a07e5b6ff33"
+    },
+    {
+      "id": "b6c26570-de71-3eb3-8224-f2fd9edbc844",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "91bbf9cb2387a0d76322e9a343bc6bc160f66b3f"
+    },
+    {
+      "id": "d404c9f5-bf2a-3311-8e65-378be17e551e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f69338d0-62e4-33f1-bff8-f270efc8d012",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0-rc1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e115fc71-d418-333b-a342-24edec0923e9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

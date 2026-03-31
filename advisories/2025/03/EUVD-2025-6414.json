@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2025-6414",
+  "enisaUuid": "fcdb0990-c3fb-36d4-906b-2de9be793f0d",
+  "description": "ruby-saml provides security assertion markup language (SAML) single sign-on (SSO) for Ruby. An authentication bypass vulnerability was found in ruby-saml prior to versions 1.12.4 and 1.18.0 due to a parser differential. ReXML and Nokogiri parse XML differently, the parsers can generate entirely different document structures from the same XML input. That allows an attacker to be able to execute a Signature Wrapping attack. This issue may lead to authentication bypass. Versions 1.12.4 and 1.18.0 contain a patch for the issue.",
+  "datePublished": "Mar 12, 2025, 8:53:24 PM",
+  "dateUpdated": "Nov 3, 2025, 7:45:01 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/SAML-Toolkits/ruby-saml/security/advisories/GHSA-754f-8gm6-c4r2\nhttps://github.com/omniauth/omniauth-saml/security/advisories/GHSA-hw46-3hmr-x9xv\nhttps://github.com/SAML-Toolkits/ruby-saml/commit/e76c5b36bac40aedbf1ba7ffaaf495be63328cd9\nhttps://github.com/SAML-Toolkits/ruby-saml/commit/e9c1cdbd0f9afa467b585de279db0cbd0fb8ae97\nhttps://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released\nhttps://github.blog/security/sign-in-as-anyone-bypassing-saml-sso-authentication-with-parser-differentials\nhttps://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.12.4\nhttps://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.18.0\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-25292\nhttps://github.com/rubysec/ruby-advisory-db/blob/master/gems/ruby-saml/CVE-2025-25292.yml\nhttps://security.netapp.com/advisory/ntap-20250314-0009\nhttps://portswigger.net/research/saml-roulette-the-hacker-always-wins\nhttps://securitylab.github.com/advisories/GHSL-2024-329_GHSL-2024-330_ruby-saml\nhttps://news.ycombinator.com/item?id=43374519\nhttps://lists.debian.org/debian-lts-announce/2025/04/msg00011.html\n",
+  "aliases": "GHSA-754f-8gm6-c4r2\nCVE-2025-25292\n",
+  "assigner": "GitHub_M",
+  "epss": 4.12,
+  "enisaIdProduct": [
+    {
+      "id": "7a267f19-157b-306f-a609-c31489a34013",
+      "product": {
+        "name": "Ruby-SAML"
+      },
+      "product_version": "< 1.12.4"
+    },
+    {
+      "id": "a6154e4e-38a5-30b9-850d-121d5f06f7bc",
+      "product": {
+        "name": "Ruby-SAML"
+      },
+      "product_version": "1.13.0, < 1.18.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f0c68c73-18b1-37b4-a931-2bfea8e33cbd",
+      "vendor": {
+        "name": "SAML-Toolkits"
+      }
+    }
+  ]
+}

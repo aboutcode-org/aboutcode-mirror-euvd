@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2024-24304",
+  "enisaUuid": "aa3ebc26-caac-3451-bd86-7e555fa89ff1",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix potential out-of-bounds access in 'amdgpu_discovery_reg_base_init()'\n\nThe issue arises when the array 'adev->vcn.vcn_config' is accessed\nbefore checking if the index 'adev->vcn.num_vcn_inst' is within the\nbounds of the array.\n\nThe fix involves moving the bounds check before the array access. This\nensures that 'adev->vcn.num_vcn_inst' is within the bounds of the array\nbefore it is used as an index.\n\nFixes the below:\ndrivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c:1289 amdgpu_discovery_reg_base_init() error: testing array offset 'adev->vcn.num_vcn_inst' after use.",
+  "datePublished": "May 1, 2024, 3:30:35 PM",
+  "dateUpdated": "Dec 23, 2024, 9:30:50 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/8f3e68c6a3fff53c2240762a47a0045d89371775\nhttps://git.kernel.org/stable/c/b33d4af102b9c1f7a83d3f0ad3cab7d2bab8f058\nhttps://git.kernel.org/stable/c/8db10cee51e3e11a6658742465edc21986cf1e8d\nhttps://git.kernel.org/stable/c/cdb637d339572398821204a1142d8d615668f1e9\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27042\n",
+  "aliases": "GHSA-p35v-6xhj-q8qh\nCVE-2024-27042\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "20549fd5-23ab-3c83-b3ed-e557f616652e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.19"
+    },
+    {
+      "id": "21b20518-95ae-38d7-91fd-ddc618c5f4fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.11"
+    },
+    {
+      "id": "54fd7208-562a-32a4-8fcd-672e3ab9efda",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a0ccc717c4ab3ef572f023fdceffb4b6df496a0d <8f3e68c6a3fff53c2240762a47a0045d89371775"
+    },
+    {
+      "id": "6028a973-1b7a-39df-b253-450a2d74a832",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a0ccc717c4ab3ef572f023fdceffb4b6df496a0d <b33d4af102b9c1f7a83d3f0ad3cab7d2bab8f058"
+    },
+    {
+      "id": "61c587ae-0554-336b-ae12-562d66c6b741",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "7ee56318-b07d-3dda-aab6-bf4dd6419e16",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a0ccc717c4ab3ef572f023fdceffb4b6df496a0d <8db10cee51e3e11a6658742465edc21986cf1e8d"
+    },
+    {
+      "id": "a02a3a60-b784-3030-9133-66d448430b82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.2"
+    },
+    {
+      "id": "a6af5c74-3b6e-3ee4-93ed-501a27e5ae3b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "ab2266f0-2ec5-34cf-b670-a3f12c97e5eb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.23"
+    },
+    {
+      "id": "fb4bfc28-db4c-3915-9b63-ecac8e7212e1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a0ccc717c4ab3ef572f023fdceffb4b6df496a0d <cdb637d339572398821204a1142d8d615668f1e9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5e06aa2a-4b9f-366d-a48d-232fed2f56a9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

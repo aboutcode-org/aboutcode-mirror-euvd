@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-40705",
+  "enisaUuid": "60558083-9dfd-3c26-b98e-de3b91577325",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: apple: fix device reference counting\n\nDrivers must call nvme_uninit_ctrl after a successful nvme_init_ctrl.\nSplit the allocation side out to make the error handling boundary easier\nto navigate. The apple driver had been doing this wrong, leaking the\ncontroller device memory on a tagset failure.",
+  "datePublished": "Aug 26, 2024, 12:31:20 PM",
+  "dateUpdated": "Dec 9, 2024, 3:31:33 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/f7d9a18572fcd7130459b7691bd19ee2a2e951ad\nhttps://git.kernel.org/stable/c/d59c4d0eb6adc24c2201f153ccb7fd0a335b0d3d\nhttps://git.kernel.org/stable/c/b9ecbfa45516182cd062fecd286db7907ba84210\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-43913\n",
+  "aliases": "CVE-2024-43913\nGHSA-w46w-6cr6-6pvh\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0d7e69c1-a48e-3647-9712-c5a95a1b139c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.19"
+    },
+    {
+      "id": "0e4f28a7-0969-3c1e-bbc3-3aa21d4a7870",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5bd2927aceba181b84286e00aa2f56e117e699c3 <d59c4d0eb6adc24c2201f153ccb7fd0a335b0d3d"
+    },
+    {
+      "id": "127039af-ab3b-3b3d-b767-652a4e0e7417",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.5"
+    },
+    {
+      "id": "840024ca-bc7d-3ba6-8bb6-62141e647172",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5bd2927aceba181b84286e00aa2f56e117e699c3 <b9ecbfa45516182cd062fecd286db7907ba84210"
+    },
+    {
+      "id": "8917533e-4b9f-3e28-be63-96aa75d6bd56",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "96393db2-e26a-3432-8e74-9c44093bb368",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.64"
+    },
+    {
+      "id": "db43b2f6-f840-39f9-8664-221ed0ab5ceb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5bd2927aceba181b84286e00aa2f56e117e699c3 <f7d9a18572fcd7130459b7691bd19ee2a2e951ad"
+    },
+    {
+      "id": "fa85a7f5-fcf2-344f-a5dd-6ff6c4e57d1d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3dd7d857-0dfa-3405-80f5-8cf6d88f44b4",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

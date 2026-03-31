@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-28549",
+  "enisaUuid": "827db09e-9cc5-337a-904d-d9c49c19bed2",
+  "description": "Command go env is documented as outputting a shell script containing the Go environment. However, go env doesn't sanitize values, so executing its output as a shell script can cause various bad bahaviors, including executing arbitrary commands or inserting new environment variables. This issue is relatively minor because, in general, if an attacker can set arbitrary environment variables on a system, they have better attack vectors than making \"go env\" print them out.",
+  "datePublished": "Jul 2, 2024, 9:32:16 PM",
+  "dateUpdated": "Mar 28, 2025, 3:31:50 PM",
+  "baseScore": -1.0,
+  "references": "https://go.dev/cl/488375\nhttps://go.dev/cl/493535\nhttps://go.dev/issue/58508\nhttps://groups.google.com/g/golang-dev/c/ixHOFpSbajE/m/8EjlbKVWAwAJ\nhttps://pkg.go.dev/vuln/GO-2024-2962\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-24531\nhttps://security.netapp.com/advisory/ntap-20250328-0005\n",
+  "aliases": "GHSA-cwpg-qgc6-jxvq\nCVE-2023-24531\n",
+  "assigner": "Go",
+  "epss": 0.48,
+  "enisaIdProduct": [
+    {
+      "id": "b71ec555-fbd3-3a6b-9664-50688e44711a",
+      "product": {
+        "name": "cmd/go"
+      },
+      "product_version": "0 <1.21.0-0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "813286a8-2e94-3631-bf3c-04b44fb9bdbe",
+      "vendor": {
+        "name": "Go toolchain"
+      }
+    }
+  ]
+}

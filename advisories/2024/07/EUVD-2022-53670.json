@@ -1,0 +1,127 @@
+{
+  "id": "EUVD-2022-53670",
+  "enisaUuid": "0d52ffaf-1819-3e6f-b93b-38c80fba0c95",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: pm8001: Fix use-after-free for aborted TMF sas_task\n\nCurrently a use-after-free may occur if a TMF sas_task is aborted before we\nhandle the IO completion in mpi_ssp_completion(). The abort occurs due to\ntimeout.\n\nWhen the timeout occurs, the SAS_TASK_STATE_ABORTED flag is set and the\nsas_task is freed in pm8001_exec_internal_tmf_task().\n\nHowever, if the I/O completion occurs later, the I/O completion still\nthinks that the sas_task is available. Fix this by clearing the ccb->task\nif the TMF times out - the I/O completion handler does nothing if this\npointer is cleared.",
+  "datePublished": "Jul 16, 2024, 12:30:39 PM",
+  "dateUpdated": "Aug 7, 2024, 9:31:43 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d872e7b5fe38f325f5206b6872746fa02c2b4819\nhttps://git.kernel.org/stable/c/3c334cdfd94945b8edb94022a0371a8665b17366\nhttps://git.kernel.org/stable/c/510b21442c3a2e3ecc071ba3e666b320e7acdd61\nhttps://git.kernel.org/stable/c/61f162aa4381845acbdc7f2be4dfb694d027c018\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48791\n",
+  "aliases": "GHSA-hrwc-pg2q-pgc2\nCVE-2022-48791\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0096bcdb-c0af-3e46-85c2-955315e1ab9b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.14"
+    },
+    {
+      "id": "055ba0a9-096b-3392-9484-b5229a8b80ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.25"
+    },
+    {
+      "id": "0e54f26b-fb7a-3db8-9373-654267721574",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d872e7b5fe38f325f5206b6872746fa02c2b4819"
+    },
+    {
+      "id": "1d62d47d-d03f-39a9-a7eb-4f39b0fa094a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.17"
+    },
+    {
+      "id": "4a6a0869-aba0-3422-976d-7b664968ebfa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d712d3fb484b7fa8d1d57e9ca6f134bb9d8c18b1 <3c334cdfd94945b8edb94022a0371a8665b17366"
+    },
+    {
+      "id": "75befcc3-b944-3c27-9662-21c434f3495a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "82a01b39-416b-3ae2-97e5-623c9d08b557",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.102"
+    },
+    {
+      "id": "8f51706b-cd27-36f0-9a90-df4ddec2fde3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16.11"
+    },
+    {
+      "id": "92f89a3b-2c9d-3448-876c-2174eb0dd9fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d712d3fb484b7fa8d1d57e9ca6f134bb9d8c18b1 <510b21442c3a2e3ecc071ba3e666b320e7acdd61"
+    },
+    {
+      "id": "9346e23a-1940-311b-8df2-8767eb56f32d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <510b21442c3a2e3ecc071ba3e666b320e7acdd61"
+    },
+    {
+      "id": "a397eb15-b5a3-34f2-88b3-3770cfa8b124",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3c334cdfd94945b8edb94022a0371a8665b17366"
+    },
+    {
+      "id": "d1476248-2b13-3a6c-bf33-34e386c7cc61",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d712d3fb484b7fa8d1d57e9ca6f134bb9d8c18b1 <61f162aa4381845acbdc7f2be4dfb694d027c018"
+    },
+    {
+      "id": "d4be4b3a-adc1-3dc4-858c-12499008b04b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "968ee9176a4489ce6d5ee54ff88dadfbff9b95f4 <d872e7b5fe38f325f5206b6872746fa02c2b4819"
+    },
+    {
+      "id": "dffbd354-b255-3c1e-8b66-b24086280d64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "fa3c19ceaa8b4b7c29d710c2c407df57d256a6c5"
+    },
+    {
+      "id": "ecb4cbce-b095-39f7-86a7-37b008fad1b5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <61f162aa4381845acbdc7f2be4dfb694d027c018"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e5bbea02-4f2a-3da7-afcd-ba984d99e6bd",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

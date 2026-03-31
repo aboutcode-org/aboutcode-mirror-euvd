@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2024-35655",
+  "enisaUuid": "a57dfb9f-4733-3127-9809-24731ea0cee6",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: check A-MSDU format more carefully\n\nIf it looks like there's another subframe in the A-MSDU\nbut the header isn't fully there, we can end up reading\ndata out of bounds, only to discard later. Make this a\nbit more careful and check if the subframe header can\neven be present.",
+  "datePublished": "May 19, 2024, 12:30:39 PM",
+  "dateUpdated": "Nov 4, 2025, 12:30:48 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9eb3bc0973d084423a6df21cf2c74692ff05647e\nhttps://git.kernel.org/stable/c/5d7a8585fbb31e88fb2a0f581b70667d3300d1e9\nhttps://git.kernel.org/stable/c/16da1e1dac23be45ef6e23c41b1508c400e6c544\nhttps://git.kernel.org/stable/c/9ad7974856926129f190ffbe3beea78460b3b7cc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35937\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "CVE-2024-35937\nGHSA-45rj-9f26-3gf5\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0203e883-0583-355d-9faa-f09d8d9bedf4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "0c0d5e53-0191-35fe-89e1-650087411893",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5d7a8585fbb31e88fb2a0f581b70667d3300d1e9"
+    },
+    {
+      "id": "2a28fda7-d947-327d-8197-c4b506684659",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6e4c0d0460bd32ca9244dff3ba2d2da27235de11 <5d7a8585fbb31e88fb2a0f581b70667d3300d1e9"
+    },
+    {
+      "id": "2f7156f3-51e3-3658-8837-52a8774cbfe6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9eb3bc0973d084423a6df21cf2c74692ff05647e"
+    },
+    {
+      "id": "484241b3-d84e-332a-8beb-5575be6805e4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.3"
+    },
+    {
+      "id": "77329111-1c9a-30cf-8431-c6d2b9b9858d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9ad7974856926129f190ffbe3beea78460b3b7cc"
+    },
+    {
+      "id": "86c3ebf3-2a0e-3cda-852b-1af7acb583d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6e4c0d0460bd32ca9244dff3ba2d2da27235de11 <9ad7974856926129f190ffbe3beea78460b3b7cc"
+    },
+    {
+      "id": "8716ec7c-f5ce-3195-aa49-d48b639ab945",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <16da1e1dac23be45ef6e23c41b1508c400e6c544"
+    },
+    {
+      "id": "89501442-b0f7-3d4b-8461-3da938d4b0cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.107"
+    },
+    {
+      "id": "9283fc5c-412a-3e74-83df-1c67d1d5cccd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "966d5c2c22edcc0ab3d519af39f91a29329c979a <9eb3bc0973d084423a6df21cf2c74692ff05647e"
+    },
+    {
+      "id": "ae52908a-4c66-3359-8fe1-8f788ad73d9d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.6"
+    },
+    {
+      "id": "d782543b-7152-377d-b9b4-db9b200d90fc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e4b6a5cf-7e5c-309d-956b-6724dd140a17",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6e4c0d0460bd32ca9244dff3ba2d2da27235de11 <16da1e1dac23be45ef6e23c41b1508c400e6c544"
+    },
+    {
+      "id": "e9468a71-b694-3e3b-b721-6aa5c26ae604",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.27"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c1098abf-e1b5-3404-ba49-bd4cad251e0d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

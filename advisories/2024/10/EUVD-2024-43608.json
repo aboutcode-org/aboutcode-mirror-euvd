@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2024-43608",
+  "enisaUuid": "d719ead8-ec53-3a53-b9a5-819fea52132d",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Add null check for head_pipe in dcn32_acquire_idle_pipe_for_head_pipe_in_layer\n\nThis commit addresses a potential null pointer dereference issue in the\n`dcn32_acquire_idle_pipe_for_head_pipe_in_layer` function. The issue\ncould occur when `head_pipe` is null.\n\nThe fix adds a check to ensure `head_pipe` is not null before asserting\nit. If `head_pipe` is null, the function returns NULL to prevent a\npotential null pointer dereference.\n\nReported by smatch:\ndrivers/gpu/drm/amd/amdgpu/../display/dc/resource/dcn32/dcn32_resource.c:2690 dcn32_acquire_idle_pipe_for_head_pipe_in_layer() error: we previously assumed 'head_pipe' could be null (see line 2681)",
+  "datePublished": "Oct 21, 2024, 6:30:57 PM",
+  "dateUpdated": "Oct 24, 2024, 6:30:42 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4f47292f488fa7041284dca1f1244116c18721f1\nhttps://git.kernel.org/stable/c/96d4c2ee18d732a248d053aae8c4a27cb1d68d1c\nhttps://git.kernel.org/stable/c/ac2140449184a26eac99585b7f69814bd3ba8f2d\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49918\n",
+  "aliases": "CVE-2024-49918\nGHSA-pgjc-h8g4-v6j2\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "05581bfa-0a03-35d3-afe3-6bb73c53fe5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <4f47292f488fa7041284dca1f1244116c18721f1"
+    },
+    {
+      "id": "10a49aec-6763-3942-8d45-86f6ac10120d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4f47292f488fa7041284dca1f1244116c18721f1"
+    },
+    {
+      "id": "2c9793b2-fdc2-3e33-b41c-620d3a3a54b3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "3327e204-68b6-3ae1-91a2-bb6d4831c8c3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ac2140449184a26eac99585b7f69814bd3ba8f2d"
+    },
+    {
+      "id": "3c84eacb-39f0-394a-a06a-134e7ac3107f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "52f2ce72-a2f0-31b2-a24c-fe59c2d36914",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.14"
+    },
+    {
+      "id": "893cb41e-506d-3889-b171-39bd5607fa4b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "bfa04ebe-c65d-37e3-95cb-ffc6a7296052",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d0331745-983b-3a6e-a554-7bdc4d430010",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <ac2140449184a26eac99585b7f69814bd3ba8f2d"
+    },
+    {
+      "id": "d8173f0a-e56a-3f76-a933-05cbe697e16b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <96d4c2ee18d732a248d053aae8c4a27cb1d68d1c"
+    },
+    {
+      "id": "eda06b8d-7b36-3e87-8e15-80f5408854b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <96d4c2ee18d732a248d053aae8c4a27cb1d68d1c"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "be6cfaae-dfa8-34c3-9b86-9a159182ad52",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

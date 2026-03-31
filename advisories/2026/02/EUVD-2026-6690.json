@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6690",
+  "enisaUuid": "39fedb30-c400-3621-8695-81279462a350",
+  "description": "Crawl4AI versions prior to 0.8.0 contain a remote code execution vulnerability in the Docker API deployment. The /crawl endpoint accepts a hooks parameter containing Python code that is executed using exec(). The __import__ builtin was included in the allowed builtins, allowing unauthenticated remote attackers to import arbitrary modules and execute system commands. Successful exploitation allows full server compromise, including arbitrary command execution, file read and write access, sensitive data exfiltration, and lateral movement within internal networks.",
+  "datePublished": "Feb 12, 2026, 3:31:20 PM",
+  "dateUpdated": "Feb 12, 2026, 9:01:12 PM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-5882-5rx9-xgxp\nhttps://github.com/unclecode/crawl4ai/blob/main/docs/blog/release-v0.8.0.md\nhttps://www.vulncheck.com/advisories/crawl4ai-docker-api-unauthenticated-remote-code-execution-via-hooks-parameter\n",
+  "aliases": "CVE-2026-26216\n",
+  "assigner": "VulnCheck",
+  "epss": 0.31,
+  "enisaIdProduct": [
+    {
+      "id": "9bf7e20c-45e1-404a-98fc-b5b619836923",
+      "product": {
+        "name": "Crawl4AI"
+      },
+      "product_version": "0 <0.8.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "35c1abf7-5dbc-448c-8f46-8ab3e81224ed",
+      "vendor": {
+        "name": "unclecode"
+      }
+    }
+  ]
+}

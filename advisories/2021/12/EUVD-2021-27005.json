@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-27005",
+  "enisaUuid": "5e1474de-f759-3943-8574-13087750df16",
+  "description": "Vulnerability in dirhistory plugin Description: the widgets that go back and forward in the directory history, triggered by pressing Alt-Left and Alt-Right, use functions that unsafely execute eval on directory names. If you cd into a directory with a carefully-crafted name, then press Alt-Left, the system is subject to command injection. Impacted areas: - Functions pop_past and pop_future in dirhistory plugin.",
+  "datePublished": "Dec 1, 2021, 12:00:42 AM",
+  "dateUpdated": "Aug 10, 2022, 12:00:23 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://github.com/ohmyzsh/ohmyzsh/commit/06fc5fb\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-3725\n",
+  "aliases": "GHSA-3jcx-v57w-c6rq\nCVE-2021-3725\n",
+  "assigner": "@huntrdev",
+  "epss": 1.36,
+  "enisaIdProduct": [
+    {
+      "id": "94db84e8-13b1-37e3-8315-c63c7f474095",
+      "product": {
+        "name": "ohmyzsh/ohmyzsh"
+      },
+      "product_version": "unspecified <06fc5fb"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7adf5daa-f121-31b6-90b6-93c153fa0c9a",
+      "vendor": {
+        "name": "ohmyzsh"
+      }
+    }
+  ]
+}

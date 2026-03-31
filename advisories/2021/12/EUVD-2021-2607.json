@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-2607",
+  "enisaUuid": "fcedca8a-f038-375b-a866-8edb68d767da",
+  "description": "Netty is an asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers & clients. Netty prior to version 4.1.71.Final skips control chars when they are present at the beginning / end of the header name. It should instead fail fast as these are not allowed by the spec and could lead to HTTP request smuggling. Failing to do the validation might cause netty to \"sanitize\" header names before it forward these to another remote system when used as proxy. This remote system can't see the invalid usage anymore, and therefore does not do the validation itself. Users should upgrade to version 4.1.71.Final.",
+  "datePublished": "Dec 9, 2021, 12:00:00 AM",
+  "dateUpdated": "Aug 4, 2024, 4:03:08 AM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+  "references": "https://github.com/netty/netty/security/advisories/GHSA-wx5j-54mm-rqqq\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-43797\nhttps://github.com/netty/netty/pull/11891\nhttps://github.com/netty/netty/commit/07aa6b5938a8b6ed7a6586e066400e2643897323\nhttps://github.com/netty/netty\nhttps://lists.debian.org/debian-lts-announce/2023/01/msg00008.html\nhttps://security.netapp.com/advisory/ntap-20220107-0003\nhttps://www.debian.org/security/2023/dsa-5316\nhttps://www.oracle.com/security-alerts/cpuapr2022.html\nhttps://www.oracle.com/security-alerts/cpujul2022.html\nhttps://www.suse.com/security/cve/CVE-2021-43797.html\nhttps://access.redhat.com/errata/RHSA-2022:0520\nhttps://access.redhat.com/errata/RHSA-2022:1345\nhttps://access.redhat.com/errata/RHSA-2022:2216\nhttps://access.redhat.com/errata/RHSA-2022:2217\nhttps://access.redhat.com/errata/RHSA-2022:2218\nhttps://access.redhat.com/errata/RHSA-2022:4623\nhttps://access.redhat.com/errata/RHSA-2022:4918\nhttps://access.redhat.com/errata/RHSA-2022:4919\nhttps://access.redhat.com/errata/RHSA-2022:4922\nhttps://access.redhat.com/errata/RHSA-2022:5101\nhttps://access.redhat.com/errata/RHSA-2022:5498\nhttps://access.redhat.com/errata/RHSA-2022:5532\nhttps://access.redhat.com/errata/RHSA-2022:5903\nhttps://access.redhat.com/errata/RHSA-2022:6782\nhttps://access.redhat.com/errata/RHSA-2022:6783\nhttps://access.redhat.com/errata/RHSA-2022:6787\nhttps://access.redhat.com/errata/RHSA-2022:7409\nhttps://access.redhat.com/errata/RHSA-2022:7410\nhttps://access.redhat.com/errata/RHSA-2022:7411\nhttps://access.redhat.com/errata/RHSA-2022:7417\nhttps://security.netapp.com/advisory/ntap-20220107-0003/\n",
+  "aliases": "GHSA-wx5j-54mm-rqqq\nCVE-2021-43797\n",
+  "assigner": "GitHub_M",
+  "epss": 0.38,
+  "enisaIdProduct": [
+    {
+      "id": "268f643b-fd07-3f6d-a536-68c9fd9e8c19",
+      "product": {
+        "name": "netty"
+      },
+      "product_version": "\u2264 4.1.7.0.Final"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ddfc0454-c0f9-3876-ac7b-4c47a490e0d3",
+      "vendor": {
+        "name": "netty"
+      }
+    }
+  ]
+}

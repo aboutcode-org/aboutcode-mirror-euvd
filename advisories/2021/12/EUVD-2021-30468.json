@@ -1,0 +1,45 @@
+{
+  "id": "EUVD-2021-30468",
+  "enisaUuid": "414cc380-4ecc-3cd0-a8d3-494211c975d1",
+  "description": "Failure to correctly record the location of live pointers across wasm instance calls resulted in a GC occurring within the call not tracing those live pointers. This could have led to a use-after-free causing a potentially exploitable crash. This vulnerability affects Thunderbird < 91.4.0, Firefox ESR < 91.4.0, and Firefox < 95.",
+  "datePublished": "Dec 9, 2021, 12:00:18 AM",
+  "dateUpdated": "Mar 17, 2022, 12:06:36 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-43539.html\nhttps://www.debian.org/security/2022/dsa-5034\nhttps://www.debian.org/security/2021/dsa-5026\nhttps://access.redhat.com/errata/RHSA-2021:5055\nhttps://access.redhat.com/errata/RHSA-2021:5048\nhttps://access.redhat.com/errata/RHSA-2021:5047\nhttps://access.redhat.com/errata/RHSA-2021:5046\nhttps://access.redhat.com/errata/RHSA-2021:5045\nhttps://access.redhat.com/errata/RHSA-2021:5017\nhttps://access.redhat.com/errata/RHSA-2021:5016\nhttps://access.redhat.com/errata/RHSA-2021:5015\nhttps://access.redhat.com/errata/RHSA-2021:5014\nhttps://access.redhat.com/errata/RHSA-2021:5013\nhttps://ubuntu.com/security/CVE-2021-43539\nhttps://advisories.mageia.org/CVE-2021-43539.html\nhttps://security.archlinux.org/CVE-2021-43539\nhttps://linux.oracle.com/cve/CVE-2021-43539.html\nhttps://www.mozilla.org/security/advisories/mfsa2021-53/\nhttps://www.mozilla.org/security/advisories/mfsa2021-54/\nhttps://www.mozilla.org/security/advisories/mfsa2021-52/\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=1739683\nhttps://lists.debian.org/debian-lts-announce/2021/12/msg00030.html\nhttps://lists.debian.org/debian-lts-announce/2022/01/msg00001.html\nhttps://security.gentoo.org/glsa/202202-03\nhttps://security.gentoo.org/glsa/202208-14\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-43539\n",
+  "aliases": "CVE-2021-43539\nGHSA-cx8r-rrrj-cfxg\n",
+  "assigner": "mozilla",
+  "epss": 0.97,
+  "enisaIdProduct": [
+    {
+      "id": "8d3207ae-b6ef-3826-80c4-1e60751da967",
+      "product": {
+        "name": "Firefox ESR"
+      },
+      "product_version": "unspecified <91.4.0"
+    },
+    {
+      "id": "c5801822-c46a-3c76-a44b-7185841d1d3c",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "unspecified <95"
+    },
+    {
+      "id": "f6b54007-0601-3fdb-b003-f97c8f18e2a5",
+      "product": {
+        "name": "Thunderbird"
+      },
+      "product_version": "unspecified <91.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f0466ae8-13b5-3b78-800e-cecd6ea6200e",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

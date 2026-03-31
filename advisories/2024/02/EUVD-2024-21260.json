@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2024-21260",
+  "enisaUuid": "60d2a52d-b54a-35d4-aaf5-0a69f676197b",
+  "description": "The Apache Xerces C++ XML parser on versions 3.0.0 before 3.2.5 contains a use-after-free error triggered during the scanning of external DTDs.\n\nUsers are recommended to upgrade to version 3.2.5 which fixes the issue, or mitigate the issue by disabling DTD processing. This can be accomplished via the DOM using a standard parser feature, or via SAX using the XERCES_DISABLE_DTD environment variable.\n\nThis issue has been disclosed before as CVE-2018-1311, but unfortunately that advisory incorrectly stated the issue would be fixed in version 3.2.3 or 3.2.4.\n\n",
+  "datePublished": "Feb 29, 2024, 3:33:17 AM",
+  "dateUpdated": "Aug 1, 2024, 3:31:29 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/apache/xerces-c/pull/54\nhttps://lists.apache.org/thread/c497tgn864tsbm8w0bo3f0d81s07zk9r\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-23807\n",
+  "aliases": "GHSA-8582-h585-f568\nCVE-2024-23807\n",
+  "assigner": "apache",
+  "epss": 0.5,
+  "enisaIdProduct": [
+    {
+      "id": "03085a3d-3bce-377c-9250-743e7c2b8c62",
+      "product": {
+        "name": "Apache Xerces C++"
+      }
+    },
+    {
+      "id": "7afca101-a3f1-36c2-812c-7658a4fbd795",
+      "product": {
+        "name": "Apache Xerces C++"
+      },
+      "product_version": "3.0.0 <3.2.5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "861c43d9-79a9-3f61-a512-e3c618fa151f",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

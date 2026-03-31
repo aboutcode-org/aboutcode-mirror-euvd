@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-39529",
+  "enisaUuid": "c350ad7f-84c4-3843-8767-a8e7ad17762f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: Avoid using corrupted block bitmap buffer\n\nWhen the filesystem block bitmap is corrupted, we detect the corruption\nwhile loading the bitmap and fail the allocation with error. However the\nnext allocation from the same bitmap will notice the bitmap buffer is\nalready loaded and tries to allocate from the bitmap with mixed results\n(depending on the exact nature of the bitmap corruption). Fix the\nproblem by using BH_verified bit to indicate whether the bitmap is valid\nor not.",
+  "datePublished": "Aug 17, 2024, 9:09:11 AM",
+  "dateUpdated": "Nov 3, 2025, 10:04:14 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/cae9e59cc41683408b70b9ab569f8654866ba914\nhttps://git.kernel.org/stable/c/2199e157a465aaf98294d3932797ecd7fce942d5\nhttps://git.kernel.org/stable/c/6a43e3c210df6c5f00570f4be49a897677dbcb64\nhttps://git.kernel.org/stable/c/271cab2ca00652bc984e269cf1208699a1e09cdd\nhttps://git.kernel.org/stable/c/57053b3bcf3403b80db6f65aba284d7dfe7326af\nhttps://git.kernel.org/stable/c/8ca170c39eca7cad6e0cfeb24e351d8f8eddcd65\nhttps://git.kernel.org/stable/c/a90d4471146de21745980cba51ce88e7926bcc4f\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42306\nhttps://lists.debian.org/debian-lts-announce/2024/10/msg00003.html\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "GHSA-782r-hcgf-6crv\nCVE-2024-42306\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "10ea174b-8599-3066-9101-0ed94738715e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.282"
+    },
+    {
+      "id": "19b76079-4d51-3490-a950-abfffb108e24",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.3"
+    },
+    {
+      "id": "252b61ae-5abd-3d6e-92fe-0bbf93fbbd54",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "2e4a6db6-588e-39ad-a31e-26e332925d4d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f862a9049c3f6e73a5504a1ac10ffd5bc253ab55"
+    },
+    {
+      "id": "2efffe33-9bed-3b99-9cf9-271f79a033ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.165"
+    },
+    {
+      "id": "458fb681-6c96-3613-970b-ded2c6b152e6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4622cc1b6d86013e01c56b60b092b5e4726c8e52"
+    },
+    {
+      "id": "a4ceaaf9-ce6a-3230-a52c-b65da9c7db86",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "a76778d6-071e-3914-99ab-610cc4856656",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.44"
+    },
+    {
+      "id": "a9a3a9ad-0531-3a49-892c-387b2481e6fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "099bf90d7fc4622da9fd4727f6d318a0f12d10be <6a43e3c210df6c5f00570f4be49a897677dbcb64"
+    },
+    {
+      "id": "aa8c2c53-e9b6-3ed1-a218-989715d087d7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e0d4adf17e7ef03281d7b16555e7c1508c8ed2d <57053b3bcf3403b80db6f65aba284d7dfe7326af"
+    },
+    {
+      "id": "b67a09ef-77a5-3763-a286-050300f84bad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e0d4adf17e7ef03281d7b16555e7c1508c8ed2d <8ca170c39eca7cad6e0cfeb24e351d8f8eddcd65"
+    },
+    {
+      "id": "b7a9db55-3cd9-3fc9-b0eb-2a2eecda27e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.3"
+    },
+    {
+      "id": "c00fa55e-5c16-3fd8-9e9b-4d0365df53c4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4ac54312f623c6d2ca30c36c1ef530c11f5aff64 <2199e157a465aaf98294d3932797ecd7fce942d5"
+    },
+    {
+      "id": "c4e49511-3555-3135-b9e9-17e533713cb8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.103"
+    },
+    {
+      "id": "e2db318f-77f1-3ed9-9db7-81f282945ecc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6ac8f2c8362afd2baa8e7b9c946597589e587d22 <271cab2ca00652bc984e269cf1208699a1e09cdd"
+    },
+    {
+      "id": "e4bb5c62-b829-36ed-8202-f755c1a97216",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.224"
+    },
+    {
+      "id": "f2b62a95-8841-3a6a-b084-279038dbdfb4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1e0d4adf17e7ef03281d7b16555e7c1508c8ed2d <a90d4471146de21745980cba51ce88e7926bcc4f"
+    },
+    {
+      "id": "fef73471-6c21-3841-aff5-3da3de197aeb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7648ea9896b31aff38830d81188f5b7a1773e4a8 <cae9e59cc41683408b70b9ab569f8654866ba914"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b6e7d68c-91df-3481-b504-b57be30e3cbe",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

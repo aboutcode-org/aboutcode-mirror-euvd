@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7920",
+  "enisaUuid": "5e1cb8fc-b600-3ee9-99cf-136565788e91",
+  "description": "Not properly invalidated session vulnerability in Graylog Web Interface, version 2.2.3, due to incorrect management of session invalidation after new logins. The application generates a new 'sessionId' each time a user authenticates, but does not invalidate previously issued session identifiers, which remain valid even after multiple consecutive logins by the same user. As a result, a stolen or leaked 'sessionId' can continue to be used to authenticate valid requests. Exploiting this vulnerability would allow an attacker with access to the web service/API network (port 9000 or HTTP/S endpoint of the server) to reuse an old session token to gain unauthorized access to the application, interact with the API/web, and compromise the integrity of the affected account.",
+  "datePublished": "Feb 18, 2026, 3:31:26 PM",
+  "dateUpdated": "Feb 18, 2026, 9:31:22 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-graylog\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1435\n",
+  "aliases": "GHSA-3crm-x896-j73p\nCVE-2026-1435\n",
+  "assigner": "INCIBE",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "a0ff81a4-e592-44b8-b745-4824f28215ed",
+      "product": {
+        "name": "Graylog Web Interface"
+      },
+      "product_version": "2.2.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8a6ca688-82b2-43cf-b5cf-fb07d5fa79d7",
+      "vendor": {
+        "name": "Graylog"
+      }
+    }
+  ]
+}

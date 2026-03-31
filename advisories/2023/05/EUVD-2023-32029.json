@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2023-32029",
+  "enisaUuid": "3ddd7bb6-c3b8-3710-a74b-e57364160023",
+  "description": "An information disclosure vulnerability exists in curl <v8.1.0 when doing HTTP(S) transfers, libcurl might erroneously use the read callback (`CURLOPT_READFUNCTION`) to ask for data to send, even when the `CURLOPT_POSTFIELDS` option has been set, if the same handle previously wasused to issue a `PUT` request which used that callback. This flaw may surprise the application and cause it to misbehave and either send off the wrong data or use memory after free or similar in the second transfer. The problem exists in the logic for a reused handle when it is (expected to be) changed from a PUT to a POST.",
+  "datePublished": "May 26, 2023, 9:30:23 PM",
+  "dateUpdated": "Feb 13, 2026, 9:31:31 PM",
+  "baseScore": -1.0,
+  "references": "https://hackerone.com/reports/1954658\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/F4I75RDGX5ULSSCBE5BF3P5I5SFO7ULQ/\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/Z2LIWHWKOVH24COGGBCVOWDXXIUPKOMK/\nhttps://security.netapp.com/advisory/ntap-20230609-0009/\nhttps://support.apple.com/kb/HT213843\nhttps://support.apple.com/kb/HT213844\nhttps://support.apple.com/kb/HT213845\nhttp://seclists.org/fulldisclosure/2023/Jul/52\nhttp://seclists.org/fulldisclosure/2023/Jul/48\nhttp://seclists.org/fulldisclosure/2023/Jul/47\nhttps://security.gentoo.org/glsa/202310-12\nhttps://lists.debian.org/debian-lts-announce/2023/12/msg00015.html\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/F4I75RDGX5ULSSCBE5BF3P5I5SFO7ULQ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Z2LIWHWKOVH24COGGBCVOWDXXIUPKOMK/\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-28322\n",
+  "aliases": "GHSA-78jh-p6rf-g59w\nCVE-2023-28322\n",
+  "assigner": "hackerone",
+  "epss": 0.63,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "4c7026b3-d5c7-3b5a-83fc-54a456f3b260",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

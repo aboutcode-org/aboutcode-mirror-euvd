@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2021-26971",
+  "enisaUuid": "a1357739-9865-3c15-9afd-e4538227f423",
+  "description": "A flaw was found in Ansible Galaxy Collections. When collections are built manually, any files in the repository directory that are not explicitly excluded via the ``build_ignore`` list in \"galaxy.yml\" include files in the ``.tar.gz`` file. This contains sensitive info, such as the user's Ansible Galaxy API key and any secrets in ``ansible`` or ``ansible-playbook`` verbose output without the``no_log`` redaction. Currently, there is no way to deprecate a Collection Or delete a Collection Version. Once published, anyone who downloads or installs the collection can view the secrets.",
+  "datePublished": "Apr 19, 2022, 12:00:49 AM",
+  "dateUpdated": "Apr 28, 2022, 12:00:57 AM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2021-3681.html\nhttps://security.archlinux.org/CVE-2021-3681\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1989407\nhttps://github.com/ansible/galaxy/issues/1977\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-3681\n",
+  "aliases": "CVE-2021-3681\nGHSA-wh68-r6p4-7cv3\n",
+  "assigner": "redhat",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "88948a04-dfac-30ea-9b92-7fe85cf36a0d",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

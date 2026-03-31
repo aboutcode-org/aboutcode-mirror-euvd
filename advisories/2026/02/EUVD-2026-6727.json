@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6727",
+  "enisaUuid": "d3b8d549-eec1-3f85-8537-779fd2e19a75",
+  "description": "Crawl4AI versions prior to 0.8.0 contain a local file inclusion vulnerability in the Docker API deployment. The /execute_js, /screenshot, /pdf, and /html endpoints accept file:// URLs, allowing unauthenticated remote attackers to read arbitrary files from the server filesystem. An attacker can access sensitive files such as /etc/passwd, /etc/shadow, application configuration files, and environment variables via /proc/self/environ, potentially exposing credentials, API keys, and internal application structure.",
+  "datePublished": "Feb 12, 2026, 3:33:27 PM",
+  "dateUpdated": "Feb 12, 2026, 3:54:14 PM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
+  "references": "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-vx9w-5cx4-9796\nhttps://github.com/unclecode/crawl4ai/blob/main/docs/blog/release-v0.8.0.md\nhttps://www.vulncheck.com/advisories/crawl4ai-docker-api-local-file-inclusion-via-file-url-handling\n",
+  "aliases": "CVE-2026-26217\n",
+  "assigner": "VulnCheck",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "7f632565-e5f1-4724-884d-cb70ea960890",
+      "product": {
+        "name": "Crawl4AI"
+      },
+      "product_version": "0 <0.8.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "85842367-150e-4f98-88d6-8391c28b73d5",
+      "vendor": {
+        "name": "unclecode"
+      }
+    }
+  ]
+}

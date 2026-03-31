@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6458",
+  "enisaUuid": "8506795c-2b89-3443-ad94-c14077421642",
+  "description": "Kanboard is project management software focused on Kanban methodology. Prior to 1.2.50, a Cross-Site Request Forgery (CSRF) vulnerability exists in the ProjectPermissionController within the Kanboard application. The application fails to strictly enforce the application/json Content-Type for the changeUserRole action. Although the request body is JSON, the server accepts text/plain, allowing an attacker to craft a malicious form using the text/plain attribute. Which allows unauthorized modification of project user roles if an authenticated admin visits a malicious site This vulnerability is fixed in 1.2.50.",
+  "datePublished": "Feb 10, 2026, 4:40:01 PM",
+  "dateUpdated": "Feb 10, 2026, 5:27:35 PM",
+  "baseScore": 5.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N",
+  "references": "https://github.com/kanboard/kanboard/security/advisories/GHSA-582j-h4w4-hwr5\nhttps://github.com/kanboard/kanboard/commit/2c56d92783d4a3094812c2f7cba50f80a372f95e\nhttps://github.com/kanboard/kanboard/releases/tag/v1.2.50\n",
+  "aliases": "CVE-2026-24885\n",
+  "assigner": "GitHub_M",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "c436f2ab-4665-4823-b0e4-755738b76c54",
+      "product": {
+        "name": "kanboard"
+      },
+      "product_version": "< 1.2.50"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e118578d-12c9-4e97-abd6-013938596a8b",
+      "vendor": {
+        "name": "kanboard"
+      }
+    }
+  ]
+}

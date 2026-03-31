@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8054",
+  "enisaUuid": "9fca075b-189b-3aad-abd9-b7fc1e15d367",
+  "description": "The EventPrime plugin for WordPress is vulnerable to unauthorized post modification due to missing authorization checks in all versions up to, and including, 4.2.8.4. This is due to the save_frontend_event_submission function accepting a user-controlled event_id parameter and updating the corresponding event post without enforcing ownership or capability checks. This makes it possible for authenticated (Customer+) attackers to modify posts created by administrators by manipulating the event_id parameter granted they can obtain a valid nonce.",
+  "datePublished": "Feb 18, 2026, 9:31:04 AM",
+  "dateUpdated": "Feb 18, 2026, 9:31:04 AM",
+  "baseScore": 4.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0e2a2769-1309-4aad-8411-4445efea2b66?source=cve\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/trunk/includes/class-ep-ajax.php#L741\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/trunk/includes/class-ep-ajax.php#L798\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/tags/4.2.8.1/includes/class-ep-ajax.php#L798\nhttps://plugins.trac.wordpress.org/browser/eventprime-event-calendar-management/tags/4.2.8.1/includes/class-ep-ajax.php#L741\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3455239%40eventprime-event-calendar-management%2Ftrunk&old=3452796%40eventprime-event-calendar-management%2Ftrunk&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1655\n",
+  "aliases": "GHSA-jh7f-pj8r-h37c\nCVE-2026-1655\n",
+  "assigner": "Wordfence",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "ba0432e4-4a8d-448d-8a56-9fbf45e1ad07",
+      "product": {
+        "name": "EventPrime \u2013 Events Calendar, Bookings and Tickets"
+      },
+      "product_version": "* \u22644.2.8.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "31a82cc5-875e-4e12-8bec-f75581ae9cf6",
+      "vendor": {
+        "name": "Metagauss"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "EUVD-2024-45031",
+  "enisaUuid": "90171f84-1119-3b13-9b54-5b6d70218074",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrcu/nocb: Fix rcuog wake-up from offline softirq\n\nAfter a CPU has set itself offline and before it eventually calls\nrcutree_report_cpu_dead(), there are still opportunities for callbacks\nto be enqueued, for example from a softirq. When that happens on NOCB,\nthe rcuog wake-up is deferred through an IPI to an online CPU in order\nnot to call into the scheduler and risk arming the RT-bandwidth after\nhrtimers have been migrated out and disabled.\n\nBut performing a synchronized IPI from a softirq is buggy as reported in\nthe following scenario:\n\n        WARNING: CPU: 1 PID: 26 at kernel/smp.c:633 smp_call_function_single\n        Modules linked in: rcutorture torture\n        CPU: 1 UID: 0 PID: 26 Comm: migration/1 Not tainted 6.11.0-rc1-00012-g9139f93209d1 #1\n        Stopper: multi_cpu_stop+0x0/0x320 <- __stop_cpus+0xd0/0x120\n        RIP: 0010:smp_call_function_single\n        <IRQ>\n        swake_up_one_online\n        __call_rcu_nocb_wake\n        __call_rcu_common\n        ? rcu_torture_one_read\n        call_timer_fn\n        __run_timers\n        run_timer_softirq\n        handle_softirqs\n        irq_exit_rcu\n        ? tick_handle_periodic\n        sysvec_apic_timer_interrupt\n        </IRQ>\n\nFix this with forcing deferred rcuog wake up through the NOCB timer when\nthe CPU is offline. The actual wake up will happen from\nrcutree_report_cpu_dead().",
+  "datePublished": "Oct 21, 2024, 9:30:53 PM",
+  "dateUpdated": "Oct 25, 2024, 6:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/84a5feebba10354c683983f5f1372a144225e4c2\nhttps://git.kernel.org/stable/c/e66b1e01f2eb3209d08122572f41f7838b79540d\nhttps://git.kernel.org/stable/c/f7345ccc62a4b880cf76458db5f320725f28e400\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-50032\n",
+  "aliases": "CVE-2024-50032\nGHSA-5m9v-h8pg-4xv6\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "02693f2a-a06e-3e2a-ae32-43d0e44b0be0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9139f93209d1ffd7f489ab19dee01b7c3a1a43d2 <f7345ccc62a4b880cf76458db5f320725f28e400"
+    },
+    {
+      "id": "49cbe61c-edb2-3d47-96e2-f8823bd52480",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.6.54 <6.6.57"
+    },
+    {
+      "id": "94e23779-45dc-3fd6-9c35-cd98af06cd6c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9b52ee18f6d2f0e845b0dd5ba35edc02ba318827 <84a5feebba10354c683983f5f1372a144225e4c2"
+    },
+    {
+      "id": "a4e9369a-40d2-3306-8205-d034f6f4c5a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "00a611229bfad075660181c53e054ff544d3ac34 <e66b1e01f2eb3209d08122572f41f7838b79540d"
+    },
+    {
+      "id": "ce670734-9adf-3910-8694-92bee91c68b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.11.2 <6.11.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c1415464-aeab-3e6f-b642-cd956c0c32a7",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

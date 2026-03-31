@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2007-2719",
+  "enisaUuid": "a4688a54-b4ae-30e7-9ea9-0ccb3c6e490f",
+  "description": "The mcrypt_create_iv function in ext/mcrypt/mcrypt.c in PHP before 4.4.7, 5.2.1, and possibly 5.0.x and other PHP 5 versions, calls php_rand_r with an uninitialized seed variable and therefore always generates the same initialization vector (IV), which might allow context-dependent attackers to decrypt certain data more easily because of the guessable encryption keys.",
+  "datePublished": "May 1, 2022, 6:06:33 PM",
+  "dateUpdated": "May 1, 2022, 6:06:33 PM",
+  "baseScore": 2.6,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:N/AC:H/Au:N/C:P/I:N/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2007-2727.html\nhttp://www.securityfocus.com/bid/23984\nhttp://www.fortheloot.com/public/mcrypt.patch\nhttp://cvs.php.net/viewvc.cgi/php-src/ext/mcrypt/mcrypt.c?r1=1.91.2.3.2.9&r2=1.91.2.3.2.10\nhttp://blog.php-security.org/archives/80-Watching-the-PHP-CVS.html\nhttp://www.php.net/ChangeLog-5.php\nhttp://bugs.php.net/bug.php?id=40999\nhttp://www.mandriva.com/security/advisories?name=MDKSA-2007:187\nhttp://secunia.com/advisories/26895\nhttp://www.novell.com/linux/security/advisories/2007_15_sr.html\nhttp://osvdb.org/36087\nhttps://nvd.nist.gov/vuln/detail/CVE-2007-2727\n",
+  "aliases": "CVE-2007-2727\nGHSA-4j4f-jw3x-9gm3\n",
+  "assigner": "mitre",
+  "epss": 0.47,
+  "enisaIdProduct": [
+    {
+      "id": "730f6351-f620-35a7-b04c-7cbaa69d08b5",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "46d37d1d-8794-3fa6-b90d-f612fdc16870",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6177",
+  "enisaUuid": "869198e0-71d7-3780-af27-52629be4c2cb",
+  "description": "A specially-crafted file can cause libjxl's decoder to write pixel data to uninitialized unallocated memory. Soon after that data from another uninitialized unallocated region is copied to pixel data.\n\nThis can be done by requesting color transformation of grayscale images to another grayscale color space. Buffers allocated for 1-float-per-pixel are used as if they are allocated for 3-float-per-pixel. That happens only if LCMS2 is used as CMS engine. There is another CMS engine available (selected by build flags).",
+  "datePublished": "Feb 11, 2026, 6:31:28 PM",
+  "dateUpdated": "Feb 11, 2026, 6:31:28 PM",
+  "baseScore": 8.7,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/libjxl/libjxl/issues/4549\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1837\n",
+  "aliases": "CVE-2026-1837\nGHSA-76gx-97cq-65f5\n",
+  "assigner": "Google",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "b0f6374e-fa09-4e85-bb26-81f969988f0f",
+      "product": {
+        "name": "libjxl"
+      },
+      "product_version": "0.9 \u22640.11.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7b075e93-a0b8-4eb2-adc7-0d182caf4a0e",
+      "vendor": {
+        "name": "Google"
+      }
+    }
+  ]
+}

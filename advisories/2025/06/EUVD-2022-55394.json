@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2022-55394",
+  "enisaUuid": "aaae3938-64e4-39a0-97a4-9c937115a2a5",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nandroid: binder: stop saving a pointer to the VMA\n\nDo not record a pointer to a VMA outside of the mmap_lock for later use. \nThis is unsafe and there are a number of failure paths *after* the\nrecorded VMA pointer may be freed during setup.  There is no callback to\nthe driver to clear the saved pointer from generic mm code.  Furthermore,\nthe VMA pointer may become stale if any number of VMA operations end up\nfreeing the VMA so saving it was fragile to being with.\n\nInstead, change the binder_alloc struct to record the start address of the\nVMA and use vma_lookup() to get the vma when needed.  Add lockdep\nmmap_lock checks on updates to the vma pointer to ensure the lock is held\nand depend on that lock for synchronization of readers and writers - which\nwas already the case anyways, so the smp_wmb()/smp_rmb() was not\nnecessary.\n\n[akpm@linux-foundation.org: fix drivers/android/binder_alloc_selftest.c]",
+  "datePublished": "Jun 18, 2025, 12:30:49 PM",
+  "dateUpdated": "Jun 18, 2025, 12:30:49 PM",
+  "baseScore": 0.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2022-50128\nhttps://git.kernel.org/stable/c/1ec3f76a436d750fd5023caec5da0494fc2870d2\nhttps://git.kernel.org/stable/c/622ef885a89ad04cfb76ee478fb44f051125d1f1\nhttps://git.kernel.org/stable/c/925e6b6f82c9c80ab3c17acbde8d16f349da7d26\nhttps://git.kernel.org/stable/c/a43cfc87caaf46710c8027a8c23b8a55f1078f19\n",
+  "aliases": "GHSA-v433-67fw-75jv\nCVE-2022-50128\n",
+  "assigner": "Linux",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

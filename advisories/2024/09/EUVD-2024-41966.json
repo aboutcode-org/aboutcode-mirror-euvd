@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-41966",
+  "enisaUuid": "a1ae6fc8-cdab-3351-add7-94709304a1e1",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: reset mmio mappings with devm\n\nSet our various mmio mappings to NULL. This should make it easier to\ncatch something rogue trying to mess with mmio after device removal. For\nexample, we might unmap everything and then start hitting some mmio\naddress which has already been unmamped by us and then remapped by\nsomething else, causing all kinds of carnage.",
+  "datePublished": "Sep 13, 2024, 9:30:32 AM",
+  "dateUpdated": "Sep 19, 2024, 3:30:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b1c9fbed3884d3883021d699c7cdf5253a65543a\nhttps://git.kernel.org/stable/c/c7117419784f612d59ee565145f722e8b5541fe6\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46705\n",
+  "aliases": "CVE-2024-46705\nGHSA-qfxc-fjvg-2qgm\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "7e497a84-e50b-3d0e-a20d-9753aa32c623",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dd08ebf6c3525a7ea2186e636df064ea47281987 <c7117419784f612d59ee565145f722e8b5541fe6"
+    },
+    {
+      "id": "9164229b-252e-3343-a85e-e5da55e030a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.7"
+    },
+    {
+      "id": "97b72e00-0900-3868-8af8-6c07d9505388",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dd08ebf6c3525a7ea2186e636df064ea47281987 <b1c9fbed3884d3883021d699c7cdf5253a65543a"
+    },
+    {
+      "id": "d481e8f2-8ca2-303f-845f-d983c39f87b5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d94e8223-9f31-31dc-8b31-4a20b8897168",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8"
+    },
+    {
+      "id": "e08d173b-f0fa-38ee-b4ec-ff3b31e268d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d18f919c-0eb7-3764-b743-d0dc295906a9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

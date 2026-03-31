@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2023-59486",
+  "enisaUuid": "aa79dfc5-acff-31d6-b49c-208466cc89a2",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix htt mlo-offset event locking\n\nThe ath12k active pdevs are protected by RCU but the htt mlo-offset\nevent handling code calling ath12k_mac_get_ar_by_pdev_id() was not\nmarked as a read-side critical section.\n\nMark the code in question as an RCU read-side critical section to avoid\nany potential use-after-free issues.\n\nCompile tested only.",
+  "datePublished": "May 21, 2024, 6:31:20 PM",
+  "dateUpdated": "Jun 3, 2024, 6:55:25 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d908ca431e20b0e4bfc5d911d1744910ed779bdb\nhttps://git.kernel.org/stable/c/afd3425bd69610f318403084fe491e24a1357fb9\nhttps://git.kernel.org/stable/c/6afc57ea315e0f660b1f870a681737bb7b71faef\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52769\n",
+  "aliases": "CVE-2023-52769\nGHSA-ccfj-2gvm-cf3r\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0a0fbfbf-ba07-3bf8-95d6-ad782bc3466e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d889913205cf7ebda905b1e62c5867ed4e39f6c2 <afd3425bd69610f318403084fe491e24a1357fb9"
+    },
+    {
+      "id": "18b64151-fa83-3b64-a582-b23154a337d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.3"
+    },
+    {
+      "id": "3e0858a4-629d-3a21-9c68-40947670a718",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.3"
+    },
+    {
+      "id": "684a7c8d-d2fa-30b0-b4ae-d63b821963d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7"
+    },
+    {
+      "id": "69f07fe1-bed9-3027-93e6-fd238d142cb4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.13"
+    },
+    {
+      "id": "725f4e95-bb36-32b8-8de4-e12ffc9fb55b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d889913205cf7ebda905b1e62c5867ed4e39f6c2 <6afc57ea315e0f660b1f870a681737bb7b71faef"
+    },
+    {
+      "id": "7e5a4020-7bb0-3053-b956-69b13f979343",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "7f2e6069-484d-3f7a-9d7e-7f7583702c83",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d889913205cf7ebda905b1e62c5867ed4e39f6c2 <d908ca431e20b0e4bfc5d911d1744910ed779bdb"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d7c5028d-45bd-35ac-a0bd-1daeb4687469",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

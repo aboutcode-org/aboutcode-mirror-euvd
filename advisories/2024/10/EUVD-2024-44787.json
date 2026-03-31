@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2024-44787",
+  "enisaUuid": "e95b85aa-bb05-391a-8bd8-c42401788eab",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: uvc: Fix ERR_PTR dereference in uvc_v4l2.c\n\nFix potential dereferencing of ERR_PTR() in find_format_by_pix()\nand uvc_v4l2_enum_format().\n\nFix the following smatch errors:\n\ndrivers/usb/gadget/function/uvc_v4l2.c:124 find_format_by_pix()\nerror: 'fmtdesc' dereferencing possible ERR_PTR()\n\ndrivers/usb/gadget/function/uvc_v4l2.c:392 uvc_v4l2_enum_format()\nerror: 'fmtdesc' dereferencing possible ERR_PTR()\n\nAlso, fix similar issue in uvc_v4l2_try_format() for potential\ndereferencing of ERR_PTR().",
+  "datePublished": "Oct 21, 2024, 7:39:47 PM",
+  "dateUpdated": "Jan 5, 2026, 10:54:49 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/cedeb36c3ff4acd0f3d09918dfd8ed1df05efdd6\nhttps://git.kernel.org/stable/c/a7bb96b18864225a694e3887ac2733159489e4b0\nhttps://git.kernel.org/stable/c/03fa71e97e9bb116993ec1d51b8a6fe776db0984\nhttps://git.kernel.org/stable/c/72a68d2bede3284b95ee93a5ab3a81758bba95b0\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-50056\nhttps://lists.debian.org/debian-lts-announce/2025/05/msg00045.html\n",
+  "aliases": "CVE-2024-50056\nGHSA-x464-67pg-rxcc\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "12de5e8a-cfed-3067-a373-91ed02c668f3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a7bb96b18864225a694e3887ac2733159489e4b0"
+    },
+    {
+      "id": "25fba08f-e849-31d7-b439-7fcca2e14ace",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cedeb36c3ff4acd0f3d09918dfd8ed1df05efdd6"
+    },
+    {
+      "id": "3a9fcc5c-f2d8-375e-8b67-db9513517725",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "5241bf5f-ccd3-3c25-bf3c-69a43bea9d10",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <03fa71e97e9bb116993ec1d51b8a6fe776db0984"
+    },
+    {
+      "id": "5984c2a4-2a94-3166-8853-f6beef84426e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "588b9e85609bcb2f84a2be83591480aa943943b6 <03fa71e97e9bb116993ec1d51b8a6fe776db0984"
+    },
+    {
+      "id": "766f95b9-1a71-32ce-b729-974560c30c7a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.86"
+    },
+    {
+      "id": "cdfbf8b5-c984-397d-b897-920525f9e06f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.133"
+    },
+    {
+      "id": "cfc49aa8-d5b5-3b9a-bb15-a7f1c36ac12a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "588b9e85609bcb2f84a2be83591480aa943943b6 <a7bb96b18864225a694e3887ac2733159489e4b0"
+    },
+    {
+      "id": "d1057acd-13a8-39c8-9e4a-482c1436f0d9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <72a68d2bede3284b95ee93a5ab3a81758bba95b0"
+    },
+    {
+      "id": "d77c51a3-a0ee-3f0f-883b-86c25181af6b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.4"
+    },
+    {
+      "id": "e744765d-2f1e-3239-97be-0d11762a6b3a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "588b9e85609bcb2f84a2be83591480aa943943b6 <72a68d2bede3284b95ee93a5ab3a81758bba95b0"
+    },
+    {
+      "id": "f3a8dbaf-0ff7-3a70-8cd8-2ace2c332f09",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "588b9e85609bcb2f84a2be83591480aa943943b6 <cedeb36c3ff4acd0f3d09918dfd8ed1df05efdd6"
+    },
+    {
+      "id": "f44ca336-f76d-3e7e-9d6f-dfdb4f4addb5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f597538a-731e-37aa-a1ad-cb6c18920fed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "479edd41-fcec-36a2-938c-f06a75b31a6c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

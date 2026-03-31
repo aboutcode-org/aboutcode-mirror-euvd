@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6878",
+  "enisaUuid": "e17beb3d-1fbd-3048-82cb-3b07771f2cbc",
+  "description": "The WCFM Marketplace \u2013 Multivendor Marketplace for WooCommerce plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.7.0. This is due to the plugin not implementing authorization checks in the `wcfm-refund-requests-form` AJAX controller. This makes it possible for unauthenticated attackers to create arbitrary refund requests for any order ID and item ID, potentially leading to financial loss if automatic refund approval is enabled in the plugin settings.",
+  "datePublished": "Feb 10, 2026, 9:30:27 AM",
+  "dateUpdated": "Feb 10, 2026, 9:30:27 AM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d39ec46d-58c4-40e4-b94a-e7a9fc99291a?source=cve\nhttps://plugins.trac.wordpress.org/browser/wc-multivendor-marketplace/trunk/core/class-wcfmmp-refund.php#L235\nhttps://plugins.trac.wordpress.org/browser/wc-multivendor-marketplace/tags/3.7.0/core/class-wcfmmp-refund.php#L235\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3455829%40wc-multivendor-marketplace%2Ftrunk&old=3424081%40wc-multivendor-marketplace%2Ftrunk&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1722\n",
+  "aliases": "CVE-2026-1722\nGHSA-f8j5-3pw5-6v7x\n",
+  "assigner": "Wordfence",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "610c2953-fce5-43fa-8054-ff953eb9e336",
+      "product": {
+        "name": "WCFM Marketplace \u2013 Multivendor Marketplace for WooCommerce"
+      },
+      "product_version": "* \u22643.7.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2b63f2a4-221d-4ba5-8da5-19aa4449077f",
+      "vendor": {
+        "name": "wclovers"
+      }
+    }
+  ]
+}

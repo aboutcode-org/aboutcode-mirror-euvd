@@ -1,0 +1,94 @@
+{
+  "id": "EUVD-2025-206344",
+  "enisaUuid": "740e248f-4a25-3b15-949e-d4a9fa77a87c",
+  "description": "A flaw was found in the GnuTLS library, specifically in the gnutls_pkcs11_token_init() function that handles PKCS#11 token initialization. When a token label longer than expected is processed, the function writes past the end of a fixed-size stack buffer. This programming error can cause the application using GnuTLS to crash or, in certain conditions, be exploited for code execution. As a result, systems or applications relying on GnuTLS may be vulnerable to a denial of service or local privilege escalation attacks.",
+  "datePublished": "Jan 26, 2026, 7:58:32 PM",
+  "dateUpdated": "Jan 26, 2026, 8:12:19 PM",
+  "baseScore": 4.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://access.redhat.com/security/cve/CVE-2025-9820\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2392528\nhttps://gitlab.com/gnutls/gnutls/-/commit/1d56f96f6ab5034d677136b9d50b5a75dff0faf5\nhttps://gitlab.com/gnutls/gnutls/-/issues/1732\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2025-11-18\n",
+  "aliases": "CVE-2025-9820\n",
+  "assigner": "redhat",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "07a71380-06cb-3c84-9a85-02c7c34dbb3e",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8"
+      },
+      "product_version": "patch: 0:3.6.16-8.el8_10.5"
+    },
+    {
+      "id": "0d0c21b8-a939-3ec4-9017-8d7c5024e7a7",
+      "product": {
+        "name": "Red Hat Insights proxy 1.5"
+      },
+      "product_version": "patch: sha256:86431fdb1ba7fa0cbc8e82cc5fe518b7c0946b8847991fc95604b1d1cfd45e06"
+    },
+    {
+      "id": "4085350c-528b-3762-91b5-62693aaee494",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:2c50c87906a1abebf427a70f401c409f1258cb55d2096f517db870ec991cfd7f"
+    },
+    {
+      "id": "4e99831c-b99a-31dd-94a5-225d9200bc8a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9"
+      },
+      "product_version": "patch: 0:3.8.3-10.el9_7"
+    },
+    {
+      "id": "68773b51-9880-3bba-ad9b-f084cff3ecca",
+      "product": {
+        "name": "Red Hat Insights proxy 1.5"
+      },
+      "product_version": "patch: sha256:325c34e2506d715975171557d40afb449c79cf6e0c41b35760977d5cafb827b8"
+    },
+    {
+      "id": "8b0d4285-bcb2-326a-be95-6277fa0a29c0",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:5f1fbf66fb349a7baf066a1216d39989c3b89f18ec5108b96d9643baf4856778"
+    },
+    {
+      "id": "8c15a79b-f4f8-3167-b7f4-2091059609c6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10"
+      },
+      "product_version": "patch: 0:3.8.10-3.el10_1"
+    },
+    {
+      "id": "d5009b9e-45c5-3f00-9ec7-618f71e8541b",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:d98fd3fe5f5f9acd0efae7db19b61b864be1eb2fbe2586a1b6be2429fa2cc7a3"
+    },
+    {
+      "id": "efbf9035-ec58-32b8-9e1f-1f7d001dfaca",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:200c27e9b396276bd505c6b41127ac5eb1d94d620172cb818ae733f2a21ac524"
+    },
+    {
+      "id": "f1f284e9-82b2-339d-bb07-d70e15b45186",
+      "product": {
+        "name": "Red Hat Ceph Storage 8"
+      },
+      "product_version": "patch: sha256:a0f0f9770911d6a0fc522f304942765059643193e95c9f6e505462f98a979db1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "30e922b6-a757-30ab-9e7f-0df51ee6282d",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-28572",
+  "enisaUuid": "6bfbd97f-9c05-3681-ae13-9147f2203dc6",
+  "description": "** UNSUPPORTED WHEN ASSIGNED ** ARCHIBUS Web Central 21.3.3.815 (a version from 2014) does not properly validate requests for access to data and functionality in these affected endpoints: /archibus/schema/ab-edit-users.axvw, /archibus/schema/ab-data-dictionary-table.axvw, /archibus/schema/ab-schema-add-field.axvw, /archibus/schema/ab-core/views/process-navigator/ab-my-user-profile.axvw. By not verifying the permissions for access to resources, it allows a potential attacker to view pages that are not allowed. Specifically, it was found that any authenticated user can reach the administrative console for user management by directly requesting access to the page via URL. This allows a malicious user to modify all users' profiles, to elevate any privileges to administrative ones, or to create or delete any type of user. It is also possible to modify the emails of other users, through a misconfiguration of the username parameter, on the user profile page. This is fixed in all recent versions, such as version 26. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
+  "datePublished": "May 24, 2022, 7:16:32 PM",
+  "dateUpdated": "Jul 13, 2022, 12:01:41 AM",
+  "baseScore": -1.0,
+  "references": "https://www.gruppotim.it/redteam\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-41554\n",
+  "aliases": "CVE-2021-41554\nGHSA-4fg8-hr8g-58rr\n",
+  "assigner": "mitre",
+  "epss": 0.39,
+  "enisaIdProduct": [
+    {
+      "id": "841119b0-defa-3878-af1e-efda9d102eb4",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e16a7793-8327-3faa-8e90-c57cce2b0b1e",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

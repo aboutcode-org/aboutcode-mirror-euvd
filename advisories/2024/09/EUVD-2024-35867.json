@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-35867",
+  "enisaUuid": "aade6216-9605-3f72-aa87-289288fec26f",
+  "description": "The CMP CLI client in KeyFactor EJBCA before 8.3.1 has only 6 octets of salt, and is thus not compliant with the security requirements of RFC 4211, and might make man-in-the-middle attacks easier. CMP includes password-based MAC as one of the options for message integrity and authentication (the other option is certificate-based). RFC 4211 section 4.4 requires that password-based MAC parameters use a salt with a random value of at least 8 octets. This helps to inhibit dictionary attacks. Because the standalone CMP client originally was developed as test code, the salt was instead hardcoded and only 6 octets long.",
+  "datePublished": "Sep 12, 2024, 9:32:02 PM",
+  "dateUpdated": "Sep 18, 2024, 9:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://datatracker.ietf.org/doc/html/rfc4211#section-4.4\nhttps://support.keyfactor.com/hc/en-us/articles/26965687021595-EJBCA-Security-Advisory-EJBCA-standalone-CMP-CLI-client\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-36066\n",
+  "aliases": "CVE-2024-36066\nGHSA-xmrg-69jq-mfv5\n",
+  "assigner": "mitre",
+  "epss": 0.4,
+  "enisaIdProduct": [
+    {
+      "id": "41e28f72-1157-30f8-87fd-d3a57ade149a",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0b144c76-bfa9-3f35-8b10-b4254433ec3d",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

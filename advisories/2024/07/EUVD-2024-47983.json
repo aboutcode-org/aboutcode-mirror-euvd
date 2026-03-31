@@ -1,0 +1,73 @@
+{
+  "id": "EUVD-2024-47983",
+  "enisaUuid": "8fd3a2fa-465c-3eb0-9c1e-ea4e6144d7de",
+  "description": "A signal handler race condition vulnerability was found in OpenSSH's server (sshd), where a client does not authenticate within LoginGraceTime seconds (120 by default, 600 in old OpenSSH versions), then sshd's SIGALRM handler is called asynchronously. However, this signal handler calls various functions that are not async-signal-safe, for example, syslog(). This issue leaves it vulnerable to a signal handler race condition on the cleanup_exit() function, which introduces the same vulnerability as CVE-2024-6387 in the unprivileged child of the SSHD server.",
+  "datePublished": "Jul 8, 2024, 6:31:18 PM",
+  "dateUpdated": "Aug 22, 2024, 3:31:16 PM",
+  "baseScore": 7.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H",
+  "references": "https://access.redhat.com/errata/RHSA-2024:4457\nhttps://access.redhat.com/errata/RHSA-2024:4613\nhttps://access.redhat.com/errata/RHSA-2024:4716\nhttps://access.redhat.com/errata/RHSA-2024:4910\nhttps://access.redhat.com/errata/RHSA-2024:4955\nhttps://access.redhat.com/errata/RHSA-2024:4960\nhttps://access.redhat.com/errata/RHSA-2024:5444\nhttps://access.redhat.com/security/cve/CVE-2024-6409\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2295085\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-6409\nhttps://github.com/openela-main/openssh/commit/c00da7741d42029e49047dd89e266d91dcfbffa0\nhttps://www.suse.com/security/cve/CVE-2024-6409.html\nhttps://ubuntu.com/security/CVE-2024-6409\nhttps://sig-security.rocky.page/issues/CVE-2024-6409\nhttps://security.netapp.com/advisory/ntap-20240712-0003\nhttps://security-tracker.debian.org/tracker/CVE-2024-6409\nhttps://explore.alas.aws.amazon.com/CVE-2024-6409.html\nhttps://bugzilla.suse.com/show_bug.cgi?id=1227217\nhttps://almalinux.org/blog/2024-07-09-cve-2024-6409\nhttp://www.openwall.com/lists/oss-security/2024/07/08/2\nhttp://www.openwall.com/lists/oss-security/2024/07/09/2\nhttp://www.openwall.com/lists/oss-security/2024/07/09/5\nhttp://www.openwall.com/lists/oss-security/2024/07/10/1\nhttp://www.openwall.com/lists/oss-security/2024/07/10/2\n",
+  "aliases": "GHSA-79hg-h6r6-64mm\nCVE-2024-6409\n",
+  "assigner": "redhat",
+  "epss": 76.4,
+  "enisaIdProduct": [
+    {
+      "id": "01dace9c-3a7e-3200-b208-4d6d32e68735",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Extended Update Support"
+      },
+      "product_version": "patch: 0:8.7p1-30.el9_2.7"
+    },
+    {
+      "id": "031dafe2-c441-319d-bff1-4c06e128de3c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.15"
+      },
+      "product_version": "patch: 415.92.202407301159-0"
+    },
+    {
+      "id": "27964146-3a1f-3148-9b25-fa24f1884510",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9"
+      },
+      "product_version": "patch: 0:8.7p1-38.el9_4.4"
+    },
+    {
+      "id": "30aaf989-9089-3675-a33d-421bf8bce7a3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.13"
+      },
+      "product_version": "patch: 413.92.202408122222-0"
+    },
+    {
+      "id": "3e27e47b-4dc8-39a9-9371-9dac175a6b94",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 0:8.7p1-12.el9_0.3"
+    },
+    {
+      "id": "5ef0155e-7d31-37a1-b316-4e84bb601d64",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.14"
+      },
+      "product_version": "patch: 414.92.202407300859-0"
+    },
+    {
+      "id": "69033481-1ca3-33fa-bb77-36ffb35eede1",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.16"
+      },
+      "product_version": "patch: 416.94.202407171205-0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "31215ec6-b939-3ff8-aa5b-0537b0694796",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}

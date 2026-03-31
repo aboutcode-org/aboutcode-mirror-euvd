@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2024-38777",
+  "enisaUuid": "ce5ebabe-124e-338b-aba7-c8fed4750f2e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nssb: Fix potential NULL pointer dereference in ssb_device_uevent()\n\nThe ssb_device_uevent() function first attempts to convert the 'dev' pointer\nto 'struct ssb_device *'. However, it mistakenly dereferences 'dev' before\nperforming the NULL check, potentially leading to a NULL pointer\ndereference if 'dev' is NULL.\n\nTo fix this issue, move the NULL check before dereferencing the 'dev' pointer,\nensuring that the pointer is valid before attempting to use it.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "datePublished": "Jul 12, 2024, 3:31:29 PM",
+  "dateUpdated": "Sep 9, 2024, 6:30:29 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c5dc2d8eb3981bae261ea7d1060a80868e886813\nhttps://git.kernel.org/stable/c/7d43c8377c6fc846b1812f8df360425c9323dc56\nhttps://git.kernel.org/stable/c/789c17185fb0f39560496c2beab9b57ce1d0cbe7\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-40982\n",
+  "aliases": "GHSA-2cj3-6xfh-2wmc\nCVE-2024-40982\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "2b35a823-71d3-3291-885f-9d500c0a8fcb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7d43c8377c6fc846b1812f8df360425c9323dc56"
+    },
+    {
+      "id": "5b917ed4-7799-3496-b676-7c84d570703e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c5dc2d8eb3981bae261ea7d1060a80868e886813"
+    },
+    {
+      "id": "8ac54b4a-3e9f-3d63-aa12-fb824c5d499f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <789c17185fb0f39560496c2beab9b57ce1d0cbe7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "16f1bfd9-b8b0-3185-bdd0-c1e9e2bf3846",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

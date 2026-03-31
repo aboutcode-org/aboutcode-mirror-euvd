@@ -1,0 +1,16 @@
+{
+  "id": "EUVD-2009-5004",
+  "enisaUuid": "29e8f18b-8750-392e-ad83-a9ae2c75bafb",
+  "description": "Jetty 6.x before 6.1.22 suffers from an escape sequence injection vulnerability from two different vectors: 1) \"Cookie Dump Servlet\" and 2) Http Content-Length header. 1) A POST request to the form at \"/test/cookie/\" with the \"Age\" parameter set to a string throws a \"java.lang.NumberFormatException\" which reflects binary characters including ESC. These characters could be used to execute arbitrary commands or buffer dumps in the terminal. 2) The same attack in 1) can be exploited by requesting a page using an HTTP request \"Content-Length\" header set to a letteral string.",
+  "datePublished": "Apr 21, 2022, 1:54:05 AM",
+  "dateUpdated": "Apr 21, 2022, 1:54:05 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2009-5047\nhttps://security-tracker.debian.org/tracker/CVE-2009-5047\nhttps://www.openwall.com/lists/oss-security/2011/01/14/2\nhttp://www.ush.it/team/ush/hack-jetty6x7x/jetty-adv.txt\n",
+  "aliases": "CVE-2009-5047\nGHSA-m2fq-jghc-8c75\n",
+  "assigner": "mitre",
+  "epss": 0.24,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

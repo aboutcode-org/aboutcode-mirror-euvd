@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2024-42087",
+  "enisaUuid": "b2227e45-4116-32b3-a86e-ed10212acb54",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nELF: fix kernel.randomize_va_space double read\n\nELF loader uses \"randomize_va_space\" twice. It is sysctl and can change\nat any moment, so 2 loads could see 2 different values in theory with\nunpredictable consequences.\n\nIssue exactly one load for consistent value across one exec.",
+  "datePublished": "Sep 27, 2024, 12:39:25 PM",
+  "dateUpdated": "Jan 5, 2026, 10:53:25 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/1f81d51141a234ad0a3874b4d185dc27a521cd27\nhttps://git.kernel.org/stable/c/53f17409abf61f66b6f05aff795e938e5ba811d1\nhttps://git.kernel.org/stable/c/1cf8cd80903073440b6ea055811d04edd24fe4f7\nhttps://git.kernel.org/stable/c/2a97388a807b6ab5538aa8f8537b2463c6988bd2\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46826\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "GHSA-jr43-7cf9-8vqm\nCVE-2024-46826\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "07c7e36e-7b95-3a10-92bd-d0faf818724d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.110"
+    },
+    {
+      "id": "1f8fa45f-6145-3698-a2e1-f280499c4dbf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2a97388a807b6ab5538aa8f8537b2463c6988bd2"
+    },
+    {
+      "id": "2f247325-04a9-31c0-9cfa-b55848763c0e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.51"
+    },
+    {
+      "id": "4c7a0701-7a7d-3e69-8713-e3263915a8c0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "53c8f87b-5b94-3dfc-92bc-cb75ffca552b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.25"
+    },
+    {
+      "id": "575aacb4-38a1-3ffa-9142-b672b884b9db",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1f81d51141a234ad0a3874b4d185dc27a521cd27"
+    },
+    {
+      "id": "71a3de66-4a2e-3c02-910c-0775dff66eb1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "32a932332c8bad842804842eaf9651ad6268e637 <2a97388a807b6ab5538aa8f8537b2463c6988bd2"
+    },
+    {
+      "id": "9f7ab1fa-c54b-3fa3-a330-5e66a34b6d17",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "32a932332c8bad842804842eaf9651ad6268e637 <1cf8cd80903073440b6ea055811d04edd24fe4f7"
+    },
+    {
+      "id": "c063fe78-e1b1-3670-852c-3653687033d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <53f17409abf61f66b6f05aff795e938e5ba811d1"
+    },
+    {
+      "id": "c82dc850-3b80-3c7e-bd91-5516387f86d2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.10"
+    },
+    {
+      "id": "c84563a5-ddb6-3829-ac4b-5270d2c85784",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "d08b0cf2-7c72-3f79-8c0e-a447c0a70579",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1cf8cd80903073440b6ea055811d04edd24fe4f7"
+    },
+    {
+      "id": "df13b0b9-d837-36ab-b562-671736d10287",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "32a932332c8bad842804842eaf9651ad6268e637 <53f17409abf61f66b6f05aff795e938e5ba811d1"
+    },
+    {
+      "id": "fd75bff7-6972-3948-86e2-49ff2c07d607",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "32a932332c8bad842804842eaf9651ad6268e637 <1f81d51141a234ad0a3874b4d185dc27a521cd27"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "aa35b0b4-b700-3177-819d-202ac8299a29",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

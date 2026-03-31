@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2008-2361",
+  "enisaUuid": "df9f475e-de61-373a-8344-88ab43754c8e",
+  "description": "Race condition in the ptrace and utrace support in the Linux kernel 2.6.9 through 2.6.25, as used in Red Hat Enterprise Linux (RHEL) 4, allows local users to cause a denial of service (oops) via a long series of PTRACE_ATTACH ptrace calls to another user's process that trigger a conflict between utrace_detach and report_quiescent, related to \"late ptrace_may_attach() check\" and \"race around &dead_engine_ops setting,\" a different vulnerability than CVE-2007-0771 and CVE-2008-1514.  NOTE: this issue might only affect kernel versions before 2.6.16.x.",
+  "datePublished": "May 1, 2022, 11:49:11 PM",
+  "dateUpdated": "May 1, 2022, 11:49:11 PM",
+  "baseScore": 4.7,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:M/Au:N/C:N/I:N/A:C",
+  "references": "https://www.suse.com/security/cve/CVE-2008-2365.html\nhttps://access.redhat.com/errata/RHSA-2008:0508\nhttps://access.redhat.com/errata/RHBA-2008:0314\nhttps://linux.oracle.com/cve/CVE-2008-2365.html\nhttps://exchange.xforce.ibmcloud.com/vulnerabilities/43567\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git%3Ba=commit%3Bh=f5b40e363ad6041a96e3da32281d8faa191597b9\nhttp://www.securitytracker.com/id?1020362\nhttp://sources.redhat.com/cgi-bin/cvsweb.cgi/~checkout~/tests/ptrace-tests/tests/late-ptrace-may-attach-check.c?cvsroot=systemtap\nhttp://www.securityfocus.com/bid/29945\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git%3Ba=commit%3Bh=5ecfbae093f0c37311e89b29bfc0c9d586eace87\nhttp://www.openwall.com/lists/oss-security/2008/07/14/1\nhttp://securityreason.com/securityalert/3965\nhttps://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10749\nhttp://secunia.com/advisories/30850\nhttps://bugzilla.redhat.com/show_bug.cgi?id=449359\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git%3Ba=commit%3Bh=f358166a9405e4f1d8e50d8f415c26d95505b6de\nhttp://secunia.com/advisories/31107\nhttp://www.openwall.com/lists/oss-security/2008/06/26/1\nhttp://www.ubuntu.com/usn/usn-625-1\nhttp://rhn.redhat.com/errata/RHSA-2008-0508.html\nhttp://marc.info/?l=linux-kernel&m=117863520707703&w=2\nhttps://nvd.nist.gov/vuln/detail/CVE-2008-2365\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git;a=commit;h=5ecfbae093f0c37311e89b29bfc0c9d586eace87\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git;a=commit;h=f358166a9405e4f1d8e50d8f415c26d95505b6de\nhttp://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.25.y.git;a=commit;h=f5b40e363ad6041a96e3da32281d8faa191597b9\n",
+  "aliases": "GHSA-rv47-5vwq-v454\nCVE-2008-2365\n",
+  "assigner": "redhat",
+  "epss": 0.71,
+  "enisaIdProduct": [
+    {
+      "id": "8e41cdb5-7a8b-3597-9a66-1b26518447ec",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bde6afc5-64e8-3db7-bee9-02c1846c9d36",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

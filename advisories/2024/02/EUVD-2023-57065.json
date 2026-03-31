@@ -1,0 +1,112 @@
+{
+  "id": "EUVD-2023-57065",
+  "enisaUuid": "fdec05d2-e2e0-3f9c-b3ad-836c23547b54",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix slub overflow in ksmbd_decode_ntlmssp_auth_blob()\n\nIf authblob->SessionKey.Length is bigger than session key\nsize(CIFS_KEY_SIZE), slub overflow can happen in key exchange codes.\ncifs_arc4_crypt copy to session key array from SessionKey from client.",
+  "datePublished": "Feb 21, 2024, 9:31:01 AM",
+  "dateUpdated": "May 1, 2024, 6:30:35 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/bd554ed4fdc3d38404a1c43d428432577573e809\nhttps://git.kernel.org/stable/c/30fd6521b2fbd9b767e438e31945e5ea3e3a2fba\nhttps://git.kernel.org/stable/c/7f1d6cb0eb6af3a8088dc24b7ddee9a9711538c4\nhttps://git.kernel.org/stable/c/ecd7e1c562cb08e41957fcd4b0e404de5ab38e20\nhttps://git.kernel.org/stable/c/4b081ce0d830b684fdf967abc3696d1261387254\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52440\nhttp://www.openwall.com/lists/oss-security/2024/03/18/2\n",
+  "aliases": "GHSA-gr5c-gf9x-ww6q\nCVE-2023-52440\n",
+  "assigner": "Linux",
+  "epss": 0.48,
+  "enisaIdProduct": [
+    {
+      "id": "15be4b8d-4f82-3f60-9982-b22be6ce9d76",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "2721df02-2e43-331f-9341-f8014a954728",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
+    {
+      "id": "3f8d0fca-9ea7-311b-b4d9-b827329fe562",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.52"
+    },
+    {
+      "id": "43000265-d7ff-3586-a751-24b31a1c15ae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <4b081ce0d830b684fdf967abc3696d1261387254"
+    },
+    {
+      "id": "46ad6dea-54cb-351e-b68b-f57f7e99ca52",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6"
+    },
+    {
+      "id": "698f9e16-378e-3a08-8979-c223d425625e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.145"
+    },
+    {
+      "id": "6cba32d6-fd23-3b7b-ae10-283267dcee41",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.4.15"
+    },
+    {
+      "id": "9565d5fa-f0a7-3cb7-a0e4-90af6262abd1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <bd554ed4fdc3d38404a1c43d428432577573e809"
+    },
+    {
+      "id": "9bfd4de2-6a57-3112-a3c7-b908bf2d5bad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <ecd7e1c562cb08e41957fcd4b0e404de5ab38e20"
+    },
+    {
+      "id": "a26f8870-877e-3d85-a3c4-5a5830f64876",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <7f1d6cb0eb6af3a8088dc24b7ddee9a9711538c4"
+    },
+    {
+      "id": "b9024191-a697-328b-8330-bb735f8b7ab2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <30fd6521b2fbd9b767e438e31945e5ea3e3a2fba"
+    },
+    {
+      "id": "c2acee7f-4bba-388e-b106-728f91cbc0cc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e0e3872d-e94e-310d-86ff-4f4d5a3f32bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "15be4b8d-4f82-3f60-9982-b22be6ce9d76",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

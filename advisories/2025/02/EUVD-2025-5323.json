@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-5323",
+  "enisaUuid": "55191861-bb80-3a08-9857-a1cb4b6bab8c",
+  "description": "picklescan before 0.0.21 does not treat 'pip' as an unsafe global. An attacker could craft a malicious model that uses Pickle to pull in a malicious PyPI package (hosted, for example, on pypi.org or GitHub) via `pip.main()`. Because pip is not a restricted global, the model, when scanned with picklescan, would pass security checks and appear to be safe, when it could instead prove to be problematic.",
+  "datePublished": "Feb 26, 2025, 2:51:38 PM",
+  "dateUpdated": "Dec 29, 2025, 2:22:50 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://sites.google.com/sonatype.com/vulnerabilities/cve-2025-1716\nhttps://github.com/mmaitre314/picklescan/commit/78ce704227c51f070c0c5fb4b466d92c62a7aa3d\nhttps://github.com/mmaitre314/picklescan/security/advisories/GHSA-655q-fx9r-782v\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-1716\nhttps://github.com/pypa/advisory-database/tree/main/vulns/picklescan/PYSEC-2025-18.yaml\nhttps://www.sonatype.com/security-advisories/cve-2025-1716\n",
+  "aliases": "GHSA-655q-fx9r-782v\nPYSEC-2025-18\nCVE-2025-1716\n",
+  "assigner": "Sonatype",
+  "epss": 4.25,
+  "enisaIdProduct": [
+    {
+      "id": "96b1ab1f-ceb2-398b-ae6d-cf2b60030fab",
+      "product": {
+        "name": "picklescan"
+      },
+      "product_version": "0.0.1 \u22640.0.20"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b00c6706-0cfc-32bb-bf3a-9b803b388ca1",
+      "vendor": {
+        "name": "mmaitre314"
+      }
+    }
+  ]
+}

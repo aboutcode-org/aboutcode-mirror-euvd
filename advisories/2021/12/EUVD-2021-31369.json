@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-31369",
+  "enisaUuid": "d7c5bc8b-99d1-30f7-a1f6-da1c4c6ceab5",
+  "description": "The olm_session_describe function in Matrix libolm before 3.2.7 is vulnerable to a buffer overflow. The Olm session object represents a cryptographic channel between two parties. Therefore, its state is partially controllable by the remote party of the channel. Attackers can construct a crafted sequence of messages to manipulate the state of the receiver's session in such a way that, for some buffer sizes, a buffer overflow happens on a call to olm_session_describe. Furthermore, safe buffer sizes were undocumented. The overflow content is partially controllable by the attacker and limited to ASCII spaces and digits. The known affected products are Element Web And SchildiChat Web.",
+  "datePublished": "Dec 15, 2021, 12:01:03 AM",
+  "dateUpdated": "Apr 13, 2022, 12:01:14 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-44538.html\nhttps://www.debian.org/security/2022/dsa-5034\nhttps://ubuntu.com/security/CVE-2021-44538\nhttps://advisories.mageia.org/CVE-2021-44538.html\nhttps://security.archlinux.org/CVE-2021-44538\nhttps://gitlab.matrix.org/matrix-org/olm/-/tags\nhttps://matrix.org/blog/2021/12/13/disclosure-buffer-overflow-in-libolm-and-matrix-js-sdk\nhttps://lists.debian.org/debian-lts-announce/2022/01/msg00001.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-44538\n",
+  "aliases": "GHSA-q7f4-j236-f4hc\nCVE-2021-44538\n",
+  "assigner": "mitre",
+  "epss": 1.42,
+  "enisaIdProduct": [
+    {
+      "id": "117128eb-9147-3ad5-81b1-0101a1709666",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f4cf850d-19d1-315d-bd50-cc62e2fc7b11",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

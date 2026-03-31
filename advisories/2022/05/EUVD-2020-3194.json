@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2020-3194",
+  "enisaUuid": "d6ec61b0-d3a3-3933-9261-bbe07dfc22c3",
+  "description": "A flaw was found in the Linux Kernel before 5.8-rc6 in the ZRAM kernel module, where a user with a local account and the ability to read the /sys/class/zram-control/hot_add file can create ZRAM device nodes in the /dev/ directory. This read allocates kernel memory and is not accounted for a user that triggers the creation of that ZRAM device. With this vulnerability, continually reading the device may consume a large amount of system memory and cause the Out-of-Memory (OOM) killer to activate and terminate random userspace processes, possibly making the system inoperable.",
+  "datePublished": "May 24, 2022, 5:28:22 PM",
+  "dateUpdated": "Oct 7, 2022, 6:15:55 PM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2020-10781.html\nhttps://ubuntu.com/security/CVE-2020-10781\nhttps://advisories.mageia.org/CVE-2020-10781.html\nhttps://linux.oracle.com/cve/CVE-2020-10781.html\nhttps://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=853eab68afc80f59f36bbdeb715e5c88c501e680\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2020-10781\nhttps://www.openwall.com/lists/oss-security/2020/06/18/1\nhttps://lists.debian.org/debian-lts-announce/2020/09/msg00025.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-10781\n",
+  "aliases": "GHSA-93vf-4x6g-q64v\nCVE-2020-10781\n",
+  "assigner": "redhat",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "69eabf64-37a6-379e-a030-fc7d25633e56",
+      "product": {
+        "name": "Kernel"
+      },
+      "product_version": "before 5.8-rc6"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "366e1de6-b87a-3284-ad15-9c914b76244d",
+      "vendor": {
+        "name": "Linux kernel"
+      }
+    }
+  ]
+}

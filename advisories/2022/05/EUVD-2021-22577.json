@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-22577",
+  "enisaUuid": "663ba017-bd56-3ad3-bb15-b15bfeb34014",
+  "description": "The wordexp function in the GNU C Library (aka glibc) through 2.33 may crash or read arbitrary memory in parse_param (in posix/wordexp.c) when called with an untrusted, crafted pattern, potentially resulting in a denial of service or disclosure of information. This occurs because atoi was used but strtoul should have been used to ensure correct calculations.",
+  "datePublished": "May 24, 2022, 7:08:56 PM",
+  "dateUpdated": "Feb 13, 2026, 9:31:31 PM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-35942.html\nhttps://access.redhat.com/errata/RHSA-2021:4358\nhttps://ubuntu.com/security/CVE-2021-35942\nhttps://advisories.mageia.org/CVE-2021-35942.html\nhttps://security.archlinux.org/CVE-2021-35942\nhttps://linux.oracle.com/cve/CVE-2021-35942.html\nhttps://sourceware.org/glibc/wiki/Security%20Exceptions\nhttps://sourceware.org/bugzilla/show_bug.cgi?id=28011\nhttps://sourceware.org/git/?p=glibc.git%3Ba=commit%3Bh=5adda61f62b77384718b4c0d8336ade8f2b4b35c\nhttps://security.netapp.com/advisory/ntap-20210827-0005/\nhttps://security.gentoo.org/glsa/202208-24\nhttps://lists.debian.org/debian-lts-announce/2022/10/msg00021.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-35942\nhttps://sourceware.org/git/?p=glibc.git;a=commit;h=5adda61f62b77384718b4c0d8336ade8f2b4b35c\n",
+  "aliases": "CVE-2021-35942\nGHSA-53wq-r63f-m33q\n",
+  "assigner": "mitre",
+  "epss": 1.11,
+  "enisaIdProduct": [
+    {
+      "id": "289f2fae-27c5-370c-8b65-e5d463266724",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f2091ac8-c2bf-3be2-9500-92e625a4f13b",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2024-29056",
+  "enisaUuid": "a1c5cacb-1682-3cb8-bbad-95d6b29a4f20",
+  "description": "When multiple devices share resources and one of them is to be passed\nthrough to a guest, security of the entire system and of respective\nguests individually cannot really be guaranteed without knowing\ninternals of any of the involved guests.  Therefore such a configuration\ncannot really be security-supported, yet making that explicit was so far\nmissing.\n\nResources the sharing of which is known to be problematic include, but\nare not limited to\n- - PCI Base Address Registers (BARs) of multiple devices mapping to the\n  same page (4k on x86),\n- - INTx lines.",
+  "datePublished": "Sep 25, 2024, 12:30:40 PM",
+  "dateUpdated": "Jan 5, 2026, 9:30:26 PM",
+  "baseScore": -1.0,
+  "references": "https://xenbits.xenproject.org/xsa/advisory-461.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-31146\nhttp://www.openwall.com/lists/oss-security/2024/08/14/3\nhttp://xenbits.xen.org/xsa/advisory-461.html\n",
+  "aliases": "CVE-2024-31146\nGHSA-hrw6-9556-27w2\n",
+  "assigner": "XEN",
+  "epss": 0.07,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "5ec8df7a-c64d-3e73-92fb-d1699c8d1ab3",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

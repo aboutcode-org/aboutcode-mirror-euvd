@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2016-4164",
+  "enisaUuid": "64efc1c3-d87b-3b9d-92a9-69fe68f6263e",
+  "description": "pulp.spec in the installation process for Pulp 2.8.3 generates the RSA key pairs used to validate messages between the pulp server and pulp consumers in a directory that is world-readable before later modifying the permissions, which might allow local users to read the generated RSA keys via reading the key files while the installation process is running.",
+  "datePublished": "May 14, 2022, 3:57:46 AM",
+  "dateUpdated": "May 14, 2022, 3:57:46 AM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://access.redhat.com/errata/RHBA-2016:1501\nhttp://pkgs.fedoraproject.org/cgit/rpms/pulp.git/tree/pulp.spec#n620\nhttp://pkgs.fedoraproject.org/cgit/rpms/pulp.git/tree/pulp.spec#n317\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1326251\nhttps://bugzilla.redhat.com/attachment.cgi?id=1146522\nhttps://pulp.plan.io/issues/1837\nhttps://github.com/pulp/pulp/blob/master/pulp.spec#L894-L903\nhttp://www.openwall.com/lists/oss-security/2016/05/20/1\nhttps://github.com/pulp/pulp/blob/master/pulp.spec#L473-L486\nhttps://nvd.nist.gov/vuln/detail/CVE-2016-3111\nhttps://access.redhat.com/security/cve/CVE-2016-3111\n",
+  "aliases": "CVE-2016-3111\nGHSA-fgrp-5xv9-qv52\n",
+  "assigner": "redhat",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "0bd6eceb-de25-3ff7-8227-39d8115d985f",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "88af05cf-9f47-328b-a15e-f870e3ac0320",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2024-24131",
+  "enisaUuid": "a3b56b4e-d968-3072-9622-741cb4d4b651",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix to truncate meta inode pages forcely\n\nBelow race case can cause data corruption:\n\nThread A\t\t\t\tGC thread\n\t\t\t\t\t- gc_data_segment\n\t\t\t\t\t - ra_data_block\n\t\t\t\t\t  - locked meta_inode page\n- f2fs_inplace_write_data\n - invalidate_mapping_pages\n : fail to invalidate meta_inode page\n   due to lock failure or dirty|writeback\n   status\n - f2fs_submit_page_bio\n : write last dirty data to old blkaddr\n\t\t\t\t\t - move_data_block\n\t\t\t\t\t  - load old data from meta_inode page\n\t\t\t\t\t  - f2fs_submit_page_write\n\t\t\t\t\t  : write old data to new blkaddr\n\nBecause invalidate_mapping_pages() will skip invalidating page which\nhas unclear status including locked, dirty, writeback and so on, so\nwe need to use truncate_inode_pages_range() instead of\ninvalidate_mapping_pages() to make sure meta_inode page will be dropped.",
+  "datePublished": "Apr 17, 2024, 12:32:04 PM",
+  "dateUpdated": "May 7, 2025, 6:30:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c92f2927df860a60ba815d3ee610a944b92a8694\nhttps://git.kernel.org/stable/c/77bfdb89cc222fc7bfe198eda77bdc427d5ac189\nhttps://git.kernel.org/stable/c/04226d8e3c4028dc451e9d8777356ec0f7919253\nhttps://git.kernel.org/stable/c/9f0c4a46be1fe9b97dbe66d49204c1371e3ece65\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26869\n",
+  "aliases": "CVE-2024-26869\nGHSA-48pj-w278-q66r\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2ab30291-5d58-3273-b000-dc69d2700506",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.23"
+    },
+    {
+      "id": "394a4145-f1d1-3397-90dc-87791768f946",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6aa58d8ad20a3323f42274c25820a6f54192422d <04226d8e3c4028dc451e9d8777356ec0f7919253"
+    },
+    {
+      "id": "478b5f05-9c0c-3320-ad9e-24891743b0b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "5762bb6e-9a9f-323a-ad99-1d0110b6b665",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.19"
+    },
+    {
+      "id": "6b29fcbd-bbba-392c-91fa-85b7540055a6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.2"
+    },
+    {
+      "id": "8d064710-411c-3a10-a755-54beaa13c4ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6aa58d8ad20a3323f42274c25820a6f54192422d <77bfdb89cc222fc7bfe198eda77bdc427d5ac189"
+    },
+    {
+      "id": "a43d84ff-65b0-31e2-b1a7-a3f85df2e87d",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "a65ce45c-d669-33a8-b296-91840b929f75",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6aa58d8ad20a3323f42274c25820a6f54192422d <c92f2927df860a60ba815d3ee610a944b92a8694"
+    },
+    {
+      "id": "a80e4d43-fdd3-3963-9db0-e49fea99d10f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.11"
+    },
+    {
+      "id": "c9507ba2-7c46-3ebb-a595-861493568e0c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ea8691a1-152d-335d-b6e9-820ce23edf31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6aa58d8ad20a3323f42274c25820a6f54192422d <9f0c4a46be1fe9b97dbe66d49204c1371e3ece65"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a43d84ff-65b0-31e2-b1a7-a3f85df2e87d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

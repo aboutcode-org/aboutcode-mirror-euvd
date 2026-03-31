@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6734",
+  "enisaUuid": "900b1dcf-907a-31c7-888c-2afa15af9865",
+  "description": "MUNGE is an authentication service for creating and validating user credentials. From 0.5 to 0.5.17, local attacker can exploit a buffer overflow vulnerability in munged (the MUNGE authentication daemon) to leak cryptographic key material from process memory. With the leaked key material, the attacker could forge arbitrary MUNGE credentials to impersonate any user (including root) to services that rely on MUNGE for authentication. The vulnerability allows a buffer overflow by sending a crafted message with an oversized address length field, corrupting munged's internal state and enabling extraction of the MAC subkey used for credential verification. This vulnerability is fixed in 0.5.18.",
+  "datePublished": "Feb 10, 2026, 6:55:57 PM",
+  "dateUpdated": "Feb 10, 2026, 8:14:03 PM",
+  "baseScore": 7.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:L",
+  "references": "https://github.com/dun/munge/security/advisories/GHSA-r9cr-jf4v-75gh\nhttps://github.com/dun/munge/commit/bf40cc27c4ce8451d4b062c9de0b67ec40894812\nhttps://github.com/dun/munge/releases/tag/munge-0.5.18\n",
+  "aliases": "CVE-2026-25506\n",
+  "assigner": "GitHub_M",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "aecbed7c-3946-407e-8ce2-51c597c9ff9c",
+      "product": {
+        "name": "munge"
+      },
+      "product_version": "0.5, < 0.5.18"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "253bf4f5-32f5-4cd7-90fc-617cbf11e005",
+      "vendor": {
+        "name": "dun"
+      }
+    }
+  ]
+}

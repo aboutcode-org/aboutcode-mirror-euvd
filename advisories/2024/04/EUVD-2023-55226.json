@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-55226",
+  "enisaUuid": "400683cd-4fe1-3b64-ae03-ccc6710ae49d",
+  "description": "emdns_resolve_raw in emdns.c in emdns through fbd1eef calls strlen with an input that may not be '\\0' terminated, leading to a stack-based buffer over-read. This can be triggered by a remote adversary that can send DNS requests to the emdns server. The impact could vary depending on the system libraries, compiler, and processor architecture. Code before be565c3 is unaffected.",
+  "datePublished": "Apr 30, 2024, 12:30:34 AM",
+  "dateUpdated": "Aug 1, 2024, 3:31:43 PM",
+  "baseScore": -1.0,
+  "references": "https://papers.mathyvanhoef.com/esorics2024.pdf\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-50434\n",
+  "aliases": "CVE-2023-50434\nGHSA-rmf6-4xgx-9wxc\n",
+  "assigner": "mitre",
+  "epss": 0.21,
+  "enisaIdProduct": [
+    {
+      "id": "55fb4948-d35f-3e95-9074-46c96314da49",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b89baca6-3cc4-317f-8639-edfbd2922c16",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

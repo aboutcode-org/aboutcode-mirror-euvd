@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2017-5733",
+  "enisaUuid": "8ef2e9ec-0f7b-3b80-9cd6-1811845b9ab5",
+  "description": "In libavformat/asfdec_f.c in FFmpeg 3.3.3, a DoS in asf_build_simple_index() due to lack of an EOF (End of File) check might cause huge CPU consumption. When a crafted ASF file, which claims a large \"ict\" field in the header but does not contain sufficient backing data, is provided, the for loop would consume huge CPU and memory resources, since there is no EOF check inside the loop.",
+  "datePublished": "May 14, 2022, 1:28:51 AM",
+  "dateUpdated": "May 14, 2022, 1:28:51 AM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2017-14223.html\nhttps://www.debian.org/security/2017/dsa-3996\nhttps://advisories.mageia.org/CVE-2017-14223.html\nhttps://security.archlinux.org/CVE-2017-14223\nhttp://www.securityfocus.com/bid/100703\nhttps://lists.debian.org/debian-lts-announce/2019/02/msg00005.html\nhttps://github.com/FFmpeg/FFmpeg/commit/afc9c683ed9db01edb357bc8c19edad4282b3a97\nhttp://www.debian.org/security/2017/dsa-3996\nhttps://nvd.nist.gov/vuln/detail/CVE-2017-14223\n",
+  "aliases": "CVE-2017-14223\nGHSA-fhhh-rhfq-jf53\n",
+  "assigner": "mitre",
+  "epss": 0.85,
+  "enisaIdProduct": [
+    {
+      "id": "e03fd33f-f517-33a1-bb66-2e331c813c77",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4cf2a3a5-86e2-3fa4-972e-ffa055f5f40b",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

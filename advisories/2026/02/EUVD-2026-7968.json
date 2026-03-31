@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7968",
+  "enisaUuid": "fad0dca4-6816-343d-87bf-a2fe16c08d57",
+  "description": "changedetection.io is a free open source web page change detection tool. In versions prior to 0.53.2, the `/static/<group>/<filename>` route accepts `group=\"..\"`, which causes `send_from_directory(\"static/..\", filename)` to execute. This moves the base directory up to `/app/changedetectionio`, enabling unauthenticated local file read of application source files (e.g., `flask_app.py`). Version 0.53.2 fixes the issue.",
+  "datePublished": "Feb 19, 2026, 2:18:18 PM",
+  "dateUpdated": "Feb 19, 2026, 3:35:41 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+  "references": "https://github.com/dgtlmoon/changedetection.io/security/advisories/GHSA-9jj8-v89v-xjvw\nhttps://github.com/dgtlmoon/changedetection.io/commit/9d38b4517364831889b5b0d7b3465fd060403fd4\n",
+  "aliases": "CVE-2026-25527\n",
+  "assigner": "GitHub_M",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "84fa4bf3-896b-479d-bf88-a13226941f44",
+      "product": {
+        "name": "changedetection.io"
+      },
+      "product_version": "< 0.53.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "52a1082a-3638-4fb6-81b0-73e238dea28e",
+      "vendor": {
+        "name": "dgtlmoon"
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-44810",
+  "enisaUuid": "d0e47d06-9411-397d-89b6-9abb7ea20a3a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: Change to non-blocking allocation in ntfs_d_hash\n\nd_hash is done while under \"rcu-walk\" and should not sleep.\n__get_name() allocates using GFP_KERNEL, having the possibility\nto sleep when under memory pressure. Change the allocation to\nGFP_NOWAIT.",
+  "datePublished": "Oct 21, 2024, 9:30:54 PM",
+  "dateUpdated": "Nov 20, 2024, 9:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c556e72cea2a1131ae418be017dd6fc76fffe2fb\nhttps://git.kernel.org/stable/c/d0c710372e238510db08ea01e7b8bd81ed995dd6\nhttps://git.kernel.org/stable/c/589996bf8c459deb5bbc9747d8f1c51658608103\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-50065\n",
+  "aliases": "CVE-2024-50065\nGHSA-7683-mrww-rjhc\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "112cf865-2262-3ee6-bb42-ca8c0bd96059",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.4"
+    },
+    {
+      "id": "395984d0-9b87-343a-8a5f-317d6f70f3e7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d392e85fd1e8d58e460c17ca7d0d5c157848d9c1 <d0c710372e238510db08ea01e7b8bd81ed995dd6"
+    },
+    {
+      "id": "3d52997d-ca83-30b6-a9b9-f366fad2cd3a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "423addee-b3c1-3124-8532-4b88a0a006af",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.11"
+    },
+    {
+      "id": "931f834b-93ea-36b0-8cc6-cd6ed30915f5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "c32caa56-ec8e-3906-9acb-49911ae61c87",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.57"
+    },
+    {
+      "id": "fb859c66-0996-3b49-9302-a4acc5e67bbe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "58ebd50d22529f79d2497abbb006137a7c7f5336 <c556e72cea2a1131ae418be017dd6fc76fffe2fb"
+    },
+    {
+      "id": "fda1395c-07e8-3f86-8f6a-3204e57f70ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d392e85fd1e8d58e460c17ca7d0d5c157848d9c1 <589996bf8c459deb5bbc9747d8f1c51658608103"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cebf9b55-1717-33be-aff0-2bcd661a36db",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

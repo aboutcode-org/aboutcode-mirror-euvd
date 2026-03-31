@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2024-38924",
+  "enisaUuid": "340c296e-8912-3744-ba55-3b568526bf33",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix to shrink read extent node in batches\n\nWe use rwlock to protect core structure data of extent tree during\nits shrink, however, if there is a huge number of extent nodes in\nextent tree, during shrink of extent tree, it may hold rwlock for\na very long time, which may trigger kernel hang issue.\n\nThis patch fixes to shrink read extent node in batches, so that,\ncritical region of the rwlock can be shrunk to avoid its extreme\nlong time hold.",
+  "datePublished": "Jan 11, 2025, 3:30:27 PM",
+  "dateUpdated": "Sep 23, 2025, 6:30:20 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/295b50e95e900da31ff237e46e04525fa799b2cf\nhttps://git.kernel.org/stable/c/924f7dd1e832e4e4530d14711db223d2803f7b61\nhttps://git.kernel.org/stable/c/3fc5d5a182f6a1f8bd4dc775feb54c369dd2c343\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-41935\n",
+  "aliases": "CVE-2024-41935\nGHSA-mrcm-jxqx-2mxp\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0ba7f1d1-2c11-3b7c-9815-2ce2b440feb0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.13"
+    },
+    {
+      "id": "13f34f1d-9732-37aa-8de2-7cb9b74cc547",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.8"
+    },
+    {
+      "id": "2a2379f7-55a5-3d44-9688-8372109cd0dd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <295b50e95e900da31ff237e46e04525fa799b2cf"
+    },
+    {
+      "id": "3f80c8c7-2751-32a5-979b-659a265a9294",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.66"
+    },
+    {
+      "id": "52ad64d3-58ec-3e82-9492-f1c41a404d81",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3fc5d5a182f6a1f8bd4dc775feb54c369dd2c343"
+    },
+    {
+      "id": "7d5d37a4-e003-3e20-95c5-59d24ee7f733",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "98e4da8ca301e062d79ae168c67e56f3c3de3ce4 <3fc5d5a182f6a1f8bd4dc775feb54c369dd2c343"
+    },
+    {
+      "id": "9a39eeb4-3a39-3c76-a68d-0d4b5d45c623",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "b5e4570e-86a6-37ca-89ff-ca8d29800648",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.5"
+    },
+    {
+      "id": "c6d6c8bc-9bc7-3426-aef7-e37be3ff4505",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "98e4da8ca301e062d79ae168c67e56f3c3de3ce4 <924f7dd1e832e4e4530d14711db223d2803f7b61"
+    },
+    {
+      "id": "f09da99f-1670-3e1b-b887-f30e75b263a5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "98e4da8ca301e062d79ae168c67e56f3c3de3ce4 <295b50e95e900da31ff237e46e04525fa799b2cf"
+    },
+    {
+      "id": "f0d63107-2946-3aed-a931-5028acb9e169",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <924f7dd1e832e4e4530d14711db223d2803f7b61"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "06b93016-b9f3-3260-843f-b6dfea310059",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

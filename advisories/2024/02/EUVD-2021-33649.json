@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2021-33649",
+  "enisaUuid": "30f299e8-1540-3160-b456-d95a3ce0a353",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxprtrdma: Fix cwnd update ordering\n\nAfter a reconnect, the reply handler is opening the cwnd (and thus\nenabling more RPC Calls to be sent) /before/ rpcrdma_post_recvs()\ncan post enough Receive WRs to receive their replies. This causes an\nRNR and the new connection is lost immediately.\n\nThe race is most clearly exposed when KASAN and disconnect injection\nare enabled. This slows down rpcrdma_rep_create() enough to allow\nthe send side to post a bunch of RPC Calls before the Receive\ncompletion handler can invoke ib_post_recv().",
+  "datePublished": "Feb 28, 2024, 9:30:37 AM",
+  "dateUpdated": "Apr 12, 2025, 12:30:26 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/eddae8be7944096419c2ae29477a45f767d0fcd4\nhttps://git.kernel.org/stable/c/8834ecb5df22b7ff3c9b0deba7726579bb613f95\nhttps://git.kernel.org/stable/c/19b5fa9489b5706bc878c3a522a7f771079e2fa0\nhttps://git.kernel.org/stable/c/35d8b10a25884050bb3b0149b62c3818ec59f77c\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47001\nhttps://security.netapp.com/advisory/ntap-20250411-0001\n",
+  "aliases": "CVE-2021-47001\nGHSA-h3qj-j9m5-8ffr\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "1bbaad55-5a98-3ed9-808b-4a934ae3a5b7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2ae50ad68cd79224198b525f7bd645c9da98b6ff <19b5fa9489b5706bc878c3a522a7f771079e2fa0"
+    },
+    {
+      "id": "274fdc2b-6b0b-3576-992d-c9d0492f46f9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2ae50ad68cd79224198b525f7bd645c9da98b6ff <35d8b10a25884050bb3b0149b62c3818ec59f77c"
+    },
+    {
+      "id": "33946b07-00ec-37a9-94c3-d0f73cf88bff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.11.22"
+    },
+    {
+      "id": "61024bc2-1c7c-33b3-9dcb-c5d657de7ec5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.5"
+    },
+    {
+      "id": "a2e018fa-ad2b-3714-8984-9c6fdeb4472a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.38"
+    },
+    {
+      "id": "c42fadb8-bc7c-3e0d-b54a-c7005df53b91",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d4dcdde7-e95c-380b-a9e9-5cd3d6f17b71",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.5"
+    },
+    {
+      "id": "dff0c729-1d01-35cc-8d85-bea312ab3e8d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2ae50ad68cd79224198b525f7bd645c9da98b6ff <eddae8be7944096419c2ae29477a45f767d0fcd4"
+    },
+    {
+      "id": "f11be273-c92d-3a55-9006-bb4eaabe27bc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2ae50ad68cd79224198b525f7bd645c9da98b6ff <8834ecb5df22b7ff3c9b0deba7726579bb613f95"
+    },
+    {
+      "id": "fe22a05a-3050-3fcc-a597-ecb82e325b0d",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "fec02ff4-e3e6-3d67-9c88-3427bcf9ca4b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fe22a05a-3050-3fcc-a597-ecb82e325b0d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-24317",
+  "enisaUuid": "8d1c9f65-b8ac-3b37-b02c-f3578b6d4242",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nworkqueue: Don't call cpumask_test_cpu() with -1 CPU in wq_update_node_max_active()\n\nFor wq_update_node_max_active(), @off_cpu of -1 indicates that no CPU is\ngoing down. The function was incorrectly calling cpumask_test_cpu() with -1\nCPU leading to oopses like the following on some archs:\n\n  Unable to handle kernel paging request at virtual address ffff0002100296e0\n  ..\n  pc : wq_update_node_max_active+0x50/0x1fc\n  lr : wq_update_node_max_active+0x1f0/0x1fc\n  ...\n  Call trace:\n    wq_update_node_max_active+0x50/0x1fc\n    apply_wqattrs_commit+0xf0/0x114\n    apply_workqueue_attrs_locked+0x58/0xa0\n    alloc_workqueue+0x5ac/0x774\n    workqueue_init_early+0x460/0x540\n    start_kernel+0x258/0x684\n    __primary_switched+0xb8/0xc0\n  Code: 9100a273 35000d01 53067f00 d0016dc1 (f8607a60)\n  ---[ end trace 0000000000000000 ]---\n  Kernel panic - not syncing: Attempted to kill the idle task!\n  ---[ end Kernel panic - not syncing: Attempted to kill the idle task! ]---\n\nFix it.",
+  "datePublished": "May 1, 2024, 3:30:36 PM",
+  "dateUpdated": "May 1, 2024, 3:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/7df62b8cca38aa452b508b477b16544cba615084\nhttps://git.kernel.org/stable/c/a75ac2693d734d20724f0e10e039ca85f1fcfc4e\nhttps://git.kernel.org/stable/c/38c19c44cc05ec1e84d2e31a9a289b83b6c7ec85\nhttps://git.kernel.org/stable/c/9fc557d489f8163c1aabcb89114b8eba960f4097\nhttps://git.kernel.org/stable/c/adc646d2126988a64234502f579e4bc2b080d7cf\nhttps://git.kernel.org/stable/c/15930da42f8981dc42c19038042947b475b19f47\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27055\n",
+  "aliases": "GHSA-w2x6-62q8-xq6c\nCVE-2024-27055\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "16d3d601-fc36-38f5-b671-eb031c121ca9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "fc67aebe34f22632ccb22faea48cc4d3134620a2 <38c19c44cc05ec1e84d2e31a9a289b83b6c7ec85"
+    },
+    {
+      "id": "2337751e-c5de-3687-9755-e705ecc2a8b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8.2 <6.8.4"
+    },
+    {
+      "id": "48aad7df-392b-3eeb-a72b-1b80f327584b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "843288afd3cc6f3342659c6cf81fc47684d25563 <adc646d2126988a64234502f579e4bc2b080d7cf"
+    },
+    {
+      "id": "4d57204f-4fd8-3375-98de-53405234fed3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5797b1c18919cd9c289ded7954383e499f729ce0 <15930da42f8981dc42c19038042947b475b19f47"
+    },
+    {
+      "id": "53f3b172-ef71-34a2-99fa-d265879e40a6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5a70baec2294e8a7d0fcc4558741c23e752dad5c <a75ac2693d734d20724f0e10e039ca85f1fcfc4e"
+    },
+    {
+      "id": "5812067d-5681-32f3-9071-3d09172a467b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.6.23 <6.6.25"
+    },
+    {
+      "id": "5c3305bc-ccf1-36b4-9f33-7941cbfbafc8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "843288afd3cc6f3342659c6cf81fc47684d25563 <9fc557d489f8163c1aabcb89114b8eba960f4097"
+    },
+    {
+      "id": "993b3b0e-daee-3fa1-8c9a-7bbcdaa58812",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5a70baec2294e8a7d0fcc4558741c23e752dad5c <7df62b8cca38aa452b508b477b16544cba615084"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "426851a9-15eb-3241-af34-18b497ae9fa9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

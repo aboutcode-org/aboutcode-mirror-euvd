@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2024-36267",
+  "enisaUuid": "ffbc287e-6dfb-3bbf-805f-a095da12b0c1",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-iocost: avoid out of bounds shift\n\nUBSAN catches undefined behavior in blk-iocost, where sometimes\niocg->delay is shifted right by a number that is too large,\nresulting in undefined behavior on some architectures.\n\n[  186.556576] ------------[ cut here ]------------\nUBSAN: shift-out-of-bounds in block/blk-iocost.c:1366:23\nshift exponent 64 is too large for 64-bit type 'u64' (aka 'unsigned long long')\nCPU: 16 PID: 0 Comm: swapper/16 Tainted: G S          E    N 6.9.0-0_fbk700_debug_rc2_kbuilder_0_gc85af715cac0 #1\nHardware name: Quanta Twin Lakes MP/Twin Lakes Passive MP, BIOS F09_3A23 12/08/2020\nCall Trace:\n <IRQ>\n dump_stack_lvl+0x8f/0xe0\n __ubsan_handle_shift_out_of_bounds+0x22c/0x280\n iocg_kick_delay+0x30b/0x310\n ioc_timer_fn+0x2fb/0x1f80\n __run_timer_base+0x1b6/0x250\n...\n\nAvoid that undefined behavior by simply taking the\n\"delay = 0\" branch if the shift is too large.\n\nI am not sure what the symptoms of an undefined value\ndelay will be, but I suspect it could be more than a\nlittle annoying to debug.",
+  "datePublished": "May 30, 2024, 3:29:12 PM",
+  "dateUpdated": "Dec 19, 2024, 9:02:01 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/62accf6c1d7b433752cb3591bba8967b7a801ad5\nhttps://git.kernel.org/stable/c/844fc023e9f14a4fb1de5ae1eaefafd6d69c5fa1\nhttps://git.kernel.org/stable/c/f6add0a6f78dc6360b822ca4b6f9f2f14174c8ca\nhttps://git.kernel.org/stable/c/ce0e99cae00e3131872936713b7f55eefd53ab86\nhttps://git.kernel.org/stable/c/488dc6808cb8369685f18cee81e88e7052ac153b\nhttps://git.kernel.org/stable/c/beaa51b36012fad5a4d3c18b88a617aea7a9b96d\n",
+  "aliases": "CVE-2024-36916\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "06ae0937-fa97-3cca-ab3b-2cc2ab19f16e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "2d5e9cd6-dc39-3702-8b00-c208936db816",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.91"
+    },
+    {
+      "id": "345f223d-2456-30c8-afc5-6729cb48003d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.4"
+    },
+    {
+      "id": "386b967f-9173-3f0a-82e5-98e2bdf15494",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.159"
+    },
+    {
+      "id": "515f0e6a-db1f-3e7f-bdfb-b257ed5112cc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "58f2ce65-e307-3766-8621-a49f3c85bf1f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <62accf6c1d7b433752cb3591bba8967b7a801ad5"
+    },
+    {
+      "id": "71ebabc5-0d21-37d5-8911-068e161bed9a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <ce0e99cae00e3131872936713b7f55eefd53ab86"
+    },
+    {
+      "id": "c8e3376f-578f-35ee-8dea-69be40e98590",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <f6add0a6f78dc6360b822ca4b6f9f2f14174c8ca"
+    },
+    {
+      "id": "d700698e-43fc-3982-9b19-4f607ff8f06d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.217"
+    },
+    {
+      "id": "d837a490-d936-3688-84e2-c8a64942cd1c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "e7e1830e-4d4e-327e-8122-4b9d06cc0c64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <488dc6808cb8369685f18cee81e88e7052ac153b"
+    },
+    {
+      "id": "f222c492-f4ae-30fb-9177-2c557710f796",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <beaa51b36012fad5a4d3c18b88a617aea7a9b96d"
+    },
+    {
+      "id": "f4d1d1fa-0d75-3e59-b982-e35add222a88",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.10"
+    },
+    {
+      "id": "fa49aedf-5f2a-366e-bda4-4af7a06cd7ac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7caa47151ab2e644dd221f741ec7578d9532c9a3 <844fc023e9f14a4fb1de5ae1eaefafd6d69c5fa1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9a1f3d15-57b0-3d98-a88b-a506a833528d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

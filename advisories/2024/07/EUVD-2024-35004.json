@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2024-35004",
+  "enisaUuid": "9b4a987b-f5ee-3e59-a69e-0e12c38d2b1f",
+  "description": "In onTransact of ParcelableListBinder.java , there is a possible way to steal mAllowlistToken to launch an app from background due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+  "datePublished": "Jul 9, 2024, 9:30:39 PM",
+  "dateUpdated": "Jul 11, 2024, 3:30:46 PM",
+  "baseScore": -1.0,
+  "references": "https://android.googlesource.com/platform/frameworks/base/+/c702bb71811993960debe0c18fcf8834cfa2454f\nhttps://source.android.com/security/bulletin/2024-07-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-34723\n",
+  "aliases": "GHSA-p93j-xfx7-j57v\nCVE-2024-34723\n",
+  "assigner": "google_android",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "0f0664ae-fac6-39f4-95ad-ff30d18e1eaa",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12"
+    },
+    {
+      "id": "649f4615-ec79-31cb-a328-71c651b03fd7",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "13"
+    },
+    {
+      "id": "9bd741ae-2a61-3e51-918c-dfc61cb14bc0",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "14"
+    },
+    {
+      "id": "cdded6b7-08e9-3f90-a0af-86efcbdaeca4",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12L"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "710adf10-86f2-3320-9086-b39eedce8d38",
+      "vendor": {
+        "name": "Google"
+      }
+    }
+  ]
+}

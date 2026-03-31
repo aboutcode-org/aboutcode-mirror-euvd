@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2024-38879",
+  "enisaUuid": "f1287cd8-77dd-32aa-acd0-9335db854799",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-fabrics: use reserved tag for reg read/write command\n\nIn some scenarios, if too many commands are issued by nvme command in\nthe same time by user tasks, this may exhaust all tags of admin_q. If\na reset (nvme reset or IO timeout) occurs before these commands finish,\nreconnect routine may fail to update nvme regs due to insufficient tags,\nwhich will cause kernel hang forever. In order to workaround this issue,\nmaybe we can let reg_read32()/reg_read64()/reg_write32() use reserved\ntags. This maybe safe for nvmf:\n\n1. For the disable ctrl path,  we will not issue connect command\n2. For the enable ctrl / fw activate path, since connect and reg_xx()\n   are called serially.\n\nSo the reserved tags may still be enough while reg_xx() use reserved tags.",
+  "datePublished": "Jul 29, 2024, 3:30:48 PM",
+  "dateUpdated": "Oct 9, 2025, 6:30:25 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/165da9c67a26f08c9b956c15d701da7690f45bcb\nhttps://git.kernel.org/stable/c/7dc3bfcb4c9cc58970fff6aaa48172cb224d85aa\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-41082\n",
+  "aliases": "GHSA-5mx3-q822-9r57\nCVE-2024-41082\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "01427065-fa6f-3b9e-8d65-c421e9b4bd9e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "19d80f13-fc19-3c9b-acfa-759633e8fa82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <165da9c67a26f08c9b956c15d701da7690f45bcb"
+    },
+    {
+      "id": "3088534d-b83a-3470-8b44-9da7a5074ef3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.11"
+    },
+    {
+      "id": "ba0567fa-f25a-3d98-ad86-71e9017d0648",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7dc3bfcb4c9cc58970fff6aaa48172cb224d85aa"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2accbe0d-ce09-3182-a40f-4f1808cc3687",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

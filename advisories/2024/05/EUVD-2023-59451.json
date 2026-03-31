@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2023-59451",
+  "enisaUuid": "0e449dfd-70e2-3ea5-83d7-5add05679ef9",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: blocklist the kclient when receiving corrupted snap trace\n\nWhen received corrupted snap trace we don't know what exactly has\nhappened in MDS side. And we shouldn't continue IOs and metadatas\naccess to MDS, which may corrupt or get incorrect contents.\n\nThis patch will just block all the further IO/MDS requests\nimmediately and then evict the kclient itself.\n\nThe reason why we still need to evict the kclient just after\nblocking all the further IOs is that the MDS could revoke the caps\nfaster.",
+  "datePublished": "May 21, 2024, 6:31:19 PM",
+  "dateUpdated": "Sep 25, 2025, 6:30:28 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/66ec619e4591f8350f99c5269a7ce160cccc7a7c\nhttps://git.kernel.org/stable/c/a68e564adcaa69b0930809fb64d9d5f7d9c32ba9\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52732\n",
+  "aliases": "CVE-2023-52732\nGHSA-fwq5-vg2m-5cr5\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0b4d4769-c69f-359b-854e-42d497277485",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.34"
+    },
+    {
+      "id": "0ca2009b-b8c1-3270-930f-ce2adeb68420",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9030aaf9bf0a1eee47a154c316c789e959638b0f <66ec619e4591f8350f99c5269a7ce160cccc7a7c"
+    },
+    {
+      "id": "24230cdd-a063-3feb-afa0-b2ed7e58f8c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.2"
+    },
+    {
+      "id": "3c0c5575-ba75-37f4-a501-6a182f6bb003",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9030aaf9bf0a1eee47a154c316c789e959638b0f <a68e564adcaa69b0930809fb64d9d5f7d9c32ba9"
+    },
+    {
+      "id": "63834d91-89f5-3cb5-9062-9c3f1349dd00",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <66ec619e4591f8350f99c5269a7ce160cccc7a7c"
+    },
+    {
+      "id": "6fd3d404-2768-326c-8fcf-01fc5d49c168",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.13"
+    },
+    {
+      "id": "792a23d9-bf72-3bc1-a582-a69d07cecf60",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a68e564adcaa69b0930809fb64d9d5f7d9c32ba9"
+    },
+    {
+      "id": "fd4e0c71-80b9-369e-adf3-eebec00f684b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bba34ad7-2a69-35fe-9415-6dcc1865baf6",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

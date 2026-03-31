@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2021-33709",
+  "enisaUuid": "b9464a4b-b0f5-37d1-96bf-cd57f9cc0ada",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: Destroy I/O bus devices on unregister failure _after_ sync'ing SRCU\n\nIf allocating a new instance of an I/O bus fails when unregistering a\ndevice, wait to destroy the device until after all readers are guaranteed\nto see the new null bus.  Destroying devices before the bus is nullified\ncould lead to use-after-free since readers expect the devices on their\nreference of the bus to remain valid.",
+  "datePublished": "Mar 1, 2024, 12:30:28 AM",
+  "dateUpdated": "Dec 10, 2024, 6:31:06 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/03c6cccedd3913006744faa252a4da5145299343\nhttps://git.kernel.org/stable/c/4e899ca848636b37e9ac124bc1723862a7d7d927\nhttps://git.kernel.org/stable/c/30f46c6993731efb2a690c9197c0fd9ed425da2d\nhttps://git.kernel.org/stable/c/2ee3757424be7c1cd1d0bbfa6db29a7edd82a250\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47061\n",
+  "aliases": "CVE-2021-47061\nGHSA-wpx2-5m9q-j3g7\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "13654c4b-033a-3cba-a4f7-6b7db759aeff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.11.21"
+    },
+    {
+      "id": "2807d0d0-3e43-3b62-aec2-3f543d6eae74",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <4e899ca848636b37e9ac124bc1723862a7d7d927"
+    },
+    {
+      "id": "3432024e-9a0a-3cc0-b638-731b665d74c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <03c6cccedd3913006744faa252a4da5145299343"
+    },
+    {
+      "id": "413b45b3-b7de-373b-bae3-f259be9238d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "73752eff-e909-3655-9fa2-18b9af1d17b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <2ee3757424be7c1cd1d0bbfa6db29a7edd82a250"
+    },
+    {
+      "id": "94eda2f6-20db-3de9-ac9f-7335af9ce1b6",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "a6e43024-6e9b-3270-aa3b-e44164513476",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <30f46c6993731efb2a690c9197c0fd9ed425da2d"
+    },
+    {
+      "id": "aafbd56b-a2ea-3d9b-9150-de1a7bb8fa49",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.9"
+    },
+    {
+      "id": "c3f0565c-a5ab-3b7e-a311-917685c6659f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.4"
+    },
+    {
+      "id": "d051ab68-c0ec-3702-9e3f-6346aab6ccb0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "fa1cb972-6a43-3b05-9cf0-9223387c172b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.37"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "94eda2f6-20db-3de9-ac9f-7335af9ce1b6",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-0034",
+  "enisaUuid": "586f95f3-cce4-31e4-8569-3251d5c9bf12",
+  "description": "Apache Airflow, version 2.7.0 through 2.7.3, has a vulnerability that allows an attacker to trigger a DAG in a GET request without CSRF validation.\u00a0As a result, it was possible for a malicious website opened in the same browser - by the user who also had Airflow UI opened - to trigger the execution of DAGs without the user's consent.\nUsers are advised to upgrade to version 2.8.0 or later which is not affected",
+  "datePublished": "Dec 21, 2023, 9:27:09 AM",
+  "dateUpdated": "Feb 13, 2025, 5:18:58 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/apache/airflow/pull/36026\nhttps://lists.apache.org/thread/mnwd2vcfw3gms6ft6kl951vfbqrxsnjq\nhttps://lists.apache.org/thread/mnwd2vcfw3gms6ft6kl951vfbqrxsnjq\nhttp://www.openwall.com/lists/oss-security/2023/12/21/3\nhttp://www.openwall.com/lists/oss-security/2023/12/21/3\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-49920\nhttps://github.com/apache/airflow/commit/f5d802791fa5f6b13b635f06a1ea2eccc22a9ba7\nhttps://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2023-266.yaml\n",
+  "aliases": "CVE-2023-49920\nPYSEC-2023-266\nGHSA-6m9r-7wrx-xmr6\n",
+  "assigner": "apache",
+  "epss": 0.18,
+  "enisaIdProduct": [
+    {
+      "id": "31ae337a-ca04-3a4e-aa9c-e58d8e4cccfc",
+      "product": {
+        "name": "Apache Airflow"
+      },
+      "product_version": "2.7.0 <2.8.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4fa7db2c-24d5-3d90-bb83-bf621a02e003",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

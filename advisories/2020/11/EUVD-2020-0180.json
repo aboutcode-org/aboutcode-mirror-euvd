@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2020-0180",
+  "enisaUuid": "e9a5f4b6-a0cd-336c-a52d-6e56d123cc13",
+  "description": "** DISPUTED ** svm_predict_values in svm.cpp in Libsvm v324, as used in scikit-learn 0.23.2 and other products, allows attackers to cause a denial of service (segmentation fault) via a crafted model SVM (introduced via pickle, json, or any other model permanence standard) with a large value in the _n_support array. NOTE: the scikit-learn vendor's position is that the behavior can only occur if the library's API is violated by an application that changes a private attribute.",
+  "datePublished": "Nov 21, 2020, 9:15:00 PM",
+  "dateUpdated": "Dec 3, 2020, 6:50:00 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/scikit-learn/scikit-learn/issues/18891\nhttps://github.com/cjlin1/libsvm/blob/9a3a9708926dec87d382c43b203f2ca19c2d56a0/svm.cpp#L2501\nhttp://seclists.org/fulldisclosure/2020/Nov/44\nhttp://packetstormsecurity.com/files/160281/SciKit-Learn-0.23.2-Denial-Of-Service.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-28975\nhttps://github.com/scikit-learn/scikit-learn/commit/1bf13d567d3cd74854aa8343fd25b61dd768bb85\nhttps://github.com/pypa/advisory-database/tree/main/vulns/scikit-learn/PYSEC-2020-108.yaml\nhttps://security.gentoo.org/glsa/202301-03\nhttps://www.suse.com/security/cve/CVE-2020-28975.html\nhttps://packetstormsecurity.com/files/cve/CVE-2020-28975\n",
+  "aliases": "CVE-2020-28975\nGHSA-jxfp-4rvq-9h9m\nPYSEC-2020-108\n",
+  "assigner": "mitre",
+  "epss": 0.25,
+  "enisaIdProduct": [
+    {
+      "id": "da5c30f4-8f1c-397e-a74b-95f4c0bc2a9a",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ec014cd5-41f5-3c66-bd7c-db6ee5aa593c",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

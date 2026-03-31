@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-42106",
+  "enisaUuid": "0c4aa500-a317-307d-946b-500eafa71df2",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/timerlat: Only clear timer if a kthread exists\n\nThe timerlat tracer can use user space threads to check for osnoise and\ntimer latency. If the program using this is killed via a SIGTERM, the\nthreads are shutdown one at a time and another tracing instance can start\nup resetting the threads before they are fully closed. That causes the\nhrtimer assigned to the kthread to be shutdown and freed twice when the\ndying thread finally closes the file descriptors, causing a use-after-free\nbug.\n\nOnly cancel the hrtimer if the associated thread is still around. Also add\nthe interface_lock around the resetting of the tlat_var->kthread.\n\nNote, this is just a quick fix that can be backported to stable. A real\nfix is to have a better synchronization between the shutdown of old\nthreads and the starting of new ones.",
+  "datePublished": "Sep 27, 2024, 3:30:34 PM",
+  "dateUpdated": "Oct 2, 2024, 3:30:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/8c72f0b2c45f21cb8b00fc37f79f632d7e46c2ed\nhttps://git.kernel.org/stable/c/8a9d0d405159e9c796ddf771f7cff691c1a2bc1e\nhttps://git.kernel.org/stable/c/e6a53481da292d970d1edf0d8831121d1c5e2f0d\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46845\n",
+  "aliases": "CVE-2024-46845\nGHSA-gvp7-4cxg-vpqq\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "100e3114-8d59-339f-a34b-6e8bcf5783e9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.51"
+    },
+    {
+      "id": "1628f287-9b50-30d6-bd1a-e1fc913c3929",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e88ed227f639ebcb31ed4e5b88756b47d904584b <8a9d0d405159e9c796ddf771f7cff691c1a2bc1e"
+    },
+    {
+      "id": "629847a6-5232-34bb-b3b1-d2ca0a13dcba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "737d50a6-1632-3e13-b81a-4c6005e24a4a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e88ed227f639ebcb31ed4e5b88756b47d904584b <e6a53481da292d970d1edf0d8831121d1c5e2f0d"
+    },
+    {
+      "id": "96666112-5354-3000-a4d3-32b7f4cd5713",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e88ed227f639ebcb31ed4e5b88756b47d904584b <8c72f0b2c45f21cb8b00fc37f79f632d7e46c2ed"
+    },
+    {
+      "id": "9743d1db-8a1f-34dc-9e0a-1e07483a3dc6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "d0ef12dd-0d9a-31f8-985f-28b9f5dd60e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.5"
+    },
+    {
+      "id": "ebcbc361-03c3-32c5-a125-f2e8381696ce",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "05c7fdbd-4a1c-3801-a1d8-8d1cfa0b1861",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

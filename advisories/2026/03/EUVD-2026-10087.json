@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2026-10087",
+  "enisaUuid": "2843b0cf-15b2-3423-a1fc-077d7821fd0c",
+  "description": "On Unix platforms, when listing the contents of a directory using File.ReadDir or File.Readdir the returned FileInfo could reference a file outside of the Root in which the File was opened. The impact of this escape is limited to reading metadata provided by lstat from arbitrary locations on the filesystem without permitting reading or writing files outside the root.",
+  "datePublished": "Mar 7, 2026, 12:30:29 AM",
+  "dateUpdated": "Mar 7, 2026, 12:30:29 AM",
+  "baseScore": 0.0,
+  "references": "https://groups.google.com/g/golang-announce/c/EdhZqrQ98hk\nhttps://go.dev/issue/77827\nhttps://go.dev/cl/749480\nhttps://pkg.go.dev/vuln/GO-2026-4602\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27139\n",
+  "aliases": "GHSA-rv83-g57w-fr8j\nCVE-2026-27139\n",
+  "assigner": "Go",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2c32ae97-1c90-37bb-81a6-9442690c9603",
+      "product": {
+        "name": "os"
+      },
+      "product_version": "1.26.0-0 <1.26.1"
+    },
+    {
+      "id": "8f19d317-a860-3bc1-aff9-2cd5304c87ab",
+      "product": {
+        "name": "os"
+      },
+      "product_version": "0 <1.25.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "baa8b139-56f9-312b-8e26-96aefd841025",
+      "vendor": {
+        "name": "Go standard library"
+      }
+    }
+  ]
+}

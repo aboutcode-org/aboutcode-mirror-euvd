@@ -1,0 +1,37 @@
+{
+  "id": "EUVD-2026-11770",
+  "enisaUuid": "b3aa2984-b553-3939-9361-e857733ea72b",
+  "description": "The Calculated Fields Form plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the form settings in all versions up to, and including, 5.4.5.0. This is due to insufficient capability checks on the form settings save handler and insufficient input sanitization of the `fcontent` field in `fhtml` field types. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "datePublished": "Mar 13, 2026, 9:31:51 PM",
+  "dateUpdated": "Mar 13, 2026, 9:31:51 PM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d650261a-ec0a-4538-ad59-0589712702fa?source=cve\nhttps://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.4.4.5/cp_calculatedfieldsf_free.php#L131\nhttps://plugins.trac.wordpress.org/browser/calculated-fields-form/trunk/cp_calculatedfieldsf_free.php#L131\nhttps://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.4.4.5/inc/cpcff_form.inc.php#L326\nhttps://plugins.trac.wordpress.org/browser/calculated-fields-form/tags/5.4.4.5/inc/cpcff_page_builders.inc.php#L41\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-3986\n",
+  "aliases": "CVE-2026-3986\nGHSA-2x88-jf9m-g87v\n",
+  "assigner": "Wordfence",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "73ed1af9-2ec7-3376-b5ef-7f7ea9a6e854",
+      "product": {
+        "name": "Calculated Fields Form"
+      },
+      "product_version": "* \u22645.4.5.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "14e31377-97b9-3030-a39c-6fdb16832bc0",
+      "vendor": {
+        "name": "CodePeople"
+      }
+    },
+    {
+      "id": "333f10c1-771d-37f1-9696-ce61ace45f5b",
+      "vendor": {
+        "name": "CodePeople"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-20762",
+  "enisaUuid": "3d686a47-ddab-3a7f-af01-95eff729031e",
+  "description": "An unrestricted file upload vulnerability exists in the WordPress AIT CSV Import/Export plugin \u2264 3.0.3. The plugin exposes an upload handler at upload-handler.php that allows arbitrary file upload via a multipart/form-data POST request. This endpoint does not enforce authentication or content-type validation, enabling attackers to upload malicious PHP code directly to the server. Although the upload may produce an error related to CSV parsing, the malicious file is still saved under wp-content/uploads/ and remains executable. Notably, the plugin does not need to be active for exploitation to succeed.",
+  "datePublished": "Jul 9, 2025, 3:30:22 AM",
+  "dateUpdated": "Jul 16, 2025, 6:32:33 PM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/unix/webapp/wp_ait_csv_rce.rb\nhttps://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/ait-csv-import-export/ait-csv-importexport-303-arbitrary-file-upload\nhttps://wpscan.com/vulnerability/36e699a4-91f2-426d-ba14-26036fbfeaea/\nhttps://www.acunetix.com/vulnerabilities/web/wordpress-plugin-ait-themes-csv-import-export-arbitrary-file-upload-3-0-3/\nhttps://www.fortiguard.com/encyclopedia/ips/49754\nhttps://www.ait-themes.club/csv-import-export-wordpress-plugin/\nhttps://packetstorm.news/files/id/160918\nhttps://vulncheck.com/advisories/wordpress-ait-csv-import-export-plugin-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-34083\n",
+  "aliases": "GHSA-q6q7-289w-x495\nCVE-2025-34083\n",
+  "assigner": "VulnCheck",
+  "epss": 0.26,
+  "enisaIdProduct": [
+    {
+      "id": "50ea4810-8e8c-3dbd-9f90-0cda37cb597b",
+      "product": {
+        "name": "AIT CSV Import/Export WordPress Plugin"
+      },
+      "product_version": "* \u22643.0.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a4afebc5-5be8-3da4-b461-602aa91ed5a3",
+      "vendor": {
+        "name": "AitThemes"
+      }
+    }
+  ]
+}

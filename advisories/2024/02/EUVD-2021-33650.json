@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2021-33650",
+  "enisaUuid": "c755e17a-e54b-3d9a-90a9-e3f872784405",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: Fix null pointer dereference in svc_rqst_free()\n\nWhen alloc_pages_node() returns null in svc_rqst_alloc(), the\nnull rq_scratch_page pointer will be dereferenced when calling\nput_page() in svc_rqst_free(). Fix it by adding a null check.\n\nAddresses-Coverity: (\"Dereference after null check\")",
+  "datePublished": "Feb 28, 2024, 9:30:37 AM",
+  "dateUpdated": "Dec 9, 2024, 6:31:18 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/1e10f58f1c9a6b667b045513c7a4e6111c24fe7c\nhttps://git.kernel.org/stable/c/c664aaec9aee544538a78ba4893a44bc73a6d742\nhttps://git.kernel.org/stable/c/b9f83ffaa0c096b4c832a43964fe6bff3acffe10\nhttps://git.kernel.org/stable/c/3de81c1e84bf84803308da3272a829a7655c5336\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47002\n",
+  "aliases": "GHSA-wqm6-ppvq-v664\nCVE-2021-47002\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2bf53538-da08-3ac7-a6cf-d206c52f8aba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5191955d6fc65e6d4efe8f4f10a6028298f57281 <1e10f58f1c9a6b667b045513c7a4e6111c24fe7c"
+    },
+    {
+      "id": "6c2998bd-780c-3f11-9fff-5efb6375d30e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.5"
+    },
+    {
+      "id": "729ad11f-cf8a-3db6-a113-a0c8285764df",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.11.22"
+    },
+    {
+      "id": "79c87773-cc7c-39d1-bc6b-6c48eca4d9e6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.11"
+    },
+    {
+      "id": "7de0ed87-4b79-3163-8d12-174dd3a9cf12",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.221"
+    },
+    {
+      "id": "93708372-c33c-34af-9b17-c09fa1b9163a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5191955d6fc65e6d4efe8f4f10a6028298f57281 <c664aaec9aee544538a78ba4893a44bc73a6d742"
+    },
+    {
+      "id": "a0f31aae-c343-3c9d-8d9a-3b66bb5df37b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5191955d6fc65e6d4efe8f4f10a6028298f57281 <b9f83ffaa0c096b4c832a43964fe6bff3acffe10"
+    },
+    {
+      "id": "b0aa57f3-0256-3a8b-a883-f46d0b4e8f94",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "b1c6e618-3459-3fc8-a473-3769ca9bf3ab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "79e4e0d489c8e72b9efa388e504a036eec1550c6 <3de81c1e84bf84803308da3272a829a7655c5336"
+    },
+    {
+      "id": "ce8f2e56-7725-3fe0-a0ee-aa86142c162f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "dc50e00e-75ee-3c2b-ba3a-8d9f981e4ec4",
+      "product": {
+        "name": "Linux"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "dc50e00e-75ee-3c2b-ba3a-8d9f981e4ec4",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

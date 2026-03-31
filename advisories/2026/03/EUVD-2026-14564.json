@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2026-14564",
+  "enisaUuid": "d9238443-6947-3f0c-891b-f89e62ce36f8",
+  "description": "OpenClaw before 2026.2.22 contains an allowlist bypass vulnerability in system.run that allows attackers to execute non-allowlisted commands by splitting command substitution using shell line-continuation. Attackers can bypass shell-wrapper analysis by injecting $\\\\ followed by newline and ( inside double quotes, causing the shell runtime to fold the payload into $(...)and execute arbitrary subcommands.",
+  "datePublished": "Mar 24, 2026, 12:30:25 AM",
+  "dateUpdated": "Mar 24, 2026, 12:30:25 AM",
+  "baseScore": 5.8,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N",
+  "references": "https://github.com/openclaw/openclaw/security/advisories/GHSA-9868-vxmx-w862\nhttps://github.com/openclaw/openclaw/commit/3f0b9dbb36c86e308267924c0d3d4a4e1fc4d1e9\nhttps://vulncheck.com/advisories/openclaw-mar-allowlist-bypass-via-shell-line-continuation-command-substitution-in-system-run\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-32047\n",
+  "aliases": "CVE-2026-32047\nGHSA-jjhv-9r5q-4vqg\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "4394eeca-9c70-30e4-b863-a76496f063c4",
+      "product": {
+        "name": "OpenClaw"
+      },
+      "product_version": "0 <2026.2.22"
+    },
+    {
+      "id": "e8a4c944-8579-3a0d-a6f5-291369698bd9",
+      "product": {
+        "name": "OpenClaw"
+      },
+      "product_version": ""
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e8a4c944-8579-3a0d-a6f5-291369698bd9",
+      "vendor": {
+        "name": "OpenClaw"
+      }
+    }
+  ]
+}

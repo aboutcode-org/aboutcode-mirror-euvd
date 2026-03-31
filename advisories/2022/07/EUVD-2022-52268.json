@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-52268",
+  "enisaUuid": "fc615a34-5f80-3448-bdd3-f739ad5b70ee",
+  "description": "Saia Burgess Controls (SBC) PCD through 2022-05-06 uses a Broken or Risky Cryptographic Algorithm. According to FSCT-2022-0063, there is a Saia Burgess Controls (SBC) PCD S-Bus weak credential hashing scheme issue. The affected components are characterized as: S-Bus (5050/UDP) authentication. The potential impact is: Authentication bypass. The Saia Burgess Controls (SBC) PCD controllers utilize the S-Bus protocol (5050/UDP) for a variety of engineering purposes. It is possible to configure a password in order to restrict access to sensitive engineering functionality. Authentication is done by using the S-Bus 'write byte' message to a specific address and supplying a hashed version of the password. The hashing algorithm used is based on CRC-16 and as such not cryptographically secure. An insecure hashing algorithm is used. An attacker capable of passively observing traffic can intercept the hashed credentials and trivially find collisions allowing for authentication without having to bruteforce a keyspace defined by the actual strength of the password. This allows the attacker access to sensitive engineering functionality such as uploading/downloading control logic and manipulating controller configuration.",
+  "datePublished": "Jul 29, 2022, 12:00:24 AM",
+  "dateUpdated": "Feb 14, 2024, 6:30:24 PM",
+  "baseScore": -1.0,
+  "references": "https://www.forescout.com/blog/\nhttps://www.cisa.gov/uscert/ics/advisories/icsa-22-207-03\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-30320\n",
+  "aliases": "CVE-2022-30320\nGHSA-99h8-7hr4-j9f9\n",
+  "assigner": "mitre",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "caceef1c-5e93-3658-891a-d9af0a324226",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9b4359e6-24f7-355e-9b11-76cc1e50d595",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

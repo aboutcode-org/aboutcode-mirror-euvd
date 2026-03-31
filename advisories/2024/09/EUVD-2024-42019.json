@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-42019",
+  "enisaUuid": "df8b9e34-3375-3eb4-893a-e14e853d3e35",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (lm95234) Fix underflows seen when writing limit attributes\n\nDIV_ROUND_CLOSEST() after kstrtol() results in an underflow if a large\nnegative number such as -9223372036854775808 is provided by the user.\nFix it by reordering clamp_val() and DIV_ROUND_CLOSEST() operations.",
+  "datePublished": "Sep 18, 2024, 9:30:37 AM",
+  "dateUpdated": "Sep 23, 2024, 6:30:34 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-46758\nhttps://git.kernel.org/stable/c/0fc27747633aa419f9af40e7bdfa00d2ec94ea81\nhttps://git.kernel.org/stable/c/16f42953231be1e7be77bc24005270d9e0d9d2ee\nhttps://git.kernel.org/stable/c/438453dfbbdcf4be26891492644aa3ecbb42c336\nhttps://git.kernel.org/stable/c/46e4fd338d5bdbaf60e41cda625b24949d2af201\nhttps://git.kernel.org/stable/c/59c1fb9874a01c9abc49a0a32f192a7e7b4e2650\nhttps://git.kernel.org/stable/c/93f0f5721d0cca45dac50af1ae6f9a9826c699fd\nhttps://git.kernel.org/stable/c/af64e3e1537896337405f880c1e9ac1f8c0c6198\nhttps://git.kernel.org/stable/c/da765bebd90e1b92bdbc3c6a27a3f3cc81529ab6\n",
+  "aliases": "CVE-2024-46758\nGHSA-vgm9-qpvf-cp5w\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

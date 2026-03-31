@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-36352",
+  "enisaUuid": "0609c6cc-7bf7-30ba-a187-1f0fc6beaec2",
+  "description": "FFmpeg n7.0 has a race condition vulnerability in the VP9 decoder. This could lead to a data race if video encoding parameters were being exported, as the side data would be attached in the decoder thread while being read in the output thread.",
+  "datePublished": "Nov 29, 2024, 9:31:03 PM",
+  "dateUpdated": "Dec 3, 2024, 6:31:03 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/ffmpeg/ffmpeg/commit/0ba058579f332b3060d8470a04ddd3fbf305be61\nhttps://github.com/FFmpeg/FFmpeg/blob/n7.0/libavcodec/vp9.c#L1738\nhttps://gist.github.com/1047524396/c44e5eaafa8f408eea0c9411205990fb\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-36615\n",
+  "aliases": "CVE-2024-36615\nGHSA-9fr3-g426-jq79\n",
+  "assigner": "mitre",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "bd389e93-cc30-3db7-9c51-afd6f1c53327",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6050d4cc-29f5-35df-bb9f-ad1be732096b",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

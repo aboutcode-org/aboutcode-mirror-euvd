@@ -1,0 +1,85 @@
+{
+  "id": "EUVD-2025-11815",
+  "enisaUuid": "c903b577-4d86-332d-980a-94ccfdda3884",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: simple-card-utils: Don't use __free(device_node) at graph_util_parse_dai()\n\ncommit 419d1918105e (\"ASoC: simple-card-utils: use __free(device_node) for\ndevice node\") uses __free(device_node) for dlc->of_node, but we need to\nkeep it while driver is in use.\n\nDon't use __free(device_node) in graph_util_parse_dai().",
+  "datePublished": "Apr 18, 2025, 3:31:38 PM",
+  "dateUpdated": "Nov 7, 2025, 12:30:26 AM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/232a32e8a7e9be8a2ee238df9b5304eed2f4e195\nhttps://git.kernel.org/stable/c/de74ec718e0788e1998eb7289ad07970e27cae27\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-39930\n",
+  "aliases": "CVE-2025-39930\nGHSA-9q9v-qmg6-ffwc\n",
+  "assigner": "Linux",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "11522895-20e3-3732-9473-9c6597a6f7e2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e03f8d14191142849abad62307d4128afd304521"
+    },
+    {
+      "id": "1733f7e5-c80d-39c7-bdd3-448dc8d1d9f1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.15-rc1"
+    },
+    {
+      "id": "2c060219-124f-395c-9545-3dbc6283ef28",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.15"
+    },
+    {
+      "id": "3861e9a8-6c76-3bd1-b39c-a0d77b68f6d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "419d1918105e5d9926ab02f1f834bb416dc76f65 <232a32e8a7e9be8a2ee238df9b5304eed2f4e195"
+    },
+    {
+      "id": "969c22e4-ea31-31ff-886f-43fbf9c4c1c4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "142a386a805809e21361976d566392bcd07870b8"
+    },
+    {
+      "id": "a2f5c0e2-a2bb-3bdc-bd75-3eae5b6c4d29",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.14"
+    },
+    {
+      "id": "c86fcaba-25f8-3f79-b633-a1ce360b2d38",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.14.2"
+    },
+    {
+      "id": "c927cf6d-7179-391b-95b4-58c759f41e78",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "419d1918105e5d9926ab02f1f834bb416dc76f65 <de74ec718e0788e1998eb7289ad07970e27cae27"
+    },
+    {
+      "id": "fdddb315-c66f-3e91-9981-80637e68a118",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4c74b973-ae74-3d78-a088-5bf9dc87dfae",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

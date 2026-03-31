@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2010-0338",
+  "enisaUuid": "6bd2c1a3-44fa-3a68-b4d8-d7f22a88b63b",
+  "description": "The load_elf_binary function in fs/binfmt_elf.c in the Linux kernel before 2.6.32.8 on the x86_64 platform does not ensure that the ELF interpreter is available before a call to the SET_PERSONALITY macro, which allows local users to cause a denial of service (system crash) via a 32-bit application that attempts to execute a 64-bit application and then triggers a segmentation fault, as demonstrated by amd64_killer, related to the flush_old_exec function.",
+  "datePublished": "May 2, 2022, 6:11:40 AM",
+  "dateUpdated": "May 2, 2022, 6:11:40 AM",
+  "baseScore": 4.7,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:M/Au:N/C:N/I:N/A:C",
+  "references": "https://www.suse.com/security/cve/CVE-2010-0307.html\nhttps://www.debian.org/security/2010/dsa-1996\nhttps://access.redhat.com/errata/RHSA-2010:0771\nhttps://access.redhat.com/errata/RHSA-2010:0398\nhttps://access.redhat.com/errata/RHSA-2010:0146\nhttps://linux.oracle.com/cve/CVE-2010-0307.html\nhttps://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10870\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=221af7f87b97431e3ee21ce4b0e77d5411cf1549\nhttp://www.openwall.com/lists/oss-security/2010/02/01/5\nhttp://www.ubuntu.com/usn/USN-914-1\nhttps://bugzilla.redhat.com/show_bug.cgi?id=560547\nhttp://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.32.8\nhttp://www.vupen.com/english/advisories/2010/0638\nhttp://www.openwall.com/lists/oss-security/2010/02/04/1\nhttp://www.redhat.com/support/errata/RHSA-2010-0771.html\nhttps://rhn.redhat.com/errata/RHSA-2010-0146.html\nhttp://secunia.com/advisories/38779\nhttp://secunia.com/advisories/39649\nhttp://lists.opensuse.org/opensuse-security-announce/2010-03/msg00000.html\nhttp://secunia.com/advisories/38922\nhttp://marc.info/?t=126466700200002&r=1&w=2\nhttp://www.debian.org/security/2010/dsa-1996\nhttp://www.globalsecuritymag.com/Vigil-nce-Linux-kernel-denial-of%2C20100202%2C15754.html\nhttp://lists.fedoraproject.org/pipermail/package-announce/2010-February/035159.html\nhttp://secunia.com/advisories/43315\nhttp://marc.info/?l=linux-mm&m=126466407724382&w=2\nhttp://www.mandriva.com/security/advisories?name=MDVSA-2010:066\nhttp://www.redhat.com/support/errata/RHSA-2010-0398.html\nhttp://www.openwall.com/lists/oss-security/2010/02/04/9\nhttp://www.vmware.com/security/advisories/VMSA-2011-0003.html\nhttp://www.openwall.com/lists/oss-security/2010/02/01/1\nhttp://support.avaya.com/css/P8/documents/100088287\nhttp://www.securityfocus.com/archive/1/516397/100/0/threaded\nhttp://www.securityfocus.com/bid/38027\nhttp://secunia.com/advisories/38492\nhttps://nvd.nist.gov/vuln/detail/CVE-2010-0307\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=221af7f87b97431e3ee21ce4b0e77d5411cf1549\nhttp://www.globalsecuritymag.com/Vigil-nce-Linux-kernel-denial-of,20100202,15754.html\n",
+  "aliases": "GHSA-536m-75pg-6c2v\nCVE-2010-0307\n",
+  "assigner": "redhat",
+  "epss": 0.28,
+  "enisaIdProduct": [
+    {
+      "id": "a3931243-c405-394a-a68a-e5e75df223e7",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ac6f9a50-50ec-3164-874e-1cc7e265a47f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

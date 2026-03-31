@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-15360",
+  "enisaUuid": "788fed64-ab4f-3533-a876-b45eb841c3bf",
+  "description": "grant table v2 status pages may remain accessible after de-allocation (take two) Guest get permitted access to certain Xen-owned pages of memory. The majority of such pages remain allocated / associated with a guest for its entire lifetime. Grant table v2 status pages, however, get de-allocated when a guest switched (back) from v2 to v1. The freeing of such pages requires that the hypervisor know where in the guest these pages were mapped. The hypervisor tracks only one use within guest space, but racing requests from the guest to insert mappings of these pages may result in any of them to become mapped in multiple locations. Upon switching back from v2 to v1, the guest would then retain access to a page that was freed and perhaps re-used for other purposes. This bug was fortuitously fixed by code cleanup in Xen 4.14, and backported to security-supported Xen branches as a prerequisite of the fix for XSA-378.",
+  "datePublished": "Dec 8, 2021, 12:01:39 AM",
+  "dateUpdated": "Feb 4, 2024, 9:30:31 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-28703.html\nhttps://xenbits.xenproject.org/xsa/advisory-387.txt\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-28703\n",
+  "aliases": "GHSA-mj29-93c5-p3pr\nCVE-2021-28703\n",
+  "assigner": "XEN",
+  "epss": 0.11,
+  "enisaIdProduct": [
+    {
+      "id": "c1ea4869-526e-37dd-ae94-d7087153bc21",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "Branch 4.13 \u22644.13"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a580278a-5876-39a0-8050-cd6bcc478e7f",
+      "vendor": {
+        "name": "Xen Project"
+      }
+    }
+  ]
+}

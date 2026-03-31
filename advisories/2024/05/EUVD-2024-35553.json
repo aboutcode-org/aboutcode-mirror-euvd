@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-35553",
+  "enisaUuid": "f95055bc-e1b8-3b84-8d8b-813c90e78231",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix io_queue_proc modifying req->flags\n\nWith multiple poll entries __io_queue_proc() might be running in\nparallel with poll handlers and possibly task_work, we should not be\ncarelessly modifying req->flags there. io_poll_double_prepare() handles\na similar case with locking but it's much easier to move it into\n__io_arm_poll_handler().",
+  "datePublished": "May 17, 2024, 3:31:10 PM",
+  "dateUpdated": "May 17, 2024, 3:31:10 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-35820\nhttps://git.kernel.org/stable/c/0ecb8919469e6d5c74eea24086b34ce1bda5aef7\nhttps://git.kernel.org/stable/c/1a8ec63b2b6c91caec87d4e132b1f71b5df342be\nhttps://git.kernel.org/stable/c/51a490a7f63cae0754120e7c04f4f47920bd48db\n",
+  "aliases": "CVE-2024-35820\nGHSA-qv2h-2f65-w8rx\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

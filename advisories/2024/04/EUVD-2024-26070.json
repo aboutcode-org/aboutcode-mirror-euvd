@@ -1,0 +1,42 @@
+{
+  "id": "EUVD-2024-26070",
+  "enisaUuid": "ef2984a0-90b1-33d3-b2aa-8e9270415bc2",
+  "description": "A problem has been identified in the CloudStack additional VM configuration (extraconfig) feature which can be misused by anyone who has privilege to deploy a VM instance or configure settings of an already deployed VM instance, to configure additional VM configuration even when the feature is not explicitly enabled by the administrator. In a KVM based CloudStack environment, an attacker can exploit this issue to\u00a0attach host devices such as storage disks, and PCI and USB devices such as network adapters and GPUs, in a regular VM instance that can be further exploited to gain access to the underlying network and storage infrastructure resources, and access any VM instance disks on the local storage.\n\nUsers are advised to upgrade to version 4.18.1.1 or 4.19.0.1, which fixes this issue.\n\n",
+  "datePublished": "Apr 4, 2024, 9:30:34 AM",
+  "dateUpdated": "Aug 30, 2024, 12:31:22 AM",
+  "baseScore": -1.0,
+  "references": "https://lists.apache.org/thread/82f46pv7mvh95ybto5hn8wlo6g8jhjvp\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-29008\n",
+  "aliases": "GHSA-3fpg-5xv7-pq63\nCVE-2024-29008\n",
+  "assigner": "apache",
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "2906a13c-60e1-3c91-b587-444f5422845c",
+      "product": {
+        "name": "Apache CloudStack"
+      }
+    },
+    {
+      "id": "af824379-7691-3ec8-8e65-af2bd5be5dfc",
+      "product": {
+        "name": "Apache CloudStack"
+      },
+      "product_version": "4.19.0.0"
+    },
+    {
+      "id": "e791b0f5-a792-33e2-8475-bb83be733464",
+      "product": {
+        "name": "Apache CloudStack"
+      },
+      "product_version": "4.14.0.0 \u22644.18.1.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9b8441d3-c92f-3e46-8ec8-510f43e2f8d9",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

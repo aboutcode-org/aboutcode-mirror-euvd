@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-26959",
+  "enisaUuid": "9bf7928a-4e4b-3daf-a99c-7912169f6f50",
+  "description": "An improper locking issue was found in the virStoragePoolLookupByTargetPath API of libvirt. It occurs in the storagePoolLookupByTargetPath function where a locked virStoragePoolObj object is not properly released on ACL permission failure. Clients connecting to the read-write socket with limited ACL permissions could use this flaw to acquire the lock and prevent other users from accessing storage pool/volume APIs, resulting in a denial of service condition. The highest threat from this vulnerability is to system availability.",
+  "datePublished": "Mar 4, 2022, 12:00:21 AM",
+  "dateUpdated": "Apr 1, 2024, 3:30:27 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-3667.html\nhttps://access.redhat.com/errata/RHSA-2021:4191\nhttps://access.redhat.com/errata/RHSA-2021:3704\nhttps://access.redhat.com/errata/RHSA-2021:3703\nhttps://advisories.mageia.org/CVE-2021-3667.html\nhttps://security.archlinux.org/CVE-2021-3667\nhttps://linux.oracle.com/cve/CVE-2021-3667.html\nhttps://ubuntu.com/security/CVE-2021-3667\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1986094\nhttps://libvirt.org/git/?p=libvirt.git%3Ba=commit%3Bh=447f69dec47e1b0bd15ecd7cd49a9fd3b050fb87\nhttps://gitlab.com/libvirt/libvirt/-/commit/447f69dec47e1b0bd15ecd7cd49a9fd3b050fb87\nhttps://security.netapp.com/advisory/ntap-20220331-0005/\nhttps://security.gentoo.org/glsa/202210-06\nhttps://lists.debian.org/debian-lts-announce/2024/04/msg00000.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-3667\nhttps://access.redhat.com/security/cve/CVE-2021-3667\nhttps://libvirt.org/git/?p=libvirt.git;a=commit;h=447f69dec47e1b0bd15ecd7cd49a9fd3b050fb87\n",
+  "aliases": "GHSA-q27q-h2jw-qq6c\nCVE-2021-3667\n",
+  "assigner": "redhat",
+  "epss": 0.44,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "86170868-3678-36fd-9719-022da74ecdc3",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

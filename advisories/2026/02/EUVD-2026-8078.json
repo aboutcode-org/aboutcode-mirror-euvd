@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8078",
+  "enisaUuid": "bf04f40e-9f3b-388c-9aad-5aded6997111",
+  "description": "The Taskbuilder \u2013 WordPress Project Management & Task Management plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.0.2. This is due to missing authorization checks on the project and task comment submission functions (AJAX actions: wppm_submit_proj_comment and wppm_submit_task_comment). This makes it possible for authenticated attackers, with subscriber-level access and above, to create comments on any project or task (including private projects they cannot view or are not assigned to), and inject arbitrary HTML and CSS via the insufficiently sanitized comment_body parameter.",
+  "datePublished": "Feb 18, 2026, 9:31:03 AM",
+  "dateUpdated": "Feb 18, 2026, 9:31:03 AM",
+  "baseScore": 4.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/66095908-875f-486d-ae77-6015671872de?source=cve\nhttps://plugins.trac.wordpress.org/browser/taskbuilder/tags/5.0.2/includes/admin/projects/open_project/wppm_submit_project_comment.php#L6\nhttps://plugins.trac.wordpress.org/browser/taskbuilder/tags/5.0.2/includes/admin/tasks/open_task/wppm_submit_task_comment.php#L6\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1640\n",
+  "aliases": "CVE-2026-1640\nGHSA-wxhm-86c2-x66c\n",
+  "assigner": "Wordfence",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "86323bd5-ebec-4ce6-a003-7082f2086e5d",
+      "product": {
+        "name": "Taskbuilder \u2013 WordPress Project Management & Task Management,kanban view"
+      },
+      "product_version": "* \u22645.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "917c893a-c539-4d55-8a4f-567f31fe1c50",
+      "vendor": {
+        "name": "taskbuilder"
+      }
+    }
+  ]
+}

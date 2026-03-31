@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2014-1294",
+  "enisaUuid": "5f33caed-3368-3ab2-b780-49c5736f7b1b",
+  "description": "Sophos Anti-Virus engine (SAVi) before 3.50.1, as used in VDL 4.97G 9.7.x before 9.7.9, 10.0.x before 10.0.11, and 10.3.x before 10.3.1 does not set an ACL for certain global and session objects, which allows local users to bypass anti-virus protection, cause a denial of service (resource consumption, CPU consumption, and eventual crash) or spoof \"ready for update\" messages by performing certain operations on mutexes or events including (1) DataUpdateRequest, (2) MmfMutexSAV-****, (3) MmfMutexSAV-Info, (4) ReadyForUpdateSAV-****, (5) ReadyForUpdateSAV-Info, (6) SAV-****, (7) SAV-Info, (8) StateChange, (9) SuspendedSAV-****, (10) SuspendedSAV-Info, (11) UpdateComplete, (12) UpdateMutex, (13) UpdateRequest, or (14) SophosALMonSessionInstance, as demonstrated by triggering a ReadyForUpdateSAV event and modifying the UpdateComplete, UpdateMutex, and UpdateRequest objects.",
+  "datePublished": "May 14, 2022, 2:53:38 AM",
+  "dateUpdated": "Apr 11, 2025, 4:19:00 AM",
+  "baseScore": 5.6,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:L/Au:N/C:N/I:P/A:C",
+  "references": "http://www.sophos.com/en-us/support/knowledgebase/2300/7200/1031/120401.aspx\nhttp://packetstormsecurity.com/files/125024/Sophos-Anti-Virus-Denial-Of-Service.html\nhttp://www.securityfocus.com/archive/1/530915/100/0/threaded\nhttp://seclists.org/fulldisclosure/2014/Feb/1\nhttp://osvdb.org/102762\nhttp://www.securitytracker.com/id/1029713\nhttp://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-1213/\nhttp://www.securityfocus.com/bid/65286\nhttps://nvd.nist.gov/vuln/detail/CVE-2014-1213\n",
+  "aliases": "CVE-2014-1213\nGHSA-r9jr-628j-pc37\n",
+  "assigner": "mitre",
+  "epss": 0.08,
+  "enisaIdProduct": [
+    {
+      "id": "fedc2342-b8d1-320c-a965-d66a5685296b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "eb1aeda5-932d-3f45-9858-0dbeb7471fb0",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

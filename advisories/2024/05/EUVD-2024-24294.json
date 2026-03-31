@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2024-24294",
+  "enisaUuid": "2507b4a8-05ca-3ebc-97fb-52234cfbe01f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix to avoid potential panic during recovery\n\nDuring recovery, if FAULT_BLOCK is on, it is possible that\nf2fs_reserve_new_block() will return -ENOSPC during recovery,\nthen it may trigger panic.\n\nAlso, if fault injection rate is 1 and only FAULT_BLOCK fault\ntype is on, it may encounter deadloop in loop of block reservation.\n\nLet's change as below to fix these issues:\n- remove bug_on() to avoid panic.\n- limit the loop count of block reservation to avoid potential\ndeadloop.",
+  "datePublished": "May 1, 2024, 3:30:35 PM",
+  "dateUpdated": "Nov 6, 2024, 9:30:54 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/fe4de493572a4263554903bf9c3afc5c196e15f0\nhttps://git.kernel.org/stable/c/8844b2f8a3f0c428b74672f9726f9950b1a7764c\nhttps://git.kernel.org/stable/c/d034810d02a5af8eb74debe29877dcaf5f00fdd1\nhttps://git.kernel.org/stable/c/f26091a981318b5b7451d61f99bc073a6af8db67\nhttps://git.kernel.org/stable/c/21ec68234826b1b54ab980a8df6e33c74cfbee58\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27032\n",
+  "aliases": "CVE-2024-27032\nGHSA-fx68-rvxh-32hf\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "02c9bec1-17e9-33cf-b914-55d37b654cff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b1020a546779139eec5d930e15ce534c1101b89c <fe4de493572a4263554903bf9c3afc5c196e15f0"
+    },
+    {
+      "id": "10ac209d-1be4-395a-b2f4-1dc19f4a9b16",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b29cc6e29b5e6037e1bcd2b2ac67b7d89acd194c <d034810d02a5af8eb74debe29877dcaf5f00fdd1"
+    },
+    {
+      "id": "12fe4aa1-2973-334d-a082-cd42b7a89bae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.2"
+    },
+    {
+      "id": "1ad907db-c61c-3f88-bbf6-f3bc95afb5de",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.11"
+    },
+    {
+      "id": "419a64f7-d5d6-35e4-9a16-89e23c802794",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "44cbc778-6197-3714-a5ed-af3ee352311d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "610e3b4d-06a6-3bbc-9729-6b2480a02c0f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2a7b12d4705bc308cf18eae2b69ec8db34881cc3 <8844b2f8a3f0c428b74672f9726f9950b1a7764c"
+    },
+    {
+      "id": "a8091736-d70e-3ece-bd8a-c0a011691459",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8"
+    },
+    {
+      "id": "bb7ecd83-aba5-353a-a47d-afb51817ecbc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.83"
+    },
+    {
+      "id": "c3cfb719-2283-3611-b092-ee3f3838fd46",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "956fa1ddc132e028f3b7d4cf17e6bfc8cb36c7fd <21ec68234826b1b54ab980a8df6e33c74cfbee58"
+    },
+    {
+      "id": "c5c13a79-7c3b-33df-b363-355157976295",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "956fa1ddc132e028f3b7d4cf17e6bfc8cb36c7fd <f26091a981318b5b7451d61f99bc073a6af8db67"
+    },
+    {
+      "id": "fd99b131-bbe7-3472-8258-ba419720396d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.23"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "06146ef7-983d-3d79-a1dc-180713657cd8",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

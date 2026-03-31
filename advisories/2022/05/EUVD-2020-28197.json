@@ -1,0 +1,45 @@
+{
+  "id": "EUVD-2020-28197",
+  "enisaUuid": "108af680-da4b-315f-9343-15c569596053",
+  "description": "In PHP versions 7.2.x below 7.2.28, 7.3.x below 7.3.15 and 7.4.x below 7.4.3, when creating PHAR archive using PharData::buildFromIterator() function, the files are added with default permissions (0666, or all access) even if the original files on the filesystem were with more restrictive permissions. This may result in files having more lax permissions than intended when such archive is extracted.",
+  "datePublished": "May 24, 2022, 5:09:52 PM",
+  "dateUpdated": "May 24, 2022, 5:09:52 PM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2020-7063.html\nhttps://www.debian.org/security/2020/dsa-4719\nhttps://www.debian.org/security/2020/dsa-4717\nhttps://access.redhat.com/errata/RHSA-2020:5275\nhttps://access.redhat.com/errata/RHSA-2020:3662\nhttps://ubuntu.com/security/CVE-2020-7063\nhttps://advisories.mageia.org/CVE-2020-7063.html\nhttps://alas.aws.amazon.com/cve/html/CVE-2020-7063.html\nhttps://linux.oracle.com/cve/CVE-2020-7063.html\nhttps://bugs.php.net/bug.php?id=79082\nhttp://lists.opensuse.org/opensuse-security-announce/2020-03/msg00023.html\nhttps://security.gentoo.org/glsa/202003-57\nhttps://lists.debian.org/debian-lts-announce/2020/03/msg00034.html\nhttps://usn.ubuntu.com/4330-1/\nhttps://www.tenable.com/security/tns-2021-14\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-7063\n",
+  "aliases": "GHSA-rm3c-r6h9-r9rg\nCVE-2020-7063\n",
+  "assigner": "php",
+  "epss": 0.3,
+  "enisaIdProduct": [
+    {
+      "id": "18980ec8-d015-3768-98f0-b39c07a3e715",
+      "product": {
+        "name": "PHP"
+      },
+      "product_version": "7.3.x <7.3.15"
+    },
+    {
+      "id": "1fc1b6d0-3a35-3dbe-a59e-ac413ae1c87c",
+      "product": {
+        "name": "PHP"
+      },
+      "product_version": "7.2.x <7.2.28"
+    },
+    {
+      "id": "718b811f-0eaa-32e7-8617-01ff0c6f39da",
+      "product": {
+        "name": "PHP"
+      },
+      "product_version": "7.4.x <7.4.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "463b2bfb-7511-31a3-91bc-81760aa0d729",
+      "vendor": {
+        "name": "PHP Group"
+      }
+    }
+  ]
+}

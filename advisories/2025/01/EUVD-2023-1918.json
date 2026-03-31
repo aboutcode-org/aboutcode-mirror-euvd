@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2023-1918",
+  "enisaUuid": "e3b86002-4a70-3787-99a1-0a91b51d608d",
+  "description": "There is a potential DOM based cross-site scripting issue in rails-ujs which leverages the Clipboard API to target HTML elements that are assigned the contenteditable attribute. This has the potential to occur when pasting malicious HTML content from the clipboard that includes a data-method, data-remote or data-disable-with attribute.",
+  "datePublished": "Jan 9, 2025, 12:33:47 AM",
+  "dateUpdated": "Jan 9, 2025, 5:09:39 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-23913\nhttps://github.com/rails/rails/commit/5037a13614d71727af8a175063bcf6ba1a74bdbd\nhttps://github.com/rails/rails/commit/73009ea59a811b28e8ec2a9c9bc24635aa891214\nhttps://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1033263\nhttps://discuss.rubyonrails.org/t/cve-2023-23913-dom-based-cross-site-scripting-in-rails-ujs-for-contenteditable-html-elements/82468\nhttps://github.com/rails/rails\nhttps://github.com/rubysec/ruby-advisory-db/blob/master/gems/actionview/CVE-2023-23913.yml\nhttps://security.netapp.com/advisory/ntap-20240605-0007\nhttps://www.debian.org/security/2023/dsa-5389\nhttps://security.netapp.com/advisory/ntap-20240605-0007/\n",
+  "aliases": "CVE-2023-23913\nGHSA-xp5h-f8jf-rc8q\n",
+  "assigner": "hackerone",
+  "epss": 0.12,
+  "enisaIdProduct": [
+    {
+      "id": "261cf46b-48d3-3a85-ab36-fe9b675f047a",
+      "product": {
+        "name": "rails-ujs"
+      },
+      "product_version": "6.1.7.3 <6.1.7.3"
+    },
+    {
+      "id": "87940bf0-ede6-3437-9641-6ae48ead9c2c",
+      "product": {
+        "name": "rails-ujs"
+      },
+      "product_version": "7.0.4.3 <7.0.4.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a6f3b2a7-5836-3dba-b5e5-256214af50bc",
+      "vendor": {
+        "name": "rails"
+      }
+    }
+  ]
+}

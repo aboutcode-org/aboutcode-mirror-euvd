@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2025-22464",
+  "enisaUuid": "e71f8854-1cce-3769-aa4d-e4cf7e703883",
+  "description": "Redis through 7.4.3 allows memory consumption via a multi-bulk command composed of many bulks, sent by an authenticated user. This occurs because the server allocates memory for the command arguments of every bulk, even when the command is skipped because of insufficient permissions.",
+  "datePublished": "Jul 23, 2025, 9:36:45 PM",
+  "dateUpdated": "Jul 25, 2025, 6:30:30 AM",
+  "baseScore": 3.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://github.com/redis/redis\nhttps://github.com/io-no/CVE-Reports/issues/1\nhttps://github.com/redis/redis/security/advisories/GHSA-2r7g-8hpc-rpq9\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-46686\n",
+  "aliases": "GHSA-f46f-fjf4-h4m2\nCVE-2025-46686\n",
+  "assigner": "mitre",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "8fa3cc9a-d9ce-3a6d-8961-b718fe782572",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    },
+    {
+      "id": "d8ea63d3-19ec-3461-893c-2fa2f8c04598",
+      "product": {
+        "name": "Redis"
+      },
+      "product_version": "0 \u22648.0.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "319a4b98-1d2e-370b-a7c4-48649768ce22",
+      "vendor": {
+        "name": "n/a"
+      }
+    },
+    {
+      "id": "cd93e60d-95ff-3154-ac19-b62d1569b030",
+      "vendor": {
+        "name": "Redis"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "EUVD-2024-22163",
+  "enisaUuid": "af7926e0-0e55-399f-a254-bd08aa6c1d98",
+  "description": "If errors returned from MarshalJSON methods contain user controlled data, they may be used to break the contextual auto-escaping behavior of the html/template package, allowing for subsequent actions to inject unexpected content into templates.",
+  "datePublished": "Mar 6, 2024, 12:31:27 AM",
+  "dateUpdated": "Mar 14, 2025, 3:31:21 AM",
+  "baseScore": -1.0,
+  "references": "https://go.dev/issue/65697\nhttps://go.dev/cl/564196\nhttps://groups.google.com/g/golang-announce/c/5pwGVUPoMbg\nhttps://pkg.go.dev/vuln/GO-2024-2610\nhttps://security.netapp.com/advisory/ntap-20240329-0008/\nhttp://www.openwall.com/lists/oss-security/2024/03/08/4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-24785\n",
+  "aliases": "CVE-2024-24785\nGHSA-j6m3-gc37-6r6q\n",
+  "assigner": "Go",
+  "epss": 1.25,
+  "enisaIdProduct": [
+    {
+      "id": "0384c2e4-b14c-3466-ad70-292c6f844af4",
+      "product": {
+        "name": "html/template"
+      }
+    },
+    {
+      "id": "36adc164-fb6a-3c73-ba57-56d4b7c2f9cc",
+      "product": {
+        "name": "html/template"
+      },
+      "product_version": "1.22.0-0 <1.22.1"
+    },
+    {
+      "id": "780d6374-d308-3e39-aeac-57f8b93adf8f",
+      "product": {
+        "name": "html/template"
+      },
+      "product_version": "0 <1.21.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c81a2fa3-43eb-3ec7-ad44-8873dad40aa0",
+      "vendor": {
+        "name": "Go standard library"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8322",
+  "enisaUuid": "2f5226d4-1bef-3121-bc9d-6eea98947978",
+  "description": "SPIP before 4.4.9 allows Insecure Deserialization in the public area through the table_valeur filter and the DATA iterator, which accept serialized data. An attacker who can place malicious serialized content (a pre-condition requiring prior access or another vulnerability) can trigger arbitrary object instantiation and potentially achieve code execution. The use of serialized data in these components has been deprecated and will be removed in SPIP 5. This vulnerability is not mitigated by the SPIP security screen.",
+  "datePublished": "Feb 19, 2026, 9:30:47 PM",
+  "dateUpdated": "Feb 19, 2026, 9:30:47 PM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://blog.spip.net/Mise-a-jour-de-securite-sortie-de-SPIP-4-4-9.html\nhttps://git.spip.net/spip/spip\nhttps://www.vulncheck.com/advisories/spip-insecure-deserialization\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27475\n",
+  "aliases": "GHSA-hxjp-v4qc-fcjg\nCVE-2026-27475\n",
+  "assigner": "VulnCheck",
+  "epss": 0.17,
+  "enisaIdProduct": [
+    {
+      "id": "96da41fc-cc39-4fd8-bc7b-02abd7dacabf",
+      "product": {
+        "name": "SPIP"
+      },
+      "product_version": "4.4.0 <4.4.9"
+    },
+    {
+      "id": "dfa2a8f7-c60d-32e6-9cdf-5eb3033f3c27",
+      "product": {
+        "name": "SPIP"
+      },
+      "product_version": "4.4.0 <4.4.9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "544021d8-4295-40c3-b6bc-7998e0466bd0",
+      "vendor": {
+        "name": "SPIP"
+      }
+    },
+    {
+      "id": "8b2933e5-b750-3f84-81b7-7efc1ba771ae",
+      "vendor": {
+        "name": "SPIP"
+      }
+    }
+  ]
+}

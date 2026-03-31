@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2024-38033",
+  "enisaUuid": "a77b6012-2238-37e6-8b5b-3ee77967299c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: fix kernel crash problem in concurrent scenario\n\nWhen link status change, the nic driver need to notify the roce\ndriver to handle this event, but at this time, the roce driver\nmay uninit, then cause kernel crash.\n\nTo fix the problem, when link status change, need to check\nwhether the roce registered, and when uninit, need to wait link\nupdate finish.",
+  "datePublished": "Jul 12, 2024, 12:20:38 PM",
+  "dateUpdated": "Nov 3, 2025, 9:56:27 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/62b5dfb67bfa8bd0301bf3442004563495f9ee48\nhttps://git.kernel.org/stable/c/6d0007f7b69d684879a0f598a042e40244d3cf63\nhttps://git.kernel.org/stable/c/689de7c3bfc7d47e0eacc641c4ce4a0f579aeefa\nhttps://git.kernel.org/stable/c/b2c5024b771cd1dd8175d5f6949accfadbab7edd\nhttps://git.kernel.org/stable/c/12cda920212a49fa22d9e8b9492ac4ea013310a4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-39507\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "CVE-2024-39507\nGHSA-ghhh-5r4g-5v2c\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "08500cff-6ad9-344a-bc9c-682ada9ab18e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.162"
+    },
+    {
+      "id": "170baccb-6d02-3bc5-853d-59d36d804277",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "45e92b7e4e27a427de7e87d5c4d63d4ce7ba02ab <b2c5024b771cd1dd8175d5f6949accfadbab7edd"
+    },
+    {
+      "id": "24b5e956-0758-3728-b65e-d2cfb7151270",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "45e92b7e4e27a427de7e87d5c4d63d4ce7ba02ab <12cda920212a49fa22d9e8b9492ac4ea013310a4"
+    },
+    {
+      "id": "377fd58f-53b7-371c-89b2-27468bbb8740",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.1"
+    },
+    {
+      "id": "45387377-9b44-36e6-93d2-d0a70983eda5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "45e92b7e4e27a427de7e87d5c4d63d4ce7ba02ab <689de7c3bfc7d47e0eacc641c4ce4a0f579aeefa"
+    },
+    {
+      "id": "5c66ffe2-b365-37df-bfb6-db84ed3d3e59",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "45e92b7e4e27a427de7e87d5c4d63d4ce7ba02ab <6d0007f7b69d684879a0f598a042e40244d3cf63"
+    },
+    {
+      "id": "8a8f3407-04db-37b2-96c6-1c5f7dbc45ff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.6"
+    },
+    {
+      "id": "91fa6df8-a959-30e0-9a66-3d991e47d0af",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.95"
+    },
+    {
+      "id": "baf7c594-08b2-3a6f-a034-d75263c06a37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "45e92b7e4e27a427de7e87d5c4d63d4ce7ba02ab <62b5dfb67bfa8bd0301bf3442004563495f9ee48"
+    },
+    {
+      "id": "c5f189d9-3562-3e2e-a3bc-2701a10bd180",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.35"
+    },
+    {
+      "id": "d415b000-2ad8-3c24-b09d-ef12618543d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f3a535c5-3c9a-3977-9c9a-3d0968d166e7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2742bd66-1773-3e32-9988-b08cc21ef9e2",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-33885",
+  "enisaUuid": "d8a3ebdf-2908-3bbd-aba2-c31aa4852c5e",
+  "description": "** DISPUTED ** An issue was discovered in Qualys Cloud Agent 4.8.0-49. It writes \"ps auxwwe\" output to the /var/log/qualys/qualys-cloud-agent-scan.log file. This may, for example, unexpectedly write credentials (from environment variables) to disk in cleartext. NOTE: there are no common circumstances in which qualys-cloud-agent-scan.log can be read by a user other than root; however, the file contents could be exposed through site-specific operational practices. The vendor does NOT characterize this as a vulnerability because the ps data collection is intentional, and would only capture credentials on a machine that was already affected by the CWE-214 weakness.",
+  "datePublished": "Aug 19, 2022, 12:00:23 AM",
+  "dateUpdated": "Aug 24, 2022, 12:00:31 AM",
+  "baseScore": -1.0,
+  "references": "https://blog.qualys.com/vulnerabilities-threat-research\nhttps://blog.qualys.com/product-tech/2022/08/15/qualys-security-updates-cloud-agent-for-linux\nhttp://seclists.org/fulldisclosure/2022/Sep/10\nhttp://packetstormsecurity.com/files/168367/Qualys-Cloud-Agent-Arbitrary-Code-Execution.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-29550\n",
+  "aliases": "GHSA-9c2p-jfmw-fgw7\nCVE-2022-29550\n",
+  "assigner": "mitre",
+  "epss": 0.17,
+  "enisaIdProduct": [
+    {
+      "id": "4958b40c-52c0-395c-aa0f-66d809febbe9",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "57eddb37-c166-3570-9ef9-80b944205c93",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

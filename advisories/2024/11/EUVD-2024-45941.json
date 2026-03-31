@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-45941",
+  "enisaUuid": "2fac1920-0cdc-31e2-9e7a-cd65085ba638",
+  "description": "GNOME libsoup before 3.6.1 allows a buffer overflow in applications that perform conversion to UTF-8 in soup_header_parse_param_list_strict. There is a plausible way to reach this remotely via soup_message_headers_get_content_type (e.g., an application may want to retrieve the content type of a request or response).",
+  "datePublished": "Nov 11, 2024, 12:00:00 AM",
+  "dateUpdated": "Nov 3, 2025, 10:28:37 PM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://gitlab.gnome.org/Teams/Releng/security/-/wikis/home\nhttps://gitlab.gnome.org/GNOME/libsoup/-/merge_requests/407\nhttps://gitlab.gnome.org/GNOME/libsoup/-/merge_requests/407#note_2316401\nhttps://offsec.almond.consulting/using-aflplusplus-on-bug-bounty-programs-an-example-with-gnome-libsoup.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-52531\nhttps://lists.debian.org/debian-lts-announce/2024/12/msg00014.html\n",
+  "aliases": "GHSA-5mc3-gwcr-mgc3\nCVE-2024-52531\n",
+  "assigner": "mitre",
+  "epss": 0.11,
+  "enisaIdProduct": [
+    {
+      "id": "0d7d5663-b2e2-335f-9f7a-a6aef0484b35",
+      "product": {
+        "name": "libsoup"
+      },
+      "product_version": "0 <3.6.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "72603937-7ab3-31df-a0ba-3ccdc46c6ce0",
+      "vendor": {
+        "name": "Gnome"
+      }
+    }
+  ]
+}

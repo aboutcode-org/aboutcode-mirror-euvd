@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-3437",
+  "enisaUuid": "0a8a358d-2333-3c76-b8cd-e03d6a388489",
+  "description": "Apache Hive\u00a0Metastore (HMS) uses\u00a0SerializationUtilities#deserializeObjectWithTypeInformation\u00a0method when filtering and fetching partitions that is unsafe and\u00a0can lead\u00a0to Remote Code Execution (RCE) since it allows the deserialization of arbitrary data.\n\nIn real deployments, the vulnerability can be exploited only by authenticated users/clients that were able to successfully establish\u00a0a connection to the Metastore. From an API perspective any code that calls the unsafe method may be vulnerable unless it performs additional prerechecks on the input arguments.",
+  "datePublished": "Dec 5, 2024, 10:01:41 AM",
+  "dateUpdated": "Dec 5, 2024, 5:02:05 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2022-41137\nhttps://github.com/apache/hive/commit/60027bb9c91a93affcfebd9068f064bc1f2a74c9\nhttps://github.com/apache/hive\nhttps://issues.apache.org/jira/browse/HIVE-26539\nhttps://lists.apache.org/thread/jwtr3d9yovf2wo0qlxvkhoxnwxxyzgts\nhttp://www.openwall.com/lists/oss-security/2024/12/04/2\n",
+  "aliases": "CVE-2022-41137\nGHSA-6hqr-c69m-r76q\n",
+  "assigner": "apache",
+  "epss": 6.21,
+  "enisaIdProduct": [
+    {
+      "id": "68bb4d6c-b607-3811-857f-8d15a76b4b61",
+      "product": {
+        "name": "Apache Hive"
+      },
+      "product_version": "4.0.0-alpha-1 <4.0.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "dcf31244-f6ff-3dc2-a374-86ae4a4aaec3",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8076",
+  "enisaUuid": "bae6a886-8b0e-34ec-b326-96c98bbb2518",
+  "description": "Improper Access Control (IDOR) in the Graylog API, version 2.2.3, which occurs when modifying the user ID in the URL. An authenticated user can access other user's profiles without proper authorization checks. Exploiting this vulnerability allows valid users of the system to be listed and sensitive third-party information to be accessed, such as names, email addresses, internal identifiers, and last activity. The endpoint 'http://<IP>:12900/users/<my_user>' does not implement object-level authorization validations.",
+  "datePublished": "Feb 18, 2026, 3:31:26 PM",
+  "dateUpdated": "Feb 18, 2026, 9:31:22 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-graylog\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1436\n",
+  "aliases": "CVE-2026-1436\nGHSA-ff7j-jwgr-hgxp\n",
+  "assigner": "INCIBE",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "ea27dc0f-1cab-4911-84a8-fe3ce058a9e5",
+      "product": {
+        "name": "Graylog Web Interface"
+      },
+      "product_version": "2.2.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7d4f0edd-f406-444b-8ace-e6ce113a790c",
+      "vendor": {
+        "name": "Graylog"
+      }
+    }
+  ]
+}

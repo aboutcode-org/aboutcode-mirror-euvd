@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-46389",
+  "enisaUuid": "df1ed398-74a4-334b-9e53-a224ad73d8f0",
+  "description": "In lunary-ai/lunary version 1.2.2, a business logic error allows users to bypass the intended limitations on team member invitations and additions, regardless of their subscription plan. The vulnerability arises due to the lack of validation against the predefined member limits in the SEAT_ALLOWANCE constants during the invitation and joining processes. This issue enables users on any plan, including the free plan, to invite and add more members to a team than allowed, effectively circumventing the system's subscription model. The flaw is located in the backend's handling of user invitations and additions, specifically in the /api/v1/auth/index.ts and /api/v1/users.ts endpoints, where the system fails to check the current number of team members against the allowed limits before proceeding with the invitation and addition operations.",
+  "datePublished": "Jun 6, 2024, 9:30:37 PM",
+  "dateUpdated": "Jun 6, 2024, 9:30:37 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-5132\nhttps://huntr.com/bounties/1a2d462f-ce25-410c-80f1-10546f963d7c\n",
+  "aliases": "GHSA-jx23-6582-6hw3\nCVE-2024-5132\n",
+  "assigner": "@huntr_ai",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

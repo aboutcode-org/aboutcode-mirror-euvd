@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8304",
+  "enisaUuid": "cd0d903c-38fc-3028-a34d-387cce1013ad",
+  "description": "Stalwart is a mail and collaboration server. A denial-of-service vulnerability exists in Stalwart Mail Server versions 0.13.0 through 0.15.4 where accessing a specially crafted email containing malformed nested `message/rfc822` MIME parts via IMAP or JMAP causes excessive CPU and memory consumption, potentially leading to an out-of-memory condition and server crash. The malformed structure causes the `mail-parser` crate to produce cyclical references in its parsed representation, which Stalwart then follows indefinitely. Version 0.15.5 contains a patch.",
+  "datePublished": "Feb 19, 2026, 9:05:11 PM",
+  "dateUpdated": "Feb 20, 2026, 7:58:25 PM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://github.com/stalwartlabs/stalwart/security/advisories/GHSA-jm95-876q-c9gw\n",
+  "aliases": "CVE-2026-26312\n",
+  "assigner": "GitHub_M",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "094998cb-1760-4262-9b49-ecc6efd51ee8",
+      "product": {
+        "name": "stalwart"
+      },
+      "product_version": "0.13.0, < 0.15.5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f3cdcd0f-d1d2-4927-ae3b-96beb3506d34",
+      "vendor": {
+        "name": "stalwartlabs"
+      }
+    }
+  ]
+}

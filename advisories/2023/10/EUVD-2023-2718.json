@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-2718",
+  "enisaUuid": "912b289e-11bd-3755-aca2-cb6c1d3dc039",
+  "description": "pkg/suci/suci.go in free5GC udm before 1.2.0, when Go before 1.19 is used, allows an Invalid Curve Attack because it may compute a shared secret via an uncompressed public key that has not been validated. An attacker can send arbitrary SUCIs to the UDM, which tries to decrypt them via both its private key and the attacker's public key.",
+  "datePublished": "Oct 23, 2023, 12:00:00 AM",
+  "dateUpdated": "Aug 2, 2024, 8:45:40 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-46324\nhttps://github.com/free5gc/udm/pull/20\nhttps://github.com/free5gc/udm/commit/5e1479cc686f058992557669b13fd3761a1b6024\nhttps://github.com/free5gc/udm\nhttps://github.com/free5gc/udm/compare/v1.1.1...v1.2.0\nhttps://www.gsma.com/security/wp-content/uploads/2023/10/0073-invalid_curve.pdf\n",
+  "aliases": "CVE-2023-46324\nGHSA-cqvv-r3g3-26rf\n",
+  "assigner": "mitre",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "10af259c-d9ca-39e9-be19-eca05d1ed943",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9ad8d46a-8342-3ba8-a475-053891831883",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

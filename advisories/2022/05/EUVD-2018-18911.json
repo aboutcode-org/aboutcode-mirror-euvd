@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2018-18911",
+  "enisaUuid": "fe9c6737-5790-3a9a-80db-682137f93ccd",
+  "description": "An issue was discovered in shadow 4.5. newgidmap (in shadow-utils) is setuid and allows an unprivileged user to be placed in a user namespace where setgroups(2) is permitted. This allows an attacker to remove themselves from a supplementary group, which may allow access to certain filesystem paths if the administrator has used \"group blacklisting\" (e.g., chmod g-rwx) to restrict access to paths. This flaw effectively reverts a security feature in the kernel (in particular, the /proc/self/setgroups knob) to prevent this sort of privilege escalation.",
+  "datePublished": "May 13, 2022, 1:53:16 AM",
+  "dateUpdated": "May 13, 2022, 1:53:16 AM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2018-7169.html\nhttps://ubuntu.com/security/CVE-2018-7169\nhttps://advisories.mageia.org/CVE-2018-7169.html\nhttps://bugs.launchpad.net/ubuntu/+source/shadow/+bug/1729357\nhttps://security.gentoo.org/glsa/201805-09\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-7169\n",
+  "aliases": "CVE-2018-7169\nGHSA-m2px-jr9v-8hhp\n",
+  "assigner": "mitre",
+  "epss": 0.24,
+  "enisaIdProduct": [
+    {
+      "id": "48cdfffb-4e4d-35a6-b397-4af237575b0b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4730c7d0-7116-3245-a677-c23cc31376e1",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

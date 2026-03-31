@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8388",
+  "enisaUuid": "edd9c364-569b-3c90-9f74-d690e81b0948",
+  "description": "MajorDoMo (aka Major Domestic Module) contains a reflected cross-site scripting (XSS) vulnerability in command.php. The $qry parameter is rendered directly into the HTML page without sanitization via htmlspecialchars(), both in an input field value attribute and in a paragraph element. An attacker can inject arbitrary JavaScript by crafting a URL with malicious content in the qry parameter.",
+  "datePublished": "Feb 19, 2026, 12:30:29 AM",
+  "dateUpdated": "Feb 19, 2026, 12:30:29 AM",
+  "baseScore": 5.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+  "references": "https://chocapikk.com/posts/2026/majordomo-revisited/\nhttps://github.com/sergejey/majordomo/pull/1177\nhttps://www.vulncheck.com/advisories/majordomo-reflected-cross-site-scripting-in-commandphp\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27176\n",
+  "aliases": "CVE-2026-27176\nGHSA-rpq9-4jjf-2xhh\n",
+  "assigner": "VulnCheck",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "8781fd0a-05e8-3b07-9974-419259d339db",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    },
+    {
+      "id": "f5e16e8c-ee15-43b7-b5c7-00daf1b1bfa8",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "47bf452e-4f1c-3859-b63e-930cd391cce2",
+      "vendor": {
+        "name": "sergejey"
+      }
+    },
+    {
+      "id": "9d2ecb66-244b-4f09-94c8-468806827067",
+      "vendor": {
+        "name": "sergejey"
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2024-41971",
+  "enisaUuid": "7a8b7e55-a555-32c7-9102-a588aa85df54",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: Prevent unmapping active read buffers\n\nThe kms paths keep a persistent map active to read and compare the cursor\nbuffer. These maps can race with each other in simple scenario where:\na) buffer \"a\" mapped for update\nb) buffer \"a\" mapped for compare\nc) do the compare\nd) unmap \"a\" for compare\ne) update the cursor\nf) unmap \"a\" for update\nAt step \"e\" the buffer has been unmapped and the read contents is bogus.\n\nPrevent unmapping of active read buffers by simply keeping a count of\nhow many paths have currently active maps and unmap only when the count\nreaches 0.",
+  "datePublished": "Sep 13, 2024, 6:33:42 AM",
+  "dateUpdated": "Nov 3, 2025, 10:16:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/58a3714db4d9dcaeb9fc4905141e17b9f536c0a5\nhttps://git.kernel.org/stable/c/0851b1ec650adadcaa23ec96daad95a55bf966f0\nhttps://git.kernel.org/stable/c/d5228d158e4c0b1663b3983044913c15c3d0135e\nhttps://git.kernel.org/stable/c/aba07b9a0587f50e5d3346eaa19019cf3f86c0ea\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46710\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "CVE-2024-46710\nGHSA-gjv7-5cpp-hqgw\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "3bbccc49-8214-3755-b70f-455468702b93",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "3ed10192-0f00-30d8-9825-0d57c6e0ba47",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "485d98d472d53f9617ffdfba5e677ac29ad4fe20 <58a3714db4d9dcaeb9fc4905141e17b9f536c0a5"
+    },
+    {
+      "id": "3f545756-3649-35af-94b1-1146759cf104",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "485d98d472d53f9617ffdfba5e677ac29ad4fe20 <aba07b9a0587f50e5d3346eaa19019cf3f86c0ea"
+    },
+    {
+      "id": "711f33fe-b6de-3ea8-ae0c-b90170e77548",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.19"
+    },
+    {
+      "id": "b1053865-8b34-3278-90cc-24d61a95da96",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.8"
+    },
+    {
+      "id": "b2611962-c64b-3f13-b891-5e5a6f2500c7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.54"
+    },
+    {
+      "id": "b55a3d9d-d345-3f62-ba8f-dea97633937b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ccf45022-28b5-3c66-924f-32f38795fcfd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "485d98d472d53f9617ffdfba5e677ac29ad4fe20 <d5228d158e4c0b1663b3983044913c15c3d0135e"
+    },
+    {
+      "id": "da34cb6b-1e4c-3942-afc2-5eba45515974",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.113"
+    },
+    {
+      "id": "ff5b2610-d241-3839-a87d-904639fb6258",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "485d98d472d53f9617ffdfba5e677ac29ad4fe20 <0851b1ec650adadcaa23ec96daad95a55bf966f0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "97bdfb6a-5175-3fec-9dba-5d47f5255275",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

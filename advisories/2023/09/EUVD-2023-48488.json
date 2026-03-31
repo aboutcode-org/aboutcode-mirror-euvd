@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2023-48488",
+  "enisaUuid": "281a0c1e-1f3e-3fd2-8dfd-55a229ee330f",
+  "description": "The vulnerability is that the Messaging (\"com.android.mms\") app patched by LG forwards attacker-controlled intents back to the attacker in the exported \"com.android.mms.ui.QClipIntentReceiverActivity\" activity. The attacker can abuse this functionality by launching this activity and then sending a broadcast with the \"com.lge.message.action.QCLIP\" action. The attacker can send, e.g., their own data/clipdata and set Intent.FLAG_GRANT_* flags. After the attacker received that intent in the \"onActivityResult()\" method, they would have access to arbitrary content providers that have the `android:grantUriPermissions=\"true\"` flag set.",
+  "datePublished": "Sep 27, 2023, 3:30:39 PM",
+  "dateUpdated": "Apr 4, 2024, 7:55:27 AM",
+  "baseScore": 3.6,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N",
+  "references": "https://lgsecurity.lge.com/bulletins/mobile#updateDetails\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-44129\n",
+  "aliases": "CVE-2023-44129\nGHSA-v38f-6chf-2vhr\n",
+  "assigner": "LGE",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "22ff2043-02ff-3d1b-bb03-a2eb201ab277",
+      "product": {
+        "name": "LG V60 Thin Q 5G(LMV600VM)"
+      },
+      "product_version": "Android 12 \u226413"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "19aa235d-c833-3b5e-b7ec-f700b11b2ae5",
+      "vendor": {
+        "name": "LG Electronics"
+      }
+    }
+  ]
+}

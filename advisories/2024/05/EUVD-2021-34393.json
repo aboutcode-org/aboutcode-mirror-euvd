@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2021-34393",
+  "enisaUuid": "d3125f7f-06f4-3388-8fab-74e9ce6e6e9e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac80211: fix use-after-free in CCMP/GCMP RX\n\nWhen PN checking is done in mac80211, for fragmentation we need\nto copy the PN to the RX struct so we can later use it to do a\ncomparison, since commit bf30ca922a0c (\"mac80211: check defrag\nPN against current frame\").\n\nUnfortunately, in that commit I used the 'hdr' variable without\nit being necessarily valid, so use-after-free could occur if it\nwas necessary to reallocate (parts of) the frame.\n\nFix this by reloading the variable after the code that results\nin the reallocations, if any.\n\nThis fixes https://bugzilla.kernel.org/show_bug.cgi?id=214401.",
+  "datePublished": "May 21, 2024, 3:31:44 PM",
+  "dateUpdated": "Dec 30, 2024, 9:30:46 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/447d001b875d0e7f211c4ba004916028da994258\nhttps://git.kernel.org/stable/c/31de381aef0ab1b342f62485118dc8a19363dc78\nhttps://git.kernel.org/stable/c/f556e1d6fb9f2923a9a36f3df638c7d79ba09dbb\nhttps://git.kernel.org/stable/c/3d5d629c99c468458022e9b381789de3595bf4dd\nhttps://git.kernel.org/stable/c/50149e0866a82cef33e680ee68dc380a5bc75d32\nhttps://git.kernel.org/stable/c/57de2dcb18742dc2860861c9f496da7d42b67da0\nhttps://git.kernel.org/stable/c/27d3eb5616ee2c0a3b30c3fa34813368ed1f3dc9\nhttps://git.kernel.org/stable/c/94513069eb549737bcfc3d988d6ed4da948a2de8\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47388\n",
+  "aliases": "CVE-2021-47388\nGHSA-q44p-8h6w-57m6\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "04c943fb-9565-3952-9c89-65102fca0cfd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d0f613fe6de344dc17ba04a88921a2094c13d3fa <31de381aef0ab1b342f62485118dc8a19363dc78"
+    },
+    {
+      "id": "06ecc06b-43df-3a1a-a894-7a8284be3a66",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.14.10"
+    },
+    {
+      "id": "205b6bfa-d2d8-3fdf-8893-1f521da6915f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.13"
+    },
+    {
+      "id": "2d0b6ac3-b5aa-3950-9346-14b3a97841a7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0f716b48ed25503e6961f4b5b40ece36f7e4ed26 <3d5d629c99c468458022e9b381789de3595bf4dd"
+    },
+    {
+      "id": "4667062d-668b-36c3-b8ea-a6667b676ec6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "608b0a2ae928a74a2f89e02227339dd79cdb63cf <447d001b875d0e7f211c4ba004916028da994258"
+    },
+    {
+      "id": "6862ae55-d92d-3863-85af-81f337ffcebf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a9b57952fed41556c950a92123086724eaf11919 <f556e1d6fb9f2923a9a36f3df638c7d79ba09dbb"
+    },
+    {
+      "id": "6d080d81-9194-3072-94ee-090a6480492d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "bf30ca922a0c0176007e074b0acc77ed345e9990 <94513069eb549737bcfc3d988d6ed4da948a2de8"
+    },
+    {
+      "id": "75288b79-fed0-3d57-a7b3-7445bb0790e9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "bf30ca922a0c0176007e074b0acc77ed345e9990 <27d3eb5616ee2c0a3b30c3fa34813368ed1f3dc9"
+    },
+    {
+      "id": "77800c40-21e2-355b-872e-14fc8a813301",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.14.249"
+    },
+    {
+      "id": "7850a009-76b1-3ea3-9b27-34cbb4bf7305",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e64ea0597050157f926ac2ba9b478a44ee5be945 <57de2dcb18742dc2860861c9f496da7d42b67da0"
+    },
+    {
+      "id": "86462730-ddf4-3117-aa58-ef7a3eb8f52b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.9.285"
+    },
+    {
+      "id": "94673b79-9d7d-332a-b7c2-68706910cc72",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15"
+    },
+    {
+      "id": "a88ce61e-8a8d-360d-b838-8d40a833d206",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.209"
+    },
+    {
+      "id": "cf6a5a65-7743-3296-9ecf-08ad4b046e82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c8b3a6150dc8ac78d5fdd5fbdfc4806249ef8b2c <50149e0866a82cef33e680ee68dc380a5bc75d32"
+    },
+    {
+      "id": "e6c96699-ee25-3272-a740-dd9eac807346",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e7c2aa5a-9dac-3a7d-b24f-849b805c31d7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.4.286"
+    },
+    {
+      "id": "f76eedc2-b9ea-37cd-a31c-ae472ff214bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.151"
+    },
+    {
+      "id": "fa29fd13-f4c6-3a9d-9eb2-405fbcc1d3de",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.71"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8efca738-bdb7-389f-bbce-1cefbea0385c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8071",
+  "enisaUuid": "97eeae2e-81ed-33ff-b53d-f853c43d9fe6",
+  "description": "Reflected Cross-Site Scripting (XSS) vulnerability in the Graylog Web Interface console, version 2.2.3, caused by a lack of proper sanitization and escaping in HTML output. Several endpoints include segments of the URL directly in the response without applying output encoding, allowing an attacker to inject and execute arbitrary JavaScript code when a user visits a specially crafted URL. Exploitation of this vulnerability may allow script execution in the victim's browser and limited manipulation of the affected user's session context, through the\u00a0 '/system/nodes/' endpoint.",
+  "datePublished": "Feb 18, 2026, 3:31:26 PM",
+  "dateUpdated": "Feb 18, 2026, 9:31:22 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-graylog\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1438\n",
+  "aliases": "GHSA-cw7v-qx8m-563q\nCVE-2026-1438\n",
+  "assigner": "INCIBE",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "fa1140f3-91ff-4be2-873b-c6f8eb00347b",
+      "product": {
+        "name": "Graylog Web Interface"
+      },
+      "product_version": "2.2.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1062ce46-0ec0-4d90-a284-d0c08f346610",
+      "vendor": {
+        "name": "Graylog"
+      }
+    }
+  ]
+}

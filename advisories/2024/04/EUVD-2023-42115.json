@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-42115",
+  "enisaUuid": "d7d0cfa1-5336-3804-88db-d6a3b5376c0e",
+  "description": "Various software builds for the following TCL 30Z and TCL A3X devices leak the ICCID to a system property that can be accessed by any local app on the device without any permissions or special privileges. Google restricted third-party apps from directly obtaining non-resettable device identifiers in Android 10 and higher, but in these instances they are leaked by a high-privilege process and can be obtained indirectly. The software build fingerprints for each confirmed vulnerable device are as follows: TCL 30Z (TCL/4188R/Jetta_ATT:12/SP1A.210812.016/LV8E:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU5P:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU61:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU66:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU68:user/release-keys, TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU6P:user/release-keys, and TCL/T602DL/Jetta_TF:12/SP1A.210812.016/vU6X:user/release-keys) and TCL A3X (TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAAZ:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAB3:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vAB7:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABA:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABM:user/release-keys, TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABP:user/release-keys, and TCL/A600DL/Delhi_TF:11/RKQ1.201202.002/vABS:user/release-keys). This malicious app reads from the \"persist.sys.tctPowerIccid\" system property to indirectly obtain the ICCID.",
+  "datePublished": "Apr 22, 2024, 3:30:42 PM",
+  "dateUpdated": "Jul 3, 2024, 6:36:29 PM",
+  "baseScore": -1.0,
+  "references": "https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Ryan%20Johnson%20Mohamed%20Elsabagh%20Angelos%20Stavrou%20-%20Still%20Vulnerable%20Out%20of%20the%20Box%20Revisiting%20the%20Security%20of%20Prepaid%20Android%20Carrier%20Devices.pdf\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-38296\n",
+  "aliases": "CVE-2023-38296\nGHSA-h9wj-383m-chrv\n",
+  "assigner": "mitre",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "49d00daf-27d1-36a6-87a6-ca5e93dc1677",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fddcb1bd-2152-38d3-b8ec-742ebeeaf3f0",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

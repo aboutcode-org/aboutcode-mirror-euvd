@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2026-10088",
+  "enisaUuid": "caf14db8-7442-3c30-a314-8c20a05812d8",
+  "description": "Actions which insert URLs into the content attribute of HTML meta tags are not escaped. This can allow XSS if the meta tag also has an http-equiv attribute with the value \"refresh\". A new GODEBUG setting has been added, htmlmetacontenturlescape, which can be used to disable escaping URLs in actions in the meta content attribute which follow \"url=\" by setting htmlmetacontenturlescape=0.",
+  "datePublished": "Mar 7, 2026, 12:30:29 AM",
+  "dateUpdated": "Mar 7, 2026, 12:30:29 AM",
+  "baseScore": 0.0,
+  "references": "https://groups.google.com/g/golang-announce/c/EdhZqrQ98hk\nhttps://go.dev/issue/77954\nhttps://go.dev/cl/752081\nhttps://pkg.go.dev/vuln/GO-2026-4603\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27142\n",
+  "aliases": "CVE-2026-27142\nGHSA-j4j7-vw47-rhfq\n",
+  "assigner": "Go",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "f81af0b0-209b-34bb-99b2-fa980f0cfabe",
+      "product": {
+        "name": "html/template"
+      },
+      "product_version": "0 <1.25.8"
+    },
+    {
+      "id": "f9ad68c9-4ab3-360a-b4b1-fc8adb64d24d",
+      "product": {
+        "name": "html/template"
+      },
+      "product_version": "1.26.0-0 <1.26.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f7853614-21eb-3d05-b6ee-0ac03286604e",
+      "vendor": {
+        "name": "Go standard library"
+      }
+    }
+  ]
+}

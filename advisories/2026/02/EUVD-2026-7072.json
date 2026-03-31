@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7072",
+  "enisaUuid": "7fcb65ae-3bf1-3462-92a3-1cc522bab134",
+  "description": "The wpForo Forum plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.4.13 via deserialization of untrusted input in the 'wpforo_display_array_data' function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present.",
+  "datePublished": "Feb 11, 2026, 3:30:27 PM",
+  "dateUpdated": "Feb 11, 2026, 3:30:27 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3c833223-c8c9-413f-9d72-6fb13101459b?source=cve\nhttps://plugins.trac.wordpress.org/browser/wpforo/tags/2.4.13/admin/tools-tabs/debug.php#L198\nhttps://plugins.trac.wordpress.org/changeset?old=3416158&old_path=wpforo%2Ftags%2F2.4.13%2Fadmin%2Ftools-tabs%2Fdebug.php&new=3446993&new_path=wpforo%2Ftags%2F2.4.14%2Fadmin%2Ftools-tabs%2Fdebug.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-0910\n",
+  "aliases": "GHSA-8v4p-4wrw-v43w\nCVE-2026-0910\n",
+  "assigner": "Wordfence",
+  "epss": 0.09,
+  "enisaIdProduct": [
+    {
+      "id": "e23c87b9-f290-438d-8083-82a6e7a5996c",
+      "product": {
+        "name": "wpForo Forum"
+      },
+      "product_version": "* \u22642.4.13"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "97d78bf1-5a65-4234-a578-b03dd86322c1",
+      "vendor": {
+        "name": "tomdever"
+      }
+    }
+  ]
+}

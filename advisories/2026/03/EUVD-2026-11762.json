@@ -1,0 +1,37 @@
+{
+  "id": "EUVD-2026-11762",
+  "enisaUuid": "97d92612-c6bb-3b28-a0d5-578f096f6cb7",
+  "description": "The GetGenie plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.3.2 due to missing validation on a user controlled key in the `action` function. This makes it possible for authenticated attackers, with Author-level access and above, to update post metadata for arbitrary posts. Combined with a lack of input sanitization, this leads to Stored Cross-Site Scripting when a higher-privileged user (such as an Administrator) views the affected post's \"Competitor\" tab in the GetGenie sidebar.",
+  "datePublished": "Mar 13, 2026, 9:31:46 PM",
+  "dateUpdated": "Mar 13, 2026, 9:31:47 PM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0f7b119d-ec56-40cb-80ef-67585dadad77?source=cve\nhttps://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/Store.php#L74\nhttps://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/Store.php#L32\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3479838%40getgenie%2Ftrunk&old=3446466%40getgenie%2Ftrunk&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-2257\n",
+  "aliases": "CVE-2026-2257\n",
+  "assigner": "Wordfence",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "6809f23a-5df0-3df1-83d7-18154b9c1d53",
+      "product": {
+        "name": "GetGenie \u2013 AI Content Writer with Keyword Research & SEO Tracking Tools"
+      },
+      "product_version": "* \u22644.3.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1911fa6f-18a6-3958-b7a2-180df2d8e16a",
+      "vendor": {
+        "name": "Roxnor"
+      }
+    },
+    {
+      "id": "3378349b-6db6-3751-9908-57f1e50a58dd",
+      "vendor": {
+        "name": "Roxnor"
+      }
+    }
+  ]
+}

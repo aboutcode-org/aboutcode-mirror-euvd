@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-9098",
+  "enisaUuid": "25171747-91df-3897-acb0-f15630ef96dc",
+  "description": "openDCIM version 23.04, through commit 4467e9c4, contains an OS command injection vulnerability in report_network_map.php. The application retrieves the 'dot' configuration parameter from the database and passes it directly to exec() without validation or sanitation. If an attacker can modify the fac_Config.dot value, arbitrary commands may be executed in the context of the web server process.",
+  "datePublished": "Feb 28, 2026, 12:31:02 AM",
+  "dateUpdated": "Feb 28, 2026, 12:31:02 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/opendcim-sqli-to-rce/\nhttps://github.com/Chocapikk/opendcim-exploit\nhttps://github.com/opendcim/openDCIM/pull/1664\nhttps://github.com/opendcim/openDCIM/pull/1664/changes/8f7ab2a710086a9c8c269560793e47c577ddda09\nhttps://github.com/opendcim/openDCIM/blob/4467e9c4/report_network_map.php#L7\nhttps://github.com/opendcim/openDCIM/blob/4467e9c4/report_network_map.php#L467\nhttps://www.vulncheck.com/advisories/opendcim-os-command-injection-via-dot-configuration-parameter\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-28517\n",
+  "aliases": "CVE-2026-28517\nGHSA-428h-8xhf-g3cw\n",
+  "assigner": "VulnCheck",
+  "epss": 0.18,
+  "enisaIdProduct": [
+    {
+      "id": "1fb3434b-9465-35cf-b18b-d94f79251fd5",
+      "product": {
+        "name": "openDCIM"
+      },
+      "product_version": "0 \u226423.04"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8593e955-6cf3-3a8f-b3e9-4e9b278ae18c",
+      "vendor": {
+        "name": "openDCIM"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2011-5248",
+  "enisaUuid": "48652f31-af26-33b4-9a4b-cfa4a7d2ad27",
+  "description": "Cytel Studio version 9.0 and earlier is vulnerable to a stack-based buffer overflow triggered by parsing a malformed .CY3 file. The vulnerability occurs when the application copies user-controlled strings into a fixed-size stack buffer (256 bytes) without proper bounds checking. Exploitation allows arbitrary code execution when the crafted file is opened.",
+  "datePublished": "Aug 13, 2025, 9:30:29 PM",
+  "dateUpdated": "Aug 13, 2025, 9:30:30 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/fileformat/cytel_studio_cy3.rb\nhttps://www.exploit-db.com/exploits/17930\nhttps://www.exploit-db.com/exploits/18027\nhttp://aluigi.altervista.org/adv/cytel_1-adv.txt\nhttps://web.archive.org/web/20110708215826/http://www.cytel.com/Software/LogXact.aspx\nhttps://web.archive.org/web/20110708215830/http://www.cytel.com/Software/StatXact.aspx\nhttps://web.archive.org/web/20110301000000*/http://www.cytel.com/Software/StatXact.aspx\nhttps://www.vulncheck.com/advisories/cytel-studio-cy3-file-stack-buffer-overflow\nhttps://nvd.nist.gov/vuln/detail/CVE-2011-10015\n",
+  "aliases": "CVE-2011-10015\nGHSA-76gc-6553-pw26\n",
+  "assigner": "VulnCheck",
+  "epss": 3.47,
+  "enisaIdProduct": [
+    {
+      "id": "0c245819-a7bc-39c1-acb7-2e196a3fd807",
+      "product": {
+        "name": "studio"
+      },
+      "product_version": "* \u22649.0"
+    },
+    {
+      "id": "456501b1-0db9-39b0-8b7c-f197f84a7805",
+      "product": {
+        "name": "studio"
+      },
+      "product_version": "* \u22649.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0d10fca1-4902-311b-a2aa-1dc629f1a90b",
+      "vendor": {
+        "name": "Cytel Inc."
+      }
+    }
+  ]
+}

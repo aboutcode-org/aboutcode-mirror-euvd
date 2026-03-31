@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-24612",
+  "enisaUuid": "63b33f22-b7ae-37d1-a4e1-58f881bb1c90",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: dw-edma: eDMA: Add sync read before starting the DMA transfer in remote setup\n\nThe Linked list element and pointer are not stored in the same memory as\nthe eDMA controller register. If the doorbell register is toggled before\nthe full write of the linked list a race condition error will occur.\nIn remote setup we can only use a readl to the memory to assure the full\nwrite has occurred.",
+  "datePublished": "May 17, 2024, 12:31:00 PM",
+  "dateUpdated": "Sep 18, 2025, 6:30:22 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/d24fe6d5a1cfdddb7a9ef56736ec501c4d0a5fd3\nhttps://git.kernel.org/stable/c/f396b4df27cfe01a99f4b41f584c49e56477be3a\nhttps://git.kernel.org/stable/c/bbcc1c83f343e580c3aa1f2a8593343bf7b55bba\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27408\n",
+  "aliases": "CVE-2024-27408\nGHSA-p7vx-23x6-fwwc\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "076d3603-c67d-3e23-a4e9-a61c769b09b0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "1fc05a0d-b889-3188-8061-965c0afdca2f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.3"
+    },
+    {
+      "id": "1fd6b19f-e362-3d4f-9a26-cdeb4fea02d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7e4b8a4fbe2cecab0959e862604803d063f50029 <bbcc1c83f343e580c3aa1f2a8593343bf7b55bba"
+    },
+    {
+      "id": "2a86aeed-eb7f-3ff9-84e0-4598c87a8548",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.9"
+    },
+    {
+      "id": "76f4581e-c2e9-3466-8c67-a7ace4ac7d9a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "99bc5df6-489a-3292-9d11-6950023d08dd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7e4b8a4fbe2cecab0959e862604803d063f50029 <f396b4df27cfe01a99f4b41f584c49e56477be3a"
+    },
+    {
+      "id": "a20f8c55-8587-3ddc-aeed-62a25c58d803",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.21"
+    },
+    {
+      "id": "deceb391-a23b-3b3b-a122-26ccb25dddb8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7e4b8a4fbe2cecab0959e862604803d063f50029 <d24fe6d5a1cfdddb7a9ef56736ec501c4d0a5fd3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1e198cd3-2d2d-3f39-830c-03d75e1b2017",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

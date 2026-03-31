@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-45409",
+  "enisaUuid": "d792f152-d773-3658-85ff-f40a66e6c993",
+  "description": "x86/HVM pinned cache attributes mis-handling T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] To allow cachability control for HVM guests with passed through devices, an interface exists to explicitly override defaults which would otherwise be put in place. While not exposed to the affected guests themselves, the interface specifically exists for domains controlling such guests. This interface may therefore be used by not fully privileged entities, e.g. qemu running deprivileged in Dom0 or qemu running in a so called stub-domain. With this exposure it is an issue that - the number of the such controlled regions was unbounded (CVE-2022-42333), - installation and removal of such regions was not properly serialized (CVE-2022-42334).",
+  "datePublished": "Mar 21, 2023, 3:30:15 PM",
+  "dateUpdated": "Mar 28, 2023, 12:34:27 AM",
+  "baseScore": -1.0,
+  "references": "https://xenbits.xenproject.org/xsa/advisory-428.txt\nhttp://xenbits.xen.org/xsa/advisory-428.html\nhttp://www.openwall.com/lists/oss-security/2023/03/21/2\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/APBMS2Q6746AXAFAITNJMGBNFGNMVLWR/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5L6PM4RE7MUE6OWA32ZVOXCP235RM2TM/\nhttps://www.debian.org/security/2023/dsa-5378\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-42334\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/5L6PM4RE7MUE6OWA32ZVOXCP235RM2TM\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/APBMS2Q6746AXAFAITNJMGBNFGNMVLWR\n",
+  "aliases": "CVE-2022-42334\nGHSA-v57p-c5gg-pq5v\n",
+  "assigner": "XEN",
+  "epss": 0.05,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "57b2db22-dbac-3d8e-94b8-e034cb427dd5",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

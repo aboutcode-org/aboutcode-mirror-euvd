@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-46024",
+  "enisaUuid": "27a9f453-ec94-3297-a6ca-3788e7bc4439",
+  "description": "In Kostal PIKO 1.5-1 MP plus HMI OEM p 1.0.1, the web application for the Solar Panel is vulnerable to a Stored Cross-Site Scripting (XSS) attack on /file.bootloader.upload.html. The application fails to sanitize the parameter filename, in a POST request to /file.bootloader.upload.html for a system update, thus allowing one to inject HTML and/or JavaScript on the page that will then be processed and stored by the application. Any subsequent requests to pages that retrieve the malicious content will automatically exploit the vulnerability on the victim's browser. This also happens because the tag is loaded in the function innerHTML in the page HTML.",
+  "datePublished": "Jun 22, 2024, 12:30:56 AM",
+  "dateUpdated": "Jul 3, 2024, 6:46:21 PM",
+  "baseScore": -1.0,
+  "references": "https://medium.com/%40daviddepaulasantos/how-we-got-a-cve-for-a-dom-based-stored-xss-on-a-solar-panel-917b9d7b2545\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-42974\n",
+  "aliases": "CVE-2022-42974\nGHSA-8gvf-f484-h344\n",
+  "assigner": "mitre",
+  "epss": 0.08,
+  "enisaIdProduct": [
+    {
+      "id": "4895430f-6b34-312b-8e04-f3a8dc692097",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e9e5ae0e-540c-3828-8da4-7d559a5da75a",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

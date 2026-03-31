@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2014-4102",
+  "enisaUuid": "0aba1fe7-9873-33bd-8c81-46fbb0e28c87",
+  "description": "mm/shmem.c in the Linux kernel through 3.15.1 does not properly implement the interaction between range notification and hole punching, which allows local users to cause a denial of service (i_mutex hold) by using the mmap system call to access a hole, as demonstrated by interfering with intended shmem activity by blocking completion of (1) an MADV_REMOVE madvise call or (2) an FALLOC_FL_PUNCH_HOLE fallocate call.",
+  "datePublished": "May 14, 2022, 1:47:40 AM",
+  "dateUpdated": "May 14, 2022, 1:47:40 AM",
+  "baseScore": 4.7,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:M/Au:N/C:N/I:N/A:C",
+  "references": "https://www.suse.com/security/cve/CVE-2014-4171.html\nhttps://access.redhat.com/errata/RHSA-2015:0102\nhttps://access.redhat.com/errata/RHSA-2014:1318\nhttps://ubuntu.com/security/CVE-2014-4171\nhttps://advisories.mageia.org/CVE-2014-4171.html\nhttps://linux.oracle.com/cve/CVE-2014-4171.html\nhttp://marc.info/?l=linux-mm-commits&m=140303745420549&w=2\nhttp://rhn.redhat.com/errata/RHSA-2014-1318.html\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1111180\nhttp://www.securityfocus.com/bid/68157\nhttp://lists.opensuse.org/opensuse-security-announce/2014-10/msg00006.html\nhttp://www.ubuntu.com/usn/USN-2335-1\nhttp://www.ubuntu.com/usn/USN-2334-1\nhttp://ozlabs.org/~akpm/mmots/broken-out/shmem-fix-faulting-into-a-hole-while-its-punched.patch\nhttp://lists.opensuse.org/opensuse-security-announce/2014-10/msg00007.html\nhttp://secunia.com/advisories/60564\nhttp://secunia.com/advisories/59777\nhttp://www.securitytracker.com/id/1030450\nhttp://www.openwall.com/lists/oss-security/2014/06/18/11\nhttp://rhn.redhat.com/errata/RHSA-2015-0102.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2014-4171\n",
+  "aliases": "CVE-2014-4171\nGHSA-p5vf-58qw-qq73\n",
+  "assigner": "mitre",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "ac424885-dd99-3321-9a4d-6fc04d95f19d",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b64dff44-f040-3a1f-9ba9-be498645e754",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

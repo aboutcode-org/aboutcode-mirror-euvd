@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-36765",
+  "enisaUuid": "68de350d-2174-34b9-9f65-be452f05ff8c",
+  "description": "An issue was discovered on Mitel 6869i through 4.5.0.41 and 5.x through 5.0.0.1018 devices. A command injection vulnerability exists in the hostname parameter taken in by the provis.html endpoint. The provis.html endpoint performs no sanitization on the hostname parameter (sent by an authenticated user), which is subsequently written to disk. During boot, the hostname parameter is executed as part of a series of shell commands. Attackers can achieve remote code execution in the root context by placing shell metacharacters in the hostname parameter.",
+  "datePublished": "Jun 9, 2024, 9:30:33 PM",
+  "dateUpdated": "Jun 12, 2024, 6:30:38 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/kwburns/CVE/tree/main/Mitel/5.0.0.1018#authenticated-remote-command-execution-provis\nhttps://github.com/kwburns/CVE/blob/main/Mitel/5.0.0.1018/code/exploit-provis.py\nhttps://www.youtube.com/watch?v=I9TQqfP5qzM\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-37569\n",
+  "aliases": "CVE-2024-37569\nGHSA-mp92-8wvj-jphh\n",
+  "assigner": "mitre",
+  "epss": 2.44,
+  "enisaIdProduct": [
+    {
+      "id": "520752d5-2df3-3db4-b06e-63a3c8f41e9a",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d5f87815-9d23-37fb-a590-90f02cc9a97a",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

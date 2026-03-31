@@ -1,0 +1,71 @@
+{
+  "id": "EUVD-2024-35781",
+  "enisaUuid": "33301043-0985-3fdf-989d-502a228bd1e0",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix bounds check for dcn35 DcfClocks\n\n[Why]\nNumFclkLevelsEnabled is used for DcfClocks bounds check\ninstead of designated NumDcfClkLevelsEnabled.\nThat can cause array index out-of-bounds access.\n\n[How]\nUse designated variable for dcn35 DcfClocks bounds check.",
+  "datePublished": "May 17, 2024, 3:31:08 PM",
+  "dateUpdated": "May 17, 2024, 3:31:08 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c373f233dab44a13752daec13788e2ad3bf86410\nhttps://git.kernel.org/stable/c/f6e163e9c3d50cd167ab9d411ed01b7718177387\nhttps://git.kernel.org/stable/c/2f10d4a51bbcd938f1f02f16c304ad1d54717b96\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35788\n",
+  "aliases": "CVE-2024-35788\nGHSA-rgfx-ffpf-rhj3\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "0869df78-1065-3db3-88a6-63839356cd90",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
+    },
+    {
+      "id": "14f524c7-8031-3987-ae91-76bdd4f5f6a5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a8edc9cc0b14e3769bbc9b82d00e5e5fc6b5ff0a <2f10d4a51bbcd938f1f02f16c304ad1d54717b96"
+    },
+    {
+      "id": "212b58c4-7369-3d62-8c05-139e7c3ddab4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.12"
+    },
+    {
+      "id": "2f20a2c1-5119-3a39-893f-55175f6e7c1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a8edc9cc0b14e3769bbc9b82d00e5e5fc6b5ff0a <f6e163e9c3d50cd167ab9d411ed01b7718177387"
+    },
+    {
+      "id": "3e571bba-be4c-3c4d-97aa-b42ca21606ee",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.3"
+    },
+    {
+      "id": "82a7202b-f2a0-3bb3-80bc-c283e80a8b88",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9dc8747d-928e-3432-b391-ddf8826ac11f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a8edc9cc0b14e3769bbc9b82d00e5e5fc6b5ff0a <c373f233dab44a13752daec13788e2ad3bf86410"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "95547c29-d98b-3935-805c-6573001bfa66",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

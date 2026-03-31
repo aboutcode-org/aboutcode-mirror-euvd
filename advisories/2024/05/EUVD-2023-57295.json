@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2023-57295",
+  "enisaUuid": "8e2cb330-6768-35cd-9901-f0a5dc217bec",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix hang/underflow when transitioning to ODM4:1\n\n[Why]\nUnder some circumstances, disabling an OPTC and attempting to reclaim\nits OPP(s) for a different OPTC could cause a hang/underflow due to OPPs\nnot being properly disconnected from the disabled OPTC.\n\n[How]\nEnsure that all OPPs are unassigned from an OPTC when it gets disabled.",
+  "datePublished": "May 17, 2024, 3:31:09 PM",
+  "dateUpdated": "Sep 25, 2025, 6:30:27 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/ae62f1dde66a6f0eee98defc4c7a346bd5acd239\nhttps://git.kernel.org/stable/c/4b6b479b2da6badff099b2e3abf0248936eefbf5\nhttps://git.kernel.org/stable/c/e7b2b108cdeab76a7e7324459e50b0c1214c0386\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52671\n",
+  "aliases": "CVE-2023-52671\nGHSA-7cmv-p5w7-7vqq\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "41eb57da-8c31-36b4-902f-b2a11d339379",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "541c0e78-a1fb-34c2-924a-3e8043c610a6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <4b6b479b2da6badff099b2e3abf0248936eefbf5"
+    },
+    {
+      "id": "5ab90fe9-2d0e-3306-8ceb-553896ad3567",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ae62f1dde66a6f0eee98defc4c7a346bd5acd239"
+    },
+    {
+      "id": "67fc7544-9010-36e6-ad4c-d96b9af370fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "686f2f6b-bdba-3acd-a198-668449a5917f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e7b2b108cdeab76a7e7324459e50b0c1214c0386"
+    },
+    {
+      "id": "6add61fe-6bae-3edc-ba13-b994241847f1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.3"
+    },
+    {
+      "id": "91c01af2-ac35-3b71-8921-b93a09b09d22",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "b4c1b060-2ad5-3ba6-95b4-befa85bdeb37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <ae62f1dde66a6f0eee98defc4c7a346bd5acd239"
+    },
+    {
+      "id": "ce48e283-b9bb-3cb3-9ba6-8d430952a115",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <e7b2b108cdeab76a7e7324459e50b0c1214c0386"
+    },
+    {
+      "id": "cf9df53e-9478-3d37-9617-7916a78049c2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4b6b479b2da6badff099b2e3abf0248936eefbf5"
+    },
+    {
+      "id": "fe396bda-82ce-3e8f-9a0a-db4f98d0b582",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.24"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0f6afb69-37e2-343b-a967-ace1d2646bb8",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

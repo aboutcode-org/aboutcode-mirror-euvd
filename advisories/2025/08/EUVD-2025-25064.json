@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-25064",
+  "enisaUuid": "5b212715-61df-3fcf-838f-5d79312d0986",
+  "description": "The AL Pack plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the check_activate_permission() permission callback for the /wp-json/presslearn/v1/activate REST API endpoint in all versions up to, and including, 1.0.2. The callback reads the client-supplied Origin header and, after parsing, allows the request if it matches one of the trusted domains, without ever verifying user authentication, capabilities, or nonce tokens. This makes it possible for unauthenticated attackers to activate premium features by simply spoofing the Origin header.",
+  "datePublished": "Aug 16, 2025, 6:30:21 AM",
+  "dateUpdated": "Aug 16, 2025, 6:30:21 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/793a2096-3332-412e-a45a-a7367b1209a3?source=cve\nhttps://plugins.trac.wordpress.org/browser/alpack/trunk/includes/api.php\nhttps://wordpress.org/plugins/alpack/#developers\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-7664\n",
+  "aliases": "GHSA-2vwh-54r8-6xwg\nCVE-2025-7664\n",
+  "assigner": "Wordfence",
+  "epss": 0.18,
+  "enisaIdProduct": [
+    {
+      "id": "1048d21e-1094-3405-837f-f489e451390a",
+      "product": {
+        "name": "AL Pack"
+      },
+      "product_version": "* \u22641.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5e10eeba-dd05-3a77-a13a-705bea8dfb64",
+      "vendor": {
+        "name": "loword"
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2024-24061",
+  "enisaUuid": "f554d0c5-afab-3dfd-b597-6a7a274b88d6",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: qcom: Fix uninitialized pointer dmactl\n\nIn the case where __lpass_get_dmactl_handle is called and the driver\nid dai_id is invalid the pointer dmactl is not being assigned a value,\nand dmactl contains a garbage value since it has not been initialized\nand so the null check may not work. Fix this to initialize dmactl to\nNULL. One could argue that modern compilers will set this to zero, but\nit is useful to keep this initialized as per the same way in functions\n__lpass_platform_codec_intf_init and lpass_cdc_dma_daiops_hw_params.\n\nCleans up clang scan build warning:\nsound/soc/qcom/lpass-cdc-dma.c:275:7: warning: Branch condition\nevaluates to a garbage value [core.uninitialized.Branch]",
+  "datePublished": "Apr 4, 2024, 9:30:36 AM",
+  "dateUpdated": "Nov 1, 2024, 6:31:25 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/99adc8b4d2f38bf0d06483ec845bc48f60c3f8cf\nhttps://git.kernel.org/stable/c/d5a7726e6ea62d447b79ab5baeb537ea6bdb225b\nhttps://git.kernel.org/stable/c/1382d8b55129875b2e07c4d2a7ebc790183769ee\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26799\n",
+  "aliases": "GHSA-7g5r-fqfh-59j6\nCVE-2024-26799\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "05979f88-247c-3098-9d60-9caea4006680",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.18"
+    },
+    {
+      "id": "30d390a7-e1ed-3ede-ab0a-bda2c53042cb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.9"
+    },
+    {
+      "id": "3fc8356e-ad7f-3212-b0e5-84769b238673",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "4e073b32-3eca-322a-81de-fd792803e47a",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "7df64092-7da9-3afd-9f38-8870fcacdfa2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b81af585ea54ee9f749391e594ee9cbd44061eae <d5a7726e6ea62d447b79ab5baeb537ea6bdb225b"
+    },
+    {
+      "id": "c3a6a4e6-9ce0-35e3-a015-1f1c4c986397",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.21"
+    },
+    {
+      "id": "c48ab1da-8d39-303b-bb36-1657f24fb9cb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b81af585ea54ee9f749391e594ee9cbd44061eae <99adc8b4d2f38bf0d06483ec845bc48f60c3f8cf"
+    },
+    {
+      "id": "ed2e8fc1-c63c-36dd-a6bc-4d9305ab97e5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b81af585ea54ee9f749391e594ee9cbd44061eae <1382d8b55129875b2e07c4d2a7ebc790183769ee"
+    },
+    {
+      "id": "fdadf01d-30bf-362f-9ae7-5567cc5a86ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4e073b32-3eca-322a-81de-fd792803e47a",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

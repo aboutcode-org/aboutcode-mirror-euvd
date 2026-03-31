@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2013-7262",
+  "enisaUuid": "10b008d5-beb8-363f-9aa7-6209bc07159c",
+  "description": "An OS command injection vulnerability exists in multiple Raidsonic NAS devices\u2014specifically tested on IB-NAS5220 and IB-NAS4220\u2014via the unauthenticated timeHandler.cgi endpoint exposed through the web interface. The CGI script fails to properly sanitize user-supplied input in the timeZone parameter of a POST request, allowing remote attackers to inject arbitrary shell commands.",
+  "datePublished": "Aug 1, 2025, 9:31:06 PM",
+  "dateUpdated": "Aug 1, 2025, 9:31:06 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/linux/http/raidsonic_nas_ib5220_exec_noauth.rb\nhttps://www.exploit-db.com/exploits/24499\nhttps://www.exploit-db.com/exploits/28508\nhttps://web.archive.org/web/20160616174425/http://www.s3cur1ty.de/m1adv2013-010\nhttps://www.vulncheck.com/advisories/raidsonic-nas-devices-unauth-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2013-10049\n",
+  "aliases": "GHSA-7v67-qhqf-7xjm\nCVE-2013-10049\n",
+  "assigner": "VulnCheck",
+  "epss": 51.37,
+  "enisaIdProduct": [
+    {
+      "id": "c2d6c89c-8e9f-34b1-a398-0a36d797b653",
+      "product": {
+        "name": "IB-NAS4220"
+      },
+      "product_version": "*"
+    },
+    {
+      "id": "e86ea36a-66d4-3ff3-b1e2-bcee5a42efb2",
+      "product": {
+        "name": "IB-NAS5220"
+      },
+      "product_version": "*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bf0250b7-7589-3b10-9a41-d0c44cc58dc9",
+      "vendor": {
+        "name": "Raidsonic Technology GmbH"
+      }
+    }
+  ]
+}

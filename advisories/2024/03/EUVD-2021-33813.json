@@ -1,0 +1,126 @@
+{
+  "id": "EUVD-2021-33813",
+  "enisaUuid": "8923ae41-05d8-3e92-bb97-fdc7f76dc239",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/meson: fix shutdown crash when component not probed\n\nWhen main component is not probed, by example when the dw-hdmi module is\nnot loaded yet or in probe defer, the following crash appears on shutdown:\n\nUnable to handle kernel NULL pointer dereference at virtual address 0000000000000038\n...\npc : meson_drv_shutdown+0x24/0x50\nlr : platform_drv_shutdown+0x20/0x30\n...\nCall trace:\nmeson_drv_shutdown+0x24/0x50\nplatform_drv_shutdown+0x20/0x30\ndevice_shutdown+0x158/0x360\nkernel_restart_prepare+0x38/0x48\nkernel_restart+0x18/0x68\n__do_sys_reboot+0x224/0x250\n__arm64_sys_reboot+0x24/0x30\n...\n\nSimply check if the priv struct has been allocated before using it.",
+  "datePublished": "Mar 25, 2024, 12:30:52 PM",
+  "dateUpdated": "Mar 3, 2025, 6:31:20 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b4298d33c1fcce511ffe84d8d3de07e220300f9b\nhttps://git.kernel.org/stable/c/e256a0eb43e17209e347409a80805b1659398d68\nhttps://git.kernel.org/stable/c/4ce2bf20b4a6e307e114847d60b2bf40a6a1fac0\nhttps://git.kernel.org/stable/c/d66083c0d6f5125a4d982aa177dd71ab4cd3d212\nhttps://git.kernel.org/stable/c/b4b91033a0b11fe9ade58156cd9168f89f4a8c1a\nhttps://git.kernel.org/stable/c/7cfc4ea78fc103ea51ecbacd9236abb5b1c490d2\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47165\n",
+  "aliases": "CVE-2021-47165\nGHSA-rfpv-q7vr-v94r\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "1055c873-c024-3c9b-aad0-b255ff9d0a8f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8fbbf2b3849419e31731902d7478b0c934732632 <e256a0eb43e17209e347409a80805b1659398d68"
+    },
+    {
+      "id": "2df495ef-718a-3e7b-9e5d-cc0335545d02",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "592ee90a-033a-3a3f-a0ff-09e8a20caaf5",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "7890374f-1830-3650-a670-664893ab3aa8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.12"
+    },
+    {
+      "id": "7a5bb521-337f-344d-9f74-d43dd86773a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.9"
+    },
+    {
+      "id": "809b7754-f088-3243-b18c-842041de2880",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "fa0c16caf3d73ab4d2e5d6fa2ef2394dbec91791 <7cfc4ea78fc103ea51ecbacd9236abb5b1c490d2"
+    },
+    {
+      "id": "9a37107d-00d2-3b8d-b27f-a2558d0a0286",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "b35876ac-d829-339d-bcd9-902d594550b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "fa0c16caf3d73ab4d2e5d6fa2ef2394dbec91791 <b4b91033a0b11fe9ade58156cd9168f89f4a8c1a"
+    },
+    {
+      "id": "b4505d70-742e-3459-bc42-0a0723cd9ca6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8a5160cc8488776ddc48ea045860dab015f47390 <b4298d33c1fcce511ffe84d8d3de07e220300f9b"
+    },
+    {
+      "id": "b80ad249-fe8e-39c7-927c-367fde4ca48e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.42"
+    },
+    {
+      "id": "be364121-661c-333d-89f8-47af8be9d9a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d4ec1ffbdaa8939a208656e9c1440742c457ef16 <d66083c0d6f5125a4d982aa177dd71ab4cd3d212"
+    },
+    {
+      "id": "cf661011-b584-3c4c-9556-f7a7ac206f2f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.193"
+    },
+    {
+      "id": "d0e7c2e4-7b8a-3f12-a132-b306fa9868a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.124"
+    },
+    {
+      "id": "ed73dd8e-35c3-3043-8487-f39002fac8ad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d2100ef32a8cfd024bad94f4fbc5e53d40d2b3da <4ce2bf20b4a6e307e114847d60b2bf40a6a1fac0"
+    },
+    {
+      "id": "ffa97c9d-3207-357c-9dfb-d246916e94f0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.14.235"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "592ee90a-033a-3a3f-a0ff-09e8a20caaf5",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

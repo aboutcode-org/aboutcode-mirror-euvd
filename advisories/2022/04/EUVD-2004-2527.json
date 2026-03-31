@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2004-2527",
+  "enisaUuid": "95f4c51c-cbac-3916-9f71-ce08dfc4593b",
+  "description": "The exit_thread function (process.c) in Linux kernel 2.6 through 2.6.5 does not invalidate the per-TSS io_bitmap pointers if a process obtains IO access permissions from the ioperm function but does not drop those permissions when it exits, which allows other processes to access the per-TSS pointers, access restricted memory locations, and possibly gain privileges.",
+  "datePublished": "Apr 29, 2022, 3:01:38 AM",
+  "dateUpdated": "Apr 29, 2022, 3:01:38 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:N/AC:L/Au:N/C:P/I:P/A:P",
+  "references": "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.6\nhttps://exchange.xforce.ibmcloud.com/vulnerabilities/16106\nhttp://www.osvdb.org/5997\nhttp://www.securityfocus.com/bid/10302\nhttp://www.ussg.iu.edu/hypermail/linux/kernel/0405.0/1242.html\nhttp://secunia.com/advisories/11577\nhttp://www.ussg.iu.edu/hypermail/linux/kernel/0405.0/1265.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2004-2536\n",
+  "aliases": "GHSA-93h5-jmg6-mmph\nCVE-2004-2536\n",
+  "assigner": "mitre",
+  "epss": 0.48,
+  "enisaIdProduct": [
+    {
+      "id": "6f0bc703-7fe8-3bfc-b066-738026ab20d4",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ccc24cd0-d93c-3222-aa14-c0f84bbeee08",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

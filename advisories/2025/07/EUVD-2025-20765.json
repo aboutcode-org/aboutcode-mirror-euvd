@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-20765",
+  "enisaUuid": "0883cadd-1773-3087-891d-08baa7730f55",
+  "description": "An unrestricted file upload vulnerability in the WordPress Simple File List plugin prior to version 4.2.3 allows unauthenticated remote attackers to achieve remote code execution. The plugin's upload endpoint (ee-upload-engine.php) restricts file uploads based on extension, but lacks proper validation after file renaming. An attacker can first upload a PHP payload disguised as a .png file, then use the plugin\u2019s ee-file-engine.php rename functionality to change the extension to .php. This bypasses upload restrictions and results in the uploaded payload being executable on the server.",
+  "datePublished": "Jul 9, 2025, 3:30:22 AM",
+  "dateUpdated": "Jul 16, 2025, 6:32:33 PM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/wp_simple_file_list_rce.rb\nhttps://plugins.trac.wordpress.org/changeset/2286920/simple-file-list\nhttps://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/simple-file-list/simple-file-list-423-remote-code-execution\nhttps://web.archive.org/web/20220426044003/https://wpscan.com/vulnerability/10192/\nhttps://www.cybersecurity-help.cz/vdb/SB2020042711\nhttps://packetstorm.news/files/id/160221\nhttps://wordpress.org/plugins/simple-file-list/\nhttps://simplefilelist.com/\nhttps://vulncheck.com/advisories/wordpress-simple-file-list-plugin-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-34085\n",
+  "aliases": "GHSA-8xp7-p66p-4h9h\nCVE-2025-34085\n",
+  "assigner": "VulnCheck",
+  "epss": 0.61,
+  "enisaIdProduct": [
+    {
+      "id": "a96c24df-3822-340d-b957-f937aacb154d",
+      "product": {
+        "name": "Simple File List WordPress Plugin"
+      },
+      "product_version": "* <4.2.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3d9483cd-c91e-3ae2-9dc0-98891acc7c61",
+      "vendor": {
+        "name": "Element Engage LLC"
+      }
+    }
+  ]
+}

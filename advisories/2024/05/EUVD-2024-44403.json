@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-44403",
+  "enisaUuid": "51fbf6c9-6b42-3154-bfa7-9656cc79b79c",
+  "description": "In register_device, the return value of ida_simple_get is unchecked,\nin witch ida_simple_get will use an invalid index value.\n\nTo address this issue, index should be checked after ida_simple_get. When\nthe index value is abnormal, a warning message should be printed, the port\nshould be dropped, and the value should be recorded.\n",
+  "datePublished": "May 14, 2024, 6:31:02 PM",
+  "dateUpdated": "May 14, 2024, 6:31:02 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-4810\nhttps://bugzilla.openanolis.cn/show_bug.cgi?id=9008\n",
+  "aliases": "CVE-2024-4810\nGHSA-6jvg-rmf5-v26j\n",
+  "assigner": "Anolis",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

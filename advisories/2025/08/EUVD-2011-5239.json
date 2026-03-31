@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2011-5239",
+  "enisaUuid": "1d0ec481-65e7-3066-bd5d-41664a54f05e",
+  "description": "Traq versions 2.0 through 2.3 contain a remote code execution vulnerability in the admincp/common.php script. The flawed authorization logic fails to halt execution after a failed access check, allowing unauthenticated users to reach admin-only functionality. This can be exploited via plugins.php to inject and execute arbitrary PHP code.",
+  "datePublished": "Aug 13, 2025, 9:30:29 PM",
+  "dateUpdated": "Aug 13, 2025, 9:30:29 PM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/traq_plugin_exec.rb\nhttps://www.exploit-db.com/exploits/18213\nhttps://www.exploit-db.com/exploits/18239\nhttps://web.archive.org/web/20110729003039/https://traqproject.org/\nhttps://github.com/nirix/traq/releases/tag/v2.3.1\nhttps://www.vulncheck.com/advisories/traq-issue-tracking-system-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2011-10013\n",
+  "aliases": "CVE-2011-10013\nGHSA-wjrf-v3xh-x8jw\n",
+  "assigner": "VulnCheck",
+  "epss": 60.0,
+  "enisaIdProduct": [
+    {
+      "id": "677138bb-e55e-3dfd-99d0-0fd8b71261a9",
+      "product": {
+        "name": "Issue Tracking System"
+      },
+      "product_version": "2.0 <2.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "501e5af4-9155-3af0-b565-d73ca693b4bf",
+      "vendor": {
+        "name": "Traq Project"
+      }
+    }
+  ]
+}

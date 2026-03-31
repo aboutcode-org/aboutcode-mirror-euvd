@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-50134",
+  "enisaUuid": "7868aee2-8bec-3fa7-828b-77e7e80e7b7a",
+  "description": "The Learning Module in ILIAS 7.25 (2023-09-12 release) allows an attacker (with basic user privileges) to achieve a high-impact Directory Traversal attack on confidentiality and availability. By exploiting this network-based vulnerability, the attacker can move specified directories, normally outside the documentRoot, to a publicly accessible location via the PHP function rename(). This results in a total loss of confidentiality, exposing sensitive resources, and potentially denying access to the affected component and the operating system's components. To exploit this, an attacker must manipulate a POST request during the creation of an exercise unit, by modifying the old_name and new_name parameters via directory traversal. However, it's essential to note that, when exploiting this vulnerability, the specified directory will be relocated from its original location, rendering all files obtained from there unavailable.",
+  "datePublished": "Oct 26, 2023, 3:30:27 PM",
+  "dateUpdated": "Nov 14, 2023, 6:30:20 PM",
+  "baseScore": -1.0,
+  "references": "https://rehmeinfosec.de\nhttps://rehmeinfosec.de/labor/cve-2023-45867\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-45868\n",
+  "aliases": "GHSA-q6jg-9395-p66m\nCVE-2023-45868\n",
+  "assigner": "mitre",
+  "epss": 0.29,
+  "enisaIdProduct": [
+    {
+      "id": "4febb6f8-fb23-3aed-9c14-457506b9c183",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "559a6d65-76c7-3d9d-a73e-508183b18e82",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

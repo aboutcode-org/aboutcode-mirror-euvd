@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-36261",
+  "enisaUuid": "97e0f9ac-ed46-3eda-9354-c7ad2f6713ee",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nuio_hv_generic: Don't free decrypted memory\n\nIn CoCo VMs it is possible for the untrusted host to cause\nset_memory_encrypted() or set_memory_decrypted() to fail such that an\nerror is returned and the resulting memory is shared. Callers need to\ntake care to handle these errors to avoid returning decrypted (shared)\nmemory to the page allocator, which could lead to functional or security\nissues.\n\nThe VMBus device UIO driver could free decrypted/shared pages if\nset_memory_decrypted() fails. Check the decrypted field in the gpadl\nto decide whether to free the memory.",
+  "datePublished": "May 30, 2024, 3:29:08 PM",
+  "dateUpdated": "Dec 19, 2024, 9:01:53 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/dabf12bf994318d939f70d47cfda30e47abb2c54\nhttps://git.kernel.org/stable/c/6466a0f6d235c8a18c602cb587160d7e49876db9\nhttps://git.kernel.org/stable/c/fe2c58602354fbd60680dc42ac3a0b772cda7d23\nhttps://git.kernel.org/stable/c/3d788b2fbe6a1a1a9e3db09742b90809d51638b7\n",
+  "aliases": "CVE-2024-36910\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2b839ada-b6b8-35b2-be41-3f56dec9badd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fe2c58602354fbd60680dc42ac3a0b772cda7d23"
+    },
+    {
+      "id": "2fde7815-11f5-3403-9bc0-14ab549e8e46",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.10"
+    },
+    {
+      "id": "392fabe1-dc89-312e-a1d6-1e46bc84ba91",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "44b89be8-90a2-3356-8006-60ba63c65805",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dabf12bf994318d939f70d47cfda30e47abb2c54"
+    },
+    {
+      "id": "9d6fa2ee-b0f9-3637-bc6f-dc573f8b7dc6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "af246a2a-fd14-3bb7-8f27-aafc8596de97",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6466a0f6d235c8a18c602cb587160d7e49876db9"
+    },
+    {
+      "id": "b1b6a84c-8fcf-39c6-972d-e2b79b3f180e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3d788b2fbe6a1a1a9e3db09742b90809d51638b7"
+    },
+    {
+      "id": "d4dd02de-bf06-30ce-af8d-e192145662e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.91"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "45a0fbc3-ac62-3ffa-917f-91f661932527",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2023-57208",
+  "enisaUuid": "b835d48e-c03e-39ff-8fd5-1908dc60c425",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspmi: mediatek: Fix UAF on device remove\n\nThe pmif driver data that contains the clocks is allocated along with\nspmi_controller.\nOn device remove, spmi_controller will be freed first, and then devres\n, including the clocks, will be cleanup.\nThis leads to UAF because putting the clocks will access the clocks in\nthe pmif driver data, which is already freed along with spmi_controller.\n\nThis can be reproduced by enabling DEBUG_TEST_DRIVER_REMOVE and\nbuilding the kernel with KASAN.\n\nFix the UAF issue by using unmanaged clk_bulk_get() and putting the\nclocks before freeing spmi_controller.",
+  "datePublished": "Mar 6, 2024, 9:30:26 AM",
+  "dateUpdated": "Aug 6, 2024, 3:30:47 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/521f28eedd6b14228c46e3b81e3bf9b90c2818d8\nhttps://git.kernel.org/stable/c/f8dcafcb54632536684336161da8bdd52120f95e\nhttps://git.kernel.org/stable/c/9a3881b1f07db1bb55cb0108e6f05cfd027eaf2e\nhttps://git.kernel.org/stable/c/e821d50ab5b956ed0effa49faaf29912fd4106d9\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52584\n",
+  "aliases": "GHSA-jmmm-pcpp-rrc4\nCVE-2023-52584\n",
+  "assigner": "Linux",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "22188bba-da6f-3fe6-91f9-5980094bbb0d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "2e429fe5-a416-37b5-ad22-ce8d7e782c3c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e821d50ab5b956ed0effa49faaf29912fd4106d9"
+    },
+    {
+      "id": "7d023818-7352-35b1-8344-bd4900338f1a",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "aaeaf9f5-d4a6-3d9e-832c-62ce1a1a8d57",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    },
+    {
+      "id": "c001333f-3fb4-372b-b18b-570fc49ca491",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "d2033cde-7b16-33b4-bc5e-c6230d18136a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f8dcafcb54632536684336161da8bdd52120f95e"
+    },
+    {
+      "id": "e7c85528-7987-3074-84aa-abef2be22acd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <521f28eedd6b14228c46e3b81e3bf9b90c2818d8"
+    },
+    {
+      "id": "eff37d9e-ea56-3713-9692-111eeb380288",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "eff7f382-e4d4-3aa1-a800-823f910004ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9a3881b1f07db1bb55cb0108e6f05cfd027eaf2e"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7d023818-7352-35b1-8344-bd4900338f1a",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

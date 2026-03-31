@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2021-34612",
+  "enisaUuid": "1b37d586-10f5-3112-9930-b16ff75de00c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: Fix null ptr access msm_ioctl_gem_submit()\n\nFix the below null pointer dereference in msm_ioctl_gem_submit():\n\n 26545.260705:   Call trace:\n 26545.263223:    kref_put+0x1c/0x60\n 26545.266452:    msm_ioctl_gem_submit+0x254/0x744\n 26545.270937:    drm_ioctl_kernel+0xa8/0x124\n 26545.274976:    drm_ioctl+0x21c/0x33c\n 26545.278478:    drm_compat_ioctl+0xdc/0xf0\n 26545.282428:    __arm64_compat_sys_ioctl+0xc8/0x100\n 26545.287169:    el0_svc_common+0xf8/0x250\n 26545.291025:    do_el0_svc_compat+0x28/0x54\n 26545.295066:    el0_svc_compat+0x10/0x1c\n 26545.298838:    el0_sync_compat_handler+0xa8/0xcc\n 26545.303403:    el0_sync_compat+0x188/0x1c0\n 26545.307445:   Code: d503201f d503201f 52800028 4b0803e8 (b8680008)\n 26545.318799:   Kernel panic - not syncing: Oops: Fatal exception",
+  "datePublished": "Jun 19, 2024, 3:30:55 PM",
+  "dateUpdated": "Aug 27, 2024, 6:31:35 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/f6db3d98f876870c35e96693cfd54752f6199e59\nhttps://git.kernel.org/stable/c/26d776fd0f79f093a5d0ce1a4c7c7a992bc3264c\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47610\n",
+  "aliases": "CVE-2021-47610\nGHSA-3xcp-65mf-qfv3\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "1b11da20-ae4b-348b-94dd-db9a65e5dfcd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f6db3d98f876870c35e96693cfd54752f6199e59"
+    },
+    {
+      "id": "46eb5c26-25f6-3a7e-beaf-613a9f18c558",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    },
+    {
+      "id": "55a783b9-ac25-3fcf-b8d1-589e86c428f8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "84ab40e7-4bbb-3dd0-ac9f-0c162cd22848",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.12"
+    },
+    {
+      "id": "9a5ebe70-f7c7-3eb0-a837-74900aa00bdd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0cf6c71d70d8aa39b8fd0e39c9009602a0e0d300 <f6db3d98f876870c35e96693cfd54752f6199e59"
+    },
+    {
+      "id": "babd25bf-cad4-36ec-9c36-06f2ba1bc0bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0cf6c71d70d8aa39b8fd0e39c9009602a0e0d300 <26d776fd0f79f093a5d0ce1a4c7c7a992bc3264c"
+    },
+    {
+      "id": "cfdb3864-e6d5-3e4c-b1fc-9c9fb3566dd5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <26d776fd0f79f093a5d0ce1a4c7c7a992bc3264c"
+    },
+    {
+      "id": "fecbdc3f-ef5c-3c31-a240-45b67e56be94",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "539579c7-6287-3eac-8d82-325ffd08bbbe",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

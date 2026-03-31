@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2021-33901",
+  "enisaUuid": "ed6f8496-705c-3bdf-b1d1-9ade104c085e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix potential memory leak in DMUB hw_init\n\n[Why]\nOn resume we perform DMUB hw_init which allocates memory:\ndm_resume->dm_dmub_hw_init->dc_dmub_srv_create->kzalloc\nThat results in memory leak in suspend/resume scenarios.\n\n[How]\nAllocate memory for the DC wrapper to DMUB only if it was not\nallocated before.\nNo need to reallocate it on suspend/resume.",
+  "datePublished": "May 21, 2024, 3:31:40 PM",
+  "dateUpdated": "Dec 30, 2024, 9:30:46 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9e8c2af010463197315fa54a6c17e74988b5259c\nhttps://git.kernel.org/stable/c/aa000f828e60ac15d6340f606ec4a673966f5b0b\nhttps://git.kernel.org/stable/c/c5699e2d863f58221044efdc3fa712dd32d55cde\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47253\n",
+  "aliases": "CVE-2021-47253\nGHSA-gg86-5h5f-jrwx\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0af6c36e-86b6-32e7-b6d0-97f50df000d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.45"
+    },
+    {
+      "id": "1372d2c0-16df-3d06-ae10-f23956d21b5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "1679a4b9-6b82-3bad-b123-090a0cdfa85b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <aa000f828e60ac15d6340f606ec4a673966f5b0b"
+    },
+    {
+      "id": "21a8b0d4-bdc1-3cef-af85-93a9b1eeed20",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <9e8c2af010463197315fa54a6c17e74988b5259c"
+    },
+    {
+      "id": "354f0d29-205d-33d9-a224-ef56c02c5fc0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9e8c2af010463197315fa54a6c17e74988b5259c"
+    },
+    {
+      "id": "682f584b-0827-3963-af42-7465f8f50c38",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "750635e5-84ab-38f9-8bc8-1ebae28099f0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.12"
+    },
+    {
+      "id": "979bb0d8-c75c-36b9-a6ef-e955a7b655db",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <aa000f828e60ac15d6340f606ec4a673966f5b0b"
+    },
+    {
+      "id": "a2614766-952f-327d-8751-7bf7c888c9e3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <c5699e2d863f58221044efdc3fa712dd32d55cde"
+    },
+    {
+      "id": "ee3a6589-1b4f-32b7-b5fb-ac0942f844da",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c5699e2d863f58221044efdc3fa712dd32d55cde"
+    },
+    {
+      "id": "fbfaa868-91ad-34f4-b6d3-2ce53e93743e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "496c3bce-cd1a-3581-9933-92fc506cd4de",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

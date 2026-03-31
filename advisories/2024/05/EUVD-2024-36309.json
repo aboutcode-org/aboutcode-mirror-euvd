@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-36309",
+  "enisaUuid": "4e8e2085-4e0d-3b93-ad69-e84db1ac6122",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: devicetree: fix refcount leak in pinctrl_dt_to_map()\n\nIf we fail to allocate propname buffer, we need to drop the reference\ncount we just took. Because the pinctrl_dt_free_maps() includes the\ndroping operation, here we call it directly.",
+  "datePublished": "May 30, 2024, 3:35:51 PM",
+  "dateUpdated": "Dec 19, 2024, 9:03:20 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/06780473cb8a858d1d6cab2673e021b072a852d1\nhttps://git.kernel.org/stable/c/47d253c485491caaf70d8cd8c0248ae26e42581f\nhttps://git.kernel.org/stable/c/35ab679e8bb5a81a4f922d3efbd43e32bce69274\nhttps://git.kernel.org/stable/c/76aa2440deb9a35507590f2c981a69a57ecd305d\nhttps://git.kernel.org/stable/c/518d5ddafeb084d6d9b1773ed85164300037d0e6\nhttps://git.kernel.org/stable/c/026e24cf31733dbd97f41cc9bc5273ace428eeec\nhttps://git.kernel.org/stable/c/c7e02ccc9fdc496fe51e440e3e66ac36509ca049\nhttps://git.kernel.org/stable/c/a0cedbcc8852d6c77b00634b81e41f17f29d9404\n",
+  "aliases": "CVE-2024-36959\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "11175006-4dac-31ad-8518-5cf1e34090fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "91d5c5060ee24fe8da88cd585bb43b843d2f0dce <026e24cf31733dbd97f41cc9bc5273ace428eeec"
+    },
+    {
+      "id": "32d37f8b-89c1-3586-acc2-31bb9b33b509",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a988dcd3dd9e691c5ccc3324b209688f3b5453e9 <06780473cb8a858d1d6cab2673e021b072a852d1"
+    },
+    {
+      "id": "4de68474-e6fd-3902-8c98-9ae18aae18d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "567d2aa4-5ea8-3b1c-94d7-82c05364a3c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "56fb48ef-4218-37e1-b66d-d04acd110f01",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "91d5c5060ee24fe8da88cd585bb43b843d2f0dce <a0cedbcc8852d6c77b00634b81e41f17f29d9404"
+    },
+    {
+      "id": "6956b80e-c83d-348c-be24-bef25533d546",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "777430aa4ddccaa5accec6db90ffc1d47f00d471 <35ab679e8bb5a81a4f922d3efbd43e32bce69274"
+    },
+    {
+      "id": "6cc5ce24-78d8-315f-8af6-5321fafa5a9c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "73ff88f7-0d46-357e-8567-4d616d354404",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "91d5c5060ee24fe8da88cd585bb43b843d2f0dce <518d5ddafeb084d6d9b1773ed85164300037d0e6"
+    },
+    {
+      "id": "9427ed6b-4857-3ad4-bcd2-de19726b3c55",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.10"
+    },
+    {
+      "id": "bbd071d7-649a-3947-9666-b7d1076f126d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.91"
+    },
+    {
+      "id": "c4a60b2c-b4a3-363f-a3b2-48c3a83ab3cb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.159"
+    },
+    {
+      "id": "c931dc6f-13ee-3426-9689-b30aa8dfb900",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "040f726fecd88121f3b95e70369785ad452dddf9 <47d253c485491caaf70d8cd8c0248ae26e42581f"
+    },
+    {
+      "id": "e03aad43-0bf5-33b9-b5f3-7a3834a27214",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.276"
+    },
+    {
+      "id": "e32580e0-ba3e-37ba-a769-9a5a99209112",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.217"
+    },
+    {
+      "id": "e3463629-5d03-3de5-a36c-a47d25d3dca6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "91d5c5060ee24fe8da88cd585bb43b843d2f0dce <c7e02ccc9fdc496fe51e440e3e66ac36509ca049"
+    },
+    {
+      "id": "e6ea2c4c-8a23-3c9a-97b8-54e53805174b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.1"
+    },
+    {
+      "id": "f1ec696c-3187-3b3f-a2da-ee32a9cd7ace",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "97e5b508e96176f1a73888ed89df396d7041bfcb <76aa2440deb9a35507590f2c981a69a57ecd305d"
+    },
+    {
+      "id": "f69f0637-fd45-3102-a56b-63276e1a5b42",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.314"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ae329370-b51a-3cc4-a725-968f08beb14d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

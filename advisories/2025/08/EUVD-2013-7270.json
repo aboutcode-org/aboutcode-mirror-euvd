@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2013-7270",
+  "enisaUuid": "874eb0f4-d5a4-3e94-a24d-fa4021837320",
+  "description": "A remote PHP code execution vulnerability exists in InstantCMS version 1.6 and earlier due to unsafe use of eval() within the search view handler. Specifically, user-supplied input passed via the look parameter is concatenated into a PHP expression and executed without proper sanitation. A remote attacker can exploit this flaw by sending a crafted HTTP GET request with a base64-encoded payload in the Cmd header, resulting in arbitrary PHP code execution within the context of the web server.",
+  "datePublished": "Aug 1, 2025, 8:41:38 PM",
+  "dateUpdated": "Nov 20, 2025, 11:31:54 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/unix/webapp/instantcms_exec.rb\nhttps://www.exploit-db.com/exploits/26622\nhttps://packetstorm.news/files/id/122176\nhttps://www.vulncheck.com/advisories/instantcms-remote-php-code-execution\nhttps://nvd.nist.gov/vuln/detail/CVE-2013-10051\n",
+  "aliases": "CVE-2013-10051\nGHSA-vv4j-q4m2-9gr7\n",
+  "assigner": "VulnCheck",
+  "epss": 75.81,
+  "enisaIdProduct": [
+    {
+      "id": "7adbb1a4-9652-38a7-983b-040d08da6b6b",
+      "product": {
+        "name": "InstantCMS"
+      },
+      "product_version": "* \u22641.6"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ad77dc01-a68e-351a-978e-e083631f2c80",
+      "vendor": {
+        "name": "InstantCMS"
+      }
+    }
+  ]
+}

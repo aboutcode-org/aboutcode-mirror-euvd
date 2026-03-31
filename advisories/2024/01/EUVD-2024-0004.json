@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2024-0004",
+  "enisaUuid": "4bcb3971-64b1-399c-8d90-bb97c52402cc",
+  "description": "Apache Airflow, versions before 2.8.1, have a vulnerability that allows a potential attacker to poison the XCom data by bypassing the protection of \"enable_xcom_pickling=False\" configuration setting resulting in poisoned data after XCom deserialization. This vulnerability is considered low since it requires a DAG author to exploit it. Users are recommended to upgrade to version 2.8.1 or later, which fixes this issue.",
+  "datePublished": "Jan 24, 2024, 12:57:07 PM",
+  "dateUpdated": "Feb 13, 2025, 5:19:41 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/apache/airflow/pull/36255\nhttps://lists.apache.org/thread/fx278v0twqzxkcts70tc04cp3f8p56pn\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-50943\nhttps://github.com/apache/airflow/commit/2c4c5bc604e9ab0cc1e98f7bee7d31d566579462\nhttps://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2024-13.yaml\nhttp://www.openwall.com/lists/oss-security/2024/01/24/4\n",
+  "aliases": "GHSA-c3c6-f2ww-xfr2\nCVE-2023-50943\nPYSEC-2024-13\n",
+  "assigner": "apache",
+  "epss": 0.22,
+  "enisaIdProduct": [
+    {
+      "id": "59a0b547-e689-3f6b-9031-c25e64a6a1e7",
+      "product": {
+        "name": "Apache Airflow"
+      }
+    },
+    {
+      "id": "c66530d9-f38c-3f88-95f5-eb3a9205d427",
+      "product": {
+        "name": "Apache Airflow"
+      },
+      "product_version": "0 <2.8.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "66fc547f-62a5-3a13-9702-cdf3fab58e06",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

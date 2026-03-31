@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-10030",
+  "enisaUuid": "021cd616-d76e-3b11-bd00-f10fc8495059",
+  "description": "curl 7.7 through 7.76.1 suffers from an information disclosure when the `-t` command line option, known as `CURLOPT_TELNETOPTIONS` in libcurl, is used to send variable=content pairs to TELNET servers. Due to a flaw in the option parser for sending NEW_ENV variables, libcurl could be made to pass on uninitialized data from a stack based buffer to the server, resulting in potentially revealing sensitive internal information to the server using a clear-text network protocol.",
+  "datePublished": "May 24, 2022, 7:05:02 PM",
+  "dateUpdated": "Mar 27, 2024, 6:32:37 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-22898.html\nhttps://access.redhat.com/errata/RHSA-2021:4511\nhttps://ubuntu.com/security/CVE-2021-22898\nhttps://advisories.mageia.org/CVE-2021-22898.html\nhttps://security.archlinux.org/CVE-2021-22898\nhttps://alas.aws.amazon.com/cve/html/CVE-2021-22898.html\nhttps://linux.oracle.com/cve/CVE-2021-22898.html\nhttps://www.debian.org/security/2022/dsa-5197\nhttps://hackerone.com/reports/1176461\nhttps://curl.se/docs/CVE-2021-22898.html\nhttps://github.com/curl/curl/commit/39ce47f219b09c380b81f89fe54ac586c8db6bde\nhttps://lists.apache.org/thread.html/rc713534b10f9daeee2e0990239fa407e2118e4aa9e88a7041177497c%40%3Cissues.guacamole.apache.org%3E\nhttps://www.oracle.com//security-alerts/cpujul2021.html\nhttp://www.openwall.com/lists/oss-security/2021/07/21/4\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/POOC3UV7V6L4CJ5KA2PTWTNUV5Y72T3Q/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V/\nhttps://lists.debian.org/debian-lts-announce/2021/08/msg00017.html\nhttps://www.oracle.com/security-alerts/cpujan2022.html\nhttps://www.oracle.com/security-alerts/cpuapr2022.html\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf\nhttps://lists.debian.org/debian-lts-announce/2022/08/msg00017.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-22898\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/POOC3UV7V6L4CJ5KA2PTWTNUV5Y72T3Q\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V\nhttps://lists.apache.org/thread.html/rc713534b10f9daeee2e0990239fa407e2118e4aa9e88a7041177497c@%3Cissues.guacamole.apache.org%3E\n",
+  "aliases": "CVE-2021-22898\nGHSA-7w8r-q58w-5wcr\n",
+  "assigner": "hackerone",
+  "epss": 0.13,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "1ab1993f-a163-311d-8d50-b410f7f88e57",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

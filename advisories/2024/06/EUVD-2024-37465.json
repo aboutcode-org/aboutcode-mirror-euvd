@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2024-37465",
+  "enisaUuid": "d3d0a62b-546e-37d0-b6d8-86c463577058",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nax25: Fix reference count leak issues of ax25_dev\n\nThe ax25_addr_ax25dev() and ax25_dev_device_down() exist a reference\ncount leak issue of the object \"ax25_dev\".\n\nMemory leak issue in ax25_addr_ax25dev():\n\nThe reference count of the object \"ax25_dev\" can be increased multiple\ntimes in ax25_addr_ax25dev(). This will cause a memory leak.\n\nMemory leak issues in ax25_dev_device_down():\n\nThe reference count of ax25_dev is set to 1 in ax25_dev_device_up() and\nthen increase the reference count when ax25_dev is added to ax25_dev_list.\nAs a result, the reference count of ax25_dev is 2. But when the device is\nshutting down. The ax25_dev_device_down() drops the reference count once\nor twice depending on if we goto unlock_put or not, which will cause\nmemory leak.\n\nAs for the issue of ax25_addr_ax25dev(), it is impossible for one pointer\nto be on a list twice. So add a break in ax25_addr_ax25dev(). As for the\nissue of ax25_dev_device_down(), increase the reference count of ax25_dev\nonce in ax25_dev_device_up() and decrease the reference count of ax25_dev\nafter it is removed from the ax25_dev_list.",
+  "datePublished": "Jun 19, 2024, 3:30:54 PM",
+  "dateUpdated": "Aug 27, 2024, 6:31:35 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/ae467750a3765dd1092eb29f58247950a2f9b60c\nhttps://git.kernel.org/stable/c/38eb01edfdaa1562fa00429be2e33f45383b1b3a\nhttps://git.kernel.org/stable/c/81d8240b0a243b3ddd8fa8aa172f1acc2f7cc8f3\nhttps://git.kernel.org/stable/c/1ea02699c7557eeb35ccff2bd822de1b3e09d868\nhttps://git.kernel.org/stable/c/b505e0319852b08a3a716b64620168eab21f4ced\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-38602\n",
+  "aliases": "GHSA-7vxw-8c3h-6mgh\nCVE-2024-38602\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0167c94b-90c5-347c-8001-7ac3648e4c4d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.3"
+    },
+    {
+      "id": "0d2676d3-e00f-3c72-aba6-02d4f2f82a79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.33"
+    },
+    {
+      "id": "418e1c15-e9be-3399-bf62-7aef2fe35276",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d01ffb9eee4af165d83b08dd73ebdf9fe94a519b <ae467750a3765dd1092eb29f58247950a2f9b60c"
+    },
+    {
+      "id": "4d5e40cb-a3ef-3cd4-b7d1-dca34c1c69c7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "6a60671d-3f7b-31ef-88f5-5bcc66d174b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.93"
+    },
+    {
+      "id": "a6436289-c2aa-3409-8d15-b78efa190652",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d01ffb9eee4af165d83b08dd73ebdf9fe94a519b <1ea02699c7557eeb35ccff2bd822de1b3e09d868"
+    },
+    {
+      "id": "cdfbc673-0bc7-3f31-a1b3-f372a2d805cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.12"
+    },
+    {
+      "id": "d6b50014-5d89-345a-a2a1-12291a747396",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d01ffb9eee4af165d83b08dd73ebdf9fe94a519b <38eb01edfdaa1562fa00429be2e33f45383b1b3a"
+    },
+    {
+      "id": "ddd0a2f2-9900-387c-8184-0abfa327303f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d01ffb9eee4af165d83b08dd73ebdf9fe94a519b <b505e0319852b08a3a716b64620168eab21f4ced"
+    },
+    {
+      "id": "e0410179-8f64-335b-b26d-50002b1e842a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e94aa685-7ff7-3647-8e0e-e9349886d182",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.17"
+    },
+    {
+      "id": "f2b89e7b-f17a-3e2c-9369-a69f0e224bb3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d01ffb9eee4af165d83b08dd73ebdf9fe94a519b <81d8240b0a243b3ddd8fa8aa172f1acc2f7cc8f3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0a231921-946f-32ed-9e35-78f4022f816e",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

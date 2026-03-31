@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-54772",
+  "enisaUuid": "d8c66c50-ca21-3d25-87ad-50910e2cc47b",
+  "description": "Server-Side Request Forgery (SSRF)\u00a0in Apache HTTP Server on Windows allows to potentially leak NTLM hashes to a malicious server via\u00a0\nmod_rewrite or apache expressions that pass unvalidated request input.\n\nThis issue affects Apache HTTP Server: from 2.4.0 through 2.4.63.\n\nNote: \u00a0The Apache HTTP Server Project will be setting a higher bar for accepting vulnerability reports regarding SSRF via UNC paths. \n\nThe server offers limited protection against administrators directing the server to open UNC paths.\nWindows servers should limit the hosts they will connect over via SMB based on the nature of NTLM authentication.",
+  "datePublished": "Jul 10, 2025, 6:31:26 PM",
+  "dateUpdated": "Nov 5, 2025, 12:31:20 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://httpd.apache.org/security/vulnerabilities_24.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-43394\nhttps://lists.debian.org/debian-lts-announce/2025/08/msg00009.html\nhttp://www.openwall.com/lists/oss-security/2025/07/10/2\nhttp://www.openwall.com/lists/oss-security/2025/07/10/5\n",
+  "aliases": "CVE-2024-43394\nGHSA-gxxm-rhpx-j39m\n",
+  "assigner": "apache",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "22135b36-c7b1-3587-b676-16324097f1d8",
+      "product": {
+        "name": "Apache HTTP Server"
+      },
+      "product_version": "2.4.0 \u22642.4.63"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "19c280b2-8cef-34e0-8262-cf075e3bf555",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-32275",
+  "enisaUuid": "59281d40-5743-3cc1-93f3-103d1ee6cea7",
+  "description": "The curl URL parser wrongly accepts percent-encoded URL separators like '/'when decoding the host name part of a URL, making it a *different* URL usingthe wrong host name when it is later retrieved.For example, a URL like `http://example.com%2F127.0.0.1/`, would be allowed bythe parser and get transposed into `http://example.com/127.0.0.1/`. This flawcan be used to circumvent filters, checks and more.",
+  "datePublished": "Jun 3, 2022, 12:01:03 AM",
+  "dateUpdated": "Mar 27, 2024, 3:30:35 PM",
+  "baseScore": -1.0,
+  "references": "https://security.archlinux.org/CVE-2022-27780\nhttps://www.suse.com/security/cve/CVE-2022-27780.html\nhttps://ubuntu.com/security/CVE-2022-27780\nhttps://hackerone.com/reports/1553841\nhttps://security.netapp.com/advisory/ntap-20220609-0009/\nhttps://security.gentoo.org/glsa/202212-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-27780\n",
+  "aliases": "GHSA-82rv-h33p-2xgc\nCVE-2022-27780\n",
+  "assigner": "hackerone",
+  "epss": 0.16,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "d24489ff-5b8c-3480-b3a5-65c879a70de8",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

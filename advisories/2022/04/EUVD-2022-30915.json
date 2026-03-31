@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-30915",
+  "enisaUuid": "da9ff59f-e6d3-34fc-9db4-11d873a28c20",
+  "description": "Racy interactions between dirty vram tracking and paging log dirty hypercalls Activation of log dirty mode done by XEN_DMOP_track_dirty_vram (was named HVMOP_track_dirty_vram before Xen 4.9) is racy with ongoing log dirty hypercalls. A suitably timed call to XEN_DMOP_track_dirty_vram can enable log dirty while another CPU is still in the process of tearing down the structures related to a previously enabled log dirty mode (XEN_DOMCTL_SHADOW_OP_OFF). This is due to lack of mutually exclusive locking between both operations and can lead to entries being added in already freed slots, resulting in a memory leak.",
+  "datePublished": "Apr 6, 2022, 12:01:31 AM",
+  "dateUpdated": "Apr 15, 2022, 12:01:17 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2022-26356.html\nhttps://www.debian.org/security/2022/dsa-5117\nhttps://linux.oracle.com/cve/CVE-2022-26356.html\nhttps://xenbits.xenproject.org/xsa/advisory-397.txt\nhttp://xenbits.xen.org/xsa/advisory-397.html\nhttp://www.openwall.com/lists/oss-security/2022/04/05/1\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-26356\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD\n",
+  "aliases": "GHSA-wqf3-h5g7-w9q8\nCVE-2022-26356\n",
+  "assigner": "XEN",
+  "epss": 0.05,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "3116f588-4277-3535-9f46-224f9f5ede2a",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

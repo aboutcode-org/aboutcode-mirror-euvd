@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2023-57210",
+  "enisaUuid": "9c22c534-ff4a-3314-abbb-893b43989874",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dpu: Add mutex lock in control vblank irq\n\nAdd a mutex lock to control vblank irq to synchronize vblank\nenable/disable operations happening from different threads to prevent\nrace conditions while registering/unregistering the vblank irq callback.\n\nv4: -Removed vblank_ctl_lock from dpu_encoder_virt, so it is only a\n    parameter of dpu_encoder_phys.\n    -Switch from atomic refcnt to a simple int counter as mutex has\n    now been added\nv3: Mistakenly did not change wording in last version. It is done now.\nv2: Slightly changed wording of commit message\n\nPatchwork: https://patchwork.freedesktop.org/patch/571854/",
+  "datePublished": "Mar 6, 2024, 6:45:20 AM",
+  "dateUpdated": "Mar 6, 2025, 3:37:10 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/14f109bf74dd67e1d0469fed859c8e506b0df53f\nhttps://git.kernel.org/stable/c/45284ff733e4caf6c118aae5131eb7e7cf3eea5a\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52586\n",
+  "aliases": "GHSA-cv5f-f45r-4cqf\nCVE-2023-52586\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "1614ffc0-c1f5-3cac-8c7e-ee910cacfcbe",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "3d184983-7231-34c9-8c32-ef68e1f88a21",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <14f109bf74dd67e1d0469fed859c8e506b0df53f"
+    },
+    {
+      "id": "3f462794-da2e-310d-aec6-e5ea797b8d09",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <45284ff733e4caf6c118aae5131eb7e7cf3eea5a"
+    },
+    {
+      "id": "47a18eb0-3bfd-334f-bbdc-13acf589abd0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "25fdd5933e4c0f5fe2ea5cd59994f8ac5fbe90ef <45284ff733e4caf6c118aae5131eb7e7cf3eea5a"
+    },
+    {
+      "id": "625644ea-29ac-3243-8f8f-60374a3db8d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "6d46bb60-d2df-3214-adf3-334cc3a47db9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "90d51ab6-2dde-331f-bb19-4df3933445a1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "de0a8d9b-b3a5-33d3-95e6-f5b1db4e3e63",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "25fdd5933e4c0f5fe2ea5cd59994f8ac5fbe90ef <14f109bf74dd67e1d0469fed859c8e506b0df53f"
+    },
+    {
+      "id": "e5743d93-16fa-3fd5-8576-b2b7eda115c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.19"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1614ffc0-c1f5-3cac-8c7e-ee910cacfcbe",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

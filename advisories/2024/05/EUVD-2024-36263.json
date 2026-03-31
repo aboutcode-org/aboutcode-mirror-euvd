@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-36263",
+  "enisaUuid": "0169f5d9-2b11-3b00-81b9-87a4cc7942c0",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nDrivers: hv: vmbus: Track decrypted status in vmbus_gpadl\n\nIn CoCo VMs it is possible for the untrusted host to cause\nset_memory_encrypted() or set_memory_decrypted() to fail such that an\nerror is returned and the resulting memory is shared. Callers need to\ntake care to handle these errors to avoid returning decrypted (shared)\nmemory to the page allocator, which could lead to functional or security\nissues.\n\nIn order to make sure callers of vmbus_establish_gpadl() and\nvmbus_teardown_gpadl() don't return decrypted/shared pages to\nallocators, add a field in struct vmbus_gpadl to keep track of the\ndecryption status of the buffers. This will allow the callers to\nknow if they should free or leak the pages.",
+  "datePublished": "May 30, 2024, 3:29:10 PM",
+  "dateUpdated": "Dec 19, 2024, 9:01:56 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/1999644d95194d4a58d3e80ad04ce19220a01a81\nhttps://git.kernel.org/stable/c/8e62341f5c45b27519b7d193bcc32ada416ad9d8\nhttps://git.kernel.org/stable/c/bfae56be077ba14311509e70706a13458f87ea99\nhttps://git.kernel.org/stable/c/211f514ebf1ef5de37b1cf6df9d28a56cfd242ca\n",
+  "aliases": "CVE-2024-36912\n",
+  "assigner": "Linux",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "43484635-4767-3f38-ab01-05a653b5c500",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <bfae56be077ba14311509e70706a13458f87ea99"
+    },
+    {
+      "id": "62c5f31f-7930-3b57-a4b0-7ce7653cfbbd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1999644d95194d4a58d3e80ad04ce19220a01a81"
+    },
+    {
+      "id": "8c970557-8636-3596-900c-57fa32709b98",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.10"
+    },
+    {
+      "id": "93f4c91b-fa39-3041-94a6-2891acd98705",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <211f514ebf1ef5de37b1cf6df9d28a56cfd242ca"
+    },
+    {
+      "id": "9aba0a66-fe3d-3f60-b234-35d292afdd24",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "c2f5ce96-1fff-3de2-a293-086e358759b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8e62341f5c45b27519b7d193bcc32ada416ad9d8"
+    },
+    {
+      "id": "d3a7e3be-9358-3f8c-bed6-271812332dc8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "dd2db020-ba82-3e42-9ada-c79e4224af04",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.91"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4dcebd44-5602-3c5f-9505-9497183ae69d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

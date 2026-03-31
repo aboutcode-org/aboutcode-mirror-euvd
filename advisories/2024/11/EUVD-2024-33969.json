@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2024-33969",
+  "enisaUuid": "bbd36ae4-52fa-3191-bc94-52de85e340c5",
+  "description": "`NSC_DeriveKey` inadvertently assumed that the `phKey` parameter is always non-NULL. When it was passed as NULL, a segmentation fault (SEGV) occurred, leading to crashes. This behavior conflicted with the PKCS#11 v3.0 specification, which allows `phKey` to be NULL for certain mechanisms. This vulnerability affects Firefox < 133 and Thunderbird < 133.",
+  "datePublished": "Nov 26, 2024, 3:31:02 PM",
+  "dateUpdated": "Nov 27, 2024, 6:34:03 PM",
+  "baseScore": -1.0,
+  "references": "https://bugzilla.mozilla.org/show_bug.cgi?id=1921768\nhttps://www.mozilla.org/security/advisories/mfsa2024-63/\nhttps://www.mozilla.org/security/advisories/mfsa2024-67/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-11705\n",
+  "aliases": "GHSA-h43c-gg33-qj9g\nCVE-2024-11705\n",
+  "assigner": "mozilla",
+  "epss": 0.19,
+  "enisaIdProduct": [
+    {
+      "id": "91759b75-69d6-3786-bafe-0b7cfdb1530d",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "unspecified <133"
+    },
+    {
+      "id": "b0d94c05-f9e3-3536-be08-4a0ff323906b",
+      "product": {
+        "name": "Thunderbird"
+      },
+      "product_version": "unspecified <133"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c726cd90-d33b-3375-9b94-867f295fd7e0",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

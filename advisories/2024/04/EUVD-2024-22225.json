@@ -1,0 +1,28 @@
+{
+  "id": "EUVD-2024-22225",
+  "enisaUuid": "da890083-0ce4-3fad-aba5-9033f0f4c8c5",
+  "description": "In function pci1xxxx_spi_probe, there is a potential null pointer that\nmay be caused by a failed memory allocation by the function devm_kzalloc.\nHence, a null pointer check needs to be added to prevent null pointer\ndereferencing later in the code.\n\nTo fix this issue, spi_bus->spi_int[iter] should be checked. The memory\nallocated by devm_kzalloc will be automatically released, so just directly\nreturn -ENOMEM without worrying about memory leaks.\n\n",
+  "datePublished": "Apr 14, 2024, 3:30:32 PM",
+  "dateUpdated": "Apr 14, 2024, 3:30:32 PM",
+  "baseScore": -1.0,
+  "references": "https://bugzilla.openanolis.cn/show_bug.cgi?id=8748\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-24862\n",
+  "aliases": "GHSA-fq5m-xqjf-8m57\nCVE-2024-24862\n",
+  "assigner": "Anolis",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "ff4114dc-2bfb-3496-8fc3-e7e7ac2b2d85",
+      "product": {
+        "name": "Linux kernel"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "15e12679-9fb8-398a-8b25-198be3adcfcf",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

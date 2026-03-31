@@ -1,0 +1,57 @@
+{
+  "id": "EUVD-2024-36292",
+  "enisaUuid": "c2c8ec62-2b7e-35ef-aef8-25bc9a1e8399",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: qca: fix firmware check error path\n\nA recent commit fixed the code that parses the firmware files before\ndownloading them to the controller but introduced a memory leak in case\nthe sanity checks ever fail.\n\nMake sure to free the firmware buffer before returning on errors.",
+  "datePublished": "May 30, 2024, 3:35:41 PM",
+  "dateUpdated": "Dec 19, 2024, 9:02:53 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/580bcd6bf24f9975f97d81d5ef1b64cca9240df9\nhttps://git.kernel.org/stable/c/064688d70c33bb5b49dde6e972b9379a8b045d8a\nhttps://git.kernel.org/stable/c/7bcba557d5c37cd09ecd5abbe7d50deb86c36d3f\nhttps://git.kernel.org/stable/c/d1f768214320852766a60a815a0be8f14fba0cc3\nhttps://git.kernel.org/stable/c/40d442f969fb1e871da6fca73d3f8aef1f888558\n",
+  "aliases": "CVE-2024-36942\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "12629380-91fd-389e-b111-6ef0334a042a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d1f768214320852766a60a815a0be8f14fba0cc3"
+    },
+    {
+      "id": "5c901cd4-7a0b-3473-b86d-8dbf25603f6e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <580bcd6bf24f9975f97d81d5ef1b64cca9240df9"
+    },
+    {
+      "id": "92bab8b2-54be-33c7-bc2e-505000799bfa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <40d442f969fb1e871da6fca73d3f8aef1f888558"
+    },
+    {
+      "id": "db9cff49-88bb-371b-a719-1497ad57dc4d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <064688d70c33bb5b49dde6e972b9379a8b045d8a"
+    },
+    {
+      "id": "f3acae61-efc5-3963-bf44-fa8bb61f04bc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7bcba557d5c37cd09ecd5abbe7d50deb86c36d3f"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5cb3c958-8623-39ab-a82a-c1755db644d6",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

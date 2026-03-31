@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-16070",
+  "enisaUuid": "3bf6f7f9-fcba-31af-8900-857223e3a629",
+  "description": "Exiv2 is a command-line utility and C++ library for reading, writing, deleting, and modifying the metadata of image files. A heap buffer overflow was found in Exiv2 versions v0.27.3 and earlier. The heap overflow is triggered when Exiv2 is used to write metadata into a crafted image file. An attacker could potentially exploit the vulnerability to gain code execution, if they can trick the victim into running Exiv2 on a crafted image file. Note that this bug is only triggered when _writing_ the metadata, which is a less frequently used Exiv2 operation than _reading_ the metadata. For example, to trigger the bug in the Exiv2 command-line application, you need to add an extra command-line argument such as `insert`. The bug is fixed in version v0.27.4.",
+  "datePublished": "Apr 19, 2021, 12:00:00 AM",
+  "dateUpdated": "Aug 3, 2024, 10:02:51 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-29457.html\nhttps://www.debian.org/security/2021/dsa-4958\nhttps://access.redhat.com/errata/RHSA-2021:4173\nhttps://ubuntu.com/security/CVE-2021-29457\nhttps://advisories.mageia.org/CVE-2021-29457.html\nhttps://security.archlinux.org/CVE-2021-29457\nhttps://github.com/Exiv2/exiv2/issues/1529\nhttps://github.com/Exiv2/exiv2/security/advisories/GHSA-v74w-h496-cgqm\nhttps://github.com/Exiv2/exiv2/pull/1534\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2XQT5F5IINTDYDAFGVGQZ7PMMLG7I5ZZ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P2A5GMJEXQ5Q76JK6F6VKK5JYCLVFGKN/\nhttps://lists.debian.org/debian-lts-announce/2021/08/msg00028.html\nhttps://security.gentoo.org/glsa/202312-06\n",
+  "aliases": "CVE-2021-29457\n",
+  "assigner": "GitHub_M",
+  "epss": 1.51,
+  "enisaIdProduct": [
+    {
+      "id": "ddc684c8-ab55-39f9-a9a0-18cde80daa27",
+      "product": {
+        "name": "exiv2"
+      },
+      "product_version": "< 0.27.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "eb0159c9-9036-37df-abb7-3fdc85c694b1",
+      "vendor": {
+        "name": "Exiv2"
+      }
+    }
+  ]
+}

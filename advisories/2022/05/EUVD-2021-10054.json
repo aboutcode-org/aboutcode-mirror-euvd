@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-10054",
+  "enisaUuid": "b8c8e497-84df-3e2c-bcfe-45de2ae33a1a",
+  "description": "curl supports the `-t` command line option, known as `CURLOPT_TELNETOPTIONS`in libcurl. This rarely used option is used to send variable=content pairs toTELNET servers.Due to flaw in the option parser for sending `NEW_ENV` variables, libcurlcould be made to pass on uninitialized data from a stack based buffer to theserver. Therefore potentially revealing sensitive internal information to theserver using a clear-text network protocol.This could happen because curl did not call and use sscanf() correctly whenparsing the string provided by the application.",
+  "datePublished": "May 24, 2022, 7:10:07 PM",
+  "dateUpdated": "Mar 27, 2024, 3:30:34 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-22925.html\nhttps://access.redhat.com/errata/RHSA-2021:4511\nhttps://ubuntu.com/security/CVE-2021-22925\nhttps://advisories.mageia.org/CVE-2021-22925.html\nhttps://security.archlinux.org/CVE-2021-22925\nhttps://linux.oracle.com/cve/CVE-2021-22925.html\nhttps://hackerone.com/reports/1223882\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V/\nhttp://seclists.org/fulldisclosure/2021/Sep/40\nhttp://seclists.org/fulldisclosure/2021/Sep/39\nhttps://www.oracle.com/security-alerts/cpuoct2021.html\nhttps://security.netapp.com/advisory/ntap-20210902-0003/\nhttps://support.apple.com/kb/HT212805\nhttps://support.apple.com/kb/HT212804\nhttps://www.oracle.com/security-alerts/cpujan2022.html\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-484086.pdf\nhttps://security.gentoo.org/glsa/202212-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-22925\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/FRUCW2UVNYUDZF72DQLFQR4PJEC6CF7V\n",
+  "aliases": "CVE-2021-22925\nGHSA-rjqf-6h27-xqfp\n",
+  "assigner": "hackerone",
+  "epss": 0.32,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "95cfc2a3-a636-3516-b68c-cead3c9a4d09",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

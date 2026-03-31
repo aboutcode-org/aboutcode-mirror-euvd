@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2017-7534",
+  "enisaUuid": "f7cc5119-f677-3bf8-b2e8-094e5932a9ef",
+  "description": "An attacker could send an authenticated HTTP request to trigger this vulnerability in Insteon Hub running firmware version 1012. At 0x9d01bb1c the value for the uri key is copied using strcpy to the buffer at 0xa00016a0. This buffer is 64 bytes large, sending anything longer will cause a buffer overflow.",
+  "datePublished": "May 13, 2022, 1:01:29 AM",
+  "dateUpdated": "May 13, 2022, 1:01:29 AM",
+  "baseScore": 8.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+  "references": "https://www.talosintelligence.com/vulnerability_reports/TALOS-2017-0484\nhttps://nvd.nist.gov/vuln/detail/CVE-2017-16339\n",
+  "aliases": "CVE-2017-16339\nGHSA-fx4p-p9m8-48x2\n",
+  "assigner": "talos",
+  "epss": 0.89,
+  "enisaIdProduct": [
+    {
+      "id": "dfc7f90e-66f1-36db-a2b9-4fefb111af0e",
+      "product": {
+        "name": "Insteon"
+      },
+      "product_version": "Insteon Hub 2245-222 - Firmware version 1012"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "83a87161-ece1-3ee9-8de2-3f9e9deaa58d",
+      "vendor": {
+        "name": "Insteon"
+      }
+    }
+  ]
+}

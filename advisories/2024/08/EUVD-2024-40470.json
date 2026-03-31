@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-40470",
+  "enisaUuid": "77e1936d-63d1-39a9-92a8-176219e3e27f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-raid: Fix WARN_ON_ONCE check for sync_thread in raid_resume\n\nrm-raid devices will occasionally trigger the following warning when\nbeing resumed after a table load because DM_RECOVERY_RUNNING is set:\n\nWARNING: CPU: 7 PID: 5660 at drivers/md/dm-raid.c:4105 raid_resume+0xee/0x100 [dm_raid]\n\nThe failing check is:\nWARN_ON_ONCE(test_bit(MD_RECOVERY_RUNNING, &mddev->recovery));\n\nThis check is designed to make sure that the sync thread isn't\nregistered, but md_check_recovery can set MD_RECOVERY_RUNNING without\nthe sync_thread ever getting registered. Instead of checking if\nMD_RECOVERY_RUNNING is set, check if sync_thread is non-NULL.",
+  "datePublished": "Aug 17, 2024, 12:30:32 PM",
+  "dateUpdated": "Sep 29, 2025, 3:30:30 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/a5c15a78c0e1631b7df822b56e8b6424e4d1ca3e\nhttps://git.kernel.org/stable/c/3199a34bfaf7561410e0be1e33a61eba870768fc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-43820\n",
+  "aliases": "CVE-2024-43820\nGHSA-cmr7-73x3-27cg\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "33c1a51e-7cb2-3dc0-997a-d48f1cdbf3f2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "16c4770c75b1223998adbeb7286f9a15c65fba73 <a5c15a78c0e1631b7df822b56e8b6424e4d1ca3e"
+    },
+    {
+      "id": "66c76d89-dcda-3f6c-833e-9deec22a6edc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "756f51ba-83c2-3176-ac6e-aaeccf558309",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "16c4770c75b1223998adbeb7286f9a15c65fba73 <3199a34bfaf7561410e0be1e33a61eba870768fc"
+    },
+    {
+      "id": "b6d68e69-b410-3548-8f31-2ba9012a553f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
+    },
+    {
+      "id": "c07a3153-6442-3af8-8de1-547ffd05ef50",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "c61239a9-6382-3823-8706-b0da15e617cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b311f4c9-bf28-37d1-a301-0782e393fe75",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

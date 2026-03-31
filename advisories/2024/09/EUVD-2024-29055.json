@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2024-29055",
+  "enisaUuid": "251857d5-6757-3e9e-b7f4-f3edd2c45aa1",
+  "description": "Certain PCI devices in a system might be assigned Reserved Memory\nRegions (specified via Reserved Memory Region Reporting, \"RMRR\") for\nIntel VT-d or Unity Mapping ranges for AMD-Vi.  These are typically used\nfor platform tasks such as legacy USB emulation.\n\nSince the precise purpose of these regions is unknown, once a device\nassociated with such a region is active, the mappings of these regions\nneed to remain continuouly accessible by the device.  In the logic\nestablishing these mappings, error handling was flawed, resulting in\nsuch mappings to potentially remain in place when they should have been\nremoved again.  Respective guests would then gain access to memory\nregions which they aren't supposed to have access to.",
+  "datePublished": "Sep 25, 2024, 12:30:40 PM",
+  "dateUpdated": "Jan 5, 2026, 9:30:26 PM",
+  "baseScore": -1.0,
+  "references": "https://xenbits.xenproject.org/xsa/advisory-460.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-31145\nhttp://www.openwall.com/lists/oss-security/2024/08/14/2\nhttp://xenbits.xen.org/xsa/advisory-460.html\n",
+  "aliases": "GHSA-38h7-7925-fvwv\nCVE-2024-31145\n",
+  "assigner": "XEN",
+  "epss": 0.07,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "f0a79e74-911c-3f59-a44a-8ee633b7a56d",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

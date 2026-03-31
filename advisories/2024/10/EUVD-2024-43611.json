@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-43611",
+  "enisaUuid": "ebd5a204-ba45-3f43-ac5f-39d72d5c4582",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check null pointers before used\n\n[WHAT & HOW]\nPoniters, such as dc->clk_mgr, are null checked previously in the same\nfunction, so Coverity warns \"implies that \"dc->clk_mgr\" might be null\".\nAs a result, these pointers need to be checked when used again.\n\nThis fixes 10 FORWARD_NULL issues reported by Coverity.",
+  "datePublished": "Oct 21, 2024, 6:30:57 PM",
+  "dateUpdated": "Oct 25, 2024, 3:31:25 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/5b35bf1a82eb29841b67ff5643ba83762250fc24\nhttps://git.kernel.org/stable/c/be1fb44389ca3038ad2430dac4234669bc177ee3\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49921\n",
+  "aliases": "GHSA-vw3v-9427-r3gf\nCVE-2024-49921\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "11a9da97-9c5c-3eb8-a424-d1074218ed35",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "841c7548-3d06-387c-b55c-8091c643d5a7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <5b35bf1a82eb29841b67ff5643ba83762250fc24"
+    },
+    {
+      "id": "939669bd-b316-3b4e-9b0f-43e4800ac2c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9e2e6cbe-5f6b-318c-99b0-c039b00871ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <be1fb44389ca3038ad2430dac4234669bc177ee3"
+    },
+    {
+      "id": "9fb87808-b01b-38c9-8c91-d9fefc07f006",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "9fc6f6fd-6630-31fd-8a39-ac178121b61b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <be1fb44389ca3038ad2430dac4234669bc177ee3"
+    },
+    {
+      "id": "b2967017-d485-36f2-a329-3d068c24a88a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5b35bf1a82eb29841b67ff5643ba83762250fc24"
+    },
+    {
+      "id": "f0595b8b-a33b-3d9e-84c8-41b08eba8046",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f80b9213-eb68-384b-acaf-159e8fc026db",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

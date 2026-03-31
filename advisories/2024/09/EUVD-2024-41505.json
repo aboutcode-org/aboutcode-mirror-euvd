@@ -1,0 +1,190 @@
+{
+  "id": "EUVD-2024-41505",
+  "enisaUuid": "84bd0951-6807-3c39-bcd5-6ca0ade4d8ff",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfix bitmap corruption on close_range() with CLOSE_RANGE_UNSHARE\n\ncopy_fd_bitmaps(new, old, count) is expected to copy the first\ncount/BITS_PER_LONG bits from old->full_fds_bits[] and fill\nthe rest with zeroes.  What it does is copying enough words\n(BITS_TO_LONGS(count/BITS_PER_LONG)), then memsets the rest.\nThat works fine, *if* all bits past the cutoff point are\nclear.  Otherwise we are risking garbage from the last word\nwe'd copied.\n\nFor most of the callers that is true - expand_fdtable() has\ncount equal to old->max_fds, so there's no open descriptors\npast count, let alone fully occupied words in ->open_fds[],\nwhich is what bits in ->full_fds_bits[] correspond to.\n\nThe other caller (dup_fd()) passes sane_fdtable_size(old_fdt, max_fds),\nwhich is the smallest multiple of BITS_PER_LONG that covers all\nopened descriptors below max_fds.  In the common case (copying on\nfork()) max_fds is ~0U, so all opened descriptors will be below\nit and we are fine, by the same reasons why the call in expand_fdtable()\nis safe.\n\nUnfortunately, there is a case where max_fds is less than that\nand where we might, indeed, end up with junk in ->full_fds_bits[] -\nclose_range(from, to, CLOSE_RANGE_UNSHARE) with\n\t* descriptor table being currently shared\n\t* 'to' being above the current capacity of descriptor table\n\t* 'from' being just under some chunk of opened descriptors.\nIn that case we end up with observably wrong behaviour - e.g. spawn\na child with CLONE_FILES, get all descriptors in range 0..127 open,\nthen close_range(64, ~0U, CLOSE_RANGE_UNSHARE) and watch dup(0) ending\nup with descriptor #128, despite #64 being observably not open.\n\nThe minimally invasive fix would be to deal with that in dup_fd().\nIf this proves to add measurable overhead, we can go that way, but\nlet's try to fix copy_fd_bitmaps() first.\n\n* new helper: bitmap_copy_and_expand(to, from, bits_to_copy, size).\n* make copy_fd_bitmaps() take the bitmap size in words, rather than\nbits; it's 'count' argument is always a multiple of BITS_PER_LONG,\nso we are not losing any information, and that way we can use the\nsame helper for all three bitmaps - compiler will see that count\nis a multiple of BITS_PER_LONG for the large ones, so it'll generate\nplain memcpy()+memset().\n\nReproducer added to tools/testing/selftests/core/close_range_test.c",
+  "datePublished": "Sep 11, 2024, 3:13:57 PM",
+  "dateUpdated": "Nov 3, 2025, 10:15:35 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/ee501f827f3db02d4e599afbbc1a7f8b792d05d7\nhttps://git.kernel.org/stable/c/e807487a1d5fd5d941f26578ae826ca815dbfcd6\nhttps://git.kernel.org/stable/c/fe5bf14881701119aeeda7cf685f3c226c7380df\nhttps://git.kernel.org/stable/c/5053581fe5dfb09b58c65dd8462bf5dea71f41ff\nhttps://git.kernel.org/stable/c/8cad3b2b3ab81ca55f37405ffd1315bcc2948058\nhttps://git.kernel.org/stable/c/dd72ae8b0fce9c0bbe9582b9b50820f0407f8d8a\nhttps://git.kernel.org/stable/c/c69d18f0ac7060de724511537810f10f29a27958\nhttps://git.kernel.org/stable/c/9a2fa1472083580b6c66bdaf291f591e1170123a\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-45025\nhttps://lists.debian.org/debian-lts-announce/2024/10/msg00003.html\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "GHSA-7977-m9r5-5r9p\nCVE-2024-45025\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0b6e4da1-922e-3259-8593-2a96eaeb78a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.107"
+    },
+    {
+      "id": "0c07698c-1fa2-3095-9bef-fa6b0552f1fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.9"
+    },
+    {
+      "id": "16a818c0-ca53-3572-ac02-92b59973a6d2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.7"
+    },
+    {
+      "id": "19bc0f97-0da2-3d0b-94d5-1e1c7ca27902",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5053581fe5dfb09b58c65dd8462bf5dea71f41ff"
+    },
+    {
+      "id": "236d3ccb-450e-3ef7-911e-ea436f68bb90",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <fe5bf14881701119aeeda7cf685f3c226c7380df"
+    },
+    {
+      "id": "49cda69a-55c8-3b11-abd2-6755dc70ad0a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.166"
+    },
+    {
+      "id": "4a4ed43d-0b40-30c6-82bb-20150345e361",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.48"
+    },
+    {
+      "id": "4b0c0607-0139-378e-a3b0-a7783c30b84a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.283"
+    },
+    {
+      "id": "563d322f-d020-33fc-a85c-bd7b8bfd58cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <c69d18f0ac7060de724511537810f10f29a27958"
+    },
+    {
+      "id": "59a00fe7-1bd2-36de-b557-5d4280466799",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "63563f61-3baf-31c6-944b-d92cbe36eb19",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "75c0733c-3146-30b5-9c76-7d1639a33fe1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fe5bf14881701119aeeda7cf685f3c226c7380df"
+    },
+    {
+      "id": "7808f728-cd48-3ef1-85dd-ef303456b43e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <dd72ae8b0fce9c0bbe9582b9b50820f0407f8d8a"
+    },
+    {
+      "id": "7def6ab1-7089-36bf-a2c1-2478fd327600",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dd72ae8b0fce9c0bbe9582b9b50820f0407f8d8a"
+    },
+    {
+      "id": "81b2c7de-23f0-3fa1-9d8d-3501ce9328a8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <8cad3b2b3ab81ca55f37405ffd1315bcc2948058"
+    },
+    {
+      "id": "8c3b3f66-dd3a-3099-88b5-f8e6edef9068",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ee501f827f3db02d4e599afbbc1a7f8b792d05d7"
+    },
+    {
+      "id": "8cbdee4a-5370-3907-b052-9d30a443eb69",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9a2fa1472083580b6c66bdaf291f591e1170123a"
+    },
+    {
+      "id": "936c231f-e433-3749-a34b-72d4169788e1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.225"
+    },
+    {
+      "id": "9ed99c6d-bf76-3a47-878e-182d0df729ae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.321"
+    },
+    {
+      "id": "a47ff7db-2772-39ba-b8de-e52ae36a0aa6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <5053581fe5dfb09b58c65dd8462bf5dea71f41ff"
+    },
+    {
+      "id": "ab813064-fa36-3a4c-a97d-cd98f017ecdf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8cad3b2b3ab81ca55f37405ffd1315bcc2948058"
+    },
+    {
+      "id": "c7ade224-c3f8-3010-9d8c-cb4d22ed8267",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e807487a1d5fd5d941f26578ae826ca815dbfcd6"
+    },
+    {
+      "id": "e1b31de3-5b3f-3ca4-a4c5-ebbebfc52527",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "278a5fbaed89dacd04e9d052f4594ffd0e0585de <9a2fa1472083580b6c66bdaf291f591e1170123a"
+    },
+    {
+      "id": "e56f8e24-3dd0-381a-b87e-30907dd47b3f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c69d18f0ac7060de724511537810f10f29a27958"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c84420d4-85d0-3338-b328-f1ef7f4a91ae",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

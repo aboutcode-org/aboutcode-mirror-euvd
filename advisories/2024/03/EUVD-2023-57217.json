@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2023-57217",
+  "enisaUuid": "fa4d6346-f71c-3d5a-8c98-c959cf0001f4",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wfx: fix possible NULL pointer dereference in wfx_set_mfp_ap()\n\nSince 'ieee80211_beacon_get()' can return NULL, 'wfx_set_mfp_ap()'\nshould check the return value before examining skb data. So convert\nthe latter to return an appropriate error code and propagate it to\nreturn from 'wfx_start_ap()' as well. Compile tested only.",
+  "datePublished": "Mar 6, 2024, 9:30:27 AM",
+  "dateUpdated": "Dec 12, 2024, 3:31:05 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/574dcd3126aa2eed75437137843f254b1190dd03\nhttps://git.kernel.org/stable/c/9ab224744a47363f74ea29c6894c405e3bcf5132\nhttps://git.kernel.org/stable/c/3739121443f5114c6bcf6d841a5124deb006b878\nhttps://git.kernel.org/stable/c/fe0a7776d4d19e613bb8dd80fe2d78ae49e8b49d\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52593\n",
+  "aliases": "GHSA-3h2v-h2q9-f9r6\nCVE-2023-52593\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "0ce7cbc1-1258-393c-a1e4-40f05b03dad1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a7a91ca5a23dbcc68f04d18ef7e765b1e4f64c7f <fe0a7776d4d19e613bb8dd80fe2d78ae49e8b49d"
+    },
+    {
+      "id": "137a53f9-1c70-3733-96c4-5044280f6d56",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a7a91ca5a23dbcc68f04d18ef7e765b1e4f64c7f <574dcd3126aa2eed75437137843f254b1190dd03"
+    },
+    {
+      "id": "2aec3f7b-5345-3d8a-9bdd-8052f8b5eea0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "30801e07-5579-314d-861c-f074f3808944",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "770685cf-e941-3074-991b-c81841f89ecd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "80b8e47d-49e6-3944-8c48-605b17645e41",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a7a91ca5a23dbcc68f04d18ef7e765b1e4f64c7f <9ab224744a47363f74ea29c6894c405e3bcf5132"
+    },
+    {
+      "id": "87c87051-ba29-3874-8d49-ae19aaf9d572",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "9fcc40a7-c962-354e-8281-c92d808f00aa",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "cde207bd-394d-3cd8-99db-8aed99c8227b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    },
+    {
+      "id": "e106b91c-0ee9-33d9-bb3b-b7aab0fe4a63",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.5"
+    },
+    {
+      "id": "fcfeeabb-49e1-31e4-8460-f7f79925cde6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a7a91ca5a23dbcc68f04d18ef7e765b1e4f64c7f <3739121443f5114c6bcf6d841a5124deb006b878"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9fcc40a7-c962-354e-8281-c92d808f00aa",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

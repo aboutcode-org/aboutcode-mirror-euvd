@@ -1,0 +1,126 @@
+{
+  "id": "EUVD-2023-57242",
+  "enisaUuid": "9d4a3f01-4463-3779-996d-f0011af6750e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock/rnbd-srv: Check for unlikely string overflow\n\nSince \"dev_search_path\" can technically be as large as PATH_MAX,\nthere was a risk of truncation when copying it and a second string\ninto \"full_path\" since it was also PATH_MAX sized. The W=1 builds were\nreporting this warning:\n\ndrivers/block/rnbd/rnbd-srv.c: In function 'process_msg_open.isra':\ndrivers/block/rnbd/rnbd-srv.c:616:51: warning: '%s' directive output may be truncated writing up to 254 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]\n  616 |                 snprintf(full_path, PATH_MAX, \"%s/%s\",\n      |                                                   ^~\nIn function 'rnbd_srv_get_full_path',\n    inlined from 'process_msg_open.isra' at drivers/block/rnbd/rnbd-srv.c:721:14: drivers/block/rnbd/rnbd-srv.c:616:17: note: 'snprintf' output between 2 and 4351 bytes into a destination of size 4096\n  616 |                 snprintf(full_path, PATH_MAX, \"%s/%s\",\n      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  617 |                          dev_search_path, dev_name);\n      |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nTo fix this, unconditionally check for truncation (as was already done\nfor the case where \"%SESSNAME%\" was present).",
+  "datePublished": "Mar 18, 2024, 12:30:35 PM",
+  "dateUpdated": "Nov 7, 2024, 12:30:35 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/95bc866c11974d3e4a9d922275ea8127ff809cf7\nhttps://git.kernel.org/stable/c/f6abd5e17da33eba15df2bddc93413e76c2b55f7\nhttps://git.kernel.org/stable/c/af7bbdac89739e2e7380387fda598848d3b7010f\nhttps://git.kernel.org/stable/c/5b9ea86e662035a886ccb5c76d56793cba618827\nhttps://git.kernel.org/stable/c/a2c6206f18104fba7f887bf4dbbfe4c41adc4339\nhttps://git.kernel.org/stable/c/9e4bf6a08d1e127bcc4bd72557f2dfafc6bc7f41\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52618\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\n",
+  "aliases": "GHSA-6285-w63g-86p4\nCVE-2023-52618\n",
+  "assigner": "Linux",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "16120f74-c833-37a9-bdbb-447bab41781a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <a2c6206f18104fba7f887bf4dbbfe4c41adc4339"
+    },
+    {
+      "id": "213f884e-29c3-3e96-ba91-0577bbdbf8a2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "3d2c31da-26f8-38f0-9408-d9192957cd2b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <af7bbdac89739e2e7380387fda598848d3b7010f"
+    },
+    {
+      "id": "48a65f81-3968-3a9b-b114-58095e15a9b9",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "5773553d-fb47-35dc-a477-ffdcebb75978",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <f6abd5e17da33eba15df2bddc93413e76c2b55f7"
+    },
+    {
+      "id": "6155d235-c347-3040-a680-a98d505122e2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.210"
+    },
+    {
+      "id": "6195438c-eee5-3123-96a2-19b1545b1d28",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.149"
+    },
+    {
+      "id": "a114970f-14d6-3dde-8502-eca4e843435a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.77"
+    },
+    {
+      "id": "aa8cc90d-4308-3a13-8943-bf9ccb073426",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "b2283a62-14b8-38e2-89c8-9991a6b89e22",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    },
+    {
+      "id": "be5881f8-fc2f-3a11-94a7-a9a925f364f8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.16"
+    },
+    {
+      "id": "dc9276b9-c0ca-3a7d-8a64-0082e7d704e4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <5b9ea86e662035a886ccb5c76d56793cba618827"
+    },
+    {
+      "id": "e441f46d-3e37-3763-9863-a69b928736e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <95bc866c11974d3e4a9d922275ea8127ff809cf7"
+    },
+    {
+      "id": "ed8c597d-cb90-3a93-9b50-13fee8f31c26",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.8"
+    },
+    {
+      "id": "fb014ff1-a50d-3938-884b-9ed8fde25804",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "219ace60770117fbe440904f9156ab2ab8f30e7d <9e4bf6a08d1e127bcc4bd72557f2dfafc6bc7f41"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "48a65f81-3968-3a9b-b114-58095e15a9b9",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2021-33555",
+  "enisaUuid": "3518c75e-5ec9-357e-9dc0-f5df63ee245a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: VMX: Don't use vcpu->run->internal.ndata as an array index\n\n__vmx_handle_exit() uses vcpu->run->internal.ndata as an index for\nan array access.  Since vcpu->run is (can be) mapped to a user address\nspace with a writer permission, the 'ndata' could be updated by the\nuser process at anytime (the user process can set it to outside the\nbounds of the array).\nSo, it is not safe that __vmx_handle_exit() uses the 'ndata' that way.",
+  "datePublished": "Feb 27, 2024, 9:31:15 AM",
+  "dateUpdated": "Feb 27, 2024, 9:31:15 AM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2021-46907\nhttps://git.kernel.org/stable/c/04c4f2ee3f68c9a4bf1653d15f1a9a435ae33f7a\nhttps://git.kernel.org/stable/c/7f64753835a78c7d2cc2932a5808ef3b7fd4c050\nhttps://git.kernel.org/stable/c/ce541d7b59566a0d94c7c99bfb5d34b050e6af70\n",
+  "aliases": "CVE-2021-46907\nGHSA-x3f2-q3jq-26fv\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

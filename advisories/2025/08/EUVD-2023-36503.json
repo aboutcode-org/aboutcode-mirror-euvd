@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2023-36503",
+  "enisaUuid": "9eadf6f3-cd27-35f9-88ab-249c8932c624",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: call rcu_barrier() in ksmbd_server_exit()\n\nracy issue is triggered the bug by racing between closing a connection\nand rmmod. In ksmbd, rcu_barrier() is not called at module unload time,\nso nothing prevents ksmbd from getting unloaded while it still has RCU\ncallbacks pending. It leads to trigger unintended execution of kernel\ncode locally and use to defeat protections such as Kernel Lockdown",
+  "datePublished": "Aug 16, 2025, 3:30:30 PM",
+  "dateUpdated": "Nov 18, 2025, 6:32:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c053e389db0d892e2ff5a60ec5e533b976503795\nhttps://git.kernel.org/stable/c/b80422474ffe44cb5e813cd6da1f1c6bc50fd9d2\nhttps://git.kernel.org/stable/c/d4174505016a3b2996eb7ff1530dcabbf15d47b6\nhttps://git.kernel.org/stable/c/5a7090ccc242ab009ee7769e9d7fad6644dbe9bd\nhttps://git.kernel.org/stable/c/eb307d09fe15844fdaebeb8cc8c9b9e925430aa5\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-32246\n",
+  "aliases": "GHSA-75h4-6q93-6c34\nCVE-2023-32246\n",
+  "assigner": "Linux",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "1c2e3f3e-67f2-3d09-aefd-6e1e15334440",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <b80422474ffe44cb5e813cd6da1f1c6bc50fd9d2"
+    },
+    {
+      "id": "30cd0b7c-53f1-378f-b0d0-63caaaba26f5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.28"
+    },
+    {
+      "id": "39f4c22e-5c42-3f11-bc7e-104ea7716d79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <d4174505016a3b2996eb7ff1530dcabbf15d47b6"
+    },
+    {
+      "id": "413e0cc1-e318-35e7-aa7d-e32a53e3f482",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <5a7090ccc242ab009ee7769e9d7fad6644dbe9bd"
+    },
+    {
+      "id": "50bbd3b6-81cd-34fb-b707-19e0eab340aa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.2.15"
+    },
+    {
+      "id": "55149467-8a54-3d95-972b-209f131f33b0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.3.2"
+    },
+    {
+      "id": "67dafa7c-9fd4-3a29-bc19-9bd2b45b054b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.111"
+    },
+    {
+      "id": "93a22356-ba1a-3b7d-847f-ee4bccfbe451",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
+    {
+      "id": "a13485a1-1c2c-3171-9656-99a068dff150",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "c5ae48ee-c4c4-3f4a-ab74-caa8622f8699",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <c053e389db0d892e2ff5a60ec5e533b976503795"
+    },
+    {
+      "id": "cefc064a-7538-30ef-a167-4b35f3dc449d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <eb307d09fe15844fdaebeb8cc8c9b9e925430aa5"
+    },
+    {
+      "id": "ff96831c-0bfc-3920-860b-947e881234a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c5b4dace-db80-30da-805f-1bd8b43c80a1",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

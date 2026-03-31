@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2023-57203",
+  "enisaUuid": "eaf3cf43-f070-3af3-b696-c9550bf75a50",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: fix null-deref in ipv4_link_failure\n\nCurrently, we assume the skb is associated with a device before calling\n__ip_options_compile, which is not always the case if it is re-routed by\nipvs.\nWhen skb->dev is NULL, dev_net(skb->dev) will become null-dereference.\nThis patch adds a check for the edge case and switch to use the net_device\nfrom the rtable when skb->dev is NULL.",
+  "datePublished": "Mar 3, 2024, 12:30:32 AM",
+  "dateUpdated": "Mar 3, 2024, 12:30:33 AM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-52579\nhttps://git.kernel.org/stable/c/0113d9c9d1ccc07f5a3710dac4aa24b6d711278c\nhttps://git.kernel.org/stable/c/084c7ac9e8d60bf21a423490021b7c3427312955\nhttps://git.kernel.org/stable/c/2712545e535d7a2e4c53b9c9658a9c88c6055862\nhttps://git.kernel.org/stable/c/810fd23d9715474aa27997584e8fc9396ef3cb67\nhttps://git.kernel.org/stable/c/8689c9ace976d6c078e6dc844b09598796e84099\nhttps://git.kernel.org/stable/c/8860d354f653628b6330e1c5b06b2828948135a4\nhttps://git.kernel.org/stable/c/a2cf7bd75b3992e8df68dd5fdc6499b67d45f6e0\nhttps://git.kernel.org/stable/c/cda20fcddf53f0f959641c8ef4d50ab87ffa5124\n",
+  "aliases": "GHSA-jgvw-q27w-5hcm\nCVE-2023-52579\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

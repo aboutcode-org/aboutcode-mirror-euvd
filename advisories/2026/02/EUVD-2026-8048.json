@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8048",
+  "enisaUuid": "62691e10-45b7-3685-8c1a-b30be750deb4",
+  "description": "The Dam Spam plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.0.8. This is due to missing nonce verification on the pending comment deletion action in the cleanup page. This makes it possible for unauthenticated attackers to delete all pending comments via a forged request granted they can trick an admin into performing an action such as clicking on a link.",
+  "datePublished": "Feb 18, 2026, 9:31:04 AM",
+  "dateUpdated": "Feb 18, 2026, 9:31:04 AM",
+  "baseScore": 4.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e336dc27-4a76-4197-929c-b221f42bfe69?source=cve\nhttps://github.com/webguyio/dam-spam/blob/52e12fb455e7b670af2e0713f9da84d2d1d309ac/settings/cleanup.php#L92\nhttps://plugins.trac.wordpress.org/browser/dam-spam/trunk/settings/cleanup.php#L92\nhttps://plugins.trac.wordpress.org/browser/dam-spam/tags/1.0.6/settings/cleanup.php#L92\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3457369%40dam-spam&new=3457369%40dam-spam&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-2112\n",
+  "aliases": "CVE-2026-2112\nGHSA-qj9g-q4j9-47hp\n",
+  "assigner": "Wordfence",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2f07f4d1-0c30-422e-a732-86da5823bfa2",
+      "product": {
+        "name": "Dam Spam"
+      },
+      "product_version": "* \u22641.0.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c35d1156-03d4-45b6-8ec1-cbf3edd2ce51",
+      "vendor": {
+        "name": "webguyio"
+      }
+    }
+  ]
+}

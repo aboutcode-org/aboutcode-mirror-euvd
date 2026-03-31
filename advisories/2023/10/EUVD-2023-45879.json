@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2023-45879",
+  "enisaUuid": "736961e2-961c-3421-9219-2e1c9cbc0f65",
+  "description": "In certain conditions for Calico Typha (v3.26.2, v3.25.1 and below), and Calico Enterprise Typha (v3.17.1, v3.16.3, v3.15.3 and below), a client TLS handshake can block the Calico Typha server indefinitely, resulting in denial of service. The TLS Handshake() call is performed inside the main server handle for loop without any timeout allowing an unclean TLS handshake to block the main loop indefinitely while other connections will be idle waiting for that handshake to finish.\n",
+  "datePublished": "Oct 31, 2023, 9:32:35 PM",
+  "dateUpdated": "Oct 31, 2023, 9:32:35 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-41377\nhttps://github.com/projectcalico/calico/pull/7908\nhttps://github.com/projectcalico/calico/pull/7993\nhttps://www.tigera.io/security-bulletins-tta-2023-001\n",
+  "aliases": "GHSA-6r5w-5j56-qvxc\nCVE-2023-41377\n",
+  "assigner": "Tigera",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

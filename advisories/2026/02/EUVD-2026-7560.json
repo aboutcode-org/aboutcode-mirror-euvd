@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7560",
+  "enisaUuid": "d9d0df86-2ff1-3af4-bcd0-bd31425dd3d3",
+  "description": "The TalkJS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 0.1.15 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+  "datePublished": "Feb 19, 2026, 6:31:50 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:50 PM",
+  "baseScore": 4.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f91ed211-9703-44fb-a2f8-8d8da910b4c7?source=cve\nhttps://plugins.trac.wordpress.org/browser/talkjs/trunk/classes/admin/ui/SettingsPage.php#L276\nhttps://plugins.trac.wordpress.org/browser/talkjs/tags/0.1.15/classes/admin/ui/SettingsPage.php#L276\nhttps://plugins.trac.wordpress.org/browser/talkjs/trunk/classes/admin/ui/FieldBuilder.php#L147\nhttps://plugins.trac.wordpress.org/browser/talkjs/tags/0.1.15/classes/admin/ui/FieldBuilder.php#L147\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1055\n",
+  "aliases": "CVE-2026-1055\nGHSA-7v8v-vq7m-6xxj\n",
+  "assigner": "Wordfence",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "7a813c0d-85dc-307d-be65-05ad9295a0f8",
+      "product": {
+        "name": "TalkJS"
+      },
+      "product_version": "* \u22640.1.15"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "dc9001d6-94a2-3acb-8cfb-1915c4100268",
+      "vendor": {
+        "name": "talkjs"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "EUVD-2023-44703",
+  "enisaUuid": "248caea4-2a83-36b6-a15b-9883b098aa47",
+  "description": "In OpRecordAudioMonitor::onFirstRef of AudioRecordClient.cpp, there is a possible way to record audio from the background due to a missing flag. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation.",
+  "datePublished": "Dec 5, 2023, 12:31:08 AM",
+  "dateUpdated": "Dec 8, 2023, 6:30:40 PM",
+  "baseScore": -1.0,
+  "references": "https://android.googlesource.com/platform/frameworks/base/+/b0f6558fb36eb76df35c516ec5a65030a34a8734\nhttps://android.googlesource.com/platform/frameworks/native/+/9ddecd3d2b88de5ff7aa890d7ba9967c30d8b183\nhttps://android.googlesource.com/platform/frameworks/av/+/148aeea373febc959c429f2cabd8323508c38ad8\nhttps://android.googlesource.com/platform/frameworks/av/+/5f401fc9f214789d691798620fea60015962370a\nhttps://source.android.com/security/bulletin/2023-12-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-40096\n",
+  "aliases": "GHSA-8chh-r69x-qcr7\nCVE-2023-40096\n",
+  "assigner": "google_android",
+  "epss": 0.07,
+  "enisaIdProduct": [
+    {
+      "id": "2741410f-108f-319c-9418-8b608bd3bcf0",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "14"
+    },
+    {
+      "id": "62e495db-25b2-34a5-afe0-e548a3f70dac",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "11"
+    },
+    {
+      "id": "728e5faa-9e59-39b2-9e38-51b4a1551675",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "13"
+    },
+    {
+      "id": "d2587a50-ebf4-393c-a948-3dbc021e4caa",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12L"
+    },
+    {
+      "id": "f473b7b2-f90d-3dd2-9ede-6192c01d2042",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d70305de-15f2-3a00-833d-0bde796b022f",
+      "vendor": {
+        "name": "Google"
+      }
+    }
+  ]
+}

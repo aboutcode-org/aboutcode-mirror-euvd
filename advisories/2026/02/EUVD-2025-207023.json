@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207023",
+  "enisaUuid": "ca0b4071-1067-3d86-9235-cd31dfc890fc",
+  "description": "A specially-crafted file can cause libjxl's decoder to read pixel data from uninitialized (but allocated) memory.\n\nThis can be done by causing the decoder to reference an outside-image-bound area in a subsequent patches. An incorrect optimization causes the decoder to omit populating those areas.",
+  "datePublished": "Feb 11, 2026, 6:31:28 PM",
+  "dateUpdated": "Feb 11, 2026, 6:31:28 PM",
+  "baseScore": 2.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/libjxl/libjxl/pull/4495\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-12474\n",
+  "aliases": "GHSA-9gvg-fw8p-72fv\nCVE-2025-12474\n",
+  "assigner": "Google",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "6832ff27-b83e-4f89-9a11-cca0bae773f7",
+      "product": {
+        "name": "libjxl"
+      },
+      "product_version": "0.7 \u22640.11.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "599e21bb-a033-40f1-ac59-beec1e453a70",
+      "vendor": {
+        "name": "Google"
+      }
+    }
+  ]
+}

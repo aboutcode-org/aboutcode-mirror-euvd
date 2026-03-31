@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-30920",
+  "enisaUuid": "93e01c80-4bc5-30e9-b688-842e3fd8084d",
+  "description": "IOMMU: RMRR (VT-d) and unity map (AMD-Vi) handling issues T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Certain PCI devices in a system might be assigned Reserved Memory Regions (specified via Reserved Memory Region Reporting, \"RMRR\") for Intel VT-d or Unity Mapping ranges for AMD-Vi. These are typically used for platform tasks such as legacy USB emulation. Since the precise purpose of these regions is unknown, once a device associated with such a region is active, the mappings of these regions need to remain continuouly accessible by the device. This requirement has been violated. Subsequent DMA or interrupts from the device may have unpredictable behaviour, ranging from IOMMU faults to memory corruption.",
+  "datePublished": "Apr 6, 2022, 12:01:31 AM",
+  "dateUpdated": "Apr 15, 2022, 12:01:14 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2022-26361.html\nhttps://www.debian.org/security/2022/dsa-5117\nhttps://xenbits.xenproject.org/xsa/advisory-400.txt\nhttp://xenbits.xen.org/xsa/advisory-400.html\nhttp://www.openwall.com/lists/oss-security/2022/04/05/3\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-26361\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD\n",
+  "aliases": "GHSA-c3mw-fh2q-7xx4\nCVE-2022-26361\n",
+  "assigner": "XEN",
+  "epss": 0.12,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "7fe3d3b6-a7d6-33ea-884e-4ea7900f2a67",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

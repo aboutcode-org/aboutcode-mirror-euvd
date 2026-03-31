@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-13994",
+  "enisaUuid": "8009a228-67ed-3192-a10d-a79a0e60892e",
+  "description": "The fyyd podcast shortcodes plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'fyyd-podcast', 'fyyd-episode', and 'fyyd' shortcodes in all versions up to, and including, 0.3.1. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes such as 'color', 'podcast_id', and 'podcast_slug'. These attributes are directly concatenated into inline JavaScript within single-quoted string arguments without any escaping or sanitization, allowing an attacker to break out of the JavaScript string context. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "datePublished": "Mar 21, 2026, 6:30:25 AM",
+  "dateUpdated": "Mar 21, 2026, 6:30:26 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3f9d57ae-b238-43db-8eee-ccab499b1cbc?source=cve\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L65\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L65\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L48\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L48\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L60\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L60\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L100\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L100\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L224\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L224\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/trunk/fyyd-podcast-shortcodes.php#L141\nhttps://plugins.trac.wordpress.org/browser/fyyd-podcast-shortcodes/tags/0.3.1/fyyd-podcast-shortcodes.php#L141\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-4084\n",
+  "aliases": "CVE-2026-4084\nGHSA-fm6h-hmg3-46c3\n",
+  "assigner": "Wordfence",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "189c83ef-a74c-33a0-872a-825d65edf84c",
+      "product": {
+        "name": "fyyd podcast shortcodes"
+      },
+      "product_version": "* \u22640.3.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "61ca2666-68ed-3701-858c-2654a6fbb391",
+      "vendor": {
+        "name": "cbednarek"
+      }
+    }
+  ]
+}

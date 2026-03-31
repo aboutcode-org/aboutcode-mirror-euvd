@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2024-47795",
+  "enisaUuid": "0986c46a-527b-34b3-999a-30fd959afae0",
+  "description": "When mounting a remote filesystem using NFS, the kernel did not sanitize remotely provided filenames for the path separator character, \"/\".  This allows readdir(3) and related functions to return filesystem entries with names containing additional path components.\n\nThe lack of validation described above gives rise to a confused deputy problem.  For example, a program copying files from an NFS mount could be tricked into copying from outside the intended source directory, and/or to a location outside the intended destination directory.",
+  "datePublished": "Aug 12, 2024, 3:30:51 PM",
+  "dateUpdated": "Aug 12, 2024, 6:30:47 PM",
+  "baseScore": -1.0,
+  "references": "https://security.freebsd.org/advisories/FreeBSD-SA-24:07.nfsclient.asc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-6759\n",
+  "aliases": "CVE-2024-6759\nGHSA-96rc-h8f4-67gc\n",
+  "assigner": "freebsd",
+  "epss": 0.27,
+  "enisaIdProduct": [
+    {
+      "id": "3c46ffda-1487-35b4-81aa-df98e3271330",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "13.3-RELEASE <p5"
+    },
+    {
+      "id": "a9b05ad2-469a-317a-902b-4d5f18667d06",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.1-RELEASE <p3"
+    },
+    {
+      "id": "bc273e5c-009a-3b11-afb0-770fa977143c",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.0-RELEASE <p9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fab4d72c-f06c-343e-a400-9481c3c16fc1",
+      "vendor": {
+        "name": "FreeBSD"
+      }
+    }
+  ]
+}

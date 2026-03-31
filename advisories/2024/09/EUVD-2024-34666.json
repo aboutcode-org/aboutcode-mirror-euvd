@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2024-34666",
+  "enisaUuid": "1bc66c05-da7e-3725-97dd-5d8e03d74867",
+  "description": "Calling Parse on a \"// +build\" build tag line with deeply nested expressions can cause a panic due to stack exhaustion.",
+  "datePublished": "Sep 6, 2024, 9:32:28 PM",
+  "dateUpdated": "Sep 9, 2024, 3:30:38 PM",
+  "baseScore": -1.0,
+  "references": "https://go.dev/cl/611240\nhttps://go.dev/issue/69141\nhttps://groups.google.com/g/golang-dev/c/S9POB9NCTdk\nhttps://pkg.go.dev/vuln/GO-2024-3107\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-34158\n",
+  "aliases": "GHSA-j7vj-rw65-4v26\nCVE-2024-34158\n",
+  "assigner": "Go",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "38ae8992-570c-31c7-8c30-2f05f8189471",
+      "product": {
+        "name": "go/build/constraint"
+      },
+      "product_version": "1.23.0-0 <1.23.1"
+    },
+    {
+      "id": "459c4f35-c41c-3a19-a00d-08129744731b",
+      "product": {
+        "name": "go/build/constraint"
+      },
+      "product_version": "0 <1.22.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ae4df240-de27-3085-97c4-772aa3869598",
+      "vendor": {
+        "name": "Go standard library"
+      }
+    }
+  ]
+}

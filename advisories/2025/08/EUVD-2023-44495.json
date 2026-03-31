@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2023-44495",
+  "enisaUuid": "eb8050d9-0a08-3eb9-9b35-0c1cc5705977",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix out of bounds read in smb2_sess_setup\n\nksmbd does not consider the case of that smb2 session setup is\nin compound request. If this is the second payload of the compound,\nOOB read issue occurs while processing the first payload in\nthe smb2_sess_setup().",
+  "datePublished": "Aug 16, 2025, 3:30:30 PM",
+  "dateUpdated": "Nov 18, 2025, 6:32:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/676392184785ace61e939831e7ca44a03d438c3b\nhttps://git.kernel.org/stable/c/ef572ffa8eb44111eed2925fbb2adca78bdcbf61\nhttps://git.kernel.org/stable/c/2ba03cecb12ac7ac9e0170e251543c56832d9959\nhttps://git.kernel.org/stable/c/98422bdd4cb3ca4d08844046f6507d7ec2c2b8d8\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-3867\n",
+  "aliases": "CVE-2023-3867\nGHSA-pm54-8x3h-h6h9\n",
+  "assigner": "Linux",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "06c03a6a-5157-36ac-ac13-8dcf3d9ec7be",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "11db5257-ae89-336d-a1a7-aaba3cc95942",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.4.5"
+    },
+    {
+      "id": "38224764-7045-357e-88d0-811b487923fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5"
+    },
+    {
+      "id": "634c9ee7-708e-314d-bedc-8516c2cc2dfc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
+    {
+      "id": "66e05196-69b3-3898-8627-9d23e56778fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.145"
+    },
+    {
+      "id": "80a86e69-f603-3eac-a74a-2bc0d129177f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.40"
+    },
+    {
+      "id": "8e09e1a2-978a-338d-a8db-c1da52c72101",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <2ba03cecb12ac7ac9e0170e251543c56832d9959"
+    },
+    {
+      "id": "9da66035-264e-3e14-91af-78225dcd56b0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <676392184785ace61e939831e7ca44a03d438c3b"
+    },
+    {
+      "id": "c4b86d6a-5664-33d2-ab87-317d33bc1a14",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <ef572ffa8eb44111eed2925fbb2adca78bdcbf61"
+    },
+    {
+      "id": "f4622b35-0024-3945-a63d-37e3a32709fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <98422bdd4cb3ca4d08844046f6507d7ec2c2b8d8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d20779c6-56cd-3438-9d95-0a91dd09413c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

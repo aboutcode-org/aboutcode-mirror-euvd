@@ -1,0 +1,105 @@
+{
+  "id": "EUVD-2024-23953",
+  "enisaUuid": "ba83db8f-872f-3418-a933-f5590441847e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Fix circular locking dependency\n\nThe rule inside kvm enforces that the vcpu->mutex is taken *inside*\nkvm->lock. The rule is violated by the pkvm_create_hyp_vm() which acquires\nthe kvm->lock while already holding the vcpu->mutex lock from\nkvm_vcpu_ioctl(). Avoid the circular locking dependency altogether by\nprotecting the hyp vm handle with the config_lock, much like we already\ndo for other forms of VM-scoped data.",
+  "datePublished": "Apr 3, 2024, 3:30:42 PM",
+  "dateUpdated": "Feb 27, 2025, 3:31:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/3d16cebf01127f459dcfeb79ed77bd68b124c228\nhttps://git.kernel.org/stable/c/3ab1c40a1e915e350d9181a4603af393141970cc\nhttps://git.kernel.org/stable/c/10c02aad111df02088d1a81792a709f6a7eca6cc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26691\n",
+  "aliases": "GHSA-p9j3-r5pw-645f\nCVE-2024-26691\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "1781cfa2-8281-3ed4-bb66-c663b7eed85a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3d16cebf01127f459dcfeb79ed77bd68b124c228"
+    },
+    {
+      "id": "19e200ca-2b86-3afd-b629-ca328aec5999",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.6"
+    },
+    {
+      "id": "357658d3-bd6e-323e-a0be-933756b383af",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.18"
+    },
+    {
+      "id": "47e0a19d-278c-3afe-bb85-722f60fc59aa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6211753fdfd05af9e08f54c8d0ba3ee516034878 <3ab1c40a1e915e350d9181a4603af393141970cc"
+    },
+    {
+      "id": "5b768b85-45d4-3ab5-b0d3-7d66f83f92bc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "68ed495e-ba18-39dd-88f7-c98c9261986f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <10c02aad111df02088d1a81792a709f6a7eca6cc"
+    },
+    {
+      "id": "742a19e9-a6cd-38fc-babd-cc3ea41b5b45",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6211753fdfd05af9e08f54c8d0ba3ee516034878 <10c02aad111df02088d1a81792a709f6a7eca6cc"
+    },
+    {
+      "id": "c2305e01-8170-3e3b-b8c1-87592e84d70c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3ab1c40a1e915e350d9181a4603af393141970cc"
+    },
+    {
+      "id": "db6e2c19-bec2-3c87-836e-056d433dcc4d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6211753fdfd05af9e08f54c8d0ba3ee516034878 <3d16cebf01127f459dcfeb79ed77bd68b124c228"
+    },
+    {
+      "id": "de126a85-25c5-3768-9537-e7060f0f24a1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.11"
+    },
+    {
+      "id": "e6058992-ae07-3f18-870c-e0520bae4f52",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "f8d348e1-91f9-32e9-aff3-d7f3188dee62",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e6058992-ae07-3f18-870c-e0520bae4f52",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

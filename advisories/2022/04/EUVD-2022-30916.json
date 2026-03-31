@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-30916",
+  "enisaUuid": "7efd4087-f29c-3f17-83b5-5a05adbac8f3",
+  "description": "race in VT-d domain ID cleanup Xen domain IDs are up to 15 bits wide. VT-d hardware may allow for only less than 15 bits to hold a domain ID associating a physical device with a particular domain. Therefore internally Xen domain IDs are mapped to the smaller value range. The cleaning up of the housekeeping structures has a race, allowing for VT-d domain IDs to be leaked and flushes to be bypassed.",
+  "datePublished": "Apr 6, 2022, 12:01:31 AM",
+  "dateUpdated": "Apr 15, 2022, 12:01:16 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2022-26357.html\nhttps://www.debian.org/security/2022/dsa-5117\nhttps://linux.oracle.com/cve/CVE-2022-26357.html\nhttps://xenbits.xenproject.org/xsa/advisory-399.txt\nhttp://xenbits.xen.org/xsa/advisory-399.html\nhttp://www.openwall.com/lists/oss-security/2022/04/05/2\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-26357\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/6ETPM2OVZZ6KOS2L7QO7SIW6XWT5OW3F\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/UHFSRVLM2JUCPDC2KGB7ETPQYJLCGBLD\n",
+  "aliases": "CVE-2022-26357\nGHSA-p235-73wr-c3m7\n",
+  "assigner": "XEN",
+  "epss": 0.02,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "9aa27359-c069-3af6-8292-8f7b8739f1df",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

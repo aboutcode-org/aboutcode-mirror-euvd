@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-43610",
+  "enisaUuid": "eea8f799-4973-3f61-bb5c-154b6223cfb5",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check null pointers before multiple uses\n\n[WHAT & HOW]\nPoniters, such as stream_enc and dc->bw_vbios, are null checked previously\nin the same function, so Coverity warns \"implies that stream_enc and\ndc->bw_vbios might be null\". They are used multiple times in the\nsubsequent code and need to be checked.\n\nThis fixes 10 FORWARD_NULL issues reported by Coverity.",
+  "datePublished": "Oct 21, 2024, 6:30:57 PM",
+  "dateUpdated": "Oct 25, 2024, 3:31:25 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/26787fb6c2b2ee0d1a7e1574b36f4711ae40fe27\nhttps://git.kernel.org/stable/c/fdd5ecbbff751c3b9061d8ebb08e5c96119915b4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49920\n",
+  "aliases": "CVE-2024-49920\nGHSA-858g-q943-3jmm\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "07414cec-7f3b-30f5-b260-265f0ca5ea37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "476c67db-6ea6-3009-b3a4-a6de508d07f7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "55bf4ff1-c558-3361-a819-f63ffe67d3d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <fdd5ecbbff751c3b9061d8ebb08e5c96119915b4"
+    },
+    {
+      "id": "5e62c963-0411-3dba-8449-b2e970623281",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <26787fb6c2b2ee0d1a7e1574b36f4711ae40fe27"
+    },
+    {
+      "id": "94c71fdd-d62a-3c47-b751-23987f66aa89",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "a45ff902-d25b-3fb4-b092-1c783253ef2f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "bef4f156-70bd-3e01-8f6e-db8eeb2f818b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fdd5ecbbff751c3b9061d8ebb08e5c96119915b4"
+    },
+    {
+      "id": "ff826996-5bde-3ecb-82e7-3123243edd5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <26787fb6c2b2ee0d1a7e1574b36f4711ae40fe27"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "358c1a1a-707b-36b9-aeeb-005fd02ee412",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

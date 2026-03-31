@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2022-38299",
+  "enisaUuid": "c894feaa-b2e3-3184-9c6d-d30f7e881d06",
+  "description": "An issue was discovered in Mbed TLS before 2.28.2 and 3.x before 3.2.0. In some configurations, an unauthenticated attacker can send an invalid ClientHello message to a DTLS server that causes a heap-based buffer over-read of up to 255 bytes. This can cause a server crash or possibly information disclosure based on error responses. Affected configurations have MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE enabled and MBEDTLS_SSL_IN_CONTENT_LEN less than a threshold that depends on the configuration: 258 bytes if using mbedtls_ssl_cookie_check, and possibly up to 571 bytes with a custom cookie check function.",
+  "datePublished": "Jul 16, 2022, 12:00:29 AM",
+  "dateUpdated": "Jul 23, 2022, 12:00:21 AM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2022-35409.html\nhttps://advisories.mageia.org/CVE-2022-35409.html\nhttps://github.com/Mbed-TLS/mbedtls/releases\nhttps://mbed-tls.readthedocs.io/en/latest/security-advisories/advisories/mbedtls-security-advisory-2022-07.html\nhttps://lists.debian.org/debian-lts-announce/2022/12/msg00036.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-35409\n",
+  "aliases": "GHSA-m52q-qpp4-f753\nCVE-2022-35409\n",
+  "assigner": "mitre",
+  "epss": 1.66,
+  "enisaIdProduct": [
+    {
+      "id": "89622a6d-a955-3b25-b394-b04601336dcb",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9b17ee4e-50f8-39b2-88a9-ab4681ecec89",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

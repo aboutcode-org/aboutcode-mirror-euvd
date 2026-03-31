@@ -1,0 +1,113 @@
+{
+  "id": "EUVD-2024-39911",
+  "enisaUuid": "80c68763-2a0a-373b-be4a-7d99dee90de4",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Fix NULL pointer dereference in gfs2_log_flush\n\nIn gfs2_jindex_free(), set sdp->sd_jdesc to NULL under the log flush\nlock to provide exclusion against gfs2_log_flush().\n\nIn gfs2_log_flush(), check if sdp->sd_jdesc is non-NULL before\ndereferencing it.  Otherwise, we could run into a NULL pointer\ndereference when outstanding glock work races with an unmount\n(glock_work_func -> run_queue -> do_xmote -> inode_go_sync ->\ngfs2_log_flush).",
+  "datePublished": "Jul 29, 2024, 3:52:41 PM",
+  "dateUpdated": "Feb 6, 2026, 4:30:54 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/3429ef5f50909cee9e498c50f0c499b9397116ce\nhttps://git.kernel.org/stable/c/f54f9d5368a4e92ede7dd078a62788dae3a7c6ef\nhttps://git.kernel.org/stable/c/35264909e9d1973ab9aaa2a1b07cda70f12bb828\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42079\nhttps://git.kernel.org/stable/c/5f6a84cfb33b34610623857bd93919dcb661e29b\n",
+  "aliases": "CVE-2024-42079\nGHSA-7wph-5wjx-7rgv\n",
+  "assigner": "Linux",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "1dfba26a-51c1-35fd-abb6-283bbfd75aac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3429ef5f50909cee9e498c50f0c499b9397116ce"
+    },
+    {
+      "id": "2942b361-6e83-342e-b7b9-1369c5c69397",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.162"
+    },
+    {
+      "id": "3c37e8c7-07d9-37f2-8fc0-8c320590bb6a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "82218943058d5e3fe692a38b5a549479738dab33 <3429ef5f50909cee9e498c50f0c499b9397116ce"
+    },
+    {
+      "id": "4180b1a1-5a59-3fe0-81a8-a121bec9fa34",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.8"
+    },
+    {
+      "id": "4c169b8d-9c21-3273-ad5f-83673a294f13",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f54f9d5368a4e92ede7dd078a62788dae3a7c6ef"
+    },
+    {
+      "id": "5b918fb3-2c1d-3952-9d31-2b49c9a88b5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "82218943058d5e3fe692a38b5a549479738dab33 <35264909e9d1973ab9aaa2a1b07cda70f12bb828"
+    },
+    {
+      "id": "9e8347fe-f2fc-31ca-ac19-fb90de7f3820",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "a26f948e-3d62-3881-a8f0-095c8b651516",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.12"
+    },
+    {
+      "id": "bd76a678-7e0c-3d8e-810c-ab762fda4044",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "82218943058d5e3fe692a38b5a549479738dab33 <5f6a84cfb33b34610623857bd93919dcb661e29b"
+    },
+    {
+      "id": "d572c886-0b6e-36ab-9367-d95244e96d3a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <35264909e9d1973ab9aaa2a1b07cda70f12bb828"
+    },
+    {
+      "id": "e2e90e26-7bdf-35f0-9e6a-0af2607da3b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.37"
+    },
+    {
+      "id": "f2dfd4c3-ab14-3096-9e8f-8f611afa7862",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "82218943058d5e3fe692a38b5a549479738dab33 <f54f9d5368a4e92ede7dd078a62788dae3a7c6ef"
+    },
+    {
+      "id": "f984cb3d-0e02-39ec-a90a-e4240eebeb80",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2d9e0cc3-6f29-3248-9c6d-549e14d7b0e2",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

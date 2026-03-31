@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2024-23883",
+  "enisaUuid": "56eee0f1-6611-382f-aab3-346bccc1f01a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: huge_memory: don't force huge page alignment on 32 bit\n\ncommit efa7df3e3bb5 (\"mm: align larger anonymous mappings on THP\nboundaries\") caused two issues [1] [2] reported on 32 bit system or compat\nuserspace.\n\nIt doesn't make too much sense to force huge page alignment on 32 bit\nsystem due to the constrained virtual address space.\n\n[1] https://lore.kernel.org/linux-mm/d0a136a0-4a31-46bc-adf4-2db109a61672@kernel.org/\n[2] https://lore.kernel.org/linux-mm/CAJuCfpHXLdQy1a2B6xN2d7quTYwg2OoZseYPZTRpU0eHHKD-sQ@mail.gmail.com/",
+  "datePublished": "Mar 3, 2024, 12:30:32 AM",
+  "dateUpdated": "Jan 16, 2025, 6:30:57 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/87632bc9ecff5ded93433bc0fca428019bdd1cfe\nhttps://git.kernel.org/stable/c/7432376c913381c5f24d373a87ff629bbde94b47\nhttps://git.kernel.org/stable/c/4ef9ad19e17676b9ef071309bc62020e2373705d\nhttps://git.kernel.org/stable/c/6ea9aa8d97e6563676094cb35755884173269555\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26621\nhttps://zolutal.github.io/aslrnt\nhttp://www.openwall.com/lists/oss-security/2024/07/08/3\nhttp://www.openwall.com/lists/oss-security/2024/07/08/4\nhttp://www.openwall.com/lists/oss-security/2024/07/08/5\nhttp://www.openwall.com/lists/oss-security/2024/07/08/6\nhttp://www.openwall.com/lists/oss-security/2024/07/08/7\nhttp://www.openwall.com/lists/oss-security/2024/07/08/8\nhttp://www.openwall.com/lists/oss-security/2024/07/09/1\nhttp://www.openwall.com/lists/oss-security/2024/07/10/5\nhttp://www.openwall.com/lists/oss-security/2024/07/10/7\nhttp://www.openwall.com/lists/oss-security/2024/07/10/8\nhttp://www.openwall.com/lists/oss-security/2024/07/11/4\nhttp://www.openwall.com/lists/oss-security/2024/07/11/5\nhttp://www.openwall.com/lists/oss-security/2024/07/11/7\nhttp://www.openwall.com/lists/oss-security/2024/07/12/3\nhttp://www.openwall.com/lists/oss-security/2024/07/13/2\nhttp://www.openwall.com/lists/oss-security/2024/07/13/7\nhttp://www.openwall.com/lists/oss-security/2024/07/15/1\nhttp://www.openwall.com/lists/oss-security/2024/07/15/2\nhttp://www.openwall.com/lists/oss-security/2024/07/16/1\nhttp://www.openwall.com/lists/oss-security/2024/07/16/2\nhttp://www.openwall.com/lists/oss-security/2024/07/29/2\nhttp://www.openwall.com/lists/oss-security/2024/07/30/2\n",
+  "aliases": "CVE-2024-26621\nGHSA-pv98-48f2-5vjr\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "074c08c4-ff7b-3342-8cdd-7c5da737a21c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.18"
+    },
+    {
+      "id": "23178315-7058-3c43-a4de-3759661310b4",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "2671bc17-56ce-383d-b377-9907dce220d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1854bc6e2420472676c5c90d3d6b15f6cd640e40 <6ea9aa8d97e6563676094cb35755884173269555"
+    },
+    {
+      "id": "43653a8e-c057-3d19-90a8-86ea5674d160",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1854bc6e2420472676c5c90d3d6b15f6cd640e40 <4ef9ad19e17676b9ef071309bc62020e2373705d"
+    },
+    {
+      "id": "58c433b0-2a38-3092-8321-81756b10a1a8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.6"
+    },
+    {
+      "id": "6ea598ac-38b1-3f8d-97bd-d19ce5a8fa0b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "7c7e1395-8da2-3007-9d9b-99484e69a307",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1854bc6e2420472676c5c90d3d6b15f6cd640e40 <7432376c913381c5f24d373a87ff629bbde94b47"
+    },
+    {
+      "id": "9af5dfba-ebb7-3bb7-99d4-6e992ca7bde2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "b6b308db-fa2e-366e-81f3-ac99af9fbc01",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.81"
+    },
+    {
+      "id": "c54f1c00-43b9-3051-8a7a-bef44774f8f4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.46"
+    },
+    {
+      "id": "d505cf8e-0668-3c99-8998-317a2a5dc8e1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1854bc6e2420472676c5c90d3d6b15f6cd640e40 <87632bc9ecff5ded93433bc0fca428019bdd1cfe"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "23178315-7058-3c43-a4de-3759661310b4",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

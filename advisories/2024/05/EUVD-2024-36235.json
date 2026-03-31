@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-36235",
+  "enisaUuid": "7668bb19-f808-3d36-be64-ab44dd7ffc6a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fix out-of-bounds access in ops_init\n\nnet_alloc_generic is called by net_alloc, which is called without any\nlocking. It reads max_gen_ptrs, which is changed under pernet_ops_rwsem. It\nis read twice, first to allocate an array, then to set s.len, which is\nlater used to limit the bounds of the array access.\n\nIt is possible that the array is allocated and another thread is\nregistering a new pernet ops, increments max_gen_ptrs, which is then used\nto set s.len with a larger than allocated length for the variable array.\n\nFix it by reading max_gen_ptrs only once in net_alloc_generic. If\nmax_gen_ptrs is later incremented, it will be caught in net_assign_generic.",
+  "datePublished": "May 30, 2024, 3:28:53 PM",
+  "dateUpdated": "Dec 19, 2024, 9:01:19 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/3cdc34d76c4f777579e28ad373979d36c030cfd3\nhttps://git.kernel.org/stable/c/7b0e64583eab8c1d896b47e5dd0bf2e7d86ec41f\nhttps://git.kernel.org/stable/c/0c3248bc708a7797be573214065cf908ff1f54c7\nhttps://git.kernel.org/stable/c/9518b79bfd2fbf99fa9b7e8e36bcb1825e7ba030\nhttps://git.kernel.org/stable/c/2d60ff5874aefd006717ca5e22ac1e25eac29c42\nhttps://git.kernel.org/stable/c/b6dbfd5bcc267a95a0bf1bf96af46243f96ec6cd\nhttps://git.kernel.org/stable/c/f4f94587e1bf87cb40ec33955a9d90148dd026ab\nhttps://git.kernel.org/stable/c/a26ff37e624d12e28077e5b24d2b264f62764ad6\n",
+  "aliases": "CVE-2024-36883\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0ff18f72-914c-303e-9090-0739a05aee88",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "144b2473-f1f5-352c-bc2f-4aeae0c2f1ae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.314"
+    },
+    {
+      "id": "196bfc2d-57ff-3ff9-8674-f7eaed2c6d15",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.10"
+    },
+    {
+      "id": "1d98916a-a5c1-34b7-b5d3-e831bd26eee7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <9518b79bfd2fbf99fa9b7e8e36bcb1825e7ba030"
+    },
+    {
+      "id": "21a53499-f21d-33a0-a727-d6cfeec075eb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.217"
+    },
+    {
+      "id": "2540ae46-04dd-3227-979c-9da0b0c360b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <3cdc34d76c4f777579e28ad373979d36c030cfd3"
+    },
+    {
+      "id": "2677a439-5b39-33c8-ac0d-db61b6c12925",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.3"
+    },
+    {
+      "id": "45d6bd54-fa18-328c-83ba-a8e95a60509e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <7b0e64583eab8c1d896b47e5dd0bf2e7d86ec41f"
+    },
+    {
+      "id": "4a9f0231-61c8-34b6-b3a7-8bf8761d53cd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <a26ff37e624d12e28077e5b24d2b264f62764ad6"
+    },
+    {
+      "id": "53d545fd-b01c-3b83-9833-8be072185741",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "587657cb-8dcb-30e9-82c7-b291dffc6aa9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.91"
+    },
+    {
+      "id": "62827d92-2869-34f0-b603-725bdce3048c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <b6dbfd5bcc267a95a0bf1bf96af46243f96ec6cd"
+    },
+    {
+      "id": "64ff628a-ac20-39c9-ae1d-cd2ea8a7fd0c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <0c3248bc708a7797be573214065cf908ff1f54c7"
+    },
+    {
+      "id": "82616e63-898c-337d-90d9-0215268ede19",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.159"
+    },
+    {
+      "id": "b223d54e-2a3d-3b0e-8496-559f4b081357",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "b2c7988e-134c-37de-b6b7-2da911ffd382",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <f4f94587e1bf87cb40ec33955a9d90148dd026ab"
+    },
+    {
+      "id": "c64ac508-893e-3059-b5e8-9abdc1f5b8a5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "073862ba5d249c20bd5c49fc6d904ff0e1f6a672 <2d60ff5874aefd006717ca5e22ac1e25eac29c42"
+    },
+    {
+      "id": "e190874a-7915-3579-bcca-181fa259b303",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.276"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "27d1964f-447b-3cac-87e0-5472c155a4a2",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

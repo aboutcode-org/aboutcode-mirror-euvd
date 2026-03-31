@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2022-53582",
+  "enisaUuid": "6bfa9fe9-5252-3431-875c-dad600157d0c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR\n\nIn some case, the GDDV returns a package with a buffer which has\nzero length. It causes that kmemdup() returns ZERO_SIZE_PTR (0x10).\n\nThen the data_vault_read() got NULL point dereference problem when\naccessing the 0x10 value in data_vault.\n\n[   71.024560] BUG: kernel NULL pointer dereference, address:\n0000000000000010\n\nThis patch uses ZERO_OR_NULL_PTR() for checking ZERO_SIZE_PTR or\nNULL value in data_vault.",
+  "datePublished": "May 3, 2024, 3:14:07 PM",
+  "dateUpdated": "Jul 17, 2025, 4:55:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/dae42083b045a4ddf71c57cf350cb2412b5915c2\nhttps://git.kernel.org/stable/c/7931e28098a4c1a2a6802510b0cbe57546d2049d\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48703\nhttps://git.kernel.org/stable/c/39d5137085a6c37ace4680ee4d24020a4a03e7dc\n",
+  "aliases": "CVE-2022-48703\nGHSA-5w96-cqcp-75r4\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "20099802-f3ee-3df3-9be1-267d20ad210f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dae42083b045a4ddf71c57cf350cb2412b5915c2"
+    },
+    {
+      "id": "400d2219-5888-3e00-b534-9c80e566b538",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0ba13c763aacb27ab32bde5d559bf40e88465921 <dae42083b045a4ddf71c57cf350cb2412b5915c2"
+    },
+    {
+      "id": "4028e702-936e-3407-ae41-bec304336808",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.8"
+    },
+    {
+      "id": "407c5e20-7294-3820-a668-5bbfda916a5c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "47faeea7-e2d7-3946-93e6-0f02562c59c2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7931e28098a4c1a2a6802510b0cbe57546d2049d"
+    },
+    {
+      "id": "66d93666-5008-3e11-b4cd-f1f83968b020",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0ba13c763aacb27ab32bde5d559bf40e88465921 <7931e28098a4c1a2a6802510b0cbe57546d2049d"
+    },
+    {
+      "id": "7d53d493-02ca-33f0-b4c8-2c9003623358",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.189"
+    },
+    {
+      "id": "99ca0f15-33b5-3a51-b4bc-3dcc0eb2efe9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.19.9"
+    },
+    {
+      "id": "e3adf34d-3bfb-3adb-a51d-a5b8d7e0a3fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.0"
+    },
+    {
+      "id": "f233c3fa-2dde-37ee-b9f5-6d62f9b00361",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0ba13c763aacb27ab32bde5d559bf40e88465921 <39d5137085a6c37ace4680ee4d24020a4a03e7dc"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e49a8e85-b5be-3754-8d6c-816fb7e7531a",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

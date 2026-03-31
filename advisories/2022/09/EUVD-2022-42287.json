@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-42287",
+  "enisaUuid": "5a9c6ff6-a06e-3bec-bf93-d7bf41904206",
+  "description": "An issue was discovered in the Linux kernel before 5.19. In pxa3xx_gcu_write in drivers/video/fbdev/pxa3xx-gcu.c, the count parameter has a type conflict of size_t versus int, causing an integer overflow and bypassing the size check. After that, because it is used as the third argument to copy_from_user(), a heap overflow may occur.",
+  "datePublished": "Sep 6, 2022, 12:00:27 AM",
+  "dateUpdated": "Mar 21, 2024, 3:34:18 AM",
+  "baseScore": -1.0,
+  "references": "https://alas.aws.amazon.com/cve/html/CVE-2022-39842.html\nhttps://advisories.mageia.org/CVE-2022-39842.html\nhttps://www.suse.com/security/cve/CVE-2022-39842.html\nhttps://ubuntu.com/security/CVE-2022-39842\nhttps://security.archlinux.org/CVE-2022-39842\nhttps://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.19\nhttps://github.com/torvalds/linux/commit/a09d2d00af53b43c6f11e6ab3cb58443c2cac8a7\nhttps://lists.debian.org/debian-lts-announce/2022/10/msg00000.html\nhttps://www.debian.org/security/2022/dsa-5257\nhttps://lists.debian.org/debian-lts-announce/2022/11/msg00001.html\nhttps://lore.kernel.org/all/YylaC1wHHyLw22D3%40kadam/T/\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-39842\nhttps://lore.kernel.org/all/YylaC1wHHyLw22D3@kadam/T\n",
+  "aliases": "CVE-2022-39842\nGHSA-8cq9-p78m-67v8\n",
+  "assigner": "mitre",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "95acd112-740d-3c43-9e74-d24eaa115ce8",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a58e9e68-3b8b-3572-9471-d2ab2384cc86",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

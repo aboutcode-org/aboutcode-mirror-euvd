@@ -1,0 +1,70 @@
+{
+  "id": "EUVD-2026-13916",
+  "enisaUuid": "c13ee0d6-4504-316b-b2b4-6ef851070161",
+  "description": "Ory Keto is am open source authorization server for managing permissions at scale. Prior to version 26.2.0, the GetRelationships API in Ory Keto is vulnerable to SQL injection due to flaws in its pagination implementation. Pagination tokens are encrypted using the secret configured in `secrets.pagination`. An attacker who knows this secret can craft their own tokens, including malicious tokens that lead to SQL injection. If this configuration value is not set, Keto falls back to a hard-coded default pagination encryption secret. Because this default value is publicly known, attackers can generate valid and malicious pagination tokens manually for installations where this secret is not set. This issue can be exploited when GetRelationships API is directly or indirectly accessible to the attacker, the attacker can pass a raw pagination token to the affected API, and the configuration value `secrets.pagination` is not set or known to the attacker. An attacker can execute arbitrary SQL queries through forged pagination tokens. As a first line of defense, immediately configure a custom value for `secrets.pagination` by generating a cryptographically secure random secret. Next, upgrade Keto to a fixed version, 26.2.0 or later, as soon as possible.",
+  "datePublished": "Mar 26, 2026, 6:37:51 PM",
+  "dateUpdated": "Mar 26, 2026, 6:37:51 PM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cc09377b-f30b-414b-a551-d3689ddcc5a4?source=cve\nhttps://plugins.trac.wordpress.org/browser/alt-manager/tags/1.8.2/inc/alm-empty-generator.php#L150\nhttps://plugins.trac.wordpress.org/browser/alt-manager/tags/1.8.2/inc/alm-empty-generator.php#L295\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3479531%40alt-manager&new=3479531%40alt-manager&sfp_email=&sfph_mail=\nhttps://github.com/WWBN/AVideo/security/advisories/GHSA-3fpm-8rjr-v5mc\nhttps://github.com/WWBN/AVideo/security/advisories/GHSA-72h5-39r7-r26j\nhttps://github.com/ory/keto/security/advisories/GHSA-c38g-mx2c-9wf2\nhttps://github.com/WWBN/AVideo/security/advisories/GHSA-hv36-p4w4-6vmj\nhttps://github.com/ory/hydra/security/advisories/GHSA-r9w3-57w2-gch2\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-3350\nhttps://github.com/WWBN/AVideo/commit/3ae02fa240939dbefc5949d64f05790fd25d728d\nhttps://github.com/WWBN/AVideo/commit/1e6cf03e93b5a5318204b010ea28440b0d9a5ab3\nhttps://github.com/WWBN/AVideo/commit/d1bc1695edd9ad4468a48cea0df6cd943a2635f3\n",
+  "aliases": "CVE-2026-33502\nCVE-2026-33507\nGHSA-r9w3-57w2-gch2\nGHSA-3fpm-8rjr-v5mc\nCVE-2026-33500\nGHSA-hv36-p4w4-6vmj\nCVE-2026-33505\nCVE-2026-3350\nGHSA-72h5-39r7-r26j\nGHSA-c38g-mx2c-9wf2\n",
+  "assigner": "GitHub_M",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "5af847d2-5b4c-3c77-b7d8-97e5c36d0812",
+      "product": {
+        "name": "Image Alt Text Manager \u2013 Bulk & Dynamic Alt Tags For image SEO Optimization + AI"
+      },
+      "product_version": "* \u22641.8.2"
+    },
+    {
+      "id": "67f5d9b0-589e-3c90-bfbb-374cb60c13c2",
+      "product": {
+        "name": "AVideo"
+      },
+      "product_version": "\u2264 26.0"
+    },
+    {
+      "id": "9e421675-ba83-3713-9241-68971cd88776",
+      "product": {
+        "name": "keto"
+      },
+      "product_version": "< 26.2.0"
+    },
+    {
+      "id": "f1caed03-74a4-3e08-970a-b9b1d6369b55",
+      "product": {
+        "name": "hydra"
+      },
+      "product_version": "< 26.2.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0cca78e5-a8dd-3644-948b-bf62db0484b6",
+      "vendor": {
+        "name": "ory"
+      }
+    },
+    {
+      "id": "221af25a-8835-39fd-8385-9584949f8764",
+      "vendor": {
+        "name": "WPSAAD"
+      }
+    },
+    {
+      "id": "d8327c80-e38c-3f99-8b5a-5c5895618147",
+      "vendor": {
+        "name": "WPSAAD"
+      }
+    },
+    {
+      "id": "ed14077f-738f-37a5-a960-0c4ee18e9c2b",
+      "vendor": {
+        "name": "WWBN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2021-34365",
+  "enisaUuid": "78923def-5a0c-3c5c-a0cd-1829d20ad03c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinder: make sure fd closes complete\n\nDuring BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object\ncleanup may close 1 or more fds. The close operations are\ncompleted using the task work mechanism -- which means the thread\nneeds to return to userspace or the file object may never be\ndereferenced -- which can lead to hung processes.\n\nForce the binder thread back to userspace if an fd is closed during\nBC_FREE_BUFFER handling.",
+  "datePublished": "May 21, 2024, 3:31:44 PM",
+  "dateUpdated": "May 12, 2025, 9:30:56 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/aa2c274c279ff365a06a4cba263f04965895166e\nhttps://git.kernel.org/stable/c/d5b0473707fa53b03a5db0256ce62b2874bddbc7\nhttps://git.kernel.org/stable/c/b95483d8d94b41fa31a84c1d86710b7907a37621\nhttps://git.kernel.org/stable/c/5fdb55c1ac9585eb23bb2541d5819224429e103d\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47360\n",
+  "aliases": "GHSA-76pr-h99m-q4fj\nCVE-2021-47360\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0c47bd0e-0baa-3766-933d-30c16df64d81",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "80cd795630d6526ba729a089a435bf74a57af927 <5fdb55c1ac9585eb23bb2541d5819224429e103d"
+    },
+    {
+      "id": "1b6da4c9-09ee-36ab-b4c2-514d2a1b4758",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.14.9"
+    },
+    {
+      "id": "1e5bc8fb-1d28-3cdc-a05a-6d75ba054ac5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "273cd425-7455-3656-95ec-b6d08a07f506",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.0"
+    },
+    {
+      "id": "524537c0-088f-3283-8ec7-01b4403dc77f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.70"
+    },
+    {
+      "id": "96e105a2-22b5-33e2-8693-388e62f9e583",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "80cd795630d6526ba729a089a435bf74a57af927 <d5b0473707fa53b03a5db0256ce62b2874bddbc7"
+    },
+    {
+      "id": "9e26f316-0a8d-339c-990e-056282958355",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.150"
+    },
+    {
+      "id": "b045d1be-0a6f-3787-96c6-35544a0d3c3b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "80cd795630d6526ba729a089a435bf74a57af927 <aa2c274c279ff365a06a4cba263f04965895166e"
+    },
+    {
+      "id": "b26d39b1-4ec6-3c05-a6bd-aa778f28b073",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "80cd795630d6526ba729a089a435bf74a57af927 <b95483d8d94b41fa31a84c1d86710b7907a37621"
+    },
+    {
+      "id": "e720199b-999e-3d37-b2a5-a9035347a8da",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5dce2216-a9e0-317e-afaa-6408a9f74f1f",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

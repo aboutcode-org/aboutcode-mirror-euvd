@@ -1,0 +1,80 @@
+{
+  "id": "EUVD-2024-52651",
+  "enisaUuid": "52de7dc1-f76a-39cd-8f80-83d2d4e71bc6",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix TCP timers deadlock after rmmod\n\nCommit ef7134c7fc48 (\"smb: client: Fix use-after-free of network namespace.\")\nfixed a netns UAF by manually enabled socket refcounting\n(sk->sk_net_refcnt=1 and sock_inuse_add(net, 1)).\n\nThe reason the patch worked for that bug was because we now hold\nreferences to the netns (get_net_track() gets a ref internally)\nand they're properly released (internally, on __sk_destruct()),\nbut only because sk->sk_net_refcnt was set.\n\nProblem:\n(this happens regardless of CONFIG_NET_NS_REFCNT_TRACKER and regardless\nif init_net or other)\n\nSetting sk->sk_net_refcnt=1 *manually* and *after* socket creation is not\nonly out of cifs scope, but also technically wrong -- it's set conditionally\nbased on user (=1) vs kernel (=0) sockets.  And net/ implementations\nseem to base their user vs kernel space operations on it.\n\ne.g. upon TCP socket close, the TCP timers are not cleared because\nsk->sk_net_refcnt=1:\n(cf. commit 151c9c724d05 (\"tcp: properly terminate timers for kernel sockets\"))\n\nnet/ipv4/tcp.c:\n    void tcp_close(struct sock *sk, long timeout)\n    {\n    \tlock_sock(sk);\n    \t__tcp_close(sk, timeout);\n    \trelease_sock(sk);\n    \tif (!sk->sk_net_refcnt)\n    \t\tinet_csk_clear_xmit_timers_sync(sk);\n    \tsock_put(sk);\n    }\n\nWhich will throw a lockdep warning and then, as expected, deadlock on\ntcp_write_timer().\n\nA way to reproduce this is by running the reproducer from ef7134c7fc48\nand then 'rmmod cifs'.  A few seconds later, the deadlock/lockdep\nwarning shows up.\n\nFix:\nWe shouldn't mess with socket internals ourselves, so do not set\nsk_net_refcnt manually.\n\nAlso change __sock_create() to sock_create_kern() for explicitness.\n\nAs for non-init_net network namespaces, we deal with it the best way\nwe can -- hold an extra netns reference for server->ssocket and drop it\nwhen it's released.  This ensures that the netns still exists whenever\nwe need to create/destroy server->ssocket, but is not directly tied to\nit.",
+  "datePublished": "Jan 11, 2025, 3:30:29 PM",
+  "dateUpdated": "Jan 16, 2025, 3:32:09 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/906807c734ed219dcb2e7bbfde5c4168ed72a3d0\nhttps://git.kernel.org/stable/c/127e907e11ccd54b59bb78fc22c43ccb76c71079\nhttps://git.kernel.org/stable/c/e9f2517a3e18a54a3943c098d2226b245d488801\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-54680\n",
+  "aliases": "CVE-2024-54680\nGHSA-xfp4-237c-chrm\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "499a92f9-09bc-338a-b457-f77b7a431e17",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e8c71494181153a134c96da28766a57bd1eac8cb <906807c734ed219dcb2e7bbfde5c4168ed72a3d0"
+    },
+    {
+      "id": "65d82717-2733-38de-b9d5-ebd5d6eedd71",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.12"
+    },
+    {
+      "id": "71bc4d74-5520-3564-a703-f6e0ee7c8e31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "8f9cb990-efa6-359b-833e-9fc5e373a1a5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ef7134c7fc48e1441b398e55a862232868a6f0a7 <127e907e11ccd54b59bb78fc22c43ccb76c71079"
+    },
+    {
+      "id": "a4e5bc77-7701-3027-ac10-34f75d61dcd5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.13"
+    },
+    {
+      "id": "b56e5c92-5335-3b99-b87a-f978d0bf5594",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ef7134c7fc48e1441b398e55a862232868a6f0a7 <e9f2517a3e18a54a3943c098d2226b245d488801"
+    },
+    {
+      "id": "c1048253-a556-3c66-86a7-7a798bbf211b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.7"
+    },
+    {
+      "id": "ce3bfe09-5099-3b9f-a855-d61cefada0c4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.68"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f6b7316d-f404-3f9b-b9c7-651ae4487e30",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

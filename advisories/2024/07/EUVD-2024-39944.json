@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-39944",
+  "enisaUuid": "3e488cf8-621f-3b2a-b72f-71c9b67fbdaf",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: txgbe: free isb resources at the right time\n\nWhen using MSI/INTx interrupt, the shared interrupts are still being\nhandled in the device remove routine, before free IRQs. So isb memory\nis still read after it is freed. Thus move wx_free_isb_resources()\nfrom txgbe_close() to txgbe_remove(). And fix the improper isb free\naction in txgbe_open() error handling path.",
+  "datePublished": "Jul 30, 2024, 9:31:51 AM",
+  "dateUpdated": "Oct 7, 2025, 6:31:01 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/efdc3f54299835ddef23bea651c753c4d467010b\nhttps://git.kernel.org/stable/c/935124dd5883b5de68dc5a94f582480a10643dc9\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42112\n",
+  "aliases": "GHSA-h999-3qm9-v2xm\nCVE-2024-42112\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "03aef7b0-582c-3b5c-bdf3-1e2a3a8affa2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "aefd013624a10f39b0bfaee8432a235128705380 <efdc3f54299835ddef23bea651c753c4d467010b"
+    },
+    {
+      "id": "0ff35e58-ba6b-3942-b049-39a601be5680",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "3ab46530-dbe6-3e30-90c2-ca1ab34b715f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "aefd013624a10f39b0bfaee8432a235128705380 <935124dd5883b5de68dc5a94f582480a10643dc9"
+    },
+    {
+      "id": "4d1011e2-ff88-39b4-8630-4439b857d9ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.9"
+    },
+    {
+      "id": "5e06c271-8927-3823-813a-d9ec9ec2f097",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
+    },
+    {
+      "id": "af8395ac-53e5-31cd-acfd-bff0e39dd415",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7a42597e-72f4-3043-9a73-f12970d82516",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2025-31625",
+  "enisaUuid": "ae678482-2216-3c30-9eb5-cc5f3902d638",
+  "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host prior to version 22.0.1026 and Application prior to version 20.0.2702 (only VA deployments) expose an unauthenticated firmware-upload flow: a public page returns a signed token usable at va-api/v1/update, and every Docker image contains the appliance\u2019s private GPG key and hard-coded passphrase. An attacker who extracts the key and obtains a token can decrypt, modify, re-sign, upload, and trigger malicious firmware, gaining remote code execution.\u00a0This vulnerability has been identified by the vendor as: V-2024-020 \u2014 Remote Code Execution.",
+  "datePublished": "Sep 29, 2025, 8:43:12 PM",
+  "dateUpdated": "Nov 17, 2025, 11:56:35 PM",
+  "baseScore": 9.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-rce-02\nhttps://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm\nhttps://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm\nhttps://www.vulncheck.com/advisories/vasion-print-printerlogic-unauth-firmware-update-endpoint-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-34215\n",
+  "aliases": "CVE-2025-34215\nGHSA-7fvr-fhqp-5ghm\n",
+  "assigner": "VulnCheck",
+  "epss": 0.55,
+  "enisaIdProduct": [
+    {
+      "id": "9e32503d-f5e8-3ff5-8b4a-3f824221b3f5",
+      "product": {
+        "name": "Print Application"
+      },
+      "product_version": "* <20.0.2702"
+    },
+    {
+      "id": "ddf4aece-66f0-3da0-9213-7a1fa4095856",
+      "product": {
+        "name": "Print Virtual Appliance Host"
+      },
+      "product_version": "* <22.0.1026"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3f784107-6dfc-3273-8b1c-b0750356569d",
+      "vendor": {
+        "name": "Vasion"
+      }
+    }
+  ]
+}

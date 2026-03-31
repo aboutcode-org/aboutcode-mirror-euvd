@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7918",
+  "enisaUuid": "ffc60314-bc32-3080-879e-b9c122ca2e45",
+  "description": "The WP All Export plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.4.14 via the export download endpoint. This is due to a PHP type juggling vulnerability in the security token comparison which uses loose comparison (==) instead of strict comparison (===). This makes it possible for unauthenticated attackers to bypass authentication using \"magic hash\" values when the expected MD5 hash prefix happens to be numeric-looking (matching pattern ^0e\\d+$), allowing download of sensitive export files containing PII, business data, or database information.",
+  "datePublished": "Feb 18, 2026, 3:31:25 PM",
+  "dateUpdated": "Feb 18, 2026, 3:31:25 PM",
+  "baseScore": 3.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9a92c682-b8b3-4d23-bd84-97d7440ee525?source=cve\nhttps://plugins.trac.wordpress.org/browser/wp-all-export/tags/1.4.14/actions/wp_loaded.php#L19\nhttps://plugins.trac.wordpress.org/changeset/3455775/\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1582\n",
+  "aliases": "CVE-2026-1582\nGHSA-p4q3-g549-vvfc\n",
+  "assigner": "Wordfence",
+  "epss": 0.12,
+  "enisaIdProduct": [
+    {
+      "id": "e05c94be-a049-4c2b-b68e-7981b5ab365e",
+      "product": {
+        "name": "WP All Export \u2013 Drag & Drop Export to Any Custom CSV, XML & Excel"
+      },
+      "product_version": "* \u22641.4.14"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f483dc58-d820-4dd4-b9a2-7a2b92e94998",
+      "vendor": {
+        "name": "Soflyy"
+      }
+    }
+  ]
+}

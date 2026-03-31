@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2010-3299",
+  "enisaUuid": "db90bcb7-8373-36a7-98f9-c779d1049166",
+  "description": "The IA32 system call emulation functionality in arch/x86/ia32/ia32entry.S in the Linux kernel before 2.6.36-rc4-git2 on the x86_64 platform does not zero extend the %eax register after the 32-bit entry path to ptrace is used, which allows local users to gain privileges by triggering an out-of-bounds access to the system call table using the %rax register.  NOTE: this vulnerability exists because of a CVE-2007-4573 regression.",
+  "datePublished": "May 13, 2022, 1:23:37 AM",
+  "dateUpdated": "Apr 11, 2025, 3:39:12 AM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:L/AC:L/Au:N/C:C/I:C/A:C",
+  "references": "https://www.suse.com/security/cve/CVE-2010-3301.html\nhttps://access.redhat.com/errata/RHSA-2010:0842\nhttps://linux.oracle.com/cve/CVE-2010-3301.html\nhttps://packetstormsecurity.com/files/cve/CVE-2010-3301\nhttp://www.openwall.com/lists/oss-security/2010/09/16/3\nhttp://www.openwall.com/lists/oss-security/2010/09/16/1\nhttp://www.vupen.com/english/advisories/2010/3117\nhttps://bugzilla.redhat.com/show_bug.cgi?id=634449\nhttp://www.mandriva.com/security/advisories?name=MDVSA-2010:198\nhttp://sota.gen.nz/compat2/\nhttp://www.ubuntu.com/usn/USN-1041-1\nhttp://lists.opensuse.org/opensuse-security-announce/2011-02/msg00000.html\nhttp://www.redhat.com/support/errata/RHSA-2010-0842.html\nhttp://www.mandriva.com/security/advisories?name=MDVSA-2010:247\nhttp://www.vupen.com/english/advisories/2011/0298\nhttp://www.kernel.org/pub/linux/kernel/v2.6/snapshots/patch-2.6.36-rc4-git2.log\nhttp://secunia.com/advisories/42758\nhttp://lists.opensuse.org/opensuse-security-announce/2010-09/msg00006.html\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=eefdca043e8391dcd719711716492063030b55ac\nhttp://www.vupen.com/english/advisories/2011/0070\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=36d001c70d8a0144ac1d038f6876c484849a74de\nhttps://nvd.nist.gov/vuln/detail/CVE-2010-3301\nhttps://access.redhat.com/security/cve/CVE-2010-3301\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=36d001c70d8a0144ac1d038f6876c484849a74de\nhttp://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=eefdca043e8391dcd719711716492063030b55ac\n",
+  "aliases": "CVE-2010-3301\nGHSA-79mw-6jhw-7997\n",
+  "assigner": "redhat",
+  "epss": 6.17,
+  "enisaIdProduct": [
+    {
+      "id": "31f9c48f-6875-36cf-a880-6b984c1261fb",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c5d4786c-ea88-3199-ac54-5b05a7386885",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

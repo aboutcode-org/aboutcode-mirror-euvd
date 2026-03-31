@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2023-57110",
+  "enisaUuid": "ccc34ffb-108f-30cd-8cfb-5065e3cee0bb",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Wake DMCUB before sending a command\n\n[Why]\nWe can hang in place trying to send commands when the DMCUB isn't\npowered on.\n\n[How]\nFor functions that execute within a DC context or DC lock we can\nwrap the direct calls to dm_execute_dmub_cmd/list with code that\nexits idle power optimizations and reallows once we're done with\nthe command submission on success.\n\nFor DM direct submissions the DM will need to manage the enter/exit\nsequencing manually.\n\nWe cannot invoke a DMCUB command directly within the DM execution\nhelper or we can deadlock.",
+  "datePublished": "Feb 29, 2024, 3:32:27 PM",
+  "dateUpdated": "Jan 9, 2025, 9:31:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/303197775a97416b62d4da69280d0c120a20e009\nhttps://git.kernel.org/stable/c/8892780834ae294bc3697c7d0e056d7743900b39\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52485\n",
+  "aliases": "GHSA-69cq-jw85-57p8\nCVE-2023-52485\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "4a57380e-5ba2-3d31-87db-9d0acd3581fa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <8892780834ae294bc3697c7d0e056d7743900b39"
+    },
+    {
+      "id": "5c36ab89-4b71-3547-8c35-47c01ff51596",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "7118bfae-c412-3093-af42-efa92b850917",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "a7677c6e-e5a3-30fc-8fd1-4db4c21fd573",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "c05a7c71-3919-3eba-b23a-809d9774aaeb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <303197775a97416b62d4da69280d0c120a20e009"
+    },
+    {
+      "id": "cdc90d61-d572-3f98-8996-a211afad880f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.3"
+    },
+    {
+      "id": "d7dfc713-7d8d-354b-9981-014ebb0d0b88",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ebd5702a-b319-3793-bc0c-a8972b6a6fd7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <303197775a97416b62d4da69280d0c120a20e009"
+    },
+    {
+      "id": "ff50f972-27e2-3bde-ac8f-61d57d93107e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8892780834ae294bc3697c7d0e056d7743900b39"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7118bfae-c412-3093-af42-efa92b850917",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

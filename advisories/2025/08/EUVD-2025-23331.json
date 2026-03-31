@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-23331",
+  "enisaUuid": "e2852fba-e860-3bd7-9eba-cb520a0586eb",
+  "description": "In Sipwise rtpengine before 13.4.1.1, an origin-validation error in the endpoint-learning logic of the media-relay core allows remote attackers to inject or intercept RTP/SRTP media streams via RTP packets (except when the relay is configured for strict source and learning disabled). Version 13.4.1.1 fixes the heuristic mode by limiting exposure to the first five packets, and introduces a recrypt flag that fully prevents SRTP attacks when both mitigations are enabled.",
+  "datePublished": "Aug 1, 2025, 6:31:34 AM",
+  "dateUpdated": "Nov 5, 2025, 12:31:23 AM",
+  "baseScore": 6.9,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:L/SI:L/SA:L",
+  "references": "https://github.com/sipwise/rtpengine/commits/rfuchs/security/\nhttps://www.openwall.com/lists/oss-security/2025/07/31/1\nhttps://github.com/sipwise/rtpengine/releases/tag/mr13.4.1.1\nhttps://github.com/EnableSecurity/advisories/tree/master/ES2025-01-rtpengine-improper-behavior-bleed-inject\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-53399\nhttp://seclists.org/fulldisclosure/2025/Aug/1\nhttp://www.openwall.com/lists/oss-security/2025/07/31/1\n",
+  "aliases": "GHSA-9m93-62q8-9jmx\nCVE-2025-53399\n",
+  "assigner": "mitre",
+  "epss": 0.21,
+  "enisaIdProduct": [
+    {
+      "id": "b84d13f3-0af0-34a0-ae0e-644ef57b086d",
+      "product": {
+        "name": "rtpengine"
+      },
+      "product_version": "0 <13.4.1.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8478f37d-1188-3799-bc7b-6ceb3cd707db",
+      "vendor": {
+        "name": "Sipwise"
+      }
+    }
+  ]
+}

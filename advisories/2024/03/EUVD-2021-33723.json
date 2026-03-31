@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2021-33723",
+  "enisaUuid": "83d2164c-452f-35d9-b1bb-3263f4e5d105",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: fix memory leak in nvmet_alloc_ctrl()\n\nWhen creating ctrl in nvmet_alloc_ctrl(), if the cntlid_min is larger\nthan cntlid_max of the subsystem, and jumps to the\n\"out_free_changed_ns_list\" label, but the ctrl->sqs lack of be freed.\nFix this by jumping to the \"out_free_sqs\" label.",
+  "datePublished": "Mar 2, 2024, 12:31:31 AM",
+  "dateUpdated": "Nov 7, 2024, 12:30:35 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4720f29acb3fe67aa8aa71e6b675b079d193aaeb\nhttps://git.kernel.org/stable/c/afb680ed7ecbb7fd66ddb43650e9b533fd8b4b9a\nhttps://git.kernel.org/stable/c/fec356a61aa3d3a66416b4321f1279e09e0f256f\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47075\n",
+  "aliases": "GHSA-f5x9-85f3-f3r4\nCVE-2021-47075\n",
+  "assigner": "Linux",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "2476302f-d960-36e2-94c1-e6748cffc00f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.7"
+    },
+    {
+      "id": "686c1a55-95c9-382d-b585-76ee58fe4f2a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "94a39d61f80fcd679debda11e1ca02b88d90e67e <afb680ed7ecbb7fd66ddb43650e9b533fd8b4b9a"
+    },
+    {
+      "id": "6fc4eb98-dcf6-3873-91f5-1d2461b73b1a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.40"
+    },
+    {
+      "id": "81c5e70a-343a-3634-8ee2-ab6f1cc2a9ea",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "83be4a86-5637-34d9-a34c-d0e93cd6f8b1",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "bcdb108b-5809-34eb-8a3e-3389204df61c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "c5b42ef5-c570-3b6f-83c5-649501f0efdf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "94a39d61f80fcd679debda11e1ca02b88d90e67e <fec356a61aa3d3a66416b4321f1279e09e0f256f"
+    },
+    {
+      "id": "deae059e-954a-37cb-9eb0-9480128066ee",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.7"
+    },
+    {
+      "id": "f8753d38-21dc-35c8-81ad-7eb28d26a0f4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "94a39d61f80fcd679debda11e1ca02b88d90e67e <4720f29acb3fe67aa8aa71e6b675b079d193aaeb"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "83be4a86-5637-34d9-a34c-d0e93cd6f8b1",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

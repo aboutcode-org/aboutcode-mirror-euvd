@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2024-35017",
+  "enisaUuid": "ab443d13-b503-3a97-b603-e64e29c80a3d",
+  "description": "In setForceHideNonSystemOverlayWindowIfNeeded of WindowState.java, there is a possible way for message content to be visible on the screensaver while lock screen visibility settings are restricted by the user due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+  "datePublished": "Aug 16, 2024, 12:32:05 AM",
+  "dateUpdated": "Aug 16, 2024, 6:30:57 PM",
+  "baseScore": -1.0,
+  "references": "https://android.googlesource.com/platform/frameworks/base/+/abfaf702ef833dc4d374492d45c615c6e6de7f01\nhttps://source.android.com/security/bulletin/2024-08-01\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-34741\n",
+  "aliases": "GHSA-xx83-6gm8-xx8p\nCVE-2024-34741\n",
+  "assigner": "google_android",
+  "epss": 0.37,
+  "enisaIdProduct": [
+    {
+      "id": "bf14e15d-924e-30c2-b365-25d5c6defe1d",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12L"
+    },
+    {
+      "id": "edf36a21-a663-3cf0-b013-e2cd26614edb",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "13"
+    },
+    {
+      "id": "fc657ad6-6ec3-3fb8-ac2a-5fbcbc95b04b",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "14"
+    },
+    {
+      "id": "ff7923d9-56b6-395a-b6a2-eb81d85dc9af",
+      "product": {
+        "name": "Android"
+      },
+      "product_version": "12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8241b0db-a0d8-389a-ab0b-ab6d1020130b",
+      "vendor": {
+        "name": "Google"
+      }
+    }
+  ]
+}

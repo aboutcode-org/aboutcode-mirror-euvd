@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2021-27180",
+  "enisaUuid": "664578c5-7902-3fc4-8806-23b62d966421",
+  "description": "A use-after-free flaw was found in libvirt. The qemuMonitorUnregister() function in qemuProcessHandleMonitorEOF is called using multiple threads without being adequately protected by a monitor lock. This flaw could be triggered by the virConnectGetAllDomainStats API when the guest is shutting down. An unprivileged client with a read-only connection could use this flaw to perform a denial of service attack by causing the libvirt daemon to crash.",
+  "datePublished": "Aug 24, 2022, 12:00:27 AM",
+  "dateUpdated": "Apr 1, 2024, 3:30:28 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-3975.html\nhttps://access.redhat.com/errata/RHBA-2021:4684\nhttps://linux.oracle.com/cve/CVE-2021-3975.html\nhttps://access.redhat.com/errata/RHSA-2022:1759\nhttps://ubuntu.com/security/CVE-2021-3975\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2024326\nhttps://access.redhat.com/security/cve/CVE-2021-3975\nhttps://github.com/libvirt/libvirt/commit/1ac703a7d0789e46833f4013a3876c2e3af18ec7\nhttps://security.netapp.com/advisory/ntap-20221201-0002/\nhttps://lists.debian.org/debian-lts-announce/2024/04/msg00000.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-3975\n",
+  "aliases": "GHSA-pg89-46xq-98vv\nCVE-2021-3975\n",
+  "assigner": "redhat",
+  "epss": 0.48,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "be28f61a-27ce-3616-8e85-1050016c047f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

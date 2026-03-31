@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2026-7676",
+  "enisaUuid": "eb655dcf-2508-3f45-a766-b28e771ff833",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched/mmcid: Don't assume CID is CPU owned on mode switch\n\nShinichiro reported a KASAN UAF, which is actually an out of bounds access\nin the MMCID management code.\n\n   CPU0\t\t\t\t\t\tCPU1\n   \t\t\t\t\t\tT1 runs in userspace\n   T0: fork(T4) -> Switch to per CPU CID mode\n         fixup() set MM_CID_TRANSIT on T1/CPU1\n   T4 exit()\n   T3 exit()\n   T2 exit()\n\t\t\t\t\t\tT1 exit() switch to per task mode\n\t\t\t\t\t\t ---> Out of bounds access.\n\nAs T1 has not scheduled after T0 set the TRANSIT bit, it exits with the\nTRANSIT bit set. sched_mm_cid_remove_user() clears the TRANSIT bit in\nthe task and drops the CID, but it does not touch the per CPU storage.\nThat's functionally correct because a CID is only owned by the CPU when\nthe ONCPU bit is set, which is mutually exclusive with the TRANSIT flag.\n\nNow sched_mm_cid_exit() assumes that the CID is CPU owned because the\nprior mode was per CPU. It invokes mm_drop_cid_on_cpu() which clears the\nnot set ONCPU bit and then invokes clear_bit() with an insanely large\nbit number because TRANSIT is set (bit 29).\n\nPrevent that by actually validating that the CID is CPU owned in\nmm_drop_cid_on_cpu().",
+  "datePublished": "Feb 18, 2026, 6:30:40 PM",
+  "dateUpdated": "Feb 23, 2026, 6:30:18 AM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/81f29975631db8a78651b3140ecd0f88ffafc476\nhttps://git.kernel.org/stable/c/1e83ccd5921a610ef409a7d4e56db27822b4ea39\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23225\n",
+  "aliases": "CVE-2026-23225\nGHSA-p525-h9pq-233r\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "2c57a989-1a7d-33e9-9753-2f00a5c1ba6a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0-rc1"
+    },
+    {
+      "id": "452009c2-b006-3456-9c6f-56ef0ef0a3b7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "007d84287c7466ca68a5809b616338214dc5b77b <1e83ccd5921a610ef409a7d4e56db27822b4ea39"
+    },
+    {
+      "id": "6a39d29d-7ec2-3b12-8be1-22894eeded1c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19.1"
+    },
+    {
+      "id": "a0fd1910-c383-3dfa-841d-2df977adbea4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "cec0d372-4d50-3329-82b9-bea29777e06d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.19"
+    },
+    {
+      "id": "f4706548-e33d-31a7-a82d-b1cd91abf6c7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "007d84287c7466ca68a5809b616338214dc5b77b <81f29975631db8a78651b3140ecd0f88ffafc476"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "716d48cf-fa87-35dd-a385-ebe884a5b0fd",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

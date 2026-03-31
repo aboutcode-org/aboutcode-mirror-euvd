@@ -1,0 +1,113 @@
+{
+  "id": "EUVD-2024-43621",
+  "enisaUuid": "2d931d7d-2403-33e6-9c2c-1bdddf9eabc3",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nl2tp: prevent possible tunnel refcount underflow\n\nWhen a session is created, it sets a backpointer to its tunnel. When\nthe session refcount drops to 0, l2tp_session_free drops the tunnel\nrefcount if session->tunnel is non-NULL. However, session->tunnel is\nset in l2tp_session_create, before the tunnel refcount is incremented\nby l2tp_session_register, which leaves a small window where\nsession->tunnel is non-NULL when the tunnel refcount hasn't been\nbumped.\n\nMoving the assignment to l2tp_session_register is trivial but\nl2tp_session_create calls l2tp_session_set_header_len which uses\nsession->tunnel to get the tunnel's encap. Add an encap arg to\nl2tp_session_set_header_len to avoid using session->tunnel.\n\nIf l2tpv3 sessions have colliding IDs, it is possible for\nl2tp_v3_session_get to race with l2tp_session_register and fetch a\nsession which doesn't yet have session->tunnel set. Add a check for\nthis case.",
+  "datePublished": "Oct 21, 2024, 6:30:58 PM",
+  "dateUpdated": "Nov 13, 2024, 3:31:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/f7415e60c25a6108cd7955a20b2e66b6251ffe02\nhttps://git.kernel.org/stable/c/24256415d18695b46da06c93135f5b51c548b950\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-49940\n",
+  "aliases": "GHSA-h9jc-p2cr-c4rx\nCVE-2024-49940\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "06f9a077-ecb7-30ed-b929-2b920debe069",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8d1c650d452c53fcb3f02a7b1d772741639f89a4"
+    },
+    {
+      "id": "3789029e-e1d9-3333-a35e-569ef411a6f7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b102bfc2a90d14f342580285782a9a51c74f7369"
+    },
+    {
+      "id": "4411ea48-d181-38de-a82b-8de93a875045",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3953ae7b218df4d1e544b98a393666f9ae58a78c <24256415d18695b46da06c93135f5b51c548b950"
+    },
+    {
+      "id": "50afbaed-5828-3837-b742-08b401532782",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3953ae7b218df4d1e544b98a393666f9ae58a78c <f7415e60c25a6108cd7955a20b2e66b6251ffe02"
+    },
+    {
+      "id": "616cede0-c234-3ae8-acd7-ab8ca7644a0e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "64fe66ea-7bc5-389b-9a79-0ae56e331a7e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12"
+    },
+    {
+      "id": "727ea5d0-fd25-3a46-8865-422101f3a99f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "aef37401b467a0b1a9517c69924a1d66937e0789"
+    },
+    {
+      "id": "7d505dd8-140b-37fb-add8-0b5fc88110a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "12b5fb58ac993c24210cf8cbc72d407d3a4e6490"
+    },
+    {
+      "id": "a83cf33c-4dc7-39bf-bf44-12a64407f0ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "a9833455-0078-3f4e-9262-7fe956078d84",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f7415e60c25a6108cd7955a20b2e66b6251ffe02"
+    },
+    {
+      "id": "e470b729-e984-3580-8af6-5fcc7af93b01",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e944669c-b5fb-3bb7-80cd-23f91b9bbaad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <24256415d18695b46da06c93135f5b51c548b950"
+    },
+    {
+      "id": "ed2b94e1-bbb7-37cb-a19d-78443e745f58",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "10c15ddabbcf888922adbdd44ca3fecf6eab19d9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1bfc8f3e-6520-360a-a493-c7f6910ee682",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

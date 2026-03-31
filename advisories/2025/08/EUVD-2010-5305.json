@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2010-5305",
+  "enisaUuid": "06980f50-02bb-3200-8cd0-7a3747495547",
+  "description": "FileWrangler <= 5.30 suffers from a stack-based buffer overflow vulnerability when parsing directory listings from an FTP server. A malicious server can send an overlong folder name in response to a LIST command, triggering memory corruption during client-side rendering. Exploitation requires passive user interaction\u2014simply connecting to the server\u2014without further input. Successful exploitation may lead to arbitrary code execution.",
+  "datePublished": "Aug 20, 2025, 6:30:21 PM",
+  "dateUpdated": "Aug 20, 2025, 6:30:21 PM",
+  "baseScore": 8.5,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://web.archive.org/web/20111016194057/https://www.corelan.be/index.php/2010/10/12/death-of-an-ftp-client/\nhttps://cursorarts.com/ca_fw.html\nhttps://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/ftp/filewrangler_list_reply.rb\nhttps://www.exploit-db.com/exploits/16721\nhttps://www.vulncheck.com/advisories/filewrangler-stack-buffer-overflow\nhttps://nvd.nist.gov/vuln/detail/CVE-2010-20045\n",
+  "aliases": "GHSA-8q3q-27hf-3cwh\nCVE-2010-20045\n",
+  "assigner": "VulnCheck",
+  "epss": 8.15,
+  "enisaIdProduct": [
+    {
+      "id": "7333ec71-d5a8-3d0d-aa0b-6819ebd8c750",
+      "product": {
+        "name": "FileWrangler"
+      },
+      "product_version": "* \u22645.30"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0f5565f7-cd81-3ccb-bf0c-c1119482687e",
+      "vendor": {
+        "name": "CursorArts"
+      }
+    }
+  ]
+}

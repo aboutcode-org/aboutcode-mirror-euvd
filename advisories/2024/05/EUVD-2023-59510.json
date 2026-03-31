@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2023-59510",
+  "enisaUuid": "20592878-5901-30b7-8926-d6c942cbabef",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsamples/bpf: syscall_tp_user: Fix array out-of-bound access\n\nCommit 06744f24696e (\"samples/bpf: Add openat2() enter/exit tracepoint\nto syscall_tp sample\") added two more eBPF programs to support the\nopenat2() syscall. However, it did not increase the size of the array\nthat holds the corresponding bpf_links. This leads to an out-of-bound\naccess on that array in the bpf_object__for_each_program loop and could\ncorrupt other variables on the stack. On our testing QEMU, it corrupts\nthe map1_fds array and causes the sample to fail:\n\n  # ./syscall_tp\n  prog #0: map ids 4 5\n  verify map:4 val: 5\n  map_lookup failed: Bad file descriptor\n\nDynamically allocate the array based on the number of programs reported\nby libbpf to prevent similar inconsistencies in the future",
+  "datePublished": "May 21, 2024, 6:31:21 PM",
+  "dateUpdated": "May 21, 2024, 6:31:21 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-52793\nhttps://git.kernel.org/stable/c/61576b7a0f28f924da06bead92a39a6d9aa2404a\nhttps://git.kernel.org/stable/c/9220c3ef6fefbf18f24aeedb1142a642b3de0596\nhttps://git.kernel.org/stable/c/de4825a444560f8cb78b03dda3ba873fab88bc4f\n",
+  "aliases": "CVE-2023-52793\nGHSA-989v-m4f5-c899\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

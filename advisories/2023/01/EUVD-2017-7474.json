@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2017-7474",
+  "enisaUuid": "677d25c9-97a9-3d1c-b2a4-f71804c3354d",
+  "description": "Multiple exploitable buffer overflow vulnerabilities exist in the PubNub message handler for the \"cc\" channel of Insteon Hub running firmware version 1012. Specially crafted commands sent through the PubNub service can cause a stack-based buffer overflow overwriting arbitrary data. An attacker should send an authenticated HTTP request to trigger this vulnerability. In cmd s_net, at 0x9d0181a4, the value for the `port` key is copied using `strcpy` to the buffer at `$sp+0x280`.This buffer is 16 bytes large, sending anything longer will cause a buffer overflow.",
+  "datePublished": "Jan 12, 2023, 12:30:18 AM",
+  "dateUpdated": "Jan 19, 2023, 9:30:26 PM",
+  "baseScore": 8.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+  "references": "https://talosintelligence.com/vulnerability_reports/TALOS-2017-0483\nhttps://nvd.nist.gov/vuln/detail/CVE-2017-16279\n",
+  "aliases": "GHSA-xpg3-33hm-wh73\nCVE-2017-16279\n",
+  "assigner": "talos",
+  "epss": 0.44,
+  "enisaIdProduct": [
+    {
+      "id": "c79470e5-3b0d-3b79-a86a-c1ab9a9110aa",
+      "product": {
+        "name": "Hub"
+      },
+      "product_version": "Not specified"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "39807fb3-5d01-3c09-8c1e-bd1ba35a49bc",
+      "vendor": {
+        "name": "Insteon"
+      }
+    }
+  ]
+}

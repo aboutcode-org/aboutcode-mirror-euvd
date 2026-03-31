@@ -1,0 +1,112 @@
+{
+  "id": "EUVD-2021-33708",
+  "enisaUuid": "a05ec15f-3bab-3e18-b675-c260c176b65f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: Stop looking for coalesced MMIO zones if the bus is destroyed\n\nAbort the walk of coalesced MMIO zones if kvm_io_bus_unregister_dev()\nfails to allocate memory for the new instance of the bus.  If it can't\ninstantiate a new bus, unregister_dev() destroys all devices _except_ the\ntarget device.   But, it doesn't tell the caller that it obliterated the\nbus and invoked the destructor for all devices that were on the bus.  In\nthe coalesced MMIO case, this can result in a deleted list entry\ndereference due to attempting to continue iterating on coalesced_zones\nafter future entries (in the walk) have been deleted.\n\nOpportunistically add curly braces to the for-loop, which encompasses\nmany lines but sneaks by without braces due to the guts being a single\nif statement.",
+  "datePublished": "Mar 1, 2024, 12:30:28 AM",
+  "dateUpdated": "Nov 7, 2024, 6:31:19 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/7d1bc32d6477ff96a32695ea4be8144e4513ab2d\nhttps://git.kernel.org/stable/c/2a20592baff59c5351c5200ec667e1a2aa22af85\nhttps://git.kernel.org/stable/c/168e82f640ed1891a700bdb43e37da354b2ab63c\nhttps://git.kernel.org/stable/c/50cbad42bfea8c052b7ca590bd4126cdc898713c\nhttps://git.kernel.org/stable/c/5d3c4c79384af06e3c8e25b7770b6247496b4417\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47060\n",
+  "aliases": "GHSA-6x38-gwgp-2pcm\nCVE-2021-47060\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "3880f8cd-a211-3324-87b9-61a6170eb6f0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <50cbad42bfea8c052b7ca590bd4126cdc898713c"
+    },
+    {
+      "id": "44a5b405-693e-3f5e-b54f-e5e9bd80b183",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <2a20592baff59c5351c5200ec667e1a2aa22af85"
+    },
+    {
+      "id": "58604efe-88e7-3b99-b492-608ff8c0d658",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "41b2ea7a6a11e2b1a7f2c29e1675a709a6b2b98d <7d1bc32d6477ff96a32695ea4be8144e4513ab2d"
+    },
+    {
+      "id": "5b869f24-2554-3e31-960b-6ee74ad9182d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.119"
+    },
+    {
+      "id": "6b23c67a-456b-367d-a198-b6b0b462bb3b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <5d3c4c79384af06e3c8e25b7770b6247496b4417"
+    },
+    {
+      "id": "83aeb785-02e3-3102-bd55-408c6167eb31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.11.21"
+    },
+    {
+      "id": "84b9ed9f-a11d-346b-a3f6-1765e60b6f4d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ab293092-8ee2-3eb4-8ef3-43a687008647",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f65886606c2d3b562716de030706dfe1bea4ed5e <168e82f640ed1891a700bdb43e37da354b2ab63c"
+    },
+    {
+      "id": "b462e183-95e6-3fd1-9efc-bbf1c9523ee1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.9"
+    },
+    {
+      "id": "cb77ecb7-9209-3614-ba0a-c7d440a1a56f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "d7162e13-f8e2-3bd4-97e0-7d369d7afcf8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.4"
+    },
+    {
+      "id": "e8f81c39-4792-3fc8-9f56-8e0a35297e14",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.37"
+    },
+    {
+      "id": "f62544f3-7eeb-311f-bdee-8a3dd018e1ae",
+      "product": {
+        "name": "Linux"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f62544f3-7eeb-311f-bdee-8a3dd018e1ae",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

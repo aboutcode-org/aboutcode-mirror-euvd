@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-22506",
+  "enisaUuid": "85026931-721d-381e-ae84-b3384b20e75c",
+  "description": "The Webinar Solution: Create live/evergreen/automated/instant webinars, stream & Zoom Meetings | WebinarIgnition plugin for WordPress is vulnerable to unauthenticated login token generation due to a missing capability check on the `webinarignition_sign_in_support_staff` and `webinarignition_register_support` functions in all versions up to, and including, 4.03.31. This makes it possible for unauthenticated attackers to generate login tokens for arbitrary WordPress users under certain circumstances, issuing authorization cookies which can lead to authentication bypass.",
+  "datePublished": "Jul 25, 2025, 3:30:44 PM",
+  "dateUpdated": "Jul 25, 2025, 3:30:44 PM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/52c19707-df18-4239-af46-12ea5ee86a4b?source=cve\nhttps://plugins.trac.wordpress.org/browser/webinar-ignition/trunk/inc/class-webinarignition.php#L549\nhttps://plugins.trac.wordpress.org/browser/webinar-ignition/trunk/inc/class.WebinarignitionManager.php#L53\nhttps://plugins.trac.wordpress.org/browser/webinar-ignition/trunk/inc/class.WebinarignitionManager.php#L1040\nhttps://plugins.trac.wordpress.org/browser/webinar-ignition/trunk/inc/class.WebinarignitionAjax.php#L769\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-6441\n",
+  "aliases": "GHSA-84fw-vffg-g7cp\nCVE-2025-6441\n",
+  "assigner": "Wordfence",
+  "epss": 0.63,
+  "enisaIdProduct": [
+    {
+      "id": "485acd60-00b0-3eed-898e-37738031c21e",
+      "product": {
+        "name": "Webinar Solution: Create live/evergreen/automated/instant webinars, stream & Zoom Meetings | WebinarIgnition"
+      },
+      "product_version": "* \u22644.03.31"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "23d30c77-c664-3a50-b0e1-0ece4afa2093",
+      "vendor": {
+        "name": "tobias_conrad"
+      }
+    }
+  ]
+}

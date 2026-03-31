@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2021-33672",
+  "enisaUuid": "bed6f561-ed57-39bb-a67b-22f4b5cf936a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: free queued packets when closing socket\n\nAs reported by syzbot [1], there is a memory leak while closing the\nsocket. We partially solved this issue with commit ac03046ece2b\n(\"vsock/virtio: free packets during the socket release\"), but we\nforgot to drain the RX queue when the socket is definitely closed by\nthe scheduled work.\n\nTo avoid future issues, let's use the new virtio_transport_remove_sock()\nto drain the RX queue before removing the socket from the af_vsock lists\ncalling vsock_remove_sock().\n\n[1] https://syzkaller.appspot.com/bug?extid=24452624fc4c571eedd9",
+  "datePublished": "Feb 28, 2024, 9:30:38 AM",
+  "dateUpdated": "Dec 6, 2024, 9:30:35 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b605673b523fe33abeafb2136759bcbc9c1e6ebf\nhttps://git.kernel.org/stable/c/27691665145e74a45034a9dccf1150cf1894763a\nhttps://git.kernel.org/stable/c/37c38674ef2f8d7e8629e5d433c37d6c1273d16b\nhttps://git.kernel.org/stable/c/8432b8114957235f42e070a16118a7f750de9d39\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47024\n",
+  "aliases": "CVE-2021-47024\nGHSA-wwcj-mm94-5r39\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "06ce8bbc-acb6-3169-899b-5f409be75a0b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "410b14e2-ec99-3f32-9c98-09e4715c572b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.2"
+    },
+    {
+      "id": "5429b789-8dd5-3d53-9f51-1abb12a5cd1c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.11.21"
+    },
+    {
+      "id": "54a62ec5-ea9d-3065-9702-eb907c4449a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.37"
+    },
+    {
+      "id": "5dd42563-ecbe-3915-8348-15a98259f206",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13"
+    },
+    {
+      "id": "7bb490e6-e4af-3f3c-bea6-181299bcf498",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.12.4"
+    },
+    {
+      "id": "7e8e702c-5f6b-35fd-be68-85a3d2fe6281",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ac03046ece2b158ebd204dfc4896fd9f39f0e6c8 <27691665145e74a45034a9dccf1150cf1894763a"
+    },
+    {
+      "id": "adc917f1-968c-35c0-895f-5d09defdd945",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "cf7bb678-89ca-37a7-a50b-a784cb80c973",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ac03046ece2b158ebd204dfc4896fd9f39f0e6c8 <b605673b523fe33abeafb2136759bcbc9c1e6ebf"
+    },
+    {
+      "id": "d6f8da92-906b-3454-8d85-f1d32d217177",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ac03046ece2b158ebd204dfc4896fd9f39f0e6c8 <8432b8114957235f42e070a16118a7f750de9d39"
+    },
+    {
+      "id": "f6bdbf4f-4e24-33ca-ac6b-f58b4ccbe5aa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ac03046ece2b158ebd204dfc4896fd9f39f0e6c8 <37c38674ef2f8d7e8629e5d433c37d6c1273d16b"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "adc917f1-968c-35c0-895f-5d09defdd945",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

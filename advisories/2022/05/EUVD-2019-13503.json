@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2019-13503",
+  "enisaUuid": "0102226b-300e-3621-a683-e12abfc9ae57",
+  "description": "It was discovered that the ElytronManagedThread in Wildfly's Elytron subsystem in versions from 11 to 16 stores a SecurityIdentity to run the thread as. These threads do not necessarily terminate if the keep alive time has not expired. This could allow a shared thread to use the wrong security identity when executing.",
+  "datePublished": "May 24, 2022, 4:45:10 PM",
+  "dateUpdated": "May 24, 2022, 4:45:10 PM",
+  "baseScore": 5.4,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+  "references": "https://access.redhat.com/errata/RHSA-2019:1140\nhttps://access.redhat.com/errata/RHSA-2019:1108\nhttps://access.redhat.com/errata/RHSA-2019:1107\nhttps://access.redhat.com/errata/RHSA-2019:1106\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2019-3894\nhttps://security.netapp.com/advisory/ntap-20190517-0004/\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-3894\n",
+  "aliases": "CVE-2019-3894\nGHSA-7hpw-qq87-9462\n",
+  "assigner": "redhat",
+  "epss": 1.21,
+  "enisaIdProduct": [
+    {
+      "id": "65ad17b6-4f30-3c99-b55e-51e1d44ddf65",
+      "product": {
+        "name": "wildfly"
+      },
+      "product_version": "affects from 11 to 16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "63e9188f-5033-365b-a74d-6ca1d62506ad",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}

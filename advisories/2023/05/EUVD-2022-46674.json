@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-46674",
+  "enisaUuid": "0b0a257b-3b46-3b55-905e-675d62a32af3",
+  "description": "An out-of-bounds read exists in the BGP daemon of FRRouting FRR through 8.4. When sending a malformed BGP OPEN message that ends with the option length octet (or the option length word, in case of an extended OPEN message), the FRR code reads of out of the bounds of the packet, throwing a SIGABRT signal and exiting. This results in a bgpd daemon restart, causing a Denial-of-Service condition.",
+  "datePublished": "May 3, 2023, 12:30:41 PM",
+  "dateUpdated": "Feb 16, 2024, 6:31:03 PM",
+  "baseScore": -1.0,
+  "references": "https://forescout.com\nhttps://www.debian.org/security/2023/dsa-5495\nhttps://lists.debian.org/debian-lts-announce/2023/09/msg00020.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-43681\n",
+  "aliases": "GHSA-x7mf-v6gh-vm4g\nCVE-2022-43681\n",
+  "assigner": "mitre",
+  "epss": 0.17,
+  "enisaIdProduct": [
+    {
+      "id": "2bec757b-141b-384a-94e5-ee74866d8f6b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "79b25c77-3249-37f1-aa5f-a11c4240f203",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

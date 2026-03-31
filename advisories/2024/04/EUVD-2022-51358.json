@@ -1,0 +1,77 @@
+{
+  "id": "EUVD-2022-51358",
+  "enisaUuid": "9317fbca-e112-367f-8fb8-39367d1546af",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: mockup: fix NULL pointer dereference when removing debugfs\n\nWe now remove the device's debugfs entries when unbinding the driver.\nThis now causes a NULL-pointer dereference on module exit because the\nplatform devices are unregistered *after* the global debugfs directory\nhas been recursively removed. Fix it by unregistering the devices first.",
+  "datePublished": "Apr 28, 2024, 3:30:30 PM",
+  "dateUpdated": "Jan 14, 2025, 3:30:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/bdea98b98f844bd8a983ca880893e509a8b4162f\nhttps://git.kernel.org/stable/c/18352095a0d581f6aeb1e9fc9d68cc0152cd64b4\nhttps://git.kernel.org/stable/c/af0bfabf06c74c260265c30ba81a34e7dec0e881\nhttps://git.kernel.org/stable/c/b7df41a6f79dfb18ba2203f8c5f0e9c0b9b57f68\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48663\n",
+  "aliases": "GHSA-xgx4-jvp8-p2h2\nCVE-2022-48663\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "512c1ef4-beb7-3f53-8a05-393f7efc79ad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15.69 <5.15.71"
+    },
+    {
+      "id": "76ff14b7-f2f8-3965-9f4f-92fffacff51e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.10.144 <5.10.146"
+    },
+    {
+      "id": "806c7ae7-967e-3427-b735-7092f79b75d5",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "80f7fd71-191f-30d1-9a0b-5a1f55b6ba5d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.19.10 <5.19.12"
+    },
+    {
+      "id": "9bb5c0db-6660-30fa-8127-d1fa474e73c8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3a10e8edee2b45a654f1f7b05f747129ec84cf9d <18352095a0d581f6aeb1e9fc9d68cc0152cd64b4"
+    },
+    {
+      "id": "ba9cdefe-9f7b-3d63-8d26-66d0f50b5992",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "303e6da99429510b1e4edf833afe90ac8542e747 <b7df41a6f79dfb18ba2203f8c5f0e9c0b9b57f68"
+    },
+    {
+      "id": "c2b31b9d-2886-374d-ab79-d810540dec59",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3815e66c2183f3430490e450ba16779cf5214ec6 <bdea98b98f844bd8a983ca880893e509a8b4162f"
+    },
+    {
+      "id": "cbddc16a-0571-3d38-8bbf-cd84d1103e2b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "bc55c1677edbe86a1c66a35e800df47dff16ad61 <af0bfabf06c74c260265c30ba81a34e7dec0e881"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "806c7ae7-967e-3427-b735-7092f79b75d5",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

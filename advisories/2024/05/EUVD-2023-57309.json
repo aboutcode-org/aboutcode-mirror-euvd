@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2023-57309",
+  "enisaUuid": "643fba55-d8c7-3814-9c1f-6389362dd79f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npstore: ram_core: fix possible overflow in persistent_ram_init_ecc()\n\nIn persistent_ram_init_ecc(), on 64-bit arches DIV_ROUND_UP() will return\n64-bit value since persistent_ram_zone::buffer_size has type size_t which\nis derived from the 64-bit *unsigned long*, while the ecc_blocks variable\nthis value gets assigned to has (always 32-bit) *int* type.  Even if that\nvalue fits into *int* type, an overflow is still possible when calculating\nthe size_t typed ecc_total variable further below since there's no cast to\nany 64-bit type before multiplication.  Declaring the ecc_blocks variable\nas *size_t* should fix this mess...\n\nFound by Linux Verification Center (linuxtesting.org) with the SVACE static\nanalysis tool.",
+  "datePublished": "May 17, 2024, 3:31:11 PM",
+  "dateUpdated": "May 17, 2024, 3:31:11 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-52685\nhttps://git.kernel.org/stable/c/3b333cded94fbe5ce30d699b316c4715151268ae\nhttps://git.kernel.org/stable/c/48dcfc42ce705b652c0619cb99846afc43029de9\nhttps://git.kernel.org/stable/c/86222a8fc16ec517de8da2604d904c9df3a08e5d\nhttps://git.kernel.org/stable/c/8fb12524c86bdd542a54857d5d076b1b6778c78c\nhttps://git.kernel.org/stable/c/a34946ec3de88a16cc3a87fdab50aad06255a22b\nhttps://git.kernel.org/stable/c/acd413da3e1f37582207cd6078a41d57c9011918\nhttps://git.kernel.org/stable/c/d1fe1aede684bd014714dacfdc75586a9ad38657\nhttps://git.kernel.org/stable/c/f9b891a7e8fcf83901f8507241e23e7420103b61\n",
+  "aliases": "CVE-2023-52685\nGHSA-4fqj-ghw2-3jmf\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

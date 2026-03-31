@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2024-23908",
+  "enisaUuid": "128e407f-acf0-314e-bb01-32e502392ae2",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal: intel: hfi: Add syscore callbacks for system-wide PM\n\nThe kernel allocates a memory buffer and provides its location to the\nhardware, which uses it to update the HFI table. This allocation occurs\nduring boot and remains constant throughout runtime.\n\nWhen resuming from hibernation, the restore kernel allocates a second\nmemory buffer and reprograms the HFI hardware with the new location as\npart of a normal boot. The location of the second memory buffer may\ndiffer from the one allocated by the image kernel.\n\nWhen the restore kernel transfers control to the image kernel, its HFI\nbuffer becomes invalid, potentially leading to memory corruption if the\nhardware writes to it (the hardware continues to use the buffer from the\nrestore kernel).\n\nIt is also possible that the hardware \"forgets\" the address of the memory\nbuffer when resuming from \"deep\" suspend. Memory corruption may also occur\nin such a scenario.\n\nTo prevent the described memory corruption, disable HFI when preparing to\nsuspend or hibernate. Enable it when resuming.\n\nAdd syscore callbacks to handle the package of the boot CPU (packages of\nnon-boot CPUs are handled via CPU offline). Syscore ops always run on the\nboot CPU. Additionally, HFI only needs to be disabled during \"deep\" suspend\nand hibernation. Syscore ops only run in these cases.\n\n[ rjw: Comment adjustment, subject and changelog edits ]",
+  "datePublished": "Mar 26, 2024, 6:32:07 PM",
+  "dateUpdated": "Mar 17, 2025, 3:31:36 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/28f010dc50df0f7987c04112114fcfa7e0803566\nhttps://git.kernel.org/stable/c/019ccc66d56a696a4dfee3bfa2f04d0a7c3d89ee\nhttps://git.kernel.org/stable/c/c9d6d63b6c03afaa6f185df249af693a7939577c\nhttps://git.kernel.org/stable/c/97566d09fd02d2ab329774bb89a2cdf2267e86d9\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26646\n",
+  "aliases": "GHSA-wrwp-f8pq-q3qj\nCVE-2024-26646\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0615332e-de6b-3e99-9f14-873ae2adff34",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <019ccc66d56a696a4dfee3bfa2f04d0a7c3d89ee"
+    },
+    {
+      "id": "799df38e-c5e4-3193-9024-dc2689fd0827",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <97566d09fd02d2ab329774bb89a2cdf2267e86d9"
+    },
+    {
+      "id": "8c417568-358e-3eef-9b8a-0cdc633e3a55",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <28f010dc50df0f7987c04112114fcfa7e0803566"
+    },
+    {
+      "id": "964c39e0-d6ce-37f6-9fbc-94afe0462c2e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c9d6d63b6c03afaa6f185df249af693a7939577c"
+    },
+    {
+      "id": "9fec1928-b018-3803-a68b-0d5cce3afdf0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.76"
+    },
+    {
+      "id": "bf95f0ad-313b-3457-ac33-8a6113512373",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.15"
+    },
+    {
+      "id": "d782ca9e-8ee0-3f5b-bf07-e49f8e73b981",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "d862e91b-4666-333c-b209-03b638455d6b",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "f145c700-26f2-3985-88fa-ccfc4025e5fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d862e91b-4666-333c-b209-03b638455d6b",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2024-35751",
+  "enisaUuid": "ed38567a-e97c-3489-88d3-cc738698f256",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbcachefs: Check for journal entries overruning end of sb clean section\n\nFix a missing bounds check in superblock validation.\n\nNote that we don't yet have repair code for this case - repair code for\nindividual items is generally low priority, since the whole superblock\nis checksummed, validated prior to write, and we have backups.",
+  "datePublished": "May 20, 2024, 12:30:27 PM",
+  "dateUpdated": "Jul 3, 2024, 6:42:34 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/fcdbc1d7a4b638e5d5668de461f320386f3002aa\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35948\n",
+  "aliases": "CVE-2024-35948\nGHSA-m2qc-57j3-6fh6\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "088689a1-cdfd-3ecc-9a10-f4aa46ddaf40",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "28c7ba65-297c-318f-bb17-5fd2fad03d39",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "61fb9843-0429-34d4-98e7-24791d7bd34f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.7"
+    },
+    {
+      "id": "dbf3563b-a03c-3d26-bf0f-e7edc34153a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1c6fdbd8f2465ddfb73a01ec620cbf3d14044e1a <fcdbc1d7a4b638e5d5668de461f320386f3002aa"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0f0c7a40-9c83-390f-937e-bdd134a58935",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

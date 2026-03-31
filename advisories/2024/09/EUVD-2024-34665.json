@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2024-34665",
+  "enisaUuid": "a194fb78-dc7a-38c2-8f8e-a94db7a40f2b",
+  "description": "Calling Decoder.Decode on a message which contains deeply nested structures can cause a panic due to stack exhaustion. This is a follow-up to CVE-2022-30635.",
+  "datePublished": "Sep 6, 2024, 9:32:28 PM",
+  "dateUpdated": "Sep 9, 2024, 6:30:29 PM",
+  "baseScore": -1.0,
+  "references": "https://go.dev/cl/611239\nhttps://go.dev/issue/69139\nhttps://groups.google.com/g/golang-dev/c/S9POB9NCTdk\nhttps://pkg.go.dev/vuln/GO-2024-3106\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-34156\n",
+  "aliases": "CVE-2024-34156\nGHSA-crqm-pwhx-j97f\n",
+  "assigner": "Go",
+  "epss": 0.31,
+  "enisaIdProduct": [
+    {
+      "id": "8541fbbe-95f3-3185-a17e-240d6382605c",
+      "product": {
+        "name": "encoding/gob"
+      },
+      "product_version": "1.23.0-0 <1.23.1"
+    },
+    {
+      "id": "e9c195be-9e21-34e9-aadb-5f8b229a6aac",
+      "product": {
+        "name": "encoding/gob"
+      },
+      "product_version": "0 <1.22.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bd551d70-ff45-3c63-bea5-ab56536d0367",
+      "vendor": {
+        "name": "Go standard library"
+      }
+    }
+  ]
+}

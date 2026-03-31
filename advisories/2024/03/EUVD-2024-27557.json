@@ -1,0 +1,61 @@
+{
+  "id": "EUVD-2024-27557",
+  "enisaUuid": "07128cd8-aa8a-3921-9984-07305b66b81d",
+  "description": "`AppendEncodedAttributeValue(), ExtraSpaceNeededForAttrEncoding()` and `AppendEncodedCharacters()` could have experienced integer overflows, causing underallocation of an output buffer leading to an out of bounds write. This vulnerability affects Firefox < 124, Firefox ESR < 115.9, and Thunderbird < 115.9.",
+  "datePublished": "Mar 19, 2024, 12:30:41 PM",
+  "dateUpdated": "Mar 13, 2025, 3:32:29 PM",
+  "baseScore": -1.0,
+  "references": "https://bugzilla.mozilla.org/show_bug.cgi?id=1880692\nhttps://www.mozilla.org/security/advisories/mfsa2024-12/\nhttps://www.mozilla.org/security/advisories/mfsa2024-13/\nhttps://www.mozilla.org/security/advisories/mfsa2024-14/\nhttps://lists.debian.org/debian-lts-announce/2024/03/msg00022.html\nhttps://lists.debian.org/debian-lts-announce/2024/03/msg00028.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-2608\n",
+  "aliases": "GHSA-9crf-rxmh-772m\nCVE-2024-2608\n",
+  "assigner": "mozilla",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "06323190-929f-3d83-8d06-db7d403e4a28",
+      "product": {
+        "name": "Thunderbird"
+      },
+      "product_version": "unspecified <115.9"
+    },
+    {
+      "id": "0fa848dd-69f2-32aa-a7d9-394f24e4048f",
+      "product": {
+        "name": "Firefox ESR"
+      }
+    },
+    {
+      "id": "5bfaba2b-4402-3017-ad97-8a448befe528",
+      "product": {
+        "name": "Thunderbird"
+      }
+    },
+    {
+      "id": "72853b5c-c879-39a3-a80e-115b3664c327",
+      "product": {
+        "name": "Firefox ESR"
+      },
+      "product_version": "unspecified <115.9"
+    },
+    {
+      "id": "82ae6424-32db-34c6-8543-ad2feaf599ce",
+      "product": {
+        "name": "Firefox"
+      }
+    },
+    {
+      "id": "d49ab8d0-937b-3d9f-ad61-01c0f4bc5558",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "unspecified <124"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "af75c1e9-dfc6-3dd1-a2ad-1bdf401f5e13",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

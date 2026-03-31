@@ -1,0 +1,789 @@
+{
+  "id": "EUVD-2024-25188",
+  "enisaUuid": "d99a475e-8018-3859-a181-76d45fd376b9",
+  "description": "Stack-based Buffer Overflow vulnerability in NEC Corporation Aterm WG1800HP4, WG1200HS3, WG1900HP2, WG1200HP3, WG1800HP3, WG1200HS2, WG1900HP, WG1200HP2, W1200EX(-MS), WG1200HS, WG1200HP, WF300HP2, W300P, WF800HP, WR8165N, WG2200HP, WF1200HP2, WG1800HP2, WF1200HP, WG600HP, WG300HP, WF300HP, WG1800HP, WG1400HP, WR8175N, WR9300N, WR8750N, WR8160N, WR9500N, WR8600N, WR8370N, WR8170N, WR8700N, WR8300N, WR8150N, WR4100N, WR4500N, WR8100N, WR8500N, CR2500P, WR8400N, WR8200N, WR1200H, WR7870S, WR6670S, WR7850S, WR6650S, WR6600H, WR7800H, WM3400RN, WM3450RN, WM3500R, WM3600R, WM3800R, WR8166N, MR01LN and MR02LN all versions allows a attacker to execute an arbitrary command via the internet.",
+  "datePublished": "Mar 28, 2024, 3:30:59 AM",
+  "dateUpdated": "Jan 14, 2025, 6:32:00 AM",
+  "baseScore": -1.0,
+  "references": "https://https://jpn.nec.com/security-info/secinfo/nv24-001_en.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-28014\n",
+  "aliases": "GHSA-v6qj-65jf-4qvc\nCVE-2024-28014\n",
+  "assigner": "NEC",
+  "epss": 0.6,
+  "enisaIdProduct": [
+    {
+      "id": "03b8a3a1-784e-3ac5-a4c0-f1b5019a5b94",
+      "product": {
+        "name": "WM3800R"
+      }
+    },
+    {
+      "id": "0630ce72-f233-35f9-84f5-80e06b57165d",
+      "product": {
+        "name": "WR8400N"
+      }
+    },
+    {
+      "id": "0b33190c-f440-3f2e-8d0a-bc008b12a12e",
+      "product": {
+        "name": "WM3500R"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "0bb2ca65-46e3-371a-a798-c7ef9434d305",
+      "product": {
+        "name": "W300P"
+      }
+    },
+    {
+      "id": "0f8aa2be-8d3e-38c9-a124-4bea141f0bc1",
+      "product": {
+        "name": "WF1200HP"
+      }
+    },
+    {
+      "id": "116fc438-dcab-3202-9124-b3705c3e9e8c",
+      "product": {
+        "name": "WG1200HP2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "151856cc-9778-38b7-bda6-ee75e4546ec7",
+      "product": {
+        "name": "WR4100N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "15c94bfe-9bca-3c1f-a046-f5164dac945e",
+      "product": {
+        "name": "W300P"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "179166d3-5193-30f6-9484-4ce20fb7c0a6",
+      "product": {
+        "name": "CR2500P"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "17a013a3-7d43-3c24-8acd-d4e5fa06bb63",
+      "product": {
+        "name": "WF300HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "18802d5d-1a59-3085-b3f7-294fcc6be34f",
+      "product": {
+        "name": "WG1200HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "1988b9a2-52cd-37ca-8606-0a670dfcf0f1",
+      "product": {
+        "name": "WG1800HP4"
+      }
+    },
+    {
+      "id": "19a8cd29-09c9-3614-abd0-e0111edd95e3",
+      "product": {
+        "name": "WG1200HS3"
+      }
+    },
+    {
+      "id": "19ffab09-a23c-36ff-aff1-d65d8e182444",
+      "product": {
+        "name": "WM3600R"
+      }
+    },
+    {
+      "id": "1b859781-1340-377b-bc38-59b2307a4502",
+      "product": {
+        "name": "WG1200HP2"
+      }
+    },
+    {
+      "id": "1c565f9e-14c2-32cb-a4a1-c2b0505e16ac",
+      "product": {
+        "name": "WR9500N"
+      }
+    },
+    {
+      "id": "1d38d4b3-3b50-3dd7-8d0b-90baf4924144",
+      "product": {
+        "name": "WG300HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "1d59f401-179f-3f00-b0ff-44f1ae655143",
+      "product": {
+        "name": "WR8500N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "1e66157c-b57e-31dd-9302-f319612d85d6",
+      "product": {
+        "name": "CR2500P"
+      }
+    },
+    {
+      "id": "22a2249b-da8e-3e69-9442-de033c2594a6",
+      "product": {
+        "name": "WR8400N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "254a4c7e-fe9d-36bb-94b7-8e2d9689b0e3",
+      "product": {
+        "name": "WR8700N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "26b18d38-98bd-3b42-a479-47c43cf51d3f",
+      "product": {
+        "name": "WR6650S"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "27a74a31-3e8e-33a0-b518-6beb5521195a",
+      "product": {
+        "name": "WG2200HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "27c32db8-0cfe-36f8-b843-d08f18443ed0",
+      "product": {
+        "name": "WR7800H"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "28d3b8cc-5c98-36dc-bcf7-ef2edf639055",
+      "product": {
+        "name": "WR6600H"
+      }
+    },
+    {
+      "id": "2aa42a5e-1ccb-35c3-afea-ad337cabde76",
+      "product": {
+        "name": "WR8100N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "334e2515-8143-37ac-8f2c-10413a4c8a28",
+      "product": {
+        "name": "MR01LN"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "3ba56596-387d-3e66-96a0-52d70da17926",
+      "product": {
+        "name": "WG1800HP3"
+      }
+    },
+    {
+      "id": "45e27912-0745-3042-b873-69d59e07a4d8",
+      "product": {
+        "name": "WG1200HS"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "476e28ff-bad7-38b1-93fe-7d3625684f4a",
+      "product": {
+        "name": "W1200EX(-MS)"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "49d52c09-7aff-39f9-ae95-24a39e08878b",
+      "product": {
+        "name": "WR8166N"
+      }
+    },
+    {
+      "id": "4fec449a-e067-3384-97a7-a01d141ed4b3",
+      "product": {
+        "name": "WF800HP"
+      }
+    },
+    {
+      "id": "511affe4-4735-314f-8f33-9b6f3d58330b",
+      "product": {
+        "name": "MR02LN"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "51bc2ed0-6ef2-3322-bbff-843cee252430",
+      "product": {
+        "name": "MR02LN"
+      }
+    },
+    {
+      "id": "559b2a74-3528-3054-9dac-3c1fa2770c59",
+      "product": {
+        "name": "WR8700N"
+      }
+    },
+    {
+      "id": "565c854a-2336-383b-b164-b6b0ab627301",
+      "product": {
+        "name": "WF1200HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "5689b667-67c7-3ff5-8b9c-63926fe16129",
+      "product": {
+        "name": "WG1200HP3"
+      }
+    },
+    {
+      "id": "57bf2877-2bd6-367b-80cd-d95b3f90e916",
+      "product": {
+        "name": "WR8175N"
+      }
+    },
+    {
+      "id": "59534920-4274-3d03-b4b7-2a51d6567d63",
+      "product": {
+        "name": "WR1200H"
+      }
+    },
+    {
+      "id": "5c06f8fa-2281-3066-81f1-ce27f4f971ac",
+      "product": {
+        "name": "WG600HP"
+      }
+    },
+    {
+      "id": "5dab608d-c418-3147-9da4-bd1ceff05b32",
+      "product": {
+        "name": "WF800HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "5ecf8891-d876-3786-adc1-a0d902918caf",
+      "product": {
+        "name": "WR8150N"
+      }
+    },
+    {
+      "id": "63c663ff-8f01-372e-98f3-a7707628bb9b",
+      "product": {
+        "name": "WR8370N"
+      }
+    },
+    {
+      "id": "676001c5-e05c-3e4b-ba48-52e5d9fcc374",
+      "product": {
+        "name": "WG1810HP(JE)"
+      }
+    },
+    {
+      "id": "6912ae68-156b-3c9c-8805-3426c8d1e40b",
+      "product": {
+        "name": "WG1900HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "6aefbf92-464d-39fc-975d-6e56274985d1",
+      "product": {
+        "name": "WG1800HP2"
+      }
+    },
+    {
+      "id": "6b15f027-a2c1-3bcb-8f0e-1c4c10a909f7",
+      "product": {
+        "name": "WM3450RN"
+      }
+    },
+    {
+      "id": "6d837adb-cfa3-352c-8c0e-f482a01f615e",
+      "product": {
+        "name": "WR8750N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "75db4791-7188-34e6-a56e-2f874e54edb9",
+      "product": {
+        "name": "WG1900HP"
+      }
+    },
+    {
+      "id": "762c790d-261f-3ad1-863c-e3e649901818",
+      "product": {
+        "name": "WR8600N"
+      }
+    },
+    {
+      "id": "797dd91f-dd20-34ff-8f1a-c67a2f597169",
+      "product": {
+        "name": "WG1200HS2"
+      }
+    },
+    {
+      "id": "7dad026c-9d98-3a0d-ab8e-a80754f5f9da",
+      "product": {
+        "name": "WG1800HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "7e110850-3721-3d45-ac96-16a9a3801730",
+      "product": {
+        "name": "WG1800HP2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "810a4885-08b8-370b-a2f2-1f77bcf62cf4",
+      "product": {
+        "name": "WR7870S"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "81553b0e-c9f4-3c5b-9111-32411efc8501",
+      "product": {
+        "name": "WG1400HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "855fff38-9bbd-3a96-979d-f5eb43c19836",
+      "product": {
+        "name": "WR8165N"
+      }
+    },
+    {
+      "id": "870c36eb-4e18-3227-9640-162c7c939e48",
+      "product": {
+        "name": "MR01LN"
+      }
+    },
+    {
+      "id": "8ae56a51-bbfa-3a73-bb85-a8614daf6285",
+      "product": {
+        "name": "WG1810HP(JE)"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "8b6e1a4b-7dec-3409-bbd0-a3e198bb1fdd",
+      "product": {
+        "name": "WF300HP"
+      }
+    },
+    {
+      "id": "8cc90396-7903-31c0-94e0-2adf245c2358",
+      "product": {
+        "name": "WG600HP"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "92641720-45c9-3519-9e4f-9382d9d69a9e",
+      "product": {
+        "name": "WR8370N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "93c4a03d-bbc9-3b92-b8ae-792f7e9c5f06",
+      "product": {
+        "name": "WG1900HP2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "94d3b6ae-4377-3f5e-9d22-2a845080c636",
+      "product": {
+        "name": "WR8200N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "9806a39d-9c7d-39f7-97a0-137366f42f07",
+      "product": {
+        "name": "WM3800R"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "997a1e6a-0d0d-30dd-86a6-5e6dfc181736",
+      "product": {
+        "name": "WR8166N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "9aafd7b4-aeaa-38ae-b9cd-4749ac68c271",
+      "product": {
+        "name": "WG1800HP4"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "9ae6ad12-e171-301e-9d2b-f164b52c4a58",
+      "product": {
+        "name": "WG1900HP2"
+      }
+    },
+    {
+      "id": "9b1ebc50-6aea-3936-a648-d2b228485c40",
+      "product": {
+        "name": "WF300HP2"
+      }
+    },
+    {
+      "id": "9cd81638-9c6b-33a8-95ba-544d36773d83",
+      "product": {
+        "name": "WM3600R"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "a06a7697-5e11-336f-8aaa-b1fb2cdceba8",
+      "product": {
+        "name": "WF300HP2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "a10c8e6a-3739-3605-91c2-273b6cb07670",
+      "product": {
+        "name": "WR8175N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "a1233f09-5174-387c-810c-c253e2b4e5f4",
+      "product": {
+        "name": "WR4100N"
+      }
+    },
+    {
+      "id": "a49d3f01-0052-3088-8aa1-e88f8731f50f",
+      "product": {
+        "name": "WR7870S"
+      }
+    },
+    {
+      "id": "a4f7bb8a-23e5-39c5-8e3b-9f9dd989642c",
+      "product": {
+        "name": "WG1200HS2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "a514dcb9-8e95-344f-9642-2a2624e9ca3b",
+      "product": {
+        "name": "WR8200N"
+      }
+    },
+    {
+      "id": "a8f7539b-906e-3449-9812-6912f8fa210e",
+      "product": {
+        "name": "WM3450RN"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "aaf49549-0ddb-3796-8314-39535ddfa1de",
+      "product": {
+        "name": "WR9300N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "af214ff4-cdb9-385b-8083-3128afaa18ed",
+      "product": {
+        "name": "WR8300N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "b0840f1a-b76b-3c8c-9fc7-0289a71bdc82",
+      "product": {
+        "name": "WR7850S"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "b2e2e7f3-62cf-3090-9003-b5b04d727e3a",
+      "product": {
+        "name": "WR8170N"
+      }
+    },
+    {
+      "id": "b5f6b5c3-25c0-3540-ae72-b0f6f22c16ff",
+      "product": {
+        "name": "WR8150N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "b6d24b03-1377-3be2-80d5-8b6f4910db1b",
+      "product": {
+        "name": "WR6670S"
+      }
+    },
+    {
+      "id": "b962bbf9-02bb-3376-96d1-27dfc21a5e25",
+      "product": {
+        "name": "WR8160N"
+      }
+    },
+    {
+      "id": "bc221ded-a53e-3500-b350-6df07fcb48bf",
+      "product": {
+        "name": "WR7850S"
+      }
+    },
+    {
+      "id": "bc543aff-f2ee-3efc-877a-7bc3963c3dc0",
+      "product": {
+        "name": "WR7800H"
+      }
+    },
+    {
+      "id": "c07b4937-3eb9-3f29-be0f-d1317ea5fc88",
+      "product": {
+        "name": "WR8100N"
+      }
+    },
+    {
+      "id": "c08d32e4-ac5b-387f-9123-1f3833625146",
+      "product": {
+        "name": "WR9500N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "c471c5c5-cd6e-3e84-aa77-497af97efc1a",
+      "product": {
+        "name": "WF1200HP2"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "ca5d6b0f-30d8-3853-8dc3-9650698b0ef4",
+      "product": {
+        "name": "WG1200HS3"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "ce045f12-86e7-39e9-bb57-945b987a677d",
+      "product": {
+        "name": "WR8170N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "d50c3abb-13bb-3773-9e34-f08b58d1e847",
+      "product": {
+        "name": "WR8750N"
+      }
+    },
+    {
+      "id": "d67b2585-1bdd-3c7c-b230-3cd809ed1405",
+      "product": {
+        "name": "WG1800HP"
+      }
+    },
+    {
+      "id": "d67cd448-3c8d-3c83-a9f3-1f7ba585235f",
+      "product": {
+        "name": "WR8600N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "d833b665-d14b-3852-96e5-9fba6507cf5e",
+      "product": {
+        "name": "WR8300N"
+      }
+    },
+    {
+      "id": "d8643638-50b1-30f3-9ddd-14560ca7eb40",
+      "product": {
+        "name": "WG1200HS"
+      }
+    },
+    {
+      "id": "d8be21e2-df23-38dc-91e6-9264841e7de4",
+      "product": {
+        "name": "WG300HP"
+      }
+    },
+    {
+      "id": "dcbd115b-3539-3a05-9263-20eff7996a6e",
+      "product": {
+        "name": "WG1810HP(MF)"
+      }
+    },
+    {
+      "id": "dd10df20-84d7-3c91-9e2d-45620ed1287a",
+      "product": {
+        "name": "WM3400RN"
+      }
+    },
+    {
+      "id": "dd591620-28e4-39ed-aa7d-be6a10cc5e77",
+      "product": {
+        "name": "WR6670S"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "e02a1af3-2557-3a84-8dd0-41acd9398544",
+      "product": {
+        "name": "WG1810HP(MF)"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "e0fd44f0-fe93-31e0-9d8b-df6981efead0",
+      "product": {
+        "name": "WR6650S"
+      }
+    },
+    {
+      "id": "e29dd0c0-6554-3337-91f8-0f82eedf8c79",
+      "product": {
+        "name": "WR6600H"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "e2ff48dc-cddd-3766-bd9f-5e73a6a1606d",
+      "product": {
+        "name": "WM3500R"
+      }
+    },
+    {
+      "id": "e34d6c6e-3364-3188-940b-376aeb70ac61",
+      "product": {
+        "name": "WG1200HP3"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "e3ca834d-59a7-362b-bbc8-511bfe562197",
+      "product": {
+        "name": "WF1200HP2"
+      }
+    },
+    {
+      "id": "e7d499f4-4854-392d-a02b-bdc558962bd5",
+      "product": {
+        "name": "W1200EX(-MS)"
+      }
+    },
+    {
+      "id": "e994becc-0d82-3fe1-8156-f101da23e8c0",
+      "product": {
+        "name": "WG1200HP"
+      }
+    },
+    {
+      "id": "eadb8266-cfb8-35ca-a696-74ec70b67f04",
+      "product": {
+        "name": "WG1400HP"
+      }
+    },
+    {
+      "id": "ec69ebc3-166c-31ae-8e3d-51bcb09f4d0d",
+      "product": {
+        "name": "WM3400RN"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "ee9acb38-ea1d-3b42-ab42-c45c34a745a8",
+      "product": {
+        "name": "WR4500N"
+      }
+    },
+    {
+      "id": "f1900d9b-408a-3215-9740-be076fd4cb05",
+      "product": {
+        "name": "WR4500N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "f4fad149-448b-361d-8095-cb740b3b02eb",
+      "product": {
+        "name": "WR1200H"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "f76f2618-9f24-3bac-8bfd-9f08e7d51d9a",
+      "product": {
+        "name": "WR8160N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "f880a8c9-98e2-34bd-a5fb-2b9b74ba91c4",
+      "product": {
+        "name": "WR8165N"
+      },
+      "product_version": "all versions"
+    },
+    {
+      "id": "f9ae4bd3-f53b-316d-ba9d-bd315b7ac0d0",
+      "product": {
+        "name": "WR8500N"
+      }
+    },
+    {
+      "id": "fb3b85ea-d96e-3a55-ba03-ab3334927f5b",
+      "product": {
+        "name": "WG2200HP"
+      }
+    },
+    {
+      "id": "fbd74500-06da-3478-83c6-86e3bda39231",
+      "product": {
+        "name": "WR9300N"
+      }
+    },
+    {
+      "id": "ffeec243-ffd2-33ac-9249-abd38803f530",
+      "product": {
+        "name": "WG1800HP3"
+      },
+      "product_version": "all versions"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "40a4ee3a-a0cd-37e1-9b26-b6fc608a4593",
+      "vendor": {
+        "name": "NEC Corporation"
+      }
+    }
+  ]
+}

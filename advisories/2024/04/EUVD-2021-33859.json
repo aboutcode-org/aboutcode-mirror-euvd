@@ -1,0 +1,105 @@
+{
+  "id": "EUVD-2021-33859",
+  "enisaUuid": "4056bc3d-7b3f-3cb7-b6cd-72f8503fcd0e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: fix null pointer dereference on pointer cs_desc\n\nThe pointer cs_desc return from snd_usb_find_clock_source could\nbe null, so there is a potential null pointer dereference issue.\nFix this by adding a null check before dereference.",
+  "datePublished": "Apr 10, 2024, 9:30:32 PM",
+  "dateUpdated": "Jan 14, 2025, 3:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/58fa50de595f152900594c28ec9915c169643739\nhttps://git.kernel.org/stable/c/b97053df0f04747c3c1e021ecbe99db675342954\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47211\n",
+  "aliases": "GHSA-rv79-7m3p-hx2p\nCVE-2021-47211\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "03574ca8-3049-3106-a123-7b96e9b0785a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.5"
+    },
+    {
+      "id": "038aa525-9d9f-3d70-8197-f13bb12d89c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    },
+    {
+      "id": "0ed2d941-a9f8-35ed-a4bb-54b88c076528",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1dc669fed61a4ec4270a89e5fb3535802cc45668 <58fa50de595f152900594c28ec9915c169643739"
+    },
+    {
+      "id": "1cdfcd4e-6d3f-3e9a-834c-39ee26e9e9ef",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "93db51d06b32227319dae2ac289029ccf1b33181 <58fa50de595f152900594c28ec9915c169643739"
+    },
+    {
+      "id": "2cd425a9-1c1f-333f-ab68-4bced23d8198",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "53304d87-32c3-3e75-a893-245035174f5e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.10"
+    },
+    {
+      "id": "a116a560-34af-3b4c-994b-ad6094a588e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1dc669fed61a4ec4270a89e5fb3535802cc45668 <b97053df0f04747c3c1e021ecbe99db675342954"
+    },
+    {
+      "id": "aaa9c12b-ffb0-3fde-b63e-8bec66d98ee3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.11"
+    },
+    {
+      "id": "bf70416e-f741-3552-82ad-46cf3af3c448",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b97053df0f04747c3c1e021ecbe99db675342954"
+    },
+    {
+      "id": "ce01ae52-c96d-3eca-80e1-538a315b80e9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <58fa50de595f152900594c28ec9915c169643739"
+    },
+    {
+      "id": "e8d733e1-ef30-3c64-9e84-99dc55d99544",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "f8491ac6-6b92-30fb-8f6f-b6d0d89d9302",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "93db51d06b32227319dae2ac289029ccf1b33181 <b97053df0f04747c3c1e021ecbe99db675342954"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e8d733e1-ef30-3c64-9e84-99dc55d99544",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

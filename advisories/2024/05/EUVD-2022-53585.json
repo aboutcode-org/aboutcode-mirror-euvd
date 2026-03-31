@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2022-53585",
+  "enisaUuid": "a34bedb1-2092-38da-a866-6cfc20ac05fc",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: ifcvf: Do proper cleanup if IFCVF init fails\n\nifcvf_mgmt_dev leaks memory if it is not freed before\nreturning. Call is made to correct return statement\nso memory does not leak. ifcvf_init_hw does not take\ncare of this so it is needed to do it here.",
+  "datePublished": "May 21, 2024, 6:31:17 PM",
+  "dateUpdated": "Feb 3, 2025, 6:30:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/5d2cc32c1c10bd889125d2adc16a6bc3338dcd3e\nhttps://git.kernel.org/stable/c/6b04456e248761cf68f562f2fd7c04e591fcac94\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48706\n",
+  "aliases": "GHSA-c5rq-j6hh-2mxr\nCVE-2022-48706\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "07e7a86e-53ca-3682-987b-bfb7fbfad4b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.0"
+    },
+    {
+      "id": "122acddc-2d61-3aca-8964-eb7905ee2ed8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "33f1f72a-7913-3703-9a4b-3683db42df49",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.2"
+    },
+    {
+      "id": "35f60457-a395-3966-8bd1-95369d1b243a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6b04456e248761cf68f562f2fd7c04e591fcac94"
+    },
+    {
+      "id": "6246d82b-b082-3387-a047-ed292d64c44d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "378b2e956820ff5c082d05f42828badcfbabb614 <5d2cc32c1c10bd889125d2adc16a6bc3338dcd3e"
+    },
+    {
+      "id": "857a0bf3-f80d-36b0-8ce2-5d8220369dc0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.13"
+    },
+    {
+      "id": "a0fcdf96-6b49-3618-b3b4-6a2e8d05edbc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5d2cc32c1c10bd889125d2adc16a6bc3338dcd3e"
+    },
+    {
+      "id": "ed7e48ce-32e9-3306-8f0c-cfe764dba8dd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "378b2e956820ff5c082d05f42828badcfbabb614 <6b04456e248761cf68f562f2fd7c04e591fcac94"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2cbbf89a-4683-3b71-abbe-7dedbb285c25",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

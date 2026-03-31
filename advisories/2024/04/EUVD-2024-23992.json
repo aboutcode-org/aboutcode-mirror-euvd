@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2024-23992",
+  "enisaUuid": "bee7de4d-4496-3869-9021-470d9965bd64",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (nct6775) Fix access to temperature configuration registers\n\nThe number of temperature configuration registers does\nnot always match the total number of temperature registers.\nThis can result in access errors reported if KASAN is enabled.\n\nBUG: KASAN: global-out-of-bounds in nct6775_probe+0x5654/0x6fe9 nct6775_core",
+  "datePublished": "Apr 3, 2024, 6:30:41 PM",
+  "dateUpdated": "Mar 17, 2025, 6:31:39 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/f006c45a3ea424f8f6c8e4b9283bc245ce2a4d0f\nhttps://git.kernel.org/stable/c/c196387820c9214c5ceaff56d77303c82514b8b1\nhttps://git.kernel.org/stable/c/d56e460e19ea8382f813eb489730248ec8d7eb73\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26730\n",
+  "aliases": "CVE-2024-26730\nGHSA-q4mr-gm7x-h58f\n",
+  "assigner": "Linux",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "25e4206a-cd22-3892-985d-21fb7f79f09a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "33144edc-9507-365b-a8db-5c8eed6223dd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b7f1f7b2523a6a4382f12fe953380b847b80e09d <f006c45a3ea424f8f6c8e4b9283bc245ce2a4d0f"
+    },
+    {
+      "id": "5fbbce60-ecc1-3d9f-9534-75959000adf1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b7f1f7b2523a6a4382f12fe953380b847b80e09d <d56e460e19ea8382f813eb489730248ec8d7eb73"
+    },
+    {
+      "id": "6eaeb9e0-5b8e-3a26-a3f9-f974f135a2a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b7f1f7b2523a6a4382f12fe953380b847b80e09d <c196387820c9214c5ceaff56d77303c82514b8b1"
+    },
+    {
+      "id": "83a6eafe-9747-37d7-8f83-afa54ab0e75e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.6"
+    },
+    {
+      "id": "94d95f7c-a652-3d9d-a904-7c1c512cc224",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "af56eb67-02c6-39ad-a0d4-6ffaa6415fff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.19"
+    },
+    {
+      "id": "b6e20226-3158-3a7c-81b6-da6700ff0f43",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.7"
+    },
+    {
+      "id": "ee60214d-cf88-36a6-a2cc-8de3cf261cc2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "94d95f7c-a652-3d9d-a904-7c1c512cc224",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

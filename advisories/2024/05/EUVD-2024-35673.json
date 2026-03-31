@@ -1,0 +1,148 @@
+{
+  "id": "EUVD-2024-35673",
+  "enisaUuid": "fb65e570-a779-3ca7-a352-b82060730d76",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkprobes: Fix possible use-after-free issue on kprobe registration\n\nWhen unloading a module, its state is changing MODULE_STATE_LIVE ->\n MODULE_STATE_GOING -> MODULE_STATE_UNFORMED. Each change will take\na time. `is_module_text_address()` and `__module_text_address()`\nworks with MODULE_STATE_LIVE and MODULE_STATE_GOING.\nIf we use `is_module_text_address()` and `__module_text_address()`\nseparately, there is a chance that the first one is succeeded but the\nnext one is failed because module->state becomes MODULE_STATE_UNFORMED\nbetween those operations.\n\nIn `check_kprobe_address_safe()`, if the second `__module_text_address()`\nis failed, that is ignored because it expected a kernel_text address.\nBut it may have failed simply because module->state has been changed\nto MODULE_STATE_UNFORMED. In this case, arm_kprobe() will try to modify\nnon-exist module text address (use-after-free).\n\nTo fix this problem, we should not use separated `is_module_text_address()`\nand `__module_text_address()`, but use only `__module_text_address()`\nonce and do `try_module_get(module)` which is only available with\nMODULE_STATE_LIVE.",
+  "datePublished": "May 20, 2024, 12:30:28 PM",
+  "dateUpdated": "Jul 3, 2024, 6:42:36 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b5808d40093403334d939e2c3c417144d12a6f33\nhttps://git.kernel.org/stable/c/93eb31e7c3399e326259f2caa17be1e821f5a412\nhttps://git.kernel.org/stable/c/5062d1f4f07facbdade0f402d9a04a788f52e26d\nhttps://git.kernel.org/stable/c/2df2dd27066cdba8041e46a64362325626bdfb2e\nhttps://git.kernel.org/stable/c/62029bc9ff2c17a4e3a2478d83418ec575413808\nhttps://git.kernel.org/stable/c/d15023fb407337028a654237d8968fefdcf87c2f\nhttps://git.kernel.org/stable/c/36b57c7d2f8b7de224980f1a284432846ad71ca0\nhttps://git.kernel.org/stable/c/325f3fb551f8cd672dbbfc4cf58b14f9ee3fc9e8\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35955\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00020.html\n",
+  "aliases": "CVE-2024-35955\nGHSA-m7wf-2qxg-448x\n",
+  "assigner": "Linux",
+  "epss": 0.34,
+  "enisaIdProduct": [
+    {
+      "id": "01f52a45-f9e1-3980-8749-7d510c962ac0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2a49b025c36ae749cee7ccc4b7e456e02539cdc3 <5062d1f4f07facbdade0f402d9a04a788f52e26d"
+    },
+    {
+      "id": "0488b915-3e9e-3198-8fd7-d1a002440294",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28f6c37a2910f565b4f5960df52b2eccae28c891 <62029bc9ff2c17a4e3a2478d83418ec575413808"
+    },
+    {
+      "id": "120ca341-5060-33a8-944b-de57a6942351",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "127951be-4209-3e24-b311-d304ef644339",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.0"
+    },
+    {
+      "id": "2ede7236-f31d-3eb1-9886-bc38ce2fcfc9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28f6c37a2910f565b4f5960df52b2eccae28c891 <325f3fb551f8cd672dbbfc4cf58b14f9ee3fc9e8"
+    },
+    {
+      "id": "5e0f8bb0-bd63-3e6d-a07b-82c6f8e3e753",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.28"
+    },
+    {
+      "id": "66d4703e-1e68-3512-8f00-58e57ade9726",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a1edb85e60fdab1e14db63ae8af8db3f0d798fb6 <2df2dd27066cdba8041e46a64362325626bdfb2e"
+    },
+    {
+      "id": "6d1e414a-5b8f-3c8b-9f48-7f5c3d5edb69",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.216"
+    },
+    {
+      "id": "72fd8fe9-66c1-36a7-b02f-1b4b3e74341a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.313"
+    },
+    {
+      "id": "8a8ffc03-0c21-3a05-8b14-95fb3153cd50",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1c836bad43f3e2ff71cc397a6e6ccb4e7bd116f8 <b5808d40093403334d939e2c3c417144d12a6f33"
+    },
+    {
+      "id": "8f2e9799-2403-3fa4-bc89-2329b3fdfabd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "a5ca5bcb-2730-36c4-9603-3f6a1a02148b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.157"
+    },
+    {
+      "id": "ada7bc49-68c8-310f-b9aa-df62021f569d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.7"
+    },
+    {
+      "id": "ae019688-7a5c-3d48-8ba3-57491bc5467f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28f6c37a2910f565b4f5960df52b2eccae28c891 <36b57c7d2f8b7de224980f1a284432846ad71ca0"
+    },
+    {
+      "id": "b97071e0-2d51-3537-b1df-05cf3d5057c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6a119c1a584aa7a2c6216458f1f272bf1bc93a93 <93eb31e7c3399e326259f2caa17be1e821f5a412"
+    },
+    {
+      "id": "daa4e7ef-1070-37d6-a131-b7558112dd41",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.87"
+    },
+    {
+      "id": "df355abd-785e-3f14-9d1f-516e4b0873cc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "28f6c37a2910f565b4f5960df52b2eccae28c891 <d15023fb407337028a654237d8968fefdcf87c2f"
+    },
+    {
+      "id": "fb3f4349-11b1-32ca-ab77-04c1f701d68f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.275"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e10f9032-d17c-329d-a179-f9712401f80c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

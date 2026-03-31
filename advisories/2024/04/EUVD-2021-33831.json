@@ -1,0 +1,133 @@
+{
+  "id": "EUVD-2021-33831",
+  "enisaUuid": "81e83447-5845-3cc5-bc94-054e41769822",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix link down processing to address NULL pointer dereference\n\nIf an FC link down transition while PLOGIs are outstanding to fabric well\nknown addresses, outstanding ABTS requests may result in a NULL pointer\ndereference. Driver unload requests may hang with repeated \"2878\" log\nmessages.\n\nThe Link down processing results in ABTS requests for outstanding ELS\nrequests. The Abort WQEs are sent for the ELSs before the driver had set\nthe link state to down. Thus the driver is sending the Abort with the\nexpectation that an ABTS will be sent on the wire. The Abort request is\nstalled waiting for the link to come up. In some conditions the driver may\nauto-complete the ELSs thus if the link does come up, the Abort completions\nmay reference an invalid structure.\n\nFix by ensuring that Abort set the flag to avoid link traffic if issued due\nto conditions where the link failed.",
+  "datePublished": "Apr 10, 2024, 6:56:24 PM",
+  "dateUpdated": "Dec 18, 2025, 11:35:50 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/28de48a7cea495ab48082d9ff4ef63f7cb4e563a\nhttps://git.kernel.org/stable/c/1854f53ccd88ad4e7568ddfafafffe71f1ceb0a6\nhttps://git.kernel.org/stable/c/04c1af683270e4709a594bb1691b8800b945035a\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47183\nhttps://lists.debian.org/debian-lts-announce/2025/10/msg00007.html\n",
+  "aliases": "GHSA-m7wr-q7cm-56rh\nCVE-2021-47183\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0762e1bc-d91d-3cfe-b24b-93f8783517d1",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "1d81df93-d462-3462-845f-2a36a48e11d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "70f3c073362ef7b5e55c92b83eb2dd9a7fb4e9bf <28de48a7cea495ab48082d9ff4ef63f7cb4e563a"
+    },
+    {
+      "id": "2646a1cd-a3e3-32fc-8492-5fe778ef7da7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1854f53ccd88ad4e7568ddfafafffe71f1ceb0a6"
+    },
+    {
+      "id": "2af85173-f50c-3cd1-b829-e153e65fe9d7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "70f3c073362ef7b5e55c92b83eb2dd9a7fb4e9bf <04c1af683270e4709a594bb1691b8800b945035a"
+    },
+    {
+      "id": "3da472e6-c261-3c47-ad34-4fd1b76d0e4b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "45348d89-b582-3e32-a950-2a01eb74bdb2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.12"
+    },
+    {
+      "id": "45a30338-5cc3-3ea2-a431-5e065571d1e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    },
+    {
+      "id": "4930099f-6191-3a18-b33a-69dd994d4139",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.5"
+    },
+    {
+      "id": "4c54fff1-bf0c-328c-9a4a-534a36b80fca",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "70f3c073362ef7b5e55c92b83eb2dd9a7fb4e9bf <1854f53ccd88ad4e7568ddfafafffe71f1ceb0a6"
+    },
+    {
+      "id": "538b2556-8ab3-39c4-bc5a-3982b1f0659a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dea3101e0a5c897d2c9351a7444e139db9f40247 <28de48a7cea495ab48082d9ff4ef63f7cb4e563a"
+    },
+    {
+      "id": "59853784-2ebf-3660-b494-1ccd8634eff0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.38"
+    },
+    {
+      "id": "5c65c3ac-0178-30a2-ae66-15f5fe2d7579",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dea3101e0a5c897d2c9351a7444e139db9f40247 <1854f53ccd88ad4e7568ddfafafffe71f1ceb0a6"
+    },
+    {
+      "id": "7adaa64a-6134-3d2c-9347-ace954f8a064",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.241"
+    },
+    {
+      "id": "91b3f935-2e22-3c84-9881-3839da7970d6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <04c1af683270e4709a594bb1691b8800b945035a"
+    },
+    {
+      "id": "ac8e096d-6e2f-30b2-9849-d020d3c28e65",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dea3101e0a5c897d2c9351a7444e139db9f40247 <04c1af683270e4709a594bb1691b8800b945035a"
+    },
+    {
+      "id": "d6a06402-ae57-3cdc-b6e4-29178191e711",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <28de48a7cea495ab48082d9ff4ef63f7cb4e563a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0762e1bc-d91d-3cfe-b24b-93f8783517d1",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

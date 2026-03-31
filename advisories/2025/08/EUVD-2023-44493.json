@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2023-44493",
+  "enisaUuid": "57a27a52-9ea6-314c-9680-0adafe370da2",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix out-of-bound read in smb2_write\n\nksmbd_smb2_check_message doesn't validate hdr->NextCommand. If\n->NextCommand is bigger than Offset + Length of smb2 write, It will\nallow oversized smb2 write length. It will cause OOB read in smb2_write.",
+  "datePublished": "Aug 16, 2025, 3:30:30 PM",
+  "dateUpdated": "Nov 18, 2025, 6:32:49 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/3813eee5154d6a4c5875cb4444cb2b63bac8947f\nhttps://git.kernel.org/stable/c/c86211159bc3178b891e0d60e586a32c7b6a231b\nhttps://git.kernel.org/stable/c/58a9c41064df27632e780c5a3ae3e0e4284957d1\nhttps://git.kernel.org/stable/c/5fe7f7b78290638806211046a99f031ff26164e1\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-3865\n",
+  "aliases": "GHSA-mr68-gqxj-cfm9\nCVE-2023-3865\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "001cbefc-5c94-39a9-b523-5bbeb8a1684d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.121"
+    },
+    {
+      "id": "07418380-d170-38fc-afab-f0e88afcbdfd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
+    {
+      "id": "0d836ce0-33dc-3468-8982-f2bc2070df12",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.4"
+    },
+    {
+      "id": "0ea68a77-8273-3672-9bde-f1cfde47c967",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <c86211159bc3178b891e0d60e586a32c7b6a231b"
+    },
+    {
+      "id": "2f96c78f-9141-3fff-b913-843465ac3413",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "6ca87044-2853-339e-ad91-98a10134440f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <5fe7f7b78290638806211046a99f031ff26164e1"
+    },
+    {
+      "id": "7717784d-8aa7-324d-87f5-f87e29d1d1df",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <58a9c41064df27632e780c5a3ae3e0e4284957d1"
+    },
+    {
+      "id": "afb746ec-a123-3608-81ce-dd659d138bd8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.36"
+    },
+    {
+      "id": "c5ab9172-d5b5-3b56-94f9-4ef2c3cd68a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <3813eee5154d6a4c5875cb4444cb2b63bac8947f"
+    },
+    {
+      "id": "cd86ff01-247b-3fe0-9c6c-d898d9d217f4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.3.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4074d978-869f-3970-b971-0012b0077bcb",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

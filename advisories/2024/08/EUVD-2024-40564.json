@@ -1,0 +1,204 @@
+{
+  "id": "EUVD-2024-40564",
+  "enisaUuid": "ab81f135-4edf-348a-9695-e4a8705de519",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid5: avoid BUG_ON() while continue reshape after reassembling\n\nCurrently, mdadm support --revert-reshape to abort the reshape while\nreassembling, as the test 07revert-grow. However, following BUG_ON()\ncan be triggerred by the test:\n\nkernel BUG at drivers/md/raid5.c:6278!\ninvalid opcode: 0000 [#1] PREEMPT SMP PTI\nirq event stamp: 158985\nCPU: 6 PID: 891 Comm: md0_reshape Not tainted 6.9.0-03335-g7592a0b0049a #94\nRIP: 0010:reshape_request+0x3f1/0xe60\nCall Trace:\n <TASK>\n raid5_sync_request+0x43d/0x550\n md_do_sync+0xb7a/0x2110\n md_thread+0x294/0x2b0\n kthread+0x147/0x1c0\n ret_from_fork+0x59/0x70\n ret_from_fork_asm+0x1a/0x30\n </TASK>\n\nRoot cause is that --revert-reshape update the raid_disks from 5 to 4,\nwhile reshape position is still set, and after reassembling the array,\nreshape position will be read from super block, then during reshape the\nchecking of 'writepos' that is caculated by old reshape position will\nfail.\n\nFix this panic the easy way first, by converting the BUG_ON() to\nWARN_ON(), and stop the reshape if checkings fail.\n\nNoted that mdadm must fix --revert-shape as well, and probably md/raid\nshould enhance metadata validation as well, however this means\nreassemble will fail and there must be user tools to fix the wrong\nmetadata.",
+  "datePublished": "Aug 26, 2024, 10:11:19 AM",
+  "dateUpdated": "Jan 5, 2026, 10:52:33 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/2c92f8c1c456d556f15cbf51667b385026b2e6a0\nhttps://git.kernel.org/stable/c/6b33c468d543f6a83de2d61f09fec74b27e19fd2\nhttps://git.kernel.org/stable/c/c384dd4f1fb3b14a2fd199360701cc163ea88705\nhttps://git.kernel.org/stable/c/bf0ff69a42a3d2d46876d0514ecf13dffc516666\nhttps://git.kernel.org/stable/c/3b33740c1750a39e046339ff9240e954f0156707\nhttps://git.kernel.org/stable/c/775a9ba16c9ffe98fe54ebf14e55d5660f2bf600\nhttps://git.kernel.org/stable/c/4811d6e5d9f4090c3e0ff9890eb24077108046ab\nhttps://git.kernel.org/stable/c/305a5170dc5cf3d395bb4c4e9239bca6d0b54b49\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-43914\nhttps://lists.debian.org/debian-lts-announce/2024/10/msg00003.html\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "CVE-2024-43914\nGHSA-j2jm-9cr2-x48x\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "203759ee-eb8d-355f-9e99-63a197a7ea3a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <4811d6e5d9f4090c3e0ff9890eb24077108046ab"
+    },
+    {
+      "id": "22dc736a-aefb-31c3-82d0-bbcb9d40bb34",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 4.19.320"
+    },
+    {
+      "id": "250e4356-0d60-3d9d-bb89-9e77f4d9c2fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <2c92f8c1c456d556f15cbf51667b385026b2e6a0"
+    },
+    {
+      "id": "288c4c29-86f0-3e24-a48f-92870dc6c06d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <bf0ff69a42a3d2d46876d0514ecf13dffc516666"
+    },
+    {
+      "id": "369d075f-ab6a-3ca2-9b70-d8576d1acc95",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4811d6e5d9f4090c3e0ff9890eb24077108046ab"
+    },
+    {
+      "id": "409a7ccc-c78b-3462-87a4-1cdc7c24616c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <305a5170dc5cf3d395bb4c4e9239bca6d0b54b49"
+    },
+    {
+      "id": "45724e95-ab04-3116-babd-d3f3f533439f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.282"
+    },
+    {
+      "id": "56278941-b7b2-360b-9916-e0840e66ca64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.224"
+    },
+    {
+      "id": "5a26e35d-3d45-3bf4-8db6-e1f7b5a7b2c5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6b33c468d543f6a83de2d61f09fec74b27e19fd2"
+    },
+    {
+      "id": "6477c1a3-11fe-3ef3-9820-6f508bfa5f2d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <c384dd4f1fb3b14a2fd199360701cc163ea88705"
+    },
+    {
+      "id": "76b48aa8-35a6-3df3-a9a8-b057e33194d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "80123c21-b398-312b-9355-a89ebacb09a8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <bf0ff69a42a3d2d46876d0514ecf13dffc516666"
+    },
+    {
+      "id": "8ca296cd-fd2c-35bd-8f2f-5d254dc47e63",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.105"
+    },
+    {
+      "id": "8e65a7f6-ba41-364c-ad41-5c55220de121",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.165"
+    },
+    {
+      "id": "93f7fb3f-91dd-3e2e-b212-816c2f1bf046",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2c92f8c1c456d556f15cbf51667b385026b2e6a0"
+    },
+    {
+      "id": "9af1c2cd-73a7-3458-86ae-e84cdf466ede",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c384dd4f1fb3b14a2fd199360701cc163ea88705"
+    },
+    {
+      "id": "a11c2480-3a3e-38b3-b5aa-dbc9cd60c63e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <775a9ba16c9ffe98fe54ebf14e55d5660f2bf600"
+    },
+    {
+      "id": "a394b190-37d0-3129-ba52-9253cc61d303",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3b33740c1750a39e046339ff9240e954f0156707"
+    },
+    {
+      "id": "a6e13c74-030c-3f1f-a39e-adf0ba2ef1d9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <3b33740c1750a39e046339ff9240e954f0156707"
+    },
+    {
+      "id": "b2033a73-ab50-33ee-9161-7479f5f64030",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.46"
+    },
+    {
+      "id": "bb29c4d1-b486-3cbb-9f23-71c7f8e748fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <6b33c468d543f6a83de2d61f09fec74b27e19fd2"
+    },
+    {
+      "id": "bfa0493b-2fc5-3463-a666-b012d88b8b1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.5"
+    },
+    {
+      "id": "c421914c-96c9-3490-86d0-adfd9913043a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <305a5170dc5cf3d395bb4c4e9239bca6d0b54b49"
+    },
+    {
+      "id": "c9bfcbf7-3774-3004-ad41-f53c1c401c7c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.30"
+    },
+    {
+      "id": "cd3d5519-74f3-3b01-8004-ed3fd81bb4b2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "d3dce754-a4ff-3b7f-b6a0-c523d4ed5029",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec32a2bd35bd6b933a5db6542c48210ce069a376 <775a9ba16c9ffe98fe54ebf14e55d5660f2bf600"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "56f4501d-2d2e-3e59-95ab-f46953a7b453",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

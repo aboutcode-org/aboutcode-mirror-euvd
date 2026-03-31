@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-35642",
+  "enisaUuid": "35f7c3fd-d9c9-3c6b-b418-3eaf3a0bd8fa",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: ucsi: Limit read size on v1.2\n\nBetween UCSI 1.2 and UCSI 2.0, the size of the MESSAGE_IN region was\nincreased from 16 to 256. In order to avoid overflowing reads for older\nsystems, add a mechanism to use the read UCSI version to truncate read\nsizes on UCSI v1.2.",
+  "datePublished": "May 19, 2024, 12:30:38 PM",
+  "dateUpdated": "Sep 24, 2025, 9:30:29 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/266f403ec47573046dee4bcebda82777ce702c40\nhttps://git.kernel.org/stable/c/0defcaa09d3b21e8387829ee3a652c43fa91e13f\nhttps://git.kernel.org/stable/c/b3db266fb031fba88c423d4bb8983a73a3db6527\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35924\n",
+  "aliases": "GHSA-58xp-fvvp-586w\nCVE-2024-35924\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "254491a9-1f3d-3ca9-9312-27161277b879",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "2fe497d9-d0a2-3d94-b6a0-78c4a39bea4e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.6"
+    },
+    {
+      "id": "4a559056-e6b8-382c-aa2e-bc6c61ad054c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0defcaa09d3b21e8387829ee3a652c43fa91e13f"
+    },
+    {
+      "id": "a36397d5-851a-3a1d-9e4b-71483b33ec25",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b3db266fb031fba88c423d4bb8983a73a3db6527"
+    },
+    {
+      "id": "af04df63-48a3-3fcd-990e-33979651c81e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.27"
+    },
+    {
+      "id": "bf48a556-e008-3d94-8017-a4e5141832c5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <266f403ec47573046dee4bcebda82777ce702c40"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "81f5c3eb-232e-3a51-add7-ad805da186b8",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

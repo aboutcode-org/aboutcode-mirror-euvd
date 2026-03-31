@@ -1,0 +1,128 @@
+{
+  "id": "EUVD-2023-57136",
+  "enisaUuid": "52b8cce2-1f00-332c-8579-6211ed587b2e",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: sun6i: reduce DMA RX transfer width to single byte\n\nThrough empirical testing it has been determined that sometimes RX SPI\ntransfers with DMA enabled return corrupted data. This is down to single\nor even multiple bytes lost during DMA transfer from SPI peripheral to\nmemory. It seems the RX FIFO within the SPI peripheral can become\nconfused when performing bus read accesses wider than a single byte to it\nduring an active SPI transfer.\n\nThis patch reduces the width of individual DMA read accesses to the\nRX FIFO to a single byte to mitigate that issue.",
+  "datePublished": "Mar 3, 2024, 12:30:31 AM",
+  "dateUpdated": "Nov 6, 2024, 9:30:53 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://git.kernel.org/stable/c/ff05ed4ae214011464a0156f05cac1b0b46b5fbc\nhttps://git.kernel.org/stable/c/e15bb292b24630ee832bfc7fd616bd72c7682bbb\nhttps://git.kernel.org/stable/c/b3c21c9c7289692f4019f163c3b06d8bdf78b355\nhttps://git.kernel.org/stable/c/171f8a49f212e87a8b04087568e1b3d132e36a18\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52511\n",
+  "aliases": "GHSA-9prw-2r97-97f6\nCVE-2023-52511\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "2efa70e8-740b-3b7e-bbcd-655bc9a54a83",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.6"
+    },
+    {
+      "id": "3cc0bae8-f98a-3829-9b2f-e47e87a25ccc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "49414fa4-0d2f-3b9b-ba33-4f8254cc058d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "345980a3a5e5e1c99fc621e2ce878fb150ad2287 <b3c21c9c7289692f4019f163c3b06d8bdf78b355"
+    },
+    {
+      "id": "516bfa3b-3d66-38ad-af0d-0c7f4002ed0e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "345980a3a5e5e1c99fc621e2ce878fb150ad2287 <e15bb292b24630ee832bfc7fd616bd72c7682bbb"
+    },
+    {
+      "id": "5e3ee3ae-58e9-3aa7-8f82-af089597b3de",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <171f8a49f212e87a8b04087568e1b3d132e36a18"
+    },
+    {
+      "id": "6c296484-7489-3b59-845e-30fd398cecc1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b3c21c9c7289692f4019f163c3b06d8bdf78b355"
+    },
+    {
+      "id": "c89fb07f-dd89-3942-9a33-c314cb740196",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6"
+    },
+    {
+      "id": "ca7624bb-c5f4-374d-9a01-bb70164b1d17",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "cf5e21f8-f50b-3acb-8d02-3d41240fadee",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ff05ed4ae214011464a0156f05cac1b0b46b5fbc"
+    },
+    {
+      "id": "d9913fc1-bad4-3478-ba46-a2b3b660b92d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.134"
+    },
+    {
+      "id": "dfb049da-b262-363e-a13b-66729761a388",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.56"
+    },
+    {
+      "id": "e1ccc689-9734-36b1-8785-a48b55780266",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.11"
+    },
+    {
+      "id": "eaccedce-ff15-398d-aaca-ec5fa824ff06",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "345980a3a5e5e1c99fc621e2ce878fb150ad2287 <ff05ed4ae214011464a0156f05cac1b0b46b5fbc"
+    },
+    {
+      "id": "eb7c0cfb-05d9-3028-93a8-de06d150060f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "345980a3a5e5e1c99fc621e2ce878fb150ad2287 <171f8a49f212e87a8b04087568e1b3d132e36a18"
+    },
+    {
+      "id": "fa2714dc-87d5-3e09-a0d9-65830df39ad3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e15bb292b24630ee832bfc7fd616bd72c7682bbb"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ca7624bb-c5f4-374d-9a01-bb70164b1d17",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

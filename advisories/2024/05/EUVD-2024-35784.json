@@ -1,0 +1,120 @@
+{
+  "id": "EUVD-2024-35784",
+  "enisaUuid": "27f9b05d-871d-3d21-adac-e93a5c28d382",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Flush pages under kvm->lock to fix UAF in svm_register_enc_region()\n\nDo the cache flush of converted pages in svm_register_enc_region() before\ndropping kvm->lock to fix use-after-free issues where region and/or its\narray of pages could be freed by a different task, e.g. if userspace has\n__unregister_enc_region_locked() already queued up for the region.\n\nNote, the \"obvious\" alternative of using local variables doesn't fully\nresolve the bug, as region->pages is also dynamically allocated.  I.e. the\nregion structure itself would be fine, but region->pages could be freed.\n\nFlushing multiple pages under kvm->lock is unfortunate, but the entire\nflow is a rare slow path, and the manual flush is only needed on CPUs that\nlack coherency for encrypted memory.",
+  "datePublished": "May 17, 2024, 3:31:08 PM",
+  "dateUpdated": "Dec 23, 2025, 9:30:18 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/2d13b79640b147bd77c34a5998533b2021a4122d\nhttps://git.kernel.org/stable/c/e126b508ed2e616d679d85fca2fbe77bb48bbdd7\nhttps://git.kernel.org/stable/c/4868c0ecdb6cfde7c70cf478c46e06bb9c7e5865\nhttps://git.kernel.org/stable/c/12f8e32a5a389a5d58afc67728c76e61beee1ad4\nhttps://git.kernel.org/stable/c/f6d53d8a2617dd58c89171a6b9610c470ebda38a\nhttps://git.kernel.org/stable/c/5ef1d8c1ddbf696e47b226e11888eaf8d9e8e807\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35791\nhttps://lists.debian.org/debian-lts-announce/2024/06/msg00017.html\n",
+  "aliases": "CVE-2024-35791\nGHSA-wm4c-jgh8-m62g\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "16c1d756-d6e1-3670-bfe5-78d7aaef7802",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4f627ecde7329e476a077bb0590db8f27bb8f912 <2d13b79640b147bd77c34a5998533b2021a4122d"
+    },
+    {
+      "id": "185993dc-58ab-36f2-8550-85ced993a43b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "19a23da53932bc8011220bd8c410cb76012de004 <12f8e32a5a389a5d58afc67728c76e61beee1ad4"
+    },
+    {
+      "id": "1c55bf16-5166-3b8c-ad3e-90fea7162c60",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.24"
+    },
+    {
+      "id": "2b996953-9615-3dfa-a055-685830e344d0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.11"
+    },
+    {
+      "id": "2c75ebea-7451-3029-b29c-3bd265ed4b16",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "19a23da53932bc8011220bd8c410cb76012de004 <5ef1d8c1ddbf696e47b226e11888eaf8d9e8e807"
+    },
+    {
+      "id": "5b6caecf-e125-39fa-bcb1-e7dbba686c95",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.84"
+    },
+    {
+      "id": "5cb434d0-1f5f-3094-888b-9baed9707729",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.154"
+    },
+    {
+      "id": "89a33f13-88cc-3752-ad09-b0ca62ba493e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.12"
+    },
+    {
+      "id": "99078383-f089-3122-8f54-f5f6669640e2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "a6ba3643-0541-306a-860b-0a8e72da14f5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "19a23da53932bc8011220bd8c410cb76012de004 <f6d53d8a2617dd58c89171a6b9610c470ebda38a"
+    },
+    {
+      "id": "c4fca581-0143-3416-95ff-ce16d3c8b567",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.215"
+    },
+    {
+      "id": "dc24f150-e70b-3c03-a76f-763cb92ed7d6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "fb8cb5d4-1dea-31a2-b959-67bad896506d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "19a23da53932bc8011220bd8c410cb76012de004 <e126b508ed2e616d679d85fca2fbe77bb48bbdd7"
+    },
+    {
+      "id": "fd967c81-3c08-385a-a0f3-003f90f24ab8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "19a23da53932bc8011220bd8c410cb76012de004 <4868c0ecdb6cfde7c70cf478c46e06bb9c7e5865"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5d8684c7-84ce-3578-992e-bec085088b32",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

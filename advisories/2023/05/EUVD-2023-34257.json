@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2023-34257",
+  "enisaUuid": "cde60cab-7947-3f49-af05-cbc255f83a02",
+  "description": "A heap-based buffer overflow issue was discovered in libjpeg-turbo in h2v2_merged_upsample_internal() function of jdmrgext.c file. The vulnerability can only be exploited with 12-bit data precision for which the range of the sample data type exceeds the valid sample range, hence, an attacker could craft a 12-bit lossless JPEG image that contains out-of-range 12-bit samples. An application attempting to decompress such image using merged upsampling would lead to segmentation fault or buffer overflows, causing an application to crash.",
+  "datePublished": "May 26, 2023, 12:30:20 AM",
+  "dateUpdated": "Feb 13, 2024, 9:30:23 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/libjpeg-turbo/libjpeg-turbo/issues/675\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2208447\nhttps://access.redhat.com/security/cve/CVE-2023-2804\nhttps://github.com/libjpeg-turbo/libjpeg-turbo/commit/9f756bc67a84d4566bf74a0c2432aa55da404021\nhttps://github.com/libjpeg-turbo/libjpeg-turbo/issues/668#issuecomment-1492586118\nhttps://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01006.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-2804\n",
+  "aliases": "GHSA-jv36-3qpq-7g23\nCVE-2023-2804\n",
+  "assigner": "redhat",
+  "epss": 0.08,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "b2d2368c-8993-354f-8ed3-4a5bceb59518",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

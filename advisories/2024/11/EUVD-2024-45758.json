@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-45758",
+  "enisaUuid": "72b531c7-4b3d-3921-8261-79f2e2c96193",
+  "description": "Out-of-bounds Read vulnerability in Apache NimBLE.\n\nMissing proper validation of HCI Number Of Completed Packets could lead to out-of-bound access when parsing HCI event and invalid read from HCI transport memory.\nThis issue requires broken or bogus Bluetooth controller and thus severity is considered low.\nThis issue affects Apache NimBLE: through 1.7.0.\n\n\nUsers are recommended to upgrade to version 1.8.0, which fixes the issue.",
+  "datePublished": "Nov 26, 2024, 12:41:37 PM",
+  "dateUpdated": "Dec 6, 2024, 12:30:47 PM",
+  "baseScore": -1.0,
+  "references": "https://lists.apache.org/thread/q0vs5rddx1lho30xnpsrvpzgxqmywnhs\nhttps://github.com/apache/mynewt-nimble/commit/4e3ac5b6e7c7df63a594c4ff6839e266b4ccfed9\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-51569\nhttp://www.openwall.com/lists/oss-security/2024/11/26/5\n",
+  "aliases": "CVE-2024-51569\nGHSA-966f-2c6j-qj89\n",
+  "assigner": "apache",
+  "epss": 0.15,
+  "enisaIdProduct": [
+    {
+      "id": "59c2caf0-49cd-36eb-8576-b87a6d1fd9b5",
+      "product": {
+        "name": "Apache NimBLE"
+      },
+      "product_version": "0 \u22641.7.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "67aca532-2628-3a34-959f-516950473873",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

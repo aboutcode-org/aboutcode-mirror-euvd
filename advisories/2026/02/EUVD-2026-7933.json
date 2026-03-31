@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-7933",
+  "enisaUuid": "a456e3be-6fd7-35e1-ac0c-1e3c0751a5ce",
+  "description": "MajorDoMo (aka Major Domestic Module) allows unauthenticated arbitrary module uninstallation through the market module. The market module's admin() method reads gr('mode') from $_REQUEST and assigns it to $this->mode at the start of execution, making all mode-gated code paths reachable without authentication via the /objects/?module=market endpoint. The uninstall mode handler calls uninstallPlugin(), which deletes module records from the database, executes the module's uninstall() method via eval(), recursively deletes the module's directory and template files using removeTree(), and removes associated cycle scripts. An attacker can iterate through module names and wipe the entire MajorDoMo installation with a series of unauthenticated GET requests.",
+  "datePublished": "Feb 19, 2026, 12:30:30 AM",
+  "dateUpdated": "Feb 19, 2026, 12:30:30 AM",
+  "baseScore": 8.7,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/majordomo-revisited/\nhttps://github.com/sergejey/majordomo/pull/1177\nhttps://www.vulncheck.com/advisories/majordomo-unauthenticated-module-uninstall-via-market-endpoint\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27181\n",
+  "aliases": "GHSA-5v24-5hr7-xg26\nCVE-2026-27181\n",
+  "assigner": "VulnCheck",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "6038ef02-18a5-3385-8ff0-b5881e410a13",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    },
+    {
+      "id": "c8d936d6-3892-4b73-a3fc-17dcc02c5c2e",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3d7a88ef-39ef-428e-8445-7fde18abdfe7",
+      "vendor": {
+        "name": "sergejey"
+      }
+    },
+    {
+      "id": "c9537510-3adf-3085-a2bc-524acff4ac19",
+      "vendor": {
+        "name": "sergejey"
+      }
+    }
+  ]
+}

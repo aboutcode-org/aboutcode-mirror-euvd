@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2025-8035",
+  "enisaUuid": "2cde52dd-5be7-3a73-a585-feeaeca171c6",
+  "description": "A security issue was discovered in Kubernetes where under certain conditions, an unauthenticated attacker with access to the pod network can achieve arbitrary code execution in the context of the ingress-nginx controller. This can lead to disclosure of Secrets accessible to the controller. (Note that in the default installation, the controller can access all Secrets cluster-wide.)",
+  "datePublished": "Mar 24, 2025, 11:28:48 PM",
+  "dateUpdated": "Feb 4, 2026, 7:33:52 PM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://https://github.com/kubernetes/kubernetes/issues/131009\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-1974\nhttps://github.com/kubernetes/ingress-nginx\nhttps://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.11.5\nhttps://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.12.1\nhttps://groups.google.com/g/kubernetes-security-announce/c/2qa9DFtN0cQ\nhttps://security.netapp.com/advisory/ntap-20250328-0008\nhttps://github.com/B1ack4sh/Blackash-CVE-2025-1974\nhttps://www.exploit-db.com/exploits/52475\n",
+  "aliases": "GHSA-mgvx-rpfc-9mpv\nCVE-2025-1974\n",
+  "assigner": "kubernetes",
+  "epss": 90.25,
+  "enisaIdProduct": [
+    {
+      "id": "0a082ae3-3918-3933-971c-a7fe0030afba",
+      "product": {
+        "name": "ingress-nginx"
+      },
+      "product_version": "1.12.0"
+    },
+    {
+      "id": "d78219e9-4b1a-3772-b62c-71ef0b0e2e5f",
+      "product": {
+        "name": "ingress-nginx"
+      },
+      "product_version": "0 \u22641.11.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "434f7df6-da93-398a-a505-d484a9b2813c",
+      "vendor": {
+        "name": "Kubernetes"
+      }
+    }
+  ]
+}

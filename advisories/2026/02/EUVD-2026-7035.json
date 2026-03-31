@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7035",
+  "enisaUuid": "f5249980-9146-3b52-b199-3a722e3d8c79",
+  "description": "manga-image-translator version\u00a0beta-0.3 and prior in shared API mode contains an unsafe deserialization vulnerability that can lead to unauthenticated remote code execution. The FastAPI endpoints /simple_execute/{method} and /execute/{method} deserialize attacker-controlled request bodies using pickle.loads() without validation. Although a nonce-based authorization check is intended to restrict access, the nonce defaults to an empty string and the check is skipped, allowing remote attackers to execute arbitrary code in the server context by sending a crafted pickle payload.",
+  "datePublished": "Feb 12, 2026, 12:31:05 AM",
+  "dateUpdated": "Feb 12, 2026, 12:31:05 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/manga-image-translator-pickle-rce/\nhttps://github.com/zyddnys/manga-image-translator/issues/1116\nhttps://github.com/zyddnys/manga-image-translator/issues/946\nhttps://github.com/zyddnys/manga-image-translator/blob/a537cb12b41daf2065795058c2753d87e73fa0fe/manga_translator/mode/share.py#L112\nhttps://github.com/zyddnys/manga-image-translator/blob/a537cb12b41daf2065795058c2753d87e73fa0fe/manga_translator/mode/share.py#L130\nhttps://www.vulncheck.com/advisories/manga-image-translator-shared-api-unsafe-deserialization-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26215\n",
+  "aliases": "GHSA-6cwx-3f6w-m5ch\nCVE-2026-26215\n",
+  "assigner": "VulnCheck",
+  "epss": 0.15,
+  "enisaIdProduct": [
+    {
+      "id": "b682433c-072d-4ed6-84c7-e13c7ba38671",
+      "product": {
+        "name": "manga-image-translator"
+      },
+      "product_version": "0 \u2264beta-0.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ddae7bc4-1b11-4f0e-a352-f56252282e14",
+      "vendor": {
+        "name": "zyddnys"
+      }
+    }
+  ]
+}

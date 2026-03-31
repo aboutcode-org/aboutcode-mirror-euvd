@@ -1,0 +1,168 @@
+{
+  "id": "EUVD-2023-34970",
+  "enisaUuid": "febda132-93c5-32b3-a4b5-511d58f57efb",
+  "description": "The generateKeys() API function returned from crypto.createDiffieHellman() only generates missing (or outdated) keys, that is, it only generates a private key if none has been set yet, but the function is also needed to compute the corresponding public key after calling setPrivateKey(). However, the documentation says this API call: \"Generates private and public Diffie-Hellman key values\".\n\nThe documented behavior is very different from the actual behavior, and this difference could easily lead to security issues in applications that use these APIs as the DiffieHellman may be used as the basis for application-level security, implications are consequently broad.",
+  "datePublished": "Nov 28, 2023, 7:15:19 PM",
+  "dateUpdated": "Nov 4, 2025, 4:10:10 PM",
+  "baseScore": -1.0,
+  "references": "https://nodejs.org/en/blog/vulnerability/june-2023-security-releases\nhttps://lists.debian.org/debian-lts-announce/2024/03/msg00029.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-30590\nhttps://security.netapp.com/advisory/ntap-20241101-0011\n",
+  "aliases": "GHSA-v63h-9gvh-2x49\nCVE-2023-30590\n",
+  "assigner": "hackerone",
+  "epss": 0.95,
+  "enisaIdProduct": [
+    {
+      "id": "131551bc-796f-32bc-9cc5-f7864ca2f423",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "14.0 <14.*"
+    },
+    {
+      "id": "142178e3-5076-3d6b-a484-f32f1a2fd852",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "20.0 <20.3.1"
+    },
+    {
+      "id": "2b17bd3f-897d-3d1e-903a-f7056aaa1552",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "7.0 <7.*"
+    },
+    {
+      "id": "60e57378-2da8-351a-9d30-70bfde03f8e3",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "16.0 <16.20.1"
+    },
+    {
+      "id": "634939a7-f845-30c9-a66f-9502c3fb80cc",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "5.0 <5.*"
+    },
+    {
+      "id": "649338ba-0efd-33a4-9f71-3f2ea588b5d9",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "13.0 <13.*"
+    },
+    {
+      "id": "6495d96b-a5ad-3fc0-94de-86e78459a81e",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "8.0 <8.*"
+    },
+    {
+      "id": "6ed6530c-cbbb-34d8-997d-c65f166d45f7",
+      "product": {
+        "name": "Node.js"
+      },
+      "product_version": "16.20.1 <16.20.1"
+    },
+    {
+      "id": "84949aa3-8bab-385f-9125-9c9f80dfde8b",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "17.0 <17.*"
+    },
+    {
+      "id": "86ca5c2f-c95f-3130-8027-6a0bb8a83d55",
+      "product": {
+        "name": "Node.js"
+      },
+      "product_version": "18.16.1 <18.16.1"
+    },
+    {
+      "id": "99ebd68f-8240-3b3e-bd93-b13051614ec0",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "18.0 <18.16.1"
+    },
+    {
+      "id": "9ac5262f-1569-3291-8244-af567c586e4d",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "6.0 <6.*"
+    },
+    {
+      "id": "9d2757d0-3b08-3db8-897d-664059d63b4f",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "9.0 <9.*"
+    },
+    {
+      "id": "b47f7448-8dbf-3026-8065-2a2c55f32479",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "15.0 <15.*"
+    },
+    {
+      "id": "b60555e4-46f2-3969-8907-ee158bfe6b1e",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "11.0 <11.*"
+    },
+    {
+      "id": "c7eaa9d9-776b-3f1d-a221-f7ddcbe14803",
+      "product": {
+        "name": "Node.js"
+      },
+      "product_version": "20.3.1 <20.3.1"
+    },
+    {
+      "id": "cfb64b91-4ce2-3282-a0af-e1989d17c1aa",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "10.0 <10.*"
+    },
+    {
+      "id": "d1eb59b1-28af-36d8-8c57-4d15f8b74817",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "19.0 <19.*"
+    },
+    {
+      "id": "db493ba2-d16a-32ab-b488-3caeac5761b4",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "4.0 <4.*"
+    },
+    {
+      "id": "e5c79280-bbf1-35aa-8cd5-f709741fdca0",
+      "product": {
+        "name": "Node"
+      },
+      "product_version": "12.0 <12.*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0dba40e9-18ea-3023-b926-78e066fae09f",
+      "vendor": {
+        "name": "Node.js"
+      }
+    },
+    {
+      "id": "d36b197b-c37a-3849-a526-f29e69b765ad",
+      "vendor": {
+        "name": "nodejs"
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-42015",
+  "enisaUuid": "92dbbbe0-bbff-3726-b768-5113e4b692cb",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Remove tst_run from lwt_seg6local_prog_ops.\n\nThe syzbot reported that the lwt_seg6 related BPF ops can be invoked\nvia bpf_test_run() without without entering input_action_end_bpf()\nfirst.\n\nMartin KaFai Lau said that self test for BPF_PROG_TYPE_LWT_SEG6LOCAL\nprobably didn't work since it was introduced in commit 04d4b274e2a\n(\"ipv6: sr: Add seg6local action End.BPF\"). The reason is that the\nper-CPU variable seg6_bpf_srh_states::srh is never assigned in the self\ntest case but each BPF function expects it.\n\nRemove test_run for BPF_PROG_TYPE_LWT_SEG6LOCAL.",
+  "datePublished": "Sep 18, 2024, 9:30:37 AM",
+  "dateUpdated": "Oct 8, 2025, 6:30:14 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9cd15511de7c619bbd0f54bb3f28e6e720ded5d6\nhttps://git.kernel.org/stable/c/c13fda93aca118b8e5cd202e339046728ee7dddb\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46754\n",
+  "aliases": "CVE-2024-46754\nGHSA-crwm-whhx-38v8\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "03c4bf1d-1ddc-3504-8887-c9e9242512cd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "2d508fea-1483-3872-aa18-090509413ce4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "36b2ecf3-d9a6-35ee-8120-f4a311c07d87",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "004d4b274e2a1a895a0e5dc66158b90a7d463d44 <9cd15511de7c619bbd0f54bb3f28e6e720ded5d6"
+    },
+    {
+      "id": "9d4eff7b-80d3-3c1a-a4b6-2d72f8ed3e2c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.18"
+    },
+    {
+      "id": "bc08d97f-f074-37c2-871e-dd084eb2f52a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "004d4b274e2a1a895a0e5dc66158b90a7d463d44 <c13fda93aca118b8e5cd202e339046728ee7dddb"
+    },
+    {
+      "id": "c7f77d7e-bf6b-3d56-9cd3-bf49142e3f7f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "62d881e1-630a-3e75-8b32-16d84cb827c6",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

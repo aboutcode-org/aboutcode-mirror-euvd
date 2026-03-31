@@ -1,0 +1,30 @@
+{
+  "id": "EUVD-2024-16762",
+  "enisaUuid": "d502999f-9954-3c47-9471-df93f6c8f7e1",
+  "description": "Late privilege drop in REFRESH MATERIALIZED VIEW CONCURRENTLY in PostgreSQL allows an object creator to execute arbitrary SQL functions as the command issuer. The command intends to run SQL functions as the owner of the materialized view, enabling safe refresh of untrusted materialized views. The victim is a superuser or member of one of the attacker's roles. The attack requires luring the victim into running REFRESH MATERIALIZED VIEW CONCURRENTLY on the attacker's materialized view. As part of exploiting this vulnerability, the attacker creates functions that use CREATE RULE to convert the internally-built temporary table to a view. Versions before PostgreSQL 15.6, 14.11, 13.14, and 12.18 are affected. The only known exploit does not work in PostgreSQL 16 and later. For defense in depth, PostgreSQL 16.2 adds the protections that older branches are using to fix their vulnerability.",
+  "datePublished": "Feb 8, 2024, 3:30:27 PM",
+  "dateUpdated": "Dec 20, 2024, 3:30:44 PM",
+  "baseScore": 8.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://www.postgresql.org/support/security/CVE-2024-0985/\nhttps://lists.debian.org/debian-lts-announce/2024/03/msg00017.html\nhttps://saites.dev/projects/personal/postgres-cve-2024-0985/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-0985\nhttps://security.netapp.com/advisory/ntap-20241220-0005\n",
+  "aliases": "CVE-2024-0985\nGHSA-4828-5p9m-g4ff\n",
+  "assigner": "PostgreSQL",
+  "epss": 0.77,
+  "enisaIdProduct": [
+    {
+      "id": "88de6244-3033-3408-8472-5150d9381ad9",
+      "product": {
+        "name": "PostgreSQL"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3fece697-48e1-3e4f-a078-f9da4846aed2",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

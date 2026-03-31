@@ -1,0 +1,57 @@
+{
+  "id": "EUVD-2021-15362",
+  "enisaUuid": "04df2121-192e-3752-bc55-be41a6ec3c18",
+  "description": "issues with partially successful P2M updates on x86 T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] x86 HVM and PVH guests may be started in populate-on-demand (PoD) mode, to provide a way for them to later easily have more memory assigned. Guests are permitted to control certain P2M aspects of individual pages via hypercalls. These hypercalls may act on ranges of pages specified via page orders (resulting in a power-of-2 number of pages). In some cases the hypervisor carries out the requests by splitting them into smaller chunks. Error handling in certain PoD cases has been insufficient in that in particular partial success of some operations was not properly accounted for. There are two code paths affected - page removal (CVE-2021-28705) and insertion of new pages (CVE-2021-28709). (We provide one patch which combines the fix to both issues.)",
+  "datePublished": "May 24, 2022, 7:21:18 PM",
+  "dateUpdated": "Feb 4, 2024, 9:30:31 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-28705.html\nhttps://www.debian.org/security/2021/dsa-5017\nhttps://linux.oracle.com/cve/CVE-2021-28705.html\nhttps://xenbits.xenproject.org/xsa/advisory-389.txt\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-28705\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF\n",
+  "aliases": "CVE-2021-28705\nGHSA-397g-22v6-9m75\n",
+  "assigner": "XEN",
+  "epss": 0.12,
+  "enisaIdProduct": [
+    {
+      "id": "47d57cc0-0ae7-3fa8-b6cd-63d848bccae7",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.14.x"
+    },
+    {
+      "id": "7b716565-0397-32ca-8fb6-66166463c687",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "xen-unstable"
+    },
+    {
+      "id": "bb4a4769-f402-3258-9d41-b95504d92cf2",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.15.x"
+    },
+    {
+      "id": "f3c9ba33-469c-30cc-b52b-054cdc17963b",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.12.x"
+    },
+    {
+      "id": "fa7d1b50-467d-3c4d-be2e-c0343c7c3444",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.13.x"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a647e4e5-0ffa-3b7d-88f4-d4c88b2c548f",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

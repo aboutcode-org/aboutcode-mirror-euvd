@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2021-26972",
+  "enisaUuid": "e7bedfd7-4598-302a-9068-12714c958423",
+  "description": "A flaw was found in the USB redirector device emulation of QEMU in versions prior to 6.1.0-rc2. It occurs when dropping packets during a bulk transfer from a SPICE client due to the packet queue being full. A malicious SPICE client could use this flaw to make QEMU call free() with faked heap chunk metadata, resulting in a crash of QEMU or potential code execution with the privileges of the QEMU process on the host.",
+  "datePublished": "May 24, 2022, 7:10:08 PM",
+  "dateUpdated": "Aug 16, 2022, 12:00:42 AM",
+  "baseScore": 8.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-3682.html\nhttps://www.debian.org/security/2021/dsa-4980\nhttps://access.redhat.com/errata/RHSA-2021:3704\nhttps://access.redhat.com/errata/RHSA-2021:3703\nhttps://ubuntu.com/security/CVE-2021-3682\nhttps://security.archlinux.org/CVE-2021-3682\nhttps://linux.oracle.com/cve/CVE-2021-3682.html\nhttps://bugzilla.redhat.com/show_bug.cgi?id=1989651\nhttps://security.netapp.com/advisory/ntap-20210902-0006/\nhttps://lists.debian.org/debian-lts-announce/2021/09/msg00000.html\nhttps://security.gentoo.org/glsa/202208-27\nhttps://lists.debian.org/debian-lts-announce/2022/09/msg00008.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-3682\n",
+  "aliases": "CVE-2021-3682\nGHSA-2w4j-r5v6-3vgr\n",
+  "assigner": "redhat",
+  "epss": 0.42,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "ecae0995-2f7f-34f1-9688-c591e36aa7ca",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

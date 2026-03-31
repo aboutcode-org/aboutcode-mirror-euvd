@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2022-53390",
+  "enisaUuid": "c059e577-f5be-3367-937e-0a52771ce251",
+  "description": "Splunk Enterprise peers in Splunk Enterprise versions before 9.0 and Splunk Cloud Platform versions before 8.2.2203 did not validate the TLS certificates during Splunk-to-Splunk communications by default. Splunk peer communications configured properly with valid certificates were not vulnerable. However, an attacker with administrator credentials could add a peer without a valid certificate and connections from misconfigured nodes without valid certificates did not fail by default. For Splunk Enterprise, update to Splunk Enterprise version 9.0 and Configure TLS host name validation for Splunk-to-Splunk communications (https://docs.splunk.com/Documentation/Splunk/9.0.0/Security/EnableTLSCertHostnameValidation) to enable the remediation.",
+  "datePublished": "Jun 16, 2022, 12:00:22 AM",
+  "dateUpdated": "Jun 25, 2022, 12:01:03 AM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://docs.splunk.com/Documentation/Splunk/9.0.0/Security/EnableTLSCertHostnameValidation\nhttps://docs.splunk.com/Documentation/Splunk/9.0.0/Security/Updates\nhttps://research.splunk.com/application/splunk_digital_certificates_infrastructure_version/\nhttps://research.splunk.com/application/splunk_digital_certificates_lack_of_encryption/\nhttps://research.splunk.com/application/splunk_protocol_impersonation_weak_encryption_selfsigned/\nhttps://research.splunk.com/network/splunk_identified_ssl_tls_certificates/\nhttps://www.splunk.com/en_us/product-security/announcements/svd-2022-0603.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-32153\n",
+  "aliases": "GHSA-3vq3-mvhh-hjcp\nCVE-2022-32153\n",
+  "assigner": "Splunk",
+  "epss": 0.3,
+  "enisaIdProduct": [
+    {
+      "id": "1744a262-493e-3ad3-9c1d-f52c6d502c33",
+      "product": {
+        "name": "Splunk Enterprise"
+      },
+      "product_version": "9.0 <9.0"
+    },
+    {
+      "id": "f23a9ef8-7b8c-3836-9839-b94651009c89",
+      "product": {
+        "name": "Splunk Cloud Platform"
+      },
+      "product_version": "8.2 <8.2.2203"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8fa9f220-5005-3d93-aaaf-f2860d411c1a",
+      "vendor": {
+        "name": "Splunk, Inc"
+      }
+    }
+  ]
+}

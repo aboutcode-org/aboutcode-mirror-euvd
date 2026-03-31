@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-18320",
+  "enisaUuid": "62613d2d-ab3c-37cd-ad64-cb251b1937ee",
+  "description": "This vulnerability allows local attackers to escalate privileges on affected installations of Parallels Desktop 16.1.0-48950. An attacker must first obtain the ability to execute low-privileged code on the target guest system in order to exploit this vulnerability. The specific flaw exists within the Toolgate component. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a fixed-length stack-based buffer. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of the hypervisor. Was ZDI-CAN-12220.",
+  "datePublished": "May 24, 2022, 5:49:11 PM",
+  "dateUpdated": "May 24, 2022, 5:49:11 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+  "references": "https://kb.parallels.com/en/125013\nhttps://www.zerodayinitiative.com/advisories/ZDI-21-428/\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-31420\n",
+  "aliases": "CVE-2021-31420\nGHSA-354r-h986-7xhw\n",
+  "assigner": "zdi",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "e6199d3d-3b05-36f8-b965-4563df88fa26",
+      "product": {
+        "name": "Desktop"
+      },
+      "product_version": "16.1.0-48950"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0d977820-72bb-3773-804c-74c0aaf6d55a",
+      "vendor": {
+        "name": "Parallels"
+      }
+    }
+  ]
+}

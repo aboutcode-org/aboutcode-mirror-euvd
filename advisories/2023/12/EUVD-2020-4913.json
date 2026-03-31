@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2020-4913",
+  "enisaUuid": "7c480847-fbdd-388f-bb45-04b66cf8e72f",
+  "description": "An issue was discovered in BeyondTrust Privilege Management for Windows through 5.6. When specifying a program to elevate, it can typically be found within the Program Files (x86) folder and therefore uses the %ProgramFiles(x86)% environment variable. However, when this same policy gets pushed to a 32bit machine, this environment variable does not exist. Therefore, since the standard user can create a user level environment variable, they can repoint this variable to any folder the user has full control of. Then, the folder structure can be created in such a way that a rule matches and arbitrary code runs elevated.",
+  "datePublished": "Dec 12, 2023, 3:30:58 PM",
+  "dateUpdated": "Dec 15, 2023, 6:30:27 PM",
+  "baseScore": -1.0,
+  "references": "https://www.beyondtrust.com/support/changelog/privilege-management-for-windows-5-6-sr1\nhttps://www.beyondtrust.com/trust-center/security-advisories/bt22-09\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-12612\n",
+  "aliases": "CVE-2020-12612\nGHSA-j69j-38vv-w2h9\n",
+  "assigner": "mitre",
+  "epss": 0.19,
+  "enisaIdProduct": [
+    {
+      "id": "458499d7-9dfc-3175-be8f-8d941e647a03",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "27982fcf-cc57-324c-912c-0d8c654da6c9",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

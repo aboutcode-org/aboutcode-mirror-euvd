@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2023-57045",
+  "enisaUuid": "bbffde61-bfbb-3fa6-a84d-cd6bf47fccd9",
+  "description": "UTF32Encoding.cpp in POCO has a Poco::UTF32Encoding integer overflow and resultant stack buffer overflow because Poco::UTF32Encoding::convert() and Poco::UTF32::queryConvert() may return a negative integer if a UTF-32 byte sequence evaluates to a value of 0x80000000 or higher. This is fixed in 1.11.8p2, 1.12.5p2, and 1.13.0.",
+  "datePublished": "Jan 27, 2024, 3:30:21 AM",
+  "dateUpdated": "Jan 20, 2025, 6:30:48 PM",
+  "baseScore": -1.0,
+  "references": "https://pocoproject.org/blog/?p=1226\nhttps://github.com/pocoproject/poco/issues/4320\nhttps://github.com/pocoproject/poco/compare/poco-1.12.5p2-release...poco-1.13.0-release\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52389\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00017.html\n",
+  "aliases": "CVE-2023-52389\nGHSA-3g75-6vfp-4hm3\n",
+  "assigner": "mitre",
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "35033b39-7caa-3f9d-99e2-50e9f0ee1547",
+      "product": {
+        "name": "n/a"
+      }
+    },
+    {
+      "id": "38c8e518-c351-3ea4-8af7-3cf33572505b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "35033b39-7caa-3f9d-99e2-50e9f0ee1547",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

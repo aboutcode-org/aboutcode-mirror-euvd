@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2024-47796",
+  "enisaUuid": "983b728e-bac6-3aa3-a94b-9f53072f8d70",
+  "description": "A logic bug in the code which disables kernel tracing for setuid programs meant that tracing was not disabled when it should have, allowing unprivileged users to trace and inspect the behavior of setuid programs.\n\nThe bug may be used by an unprivileged user to read the contents of files to which they would not otherwise have access, such as the local password database.",
+  "datePublished": "Aug 12, 2024, 3:30:51 PM",
+  "dateUpdated": "Aug 13, 2024, 3:31:34 PM",
+  "baseScore": -1.0,
+  "references": "https://security.freebsd.org/advisories/FreeBSD-SA-24:06.ktrace.asc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-6760\n",
+  "aliases": "CVE-2024-6760\nGHSA-2mcp-f38w-p5gf\n",
+  "assigner": "freebsd",
+  "epss": 0.25,
+  "enisaIdProduct": [
+    {
+      "id": "9a895c55-6309-3f5d-af16-544eb103fa9c",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.0-RELEASE <p9"
+    },
+    {
+      "id": "b266457a-0438-3a08-8880-cbaf90579012",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "13.3-RELEASE <p5"
+    },
+    {
+      "id": "cc8fdc4c-8a43-32f6-b87c-f8f59edcac1c",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.1-RELEASE <p3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9a4c0d0a-7464-3ba3-bb9e-a361e7b89fc0",
+      "vendor": {
+        "name": "FreeBSD"
+      }
+    }
+  ]
+}

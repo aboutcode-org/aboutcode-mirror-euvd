@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-207866",
+  "enisaUuid": "2f67d838-3d5b-38bd-8aa4-2069559826e8",
+  "description": "The IDonate \u2013 Blood Donation, Request And Donor Management System plugin for WordPress is vulnerable to Privilege Escalation due to a missing capability check on the idonate_donor_profile() function in versions 2.1.5 to 2.1.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to hijack any account by reassigning its email address (via the donor_id they supply) and then triggering a password reset, ultimately granting themselves full administrator privileges.",
+  "datePublished": "Feb 19, 2026, 6:31:50 PM",
+  "dateUpdated": "Feb 19, 2026, 6:31:50 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/51d4b7f6-183b-4a8d-a94d-83c66950a872?source=cve\nhttps://wordpress.org/plugins/idonate/#developers\nhttps://plugins.trac.wordpress.org/browser/idonate/tags/2.1.9/src/Helpers/DonorFunctions.php#L310\nhttps://plugins.trac.wordpress.org/changeset/3334424/idonate/tags/2.1.10/src/Helpers/DonorFunctions.php?old=3279142&old_path=idonate%2Ftags%2F2.1.9%2Fsrc%2FHelpers%2FDonorFunctions.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-4521\n",
+  "aliases": "CVE-2025-4521\nGHSA-gfpc-fhhf-f36m\n",
+  "assigner": "Wordfence",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "e687a0b1-7ff2-419a-89ad-f2b48c87d9ca",
+      "product": {
+        "name": "IDonate \u2013 Blood Donation, Request And Donor Management System"
+      },
+      "product_version": "2.1.5 \u22642.1.9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ae5f1b09-96c8-4b27-bd6e-02468ebcea10",
+      "vendor": {
+        "name": "ThemeAtelier"
+      }
+    }
+  ]
+}

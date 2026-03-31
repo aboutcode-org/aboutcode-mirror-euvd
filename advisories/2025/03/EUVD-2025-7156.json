@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-7156",
+  "enisaUuid": "0092fe52-b085-3214-9aee-de95235218ef",
+  "description": "picklescan before 0.0.23 is vulnerable to a ZIP archive manipulation attack that causes it to crash when attempting to extract and scan PyTorch model archives. By modifying the filename in the ZIP header while keeping the original filename in the directory listing, an attacker can make PickleScan raise a BadZipFile error. However, PyTorch's more forgiving ZIP implementation still allows the model to be loaded, enabling malicious payloads to bypass detection.",
+  "datePublished": "Mar 10, 2025, 11:30:32 AM",
+  "dateUpdated": "Dec 29, 2025, 2:18:19 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:L/SA:L",
+  "references": "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-7q5r-7gvp-wc82\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-1944\nhttps://github.com/mmaitre314/picklescan/commit/e58e45e0d9e091159c1554f9b04828bbb40b9781\nhttps://github.com/mmaitre314/picklescan\nhttps://sites.google.com/sonatype.com/vulnerabilities/cve-2025-1944\nhttps://github.com/pypa/advisory-database/tree/main/vulns/picklescan/PYSEC-2025-20.yaml\nhttps://www.sonatype.com/security-advisories/cve-2025-1944\n",
+  "aliases": "PYSEC-2025-20\nGHSA-7q5r-7gvp-wc82\nCVE-2025-1944\n",
+  "assigner": "Sonatype",
+  "epss": 0.14,
+  "enisaIdProduct": [
+    {
+      "id": "80efcfa1-8858-3be1-a2f0-4c45fc72a603",
+      "product": {
+        "name": "picklescan"
+      },
+      "product_version": "0.0.1 <0.0.23"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c2c0f98b-038b-3f68-b24f-e2c1cc611408",
+      "vendor": {
+        "name": "mmaitre314"
+      }
+    }
+  ]
+}

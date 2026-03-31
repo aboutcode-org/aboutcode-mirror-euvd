@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-46904",
+  "enisaUuid": "e6de80d4-727d-38bf-9e53-468ae6beac5f",
+  "description": "A Type Confusion vulnerability was found in the Spotlight RPC functions in afpd in Netatalk 3.1.x before 3.1.17. When parsing Spotlight RPC packets, one encoded data structure is a key-value style dictionary where the keys are character strings, and the values can be any of the supported types in the underlying protocol. Due to a lack of type checking in callers of the dalloc_value_for_key() function, which returns the object associated with a key, a malicious actor may be able to fully control the value of the pointer and theoretically achieve Remote Code Execution on the host. This issue is similar to CVE-2023-34967.",
+  "datePublished": "Sep 20, 2023, 3:30:52 PM",
+  "dateUpdated": "Jul 1, 2024, 3:31:59 PM",
+  "baseScore": -1.0,
+  "references": "https://netatalk.sourceforge.io/\nhttps://github.com/Netatalk/netatalk/issues/486\nhttps://www.debian.org/security/2023/dsa-5503\nhttps://lists.debian.org/debian-lts-announce/2023/09/msg00031.html\nhttps://netatalk.sourceforge.io/CVE-2023-42464.php\nhttps://netatalk.sourceforge.io/3.1/htmldocs/afpd.8.html\nhttps://netatalk.io/security/CVE-2023-42464\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-42464\nhttps://netatalk.sourceforge.io/2.0/htmldocs/afpd.8.html\n",
+  "aliases": "CVE-2023-42464\nGHSA-qv4g-5q5g-2vc3\n",
+  "assigner": "mitre",
+  "epss": 7.7,
+  "enisaIdProduct": [
+    {
+      "id": "232cef0c-ffba-32d7-8379-49dbbdd4add7",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9728e59d-4928-3580-90d6-e48ad33186a0",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

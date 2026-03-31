@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8868",
+  "enisaUuid": "d1c91f94-e761-3fac-b4b5-a6e49886daaf",
+  "description": "Golioth Firmware SDK version 0.10.0 prior to 0.22.0, fixed in commit\u00a048f521b, contain a stack-based buffer overflow in Payload Utils. The golioth_payload_as_int() and golioth_payload_as_float() helpers copy network-supplied payload data into fixed-size stack buffers using memcpy() with a length derived from payload_size. The only length checks are guarded by assert(); in release builds, the asserts are compiled out and memcpy() may copy an unbounded payload_size. Payloads larger than 12 bytes (int) or 32 bytes (float) can overflow the stack, resulting in a crash/denial of service. This is reachable via LightDB State on_payload with a malicious server or MITM.",
+  "datePublished": "Feb 26, 2026, 6:31:41 PM",
+  "dateUpdated": "Feb 26, 2026, 6:31:41 PM",
+  "baseScore": 6.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+  "references": "https://github.com/golioth/golioth-firmware-sdk/releases/tag/v0.22.0\nhttps://github.com/golioth/golioth-firmware-sdk/commit/48f521bcc0187ada2b9cbdad31dc380e6c7b7332\nhttps://www.vulncheck.com/advisories/golioth-firmware-sdk-payload-utils-stack-based-buffer-overflow\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23747\n",
+  "aliases": "CVE-2026-23747\nGHSA-5wx9-6p5v-7r76\n",
+  "assigner": "VulnCheck",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "687c2b52-7e51-379b-91c9-23011f060445",
+      "product": {
+        "name": "Firmware SDK"
+      },
+      "product_version": "0.10.0 <0.22.0"
+    },
+    {
+      "id": "cdcfb2dc-e5f3-4d88-9434-315d29688baa",
+      "product": {
+        "name": "Firmware SDK"
+      },
+      "product_version": "0.10.0 <0.22.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9a57b4a2-146c-4b89-8e98-0a6116ba8edf",
+      "vendor": {
+        "name": "Golioth"
+      }
+    },
+    {
+      "id": "b2c8a9c5-7a8f-30c5-aedc-6b3396fe0baa",
+      "vendor": {
+        "name": "Golioth"
+      }
+    }
+  ]
+}

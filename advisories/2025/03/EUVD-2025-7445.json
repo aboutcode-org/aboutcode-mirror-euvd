@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-7445",
+  "enisaUuid": "918d50d8-d887-33f9-986c-c8803d64a05e",
+  "description": "picklescan before 0.0.23 fails to detect malicious pickle files inside PyTorch model archives when certain ZIP file flag bits are modified. By flipping specific bits in the ZIP file headers, an attacker can embed malicious pickle files that remain undetected by PickleScan while still being successfully loaded by PyTorch's torch.load(). This can lead to arbitrary code execution when loading a compromised model.",
+  "datePublished": "Mar 10, 2025, 11:43:02 AM",
+  "dateUpdated": "Dec 29, 2025, 2:17:42 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:L/SA:L",
+  "references": "https://sites.google.com/sonatype.com/vulnerabilities/cve-2025-1945\nhttps://github.com/mmaitre314/picklescan/security/advisories/GHSA-w8jq-xcqf-f792\nhttps://github.com/mmaitre314/picklescan/commit/e58e45e0d9e091159c1554f9b04828bbb40b9781\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-1945\nhttps://github.com/pypa/advisory-database/tree/main/vulns/picklescan/PYSEC-2025-21.yaml\nhttps://www.sonatype.com/security-advisories/cve-2025-1945\n",
+  "aliases": "PYSEC-2025-21\nCVE-2025-1945\nGHSA-w8jq-xcqf-f792\n",
+  "assigner": "Sonatype",
+  "epss": 0.31,
+  "enisaIdProduct": [
+    {
+      "id": "ef5450b2-1b47-3213-ba20-3f98ea66c63a",
+      "product": {
+        "name": "picklescan"
+      },
+      "product_version": "0.0.1 <0.0.23"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6e181c7d-7278-3998-899d-263e6a01ceb5",
+      "vendor": {
+        "name": "mmaitre314"
+      }
+    }
+  ]
+}

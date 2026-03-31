@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2024-42074",
+  "enisaUuid": "f07c2d4d-c27a-39c2-9827-f50ce70af860",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check link_index before accessing dc->links[]\n\n[WHY & HOW]\ndc->links[] has max size of MAX_LINKS and NULL is return when trying to\naccess with out-of-bound index.\n\nThis fixes 3 OVERRUN and 1 RESOURCE_LEAK issues reported by Coverity.",
+  "datePublished": "Sep 27, 2024, 12:35:55 PM",
+  "dateUpdated": "Jul 11, 2025, 5:20:38 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/ac04759b4a002969cf0f1384f1b8bb2001cfa782\nhttps://git.kernel.org/stable/c/8aa2864044b9d13e95fe224f32e808afbf79ecdf\nhttps://git.kernel.org/stable/c/032c5407a608ac3b2a98bf4fbda27d12c20c5887\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46813\n",
+  "aliases": "GHSA-2vgc-pr6w-4gq9\nCVE-2024-46813\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "31cfc79d-52dc-3a64-98af-311fd0067549",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8aa2864044b9d13e95fe224f32e808afbf79ecdf"
+    },
+    {
+      "id": "43c92ad4-1c2f-385f-96dc-1a1d5ebcf0fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "574d0c42-7f2f-3b72-bf0a-85cdab877fc1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <032c5407a608ac3b2a98bf4fbda27d12c20c5887"
+    },
+    {
+      "id": "5ab713a9-f5aa-394d-ab9a-cc932e25b83a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.15"
+    },
+    {
+      "id": "b86d35d3-4efb-345f-afad-75e0b78e01a6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <ac04759b4a002969cf0f1384f1b8bb2001cfa782"
+    },
+    {
+      "id": "bf456a36-03b4-354c-9511-7a1c528c100b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <032c5407a608ac3b2a98bf4fbda27d12c20c5887"
+    },
+    {
+      "id": "c9fb739a-39ed-3dea-b696-47efe6c88a20",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.87"
+    },
+    {
+      "id": "cb167ce5-96e5-334f-bf18-930368957e4a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <8aa2864044b9d13e95fe224f32e808afbf79ecdf"
+    },
+    {
+      "id": "e592ff7d-5e82-3fd0-8c79-2e1e54ce5eff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e6e91db9-28b1-3168-a0b5-00db46dc1866",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ac04759b4a002969cf0f1384f1b8bb2001cfa782"
+    },
+    {
+      "id": "ec4c5e3d-4990-3a7f-8a1a-44fb2589d80e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bf911917-267e-3597-9a5b-eb7d96b12bc1",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2024-0085",
+  "enisaUuid": "69376f97-11fa-33d6-a6ae-1650caae75c6",
+  "description": "LangChain through 0.1.10 allows ../ directory traversal by an actor who is able to control the final part of the path parameter in a load_chain call. This bypasses the intended behavior of loading configurations only from the hwchase17/langchain-hub GitHub repository. The outcome can be disclosure of an API key for a large language model online service, or remote code execution.",
+  "datePublished": "Mar 4, 2024, 2:15:00 AM",
+  "dateUpdated": "Mar 5, 2024, 12:22:15 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/PinkDraconian/PoC-Langchain-RCE/blob/main/README.md\nhttps://github.com/langchain-ai/langchain/blob/f96dd57501131840b713ed7c2e86cbf1ddc2761f/libs/core/langchain_core/utils/loading.py\nhttps://github.com/langchain-ai/langchain/pull/18600\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-28088\nhttps://github.com/langchain-ai/langchain/commit/e1924b3e93d513ca950c72f8e80e1c133749fba5\nhttps://github.com/pypa/advisory-database/tree/main/vulns/langchain-core/PYSEC-2024-45.yaml\nhttps://github.com/pypa/advisory-database/tree/main/vulns/langchain/PYSEC-2024-43.yaml\n",
+  "aliases": "PYSEC-2024-45\nGHSA-h59x-p739-982c\nCVE-2024-28088\nPYSEC-2024-43\n",
+  "assigner": "mitre",
+  "epss": 13.44,
+  "enisaIdProduct": [
+    {
+      "id": "68d8e813-b394-3871-870e-335caa714c3f",
+      "product": {
+        "name": "n/a"
+      }
+    },
+    {
+      "id": "e1a54618-1411-3e66-9628-221852e0ebda",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "68d8e813-b394-3871-870e-335caa714c3f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

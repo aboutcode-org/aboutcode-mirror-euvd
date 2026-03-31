@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-20763",
+  "enisaUuid": "73068f45-52b9-36bb-a141-484ebed98e8c",
+  "description": "An unauthenticated information disclosure vulnerability exists in the WordPress Total Upkeep plugin (also known as BoldGrid Backup) prior to version 1.14.10. The plugin exposes multiple endpoints that allow unauthenticated users to retrieve detailed server configuration (env-info.php) and discover backup metadata (restore-info.json). These backups, which may include full SQL database dumps, are accessible without authentication if their paths are known or guessed. The restore-info.json endpoint discloses the absolute filesystem path of the latest backup, which attackers can convert into a web-accessible URL under wp-content/uploads/ and download. Extracting the database archive may yield credential hashes from the wp_users table, facilitating offline password cracking or credential stuffing attacks.",
+  "datePublished": "Jul 9, 2025, 3:30:22 AM",
+  "dateUpdated": "Jul 9, 2025, 3:30:22 AM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/auxiliary/scanner/http/wp_total_upkeep_downloader.rb\nhttps://www.exploit-db.com/exploits/49252\nhttps://plugins.trac.wordpress.org/changeset/2439376/boldgrid-backup\nhttps://www.boldgrid.com/wordpress-backup-plugin/\nhttps://wordpress.org/plugins/boldgrid-backup/\nhttps://vulncheck.com/advisories/wordpress-total-upkeep-boldgrid-backup-plugin-info-disclosure\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-34084\n",
+  "aliases": "CVE-2025-34084\nGHSA-fq9r-wxr5-h64q\n",
+  "assigner": "VulnCheck",
+  "epss": 0.27,
+  "enisaIdProduct": [
+    {
+      "id": "a3079ea4-c671-3d5d-ac2e-91db3d898471",
+      "product": {
+        "name": "Total Upkeep (BoldGrid Backup) WordPress Plugin"
+      },
+      "product_version": "* <1.14.10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "73689927-4172-39c5-af6e-c9f2cb21ca2d",
+      "vendor": {
+        "name": "boldgrid"
+      }
+    }
+  ]
+}

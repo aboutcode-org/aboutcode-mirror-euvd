@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2020-4152",
+  "enisaUuid": "d97ba376-50d6-3767-ad27-f6e42c308ed5",
+  "description": "An issue was discovered in OpenVPN 2.4.x before 2.4.9. An attacker can inject a data channel v2 (P_DATA_V2) packet using a victim's peer-id. Normally such packets are dropped, but if this packet arrives before the data channel crypto parameters have been initialized, the victim's connection will be dropped. This requires careful timing due to the small time window (usually within a few seconds) between the victim client connection starting and the server PUSH_REPLY response back to the client. This attack will only work if Negotiable Cipher Parameters (NCP) is in use.",
+  "datePublished": "May 24, 2022, 5:16:34 PM",
+  "dateUpdated": "May 24, 2022, 5:16:34 PM",
+  "baseScore": 3.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://www.suse.com/security/cve/CVE-2020-11810.html\nhttps://ubuntu.com/security/CVE-2020-11810\nhttps://advisories.mageia.org/CVE-2020-11810.html\nhttps://security.archlinux.org/CVE-2020-11810\nhttps://alas.aws.amazon.com/cve/html/CVE-2020-11810.html\nhttps://github.com/OpenVPN/openvpn/commit/37bc691e7d26ea4eb61a8a434ebd7a9ae76225ab\nhttps://security-tracker.debian.org/tracker/CVE-2020-11810\nhttps://bugzilla.suse.com/show_bug.cgi?id=1169925\nhttps://community.openvpn.net/openvpn/ticket/1272\nhttps://patchwork.openvpn.net/patch/1079/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FGHHV4YZANZW45KZTJJGVGPFMSXYRCKZ/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JII7RYYYRBPQNEGGVSOXCM7JUZ43T3VH/\nhttps://lists.debian.org/debian-lts-announce/2022/05/msg00002.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-11810\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/FGHHV4YZANZW45KZTJJGVGPFMSXYRCKZ\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JII7RYYYRBPQNEGGVSOXCM7JUZ43T3VH\n",
+  "aliases": "CVE-2020-11810\nGHSA-6crj-vqv7-qq9r\n",
+  "assigner": "mitre",
+  "epss": 2.36,
+  "enisaIdProduct": [
+    {
+      "id": "e41b2fb0-437d-378d-afa0-62ad61936380",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "05470d03-133c-3344-83a5-584df53c2e80",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

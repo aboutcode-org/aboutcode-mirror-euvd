@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-18339",
+  "enisaUuid": "189033ef-30c7-3612-8a1a-ee61c5bab869",
+  "description": "This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of Synology DiskStation Manager. Authentication is not required to exploit this vulnerablity. The specific flaw exists within the processing of DSI structures in Netatalk. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-12326.",
+  "datePublished": "May 24, 2022, 7:02:57 PM",
+  "dateUpdated": "Jan 14, 2025, 9:31:41 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2021-31439.html\nhttps://advisories.mageia.org/CVE-2021-31439.html\nhttps://www.zerodayinitiative.com/advisories/ZDI-21-492/\nhttps://www.synology.com/zh-hk/security/advisory/Synology_SA_20_26\nhttps://lists.debian.org/debian-lts-announce/2023/05/msg00018.html\nhttps://www.debian.org/security/2023/dsa-5503\nhttps://security.gentoo.org/glsa/202311-02\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-31439\n",
+  "aliases": "CVE-2021-31439\nGHSA-8292-4xc6-r7cv\n",
+  "assigner": "zdi",
+  "epss": 1.04,
+  "enisaIdProduct": [
+    {
+      "id": "01be6ae5-6580-3a6d-8c37-6eb79bd0703e",
+      "product": {
+        "name": "DiskStation Manager"
+      },
+      "product_version": "6.1.1-15101-4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "331c6e65-5f70-3e99-81be-8cc4e072daed",
+      "vendor": {
+        "name": "Synology"
+      }
+    }
+  ]
+}

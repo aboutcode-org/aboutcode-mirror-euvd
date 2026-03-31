@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-6237",
+  "enisaUuid": "fc5c1b86-6cca-3c1d-9d5b-53b9807abcb8",
+  "description": "DoraCMS version 3.1 and prior contains a server-side request forgery (SSRF) vulnerability in its UEditor remote image fetch functionality. The application accepts user-supplied URLs and performs server-side HTTP or HTTPS requests without sufficient validation or destination restrictions. The implementation does not enforce allowlists, block internal or private IP address ranges, or apply request timeouts or response size limits. An attacker can abuse this behavior to induce the server to issue outbound requests to arbitrary hosts, including internal network resources, potentially enabling internal network scanning and denial of service through resource exhaustion.",
+  "datePublished": "Feb 11, 2026, 12:30:19 AM",
+  "dateUpdated": "Feb 11, 2026, 12:30:19 AM",
+  "baseScore": 6.9,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:L/SI:L/SA:L",
+  "references": "https://github.com/doramart/DoraCMS/issues/268\nhttps://www.doracms.net/\nhttps://www.vulncheck.com/advisories/doracms-ueditor-remote-image-fetch-ssrf\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-25870\n",
+  "aliases": "CVE-2026-25870\nGHSA-22v2-wj2v-mmrw\n",
+  "assigner": "VulnCheck",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "9b0c31c4-a639-3bc0-85d1-4337411cb761",
+      "product": {
+        "name": "DoraCMS"
+      },
+      "product_version": "0 \u22643.1"
+    },
+    {
+      "id": "f5bb44bc-93e5-49d9-9ea0-2b539f8f98bc",
+      "product": {
+        "name": "DoraCMS"
+      },
+      "product_version": "0 \u22643.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "833de9db-9008-45c6-8cfc-da5b285a46f8",
+      "vendor": {
+        "name": "doramart"
+      }
+    },
+    {
+      "id": "e8da6fc2-ecae-3cf0-b7e8-229ed6bf50cd",
+      "vendor": {
+        "name": "doramart"
+      }
+    }
+  ]
+}

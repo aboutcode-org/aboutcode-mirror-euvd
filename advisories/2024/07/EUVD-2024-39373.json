@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2024-39373",
+  "enisaUuid": "5038c4ab-9dad-356a-8878-91dbb1146341",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Restrict untrusted app to attach to privileged PD\n\nUntrusted application with access to only non-secure fastrpc device\nnode can attach to root_pd or static PDs if it can make the respective\ninit request. This can cause problems as the untrusted application\ncan send bad requests to root_pd or static PDs. Add changes to reject\nattach to privileged PDs if the request is being made using non-secure\nfastrpc device node.",
+  "datePublished": "Jul 29, 2024, 3:30:39 PM",
+  "dateUpdated": "Aug 29, 2024, 6:31:34 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-41024\nhttps://git.kernel.org/stable/c/2eb973ee4770a26d9b5e292b58ad29822d321c7f\nhttps://git.kernel.org/stable/c/5e305b5986dc52122a9368a1461f0c13e1de3fd6\nhttps://git.kernel.org/stable/c/bab2f5e8fd5d2f759db26b78d9db57412888f187\nhttps://git.kernel.org/stable/c/c69fd8afacebfdf2f8a1ee1ea7e0723786529874\nhttps://git.kernel.org/stable/c/ea13bd807f1cef1af375d999980a9b9794c789b6\n",
+  "aliases": "GHSA-5r86-7p4c-pw27\nCVE-2024-41024\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2019-2895",
+  "enisaUuid": "306e4f30-e2cc-30f0-9348-53cf729919bd",
+  "description": "** DISPUTED ** The Linux kernel through 5.0.7, when CONFIG_IA32_AOUT is enabled and ia32_aout is loaded, allows local users to bypass ASLR on setuid a.out programs (if any exist) because install_exec_creds() is called too late in load_aout_binary() in fs/binfmt_aout.c, and thus the ptrace_may_access() check has a race condition when reading /proc/pid/stat. NOTE: the software maintainer disputes that this is a vulnerability because ASLR for a.out format executables has never been supported.",
+  "datePublished": "May 14, 2022, 12:58:07 AM",
+  "dateUpdated": "Mar 21, 2024, 3:33:34 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2019-11191.html\nhttps://ubuntu.com/security/CVE-2019-11191\nhttps://www.openwall.com/lists/oss-security/2019/04/03/4\nhttps://www.openwall.com/lists/oss-security/2019/04/03/4/1\nhttp://www.securityfocus.com/bid/107887\nhttp://www.openwall.com/lists/oss-security/2019/04/18/5\nhttp://www.openwall.com/lists/oss-security/2019/05/22/7\nhttps://usn.ubuntu.com/4007-2/\nhttps://usn.ubuntu.com/4008-1/\nhttps://usn.ubuntu.com/4006-1/\nhttps://usn.ubuntu.com/4006-2/\nhttps://usn.ubuntu.com/4007-1/\nhttps://usn.ubuntu.com/4008-3/\nhttp://lists.opensuse.org/opensuse-security-announce/2019-06/msg00039.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-11191\n",
+  "aliases": "CVE-2019-11191\nGHSA-wv63-pcg9-3x4q\n",
+  "assigner": "mitre",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "2242e035-6352-389a-83f1-af7fc4c850d7",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7c29afe5-c25e-35c7-8b28-219d6edfde7a",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

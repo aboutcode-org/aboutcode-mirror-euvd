@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-22507",
+  "enisaUuid": "45486f21-481e-3183-ac88-c918c87229bd",
+  "description": "The AI Engine plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.9.4. The simpleTranscribeAudio endpoint fails to restrict URL schemes before calling get_audio(). This makes it possible for authenticated attackers, with Subscriber-level access and above, to read any file on the web server and exfiltrate it via the plugin\u2019s OpenAI API integration.",
+  "datePublished": "Jul 25, 2025, 3:30:44 PM",
+  "dateUpdated": "Jul 25, 2025, 3:30:44 PM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/513274bc-3016-4adb-be78-b13c5fae9c03?source=cve\nhttps://wordpress.org/plugins/ai-engine/#developers\nhttps://plugins.trac.wordpress.org/browser/ai-engine/tags/2.9.3/classes/engines/chatml.php#L829\nhttps://plugins.trac.wordpress.org/browser/ai-engine/tags/2.9.3/classes/api.php#L625\nhttps://plugins.trac.wordpress.org/changeset/3332540/\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-7780\n",
+  "aliases": "CVE-2025-7780\nGHSA-mg6f-qcc4-f2gp\n",
+  "assigner": "Wordfence",
+  "epss": 0.06,
+  "enisaIdProduct": [
+    {
+      "id": "50015302-942d-3842-be96-3d33571a4374",
+      "product": {
+        "name": "AI Engine"
+      },
+      "product_version": "* \u22642.9.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c6d44db1-5fe3-32b3-9e2d-09b54f6fa238",
+      "vendor": {
+        "name": "tigroumeow"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-0354",
+  "enisaUuid": "9eda73a9-699a-36d6-a4cf-accbfcabaa8d",
+  "description": "Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache Solr.\nThe Solr Metrics API publishes all unprotected environment variables available to each Apache Solr instance. Users are able to specify which environment variables to hide, however, the default list is designed to work for known secret Java system properties. Environment variables cannot be strictly defined in Solr, like Java system properties can be, and may be set for the entire host,\u00a0unlike Java system properties which are set per-Java-proccess.\n\nThe Solr Metrics API is protected by the \"metrics-read\" permission.\nTherefore, Solr Clouds with Authorization setup will only be vulnerable via users with the \"metrics-read\" permission.\nThis issue affects Apache Solr: from 9.0.0 before 9.3.0.\n\nUsers are recommended to upgrade to version 9.3.0 or later, in which environment variables are not published via the Metrics API.\n\n",
+  "datePublished": "Jan 15, 2024, 9:32:44 AM",
+  "dateUpdated": "Aug 2, 2024, 10:16:46 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-50290\nhttps://github.com/apache/solr/commit/35fc4bdc48171d9a64251c54a1e76deb558cf9d8\nhttps://github.com/apache/lucene-solr\nhttps://issues.apache.org/jira/browse/SOLR-16808\nhttps://solr.apache.org/security.html#cve-2023-50290-apache-solr-allows-read-access-to-host-environment-variables\n",
+  "aliases": "CVE-2023-50290\nGHSA-gg7w-pw2r-x2cq\n",
+  "assigner": "apache",
+  "epss": 92.56,
+  "enisaIdProduct": [
+    {
+      "id": "30344ef2-5a4a-393f-b79c-279a6ed3bbf9",
+      "product": {
+        "name": "Apache Solr"
+      },
+      "product_version": "9.0.0 <9.3.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b72c89e7-de18-318d-8819-9bcc56e163cf",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

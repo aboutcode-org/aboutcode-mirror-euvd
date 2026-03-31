@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-12630",
+  "enisaUuid": "4fdeb125-6564-35cf-8c92-3f2fc83a4e06",
+  "description": "A security issue was discovered in ingress-nginx where a user that can create or update ingress objects can use .metadata.annotations in an Ingress object (in the networking.k8s.io or extensions API group) to obtain the credentials of the ingress-nginx controller. In the default configuration, that credential has access to all secrets in the cluster.",
+  "datePublished": "May 7, 2022, 12:00:48 AM",
+  "dateUpdated": "May 14, 2022, 12:01:18 AM",
+  "baseScore": 7.6,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L",
+  "references": "https://security.archlinux.org/CVE-2021-25746\nhttps://www.suse.com/security/cve/CVE-2021-25746.html\nhttps://groups.google.com/g/kubernetes-security-announce/c/hv2-SfdqcfQ\nhttps://github.com/kubernetes/ingress-nginx/issues/8503\nhttps://security.netapp.com/advisory/ntap-20220609-0006/\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-25746\n",
+  "aliases": "CVE-2021-25746\nGHSA-79xv-4hmm-pw72\n",
+  "assigner": "kubernetes",
+  "epss": 0.58,
+  "enisaIdProduct": [
+    {
+      "id": "5fe15b68-e9c1-36dc-9f6d-717a14a4235d",
+      "product": {
+        "name": "Kubernetes ingress-nginx"
+      },
+      "product_version": "unspecified <1.2.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "45980dff-cb2f-37ad-a90a-9e7857ace6a6",
+      "vendor": {
+        "name": "Kubernetes"
+      }
+    }
+  ]
+}

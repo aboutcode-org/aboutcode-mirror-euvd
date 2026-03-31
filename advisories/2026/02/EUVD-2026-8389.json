@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8389",
+  "enisaUuid": "c5b94417-933e-39a9-a19d-4762f24b08e9",
+  "description": "MajorDoMo (aka Major Domestic Module) contains a stored cross-site scripting (XSS) vulnerability via the /objects/?op=set endpoint, which is intentionally unauthenticated for IoT device integration. User-supplied property values are stored raw in the database without sanitization. When an administrator views the property editor in the admin panel, the stored values are rendered without escaping in both a paragraph tag (SOURCE field) and a textarea element (VALUE field). The XSS fires on page load without requiring any click from the admin. Additionally, the session cookie lacks the HttpOnly flag, enabling session hijack via document.cookie exfiltration. An attacker can enumerate properties via the unauthenticated /api.php/data/ endpoint and poison any property with malicious JavaScript.",
+  "datePublished": "Feb 19, 2026, 12:30:29 AM",
+  "dateUpdated": "Feb 19, 2026, 12:30:29 AM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N",
+  "references": "https://chocapikk.com/posts/2026/majordomo-revisited/\nhttps://github.com/sergejey/majordomo/pull/1177\nhttps://www.vulncheck.com/advisories/majordomo-stored-cross-site-scripting-via-property-set-endpoint\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27177\n",
+  "aliases": "CVE-2026-27177\nGHSA-c59q-pmw5-v3pf\n",
+  "assigner": "VulnCheck",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "b812461c-ed71-40b8-a07f-f3eccc4a5e7c",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    },
+    {
+      "id": "ef9b6eb5-b646-3953-b628-f0c94207a951",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "0b86e912-6cde-3248-a6c1-c5aa1eaacac5",
+      "vendor": {
+        "name": "sergejey"
+      }
+    },
+    {
+      "id": "58e29996-10e7-46ce-8881-f3fb21d3a0ed",
+      "vendor": {
+        "name": "sergejey"
+      }
+    }
+  ]
+}

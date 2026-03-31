@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6871",
+  "enisaUuid": "74439ed7-ec88-3bc2-a2be-291fc14c48b3",
+  "description": "The Fluent Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the AI Form Builder module in all versions up to, and including, 6.1.14 due to a combination of missing authorization checks, a leaked nonce, and insufficient input sanitization. The vulnerability allows Subscriber-level users to trigger AI form generation via a protected endpoint. When prompted, AI services will typically return bare JavaScript code (without <script> tags), which bypasses the plugin's sanitization. This stored JavaScript executes whenever anyone views the generated form, making it possible for authenticated attackers with Subscriber-level access and above to inject arbitrary web scripts that will execute in the context of any user accessing the form.",
+  "datePublished": "Feb 10, 2026, 6:30:39 AM",
+  "dateUpdated": "Feb 10, 2026, 6:30:39 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/00192a36-4b75-4dae-9a6e-0afb02ed5bad?source=cve\nhttps://plugins.trac.wordpress.org/browser/fluentform/tags/6.1.12/boot/globals.php#L438\nhttps://plugins.trac.wordpress.org/browser/fluentform/tags/6.1.12/app/Modules/Ai/AiFormBuilder.php#L29\nhttps://plugins.trac.wordpress.org/browser/fluentform/tags/6.1.12/app/Modules/Ai/AiFormBuilder.php#L334\nhttps://plugins.trac.wordpress.org/browser/fluentform/tags/6.1.12/app/Hooks/actions.php#L641\nhttps://plugins.trac.wordpress.org/changeset/3449710/fluentform/trunk/app/Hooks/actions.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-0996\n",
+  "aliases": "CVE-2026-0996\nGHSA-fhfr-52x2-ggm2\n",
+  "assigner": "Wordfence",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "15ef3a33-30bc-4645-ad11-69c6764d6fb8",
+      "product": {
+        "name": "Fluent Forms \u2013 Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder"
+      },
+      "product_version": "* \u22646.1.14"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "164771c6-9436-41f2-aa42-6bffd8126064",
+      "vendor": {
+        "name": "techjewel"
+      }
+    }
+  ]
+}

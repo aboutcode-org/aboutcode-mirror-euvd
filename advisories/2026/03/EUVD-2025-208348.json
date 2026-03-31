@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2025-208348",
+  "enisaUuid": "d0a9dea5-b25c-3409-89bf-78346a778a17",
+  "description": "GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an abort (SIGABRT) when processing a crafted ELF binary with malformed DWARF abbrev or debug information. Due to incomplete state cleanup in process_debug_info(), an invalid debug_info_p state may propagate into DWARF attribute parsing routines. When certain malformed attributes result in an unexpected data length of zero, byte_get_little_endian() triggers a fatal abort. No evidence of memory corruption or code execution was observed; the impact is limited to denial of service.",
+  "datePublished": "Mar 6, 2026, 9:30:37 PM",
+  "dateUpdated": "Mar 6, 2026, 9:30:37 PM",
+  "baseScore": 0.0,
+  "references": "https://sourceware.org/bugzilla/show_bug.cgi?id=33701\nhttps://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=44b79abd0fa12e7947252eb4c6e5d16ed6033e01\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-69652\n",
+  "aliases": "GHSA-c4wj-p3m6-6483\nCVE-2025-69652\n",
+  "assigner": "mitre",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "5456db4a-e624-3286-8397-8f97f28cec82",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "73fb0f89-62f5-36f0-a657-acc73c5daceb",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

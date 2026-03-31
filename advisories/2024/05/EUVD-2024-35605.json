@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-35605",
+  "enisaUuid": "b048d1fb-11ba-3dde-899a-5e6bfc4ee110",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nax25: fix use-after-free bugs caused by ax25_ds_del_timer\n\nWhen the ax25 device is detaching, the ax25_dev_device_down()\ncalls ax25_ds_del_timer() to cleanup the slave_timer. When\nthe timer handler is running, the ax25_ds_del_timer() that\ncalls del_timer() in it will return directly. As a result,\nthe use-after-free bugs could happen, one of the scenarios\nis shown below:\n\n      (Thread 1)          |      (Thread 2)\n                          | ax25_ds_timeout()\nax25_dev_device_down()    |\n  ax25_ds_del_timer()     |\n    del_timer()           |\n  ax25_dev_put() //FREE   |\n                          |  ax25_dev-> //USE\n\nIn order to mitigate bugs, when the device is detaching, use\ntimer_shutdown_sync() to stop the timer.",
+  "datePublished": "May 19, 2024, 9:34:46 AM",
+  "dateUpdated": "Dec 31, 2024, 9:30:44 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/74204bf9050f7627aead9875fe4e07ba125cb19b\nhttps://git.kernel.org/stable/c/c6a368f9c7af4c14b14d390c2543af8001c9bdb9\nhttps://git.kernel.org/stable/c/fd819ad3ecf6f3c232a06b27423ce9ed8c20da89\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-35887\n",
+  "aliases": "GHSA-x3w9-8c2f-ccvj\nCVE-2024-35887\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "2da33837-2025-331f-b59b-3cba8f2fbb19",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <74204bf9050f7627aead9875fe4e07ba125cb19b"
+    },
+    {
+      "id": "309773a9-5cdb-31d4-9962-026a3ddd3cb6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "31700571-958a-3a05-8b81-2312fa38f258",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fd819ad3ecf6f3c232a06b27423ce9ed8c20da89"
+    },
+    {
+      "id": "58d5ef69-f76c-3632-ad73-99d080892913",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.12"
+    },
+    {
+      "id": "7a1a9c41-f742-329b-9e92-3c1bba28d4a7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "a0899ccd-82ff-3dce-9b98-cd62c6612113",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.5"
+    },
+    {
+      "id": "a2928883-baed-3dc0-bd24-f0b417ff17b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.26"
+    },
+    {
+      "id": "bbf161ec-1562-3fe1-8d32-7486ab94c28e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c6a368f9c7af4c14b14d390c2543af8001c9bdb9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1c8543e5-69f4-3e0d-a6f6-f0c3451b87ce",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2021-34508",
+  "enisaUuid": "15db8b6d-1943-34aa-a695-00ac499cb1aa",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: ensure task_work gets run as part of cancelations\n\nIf we successfully cancel a work item but that work item needs to be\nprocessed through task_work, then we can be sleeping uninterruptibly\nin io_uring_cancel_generic() and never process it. Hence we don't\nmake forward progress and we end up with an uninterruptible sleep\nwarning.\n\nWhile in there, correct a comment that should be IFF, not IIF.",
+  "datePublished": "May 24, 2024, 3:01:51 PM",
+  "dateUpdated": "Jul 28, 2025, 11:16:20 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/8e12976c0c19ebc14b60046b1348c516a74c25a2\nhttps://git.kernel.org/stable/c/78a780602075d8b00c98070fa26e389b3b3efa72\n",
+  "aliases": "CVE-2021-47504\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "048f51b7-180d-38c9-b5f1-3ff2ad061f99",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <78a780602075d8b00c98070fa26e389b3b3efa72"
+    },
+    {
+      "id": "28bf483a-054e-3462-88de-888943420af0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2b188cc1bb857a9d4701ae59aa7768b5124e262e <78a780602075d8b00c98070fa26e389b3b3efa72"
+    },
+    {
+      "id": "566c452e-42f0-31bf-89b8-616b19ceea0c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "5687784e-6a6b-3830-939f-7d368d936c1c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.1"
+    },
+    {
+      "id": "7867c4ba-0d8e-320b-97b7-97730c809b1b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.8"
+    },
+    {
+      "id": "79ef8095-daac-3bf6-9e09-139d39146b8e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2b188cc1bb857a9d4701ae59aa7768b5124e262e <8e12976c0c19ebc14b60046b1348c516a74c25a2"
+    },
+    {
+      "id": "8043ba77-6c78-3843-8375-acf8594b4cf6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    },
+    {
+      "id": "fb5e3fcf-bdb7-376f-a5c2-df9fb263a33a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8e12976c0c19ebc14b60046b1348c516a74c25a2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7e1b0300-485c-324e-9e39-c7380b164e3a",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

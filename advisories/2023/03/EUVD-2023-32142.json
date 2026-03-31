@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2023-32142",
+  "enisaUuid": "9570af80-f65b-37ea-beee-82951232880a",
+  "description": "hci_conn_cleanup in net/bluetooth/hci_conn.c in the Linux kernel through 6.2.9 has a use-after-free (observed in hci_conn_hash_flush) because of calls to hci_dev_put and hci_conn_put. There is a double free that may lead to privilege escalation.",
+  "datePublished": "Mar 31, 2023, 6:30:22 PM",
+  "dateUpdated": "Apr 7, 2023, 3:30:19 AM",
+  "baseScore": -1.0,
+  "references": "https://lore.kernel.org/lkml/20230309074645.74309-1-wzhmmmmm@gmail.com/\nhttps://www.openwall.com/lists/oss-security/2023/03/28/2\nhttps://www.openwall.com/lists/oss-security/2023/03/28/3\nhttps://security.netapp.com/advisory/ntap-20230517-0004/\nhttps://lore.kernel.org/lkml/20230309074645.74309-1-wzhmmmmm%40gmail.com/\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-28464\n",
+  "aliases": "CVE-2023-28464\nGHSA-p5r5-29j4-g3f7\n",
+  "assigner": "mitre",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "aca18fc1-17a4-3c8c-8029-1e864f730f09",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7eefe827-c6b8-3b14-800b-6bca333b0dfe",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

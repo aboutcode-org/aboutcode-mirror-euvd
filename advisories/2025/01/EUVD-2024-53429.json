@@ -1,0 +1,66 @@
+{
+  "id": "EUVD-2024-53429",
+  "enisaUuid": "ad65f72f-6cce-3be8-982b-1b5533965e7a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: put bpf_link's program when link is safe to be deallocated\n\nIn general, BPF link's underlying BPF program should be considered to be\nreachable through attach hook -> link -> prog chain, and, pessimistically,\nwe have to assume that as long as link's memory is not safe to free,\nattach hook's code might hold a pointer to BPF program and use it.\n\nAs such, it's not (generally) correct to put link's program early before\nwaiting for RCU GPs to go through. More eager bpf_prog_put() that we\ncurrently do is mostly correct due to BPF program's release code doing\nsimilar RCU GP waiting, but as will be shown in the following patches,\nBPF program can be non-sleepable (and, thus, reliant on only \"classic\"\nRCU GP), while BPF link's attach hook can have sleepable semantics and\nneeds to be protected by RCU Tasks Trace, and for such cases BPF link\nhas to go through RCU Tasks Trace + \"classic\" RCU GPs before being\ndeallocated. And so, if we put BPF program early, we might free BPF\nprogram before we free BPF link, leading to use-after-free situation.\n\nSo, this patch defers bpf_prog_put() until we are ready to perform\nbpf_link's deallocation. At worst, this delays BPF program freeing by\none extra RCU GP, but that seems completely acceptable. Alternatively,\nwe'd need more elaborate ways to determine BPF hook, BPF link, and BPF\nprogram lifetimes, and how they relate to each other, which seems like\nan unnecessary complication.\n\nNote, for most BPF links we still will perform eager bpf_prog_put() and\nlink dealloc, so for those BPF links there are no observable changes\nwhatsoever. Only BPF links that use deferred dealloc might notice\nslightly delayed freeing of BPF programs.\n\nAlso, to reduce code and logic duplication, extract program put + link\ndealloc logic into bpf_link_dealloc() helper.",
+  "datePublished": "Jan 8, 2025, 6:30:49 PM",
+  "dateUpdated": "Jan 10, 2025, 9:31:27 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/5fe23c57abadfd46a7a66e81f3536e4757252a0b\nhttps://git.kernel.org/stable/c/2fcb921c2799c49ac5e365cf4110f94a64ae4885\nhttps://git.kernel.org/stable/c/f44ec8733a8469143fde1984b5e6931b2e2f6f3f\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-56786\n",
+  "aliases": "CVE-2024-56786\nGHSA-27cc-fvv7-2rh9\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "3bf4ca4e-fb5f-389a-b3a6-1866be70321c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2fcb921c2799c49ac5e365cf4110f94a64ae4885"
+    },
+    {
+      "id": "51b03506-2d87-3a87-b9bd-422d185758db",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.5"
+    },
+    {
+      "id": "9baa6a1b-1522-3d89-a853-e650411d4bc8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5fe23c57abadfd46a7a66e81f3536e4757252a0b"
+    },
+    {
+      "id": "c9a54079-9f10-3be9-afab-0b75265de159",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f44ec8733a8469143fde1984b5e6931b2e2f6f3f"
+    },
+    {
+      "id": "ceb7f646-167d-3ce3-8ee8-5fdfc1d0b508",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.66"
+    },
+    {
+      "id": "fcf7e265-2fc4-33cd-971f-81bc7b1092ff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.13"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9de993a5-7daf-33f1-a35d-90018c6ca420",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

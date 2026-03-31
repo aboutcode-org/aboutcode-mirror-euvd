@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-53422",
+  "enisaUuid": "a80acf36-a648-391f-995d-5d9585fb22d8",
+  "description": "When doing HTTP(S) transfers, libcurl might erroneously use the read callback (`CURLOPT_READFUNCTION`) to ask for data to send, even when the `CURLOPT_POSTFIELDS` option has been set, if the same handle previously was used to issue a `PUT` request which used that callback. This flaw may surprise the application and cause it to misbehave and either send off the wrong data or use memory after free or similar in the subsequent `POST` request. The problem exists in the logic for a reused handle when it is changed from a PUT to a POST.",
+  "datePublished": "Dec 6, 2022, 12:30:16 AM",
+  "dateUpdated": "Mar 27, 2024, 3:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://hackerone.com/reports/1704017\nhttps://security.gentoo.org/glsa/202212-01\nhttps://security.netapp.com/advisory/ntap-20230110-0006/\nhttps://support.apple.com/kb/HT213604\nhttps://support.apple.com/kb/HT213605\nhttp://seclists.org/fulldisclosure/2023/Jan/20\nhttp://seclists.org/fulldisclosure/2023/Jan/19\nhttps://www.debian.org/security/2023/dsa-5330\nhttps://lists.debian.org/debian-lts-announce/2023/01/msg00028.html\nhttps://security.netapp.com/advisory/ntap-20230208-0002/\nhttp://www.openwall.com/lists/oss-security/2023/05/17/4\nhttps://advisories.mageia.org/CVE-2022-32221.html\nhttps://access.redhat.com/errata/RHSA-2022:8840\nhttps://access.redhat.com/errata/RHSA-2022:8841\nhttps://www.suse.com/security/cve/CVE-2022-32221.html\nhttps://ubuntu.com/security/CVE-2022-32221\nhttps://access.redhat.com/errata/RHSA-2023:0333\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-32221\n",
+  "aliases": "CVE-2022-32221\nGHSA-grfr-78m7-q35q\n",
+  "assigner": "hackerone",
+  "epss": 2.59,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "7228c45c-ef96-3b64-8c49-06576905ac69",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2022-25196",
+  "enisaUuid": "df85db52-40d7-366d-9585-8d428236b093",
+  "description": "DOS / potential heap overwrite in mkv demuxing using lzo decompression. Integer overflow in matroskademux element in lzo decompression function which causes a segfault, or could cause a heap overwrite, depending on libc and OS. Depending on the libc used, and the underlying OS capabilities, it could be just a segfault or a heap overwrite. If the libc uses mmap for large chunks, and the OS supports mmap, then it is just a segfault (because the realloc before the integer overflow will use mremap to reduce the size of the chunk, and it will start to write to unmapped memory). However, if using a libc implementation that does not use mmap, or if the OS does not support mmap while using libc, then this could result in a heap overwrite.",
+  "datePublished": "Jul 20, 2022, 12:00:18 AM",
+  "dateUpdated": "Jul 27, 2022, 12:00:31 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2022-1924.html\nhttps://www.debian.org/security/2022/dsa-5204\nhttps://ubuntu.com/security/CVE-2022-1924\nhttps://advisories.mageia.org/CVE-2022-1924.html\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/1225\nhttps://lists.debian.org/debian-lts-announce/2022/08/msg00001.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-1924\n",
+  "aliases": "CVE-2022-1924\nGHSA-vp6v-57g2-v7vw\n",
+  "assigner": "redhat",
+  "epss": 0.06,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "5cb94b48-699d-3a18-abf7-1ecfea2cf33b",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

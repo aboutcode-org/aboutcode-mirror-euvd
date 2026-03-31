@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2021-20585",
+  "enisaUuid": "21dc3dac-b975-346a-bb41-b1a8002907b3",
+  "description": "libspf2 before 1.2.11 has a heap-based buffer overflow that might allow remote attackers to execute arbitrary code (via an unauthenticated e-mail message from anywhere on the Internet) with a crafted SPF DNS record, because of SPF_record_expand_data in spf_expand.c. The amount of overflowed data depends on the relationship between the length of an entire domain name and the length of its leftmost label. The vulnerable code may be part of the supply chain of a site's e-mail infrastructure (e.g., with additional configuration, Exim can use libspf2; the Postfix web site links to unofficial patches for use of libspf2 with Postfix; older versions of spfquery relied on libspf2) but most often is not.",
+  "datePublished": "Jan 20, 2022, 12:00:22 AM",
+  "dateUpdated": "Jan 15, 2024, 6:30:17 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-33913.html\nhttps://github.com/shevek/libspf2/tree/8131fe140704eaae695e76b5cd09e39bd1dd220b\nhttps://nathanielbennett.com/blog/libspf2-cve-jan-2022-disclosure\nhttps://lists.debian.org/debian-lts-announce/2022/01/msg00015.html\nhttps://security.gentoo.org/glsa/202401-22\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-33913\n",
+  "aliases": "CVE-2021-33913\nGHSA-7659-433m-4fhx\n",
+  "assigner": "mitre",
+  "epss": 1.35,
+  "enisaIdProduct": [
+    {
+      "id": "eb35ca7f-752e-3daf-9376-fbd838ac1d8b",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b8f97ecc-feeb-3178-b657-a0166b6c7fe3",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2023-23756",
+  "enisaUuid": "d150dc06-b3d3-3c1d-92aa-af51fcd3a114",
+  "description": "The GMAce plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.5.2. This is due to missing nonce validation on the gmace_manager_server function called via the wp_ajax_gmace_manager AJAX action. This makes it possible for unauthenticated attackers to modify arbitrary files and achieve remote code execution via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "datePublished": "Mar 29, 2023, 12:30:35 PM",
+  "dateUpdated": "Apr 5, 2023, 3:30:17 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/826b3913-9a37-4e15-80fd-b35cefb51af8?source=cve\nhttps://plugins.trac.wordpress.org/browser/gmace/trunk/gmace.php?rev=1583327#L84\nhttps://plugins.trac.wordpress.org/browser/gmace/trunk/inc/filemanager.php?rev=1583319#L27\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-1509\n",
+  "aliases": "GHSA-4v79-g36g-gxp6\nCVE-2023-1509\n",
+  "assigner": "Wordfence",
+  "epss": 0.73,
+  "enisaIdProduct": [
+    {
+      "id": "5e44c15c-94b3-3cc6-9802-03daefb4f554",
+      "product": {
+        "name": "GMAce"
+      },
+      "product_version": "* \u22641.5.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8a4bfe73-9b74-3dd5-9d1d-d596d241d8d9",
+      "vendor": {
+        "name": "gmdragonx"
+      }
+    }
+  ]
+}

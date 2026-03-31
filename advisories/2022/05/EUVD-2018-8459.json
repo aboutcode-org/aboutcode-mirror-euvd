@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2018-8459",
+  "enisaUuid": "ed694292-7ae7-3918-aaac-90a5e629d1b0",
+  "description": "In Kamailio before 5.0.7 and 5.1.x before 5.1.4, a crafted SIP message with an invalid Via header causes a segmentation fault and crashes Kamailio. The reason is missing input validation in the crcitt_string_array core function for calculating a CRC hash for To tags. (An additional error is present in the check_via_address core function: this function also misses input validation.) This could result in denial of service and potentially the execution of arbitrary code.",
+  "datePublished": "May 13, 2022, 1:19:17 AM",
+  "dateUpdated": "May 13, 2022, 1:19:17 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.debian.org/security/2018/dsa-4292\nhttps://lists.debian.org/debian-lts-announce/2018/09/msg00013.html\nhttps://skalatan.de/blog/advisory-hw-2018-06\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-16657\n",
+  "aliases": "GHSA-4477-4jr7-cfjq\nCVE-2018-16657\n",
+  "assigner": "mitre",
+  "epss": 0.26,
+  "enisaIdProduct": [
+    {
+      "id": "f965e5ae-7a57-3f2b-8f76-244516a0da6a",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9cc59a51-16a2-3000-a350-3c939f83e5be",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

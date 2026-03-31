@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2022-55295",
+  "enisaUuid": "3375a4ec-bffa-39cf-ba7a-4fe19067ec91",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hda: Fix page fault in snd_hda_codec_shutdown()\n\nIf early probe of HDAudio bus driver fails e.g.: due to missing\nfirmware file, snd_hda_codec_shutdown() ends in manipulating\nuninitialized codec->pcm_list_head causing page fault.\n\nIinitialization of HDAudio codec in ASoC is split in two:\n- snd_hda_codec_device_init()\n- snd_hda_codec_device_new()\n\nsnd_hda_codec_device_init() is called during probe_codecs() by HDAudio\nbus driver while snd_hda_codec_device_new() is called by\ncodec-component's ->probe(). The second call will not happen until all\ncomponents required by related sound card are present within the ASoC\nframework. With firmware failing to load during the PCI's deferred\ninitialization i.e.: probe_work(), no platform components are ever\nregistered. HDAudio codec enumeration is done at that point though, so\nthe codec components became registered to ASoC framework, calling\nsnd_hda_codec_device_init() in the process.\n\nNow, during platform reboot snd_hda_codec_shutdown() is called for every\ncodec found on the HDAudio bus causing oops if any of them has not\ncompleted both of their initialization steps. Relocating field\ninitialization fixes the issue.",
+  "datePublished": "Jun 18, 2025, 12:30:42 PM",
+  "dateUpdated": "Jun 18, 2025, 12:30:42 PM",
+  "baseScore": 0.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2022-50018\nhttps://git.kernel.org/stable/c/980b3a8790b402e959a6d773b38b771019682be1\nhttps://git.kernel.org/stable/c/e02db5c2c2ee15bc9a9ec8a86a614fd091e584dc\n",
+  "aliases": "GHSA-r7mg-9735-2673\nCVE-2022-50018\n",
+  "assigner": "Linux",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

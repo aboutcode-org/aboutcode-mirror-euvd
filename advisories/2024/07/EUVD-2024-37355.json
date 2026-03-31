@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-37355",
+  "enisaUuid": "8fd9d7fc-f768-3289-9e64-7ec7d5f72f07",
+  "description": "Substitution encoding issue in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows attacker to execute scripts in\ndirectories permitted by the configuration but not directly reachable by any\u00a0URL or source disclosure of scripts meant to only to be executed as CGI.\n\nUsers are recommended to upgrade to version 2.4.60, which fixes this issue.\n\nSome RewriteRules that capture and substitute unsafely will now fail unless rewrite flag \"UnsafeAllow3F\" is specified.",
+  "datePublished": "Jul 1, 2024, 9:31:14 PM",
+  "dateUpdated": "Mar 25, 2025, 9:31:31 PM",
+  "baseScore": -1.0,
+  "references": "https://httpd.apache.org/security/vulnerabilities_24.html\nhttps://security.netapp.com/advisory/ntap-20240712-0001/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-38474\nhttp://www.openwall.com/lists/oss-security/2024/07/01/7\n",
+  "aliases": "CVE-2024-38474\nGHSA-x6g9-g4wf-qrf7\n",
+  "assigner": "apache",
+  "epss": 0.74,
+  "enisaIdProduct": [
+    {
+      "id": "c516e16f-e287-3b9f-8f08-28dd36095865",
+      "product": {
+        "name": "Apache HTTP Server"
+      },
+      "product_version": "2.4.0 \u22642.4.59"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "51502f31-173c-3d28-934c-c0bf935497c8",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

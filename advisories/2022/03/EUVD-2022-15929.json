@@ -1,0 +1,21 @@
+{
+  "id": "EUVD-2022-15929",
+  "enisaUuid": "ca281aa0-1c8f-3845-8a78-b334b705f90a",
+  "description": "A flaw was found in the libvirt nwfilter driver. The virNWFilterObjListNumOfNWFilters method failed to acquire the `driver->nwfilters` mutex before iterating over virNWFilterObj instances. There was no protection to stop another thread from concurrently modifying the `driver->nwfilters` object. This flaw allows a malicious, unprivileged user to exploit this issue via libvirt\u2019s API virConnectNumOfNWFilters to crash the network filter management daemon (libvirtd/virtnwfilterd).",
+  "datePublished": "Mar 26, 2022, 12:00:29 AM",
+  "dateUpdated": "Apr 1, 2024, 3:30:28 PM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2022-0897.html\nhttps://linux.oracle.com/cve/CVE-2022-0897.html\nhttps://ubuntu.com/security/CVE-2022-0897\nhttps://access.redhat.com/errata/RHSA-2022:7472\nhttps://access.redhat.com/errata/RHSA-2022:8003\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2063883\nhttps://security.gentoo.org/glsa/202210-06\nhttps://lists.debian.org/debian-lts-announce/2024/04/msg00000.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-0897\nhttps://gitlab.com/libvirt/libvirt/-/commit/a4947e8f63c3e6b7b067b444f3d6cf674c0d7f36\nhttps://security.netapp.com/advisory/ntap-20220519-0002\n",
+  "aliases": "CVE-2022-0897\nGHSA-4r2g-j5rc-7wqf\n",
+  "assigner": "redhat",
+  "epss": 0.05,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "9e0239c1-7242-3e92-bde7-e64a40dada72",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

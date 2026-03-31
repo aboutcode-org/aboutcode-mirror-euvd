@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2024-23894",
+  "enisaUuid": "7f21edf9-8ae0-3141-8bf4-9c6a0477fb6c",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: Fix iterating over an empty bio with bio_for_each_folio_all\n\nIf the bio contains no data, bio_first_folio() calls page_folio() on a\nNULL pointer and oopses.  Move the test that we've reached the end of\nthe bio from bio_next_folio() to bio_first_folio().\n\n[axboe: add unlikely() to error case]",
+  "datePublished": "Mar 18, 2024, 12:30:35 PM",
+  "dateUpdated": "Mar 3, 2025, 6:31:20 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c6350b5cb78e9024c49eaee6fdb914ad2903a5fe\nhttps://git.kernel.org/stable/c/a6bd8182137a12d22d3f2cee463271bdcb491659\nhttps://git.kernel.org/stable/c/ca3ede3f5893e2d26d4dbdef1eec28a8487fafde\nhttps://git.kernel.org/stable/c/7bed6f3d08b7af27b7015da8dc3acf2b9c1f21d7\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26632\n",
+  "aliases": "GHSA-627x-567f-x2pf\nCVE-2024-26632\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "24f88249-0c65-3aa0-9c27-c61210599d93",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.75"
+    },
+    {
+      "id": "289b46de-2ff6-3475-9aaf-58e6778258d0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "640d1930bef4f87ec8d8d2b05f0f6edc1dfcf662 <ca3ede3f5893e2d26d4dbdef1eec28a8487fafde"
+    },
+    {
+      "id": "4a43a2a8-5a5b-3765-89ce-c9f7d2a17090",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.2"
+    },
+    {
+      "id": "6aec041d-9e93-39e2-8858-902cdb58cbd4",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "8763d064-6b7c-3474-8d26-a6e864d5f276",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "8f7072f1-50f3-3466-aeb3-4c0d510eb493",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "640d1930bef4f87ec8d8d2b05f0f6edc1dfcf662 <7bed6f3d08b7af27b7015da8dc3acf2b9c1f21d7"
+    },
+    {
+      "id": "96480c9c-4441-3d94-b7cc-77826671a26d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "a3b4ef84-55bb-380e-a5a8-373aadd0bb8d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.17"
+    },
+    {
+      "id": "cac25cbe-d622-351a-8167-4f97e963abf0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "640d1930bef4f87ec8d8d2b05f0f6edc1dfcf662 <a6bd8182137a12d22d3f2cee463271bdcb491659"
+    },
+    {
+      "id": "e3759f53-63c8-3260-87a2-0244d237b509",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.14"
+    },
+    {
+      "id": "e8ec34e9-2890-3726-9697-921ac5efb3f7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "640d1930bef4f87ec8d8d2b05f0f6edc1dfcf662 <c6350b5cb78e9024c49eaee6fdb914ad2903a5fe"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6aec041d-9e93-39e2-8858-902cdb58cbd4",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

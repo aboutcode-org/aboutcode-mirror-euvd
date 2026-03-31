@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2021-34347",
+  "enisaUuid": "a1df504a-09ad-3458-83a0-aca91ca47dee",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix possible UAF when remounting r/o a mmp-protected file system\n\nAfter commit 618f003199c6 (\"ext4: fix memory leak in\next4_fill_super\"), after the file system is remounted read-only, there\nis a race where the kmmpd thread can exit, causing sbi->s_mmp_tsk to\npoint at freed memory, which the call to ext4_stop_mmpd() can trip\nover.\n\nFix this by only allowing kmmpd() to exit when it is stopped via\next4_stop_mmpd().\n\nBug-Report-Link: <20210629143603.2166962-1-yebin10@huawei.com>",
+  "datePublished": "May 21, 2024, 3:31:43 PM",
+  "dateUpdated": "Dec 26, 2024, 9:30:36 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b663890d854403e566169f7e90aed5cd6ff64f6b\nhttps://git.kernel.org/stable/c/7ed572cdf11081f8f9e07abd4bea56a3f2c4edbd\nhttps://git.kernel.org/stable/c/61bb4a1c417e5b95d9edb4f887f131de32e419cb\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47342\n",
+  "aliases": "CVE-2021-47342\nGHSA-c5qq-qcr6-82vp\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "09723e6e-f271-3a35-b438-bce14fda1f7e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b663890d854403e566169f7e90aed5cd6ff64f6b"
+    },
+    {
+      "id": "4370077b-4c1f-3e94-b122-b22a4a16fdc4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cecfdb9cf9a700d1037066173abac0617f6788df"
+    },
+    {
+      "id": "4fa142c7-f09b-3346-81a3-1a7f8c2656ca",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <61bb4a1c417e5b95d9edb4f887f131de32e419cb"
+    },
+    {
+      "id": "66a2999e-be18-3304-9ff0-6f131c1f965d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.77"
+    },
+    {
+      "id": "6e5a8a4b-6c3a-32c7-9db4-398977c68b4e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.14"
+    },
+    {
+      "id": "6f46b521-e698-331e-ab82-baf5eaade6d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.13.3"
+    },
+    {
+      "id": "82a2927d-8db2-3e7e-9674-27a5342e70a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7ed572cdf11081f8f9e07abd4bea56a3f2c4edbd"
+    },
+    {
+      "id": "87febab6-4aa6-30b7-8fa7-a16409ae5f6b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5e4f5138bd8522ebe231a137682d3857209a2c07 <b663890d854403e566169f7e90aed5cd6ff64f6b"
+    },
+    {
+      "id": "bab90d9d-505b-34bd-ae84-887ce5027c43",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb7b40d9d3785f7a131fb0b1f89bb6efa46c1833 <7ed572cdf11081f8f9e07abd4bea56a3f2c4edbd"
+    },
+    {
+      "id": "c974d4fe-e3f2-3db0-9b7f-cb9e34dd6789",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "618f003199c6188e01472b03cdbba227f1dc5f24 <61bb4a1c417e5b95d9edb4f887f131de32e419cb"
+    },
+    {
+      "id": "df637f19-7557-3816-9d16-da3d602dbb4b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.10.51 <5.10.77"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2998610c-1d5c-3f4c-83b7-e134b71dfe05",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

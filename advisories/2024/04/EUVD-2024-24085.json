@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2024-24085",
+  "enisaUuid": "6e79480e-f57e-3e21-ba44-f0e16fc17b47",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/gic-v3-its: Restore quirk probing for ACPI-based systems\n\nWhile refactoring the way the ITSs are probed, the handling of quirks\napplicable to ACPI-based platforms was lost. As a result, systems such as\nHIP07 lose their GICv4 functionnality, and some other may even fail to\nboot, unless they are configured to boot with DT.\n\nMove the enabling of quirks into its_probe_one(), making it common to all\nfirmware implementations.",
+  "datePublished": "Apr 17, 2024, 12:32:02 PM",
+  "dateUpdated": "Mar 27, 2025, 9:31:09 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/91a80fff3eeed928b6fba21271f6a9719b22a5d8\nhttps://git.kernel.org/stable/c/4c60c611441f1f1e5de8e00e98ee5a4970778a00\nhttps://git.kernel.org/stable/c/8b02da04ad978827e5ccd675acf170198f747a7a\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26823\n",
+  "aliases": "CVE-2024-26823\nGHSA-xcf9-x48q-v8xv\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "07b3019b-c3e4-334b-8575-c3da39a66bc9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.6"
+    },
+    {
+      "id": "3195304b-82cc-3817-af67-b4ffab55bd4e",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "342ce87d-39cd-3ffe-af58-a8a1e345056c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "46e84740-17ca-334f-a241-d2c22a862ae7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "4c86b761-fd63-369d-b3c8-201680d3a32d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9585a495ac936049dba141e8f9d99159ca06d46a <91a80fff3eeed928b6fba21271f6a9719b22a5d8"
+    },
+    {
+      "id": "576732ca-98c4-38bc-85ac-e865b63643b4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9585a495ac936049dba141e8f9d99159ca06d46a <4c60c611441f1f1e5de8e00e98ee5a4970778a00"
+    },
+    {
+      "id": "d657cef5-e4b7-3a2a-9710-ec7a9a21fd8c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.18"
+    },
+    {
+      "id": "dcadc77b-262e-334b-8b37-64b47f6fe518",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.6"
+    },
+    {
+      "id": "f68e43d6-a9eb-36d6-9452-96ed0f8a2206",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9585a495ac936049dba141e8f9d99159ca06d46a <8b02da04ad978827e5ccd675acf170198f747a7a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3195304b-82cc-3817-af67-b4ffab55bd4e",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

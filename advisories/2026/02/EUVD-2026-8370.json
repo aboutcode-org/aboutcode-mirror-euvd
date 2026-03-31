@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-8370",
+  "enisaUuid": "08581508-f36c-355a-9447-aa909d33ebb9",
+  "description": "MajorDoMo (aka Major Domestic Module) is vulnerable to unauthenticated remote code execution through supply chain compromise via update URL poisoning. The saverestore module exposes its admin() method through the /objects/?module=saverestore endpoint without authentication because it uses gr('mode') (which reads directly from $_REQUEST) instead of the framework's $this->mode. An attacker can poison the system update URL via the auto_update_settings mode handler, then trigger the force_update handler to initiate the update chain. The autoUpdateSystem() method fetches an Atom feed from the attacker-controlled URL with trivial validation, downloads a tarball via curl with TLS verification disabled (CURLOPT_SSL_VERIFYPEER set to FALSE), extracts it using exec('tar xzvf ...'), and copies all extracted files to the document root using copyTree(). This allows an attacker to deploy arbitrary PHP files, including webshells, to the webroot with two GET requests.",
+  "datePublished": "Feb 19, 2026, 12:30:30 AM",
+  "dateUpdated": "Feb 19, 2026, 12:30:30 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/majordomo-revisited/\nhttps://github.com/sergejey/majordomo/pull/1177\nhttps://www.vulncheck.com/advisories/majordomo-supply-chain-remote-code-execution-via-update-url-poisoning\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-27180\n",
+  "aliases": "CVE-2026-27180\nGHSA-grp8-p6j9-9x5f\n",
+  "assigner": "VulnCheck",
+  "epss": 41.3,
+  "enisaIdProduct": [
+    {
+      "id": "1f3ac7d5-0d2a-459d-9714-57d20ff9c66a",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    },
+    {
+      "id": "56f2a7d3-87a3-3f13-b0d6-144c3239d473",
+      "product": {
+        "name": "MajorDoMo"
+      },
+      "product_version": "0 \u2264*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "80bc5eed-ab51-318e-8b96-644807daa681",
+      "vendor": {
+        "name": "sergejey"
+      }
+    },
+    {
+      "id": "831e8f30-014f-412f-8343-06319c81e306",
+      "vendor": {
+        "name": "sergejey"
+      }
+    }
+  ]
+}

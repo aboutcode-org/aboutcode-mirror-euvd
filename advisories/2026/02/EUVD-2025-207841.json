@@ -1,0 +1,92 @@
+{
+  "id": "EUVD-2025-207841",
+  "enisaUuid": "e6cda509-8a21-3814-9678-8461d2c9522a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: Set correct protection_map[] for VM_NONE/VM_SHARED\n\nFor 32BIT platform _PAGE_PROTNONE is 0, so set a VMA to be VM_NONE or\nVM_SHARED will make pages non-present, then cause Oops with kernel page\nfault.\n\nFix it by set correct protection_map[] for VM_NONE/VM_SHARED, replacing\n_PAGE_PROTNONE with _PAGE_PRESENT.",
+  "datePublished": "Feb 18, 2026, 3:31:26 PM",
+  "dateUpdated": "Feb 18, 2026, 3:31:26 PM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/046303283d02c9732a778ccdeea433a899c78cbd\nhttps://git.kernel.org/stable/c/5fbdf95d2575ec53fd4a5c18e789b4d54a0281fe\nhttps://git.kernel.org/stable/c/380d7c1af4bd3e797692f5410ab374a98e766cd4\nhttps://git.kernel.org/stable/c/9531210f348aa78e260a9e5b0d1a6f7e7aa329e6\nhttps://git.kernel.org/stable/c/d5be446948b379f1d1a8e7bc6656d13f44c5c7b1\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-71228\n",
+  "aliases": "GHSA-fjxh-qxr5-g7j4\nCVE-2025-71228\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "091c38f0-cc5c-47b2-8ef1-6e6dfbcb87ee",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.124"
+    },
+    {
+      "id": "0ed2241f-5252-4da6-a2a7-050c543bab35",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
+    },
+    {
+      "id": "262a7f0b-491b-4943-abc6-ab905079808c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <380d7c1af4bd3e797692f5410ab374a98e766cd4"
+    },
+    {
+      "id": "2e9e4de7-b4f1-43c4-99e1-8c0becf612a3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5fbdf95d2575ec53fd4a5c18e789b4d54a0281fe"
+    },
+    {
+      "id": "6bc06fa0-2451-4df9-8b3f-4effa416cc5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9531210f348aa78e260a9e5b0d1a6f7e7aa329e6"
+    },
+    {
+      "id": "79f71b8c-d15f-47b4-b670-54f5f898ebda",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.70"
+    },
+    {
+      "id": "98898b41-3fa0-46df-bdc3-e8a8b1da01d7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.18.10"
+    },
+    {
+      "id": "ae9fc1be-aea8-404c-b234-a490568c034a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d5be446948b379f1d1a8e7bc6656d13f44c5c7b1"
+    },
+    {
+      "id": "b82edafd-b508-4b0b-aa36-ab9d2a88a941",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.163"
+    },
+    {
+      "id": "c35d511a-ec97-4320-afdf-94c9f82941f9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <046303283d02c9732a778ccdeea433a899c78cbd"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a7e1008d-8cdb-482b-b11f-1f0d246111b5",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-39586",
+  "enisaUuid": "deb35572-cd7a-3693-a877-ac4fc2b89c8c",
+  "description": "os/linux/elf.rb in Homebrew brew before 4.2.20 uses ldd to load ELF files obtained from untrusted sources, which allows attackers to achieve code execution via an ELF file with a custom .interp section. NOTE: this code execution would occur during an un-sandboxed binary relocation phase, which occurs before a user would expect execution of downloaded package content. (237d1e783f7ee261beaba7d3f6bde22da7148b0a was the tested vulnerable version.)",
+  "datePublished": "Jul 31, 2024, 6:30:35 AM",
+  "dateUpdated": "Jul 31, 2024, 6:30:35 AM",
+  "baseScore": 8.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AC:H/AV:N/A:H/C:H/I:H/PR:N/S:C/UI:R",
+  "references": "https://github.com/Homebrew/brew/tree/237d1e783f7ee261beaba7d3f6bde22da7148b0a\nhttps://github.com/trailofbits/publications/blob/master/reviews/2023-08-28-homebrew-securityreview.pdf\nhttps://blog.trailofbits.com/2024/07/30/our-audit-of-homebrew/\nhttps://brew.sh/2024/07/30/homebrew-security-audit/\nhttps://github.com/Homebrew/brew/commit/916b37388d3851a8a93a8e9b4adc38873680ead7\nhttps://github.com/Homebrew/brew/releases/tag/4.2.20\nhttps://github.com/Homebrew/brew/pull/17136\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42381\n",
+  "aliases": "GHSA-phm2-c5jj-q34c\nCVE-2024-42381\n",
+  "assigner": "mitre",
+  "epss": 0.39,
+  "enisaIdProduct": [
+    {
+      "id": "9ea7791d-9a69-375d-8e13-b52457f4d3ac",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1f0e0682-21cd-3934-9bca-dcbcececc275",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

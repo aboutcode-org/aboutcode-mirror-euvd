@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-47621",
+  "enisaUuid": "9ce50a12-4726-3518-93ce-408e59fcdf93",
+  "description": "The Add Admin JavaScript plugin for WordPress is vulnerable to Full Path Disclosure in all versions up to, and including, 2.0. This is due to the plugin utilizing bootstrap and leaving test files with display_errors on. This makes it possible for unauthenticated attackers to retrieve the full path of the web application, which can be used to aid other attacks. The information displayed is not useful on its own, and requires another vulnerability to be present for damage to an affected website.",
+  "datePublished": "Jul 27, 2024, 3:30:51 AM",
+  "dateUpdated": "Jul 27, 2024, 3:30:51 AM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1069c845-30b9-4aca-8a60-8b66c48365af?source=cve\nhttps://plugins.trac.wordpress.org/browser/add-admin-javascript/trunk/tests/phpunit/bootstrap.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-6548\n",
+  "aliases": "GHSA-f8m3-qc44-r23g\nCVE-2024-6548\n",
+  "assigner": "Wordfence",
+  "epss": 0.75,
+  "enisaIdProduct": [
+    {
+      "id": "a44a65df-f900-330b-855d-313921f21dd2",
+      "product": {
+        "name": "Add Admin JavaScript"
+      },
+      "product_version": "* \u22642.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "51827ad5-ea6d-3ee0-b88d-ffd17b9682f9",
+      "vendor": {
+        "name": "coffee2code"
+      }
+    }
+  ]
+}

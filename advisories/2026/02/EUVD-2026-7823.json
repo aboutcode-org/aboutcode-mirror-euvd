@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-7823",
+  "enisaUuid": "ef877022-512c-3869-8b05-d5efd58ad038",
+  "description": "LightLLM version 1.1.0 and prior contain an unauthenticated remote code execution vulnerability in PD (prefill-decode) disaggregation mode. The PD master node exposes WebSocket endpoints that receive binary frames and pass the data directly to pickle.loads() without authentication or validation. A remote attacker who can reach the PD master can send a crafted payload to achieve arbitrary code execution.",
+  "datePublished": "Feb 17, 2026, 3:30:15 AM",
+  "dateUpdated": "Feb 17, 2026, 3:30:15 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://chocapikk.com/posts/2026/lightllm-pickle-rce/\nhttps://github.com/ModelTC/LightLLM/issues/1213\nhttps://lightllm-en.readthedocs.io/en/latest/index.html\nhttps://github.com/ModelTC/lightllm/blob/a27dfc88c2144ed51a6e160b6fbe20aad66c8fe0/lightllm/server/api_http.py#L310\nhttps://github.com/ModelTC/lightllm/blob/a27dfc88c2144ed51a6e160b6fbe20aad66c8fe0/lightllm/server/api_http.py#L331\nhttps://www.vulncheck.com/advisories/lightllm-pd-mode-unsafe-deserialization-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26220\n",
+  "aliases": "CVE-2026-26220\nGHSA-xxv9-73gc-96fm\n",
+  "assigner": "VulnCheck",
+  "epss": 1.5,
+  "enisaIdProduct": [
+    {
+      "id": "b278d28c-c152-41e0-944c-01b1cd00dbed",
+      "product": {
+        "name": "LightLLM"
+      },
+      "product_version": "0 \u22641.1.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f471c68d-6b6d-4b36-99ec-25bc773baddf",
+      "vendor": {
+        "name": "ModelTC"
+      }
+    }
+  ]
+}

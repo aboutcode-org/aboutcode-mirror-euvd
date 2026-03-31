@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2021-15364",
+  "enisaUuid": "22245696-57f8-3b66-b225-24a22a7fba46",
+  "description": "PoD operations on misaligned GFNs T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] x86 HVM and PVH guests may be started in populate-on-demand (PoD) mode, to provide a way for them to later easily have more memory assigned. Guests are permitted to control certain P2M aspects of individual pages via hypercalls. These hypercalls may act on ranges of pages specified via page orders (resulting in a power-of-2 number of pages). The implementation of some of these hypercalls for PoD does not enforce the base page frame number to be suitably aligned for the specified order, yet some code involved in PoD handling actually makes such an assumption. These operations are XENMEM_decrease_reservation (CVE-2021-28704) and XENMEM_populate_physmap (CVE-2021-28707), the latter usable only by domains controlling the guest, i.e. a de-privileged qemu or a stub domain. (Patch 1, combining the fix to both these two issues.) In addition handling of XENMEM_decrease_reservation can also trigger a host crash when the specified page order is neither 4k nor 2M nor 1G (CVE-2021-28708, patch 2).",
+  "datePublished": "Nov 25, 2021, 12:00:40 AM",
+  "dateUpdated": "Jun 29, 2022, 12:00:49 AM",
+  "baseScore": -1.0,
+  "references": "https://www.suse.com/security/cve/CVE-2021-28707.html\nhttps://www.debian.org/security/2021/dsa-5017\nhttps://xenbits.xenproject.org/xsa/advisory-388.txt\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/\nhttps://security.gentoo.org/glsa/202402-07\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-28707\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF\n",
+  "aliases": "CVE-2021-28707\nGHSA-jpp8-232v-26fc\n",
+  "assigner": "XEN",
+  "epss": 0.09,
+  "enisaIdProduct": [
+    {
+      "id": "63d2f98b-99cd-3fcb-9b90-a0e53aa3dc78",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.15.x"
+    },
+    {
+      "id": "7f76d097-dbba-3801-978f-52ccd94acd2f",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "4.12.x <unspecified"
+    },
+    {
+      "id": "e70d3c01-c9b4-37d5-9fe0-efc503147c7a",
+      "product": {
+        "name": "Xen"
+      },
+      "product_version": "xen-unstable"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5b6c15c2-1889-3051-8dfd-6413452b9a17",
+      "vendor": {
+        "name": "Xen"
+      }
+    }
+  ]
+}

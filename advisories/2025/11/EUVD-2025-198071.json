@@ -1,0 +1,163 @@
+{
+  "id": "EUVD-2025-198071",
+  "enisaUuid": "55ef7c1a-5119-391b-9809-781dd598c016",
+  "description": "A Use-After-Free vulnerability has been discovered in GRUB's gettext module. This flaw stems from a programming error where the gettext command remains registered in memory after its module is unloaded. An attacker can exploit this condition by invoking the orphaned command, causing the application to access a memory location that is no longer valid. An attacker could exploit this vulnerability to cause grub to crash, leading to a Denial of Service. Possible data integrity or confidentiality compromise is not discarded.",
+  "datePublished": "Nov 18, 2025, 6:20:48 PM",
+  "dateUpdated": "Jan 21, 2026, 1:15:44 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://access.redhat.com/security/cve/CVE-2025-61662\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2414683\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-61662\nhttp://www.openwall.com/lists/oss-security/2025/11/18/5\n",
+  "aliases": "CVE-2025-61662\nGHSA-g7mr-vm94-3rv7\n",
+  "assigner": "redhat",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "00febaa7-453e-3cb5-aac6-7e31ff89c632",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 1:2.02-123.el8_6.19"
+    },
+    {
+      "id": "083d8d44-7f80-3933-b2e3-8a5ddd2ebac9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10.0 Extended Update Support"
+      },
+      "product_version": "patch: 1:2.12-15.el10_0.2"
+    },
+    {
+      "id": "0c223112-1f72-3c81-8eab-8bcababc0041",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 1:2.02-152.el8_8.3"
+    },
+    {
+      "id": "18fa24a0-3f62-3a81-ab02-c85a54e28bbc",
+      "product": {
+        "name": "grub2"
+      },
+      "product_version": "0 \u22642.14"
+    },
+    {
+      "id": "35406001-e3de-30f4-bffa-d5501ff92349",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+      },
+      "product_version": "patch: 1:2.02-123.el8_6.19"
+    },
+    {
+      "id": "3eb128de-cc57-3ae8-bc68-440b3cad9bc9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+      },
+      "product_version": "patch: 1:2.02-152.el8_8.3"
+    },
+    {
+      "id": "455d9da2-a2b9-39f5-aa29-3fd8dd8585dc",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On"
+      },
+      "product_version": "patch: 1:2.02-99.el8_4.13"
+    },
+    {
+      "id": "543ed3ab-f9aa-3919-8be1-3b386d5794c4",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18"
+      },
+      "product_version": "patch: 418.94.202603181125-0"
+    },
+    {
+      "id": "6b491dca-9b52-39dc-b3d4-00194f2edbdb",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10"
+      },
+      "product_version": "patch: 1:2.12-29.el10_1.2"
+    },
+    {
+      "id": "8dc53e58-8d91-3e45-9ead-2334b726075a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8"
+      },
+      "product_version": "patch: 1:2.02-170.el8_10.1"
+    },
+    {
+      "id": "8f9b12f3-aa27-3065-96f8-746e6f58371f",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 1:2.06-27.el9_0.23"
+    },
+    {
+      "id": "ae527660-a0ba-326a-afaf-1effa9e4c2db",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Extended Update Support"
+      },
+      "product_version": "patch: 1:2.06-86.el9_4.4"
+    },
+    {
+      "id": "aeb0f340-8868-3479-a023-05588527a31a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Telecommunications Update Service"
+      },
+      "product_version": "patch: 1:2.02-123.el8_6.19"
+    },
+    {
+      "id": "c111271b-7b8f-31f7-b3e0-0f4c39b7d1a7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support"
+      },
+      "product_version": "patch: 1:2.02-99.el8_4.13"
+    },
+    {
+      "id": "cb0ecd78-01ab-38f4-ac4a-ff3fe708f01e",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 1:2.06-61.el9_2.11"
+    },
+    {
+      "id": "eb833929-2af5-3196-8c21-cfcaf7978f67",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+      },
+      "product_version": "patch: 1:2.02-0.87.el7_9.16"
+    },
+    {
+      "id": "f6160328-0c8a-3003-9636-07bfae6f1f1a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support"
+      },
+      "product_version": "patch: 1:2.06-105.el9_6.1"
+    },
+    {
+      "id": "f9cfb90f-0478-3ffd-8152-a26873bb48f6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9"
+      },
+      "product_version": "patch: 1:2.06-114.el9_7.1"
+    },
+    {
+      "id": "fc04b22b-a2b8-380e-a1b8-4d44c3ff4b21",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.2 Advanced Update Support"
+      },
+      "product_version": "patch: 1:2.02-87.el8_2.14"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "399308cb-0d82-3e48-b2d5-332d3054fab6",
+      "vendor": {
+        "name": "GNU"
+      }
+    },
+    {
+      "id": "d23875c6-48de-3b79-8db6-6dc7dd8d1ac3",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}

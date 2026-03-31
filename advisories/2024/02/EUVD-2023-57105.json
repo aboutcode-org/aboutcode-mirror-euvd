@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2023-57105",
+  "enisaUuid": "8300cf7f-b027-3d57-95c7-b5d19a7e0dd6",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix race condition between session lookup and expire\n\n Thread A                        +  Thread B\n ksmbd_session_lookup            |  smb2_sess_setup\n   sess = xa_load                |\n                                 |\n                                 |    xa_erase(&conn->sessions, sess->id);\n                                 |\n                                 |    ksmbd_session_destroy(sess) --> kfree(sess)\n                                 |\n   // UAF!                       |\n   sess->last_active = jiffies   |\n                                 +\n\nThis patch add rwsem to fix race condition between ksmbd_session_lookup\nand ksmbd_expire_session.",
+  "datePublished": "Feb 29, 2024, 6:30:32 AM",
+  "dateUpdated": "Jan 13, 2025, 6:31:55 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/c77fd3e25a51ac92b0f1b347a96eff6a0b4f066f\nhttps://git.kernel.org/stable/c/a2ca5fd3dbcc665e1169044fa0c9e3eba779202b\nhttps://git.kernel.org/stable/c/18ced78b0ebccc2d16f426143dc56ab3aad666be\nhttps://git.kernel.org/stable/c/53ff5cf89142b978b1a5ca8dc4d4425e6a09745f\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52480\n",
+  "aliases": "GHSA-v2j2-ph6r-wrg9\nCVE-2023-52480\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0bd18c6a-e2e6-3925-9e65-1c2677e45dc8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.57"
+    },
+    {
+      "id": "21acf87f-a1ac-3929-830b-0647a12be45e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.145"
+    },
+    {
+      "id": "326077e9-5175-3f20-a6aa-770875b95dd0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.5.7"
+    },
+    {
+      "id": "523dd0e1-e41e-3298-a19a-8f6bd63d92d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <18ced78b0ebccc2d16f426143dc56ab3aad666be"
+    },
+    {
+      "id": "6e9c53ea-3c18-3c39-b3fd-7bb73413d14d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
+    {
+      "id": "ab073ef9-a3a0-32b8-843a-d3e3d6badc15",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <a2ca5fd3dbcc665e1169044fa0c9e3eba779202b"
+    },
+    {
+      "id": "b75a7c9f-44f7-39e6-97e0-2318697106d9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <53ff5cf89142b978b1a5ca8dc4d4425e6a09745f"
+    },
+    {
+      "id": "b9113e08-9f1d-3a37-9927-7f3c3fb21a90",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <c77fd3e25a51ac92b0f1b347a96eff6a0b4f066f"
+    },
+    {
+      "id": "d8918190-f25c-3cb1-8207-b200fbf60e91",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6"
+    },
+    {
+      "id": "def954db-5408-3d7c-b931-9467d8d5c3b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ec597f06-d61f-33f0-876e-d084edc10186",
+      "product": {
+        "name": "Linux"
+      }
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ec597f06-d61f-33f0-876e-d084edc10186",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

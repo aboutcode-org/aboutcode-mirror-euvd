@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2019-8605",
+  "enisaUuid": "7e2367ea-5e5f-3405-b7db-a85ecc49be48",
+  "description": "log.c in Squid Analysis Report Generator (sarg) through 2.3.11 allows local privilege escalation. By default, it uses a fixed temporary directory /tmp/sarg. As the root user, sarg creates this directory or reuses an existing one in an insecure manner. An attacker can pre-create the directory, and place symlinks in it (after winning a /tmp/sarg/denied.int_unsort race condition). The outcome will be corrupted or newly created files in privileged file system locations.",
+  "datePublished": "May 24, 2022, 5:07:01 PM",
+  "dateUpdated": "Apr 4, 2024, 2:46:42 AM",
+  "baseScore": 7.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2019-18932.html\nhttps://bugzilla.suse.com/show_bug.cgi?id=1150554\nhttps://sourceforge.net/projects/sarg/\nhttp://www.openwall.com/lists/oss-security/2020/01/20/6\nhttps://seclists.org/oss-sec/2020/q1/23\nhttp://www.openwall.com/lists/oss-security/2020/01/27/1\nhttp://lists.opensuse.org/opensuse-security-announce/2020-01/msg00051.html\nhttp://lists.opensuse.org/opensuse-security-announce/2020-01/msg00063.html\nhttps://security.gentoo.org/glsa/202007-32\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-18932\n",
+  "aliases": "GHSA-jcx8-j739-fp6q\nCVE-2019-18932\n",
+  "assigner": "mitre",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "5490a0ef-ef95-3b81-aa26-29eca24cee62",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f3be673e-ff40-393c-b86a-4c394ee89fcb",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2022-51130",
+  "enisaUuid": "e2bbdc15-1be9-32cb-9468-80bf6c6dd712",
+  "description": "libavcodec/pthread_frame.c in FFmpeg before 5.1.2, as used in VLC and other products, leaves stale hwaccel state in worker threads, which allows attackers to trigger a use-after-free and execute arbitrary code in some circumstances (e.g., hardware re-initialization upon a mid-video SPS change when Direct3D11 is used).",
+  "datePublished": "Mar 29, 2023, 6:30:29 PM",
+  "dateUpdated": "Oct 21, 2024, 6:30:45 PM",
+  "baseScore": -1.0,
+  "references": "https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/cc867f2c09d2b69cee8a0eccd62aff002cbbfe11\nhttps://news.ycombinator.com/item?id=35356201\nhttps://wrv.github.io/h26forge.pdf\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PQHNSWXFUN3VJ3AO2AEJUK3BURSGM5G2/\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/KOMB6WRUC55VWV25IKJTV22KARBUGWGQ/\nhttps://security.gentoo.org/glsa/202312-14\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PQHNSWXFUN3VJ3AO2AEJUK3BURSGM5G2/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KOMB6WRUC55VWV25IKJTV22KARBUGWGQ/\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48434\n",
+  "aliases": "CVE-2022-48434\nGHSA-q56j-8x89-gvgg\n",
+  "assigner": "mitre",
+  "epss": 0.28,
+  "enisaIdProduct": [
+    {
+      "id": "6dd3ff3e-a069-39bd-887b-8ffe6fc177eb",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5aec010e-b032-3b8b-a4cc-a1fea3cd6613",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

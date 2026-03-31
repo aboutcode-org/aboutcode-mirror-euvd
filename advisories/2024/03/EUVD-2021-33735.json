@@ -1,0 +1,98 @@
+{
+  "id": "EUVD-2021-33735",
+  "enisaUuid": "6d4bfb03-c874-38ff-a68b-1742679a8d38",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: optee: Fix incorrect page free bug\n\nPointer to the allocated pages (struct page *page) has already\nprogressed towards the end of allocation. It is incorrect to perform\n__free_pages(page, order) using this pointer as we would free any\narbitrary pages. Fix this by stop modifying the page pointer.",
+  "datePublished": "Mar 4, 2024, 6:30:37 PM",
+  "dateUpdated": "Jan 16, 2025, 6:30:57 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/806142c805cacd098e61bdc0f72c778a2389fe4a\nhttps://git.kernel.org/stable/c/ad338d825e3f7b96ee542bf313728af2d19fe9ad\nhttps://git.kernel.org/stable/c/91e94e42f6fc49635f1a16d8ae3f79552bcfda29\nhttps://git.kernel.org/stable/c/18549bf4b21c739a9def39f27dcac53e27286ab5\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47087\n",
+  "aliases": "CVE-2021-47087\nGHSA-3mhq-jqrv-fc88\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "17188cfe-e340-3872-9392-e2da3f250da1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.12"
+    },
+    {
+      "id": "213e687c-4291-3a47-9c0c-f62713735c7b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3c712f14d8a9354a8807c15c64c8dd334499cc42 <806142c805cacd098e61bdc0f72c778a2389fe4a"
+    },
+    {
+      "id": "28428fcf-b723-394c-8d62-a624f21c74f9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1340dc3fb75ea69221f4f5dcb0cbace55ad0331c <ad338d825e3f7b96ee542bf313728af2d19fe9ad"
+    },
+    {
+      "id": "28a2ff83-4c15-35a2-8b2d-677a2bd39467",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "4d471225-22a5-387c-83c2-6992330d79a2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec185dd3ab257dc2a60953fdf1b6622f524cc5b7 <91e94e42f6fc49635f1a16d8ae3f79552bcfda29"
+    },
+    {
+      "id": "78583b07-4ad4-3fb7-9304-da8c8b1e18bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.169"
+    },
+    {
+      "id": "a591e882-ad58-395a-b017-58feccd73bb3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.14"
+    },
+    {
+      "id": "b2e85590-9568-39e1-92f6-3a9c4ba3f77a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ec185dd3ab257dc2a60953fdf1b6622f524cc5b7 <18549bf4b21c739a9def39f27dcac53e27286ab5"
+    },
+    {
+      "id": "c6c15f58-5f95-371f-b2ec-65043b14a97e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "dc8dba4a-c127-3099-95a9-c1f89137c11b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.89"
+    },
+    {
+      "id": "ed107fc0-4ff8-3aa8-ac16-e2ca12c5b9df",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "28a2ff83-4c15-35a2-8b2d-677a2bd39467",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

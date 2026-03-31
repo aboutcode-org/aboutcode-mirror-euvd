@@ -1,0 +1,43 @@
+{
+  "id": "EUVD-2024-48485",
+  "enisaUuid": "38632933-5c8c-307b-9846-d2c3507f98b3",
+  "description": "A signal handler in sshd(8) may call a logging function that is not async-signal-safe.  The signal handler is invoked when a client does not authenticate within the LoginGraceTime seconds (120 by default).  This signal handler executes in the context of the sshd(8)'s privileged code, which is not sandboxed and runs with full root privileges.\n\nThis issue is another instance of the problem in CVE-2024-6387 addressed by FreeBSD-SA-24:04.openssh.  The faulty code in this case is from the integration of blacklistd in OpenSSH in FreeBSD.\n\nAs a result of calling functions that are not async-signal-safe in the privileged sshd(8) context, a race condition exists that a determined attacker may be able to exploit to allow an unauthenticated remote code execution as root.",
+  "datePublished": "Aug 12, 2024, 3:30:52 PM",
+  "dateUpdated": "Aug 12, 2024, 6:30:47 PM",
+  "baseScore": -1.0,
+  "references": "https://security.freebsd.org/advisories/FreeBSD-SA-24:08.openssh.asc\nhttps://www.cve.org/CVERecord?id=CVE-2006-5051\nhttps://www.cve.org/CVERecord?id=CVE-2024-6387\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-7589\n",
+  "aliases": "GHSA-j7jm-6q5x-ffr4\nCVE-2024-7589\n",
+  "assigner": "freebsd",
+  "epss": 21.96,
+  "enisaIdProduct": [
+    {
+      "id": "2b6c8895-23ec-35cd-a62c-fc8499fe489b",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.0-RELEASE <p9"
+    },
+    {
+      "id": "49dafce4-6ff5-30c2-9f13-313267e7db4a",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "13.3-RELEASE <p5"
+    },
+    {
+      "id": "99d80a31-e77e-3125-8be2-dc277b59666b",
+      "product": {
+        "name": "FreeBSD"
+      },
+      "product_version": "14.1-RELEASE <p3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b24e3934-0bd1-3810-84a5-aff7d633c069",
+      "vendor": {
+        "name": "FreeBSD"
+      }
+    }
+  ]
+}

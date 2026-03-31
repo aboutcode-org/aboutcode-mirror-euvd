@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2025-207842",
+  "enisaUuid": "2d7b5d1c-df96-3afb-a72e-953cf624d413",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: Implement settime64 as stub for MVM/MLD PTP\n\nSince commit dfb073d32cac (\"ptp: Return -EINVAL on ptp_clock_register if\nrequired ops are NULL\"), PTP clock registered through ptp_clock_register\nis required to have ptp_clock_info.settime64 set, however, neither MVM\nnor MLD's PTP clock implementation sets it, resulting in warnings when\nthe interface starts up, like\n\nWARNING: drivers/ptp/ptp_clock.c:325 at ptp_clock_register+0x2c8/0x6b8, CPU#1: wpa_supplicant/469\nCPU: 1 UID: 0 PID: 469 Comm: wpa_supplicant Not tainted 6.18.0+ #101 PREEMPT(full)\nra: ffff800002732cd4 iwl_mvm_ptp_init+0x114/0x188 [iwlmvm]\nERA: 9000000002fdc468 ptp_clock_register+0x2c8/0x6b8\niwlwifi 0000:01:00.0: Failed to register PHC clock (-22)\n\nI don't find an appropriate firmware interface to implement settime64()\nfor iwlwifi MLD/MVM, thus instead create a stub that returns\n-EOPTNOTSUPP only, suppressing the warning and allowing the PTP clock to\nbe registered.",
+  "datePublished": "Feb 18, 2026, 3:31:26 PM",
+  "dateUpdated": "Feb 18, 2026, 3:31:26 PM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/ff6892ea544c4052dd5799f675ebc20419953801\nhttps://git.kernel.org/stable/c/81d90d93d22ca4f61833cba921dce9a0bd82218f\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-71226\n",
+  "aliases": "GHSA-r264-whc7-wwfw\nCVE-2025-71226\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "3e49395e-07dc-4ca7-9740-02e9254a0630",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <81d90d93d22ca4f61833cba921dce9a0bd82218f"
+    },
+    {
+      "id": "85786313-acfa-40c8-a42f-7ac6bbc3c28b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ff6892ea544c4052dd5799f675ebc20419953801"
+    },
+    {
+      "id": "b0cdc137-e670-4acf-a4d5-a7267f09c739",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.18.10"
+    },
+    {
+      "id": "da7e931d-ccdb-4f96-ae71-1f4ae6aa9ff7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "28cb6997-ff15-4af0-924c-2d0100c4cd6c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-24272",
+  "enisaUuid": "5d483523-47d5-37d1-84e2-65e15ef3d99a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: Fix mirred deadlock on device recursion\n\nWhen the mirred action is used on a classful egress qdisc and a packet is\nmirrored or redirected to self we hit a qdisc lock deadlock.\nSee trace below.\n\n[..... other info removed for brevity....]\n[   82.890906]\n[   82.890906] ============================================\n[   82.890906] WARNING: possible recursive locking detected\n[   82.890906] 6.8.0-05205-g77fadd89fe2d-dirty #213 Tainted: G        W\n[   82.890906] --------------------------------------------\n[   82.890906] ping/418 is trying to acquire lock:\n[   82.890906] ffff888006994110 (&sch->q.lock){+.-.}-{3:3}, at:\n__dev_queue_xmit+0x1778/0x3550\n[   82.890906]\n[   82.890906] but task is already holding lock:\n[   82.890906] ffff888006994110 (&sch->q.lock){+.-.}-{3:3}, at:\n__dev_queue_xmit+0x1778/0x3550\n[   82.890906]\n[   82.890906] other info that might help us debug this:\n[   82.890906]  Possible unsafe locking scenario:\n[   82.890906]\n[   82.890906]        CPU0\n[   82.890906]        ----\n[   82.890906]   lock(&sch->q.lock);\n[   82.890906]   lock(&sch->q.lock);\n[   82.890906]\n[   82.890906]  *** DEADLOCK ***\n[   82.890906]\n[..... other info removed for brevity....]\n\nExample setup (eth0->eth0) to recreate\ntc qdisc add dev eth0 root handle 1: htb default 30\ntc filter add dev eth0 handle 1: protocol ip prio 2 matchall \\\n     action mirred egress redirect dev eth0\n\nAnother example(eth0->eth1->eth0) to recreate\ntc qdisc add dev eth0 root handle 1: htb default 30\ntc filter add dev eth0 handle 1: protocol ip prio 2 matchall \\\n     action mirred egress redirect dev eth1\n\ntc qdisc add dev eth1 root handle 1: htb default 30\ntc filter add dev eth1 handle 1: protocol ip prio 2 matchall \\\n     action mirred egress redirect dev eth0\n\nWe fix this by adding an owner field (CPU id) to struct Qdisc set after\nroot qdisc is entered. When the softirq enters it a second time, if the\nqdisc owner is the same CPU, the packet is dropped to break the loop.",
+  "datePublished": "May 1, 2024, 6:31:43 AM",
+  "dateUpdated": "Dec 23, 2024, 3:30:46 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/e6b90468da4dae2281a6e381107f411efb48b0ef\nhttps://git.kernel.org/stable/c/0f022d32c3eca477fbf79a205243a6123ed0fe11\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-27010\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4EZ6PJW7VOZ224TD7N4JZNU6KV32ZJ53\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DAMSOZXJEPUOXW33WZYWCVAY7Z5S7OOY\nhttps://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/GCBZZEC7L7KTWWAS2NLJK6SO3IZIL4WW\n",
+  "aliases": "CVE-2024-27010\nGHSA-vf44-3g39-fv4r\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "7381a0c1-c919-39a5-977d-3ae38c49799c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e578d9c02587d57bfa7b560767c698a668a468c6 <0f022d32c3eca477fbf79a205243a6123ed0fe11"
+    },
+    {
+      "id": "8ce0dd30-af89-3a66-ad16-e9500e5699e5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    },
+    {
+      "id": "98b310e5-2387-3f36-84ac-04aadf6fe9c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.2"
+    },
+    {
+      "id": "a08f29ac-8fc3-39cb-95a6-812c8302bc9e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ade2a504-6c85-3e85-bc92-a6eaafb06b1b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.8"
+    },
+    {
+      "id": "ae5808c7-a143-3921-a138-6f64e643b09d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e578d9c02587d57bfa7b560767c698a668a468c6 <e6b90468da4dae2281a6e381107f411efb48b0ef"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fbe560cc-0be8-33e4-83a6-c773f0135554",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

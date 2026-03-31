@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2025-26408",
+  "enisaUuid": "035b2838-d37c-3e94-b99a-f1e96eb01c7e",
+  "description": "An issue was discovered in rust-ffmpeg 0.3.0 (after comit 5ac0527) A use-after-free vulnerability in the write_interleaved method allows an attacker to cause a denial of service or memory corruption. The method violates Rust's aliasing rules by modifying a data structure through a mutable pointer while only holding an immutable reference, which can lead to undefined behavior when the data is accessed later.",
+  "datePublished": "Sep 10, 2025, 6:30:13 PM",
+  "dateUpdated": "Sep 10, 2025, 6:30:13 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://github.com/meh/rust-ffmpeg/issues/192\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-57616\n",
+  "aliases": "GHSA-x347-9xfm-4xhh\nCVE-2025-57616\n",
+  "assigner": "mitre",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "396d3de7-81ae-3ded-8b53-6842e247c239",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5517cac3-b409-3150-aa33-82c71ede2938",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

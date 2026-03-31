@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2011-5245",
+  "enisaUuid": "b068d234-e6cc-39e4-bd35-612dca0238d5",
+  "description": "NetOp (now part of Impero Software) Remote Control Client v9.5 is vulnerable to a stack-based buffer overflow when processing .dws configuration files. If a .dws file contains a string longer than 520 bytes, the application fails to perform proper bounds checking, allowing an attacker to execute arbitrary code when the file is opened.",
+  "datePublished": "Aug 13, 2025, 9:30:29 PM",
+  "dateUpdated": "Aug 13, 2025, 9:30:29 PM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/fileformat/netop.rb\nhttps://www.exploit-db.com/exploits/17223\nhttps://www.exploit-db.com/exploits/18697\nhttps://www.fortiguard.com/encyclopedia/ips/27765/netop-remote-control-dws-file-handling-buffer-overflow\nhttps://netop.com/\nhttps://web.archive.org/web/20120314075913/https://codework-systems.com/netop-remotecontrol-10-01-released/\nhttps://www.vulncheck.com/advisories/netop-remote-control-client-dws-file-buffer-overflow\nhttps://nvd.nist.gov/vuln/detail/CVE-2011-10012\n",
+  "aliases": "GHSA-f64q-2qj4-2pmh\nCVE-2011-10012\n",
+  "assigner": "VulnCheck",
+  "epss": 8.15,
+  "enisaIdProduct": [
+    {
+      "id": "cd1c1d25-ced2-368e-b88c-dcd80116edfa",
+      "product": {
+        "name": "Remote Control Client"
+      },
+      "product_version": "9.5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "000a9f0d-55bd-309d-b8c2-3b818127e2d5",
+      "vendor": {
+        "name": "NetOp"
+      }
+    }
+  ]
+}

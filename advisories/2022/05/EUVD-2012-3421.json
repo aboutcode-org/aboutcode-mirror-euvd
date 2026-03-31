@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2012-3421",
+  "enisaUuid": "64e3e12d-ebaf-3187-9b09-7e8de5d5be66",
+  "description": "The (1) otrl_base64_otr_decode function in src/b64.c; (2) otrl_proto_data_read_flags and (3) otrl_proto_accept_data functions in src/proto.c; and (4) decode function in toolkit/parse.c in libotr before 3.2.1 allocates a zero-length buffer when decoding a base64 string, which allows remote attackers to cause a denial of service (application crash) via a message with the value \"?OTR:===.\", which triggers a heap-based buffer overflow.",
+  "datePublished": "May 17, 2022, 1:44:00 AM",
+  "dateUpdated": "May 17, 2022, 1:44:00 AM",
+  "baseScore": 4.3,
+  "baseScoreVersion": "2.0",
+  "baseScoreVector": "AV:N/AC:M/Au:N/C:N/I:N/A:P",
+  "references": "https://www.suse.com/security/cve/CVE-2012-3461.html\nhttps://www.debian.org/security/2012/dsa-2526\nhttp://www.debian.org/security/2012/dsa-2526\nhttp://lists.opensuse.org/opensuse-security-announce/2012-11/msg00019.html\nhttps://exchange.xforce.ibmcloud.com/vulnerabilities/77528\nhttps://bugzilla.redhat.com/show_bug.cgi?id=846377\nhttp://www.mandriva.com/security/advisories?name=MDVSA-2013:097\nhttp://www.mandriva.com/security/advisories?name=MDVSA-2012:131\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr%3Ba=commitdiff%3Bh=b17232f86f8e60d0d22caf9a2400494d3c77da58\nhttp://lists.cypherpunks.ca/pipermail/otr-dev/2012-July/001347.html\nhttp://lists.cypherpunks.ca/pipermail/otr-dev/2012-July/001348.html\nhttp://bugs.debian.org/cgi-bin/bugreport.cgi?bug=684121\nhttp://www.ubuntu.com/usn/USN-1541-1\nhttp://lists.opensuse.org/opensuse-security-announce/2012-11/msg00016.html\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr%3Ba=commitdiff%3Bh=1902baee5d4b056850274ed0fa8c2409f1187435\nhttp://lists.opensuse.org/opensuse-security-announce/2013-01/msg00019.html\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr%3Ba=commitdiff%3Bh=6d4ca89cf1d3c9a8aff696c3a846ac5a51f762c1\nhttp://www.securityfocus.com/bid/54907\nhttps://nvd.nist.gov/vuln/detail/CVE-2012-3461\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr;a=commitdiff;h=1902baee5d4b056850274ed0fa8c2409f1187435\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr;a=commitdiff;h=6d4ca89cf1d3c9a8aff696c3a846ac5a51f762c1\nhttp://otr.git.sourceforge.net/git/gitweb.cgi?p=otr/libotr;a=commitdiff;h=b17232f86f8e60d0d22caf9a2400494d3c77da58\n",
+  "aliases": "CVE-2012-3461\nGHSA-gwfv-2hfv-wqmr\n",
+  "assigner": "redhat",
+  "epss": 3.17,
+  "enisaIdProduct": [
+    {
+      "id": "41c2bd56-0b7a-3885-a71d-fc4ecd7cad67",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "046b0e12-5a16-3d87-9123-d6e1875f3a9e",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

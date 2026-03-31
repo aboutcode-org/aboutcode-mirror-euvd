@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2019-4592",
+  "enisaUuid": "dc700736-7754-3f83-82e4-960a7ba80616",
+  "description": "Centreon V19.04 allows the attacker to execute arbitrary system commands by using the value \"init_script\"-\"Monitoring Engine Binary\" in main.get.php to insert a arbitrary command into the database, and execute it by calling the vulnerable page www/include/configuration/configGenerate/xml/generateFiles.php (which passes the inserted value to the database to shell_exec without sanitizing it, allowing one to execute system arbitrary commands).",
+  "datePublished": "May 24, 2022, 4:49:06 PM",
+  "dateUpdated": "May 24, 2022, 4:49:06 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://packetstormsecurity.com/files/cve/CVE-2019-13024\nhttps://gist.github.com/mhaskar/c4255f6cf45b19b8a852c780f50576da\nhttps://shells.systems/centreon-v19-04-remote-code-execution-cve-2019-13024/\nhttp://packetstormsecurity.com/files/153504/Centreon-19.04-Remote-Code-Execution.html\nhttps://github.com/centreon/centreon/pull/7694\nhttps://documentation.centreon.com/docs/centreon/en/latest/release_notes/centreon-19.04/centreon-19.04.3.html\nhttps://documentation.centreon.com/docs/centreon/en/latest/release_notes/centreon-18.10/centreon-18.10.6.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-13024\n",
+  "aliases": "CVE-2019-13024\nGHSA-v39g-xvv3-gr6r\n",
+  "assigner": "mitre",
+  "epss": 62.02,
+  "enisaIdProduct": [
+    {
+      "id": "f048a0fd-583a-39ca-b2e0-586716e11893",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9ad8ac92-e3fa-3bc4-9248-aef413cf2dc8",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

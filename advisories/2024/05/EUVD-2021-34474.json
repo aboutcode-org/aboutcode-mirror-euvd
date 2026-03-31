@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2021-34474",
+  "enisaUuid": "47374d31-3c30-3a43-b309-bd68e96f358f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: Fix deadlock when adding SPI controllers on SPI buses\n\nCurrently we have a global spi_add_lock which we take when adding new\ndevices so that we can check that we're not trying to reuse a chip\nselect that's already controlled.  This means that if the SPI device is\nitself a SPI controller and triggers the instantiation of further SPI\ndevices we trigger a deadlock as we try to register and instantiate\nthose devices while in the process of doing so for the parent controller\nand hence already holding the global spi_add_lock.  Since we only care\nabout concurrency within a single SPI bus move the lock to be per\ncontroller, avoiding the deadlock.\n\nThis can be easily triggered in the case of spi-mux.",
+  "datePublished": "May 22, 2024, 9:31:45 AM",
+  "dateUpdated": "Jan 10, 2025, 6:31:37 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/aa3f3d7bef59583f2d3234173105a27ff61ef8fe\nhttps://git.kernel.org/stable/c/c8dce228db6f81dbc897a018dfc5c418e917cf64\nhttps://git.kernel.org/stable/c/722ef19a161ce3fffb3d1b01ce2301c306639bdd\nhttps://git.kernel.org/stable/c/6098475d4cb48d821bdf453c61118c56e26294f0\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-47469\n",
+  "aliases": "CVE-2021-47469\nGHSA-hx2r-xg86-xj35\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "cd781e90-d87c-3468-9046-20d938c2aa13",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <722ef19a161ce3fffb3d1b01ce2301c306639bdd"
+    },
+    {
+      "id": "df1cd8dc-c8e5-3085-b408-f2def9aa6875",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6098475d4cb48d821bdf453c61118c56e26294f0"
+    },
+    {
+      "id": "e99c378c-628c-3fa9-8491-7b8dc0d92b35",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <aa3f3d7bef59583f2d3234173105a27ff61ef8fe"
+    },
+    {
+      "id": "fc6517bd-9a94-3208-901d-cf59b6d376b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c8dce228db6f81dbc897a018dfc5c418e917cf64"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f22a79e9-89bc-3b44-94e6-9d65954c726c",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

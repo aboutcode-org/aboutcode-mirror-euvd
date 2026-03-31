@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2021-21638",
+  "enisaUuid": "6eab9bb9-389c-3ae2-8a90-9e66bb331472",
+  "description": "This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of NETGEAR R6400v2 1.0.4.106_10.0.80 routers. Authentication is not required to exploit this vulnerability. The specific flaw exists within the UPnP service, which listens on TCP port 5000 by default. When parsing the uuid request header, the process does not properly validate the length of user-supplied data prior to copying it to a fixed-length stack-based buffer. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-14110.",
+  "datePublished": "May 24, 2022, 7:20:54 PM",
+  "dateUpdated": "May 24, 2022, 7:20:54 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.zerodayinitiative.com/advisories/ZDI-21-1303/\nhttps://kb.netgear.com/000064361/Security-Advisory-for-Pre-Authentication-Buffer-Overflow-on-Multiple-Products-PSV-2021-0168\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-34991\n",
+  "aliases": "CVE-2021-34991\nGHSA-4fwh-3qpr-42ff\n",
+  "assigner": "zdi",
+  "epss": 0.21,
+  "enisaIdProduct": [
+    {
+      "id": "3b8afb7d-202e-3a11-b857-077cd17bb631",
+      "product": {
+        "name": "R6400v2"
+      },
+      "product_version": "1.0.4.106_10.0.80"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "88976810-0c2f-3e38-ac36-46ff23a113f7",
+      "vendor": {
+        "name": "Netgear"
+      }
+    }
+  ]
+}

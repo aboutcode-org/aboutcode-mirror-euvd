@@ -1,0 +1,106 @@
+{
+  "id": "EUVD-2023-59498",
+  "enisaUuid": "f04b75c1-9939-3582-99a4-734e804e1a2f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: config: fix iteration issue in 'usb_get_bos_descriptor()'\n\nThe BOS descriptor defines a root descriptor and is the base descriptor for\naccessing a family of related descriptors.\n\nFunction 'usb_get_bos_descriptor()' encounters an iteration issue when\nskipping the 'USB_DT_DEVICE_CAPABILITY' descriptor type. This results in\nthe same descriptor being read repeatedly.\n\nTo address this issue, a 'goto' statement is introduced to ensure that the\npointer and the amount read is updated correctly. This ensures that the\nfunction iterates to the next descriptor instead of reading the same\ndescriptor repeatedly.",
+  "datePublished": "May 21, 2024, 6:31:21 PM",
+  "dateUpdated": "Sep 25, 2025, 6:30:28 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9ef94ec8e52eaf7b9abc5b5f8f5b911751112223\nhttps://git.kernel.org/stable/c/64c27b7b2357ddb38b6afebaf46d5bff4d250702\nhttps://git.kernel.org/stable/c/f89fef7710b2ba0f7a1e46594e530dcf2f77be91\nhttps://git.kernel.org/stable/c/7c0244cc311a4038505b73682b7c8ceaa5c7a8c8\nhttps://git.kernel.org/stable/c/974bba5c118f4c2baf00de0356e3e4f7928b4cbc\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52781\n",
+  "aliases": "CVE-2023-52781\nGHSA-3pwm-r3r4-xpvf\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "04c483a5-eafb-3815-8ac4-1a3ca12ea739",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3dd550a2d36596a1b0ee7955da3b611c031d3873 <f89fef7710b2ba0f7a1e46594e530dcf2f77be91"
+    },
+    {
+      "id": "07d3de85-325c-39d6-aafa-17896c97af02",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.4"
+    },
+    {
+      "id": "2166d82c-ee88-3782-8ec0-b58747914ae7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "5fd81783-ee1e-352f-b828-fb941bfb07d5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.142"
+    },
+    {
+      "id": "6cad2f7b-7a26-35fd-b6c5-ecdbb63d6420",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3dd550a2d36596a1b0ee7955da3b611c031d3873 <7c0244cc311a4038505b73682b7c8ceaa5c7a8c8"
+    },
+    {
+      "id": "7db0ab1b-f259-3aab-9bb9-8d1af3ec20c5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.4"
+    },
+    {
+      "id": "9538451c-dd28-3f92-961a-14ff87589634",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.203"
+    },
+    {
+      "id": "a1ac0a4b-61cf-3bb4-bd4f-ceb9f8be24e7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.66"
+    },
+    {
+      "id": "a66b5573-cce2-3c58-bf60-7238fe7df724",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3dd550a2d36596a1b0ee7955da3b611c031d3873 <974bba5c118f4c2baf00de0356e3e4f7928b4cbc"
+    },
+    {
+      "id": "b05aec6b-a1f1-3ecc-91fa-e009d748cfb4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7"
+    },
+    {
+      "id": "b85616ea-e8ba-3324-9b6c-b312b4e575a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3dd550a2d36596a1b0ee7955da3b611c031d3873 <9ef94ec8e52eaf7b9abc5b5f8f5b911751112223"
+    },
+    {
+      "id": "eabdae90-3311-3de9-a0dc-e0bfd995f577",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3dd550a2d36596a1b0ee7955da3b611c031d3873 <64c27b7b2357ddb38b6afebaf46d5bff4d250702"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b0c94f78-49f6-36a2-a4b8-a9c7550c2573",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

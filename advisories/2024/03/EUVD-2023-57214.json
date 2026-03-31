@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2023-57214",
+  "enisaUuid": "7e58073c-1ad3-3a85-9e47-27221203d10a",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: Avoid touching renamed directory if parent does not change\n\nThe VFS will not be locking moved directory if its parent does not\nchange. Change ocfs2 rename code to avoid touching renamed directory if\nits parent does not change as without locking that can corrupt the\nfilesystem.",
+  "datePublished": "Mar 6, 2024, 6:45:22 AM",
+  "dateUpdated": "Jan 5, 2026, 10:16:24 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/de940cede3c41624e2de27f805b490999f419df9\nhttps://git.kernel.org/stable/c/9d618d19b29c2943527e3a43da0a35aea91062fc\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52590\n",
+  "aliases": "CVE-2023-52590\nGHSA-55wg-fv83-2v8j\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "5ecfcdae-fbb9-3f77-809d-10eb17e84d8b",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "5ff409d4-740a-31ff-ba4e-b420c43d27a3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ccd979bdbce9fba8412beb3f1de68a9d0171b12c <9d618d19b29c2943527e3a43da0a35aea91062fc"
+    },
+    {
+      "id": "648d72b0-46fe-32ec-bbff-20824a6fb012",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9d618d19b29c2943527e3a43da0a35aea91062fc"
+    },
+    {
+      "id": "7df9a6f9-c92c-39ed-95f3-1bf14074c9cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "7f1e26d5-b3b7-36f5-ae7c-1503c3d8e8ff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.16"
+    },
+    {
+      "id": "80aec9ac-d4f1-3917-bc5d-4ee7c1616f76",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <de940cede3c41624e2de27f805b490999f419df9"
+    },
+    {
+      "id": "98dddab3-227f-3e88-a798-c0e9383717b3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "9df58d63-9a6e-3740-a694-366cef805ffe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ccd979bdbce9fba8412beb3f1de68a9d0171b12c <de940cede3c41624e2de27f805b490999f419df9"
+    },
+    {
+      "id": "c7453d13-a1b2-3282-a467-e93ef9293eb7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5ecfcdae-fbb9-3f77-809d-10eb17e84d8b",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

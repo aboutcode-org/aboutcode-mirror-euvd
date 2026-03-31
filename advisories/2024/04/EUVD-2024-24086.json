@@ -1,0 +1,84 @@
+{
+  "id": "EUVD-2024-24086",
+  "enisaUuid": "6d1e3248-4802-3435-90f8-a50086b7ab1b",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: algif_hash - Remove bogus SGL free on zero-length error path\n\nWhen a zero-length message is hashed by algif_hash, and an error\nis triggered, it tries to free an SG list that was never allocated\nin the first place.  Fix this by not freeing the SG list on the\nzero-length error path.",
+  "datePublished": "Apr 17, 2024, 12:32:02 PM",
+  "dateUpdated": "Mar 27, 2025, 9:31:09 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9c82920359b7c1eddaf72069bcfe0ffddf088cd0\nhttps://git.kernel.org/stable/c/775f3c1882a493168e08fdb8cde0865c8f3a8a29\nhttps://git.kernel.org/stable/c/24c890dd712f6345e382256cae8c97abb0406b70\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-26824\n",
+  "aliases": "GHSA-c8fg-x59g-83c8\nCVE-2024-26824\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "06a887cb-a905-3007-b9cc-87aa7c0e1ac2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.7.6"
+    },
+    {
+      "id": "1e3e008d-a7f5-3290-8907-02cc05f50fbd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8"
+    },
+    {
+      "id": "23646cce-de67-3925-8b04-a2290b56ccef",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "4e5261c7-ef0f-3538-96fc-aefc913f2b82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b6d972f6898308fbe7e693bf8d44ebfdb1cd2dc4 <24c890dd712f6345e382256cae8c97abb0406b70"
+    },
+    {
+      "id": "4f0c2f35-208f-3b9d-870c-a5100140eaeb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b6d972f6898308fbe7e693bf8d44ebfdb1cd2dc4 <775f3c1882a493168e08fdb8cde0865c8f3a8a29"
+    },
+    {
+      "id": "753fc7a2-c1b1-3215-9c74-b64bb4aa9a1d",
+      "product": {
+        "name": "Linux"
+      }
+    },
+    {
+      "id": "efb2405f-fde1-3bd8-af23-4b3956586c88",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b6d972f6898308fbe7e693bf8d44ebfdb1cd2dc4 <9c82920359b7c1eddaf72069bcfe0ffddf088cd0"
+    },
+    {
+      "id": "f5a698e0-9e0d-3162-8524-509240ec96b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.5"
+    },
+    {
+      "id": "f61d6310-24a5-3304-a719-e9b9becb15eb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.18"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "753fc7a2-c1b1-3215-9c74-b64bb4aa9a1d",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2023-59601",
+  "enisaUuid": "f23f5fd2-3ccd-3f29-965d-bc784aa7b8b7",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mediatek: vcodec: Only free buffer VA that is not NULL\n\nIn the MediaTek vcodec driver, while mtk_vcodec_mem_free() is mostly\ncalled only when the buffer to free exists, there are some instances\nthat didn't do the check and triggered warnings in practice.\n\nWe believe those checks were forgotten unintentionally. Add the checks\nback to fix the warnings.",
+  "datePublished": "Jul 30, 2024, 9:31:51 AM",
+  "dateUpdated": "Oct 7, 2025, 6:31:01 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/5c217253c76c94f76d1df31d0bbdcb88dc07be91\nhttps://git.kernel.org/stable/c/303d01082edaf817ee2df53a40dca9da637a2c04\nhttps://git.kernel.org/stable/c/eb005c801ec70ff4307727bd3bd6e8280169ef32\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-52888\n",
+  "aliases": "GHSA-m9c3-v5xg-j7mc\nCVE-2023-52888\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "028dabba-a56b-3e6b-927d-45e0f25b9111",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <eb005c801ec70ff4307727bd3bd6e8280169ef32"
+    },
+    {
+      "id": "0cf03432-f83b-3c22-8175-b4a3d6f4b631",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.10"
+    },
+    {
+      "id": "18648a51-0e71-3dba-be9d-3102cb935638",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.9"
+    },
+    {
+      "id": "30a95b84-fc95-3880-a59a-47b8187bbc7a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "590577a4e5257ac3ed72999a94666ad6ba8f24bc <eb005c801ec70ff4307727bd3bd6e8280169ef32"
+    },
+    {
+      "id": "4219b35a-91cc-35a4-8faf-4be13977f8d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "590577a4e5257ac3ed72999a94666ad6ba8f24bc <303d01082edaf817ee2df53a40dca9da637a2c04"
+    },
+    {
+      "id": "435e19d2-0425-3da8-8794-6cbd8dd89375",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.39"
+    },
+    {
+      "id": "665ed71b-7d4d-380a-92d0-13f841430ea5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "590577a4e5257ac3ed72999a94666ad6ba8f24bc <5c217253c76c94f76d1df31d0bbdcb88dc07be91"
+    },
+    {
+      "id": "7fd8ced6-a859-33e3-b642-e965776cb26a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "b1b3fa29-dcab-35a7-a6c0-410f0ec30682",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "b6736bfb-ea88-3be8-a96e-1d64dc8cae76",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <303d01082edaf817ee2df53a40dca9da637a2c04"
+    },
+    {
+      "id": "c8f113f8-ea44-380a-8084-3e406234d782",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5c217253c76c94f76d1df31d0bbdcb88dc07be91"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ff43de42-86d9-3a30-aef9-8a8cffca5dd7",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

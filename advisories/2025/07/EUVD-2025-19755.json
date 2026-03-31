@@ -1,0 +1,59 @@
+{
+  "id": "EUVD-2025-19755",
+  "enisaUuid": "aaf3630f-f8d9-3f22-ab03-252518bbec1f",
+  "description": "An authenticated remote code execution vulnerability exists in Lucee\u2019s administrative interface due to insecure design in the scheduled task functionality. An administrator with access to /lucee/admin/web.cfm can configure a scheduled job to retrieve a remote .cfm file from an attacker-controlled server, which is written to the Lucee webroot and executed with the privileges of the Lucee service account. Because Lucee does not enforce integrity checks, path restrictions, or execution controls for scheduled task fetches, this feature can be abused to achieve arbitrary code execution. This issue is distinct from CVE-2024-55354.",
+  "datePublished": "Jul 2, 2025, 9:32:00 PM",
+  "dateUpdated": "Jul 2, 2025, 9:32:00 PM",
+  "baseScore": 9.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/lucee_scheduled_job.rb\nhttps://github.com/lucee/Lucee\nhttps://vulncheck.com/advisories/lucee-admin-interface-rce\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-34074\n",
+  "aliases": "CVE-2025-34074\nGHSA-xr55-cjp7-wp4r\n",
+  "assigner": "VulnCheck",
+  "epss": 57.33,
+  "enisaIdProduct": [
+    {
+      "id": "14c3dbe2-1ace-3175-a763-7cbdaeefceb1",
+      "product": {
+        "name": "Lucee"
+      },
+      "product_version": "All versions with scheduled task functionality"
+    },
+    {
+      "id": "582cd692-0659-3824-9232-772532c74e51",
+      "product": {
+        "name": "Lucee"
+      },
+      "product_version": "5.0"
+    },
+    {
+      "id": "6ef7a242-7aa6-3628-8877-2aeac929c07f",
+      "product": {
+        "name": "Lucee"
+      },
+      "product_version": "5.x"
+    },
+    {
+      "id": "fad5beb4-db9d-3b56-a4be-846ac9575e0f",
+      "product": {
+        "name": "Lucee"
+      },
+      "product_version": "6.x"
+    },
+    {
+      "id": "fe77228e-7676-30ab-b115-7f45058940f7",
+      "product": {
+        "name": "Lucee"
+      },
+      "product_version": "6.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fdff98e7-925f-323b-aa77-5e8430c21301",
+      "vendor": {
+        "name": "Lucee Association Switzerland"
+      }
+    }
+  ]
+}

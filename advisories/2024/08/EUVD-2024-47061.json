@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2024-47061",
+  "enisaUuid": "c145877f-4a02-327a-a3a9-ce30140595b4",
+  "description": "The GiveWP \u2013 Donation Plugin and Fundraising Platform plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 3.14.1 via deserialization of untrusted input from the 'give_title' parameter. This makes it possible for unauthenticated attackers to inject a PHP Object. The additional presence of a POP chain allows attackers to execute code remotely, and to delete arbitrary files.",
+  "datePublished": "Aug 20, 2024, 3:32:24 AM",
+  "dateUpdated": "Aug 26, 2024, 9:30:32 PM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/93e2d007-8157-42c5-92ad-704dc80749a3?source=cve\nhttps://plugins.trac.wordpress.org/browser/give/tags/3.12.0/includes/login-register.php#L235\nhttps://plugins.trac.wordpress.org/browser/give/tags/3.12.0/includes/process-donation.php#L420\nhttps://plugins.trac.wordpress.org/browser/give/tags/3.12.0/vendor/vendor-prefixed/fakerphp/faker/src/Faker/ValidGenerator.php#L80\nhttps://plugins.trac.wordpress.org/browser/give/tags/3.12.0/vendor/tecnickcom/tcpdf/tcpdf.php#L7861\nhttps://plugins.trac.wordpress.org/browser/give/tags/3.12.0/src/DonorDashboards/Tabs/EditProfileTab/AvatarRoute.php#L51\nhttps://plugins.trac.wordpress.org/changeset/3132247/\nhttps://www.wordfence.com/blog/2024/08/4998-bounty-awarded-and-100000-wordpress-sites-protected-against-unauthenticated-remote-code-execution-vulnerability-patched-in-givewp-wordpress-plugin/\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-5932\n",
+  "aliases": "CVE-2024-5932\nGHSA-v25r-h42w-j2vq\n",
+  "assigner": "Wordfence",
+  "epss": 94.2,
+  "enisaIdProduct": [
+    {
+      "id": "a85c454c-061d-3fe6-a5b9-ac41698e6733",
+      "product": {
+        "name": "GiveWP \u2013 Donation Plugin and Fundraising Platform"
+      },
+      "product_version": "* \u22643.14.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d700410e-c740-321d-bf91-f32c92328a50",
+      "vendor": {
+        "name": "webdevmattcrom"
+      }
+    }
+  ]
+}

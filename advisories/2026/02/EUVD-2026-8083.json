@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8083",
+  "enisaUuid": "0e1ad05b-1f59-3013-a55c-219d818eed22",
+  "description": "The Product Addons for Woocommerce \u2013 Product Options with Custom Fields plugin for WordPress is vulnerable to Code Injection in all versions up to, and including, 3.1.0. This is due to insufficient input validation of the 'operator' field in conditional logic rules within the evalConditions() function, which passes unsanitized user input directly to PHP's eval() function. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to inject and execute arbitrary PHP code on the server via the conditional logic 'operator' parameter when saving addon form field rules.",
+  "datePublished": "Feb 18, 2026, 9:31:04 AM",
+  "dateUpdated": "Feb 18, 2026, 9:31:04 AM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b3c1edd7-2421-4dfa-8775-ca0497759d52?source=cve\nhttps://plugins.trac.wordpress.org/browser/woo-custom-product-addons/trunk/includes/process/conditional-logic.php#L104\nhttps://plugins.trac.wordpress.org/browser/woo-custom-product-addons/tags/3.0.19/includes/process/conditional-logic.php#L104\nhttps://plugins.trac.wordpress.org/browser/woo-custom-product-addons/trunk/includes/process/conditional-logic.php#L84\nhttps://plugins.trac.wordpress.org/browser/woo-custom-product-addons/tags/3.0.19/includes/process/conditional-logic.php#L84\nhttps://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3458823%40woo-custom-product-addons&new=3458823%40woo-custom-product-addons&sfp_email=&sfph_mail=\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-2296\n",
+  "aliases": "GHSA-p572-g32f-hp32\nCVE-2026-2296\n",
+  "assigner": "Wordfence",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "b1401262-31ee-4ea6-8f00-cfc5b2f7f595",
+      "product": {
+        "name": "Product Addons for Woocommerce \u2013 Product Options with Custom Fields"
+      },
+      "product_version": "* \u22643.1.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "82053130-861a-4a03-8228-da4a2ea6b82f",
+      "vendor": {
+        "name": "acowebs"
+      }
+    }
+  ]
+}

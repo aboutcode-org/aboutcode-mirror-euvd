@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-38205",
+  "enisaUuid": "7c82f681-88df-306f-a112-ed1a92149f21",
+  "description": "An issue was discovered in Ollama before 0.1.34. The CreateModelHandler function uses os.Open to read a file until completion. The req.Path parameter is user-controlled and can be set to /dev/random, which is blocking, causing the goroutine to run infinitely (even after the HTTP request is aborted by the client).",
+  "datePublished": "Oct 31, 2024, 9:31:45 PM",
+  "dateUpdated": "Nov 1, 2024, 6:31:32 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/ollama/ollama/blob/9164b0161bcb24e543cba835a8863b80af2c0c21/server/routes.go#L557\nhttps://github.com/ollama/ollama/blob/adeb40eaf29039b8964425f69a9315f9f1694ba8/server/routes.go#L536\nhttps://www.oligo.security/blog/more-models-more-probllms\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-39721\nhttps://oligosecurity.webflow.io/blog/more-models-more-probllms\n",
+  "aliases": "CVE-2024-39721\nGHSA-mvx2-276h-w78v\n",
+  "assigner": "mitre",
+  "epss": 0.26,
+  "enisaIdProduct": [
+    {
+      "id": "2bd85bfa-45f8-304a-98dc-a3c452bc819a",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "eb7c32e0-854e-30e3-a957-30f703aff038",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

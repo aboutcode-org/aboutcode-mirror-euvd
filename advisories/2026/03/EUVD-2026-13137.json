@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-13137",
+  "enisaUuid": "b46b456f-ff6f-30e0-b5c8-4d22782821ca",
+  "description": "A heap-buffer-overflow vulnerability exists in wolfSSL's wolfSSL_d2i_SSL_SESSION() function. When deserializing session data with SESSION_CERTS enabled, certificate and session id lengths are read from an untrusted input without bounds validation, allowing an attacker to overflow fixed-size buffers and corrupt heap memory. A maliciously crafted session would need to be loaded from an external source to trigger this vulnerability. Internal sessions were not vulnerable.",
+  "datePublished": "Mar 19, 2026, 6:31:19 PM",
+  "dateUpdated": "Mar 19, 2026, 6:31:19 PM",
+  "baseScore": 5.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:P",
+  "references": "https://github.com/wolfSSL/wolfssl/pull/9748\nhttps://github.com/wolfSSL/wolfssl/pull/9949\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-2646\n",
+  "aliases": "CVE-2026-2646\n",
+  "assigner": "wolfSSL",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "61319575-42e8-3240-ab5e-f1fb41370aea",
+      "product": {
+        "name": "wolfSSL"
+      },
+      "product_version": "0 \u22645.8.4"
+    },
+    {
+      "id": "9ac30f93-6753-3518-8ccb-0dda32f7b567",
+      "product": {
+        "name": "wolfSSL"
+      },
+      "product_version": "0 \u22645.8.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "63f348b7-663f-3d78-b37c-7d6f5fbac220",
+      "vendor": {
+        "name": "wolfSSL"
+      }
+    },
+    {
+      "id": "dabd25f8-7163-3d4d-8b82-f1bc99cfa234",
+      "vendor": {
+        "name": "wolfSSL"
+      }
+    }
+  ]
+}

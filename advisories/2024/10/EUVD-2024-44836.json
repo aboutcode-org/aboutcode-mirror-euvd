@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-44836",
+  "enisaUuid": "d84da810-9780-39fa-9110-e7074adebb15",
+  "description": "Botan before 3.6.0, when certain GCC versions are used, has a compiler-induced secret-dependent operation in lib/utils/donna128.h in donna128 (used in Chacha-Poly1305 and x25519). An addition can be skipped if a carry is not set. This was observed for GCC 11.3.0 with -O2 on MIPS, and GCC on x86-i386. (Only 32-bit processors can be affected.)",
+  "datePublished": "Oct 23, 2024, 6:33:09 PM",
+  "dateUpdated": "Oct 24, 2024, 9:31:03 PM",
+  "baseScore": -1.0,
+  "references": "https://github.com/randombit/botan/commit/53b0cfde580e86b03d0d27a488b6c134f662e957\nhttps://github.com/randombit/botan/compare/3.5.0...3.6.0\nhttps://arxiv.org/pdf/2410.13489\nhttps://news.ycombinator.com/item?id=41887153\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-50383\n",
+  "aliases": "CVE-2024-50383\nGHSA-m6p4-vhgw-8c9c\n",
+  "assigner": "mitre",
+  "epss": 0.14,
+  "enisaIdProduct": [
+    {
+      "id": "625e52fa-6391-319f-ad98-1ef389505ec0",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "6b00e45f-ced5-3f93-8b3e-44f00ddd6305",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2023-33593",
+  "enisaUuid": "e029aca4-2728-3f3b-b1c3-83e83694db71",
+  "description": "The Announcement & Notification Banner \u2013 Bulletin plugin for WordPress is vulnerable to Cross-Site Request Forgery due to a missing nonce validation on the 'bulletinwp_update_bulletin_status', 'bulletinwp_update_bulletin', 'bulletinwp_update_settings', 'bulletinwp_update_status', 'bulletinwp_export_bulletins', and 'bulletinwp_import_bulletins' functions in versions up to, and including, 3.7.0. This makes it possible for unauthenticated attackers to modify the plugin's settings, modify bulletins, create new bulletins, and more, via a forged request granted they can trick a site's user into performing an action such as clicking on a link.",
+  "datePublished": "Jul 6, 2023, 9:15:07 PM",
+  "dateUpdated": "Apr 4, 2024, 5:49:30 AM",
+  "baseScore": 6.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b808450f-0ebf-4c49-a9e3-f1c1f2b1f632?source=cve\nhttps://plugins.trac.wordpress.org/browser/bulletin-announcements/trunk/classes/class-bulletinwp-ajax.php\nhttps://plugins.trac.wordpress.org/changeset/2910991/bulletin-announcements/trunk/classes/class-bulletinwp-ajax.php\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-2067\n",
+  "aliases": "GHSA-c2m7-x544-f5mw\nCVE-2023-2067\n",
+  "assigner": "Wordfence",
+  "epss": 0.08,
+  "enisaIdProduct": [
+    {
+      "id": "35932b69-d34a-3dc1-a70f-d01b5ab50af9",
+      "product": {
+        "name": "Announcement & Notification Banner \u2013 Bulletin"
+      },
+      "product_version": "* \u22643.7.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "47a9c194-921e-3dad-994b-bc5f8dc778fd",
+      "vendor": {
+        "name": "mikewire_rocksolid"
+      }
+    }
+  ]
+}

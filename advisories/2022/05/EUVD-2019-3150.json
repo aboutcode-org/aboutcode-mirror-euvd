@@ -1,0 +1,59 @@
+{
+  "id": "EUVD-2019-3150",
+  "enisaUuid": "eca60ca7-790e-364b-8d60-a2b265c1c78d",
+  "description": "Jonathan Looney discovered that the TCP_SKB_CB(skb)->tcp_gso_segs value was subject to an integer overflow in the Linux kernel when handling TCP Selective Acknowledgments (SACKs). A remote attacker could use this to cause a denial of service. This has been fixed in stable kernel releases 4.4.182, 4.9.182, 4.14.127, 4.19.52, 5.1.11, and is fixed in commit 3b4929f65b0d8249f19a50245cd88ed1a2f78cff.",
+  "datePublished": "May 24, 2022, 4:48:21 PM",
+  "dateUpdated": "Feb 27, 2024, 9:31:22 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2019-11477.html\nhttps://www.debian.org/security/2019/dsa-4465\nhttps://access.redhat.com/errata/RHSA-2019:1699\nhttps://access.redhat.com/errata/RHSA-2019:1602\nhttps://access.redhat.com/errata/RHSA-2019:1594\nhttps://access.redhat.com/errata/RHSA-2019:1490\nhttps://access.redhat.com/errata/RHSA-2019:1489\nhttps://access.redhat.com/errata/RHSA-2019:1488\nhttps://access.redhat.com/errata/RHSA-2019:1487\nhttps://access.redhat.com/errata/RHSA-2019:1486\nhttps://access.redhat.com/errata/RHSA-2019:1485\nhttps://access.redhat.com/errata/RHSA-2019:1484\nhttps://access.redhat.com/errata/RHSA-2019:1483\nhttps://access.redhat.com/errata/RHSA-2019:1482\nhttps://access.redhat.com/errata/RHSA-2019:1481\nhttps://access.redhat.com/errata/RHSA-2019:1480\nhttps://access.redhat.com/errata/RHSA-2019:1479\nhttps://ubuntu.com/security/CVE-2019-11477\nhttps://advisories.mageia.org/CVE-2019-11477.html\nhttps://security.archlinux.org/CVE-2019-11477\nhttps://alas.aws.amazon.com/cve/html/CVE-2019-11477.html\nhttps://linux.oracle.com/cve/CVE-2019-11477.html\nhttps://www.kb.cert.org/vuls/id/905115\nhttp://www.openwall.com/lists/oss-security/2019/06/20/3\nhttp://www.openwall.com/lists/oss-security/2019/06/28/2\nhttp://www.openwall.com/lists/oss-security/2019/07/06/3\nhttp://www.openwall.com/lists/oss-security/2019/07/06/4\nhttp://www.openwall.com/lists/oss-security/2019/10/24/1\nhttp://www.openwall.com/lists/oss-security/2019/10/29/3\nhttps://www.oracle.com/security-alerts/cpujan2020.html\nhttps://www.oracle.com/security-alerts/cpuoct2020.html\nhttps://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git/commit/?id=3b4929f65b0d8249f19a50245cd88ed1a2f78cff\nhttps://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md\nhttps://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SACKPanic\nhttps://access.redhat.com/security/vulnerabilities/tcpsack\nhttps://support.f5.com/csp/article/K78234183\nhttp://packetstormsecurity.com/files/153346/Kernel-Live-Patch-Security-Notice-LSN-0052-1.html\nhttps://kb.pulsesecure.net/articles/Pulse_Security_Advisories/SA44193\nhttps://www.synology.com/security/advisory/Synology_SA_19_28\nhttps://security.netapp.com/advisory/ntap-20190625-0001/\nhttps://psirt.global.sonicwall.com/vuln-detail/SNWLID-2019-0006\nhttps://kc.mcafee.com/corporate/index?page=content&id=SB10287\nhttp://www.vmware.com/security/advisories/VMSA-2019-0010.html\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-462066.pdf\nhttps://www.us-cert.gov/ics/advisories/icsa-19-253-03\nhttp://packetstormsecurity.com/files/154951/Kernel-Live-Patch-Security-Notice-LSN-0058-1.html\nhttp://www.huawei.com/en/psirt/security-advisories/huawei-sa-20191225-01-kernel-en\nhttp://www.arubanetworks.com/assets/alert/ARUBA-PSA-2020-010.txt\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-11477\n",
+  "aliases": "GHSA-748j-px2m-cwgh\nCVE-2019-11477\n",
+  "assigner": "canonical",
+  "epss": 74.55,
+  "enisaIdProduct": [
+    {
+      "id": "3b2b551e-6b8f-39a2-8df9-44918de61142",
+      "product": {
+        "name": "Linux kernel"
+      },
+      "product_version": "4.9 <4.9.182"
+    },
+    {
+      "id": "53a32aa9-e9e1-3c7f-9c1d-5069bf27a32e",
+      "product": {
+        "name": "Linux kernel"
+      },
+      "product_version": "4.4 <4.4.182"
+    },
+    {
+      "id": "6b518590-1128-3efb-bf39-fcf7f8caee6e",
+      "product": {
+        "name": "Linux kernel"
+      },
+      "product_version": "5.1 <5.1.11"
+    },
+    {
+      "id": "98b728c4-9e27-33a0-bfe0-1371b98026a6",
+      "product": {
+        "name": "Linux kernel"
+      },
+      "product_version": "4.14 <4.14.127"
+    },
+    {
+      "id": "b8815caa-3ba1-3a92-bc81-d9528399f840",
+      "product": {
+        "name": "Linux kernel"
+      },
+      "product_version": "4.19 <4.19.52"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "957e86f3-75fc-307f-bef3-3216fa6a03e7",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

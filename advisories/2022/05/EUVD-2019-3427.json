@@ -1,0 +1,45 @@
+{
+  "id": "EUVD-2019-3427",
+  "enisaUuid": "e1af3dc6-9bab-3852-9248-ed80f1b1e3fc",
+  "description": "When following the value's prototype chain, it was possible to retain a reference to a locale, delete it, and subsequently reference it. This resulted in a use-after-free and a potentially exploitable crash. This vulnerability affects Firefox < 70, Thunderbird < 68.2, and Firefox ESR < 68.2.",
+  "datePublished": "May 24, 2022, 5:05:46 PM",
+  "dateUpdated": "Feb 1, 2023, 6:30:24 PM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2019-11757.html\nhttps://www.debian.org/security/2019/dsa-4571\nhttps://www.debian.org/security/2019/dsa-4549\nhttps://access.redhat.com/errata/RHSA-2019:3756\nhttps://access.redhat.com/errata/RHSA-2019:3281\nhttps://access.redhat.com/errata/RHSA-2019:3237\nhttps://access.redhat.com/errata/RHSA-2019:3210\nhttps://access.redhat.com/errata/RHSA-2019:3196\nhttps://access.redhat.com/errata/RHSA-2019:3193\nhttps://ubuntu.com/security/CVE-2019-11757\nhttps://advisories.mageia.org/CVE-2019-11757.html\nhttps://security.archlinux.org/CVE-2019-11757\nhttps://linux.oracle.com/cve/CVE-2019-11757.html\nhttps://www.mozilla.org/security/advisories/mfsa2019-35/\nhttps://www.mozilla.org/security/advisories/mfsa2019-33/\nhttps://www.mozilla.org/security/advisories/mfsa2019-34/\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=1577107\nhttps://security.gentoo.org/glsa/202003-10\nhttps://usn.ubuntu.com/4335-1/\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-11757\n",
+  "aliases": "CVE-2019-11757\nGHSA-fxjq-wqq4-mf6x\n",
+  "assigner": "mozilla",
+  "epss": 1.39,
+  "enisaIdProduct": [
+    {
+      "id": "120edd7c-84a3-39d0-ab71-cc1843a11995",
+      "product": {
+        "name": "Firefox ESR"
+      },
+      "product_version": "before 68.2"
+    },
+    {
+      "id": "afdafb89-c8a2-3f58-a516-66d71ac6a38b",
+      "product": {
+        "name": "Thunderbird"
+      },
+      "product_version": "before 68.2"
+    },
+    {
+      "id": "d891caef-b720-3165-889c-6310519d8d4b",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "before 70"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9449ccd2-82b5-3f65-aafb-7735364c5ea0",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

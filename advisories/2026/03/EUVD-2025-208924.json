@@ -1,0 +1,37 @@
+{
+  "id": "EUVD-2025-208924",
+  "enisaUuid": "cdddaf66-57aa-38ef-9cb1-90e1331f8409",
+  "description": "The ReviewX \u2013 WooCommerce Product Reviews with Multi-Criteria, Reminder Emails, Google Reviews, Schema & More plugin for WordPress is vulnerable to arbitrary method calls in all versions up to, and including, 2.2.12. This is due to insufficient input validation in the bulkTenReviews function that allows user-controlled data to be passed directly to a variable function call mechanism. This makes it possible for unauthenticated attackers to call arbitrary PHP class methods that take no inputs or have default values, potentially leading to information disclosure or remote code execution depending on available methods and server configuration.",
+  "datePublished": "Mar 23, 2026, 6:30:28 AM",
+  "dateUpdated": "Mar 23, 2026, 6:30:28 AM",
+  "baseScore": 7.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0935ede4-05bc-48a2-94a3-8d92002e02bb?source=cve\nhttps://plugins.trac.wordpress.org/browser/reviewx/tags/2.2.7/routes/api.php#L220\nhttps://plugins.trac.wordpress.org/browser/reviewx/tags/2.2.7/app/Rest/Controllers/ReviewController.php#L426\nhttps://plugins.trac.wordpress.org/browser/reviewx/tags/2.2.7/app/Services/ReviewService.php#L731\nhttps://plugins.trac.wordpress.org/browser/reviewx/tags/2.2.7/app/Utilities/Helper.php#L65\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-10679\n",
+  "aliases": "GHSA-7q98-jvc7-4p5q\nCVE-2025-10679\n",
+  "assigner": "Wordfence",
+  "epss": 0.18,
+  "enisaIdProduct": [
+    {
+      "id": "0b10a052-4e41-386d-90d1-496bd87a435f",
+      "product": {
+        "name": "ReviewX \u2013 Multi-Criteria Reviews for WooCommerce with Google Reviews & Schema"
+      },
+      "product_version": "* \u22642.2.12"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3e6b79fd-eeb8-3739-b395-bfdd9c5d3038",
+      "vendor": {
+        "name": "ReviewX"
+      }
+    },
+    {
+      "id": "d8ee30d3-494c-3a2c-80d4-79bd47677198",
+      "vendor": {
+        "name": "ReviewX"
+      }
+    }
+  ]
+}

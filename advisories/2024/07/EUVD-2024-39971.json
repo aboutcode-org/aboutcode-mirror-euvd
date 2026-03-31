@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-39971",
+  "enisaUuid": "ea99bbd5-b341-331b-8b05-d7638237f726",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: Fix improper extts handling\n\nExtts events are disabled and enabled by the application ts2phc.\nHowever, in case where the driver is removed when the application is\nrunning, a specific extts event remains enabled and can cause a kernel\ncrash.\nAs a side effect, when the driver is reloaded and application is started\nagain, remaining extts event for the channel from a previous run will\nkeep firing and the message \"extts on unexpected channel\" might be\nprinted to the user.\n\nTo avoid that, extts events shall be disabled when PTP is released.",
+  "datePublished": "Jul 30, 2024, 9:32:02 AM",
+  "dateUpdated": "Dec 11, 2024, 3:31:15 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/9f69b31ae9e25dec27ad31fbc64dd99af16ee3d3\nhttps://git.kernel.org/stable/c/00d3b4f54582d4e4a02cda5886bb336eeab268cc\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42139\n",
+  "aliases": "GHSA-8qf2-p2j7-qp5x\nCVE-2024-42139\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "03d3aa9e-053d-34dd-8816-2c76188901a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "172db5f91d5f7b91670c68a7547798b0b5374158 <00d3b4f54582d4e4a02cda5886bb336eeab268cc"
+    },
+    {
+      "id": "2ebb3f11-3aee-3fb8-9ea6-32dd6a9bf01f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.14"
+    },
+    {
+      "id": "378e3d26-312e-3d25-a5cf-1574ef06c593",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "443851ca-d5ce-3840-82c0-b7406cead7eb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.9"
+    },
+    {
+      "id": "485a8c7b-a4d8-35e7-9484-544b6c15093f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "8f5b87b8-c4f0-3ea6-af48-d7ddc4d0ec73",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "172db5f91d5f7b91670c68a7547798b0b5374158 <9f69b31ae9e25dec27ad31fbc64dd99af16ee3d3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "025b4c08-4309-37fc-a2e1-2b0446ff7a4f",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

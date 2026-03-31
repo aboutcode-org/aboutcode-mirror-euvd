@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2023-59476",
+  "enisaUuid": "ad0feef7-576f-3ed7-aa88-9a109581c7e9",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: dev: copy userspace array safely\n\ni2c-dev.c utilizes memdup_user() to copy a userspace array. This is done\nwithout an overflow check.\n\nUse the new wrapper memdup_array_user() to copy the array more safely.",
+  "datePublished": "May 21, 2024, 6:31:20 PM",
+  "dateUpdated": "May 21, 2024, 6:31:20 PM",
+  "baseScore": -1.0,
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2023-52758\nhttps://git.kernel.org/stable/c/38ada2f304f6f2065dd59613ef236a26f4dd73cd\nhttps://git.kernel.org/stable/c/aff8be2cad74a22525cd89cdff0b72a5c9a4c0c6\nhttps://git.kernel.org/stable/c/bef76b8544939518dafa3325bcd438b111136437\nhttps://git.kernel.org/stable/c/cc9c54232f04aef3a5d7f64a0ece7df00f1aaa3d\nhttps://git.kernel.org/stable/c/fe4eb2157d8c45b127bd88b1376c38c27b741293\n",
+  "aliases": "GHSA-v9fv-p8rm-2gvr\nCVE-2023-52758\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

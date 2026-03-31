@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2022-33609",
+  "enisaUuid": "df02120c-dc5d-38fd-9b59-60313b116fd3",
+  "description": "In APache APISIX before 3.13.1, an attacker can obtain a plugin-configured secret via an error message response by sending an incorrect JSON Web Token to a route protected by the jwt-auth plugin. The error logic in the dependency library lua-resty-jwt enables sending an RS256 token to an endpoint that requires an HS256 token, with the original secret value included in the error response.",
+  "datePublished": "Apr 21, 2022, 12:00:26 AM",
+  "dateUpdated": "May 1, 2022, 12:00:39 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://lists.apache.org/thread/6qpfyxogbvn18g9xr8g218jjfjbfsbhr\nhttp://www.openwall.com/lists/oss-security/2022/04/20/1\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-29266\n",
+  "aliases": "CVE-2022-29266\nGHSA-x46m-gg6j-22gf\n",
+  "assigner": "apache",
+  "epss": 35.84,
+  "enisaIdProduct": [
+    {
+      "id": "a60d2d5d-7ba2-3fc7-9327-ea4a5cfe3e70",
+      "product": {
+        "name": "Apache APISIX"
+      },
+      "product_version": "Apache APISIX \u22642.13.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5f6ceb61-443a-37d1-9121-51cff57d9a74",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

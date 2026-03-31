@@ -1,0 +1,155 @@
+{
+  "id": "EUVD-2025-28963",
+  "enisaUuid": "1c4b40c8-8263-3b2a-83c7-70b97959a747",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Forget ranges when refining tnum after JSET\n\nSyzbot reported a kernel warning due to a range invariant violation on\nthe following BPF program.\n\n  0: call bpf_get_netns_cookie\n  1: if r0 == 0 goto <exit>\n  2: if r0 & Oxffffffff goto <exit>\n\nThe issue is on the path where we fall through both jumps.\n\nThat path is unreachable at runtime: after insn 1, we know r0 != 0, but\nwith the sign extension on the jset, we would only fallthrough insn 2\nif r0 == 0. Unfortunately, is_branch_taken() isn't currently able to\nfigure this out, so the verifier walks all branches. The verifier then\nrefines the register bounds using the second condition and we end\nup with inconsistent bounds on this unreachable path:\n\n  1: if r0 == 0 goto <exit>\n    r0: u64=[0x1, 0xffffffffffffffff] var_off=(0, 0xffffffffffffffff)\n  2: if r0 & 0xffffffff goto <exit>\n    r0 before reg_bounds_sync: u64=[0x1, 0xffffffffffffffff] var_off=(0, 0)\n    r0 after reg_bounds_sync:  u64=[0x1, 0] var_off=(0, 0)\n\nImproving the range refinement for JSET to cover all cases is tricky. We\nalso don't expect many users to rely on JSET given LLVM doesn't generate\nthose instructions. So instead of improving the range refinement for\nJSETs, Eduard suggested we forget the ranges whenever we're narrowing\ntnums after a JSET. This patch implements that approach.",
+  "datePublished": "Sep 11, 2025, 4:52:20 PM",
+  "dateUpdated": "Jan 2, 2026, 3:32:04 PM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/f01e06930444cab289a8783017af9b64255bd103\nhttps://git.kernel.org/stable/c/2fd0c26bacd90ef26522bd3169000a4715bf151f\nhttps://git.kernel.org/stable/c/80a6b11862a7cfdf691e8f9faee89cfea219f098\nhttps://git.kernel.org/stable/c/6279846b9b2532e1b04559ef8bd0dec049f29383\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-39748\n",
+  "aliases": "GHSA-v488-2vhj-rwrj\nCVE-2025-39748\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "01beb0f4-2f12-3c4b-83e3-89ab1b48da1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <591c788d16046edb0220800bf1819554af5853ce"
+    },
+    {
+      "id": "0e364afa-9edc-34d2-ac8a-0b973f04f0f6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "10d53383-a951-3660-94d0-ff194e758356",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.15.11"
+    },
+    {
+      "id": "26ec889c-ec2d-3551-a9e6-0c58d78112ed",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.167"
+    },
+    {
+      "id": "36ccff4b-d1e8-34c8-96e3-fa82c4cd0c64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6279846b9b2532e1b04559ef8bd0dec049f29383"
+    },
+    {
+      "id": "38f064cc-f71f-330a-9a4d-997b183494da",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <6279846b9b2532e1b04559ef8bd0dec049f29383"
+    },
+    {
+      "id": "40b7a1a2-5434-3316-a5b3-74e53e4ef89d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <80a6b11862a7cfdf691e8f9faee89cfea219f098"
+    },
+    {
+      "id": "70e34e8b-313a-3b1d-b97a-6f775e80aab2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "8c8efdb2-0bca-3a5f-a57d-954b372fc79c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2fd0c26bacd90ef26522bd3169000a4715bf151f"
+    },
+    {
+      "id": "931bf11f-cedc-389f-b822-5f5014b5819b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <f01e06930444cab289a8783017af9b64255bd103"
+    },
+    {
+      "id": "99634ef7-c1ea-385f-b0d5-bc3326ad5c9f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <0643aa2468192a4d81326e8e76543854870b1ee2"
+    },
+    {
+      "id": "aafdcda6-86b5-3bab-8008-1e2d2686753f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.17"
+    },
+    {
+      "id": "ab275820-492c-35da-b34c-5cd6a58789e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <80a6b11862a7cfdf691e8f9faee89cfea219f098"
+    },
+    {
+      "id": "cb16bb0d-859e-39a3-adc3-21f7d7929b0a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "960ea056561a08e2b837b2f02d22c53226414a84 <2fd0c26bacd90ef26522bd3169000a4715bf151f"
+    },
+    {
+      "id": "f060e3a3-f711-3326-ba7a-9556e97fa4a8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.16.2"
+    },
+    {
+      "id": "fa494848-e0f5-393e-ab7a-fba321b371b7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.0"
+    },
+    {
+      "id": "fe14baf5-24b7-3354-bf25-44122e0eaa1d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f01e06930444cab289a8783017af9b64255bd103"
+    },
+    {
+      "id": "fefe72fa-750e-3cde-82b1-fa2273652396",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.17-rc1"
+    },
+    {
+      "id": "ff3426bf-810b-39f1-b2e1-8f68950f39b8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.43"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a2f3eb06-a4d2-396e-bb88-dfeeb4f82240",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

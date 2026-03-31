@@ -1,0 +1,36 @@
+{
+  "id": "EUVD-2023-50014",
+  "enisaUuid": "3e21dd57-ffa7-3078-9e0a-4580c33a9bbc",
+  "description": "Design document functions which receive a user http request object may expose authorization or session cookie headers of the user who accesses the document.\n\nThese design document functions are:\n  *  \u00a0 list\n  *  \u00a0 show\n  *  \u00a0 rewrite\n  *  \u00a0 update\n\nAn attacker can leak the session component using an HTML-like output, insert the session as an external resource (such as an image), or store the credential in a _local document with an \"update\" function.\n\nFor the attack to succeed the attacker has to be able to insert the design documents into the database, then manipulate a user to access a function from that design document.\n\nWorkaround: Avoid using design documents from untrusted sources which may attempt to access or manipulate request object's headers\n",
+  "datePublished": "Dec 13, 2023, 9:30:32 AM",
+  "dateUpdated": "Dec 20, 2023, 9:30:29 PM",
+  "baseScore": -1.0,
+  "references": "https://lists.apache.org/thread/pqjq9zt8vq9rsobkc1cow9sqm9vozlrg\nhttps://docs.couchdb.org/en/stable/cve/2023-45725.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-45725\n",
+  "aliases": "GHSA-rmfx-8gmj-c39q\nCVE-2023-45725\n",
+  "assigner": "apache",
+  "epss": 0.22,
+  "enisaIdProduct": [
+    {
+      "id": "70578f0a-021a-39c7-8a75-bef0801395fe",
+      "product": {
+        "name": "IBM Cloudant"
+      },
+      "product_version": "0 <8413"
+    },
+    {
+      "id": "e61347b9-dbd3-3b84-8c5b-7e55038ae32b",
+      "product": {
+        "name": "Apache CouchDB"
+      },
+      "product_version": "0 \u22643.3.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d78d4fb2-8eff-336c-bb34-9d32e6850ad4",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

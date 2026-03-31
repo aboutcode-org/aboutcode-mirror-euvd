@@ -1,0 +1,162 @@
+{
+  "id": "EUVD-2024-39958",
+  "enisaUuid": "b212b86c-dee8-3337-ab11-0c62ab10bc6f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc: Avoid nmi_enter/nmi_exit in real mode interrupt.\n\nnmi_enter()/nmi_exit() touches per cpu variables which can lead to kernel\ncrash when invoked during real mode interrupt handling (e.g. early HMI/MCE\ninterrupt handler) if percpu allocation comes from vmalloc area.\n\nEarly HMI/MCE handlers are called through DEFINE_INTERRUPT_HANDLER_NMI()\nwrapper which invokes nmi_enter/nmi_exit calls. We don't see any issue when\npercpu allocation is from the embedded first chunk. However with\nCONFIG_NEED_PER_CPU_PAGE_FIRST_CHUNK enabled there are chances where percpu\nallocation can come from the vmalloc area.\n\nWith kernel command line \"percpu_alloc=page\" we can force percpu allocation\nto come from vmalloc area and can see kernel crash in machine_check_early:\n\n[    1.215714] NIP [c000000000e49eb4] rcu_nmi_enter+0x24/0x110\n[    1.215717] LR [c0000000000461a0] machine_check_early+0xf0/0x2c0\n[    1.215719] --- interrupt: 200\n[    1.215720] [c000000fffd73180] [0000000000000000] 0x0 (unreliable)\n[    1.215722] [c000000fffd731b0] [0000000000000000] 0x0\n[    1.215724] [c000000fffd73210] [c000000000008364] machine_check_early_common+0x134/0x1f8\n\nFix this by avoiding use of nmi_enter()/nmi_exit() in real mode if percpu\nfirst chunk is not embedded.",
+  "datePublished": "Jul 30, 2024, 7:46:23 AM",
+  "dateUpdated": "Nov 3, 2025, 10:01:57 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/fb6675db04c4b79883373edc578d5df7bbc84848\nhttps://git.kernel.org/stable/c/e2afb26615adf6c3ceaaa7732aa839bcd587a057\nhttps://git.kernel.org/stable/c/8d3f83dfb23674540c827a8d65fba20aa300b252\nhttps://git.kernel.org/stable/c/0f37946c62c48a907625348cbc720a7a0c547d1e\nhttps://git.kernel.org/stable/c/2c78c9411e685dbc9eac8c2845111b03501975b8\nhttps://git.kernel.org/stable/c/0db880fc865ffb522141ced4bfa66c12ab1fbb70\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-42126\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "GHSA-vx4j-2p26-q8m4\nCVE-2024-42126\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "0d15b7e4-b5b1-35b9-bc34-905a880bc084",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.98"
+    },
+    {
+      "id": "11706d97-654e-3fe7-8612-d8cd3ad3afdb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.224"
+    },
+    {
+      "id": "1398493b-a018-3153-b7e7-c56e2aef3b5f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "1ebe6333-7cb6-3e97-81cb-13e088de30d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <0f37946c62c48a907625348cbc720a7a0c547d1e"
+    },
+    {
+      "id": "2b96829f-cf38-341b-ada2-171908419b65",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <e2afb26615adf6c3ceaaa7732aa839bcd587a057"
+    },
+    {
+      "id": "2cfe1276-1309-38d9-a307-09194970e687",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <fb6675db04c4b79883373edc578d5df7bbc84848"
+    },
+    {
+      "id": "4d756e44-04a1-38e9-b4bd-8749b20ca19e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <8d3f83dfb23674540c827a8d65fba20aa300b252"
+    },
+    {
+      "id": "86892e71-717b-3969-875f-1ed7c7b48ede",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e2afb26615adf6c3ceaaa7732aa839bcd587a057"
+    },
+    {
+      "id": "8ac8ab41-6356-3ed6-a282-0b7144c369cf",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0f37946c62c48a907625348cbc720a7a0c547d1e"
+    },
+    {
+      "id": "8ce1cfee-17a4-307c-a2e3-a32a53a4406e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8d3f83dfb23674540c827a8d65fba20aa300b252"
+    },
+    {
+      "id": "9588a87f-c5f0-3f59-adba-62d425e0c61e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2c78c9411e685dbc9eac8c2845111b03501975b8"
+    },
+    {
+      "id": "9954af9e-eb7c-34a7-83c3-a2a78cfb7fc1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.9"
+    },
+    {
+      "id": "99ee3af4-d9e6-309c-badf-7dc5876fd924",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0db880fc865ffb522141ced4bfa66c12ab1fbb70"
+    },
+    {
+      "id": "a7c7884e-34f1-33a5-a0bd-7d0c95393f94",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.39"
+    },
+    {
+      "id": "afc95c10-6c67-3180-9fb7-72b4ad60b0f5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.10"
+    },
+    {
+      "id": "ba427e27-b663-3f91-9675-f80652989b6e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <0db880fc865ffb522141ced4bfa66c12ab1fbb70"
+    },
+    {
+      "id": "be667d7a-c84e-38fe-b29c-88299d8838ca",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fb6675db04c4b79883373edc578d5df7bbc84848"
+    },
+    {
+      "id": "c34a9800-4ee1-3c4a-b4f5-0a42bf0390e9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "eb553f16973ade990d05946af9ae191394712c8a <2c78c9411e685dbc9eac8c2845111b03501975b8"
+    },
+    {
+      "id": "c51aed26-9dc0-390a-a680-c8c38245c91c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "fdbc46ed-f8d1-3217-965d-46b854d0bb99",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.165"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "73013959-0d9f-3362-aa19-5c81e7bf5d64",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

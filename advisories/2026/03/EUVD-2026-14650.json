@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-14650",
+  "enisaUuid": "d4abd193-378f-3f04-b832-480ff68b755b",
+  "description": "The Jupiter X Core plugin for WordPress is vulnerable to limited file uploads due to missing authorization on import_popup_templates() function as well as insufficient file type validation in the upload_files() function in all versions up to, and including, 4.14.1. This makes it possible for Authenticated attackers with Subscriber-level access and above, to upload files with dangerous types that can lead to Remote Code Execution on servers configured to handle .phar files as executable PHP (e.g., Apache+mod_php), or Stored Cross-Site Scripting via .svg, .dfxp, or .xhtml files upload on any server configuration",
+  "datePublished": "Mar 24, 2026, 12:30:26 AM",
+  "dateUpdated": "Mar 24, 2026, 12:30:26 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/70bc5247-525d-4aae-9d66-efd65c9beee3?source=cve\nhttps://plugins.trac.wordpress.org/browser/jupiterx-core/trunk/includes/control-panel-2/includes/class-popup.php?rev=3430169#138\nhttps://plugins.trac.wordpress.org/browser/jupiterx-core/trunk/includes/extensions/raven/includes/modules/forms/fields/file.php?rev=3430169#L214\nhttps://plugins.trac.wordpress.org/browser/jupiterx-core/trunk/includes/extensions/raven/includes/modules/forms/classes/ajax-handler.php?rev=3430169#L434\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-3533\n",
+  "aliases": "GHSA-wv9g-vw7m-7mq8\nCVE-2026-3533\n",
+  "assigner": "Wordfence",
+  "epss": 0.25,
+  "enisaIdProduct": [
+    {
+      "id": "cede51b4-6869-3875-b6c9-7a8512762eed",
+      "product": {
+        "name": "Jupiter X Core"
+      },
+      "product_version": "* \u22644.14.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9867fc1c-67c7-3eed-9aac-d66e8277ba10",
+      "vendor": {
+        "name": "artbees"
+      }
+    }
+  ]
+}

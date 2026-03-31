@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2018-11532",
+  "enisaUuid": "8ef9616d-84c8-3a51-aacb-02465f1c92c3",
+  "description": "The CAF demuxer in modules/demux/caf.c in VideoLAN VLC media player 3.0.4 may read memory from an uninitialized pointer when processing magic cookies in CAF files, because a ReadKukiChunk() cast converts a return value to an unsigned int even if that value is negative. This could result in a denial of service and/or a potential infoleak.",
+  "datePublished": "May 14, 2022, 12:55:56 AM",
+  "dateUpdated": "May 14, 2022, 12:55:56 AM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2018-19857.html\nhttps://www.debian.org/security/2019/dsa-4366\nhttps://ubuntu.com/security/CVE-2018-19857\nhttp://www.securityfocus.com/bid/106130\nhttps://git.videolan.org/?p=vlc.git%3Ba=commit%3Bh=0cc5ea748ee5ff7705dde61ab15dff8f58be39d0\nhttps://dyntopia.com/advisories/013-vlc\nhttps://usn.ubuntu.com/4074-1/\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00005.html\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00040.html\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00037.html\nhttp://lists.opensuse.org/opensuse-security-announce/2019-08/msg00081.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-19857\nhttps://git.videolan.org/?p=vlc.git;a=commit;h=0cc5ea748ee5ff7705dde61ab15dff8f58be39d0\n",
+  "aliases": "GHSA-7g6v-cgr9-2355\nCVE-2018-19857\n",
+  "assigner": "mitre",
+  "epss": 1.49,
+  "enisaIdProduct": [
+    {
+      "id": "09c1bb59-40b7-319a-845e-f113167f96e4",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "488786f3-fa01-3ab6-93d6-f2e5cc65676f",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

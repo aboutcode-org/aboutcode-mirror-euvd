@@ -1,0 +1,78 @@
+{
+  "id": "EUVD-2024-38195",
+  "enisaUuid": "c4f3bc40-546a-3006-9b08-d5630b0259b1",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"xsk: Support redirect to any socket bound to the same umem\"\n\nThis reverts commit 2863d665ea41282379f108e4da6c8a2366ba66db.\n\nThis patch introduced a potential kernel crash when multiple napi instances\nredirect to the same AF_XDP socket. By removing the queue_index check, it is\npossible for multiple napi instances to access the Rx ring at the same time,\nwhich will result in a corrupted ring state which can lead to a crash when\nflushing the rings in __xsk_flush(). This can happen when the linked list of\nsockets to flush gets corrupted by concurrent accesses. A quick and small fix\nis not possible, so let us revert this for now.",
+  "datePublished": "Jun 25, 2024, 3:31:09 PM",
+  "dateUpdated": "Sep 17, 2025, 6:31:15 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/19cb40b1064566ea09538289bfcf5bc7ecb9b6f5\nhttps://git.kernel.org/stable/c/7fcf26b315bbb728036da0862de6b335da83dff2\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-39293\n",
+  "aliases": "CVE-2024-39293\nGHSA-vhxr-pcmq-x8rc\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "46825a6b-0137-39ba-b4b1-7ebfa8441b73",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <19cb40b1064566ea09538289bfcf5bc7ecb9b6f5"
+    },
+    {
+      "id": "61267bae-7cef-3e59-9212-d56a0fae4910",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7fcf26b315bbb728036da0862de6b335da83dff2"
+    },
+    {
+      "id": "78a4d7d0-aec9-3ac0-86f0-1646cd21de7c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9.5"
+    },
+    {
+      "id": "7a10eed2-22cc-3930-b449-ea5ddbc3b740",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
+    },
+    {
+      "id": "a2b2f88a-d0c9-3446-ae14-4a1a6ab70b48",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d2befeb0-2d6a-332e-b5c8-5896013466ad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10"
+    },
+    {
+      "id": "d427634b-d805-303e-926c-1296e5bf9c33",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2863d665ea41282379f108e4da6c8a2366ba66db <7fcf26b315bbb728036da0862de6b335da83dff2"
+    },
+    {
+      "id": "e6a5c5e1-56dd-39fc-a60f-166388fc4f3e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2863d665ea41282379f108e4da6c8a2366ba66db <19cb40b1064566ea09538289bfcf5bc7ecb9b6f5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "73a4490f-99aa-300c-a910-9f5d9b0dee9a",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

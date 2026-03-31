@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2020-30937",
+  "enisaUuid": "78b4f503-a165-3f30-9c8a-ecbfcf63d9a6",
+  "description": "OpenCTI 3.3.1 is vulnerable to a directory traversal attack via the static/css endpoint. An unauthenticated attacker can read arbitrary files from the filesystem by sending crafted GET requests with path traversal sequences (e.g., '../') in the URL. For example, requesting /static/css//../../../../../../../../etc/passwd returns the contents of /etc/passwd. This vulnerability was discovered by Raif Berkay Dincel and confirmed on Linux Mint and Windows 10.",
+  "datePublished": "Jan 31, 2026, 12:30:29 AM",
+  "dateUpdated": "Jan 31, 2026, 12:30:29 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://www.exploit-db.com/exploits/48595\nhttps://www.opencti.io/\nhttps://github.com/OpenCTI-Platform/opencti\nhttps://www.vulncheck.com/advisories/opencti-directory-traversal\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-37041\n",
+  "aliases": "GHSA-wvqh-8vgx-x89q\nCVE-2020-37041\n",
+  "assigner": "VulnCheck",
+  "epss": 0.33,
+  "enisaIdProduct": [
+    {
+      "id": "127440b6-769c-363a-aa32-6cdbcecebedd",
+      "product": {
+        "name": "opencti"
+      },
+      "product_version": "3.3.1"
+    },
+    {
+      "id": "4a3a68d5-b199-3a7b-b185-b7b69e3872a5",
+      "product": {
+        "name": "opencti"
+      },
+      "product_version": "3.3.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "135d71ba-80f0-3c39-8c3d-7be18f07fba6",
+      "vendor": {
+        "name": "Filigran"
+      }
+    }
+  ]
+}

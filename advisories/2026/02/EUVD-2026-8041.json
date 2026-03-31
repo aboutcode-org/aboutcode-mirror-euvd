@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-8041",
+  "enisaUuid": "1e3e2e67-afe3-3717-be7f-9fc2c452fedf",
+  "description": "The Blog2Social: Social Media Auto Post & Scheduler plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the b2s_curation_draft AJAX action in all versions up to, and including, 8.7.4. The curationDraft() function only verifies current_user_can('read') without checking whether the user has edit_post permission for the target post. Combined with the plugin granting UI access and nonce exposure to all roles, this makes it possible for authenticated attackers, with Subscriber-level access and above, to overwrite the title and content of arbitrary posts and pages by supplying a target post ID via the 'b2s-draft-id' parameter.",
+  "datePublished": "Feb 18, 2026, 12:31:11 PM",
+  "dateUpdated": "Feb 18, 2026, 12:31:11 PM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/930e7fd6-ae0b-465a-aa93-04ef80011d32?source=cve\nhttps://plugins.trac.wordpress.org/browser/blog2social/tags/8.7.3/includes/Ajax/Post.php#L159\nhttps://plugins.trac.wordpress.org/browser/blog2social/tags/8.7.3/includes/B2S/Curation/Save.php#L39\nhttps://plugins.trac.wordpress.org/browser/blog2social/trunk/includes/Ajax/Post.php?rev=3462464\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1942\n",
+  "aliases": "CVE-2026-1942\nGHSA-9pr5-g9xr-gp22\n",
+  "assigner": "Wordfence",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "1f425b03-674e-4d1d-85d9-87243300684b",
+      "product": {
+        "name": "Blog2Social: Social Media Auto Post & Scheduler"
+      },
+      "product_version": "* \u22648.7.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b844fb44-11a1-4507-abfe-619dbc7fee90",
+      "vendor": {
+        "name": "pr-gateway"
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "EUVD-2026-8392",
+  "enisaUuid": "783a7810-316a-3385-90f4-485c3bf930d4",
+  "description": "A Missing Authorization vulnerability was identified in GitHub Enterprise Server that allowed an attacker to upload unauthorized content to another user\u2019s repository migration export due to a missing authorization check in the repository migration upload endpoint. By supplying the migration identifier, an attacker could overwrite or replace a victim\u2019s migration archive, potentially causing victims to download attacker-controlled repository data during migration restores or automated imports. An attacker would require authentication to the victim's GitHub Enterprise Server instance. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.20 and was fixed in versions 3.19.2, 3.18.5, 3.17.11, 3.16.14, 3.15.18, 3.14.23. This vulnerability was reported via the GitHub Bug Bounty program.",
+  "datePublished": "Feb 18, 2026, 9:31:23 PM",
+  "dateUpdated": "Feb 20, 2026, 12:31:52 AM",
+  "baseScore": 6.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:L",
+  "references": "https://docs.github.com/en/enterprise-server@3.19/admin/release-notes#3.19.2\nhttps://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.5\nhttps://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.11\nhttps://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.14\nhttps://docs.github.com/en/enterprise-server@3.15/admin/release-notes#3.15.18\nhttps://docs.github.com/en/enterprise-server@3.14/admin/release-notes#3.14.23\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-1355\n",
+  "aliases": "GHSA-2q3j-wj77-9934\nCVE-2026-1355\n",
+  "assigner": "GitHub_P",
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "3b2fdda0-4a34-4c8c-b69a-1a926a6925aa",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.16.0 \u22643.16.13"
+    },
+    {
+      "id": "541e69f4-f2b8-4b6d-9b6e-6e5ec33f7a98",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.15.0 \u22643.15.17"
+    },
+    {
+      "id": "891c9971-73b9-40c3-a7c5-766ecf3963a2",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.17.0 \u22643.17.10"
+    },
+    {
+      "id": "ace2ddb5-68be-4528-8838-8814f4be2056",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.19.0 \u22643.19.1"
+    },
+    {
+      "id": "be7bd1b5-fc46-42bf-a714-e9e1104ff4b9",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.18.0 \u22643.18.4"
+    },
+    {
+      "id": "c29b0fa7-b885-4e52-88c4-63fdadf5f780",
+      "product": {
+        "name": "Enterprise Server"
+      },
+      "product_version": "3.14.0 \u22643.14.22"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c0f5f881-93c7-4983-a6a9-cc4c952a4a8a",
+      "vendor": {
+        "name": "GitHub"
+      }
+    }
+  ]
+}

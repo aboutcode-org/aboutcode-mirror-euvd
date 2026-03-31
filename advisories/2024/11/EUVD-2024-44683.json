@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-44683",
+  "enisaUuid": "bca86368-04b4-3ece-a74c-36fd798b0a31",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: imx: Remove CLK_SET_PARENT_GATE for DRAM mux for i.MX7D\n\nFor i.MX7D DRAM related mux clock, the clock source change should ONLY\nbe done done in low level asm code without accessing DRAM, and then\ncalling clk API to sync the HW clock status with clk tree, it should never\ntouch real clock source switch via clk API, so CLK_SET_PARENT_GATE flag\nshould NOT be added, otherwise, DRAM's clock parent will be disabled when\nDRAM is active, and system will hang.",
+  "datePublished": "Nov 8, 2024, 6:30:48 AM",
+  "dateUpdated": "Nov 29, 2024, 9:31:01 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/b677b94a9193ec7b6607bd1255172ae59174a382\nhttps://git.kernel.org/stable/c/d18dc8e14b9c794f58dae1577ccb2ab84a4a1b11\nhttps://git.kernel.org/stable/c/11ceb17e6f07cc30410f3a6276cddda248a9b863\nhttps://git.kernel.org/stable/c/339273a9ddfe7632b717c2e13e81cbd5d383e1ff\nhttps://git.kernel.org/stable/c/94f6cdc837e38371324cee97dfd2ef1a99a82c98\nhttps://git.kernel.org/stable/c/a54c441b46a0745683c2eef5a359d22856d27323\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-50181\n",
+  "aliases": "GHSA-2p25-rmjx-pfqv\nCVE-2024-50181\n",
+  "assigner": "Linux",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "48381298-2a0f-3778-9710-540a0052b862",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <11ceb17e6f07cc30410f3a6276cddda248a9b863"
+    },
+    {
+      "id": "a00d8cdd-33df-3b8c-a9c5-56db5682ab7a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <339273a9ddfe7632b717c2e13e81cbd5d383e1ff"
+    },
+    {
+      "id": "a8ce287c-8510-32d7-9b6b-759c1130db79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a54c441b46a0745683c2eef5a359d22856d27323"
+    },
+    {
+      "id": "ceb24a3c-6048-3440-acb3-c36446676ad6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <94f6cdc837e38371324cee97dfd2ef1a99a82c98"
+    },
+    {
+      "id": "e178b813-6aba-3588-93ec-3fcdfca674e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b677b94a9193ec7b6607bd1255172ae59174a382"
+    },
+    {
+      "id": "ed44ab65-0b4e-300f-8cc0-f6cba87831b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d18dc8e14b9c794f58dae1577ccb2ab84a4a1b11"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bf0f7e2a-6405-33c6-976e-6657e9c2f636",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

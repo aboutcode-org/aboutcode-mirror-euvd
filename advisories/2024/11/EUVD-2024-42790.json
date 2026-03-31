@@ -1,0 +1,29 @@
+{
+  "id": "EUVD-2024-42790",
+  "enisaUuid": "9335bbe6-4f18-3c44-a14d-d38bfb896350",
+  "description": "Out-of-bounds Read vulnerability in Apache NimBLE.\n\nMissing proper validation of HCI advertising report could lead to out-of-bound access when parsing HCI event and thus bogus GAP 'device found' events being sent.\nThis issue requires broken or bogus Bluetooth controller and thus severity is considered low.\nThis issue affects Apache NimBLE: through 1.7.0.\n\n\nUsers are recommended to upgrade to version 1.8.0, which fixes the issue.",
+  "datePublished": "Nov 26, 2024, 12:41:37 PM",
+  "dateUpdated": "Dec 6, 2024, 12:30:47 PM",
+  "baseScore": -1.0,
+  "references": "https://lists.apache.org/thread/zdb50spojlqbn0yxd866mbzqjt2vpt85\nhttps://github.com/apache/mynewt-nimble/commit/3b7a32ea09a3bffaab831ee0ab193a2375fc4df6\nhttps://github.com/apache/mynewt-nimble/commit/23d61150ddae4bc8356356d7ef09d816fb89da45\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-47250\nhttp://www.openwall.com/lists/oss-security/2024/11/26/4\n",
+  "aliases": "GHSA-4qc3-fmcj-w66w\nCVE-2024-47250\n",
+  "assigner": "apache",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "1d6b24be-e1a1-3019-95d3-22533e7f928b",
+      "product": {
+        "name": "Apache NimBLE"
+      },
+      "product_version": "0 \u22641.7.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "959c7db1-acef-3734-8147-f3c57e4f7ff6",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

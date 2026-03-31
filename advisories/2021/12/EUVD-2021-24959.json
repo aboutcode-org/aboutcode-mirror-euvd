@@ -1,0 +1,45 @@
+{
+  "id": "EUVD-2021-24959",
+  "enisaUuid": "0a76af8e-996a-3a4e-803d-6d7b212ac291",
+  "description": "The Opportunistic Encryption feature of HTTP2 (RFC 8164) allows a connection to be transparently upgraded to TLS while retaining the visual properties of an HTTP connection, including being same-origin with unencrypted connections on port 80. However, if a second encrypted port on the same IP address (e.g. port 8443) did not opt-in to opportunistic encryption; a network attacker could forward a connection from the browser to port 443 to port 8443, causing the browser to treat the content of port 8443 as same-origin with HTTP. This was resolved by disabling the Opportunistic Encryption feature, which had low usage. This vulnerability affects Firefox < 94, Thunderbird < 91.3, and Firefox ESR < 91.3.",
+  "datePublished": "Dec 9, 2021, 12:00:24 AM",
+  "dateUpdated": "Mar 17, 2022, 12:06:36 AM",
+  "baseScore": 6.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+  "references": "https://www.suse.com/security/cve/CVE-2021-38507.html\nhttps://www.debian.org/security/2022/dsa-5034\nhttps://www.debian.org/security/2021/dsa-5026\nhttps://access.redhat.com/errata/RHSA-2021:4607\nhttps://access.redhat.com/errata/RHSA-2021:4605\nhttps://access.redhat.com/errata/RHSA-2021:4134\nhttps://access.redhat.com/errata/RHSA-2021:4133\nhttps://access.redhat.com/errata/RHSA-2021:4132\nhttps://access.redhat.com/errata/RHSA-2021:4130\nhttps://access.redhat.com/errata/RHSA-2021:4123\nhttps://access.redhat.com/errata/RHSA-2021:4116\nhttps://ubuntu.com/security/CVE-2021-38507\nhttps://advisories.mageia.org/CVE-2021-38507.html\nhttps://security.archlinux.org/CVE-2021-38507\nhttps://linux.oracle.com/cve/CVE-2021-38507.html\nhttps://www.mozilla.org/security/advisories/mfsa2021-49/\nhttps://www.mozilla.org/security/advisories/mfsa2021-50/\nhttps://www.mozilla.org/security/advisories/mfsa2021-48/\nhttps://bugzilla.mozilla.org/show_bug.cgi?id=1730935\nhttps://lists.debian.org/debian-lts-announce/2021/12/msg00030.html\nhttps://lists.debian.org/debian-lts-announce/2022/01/msg00001.html\nhttps://security.gentoo.org/glsa/202202-03\nhttps://security.gentoo.org/glsa/202208-14\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-38507\n",
+  "aliases": "GHSA-mvf9-xj62-qhwc\nCVE-2021-38507\n",
+  "assigner": "mozilla",
+  "epss": 0.46,
+  "enisaIdProduct": [
+    {
+      "id": "956ffb18-4cc2-3952-9ea0-6eda32186701",
+      "product": {
+        "name": "Firefox ESR"
+      },
+      "product_version": "unspecified <91.3"
+    },
+    {
+      "id": "d2087ea3-b91f-3f48-b9d3-fd68d0cb0bae",
+      "product": {
+        "name": "Thunderbird"
+      },
+      "product_version": "unspecified <91.3"
+    },
+    {
+      "id": "e8b809e5-2e60-3ba8-85b3-410965f4ebab",
+      "product": {
+        "name": "Firefox"
+      },
+      "product_version": "unspecified <94"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7325a315-a65d-3b7b-b970-d7ecb8be14b3",
+      "vendor": {
+        "name": "Mozilla"
+      }
+    }
+  ]
+}

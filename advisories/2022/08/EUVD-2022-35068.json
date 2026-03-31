@@ -1,0 +1,23 @@
+{
+  "id": "EUVD-2022-35068",
+  "enisaUuid": "951c4c58-06f9-3528-94ba-778e46963c81",
+  "description": "When rendering with headless builds, show an error instead of crashing. Previously GPU_backend_init was called indirectly from DRW_opengl_context_create, a new function is now called from the window manager (GPU_backend_init_once), so it's possible to check if the GPU has a back-end. This also disables the bgl Python module when building WITH_HEADLESS.",
+  "datePublished": "Aug 17, 2022, 12:00:18 AM",
+  "dateUpdated": "Aug 19, 2022, 12:00:21 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://www.suse.com/security/cve/CVE-2022-2832.html\nhttps://access.redhat.com/errata/RHSA-2022:7058\nhttps://developer.blender.org/T99706\nhttps://developer.blender.org/D15463\nhttps://developer.blender.org/rB00dc7477022acdd969e4d709a235c0be819efa6c\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-2832\nhttps://access.redhat.com/security/cve/CVE-2022-2832\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2118556\n",
+  "aliases": "CVE-2022-2832\nGHSA-jw85-mc7h-c36v\n",
+  "assigner": "redhat",
+  "epss": 0.78,
+  "enisaIdProduct": [],
+  "enisaIdVendor": [
+    {
+      "id": "c91fd600-9f99-3316-a55d-aa51593a4722",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

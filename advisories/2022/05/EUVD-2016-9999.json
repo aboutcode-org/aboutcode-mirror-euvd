@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2016-9999",
+  "enisaUuid": "9445c245-e6d4-33ca-9d76-1da2e023971f",
+  "description": "In /framework/modules/ecommerce/controllers/orderController.php of Exponent CMS 2.4.0, untrusted input is passed into selectObjectsBySql. The method selectObjectsBySql of class mysqli_database uses the injectProof method to prevent SQL injection, but this filter can be bypassed easily: it only sanitizes user input if there are odd numbers of ' or \" characters. Impact is Information Disclosure.",
+  "datePublished": "May 17, 2022, 3:38:32 AM",
+  "dateUpdated": "May 17, 2022, 3:38:32 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "references": "http://www.securityfocus.com/bid/94227\nhttps://github.com/exponentcms/exponent-cms/commit/3b3557e9f6ba193a4c23c8ce5498fa285dddf3f3\nhttps://nvd.nist.gov/vuln/detail/CVE-2016-9183\n",
+  "aliases": "GHSA-3qmw-8chv-6j3f\nCVE-2016-9183\n",
+  "assigner": "mitre",
+  "epss": 0.48,
+  "enisaIdProduct": [
+    {
+      "id": "583f0f86-3404-3fb7-b96f-9b27f1307d74",
+      "product": {
+        "name": "n/a"
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "3bf18e71-7c3a-32c6-bb8d-f84cbfa797dd",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

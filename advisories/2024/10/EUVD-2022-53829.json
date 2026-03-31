@@ -1,0 +1,99 @@
+{
+  "id": "EUVD-2022-53829",
+  "enisaUuid": "e30b895a-d149-346c-86bf-9e6433ed059f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix perf_pending_task() UaF\n\nPer syzbot it is possible for perf_pending_task() to run after the\nevent is free()'d. There are two related but distinct cases:\n\n - the task_work was already queued before destroying the event;\n - destroying the event itself queues the task_work.\n\nThe first cannot be solved using task_work_cancel() since\nperf_release() itself might be called from a task_work (____fput),\nwhich means the current->task_works list is already empty and\ntask_work_cancel() won't be able to find the perf_pending_task()\nentry.\n\nThe simplest alternative is extending the perf_event lifetime to cover\nthe task_work.\n\nThe second is just silly, queueing a task_work while you know the\nevent is going away makes no sense and is easily avoided by\nre-arranging how the event is marked STATE_DEAD and ensuring it goes\nthrough STATE_OFF on the way down.",
+  "datePublished": "Oct 21, 2024, 9:30:50 PM",
+  "dateUpdated": "Oct 25, 2024, 9:31:26 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/8bffa95ac19ff27c8261904f89d36c7fcf215d59\nhttps://git.kernel.org/stable/c/78e1317a174edbfd1182599bf76c092a2877672c\nhttps://git.kernel.org/stable/c/517e6a301f34613bff24a8e35b5455884f2d83d8\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48950\n",
+  "aliases": "CVE-2022-48950\nGHSA-qw38-ppmm-fjpw\n",
+  "assigner": "Linux",
+  "epss": 0.05,
+  "enisaIdProduct": [
+    {
+      "id": "16051a30-8a55-399e-8b48-b2e0cfff3d23",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8bffa95ac19ff27c8261904f89d36c7fcf215d59"
+    },
+    {
+      "id": "2f651991-18cf-3268-b506-fb4e4dbb4052",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ca6c21327c6af02b7eec31ce4b9a740a18c6c13f <517e6a301f34613bff24a8e35b5455884f2d83d8"
+    },
+    {
+      "id": "305b2c63-4aa6-3a3f-8dc9-5e9d3180bc7d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "078c12ccf1fb943cc18c84894c76113dc89e5975 <78e1317a174edbfd1182599bf76c092a2877672c"
+    },
+    {
+      "id": "3c092149-d531-3dba-9638-0ff1106ff523",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.0.14"
+    },
+    {
+      "id": "7fd89c00-e269-3d80-a9fd-87bfd191eb82",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1"
+    },
+    {
+      "id": "81f92084-16b0-3c1b-b1f2-90a25dc1c72a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15.77 <5.15.84"
+    },
+    {
+      "id": "8d3e0835-ac78-3755-9333-6605ba38efe7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.0.7 <6.0.14"
+    },
+    {
+      "id": "9b0e9ff7-cc92-359f-93f4-a77548b4df10",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.84"
+    },
+    {
+      "id": "b690c259-b36e-3592-aa70-0f7e4cba49bd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ca7b0a10287e2733bdafb01ef0d4038536625fe3 <8bffa95ac19ff27c8261904f89d36c7fcf215d59"
+    },
+    {
+      "id": "cab25df9-2093-3456-a717-29710288a1e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <517e6a301f34613bff24a8e35b5455884f2d83d8"
+    },
+    {
+      "id": "f6ae86fa-3fa9-3c59-b924-71b23c2c2b1a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <78e1317a174edbfd1182599bf76c092a2877672c"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d7e81354-a695-3d5e-8800-a39efda30b1b",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

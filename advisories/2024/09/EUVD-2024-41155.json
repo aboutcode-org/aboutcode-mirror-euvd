@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2024-41155",
+  "enisaUuid": "b11cd540-96d6-3a3a-9b7b-a49d0f1f1629",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: sc16is7xx: fix TX fifo corruption\n\nSometimes, when a packet is received on channel A at almost the same time\nas a packet is about to be transmitted on channel B, we observe with a\nlogic analyzer that the received packet on channel A is transmitted on\nchannel B. In other words, the Tx buffer data on channel B is corrupted\nwith data from channel A.\n\nThe problem appeared since commit 4409df5866b7 (\"serial: sc16is7xx: change\nEFR lock to operate on each channels\"), which changed the EFR locking to\noperate on each channel instead of chip-wise.\n\nThis commit has introduced a regression, because the EFR lock is used not\nonly to protect the EFR registers access, but also, in a very obscure and\nundocumented way, to protect access to the data buffer, which is shared by\nthe Tx and Rx handlers, but also by each channel of the IC.\n\nFix this regression first by switching to kfifo_out_linear_ptr() in\nsc16is7xx_handle_tx() to eliminate the need for a shared Rx/Tx buffer.\n\nSecondly, replace the chip-wise Rx buffer with a separate Rx buffer for\neach channel.",
+  "datePublished": "Sep 4, 2024, 9:30:31 PM",
+  "dateUpdated": "Oct 9, 2024, 3:32:18 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/09cfe05e9907f3276887a20e267cc40e202f4fdd\nhttps://git.kernel.org/stable/c/133f4c00b8b2bfcacead9b81e7e8edfceb4b06c4\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-44951\n",
+  "aliases": "CVE-2024-44951\nGHSA-qx5p-7g35-jj49\n",
+  "assigner": "Linux",
+  "epss": 0.02,
+  "enisaIdProduct": [
+    {
+      "id": "2c7977a4-2302-3c66-b04c-c1f2281bf342",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4409df5866b7ff7686ba27e449ca97a92ee063c9 <09cfe05e9907f3276887a20e267cc40e202f4fdd"
+    },
+    {
+      "id": "490b9937-0b84-3dda-80ac-1b8b4ac78c81",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "50fc9a27-217a-384b-a8cc-c775b57775f1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.8"
+    },
+    {
+      "id": "674b9f3f-3923-3b1e-a114-f73da085f77b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.5"
+    },
+    {
+      "id": "9f02d74a-0bf9-3045-b681-85feff2e5546",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d85f9ce9-c655-3eb2-a2ec-52bfec7f3ba7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4409df5866b7ff7686ba27e449ca97a92ee063c9 <133f4c00b8b2bfcacead9b81e7e8edfceb4b06c4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9483c61f-31c8-3d50-9299-2fa404557dbd",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "EUVD-2024-35832",
+  "enisaUuid": "a6508bae-0ee8-35ca-b7dc-1021799c9afc",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Init zone device and drm client after mode-1 reset on reload\n\nIn passthrough environment, when amdgpu is reloaded after unload, mode-1\nis triggered after initializing the necessary IPs, That init does not\ninclude KFD, and KFD init waits until the reset is completed. KFD init\nis called in the reset handler, but in this case, the zone device and\ndrm client is not initialized, causing app to create kernel panic.\n\nv2: Removing the init KFD condition from amdgpu_amdkfd_drm_client_create.\nAs the previous version has the potential of creating DRM client twice.\n\nv3: v2 patch results in SDMA engine hung as DRM open causes VM clear to SDMA\nbefore SDMA init. Adding the condition to in drm client creation, on top of v1,\nto guard against drm client creation call multiple times.",
+  "datePublished": "May 30, 2024, 3:03:59 PM",
+  "dateUpdated": "Dec 19, 2024, 9:00:42 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/4f8154f775197d0021b690c2945d6a4d8094c8f6\nhttps://git.kernel.org/stable/c/f679fd6057fbf5ab34aaee28d58b7f81af0cbf48\n",
+  "aliases": "CVE-2024-36022\n",
+  "assigner": "Linux",
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "7d3af33a-1b17-3df3-ad40-d01ffc65bf6d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4f8154f775197d0021b690c2945d6a4d8094c8f6"
+    },
+    {
+      "id": "aa181a45-297e-31b7-a98f-93c9f64f9eeb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f679fd6057fbf5ab34aaee28d58b7f81af0cbf48"
+    },
+    {
+      "id": "b1090264-e5ab-3783-bea5-c42886da0f44",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.8.6"
+    },
+    {
+      "id": "c8cbb55b-2edd-3c49-8fca-bd62a1946e1a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.9"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9579e6b1-8c83-3eea-acb3-1024ad9e033f",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

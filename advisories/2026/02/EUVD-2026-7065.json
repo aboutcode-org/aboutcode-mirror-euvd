@@ -1,0 +1,38 @@
+{
+  "id": "EUVD-2026-7065",
+  "enisaUuid": "eb69538b-9b5f-3d1a-b050-80222fba3847",
+  "description": "The mongo-go-driver repository\u00a0contains CGo bindings for GSSAPI (Kerberos) authentication on Linux and macOS. The C wrapper implementation contains a heap out-of-bounds read vulnerability due to incorrect assumptions about string termination in the GSSAPI standard. Since GSSAPI buffers are not guaranteed to be null-terminated or have extra padding, this results in reading one byte past the allocated heap buffer.",
+  "datePublished": "Feb 10, 2026, 9:31:31 PM",
+  "dateUpdated": "Feb 10, 2026, 9:31:31 PM",
+  "baseScore": 6.9,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://jira.mongodb.org/browse/GODRIVER-3770\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23035\nhttps://git.kernel.org/stable/c/4ef8512e1427111f7ba92b4a847d181ff0aeec42\nhttps://git.kernel.org/stable/c/66a25f6b7c0bfd84e6d27b536f5d24116dbd52da\nhttps://git.kernel.org/stable/c/a7625bacaa8c8c2bfcde6dd6d1397bd63ad82b02\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23039\nhttps://git.kernel.org/stable/c/a255ec07f91d4c73a361a28b7a3d82f5710245f1\nhttps://git.kernel.org/stable/c/dc2d5ddb193e363187bae2ad358245642d2721fb\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23034\nhttps://git.kernel.org/stable/c/b2426a211dba6432e32a2e70e9183c6e134475c6\nhttps://git.kernel.org/stable/c/e1a30e1ab33fc522785d04bbf7e1b13a5c5c9175\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23032\nhttps://git.kernel.org/stable/c/1a3286edf4d48ce37f8982ff3c3b65159a5ecbb2\nhttps://git.kernel.org/stable/c/40b94ec7edbbb867c4e26a1a43d2b898f04b93c5\nhttps://git.kernel.org/stable/c/d59ba448ccd595d5d65e197216cf781a87db2b28\nhttps://git.kernel.org/stable/c/f1718da051282698aa8fa150bebb9724f6389fda\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23036\nhttps://git.kernel.org/stable/c/1e1f2055ad5a7a5d548789b334a4473a7665c418\nhttps://git.kernel.org/stable/c/65241e3ddda60b53a4ee3ae12721fc9ee21d5827\n",
+  "aliases": "GHSA-hv59-hh7h-7h9r\nGHSA-cp6g-7hqx-qxhp\nGHSA-5wr5-mxmx-fvmr\nGHSA-jq2q-j87r-jrqv\nGHSA-8v58-m3wh-hhg4\nGHSA-v7cw-956x-792r\nCVE-2026-2303\n",
+  "assigner": "mongodb",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "144c7415-def5-4a64-ad26-7b10282dc369",
+      "product": {
+        "name": "MongoDB Go Driver"
+      },
+      "product_version": "2.0.0 <2.4.2"
+    },
+    {
+      "id": "46d0eaae-c12c-403a-b0f4-ef50835e39a3",
+      "product": {
+        "name": "MongoDB Go Driver"
+      },
+      "product_version": "1.0.0 <1.17.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9abe6970-52c1-446e-bf3c-2649a32ea16d",
+      "vendor": {
+        "name": "MongoDB Inc"
+      }
+    }
+  ]
+}

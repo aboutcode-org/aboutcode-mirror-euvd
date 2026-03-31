@@ -1,0 +1,141 @@
+{
+  "id": "EUVD-2024-42594",
+  "enisaUuid": "50c42e39-49d3-30a9-ada3-dd5056deff6f",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: pause TCM when the firmware is stopped\n\nNot doing so will make us send a host command to the transport while the\nfirmware is not alive, which will trigger a WARNING.\n\nbad state = 0\nWARNING: CPU: 2 PID: 17434 at drivers/net/wireless/intel/iwlwifi/iwl-trans.c:115 iwl_trans_send_cmd+0x1cb/0x1e0 [iwlwifi]\nRIP: 0010:iwl_trans_send_cmd+0x1cb/0x1e0 [iwlwifi]\nCall Trace:\n <TASK>\n iwl_mvm_send_cmd+0x40/0xc0 [iwlmvm]\n iwl_mvm_config_scan+0x198/0x260 [iwlmvm]\n iwl_mvm_recalc_tcm+0x730/0x11d0 [iwlmvm]\n iwl_mvm_tcm_work+0x1d/0x30 [iwlmvm]\n process_one_work+0x29e/0x640\n worker_thread+0x2df/0x690\n ? rescuer_thread+0x540/0x540\n kthread+0x192/0x1e0\n ? set_kthread_struct+0x90/0x90\n ret_from_fork+0x22/0x30",
+  "datePublished": "Oct 9, 2024, 2:49:14 PM",
+  "dateUpdated": "Jan 5, 2026, 10:53:59 AM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/a15df5f37fa3a8b7a8ec7a339d1e897bc524e28f\nhttps://git.kernel.org/stable/c/5948a191906b54e10f02f6b7a7670243a39f99f4\nhttps://git.kernel.org/stable/c/2c61b561baf92a2860c76c2302a62169e22c21cc\nhttps://git.kernel.org/stable/c/55086c97a55d781b04a2667401c75ffde190135c\nhttps://git.kernel.org/stable/c/0668ebc8c2282ca1e7eb96092a347baefffb5fe7\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-47673\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00001.html\n",
+  "aliases": "CVE-2024-47673\nGHSA-2cfj-58rp-82cv\n",
+  "assigner": "Linux",
+  "epss": 0.01,
+  "enisaIdProduct": [
+    {
+      "id": "10c69698-7d64-3549-b2d4-3c9303e6a69f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.53"
+    },
+    {
+      "id": "180338a2-2576-3e4c-a2d2-7ffea27ee788",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a15df5f37fa3a8b7a8ec7a339d1e897bc524e28f"
+    },
+    {
+      "id": "1ec4cd7a-86aa-30c5-918c-321a03aca05e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0668ebc8c2282ca1e7eb96092a347baefffb5fe7"
+    },
+    {
+      "id": "254578f3-f8a0-36fd-80ce-af5cac954b65",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <55086c97a55d781b04a2667401c75ffde190135c"
+    },
+    {
+      "id": "3250c1d8-10c9-3355-8caa-5775c2b60838",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.10.12"
+    },
+    {
+      "id": "3c26c403-1154-36e2-97d4-5d528daa6752",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.112"
+    },
+    {
+      "id": "4d864447-b905-33d5-9460-6e1c550cbc59",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5948a191906b54e10f02f6b7a7670243a39f99f4"
+    },
+    {
+      "id": "50311135-5d00-3153-b1ac-4eb41efa75ba",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.11"
+    },
+    {
+      "id": "822b599b-3620-395c-8db9-c325b287315b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.168"
+    },
+    {
+      "id": "83d72bd0-1f30-3d21-ac89-c31a81d897f6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2c61b561baf92a2860c76c2302a62169e22c21cc"
+    },
+    {
+      "id": "89805df8-b150-3d7c-ada0-89703ab71f28",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "4.18"
+    },
+    {
+      "id": "9877dfc3-1344-3a73-b358-3730b8ac2530",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7d9d0d562b54d2953304693f76bc2bbfbe318c27 <55086c97a55d781b04a2667401c75ffde190135c"
+    },
+    {
+      "id": "aea54c0c-50fd-30f2-aa31-a01b3a92494f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7d9d0d562b54d2953304693f76bc2bbfbe318c27 <a15df5f37fa3a8b7a8ec7a339d1e897bc524e28f"
+    },
+    {
+      "id": "b6b113e7-911b-33f9-910e-2a7c84df5d37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7d9d0d562b54d2953304693f76bc2bbfbe318c27 <5948a191906b54e10f02f6b7a7670243a39f99f4"
+    },
+    {
+      "id": "db747371-51da-3ec5-a669-4df222456f75",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7d9d0d562b54d2953304693f76bc2bbfbe318c27 <0668ebc8c2282ca1e7eb96092a347baefffb5fe7"
+    },
+    {
+      "id": "dfd4df0d-17a1-33db-8924-24be6e54b0ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "ef3c0cf8-797d-3d03-973e-c152350c314f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7d9d0d562b54d2953304693f76bc2bbfbe318c27 <2c61b561baf92a2860c76c2302a62169e22c21cc"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "458a613e-7575-3ee4-9efd-c4551ec6f6fb",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

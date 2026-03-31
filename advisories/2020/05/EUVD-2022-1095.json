@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2022-1095",
+  "enisaUuid": "34d5bf9f-815b-399a-a480-cf250b3b31c4",
+  "description": "A flaw was found in Keycloak before version 11.0.0, where the code base contains usages of ObjectInputStream without type checks. This flaw allows an attacker to inject arbitrarily serialized Java Objects, which would then get deserialized in a privileged context and potentially lead to remote code execution.",
+  "datePublished": "May 13, 2020, 6:25:56 PM",
+  "dateUpdated": "Aug 4, 2024, 6:46:30 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.0",
+  "baseScoreVector": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://nvd.nist.gov/vuln/detail/CVE-2020-1714\nhttps://github.com/keycloak/keycloak/pull/7053\nhttps://github.com/keycloak/keycloak/commit/33863ba16117844930a38ebde57a25258f5b80fd\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2020-1714\nhttps://github.com/keycloak/keycloak\nhttps://access.redhat.com/errata/RHSA-2020:5568\nhttps://access.redhat.com/errata/RHSA-2020:4252\nhttps://access.redhat.com/errata/RHSA-2020:3678\nhttps://access.redhat.com/errata/RHSA-2020:3675\nhttps://access.redhat.com/errata/RHSA-2020:3017\nhttps://access.redhat.com/errata/RHSA-2020:2905\nhttps://access.redhat.com/errata/RHSA-2020:2816\nhttps://access.redhat.com/errata/RHSA-2020:2814\nhttps://access.redhat.com/errata/RHSA-2020:2813\nhttps://security.archlinux.org/CVE-2020-1714\n",
+  "aliases": "GHSA-m6mm-q862-j366\nCVE-2020-1714\n",
+  "assigner": "redhat",
+  "epss": 2.15,
+  "enisaIdProduct": [
+    {
+      "id": "9a27135c-2b37-3252-b0f3-1e2a11d3b4f1",
+      "product": {
+        "name": "KeyCloak"
+      },
+      "product_version": "before 11.0.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "fa039cc1-69a5-33ea-8aea-1d70cbe141d3",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}

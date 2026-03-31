@@ -1,0 +1,141 @@
+{
+  "id": "EUVD-2022-53668",
+  "enisaUuid": "ab84c23e-8b14-3a60-96ad-e8fa1c71cf70",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix possible use-after-free in transport error_recovery work\n\nWhile nvme_tcp_submit_async_event_work is checking the ctrl and queue\nstate before preparing the AER command and scheduling io_work, in order\nto fully prevent a race where this check is not reliable the error\nrecovery work must flush async_event_work before continuing to destroy\nthe admin queue after setting the ctrl state to RESETTING such that\nthere is no race .submit_async_event and the error recovery handler\nitself changing the ctrl state.",
+  "datePublished": "Jul 16, 2024, 12:30:39 PM",
+  "dateUpdated": "Aug 7, 2024, 9:31:43 PM",
+  "baseScore": -1.0,
+  "references": "https://git.kernel.org/stable/c/61a26ffd5ad3ece456d74c4c79f7b5e3f440a141\nhttps://git.kernel.org/stable/c/e192184cf8bce8dd55d619f5611a2eaba996fa05\nhttps://git.kernel.org/stable/c/5e42fca37ccc76f39f73732661bd47254cad5982\nhttps://git.kernel.org/stable/c/bb0d8fb35c4ff00a503c2c4dca4cce8d102a21c4\nhttps://git.kernel.org/stable/c/ff9fc7ebf5c06de1ef72a69f9b1ab40af8b07f9e\nhttps://nvd.nist.gov/vuln/detail/CVE-2022-48789\n",
+  "aliases": "CVE-2022-48789\nGHSA-f27c-pqm6-956j\n",
+  "assigner": "Linux",
+  "epss": 0.03,
+  "enisaIdProduct": [
+    {
+      "id": "1bcb78e1-f7a3-3258-8b15-5e4f8227ce55",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <e192184cf8bce8dd55d619f5611a2eaba996fa05"
+    },
+    {
+      "id": "1bcdb50c-ce79-3b50-a780-9b9c1f7c48fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <5e42fca37ccc76f39f73732661bd47254cad5982"
+    },
+    {
+      "id": "1e629a73-2087-30c2-be61-f8d509b5c89e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "4b6d3368-c72a-37d4-b786-901e482256af",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5e42fca37ccc76f39f73732661bd47254cad5982"
+    },
+    {
+      "id": "564d6b08-799c-39fb-a605-80e2824aeca8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <61a26ffd5ad3ece456d74c4c79f7b5e3f440a141"
+    },
+    {
+      "id": "5c871435-81db-30c1-8e87-ac9d7e1e7447",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.17"
+    },
+    {
+      "id": "64139b47-f1ed-36c9-a23f-a81935d75eb7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <ff9fc7ebf5c06de1ef72a69f9b1ab40af8b07f9e"
+    },
+    {
+      "id": "6acafa20-fff2-3b86-98cf-bdc3d74491cb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <61a26ffd5ad3ece456d74c4c79f7b5e3f440a141"
+    },
+    {
+      "id": "6e1ef8a9-c9bd-3129-acbe-66d976e00cf7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ff9fc7ebf5c06de1ef72a69f9b1ab40af8b07f9e"
+    },
+    {
+      "id": "81c3654d-a906-3431-8218-1feebf6a27fe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.16.11"
+    },
+    {
+      "id": "842ab60d-f78a-315c-880f-e06703b9fc37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.0"
+    },
+    {
+      "id": "ab5869e5-f7f1-3ec7-ab96-14089eb32861",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e192184cf8bce8dd55d619f5611a2eaba996fa05"
+    },
+    {
+      "id": "bdae989e-cc7e-3325-8d8f-b98938e6b9fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.4.181"
+    },
+    {
+      "id": "c7f46ddf-d241-38a9-93a4-eab9d34d789e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.25"
+    },
+    {
+      "id": "dc5a92eb-3f43-390f-bd9c-83d8a0128c11",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <bb0d8fb35c4ff00a503c2c4dca4cce8d102a21c4"
+    },
+    {
+      "id": "e2a12b59-ec26-3177-ac29-d2465b31c8c9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <bb0d8fb35c4ff00a503c2c4dca4cce8d102a21c4"
+    },
+    {
+      "id": "ecd51eca-48f7-39eb-b5a9-18069e881ac2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.102"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cdc0cb55-325c-36b7-a7d3-3de623c596de",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

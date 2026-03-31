@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-6259",
+  "enisaUuid": "61e59b8a-c548-3353-ae94-a3148454655c",
+  "description": "Outline is a service that allows for collaborative documentation. Prior to 1.4.0, during the JSON import process, the value of attachments[].key from the imported JSON is passed directly to path.join(rootPath, node.key) and then read using fs.readFile without validation. By embedding path traversal sequences such as ../ or absolute paths, an attacker can read arbitrary files on the server and import them as attachments. This vulnerability is fixed in 1.4.0.",
+  "datePublished": "Feb 11, 2026, 8:23:07 PM",
+  "dateUpdated": "Feb 11, 2026, 8:53:58 PM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N",
+  "references": "https://github.com/outline/outline/security/advisories/GHSA-7r4f-3wjv-83xf\nhttps://github.com/outline/outline/releases/tag/v1.4.0\n",
+  "aliases": "CVE-2026-25062\n",
+  "assigner": "GitHub_M",
+  "epss": 0.04,
+  "enisaIdProduct": [
+    {
+      "id": "9104ca70-7f91-42ad-b25c-568d8e6f7bc1",
+      "product": {
+        "name": "outline"
+      },
+      "product_version": "< 1.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f52357b1-5569-486d-85c9-8546801fa83d",
+      "vendor": {
+        "name": "outline"
+      }
+    }
+  ]
+}
