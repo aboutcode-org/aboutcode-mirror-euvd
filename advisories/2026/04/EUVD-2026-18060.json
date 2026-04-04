@@ -1,19 +1,26 @@
 {
   "id": "EUVD-2026-18060",
   "enisaUuid": "d540385d-afa8-371c-99a5-22071a6a9eed",
-  "description": "OpenEXR provides the specification and reference implementation of the EXR file format, an image storage format for the motion picture industry. From version 3.4.0 to before version 3.4.8, a crafted B44 or B44A EXR file can cause an out-of-bounds write in any application that decodes it via exr_decoding_run(). Consequences range from immediate crash (most likely) to corruption of adjacent heap allocations (layout-dependent). This issue has been patched in version 3.4.8.",
-  "datePublished": "Apr 1, 2026, 8:55:30 PM",
-  "dateUpdated": "Apr 1, 2026, 8:55:30 PM",
+  "description": "OpenEXR: integer overflow to OOB write in uncompress_b44_impl()",
+  "datePublished": "Apr 3, 2026, 9:47:07 PM",
+  "dateUpdated": "Apr 3, 2026, 9:47:07 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/AcademySoftwareFoundation/openexr/security/advisories/GHSA-h762-rhv3-h25v\nhttps://github.com/AcademySoftwareFoundation/openexr/commit/35e7aa35e22c1975606be86e859f31cc1fc598ee\nhttps://github.com/AcademySoftwareFoundation/openexr/releases/tag/v3.4.8\n",
+  "references": "https://github.com/AcademySoftwareFoundation/openexr/security/advisories/GHSA-h762-rhv3-h25v\nhttps://github.com/AcademySoftwareFoundation/openexr/commit/35e7aa35e22c1975606be86e859f31cc1fc598ee\nhttps://github.com/AcademySoftwareFoundation/openexr/releases/tag/v3.4.8\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-34544\n",
   "aliases": "CVE-2026-34544\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.01,
   "enisaIdProduct": [
     {
       "id": "10bad83a-9338-334c-9b63-6ee256c03d9a",
+      "product": {
+        "name": "OpenEXR"
+      },
+      "product_version": "3.4.0, < 3.4.8"
+    },
+    {
+      "id": "5b27ef3f-bfc4-304c-bfb7-d144c3427269",
       "product": {
         "name": "OpenEXR"
       },
