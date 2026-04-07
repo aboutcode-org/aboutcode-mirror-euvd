@@ -2,20 +2,34 @@
   "id": "EUVD-2026-18745",
   "enisaUuid": "d606eb31-d1f1-3e17-8d2b-664bf41408e9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: core: fix infinite loop in handle_tx() for PORT_UNKNOWN\n\nuart_write_room() and uart_write() behave inconsistently when\nxmit_buf is NULL (which happens for PORT_UNKNOWN ports that were\nnever properly initialized):\n\n- uart_write_room() returns kfifo_avail() which can be > 0\n- uart_write() checks xmit_buf and returns 0 if NULL\n\nThis inconsistency causes an infinite loop in drivers that rely on\ntty_write_room() to determine if they can write:\n\n  while (tty_write_room(tty) > 0) {\n      written = tty->ops->write(...);\n      // written is always 0, loop never exits\n  }\n\nFor example, caif_serial's handle_tx() enters an infinite loop when\nused with PORT_UNKNOWN serial ports, causing system hangs.\n\nFix by making uart_write_room() also check xmit_buf and return 0 if\nit's NULL, consistent with uart_write().\n\nReproducer: https://gist.github.com/mrpre/d9a694cc0e19828ee3bc3b37983fde13",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:51 PM",
+  "dateUpdated": "Apr 6, 2026, 6:59:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/efe85a557186b7fe915572ae93a8f3f78bfd9a22\nhttps://git.kernel.org/stable/c/bc70f2b36cf474d5cc8ecbcaf57f3e326fdec67c\nhttps://git.kernel.org/stable/c/455ce986fa356ff43a43c0d363ba95fa152f21d5\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23472\n",
   "aliases": "CVE-2026-23472\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "05977b0b-98a8-32dd-b6f2-c4b4599b393e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.12"
+    },
     {
       "id": "426f841d-1f72-305d-9a34-7c8f09766dbd",
       "product": {
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <455ce986fa356ff43a43c0d363ba95fa152f21d5"
+    },
+    {
+      "id": "5ca46600-682d-345a-8ca4-2879610efaac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "678dc1b5-b362-3f2c-b8ce-bae4ca991432",

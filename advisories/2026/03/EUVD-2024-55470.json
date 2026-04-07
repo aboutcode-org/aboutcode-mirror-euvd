@@ -2,10 +2,10 @@
   "id": "EUVD-2024-55470",
   "enisaUuid": "63b9c87a-f04c-3b99-89be-244dfb6fd763",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/xattr: missing fdput() in fremovexattr error path\n\nIn the Linux kernel, the fremovexattr() syscall calls fdget() to acquire a\nfile reference but returns early without calling fdput() when\nstrncpy_from_user() fails on the name argument. In multi-threaded processes\nwhere fdget() takes the slow path, this permanently leaks one\nfile reference per call, pinning the struct file and associated kernel\nobjects in memory. An unprivileged local user can exploit this to cause\nkernel memory exhaustion. The issue was inadvertently fixed by commit\na71874379ec8 (\"xattr: switch to CLASS(fd)\").",
-  "datePublished": "Mar 9, 2026, 6:31:43 PM",
-  "dateUpdated": "Mar 9, 2026, 6:31:43 PM",
+  "datePublished": "Mar 9, 2026, 3:51:12 PM",
+  "dateUpdated": "Apr 6, 2026, 8:01:13 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a71874379ec8c6e788a61d71b3ad014a8d9a5c08\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-14027\n",
+  "references": "https://git.kernel.org/stable/c/a71874379ec8c6e788a61d71b3ad014a8d9a5c08\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-14027\nhttps://git.kernel.org/stable/c/9a3a2ae5efbbcaed37551218abed94e23c537157\nhttps://git.kernel.org/stable/c/d151b94967c8247005435b63fc60f8f4baa320da\n",
   "aliases": "CVE-2024-14027\nGHSA-h9jc-64qv-h9cg\n",
   "assigner": "Linux",
   "epss": 0.01,
@@ -25,11 +25,25 @@
       "product_version": "patch: 6.13"
     },
     {
+      "id": "7bf22de6-b246-320a-ae18-cf3483659b37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.133"
+    },
+    {
       "id": "7c5b039a-75e7-3691-97f1-ce5892d035c1",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.12.77"
+    },
+    {
+      "id": "83678d73-fca3-3a50-ba26-764a79430b61",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.6.131"
     },
     {
       "id": "890f4be3-db4a-3273-b84e-ff4bbcba12d0",
@@ -53,11 +67,25 @@
       "product_version": "c03185f4a23e7f89d84c9981091770e876e64480"
     },
     {
+      "id": "9526fd79-a7bb-37fc-89e2-d4a5541e585c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c03185f4a23e7f89d84c9981091770e876e64480 <9a3a2ae5efbbcaed37551218abed94e23c537157"
+    },
+    {
       "id": "9b4d37f3-a4b4-3c5a-bec1-f4a827909f3d",
       "product": {
         "name": "Linux"
       },
       "product_version": "8d5863cb33aa424fc27115ee945ad6b96ae2facb"
+    },
+    {
+      "id": "c22c6809-1f2b-3593-99a9-7f395045c98e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c03185f4a23e7f89d84c9981091770e876e64480 <5a1e865e51063d6c56f673ec8ad4b6604321b455"
     },
     {
       "id": "c588aa3a-d972-3a0a-bd62-2b4dbfe3395e",
