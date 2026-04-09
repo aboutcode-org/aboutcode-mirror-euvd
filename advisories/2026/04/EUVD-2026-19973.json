@@ -1,19 +1,26 @@
 {
   "id": "EUVD-2026-19973",
   "enisaUuid": "58ba6a1d-7b40-3820-88ea-d48d5c01bb62",
-  "description": "SiYuan is a personal knowledge management system. Prior to 3.6.4, a malicious note synced to another user can trigger remote code execution in the SiYuan Electron desktop client. The root cause is that table caption content is stored without safe escaping and later unescaped into rendered HTML, creating a stored XSS sink. Because the desktop renderer runs with nodeIntegration enabled and contextIsolation disabled, attacker-controlled JavaScript executes with access to Node.js APIs. In practice, an attacker can import a crafted note into a synced workspace, wait for the victim to sync, and achieve code execution when the victim opens the note. This vulnerability is fixed in 3.6.4.",
-  "datePublished": "Apr 7, 2026, 9:34:28 PM",
-  "dateUpdated": "Apr 7, 2026, 9:34:28 PM",
+  "description": "SiYuan: Remote Code Execution in the Electron desktop client via stored XSS in synced table captions",
+  "datePublished": "Apr 8, 2026, 3:03:54 PM",
+  "dateUpdated": "Apr 8, 2026, 3:03:55 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
-  "references": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-phhp-9rm9-6gr2\n",
-  "aliases": "CVE-2026-39846\n",
+  "references": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-phhp-9rm9-6gr2\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-39846\n",
+  "aliases": "GHSA-phhp-9rm9-6gr2\nCVE-2026-39846\n",
   "assigner": "GitHub_M",
   "epss": 0.0,
   "enisaIdProduct": [
     {
       "id": "8bd71e11-ceb0-3f9a-9a32-4f3dfe1f2c56",
+      "product": {
+        "name": "SiYuan"
+      },
+      "product_version": "< 3.6.4"
+    },
+    {
+      "id": "dee578c6-1a00-3549-97b6-06c5790f962d",
       "product": {
         "name": "SiYuan"
       },
