@@ -3,11 +3,11 @@
   "enisaUuid": "05e3a76c-8055-388a-9e22-2ca124296b93",
   "description": "A flaw was found in rsync which could be triggered when rsync compares file checksums. This flaw allows an attacker to manipulate the checksum length (s2length) to cause a comparison between a checksum and uninitialized memory and leak one byte of uninitialized stack data at a time.",
   "datePublished": "Jan 14, 2025, 5:37:16 PM",
-  "dateUpdated": "Jan 27, 2026, 11:11:51 AM",
+  "dateUpdated": "Apr 18, 2026, 3:34:10 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2025:0324\nhttps://access.redhat.com/errata/RHSA-2025:0325\nhttps://access.redhat.com/errata/RHSA-2025:0637\nhttps://access.redhat.com/errata/RHSA-2025:0688\nhttps://access.redhat.com/errata/RHSA-2025:0714\nhttps://access.redhat.com/errata/RHSA-2025:0774\nhttps://access.redhat.com/errata/RHSA-2025:0787\nhttps://access.redhat.com/errata/RHSA-2025:0790\nhttps://access.redhat.com/errata/RHSA-2025:0849\nhttps://access.redhat.com/errata/RHSA-2025:0884\nhttps://access.redhat.com/errata/RHSA-2025:0885\nhttps://access.redhat.com/errata/RHSA-2025:1120\nhttps://access.redhat.com/errata/RHSA-2025:1123\nhttps://access.redhat.com/errata/RHSA-2025:1128\nhttps://access.redhat.com/errata/RHSA-2025:1225\nhttps://access.redhat.com/errata/RHSA-2025:1227\nhttps://access.redhat.com/errata/RHSA-2025:1242\nhttps://access.redhat.com/security/cve/CVE-2024-12085\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2330539\nhttps://kb.cert.org/vuls/id/952657\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-12085\nhttps://access.redhat.com/errata/RHSA-2025:1451\nhttps://github.com/google/security-research/security/advisories/GHSA-p5pg-x43v-mvqj\nhttps://access.redhat.com/errata/RHSA-2025:2701\nhttps://security.netapp.com/advisory/ntap-20250131-0002\nhttps://www.kb.cert.org/vuls/id/952657\nhttps://lists.debian.org/debian-lts-announce/2025/01/msg00008.html\nhttps://access.redhat.com/errata/RHSA-2025:21885\n",
+  "references": "https://access.redhat.com/errata/RHBA-2025:6470\nhttps://access.redhat.com/errata/RHSA-2025:0324\nhttps://access.redhat.com/errata/RHSA-2025:0325\nhttps://access.redhat.com/errata/RHSA-2025:0637\nhttps://access.redhat.com/errata/RHSA-2025:0688\nhttps://access.redhat.com/errata/RHSA-2025:0714\nhttps://access.redhat.com/errata/RHSA-2025:0774\nhttps://access.redhat.com/errata/RHSA-2025:0787\nhttps://access.redhat.com/errata/RHSA-2025:0790\nhttps://access.redhat.com/errata/RHSA-2025:0849\nhttps://access.redhat.com/errata/RHSA-2025:0884\nhttps://access.redhat.com/errata/RHSA-2025:0885\nhttps://access.redhat.com/errata/RHSA-2025:1120\nhttps://access.redhat.com/errata/RHSA-2025:1123\nhttps://access.redhat.com/errata/RHSA-2025:1128\nhttps://access.redhat.com/errata/RHSA-2025:1225\nhttps://access.redhat.com/errata/RHSA-2025:1227\nhttps://access.redhat.com/errata/RHSA-2025:1242\nhttps://access.redhat.com/errata/RHSA-2025:1451\nhttps://access.redhat.com/errata/RHSA-2025:21885\nhttps://access.redhat.com/errata/RHSA-2025:2701\nhttps://access.redhat.com/security/cve/CVE-2024-12085\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2330539\nhttps://kb.cert.org/vuls/id/952657\n",
   "aliases": "GHSA-xh5q-pch5-g3xq\nCVE-2024-12085\n",
   "assigner": "redhat",
   "epss": 19.14,
@@ -188,6 +188,20 @@
       "product_version": "patch: v4.16.0-202501311605.p0.g4246d04.assembly.stream.el9"
     },
     {
+      "id": "6c441ade-b286-3bf3-9591-875ca9ea5b68",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10"
+      },
+      "product_version": "patch: 0:3.4.1-2.el10"
+    },
+    {
+      "id": "6d81e70c-a5f8-3aaa-8b15-c6e8bea18d1b",
+      "product": {
+        "name": "Compliance Operator 1"
+      },
+      "product_version": "patch: sha256:4953a7ea865ff38a4fe19d5536d8062870c262733c640a2c7e4bd9e0bfb3d498"
+    },
+    {
       "id": "78a8223b-28f2-3043-8f2f-dd1ea128d7e6",
       "product": {
         "name": "RHOL-5.9-RHEL-9"
@@ -319,6 +333,13 @@
         "name": "RHOL-5.9-RHEL-9"
       },
       "product_version": "patch: v0.34.1-30"
+    },
+    {
+      "id": "eada35a5-2577-35c2-8607-2bae690d957d",
+      "product": {
+        "name": "OpenShift Compliance Operator 1"
+      },
+      "product_version": "patch: sha256:4953a7ea865ff38a4fe19d5536d8062870c262733c640a2c7e4bd9e0bfb3d498"
     },
     {
       "id": "ec37dd26-1703-3a51-bbc7-90b5adefe352",

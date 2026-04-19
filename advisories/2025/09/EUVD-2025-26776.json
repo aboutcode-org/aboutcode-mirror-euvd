@@ -2,13 +2,13 @@
   "id": "EUVD-2025-26776",
   "enisaUuid": "4e86a8b9-8f16-30b4-9ce6-be31da24d34c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dvb-frontends: w7090p: fix null-ptr-deref in w7090p_tuner_write_serpar and w7090p_tuner_read_serpar\n\nIn w7090p_tuner_write_serpar, msg is controlled by user. When msg[0].buf is null and msg[0].len is zero, former checks on msg[0].buf would be passed. If accessing msg[0].buf[2] without sanity check, null pointer deref would happen. We add\ncheck on msg[0].len to prevent crash.\n\nSimilar commit: commit 0ed554fd769a (\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")",
-  "datePublished": "Sep 5, 2025, 6:31:16 PM",
-  "dateUpdated": "Jan 9, 2026, 9:31:32 PM",
+  "datePublished": "Sep 4, 2025, 3:32:46 PM",
+  "dateUpdated": "Apr 18, 2026, 8:56:59 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7a41ecfc3415ebe3b4c44f96b3337691dcf431a3\nhttps://git.kernel.org/stable/c/b3d77a3fc71c084575d3df4ec6544b3fb6ce587d\nhttps://git.kernel.org/stable/c/17b30e5ded062bd74f8ca6f317e1d415a8680665\nhttps://git.kernel.org/stable/c/454a443eaa792c8865c861a282fe6d4f596abc3a\nhttps://git.kernel.org/stable/c/6bbaec6a036940e22318f0454b50b8000845ab59\nhttps://git.kernel.org/stable/c/f98132a59ccc59a8b97987363bc99c8968934756\nhttps://git.kernel.org/stable/c/99690a494d91a0dc86cebd628da4c62c40552bcb\nhttps://git.kernel.org/stable/c/39b06b93f24dff923c4183d564ed28c039150554\nhttps://git.kernel.org/stable/c/ed0234c8458b3149f15e496b48a1c9874dd24a1b\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-38693\nhttps://lists.debian.org/debian-lts-announce/2025/10/msg00007.html\nhttps://lists.debian.org/debian-lts-announce/2025/10/msg00008.html\n",
+  "references": "https://git.kernel.org/stable/c/7a41ecfc3415ebe3b4c44f96b3337691dcf431a3\nhttps://git.kernel.org/stable/c/ddd1f0e0b6991e4f1b5d08a74de388564b7c4ac6\nhttps://git.kernel.org/stable/c/17b30e5ded062bd74f8ca6f317e1d415a8680665\nhttps://git.kernel.org/stable/c/454a443eaa792c8865c861a282fe6d4f596abc3a\nhttps://git.kernel.org/stable/c/6bbaec6a036940e22318f0454b50b8000845ab59\nhttps://git.kernel.org/stable/c/f98132a59ccc59a8b97987363bc99c8968934756\nhttps://git.kernel.org/stable/c/99690a494d91a0dc86cebd628da4c62c40552bcb\nhttps://git.kernel.org/stable/c/39b06b93f24dff923c4183d564ed28c039150554\nhttps://git.kernel.org/stable/c/ed0234c8458b3149f15e496b48a1c9874dd24a1b\n",
   "aliases": "GHSA-qp76-qqr3-xhv8\nCVE-2025-38693\n",
   "assigner": "Linux",
-  "epss": 0.01,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "009771ee-7b2c-3293-8703-5d45e016d81c",
@@ -158,6 +158,13 @@
       "product_version": "713d54a8bd812229410a1902cd9b332a2a27af9f <f98132a59ccc59a8b97987363bc99c8968934756"
     },
     {
+      "id": "af597d2d-9048-3791-975d-bc1f3f2c92f3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "713d54a8bd812229410a1902cd9b332a2a27af9f <ddd1f0e0b6991e4f1b5d08a74de388564b7c4ac6"
+    },
+    {
       "id": "bb31b55a-7051-3f7e-8ba1-0338ae3cdd1e",
       "product": {
         "name": "Linux"
@@ -184,6 +191,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 5.15.190"
+    },
+    {
+      "id": "d50119b9-8370-317f-927d-89f91877407a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "d903724b-73f1-3811-9ef4-111e0d33ce85",

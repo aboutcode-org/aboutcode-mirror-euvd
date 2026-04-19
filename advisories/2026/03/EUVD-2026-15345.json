@@ -2,14 +2,21 @@
   "id": "EUVD-2026-15345",
   "enisaUuid": "95268922-d3ad-3dba-b7c6-5f5141427197",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: kalmia: validate USB endpoints\n\nThe kalmia driver should validate that the device it is probing has the\nproper number and types of USB endpoints it is expecting before it binds\nto it.  If a malicious device were to not have the same urbs the driver\nwill crash later on when it blindly accesses these endpoints.",
-  "datePublished": "Mar 25, 2026, 12:30:24 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:24 PM",
+  "datePublished": "Mar 25, 2026, 10:27:47 AM",
+  "dateUpdated": "Apr 18, 2026, 8:58:13 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/28a380bfa5bc7f6a9380b85e8eab919ee6ac1701\nhttps://git.kernel.org/stable/c/12c0243de0aee0ab27cc00932fd5edae65c1e3a2\nhttps://git.kernel.org/stable/c/51c20ea5f1555a984c041b0dbf56f00d41b9e652\nhttps://git.kernel.org/stable/c/011684cd18349aa4c52167c8ac37a0524169f48c\nhttps://git.kernel.org/stable/c/7bfda1a0be4caec3263753d567678451cef73a85\nhttps://git.kernel.org/stable/c/c58b6c29a4c9b8125e8ad3bca0637e00b71e2693\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23365\n",
+  "references": "https://git.kernel.org/stable/c/ff675bc5b3e8c356f9d993d65d0bae6ed0dc7459\nhttps://git.kernel.org/stable/c/185050b47df3d41e49f20ad01beea2e7b9cddaa7\nhttps://git.kernel.org/stable/c/28a380bfa5bc7f6a9380b85e8eab919ee6ac1701\nhttps://git.kernel.org/stable/c/12c0243de0aee0ab27cc00932fd5edae65c1e3a2\nhttps://git.kernel.org/stable/c/51c20ea5f1555a984c041b0dbf56f00d41b9e652\nhttps://git.kernel.org/stable/c/011684cd18349aa4c52167c8ac37a0524169f48c\nhttps://git.kernel.org/stable/c/7bfda1a0be4caec3263753d567678451cef73a85\nhttps://git.kernel.org/stable/c/c58b6c29a4c9b8125e8ad3bca0637e00b71e2693\n",
   "aliases": "CVE-2026-23365\nGHSA-m58v-8vcf-j347\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "01a815e7-c455-3f97-86cc-1dff82486f1f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d40261236e8e278cb1936cb5e934262971692b10 <185050b47df3d41e49f20ad01beea2e7b9cddaa7"
+    },
     {
       "id": "1ca535c4-a74a-35d7-8d5b-1645ccf36d63",
       "product": {
@@ -30,6 +37,13 @@
         "name": "Linux"
       },
       "product_version": "d40261236e8e278cb1936cb5e934262971692b10 <28a380bfa5bc7f6a9380b85e8eab919ee6ac1701"
+    },
+    {
+      "id": "44277d69-ae23-30b7-b62b-db159a6c1ad2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "463a9551-aa25-37b8-9c63-8ae04b2c425f",
@@ -88,11 +102,25 @@
       "product_version": "d40261236e8e278cb1936cb5e934262971692b10 <c58b6c29a4c9b8125e8ad3bca0637e00b71e2693"
     },
     {
+      "id": "bdef7160-078f-34af-8a83-b617f2a6477c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "be38467e-b62b-3847-bda9-2b41867e6a1d",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.1.167"
+    },
+    {
+      "id": "c7af7b77-1f2c-3d2f-92fd-db6a7e1c0695",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     },
     {
       "id": "caf97bfa-34e0-32ac-8e4e-3e225add1d61",
@@ -107,6 +135,13 @@
         "name": "Linux"
       },
       "product_version": "d40261236e8e278cb1936cb5e934262971692b10 <7bfda1a0be4caec3263753d567678451cef73a85"
+    },
+    {
+      "id": "dff69ae6-dde8-3af8-94c9-84aa638114bc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d40261236e8e278cb1936cb5e934262971692b10 <ff675bc5b3e8c356f9d993d65d0bae6ed0dc7459"
     }
   ],
   "enisaIdVendor": [

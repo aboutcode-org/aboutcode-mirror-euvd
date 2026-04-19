@@ -2,14 +2,21 @@
   "id": "EUVD-2026-15376",
   "enisaUuid": "d10e4d0e-5af7-3803-b160-a6cbe96b5288",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: Add HID_CLAIMED_INPUT guards in raw_event callbacks missing them\n\nIn commit 2ff5baa9b527 (\"HID: appleir: Fix potential NULL dereference at\nraw event handle\"), we handle the fact that raw event callbacks\ncan happen even for a HID device that has not been \"claimed\" causing a\ncrash if a broken device were attempted to be connected to the system.\n\nFix up the remaining in-tree HID drivers that forgot to add this same\ncheck to resolve the same issue.",
-  "datePublished": "Mar 25, 2026, 12:30:24 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:24 PM",
+  "datePublished": "Mar 25, 2026, 10:28:01 AM",
+  "dateUpdated": "Apr 18, 2026, 8:58:24 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ac83b0d91a3f4f0c012ba9c85fb99436cddb1208\nhttps://git.kernel.org/stable/c/6e330889e6c8db99f04d4feb861d23de4e8fbb13\nhttps://git.kernel.org/stable/c/892dbaf46bb738dacf1fa663eadb3712c85868f0\nhttps://git.kernel.org/stable/c/20864e3e41c74cda253a9fa6b6fe093c1461a6a9\nhttps://git.kernel.org/stable/c/575122cd6569c4c4aa13c4c9958fea506724c788\nhttps://git.kernel.org/stable/c/ecfa6f34492c493a9a1dc2900f3edeb01c79946b\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23382\n",
+  "references": "https://git.kernel.org/stable/c/b48284d7f0f76023b215a3409cdc989b5081eadf\nhttps://git.kernel.org/stable/c/de316c1edf15bc30ff5e0d4c7b37c70fd41cf319\nhttps://git.kernel.org/stable/c/ac83b0d91a3f4f0c012ba9c85fb99436cddb1208\nhttps://git.kernel.org/stable/c/6e330889e6c8db99f04d4feb861d23de4e8fbb13\nhttps://git.kernel.org/stable/c/892dbaf46bb738dacf1fa663eadb3712c85868f0\nhttps://git.kernel.org/stable/c/20864e3e41c74cda253a9fa6b6fe093c1461a6a9\nhttps://git.kernel.org/stable/c/575122cd6569c4c4aa13c4c9958fea506724c788\nhttps://git.kernel.org/stable/c/ecfa6f34492c493a9a1dc2900f3edeb01c79946b\n",
   "aliases": "CVE-2026-23382\nGHSA-22m9-9vqx-v8ww\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "14a593a0-276e-3e09-9857-31a91a62de39",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d0742abaa1c396a26bb3d3ce2732988cd3faa020 <de316c1edf15bc30ff5e0d4c7b37c70fd41cf319"
+    },
     {
       "id": "16dad4fb-6612-3ca6-9f69-6fc885af7b56",
       "product": {
@@ -67,6 +74,13 @@
       "product_version": "patch: 6.18.17"
     },
     {
+      "id": "37e44d73-616c-364c-8358-012097673827",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "3fe17439-6cf5-3823-b59c-9f18f8f56be5",
       "product": {
         "name": "Linux"
@@ -116,11 +130,25 @@
       "product_version": "d0742abaa1c396a26bb3d3ce2732988cd3faa020 <6e330889e6c8db99f04d4feb861d23de4e8fbb13"
     },
     {
+      "id": "a4381470-1338-3906-abba-85baa2866776",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d0742abaa1c396a26bb3d3ce2732988cd3faa020 <b48284d7f0f76023b215a3409cdc989b5081eadf"
+    },
+    {
       "id": "aee91edd-4a35-36b0-9ebf-d68f6d82b8a2",
       "product": {
         "name": "Linux"
       },
       "product_version": "2.6.35"
+    },
+    {
+      "id": "b4bc824d-0765-3c9c-aba5-9bb4d3507956",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "b53a8d45-4c94-36b0-800d-e7c7bea3ec88",
@@ -142,6 +170,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19.7"
+    },
+    {
+      "id": "c13c2a27-c9e3-3389-a360-5e8689d1dfe8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "fa3b1df1-77a4-3e6a-af16-9e5057a8a636",

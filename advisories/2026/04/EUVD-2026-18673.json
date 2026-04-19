@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18673",
   "enisaUuid": "1b624480-c757-3f88-a5ca-20173c0dc47a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: rawnand: serialize lock/unlock against other NAND operations\n\nnand_lock() and nand_unlock() call into chip->ops.lock_area/unlock_area\nwithout holding the NAND device lock. On controllers that implement\nSET_FEATURES via multiple low-level PIO commands, these can race with\nconcurrent UBI/UBIFS background erase/write operations that hold the\ndevice lock, resulting in cmd_pending conflicts on the NAND controller.\n\nAdd nand_get_device()/nand_release_device() around the lock/unlock\noperations to serialize them against all other NAND controller access.",
-  "datePublished": "Apr 3, 2026, 6:31:21 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:21 PM",
+  "datePublished": "Apr 3, 2026, 3:15:19 PM",
+  "dateUpdated": "Apr 18, 2026, 8:58:52 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ce5229e78078e437704157eb542f43a6f83b429b\nhttps://git.kernel.org/stable/c/a80291e577b44593a724d6cd64c14337c78f194d\nhttps://git.kernel.org/stable/c/f71ce0ae5aefe39dd5b2f996c0e08550d2153ad2\nhttps://git.kernel.org/stable/c/5fd5c078af23cb353507aa522e09d557d7eaef04\nhttps://git.kernel.org/stable/c/f25446e2c28939753d3b62d34dfda49952b2557d\nhttps://git.kernel.org/stable/c/bab2bc6e850a697a23b9e5f0e21bb8c187615e95\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23434\n",
+  "references": "https://git.kernel.org/stable/c/28ea836cc44cb8b89c1c174707ead0c1133c60e9\nhttps://git.kernel.org/stable/c/fe4a73c3dd48308149d57a10c2761e1d36ced7ba\nhttps://git.kernel.org/stable/c/ce5229e78078e437704157eb542f43a6f83b429b\nhttps://git.kernel.org/stable/c/a80291e577b44593a724d6cd64c14337c78f194d\nhttps://git.kernel.org/stable/c/f71ce0ae5aefe39dd5b2f996c0e08550d2153ad2\nhttps://git.kernel.org/stable/c/5fd5c078af23cb353507aa522e09d557d7eaef04\nhttps://git.kernel.org/stable/c/f25446e2c28939753d3b62d34dfda49952b2557d\nhttps://git.kernel.org/stable/c/bab2bc6e850a697a23b9e5f0e21bb8c187615e95\n",
   "aliases": "CVE-2026-23434\nGHSA-f5hq-62qq-fgrw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "04266498-3806-3d1d-9937-367ed34c6812",
@@ -39,6 +39,13 @@
       "product_version": "patch: 6.12.78"
     },
     {
+      "id": "2ac851ae-7b0d-37fa-af05-8ee66b213e48",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "92270086b7e5ada7ab381c06cc3da2e95ed17088 <fe4a73c3dd48308149d57a10c2761e1d36ced7ba"
+    },
+    {
       "id": "3694b004-35fe-3b7e-9030-dc2c00616362",
       "product": {
         "name": "Linux"
@@ -51,6 +58,13 @@
         "name": "Linux"
       },
       "product_version": "92270086b7e5ada7ab381c06cc3da2e95ed17088 <f71ce0ae5aefe39dd5b2f996c0e08550d2153ad2"
+    },
+    {
+      "id": "679128f6-d5e7-3810-9c48-42c70e476058",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "6df73737-d642-3887-9f60-1799a51f092b",
@@ -81,6 +95,13 @@
       "product_version": "92270086b7e5ada7ab381c06cc3da2e95ed17088 <5fd5c078af23cb353507aa522e09d557d7eaef04"
     },
     {
+      "id": "a5e480cb-0ff5-3bcd-8023-13673d4b4225",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "92270086b7e5ada7ab381c06cc3da2e95ed17088 <28ea836cc44cb8b89c1c174707ead0c1133c60e9"
+    },
+    {
       "id": "b10c7bc0-ca53-35cb-8f93-9e5c569afa03",
       "product": {
         "name": "Linux"
@@ -95,11 +116,25 @@
       "product_version": "92270086b7e5ada7ab381c06cc3da2e95ed17088 <a80291e577b44593a724d6cd64c14337c78f194d"
     },
     {
+      "id": "cbc9a550-64c5-3e4a-9434-c473b279b9e8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "e11849ee-b689-3df1-a977-e925ff09187d",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "e528754d-038f-3462-83b3-9267ac8b4b6b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "fa268005-618d-39e8-830e-2652d62a5ef6",

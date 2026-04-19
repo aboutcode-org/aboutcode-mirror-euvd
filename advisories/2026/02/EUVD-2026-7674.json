@@ -2,10 +2,12 @@
   "id": "EUVD-2026-7674",
   "enisaUuid": "0cb6364e-a18a-3f38-8fc2-5ca18ac11b08",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/exynos: vidi: use ctx->lock to protect struct vidi_context member variables related to memory alloc/free\n\nExynos Virtual Display driver performs memory alloc/free operations\nwithout lock protection, which easily causes concurrency problem.\n\nFor example, use-after-free can occur in race scenario like this:\n```\n\tCPU0\t\t\t\tCPU1\t\t\t\tCPU2\n\t----\t\t\t\t----\t\t\t\t----\n  vidi_connection_ioctl()\n    if (vidi->connection) // true\n      drm_edid = drm_edid_alloc(); // alloc drm_edid\n      ...\n      ctx->raw_edid = drm_edid;\n      ...\n\t\t\t\t\t\t\t\tdrm_mode_getconnector()\n\t\t\t\t\t\t\t\t  drm_helper_probe_single_connector_modes()\n\t\t\t\t\t\t\t\t    vidi_get_modes()\n\t\t\t\t\t\t\t\t      if (ctx->raw_edid) // true\n\t\t\t\t\t\t\t\t        drm_edid_dup(ctx->raw_edid);\n\t\t\t\t\t\t\t\t          if (!drm_edid) // false\n\t\t\t\t\t\t\t\t          ...\n\t\t\t\tvidi_connection_ioctl()\n\t\t\t\t  if (vidi->connection) // false\n\t\t\t\t    drm_edid_free(ctx->raw_edid); // free drm_edid\n\t\t\t\t    ...\n\t\t\t\t\t\t\t\t          drm_edid_alloc(drm_edid->edid)\n\t\t\t\t\t\t\t\t            kmemdup(edid); // UAF!!\n\t\t\t\t\t\t\t\t            ...\n```\n\nTo prevent these vulns, at least in vidi_context, member variables related\nto memory alloc/free should be protected with ctx->lock.",
-  "datePublished": "Feb 18, 2026, 6:30:40 PM",
-  "dateUpdated": "Feb 23, 2026, 6:30:18 AM",
-  "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/60b75407c172e1f341a8a5097c5cbc97dbbdd893\nhttps://git.kernel.org/stable/c/0cd2c155740dbd00868ac5a8ae5d14cd6b9ed385\nhttps://git.kernel.org/stable/c/52b330799e2d6f825ae2bb74662ec1b10eb954bb\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23227\n",
+  "datePublished": "Feb 18, 2026, 2:53:30 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:24 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/56966a4cfa925ec24edb68ab652a740a7abe2c4d\nhttps://git.kernel.org/stable/c/9e1ef9396a1899925911b1729cb65665420268df\nhttps://git.kernel.org/stable/c/92dd1f38d7db75374dcdaf54f1d79d67bffd54e5\nhttps://git.kernel.org/stable/c/1b24d3e8792bcc050c70e8e0dea6b49c4fc63b13\nhttps://git.kernel.org/stable/c/abfdf449fb3d7b42e85a1ad1c8694b768b1582f4\nhttps://git.kernel.org/stable/c/60b75407c172e1f341a8a5097c5cbc97dbbdd893\nhttps://git.kernel.org/stable/c/0cd2c155740dbd00868ac5a8ae5d14cd6b9ed385\nhttps://git.kernel.org/stable/c/52b330799e2d6f825ae2bb74662ec1b10eb954bb\n",
   "aliases": "CVE-2026-23227\nGHSA-g3vh-wfh4-fp76\n",
   "assigner": "Linux",
   "epss": 0.01,
@@ -32,6 +34,13 @@
       "product_version": "patch: 6.18.11"
     },
     {
+      "id": "374d9063-9a88-3c03-9515-6abe62bff431",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "5f84241e-89f4-3f1c-9286-b9f45e65b65c",
       "product": {
         "name": "Linux"
@@ -39,11 +48,32 @@
       "product_version": "d3b62dbfc7b9bb013926f56db79b60f6c18c392f <60b75407c172e1f341a8a5097c5cbc97dbbdd893"
     },
     {
+      "id": "716a4f5c-57e2-3104-a9ba-a3ec116d9a37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d3b62dbfc7b9bb013926f56db79b60f6c18c392f <56966a4cfa925ec24edb68ab652a740a7abe2c4d"
+    },
+    {
       "id": "7471a40d-b72d-3e4f-a41b-7fad4d75019f",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.1.167"
+    },
+    {
+      "id": "85382700-686b-3649-9579-cd0ffcbb7d6a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "8b88cb61-cc81-335b-bc6f-a0652451490b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d3b62dbfc7b9bb013926f56db79b60f6c18c392f <9e1ef9396a1899925911b1729cb65665420268df"
     },
     {
       "id": "9c7a5e7a-0786-3a1e-8705-3590aa45fc29",
@@ -86,6 +116,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "e21cede0-47d8-36f7-a893-d4e33b68916e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "ec1315d5-48af-35c9-a237-c5f643fc8a07",

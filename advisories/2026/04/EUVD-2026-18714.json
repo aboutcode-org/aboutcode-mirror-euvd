@@ -2,14 +2,21 @@
   "id": "EUVD-2026-18714",
   "enisaUuid": "b2da742a-f33d-3d07-a4d0-d80076fce88f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_sip: fix Content-Length u32 truncation in sip_help_tcp()\n\nsip_help_tcp() parses the SIP Content-Length header with\nsimple_strtoul(), which returns unsigned long, but stores the result in\nunsigned int clen.  On 64-bit systems, values exceeding UINT_MAX are\nsilently truncated before computing the SIP message boundary.\n\nFor example, Content-Length 4294967328 (2^32 + 32) is truncated to 32,\ncausing the parser to miscalculate where the current message ends.  The\nloop then treats trailing data in the TCP segment as a second SIP\nmessage and processes it through the SDP parser.\n\nFix this by changing clen to unsigned long to match the return type of\nsimple_strtoul(), and reject Content-Length values that exceed the\nremaining TCP payload length.",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:38 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:06 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b75209debb9adab287b3caa982f77788c1e15027\nhttps://git.kernel.org/stable/c/528b4509c9dfc272e2e92d811915e5211650d383\nhttps://git.kernel.org/stable/c/75fcaee5170e7dbbee778927134ef2e9568b4659\nhttps://git.kernel.org/stable/c/865dba58958c3a86786f89a501971ab0e3ec6ba9\nhttps://git.kernel.org/stable/c/d4f17256544cc37f6534a14a27a9dec3540c2015\nhttps://git.kernel.org/stable/c/fbce58e719a17aa215c724473fd5baaa4a8dc57c\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23457\n",
+  "references": "https://git.kernel.org/stable/c/ed81b6a7012485acdb9c6c80735a0b7d8e5e1873\nhttps://git.kernel.org/stable/c/cd1b7403ec835f8a0b3f1f7e68ac26af2cb1e42f\nhttps://git.kernel.org/stable/c/b75209debb9adab287b3caa982f77788c1e15027\nhttps://git.kernel.org/stable/c/528b4509c9dfc272e2e92d811915e5211650d383\nhttps://git.kernel.org/stable/c/75fcaee5170e7dbbee778927134ef2e9568b4659\nhttps://git.kernel.org/stable/c/865dba58958c3a86786f89a501971ab0e3ec6ba9\nhttps://git.kernel.org/stable/c/d4f17256544cc37f6534a14a27a9dec3540c2015\nhttps://git.kernel.org/stable/c/fbce58e719a17aa215c724473fd5baaa4a8dc57c\n",
   "aliases": "CVE-2026-23457\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "0f872517-e8c6-3bc7-b0a3-bd1612f03d14",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
     {
       "id": "2d403e4a-140c-3116-b56c-bbf4926f12c6",
       "product": {
@@ -53,6 +60,13 @@
       "product_version": "patch: 6.6.130"
     },
     {
+      "id": "6d1b7a38-b7ae-365a-878a-ed08749206f9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b321bd37fbec9188feb1f721ab46a5ac0b35da <cd1b7403ec835f8a0b3f1f7e68ac26af2cb1e42f"
+    },
+    {
       "id": "7a62be15-93bd-30db-a470-f0f05736b093",
       "product": {
         "name": "Linux"
@@ -72,6 +86,13 @@
         "name": "Linux"
       },
       "product_version": "f5b321bd37fbec9188feb1f721ab46a5ac0b35da <fbce58e719a17aa215c724473fd5baaa4a8dc57c"
+    },
+    {
+      "id": "92a1da88-c0c6-3de8-bd1b-b80d15ca27fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "b5dc25a7-8066-3a04-abd5-305477ab4abe",
@@ -107,6 +128,20 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.1.167"
+    },
+    {
+      "id": "fb66daf5-a59d-307c-a991-e5d815d1c6b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "fd48331c-ed70-3bb3-a3dd-b090212b7c31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f5b321bd37fbec9188feb1f721ab46a5ac0b35da <ed81b6a7012485acdb9c6c80735a0b7d8e5e1873"
     }
   ],
   "enisaIdVendor": [

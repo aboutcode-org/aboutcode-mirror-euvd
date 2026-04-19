@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18720",
   "enisaUuid": "17d9f98d-11ff-37f7-89a2-f66507405f4d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rose: fix NULL pointer dereference in rose_transmit_link on reconnect\n\nsyzkaller reported a bug [1], and the reproducer is available at [2].\n\nROSE sockets use four sk->sk_state values: TCP_CLOSE, TCP_LISTEN,\nTCP_SYN_SENT, and TCP_ESTABLISHED. rose_connect() already rejects\ncalls for TCP_ESTABLISHED (-EISCONN) and TCP_CLOSE with SS_CONNECTING\n(-ECONNREFUSED), but lacks a check for TCP_SYN_SENT.\n\nWhen rose_connect() is called a second time while the first connection\nattempt is still in progress (TCP_SYN_SENT), it overwrites\nrose->neighbour via rose_get_neigh(). If that returns NULL, the socket\nis left with rose->state == ROSE_STATE_1 but rose->neighbour == NULL.\nWhen the socket is subsequently closed, rose_release() sees\nROSE_STATE_1 and calls rose_write_internal() ->\nrose_transmit_link(skb, NULL), causing a NULL pointer dereference.\n\nPer connect(2), a second connect() while a connection is already in\nprogress should return -EALREADY. Add this missing check for\nTCP_SYN_SENT to complete the state validation in rose_connect().\n\n[1] https://syzkaller.appspot.com/bug?extid=d00f90e0af54102fb271\n[2] https://gist.github.com/mrpre/9e6779e0d13e2c66779b1653fef80516",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:40 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:09 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c2ab74c12932e52cfa1e7e4582d42b0c8bec96c7\nhttps://git.kernel.org/stable/c/0c9fb70a206a8734e10468ecc24d57c7596cf64e\nhttps://git.kernel.org/stable/c/508f49ccbe0329641bb681f7d0052bb4e5943252\nhttps://git.kernel.org/stable/c/0c3e8bff808f17ad37a51d8e719eed22c7863120\nhttps://git.kernel.org/stable/c/a12254050e3050f1011cd24f3b880a6882d0139d\nhttps://git.kernel.org/stable/c/e1f0a18c9564cdb16523c802e2c6fe5874e3d944\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23460\n",
+  "references": "https://git.kernel.org/stable/c/c85fe6580e86947ca07907ebf4363a73c156fda7\nhttps://git.kernel.org/stable/c/a753844d2a8136f090123c8fb1ff6c7f6ee7c2b3\nhttps://git.kernel.org/stable/c/c2ab74c12932e52cfa1e7e4582d42b0c8bec96c7\nhttps://git.kernel.org/stable/c/0c9fb70a206a8734e10468ecc24d57c7596cf64e\nhttps://git.kernel.org/stable/c/508f49ccbe0329641bb681f7d0052bb4e5943252\nhttps://git.kernel.org/stable/c/0c3e8bff808f17ad37a51d8e719eed22c7863120\nhttps://git.kernel.org/stable/c/a12254050e3050f1011cd24f3b880a6882d0139d\nhttps://git.kernel.org/stable/c/e1f0a18c9564cdb16523c802e2c6fe5874e3d944\n",
   "aliases": "CVE-2026-23460\nGHSA-cx6c-45wp-f5pr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "0277a242-376a-3e91-ae4f-d2b9694ea07a",
@@ -23,6 +23,13 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <508f49ccbe0329641bb681f7d0052bb4e5943252"
+    },
+    {
+      "id": "170388f8-ccb6-3e63-8c84-6ace4e1885e0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a753844d2a8136f090123c8fb1ff6c7f6ee7c2b3"
     },
     {
       "id": "17ec9fde-36ed-35e0-8ec9-6f10d12395ae",
@@ -51,6 +58,20 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0c9fb70a206a8734e10468ecc24d57c7596cf64e"
+    },
+    {
+      "id": "592b89f8-94dc-3e43-a91d-e210eaa5c811",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "753941b7-5c49-3562-b3dd-5a8771944ac7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c85fe6580e86947ca07907ebf4363a73c156fda7"
     },
     {
       "id": "87cce617-80e1-324c-ab63-5372c9de072b",
@@ -93,6 +114,20 @@
         "name": "Linux"
       },
       "product_version": "2.6.12"
+    },
+    {
+      "id": "b3b2f351-65e2-3bc7-8840-d1779eb984ec",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "b936c1e8-ae9d-3a9e-99ef-823d80552fac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "d091157b-cf55-3740-a3b7-c8c03b49c245",

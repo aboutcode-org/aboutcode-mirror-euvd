@@ -2,13 +2,13 @@
   "id": "EUVD-2026-15277",
   "enisaUuid": "2d5768c5-02b2-3eac-a20e-38f442d44cdb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: usb: etas_es58x: correctly anchor the urb in the read bulk callback\n\nWhen submitting an urb, that is using the anchor pattern, it needs to be\nanchored before submitting it otherwise it could be leaked if\nusb_kill_anchored_urbs() is called.  This logic is correctly done\nelsewhere in the driver, except in the read bulk callback so do that\nhere also.",
-  "datePublished": "Mar 25, 2026, 12:30:22 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:22 PM",
+  "datePublished": "Mar 25, 2026, 10:27:17 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:57 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2185ea6e4ebcb61d1224dc7d187c59723cb5ad59\nhttps://git.kernel.org/stable/c/f6e90c113c92e83fc0963d5e60e16b0e8a268981\nhttps://git.kernel.org/stable/c/b878444519fa03a3edd287d1963cf79ef78be2f1\nhttps://git.kernel.org/stable/c/18eee279e9b5bff0db1aca9475ae4bc12804f05c\nhttps://git.kernel.org/stable/c/b8f9ca88253574638bcff38900a4c28d570b1919\nhttps://git.kernel.org/stable/c/5eaad4f768266f1f17e01232ffe2ef009f8129b7\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23324\n",
+  "references": "https://git.kernel.org/stable/c/7a0171b4921ad443fee5ed4fcb9d99fa4776edac\nhttps://git.kernel.org/stable/c/2185ea6e4ebcb61d1224dc7d187c59723cb5ad59\nhttps://git.kernel.org/stable/c/f6e90c113c92e83fc0963d5e60e16b0e8a268981\nhttps://git.kernel.org/stable/c/b878444519fa03a3edd287d1963cf79ef78be2f1\nhttps://git.kernel.org/stable/c/18eee279e9b5bff0db1aca9475ae4bc12804f05c\nhttps://git.kernel.org/stable/c/b8f9ca88253574638bcff38900a4c28d570b1919\nhttps://git.kernel.org/stable/c/5eaad4f768266f1f17e01232ffe2ef009f8129b7\n",
   "aliases": "CVE-2026-23324\nGHSA-6pcx-mjxw-6w72\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "23b1a422-a121-3c1c-9fe8-f076cfbb7515",
@@ -51,6 +51,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19.7"
+    },
+    {
+      "id": "56322150-6beb-3137-98be-55b371ca3214",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     },
     {
       "id": "780a3596-eb50-397d-8801-b8da0795a1f5",
@@ -102,11 +109,25 @@
       "product_version": "8537257874e949a59c834cecfd5a063e11b64b0b <f6e90c113c92e83fc0963d5e60e16b0e8a268981"
     },
     {
+      "id": "d4216c01-5a6c-3a6e-819b-4a09273648cc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "e84828f4-796c-31d4-b2de-87b233f67715",
       "product": {
         "name": "Linux"
       },
       "product_version": "8537257874e949a59c834cecfd5a063e11b64b0b <b8f9ca88253574638bcff38900a4c28d570b1919"
+    },
+    {
+      "id": "f8cf6c6f-b1a8-34e5-9781-d2c5f7ee302e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8537257874e949a59c834cecfd5a063e11b64b0b <7a0171b4921ad443fee5ed4fcb9d99fa4776edac"
     }
   ],
   "enisaIdVendor": [

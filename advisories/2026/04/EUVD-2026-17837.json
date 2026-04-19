@@ -2,14 +2,30 @@
   "id": "EUVD-2026-17837",
   "enisaUuid": "9163c774-208a-30cb-a378-997ed4addb0e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: Fix double free of ns_name in aa_replace_profiles()\n\nif ns_name is NULL after\n1071         error = aa_unpack(udata, &lh, &ns_name);\n\nand if ent->ns_name contains an ns_name in\n1089                 } else if (ent->ns_name) {\n\nthen ns_name is assigned the ent->ns_name\n1095                         ns_name = ent->ns_name;\n\nhowever ent->ns_name is freed at\n1262                 aa_load_ent_free(ent);\n\nand then again when freeing ns_name at\n1270         kfree(ns_name);\n\nFix this by NULLing out ent->ns_name after it is transferred to ns_name\n\n\")",
-  "datePublished": "Apr 1, 2026, 9:31:28 AM",
-  "dateUpdated": "Apr 1, 2026, 9:31:28 AM",
-  "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/55ef2af7490aaf72f8ffe11ec44c6bcb7eb2162a\nhttps://git.kernel.org/stable/c/86feeccd6b93ed94bd6655f30de80f163f8d5a45\nhttps://git.kernel.org/stable/c/7998ab3010d2317643f91828f1853d954ef31387\nhttps://git.kernel.org/stable/c/18b5233e860c294a847ee07869d93c0b8673a54b\nhttps://git.kernel.org/stable/c/5df0c44e8f5f619d3beb871207aded7c78414502\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23408\n",
+  "datePublished": "Apr 1, 2026, 8:36:37 AM",
+  "dateUpdated": "Apr 18, 2026, 8:58:43 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/c6347a2116ecccb8fd9ee4ebc75ae41d1d7ef689\nhttps://git.kernel.org/stable/c/c053ae381ce227577567d1ef10090ce7506d7a28\nhttps://git.kernel.org/stable/c/35f4caec1352054b9a61cfdf2bf1898073637aa0\nhttps://git.kernel.org/stable/c/55ef2af7490aaf72f8ffe11ec44c6bcb7eb2162a\nhttps://git.kernel.org/stable/c/86feeccd6b93ed94bd6655f30de80f163f8d5a45\nhttps://git.kernel.org/stable/c/7998ab3010d2317643f91828f1853d954ef31387\nhttps://git.kernel.org/stable/c/18b5233e860c294a847ee07869d93c0b8673a54b\nhttps://git.kernel.org/stable/c/5df0c44e8f5f619d3beb871207aded7c78414502\n",
   "aliases": "CVE-2026-23408\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.01,
   "enisaIdProduct": [
+    {
+      "id": "0046c9d7-89ab-344a-b2bc-5a179d1f57dc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "145a0ef21c8e944957f58e2c8ffcd8a10f46266a <35f4caec1352054b9a61cfdf2bf1898073637aa0"
+    },
+    {
+      "id": "027d7ac0-7292-3668-9b0a-3c5c882ecc43",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "145a0ef21c8e944957f58e2c8ffcd8a10f46266a <c6347a2116ecccb8fd9ee4ebc75ae41d1d7ef689"
+    },
     {
       "id": "03e1a789-9d23-3bb5-beb9-010264a1948f",
       "product": {
@@ -53,6 +69,27 @@
       "product_version": "5.5"
     },
     {
+      "id": "7b6c48a7-9b50-3dfb-9986-d4488eb28381",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "7e850485-c0d5-359b-8acd-ed6c97e7ac54",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "145a0ef21c8e944957f58e2c8ffcd8a10f46266a <c053ae381ce227577567d1ef10090ce7506d7a28"
+    },
+    {
+      "id": "86c59252-f0c2-36f9-81fa-96207e205674",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "8eb03c89-7422-3e72-89d1-bc17cdab55e9",
       "product": {
         "name": "Linux"
@@ -65,6 +102,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19.8"
+    },
+    {
+      "id": "9ddbb409-eee3-3e4b-923a-390d4e554451",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "a222a983-d4f8-34aa-a255-b2aa6de2e0d9",
@@ -93,6 +137,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 7.0-rc4"
+    },
+    {
+      "id": "e4099969-bae2-3def-9d65-a9c17b685f34",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.1.169"
     }
   ],
   "enisaIdVendor": [

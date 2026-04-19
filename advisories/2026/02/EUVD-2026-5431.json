@@ -3,9 +3,9 @@
   "enisaUuid": "a42916ef-e4b3-3531-88f5-21016a5889ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: core: Wake up the error handler when final completions race against each other\n\nThe fragile ordering between marking commands completed or failed so\nthat the error handler only wakes when the last running command\ncompletes or times out has race conditions. These race conditions can\ncause the SCSI layer to fail to wake the error handler, leaving I/O\nthrough the SCSI host stuck as the error state cannot advance.\n\nFirst, there is an memory ordering issue within scsi_dec_host_busy().\nThe write which clears SCMD_STATE_INFLIGHT may be reordered with reads\ncounting in scsi_host_busy(). While the local CPU will see its own\nwrite, reordering can allow other CPUs in scsi_dec_host_busy() or\nscsi_eh_inc_host_failed() to see a raised busy count, causing no CPU to\nsee a host busy equal to the host_failed count.\n\nThis race condition can be prevented with a memory barrier on the error\npath to force the write to be visible before counting host busy\ncommands.\n\nSecond, there is a general ordering issue with scsi_eh_inc_host_failed(). By\ncounting busy commands before incrementing host_failed, it can race with a\nfinal command in scsi_dec_host_busy(), such that scsi_dec_host_busy() does\nnot see host_failed incremented but scsi_eh_inc_host_failed() counts busy\ncommands before SCMD_STATE_INFLIGHT is cleared by scsi_dec_host_busy(),\nresulting in neither waking the error handler task.\n\nThis needs the call to scsi_host_busy() to be moved after host_failed is\nincremented to close the race condition.",
   "datePublished": "Feb 4, 2026, 4:08:30 PM",
-  "dateUpdated": "Feb 6, 2026, 4:33:33 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:18 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9fdc6f28d5e81350ab1d2cac8389062bd09e61e1\nhttps://git.kernel.org/stable/c/64ae21b9c4f0c7e60cf47a53fa7ab68852079ef0\nhttps://git.kernel.org/stable/c/219f009ebfd1ef3970888ee9eef4c8a06357f862\nhttps://git.kernel.org/stable/c/fe2f8ad6f0999db3b318359a01ee0108c703a8c3\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23110\nhttps://git.kernel.org/stable/c/6d9a367be356101963c249ebf10ea10b32886607\nhttps://git.kernel.org/stable/c/cc872e35c0df80062abc71268d690a2f749e542e\n",
+  "references": "https://git.kernel.org/stable/c/48cbc304c5ea796421f7d10b7798fa581970c080\nhttps://git.kernel.org/stable/c/6d9a367be356101963c249ebf10ea10b32886607\nhttps://git.kernel.org/stable/c/9fdc6f28d5e81350ab1d2cac8389062bd09e61e1\nhttps://git.kernel.org/stable/c/64ae21b9c4f0c7e60cf47a53fa7ab68852079ef0\nhttps://git.kernel.org/stable/c/219f009ebfd1ef3970888ee9eef4c8a06357f862\nhttps://git.kernel.org/stable/c/fe2f8ad6f0999db3b318359a01ee0108c703a8c3\n",
   "aliases": "CVE-2026-23110\nGHSA-7p3h-gfr2-rwcv\n",
   "assigner": "Linux",
   "epss": 0.01,
@@ -25,11 +25,25 @@
       "product_version": "patch: 6.6.122"
     },
     {
+      "id": "5f0f7c36-aaf7-35e3-8ce7-aebd3a7549ae",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
+    },
+    {
       "id": "70fb6ef9-4969-35d8-ab74-4e904a0728ba",
       "product": {
         "name": "Linux"
       },
       "product_version": "6eb045e092efefafc6687409a6fa6d1dabf0fb69 <cc872e35c0df80062abc71268d690a2f749e542e"
+    },
+    {
+      "id": "7b306192-7418-3f7d-8e15-86dea37f1541",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "8a41d0b0-c301-3d17-b07d-7498d9e96734",
@@ -58,6 +72,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19-rc7"
+    },
+    {
+      "id": "d1c746e0-56ad-383d-be45-c6e8b770d661",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6eb045e092efefafc6687409a6fa6d1dabf0fb69 <48cbc304c5ea796421f7d10b7798fa581970c080"
     },
     {
       "id": "d3c79a25-584f-3d3b-a804-821262f4ac3b",

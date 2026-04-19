@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18749",
   "enisaUuid": "2c6272b4-815f-391d-bbda-3e3cb78efb71",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: Avoid boot crash in RedBoot partition table parser\n\nGiven CONFIG_FORTIFY_SOURCE=y and a recent compiler,\ncommit 439a1bcac648 (\"fortify: Use __builtin_dynamic_object_size() when\navailable\") produces the warning below and an oops.\n\n    Searching for RedBoot partition table in 50000000.flash at offset 0x7e0000\n    ------------[ cut here ]------------\n    WARNING: lib/string_helpers.c:1035 at 0xc029e04c, CPU#0: swapper/0/1\n    memcmp: detected buffer overflow: 15 byte read of buffer size 14\n    Modules linked in:\n    CPU: 0 UID: 0 PID: 1 Comm: swapper/0 Not tainted 6.19.0 #1 NONE\n\nAs Kees said, \"'names' is pointing to the final 'namelen' many bytes\nof the allocation ... 'namelen' could be basically any length at all.\nThis fortify warning looks legit to me -- this code used to be reading\nbeyond the end of the allocation.\"\n\nSince the size of the dynamic allocation is calculated with strlen()\nwe can use strcmp() instead of memcmp() and remain within bounds.",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:53 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:13 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0b08be5aca212a99f8ba786fee4922feac08002c\nhttps://git.kernel.org/stable/c/d8570211a2b1ec886a462daa0be4e9983ac768bb\nhttps://git.kernel.org/stable/c/2025b2d1f9d5cad6ea6fe85654c6c41297c3130b\nhttps://git.kernel.org/stable/c/c4054ad2d8bff4e8e937cd4a1d1a04c1e8f77a2c\nhttps://git.kernel.org/stable/c/75a4d8cfe7784f909b3bd69325abac8e04ecb385\nhttps://git.kernel.org/stable/c/8e2f8020270af7777d49c2e7132260983e4fc566\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23474\n",
+  "references": "https://git.kernel.org/stable/c/ca235d11fc2fd8fce1dcd9d732dc780be0cde2de\nhttps://git.kernel.org/stable/c/e0065e106f798ce6862251bc4fc030ac5cead940\nhttps://git.kernel.org/stable/c/0b08be5aca212a99f8ba786fee4922feac08002c\nhttps://git.kernel.org/stable/c/d8570211a2b1ec886a462daa0be4e9983ac768bb\nhttps://git.kernel.org/stable/c/2025b2d1f9d5cad6ea6fe85654c6c41297c3130b\nhttps://git.kernel.org/stable/c/c4054ad2d8bff4e8e937cd4a1d1a04c1e8f77a2c\nhttps://git.kernel.org/stable/c/75a4d8cfe7784f909b3bd69325abac8e04ecb385\nhttps://git.kernel.org/stable/c/8e2f8020270af7777d49c2e7132260983e4fc566\n",
   "aliases": "CVE-2026-23474\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.04,
   "enisaIdProduct": [
     {
       "id": "1ac794bc-f1ad-3a46-8f58-48464239e182",
@@ -46,6 +46,13 @@
       "product_version": "patch: 6.6.130"
     },
     {
+      "id": "3f049487-c1fb-36f8-9ce6-6853852e1fe3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ca235d11fc2fd8fce1dcd9d732dc780be0cde2de"
+    },
+    {
       "id": "4c97ec8d-80f7-3ac0-b0f9-fb01d4fffd97",
       "product": {
         "name": "Linux"
@@ -58,6 +65,13 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0b08be5aca212a99f8ba786fee4922feac08002c"
+    },
+    {
+      "id": "64fa683e-4692-32fb-87e7-8989694d0fe5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e0065e106f798ce6862251bc4fc030ac5cead940"
     },
     {
       "id": "7286e16a-ecc0-39fe-8e8f-3b5f4c3ab9bc",
@@ -74,6 +88,20 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2025b2d1f9d5cad6ea6fe85654c6c41297c3130b"
     },
     {
+      "id": "84cae6be-bd1d-3030-884b-d96160d7f170",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "8a18f530-0715-3a1b-bdce-3c592d06f5b1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "96532259-c4cc-329c-b064-01e12c20e8f8",
       "product": {
         "name": "Linux"
@@ -86,6 +114,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 7.0-rc5"
+    },
+    {
+      "id": "b0dbb19e-67ff-37b1-a01f-e8763b3a47d3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "c0d2181b-6b31-3a7b-a637-0bbc681b075f",

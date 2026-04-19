@@ -2,14 +2,23 @@
   "id": "EUVD-2026-13610",
   "enisaUuid": "7352f344-820a-3f64-91c3-e78b75395617",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_IDLETIMER: reject rev0 reuse of ALARM timer labels\n\nIDLETIMER revision 0 rules reuse existing timers by label and always call\nmod_timer() on timer->timer.\n\nIf the label was created first by revision 1 with XT_IDLETIMER_ALARM,\nthe object uses alarm timer semantics and timer->timer is never initialized.\nReusing that object from revision 0 causes mod_timer() on an uninitialized\ntimer_list, triggering debugobjects warnings and possible panic when\npanic_on_warn=1.\n\nFix this by rejecting revision 0 rule insertion when an existing timer with\nthe same label is of ALARM type.",
-  "datePublished": "Mar 20, 2026, 9:32:10 AM",
-  "dateUpdated": "Mar 20, 2026, 9:32:10 AM",
-  "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f5ef97c13165542480a6ffdbe6f09f40bbb7cbf1\nhttps://git.kernel.org/stable/c/f228b9ae2a7e84d1153616d8e71c4236cb1f1309\nhttps://git.kernel.org/stable/c/329f0b9b48ee6ab59d1ab72fef55fe8c6463a6cf\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23274\n",
+  "datePublished": "Mar 20, 2026, 8:08:54 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:32 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/32e937dc6e97f5ed3cdfe3fc0b2b19a05e23fa44\nhttps://git.kernel.org/stable/c/144f88054ba0180467356f40895bd660b5dceeec\nhttps://git.kernel.org/stable/c/28c7cfaf0c0ab17cbd7754092116fd1af45271f9\nhttps://git.kernel.org/stable/c/54080355999381fed4a26129579a5765bab87491\nhttps://git.kernel.org/stable/c/5e7ece24c5cb75a60402aad4d803c7898ea40aa9\nhttps://git.kernel.org/stable/c/f5ef97c13165542480a6ffdbe6f09f40bbb7cbf1\nhttps://git.kernel.org/stable/c/f228b9ae2a7e84d1153616d8e71c4236cb1f1309\nhttps://git.kernel.org/stable/c/329f0b9b48ee6ab59d1ab72fef55fe8c6463a6cf\n",
   "aliases": "GHSA-3cwp-73f3-j7w3\nCVE-2026-23274\n",
   "assigner": "Linux",
-  "epss": 0.03,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "214c5144-f9cd-36b4-a1f3-54f4e24c29d9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "68983a354a655c35d3fb204489d383a2a051fda7 <144f88054ba0180467356f40895bd660b5dceeec"
+    },
     {
       "id": "3692b132-0453-35b4-ba7e-429d925d11e0",
       "product": {
@@ -30,6 +39,27 @@
         "name": "Linux"
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "6dcb32d8-6998-3544-a447-ba4fdcb24a73",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "79b5a3e2-eeb9-37cc-92cd-1b89734fd380",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "68983a354a655c35d3fb204489d383a2a051fda7 <32e937dc6e97f5ed3cdfe3fc0b2b19a05e23fa44"
+    },
+    {
+      "id": "9912058b-2dfb-362c-ae14-92f8cf04b1dc",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "a5c1b982-2d52-3db9-886e-0a7b9cd0ea91",
@@ -58,6 +88,13 @@
         "name": "Linux"
       },
       "product_version": "5.7"
+    },
+    {
+      "id": "cb683c3f-f9a1-39b7-84ba-448a2f15d299",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "d8007b40-9441-3f1f-92a1-ff8d1d43bcf0",

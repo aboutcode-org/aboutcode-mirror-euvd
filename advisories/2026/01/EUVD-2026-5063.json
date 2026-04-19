@@ -3,9 +3,9 @@
   "enisaUuid": "ba8984d9-29b1-3d20-bda6-20d0de87793c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: gs_usb: gs_usb_receive_bulk_callback(): fix URB memory leak\n\nIn gs_can_open(), the URBs for USB-in transfers are allocated, added to the\nparent->rx_submitted anchor and submitted. In the complete callback\ngs_usb_receive_bulk_callback(), the URB is processed and resubmitted. In\ngs_can_close() the URBs are freed by calling\nusb_kill_anchored_urbs(parent->rx_submitted).\n\nHowever, this does not take into account that the USB framework unanchors\nthe URB before the complete function is called. This means that once an\nin-URB has been completed, it is no longer anchored and is ultimately not\nreleased in gs_can_close().\n\nFix the memory leak by anchoring the URB in the\ngs_usb_receive_bulk_callback() to the parent->rx_submitted anchor.",
   "datePublished": "Jan 31, 2026, 11:42:09 AM",
-  "dateUpdated": "Feb 6, 2026, 4:32:14 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:14 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f905bcfa971edb89e398c98957838d8c6381c0c7\nhttps://git.kernel.org/stable/c/08624b7206ddb9148eeffc2384ebda2c47b6d1e9\nhttps://git.kernel.org/stable/c/9f669a38ca70839229b7ba0f851820850a2fe1f7\nhttps://git.kernel.org/stable/c/7352e1d5932a0e777e39fa4b619801191f57e603\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23031\nhttps://git.kernel.org/stable/c/ec5ccc2af9e5b045671f3f604b57512feda8bcc5\n",
+  "references": "https://git.kernel.org/stable/c/9c151898cc259a7784be60ba38664f42ede39b31\nhttps://git.kernel.org/stable/c/ec5ccc2af9e5b045671f3f604b57512feda8bcc5\nhttps://git.kernel.org/stable/c/f905bcfa971edb89e398c98957838d8c6381c0c7\nhttps://git.kernel.org/stable/c/08624b7206ddb9148eeffc2384ebda2c47b6d1e9\nhttps://git.kernel.org/stable/c/9f669a38ca70839229b7ba0f851820850a2fe1f7\nhttps://git.kernel.org/stable/c/7352e1d5932a0e777e39fa4b619801191f57e603\n",
   "aliases": "GHSA-gvm4-5v6x-vmv9\nCVE-2026-23031\n",
   "assigner": "Linux",
   "epss": 0.01,
@@ -30,6 +30,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.6.122"
+    },
+    {
+      "id": "382d6e92-b15e-3655-8334-64b84d53aacd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "d08e973a77d128b25e01a08c34d89593fdf222da <9c151898cc259a7784be60ba38664f42ede39b31"
     },
     {
       "id": "4481892c-d06e-34e9-a47e-0e8f872794ae",
@@ -79,6 +86,20 @@
         "name": "Linux"
       },
       "product_version": "d08e973a77d128b25e01a08c34d89593fdf222da <7352e1d5932a0e777e39fa4b619801191f57e603"
+    },
+    {
+      "id": "b3c5e682-de15-39b9-986b-627296496d9b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
+    },
+    {
+      "id": "bcdc18fe-59bd-3350-861e-34019026b446",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "c4ed8444-fa20-3448-b7f3-2cda9ffac879",

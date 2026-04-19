@@ -2,20 +2,34 @@
   "id": "EUVD-2026-18712",
   "enisaUuid": "4b05349f-7508-3695-b2a8-e1e2062c8c38",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_h323: fix OOB read in decode_int() CONS case\n\nIn decode_int(), the CONS case calls get_bits(bs, 2) to read a length\nvalue, then calls get_uint(bs, len) without checking that len bytes\nremain in the buffer. The existing boundary check only validates the\n2 bits for get_bits(), not the subsequent 1-4 bytes that get_uint()\nreads. This allows a malformed H.323/RAS packet to cause a 1-4 byte\nslab-out-of-bounds read.\n\nAdd a boundary check for len bytes after get_bits() and before\nget_uint().",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:37 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:05 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/41b417ff73a24b2c68134992cc44c88db27f482d\nhttps://git.kernel.org/stable/c/52235bf88159a1ef16434ab49e47e99c8a09ab20\nhttps://git.kernel.org/stable/c/774a434f8c9c8602a976b2536f65d0172a07f4d2\nhttps://git.kernel.org/stable/c/6bce72daeccca9aa1746e92d6c3d4784e71f2ebb\nhttps://git.kernel.org/stable/c/fb6c3596823ec5dd09c2123340330d7448f51a59\nhttps://git.kernel.org/stable/c/1e3a3593162c96e8a8de48b1e14f60c3b57fca8a\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23456\n",
+  "references": "https://git.kernel.org/stable/c/a2cd54b9348e485d338b3c132338a4410c99afaf\nhttps://git.kernel.org/stable/c/c95dc674ebf01ecfb40388b6facfc89b81fed3b7\nhttps://git.kernel.org/stable/c/41b417ff73a24b2c68134992cc44c88db27f482d\nhttps://git.kernel.org/stable/c/52235bf88159a1ef16434ab49e47e99c8a09ab20\nhttps://git.kernel.org/stable/c/774a434f8c9c8602a976b2536f65d0172a07f4d2\nhttps://git.kernel.org/stable/c/6bce72daeccca9aa1746e92d6c3d4784e71f2ebb\nhttps://git.kernel.org/stable/c/fb6c3596823ec5dd09c2123340330d7448f51a59\nhttps://git.kernel.org/stable/c/1e3a3593162c96e8a8de48b1e14f60c3b57fca8a\n",
   "aliases": "CVE-2026-23456\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "002f981c-1074-337b-99ca-1276e99aa679",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
     {
       "id": "01e5f104-cec3-3f3f-97fa-2012d8a10739",
       "product": {
         "name": "Linux"
       },
       "product_version": "5e35941d990123f155b02d5663e51a24f816b6f3 <1e3a3593162c96e8a8de48b1e14f60c3b57fca8a"
+    },
+    {
+      "id": "073df24e-ba86-345b-95a1-f1b19ccc96d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "4944e6f5-2bd1-345b-ab04-32f2fd1097fd",
@@ -37,6 +51,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "a35a398d-0a2b-3f21-9a9d-bc70eda85211",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "a4fd18c9-5f4d-3f64-916a-fb5c009ce808",
@@ -65,6 +86,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "c7227957-882e-3d01-989c-03f9d9efb46b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5e35941d990123f155b02d5663e51a24f816b6f3 <c95dc674ebf01ecfb40388b6facfc89b81fed3b7"
     },
     {
       "id": "dc492dca-c7eb-337d-b513-b7288e789fac",
@@ -100,6 +128,13 @@
         "name": "Linux"
       },
       "product_version": "5e35941d990123f155b02d5663e51a24f816b6f3 <fb6c3596823ec5dd09c2123340330d7448f51a59"
+    },
+    {
+      "id": "f3e0126d-9ad7-3ef9-901f-d2ad3a66b1c7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5e35941d990123f155b02d5663e51a24f816b6f3 <a2cd54b9348e485d338b3c132338a4410c99afaf"
     },
     {
       "id": "f7bf0f5b-14e4-3650-8432-446bd537ded6",

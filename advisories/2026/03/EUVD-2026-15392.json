@@ -2,13 +2,15 @@
   "id": "EUVD-2026-15392",
   "enisaUuid": "ffad5987-2a66-3682-acfd-d3b15f1c6b36",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_CT: drop pending enqueued packets on template removal\n\nTemplates refer to objects that can go away while packets are sitting in\nnfqueue refer to:\n\n- helper, this can be an issue on module removal.\n- timeout policy, nfnetlink_cttimeout might remove it.\n\nThe use of templates with zone and event cache filter are safe, since\nthis just copies values.\n\nFlush these enqueued packets in case the template rule gets removed.",
-  "datePublished": "Mar 25, 2026, 12:30:24 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:24 PM",
-  "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d2d0bae0c9a2a17b6990a2966f5cdce0813d6256\nhttps://git.kernel.org/stable/c/63b8097cea1923fe82cd598068d0796da8c015ec\nhttps://git.kernel.org/stable/c/19a230dec6bb8928e3f96387f9085cf2c79bcef9\nhttps://git.kernel.org/stable/c/cb549925875fa06dd155e49db4ac2c5044c30f9c\nhttps://git.kernel.org/stable/c/777d02efe3d630cca4c1b63962cec17c57711325\nhttps://git.kernel.org/stable/c/f62a218a946b19bb59abdd5361da85fa4606b96b\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23391\n",
+  "datePublished": "Mar 25, 2026, 10:33:15 AM",
+  "dateUpdated": "Apr 18, 2026, 8:58:26 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/55445134d42b84cb0a272e42c98d233ca65eca83\nhttps://git.kernel.org/stable/c/cc57506dd66555899560b9c0f24e813f034e12ec\nhttps://git.kernel.org/stable/c/d2d0bae0c9a2a17b6990a2966f5cdce0813d6256\nhttps://git.kernel.org/stable/c/63b8097cea1923fe82cd598068d0796da8c015ec\nhttps://git.kernel.org/stable/c/19a230dec6bb8928e3f96387f9085cf2c79bcef9\nhttps://git.kernel.org/stable/c/cb549925875fa06dd155e49db4ac2c5044c30f9c\nhttps://git.kernel.org/stable/c/777d02efe3d630cca4c1b63962cec17c57711325\nhttps://git.kernel.org/stable/c/f62a218a946b19bb59abdd5361da85fa4606b96b\n",
   "aliases": "CVE-2026-23391\nGHSA-qqcv-h6xq-mw7q\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.01,
   "enisaIdProduct": [
     {
       "id": "02ef1c57-dceb-31c9-b081-285aaef1b5c7",
@@ -16,6 +18,13 @@
         "name": "Linux"
       },
       "product_version": "24de58f465165298aaa8f286b2592f0163706cfe <777d02efe3d630cca4c1b63962cec17c57711325"
+    },
+    {
+      "id": "327639cc-2284-37bc-a559-a27e2291a92c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "24de58f465165298aaa8f286b2592f0163706cfe <55445134d42b84cb0a272e42c98d233ca65eca83"
     },
     {
       "id": "4b96a90a-23ef-3152-b79b-fd1ce5b789ec",
@@ -32,11 +41,32 @@
       "product_version": "24de58f465165298aaa8f286b2592f0163706cfe <d2d0bae0c9a2a17b6990a2966f5cdce0813d6256"
     },
     {
+      "id": "6a8fa1d2-cb86-3680-b237-c6468f86ca77",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "24de58f465165298aaa8f286b2592f0163706cfe <cc57506dd66555899560b9c0f24e813f034e12ec"
+    },
+    {
       "id": "6b3d3632-104a-30ef-bd7e-90f21ef1cef2",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 7.0-rc5"
+    },
+    {
+      "id": "7cdc0610-b159-3741-b5c3-59049fb18b87",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "92fb6a52-2990-3aad-ba3d-cf89d806c95f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "9708a5ca-0820-332c-b619-9aaf5e338fce",
@@ -72,6 +102,13 @@
         "name": "Linux"
       },
       "product_version": "24de58f465165298aaa8f286b2592f0163706cfe <63b8097cea1923fe82cd598068d0796da8c015ec"
+    },
+    {
+      "id": "af1a5209-e90d-388c-a93b-17916a711cd4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     },
     {
       "id": "d64f4919-cbdf-3ed5-b8c6-834065c711bb",

@@ -2,14 +2,21 @@
   "id": "EUVD-2026-21938",
   "enisaUuid": "e053d910-cbb3-3e53-94f3-98c128b0acf7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/x25: Fix overflow when accumulating packets\n\nAdd a check to ensure that `x25_sock.fraglen` does not overflow.\n\nThe `fraglen` also needs to be resetted when purging `fragment_queue` in\n`x25_clear_queues()`.",
-  "datePublished": "Apr 13, 2026, 3:31:42 PM",
-  "dateUpdated": "Apr 13, 2026, 3:31:42 PM",
+  "datePublished": "Apr 13, 2026, 1:21:04 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:30 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6e568835ea54a3e1d08e310e34f95d434e739477\nhttps://git.kernel.org/stable/c/1734bd85c5e0a7a801295b729efb56b009cb8fc3\nhttps://git.kernel.org/stable/c/4e2d1bcef78d21247fe8fef13bc7ed95885df2b5\nhttps://git.kernel.org/stable/c/8c92969c197b91c134be27dc3afb64ab468853a9\nhttps://git.kernel.org/stable/c/f953f11ccf4afe6feb635c08145f4240d9a6b544\nhttps://git.kernel.org/stable/c/a1822cb524e89b4cd2cf0b82e484a2335496a6d9\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31417\n",
+  "references": "https://git.kernel.org/stable/c/96fc16370b0bceb289c7e0479bd0540b81e257aa\nhttps://git.kernel.org/stable/c/798d613afb64b01a203f448fb0f43c37c6afe79d\nhttps://git.kernel.org/stable/c/6e568835ea54a3e1d08e310e34f95d434e739477\nhttps://git.kernel.org/stable/c/1734bd85c5e0a7a801295b729efb56b009cb8fc3\nhttps://git.kernel.org/stable/c/4e2d1bcef78d21247fe8fef13bc7ed95885df2b5\nhttps://git.kernel.org/stable/c/8c92969c197b91c134be27dc3afb64ab468853a9\nhttps://git.kernel.org/stable/c/f953f11ccf4afe6feb635c08145f4240d9a6b544\nhttps://git.kernel.org/stable/c/a1822cb524e89b4cd2cf0b82e484a2335496a6d9\n",
   "aliases": "GHSA-j4r7-4685-8m4m\nCVE-2026-31417\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "02f7bfa2-d9bd-3117-b277-46637179a8fd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
     {
       "id": "08448433-6031-3465-9d7b-6027f78421ba",
       "product": {
@@ -46,6 +53,20 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1734bd85c5e0a7a801295b729efb56b009cb8fc3"
     },
     {
+      "id": "36aa3008-7030-3f56-8f0e-d49f47d8856b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "3cacc630-00e2-387b-8c54-a71e0a58bb1e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <96fc16370b0bceb289c7e0479bd0540b81e257aa"
+    },
+    {
       "id": "5411205a-7530-364a-8449-536beff157e9",
       "product": {
         "name": "Linux"
@@ -72,6 +93,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.12.81"
+    },
+    {
+      "id": "c2877f9c-768d-33f9-9e58-2f0debb3875a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <798d613afb64b01a203f448fb0f43c37c6afe79d"
     },
     {
       "id": "cc011717-264e-3991-a677-703e49b553f0",

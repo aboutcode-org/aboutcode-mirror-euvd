@@ -3,9 +3,9 @@
   "enisaUuid": "2ab7fe77-2e22-3381-980e-28dd92e59e58",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpiolib: cdev: fix uninitialised kfifo\n\nIf a line is requested with debounce, and that results in debouncing\nin software, and the line is subsequently reconfigured to enable edge\ndetection then the allocation of the kfifo to contain edge events is\noverlooked.  This results in events being written to and read from an\nuninitialised kfifo.  Read events are returned to userspace.\n\nInitialise the kfifo in the case where the software debounce is\nalready active.",
   "datePublished": "May 30, 2024, 3:29:02 PM",
-  "dateUpdated": "Dec 19, 2024, 9:01:37 AM",
+  "dateUpdated": "Apr 18, 2026, 8:56:36 AM",
   "baseScore": -1.0,
-  "references": "https://git.kernel.org/stable/c/1a51e24404d77bb3307c1e39eee0d8e86febb1a5\nhttps://git.kernel.org/stable/c/883e4bbf06eb5fb7482679e4edb201093e9f55a2\nhttps://git.kernel.org/stable/c/bd7139a70ee8d8ea872b223e043730cf6f5e2b0e\nhttps://git.kernel.org/stable/c/ee0166b637a5e376118e9659e5b4148080f1d27e\n",
+  "references": "https://git.kernel.org/stable/c/c87cc32bc48b187067e089b15ab7a6a7eed5767d\nhttps://git.kernel.org/stable/c/1a51e24404d77bb3307c1e39eee0d8e86febb1a5\nhttps://git.kernel.org/stable/c/883e4bbf06eb5fb7482679e4edb201093e9f55a2\nhttps://git.kernel.org/stable/c/bd7139a70ee8d8ea872b223e043730cf6f5e2b0e\nhttps://git.kernel.org/stable/c/ee0166b637a5e376118e9659e5b4148080f1d27e\n",
   "aliases": "CVE-2024-36898\n",
   "assigner": "Linux",
   "epss": 0.01,
@@ -23,6 +23,13 @@
         "name": "Linux"
       },
       "product_version": "65cff70464068a823b3f4a28074000febdce0630 <883e4bbf06eb5fb7482679e4edb201093e9f55a2"
+    },
+    {
+      "id": "344401e4-2b28-37c1-b310-e37662258581",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "65cff70464068a823b3f4a28074000febdce0630 <c87cc32bc48b187067e089b15ab7a6a7eed5767d"
     },
     {
       "id": "54400914-8d17-3e6b-887d-8b12acb27122",
@@ -58,6 +65,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.6.31"
+    },
+    {
+      "id": "a2ab7321-9e28-33de-b222-6c7ad6f8a2d9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "a828b361-2ff7-39fd-9b72-8d801535db9e",

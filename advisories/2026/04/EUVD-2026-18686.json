@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18686",
   "enisaUuid": "ce5354ce-9599-3035-8e6a-9ab50dfa448c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: processor: Fix previous acpi_processor_errata_piix4() fix\n\nAfter commi f132e089fe89 (\"ACPI: processor: Fix NULL-pointer dereference\nin acpi_processor_errata_piix4()\"), device pointers may be dereferenced\nafter dropping references to the device objects pointed to by them,\nwhich may cause a use-after-free to occur.\n\nMoreover, debug messages about enabling the errata may be printed\nif the errata flags corresponding to them are unset.\n\nAddress all of these issues by moving message printing to the points\nin the code where the errata flags are set.",
-  "datePublished": "Apr 3, 2026, 6:31:21 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:21 PM",
+  "datePublished": "Apr 3, 2026, 3:15:27 PM",
+  "dateUpdated": "Apr 18, 2026, 8:58:56 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2e369ba9eb7b8a06e9cc35a3e7fe73e59272f8c2\nhttps://git.kernel.org/stable/c/edf4c2aaee08e8fd503fbae705c801e92a0b55d7\nhttps://git.kernel.org/stable/c/e0c470049344e9346fff79d7e2362212c216665e\nhttps://git.kernel.org/stable/c/98473309a36acc271009b85e0bb53a4c0dddf5c2\nhttps://git.kernel.org/stable/c/8583f62259e1b315d5239371adfb36939cdab741\nhttps://git.kernel.org/stable/c/bf504b229cb8d534eccbaeaa23eba34c05131e25\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23443\n",
+  "references": "https://git.kernel.org/stable/c/68408e8f9e366ad9850a66ac65cb569f13bf6cd4\nhttps://git.kernel.org/stable/c/2e369ba9eb7b8a06e9cc35a3e7fe73e59272f8c2\nhttps://git.kernel.org/stable/c/edf4c2aaee08e8fd503fbae705c801e92a0b55d7\nhttps://git.kernel.org/stable/c/e0c470049344e9346fff79d7e2362212c216665e\nhttps://git.kernel.org/stable/c/98473309a36acc271009b85e0bb53a4c0dddf5c2\nhttps://git.kernel.org/stable/c/8583f62259e1b315d5239371adfb36939cdab741\nhttps://git.kernel.org/stable/c/bf504b229cb8d534eccbaeaa23eba34c05131e25\n",
   "aliases": "CVE-2026-23443\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "224cc5e7-48c5-36ea-acd4-c028524bdb8b",
@@ -44,6 +44,48 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.18.20"
+    },
+    {
+      "id": "49e4eec0-e8ac-36a8-89c0-b6404d1621b9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "06724a60cfa9767ea90b0f5d3dfb5cdd251b64f5 <68408e8f9e366ad9850a66ac65cb569f13bf6cd4"
+    },
+    {
+      "id": "4b7c2ef2-a7dc-306b-bc22-1e61bf2ef1c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.1.165 <6.1.167"
+    },
+    {
+      "id": "61807372-97e3-3a68-a48f-692d18925a5a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.18.16 <6.18.20"
+    },
+    {
+      "id": "662ae8d9-3507-3bb9-adfd-56fd3693cab1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.12.75 <6.12.78"
+    },
+    {
+      "id": "683f1bc2-eedb-358f-95fd-42da0e987192",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.6.128 <6.6.130"
+    },
+    {
+      "id": "6bf4c9d4-3019-39cf-ad7f-7aa0ad5c15c5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15.202 <5.15.203"
     },
     {
       "id": "752363ad-b296-349d-b63d-b0fd77e68306",
@@ -86,6 +128,13 @@
         "name": "Linux"
       },
       "product_version": "7.0-rc1"
+    },
+    {
+      "id": "9a675622-8c83-3d86-8884-a45860a145b3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.19.6 <6.19.10"
     },
     {
       "id": "9e4f45d0-ad1c-399f-9655-1586ed506d76",

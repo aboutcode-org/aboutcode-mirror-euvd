@@ -3,12 +3,12 @@
   "enisaUuid": "3019e571-6665-340d-8b7b-3c2d5c6e474a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: fix hugetlb_pmd_shared()\n\nPatch series \"mm/hugetlb: fixes for PMD table sharing (incl.  using\nmmu_gather)\", v3.\n\nOne functional fix, one performance regression fix, and two related\ncomment fixes.\n\nI cleaned up my prototype I recently shared [1] for the performance fix,\ndeferring most of the cleanups I had in the prototype to a later point. \nWhile doing that I identified the other things.\n\nThe goal of this patch set is to be backported to stable trees \"fairly\"\neasily. At least patch #1 and #4.\n\nPatch #1 fixes hugetlb_pmd_shared() not detecting any sharing\nPatch #2 + #3 are simple comment fixes that patch #4 interacts with.\nPatch #4 is a fix for the reported performance regression due to excessive\nIPI broadcasts during fork()+exit().\n\nThe last patch is all about TLB flushes, IPIs and mmu_gather.\nRead: complicated\n\nThere are plenty of cleanups in the future to be had + one reasonable\noptimization on x86. But that's all out of scope for this series.\n\nRuntime tested, with a focus on fixing the performance regression using\nthe original reproducer [2] on x86.\n\n\nThis patch (of 4):\n\nWe switched from (wrongly) using the page count to an independent shared\ncount.  Now, shared page tables have a refcount of 1 (excluding\nspeculative references) and instead use ptdesc->pt_share_count to identify\nsharing.\n\nWe didn't convert hugetlb_pmd_shared(), so right now, we would never\ndetect a shared PMD table as such, because sharing/unsharing no longer\ntouches the refcount of a PMD table.\n\nPage migration, like mbind() or migrate_pages() would allow for migrating\nfolios mapped into such shared PMD tables, even though the folios are not\nexclusive.  In smaps we would account them as \"private\" although they are\n\"shared\", and we would be wrongly setting the PM_MMAP_EXCLUSIVE in the\npagemap interface.\n\nFix it by properly using ptdesc_pmd_is_shared() in hugetlb_pmd_shared().",
   "datePublished": "Feb 4, 2026, 4:08:22 PM",
-  "dateUpdated": "Feb 4, 2026, 4:08:22 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:17 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/69c4e241ff13545d410a8b2a688c932182a858bf\nhttps://git.kernel.org/stable/c/ca1a47cd3f5f4c46ca188b1c9a27af87d1ab2216\n",
-  "aliases": "CVE-2026-23100\n",
+  "references": "https://git.kernel.org/stable/c/8ae48255bcb17b32436be97553dca848730d365f\nhttps://git.kernel.org/stable/c/bf3c2affe245cf831866ddc8f736ae6a22cdc11c\nhttps://git.kernel.org/stable/c/5b2aec77f92265a9028c5f632bdd9af5b57ec3a3\nhttps://git.kernel.org/stable/c/51dcf459845fd28f5a0d83d408a379b274ec5cc5\nhttps://git.kernel.org/stable/c/3a18b452dd5f7f1652c2e92f8ae769aa17a66c9e\nhttps://git.kernel.org/stable/c/69c4e241ff13545d410a8b2a688c932182a858bf\nhttps://git.kernel.org/stable/c/ca1a47cd3f5f4c46ca188b1c9a27af87d1ab2216\n",
+  "aliases": "CVE-2026-23100\nGHSA-4rhr-9xj2-x9gx\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "11bd9209-9e14-32bf-a2df-5d3eee0c0cbc",
@@ -67,6 +67,13 @@
       "product_version": "02333ac1c35370517a19a4a131332a9690c6a5c7"
     },
     {
+      "id": "84778da2-ff3e-3bc0-b2b5-7249cd0894b5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "94b4b41d0cdf5cfd4d4325bc0e6e9e0d0e996133 <8ae48255bcb17b32436be97553dca848730d365f"
+    },
+    {
       "id": "9261dce5-4a4d-3afa-be06-2f0352836534",
       "product": {
         "name": "Linux"
@@ -109,6 +116,13 @@
       "product_version": "02333ac1c35370517a19a4a131332a9690c6a5c7 <5b2aec77f92265a9028c5f632bdd9af5b57ec3a3"
     },
     {
+      "id": "b91f5cc4-6995-3639-b1a8-f4636e40f467",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "c2f4481a-3661-3c46-a25a-db4acf1a6d6f",
       "product": {
         "name": "Linux"
@@ -116,11 +130,25 @@
       "product_version": "2e31443a0d18ae43b9d29e02bf0563f07772193d <3a18b452dd5f7f1652c2e92f8ae769aa17a66c9e"
     },
     {
+      "id": "df07c231-2338-38f1-a7ef-4897da3c17ab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "df565fdc-2b1d-33a9-b124-eb14ccf19ac8",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.19"
+    },
+    {
+      "id": "e36e5678-e061-3091-beb4-753307b4996e",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8410996eb6fea116fe1483ed977aacf580eee7b4 <bf3c2affe245cf831866ddc8f736ae6a22cdc11c"
     },
     {
       "id": "f0f209bd-24ba-3d24-9195-9f21d373197a",

@@ -2,13 +2,13 @@
   "id": "EUVD-2026-15350",
   "enisaUuid": "8d206487-5a3b-3e58-878e-cc9f14fa89a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: radiotap: reject radiotap with unknown bits\n\nThe radiotap parser is currently only used with the radiotap\nnamespace (not with vendor namespaces), but if the undefined\nfield 18 is used, the alignment/size is unknown as well. In\nthis case, iterator->_next_ns_data isn't initialized (it's\nonly set for skipping vendor namespaces), and syzbot points\nout that we later compare against this uninitialized value.\n\nFix this by moving the rejection of unknown radiotap fields\ndown to after the in-namespace lookup, so it will really use\niterator->_next_ns_data only for vendor namespaces, even in\ncase undefined fields are present.",
-  "datePublished": "Mar 25, 2026, 12:30:24 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:24 PM",
+  "datePublished": "Mar 25, 2026, 10:27:49 AM",
+  "dateUpdated": "Apr 18, 2026, 8:58:14 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/703fa979badbba83d31cd011606d060bfb8b0d1d\nhttps://git.kernel.org/stable/c/129c8bb320a7cef692c78056ef8e89a2a12ba448\nhttps://git.kernel.org/stable/c/2a60c588d5d39ad187628f58395c776a97fd4323\nhttps://git.kernel.org/stable/c/2f8ceeba670610d66f77def32011f48de951d781\nhttps://git.kernel.org/stable/c/e664971759a0e5570b50c6592e58a7f97d55e992\nhttps://git.kernel.org/stable/c/c854758abe0b8d86f9c43dc060ff56a0ee5b31e0\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23367\n",
+  "references": "https://git.kernel.org/stable/c/6f80f6a60f5d87e5de5fb2732751fce799991c24\nhttps://git.kernel.org/stable/c/d1d1d3c50095928624a95b67a6d7ccc3a18f2215\nhttps://git.kernel.org/stable/c/703fa979badbba83d31cd011606d060bfb8b0d1d\nhttps://git.kernel.org/stable/c/129c8bb320a7cef692c78056ef8e89a2a12ba448\nhttps://git.kernel.org/stable/c/2a60c588d5d39ad187628f58395c776a97fd4323\nhttps://git.kernel.org/stable/c/2f8ceeba670610d66f77def32011f48de951d781\nhttps://git.kernel.org/stable/c/e664971759a0e5570b50c6592e58a7f97d55e992\nhttps://git.kernel.org/stable/c/c854758abe0b8d86f9c43dc060ff56a0ee5b31e0\n",
   "aliases": "CVE-2026-23367\nGHSA-mg4x-3g76-43w7\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "1481afd4-26b6-3a9a-a814-f77190c166ec",
@@ -39,6 +39,13 @@
       "product_version": "2.6.34"
     },
     {
+      "id": "425b43de-15f1-3014-8bf0-e07d28454055",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "33e5a2f776e331dc8a4379b6efb660d38f182d96 <6f80f6a60f5d87e5de5fb2732751fce799991c24"
+    },
+    {
       "id": "54b19b98-ac13-33fc-9d82-565af0c7bb94",
       "product": {
         "name": "Linux"
@@ -58,6 +65,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 7.0-rc2"
+    },
+    {
+      "id": "5d707665-5332-3890-9976-bdc039abaa6a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "33e5a2f776e331dc8a4379b6efb660d38f182d96 <d1d1d3c50095928624a95b67a6d7ccc3a18f2215"
     },
     {
       "id": "7076134f-a658-3113-8956-b780975bcee5",
@@ -81,11 +95,32 @@
       "product_version": "33e5a2f776e331dc8a4379b6efb660d38f182d96 <2a60c588d5d39ad187628f58395c776a97fd4323"
     },
     {
+      "id": "7abc46ba-e862-3b05-8110-1241ef155826",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "92324f3e-21e1-3a78-a8ec-24eba4bf8caa",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "a8e632bd-eb55-376e-ba57-4b587347c584",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
+      "id": "bc2acdea-77f0-37de-ae4c-018797aa93ff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "dbf9367e-8ea1-309d-a0ff-52846bb5a913",

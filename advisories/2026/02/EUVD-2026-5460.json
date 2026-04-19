@@ -3,9 +3,9 @@
   "enisaUuid": "139e90d7-2db3-3cfb-823e-1e5b5811a6d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: gs_usb: gs_usb_receive_bulk_callback(): unanchor URL on usb_submit_urb() error\n\nIn commit 7352e1d5932a (\"can: gs_usb: gs_usb_receive_bulk_callback(): fix\nURB memory leak\"), the URB was re-anchored before usb_submit_urb() in\ngs_usb_receive_bulk_callback() to prevent a leak of this URB during\ncleanup.\n\nHowever, this patch did not take into account that usb_submit_urb() could\nfail. The URB remains anchored and\nusb_kill_anchored_urbs(&parent->rx_submitted) in gs_can_close() loops\ninfinitely since the anchor list never becomes empty.\n\nTo fix the bug, unanchor the URB when an usb_submit_urb() error occurs,\nalso print an info message.",
   "datePublished": "Feb 4, 2026, 4:08:06 PM",
-  "dateUpdated": "Feb 6, 2026, 4:32:56 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:15 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ce4352057fc5a986c76ece90801b9755e7c6e56c\nhttps://git.kernel.org/stable/c/c610b550ccc0438d456dfe1df9f4f36254ccaae3\nhttps://git.kernel.org/stable/c/c3edc14da81a8d8398682f6e4ab819f09f37c0b7\nhttps://git.kernel.org/stable/c/79a6d1bfe1148bc921b8d7f3371a7fbce44e30f7\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23082\nhttps://git.kernel.org/stable/c/aa8a8866c533a150be4763bcb27993603bd5426c\n",
+  "references": "https://git.kernel.org/stable/c/da01de754e455e2598a7f1ce4ff2078c4f0ecde1\nhttps://git.kernel.org/stable/c/aa8a8866c533a150be4763bcb27993603bd5426c\nhttps://git.kernel.org/stable/c/ce4352057fc5a986c76ece90801b9755e7c6e56c\nhttps://git.kernel.org/stable/c/c610b550ccc0438d456dfe1df9f4f36254ccaae3\nhttps://git.kernel.org/stable/c/c3edc14da81a8d8398682f6e4ab819f09f37c0b7\nhttps://git.kernel.org/stable/c/79a6d1bfe1148bc921b8d7f3371a7fbce44e30f7\n",
   "aliases": "GHSA-m8p7-hjg2-3xqj\nCVE-2026-23082\n",
   "assigner": "Linux",
   "epss": 0.02,
@@ -30,6 +30,13 @@
         "name": "Linux"
       },
       "product_version": "6.19-rc6"
+    },
+    {
+      "id": "2d6e695f-9d4d-3016-b1ff-0a9a80f986a3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.18.7 <6.18.8"
     },
     {
       "id": "4dc10f88-08a4-36a8-b1a3-6aa970c3f06a",
@@ -79,6 +86,20 @@
         "name": "Linux"
       },
       "product_version": "08624b7206ddb9148eeffc2384ebda2c47b6d1e9 <c610b550ccc0438d456dfe1df9f4f36254ccaae3"
+    },
+    {
+      "id": "e58ea717-9701-3770-8317-de50fb4330a3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.12.67 <6.12.68"
+    },
+    {
+      "id": "f508f20f-d365-3f07-b61b-fd53e7392ec2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "9c151898cc259a7784be60ba38664f42ede39b31 <da01de754e455e2598a7f1ce4ff2078c4f0ecde1"
     }
   ],
   "enisaIdVendor": [

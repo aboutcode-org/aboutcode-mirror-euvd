@@ -2,14 +2,28 @@
   "id": "EUVD-2026-21957",
   "enisaUuid": "48bef2fb-36ce-3246-811d-ac060ff39b0f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_log: fix uninitialized padding leak in NFULA_PAYLOAD\n\n__build_packet_message() manually constructs the NFULA_PAYLOAD netlink\nattribute using skb_put() and skb_copy_bits(), bypassing the standard\nnla_reserve()/nla_put() helpers. While nla_total_size(data_len) bytes\nare allocated (including NLA alignment padding), only data_len bytes\nof actual packet data are copied. The trailing nla_padlen(data_len)\nbytes (1-3 when data_len is not 4-byte aligned) are never initialized,\nleaking stale heap contents to userspace via the NFLOG netlink socket.\n\nReplace the manual attribute construction with nla_reserve(), which\nhandles the tailroom check, header setup, and padding zeroing via\n__nla_reserve(). The subsequent skb_copy_bits() fills in the payload\ndata on top of the properly initialized attribute.",
-  "datePublished": "Apr 13, 2026, 3:31:42 PM",
-  "dateUpdated": "Apr 13, 2026, 3:31:42 PM",
+  "datePublished": "Apr 13, 2026, 1:40:30 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:45 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/fc961dd7272b5e4a462999635e44a4770d7f2482\nhttps://git.kernel.org/stable/c/a8365d1064ded323797c5e28e91070c52f44b76c\nhttps://git.kernel.org/stable/c/a2f6ff3444b663d6cfa63eadd61327a18592885a\nhttps://git.kernel.org/stable/c/c9f6c51d36482805ac3ffadb9663fe775a13e926\nhttps://git.kernel.org/stable/c/7eff72968161fb8ddb26113344de3b92fb7d7ef5\nhttps://git.kernel.org/stable/c/52025ebaa29f4eb4ed8bf92ce83a68f24ab7fdf7\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31428\n",
+  "references": "https://git.kernel.org/stable/c/7f3e5d72455936f42709116fabeca3bb216cda62\nhttps://git.kernel.org/stable/c/21d8efda029948d3666b0db5afcc0d36c0984aae\nhttps://git.kernel.org/stable/c/fc961dd7272b5e4a462999635e44a4770d7f2482\nhttps://git.kernel.org/stable/c/a8365d1064ded323797c5e28e91070c52f44b76c\nhttps://git.kernel.org/stable/c/a2f6ff3444b663d6cfa63eadd61327a18592885a\nhttps://git.kernel.org/stable/c/c9f6c51d36482805ac3ffadb9663fe775a13e926\nhttps://git.kernel.org/stable/c/7eff72968161fb8ddb26113344de3b92fb7d7ef5\nhttps://git.kernel.org/stable/c/52025ebaa29f4eb4ed8bf92ce83a68f24ab7fdf7\n",
   "aliases": "CVE-2026-31428\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "03587640-83db-3f39-8c62-a51e403cd710",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "df6fb868d6118686805c2fa566e213a8f31c8e4f <21d8efda029948d3666b0db5afcc0d36c0984aae"
+    },
+    {
+      "id": "27916245-56b0-3852-8df0-00194a376d80",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "df6fb868d6118686805c2fa566e213a8f31c8e4f <7f3e5d72455936f42709116fabeca3bb216cda62"
+    },
     {
       "id": "279cc3ea-36f7-3ac4-a725-c67e9e04c874",
       "product": {
@@ -23,6 +37,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.12.80"
+    },
+    {
+      "id": "375c3c84-3037-307c-847d-e20f7de9e0a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "3fcc4bb5-c6e9-39d2-a255-571ac378767b",
@@ -107,6 +128,13 @@
         "name": "Linux"
       },
       "product_version": "df6fb868d6118686805c2fa566e213a8f31c8e4f <52025ebaa29f4eb4ed8bf92ce83a68f24ab7fdf7"
+    },
+    {
+      "id": "e583f290-fbf4-39f3-8673-6ea2621b5a25",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     }
   ],
   "enisaIdVendor": [

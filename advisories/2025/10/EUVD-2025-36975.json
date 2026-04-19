@@ -3,12 +3,12 @@
   "enisaUuid": "c0c8709a-d6ec-332d-a514-b2b4273a3931",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: Fix refcount leak for cifs_sb_tlink\n\nFix three refcount inconsistency issues related to `cifs_sb_tlink`.\n\nComments for `cifs_sb_tlink` state that `cifs_put_tlink()` needs to be\ncalled after successful calls to `cifs_sb_tlink()`. Three calls fail to\nupdate refcount accordingly, leading to possible resource leaks.",
   "datePublished": "Oct 30, 2025, 9:48:08 AM",
-  "dateUpdated": "Dec 1, 2025, 6:18:06 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:06 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/790282abe9d805f08618c1c24ea2529e7259b692\nhttps://git.kernel.org/stable/c/d7dd034c14928306db1b46be277ae439b84dacf9\nhttps://git.kernel.org/stable/c/e15605b68b490186da2ad8029c0351a9cfb0b9af\nhttps://git.kernel.org/stable/c/896bb31e1416f582503db1350cf1bd10dc64e5a6\nhttps://git.kernel.org/stable/c/c2b77f42205ef485a647f62082c442c1cd69d3fc\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-40103\n",
+  "references": "https://git.kernel.org/stable/c/d3c8ea197055c260119a13360e8202a27e53e1e4\nhttps://git.kernel.org/stable/c/790282abe9d805f08618c1c24ea2529e7259b692\nhttps://git.kernel.org/stable/c/d7dd034c14928306db1b46be277ae439b84dacf9\nhttps://git.kernel.org/stable/c/e15605b68b490186da2ad8029c0351a9cfb0b9af\nhttps://git.kernel.org/stable/c/896bb31e1416f582503db1350cf1bd10dc64e5a6\nhttps://git.kernel.org/stable/c/c2b77f42205ef485a647f62082c442c1cd69d3fc\n",
   "aliases": "GHSA-rg54-mxfq-r39j\nCVE-2025-40103\n",
   "assigner": "Linux",
-  "epss": 0.04,
+  "epss": 0.06,
   "enisaIdProduct": [
     {
       "id": "0a4c50dc-5fbb-3a64-9afd-09047cf01cc7",
@@ -30,6 +30,20 @@
         "name": "Linux"
       },
       "product_version": "8ceb984379462f94bdebef3288d569c6e1f912ea <790282abe9d805f08618c1c24ea2529e7259b692"
+    },
+    {
+      "id": "3fd22ecb-1573-3d9d-9dd4-e25fc6dc21bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "8ceb984379462f94bdebef3288d569c6e1f912ea <d3c8ea197055c260119a13360e8202a27e53e1e4"
+    },
+    {
+      "id": "425682f3-804e-300e-b306-3b0f8c1a8b8b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "427e4ebb-f6a1-3a2e-af75-7ba8fa8b0c32",

@@ -2,13 +2,13 @@
   "id": "EUVD-2026-15230",
   "enisaUuid": "eb1cdb75-fe95-3a45-9457-223980bf9c73",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: core: Fix refcount leak for tagset_refcnt\n\nThis leak will cause a hang when tearing down the SCSI host. For example,\niscsid hangs with the following call trace:\n\n[130120.652718] scsi_alloc_sdev: Allocation failure during SCSI scanning, some SCSI devices might not be configured\n\nPID: 2528     TASK: ffff9d0408974e00  CPU: 3    COMMAND: \"iscsid\"\n #0 [ffffb5b9c134b9e0] __schedule at ffffffff860657d4\n #1 [ffffb5b9c134ba28] schedule at ffffffff86065c6f\n #2 [ffffb5b9c134ba40] schedule_timeout at ffffffff86069fb0\n #3 [ffffb5b9c134bab0] __wait_for_common at ffffffff8606674f\n #4 [ffffb5b9c134bb10] scsi_remove_host at ffffffff85bfe84b\n #5 [ffffb5b9c134bb30] iscsi_sw_tcp_session_destroy at ffffffffc03031c4 [iscsi_tcp]\n #6 [ffffb5b9c134bb48] iscsi_if_recv_msg at ffffffffc0292692 [scsi_transport_iscsi]\n #7 [ffffb5b9c134bb98] iscsi_if_rx at ffffffffc02929c2 [scsi_transport_iscsi]\n #8 [ffffb5b9c134bbf0] netlink_unicast at ffffffff85e551d6\n #9 [ffffb5b9c134bc38] netlink_sendmsg at ffffffff85e554ef",
-  "datePublished": "Mar 25, 2026, 12:30:22 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:22 PM",
+  "datePublished": "Mar 25, 2026, 10:26:53 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:44 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9f5e4abed9248448aa1b45b12ab0bea4d329b56a\nhttps://git.kernel.org/stable/c/7c01b680beaf4d3143866b062b8e770e8b237fb8\nhttps://git.kernel.org/stable/c/ec5c17c687b189dbc09dfdec11b669caa40bc395\nhttps://git.kernel.org/stable/c/944a333c8e4d42256556c1d2ebb6d773a33e0dcd\nhttps://git.kernel.org/stable/c/a03d96598d39fdf605d90731db3ef3b13fb8bdc8\nhttps://git.kernel.org/stable/c/1ac22c8eae81366101597d48360718dff9b9d980\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23296\n",
+  "references": "https://git.kernel.org/stable/c/0e274674714427dc578bb99db5b86e312d2b57f8\nhttps://git.kernel.org/stable/c/9f5e4abed9248448aa1b45b12ab0bea4d329b56a\nhttps://git.kernel.org/stable/c/7c01b680beaf4d3143866b062b8e770e8b237fb8\nhttps://git.kernel.org/stable/c/ec5c17c687b189dbc09dfdec11b669caa40bc395\nhttps://git.kernel.org/stable/c/944a333c8e4d42256556c1d2ebb6d773a33e0dcd\nhttps://git.kernel.org/stable/c/a03d96598d39fdf605d90731db3ef3b13fb8bdc8\nhttps://git.kernel.org/stable/c/1ac22c8eae81366101597d48360718dff9b9d980\n",
   "aliases": "CVE-2026-23296\nGHSA-xvv5-hhxw-j52w\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "0356df54-eb09-30aa-85fe-0f4081f27d64",
@@ -25,11 +25,25 @@
       "product_version": "patch: 6.6.130"
     },
     {
+      "id": "2bd52297-21bf-3d84-b343-585a0c6f30ac",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "3220a62f-f238-3da8-9658-31750ae43a11",
       "product": {
         "name": "Linux"
       },
       "product_version": "8fe4ce5836e932f5766317cb651c1ff2a4cd0506 <1ac22c8eae81366101597d48360718dff9b9d980"
+    },
+    {
+      "id": "57e62227-a427-3d4d-a3b8-2bc9ff633a29",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "646e55a1-5b65-3d2d-9b25-485e34d42897",
@@ -79,6 +93,13 @@
         "name": "Linux"
       },
       "product_version": "2e7eb4c1e8af8385de22775bd0be552f59b28c9a"
+    },
+    {
+      "id": "a5aa2473-882d-39fc-a94d-e5cce43b35aa",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f818708eeeae793e12dc39f8984ed7732048a7d9 <0e274674714427dc578bb99db5b86e312d2b57f8"
     },
     {
       "id": "b0429352-ae63-3612-a9e2-e6c5e201d2e4",

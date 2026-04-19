@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18726",
   "enisaUuid": "eb7147f9-3c1b-38b1-8c92-37e1b0450763",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: fsl: qbman: fix race condition in qman_destroy_fq\n\nWhen QMAN_FQ_FLAG_DYNAMIC_FQID is set, there's a race condition between\nfq_table[fq->idx] state and freeing/allocating from the pool and\nWARN_ON(fq_table[fq->idx]) in qman_create_fq() gets triggered.\n\nIndeed, we can have:\n         Thread A                             Thread B\n    qman_destroy_fq()                    qman_create_fq()\n      qman_release_fqid()\n        qman_shutdown_fq()\n        gen_pool_free()\n           -- At this point, the fqid is available again --\n                                           qman_alloc_fqid()\n           -- so, we can get the just-freed fqid in thread B --\n                                           fq->fqid = fqid;\n                                           fq->idx = fqid * 2;\n                                           WARN_ON(fq_table[fq->idx]);\n                                           fq_table[fq->idx] = fq;\n     fq_table[fq->idx] = NULL;\n\nAnd adding some logs between qman_release_fqid() and\nfq_table[fq->idx] = NULL makes the WARN_ON() trigger a lot more.\n\nTo prevent that, ensure that fq_table[fq->idx] is set to NULL before\ngen_pool_free() is called by using smp_wmb().",
-  "datePublished": "Apr 3, 2026, 6:31:22 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:22 PM",
+  "datePublished": "Apr 3, 2026, 3:15:42 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:12 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9e3d47904b8153c8c3ad2f9b66d5008aad677aa8\nhttps://git.kernel.org/stable/c/d21923a8059fa896bfef016f55dd769299335cb4\nhttps://git.kernel.org/stable/c/751f60bd48edaf03f9d84ab09e5ce6705757d50f\nhttps://git.kernel.org/stable/c/85dbbf7dc88b0a54f2e334daedf6f3f31fd004fa\nhttps://git.kernel.org/stable/c/265e56714635c5dd1e5964bfd97fa6e73f62cde5\nhttps://git.kernel.org/stable/c/014077044e874e270ec480515edbc1cadb976cf2\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23463\n",
+  "references": "https://git.kernel.org/stable/c/66442cf9989bd4489fa80d9f37637d58ab016835\nhttps://git.kernel.org/stable/c/d288fbe652ef43b7128e4bc0c0c2ef6bd03a2210\nhttps://git.kernel.org/stable/c/9e3d47904b8153c8c3ad2f9b66d5008aad677aa8\nhttps://git.kernel.org/stable/c/d21923a8059fa896bfef016f55dd769299335cb4\nhttps://git.kernel.org/stable/c/751f60bd48edaf03f9d84ab09e5ce6705757d50f\nhttps://git.kernel.org/stable/c/85dbbf7dc88b0a54f2e334daedf6f3f31fd004fa\nhttps://git.kernel.org/stable/c/265e56714635c5dd1e5964bfd97fa6e73f62cde5\nhttps://git.kernel.org/stable/c/014077044e874e270ec480515edbc1cadb976cf2\n",
   "aliases": "GHSA-cxrg-39g8-v6cj\nCVE-2026-23463\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "09f7b9c6-5fd4-377d-a4ec-20b18fa8d985",
@@ -67,11 +67,39 @@
       "product_version": "c535e923bb97a4b361e89a6383693482057f8b0c <265e56714635c5dd1e5964bfd97fa6e73f62cde5"
     },
     {
+      "id": "4e678c32-03b5-3e17-b4b7-ec641f95c5e2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
+      "id": "4ec26901-0eca-35f0-ba74-c9da1237b76d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c535e923bb97a4b361e89a6383693482057f8b0c <66442cf9989bd4489fa80d9f37637d58ab016835"
+    },
+    {
+      "id": "61fc3fd0-b07d-3f77-9894-7239495af0ab",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "710679a7-9979-3271-8821-fdc25d2ef3a5",
       "product": {
         "name": "Linux"
       },
       "product_version": "c535e923bb97a4b361e89a6383693482057f8b0c <85dbbf7dc88b0a54f2e334daedf6f3f31fd004fa"
+    },
+    {
+      "id": "8138a267-057f-344f-ab0b-dca3768a19d8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "8434ff83-f37a-3c46-a1c5-aec4df7b280d",
@@ -93,6 +121,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "d05c6ee3-e56a-3341-8057-9543f745c860",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c535e923bb97a4b361e89a6383693482057f8b0c <d288fbe652ef43b7128e4bc0c0c2ef6bd03a2210"
     },
     {
       "id": "dbd69fa6-2521-3285-826c-b4934846cd27",

@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18782",
   "enisaUuid": "cbd5ce61-15c7-32a4-89c4-830b35e66440",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: fix cache_request leak in cache_release\n\nWhen a reader's file descriptor is closed while in the middle of reading\na cache_request (rp->offset != 0), cache_release() decrements the\nrequest's readers count but never checks whether it should free the\nrequest.\n\nIn cache_read(), when readers drops to 0 and CACHE_PENDING is clear, the\ncache_request is removed from the queue and freed along with its buffer\nand cache_head reference. cache_release() lacks this cleanup.\n\nThe only other path that frees requests with readers == 0 is\ncache_dequeue(), but it runs only when CACHE_PENDING transitions from\nset to clear. If that transition already happened while readers was\nstill non-zero, cache_dequeue() will have skipped the request, and no\nsubsequent call will clean it up.\n\nAdd the same cleanup logic from cache_read() to cache_release(): after\ndecrementing readers, check if it reached 0 with CACHE_PENDING clear,\nand if so, dequeue and free the cache_request.",
-  "datePublished": "Apr 3, 2026, 6:31:23 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:23 PM",
+  "datePublished": "Apr 3, 2026, 3:16:03 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:20 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7bcd5e318876ac638c8ceade7a648e76ac8c48e1\nhttps://git.kernel.org/stable/c/41f6ba6c98a618043d2cd71030bf9a752dfab8b2\nhttps://git.kernel.org/stable/c/301670dcd098c1fe5c2fe90fb3c7a8f4814d2351\nhttps://git.kernel.org/stable/c/be5c35960e5ead70862736161836e2d1bc7352dc\nhttps://git.kernel.org/stable/c/373457de14281c1fc7cace6fc4c8a267fc176673\nhttps://git.kernel.org/stable/c/17ad31b3a43b72aec3a3d83605891e1397d0d065\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31400\n",
+  "references": "https://git.kernel.org/stable/c/1dfedb293943e491379c9302b428e6f920a73d12\nhttps://git.kernel.org/stable/c/f18c1f2a88ca91357916997cdb0f7adaf14fc497\nhttps://git.kernel.org/stable/c/7bcd5e318876ac638c8ceade7a648e76ac8c48e1\nhttps://git.kernel.org/stable/c/41f6ba6c98a618043d2cd71030bf9a752dfab8b2\nhttps://git.kernel.org/stable/c/301670dcd098c1fe5c2fe90fb3c7a8f4814d2351\nhttps://git.kernel.org/stable/c/be5c35960e5ead70862736161836e2d1bc7352dc\nhttps://git.kernel.org/stable/c/373457de14281c1fc7cace6fc4c8a267fc176673\nhttps://git.kernel.org/stable/c/17ad31b3a43b72aec3a3d83605891e1397d0d065\n",
   "aliases": "GHSA-73jc-99jj-ch5v\nCVE-2026-31400\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "00e3ce0f-b507-3151-81b0-56503160e885",
@@ -23,6 +23,20 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.6.130"
+    },
+    {
+      "id": "12073978-c3f7-3ed1-89ac-f20c9418e472",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "1606a270-1c7e-30a2-8a50-d753f76c4fcd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1dfedb293943e491379c9302b428e6f920a73d12"
     },
     {
       "id": "1aa9a411-661c-3fe4-840f-25dc974ac681",
@@ -53,6 +67,13 @@
       "product_version": "2.6.12"
     },
     {
+      "id": "39434efb-d836-3ae7-a774-11de1540dd64",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "56600460-d2ea-3b3b-9ab1-e1befe3721fe",
       "product": {
         "name": "Linux"
@@ -65,6 +86,20 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <301670dcd098c1fe5c2fe90fb3c7a8f4814d2351"
+    },
+    {
+      "id": "7f20f0b0-9a14-353a-96a3-9638c4ad0b37",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f18c1f2a88ca91357916997cdb0f7adaf14fc497"
+    },
+    {
+      "id": "8325a2eb-8d2c-358d-948e-4f9566686c75",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     },
     {
       "id": "8c4d0a80-5217-317a-9c6c-3a5eaaf7eb30",

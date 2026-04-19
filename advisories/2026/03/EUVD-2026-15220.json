@@ -2,13 +2,13 @@
   "id": "EUVD-2026-15220",
   "enisaUuid": "7afff382-0ec3-35b8-911a-9e6b1ef7a82a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: pn533: properly drop the usb interface reference on disconnect\n\nWhen the device is disconnected from the driver, there is a \"dangling\"\nreference count on the usb interface that was grabbed in the probe\ncallback.  Fix this up by properly dropping the reference after we are\ndone with it.",
-  "datePublished": "Mar 25, 2026, 12:30:22 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:22 PM",
+  "datePublished": "Mar 25, 2026, 10:26:49 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:42 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7398d6570501edc55a50ece820f369ab3c1df2e7\nhttps://git.kernel.org/stable/c/d1f6d20b3c2642ec85ce6ea5da7155746c31c6d0\nhttps://git.kernel.org/stable/c/7ff14eb070f0efecb2606f8d7aa01b77d188e886\nhttps://git.kernel.org/stable/c/00477cab053dc4816b99141d8fcca7a479cfebeb\nhttps://git.kernel.org/stable/c/4551d6cea00224ab65a0ef35e4e6da0e9c0a2d74\nhttps://git.kernel.org/stable/c/12133a483dfa832241fbbf09321109a0ea8a520e\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23291\n",
+  "references": "https://git.kernel.org/stable/c/6645b030b0c1fc5bf338bffb0044238f24b2f770\nhttps://git.kernel.org/stable/c/5be8aa2bcfb53158436182db8dee9d0b8e5901e6\nhttps://git.kernel.org/stable/c/7398d6570501edc55a50ece820f369ab3c1df2e7\nhttps://git.kernel.org/stable/c/d1f6d20b3c2642ec85ce6ea5da7155746c31c6d0\nhttps://git.kernel.org/stable/c/7ff14eb070f0efecb2606f8d7aa01b77d188e886\nhttps://git.kernel.org/stable/c/00477cab053dc4816b99141d8fcca7a479cfebeb\nhttps://git.kernel.org/stable/c/4551d6cea00224ab65a0ef35e4e6da0e9c0a2d74\nhttps://git.kernel.org/stable/c/12133a483dfa832241fbbf09321109a0ea8a520e\n",
   "aliases": "GHSA-3m5v-fjjv-99m5\nCVE-2026-23291\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "05827b0e-b86e-31a7-a2c9-2f0a2cbe02a2",
@@ -18,6 +18,20 @@
       "product_version": "c46ee38620a2aa2b25b16bc9738ace80dbff76a4 <4551d6cea00224ab65a0ef35e4e6da0e9c0a2d74"
     },
     {
+      "id": "0ef3386d-b862-3a62-8dcf-9227be395c3c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c46ee38620a2aa2b25b16bc9738ace80dbff76a4 <6645b030b0c1fc5bf338bffb0044238f24b2f770"
+    },
+    {
+      "id": "251d93da-e409-30ce-a01e-b6d3ac34a574",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "26cfec1f-28da-3ecb-bb2c-87bf8f14f53d",
       "product": {
         "name": "Linux"
@@ -25,11 +39,25 @@
       "product_version": "c46ee38620a2aa2b25b16bc9738ace80dbff76a4 <7398d6570501edc55a50ece820f369ab3c1df2e7"
     },
     {
+      "id": "2f0dcbcc-468f-3d96-82da-f71c86412bd3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "35793081-f200-3584-8989-c0f77c81a641",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.18.17"
+    },
+    {
+      "id": "3fe1ff77-88c5-3e53-a89a-1275ea3db8d2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "c46ee38620a2aa2b25b16bc9738ace80dbff76a4 <5be8aa2bcfb53158436182db8dee9d0b8e5901e6"
     },
     {
       "id": "537ed660-5be0-3148-b484-30304435198b",
@@ -86,6 +114,13 @@
         "name": "Linux"
       },
       "product_version": "c46ee38620a2aa2b25b16bc9738ace80dbff76a4 <7ff14eb070f0efecb2606f8d7aa01b77d188e886"
+    },
+    {
+      "id": "a5298943-571d-34cb-ba55-5470437e8944",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "c1b746d2-82ed-3df4-a771-8f30dcc812cb",

@@ -2,10 +2,10 @@
   "id": "EUVD-2025-28948",
   "enisaUuid": "983d2ed1-0519-3d6b-a77c-81727476555b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ctnetlink: remove refcounting in expectation dumpers\n\nSame pattern as previous patch: do not keep the expectation object\nalive via refcount, only store a cookie value and then use that\nas the skip hint for dump resumption.\n\nAFAICS this has the same issue as the one resolved in the conntrack\ndumper, when we do\n  if (!refcount_inc_not_zero(&exp->use))\n\nto increment the refcount, there is a chance that exp == last, which\ncauses a double-increment of the refcount and subsequent memory leak.",
-  "datePublished": "Sep 11, 2025, 6:35:52 PM",
-  "dateUpdated": "Nov 25, 2025, 9:32:04 PM",
+  "datePublished": "Sep 11, 2025, 4:52:32 PM",
+  "dateUpdated": "Apr 18, 2026, 8:57:02 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a4d634ded4d3d400f115d84f654f316f249531c9\nhttps://git.kernel.org/stable/c/1492e3dcb2be3aa46d1963da96aa9593e4e4db5a\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-39764\n",
+  "references": "https://git.kernel.org/stable/c/b05500444b8eb97644efdd180839a04a706be97c\nhttps://git.kernel.org/stable/c/bada48ad5b0590e318d0f79636ff62a2ef9f4955\nhttps://git.kernel.org/stable/c/64b7684042246e3238464c66894e30ba30c7e851\nhttps://git.kernel.org/stable/c/9e5021a906532ca16e2aac69c0607711e1c70b1f\nhttps://git.kernel.org/stable/c/078d33c95bf534d37aa04269d1ae6158e20082d5\nhttps://git.kernel.org/stable/c/a4d634ded4d3d400f115d84f654f316f249531c9\nhttps://git.kernel.org/stable/c/1492e3dcb2be3aa46d1963da96aa9593e4e4db5a\n",
   "aliases": "CVE-2025-39764\nGHSA-rh5v-2xrc-gj9x\n",
   "assigner": "Linux",
   "epss": 0.02,
@@ -23,6 +23,13 @@
         "name": "Linux"
       },
       "product_version": "2.6.23"
+    },
+    {
+      "id": "1d2fa417-a5b0-3e5e-ae43-f1e889db2b78",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cf6994c2b9812a9f02b99e89df411ffc5db9c779 <bada48ad5b0590e318d0f79636ff62a2ef9f4955"
     },
     {
       "id": "2fe1475d-37d9-3726-845c-5cf60410d1a2",
@@ -46,6 +53,13 @@
       "product_version": "patch: 6.6.130"
     },
     {
+      "id": "47818d13-e078-3a8c-9156-9216e6e22ab5",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "71347b0f-ed22-3f3b-b5f7-00beca420d2a",
       "product": {
         "name": "Linux"
@@ -58,6 +72,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "93c5e4b1-9e20-307b-b7ed-7bf5a60f8bf1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
     },
     {
       "id": "9c9bd823-2d77-3774-8e54-b40804541086",
@@ -86,6 +107,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.12.78"
+    },
+    {
+      "id": "cd0c1d1a-8562-387a-a77a-89430a19aa8b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cf6994c2b9812a9f02b99e89df411ffc5db9c779 <b05500444b8eb97644efdd180839a04a706be97c"
     },
     {
       "id": "cf500545-c94f-3451-8dd3-ae784154b4d4",

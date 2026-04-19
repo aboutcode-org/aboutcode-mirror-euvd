@@ -3,9 +3,9 @@
   "enisaUuid": "02d1c943-3a30-3a73-b7b4-cf049a131781",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix refcount leak when invalid session is found on session lookup\n\nWhen a session is found but its state is not SMB2_SESSION_VALID, It\nindicates that no valid session was found, but it is missing to decrement\nthe reference count acquired by the session lookup, which results in\na reference count leak. This patch fixes the issue by explicitly calling\nksmbd_user_session_put to release the reference to the session.",
   "datePublished": "Jan 23, 2026, 2:15:16 PM",
-  "dateUpdated": "Jan 26, 2026, 6:52:30 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:13 AM",
   "baseScore": 0.0,
-  "references": "https://nvd.nist.gov/vuln/detail/CVE-2025-71150\nhttps://git.kernel.org/stable/c/02e06785e85b4bd86ef3d23b7c8d87acc76773d5\nhttps://git.kernel.org/stable/c/0fb87b28cafae71e9c8248432cc3a6a1fd759efc\nhttps://git.kernel.org/stable/c/8cabcb4dd3dc85dd83a37d26efcc59a66a4074d7\nhttps://git.kernel.org/stable/c/cafb57f7bdd57abba87725eb4e82bbdca4959644\nhttps://git.kernel.org/stable/c/e54fb2a4772545701766cba08aab20de5eace8cd\n",
+  "references": "https://git.kernel.org/stable/c/11fe566b442e3bc2774191740fd377739a87a1c0\nhttps://git.kernel.org/stable/c/0fb87b28cafae71e9c8248432cc3a6a1fd759efc\nhttps://git.kernel.org/stable/c/e54fb2a4772545701766cba08aab20de5eace8cd\nhttps://git.kernel.org/stable/c/02e06785e85b4bd86ef3d23b7c8d87acc76773d5\nhttps://git.kernel.org/stable/c/8cabcb4dd3dc85dd83a37d26efcc59a66a4074d7\nhttps://git.kernel.org/stable/c/cafb57f7bdd57abba87725eb4e82bbdca4959644\n",
   "aliases": "CVE-2025-71150\nGHSA-4mf3-frrh-jfqw\n",
   "assigner": "Linux",
   "epss": 0.02,
@@ -46,6 +46,13 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0fb87b28cafae71e9c8248432cc3a6a1fd759efc"
     },
     {
+      "id": "5ff84b3b-76dc-35b9-99f6-352f19c2fd8b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2107ab40629aeabbec369cf34b8cf0f288c3eb1b <11fe566b442e3bc2774191740fd377739a87a1c0"
+    },
+    {
       "id": "616f2684-b46c-3fa4-b804-b88d5b1defff",
       "product": {
         "name": "Linux"
@@ -58,6 +65,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19-rc2"
+    },
+    {
+      "id": "6965cf16-27c1-34f3-9b19-2069d849cd8f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     },
     {
       "id": "71e81eae-0ac3-3b24-b772-d8a8255e9323",
@@ -135,6 +149,13 @@
         "name": "Linux"
       },
       "product_version": "450a844c045ff0895d41b05a1cbe8febd1acfcfd <e54fb2a4772545701766cba08aab20de5eace8cd"
+    },
+    {
+      "id": "f2767563-9314-3a4c-aed1-de78c66817d1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.19"
     }
   ],
   "enisaIdVendor": [

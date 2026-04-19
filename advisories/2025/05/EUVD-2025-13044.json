@@ -3,9 +3,9 @@
   "enisaUuid": "d2662909-09c5-3ad4-adf3-cb1bb4d8c0ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix dangling pointer in krb_authenticate\n\nkrb_authenticate frees sess->user and does not set the pointer\nto NULL. It calls ksmbd_krb5_authenticate to reinitialise\nsess->user but that function may return without doing so. If\nthat happens then smb2_sess_setup, which calls krb_authenticate,\nwill be accessing free'd memory when it later uses sess->user.",
   "datePublished": "May 1, 2025, 1:07:16 PM",
-  "dateUpdated": "Nov 3, 2025, 7:54:55 PM",
+  "dateUpdated": "Apr 18, 2026, 8:56:54 AM",
   "baseScore": 0.0,
-  "references": "https://nvd.nist.gov/vuln/detail/CVE-2025-37778\nhttps://git.kernel.org/stable/c/1db2451de23e98bc864c6a6e52aa0d82c91cb325\nhttps://git.kernel.org/stable/c/1e440d5b25b7efccb3defe542a73c51005799a5f\nhttps://git.kernel.org/stable/c/6e30c0e10210c714f3d4453dc258d4abcc70364e\nhttps://git.kernel.org/stable/c/d5b554bc8d554ed6ddf443d3db2fad9f665cec10\nhttps://git.kernel.org/stable/c/e83e39a5f6a01a81411a4558a59a10f87aa88dd6\nhttps://lists.debian.org/debian-lts-announce/2025/05/msg00045.html\n",
+  "references": "https://git.kernel.org/stable/c/b61f04d5d73c53d183019bafe22fb700a739bac5\nhttps://git.kernel.org/stable/c/d5b554bc8d554ed6ddf443d3db2fad9f665cec10\nhttps://git.kernel.org/stable/c/1db2451de23e98bc864c6a6e52aa0d82c91cb325\nhttps://git.kernel.org/stable/c/6e30c0e10210c714f3d4453dc258d4abcc70364e\nhttps://git.kernel.org/stable/c/e83e39a5f6a01a81411a4558a59a10f87aa88dd6\nhttps://git.kernel.org/stable/c/1e440d5b25b7efccb3defe542a73c51005799a5f\n",
   "aliases": "CVE-2025-37778\nGHSA-45gw-fx24-h4pv\n",
   "assigner": "Linux",
   "epss": 0.07,
@@ -100,6 +100,20 @@
         "name": "Linux"
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "d95672c4-0297-3d83-925b-9ff6c31f02ad",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <b61f04d5d73c53d183019bafe22fb700a739bac5"
+    },
+    {
+      "id": "eadf9506-8dbd-388b-aeb6-9838492914a4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
     }
   ],
   "enisaIdVendor": [

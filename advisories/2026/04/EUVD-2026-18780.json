@@ -2,13 +2,13 @@
   "id": "EUVD-2026-18780",
   "enisaUuid": "b39c8146-8426-3c94-baa4-eaab1cb7ca69",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm/bus: Fix potential use after free in asynchronous initialization\n\nDingisoul with KASAN reports a use after free if device_add() fails in\nnd_async_device_register().\n\nCommit b6eae0f61db2 (\"libnvdimm: Hold reference on parent while\nscheduling async init\") correctly added a reference on the parent device\nto be held until asynchronous initialization was complete.  However, if\ndevice_add() results in an allocation failure the ref count of the\ndevice drops to 0 prior to the parent pointer being accessed.  Thus\nresulting in use after free.\n\nThe bug bot AI correctly identified the fix.  Save a reference to the\nparent pointer to be used to drop the parent reference regardless of the\noutcome of device_add().",
-  "datePublished": "Apr 3, 2026, 6:31:23 PM",
-  "dateUpdated": "Apr 3, 2026, 6:31:23 PM",
+  "datePublished": "Apr 3, 2026, 3:16:03 PM",
+  "dateUpdated": "Apr 18, 2026, 8:59:18 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9a0fb16ba5b372465a3a1ecd761c6fa911a4ab4d\nhttps://git.kernel.org/stable/c/e48bf8f1d2b12c1c5ba1f609edbd4cde5dadc20e\nhttps://git.kernel.org/stable/c/2c638259ad750833fd46a0cf57672a618542d84c\nhttps://git.kernel.org/stable/c/a226e5b49e5fe8c98b14f8507de670189d191348\nhttps://git.kernel.org/stable/c/84af19855d1abdee3c9d57c0684e2868e391793c\nhttps://git.kernel.org/stable/c/a8aec14230322ed8f1e8042b6d656c1631d41163\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31399\n",
+  "references": "https://git.kernel.org/stable/c/6fc36c2a925ceaba203eb13d75a8f0879a2c121b\nhttps://git.kernel.org/stable/c/a36cf138500e56f50db9f9a33222df6969b38326\nhttps://git.kernel.org/stable/c/9a0fb16ba5b372465a3a1ecd761c6fa911a4ab4d\nhttps://git.kernel.org/stable/c/e48bf8f1d2b12c1c5ba1f609edbd4cde5dadc20e\nhttps://git.kernel.org/stable/c/2c638259ad750833fd46a0cf57672a618542d84c\nhttps://git.kernel.org/stable/c/a226e5b49e5fe8c98b14f8507de670189d191348\nhttps://git.kernel.org/stable/c/84af19855d1abdee3c9d57c0684e2868e391793c\nhttps://git.kernel.org/stable/c/a8aec14230322ed8f1e8042b6d656c1631d41163\n",
   "aliases": "CVE-2026-31399\nGHSA-j3fg-h3r6-7945\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
     {
       "id": "0105fe78-cde5-337e-8007-ada2ef69bf40",
@@ -25,11 +25,25 @@
       "product_version": "1490de2bb0836fc0631c04d0559fdf81545b672f"
     },
     {
+      "id": "21fdaa33-d1c4-314e-bc63-1adde67129d6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
+    {
       "id": "226d4c06-09b3-368d-8485-33d22ae983c8",
       "product": {
         "name": "Linux"
       },
       "product_version": "b6eae0f61db27748606cc00dafcfd1e2c032f0a5 <e48bf8f1d2b12c1c5ba1f609edbd4cde5dadc20e"
+    },
+    {
+      "id": "37061483-df40-3765-924d-48a709a4d288",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b6eae0f61db27748606cc00dafcfd1e2c032f0a5 <a36cf138500e56f50db9f9a33222df6969b38326"
     },
     {
       "id": "3885f17d-2400-345a-8442-d5b29a5c662e",
@@ -74,6 +88,13 @@
       "product_version": "e31a8418c8df7e6771414f99ed3d95ba8aca4e05"
     },
     {
+      "id": "607e5c5f-bad2-3420-bee0-cfc9bf549be6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
       "id": "61c1ada7-3005-3bc8-a560-31613f8e14f8",
       "product": {
         "name": "Linux"
@@ -100,6 +121,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 7.0-rc5"
+    },
+    {
+      "id": "784e16b1-e4ea-39c3-b648-6e3161a72400",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b6eae0f61db27748606cc00dafcfd1e2c032f0a5 <6fc36c2a925ceaba203eb13d75a8f0879a2c121b"
     },
     {
       "id": "950748cc-afad-395b-92f3-d71408f5e62c",
@@ -142,6 +170,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.19.10"
+    },
+    {
+      "id": "dd45e7f1-691c-36ba-b63a-cc5cb45609a0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     }
   ],
   "enisaIdVendor": [

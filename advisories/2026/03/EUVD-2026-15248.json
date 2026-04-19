@@ -2,14 +2,28 @@
   "id": "EUVD-2026-15248",
   "enisaUuid": "86b71502-469c-34b1-a000-7e12341deee9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: ems_usb: ems_usb_read_bulk_callback(): check the proper length of a message\n\nWhen looking at the data in a USB urb, the actual_length is the size of\nthe buffer passed to the driver, not the transfer_buffer_length which is\nset by the driver as the max size of the buffer.\n\nWhen parsing the messages in ems_usb_read_bulk_callback() properly check\nthe size both at the beginning of parsing the message to make sure it is\nbig enough for the expected structure, and at the end of the message to\nmake sure we don't overflow past the end of the buffer for the next\nmessage.",
-  "datePublished": "Mar 25, 2026, 12:30:22 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:22 PM",
+  "datePublished": "Mar 25, 2026, 10:27:02 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:53 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c703bbf8e9b4947e111c88d2ed09236a6772a471\nhttps://git.kernel.org/stable/c/1818974e1b5ef200e27f144c8cb8a246420bb54d\nhttps://git.kernel.org/stable/c/18f75b9cbdc3703f15965425ab69dee509b07785\nhttps://git.kernel.org/stable/c/1cf469026d4a2308eaa91d04dca4a900d07a5c2e\nhttps://git.kernel.org/stable/c/2833e13e2b099546abf5d40a483b4eb04ddd1f7b\nhttps://git.kernel.org/stable/c/38a01c9700b0dcafe97dfa9dc7531bf4a245deff\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23307\n",
+  "references": "https://git.kernel.org/stable/c/aed172a2e2330131f0977d2acd3ec8883f413ec1\nhttps://git.kernel.org/stable/c/f10177e6c4575aedaea580ce67d792fab7a2235e\nhttps://git.kernel.org/stable/c/c703bbf8e9b4947e111c88d2ed09236a6772a471\nhttps://git.kernel.org/stable/c/1818974e1b5ef200e27f144c8cb8a246420bb54d\nhttps://git.kernel.org/stable/c/18f75b9cbdc3703f15965425ab69dee509b07785\nhttps://git.kernel.org/stable/c/1cf469026d4a2308eaa91d04dca4a900d07a5c2e\nhttps://git.kernel.org/stable/c/2833e13e2b099546abf5d40a483b4eb04ddd1f7b\nhttps://git.kernel.org/stable/c/38a01c9700b0dcafe97dfa9dc7531bf4a245deff\n",
   "aliases": "CVE-2026-23307\nGHSA-hg9v-crxc-wx3j\n",
   "assigner": "Linux",
-  "epss": 0.03,
+  "epss": 0.04,
   "enisaIdProduct": [
+    {
+      "id": "0c323708-a2bd-3f95-bca8-87881e02ed4b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "11a88a3c-53a3-3f66-850f-897c7ab4452d",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 5.10.253"
+    },
     {
       "id": "16e3954a-e927-3d08-bff0-d86520fbf7c7",
       "product": {
@@ -60,6 +74,13 @@
       "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <2833e13e2b099546abf5d40a483b4eb04ddd1f7b"
     },
     {
+      "id": "4f260844-5575-3bc8-b548-0077ee146943",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <aed172a2e2330131f0977d2acd3ec8883f413ec1"
+    },
+    {
       "id": "5c33d3f6-7d3c-357a-bd63-cd905227acb4",
       "product": {
         "name": "Linux"
@@ -95,11 +116,25 @@
       "product_version": "patch: 6.1.167"
     },
     {
+      "id": "d74a48ab-033d-3042-98b4-f0117d00f344",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <f10177e6c4575aedaea580ce67d792fab7a2235e"
+    },
+    {
       "id": "d9ca7dfc-5b3a-3762-bafd-1abf7510e116",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.19.7"
+    },
+    {
+      "id": "df95db3e-f49d-30d3-9034-523ad3c661a1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
     },
     {
       "id": "f7a1b44b-a9c9-301d-92a1-6f2e70e47a35",

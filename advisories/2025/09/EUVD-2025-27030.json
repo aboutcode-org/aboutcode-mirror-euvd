@@ -1,13 +1,13 @@
 {
   "id": "EUVD-2025-27030",
   "enisaUuid": "58f78454-cc3d-3cc9-8eca-78fd89519fd9",
-  "description": "podman kube play symlink traversal vulnerability",
-  "datePublished": "Sep 4, 2025, 8:01:54 PM",
-  "dateUpdated": "Nov 13, 2025, 12:31:19 PM",
+  "description": "There's a vulnerability in podman where an attacker may use the kube play command to overwrite host files when the kube file container a Secrete or a ConfigMap volume mount and such volume contains a symbolic link to a host file path. In a successful attack, the attacker can only control the target file to be overwritten but not the content to be written into the file.\n\nBinary-Affected: podman\nUpstream-version-introduced: v4.0.0\nUpstream-version-fixed: v5.6.1",
+  "datePublished": "Sep 5, 2025, 7:54:30 PM",
+  "dateUpdated": "Apr 18, 2026, 5:57:25 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2025-9566\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2393152\nhttps://access.redhat.com/errata/RHSA-2025:15901\nhttps://access.redhat.com/errata/RHSA-2025:15900\nhttps://access.redhat.com/errata/RHSA-2025:15904\nhttps://github.com/containers/podman/security/advisories/GHSA-wp3j-xq48-xpjw\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-9566\nhttps://github.com/containers/podman/commit/43fbde4e665fe6cee6921868f04b7ccd3de5ad89\nhttps://access.redhat.com/errata/RHSA-2025:16480\nhttps://access.redhat.com/errata/RHSA-2025:16482\nhttps://access.redhat.com/errata/RHSA-2025:16481\nhttps://access.redhat.com/errata/RHSA-2025:16488\nhttps://access.redhat.com/errata/RHSA-2025:16515\nhttps://access.redhat.com/errata/RHSA-2025:18217\nhttps://access.redhat.com/errata/RHSA-2025:18218\nhttps://access.redhat.com/errata/RHSA-2025:19094\nhttps://access.redhat.com/errata/RHSA-2025:18240\nhttps://access.redhat.com/errata/RHSA-2025:19046\nhttps://access.redhat.com/errata/RHSA-2025:19041\nhttps://access.redhat.com/errata/RHSA-2025:19002\nhttps://access.redhat.com/errata/RHSA-2025:20909\nhttps://access.redhat.com/errata/RHSA-2025:20983\nhttps://access.redhat.com/errata/RHSA-2025:19894\n",
+  "references": "https://access.redhat.com/errata/RHBA-2025:15692\nhttps://access.redhat.com/errata/RHBA-2025:15712\nhttps://access.redhat.com/errata/RHBA-2025:16158\nhttps://access.redhat.com/errata/RHBA-2025:16163\nhttps://access.redhat.com/errata/RHEA-2025:4782\nhttps://access.redhat.com/errata/RHSA-2025:15900\nhttps://access.redhat.com/errata/RHSA-2025:15901\nhttps://access.redhat.com/errata/RHSA-2025:15904\nhttps://access.redhat.com/errata/RHSA-2025:16480\nhttps://access.redhat.com/errata/RHSA-2025:16481\nhttps://access.redhat.com/errata/RHSA-2025:16482\nhttps://access.redhat.com/errata/RHSA-2025:16488\nhttps://access.redhat.com/errata/RHSA-2025:16515\nhttps://access.redhat.com/errata/RHSA-2025:16724\nhttps://access.redhat.com/errata/RHSA-2025:17669\nhttps://access.redhat.com/errata/RHSA-2025:18217\nhttps://access.redhat.com/errata/RHSA-2025:18218\nhttps://access.redhat.com/errata/RHSA-2025:18240\nhttps://access.redhat.com/errata/RHSA-2025:19002\nhttps://access.redhat.com/errata/RHSA-2025:19041\nhttps://access.redhat.com/errata/RHSA-2025:19046\nhttps://access.redhat.com/errata/RHSA-2025:19094\nhttps://access.redhat.com/errata/RHSA-2025:19894\nhttps://access.redhat.com/errata/RHSA-2025:20909\nhttps://access.redhat.com/errata/RHSA-2025:20983\nhttps://access.redhat.com/security/cve/CVE-2025-9566\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2393152\nhttps://github.com/containers/podman/commit/43fbde4e665fe6cee6921868f04b7ccd3de5ad89\nhttps://github.com/containers/podman/security/advisories/GHSA-wp3j-xq48-xpjw\n",
   "aliases": "GHSA-wp3j-xq48-xpjw\nCVE-2025-9566\n",
   "assigner": "redhat",
   "epss": 0.05,
@@ -193,6 +193,13 @@
         "name": "Red Hat OpenShift Container Platform 4.20"
       },
       "product_version": "patch: 0:2.5.0-13.1.el9ocp"
+    },
+    {
+      "id": "0c5ce3e7-c744-3311-8e7a-81ba8ba8ead7",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.20"
+      },
+      "product_version": "patch: 0:4.20.0-202509232257.p2.ge0d4216.assembly.stream.el8"
     },
     {
       "id": "0c8e2429-69c6-3335-a823-872a0332e6f2",
@@ -923,6 +930,13 @@
       "product_version": "patch: 0:23.2-1.el9ocp"
     },
     {
+      "id": "5a2dad2f-431a-3795-a889-cbfe02703436",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18"
+      },
+      "product_version": "patch: 0:4.18.0-202509090932.p2.ga4cad44.assembly.stream.el8"
+    },
+    {
       "id": "5a93cc6f-9899-3afc-9953-3125de0ee2fe",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.20"
@@ -1511,6 +1525,13 @@
       "product_version": "patch: 1:4.5.0-0.20240522162619.f683776.el9ocp"
     },
     {
+      "id": "902a3824-99da-32bc-88aa-e00b0366ee23",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.20"
+      },
+      "product_version": "patch: 0:4.20.0-202509051528.p2.gbb88da1.assembly.stream.el8"
+    },
+    {
       "id": "90ad415a-8543-33a5-9133-fedcdbea7b5b",
       "product": {
         "name": "Red Hat Enterprise Linux 9.4 Extended Update Support"
@@ -1523,6 +1544,13 @@
         "name": "Red Hat OpenShift Container Platform 4.15"
       },
       "product_version": "patch: 0:5.14.0-284.138.1.rt14.423.el9_2"
+    },
+    {
+      "id": "91669e10-93c8-3414-b0c9-231ff87bd2c0",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.20"
+      },
+      "product_version": "patch: 0:4.20.0-202509051528.p2.ga434281.assembly.stream.el8"
     },
     {
       "id": "917384b0-fc38-342a-bf15-dd4ce9ec9e8f",
@@ -1607,6 +1635,13 @@
         "name": "Red Hat OpenShift Container Platform 4.20"
       },
       "product_version": "patch: 0:3.0.1-1.1.el9ocp"
+    },
+    {
+      "id": "9ca9ffc9-d118-30da-9367-50623d2d8d2a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.16"
+      },
+      "product_version": "patch: 4:4.9.4-16.rhaos4.16.el8"
     },
     {
       "id": "9d0ff81b-ba88-397c-aec2-fd255e3b6283",
@@ -2013,6 +2048,20 @@
         "name": "Red Hat OpenShift Container Platform 4.20"
       },
       "product_version": "patch: 0:21.6.0-1.el9ocp"
+    },
+    {
+      "id": "c876b2d9-a88c-3b65-9627-3bb7c902a170",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.20"
+      },
+      "product_version": "patch: 0:4.20.0-202509051528.p2.gf940e72.assembly.stream.el8"
+    },
+    {
+      "id": "c8b2d06b-371f-3e4b-844e-ede3d9cd299f",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.14"
+      },
+      "product_version": "patch: 3:4.4.1-23.rhaos4.14.el8"
     },
     {
       "id": "ca0c7807-72f8-3307-a3a8-8d3e811c60e6",

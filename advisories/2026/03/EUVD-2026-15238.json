@@ -2,10 +2,10 @@
   "id": "EUVD-2026-15238",
   "enisaUuid": "8f9c637d-5398-3fd7-b9c4-7e3ad24ac1f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: annotate data-races around sk->sk_{data_ready,write_space}\n\nskmsg (and probably other layers) are changing these pointers\nwhile other cpus might read them concurrently.\n\nAdd corresponding READ_ONCE()/WRITE_ONCE() annotations\nfor UDP, TCP and AF_UNIX.",
-  "datePublished": "Mar 25, 2026, 12:30:22 PM",
-  "dateUpdated": "Mar 25, 2026, 12:30:22 PM",
+  "datePublished": "Mar 25, 2026, 10:26:57 AM",
+  "dateUpdated": "Apr 18, 2026, 8:57:48 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f17c1c4acbe2bd702abce73a847a04a196fab2c5\nhttps://git.kernel.org/stable/c/27fccdbcbbfc4651b6f66756e6fa3f52e051ec23\nhttps://git.kernel.org/stable/c/2ef2b20cf4e04ac8a6ba68493f8780776ff84300\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-23302\n",
+  "references": "https://git.kernel.org/stable/c/c494448bb522bbbb63096540eb2319101a0480ab\nhttps://git.kernel.org/stable/c/f17c1c4acbe2bd702abce73a847a04a196fab2c5\nhttps://git.kernel.org/stable/c/27fccdbcbbfc4651b6f66756e6fa3f52e051ec23\nhttps://git.kernel.org/stable/c/2ef2b20cf4e04ac8a6ba68493f8780776ff84300\n",
   "aliases": "CVE-2026-23302\n",
   "assigner": "Linux",
   "epss": 0.02,
@@ -39,6 +39,20 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "5936db49-5d4b-3c68-aca4-14e5de2c91a9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 6.12.82"
+    },
+    {
+      "id": "6365f3f0-2301-30b8-95be-0eb0873342bb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 7.0"
+    },
+    {
       "id": "6cdfda10-95c5-3c08-bbbc-2147cb1d693a",
       "product": {
         "name": "Linux"
@@ -58,6 +72,13 @@
         "name": "Linux"
       },
       "product_version": "604326b41a6fb9b4a78b6179335decee0365cd8c <27fccdbcbbfc4651b6f66756e6fa3f52e051ec23"
+    },
+    {
+      "id": "a6a13a0e-564f-3abc-92cd-698ffc299528",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "604326b41a6fb9b4a78b6179335decee0365cd8c <c494448bb522bbbb63096540eb2319101a0480ab"
     },
     {
       "id": "bad2f6b9-c074-326f-be8b-eec247ff0011",
