@@ -3,15 +3,43 @@
   "enisaUuid": "64d14084-b162-3fd0-947c-ec89acd03204",
   "description": "A flaw was identified in the RAR5 archive decompression logic of the libarchive library, specifically within the archive_read_data() processing path. When a specially crafted RAR5 archive is processed, the decompression routine may enter a state where internal logic prevents forward progress. This condition results in an infinite loop that continuously consumes CPU resources. Because the archive passes checksum validation and appears structurally valid, affected applications cannot detect the issue before processing. This can allow attackers to cause persistent denial-of-service conditions in services that automatically process archives.",
   "datePublished": "Mar 13, 2026, 9:31:51 PM",
-  "dateUpdated": "Mar 13, 2026, 9:31:51 PM",
+  "dateUpdated": "Apr 20, 2026, 6:31:26 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-4111\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:5063\nhttps://access.redhat.com/errata/RHSA-2026:5080\nhttps://access.redhat.com/errata/RHSA-2026:6647\nhttps://access.redhat.com/errata/RHSA-2026:7093\nhttps://access.redhat.com/errata/RHSA-2026:7105\nhttps://access.redhat.com/errata/RHSA-2026:7106\nhttps://access.redhat.com/errata/RHSA-2026:7239\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7335\nhttps://access.redhat.com/errata/RHSA-2026:8746\nhttps://access.redhat.com/errata/RHSA-2026:8747\nhttps://access.redhat.com/errata/RHSA-2026:8748\nhttps://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-4111\nhttps://access.redhat.com/errata/RHSA-2026:8865\n",
   "aliases": "CVE-2026-4111\n",
   "assigner": "redhat",
-  "epss": 0.02,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "0bf6f597-d8a6-3330-99e2-0a1b69ecf998",
+      "product": {
+        "name": "Red Hat Discovery 2"
+      },
+      "product_version": "patch: sha256:040dadd657afdb9f0914f896a4962fd3dbf40b70c8037e4d72b6801b766c9b7d"
+    },
+    {
+      "id": "185c1528-92c0-30df-832d-a6e3e5510749",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3"
+      },
+      "product_version": "patch: sha256:be6d568f28044533e4ad80f0856407c359e2eaf31a6b89cada433e6575d2300e"
+    },
+    {
+      "id": "2a2b8200-a784-3403-aeca-50ed8ca423a8",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3"
+      },
+      "product_version": "patch: sha256:0ec114881d9dcd28a5dbbb2ec0ea1301ad87d5ae133121ce8167ef29d19802cc"
+    },
+    {
+      "id": "2b76eb5a-3691-34c5-a2a9-ed8db4d5c4e5",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.13"
+      },
+      "product_version": "patch: 413.92.202604080111-0"
+    },
     {
       "id": "3facfc15-d651-3756-bbf8-fb8d8b8a18c5",
       "product": {
@@ -25,6 +53,55 @@
         "name": "Red Hat Enterprise Linux 10"
       },
       "product_version": "patch: 0:3.7.7-5.el10_1"
+    },
+    {
+      "id": "4c6d54c9-aa96-35c2-b9da-633f1dae372f",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support"
+      },
+      "product_version": "patch: 0:3.5.3-6.el9_6.1"
+    },
+    {
+      "id": "57a7dfed-45e5-362b-be45-8c9c21de6d92",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 0:3.5.3-5.el9_2.1"
+    },
+    {
+      "id": "9606ba53-506f-3ebb-af4a-948b59802100",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Extended Update Support"
+      },
+      "product_version": "patch: 0:3.5.3-4.el9_4.2"
+    },
+    {
+      "id": "b68bc367-fd7f-39e7-a241-6a54815bc2cc",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3"
+      },
+      "product_version": "patch: sha256:813ba7ccd1696b44deb90d9e6cd8af114bdb47781eae7f27246a81fba062a892"
+    },
+    {
+      "id": "e2ccd141-b1c3-343d-9bf0-124d46adffbf",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+      },
+      "product_version": "patch: 0:3.5.3-2.el9_0.3"
+    },
+    {
+      "id": "f2bbe426-8e7d-39e0-a95d-0a57a340cd82",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2"
+      },
+      "product_version": "patch: sha256:54616c9f3e4d27120504b0b2020432ef3ff85286a50de7be842f05df0cfcd69e"
+    },
+    {
+      "id": "fe0340f1-ae0e-3e35-9f55-8d917e1f16ca",
+      "product": {
+        "name": "Red Hat Discovery 2"
+      },
+      "product_version": "patch: sha256:062310de4b34e278f8c7e4634def673a77d1228d493541ef1264ba4cb83b68eb"
     }
   ],
   "enisaIdVendor": [
