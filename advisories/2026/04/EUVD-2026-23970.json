@@ -1,17 +1,24 @@
 {
   "id": "EUVD-2026-23970",
   "enisaUuid": "e9274573-2c80-3932-8812-4d1abdcbd93f",
-  "description": "LMDeploy is a toolkit for compressing, deploying, and serving large language models. Versions prior to 0.12.3 have a Server-Side Request Forgery (SSRF) vulnerability in LMDeploy's vision-language module. The `load_image()` function in `lmdeploy/vl/utils.py` fetches arbitrary URLs without validating internal/private IP addresses, allowing attackers to access cloud metadata services, internal networks, and sensitive resources. Version 0.12.3 patches the issue.",
-  "datePublished": "Apr 20, 2026, 8:29:19 PM",
-  "dateUpdated": "Apr 20, 2026, 8:29:19 PM",
+  "description": "LMDeploy has Server-Side Request Forgery (SSRF) via Vision-Language Image Loading",
+  "datePublished": "Apr 21, 2026, 3:04:13 PM",
+  "dateUpdated": "Apr 21, 2026, 3:04:13 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://github.com/InternLM/lmdeploy/security/advisories/GHSA-6w67-hwm5-92mq\nhttps://github.com/InternLM/lmdeploy/pull/4447\nhttps://github.com/InternLM/lmdeploy/commit/71d64a339edb901e9005358e0633fbbab367d626\nhttps://github.com/InternLM/lmdeploy/releases/tag/v0.12.3\n",
+  "references": "https://github.com/InternLM/lmdeploy/security/advisories/GHSA-6w67-hwm5-92mq\nhttps://github.com/InternLM/lmdeploy/pull/4447\nhttps://github.com/InternLM/lmdeploy/commit/71d64a339edb901e9005358e0633fbbab367d626\nhttps://github.com/InternLM/lmdeploy/releases/tag/v0.12.3\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-33626\n",
   "aliases": "CVE-2026-33626\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.03,
   "enisaIdProduct": [
+    {
+      "id": "26c71137-f564-3234-a7e9-6529ad58b00b",
+      "product": {
+        "name": "LMDeploy"
+      },
+      "product_version": "< 0.12.3"
+    },
     {
       "id": "79ee4f06-3203-38b8-9b43-610ae611d6a3",
       "product": {
