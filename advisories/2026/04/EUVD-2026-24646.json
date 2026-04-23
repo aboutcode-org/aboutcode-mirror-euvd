@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-24646",
+  "enisaUuid": "63c6191b-a6be-3c8f-b047-d6af9fd405bb",
+  "description": "The Slider Bootstrap Carousel plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'category' and 'template' shortcode attributes in all versions up to and including 1.0.7. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes. The plugin uses extract() on shortcode_atts() to parse attributes, then directly outputs the $category variable into multiple HTML attributes (id, data-target, href) on lines 38, 47, 109, and 113 without applying esc_attr(). Similarly, the $template attribute flows into a class attribute on line 93 without escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "datePublished": "Apr 22, 2026, 9:31:32 AM",
+  "dateUpdated": "Apr 22, 2026, 9:31:32 AM",
+  "baseScore": 6.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/26fe0b7b-dbf8-467f-b5e2-86a858eeaf89?source=cve\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L38\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L38\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L7\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L7\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L47\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L47\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L93\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L93\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L109\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L109\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/trunk/includes/sbc-shortcode.php#L113\nhttps://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L113\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-4076\n",
+  "aliases": "GHSA-wpp9-gmq8-vmx8\nCVE-2026-4076\n",
+  "assigner": "Wordfence",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "dca5cb3f-ba57-30ea-ab1e-fa12e27ebab2",
+      "product": {
+        "name": "Slider Bootstrap Carousel"
+      },
+      "product_version": "0 \u22641.0.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ef156f88-2b83-3768-91f0-d2b784b9a7e6",
+      "vendor": {
+        "name": "felipermendes"
+      }
+    }
+  ]
+}
