@@ -1,0 +1,31 @@
+{
+  "id": "EUVD-2026-25144",
+  "enisaUuid": "8464658a-e465-3413-86be-0f1a2b34545a",
+  "description": "Rclone is a command-line program to sync files and directories to and from different cloud storage providers. Starting in version 1.48.0 and prior to version 1.73.5, the RC endpoint `operations/fsinfo` is exposed without `AuthRequired: true` and accepts attacker-controlled `fs` input. Because `rc.GetFs(...)` supports inline backend definitions, an unauthenticated attacker can instantiate an attacker-controlled backend on demand. For the WebDAV backend, `bearer_token_command` is executed during backend initialization, making single-request unauthenticated local command execution possible on reachable RC deployments without global HTTP authentication. Version 1.73.5 patches the issue.",
+  "datePublished": "Apr 23, 2026, 12:03:36 AM",
+  "dateUpdated": "Apr 25, 2026, 3:55:41 AM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/rclone/rclone/security/advisories/GHSA-jfwf-28xr-xw6q\nhttps://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/backend/webdav/webdav.go\nhttps://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/operations/rc.go\nhttps://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/fs/rc/cache.go\n",
+  "aliases": "GHSA-jfwf-28xr-xw6q\nCVE-2026-41179\n",
+  "assigner": "GitHub_M",
+  "epss": 5.98,
+  "enisaIdProduct": [
+    {
+      "id": "3cb69557-3ec2-3b08-bbc2-02feac8f8d11",
+      "product": {
+        "name": "rclone"
+      },
+      "product_version": "1.48.0, < 1.73.5"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cc09aa2f-a512-3e20-b98e-11aace85b4fc",
+      "vendor": {
+        "name": "rclone"
+      }
+    }
+  ]
+}

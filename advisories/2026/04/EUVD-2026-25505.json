@@ -2,14 +2,35 @@
   "id": "EUVD-2026-25505",
   "enisaUuid": "54eee818-57bc-3f81-a9c7-ec5dca213f8c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate EaNameLength in smb2_get_ea()\n\nsmb2_get_ea() reads ea_req->EaNameLength from the client request and\npasses it directly to strncmp() as the comparison length without\nverifying that the length of the name really is the size of the input\nbuffer received.\n\nFix this up by properly checking the size of the name based on the value\nreceived and the overall size of the request, to prevent a later\nstrncmp() call to use the length as a \"trusted\" size of the buffer.\nWithout this check, uninitialized heap values might be slowly leaked to\nthe client.",
-  "datePublished": "Apr 24, 2026, 3:32:35 PM",
-  "dateUpdated": "Apr 24, 2026, 3:32:35 PM",
+  "datePublished": "Apr 24, 2026, 2:42:32 PM",
+  "dateUpdated": "Apr 25, 2026, 5:48:19 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/551dfb15b182abad4600eaf7b37e6eb7000d5b1b\nhttps://git.kernel.org/stable/c/3363a770b193f555f29d76ddf4ced3305c0ccf6d\nhttps://git.kernel.org/stable/c/243b206bcb5a7137e8bddd57b2eec81e1ebd3859\nhttps://git.kernel.org/stable/c/dfc6878d14acafffbe670bf2576620757a10a3d8\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31612\n",
+  "references": "https://git.kernel.org/stable/c/551dfb15b182abad4600eaf7b37e6eb7000d5b1b\nhttps://git.kernel.org/stable/c/3363a770b193f555f29d76ddf4ced3305c0ccf6d\nhttps://git.kernel.org/stable/c/243b206bcb5a7137e8bddd57b2eec81e1ebd3859\nhttps://git.kernel.org/stable/c/dfc6878d14acafffbe670bf2576620757a10a3d8\n",
   "aliases": "CVE-2026-31612\nGHSA-mgh3-34fv-3j84\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "1144c681-aada-3051-a9ff-365888170b53",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "2c5411a4-9f85-3d37-a3b3-e0b5ba205659",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <551dfb15b182abad4600eaf7b37e6eb7000d5b1b"
+    },
+    {
+      "id": "33b78538-071a-34ea-8f40-6c99d17f87b6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.15"
+    },
     {
       "id": "422e4123-1381-30cb-833e-e38ffe982a00",
       "product": {
@@ -39,6 +60,13 @@
       "product_version": "patch: 6.19.14"
     },
     {
+      "id": "6e0b1d78-eb4d-3533-9b64-69fe202fbef6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <dfc6878d14acafffbe670bf2576620757a10a3d8"
+    },
+    {
       "id": "6e3b9cea-66e7-303d-9886-404edf5e053c",
       "product": {
         "name": "Linux"
@@ -51,6 +79,20 @@
         "name": "Linux"
       },
       "product_version": "patch: 6.12.83"
+    },
+    {
+      "id": "aeea5c6e-f326-361a-b482-c7a54b6fa4be",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <3363a770b193f555f29d76ddf4ced3305c0ccf6d"
+    },
+    {
+      "id": "cd8cadd0-82f9-36c1-af7b-f009ac3aceb7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <243b206bcb5a7137e8bddd57b2eec81e1ebd3859"
     },
     {
       "id": "cdb65fb7-529d-3a40-a1e4-73ee8efcfad8",

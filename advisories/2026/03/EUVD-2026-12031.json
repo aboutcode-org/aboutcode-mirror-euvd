@@ -2,15 +2,15 @@
   "id": "EUVD-2026-12031",
   "enisaUuid": "64d14084-b162-3fd0-947c-ec89acd03204",
   "description": "A flaw was identified in the RAR5 archive decompression logic of the libarchive library, specifically within the archive_read_data() processing path. When a specially crafted RAR5 archive is processed, the decompression routine may enter a state where internal logic prevents forward progress. This condition results in an infinite loop that continuously consumes CPU resources. Because the archive passes checksum validation and appears structurally valid, affected applications cannot detect the issue before processing. This can allow attackers to cause persistent denial-of-service conditions in services that automatically process archives.",
-  "datePublished": "Mar 13, 2026, 9:31:51 PM",
-  "dateUpdated": "Apr 20, 2026, 6:31:26 AM",
+  "datePublished": "Mar 13, 2026, 11:45:20 AM",
+  "dateUpdated": "Apr 25, 2026, 4:20:44 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:5063\nhttps://access.redhat.com/errata/RHSA-2026:5080\nhttps://access.redhat.com/errata/RHSA-2026:6647\nhttps://access.redhat.com/errata/RHSA-2026:7093\nhttps://access.redhat.com/errata/RHSA-2026:7105\nhttps://access.redhat.com/errata/RHSA-2026:7106\nhttps://access.redhat.com/errata/RHSA-2026:7239\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7335\nhttps://access.redhat.com/errata/RHSA-2026:8746\nhttps://access.redhat.com/errata/RHSA-2026:8747\nhttps://access.redhat.com/errata/RHSA-2026:8748\nhttps://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-4111\nhttps://access.redhat.com/errata/RHSA-2026:8865\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:10065\nhttps://access.redhat.com/errata/RHSA-2026:5063\nhttps://access.redhat.com/errata/RHSA-2026:5080\nhttps://access.redhat.com/errata/RHSA-2026:6647\nhttps://access.redhat.com/errata/RHSA-2026:7093\nhttps://access.redhat.com/errata/RHSA-2026:7105\nhttps://access.redhat.com/errata/RHSA-2026:7106\nhttps://access.redhat.com/errata/RHSA-2026:7239\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7335\nhttps://access.redhat.com/errata/RHSA-2026:8423\nhttps://access.redhat.com/errata/RHSA-2026:8746\nhttps://access.redhat.com/errata/RHSA-2026:8747\nhttps://access.redhat.com/errata/RHSA-2026:8748\nhttps://access.redhat.com/errata/RHSA-2026:8865\nhttps://access.redhat.com/errata/RHSA-2026:8944\nhttps://access.redhat.com/errata/RHSA-2026:9832\nhttps://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\n",
   "aliases": "CVE-2026-4111\n",
   "assigner": "redhat",
-  "epss": 0.03,
+  "epss": 0.04,
   "enisaIdProduct": [
     {
       "id": "0bf6f597-d8a6-3330-99e2-0a1b69ecf998",
@@ -18,6 +18,13 @@
         "name": "Red Hat Discovery 2"
       },
       "product_version": "patch: sha256:040dadd657afdb9f0914f896a4962fd3dbf40b70c8037e4d72b6801b766c9b7d"
+    },
+    {
+      "id": "10b50ff1-7df7-3ca6-9530-f3cf69fe3fbc",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10.0 Extended Update Support"
+      },
+      "product_version": "patch: 0:3.7.7-5.el10_0"
     },
     {
       "id": "185c1528-92c0-30df-832d-a6e3e5510749",
@@ -39,6 +46,13 @@
         "name": "Red Hat OpenShift Container Platform 4.13"
       },
       "product_version": "patch: 413.92.202604080111-0"
+    },
+    {
+      "id": "3f539bf8-b6f9-3cea-8065-aa9db4347afe",
+      "product": {
+        "name": "Red Hat Hardened Images"
+      },
+      "product_version": "patch: 3.8.7-1.hum1"
     },
     {
       "id": "3facfc15-d651-3756-bbf8-fb8d8b8a18c5",
@@ -69,6 +83,13 @@
       "product_version": "patch: 0:3.5.3-5.el9_2.1"
     },
     {
+      "id": "7888ea9f-5db8-3f93-82c7-b0168cce902c",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:8e13332d210961a93746eb0bd3761fa220dc710aada98b121320184aef2e5709"
+    },
+    {
       "id": "9606ba53-506f-3ebb-af4a-948b59802100",
       "product": {
         "name": "Red Hat Enterprise Linux 9.4 Extended Update Support"
@@ -76,11 +97,39 @@
       "product_version": "patch: 0:3.5.3-4.el9_4.2"
     },
     {
+      "id": "993afbfc-a36e-33b1-b061-1b24b52f4f99",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18"
+      },
+      "product_version": "patch: 418.94.202604140044-0"
+    },
+    {
+      "id": "a54fad51-8b16-3956-9c4b-0abc4b44a6a4",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:8ac1507077086484155f94d2289df0f1d22bfe8f5f15589d6b354f11fe21d930"
+    },
+    {
+      "id": "aaba193b-0824-379f-9894-b624bf331f8d",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:7eae5b16539484129c6ce169b41a3e1da7d7dd1296d2677acf7e9c3d1bce00ed"
+    },
+    {
       "id": "b68bc367-fd7f-39e7-a241-6a54815bc2cc",
       "product": {
         "name": "Red Hat AI Inference Server 3.3"
       },
       "product_version": "patch: sha256:813ba7ccd1696b44deb90d9e6cd8af114bdb47781eae7f27246a81fba062a892"
+    },
+    {
+      "id": "be37f5fe-edb9-34e6-bec3-f4947a635154",
+      "product": {
+        "name": "Red Hat Insights proxy 1.5"
+      },
+      "product_version": "patch: sha256:16b5fab54718cedc94d43f2bd55bd14a469cfbfbbbd0fe634ed81783196d2f42"
     },
     {
       "id": "e2ccd141-b1c3-343d-9bf0-124d46adffbf",
@@ -95,6 +144,13 @@
         "name": "Red Hat AI Inference Server 3.2"
       },
       "product_version": "patch: sha256:54616c9f3e4d27120504b0b2020432ef3ff85286a50de7be842f05df0cfcd69e"
+    },
+    {
+      "id": "f497e7df-3ee7-38f0-9f73-b66783d77bfe",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5"
+      },
+      "product_version": "patch: sha256:8fbf461b33717d3463e4f802b1a257b7e43d60c3e9568f710df83db36a04a4fe"
     },
     {
       "id": "fe0340f1-ae0e-3e35-9f55-8d917e1f16ca",

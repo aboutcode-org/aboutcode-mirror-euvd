@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-25267",
   "enisaUuid": "638d7a94-22b5-3a8c-82ed-c503b2da0edd",
-  "description": "Argo Workflows: Unchecked annotation parsing in pod informer crashes Argo Workflows Controller",
-  "datePublished": "Apr 23, 2026, 9:39:21 PM",
-  "dateUpdated": "Apr 23, 2026, 9:39:21 PM",
+  "description": "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. From 3.6.5 to 4.0.4, an unchecked array index in the pod informer's podGCFromPod() function causes a controller-wide panic when a workflow pod carries a malformed workflows.argoproj.io/pod-gc-strategy annotation. Because the panic occurs inside an informer goroutine (outside the controller's recover() scope), it crashes the entire controller process. The poisoned pod persists across restarts, causing a crash loop that halts all workflow processing until the pod is manually deleted. This vulnerability is fixed in 4.0.5 and 3.7.14.",
+  "datePublished": "Apr 23, 2026, 6:12:05 PM",
+  "dateUpdated": "Apr 25, 2026, 1:22:45 AM",
   "baseScore": 7.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H",
-  "references": "https://github.com/argoproj/argo-workflows/security/advisories/GHSA-5jv8-h7qh-rf5p\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-40886\n",
+  "references": "https://github.com/argoproj/argo-workflows/security/advisories/GHSA-5jv8-h7qh-rf5p\n",
   "aliases": "CVE-2026-40886\nGHSA-5jv8-h7qh-rf5p\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.04,
   "enisaIdProduct": [
     {
       "id": "770dc296-3e26-3712-8bc8-a9ce78cb0797",

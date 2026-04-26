@@ -2,16 +2,24 @@
   "id": "EUVD-2026-16336",
   "enisaUuid": "4c507695-4179-37bb-ad11-490667be0af6",
   "description": "A flaw was found in p11-kit. A remote attacker could exploit this vulnerability by calling the C_DeriveKey function on a remote token with specific IBM kyber or IBM btc derive mechanism parameters set to NULL. This could lead to the RPC-client attempting to return an uninitialized value, potentially resulting in a NULL dereference or undefined behavior. This issue may cause an application level denial of service or other unpredictable system states.",
-  "datePublished": "Mar 26, 2026, 9:31:27 PM",
-  "dateUpdated": "Mar 26, 2026, 9:31:27 PM",
+  "datePublished": "Mar 26, 2026, 8:01:46 PM",
+  "dateUpdated": "Apr 25, 2026, 1:11:02 AM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-2100\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2437308\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-2100\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:7065\nhttps://access.redhat.com/security/cve/CVE-2026-2100\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2437308\nhttps://github.com/p11-glue/p11-kit/pull/740\n",
   "aliases": "GHSA-hq85-3f6c-jx84\nCVE-2026-2100\n",
   "assigner": "redhat",
-  "epss": 0.1,
-  "enisaIdProduct": [],
+  "epss": 0.16,
+  "enisaIdProduct": [
+    {
+      "id": "c9741899-66ba-3c63-9c76-c840a4adf46e",
+      "product": {
+        "name": "Red Hat Hardened Images"
+      },
+      "product_version": "patch: 0.26.2-1.1.hum1"
+    }
+  ],
   "enisaIdVendor": [
     {
       "id": "7815dc50-826d-3e8c-9753-2c435993bd10",

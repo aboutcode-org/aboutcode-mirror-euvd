@@ -2,14 +2,21 @@
   "id": "EUVD-2026-25509",
   "enisaUuid": "78c8bf3a-5a33-3c9b-8421-33c4d992120b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_phonet: fix skb frags[] overflow in pn_rx_complete()\n\nA broken/bored/mean USB host can overflow the skb_shared_info->frags[]\narray on a Linux gadget exposing a Phonet function by sending an\nunbounded sequence of full-page OUT transfers.\n\npn_rx_complete() finalizes the skb only when req->actual < req->length,\nwhere req->length is set to PAGE_SIZE by the gadget.  If the host always\nsends exactly PAGE_SIZE bytes per transfer, fp->rx.skb will never be\nreset and each completion will add another fragment via\nskb_add_rx_frag().  Once nr_frags exceeds MAX_SKB_FRAGS (default 17),\nsubsequent frag stores overwrite memory adjacent to the shinfo on the\nheap.\n\nDrop the skb and account a length error when the frag limit is reached,\nmatching the fix applied in t7xx by commit f0813bcd2d9d (\"net: wwan:\nt7xx: fix potential skb->frags overflow in RX path\").",
-  "datePublished": "Apr 24, 2026, 3:32:35 PM",
-  "dateUpdated": "Apr 24, 2026, 3:32:35 PM",
+  "datePublished": "Apr 24, 2026, 2:42:35 PM",
+  "dateUpdated": "Apr 25, 2026, 5:48:23 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c9315ce9da3632c591666a29de82d3e92d46bec1\nhttps://git.kernel.org/stable/c/4e476c25bfcab0535ba7c76a903ae77ca8747711\nhttps://git.kernel.org/stable/c/bd44ce09b9b569f49ed13e2d87d23d853fc7d6a7\nhttps://git.kernel.org/stable/c/66f7471c4042e4eb300e30b5b9d87d1406862673\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31616\n",
+  "references": "https://git.kernel.org/stable/c/c9315ce9da3632c591666a29de82d3e92d46bec1\nhttps://git.kernel.org/stable/c/4e476c25bfcab0535ba7c76a903ae77ca8747711\nhttps://git.kernel.org/stable/c/bd44ce09b9b569f49ed13e2d87d23d853fc7d6a7\nhttps://git.kernel.org/stable/c/66f7471c4042e4eb300e30b5b9d87d1406862673\n",
   "aliases": "GHSA-h96r-xqwg-w67w\nCVE-2026-31616\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "0371db34-822f-3a0f-b0d5-080e014b7f5c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b91cd1440870f7a0649e570498b7b93caf9f781c <bd44ce09b9b569f49ed13e2d87d23d853fc7d6a7"
+    },
     {
       "id": "06787958-2666-36a4-a93b-292eec37b0a8",
       "product": {
@@ -25,11 +32,32 @@
       "product_version": "patch: 7.0.1"
     },
     {
+      "id": "305b64a9-f0e1-3deb-978e-37e4329094d0",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b91cd1440870f7a0649e570498b7b93caf9f781c <4e476c25bfcab0535ba7c76a903ae77ca8747711"
+    },
+    {
       "id": "3cde304c-dd78-3e31-af1f-81a7f30f75d0",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.12.83"
+    },
+    {
+      "id": "5acc3e7f-d396-32bf-a39a-44d496069e25",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b91cd1440870f7a0649e570498b7b93caf9f781c <c9315ce9da3632c591666a29de82d3e92d46bec1"
+    },
+    {
+      "id": "81499d95-aed5-3341-8c50-57ae7bf0b671",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "b91cd1440870f7a0649e570498b7b93caf9f781c <66f7471c4042e4eb300e30b5b9d87d1406862673"
     },
     {
       "id": "86d97c70-7b51-3ac2-8baf-c267562ee802",
@@ -39,11 +67,25 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c9315ce9da3632c591666a29de82d3e92d46bec1"
     },
     {
+      "id": "897096c3-70b3-3c6a-85f8-230e06e9d232",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.32"
+    },
+    {
       "id": "8a81752d-9116-32b3-b1df-c402f3120d33",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.19.14"
+    },
+    {
+      "id": "8b620f83-8a29-3ff6-baf8-f23fc8345a8b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "8d7f3cc3-0f75-39ab-a41e-79781a2ecdbc",

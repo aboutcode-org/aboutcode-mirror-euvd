@@ -2,13 +2,13 @@
   "id": "EUVD-2026-25507",
   "enisaUuid": "e8ad0ced-a12e-36fc-a4c5-98c799db0d47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix off-by-8 bounds check in check_wsl_eas()\n\nThe bounds check uses (u8 *)ea + nlen + 1 + vlen as the end of the EA\nname and value, but ea_data sits at offset sizeof(struct\nsmb2_file_full_ea_info) = 8 from ea, not at offset 0.  The strncmp()\nlater reads ea->ea_data[0..nlen-1] and the value bytes follow at\nea_data[nlen+1..nlen+vlen], so the actual end is ea->ea_data + nlen + 1\n+ vlen.  Isn't pointer math fun?\n\nThe earlier check (u8 *)ea > end - sizeof(*ea) only guarantees the\n8-byte header is in bounds, but since the last EA is placed within 8\nbytes of the end of the response, the name and value bytes are read past\nthe end of iov.\n\nFix this mess all up by using ea->ea_data as the base for the bounds\ncheck.\n\nAn \"untrusted\" server can use this to leak up to 8 bytes of kernel heap\ninto the EA name comparison and influence which WSL xattr the data is\ninterpreted as.",
-  "datePublished": "Apr 24, 2026, 3:32:35 PM",
-  "dateUpdated": "Apr 24, 2026, 3:32:35 PM",
+  "datePublished": "Apr 24, 2026, 2:42:34 PM",
+  "dateUpdated": "Apr 25, 2026, 5:48:21 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5cc0574c84aa73946ade587c41e81757b8b01cb5\nhttps://git.kernel.org/stable/c/b2b76d09a64c538c57006180103fc1841e8cfa66\nhttps://git.kernel.org/stable/c/ba3ad159aa61810bbe0acaf39578b1ebfb6f1a18\nhttps://git.kernel.org/stable/c/a893f1757d9a4009e4a8d7ceb2312142fe29cea4\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31614\n",
+  "references": "https://git.kernel.org/stable/c/5cc0574c84aa73946ade587c41e81757b8b01cb5\nhttps://git.kernel.org/stable/c/b2b76d09a64c538c57006180103fc1841e8cfa66\nhttps://git.kernel.org/stable/c/ba3ad159aa61810bbe0acaf39578b1ebfb6f1a18\nhttps://git.kernel.org/stable/c/a893f1757d9a4009e4a8d7ceb2312142fe29cea4\n",
   "aliases": "GHSA-p37w-xhv5-6c8j\nCVE-2026-31614\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "03d3ed62-31c4-3f10-b277-9c15d427b36b",
@@ -32,6 +32,20 @@
       "product_version": "patch: 6.18.24"
     },
     {
+      "id": "28cacd91-3bcf-35a8-9ee9-04167dab5936",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ea41367b2a602f602ea6594fc4a310520dcc64f4 <ba3ad159aa61810bbe0acaf39578b1ebfb6f1a18"
+    },
+    {
+      "id": "3748cb34-cd82-3d70-a737-8a20c7ae93ea",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ea41367b2a602f602ea6594fc4a310520dcc64f4 <a893f1757d9a4009e4a8d7ceb2312142fe29cea4"
+    },
+    {
       "id": "388aae18-ac4b-33c8-a636-92e1e9b1f1c4",
       "product": {
         "name": "Linux"
@@ -53,6 +67,27 @@
       "product_version": "patch: 7.0.1"
     },
     {
+      "id": "a5167c4e-9849-3362-a38b-5b143669e709",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "7449d736bbbd160c76b01b8fcdf72f58a8757d4b"
+    },
+    {
+      "id": "ab59031b-6f31-3aa4-b99c-9019824c4e40",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ea41367b2a602f602ea6594fc4a310520dcc64f4 <5cc0574c84aa73946ade587c41e81757b8b01cb5"
+    },
+    {
+      "id": "b63e2776-cc5d-3c04-b505-7d7bd34a5abe",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
       "id": "c04b9a67-982a-3538-9e53-9e796eefd477",
       "product": {
         "name": "Linux"
@@ -60,11 +95,25 @@
       "product_version": "patch: 6.19.14"
     },
     {
+      "id": "ce26d833-b607-3317-824f-4267ac6db60c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "ea41367b2a602f602ea6594fc4a310520dcc64f4 <b2b76d09a64c538c57006180103fc1841e8cfa66"
+    },
+    {
       "id": "f62577f7-7923-3fcf-b566-4304a239c196",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.12.83"
+    },
+    {
+      "id": "f663d5cb-fb48-3cef-bd29-c849135906af",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
     }
   ],
   "enisaIdVendor": [

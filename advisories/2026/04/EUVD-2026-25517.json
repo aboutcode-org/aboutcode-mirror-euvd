@@ -2,14 +2,21 @@
   "id": "EUVD-2026-25517",
   "enisaUuid": "6787d149-ed96-3565-9e63-d1a2070d7328",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: core: clamp report_size in s32ton() to avoid undefined shift\n\ns32ton() shifts by n-1 where n is the field's report_size, a value that\ncomes directly from a HID device.  The HID parser bounds report_size\nonly to <= 256, so a broken HID device can supply a report descriptor\nwith a wide field that triggers shift exponents up to 256 on a 32-bit\ntype when an output report is built via hid_output_field() or\nhid_set_field().\n\nCommit ec61b41918587 (\"HID: core: fix shift-out-of-bounds in\nhid_report_raw_event\") added the same n > 32 clamp to the function\nsnto32(), but s32ton() was never given the same fix as I guess syzbot\nhadn't figured out how to fuzz a device the same way.\n\nFix this up by just clamping the max value of n, just like snto32()\ndoes.",
-  "datePublished": "Apr 24, 2026, 3:32:35 PM",
-  "dateUpdated": "Apr 24, 2026, 3:32:35 PM",
+  "datePublished": "Apr 24, 2026, 2:42:41 PM",
+  "dateUpdated": "Apr 25, 2026, 5:48:25 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/58386f00af710922cafb0fb69211497beddfaa95\nhttps://git.kernel.org/stable/c/8a8333237f1f5caab8d4c3d2c2e7578c4263a97f\nhttps://git.kernel.org/stable/c/ea363a34086ddb4231adc581a7f36c39ec154bfc\nhttps://git.kernel.org/stable/c/97014719bb8fccb1ffcbbc299e84b1f11b114195\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-31624\n",
+  "references": "https://git.kernel.org/stable/c/58386f00af710922cafb0fb69211497beddfaa95\nhttps://git.kernel.org/stable/c/8a8333237f1f5caab8d4c3d2c2e7578c4263a97f\nhttps://git.kernel.org/stable/c/ea363a34086ddb4231adc581a7f36c39ec154bfc\nhttps://git.kernel.org/stable/c/97014719bb8fccb1ffcbbc299e84b1f11b114195\n",
   "aliases": "CVE-2026-31624\nGHSA-7r46-pv4v-9gxj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "02956d95-000f-3597-973c-5cdd4c92fc6c",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dde5845a529ff753364a6d1aea61180946270bfa <8a8333237f1f5caab8d4c3d2c2e7578c4263a97f"
+    },
     {
       "id": "14e18b54-6975-3144-b084-0a13469e65b3",
       "product": {
@@ -18,11 +25,32 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <58386f00af710922cafb0fb69211497beddfaa95"
     },
     {
+      "id": "159111e6-c024-3f41-970e-7b10028a77b4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dde5845a529ff753364a6d1aea61180946270bfa <58386f00af710922cafb0fb69211497beddfaa95"
+    },
+    {
       "id": "1d155153-44e1-30cf-905c-df4f1381a965",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.12.83"
+    },
+    {
+      "id": "1ddc84f1-af29-3438-8c4d-50f30063c32b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "42106490-e73b-3c67-a653-0e87612ec0c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dde5845a529ff753364a6d1aea61180946270bfa <97014719bb8fccb1ffcbbc299e84b1f11b114195"
     },
     {
       "id": "6f015875-8880-3ee4-bb01-aa81ee3925e1",
@@ -51,6 +79,20 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8a8333237f1f5caab8d4c3d2c2e7578c4263a97f"
+    },
+    {
+      "id": "a04da602-13f3-3d4f-9d7d-53ae873a0e14",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "dde5845a529ff753364a6d1aea61180946270bfa <ea363a34086ddb4231adc581a7f36c39ec154bfc"
+    },
+    {
+      "id": "cecf646c-795e-343f-8c97-2f0740e3f100",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "2.6.20"
     },
     {
       "id": "f83f4457-c3a2-3722-85d8-0f7cab927fef",
