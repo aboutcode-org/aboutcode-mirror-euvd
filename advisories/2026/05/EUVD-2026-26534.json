@@ -3,12 +3,12 @@
   "enisaUuid": "59b62dea-4089-3b03-91c2-3623515e564a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_hid: move list and spinlock inits from bind to alloc\n\nThere was an issue when you did the following:\n- setup and bind an hid gadget\n- open /dev/hidg0\n- use the resulting fd in EPOLL_CTL_ADD\n- unbind the UDC\n- bind the UDC\n- use the fd in EPOLL_CTL_DEL\n\nWhen CONFIG_DEBUG_LIST was enabled, a list_del corruption was reported\nwithin remove_wait_queue (via ep_remove_wait_queue). After some\ndebugging I found out that the queues, which f_hid registers via\npoll_wait were the problem. These were initialized using\ninit_waitqueue_head inside hidg_bind. So effectively, the bind function\nre-initialized the queues while there were still items in them.\n\nThe solution is to move the initialization from hidg_bind to hidg_alloc\nto extend their lifetimes to the lifetime of the function instance.\n\nAdditionally, I found many other possibly problematic init calls in the\nbind function, which I moved as well.",
   "datePublished": "May 1, 2026, 2:14:23 PM",
-  "dateUpdated": "May 1, 2026, 2:14:23 PM",
+  "dateUpdated": "May 2, 2026, 6:14:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/13440c0db227c5db01da751ed966dde4cdd2ea18\nhttps://git.kernel.org/stable/c/de93e0862169b5539e00c2b9980b93fd80c37c0d\nhttps://git.kernel.org/stable/c/81aee4500055876883658b024b6fb61801afe134\nhttps://git.kernel.org/stable/c/8ec6a58586f195a88479edcdb0b8027c39f12d03\nhttps://git.kernel.org/stable/c/f7d00ee1c8082c8a134340aaf16d71a27e29c362\nhttps://git.kernel.org/stable/c/5d1bb391ceeebb28327703dd07af8c6324af298f\nhttps://git.kernel.org/stable/c/26a879a41ed960b3fb4ec773ef2788c515c0e488\nhttps://git.kernel.org/stable/c/4e0a88254ad59f6c53a34bf5fa241884ec09e8b2\n",
   "aliases": "CVE-2026-31721\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "05da86a7-abcc-3274-b19f-23d774660dc5",
@@ -23,6 +23,13 @@
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <26a879a41ed960b3fb4ec773ef2788c515c0e488"
+    },
+    {
+      "id": "17f7f6a6-d919-37a5-b33d-7467907571f4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "35b1bca9-a6b1-3f5a-b7b8-ae3042649053",
@@ -60,6 +67,13 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <81aee4500055876883658b024b6fb61801afe134"
     },
     {
+      "id": "71601a99-7a33-3d62-9c50-6510675597d4",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <4e0a88254ad59f6c53a34bf5fa241884ec09e8b2"
+    },
+    {
       "id": "783f02f8-06ef-328d-b331-5a51520c0c4d",
       "product": {
         "name": "Linux"
@@ -67,11 +81,39 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f7d00ee1c8082c8a134340aaf16d71a27e29c362"
     },
     {
+      "id": "7859766d-fe20-3fd0-b08e-66204f4ada31",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <13440c0db227c5db01da751ed966dde4cdd2ea18"
+    },
+    {
+      "id": "7bfe56bc-64ad-3b37-a7c7-d2bb1c7b64a7",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <f7d00ee1c8082c8a134340aaf16d71a27e29c362"
+    },
+    {
       "id": "83823af7-3dea-3630-b4f9-e4cd357b98e4",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.19.12"
+    },
+    {
+      "id": "9b593af2-83cc-3814-9ccb-3c12436a63c1",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <26a879a41ed960b3fb4ec773ef2788c515c0e488"
+    },
+    {
+      "id": "a35b402e-6fbd-306a-b751-9939857a6137",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <5d1bb391ceeebb28327703dd07af8c6324af298f"
     },
     {
       "id": "ae9e3818-5e11-34a4-b21b-d7fdfd12c5b8",
@@ -88,6 +130,20 @@
       "product_version": "patch: 6.6.135"
     },
     {
+      "id": "c2c479ef-941c-3ef1-adb7-0ea4b418d06a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <8ec6a58586f195a88479edcdb0b8027c39f12d03"
+    },
+    {
+      "id": "cfc0f395-7908-3ce0-8503-9538df2405f2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <81aee4500055876883658b024b6fb61801afe134"
+    },
+    {
       "id": "db5b6f88-f46e-39f7-898d-ad5fde81de88",
       "product": {
         "name": "Linux"
@@ -95,11 +151,25 @@
       "product_version": "patch: 5.15.203"
     },
     {
+      "id": "e4d00a3c-7c06-361b-8c56-53db9bf3a7b3",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "cb382536052fcc7713988869b54a81137069e5a9 <de93e0862169b5539e00c2b9980b93fd80c37c0d"
+    },
+    {
       "id": "edc5b509-0c3c-3e56-a7fc-b5ec3ea7620a",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 5.10.253"
+    },
+    {
+      "id": "ef3ce243-d696-3aca-b341-af1978a9d14b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "3.19"
     },
     {
       "id": "f30d4fa9-b219-3f1d-b209-c2e9312e953c",

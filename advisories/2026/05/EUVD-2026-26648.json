@@ -3,12 +3,12 @@
   "enisaUuid": "6769a94a-69b3-3318-88cf-ae96d8aa06bf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: logitech-hidpp: Prevent use-after-free on force feedback initialisation failure\n\nPresently, if the force feedback initialisation fails when probing the\nLogitech G920 Driving Force Racing Wheel for Xbox One, an error number\nwill be returned and propagated before the userspace infrastructure\n(sysfs and /dev/input) has been torn down.  If userspace ignores the\nerrors and continues to use its references to these dangling entities, a\nUAF will promptly follow.\n\nWe have 2 options; continue to return the error, but ensure that all of\nthe infrastructure is torn down accordingly or continue to treat this\ncondition as a warning by emitting the message but returning success.\nIt is thought that the original author's intention was to emit the\nwarning but keep the device functional, less the force feedback feature,\nso let's go with that.",
   "datePublished": "May 1, 2026, 2:15:43 PM",
-  "dateUpdated": "May 1, 2026, 2:15:43 PM",
+  "dateUpdated": "May 2, 2026, 6:14:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/772f99cc8d6e5d95613bce93c9624e154c1abe88\nhttps://git.kernel.org/stable/c/b846fb0a73e99174f08238e083e284c0463a2102\nhttps://git.kernel.org/stable/c/9a793ac19eb84f44ed759c0fce80cf29bc2a2453\nhttps://git.kernel.org/stable/c/f7a4c78bfeb320299c1b641500fe7761eadbd101\n",
   "aliases": "CVE-2026-43049\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "01816816-5cb9-3170-9214-506a79eee24a",
@@ -25,11 +25,25 @@
       "product_version": "patch: 7.0"
     },
     {
+      "id": "5319fad1-939d-361b-abad-86ca1e590abb",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5.4"
+    },
+    {
       "id": "563e79eb-a055-326f-a341-ca04ddb14304",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.19.12"
+    },
+    {
+      "id": "705e34de-6cd8-3900-811d-76155e58d3c8",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "abdd3d0b344fdf72a4904d09b97bc964d74c4419 <b846fb0a73e99174f08238e083e284c0463a2102"
     },
     {
       "id": "81f50a5e-0d14-3985-8a2c-388b878021fa",
@@ -53,6 +67,13 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9a793ac19eb84f44ed759c0fce80cf29bc2a2453"
     },
     {
+      "id": "8eaf8ae1-7a5d-362d-8ea9-438e20bd749b",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "abdd3d0b344fdf72a4904d09b97bc964d74c4419 <772f99cc8d6e5d95613bce93c9624e154c1abe88"
+    },
+    {
       "id": "92bca04c-7254-3a9d-8839-3570e9d6473f",
       "product": {
         "name": "Linux"
@@ -60,11 +81,39 @@
       "product_version": "patch: 6.18.22"
     },
     {
+      "id": "c753edaa-8e8a-3479-ad23-f4be0865f846",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
       "id": "c79aa6e7-6b92-3c3e-a787-49f49d929e8f",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 6.12.81"
+    },
+    {
+      "id": "d0f01b89-7a8e-366e-9e2f-fb60be067cc9",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "5f7fd3576cf30d502a8b2aec4e7a49c4f894e253"
+    },
+    {
+      "id": "f1ac682d-f1e7-32ad-a6c1-0555b5e256c6",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "abdd3d0b344fdf72a4904d09b97bc964d74c4419 <f7a4c78bfeb320299c1b641500fe7761eadbd101"
+    },
+    {
+      "id": "f2bb2b43-3016-3ce1-aca2-93ce76aec141",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "abdd3d0b344fdf72a4904d09b97bc964d74c4419 <9a793ac19eb84f44ed759c0fce80cf29bc2a2453"
     }
   ],
   "enisaIdVendor": [

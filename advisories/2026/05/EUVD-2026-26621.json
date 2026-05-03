@@ -3,19 +3,33 @@
   "enisaUuid": "43c5461a-0681-38e2-832f-f91cc8ee6a65",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hci_cmd_sync_queue_once() return -EEXIST if exists\n\nhci_cmd_sync_queue_once() needs to indicate whether a queue item was\nadded, so caller can know if callbacks are called, so it can avoid\nleaking resources.\n\nChange the function to return -EEXIST if queue item already exists.\n\nModify all callsites to handle that.",
   "datePublished": "May 1, 2026, 2:15:25 PM",
-  "dateUpdated": "May 1, 2026, 2:15:25 PM",
+  "dateUpdated": "May 2, 2026, 6:14:29 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0ad2ce230b38cd4b3f6732cc609e270461e626e5\nhttps://git.kernel.org/stable/c/2969554bcfccb5c609f6b6cd4a014933f3a66dd0\n",
   "aliases": "CVE-2026-43022\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
+    {
+      "id": "02e77d0f-5d57-3726-bf9b-e7df9f55b7ff",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "505ea2b295929e7be2b4e1bc86ee31cb7862fb01 <2969554bcfccb5c609f6b6cd4a014933f3a66dd0"
+    },
     {
       "id": "45a57b3b-8211-302f-b743-cd853f1ee28a",
       "product": {
         "name": "Linux"
       },
       "product_version": "patch: 7.0"
+    },
+    {
+      "id": "48e2c741-3b83-3684-889c-6f06c65133cd",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "505ea2b295929e7be2b4e1bc86ee31cb7862fb01 <0ad2ce230b38cd4b3f6732cc609e270461e626e5"
     },
     {
       "id": "734b336d-42ad-317f-8891-dbd2dafbc6be",
@@ -32,11 +46,46 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0ad2ce230b38cd4b3f6732cc609e270461e626e5"
     },
     {
+      "id": "7e11bc9b-0963-343e-ad0f-91c72aaa4f63",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "f00f36db76eb8fd10d13e80e2590f23b5beaa54d"
+    },
+    {
+      "id": "9cd99554-9b69-3015-be74-2eb0fb38655f",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.9"
+    },
+    {
+      "id": "a4b01a2e-3777-3358-a0fa-999f5a00d862",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "357603f4d396d85fbf0045512efaf1d7f7394ed7"
+    },
+    {
       "id": "a9669cce-4d69-335c-b7b6-df5803913d33",
       "product": {
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2969554bcfccb5c609f6b6cd4a014933f3a66dd0"
+    },
+    {
+      "id": "b4877f68-f7ff-3e84-a4c8-8b0181e2a9a2",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "d3e9ced2-4d28-3da6-a5eb-cfce158b3d3a",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "1499f79995c7ee58e3bfeeff75f6d1b37dcda881"
     }
   ],
   "enisaIdVendor": [

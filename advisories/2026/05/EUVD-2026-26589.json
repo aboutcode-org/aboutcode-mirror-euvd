@@ -3,12 +3,12 @@
   "enisaUuid": "13ab9ee6-7da1-3eb2-8bb2-6b100d6b25fb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: ctxfi: Fix missing SPDIFI1 index handling\n\nSPDIF1 DAIO type isn't properly handled in daio_device_index() for\nhw20k2, and it returned -EINVAL, which ended up with the out-of-bounds\narray access.  Follow the hw20k1 pattern and return the proper index\nfor this type, too.",
   "datePublished": "May 1, 2026, 2:15:04 PM",
-  "dateUpdated": "May 1, 2026, 2:15:04 PM",
+  "dateUpdated": "May 2, 2026, 6:14:25 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a3b0e5f84058a9c3d0542a71c2b3a7801e4ee26a\nhttps://git.kernel.org/stable/c/28222e13666b5d26bf66563c056069ed32f87b33\nhttps://git.kernel.org/stable/c/5b39985303a639b159dea306a032c08ef22f029d\nhttps://git.kernel.org/stable/c/c8859675f1cf92fe2eb25ef525440702140a0b55\nhttps://git.kernel.org/stable/c/a0b45bdfffce9894b39392d061c14fda24de8b67\nhttps://git.kernel.org/stable/c/57698f184e1afbe054b3cd30e2c43a67c11d7f5e\nhttps://git.kernel.org/stable/c/950decf59d4e978b60a792ce0b3e1555a608f489\nhttps://git.kernel.org/stable/c/b045ab3dff97edae6d538eeff900a34c098761f8\n",
+  "references": "https://git.kernel.org/stable/c/950decf59d4e978b60a792ce0b3e1555a608f489\nhttps://git.kernel.org/stable/c/b045ab3dff97edae6d538eeff900a34c098761f8\n",
   "aliases": "CVE-2026-31776\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "0a4683f2-f272-3207-8be5-17406431fe9c",
@@ -60,6 +60,13 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a0b45bdfffce9894b39392d061c14fda24de8b67"
     },
     {
+      "id": "62965850-1194-3717-b09d-ce88157db389",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "6.19"
+    },
+    {
       "id": "6dd77e0e-463f-3c52-93e7-fcb1563f2f4a",
       "product": {
         "name": "Linux"
@@ -72,6 +79,13 @@
         "name": "Linux"
       },
       "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "98da423a-d3c6-3fdb-b6e4-27dd0c248f79",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "ab13eeb2-902b-39b0-9f01-70a8b6a1dcdf",
@@ -95,11 +109,25 @@
       "product_version": "patch: 5.10.253"
     },
     {
+      "id": "bf980544-d542-33e2-995f-2643127c2307",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a2dbaeb5c61ef110ceefe0d48fe94d428d3bcf16 <950decf59d4e978b60a792ce0b3e1555a608f489"
+    },
+    {
       "id": "c688fcbf-36f7-3298-98b2-7d926b8daf4e",
       "product": {
         "name": "Linux"
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b045ab3dff97edae6d538eeff900a34c098761f8"
+    },
+    {
+      "id": "d02c3a19-4739-3131-89e6-e4d7b6f7b681",
+      "product": {
+        "name": "Linux"
+      },
+      "product_version": "a2dbaeb5c61ef110ceefe0d48fe94d428d3bcf16 <b045ab3dff97edae6d538eeff900a34c098761f8"
     },
     {
       "id": "dcd042d8-d3a8-31f9-90b9-78c9f3e8d822",

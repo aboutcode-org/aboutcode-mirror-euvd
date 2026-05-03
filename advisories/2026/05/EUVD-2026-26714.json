@@ -3,14 +3,14 @@
   "enisaUuid": "a3185b29-41a5-3b77-b21e-6cfd4682df98",
   "description": "Reliance on Untrusted Inputs in a Security Decision vulnerability in mtrudel bandit allows unauthenticated transport-state spoofing on plaintext HTTP connections.\n\n'Elixir.Bandit.Pipeline':determine_scheme/2 in lib/bandit/pipeline.ex returns the client-supplied URI scheme verbatim, ignoring the transport's secure? flag. HTTP/1.1 absolute-form request targets (e.g. GET https://victim/path HTTP/1.1) and the HTTP/2 :scheme pseudo-header are both attacker-controlled strings that flow through this function. Over a plaintext TCP connection, a client can declare https and Bandit will set conn.scheme = :https even though no TLS was negotiated.\n\nDownstream Plug consumers that branch on conn.scheme are silently misled: Plug.SSL's already-secure branch skips its HTTP\u2192HTTPS redirect, cookies emitted with secure: true are sent over plaintext, audit logs record requests as having arrived over HTTPS, and CSRF/SameSite gating may make incorrect decisions.\n\nThis issue affects bandit: from 1.0.0 before 1.11.0.",
   "datePublished": "May 1, 2026, 8:34:22 PM",
-  "dateUpdated": "May 1, 2026, 8:34:22 PM",
+  "dateUpdated": "May 2, 2026, 4:17:33 AM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/mtrudel/bandit/security/advisories/GHSA-375f-4r2h-f99j\nhttps://cna.erlef.org/cves/CVE-2026-39807.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-39807\nhttps://github.com/mtrudel/bandit/commit/45feea20dea8af7ffd7245271107b695c040e667\n",
   "aliases": "CVE-2026-39807\n",
   "assigner": "EEF",
-  "epss": 0.0,
+  "epss": 0.02,
   "enisaIdProduct": [
     {
       "id": "7ccb2fb8-ade1-3031-b5f1-39dd531385fc",
