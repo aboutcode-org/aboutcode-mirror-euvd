@@ -3,7 +3,7 @@
   "enisaUuid": "a333bdaf-98a9-3c84-8b12-750c14ef620c",
   "description": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-grpc grpc allows unauthenticated attackers to exhaust the BEAM's memory and crash the server by streaming a large or slow-trickle unary request body.\n\n'Elixir.GRPC.Server.Adapters.Cowboy.Handler':read_full_body/3 (lib/grpc/server/adapters/cowboy/handler.ex) accumulates every received chunk into a single growing binary with no size cap. Additionally, when the client omits the grpc-timeout header, the per-chunk read timeout resolves to :infinity, allowing a slow-trickle client to keep the connection alive indefinitely while memory grows. A single connection is sufficient to exhaust server memory and crash the node.\n\nThis issue affects grpc from 0.3.1 before 1.0.0.",
   "datePublished": "Jun 15, 2026, 9:55:23 PM",
-  "dateUpdated": "Jun 15, 2026, 9:55:23 PM",
+  "dateUpdated": "Jun 16, 2026, 2:47:28 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
