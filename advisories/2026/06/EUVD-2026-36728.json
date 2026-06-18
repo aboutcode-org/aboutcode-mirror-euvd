@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-36728",
   "enisaUuid": "fa40aeee-69ad-314f-86d2-471d983b07a0",
-  "description": "Impact: multer versions 2.0.0-alpha.1 through 2.1.1 and 3.0.0-alpha.1 are vulnerable to a Denial of Service when using diskStorage. Aborted or malformed multipart uploads leave orphaned partial files on disk because the Readable.pipe() call does not propagate the stream destroy signal to \nthe underlying fs.WriteStream. An attacker can exhaust disk space by triggering many aborted uploads, with no application bug required.\n\nPatches: Users should upgrade to multer 2.2.0 (2.x line) or 3.0.0-alpha.2 (3.x prerelease). Both versions track in-flight write streams and clean them up on the abort path.\n\nWorkarounds: None.",
-  "datePublished": "Jun 15, 2026, 2:23:24 PM",
-  "dateUpdated": "Jun 15, 2026, 4:07:45 PM",
+  "description": "Multer vulnerable to Denial of Service via incomplete cleanup of aborted uploads",
+  "datePublished": "Jun 17, 2026, 6:11:48 PM",
+  "dateUpdated": "Jun 17, 2026, 6:11:48 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://github.com/expressjs/multer/security/advisories/GHSA-3p4h-7m6x-2hcm\nhttps://cna.openjsf.org/security-advisories.html\n",
-  "aliases": "CVE-2026-5038\n",
+  "references": "https://github.com/expressjs/multer/security/advisories/GHSA-3p4h-7m6x-2hcm\nhttps://cna.openjsf.org/security-advisories.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-5038\n",
+  "aliases": "CVE-2026-5038\nGHSA-3p4h-7m6x-2hcm\n",
   "assigner": "openjs",
-  "epss": 0.0,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "2927a313-8fe9-3574-b1d5-05727282822e",

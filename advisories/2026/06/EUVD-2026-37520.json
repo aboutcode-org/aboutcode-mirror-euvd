@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2026-37520",
+  "enisaUuid": "bf24f50e-f4b5-3488-8f2a-58ecc6416448",
+  "description": "A path traversal in the SFTP provider (`SFTPHook.retrieve_directory` / `SFTPOperator(operation=get)`) let a malicious or compromised remote SFTP server write files outside the configured local destination directory via crafted directory-entry names. No Airflow account is required \u2014 the attack surface is any deployment downloading directories from an untrusted SFTP server. Upgrade `apache-airflow-providers-sftp` to 5.8.1 or later.",
+  "datePublished": "Jun 17, 2026, 6:35:51 PM",
+  "dateUpdated": "Jun 17, 2026, 6:35:52 PM",
+  "baseScore": 0.0,
+  "references": "https://github.com/apache/airflow/pull/67985\nhttps://lists.apache.org/thread/7f4b284oh44c1n95oq8mh1qc7y1lr9dx\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-50203\nhttp://www.openwall.com/lists/oss-security/2026/06/16/3\n",
+  "aliases": "GHSA-qf38-jq28-3ccq\nCVE-2026-50203\n",
+  "assigner": "apache",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "c2d59c80-826a-3fa5-b0fd-eee9989d3637",
+      "product": {
+        "name": "Apache Airflow SFTP provider",
+        "vendor": {
+          "name": "Apache Software Foundation"
+        }
+      },
+      "product_version": "0 <5.8.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c16c1d95-b044-3086-87ee-6c952e81a409",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}
