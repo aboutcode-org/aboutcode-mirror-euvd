@@ -3,14 +3,72 @@
   "enisaUuid": "959e7fdc-986e-351b-836a-c2eb9271cc3d",
   "description": "A flaw was found in Poppler's Splash backend. A remote attacker could exploit this vulnerability by crafting a malicious PDF file that, when rendered, triggers an integer overflow in the `tilingPatternFill` function. This overflow leads to an undersized heap memory allocation, allowing a subsequent out-of-bounds write. Successful exploitation could result in arbitrary code execution, information disclosure, or denial of service within the context of the application processing the PDF.",
   "datePublished": "Jun 1, 2026, 3:33:39 PM",
-  "dateUpdated": "Jun 1, 2026, 7:34:10 PM",
+  "dateUpdated": "Jun 22, 2026, 2:41:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-10118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2460428\nhttps://gitlab.freedesktop.org/poppler/poppler/-/work_items/1715\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:24984\nhttps://access.redhat.com/errata/RHSA-2026:24985\nhttps://access.redhat.com/errata/RHSA-2026:25058\nhttps://access.redhat.com/errata/RHSA-2026:27727\nhttps://access.redhat.com/security/cve/CVE-2026-10118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2460428\nhttps://gitlab.freedesktop.org/poppler/poppler/-/work_items/1715\n",
   "aliases": "CVE-2026-10118\nGHSA-469x-qwp6-693q\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.23,
+  "enisaIdProduct": [
+    {
+      "id": "240b9af7-b687-3e6d-9fcc-b64ae61f21b6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:21.01.0-24.el9_8.1"
+    },
+    {
+      "id": "4a765617-bae4-335d-bf06-bef93702e1ba",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:20.11.0-2.el8_4.3"
+    },
+    {
+      "id": "5f1095dd-469b-34ff-9e01-80c87d4a045a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:20.11.0-2.el8_4.3"
+    },
+    {
+      "id": "5f512416-6284-37c8-beb7-434b3a977d24",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:20.11.0-14.el8_10"
+    },
+    {
+      "id": "f20ca6bd-6df1-3a27-995b-55ab5f84c1fa",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:24.02.0-7.el10_2.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2cfacedc-b288-391a-81d2-7cb1b346af6a",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }
