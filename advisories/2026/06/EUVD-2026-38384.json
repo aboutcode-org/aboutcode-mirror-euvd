@@ -3,7 +3,7 @@
   "enisaUuid": "7523b6c5-c090-36d7-b94a-15e092d28b5a",
   "description": "MessagePack for C# is a MessagePack serializer for C#. Prior to 2.5.301 and 3.1.7, MessagePack-CSharp's JSON conversion helpers contain multiple recursion paths that do not consistently enforce a depth limit. These paths are in the JSON conversion component rather than normal typed MessagePack deserialization. MessagePackSerializer.ConvertFromJson recursively processes nested JSON arrays and objects in FromJsonCore() without consulting MessagePackSecurity.MaximumObjectGraphDepth. TinyJsonReader.ReadNextToken() recursively consumes comma and colon separator characters, allowing even malformed JSON with long separator runs to consume one stack frame per character. MessagePackSerializer.ConvertToJson applies depth checks to arrays and maps, but the typeless extension branch for ext-100 recursively calls ToJsonCore() without applying MessagePackSecurity.DepthStep(ref reader). Each path can allow attacker-controlled input to exhaust the process stack and trigger an uncatchable StackOverflowException instead of failing with a catchable parse or serialization exception.  This vulnerability is fixed in 2.5.301 and 3.1.7.",
   "datePublished": "Jun 22, 2026, 9:14:20 PM",
-  "dateUpdated": "Jun 22, 2026, 9:14:20 PM",
+  "dateUpdated": "Jun 23, 2026, 3:05:39 PM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",

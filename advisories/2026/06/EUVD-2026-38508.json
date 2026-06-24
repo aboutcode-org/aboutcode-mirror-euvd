@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2026-38508",
+  "enisaUuid": "21f89485-ba62-3264-bd2c-cd31d50174e2",
+  "description": "Low\u2011privileged users could use their Full Name as a vector for a stored XSS attack. The name is included in system\u2011generated emails, whose content is stored in the details field of the userlog table. An admin user viewing the email content through userlog-details.php would have any malicious JavaScript payload executed due to missing output sanitisation. Proper escaping has been added to the userlog details output.",
+  "datePublished": "Jun 23, 2026, 4:14:38 PM",
+  "dateUpdated": "Jun 23, 2026, 5:25:34 PM",
+  "baseScore": null,
+  "references": "https://hackerone.com/reports/3669623\n",
+  "aliases": "CVE-2026-44956\nGHSA-55h8-q58m-2332\n",
+  "assigner": "hackerone",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "393dad4a-7510-319e-a736-518465c621a3",
+      "product": {
+        "name": "Adserver",
+        "vendor": {
+          "name": "Revive"
+        }
+      },
+      "product_version": "0 \u22646.0.6"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a7ce8325-17eb-3040-9e67-07cf810b3bb8",
+      "vendor": {
+        "name": "Revive"
+      }
+    }
+  ]
+}
