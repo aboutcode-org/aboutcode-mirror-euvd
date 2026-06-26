@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-38383",
   "enisaUuid": "2da69351-bf75-34b7-b759-d74ff87ce64c",
-  "description": "MessagePack for C# is a MessagePack serializer for C#. Prior to 2.5.301 and 3.1.7, runtime-generated union deserializers emitted by DynamicUnionResolver do not call MessagePackSecurity.DepthStep(ref reader) and do not decrement reader.Depth around recursive deserialization and skip paths. This means union deserialization does not consistently participate in the maximum object graph depth enforcement that protects other recursive formatter paths. For unknown union keys, the emitted deserializer calls reader.Skip() on attacker-controlled data without an enclosing depth step. This vulnerability is fixed in 2.5.301 and 3.1.7.",
-  "datePublished": "Jun 22, 2026, 9:12:43 PM",
-  "dateUpdated": "Jun 23, 2026, 2:26:54 PM",
+  "description": "MessagePack-CSharp: DynamicUnionResolver-generated deserializers miss depth enforcement",
+  "datePublished": "Jun 25, 2026, 9:22:52 PM",
+  "dateUpdated": "Jun 25, 2026, 9:22:52 PM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
-  "references": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/security/advisories/GHSA-wfr3-xj75-pfwh\n",
-  "aliases": "CVE-2026-48513\n",
+  "references": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/security/advisories/GHSA-wfr3-xj75-pfwh\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-48513\n",
+  "aliases": "GHSA-wfr3-xj75-pfwh\nCVE-2026-48513\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "09bc80b3-27b5-3c70-8b4f-2a1452f09d5b",
