@@ -3,14 +3,42 @@
   "enisaUuid": "2a028037-2fe5-3224-a4a0-d009ee15835b",
   "description": "A flaw was found in Keycloak. The cross-session verification proof is keyed only by (local userId,\nidpAlias) and is not bound to the upstream identity that was actually verified, so a second upstream account on the same IdP can consume it and get linked to the victim's local account.",
   "datePublished": "May 20, 2026, 4:13:03 PM",
-  "dateUpdated": "May 20, 2026, 4:13:03 PM",
+  "dateUpdated": "Jun 26, 2026, 12:08:05 AM",
   "baseScore": 6.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-9087\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2480172\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:25097\nhttps://access.redhat.com/errata/RHSA-2026:25098\nhttps://access.redhat.com/security/cve/CVE-2026-9087\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2480172\n",
   "aliases": "CVE-2026-9087\nGHSA-m6qj-3mpp-57v8\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.29,
+  "enisaIdProduct": [
+    {
+      "id": "2f26cb27-f30d-3ebb-8cd0-fe80b9feafdc",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6.3-3"
+    },
+    {
+      "id": "5c28900b-f3ba-3f30-b58c-672c57414032",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6-6"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "18f307c3-b874-3759-b357-598106e01ed7",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

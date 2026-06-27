@@ -3,15 +3,36 @@
   "enisaUuid": "9c2e1b9a-16b6-39c6-9fde-369a402708d7",
   "description": "When Keycloak is started with `--features-disabled=account,account-api`, the Account REST API is only partially disabled. Five endpoints under the versioned path `/account/v1alpha1` remain fully functional \u2014 including both read and write operations \u2014 because they lack the `checkAccountApiEnabled()` gate that correctly blocks four other endpoints in the same REST service class. The user needs to have permissions to use the API.",
   "datePublished": "Apr 30, 2026, 2:53:09 PM",
-  "dateUpdated": "Apr 30, 2026, 2:53:09 PM",
+  "dateUpdated": "Jun 26, 2026, 12:07:40 AM",
   "baseScore": 5.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-7500\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2464126\n",
-  "aliases": "CVE-2026-7500\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:25097\nhttps://access.redhat.com/errata/RHSA-2026:25098\nhttps://access.redhat.com/security/cve/CVE-2026-7500\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2464126\n",
+  "aliases": "GHSA-hm32-hfmw-rhvg\nCVE-2026-7500\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
+  "epss": 0.22,
+  "enisaIdProduct": [
+    {
+      "id": "20a2e930-2a0c-321a-83bc-7bff0d1ac2e1",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6-6"
+    },
+    {
+      "id": "2a892a12-b96b-326f-bafd-6c110fe51a3b",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6.3-3"
+    }
+  ],
   "enisaIdVendor": [
     {
       "id": "cd84f740-7e77-35d6-a334-460aaaa71a60",

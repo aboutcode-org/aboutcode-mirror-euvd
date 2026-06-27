@@ -3,14 +3,42 @@
   "enisaUuid": "4b9753a0-bed9-35f5-a686-7ea7d1994be0",
   "description": "A flaw was found in Keycloak. An authenticated user can bypass configured WebAuthn policies during credential registration by manipulating client-side JavaScript. This occurs because the server-side processAction() fails to validate that the newly created credential's parameters, such as public key algorithms, match the realm's configured WebAuthn policies. This could lead to the creation of credentials that do not adhere to administrative security requirements, potentially weakening the overall security posture of the system by allowing non-compliant authentication methods.",
   "datePublished": "May 19, 2026, 6:04:13 AM",
-  "dateUpdated": "May 19, 2026, 4:32:09 PM",
+  "dateUpdated": "Jun 26, 2026, 12:07:45 AM",
   "baseScore": 4.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-8830\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2479565\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:25097\nhttps://access.redhat.com/errata/RHSA-2026:25098\nhttps://access.redhat.com/security/cve/CVE-2026-8830\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2479565\n",
   "aliases": "GHSA-g8vr-x4qh-25qg\nCVE-2026-8830\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.38,
+  "enisaIdProduct": [
+    {
+      "id": "17cb9c94-9619-3b89-8341-bf02c18021ed",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6-6"
+    },
+    {
+      "id": "d570e00f-7004-3e47-a624-023c9aa1c129",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6.3-3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d55eb5ab-e41c-39d6-a723-c84ab3e44048",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }
