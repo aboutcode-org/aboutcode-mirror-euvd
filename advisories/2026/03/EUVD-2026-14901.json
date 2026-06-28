@@ -3,15 +3,25 @@
   "enisaUuid": "76f95057-c267-3e83-a93a-d8c6424f98e8",
   "description": "A flaw was found in the libtiff library. A remote attacker could exploit a signed integer overflow vulnerability in the putcontig8bitYCbCr44tile function by providing a specially crafted TIFF file. This flaw can lead to an out-of-bounds heap write due to incorrect memory pointer calculations, potentially causing a denial of service (application crash) or arbitrary code execution.",
   "datePublished": "Mar 24, 2026, 2:42:47 PM",
-  "dateUpdated": "May 26, 2026, 8:44:54 AM",
+  "dateUpdated": "Jun 27, 2026, 8:21:05 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:12265\nhttps://access.redhat.com/errata/RHSA-2026:12271\nhttps://access.redhat.com/errata/RHSA-2026:14929\nhttps://access.redhat.com/errata/RHSA-2026:16055\nhttps://access.redhat.com/errata/RHSA-2026:19150\nhttps://access.redhat.com/errata/RHSA-2026:19363\nhttps://access.redhat.com/errata/RHSA-2026:19585\nhttps://access.redhat.com/errata/RHSA-2026:19586\nhttps://access.redhat.com/errata/RHSA-2026:19604\nhttps://access.redhat.com/errata/RHSA-2026:19608\nhttps://access.redhat.com/errata/RHSA-2026:19609\nhttps://access.redhat.com/errata/RHSA-2026:19657\nhttps://access.redhat.com/errata/RHSA-2026:19659\nhttps://access.redhat.com/errata/RHSA-2026:19702\nhttps://access.redhat.com/errata/RHSA-2026:20583\nhttps://access.redhat.com/errata/RHSA-2026:20585\nhttps://access.redhat.com/errata/RHSA-2026:20591\nhttps://access.redhat.com/errata/RHSA-2026:20592\nhttps://access.redhat.com/security/cve/CVE-2026-4775\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450768\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:12265\nhttps://access.redhat.com/errata/RHSA-2026:12271\nhttps://access.redhat.com/errata/RHSA-2026:14929\nhttps://access.redhat.com/errata/RHSA-2026:16055\nhttps://access.redhat.com/errata/RHSA-2026:19150\nhttps://access.redhat.com/errata/RHSA-2026:19363\nhttps://access.redhat.com/errata/RHSA-2026:19585\nhttps://access.redhat.com/errata/RHSA-2026:19586\nhttps://access.redhat.com/errata/RHSA-2026:19604\nhttps://access.redhat.com/errata/RHSA-2026:19608\nhttps://access.redhat.com/errata/RHSA-2026:19609\nhttps://access.redhat.com/errata/RHSA-2026:19657\nhttps://access.redhat.com/errata/RHSA-2026:19659\nhttps://access.redhat.com/errata/RHSA-2026:19702\nhttps://access.redhat.com/errata/RHSA-2026:20583\nhttps://access.redhat.com/errata/RHSA-2026:20585\nhttps://access.redhat.com/errata/RHSA-2026:20591\nhttps://access.redhat.com/errata/RHSA-2026:20592\nhttps://access.redhat.com/errata/RHSA-2026:24992\nhttps://access.redhat.com/errata/RHSA-2026:25096\nhttps://access.redhat.com/errata/RHSA-2026:25910\nhttps://access.redhat.com/errata/RHSA-2026:30078\nhttps://access.redhat.com/errata/RHSA-2026:30087\nhttps://access.redhat.com/errata/RHSA-2026:30088\nhttps://access.redhat.com/errata/RHSA-2026:30089\nhttps://access.redhat.com/errata/RHSA-2026:30349\nhttps://access.redhat.com/security/cve/CVE-2026-4775\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450768\n",
   "aliases": "CVE-2026-4775\n",
   "assigner": "redhat",
-  "epss": 0.04,
+  "epss": 0.55,
   "enisaIdProduct": [
+    {
+      "id": "0e64d495-d999-3e18-90bc-dcabd64bdd38",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 4.7.1-2.2.hum1"
+    },
     {
       "id": "126d4083-e20b-3f4e-a753-e28d5f840094",
       "product": {
@@ -103,6 +113,26 @@
       "product_version": "patch: 0:4.2.0-3.el9_0.3"
     },
     {
+      "id": "58af2ca7-f45b-3ddf-aec6-6a1fda443d9d",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782352847"
+    },
+    {
+      "id": "58ee6e98-036e-31b6-b07c-8f661dfad959",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:4.0.3-35.el7_9.2"
+    },
+    {
       "id": "63026d1b-8980-34ef-88c5-28cda18370d9",
       "product": {
         "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
@@ -113,6 +143,16 @@
       "product_version": "patch: 0:4.0.9-29.el8_8.2"
     },
     {
+      "id": "68475db3-9b38-3c96-8338-f99e814dd415",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.9.4-12.el7_9.2"
+    },
+    {
       "id": "710ff87e-484e-34a1-8e47-aefaf03ed472",
       "product": {
         "name": "Red Hat Enterprise Linux 9.4 Extended Update Support",
@@ -121,6 +161,16 @@
         }
       },
       "product_version": "patch: 0:4.4.0-12.el9_4.5"
+    },
+    {
+      "id": "712df56a-a27b-3217-8bb9-f0ddd67f28ef",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1780681984"
     },
     {
       "id": "7736fd7e-9c04-3fe3-be37-06d253523c05",
@@ -193,6 +243,16 @@
       "product_version": "patch: 0:4.4.0-8.el9_2.5"
     },
     {
+      "id": "be39d7d6-9d25-3370-95f1-4ad922cb0844",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782352950"
+    },
+    {
       "id": "c0ce5246-aeb2-344d-a5c8-1757e9e3923b",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
@@ -231,6 +291,26 @@
         }
       },
       "product_version": "patch: 0:4.6.0-6.el10_1.3"
+    },
+    {
+      "id": "d1bc80e1-7ef6-3f45-9204-cc650bccf5f1",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782352919"
+    },
+    {
+      "id": "dfb592b5-3b7c-3aad-89f9-ec0e2d17bcec",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782353093"
     },
     {
       "id": "edb7298e-02cc-3d8f-a84a-48424b77e799",

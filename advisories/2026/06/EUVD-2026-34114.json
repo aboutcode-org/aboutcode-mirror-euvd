@@ -3,13 +3,23 @@
   "enisaUuid": "cd0228d8-443a-30f6-ae5c-0db4555bf0a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: core: fix locking in regulator_resolve_supply() error path\n\nIf late enabling of a supply regulator fails in\nregulator_resolve_supply(), the code currently triggers a lockdep\nwarning:\n\n    WARNING: drivers/regulator/core.c:2649 at _regulator_put+0x80/0xa0, CPU#6: kworker/u32:4/596\n    ...\n    Call trace:\n     _regulator_put+0x80/0xa0 (P)\n     regulator_resolve_supply+0x7cc/0xbe0\n     regulator_register_resolve_supply+0x28/0xb8\n\nas the regulator_list_mutex must be held when calling _regulator_put().\n\nTo solve this, simply switch to using regulator_put().\n\nWhile at it, we should also make sure that no concurrent access happens\nto our rdev while we clear out the supply pointer. Add appropriate\nlocking to ensure that.\n\nWhile the code in question will be removed altogether in a follow-up\ncommit, I believe it is still beneficial to have this corrected before\nremoval for future reference.",
   "datePublished": "Jun 3, 2026, 3:49:48 PM",
-  "dateUpdated": "Jun 3, 2026, 3:49:48 PM",
+  "dateUpdated": "Jun 27, 2026, 10:25:23 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c66e0db0f37290b53c57994f998bb55590364fd0\nhttps://git.kernel.org/stable/c/497330b203d2c59c5ff3fa4c34d14494d7203bc3\n",
+  "references": "https://git.kernel.org/stable/c/bde74af8d4466213007bdd42cc85fa72c861dea7\nhttps://git.kernel.org/stable/c/c66e0db0f37290b53c57994f998bb55590364fd0\nhttps://git.kernel.org/stable/c/497330b203d2c59c5ff3fa4c34d14494d7203bc3\n",
   "aliases": "GHSA-w447-hxj8-xq6p\nCVE-2026-46252\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.08,
   "enisaIdProduct": [
+    {
+      "id": "013e060a-da07-38f2-b896-f1b7b0890aad",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "36a1f1b6ddc6d1442424e29548e790633ca39c7b <bde74af8d4466213007bdd42cc85fa72c861dea7"
+    },
     {
       "id": "44d8f209-0aff-30d0-92e9-d3cbe40588fc",
       "product": {
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "36a1f1b6ddc6d1442424e29548e790633ca39c7b <c66e0db0f37290b53c57994f998bb55590364fd0"
+    },
+    {
+      "id": "af9d04c9-a6f1-3455-b57f-021e2bc4fc8a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.37"
     }
   ],
   "enisaIdVendor": [

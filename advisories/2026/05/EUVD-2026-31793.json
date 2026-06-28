@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-31793",
   "enisaUuid": "509260f4-7873-34f3-81d3-867459845a58",
-  "description": "Versions of the package pacote from 11.2.7 are vulnerable to Denial of Service (DoS) via the addGitSha function. An attacker can exploit this vulnerability by supplying a specially crafted spec.rawSpec value that triggers the function\u2019s regex replacement and string-manipulation logic,  causing excessive CPU consumption and potentially stalling or crashing the process.",
+  "description": "Versions of the package pacote from 11.2.7 and before 21.5.1 are vulnerable to Denial of Service (DoS) via the addGitSha function. An attacker can exploit this vulnerability by supplying a specially crafted spec.rawSpec value that triggers the function\u2019s regex replacement and string-manipulation logic,  causing excessive CPU consumption and potentially stalling or crashing the process.",
   "datePublished": "May 26, 2026, 5:00:07 AM",
-  "dateUpdated": "May 26, 2026, 12:41:58 PM",
+  "dateUpdated": "Jun 27, 2026, 3:25:16 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
-  "references": "https://security.snyk.io/vuln/SNYK-JS-PACOTE-8225084\nhttps://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-16874025\nhttps://github.com/npm/pacote/blob/9d7459440826ab4cf962ef98d8f3fd0c4d464b5c/lib/util/add-git-sha.js%23L2C1-L13C2\n",
+  "references": "https://security.snyk.io/vuln/SNYK-JS-PACOTE-8225084\nhttps://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-16874025\nhttps://github.com/npm/pacote/blob/9d7459440826ab4cf962ef98d8f3fd0c4d464b5c/lib/util/add-git-sha.js%23L2C1-L13C2\nhttps://github.com/npm/pacote/commit/ce804fb1647fe1699b2f87efd01ea9f4efed8508\n",
   "aliases": "CVE-2026-9496\nGHSA-w4pp-8pjf-rmxw\n",
   "assigner": "snyk",
-  "epss": 0.0,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "8336e31a-d5a0-3cd2-af63-a0220ec62c95",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "11.2.7 <*"
+    },
+    {
+      "id": "fc41b180-bf3e-35ae-ada0-8db8d481d403",
+      "product": {
+        "name": "pacote",
+        "vendor": {
+          "name": "n/a"
+        }
+      },
+      "product_version": "11.2.7 <21.5.1"
     }
   ],
   "enisaIdVendor": [
