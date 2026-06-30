@@ -3,14 +3,32 @@
   "enisaUuid": "baba5e5f-d85a-3825-abe6-35456bf1e28e",
   "description": "An arbitrary address write vulnerability was found in libaom, the reference AV1 codec implementation. A missing bounds check in the SVC (Scalable Video Coding) layer ID control function allows an attacker to inject an arbitrary pointer into the cyclic refresh map field via crafted image pixel values. The encoder then writes approximately 1,200 bytes at the attacker-controlled address. This is fully deterministic and does not require a separate information leak. An attacker who can supply frames to a network-facing libaom encoder with SVC enabled could exploit this for denial of service or potential code execution.",
   "datePublished": "Jun 19, 2026, 4:28:26 PM",
-  "dateUpdated": "Jun 19, 2026, 5:47:00 PM",
+  "dateUpdated": "Jun 29, 2026, 12:06:40 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-56209\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490800\nhttps://issues.chromium.org/issues/503993984\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/security/cve/CVE-2026-56209\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490800\nhttps://issues.chromium.org/issues/503993984\n",
   "aliases": "CVE-2026-56209\nGHSA-8vmr-q5h8-3vc5\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.27,
+  "enisaIdProduct": [
+    {
+      "id": "9ed51777-182c-3fa7-8e3c-0ccf2cafc7dd",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 3.14.0-0.1.hum1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b8c01a33-cf62-38ec-bd25-7c6e2d623516",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }
