@@ -3,12 +3,14 @@
   "enisaUuid": "7b336e4a-baeb-313d-a972-b17cd20ea0c1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: pull headers in qdisc_pkt_len_segs_init()\n\nMost ndo_start_xmit() methods expects headers of gso packets\nto be already in skb->head.\n\nnet/core/tso.c users are particularly at risk, because tso_build_hdr()\ndoes a memcpy(hdr, skb->data, hdr_len);\n\nqdisc_pkt_len_segs_init() already does a dissection of gso packets.\n\nUse pskb_may_pull() instead of skb_header_pointer() to make\nsure drivers do not have to reimplement this.\n\nSome malicious packets could be fed, detect them so that we can\ndrop them sooner with a new SKB_DROP_REASON_SKB_BAD_GSO drop_reason.",
   "datePublished": "Jun 24, 2026, 4:30:30 PM",
-  "dateUpdated": "Jun 24, 2026, 4:30:30 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jun 30, 2026, 2:44:18 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/9d4f5c68f5ad4ab425f3ce1500c97c9f9743999a\nhttps://git.kernel.org/stable/c/7fb4c19670110f052c04e1ec1d2b953b9f4f57e4\n",
   "aliases": "GHSA-mjfm-6cr9-5cqx\nCVE-2026-53091\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "216ed660-9594-31b0-a064-bf2d1ac80f90",

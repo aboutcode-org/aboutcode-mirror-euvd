@@ -3,26 +3,32 @@
   "enisaUuid": "f506b14c-4421-30da-aa57-82e6ca83240c",
   "description": "Redis is an in-memory data structure store. In all versions of redis-server with Lua scripting, an authenticated attacker can exploit the master-replica synchronization mechanism to trigger a use-after-free on replicas where replica-read-only is disabled or can be disabled, which may lead to remote code execution. A workaround is to prevent users from executing Lua scripts or avoid using replicas where replica-read-only is disabled. This is patched in version 8.6.3.",
   "datePublished": "May 5, 2026, 4:39:32 PM",
-  "dateUpdated": "May 6, 2026, 3:56:09 AM",
+  "dateUpdated": "Jun 30, 2026, 2:46:28 AM",
   "baseScore": 6.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/redis/redis/security/advisories/GHSA-8ghh-qpmp-7826\nhttps://github.com/redis/redis/releases/tag/8.6.3\n",
   "aliases": "CVE-2026-23631\n",
   "assigner": "GitHub_M",
-  "epss": 0.1,
+  "epss": 1.22,
   "enisaIdProduct": [
     {
       "id": "91e36fd2-539e-303c-b346-b119afcbe7d6",
       "product": {
-        "name": "Redis"
+        "name": "Redis",
+        "vendor": {
+          "name": "Redis"
+        }
       },
       "product_version": "< 8.6.3"
     },
     {
       "id": "ed58244f-6bff-34a2-beb6-703a9f1a4a22",
       "product": {
-        "name": "Redis"
+        "name": "Redis",
+        "vendor": {
+          "name": "Redis"
+        }
       },
       "product_version": "< 8.6.3"
     }

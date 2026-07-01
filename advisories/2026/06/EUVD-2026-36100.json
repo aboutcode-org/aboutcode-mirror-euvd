@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-36100",
   "enisaUuid": "89c74288-912e-3973-b78f-09ebdf65f5bf",
-  "description": "Fission is an open-source, Kubernetes-native serverless framework that simplifies the deployment of functions and applications on Kubernetes. Prior to version 1.24.0, Fission's Environment CRD exposes spec.runtime.podSpec and spec.builder.podSpec, which are merged into the Kubernetes pod specs for runtime and builder pods. The merge logic propagated hostNetwork, hostPID, hostIPC, container privileged, and serviceAccountName from the user-supplied podspec with no filtering, and Environment.Validate performed no security-relevant checks on these fields. This issue has been patched in version 1.24.0.",
-  "datePublished": "Jun 10, 2026, 5:27:34 PM",
-  "dateUpdated": "Jun 10, 2026, 6:47:43 PM",
+  "description": "Fission Environment CRD podspec passthrough enables hostPID/hostNetwork/privileged pods, node escape",
+  "datePublished": "Jun 30, 2026, 6:19:32 PM",
+  "dateUpdated": "Jun 30, 2026, 6:19:32 PM",
   "baseScore": 9.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://github.com/fission/fission/security/advisories/GHSA-gx55-f84r-v3r7\nhttps://github.com/fission/fission/pull/3391\nhttps://github.com/fission/fission/releases/tag/v1.24.0\n",
-  "aliases": "CVE-2026-50564\n",
+  "references": "https://github.com/fission/fission/security/advisories/GHSA-gx55-f84r-v3r7\nhttps://github.com/fission/fission/pull/3391\nhttps://github.com/fission/fission/releases/tag/v1.24.0\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-50564\nhttps://github.com/fission/fission/commit/e484df8460bb4e8026e24210120602aa7f181f64\n",
+  "aliases": "CVE-2026-50564\nGHSA-gx55-f84r-v3r7\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "60590953-2330-3d75-96fc-291e49d53584",

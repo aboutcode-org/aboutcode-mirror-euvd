@@ -3,7 +3,7 @@
   "enisaUuid": "3596b3bb-e5b6-3790-8493-2f44a73d8b5c",
   "description": "luci-proto-openvpn through 0.11.1, fixed in commit e4ff45e, contains a command injection vulnerability in the generateKey ubus method where the cl_meta parameter is interpolated into a shell command without proper escaping or quoting. An authenticated LuCI user with OpenVPN protocol configuration access can inject arbitrary shell metacharacters into cl_meta to execute commands as root via the popen function.",
   "datePublished": "Jun 29, 2026, 6:16:04 PM",
-  "dateUpdated": "Jun 29, 2026, 7:21:29 PM",
+  "dateUpdated": "Jun 30, 2026, 11:15:50 AM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
@@ -16,6 +16,16 @@
       "id": "8df0fe6f-3251-3446-9e60-08b42ec469cb",
       "product": {
         "name": "luci",
+        "vendor": {
+          "name": "OpenWRT"
+        }
+      },
+      "product_version": "0 \u22640.11.1"
+    },
+    {
+      "id": "aa43eeae-88c3-38fb-9f97-b2cd33e19acf",
+      "product": {
+        "name": "luci-proto-openvpn",
         "vendor": {
           "name": "OpenWRT"
         }

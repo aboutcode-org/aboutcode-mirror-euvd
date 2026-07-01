@@ -3,19 +3,22 @@
   "enisaUuid": "2265f8ed-f325-3854-8590-42434843271a",
   "description": "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. From version 4.0.0 to before version 4.0.5, the Sync Service's ConfigMap-backed provider (server/sync/sync_cm.go) performs zero authorization checks on all CRUD operations (create, read, update, delete). Any authenticated user \u2014 including those using fake Bearer tokens \u2014 can create, read, update, and delete Kubernetes ConfigMaps containing synchronization limits. This issue has been patched in version 4.0.5.",
   "datePublished": "May 9, 2026, 3:42:43 AM",
-  "dateUpdated": "May 12, 2026, 2:23:10 AM",
+  "dateUpdated": "Jun 30, 2026, 2:43:52 AM",
   "baseScore": 8.5,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:H/SA:H",
   "references": "https://github.com/argoproj/argo-workflows/security/advisories/GHSA-xchc-cqwg-g76q\nhttps://github.com/argoproj/argo-workflows/commit/09fff05e0830c14a5e36cc40597ad84881db1ab6\nhttps://github.com/argoproj/argo-workflows/releases/tag/v4.0.5\n",
   "aliases": "GHSA-xchc-cqwg-g76q\nCVE-2026-42297\n",
   "assigner": "GitHub_M",
-  "epss": 0.04,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "5a26f47f-bf82-3cea-8b5e-ad56b3a72131",
       "product": {
-        "name": "argo-workflows"
+        "name": "argo-workflows",
+        "vendor": {
+          "name": "argoproj"
+        }
       },
       "product_version": "4.0.0, < 4.0.5"
     }

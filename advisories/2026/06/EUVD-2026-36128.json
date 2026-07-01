@@ -3,14 +3,14 @@
   "enisaUuid": "7e49848b-bb3e-3c0e-b928-727197614758",
   "description": "kafka-python prior to 2.3.2 contains a denial-of-service vulnerability in SCRAM authentication handling that allows a malicious or machine-in-the-middle broker to freeze the client event loop by supplying an excessively large iteration count. In scram.py, ScramClient.process_server_first_message() passes the broker-controlled SCRAM iteration count directly to hashlib.pbkdf2_hmac() without validation, blocking producer sends, consumer polls, admin operations, and heartbeats, which can cause consumer group eviction and repeated reconnect failures.",
   "datePublished": "Jun 10, 2026, 8:22:39 PM",
-  "dateUpdated": "Jun 11, 2026, 1:24:52 PM",
+  "dateUpdated": "Jun 30, 2026, 2:45:55 AM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/dpkp/kafka-python/pull/3019\nhttps://github.com/dpkp/kafka-python/commit/6e4831444f972d169cdd11f5c8d50333cea3f19b\nhttps://github.com/dpkp/kafka-python/pull/3026\nhttps://www.vulncheck.com/advisories/kafka-python-prior-to-dos-via-scram-iteration-count-in-scram-py\n",
   "aliases": "CVE-2026-10143\nGHSA-2jcm-hq8r-84wx\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.39,
   "enisaIdProduct": [
     {
       "id": "cb92a5e4-0a19-397a-a57a-e2ae6bb46ac8",
