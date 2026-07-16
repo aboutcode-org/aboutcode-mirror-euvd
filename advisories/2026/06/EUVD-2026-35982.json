@@ -3,14 +3,14 @@
   "enisaUuid": "90241a38-5b2a-3f8b-821f-ab5093c8f6d9",
   "description": "A local privilege escalation vulnerability was found in the ansible.posix authorized_key module. The module's keyfile() function uses os.chown() instead of os.lchown() and opens files without O_NOFOLLOW when managing SSH authorized keys. An unprivileged local user can pre-stage symbolic links in their ~/.ssh directory to redirect file ownership changes to arbitrary system paths when an operator runs the authorized_key task as root, leading to local privilege escalation.",
   "datePublished": "Jun 10, 2026, 5:03:05 AM",
-  "dateUpdated": "Jun 30, 2026, 2:43:13 AM",
+  "dateUpdated": "Jul 15, 2026, 1:23:04 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://access.redhat.com/security/cve/CVE-2026-11837\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2487424\n",
   "aliases": "CVE-2026-11837\nGHSA-49qh-h4vj-mrgf\n",
   "assigner": "redhat",
-  "epss": 0.13,
+  "epss": 0.16,
   "enisaIdProduct": [],
   "enisaIdVendor": []
 }

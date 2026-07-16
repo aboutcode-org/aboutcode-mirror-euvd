@@ -3,14 +3,14 @@
   "enisaUuid": "21ce8694-fd86-3e07-b1c4-f2b7551de891",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: gro: don't merge zcopy skbs\n\nskb_gro_receive() can currently copy frags between the source and GRO\nskb, without checking the zerocopy status, and in particular the\nSKBFL_MANAGED_FRAG_REFS flag.\n\nWhen SKBFL_MANAGED_FRAG_REFS is set, the skb doesn't hold a reference\non the pages in shinfo->frags. Appending those frags to another skb's\nfrags without fixing up the page refcount can lead to UAF.\n\nWhen either the last skb in the GRO chain (the one we would append\nfrags to) or the source skb is zerocopy, don't merge the skbs.",
   "datePublished": "Jun 9, 2026, 12:11:15 PM",
-  "dateUpdated": "Jun 30, 2026, 2:42:56 AM",
+  "dateUpdated": "Jul 15, 2026, 12:50:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3c6cc9f2ca65b6dd61b1af75452dc0e1cd0aad8d\nhttps://git.kernel.org/stable/c/1f9c828556416fbe3f49386708ce999fc4d4da06\nhttps://git.kernel.org/stable/c/479084ae0e1d9cb7929cb4298d35623de189f80a\nhttps://git.kernel.org/stable/c/e334cbf3388fd9334503a778a82d9e9f14dd2f71\nhttps://git.kernel.org/stable/c/44bea2032af0425e4ce6d26a8af0ede79db49ec1\nhttps://git.kernel.org/stable/c/4db79a322db8c97f7b73b8a347395ef4d685eb40\n",
   "aliases": "CVE-2026-46323\nGHSA-hf4r-hm8m-w52j\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "126aa622-55c3-37f7-ac84-475b14f1a5b9",

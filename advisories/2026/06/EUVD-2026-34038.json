@@ -3,14 +3,14 @@
   "enisaUuid": "6c2b313e-7d46-33f5-92e0-2584dc088c04",
   "description": "(*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, \".\") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates.",
   "datePublished": "Jun 2, 2026, 10:01:36 PM",
-  "dateUpdated": "Jun 30, 2026, 2:41:53 AM",
+  "dateUpdated": "Jul 15, 2026, 1:14:27 AM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
   "references": "https://go.dev/cl/783621\nhttps://go.dev/issue/79694\nhttps://groups.google.com/g/golang-announce/c/tKs3rmcBcKw\nhttps://pkg.go.dev/vuln/GO-2026-5037\n",
   "aliases": "GHSA-4279-q6mj-392r\nCVE-2026-27145\n",
   "assigner": "Go",
-  "epss": 0.56,
+  "epss": 0.94,
   "enisaIdProduct": [
     {
       "id": "b8cf97b4-2093-38c3-aa2f-a1c23db2a448",

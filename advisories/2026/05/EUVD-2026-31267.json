@@ -3,7 +3,7 @@
   "enisaUuid": "7d5017fd-a23a-3952-a16c-ac124a7453fc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: reset op_nents when zerocopy page pin fails\n\nWhen iov_iter_get_pages2() fails in rds_message_zcopy_from_user(),\nthe pinned pages are released with put_page(), and\nrm->data.op_mmp_znotifier is cleared.  But we fail to properly\nclear rm->data.op_nents.\n\nLater when rds_message_purge() is called from rds_sendmsg() the\ncleanup loop iterates over the incorrectly non zero number of\nop_nents and frees them again.\n\nFix this by properly resetting op_nents when it should be in\nrds_message_zcopy_from_user().",
   "datePublished": "May 21, 2026, 10:49:21 AM",
-  "dateUpdated": "Jun 30, 2026, 2:44:40 AM",
+  "dateUpdated": "Jul 15, 2026, 12:55:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

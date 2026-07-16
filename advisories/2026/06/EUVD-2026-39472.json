@@ -3,14 +3,14 @@
   "enisaUuid": "658ed631-ad13-397d-a6a9-4744b8add39c",
   "description": "A flaw was found in Keycloak. A missing authorization check in the GroupResource.addChild() endpoint within the Admin REST API allows an authenticated user with limited administrative privileges to reparent any existing group. When Fine-Grained Admin Permissions v2 (FGAPv2) is enabled, an attacker with management rights over a single low-privilege group can reparent a highly privileged group (such as one possessing the realm-admin role) under their managed group.\n\nBecause group permissions follow a hierarchical structure, this action unauthorizedly grants the attacker management and password-reset capabilities over the members of the targeted privileged group. An attacker can exploit this to reset an administrator's password, compromise the account, and achieve a full realm takeover, leading to a complete compromise of confidentiality, integrity, and availability.",
   "datePublished": "Jun 25, 2026, 4:16:43 PM",
-  "dateUpdated": "Jun 30, 2026, 2:44:01 AM",
+  "dateUpdated": "Jul 15, 2026, 12:38:43 AM",
   "baseScore": 7.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2026:30049\nhttps://access.redhat.com/errata/RHSA-2026:30050\nhttps://access.redhat.com/errata/RHSA-2026:30083\nhttps://access.redhat.com/errata/RHSA-2026:30084\nhttps://access.redhat.com/security/cve/CVE-2026-9099\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2480182\n",
   "aliases": "GHSA-rmcj-82cr-27rx\nCVE-2026-9099\n",
   "assigner": "redhat",
-  "epss": 0.27,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "0fbed48a-ef67-3916-b4ee-384e7a671c13",

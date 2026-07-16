@@ -3,14 +3,14 @@
   "enisaUuid": "2269749f-6908-3b1b-8a76-eda8bc59bdff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: aloop: Fix peer runtime UAF during format-change stop\n\nloopback_check_format() may stop the capture side when playback starts\nwith parameters that no longer match a running capture stream. Commit\n826af7fa62e3 (\"ALSA: aloop: Fix racy access at PCM trigger\") moved\nthe peer lookup under cable->lock, but the actual snd_pcm_stop() still\nruns after dropping that lock.\n\nA concurrent close can clear the capture entry from cable->streams[] and\ndetach or free its runtime while the playback trigger path still holds a\nstale peer substream pointer.\n\nKeep a per-cable count of in-flight peer stops before dropping\ncable->lock, and make free_cable() wait for those stops before\ndetaching the runtime. This preserves the existing behavior while\nmaking the peer runtime lifetime explicit.",
   "datePublished": "May 27, 2026, 12:58:34 PM",
-  "dateUpdated": "Jun 30, 2026, 2:41:20 AM",
+  "dateUpdated": "Jul 15, 2026, 12:51:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/83bd62fa9620ac98d5d694bde14c50f98c8e7189\nhttps://git.kernel.org/stable/c/345c24b2bcf0923dfae1ab41497351c68214ff76\nhttps://git.kernel.org/stable/c/03f52a9c170431e8f10e156b9dc0dae80b3e9198\nhttps://git.kernel.org/stable/c/bdd9503c3d222d2735b56c7a8b4422ccf3de6e5c\nhttps://git.kernel.org/stable/c/5d45e34bf001344e2966dabca1897561bbc9e913\nhttps://git.kernel.org/stable/c/e5c33cdc6f402eab8abd36ecf436b22c9d3a8aff\n",
   "aliases": "GHSA-w9ff-9cjh-6463\nCVE-2026-46090\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "39bbe971-68a8-3c27-aca7-624e039592f4",

@@ -3,14 +3,14 @@
   "enisaUuid": "0ebd857c-bb9b-32e7-b86c-194dab19df82",
   "description": "An issue was discovered in OpenStack Keystone before 29.0.2. When combined with an application credential impersonation vulnerability, an attacker with the member role on a project can escalate to admin by chaining unrestricted application credentials with Keystone trusts. The impersonated token carries the victim's identity, which passes the trustor validation check. Keystone then validates the delegated roles against the victim's actual role assignments in the database, not the roles on the requesting token. This allows the attacker to create a trust delegating the victim's admin role to themselves. The trust persists independently, and additional trusts and application credentials can be created to maintain access. All actions are logged under the victim's identity.",
   "datePublished": "May 28, 2026, 12:00:00 AM",
-  "dateUpdated": "Jun 30, 2026, 2:43:07 AM",
+  "dateUpdated": "Jul 15, 2026, 12:56:25 AM",
   "baseScore": 6.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:L",
   "references": "https://bugs.launchpad.net/keystone/+bug/2148477\nhttps://security.openstack.org/ossa/OSSA-2026-015.html\n",
-  "aliases": "CVE-2026-43000\nGHSA-q623-f4j4-p4xj\n",
+  "aliases": "CVE-2026-43000\nGHSA-q623-f4j4-p4xj\nPYSEC-2026-601\n",
   "assigner": "mitre",
-  "epss": 0.25,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "129b95b5-5e7c-3ed0-bf2a-2097a0293280",
