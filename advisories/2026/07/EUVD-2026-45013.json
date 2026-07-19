@@ -3,14 +3,14 @@
   "enisaUuid": "8870b98e-5b95-3aab-a730-14a145467a67",
   "description": "WireGuard Easy through 15.3.0, fixed in commit 66b292b, contains a cryptographically weak one-time link token generation vulnerability that allows unauthenticated network attackers to recover WireGuard peer credentials by brute-forcing a keyspace of at most 1000 candidate tokens per client ID, as the token is computed using CRC32 over a random value constrained to 0-999. Attackers can enumerate candidate tokens against the unauthenticated /cnf/:oneTimeLink route, which lacks rate limiting and does not validate token expiration, to obtain a peer's PrivateKey and PresharedKey and impersonate that peer on the VPN network.",
   "datePublished": "Jul 16, 2026, 7:28:37 PM",
-  "dateUpdated": "Jul 16, 2026, 7:28:37 PM",
+  "dateUpdated": "Jul 18, 2026, 3:08:24 AM",
   "baseScore": 9.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:L/SA:N",
   "references": "https://github.com/wg-easy/wg-easy/pull/2661\nhttps://github.com/wg-easy/wg-easy/commit/66b292b11bde3664f05ffb016c8082665d261ded\nhttps://www.vulncheck.com/advisories/wireguard-easy-weak-token-generation-information-disclosure-via-otl-route\n",
   "aliases": "CVE-2026-63089\nGHSA-m894-wgpg-hwpv\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "0b41886a-61e4-396b-995b-f58b3142042c",

@@ -3,21 +3,34 @@
   "enisaUuid": "b8ac9849-3743-34d1-9c2a-9095a71b3df8",
   "description": "barebox prior to version 2026.04.0 contains an out-of-bounds read vulnerability in DHCP option parsing within the dhcp_message_type() function that fails to verify the options pointer remains within received packet bounds. An attacker on the same broadcast domain can send a crafted DHCP Offer or ACK packet without a proper 0xff end marker to cause the parser to read past valid packet data and potentially crash the system.",
   "datePublished": "May 11, 2026, 8:49:01 PM",
-  "dateUpdated": "May 11, 2026, 8:49:01 PM",
+  "dateUpdated": "Jul 18, 2026, 3:01:34 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/barebox/barebox\nhttps://github.com/barebox/barebox/releases/tag/v2026.04.0\nhttps://www.vulncheck.com/advisories/barebox-out-of-bounds-read-in-dhcp-option-parsing\n",
-  "aliases": "CVE-2026-34960\n",
+  "references": "https://github.com/barebox/barebox\nhttps://github.com/barebox/barebox/releases/tag/v2026.04.0\nhttps://www.vulncheck.com/advisories/barebox-out-of-bounds-read-in-dhcp-option-parsing\nhttps://y637f9qq2x.com/posts/barebox-sandbox-vulns/\n",
+  "aliases": "GHSA-fqhc-8hwj-969h\nCVE-2026-34960\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "118b0934-1e40-367e-aaae-a6ed42ea137c",
       "product": {
-        "name": "barebox"
+        "name": "barebox",
+        "vendor": {
+          "name": "barebox"
+        }
       },
       "product_version": "0 \u22642026.04.0"
+    },
+    {
+      "id": "b9cba2c0-9e10-3bfb-b85a-fb1bb380b43b",
+      "product": {
+        "name": "barebox",
+        "vendor": {
+          "name": "barebox"
+        }
+      },
+      "product_version": "0 <2026.04.0"
     }
   ],
   "enisaIdVendor": [

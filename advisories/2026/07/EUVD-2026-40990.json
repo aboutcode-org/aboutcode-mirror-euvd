@@ -3,12 +3,14 @@
   "enisaUuid": "8f1ab59c-f8ad-3f91-8a41-0c3ee1bf7af9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Fix phys BO pread/pwrite with offset\n\nsg_page() returns struct page pointer not (void *) so the scaling\nof pread/pwrite is wrong for phys BO and wrong parts of BO would be\naccessed if non-zero offset is used.\n\nLast impacted platform with overlay or cursor planes using phys\nmapping was Gen3/945G/Lakeport.\n\n(cherry picked from commit 3e49a2f85070b2fb672c1e0fdba281a4ea3aebe6)",
   "datePublished": "Jul 1, 2026, 1:32:31 PM",
-  "dateUpdated": "Jul 1, 2026, 1:32:31 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 18, 2026, 7:33:24 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/40f738991058eb3e3530c3006a5bd6fd5e29f035\nhttps://git.kernel.org/stable/c/1ec8fc63e9cdb22da54e48e536c9204020416fc6\nhttps://git.kernel.org/stable/c/14469860e2e39b7095dcd658d2bad38a11110a68\nhttps://git.kernel.org/stable/c/07c33be968d9e0cab6cba38c81850a09942fcb2e\nhttps://git.kernel.org/stable/c/3bd168dd835b93a3862cd05b0d13c432b115f9d6\nhttps://git.kernel.org/stable/c/32d4c5d328a3ff995420f4f85163e1e403f43628\nhttps://git.kernel.org/stable/c/dd51a2eeb93bc6faa892ff9083911dd23f82c187\nhttps://git.kernel.org/stable/c/d21ad938398bca695a511307de38a65889e3b354\n",
   "aliases": "GHSA-v877-m38r-6c5w\nCVE-2026-53356\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "02e2c181-f9ff-3e1a-a74f-60d285f95873",
