@@ -1,0 +1,16 @@
+{
+  "id": "EUVD-2026-46412",
+  "enisaUuid": "c0399c45-ad77-3120-be2d-91aec60f47f6",
+  "description": "lmdeploy's OpenAI-compatible API server contains a server-side request forgery vulnerability that allows unauthenticated attackers to access internal services and cloud metadata endpoints by supplying a crafted image_url that redirects to internal targets. Attackers can send a POST request to the chat completions endpoint with an image_url pointing to an attacker-controlled server that responds with an HTTP 302 redirect to internal addresses such as loopback or instance-metadata endpoints, bypassing the initial URL safety check because redirects are followed without re-validating each hop through the safety guard.",
+  "datePublished": "Jul 21, 2026, 9:32:42 PM",
+  "dateUpdated": "Jul 21, 2026, 9:32:42 PM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:L/SC:N/SI:H/SA:L",
+  "references": "https://github.com/InternLM/lmdeploy/issues/4761\nhttps://github.com/InternLM/lmdeploy\nhttps://www.vulncheck.com/advisories/lmdeploy-server-side-request-forgery-via-http-redirect-bypass-of-private-ip-guard-in-vision-image-fetch\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-63764\n",
+  "aliases": "GHSA-rqhf-rg9p-w5gg\nCVE-2026-63764\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}
