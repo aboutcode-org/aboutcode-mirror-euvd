@@ -3,14 +3,82 @@
   "enisaUuid": "f47766f2-f55a-31da-b5a8-d1db9001402b",
   "description": "A flaw was found in ansible-core. The ansible-galaxy role install command processes dependency specifications from a role's meta/requirements.yml file. Due to improper neutralization of argument delimiters, a malicious role author can inject arbitrary git configuration flags through the src field. This allows arbitrary code execution on the machine of a user who installs the role via ansible-galaxy role install.",
   "datePublished": "Jun 5, 2026, 8:21:43 AM",
-  "dateUpdated": "Jul 15, 2026, 1:23:17 AM",
+  "dateUpdated": "Jul 22, 2026, 12:08:36 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-11332\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2485379\nhttps://github.com/ansible/ansible\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:42078\nhttps://access.redhat.com/errata/RHSA-2026:42079\nhttps://access.redhat.com/errata/RHSA-2026:42080\nhttps://access.redhat.com/security/cve/CVE-2026-11332\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2485379\nhttps://github.com/ansible/ansible\n",
   "aliases": "CVE-2026-11332\nGHSA-w8p5-mx5w-cpqj\n",
   "assigner": "redhat",
   "epss": 0.16,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "02b12e38-bdec-38aa-81b8-660c20c1cd51",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.5 for RHEL 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1:2.16.19-1.el8ap"
+    },
+    {
+      "id": "18a13f8b-db84-3359-837f-e51bb1ced802",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.6 for RHEL 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2:2.16.19-1.el10ap"
+    },
+    {
+      "id": "1c46afc0-9796-3ca4-b255-040f886e1c0b",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.7 for RHEL 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2:2.16.19-1.el10ap"
+    },
+    {
+      "id": "2efe7621-7469-324b-a1c8-e01ceea4246b",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.7 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1:2.16.19-1.el9ap"
+    },
+    {
+      "id": "8199b088-ad8d-3a91-b778-8a6718629fc0",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.5 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1:2.16.19-1.el9ap"
+    },
+    {
+      "id": "afbd90b6-c0a6-39f9-92b3-56e7b2e75488",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.6 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1:2.16.19-1.el9ap"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c8d06b24-7474-3cf8-aa71-d7954c58eb42",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

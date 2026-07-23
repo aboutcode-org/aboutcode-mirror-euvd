@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-44635",
   "enisaUuid": "ed8fb067-c793-3987-a2da-22243351310c",
-  "description": "n8n before versions 1.123.61, 2.27.4, and 2.28.1 contains a permission bypass vulnerability in external secrets handling caused by a mismatch between the static validation check and the runtime expression engine. An authenticated user with credential create or update permissions but without the externalSecret:list scope can embed external secret references into credentials in forms the static validation does not detect; these references resolve at workflow execution time, exposing secret values the user is not authorized to access. This issue only affects instances where an external secrets provider is configured and Advanced Permissions are in use.",
-  "datePublished": "Jul 15, 2026, 11:25:35 AM",
-  "dateUpdated": "Jul 15, 2026, 11:47:00 AM",
+  "description": "n8n: External Secrets Permission Bypass via Expression Parser Mismatch",
+  "datePublished": "Jul 22, 2026, 10:21:20 PM",
+  "dateUpdated": "Jul 22, 2026, 10:21:20 PM",
   "baseScore": 6.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://github.com/n8n-io/n8n/security/advisories/GHSA-jp7m-xcgx-57qm\nhttps://www.vulncheck.com/advisories/n8n-permission-bypass-via-expression-parser-mismatch-in-external-secrets\n",
-  "aliases": "CVE-2026-59259\nGHSA-q6mx-qvhp-fqmg\n",
+  "references": "https://github.com/n8n-io/n8n/security/advisories/GHSA-jp7m-xcgx-57qm\nhttps://www.vulncheck.com/advisories/n8n-permission-bypass-via-expression-parser-mismatch-in-external-secrets\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-59259\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@1.123.61\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@2.27.4\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@2.28.1\n",
+  "aliases": "CVE-2026-59259\nGHSA-q6mx-qvhp-fqmg\nGHSA-jp7m-xcgx-57qm\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.32,
   "enisaIdProduct": [
     {
       "id": "a69cbf63-3c37-332d-9ade-4f1aa964fd3b",

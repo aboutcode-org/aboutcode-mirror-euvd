@@ -1,21 +1,24 @@
 {
   "id": "EUVD-2026-11728",
   "enisaUuid": "af85bc5f-90a8-331c-8ed9-e740fc60c620",
-  "description": "PyJWT accepts unknown `crit` header extensions",
-  "datePublished": "Mar 13, 2026, 8:05:04 PM",
-  "dateUpdated": "Mar 13, 2026, 8:05:04 PM",
+  "description": "PyJWT is a JSON Web Token implementation in Python. Prior to 2.12.0, PyJWT does not validate the crit (Critical) Header Parameter defined in RFC 7515 \u00a74.1.11. When a JWS token contains a crit array listing extensions that PyJWT does not understand, the library accepts the token instead of rejecting it. This violates the MUST requirement in the RFC. This vulnerability is fixed in 2.12.0.",
+  "datePublished": "Mar 12, 2026, 9:41:50 PM",
+  "dateUpdated": "Jul 22, 2026, 12:08:48 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
   "references": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-752w-5fwx-jx9f\n",
-  "aliases": "CVE-2026-32597\n",
+  "aliases": "GHSA-752w-5fwx-jx9f\nCVE-2026-32597\nPYSEC-2026-120\n",
   "assigner": "GitHub_M",
-  "epss": 0.01,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "0975833b-161c-30e3-a58e-127ca5d94697",
       "product": {
-        "name": "pyjwt"
+        "name": "pyjwt",
+        "vendor": {
+          "name": "jpadilla"
+        }
       },
       "product_version": "< 2.12.0"
     }

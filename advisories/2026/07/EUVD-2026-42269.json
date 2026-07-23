@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-42269",
   "enisaUuid": "9250d1bc-8013-3d13-a968-695a33e8dbaf",
-  "description": "n8n before 1.123.61, 2.x before 2.27.4, and 2.28.x before 2.28.1 contains a SQL injection vulnerability in the legacy MySQL v1 node's executeQuery operation. The operation substitutes evaluated {{ ... }} expression values directly into the raw SQL string without parameterization. When a workflow uses this operation with expression-sourced values and is connected to an externally-reachable trigger (such as a Webhook node), attacker-controlled input reaching those expressions results in SQL injection, allowing execution of arbitrary SQL with the configured MySQL credentials' privileges. The MySQL v2 node, which uses parameterized queries, is not affected.",
-  "datePublished": "Jul 8, 2026, 1:49:13 PM",
-  "dateUpdated": "Jul 8, 2026, 1:49:13 PM",
+  "description": "n8n: MySQL v1 Node executeQuery Operation Allows SQL Injection via Unparameterized Expression Interpolation",
+  "datePublished": "Jul 22, 2026, 10:22:22 PM",
+  "dateUpdated": "Jul 22, 2026, 10:22:22 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N",
-  "references": "https://github.com/n8n-io/n8n/security/advisories/GHSA-hwmj-qg4v-cvg9\nhttps://www.vulncheck.com/advisories/n8n-sql-injection-in-mysql-v1-executequery-operation-via-expression-interpolation\n",
-  "aliases": "CVE-2026-59257\nGHSA-2qp2-6frj-p9pq\n",
+  "references": "https://github.com/n8n-io/n8n/security/advisories/GHSA-hwmj-qg4v-cvg9\nhttps://www.vulncheck.com/advisories/n8n-sql-injection-in-mysql-v1-executequery-operation-via-expression-interpolation\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-59257\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@1.123.61\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@2.27.4\nhttps://github.com/n8n-io/n8n/releases/tag/n8n@2.28.1\n",
+  "aliases": "CVE-2026-59257\nGHSA-hwmj-qg4v-cvg9\nGHSA-2qp2-6frj-p9pq\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.31,
   "enisaIdProduct": [
     {
       "id": "1ef8214c-4a06-3d28-b4cb-e1b925d1bb4a",

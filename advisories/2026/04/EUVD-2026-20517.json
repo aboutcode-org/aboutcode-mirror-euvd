@@ -3,34 +3,84 @@
   "enisaUuid": "ebc61a34-71b4-394d-a5b5-6fa5e3b4393b",
   "description": "A flaw was found in Red Hat Quay's Proxy Cache configuration feature. When an organization administrator configures an upstream registry for proxy caching, Quay makes a network connection to the specified registry hostname without verifying that it points to a legitimate external service. An attacker with organization administrator privileges could supply a crafted hostname to force the Quay server to make requests to internal network services, cloud infrastructure endpoints, or other resources that should not be accessible from the Quay application.",
   "datePublished": "Apr 8, 2026, 5:06:58 PM",
-  "dateUpdated": "May 28, 2026, 2:37:53 AM",
+  "dateUpdated": "Jul 22, 2026, 2:53:32 PM",
   "baseScore": 5.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:L/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:19375\nhttps://access.redhat.com/errata/RHSA-2026:21017\nhttps://access.redhat.com/security/cve/CVE-2026-32591\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446965\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:24833\nhttps://access.redhat.com/errata/RHSA-2026:40262\nhttps://access.redhat.com/errata/RHSA-2026:41031\nhttps://access.redhat.com/errata/RHSA-2026:41066\nhttps://access.redhat.com/errata/RHSA-2026:42146\nhttps://access.redhat.com/errata/RHSA-2026:42796\nhttps://access.redhat.com/errata/RHSA-2026:43052\nhttps://access.redhat.com/security/cve/CVE-2026-32591\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446965\n",
   "aliases": "CVE-2026-32591\nGHSA-9wjq-f6rc-86wf\n",
   "assigner": "redhat",
-  "epss": 0.01,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
-      "id": "bcb337b3-6fe1-37b0-bc6e-76d16fed1e05",
+      "id": "3edd5920-dffc-3617-a9c8-6aeb20da677d",
+      "product": {
+        "name": "Red Hat Quay 3.9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1784125838"
+    },
+    {
+      "id": "430fcfda-1fb7-328e-8638-f0e6c41de0bd",
+      "product": {
+        "name": "Red Hat Quay 3.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1780604033"
+    },
+    {
+      "id": "67ad1ac1-d01f-3747-9e82-d32414a00892",
+      "product": {
+        "name": "Red Hat Quay 3.1",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1783750447"
+    },
+    {
+      "id": "838abb3e-1db1-3773-87a3-cf1e9462616a",
       "product": {
         "name": "Red Hat Quay 3.16",
         "vendor": {
           "name": "Red Hat"
         }
       },
-      "product_version": "patch: 1779204086"
+      "product_version": "patch: 1783955846"
     },
     {
-      "id": "eabfa126-0f47-37c9-b1df-ced2506af53d",
+      "id": "a359de5b-3d63-369b-a6ec-30f979052948",
       "product": {
-        "name": "Red Hat Quay 3.14",
+        "name": "Red Hat Quay 3.12",
         "vendor": {
           "name": "Red Hat"
         }
       },
-      "product_version": "patch: 1779689392"
+      "product_version": "patch: 1783751865"
+    },
+    {
+      "id": "f3d1976c-96c0-36e4-aa48-c0276488f608",
+      "product": {
+        "name": "Red Hat Quay 3.15",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1784351966"
+    },
+    {
+      "id": "faa05ea8-b206-36ba-b067-8dda6494eeca",
+      "product": {
+        "name": "Red Hat Quay 3.12",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1784353904"
     }
   ],
   "enisaIdVendor": [

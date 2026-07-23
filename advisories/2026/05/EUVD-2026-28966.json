@@ -3,14 +3,14 @@
   "enisaUuid": "05014b06-97d1-3d4a-a677-90baa296f098",
   "description": "In PHP versions 8.2.* before 8.2.31, 8.3.* before 8.3.31, 8.4.* before 8.4.21, and 8.5.* before 8.5.6, the SOAP extension's object deduplication mechanism stores pointers to PHP objects in a global map\u00a0without incrementing their reference counts. When an apache:Map node contains duplicate keys, processing the second entry overwrites the first in the temporary result map, freeing the original PHP object while its stale pointer remains in the map. A subsequent href reference to the freed node can copy the dangling pointer into the result. As PHP string allocations can reclaim the freed memory region, an attacker with control over the SOAP request body can exploit this use-after-free to achieve remote code execution.",
   "datePublished": "May 10, 2026, 4:19:15 AM",
-  "dateUpdated": "Jun 30, 2026, 2:44:11 AM",
+  "dateUpdated": "Jul 22, 2026, 12:08:35 PM",
   "baseScore": 9.5,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/AU:Y/RE:M/U:Red",
   "references": "https://github.com/php/php-src/security/advisories/GHSA-85c2-q967-79q5\n",
   "aliases": "CVE-2026-6722\n",
   "assigner": "php",
-  "epss": 0.51,
+  "epss": 0.74,
   "enisaIdProduct": [
     {
       "id": "05e4cfb8-d853-30da-8b55-07479c1f8d04",

@@ -3,7 +3,7 @@
   "enisaUuid": "53e8846b-2577-38b4-8ccf-1fd42c2476e6",
   "description": "PraisonAI Platform is the platform layer for the PraisonAI multi-agent teams system. Versions prior to 0.1.4 have an insecure default cryptographic key. The JWT signing secret defaults to the hardcoded literal `\"dev-secret-change-me\"` when `PLATFORM_JWT_SECRET` is unset. A safety check exists but only fires when `PLATFORM_ENV != \"dev\"`; the default value of `PLATFORM_ENV` is `\"dev\"`, so the check is silently bypassed in any deployment that does not explicitly opt out. The attacker reads the literal from this public source file, mints a JWT with arbitrary `sub` and `email` claims, and authenticates as any existing user (including workspace owners and admins). PraisonAI Platform version 0.1.4 patches the issue.",
   "datePublished": "Jul 21, 2026, 4:55:31 PM",
-  "dateUpdated": "Jul 21, 2026, 5:20:55 PM",
+  "dateUpdated": "Jul 22, 2026, 2:43:35 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -16,16 +16,6 @@
       "id": "35a5d157-3307-377d-9022-bb90173b23e2",
       "product": {
         "name": "praisonai-platform",
-        "vendor": {
-          "name": "mervinpraison"
-        }
-      },
-      "product_version": "< 0.1.4"
-    },
-    {
-      "id": "63a55a57-a9a9-3ff4-8c6a-8e4ce3a3dd14",
-      "product": {
-        "name": "PraisonAI",
         "vendor": {
           "name": "mervinpraison"
         }
