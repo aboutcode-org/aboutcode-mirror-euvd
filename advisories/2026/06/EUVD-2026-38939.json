@@ -3,14 +3,14 @@
   "enisaUuid": "94c47ee8-72d7-360d-91ac-a044864a915b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: l2cap: Add missing chan lock in l2cap_ecred_reconf_rsp\n\nl2cap_ecred_reconf_rsp() calls l2cap_chan_del() without holding\nl2cap_chan_lock(). Every other l2cap_chan_del() caller in the file\nacquires the lock first. A remote BLE device can send a crafted\nL2CAP ECRED reconfiguration response to corrupt the channel list\nwhile another thread is iterating it.\n\nAdd l2cap_chan_hold() and l2cap_chan_lock() before l2cap_chan_del(),\nand l2cap_chan_unlock() and l2cap_chan_put() after, matching the\npattern used in l2cap_ecred_conn_rsp() and l2cap_conn_del().",
   "datePublished": "Jun 24, 2026, 4:30:12 PM",
-  "dateUpdated": "Jul 22, 2026, 12:08:44 PM",
+  "dateUpdated": "Jul 23, 2026, 12:08:03 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/96dca51715d86559ed6ed8028e5445cecb80f3ae\nhttps://git.kernel.org/stable/c/330b20ec97916961ee0e6c29c06bc0fa7c96e64c\nhttps://git.kernel.org/stable/c/0ccd75c51f620374086f359e906917676e699a1c\nhttps://git.kernel.org/stable/c/77a853aec710b2fdf41fa298ea3cbc9a4358f917\nhttps://git.kernel.org/stable/c/fe1188abdae9b7a8199dcdfcf9244d5e5d61eb14\nhttps://git.kernel.org/stable/c/dc89961b76f12aff47124c1df4bdb32a080f4d0c\nhttps://git.kernel.org/stable/c/5501d055a1ce3c747141e3955ba8cf034d193f3e\nhttps://git.kernel.org/stable/c/42776497cdbc9a665b384a6dcb85f0d4bd927eab\n",
   "aliases": "GHSA-g7cw-xhg8-933g\nCVE-2026-53071\n",
   "assigner": "Linux",
-  "epss": 0.27,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "0e06cfe9-e741-3e19-8203-5ed97d6cfdef",

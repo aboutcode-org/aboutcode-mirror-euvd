@@ -1,42 +1,54 @@
 {
   "id": "EUVD-2025-206319",
   "enisaUuid": "182c81c9-b777-3d6d-9fd3-3f82aeca6da7",
-  "description": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
-  "datePublished": "Jan 21, 2026, 11:01:22 PM",
-  "dateUpdated": "Jan 21, 2026, 11:01:22 PM",
+  "description": "Lodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the _.unset\u00a0and _.omit\u00a0functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes.\n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.\n\nThis issue is patched on 4.17.23",
+  "datePublished": "Jan 21, 2026, 7:05:28 PM",
+  "dateUpdated": "Jul 23, 2026, 12:08:00 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P",
-  "references": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-13465\nhttps://github.com/lodash/lodash/commit/edadd452146f7e4bad4ea684e955708931d84d81\n",
+  "references": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg\n",
   "aliases": "CVE-2025-13465\nGHSA-xxjr-mmjv-4gpg\n",
   "assigner": "openjs",
-  "epss": 0.03,
+  "epss": 1.54,
   "enisaIdProduct": [
     {
-      "id": "a20e08d8-585e-3793-8516-f1734260db01",
+      "id": "63b45d6e-98dd-38f9-a6a0-cf976dde2e30",
       "product": {
-        "name": "lodash"
+        "name": "lodash",
+        "vendor": {
+          "name": "lodash"
+        }
       },
       "product_version": "4.0.0 \u22644.17.22"
     },
     {
       "id": "b6a6ee4d-67aa-3488-a2fe-11c3b8bc5c1d",
       "product": {
-        "name": "lodash-es"
+        "name": "lodash-es",
+        "vendor": {
+          "name": "lodash"
+        }
       },
       "product_version": "4.0.0 \u22644.17.22"
     },
     {
       "id": "da9f83b6-e7c4-35bc-af35-01371cb6b32f",
       "product": {
-        "name": "Lodash-amd"
+        "name": "Lodash-amd",
+        "vendor": {
+          "name": "lodash"
+        }
       },
       "product_version": "4.0.0 \u22644.17.22"
     },
     {
       "id": "e1aaa881-0d28-3209-b3a5-650e10e12f74",
       "product": {
-        "name": "lodash.unset"
+        "name": "lodash.unset",
+        "vendor": {
+          "name": "lodash"
+        }
       },
       "product_version": "4.0.0"
     }
@@ -55,7 +67,7 @@
       }
     },
     {
-      "id": "f0ebec92-f18d-3780-a671-1f0413f26220",
+      "id": "99154d0f-5a5c-3ce1-8d44-0ebd9bd9d637",
       "vendor": {
         "name": "lodash"
       }

@@ -3,7 +3,7 @@
   "enisaUuid": "41891912-b8ea-3805-916a-3635cc1b8aea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject userspace cifs.spnego descriptions\n\ncifs.spnego key descriptions contain authority-bearing fields such as\npid, uid, creduid, and upcall_target that cifs.upcall treats as\nkernel-originating inputs. However, userspace can also create keys of\nthis type through request_key(2) or add_key(2), allowing those fields to\nbe supplied without CIFS origin.\n\nOnly accept cifs.spnego descriptions while CIFS is using its private\nspnego_cred to request the key.",
   "datePublished": "Jun 1, 2026, 4:22:29 PM",
-  "dateUpdated": "Jul 15, 2026, 12:51:02 AM",
+  "dateUpdated": "Jul 23, 2026, 12:08:05 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
@@ -151,16 +151,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "b42b33fe-f8a5-3359-932b-ecd22c501406",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc5"
     },
     {
       "id": "c9604fd2-b8eb-3989-9d09-77c1afbaa305",
