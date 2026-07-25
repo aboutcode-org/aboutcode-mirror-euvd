@@ -3,14 +3,14 @@
   "enisaUuid": "89c3d80b-89ad-3864-b38a-bb81b6f57eda",
   "description": "Traefik versions 3.7.0 through 3.7.6 contain a namespace confusion vulnerability in the Kubernetes Gateway API provider. When resolving HTTPRoute.spec.rules[].backendRefs[].filters[].extensionRef, Traefik used the backend Service namespace instead of the HTTPRoute namespace. A low-privileged route author holding a ReferenceGrant for a cross-namespace Service could therefore bind a Traefik Middleware from the backend namespace without a separate grant for that middleware, potentially injecting trusted reverse-proxy identity headers into downstream requests. The issue is fixed in version 3.7.7.",
   "datePublished": "Jul 22, 2026, 11:21:47 AM",
-  "dateUpdated": "Jul 23, 2026, 1:51:17 PM",
+  "dateUpdated": "Jul 24, 2026, 9:35:16 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N",
   "references": "https://github.com/traefik/traefik/security/advisories/GHSA-qq9q-x9w4-chhj\nhttps://github.com/traefik/traefik/commit/26c96a3935cafb473f4a5bae1886560d9aa4e4f0\nhttps://www.vulncheck.com/advisories/traefik-before-namespace-confusion-via-httproute-extensionref\n",
   "aliases": "GHSA-6mxq-jr92-3h2r\nCVE-2026-65601\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "c785f856-2c46-3fc0-a329-8350a59d691b",

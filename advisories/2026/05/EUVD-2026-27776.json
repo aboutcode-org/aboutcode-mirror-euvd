@@ -3,9 +3,9 @@
   "enisaUuid": "b29dcc2f-f1a3-39c4-846d-207bba0e406d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: Drop the lock in skb_may_tx_timestamp()\n\nskb_may_tx_timestamp() may acquire sock::sk_callback_lock. The lock must\nnot be taken in IRQ context, only softirq is okay. A few drivers receive\nthe timestamp via a dedicated interrupt and complete the TX timestamp\nfrom that handler. This will lead to a deadlock if the lock is already\nwrite-locked on the same CPU.\n\nTaking the lock can be avoided. The socket (pointed by the skb) will\nremain valid until the skb is released. The ->sk_socket and ->file\nmember will be set to NULL once the user closes the socket which may\nhappen before the timestamp arrives.\nIf we happen to observe the pointer while the socket is closing but\nbefore the pointer is set to NULL then we may use it because both\npointer (and the file's cred member) are RCU freed.\n\nDrop the lock. Use READ_ONCE() to obtain the individual pointer. Add a\nmatching WRITE_ONCE() where the pointer are cleared.",
   "datePublished": "May 6, 2026, 11:28:18 AM",
-  "dateUpdated": "Jul 4, 2026, 11:50:35 AM",
+  "dateUpdated": "Jul 24, 2026, 2:33:35 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c770217044d9cbe16a1f7c385cf080ed06a2fc04\nhttps://git.kernel.org/stable/c/f3e4cceafad27c9363c33622732f86722846ec6f\nhttps://git.kernel.org/stable/c/e4c6efb3b70ff87f1df99efce2f8893717695718\nhttps://git.kernel.org/stable/c/983512f3a87fd8dc4c94dfa6b596b6e57df5aad7\n",
+  "references": "https://git.kernel.org/stable/c/4839cbda8f13e99ce2bb3b593f5cc3288415684b\nhttps://git.kernel.org/stable/c/3709d73ace37e9aaebb688f5a5cf706d74350b64\nhttps://git.kernel.org/stable/c/cf7599116c4c0082fd25cb1bf0254631da0ed06e\nhttps://git.kernel.org/stable/c/cd2463ec60f0d6e460078037c86f9d0947ee1ff6\nhttps://git.kernel.org/stable/c/c770217044d9cbe16a1f7c385cf080ed06a2fc04\nhttps://git.kernel.org/stable/c/f3e4cceafad27c9363c33622732f86722846ec6f\nhttps://git.kernel.org/stable/c/e4c6efb3b70ff87f1df99efce2f8893717695718\nhttps://git.kernel.org/stable/c/983512f3a87fd8dc4c94dfa6b596b6e57df5aad7\n",
   "aliases": "GHSA-r977-p9g8-m7hx\nCVE-2026-43216\n",
   "assigner": "Linux",
   "epss": 0.13,
@@ -41,6 +41,16 @@
       "product_version": "patch: 7.0"
     },
     {
+      "id": "594eb9d3-98cd-3438-9cf7-07b1cc4183d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.261"
+    },
+    {
       "id": "5d122076-d8de-3047-b0f5-0529a9b26f0a",
       "product": {
         "name": "Linux",
@@ -51,6 +61,26 @@
       "product_version": "4.0"
     },
     {
+      "id": "6237ca24-c44b-3c1a-b44e-adc3611ec327",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.145"
+    },
+    {
+      "id": "6c431b28-ac50-3f83-b7c6-343ee0f7fbcf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b245be1f4db1a0394e4b6eb66059814b46670ac3 <4839cbda8f13e99ce2bb3b593f5cc3288415684b"
+    },
+    {
       "id": "73c70c3b-1f05-3796-8a9a-72391464867f",
       "product": {
         "name": "Linux",
@@ -59,6 +89,26 @@
         }
       },
       "product_version": "b245be1f4db1a0394e4b6eb66059814b46670ac3 <983512f3a87fd8dc4c94dfa6b596b6e57df5aad7"
+    },
+    {
+      "id": "890148b6-ef1e-3606-bcf1-7b2e308ecb4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b245be1f4db1a0394e4b6eb66059814b46670ac3 <cf7599116c4c0082fd25cb1bf0254631da0ed06e"
+    },
+    {
+      "id": "89dddbbf-d1ed-37a1-b88a-1af7195714e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b245be1f4db1a0394e4b6eb66059814b46670ac3 <cd2463ec60f0d6e460078037c86f9d0947ee1ff6"
     },
     {
       "id": "8ac0d8aa-3580-3606-896d-838b8e40af16",
@@ -79,6 +129,36 @@
         }
       },
       "product_version": "patch: 6.19.6"
+    },
+    {
+      "id": "ad427ebf-df7e-3a66-ba17-2f0d0ce13c9a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b245be1f4db1a0394e4b6eb66059814b46670ac3 <3709d73ace37e9aaebb688f5a5cf706d74350b64"
+    },
+    {
+      "id": "b49e6e83-0481-3db1-8445-281f12764ee7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.212"
+    },
+    {
+      "id": "b91101bd-6a7e-348f-9ca6-97c2825e7f5c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.178"
     },
     {
       "id": "d0a6737d-aba3-3d1d-a797-cb482ab65998",

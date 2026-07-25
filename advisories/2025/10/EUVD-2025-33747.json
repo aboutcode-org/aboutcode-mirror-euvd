@@ -1,37 +1,36 @@
 {
   "id": "EUVD-2025-33747",
   "enisaUuid": "7190873e-58f5-30c7-b933-b038cec4d065",
-  "description": "Ash Framework: Filter authorization misapplies impossible bypass/runtime policies",
-  "datePublished": "Oct 13, 2025, 1:33:22 PM",
-  "dateUpdated": "Oct 13, 2025, 1:33:22 PM",
+  "description": "Incorrect Authorization vulnerability in ash-project ash allows Authentication Bypass. This vulnerability is associated with program files lib/ash/policy/authorizer/authorizer.ex and program routines 'Elixir.Ash.Policy.Authorizer':strict_filters/2.\n\nThis issue affects ash: from 0.1.0 before 3.6.2.",
+  "datePublished": "Oct 10, 2025, 3:57:29 PM",
+  "dateUpdated": "Jul 24, 2026, 2:14:08 PM",
   "baseScore": 8.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://github.com/ash-project/ash/security/advisories/GHSA-7r7f-9xpj-jmr7\nhttps://github.com/ash-project/ash/commit/66d81300065b970da0d2f4528354835d2418c7ae\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-48043\nhttps://github.com/ash-project/ash/releases/tag/v3.6.2\n",
+  "references": "https://github.com/ash-project/ash/security/advisories/GHSA-7r7f-9xpj-jmr7\nhttps://cna.erlef.org/cves/CVE-2025-48043.html\nhttps://osv.dev/vulnerability/EEF-CVE-2025-48043\nhttps://github.com/ash-project/ash/commit/66d81300065b970da0d2f4528354835d2418c7ae\n",
   "aliases": "GHSA-7r7f-9xpj-jmr7\nCVE-2025-48043\n",
   "assigner": "EEF",
-  "epss": 0.11,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
-      "id": "88c50bb6-8b6d-338e-ba35-f62c85bd6ce3",
+      "id": "5f9f625f-4419-3d3f-b6da-a46436fea8cf",
       "product": {
-        "name": "ash"
+        "name": "ash",
+        "vendor": {
+          "name": "ash-project"
+        }
       },
-      "product_version": "0 <3.6.2"
+      "product_version": "0.1.0 <3.6.2"
     },
     {
-      "id": "aff584b6-46d4-3167-b091-e4b1df087add",
+      "id": "c8c3e4c8-0066-370e-962a-44835040797b",
       "product": {
-        "name": "ash"
+        "name": "ash",
+        "vendor": {
+          "name": "ash-project"
+        }
       },
-      "product_version": "pkg:hex/ash@0 <pkg:hex/ash@3.6.2"
-    },
-    {
-      "id": "bd288203-3064-3d04-913e-89eb1f9bb8a8",
-      "product": {
-        "name": "ash"
-      },
-      "product_version": "0 <66d81300065b970da0d2f4528354835d2418c7ae"
+      "product_version": "4c41344126b0aba09ec3085517000f8aefec299e <66d81300065b970da0d2f4528354835d2418c7ae"
     }
   ],
   "enisaIdVendor": [

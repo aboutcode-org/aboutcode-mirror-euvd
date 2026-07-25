@@ -3,13 +3,23 @@
   "enisaUuid": "4af1b9f0-adfc-3195-88fb-a8101ed34739",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject BPF_MAP_TYPE_INODE_STORAGE creation if BPF LSM is uninitialized\n\nWhen CONFIG_BPF_LSM=y is set, BPF inode storage maps\n(BPF_MAP_TYPE_INODE_STORAGE) are compiled into the kernel. However,\nif the BPF LSM is not explicitly enabled at boot time (e.g. omitted\nfrom the \"lsm=\" boot parameter), lsm_prepare() is never executed for\nthe BPF LSM.\n\nConsequently, the BPF inode security blob offset\n(bpf_lsm_blob_sizes.lbs_inode) is never initialized and remains at\nits default compiled size of 8 bytes instead of being updated to a\nvalid offset past the reserved struct rcu_head (typically 16 bytes\nor more).\n\nWhen a privileged user creates and updates a BPF_MAP_TYPE_INODE_STORAGE\nmap, bpf_inode() evaluates inode->i_security + 8. This erroneously\naliases the struct rcu_head.func callback pointer at the beginning\nof the inode->i_security blob. During subsequent map element cleanup\nor inode destruction, writing NULL to owner_storage clears the queued\nRCU callback pointer. When rcu_do_batch() later executes the queued\ncallback, it attempts an instruction fetch at address 0x0, triggering\nan immediate kernel panic.\n\nFix this by introducing a global bpf_lsm_initialized boolean flag\nmarked with __ro_after_init. Set this flag to true inside bpf_lsm_init()\nwhen the LSM framework successfully registers the BPF LSM. Gate map\nallocation in inode_storage_map_alloc() on this flag, returning\n-EOPNOTSUPP if the BPF LSM is in turn uninitialized.\n\nThis fail-fast approach prevents userspace from allocating inode\nstorage maps when the supporting BPF LSM infrastructure is absent,\navoiding zombie map states.",
   "datePublished": "Jul 20, 2026, 4:27:51 PM",
-  "dateUpdated": "Jul 20, 2026, 4:27:51 PM",
+  "dateUpdated": "Jul 24, 2026, 2:34:19 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c76b8abce575e0c6e4096957220b4515ed847d89\nhttps://git.kernel.org/stable/c/a6f0643e4f63cfaa0d5d4a69de4f132eac4b8fe4\n",
+  "references": "https://git.kernel.org/stable/c/de984ea883405420fdc416ae8964b752df586970\nhttps://git.kernel.org/stable/c/267fdd9b6530c399dfd996e1a0a7628b45baf9f0\nhttps://git.kernel.org/stable/c/c76b8abce575e0c6e4096957220b4515ed847d89\nhttps://git.kernel.org/stable/c/a6f0643e4f63cfaa0d5d4a69de4f132eac4b8fe4\n",
   "aliases": "GHSA-3hvr-phfh-x26g\nCVE-2026-64192\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
+    {
+      "id": "01704c4d-ab76-318e-8f43-c88197b0d7fc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.40"
+    },
     {
       "id": "078c6215-8166-3f77-8f1d-67fc7e930cd5",
       "product": {
@@ -21,6 +31,16 @@
       "product_version": "patch: 7.2-rc2"
     },
     {
+      "id": "3302330c-038e-3e15-a660-00375d5b4517",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8ea636848aca35b9f97c5b5dee30225cf2dd0fe6 <267fdd9b6530c399dfd996e1a0a7628b45baf9f0"
+    },
+    {
       "id": "537d92bf-40a9-3086-b3c5-7355c2deec55",
       "product": {
         "name": "Linux",
@@ -29,6 +49,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "600f5eae-a865-306c-8023-d2c424a4be89",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.97"
+    },
+    {
+      "id": "6da946da-22eb-355e-b827-93542393213b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8ea636848aca35b9f97c5b5dee30225cf2dd0fe6 <de984ea883405420fdc416ae8964b752df586970"
     },
     {
       "id": "72b125eb-fd6c-30de-b156-c8c0e56f35cb",

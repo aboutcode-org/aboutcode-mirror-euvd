@@ -3,7 +3,7 @@
   "enisaUuid": "fd2c8331-0f36-3044-a338-556bdd220252",
   "description": "A flaw was found in gdk-pixbuf. When parsing a specially crafted ICO file with pixel values that exceed the defined palette range, an out-of-bounds read can occur due to improper bounds checking against the actual palette size. This vulnerability causes heap bytes to be interpreted as valid palette indices and rendered as RGB pixel values in the output image, allowing an attacker to extract heap content via the generated output, such as a thumbnail.",
   "datePublished": "Jul 23, 2026, 4:41:20 PM",
-  "dateUpdated": "Jul 23, 2026, 5:49:54 PM",
+  "dateUpdated": "Jul 24, 2026, 3:12:41 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
@@ -11,6 +11,24 @@
   "aliases": "CVE-2026-16768\nGHSA-744w-9fjj-p376\n",
   "assigner": "redhat",
   "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "ea080211-4e7f-3683-8088-2b0036373f4a",
+      "product": {
+        "name": "gdk-pixbuf",
+        "vendor": {
+          "name": "Gnome"
+        }
+      },
+      "product_version": "0 <*"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b669ed7c-07fb-3873-a0bb-77d866bd027e",
+      "vendor": {
+        "name": "Gnome"
+      }
+    }
+  ]
 }

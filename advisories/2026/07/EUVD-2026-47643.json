@@ -3,14 +3,14 @@
   "enisaUuid": "3bbac89c-5a36-318d-9901-f0a2b0bb04b7",
   "description": "n8n versions before 1.123.64, 2.29.8, and 2.30.1 contain a credential exposure vulnerability: when configured with a Google Service Account key, the full PEM private key was mistakenly placed in the JWT header's kid field (intended only for a key identifier). Because JWT headers are Base64-encoded rather than encrypted, the private key could be recovered by anything that logged or inspected the JWT. An attacker who obtained the key could impersonate the service account and access or modify any Google Cloud resource it was authorized to use. Only instances using Google Service Account credentials are affected.",
   "datePublished": "Jul 22, 2026, 11:21:46 AM",
-  "dateUpdated": "Jul 22, 2026, 6:24:11 PM",
+  "dateUpdated": "Jul 24, 2026, 9:35:16 PM",
   "baseScore": 5.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:L/VI:N/VA:N/SC:H/SI:L/SA:L",
   "references": "https://github.com/n8n-io/n8n/security/advisories/GHSA-9r8p-h6cc-6qhm\nhttps://www.vulncheck.com/advisories/n8n-before-credential-exposure-via-jwt-header\n",
   "aliases": "GHSA-mhvh-gwhr-76pw\nGHSA-9r8p-h6cc-6qhm\nCVE-2026-65599\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "0574a1e6-101f-39bb-bd8a-ac8d96a97aff",

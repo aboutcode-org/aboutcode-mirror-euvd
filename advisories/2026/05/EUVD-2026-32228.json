@@ -3,15 +3,25 @@
   "enisaUuid": "a3db6ede-177e-35e6-ab05-c108f34c1340",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Clear Present bit before tearing down context entry\n\nWhen tearing down a context entry, the current implementation zeros the\nentire 128-bit entry using multiple 64-bit writes. This creates a window\nwhere the hardware can fetch a \"torn\" entry \u2014 where some fields are\nalready zeroed while the 'Present' bit is still set \u2014 leading to\nunpredictable behavior or spurious faults.\n\nWhile x86 provides strong write ordering, the compiler may reorder writes\nto the two 64-bit halves of the context entry. Even without compiler\nreordering, the hardware fetch is not guaranteed to be atomic with\nrespect to multiple CPU writes.\n\nAlign with the \"Guidance to Software for Invalidations\" in the VT-d spec\n(Section 6.5.3.3) by implementing the recommended ownership handshake:\n\n1. Clear only the 'Present' (P) bit of the context entry first to\n   signal the transition of ownership from hardware to software.\n2. Use dma_wmb() to ensure the cleared bit is visible to the IOMMU.\n3. Perform the required cache and context-cache invalidation to ensure\n   hardware no longer has cached references to the entry.\n4. Fully zero out the entry only after the invalidation is complete.\n\nAlso, add a dma_wmb() to context_set_present() to ensure the entry\nis fully initialized before the 'Present' bit becomes visible.",
   "datePublished": "May 27, 2026, 12:18:00 PM",
-  "dateUpdated": "May 30, 2026, 10:46:08 AM",
+  "dateUpdated": "Jul 24, 2026, 2:33:39 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/d2138abc8f0a7fce4101b7229b43b06811ed083d\nhttps://git.kernel.org/stable/c/a922dbafb4a674d958d702038232d09a30daf770\nhttps://git.kernel.org/stable/c/c1e4f1dccbe9d7656d1c6872ebeadb5992d0aaa2\n",
+  "references": "https://git.kernel.org/stable/c/c716a59e9977d751e5eb54bcfa6a80124cb5067b\nhttps://git.kernel.org/stable/c/d2138abc8f0a7fce4101b7229b43b06811ed083d\nhttps://git.kernel.org/stable/c/a922dbafb4a674d958d702038232d09a30daf770\nhttps://git.kernel.org/stable/c/c1e4f1dccbe9d7656d1c6872ebeadb5992d0aaa2\n",
   "aliases": "GHSA-xp3w-6f4f-gvg7\nCVE-2026-45944\n",
   "assigner": "Linux",
-  "epss": 0.01,
+  "epss": 0.13,
   "enisaIdProduct": [
+    {
+      "id": "09450082-5c44-3624-a459-540325010811",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.97"
+    },
     {
       "id": "0bf51384-d3de-39d6-9048-6080aa9d5561",
       "product": {
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "ba39592764ed20cee09aae5352e603a27bf56b0d <d2138abc8f0a7fce4101b7229b43b06811ed083d"
+    },
+    {
+      "id": "69c7ad41-c65c-3160-b4ef-6fb549f31173",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ba39592764ed20cee09aae5352e603a27bf56b0d <c716a59e9977d751e5eb54bcfa6a80124cb5067b"
     },
     {
       "id": "6e311124-bd43-3ace-818c-3f9b583508b1",

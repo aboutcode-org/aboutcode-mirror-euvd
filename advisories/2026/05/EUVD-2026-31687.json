@@ -1,26 +1,26 @@
 {
   "id": "EUVD-2026-31687",
   "enisaUuid": "dcaf864c-cf1b-3833-bbb3-ab814ce033cd",
-  "description": "Improper Neutralization of CRLF Sequences vulnerability in benoitc hackney allows HTTP Request Splitting. hackney does not percent-encode carriage return (\\r) or line feed (\\n) characters in the URL query component before constructing the HTTP/1.1 request target. Characters outside the grammar defined in RFC 3986 Section 3.4 must be percent-encoded, but hackney_url:make_url/3 passes the query binary directly without validation or escaping. An attacker who can control all or part of a URL passed to hackney can inject raw CRLF sequences into the query string, which are then sent as HTTP line breaks in the request target. This enables injection of arbitrary HTTP headers or splitting of the HTTP request.\n\nThis issue affects hackney: from 0 before 4.0.1.",
+  "description": "Improper Neutralization of CRLF Sequences vulnerability in benoitc hackney allows HTTP Request Splitting. hackney does not percent-encode carriage return (\\r) or line feed (\\n) characters in the URL query component before constructing the HTTP/1.1 request target. Characters outside the grammar defined in RFC 3986 Section 3.4 must be percent-encoded, but hackney_url:make_url/3 passes the query binary directly without validation or escaping. An attacker who can control all or part of a URL passed to hackney can inject raw CRLF sequences into the query string, which are then sent as HTTP line breaks in the request target. This enables injection of arbitrary HTTP headers or splitting of the HTTP request.\n\nThis issue affects hackney: from 0.13.1 before 4.0.1.",
   "datePublished": "May 25, 2026, 2:00:45 PM",
-  "dateUpdated": "May 26, 2026, 3:50:09 PM",
+  "dateUpdated": "Jul 24, 2026, 2:15:24 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N",
   "references": "https://github.com/benoitc/hackney/security/advisories/GHSA-j9wq-vxxc-94wf\nhttps://cna.erlef.org/cves/CVE-2026-47075.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-47075\nhttps://github.com/benoitc/hackney/commit/ca73dd0aba0ed557449c18288bf07241671a43c9\n",
-  "aliases": "CVE-2026-47075\n",
+  "aliases": "CVE-2026-47075\nGHSA-j9wq-vxxc-94wf\n",
   "assigner": "EEF",
-  "epss": 0.0,
+  "epss": 0.42,
   "enisaIdProduct": [
     {
-      "id": "15c361d4-0964-3a92-a03e-dddf0ffee60b",
+      "id": "347c67e8-98af-38df-abed-1ba03157ae4a",
       "product": {
         "name": "hackney",
         "vendor": {
           "name": "hackney"
         }
       },
-      "product_version": "0 <4.0.1"
+      "product_version": "0.13.1 <4.0.1"
     },
     {
       "id": "5d3f5d0a-b81c-3888-991c-d33815b57d13",

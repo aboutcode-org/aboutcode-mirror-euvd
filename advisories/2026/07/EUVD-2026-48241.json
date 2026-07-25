@@ -3,7 +3,7 @@
   "enisaUuid": "f6c3707d-2753-3f7a-9c74-7aa12386a0bd",
   "description": "SiYuan before v3.7.2 contains a stored cross-site scripting vulnerability in Attribute View (database) cell rendering. A Template column value is rendered as HTML via text/template without auto-escaping, and EscapeHTML is only applied when HasUnclosedHtmlTag returns true; because balanced self-closing tags such as <img> are skipped by that check, a payload like <img src=x onerror=...> is stored unescaped and later inserted into the page via innerHTML, executing when the database is viewed. Because the desktop renderer runs with nodeIntegration enabled, the injected script can reach require and escalate to arbitrary command execution.",
   "datePublished": "Jul 23, 2026, 11:42:13 AM",
-  "dateUpdated": "Jul 23, 2026, 3:23:58 PM",
+  "dateUpdated": "Jul 24, 2026, 9:35:18 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
