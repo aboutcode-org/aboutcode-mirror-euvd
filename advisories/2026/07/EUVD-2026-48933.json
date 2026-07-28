@@ -3,12 +3,14 @@
   "enisaUuid": "8bb4ad01-c6b9-38a3-948e-980a9f8b8ccc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate NTLMv2 response before updating session key\n\nksmbd_auth_ntlmv2() derives the NTLMv2 session key into\nsess->sess_key before it verifies the NTLMv2 response.\nksmbd_decode_ntlmssp_auth_blob() then continues into KEY_XCH even\nwhen ksmbd_auth_ntlmv2() failed.\n\nWith SMB3 multichannel binding, the failed authentication operates on\nan existing session and the session setup error path does not expire\nbinding sessions. A client can send a binding session setup with a\nbad NT proof and KEY_XCH and still modify sess->sess_key before\nSTATUS_LOGON_FAILURE is returned.\n\nRelevant path:\n\n  smb2_sess_setup()\n    -> conn->binding = true\n    -> ntlm_authenticate()\n       -> session_user()\n       -> ksmbd_decode_ntlmssp_auth_blob()\n          -> ksmbd_auth_ntlmv2()\n             -> calc_ntlmv2_hash()\n             -> hmac_md5_usingrawkey(..., sess->sess_key)\n             -> crypto_memneq() returns mismatch\n          -> KEY_XCH arc4_crypt(..., sess->sess_key, ...)\n    -> out_err without expiring the binding session\n\nDerive the base session key into a local buffer and copy it to\nsess->sess_key only after the proof matches. Return immediately on\nauthentication failure so KEY_XCH is only processed after successful\nauthentication.",
   "datePublished": "Jul 25, 2026, 8:50:36 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:36 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 27, 2026, 5:00:18 AM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/b56400364aed5c34d6e1a0b493081290a5328a9c\nhttps://git.kernel.org/stable/c/89ca7756d5566ba636bb9092cdbe57dab095e136\nhttps://git.kernel.org/stable/c/954d196bebb2b50151cb96454c72dc113b2af1ac\n",
   "aliases": "CVE-2026-64389\nGHSA-fxvf-vm38-6pxw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "33f9ff04-6b70-3d1b-8220-9364221555c5",

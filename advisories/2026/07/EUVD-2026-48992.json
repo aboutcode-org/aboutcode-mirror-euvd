@@ -3,12 +3,14 @@
   "enisaUuid": "ddf20597-9f2c-3b52-9596-155b97bf9bcf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfpga: dfl-afu: validate DMA mapping length in afu_dma_map_region()\n\nafu_ioctl_dma_map() accepts a 64-bit length from userspace via\nDFL_FPGA_PORT_DMA_MAP ioctl without an upper bound check. The value\nis passed to afu_dma_pin_pages() where npages is derived as\nlength >> PAGE_SHIFT and passed to pin_user_pages_fast() which takes\nint nr_pages, causing implicit truncation if length is very large.\n\nValidate map.length at the ioctl entry point before calling\nafu_dma_map_region(), rejecting values whose page count exceeds\nINT_MAX.",
   "datePublished": "Jul 25, 2026, 8:49:23 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:23 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 27, 2026, 4:59:24 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/59070040fd12e0b78d7b4d341d9f9a183237c5ff\nhttps://git.kernel.org/stable/c/fb2c0eab51ae5b02d2bae7d67c2cfbec39b57231\nhttps://git.kernel.org/stable/c/fc3b071a7c8dc0f5d56defddf6e6fd5aaa3e1e27\n",
   "aliases": "CVE-2026-64280\nGHSA-hj85-3f53-vrg4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "096775a9-8da6-3b67-8331-98d5d692365d",

@@ -3,12 +3,14 @@
   "enisaUuid": "cda75509-3a5f-3458-a971-1895dbf5a818",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npartitions: aix: bound the pp_count scan to the ppe array\n\naix_partition() reads the physical volume descriptor into a fixed-size\nstruct pvd and then scans its physical-partition-extent array:\n\n\tint numpps = be16_to_cpu(pvd->pp_count);\n\t...\n\tfor (i = 0; i < numpps; i += 1) {\n\t\tstruct ppe *p = pvd->ppe + i;\n\t\t...\n\t\tlp_ix = be16_to_cpu(p->lp_ix);\n\npvd points at a single kmalloc()'d struct pvd whose ppe[] member holds a\nfixed ARRAY_SIZE(pvd->ppe) (1016) entries, but the loop runs up to the\non-disk pp_count.  pp_count is an unvalidated __be16 read straight from\nthe descriptor, so a crafted AIX image with pp_count larger than 1016\ndrives the loop to read pvd->ppe[i] past the end of the allocation (up\nto 65535 entries, ~2 MB out of bounds).\n\nThe partition scan runs without mounting anything, when a block device\nwith a crafted AIX/IBM partition table appears (an attacker-supplied\nimage attached with losetup -P, or a device auto-scanned by udev), via\nmsdos_partition() -> aix_partition().\n\nClamp the scan to the number of entries the ppe[] array can hold.",
   "datePublished": "Jul 25, 2026, 8:49:47 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:47 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 27, 2026, 4:59:44 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/09861651617ba0fec089e8b9477439e68398c110\nhttps://git.kernel.org/stable/c/5eacdb1967378f5e5591cd27a2d8cdee2df1a599\nhttps://git.kernel.org/stable/c/b5e9c09309e18fd9839ad007c238120353ca0cc4\nhttps://git.kernel.org/stable/c/fd94a779020f2ecc8b2607f4c20b34acb1763b9a\nhttps://git.kernel.org/stable/c/4671bb74bba05fdd4acf670a35758c29e8c97b83\nhttps://git.kernel.org/stable/c/ce93228e2193a17d2c58b656e439bb39fe5c3af8\nhttps://git.kernel.org/stable/c/44f37ee92fdcd377c41bdf6a31cdd8cc7d4c410e\nhttps://git.kernel.org/stable/c/2dc0bfd2fe355fb930de63c2f2eb8ced8570c579\n",
   "aliases": "GHSA-499p-p84w-r6w8\nCVE-2026-64318\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0a205bba-7476-3e9d-90c7-d6dd1ad0bc82",

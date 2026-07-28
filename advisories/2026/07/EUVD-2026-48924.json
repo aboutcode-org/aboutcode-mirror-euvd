@@ -3,12 +3,14 @@
   "enisaUuid": "3d422612-5010-3e10-a130-77ebb725b4ef",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: harden POSIX SID length parsing\n\nposix_info_sid_size() reads sid[1] to obtain the subauthority count,\nbut its existing boundary check still accepts buffers with only one\nremaining byte. Require two bytes before reading sid[1] so all client\npaths that reuse the helper reject truncated POSIX SIDs safely.",
   "datePublished": "Jul 25, 2026, 8:50:30 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:30 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 27, 2026, 5:00:08 AM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/171605aed68380c2fa75dff9b3a1ed427c50065b\nhttps://git.kernel.org/stable/c/4213c1208978483021d7d125c131de3985d38f61\nhttps://git.kernel.org/stable/c/96e889bc1e759c83f25093e8c2f3da31b4973f30\nhttps://git.kernel.org/stable/c/0de5b8e76847f5de26f364a82c6602c4881c30da\nhttps://git.kernel.org/stable/c/427eb7eb46425fec845a43e861f3d6e2899cae59\nhttps://git.kernel.org/stable/c/86c5d470f5d42e61123b2f4b4f0b91f4eee5b980\nhttps://git.kernel.org/stable/c/46a84715a015cb48e1b9c219dc88c03d8a541ea4\nhttps://git.kernel.org/stable/c/7ad2bcf2441430bb2e918fb3ef9a90d775a6e422\n",
   "aliases": "GHSA-86gc-pxpc-4p5h\nCVE-2026-64380\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "092e4555-64a1-3eb3-8f32-fb435191b64c",

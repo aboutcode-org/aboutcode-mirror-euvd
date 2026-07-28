@@ -3,12 +3,14 @@
   "enisaUuid": "416a11d8-ce70-3004-bf78-79c321135c66",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: synaptics-rmi4 - bound the F30 keymap to the GPIO/LED count\n\nrmi_f30_map_gpios() allocates gpioled_key_map with\nmin(gpioled_count, TRACKSTICK_RANGE_END) == at most 6 entries, but\nrmi_f30_attention() iterates the full f30->gpioled_count (device query\nregister, range 0..31) and dereferences gpioled_key_map[i], and\ninput->keycodemax is set to the full gpioled_count while input->keycode\npoints at the 6-entry allocation.\n\nA device that reports gpioled_count > 6 with GPIO support enabled\ntherefore causes an out-of-bounds read on the attention interrupt and\nout-of-bounds read/write through the EVIOCGKEYCODE/EVIOCSKEYCODE ioctls,\nwhich bound the index only against keycodemax. This is the same defect\nas the F3A handler, which was copied from F30.\n\nSize the keymap for the full gpioled_count; the mapping loop still\nassigns only the first min(gpioled_count, TRACKSTICK_RANGE_END) entries.",
   "datePublished": "Jul 25, 2026, 8:49:21 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:21 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 27, 2026, 4:59:20 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8c6d18d61bb6fe0e6edf848413391c590552e8a9\nhttps://git.kernel.org/stable/c/d162a1ead7de404d8b41a093c83ed0db6487cded\nhttps://git.kernel.org/stable/c/f0be9eba946e9200b43265e0a748d38bd0a56954\nhttps://git.kernel.org/stable/c/26c895928d7118436a24f564587cb4aefc40cdd8\nhttps://git.kernel.org/stable/c/4e3689c26854356f41fbaa1eafa382e58ac79e00\nhttps://git.kernel.org/stable/c/e849c6f51e6877104c765da084e001ec37c8e119\nhttps://git.kernel.org/stable/c/bfe622efecd4ff0a792d0ecd1a8dce535a902f50\nhttps://git.kernel.org/stable/c/d577e46785d45484b2ab7e7309c49b18764bf56c\n",
   "aliases": "CVE-2026-64276\nGHSA-7j4q-9mx8-7779\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "02a0a06d-4f94-3fbc-b10f-2e24fc809e82",

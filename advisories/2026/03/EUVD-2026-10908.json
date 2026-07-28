@@ -1,21 +1,24 @@
 {
   "id": "EUVD-2026-10908",
   "enisaUuid": "c7e1bce6-48b1-3bf3-ab26-0e1030b04eef",
-  "description": "Quinn affected by unauthenticated remote DoS via panic in QUIC transport parameter parsing",
-  "datePublished": "Mar 11, 2026, 12:09:19 AM",
-  "dateUpdated": "Mar 11, 2026, 12:09:19 AM",
+  "description": "Quinn is a pure-Rust, async-compatible implementation of the IETF QUIC transport protocol. Prior to 0.11.14, a remote, unauthenticated attacker can trigger a denial of service in applications using vulnerable quinn versions by sending a crafted QUIC Initial packet containing malformed quic_transport_parameters. In quinn-proto parsing logic, attacker-controlled varints are decoded with unwrap(), so truncated encodings cause Err(UnexpectedEnd) and panic. This is reachable over the network with a single packet and no prior trust or authentication. This vulnerability is fixed in 0.11.14.",
+  "datePublished": "Mar 10, 2026, 9:04:36 PM",
+  "dateUpdated": "Jul 27, 2026, 12:05:46 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/quinn-rs/quinn/security/advisories/GHSA-6xvm-j4wr-6v98\nhttps://github.com/quinn-rs/quinn/pull/2559\nhttps://rustsec.org/advisories/RUSTSEC-2026-0037.html\n",
+  "references": "https://github.com/quinn-rs/quinn/security/advisories/GHSA-6xvm-j4wr-6v98\n",
   "aliases": "GHSA-6xvm-j4wr-6v98\nCVE-2026-31812\n",
   "assigner": "GitHub_M",
-  "epss": 0.21,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
       "id": "c7fe44e2-acab-30df-8f02-3e3c0a0b22bc",
       "product": {
-        "name": "quinn"
+        "name": "quinn",
+        "vendor": {
+          "name": "quinn-rs"
+        }
       },
       "product_version": "< 0.11.14"
     }
