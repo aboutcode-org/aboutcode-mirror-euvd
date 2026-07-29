@@ -3,14 +3,14 @@
   "enisaUuid": "cece70e2-e408-3ce0-9edf-60565398758f",
   "description": "ProFTPD before 1.3.9c and 1.3.10rc3 contains a heap-based buffer overflow vulnerability in the mod_sftp module that allows authenticated low-privilege attackers to achieve arbitrary code execution by sending crafted SFTP packet fragments exceeding the 16 KB reassembly buffer in the fxp.c component. Attackers can supply oversized fragments to trigger an incorrectly conditioned reallocation, corrupt pool freelist metadata, overwrite the root_fs BSS global pointer to reference a fake filesystem struct, and redirect pr_fsio_stat() to system() via a crafted RENAME request.",
   "datePublished": "Jul 20, 2026, 2:22:03 PM",
-  "dateUpdated": "Jul 20, 2026, 2:22:03 PM",
+  "dateUpdated": "Jul 28, 2026, 1:49:57 AM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/proftpd/proftpd/blob/master/RELEASE_NOTES\nhttps://github.com/proftpd/proftpd/releases/tag/v1.3.10rc3-3\nhttps://github.com/proftpd/proftpd/releases/tag/v1.3.9c\nhttps://github.com/proftpd/proftpd/issues/2190\nhttps://github.com/proftpd/proftpd/commit/4ee8701bcf425f11b3b2116e634ff3e655d918b1\nhttps://www.vulncheck.com/advisories/proftpd-mod-sftp-heap-buffer-overflow-via-sftp-packet-reassembly\n",
   "aliases": "CVE-2026-63090\nGHSA-wxc2-grp8-f55h\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "83669b00-8347-34e2-9957-79495e5271b8",

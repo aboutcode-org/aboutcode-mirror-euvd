@@ -3,14 +3,14 @@
   "enisaUuid": "07f93879-88a3-3cd4-9d6d-5ecd7ab7aa78",
   "description": "Home Assistant Core before 2026.7.0 contains a path traversal vulnerability in the backup-restore function that allows attackers to write files to arbitrary absolute filesystem paths by supplying a crafted tar archive with a SYMTYPE entry containing a benign member name paired with an absolute linkname pointing outside the extraction directory. Because the official Docker image runs the Home Assistant process as root and the subsequent regular-file entry is written through the unvalidated symlink, attackers can achieve remote code execution by overwriting auto-imported Python paths such as site-packages/sitecustomize.py or custom component directories.",
   "datePublished": "Jul 21, 2026, 3:39:52 PM",
-  "dateUpdated": "Jul 21, 2026, 5:19:07 PM",
+  "dateUpdated": "Jul 28, 2026, 1:05:57 AM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
   "references": "https://github.com/home-assistant/core/releases/tag/2026.7.0\nhttps://github.com/home-assistant/core/pull/172252\nhttps://github.com/home-assistant/core/commit/1e457600f1093c15e1325742d03e2b76498c79c1\nhttps://www.vulncheck.com/advisories/home-assistant-core-symlink-path-traversal-rce-via-backup-restore\n",
   "aliases": "CVE-2026-64824\nGHSA-cwh8-w64c-4j5h\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "23953f51-7b80-359b-a0e0-7e81fefd2dd3",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "0 <2026.7.0"
-    },
-    {
-      "id": "b1ab1a49-0fe6-354c-b8a2-897f8ef126c9",
-      "product": {
-        "name": "Home Assistant Core",
-        "vendor": {
-          "name": "home-assistant"
-        }
-      },
-      "product_version": "0 <2026.6.0"
     }
   ],
   "enisaIdVendor": [

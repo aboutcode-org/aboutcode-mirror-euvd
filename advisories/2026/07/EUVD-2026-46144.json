@@ -3,14 +3,14 @@
   "enisaUuid": "bc714562-1543-3f2b-b8c5-e19131006832",
   "description": "The SyncTeX parser (synctex_parser.c) shipped with TeX Live and embedded by downstream consumers such as GNOME Evince contains a heap use-after-free vulnerability that allows attackers to crash applications or potentially execute arbitrary code by supplying a malformed .synctex or .synctex.gz file. A malformed SyncTeX file can construct a ref node with a NULL parent pointer, causing the replacement routine to fail to detach the node from its sibling chain, which triggers recursive freeing of live tree nodes and leaves dangling pointers that are later accessed by the parser during document load.",
   "datePublished": "Jul 21, 2026, 1:35:41 AM",
-  "dateUpdated": "Jul 21, 2026, 1:19:27 PM",
+  "dateUpdated": "Jul 28, 2026, 1:05:30 AM",
   "baseScore": 6.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/TeX-Live/texlive-source/\nhttps://github.com/TeX-Live/texlive-source/commit/002dcd3eac30db5c352f53d4181737961cc7ee9a\nhttps://fatihhcelik.github.io/posts/evince-synctex-heap-use-after-free/\nhttps://www.vulncheck.com/advisories/tex-live-synctex-parser-heap-use-after-free-via-malformed-synctex-file\n",
   "aliases": "CVE-2026-63729\nGHSA-jf22-92mg-7xxh\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "494edc61-5249-302a-8503-c51a11b6ea17",

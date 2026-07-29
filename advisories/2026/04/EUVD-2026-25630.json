@@ -3,26 +3,22 @@
   "enisaUuid": "bcb47741-c1d9-3e8b-92da-aae153db4cc6",
   "description": "CyberPanel versions prior to\u00a02.4.4 contain a stored cross-site scripting vulnerability in the AI Scanner dashboard where the POST /api/ai-scanner/callback endpoint lacks authentication and allows unauthenticated attackers to inject malicious JavaScript by overwriting the findings_json field of ScanHistory records. Attackers can inject JavaScript that executes in an administrator's authenticated session when they visit the AI Scanner dashboard, allowing them to issue same-origin requests to plant cron jobs and achieve remote code execution on the server.",
   "datePublished": "Apr 24, 2026, 8:40:12 PM",
-  "dateUpdated": "Apr 24, 2026, 8:40:12 PM",
+  "dateUpdated": "Jul 28, 2026, 1:48:47 AM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N",
   "references": "https://itsrez.re/post/cyberpanel-rce\nhttps://github.com/usmannasir/cyberpanel/commit/0a099b1b193946555fbdd387a28486b1521f9961\nhttps://www.vulncheck.com/advisories/cyberpanel-stored-xss-via-ai-scanner-dashboard\n",
-  "aliases": "CVE-2026-41472\n",
+  "aliases": "GHSA-7jgx-wx3x-3fp3\nCVE-2026-41472\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
-      "id": "2a03fea4-3b5a-3474-bb0b-1f1673259178",
+      "id": "5b9111be-a719-3a76-8365-da8629eb2c23",
       "product": {
-        "name": "CyberPanel"
-      },
-      "product_version": ""
-    },
-    {
-      "id": "2b77a526-cd7b-3a94-b1df-c7be135fe346",
-      "product": {
-        "name": "CyberPanel"
+        "name": "CyberPanel",
+        "vendor": {
+          "name": "Cyberpanel"
+        }
       },
       "product_version": "0 <2.4.4"
     }

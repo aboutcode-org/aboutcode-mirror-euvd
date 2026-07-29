@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-49894",
+  "enisaUuid": "6fbb80ca-d1d8-3b3d-b6b5-f0d2eb53feef",
+  "description": "gopacket provides packet processing capabilities for Go. In version 1.6.0 and earlier, the sFlow ExtendedGatewayFlow decoder in layers/sflow.go reads an attacker-controlled 32-bit community count and AS path member count and sizes a slice allocation from those counts without bounding them against the bytes remaining in the datagram, so a 104-byte UDP datagram can drive an allocation of up to 16 GiB and cause an unauthenticated remote denial of service. This issue is fixed in version 1.6.1.",
+  "datePublished": "Jul 28, 2026, 4:17:48 PM",
+  "dateUpdated": "Jul 28, 2026, 5:28:21 PM",
+  "baseScore": 6.9,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+  "references": "https://github.com/gopacket/gopacket/security/advisories/GHSA-g6v3-7xmc-w563\nhttps://github.com/gopacket/gopacket/commit/76119086f5936aacd7088bdf97d565501bb6c4cc\nhttps://github.com/gopacket/gopacket/releases/tag/v1.6.1\n",
+  "aliases": "GHSA-g6v3-7xmc-w563\nCVE-2026-54332\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "61957133-9384-336b-bdfc-8eeaa704ba3f",
+      "product": {
+        "name": "gopacket",
+        "vendor": {
+          "name": "gopacket"
+        }
+      },
+      "product_version": "< 1.6.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "7c58fca4-dc71-3fc1-94ae-b49084b94a30",
+      "vendor": {
+        "name": "gopacket"
+      }
+    }
+  ]
+}
