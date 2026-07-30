@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-43722",
   "enisaUuid": "03ae8ba7-24b5-38d0-9b36-cd5795732629",
-  "description": "Easy!Appointments is a self hosted appointment scheduler. In versions prior to 1.6.0, `Caldav::connect_to_server` at `application/controllers/Caldav.php:60` hands the request's `caldav_url` to a Guzzle `REPORT` call without scheme or host validation. A logged-in backend user (admin, provider, or secretary) reaches loopback, RFC1918, and link-local hosts on the deployment's network. The Guzzle exception path returns the upstream status code plus ~120 bytes of response body in the JSON `message` field (`Caldav.php:74-78`), so the SSRF is semi-blind. Version 1.6.0 contains a patch.",
-  "datePublished": "Jul 14, 2026, 3:23:59 PM",
-  "dateUpdated": "Jul 14, 2026, 3:23:59 PM",
+  "description": "Easy!Appointments has server-side request forgery in CalDAV connection test that exposes the deployment's internal network",
+  "datePublished": "Jul 29, 2026, 4:24:27 PM",
+  "dateUpdated": "Jul 29, 2026, 4:24:28 PM",
   "baseScore": 2.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N",
-  "references": "https://github.com/alextselegidis/easyappointments/security/advisories/GHSA-pm5p-7w5h-jm5q\nhttps://github.com/alextselegidis/easyappointments/commit/6eb9336a91cfb276379506625e81f5bd9ed3a536\n",
-  "aliases": "CVE-2026-52840\n",
+  "references": "https://github.com/alextselegidis/easyappointments/security/advisories/GHSA-pm5p-7w5h-jm5q\nhttps://github.com/alextselegidis/easyappointments/commit/6eb9336a91cfb276379506625e81f5bd9ed3a536\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-52840\nhttps://github.com/alextselegidis/easyappointments/commit/2da2baed18ec32ad7916e507815709c8f010d510\nhttps://github.com/alextselegidis/easyappointments/commit/4abb10545d83ac1a57d03f6502376ee67696ea7c\nhttps://github.com/alextselegidis/easyappointments/commit/6b34b78c47790dfd1dec27cf62926db51be276e9\nhttps://github.com/alextselegidis/easyappointments/releases/tag/1.6.0\n",
+  "aliases": "GHSA-pm5p-7w5h-jm5q\nCVE-2026-52840\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "ee7467a4-13a3-332b-8f52-ebbbba98c60b",

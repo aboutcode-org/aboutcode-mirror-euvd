@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-43705",
   "enisaUuid": "ab545030-4244-3fd0-90d1-eebf2d0713fb",
-  "description": "Easy!Appointments is a self hosted appointment scheduler. Versions prior to 1.6.0 allow administrators to define a custom \"booking disabled\" message through the booking settings page. That value is stored in the `disable_booking_message` setting via a rich-text editor and later passed directly to the public `booking_message` view without escaping or sanitization. An authenticated administrator can store HTML or JavaScript in this field, enable disabled-booking mode, and trigger stored XSS in every unauthenticated visitor who opens the public booking page. Version 1.6.0 fixes the issue.",
-  "datePublished": "Jul 14, 2026, 3:07:43 PM",
-  "dateUpdated": "Jul 14, 2026, 4:26:53 PM",
+  "description": "Easy!Appointments disable_booking_message rendered as raw HTML on public booking page \u2014 Stored XSS",
+  "datePublished": "Jul 29, 2026, 4:30:09 PM",
+  "dateUpdated": "Jul 29, 2026, 4:30:09 PM",
   "baseScore": 2.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:N/I:L/A:N",
-  "references": "https://github.com/alextselegidis/easyappointments/security/advisories/GHSA-996f-334j-67g7\nhttps://github.com/alextselegidis/easyappointments/commit/629a0415f54f75556c17f4f5d9c77fda1fdbdeae\n",
-  "aliases": "CVE-2026-52838\n",
+  "references": "https://github.com/alextselegidis/easyappointments/security/advisories/GHSA-996f-334j-67g7\nhttps://github.com/alextselegidis/easyappointments/commit/629a0415f54f75556c17f4f5d9c77fda1fdbdeae\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-52838\nhttps://github.com/alextselegidis/easyappointments/releases/tag/1.6.0\n",
+  "aliases": "CVE-2026-52838\nGHSA-996f-334j-67g7\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1efd0343-e4db-373b-a2fc-f516b725bad4",

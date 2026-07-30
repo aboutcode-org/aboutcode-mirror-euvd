@@ -1,21 +1,34 @@
 {
   "id": "EUVD-2025-199795",
   "enisaUuid": "c8da627d-c707-3f75-a6c3-c67bf5f51d58",
-  "description": "Validator is Vulnerable to Incomplete Filtering of One or More Instances of Special Elements",
-  "datePublished": "Nov 27, 2025, 6:31:25 AM",
-  "dateUpdated": "Jan 31, 2026, 3:33:13 AM",
+  "description": "Versions of the package validator before 13.15.22 are vulnerable to Incomplete Filtering of One or More Instances of Special Elements in the isLength() function that does not take into account Unicode variation selectors (\\uFE0F, \\uFE0E) appearing in a sequence which lead to improper string length calculation. This can lead to an application using isLength for input validation accepting strings significantly longer than intended, resulting in issues like data truncation in databases, buffer overflows in other system components, or denial-of-service.",
+  "datePublished": "Nov 27, 2025, 5:00:01 AM",
+  "dateUpdated": "Jul 29, 2026, 3:25:11 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
-  "references": "https://security.snyk.io/vuln/SNYK-JS-VALIDATOR-13653476\nhttps://gist.github.com/koral--/ad31208b25b9e3d1e2e35f1d4d72572e\nhttps://github.com/validatorjs/validator.js/pull/2616\nhttps://nvd.nist.gov/vuln/detail/CVE-2025-12758\nhttps://github.com/validatorjs/validator.js/commit/d457ecaf55b0f3d8bd379d82757425d0d13dd382\nhttp://seclists.org/fulldisclosure/2026/Jan/27\n",
+  "references": "https://security.snyk.io/vuln/SNYK-JS-VALIDATOR-13653476\nhttps://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-14152011\nhttps://gist.github.com/koral--/ad31208b25b9e3d1e2e35f1d4d72572e\nhttps://github.com/validatorjs/validator.js/pull/2616\n",
   "aliases": "GHSA-vghf-hv5q-vc2g\nCVE-2025-12758\n",
   "assigner": "snyk",
-  "epss": 0.1,
+  "epss": 0.51,
   "enisaIdProduct": [
     {
       "id": "500e2370-2e76-30c0-9295-52e2a72ecc68",
       "product": {
-        "name": "validator"
+        "name": "validator",
+        "vendor": {
+          "name": "n/a"
+        }
+      },
+      "product_version": "0 <13.15.22"
+    },
+    {
+      "id": "be78463d-caf7-39f3-8853-4080296f97a9",
+      "product": {
+        "name": "org.webjars.npm:validator",
+        "vendor": {
+          "name": "n/a"
+        }
       },
       "product_version": "0 <13.15.22"
     }
