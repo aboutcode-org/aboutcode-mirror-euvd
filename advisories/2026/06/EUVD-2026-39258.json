@@ -3,12 +3,12 @@
   "enisaUuid": "aca46b02-cea8-3682-99db-f8f004990bdf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: limit FUSE_NOTIFY_RETRIEVE to uptodate folios\n\nFUSE_NOTIFY_RETRIEVE must be limited to uptodate folios; !uptodate folios\ncan contain uninitialized data.\nSince FUSE_NOTIFY_RETRIEVE is intended to only return data that is already\nin the page cache and not wait for data from the FUSE daemon, treat\n!uptodate folios as if they weren't present.\n\nThis only has security impact on systems that don't enable automatic\nzero-initialization of all page allocations via\nCONFIG_INIT_ON_ALLOC_DEFAULT_ON or init_on_alloc=1.",
   "datePublished": "Jun 25, 2026, 8:38:46 AM",
-  "dateUpdated": "Jul 4, 2026, 11:51:00 AM",
+  "dateUpdated": "Jul 30, 2026, 12:57:11 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/feafe8ccb1584254f59fbd4946d6ca7ef1e3e99c\nhttps://git.kernel.org/stable/c/651801d75ad0897dbd331b3cc6a4da3e78f60d42\nhttps://git.kernel.org/stable/c/4e14f29473eda18fb2af082dd2fd4c12139862cd\nhttps://git.kernel.org/stable/c/8bef2f840b43e0879478fe3aaa9ff2f0b80798a5\nhttps://git.kernel.org/stable/c/68a9282d5ea5b8780d59122505ad633e6daede90\nhttps://git.kernel.org/stable/c/56763afa013444a9d84ca1b74e4b7130942177ba\nhttps://git.kernel.org/stable/c/1fb8735a3a4d894f8c1f90b741a3ab1d3817f9bd\nhttps://git.kernel.org/stable/c/4e3d1b2c48ca6c55f1e9ca7f8dccc76f120f276c\n",
+  "references": "https://git.kernel.org/stable/c/feafe8ccb1584254f59fbd4946d6ca7ef1e3e99c\nhttps://git.kernel.org/stable/c/651801d75ad0897dbd331b3cc6a4da3e78f60d42\nhttps://git.kernel.org/stable/c/4e14f29473eda18fb2af082dd2fd4c12139862cd\nhttps://git.kernel.org/stable/c/8bef2f840b43e0879478fe3aaa9ff2f0b80798a5\nhttps://git.kernel.org/stable/c/68a9282d5ea5b8780d59122505ad633e6daede90\nhttps://git.kernel.org/stable/c/56763afa013444a9d84ca1b74e4b7130942177ba\nhttps://git.kernel.org/stable/c/1fb8735a3a4d894f8c1f90b741a3ab1d3817f9bd\nhttps://git.kernel.org/stable/c/4e3d1b2c48ca6c55f1e9ca7f8dccc76f120f276c\nhttps://project-zero.issues.chromium.org/issues/514653451\n",
   "aliases": "CVE-2026-53167\nGHSA-vg6g-9h68-878w\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "3864fc1c-de26-320c-80a7-93b2dac39721",

@@ -3,12 +3,14 @@
   "enisaUuid": "25d01db4-b93f-319e-8ea1-47ac91de49af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet, bpf: check master for NULL in xdp_master_redirect()\n\nxdp_master_redirect() dereferences the result of\nnetdev_master_upper_dev_get_rcu() without a NULL check, but that helper\nreturns NULL when the receiving device has no upper-master adjacency.\n\nThe reach guard only checks netif_is_bond_slave(). On bond slave release\nbond_upper_dev_unlink() drops the upper-master adjacency before clearing\nIFF_SLAVE, so an XDP_TX reaching xdp_master_redirect() in that window\nstill passes netif_is_bond_slave() while master is already NULL, and\nfaults on master->flags at offset 0xb0:\n\n  BUG: kernel NULL pointer dereference, address: 00000000000000b0\n  RIP: 0010:xdp_master_redirect (net/core/filter.c:4432)\n  Call Trace:\n   xdp_master_redirect (net/core/filter.c:4432)\n   bpf_prog_run_generic_xdp (include/net/xdp.h:700)\n   do_xdp_generic (net/core/dev.c:5608)\n   __netif_receive_skb_one_core (net/core/dev.c:6204)\n   process_backlog (net/core/dev.c:6319)\n   __napi_poll (net/core/dev.c:7729)\n   net_rx_action (net/core/dev.c:7792)\n   handle_softirqs (kernel/softirq.c:622)\n   __dev_queue_xmit (include/linux/bottom_half.h:33)\n   packet_sendmsg (net/packet/af_packet.c:3082)\n   __sys_sendto (net/socket.c:2252)\n  Kernel panic - not syncing: Fatal exception in interrupt\n\nThe missing check dates back to the original code; commit 1921f91298d1\n(\"net, bpf: fix null-ptr-deref in xdp_master_redirect() for down master\")\nlater added the master->flags read where the fault now lands but kept the\nunconditional deref. Check master for NULL before use; a NULL master is\ntreated the same as one that is not up.",
   "datePublished": "Jul 27, 2026, 8:10:36 PM",
-  "dateUpdated": "Jul 27, 2026, 8:10:36 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Jul 30, 2026, 6:06:37 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c99ca049e910d61ddbd28cc2c47242f2bfbb4970\nhttps://git.kernel.org/stable/c/e2a56441233131fe18a76001de347ecda217e40c\nhttps://git.kernel.org/stable/c/3876318ea54e83eb70982b8280a3c5e4e32269bf\nhttps://git.kernel.org/stable/c/4edbcacca09f92b85d3951b6add11894b20a84bc\nhttps://git.kernel.org/stable/c/03b743586a2469744e96e9c1015096d07240935d\nhttps://git.kernel.org/stable/c/89c103d702b25ceb2d097faf854deb47b53b17ff\nhttps://git.kernel.org/stable/c/e82d8cc4321c373dc46e741cd2dfdaa7921fddb7\n",
   "aliases": "GHSA-5fp4-82x6-8894\nCVE-2026-64545\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "010f8e06-32c4-3367-aa3a-0d16ceeba3aa",
