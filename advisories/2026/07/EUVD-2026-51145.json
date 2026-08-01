@@ -3,7 +3,7 @@
   "enisaUuid": "df585fa1-07de-39bf-8675-2cb6da839631",
   "description": "Authentication Bypass by Capture-replay vulnerability in malach-it Boruta allows an attacker who has obtained a previously valid JWT client assertion to authenticate as the issuing OAuth client after the assertion has expired.\n\nBoruta accepts JWT-based client authentication (client_secret_jwt and private_key_jwt token endpoint authentication methods) but never enforces that the assertion's exp claim is in the future. The pre-check helper Boruta.Oauth.Request.Base.check_expiration/1 in lib/boruta/oauth/request/base.ex only verifies that an exp claim is present (it pattern-matches on the existence of the key and returns success), and the Joken token configuration used for signature verification, Boruta.Oauth.Authorization.Client.Token.token_config/0 in lib/boruta/oauth/authorization/client.ex, returns an empty map, so Joken's default exp claim validator is not engaged either. Any attacker who obtains a validly-signed client assertion (for example through logs, reverse proxies, browser tooling, or other observability surfaces) can replay it indefinitely to authenticate as the client and obtain access tokens with that client's privileges.\n\nThis issue affects boruta: from 2.3.0 before 2.3.7.",
   "datePublished": "Jul 30, 2026, 2:17:27 PM",
-  "dateUpdated": "Jul 30, 2026, 4:13:22 PM",
+  "dateUpdated": "Jul 31, 2026, 4:20:43 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",

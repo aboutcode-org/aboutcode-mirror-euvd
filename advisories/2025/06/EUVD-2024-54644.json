@@ -3,7 +3,7 @@
   "enisaUuid": "70dbf165-0761-3abc-83ca-007deb268fbb",
   "description": "Allows modifying some file metadata (e.g. last modified) with filter=\"data\"\u00a0or file permissions (chmod) with filter=\"tar\"\u00a0of files outside the extraction directory.\nYou are affected by this vulnerability if using the tarfile\u00a0module to extract untrusted tar archives using TarFile.extractall()\u00a0or TarFile.extract()\u00a0using the filter=\u00a0parameter with a value of \"data\"\u00a0or \"tar\". See the tarfile  extraction filters documentation https://docs.python.org/3/library/tarfile.html#tarfile-extraction-filter \u00a0for more information. Only Python versions 3.12 or later are affected by these vulnerabilities, earlier versions don't include the extraction filter feature.\n\nNote that for Python 3.14 or later the default value of filter=\u00a0changed from \"no filtering\" to `\"data\", so if you are relying on this new default behavior then your usage is also affected.\n\nNote that none of these vulnerabilities significantly affect the installation of source distributions which are tar archives as source distributions already allow arbitrary code execution during the build process. However when evaluating source distributions it's important to avoid installing source distributions with suspicious links.",
   "datePublished": "Jun 3, 2025, 12:59:10 PM",
-  "dateUpdated": "Jul 30, 2026, 10:16:39 PM",
+  "dateUpdated": "Jul 31, 2026, 2:08:19 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
@@ -12,6 +12,16 @@
   "assigner": "PSF",
   "epss": 0.64,
   "enisaIdProduct": [
+    {
+      "id": "1a1db2ef-ccbf-3e3d-bbea-1c7eb0448db8",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "0 <3.9.23"
+    },
     {
       "id": "21736603-23a7-34bb-a738-3d061397ac61",
       "product": {

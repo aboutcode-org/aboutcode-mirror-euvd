@@ -3,7 +3,7 @@
   "enisaUuid": "8cbab944-241c-374c-a96d-b4e2a65cdf50",
   "description": "There is a defect in the CPython \u201ctarfile\u201d module affecting the \u201cTarFile\u201d extraction and entry enumeration APIs. The tar implementation would process tar archives with negative offsets without error, resulting in an infinite loop and deadlock during the parsing of maliciously crafted tar archives. \n\nThis vulnerability can be mitigated by including the following patch after importing the \u201ctarfile\u201d module:\u00a0 https://gist.github.com/sethmlarson/1716ac5b82b73dbcbf23ad2eff8b33e1",
   "datePublished": "Jul 28, 2025, 6:42:44 PM",
-  "dateUpdated": "Jul 30, 2026, 10:14:27 PM",
+  "dateUpdated": "Jul 31, 2026, 2:01:18 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -12,6 +12,16 @@
   "assigner": "PSF",
   "epss": 0.61,
   "enisaIdProduct": [
+    {
+      "id": "38146385-a169-3692-b76f-121bee18bf55",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "0 <3.9.24"
+    },
     {
       "id": "623c51fb-b6d1-3d6a-95e6-6070cf9c4a67",
       "product": {

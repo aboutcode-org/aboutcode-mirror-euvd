@@ -3,7 +3,7 @@
   "enisaUuid": "cc59a5c8-33e2-37e9-bda2-f649fe53201a",
   "description": "The 'zipfile' module would not check the validity of the ZIP64 End of\nCentral Directory (EOCD) Locator record offset value would not be used to\nlocate the ZIP64 EOCD record, instead the ZIP64 EOCD record would be\nassumed to be the previous record in the ZIP archive. This could be abused\nto create ZIP archives that are handled differently by the 'zipfile' module\ncompared to other ZIP implementations.\n\n\nRemediation maintains this behavior, but checks that the offset specified\nin the ZIP64 EOCD Locator record matches the expected value.",
   "datePublished": "Oct 7, 2025, 6:10:05 PM",
-  "dateUpdated": "Jul 30, 2026, 10:14:20 PM",
+  "dateUpdated": "Jul 31, 2026, 2:01:02 PM",
   "baseScore": 4.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
@@ -61,6 +61,16 @@
         }
       },
       "product_version": "3.11.0 <3.11.14"
+    },
+    {
+      "id": "ea0e6cd7-4201-3457-93a8-88bc6ba4421a",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "0 <3.9.24"
     }
   ],
   "enisaIdVendor": [
