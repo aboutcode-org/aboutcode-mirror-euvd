@@ -3,7 +3,7 @@
   "enisaUuid": "cd072336-5336-3c51-8083-7208e80ec989",
   "description": "Early versions of Operator-SDK provided an insecure method to allow operator containers to run in environments that used a random UID. Operator-SDK before 0.15.2 provided a script, user_setup, which modifies the permissions of the /etc/passwd file to 664 during build time. Developers who used Operator-SDK before 0.15.2 to scaffold their operator may still be impacted by this if the insecure user_setup script is still being used to build new container images. \n\nIn affected images, the /etc/passwd file is created during build time with group-writable permissions and a group ownership of root (gid=0). An attacker who can execute commands within an affected container, even as a non-root user, may be able to leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container.",
   "datePublished": "Aug 7, 2025, 7:05:08 PM",
-  "dateUpdated": "Jul 26, 2026, 2:45:35 PM",
+  "dateUpdated": "Aug 2, 2026, 6:56:46 PM",
   "baseScore": 6.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
@@ -413,16 +413,6 @@
       "product_version": "patch: v4.16-1764169527"
     },
     {
-      "id": "5dcd721b-62a4-3ea5-b221-80cb4d03c034",
-      "product": {
-        "name": "Compliance Operator 1",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: v1.3"
-    },
-    {
       "id": "5e5e2483-97f7-3350-8137-0310f3dbc5ef",
       "product": {
         "name": "Red Hat Openshift Data Foundation 4.18",
@@ -823,6 +813,16 @@
       "product_version": "patch: 1766360304"
     },
     {
+      "id": "b621d906-d941-3ca9-8c0e-c39cff4771db",
+      "product": {
+        "name": "multicluster engine for Kubernetes 2.9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v2.9"
+    },
+    {
       "id": "b68e6ee7-82cb-3f12-91be-fc697d7cb066",
       "product": {
         "name": "Red Hat Openshift Data Foundation 4.14",
@@ -901,6 +901,16 @@
         }
       },
       "product_version": "patch: v4.17-1764168475"
+    },
+    {
+      "id": "c3851234-a121-3a37-9abb-35439d4e72ff",
+      "product": {
+        "name": "File Integrity Operator 1",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v1.3"
     },
     {
       "id": "c7f0edbf-97f1-3565-9af9-7a0d04a8751c",
@@ -1041,16 +1051,6 @@
         }
       },
       "product_version": "patch: v4.15-1764177174"
-    },
-    {
-      "id": "e4e2218f-da29-3735-ac2f-c01c539d9a76",
-      "product": {
-        "name": "multicluster engine for Kubernetes 2.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: v2.9"
     },
     {
       "id": "e4fbfbf9-00e7-34d9-936c-b39c62870909",

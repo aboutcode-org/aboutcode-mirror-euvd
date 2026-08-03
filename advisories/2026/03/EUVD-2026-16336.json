@@ -3,21 +3,114 @@
   "enisaUuid": "4c507695-4179-37bb-ad11-490667be0af6",
   "description": "A flaw was found in p11-kit. A remote attacker could exploit this vulnerability by calling the C_DeriveKey function on a remote token with specific IBM kyber or IBM btc derive mechanism parameters set to NULL. This could lead to the RPC-client attempting to return an uninitialized value, potentially resulting in a NULL dereference or undefined behavior. This issue may cause an application level denial of service or other unpredictable system states.",
   "datePublished": "Mar 26, 2026, 8:01:46 PM",
-  "dateUpdated": "Apr 25, 2026, 1:11:02 AM",
+  "dateUpdated": "Aug 2, 2026, 5:31:14 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:7065\nhttps://access.redhat.com/security/cve/CVE-2026-2100\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2437308\nhttps://github.com/p11-glue/p11-kit/pull/740\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:18143\nhttps://access.redhat.com/errata/RHSA-2026:18599\nhttps://access.redhat.com/errata/RHSA-2026:21275\nhttps://access.redhat.com/errata/RHSA-2026:22634\nhttps://access.redhat.com/errata/RHSA-2026:27998\nhttps://access.redhat.com/errata/RHSA-2026:7065\nhttps://access.redhat.com/security/cve/CVE-2026-2100\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2437308\nhttps://github.com/p11-glue/p11-kit/pull/740\nhttps://github.com/p11-glue/p11-kit/releases/tag/0.26.2\n",
   "aliases": "GHSA-hq85-3f6c-jx84\nCVE-2026-2100\n",
   "assigner": "redhat",
-  "epss": 0.16,
+  "epss": 1.16,
   "enisaIdProduct": [
+    {
+      "id": "391ee2e7-fd1b-37a0-a9e6-350042983ca5",
+      "product": {
+        "name": "Red Hat Insights proxy 1.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1780420428"
+    },
+    {
+      "id": "42cd3bea-6c6d-3bae-a78e-4d1d11777956",
+      "product": {
+        "name": "Cost Management Metrics Operator 4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1780946239"
+    },
+    {
+      "id": "4345be5f-dcc1-3ffb-9749-050ff795bf49",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1779798165"
+    },
+    {
+      "id": "4a3c9081-bae1-3ad8-831b-752e84e48bd5",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1779798164"
+    },
+    {
+      "id": "819192bc-8d13-3b00-85b2-f62e81fa083f",
+      "product": {
+        "name": "p11-kit",
+        "vendor": {
+          "name": "Microsoft"
+        }
+      },
+      "product_version": "0 <0.26.2"
+    },
+    {
+      "id": "99f54ee7-ce79-3d47-b83d-acacf3cc597b",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1779798159"
+    },
+    {
+      "id": "bdf732c8-9f2f-33c1-967d-cde7f2073783",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:0.26.2-1.el9"
+    },
+    {
+      "id": "c42c109d-7795-382a-b09d-bc13465ca7c4",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:0.26.2-1.el10"
+    },
     {
       "id": "c9741899-66ba-3c63-9c76-c840a4adf46e",
       "product": {
-        "name": "Red Hat Hardened Images"
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0.26.2-1.1.hum1"
+    },
+    {
+      "id": "f10cc74a-d4a3-36b6-8a3e-3616b9eeeb42",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1779798222"
     }
   ],
   "enisaIdVendor": [
@@ -25,6 +118,12 @@
       "id": "7815dc50-826d-3e8c-9753-2c435993bd10",
       "vendor": {
         "name": "Red Hat"
+      }
+    },
+    {
+      "id": "9b13dca7-9e16-32c3-8e79-bad6b39ae1b0",
+      "vendor": {
+        "name": "p11-glue"
       }
     }
   ]
