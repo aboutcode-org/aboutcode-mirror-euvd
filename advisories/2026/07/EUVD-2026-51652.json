@@ -3,14 +3,14 @@
   "enisaUuid": "ff619efc-0ee8-3dfb-840f-de95ed842b1d",
   "description": "ComfyUI v0.23.0 contains an unsafe deserialization vulnerability in the LoadTrainingDataset node that allows unauthenticated remote attackers to execute arbitrary Python code by uploading a crafted pickle file and triggering its deserialization. Attackers can upload a malicious shard_*.pkl file via the unauthenticated POST /upload/image endpoint and then queue a workflow graph via POST /prompt referencing the uploaded file, causing torch.load to deserialize the attacker-controlled pickle payload using __reduce__ and execute arbitrary commands as the ComfyUI process user.",
   "datePublished": "Jul 31, 2026, 9:16:09 PM",
-  "dateUpdated": "Jul 31, 2026, 9:16:09 PM",
+  "dateUpdated": "Aug 3, 2026, 5:08:03 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/Comfy-Org/ComfyUI/pull/14543\nhttps://github.com/Comfy-Org/ComfyUI\nhttps://github.com/Comfy-Org/ComfyUI/commit/94ee49b1612824366a8631ea069b2a1fa5c73720\nhttps://www.vulncheck.com/advisories/comfyui-unauthenticated-rce-via-loadtrainingdataset-pickle-deserialization\n",
-  "aliases": "CVE-2026-68771\n",
+  "aliases": "GHSA-6p72-9j26-4rmx\nCVE-2026-68771\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.62,
   "enisaIdProduct": [
     {
       "id": "2cca65c0-5f73-31d9-90a9-3a828bd4ae12",

@@ -3,7 +3,7 @@
   "enisaUuid": "a43ee55e-8964-3225-b1b5-3a1dc157c15b",
   "description": "A flaw was found in the file-icns plugin in GIMP. When applying a decompressed mask during ICNS image processing, the plugin reads from the mask data buffer without verifying if the cursor exceeds the allocated resource size. If a crafted file contains a truncated mask resource, the icns_decompress function continues reading past the bounds of the buffer. This out-of-bounds read vulnerability results in information disclosure of heap contents, where memory contents are leaked as alpha channel pixel values, or a crash leading to a denial of service if unmapped memory is accessed.",
   "datePublished": "Jul 27, 2026, 7:12:27 PM",
-  "dateUpdated": "Jul 31, 2026, 2:39:42 PM",
+  "dateUpdated": "Aug 3, 2026, 5:54:12 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H",
