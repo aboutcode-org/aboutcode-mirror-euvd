@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-52765",
+  "enisaUuid": "fb2ea71f-aa97-3a45-9d7b-fba178646e8c",
+  "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, the SQLite Record Manager node in packages/components/nodes/recordmanager/SQLiteRecordManager/SQLiteRecordManager.ts accepted user-controlled additionalConfig and spread it after the intended database setting, allowing additionalConfig.database to overwrite the SQLite database path. An authenticated attacker using the published Docker image, which ran as root, could write a SQLite database to paths such as /etc/chromium/exploit.conf; by controlling the table name and namespace value, the attacker could place shell syntax into the database file and trigger execution when Puppeteer launched Chromium and sourced /etc/chromium/*.conf. This issue is fixed in version 3.1.3.",
+  "datePublished": "Aug 4, 2026, 4:05:19 PM",
+  "dateUpdated": "Aug 4, 2026, 5:44:16 PM",
+  "baseScore": 9.4,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-x3hf-7cj6-3r4m\nhttps://github.com/FlowiseAI/Flowise/pull/6464\nhttps://github.com/FlowiseAI/Flowise/commit/d07186844263bad057008863037466aff7c3390f\nhttps://github.com/FlowiseAI/Flowise/releases/tag/flowise@3.1.3\n",
+  "aliases": "CVE-2026-69259\nGHSA-x3hf-7cj6-3r4m\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "98d89f18-47e9-3707-b136-d8dc1a921176",
+      "product": {
+        "name": "Flowise",
+        "vendor": {
+          "name": "FlowiseAI"
+        }
+      },
+      "product_version": "< 3.1.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4f575a46-59f0-356d-84b9-24dcd32ae746",
+      "vendor": {
+        "name": "FlowiseAI"
+      }
+    }
+  ]
+}

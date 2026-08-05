@@ -2,55 +2,95 @@
   "id": "EUVD-2024-42064",
   "enisaUuid": "86b4bf78-0596-3dcc-b68f-61ab549084b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check debug trap enable before write dbg_ev_file\n\nIn interrupt context, write dbg_ev_file will be run by work queue. It\nwill cause write dbg_ev_file execution after debug_trap_disable, which\nwill cause NULL pointer access.\nv2: cancel work \"debug_event_workarea\" before set dbg_ev_file as NULL.",
-  "datePublished": "Sep 27, 2024, 3:30:33 PM",
-  "dateUpdated": "Oct 4, 2024, 6:31:09 PM",
-  "baseScore": -1.0,
-  "references": "https://git.kernel.org/stable/c/e6ea3b8fe398915338147fe54dd2db8155fdafd8\nhttps://git.kernel.org/stable/c/820dcbd38a77bd5fdc4236d521c1c122841227d0\nhttps://git.kernel.org/stable/c/547033b593063eb85bfdf9b25a5f1b8fd1911be2\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-46803\n",
+  "datePublished": "Sep 27, 2024, 12:35:49 PM",
+  "dateUpdated": "Aug 4, 2026, 9:32:01 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://git.kernel.org/stable/c/e6ea3b8fe398915338147fe54dd2db8155fdafd8\nhttps://git.kernel.org/stable/c/820dcbd38a77bd5fdc4236d521c1c122841227d0\nhttps://git.kernel.org/stable/c/547033b593063eb85bfdf9b25a5f1b8fd1911be2\n",
   "aliases": "CVE-2024-46803\nGHSA-3mfg-g733-vvp9\n",
   "assigner": "Linux",
-  "epss": 0.02,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "036421fc-88e7-3baf-bf63-fb8eb7bbe4b6",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
       "product_version": "patch: 6.6.50"
     },
     {
-      "id": "412f510e-7fc4-329e-99fe-369a79dc75ba",
+      "id": "04c6f5cf-385e-3111-bcd4-68c6fb60c405",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <547033b593063eb85bfdf9b25a5f1b8fd1911be2"
+      "product_version": "0ab2d7532b05a3e7c06fd3b0c8bd6b46c1dfb508 <e6ea3b8fe398915338147fe54dd2db8155fdafd8"
     },
     {
       "id": "62b10dbd-4cf6-3d55-bd19-c85758209f76",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
       "product_version": "patch: 6.11"
     },
     {
-      "id": "7237d6b3-afb4-37e3-af65-068bf9d127c8",
+      "id": "8f3ef0bb-6970-3b38-aabb-78a8db74ded8",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e6ea3b8fe398915338147fe54dd2db8155fdafd8"
+      "product_version": "0ab2d7532b05a3e7c06fd3b0c8bd6b46c1dfb508 <820dcbd38a77bd5fdc4236d521c1c122841227d0"
+    },
+    {
+      "id": "998d9b87-e051-32fe-b462-e0b03487f7bc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0ab2d7532b05a3e7c06fd3b0c8bd6b46c1dfb508 <547033b593063eb85bfdf9b25a5f1b8fd1911be2"
     },
     {
       "id": "9eb76a7d-0a23-3440-a7c8-c03e304debba",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
       "product_version": "patch: 6.10.9"
     },
     {
-      "id": "ccf597a3-6b3d-321b-bdb5-f68a908ab4ff",
+      "id": "d7718893-9634-3657-8c55-df399990cb07",
       "product": {
-        "name": "Linux"
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <820dcbd38a77bd5fdc4236d521c1c122841227d0"
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "e524c491-3712-35db-9718-8f4f7033f0c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.5"
     }
   ],
   "enisaIdVendor": [

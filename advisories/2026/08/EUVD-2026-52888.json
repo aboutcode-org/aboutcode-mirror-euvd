@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-52888",
+  "enisaUuid": "670a8ce8-1029-34fa-96b0-5f574639d969",
+  "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.6 until 0.11.0, DELETE /api/v1/chats/{id} cancelled a chat's in-flight tasks before checking whether the caller could delete that chat. Any authenticated user who knew another user's chat id could abort that user's running model response, title generation, or tag generation, even though the delete was refused and no chat data was deleted, modified, or disclosed. This issue is fixed in 0.11.0.",
+  "datePublished": "Aug 4, 2026, 7:54:35 PM",
+  "dateUpdated": "Aug 4, 2026, 7:54:35 PM",
+  "baseScore": 3.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:L",
+  "references": "https://github.com/open-webui/open-webui/security/advisories/GHSA-3vf6-64vr-3g56\nhttps://github.com/open-webui/open-webui/pull/27006\nhttps://github.com/open-webui/open-webui/commit/4f93c3e36c1734342a32c312bdb0516c66d8e93c\nhttps://github.com/open-webui/open-webui/releases/tag/v0.11.0\n",
+  "aliases": "GHSA-3vf6-64vr-3g56\nCVE-2026-70483\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "8cc1c5c2-89b7-3142-a6e2-614f427f16d8",
+      "product": {
+        "name": "open-webui",
+        "vendor": {
+          "name": "open-webui"
+        }
+      },
+      "product_version": "0.9.6, < 0.11.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4612de40-ea04-3f43-bc74-e926cfc3e781",
+      "vendor": {
+        "name": "open-webui"
+      }
+    }
+  ]
+}
