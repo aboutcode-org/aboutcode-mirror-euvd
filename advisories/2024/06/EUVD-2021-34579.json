@@ -3,14 +3,14 @@
   "enisaUuid": "ac0335ed-00b6-3b7c-8cf8-23ae6ab03a22",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio-wq: check for wq exit after adding new worker task_work\n\nWe check IO_WQ_BIT_EXIT before attempting to create a new worker, and\nwq exit cancels pending work if we have any. But it's possible to have\na race between the two, where creation checks exit finding it not set,\nbut we're in the process of exiting. The exit side will cancel pending\ncreation task_work, but there's a gap where we add task_work after we've\ncanceled existing creations at exit time.\n\nFix this by checking the EXIT bit post adding the creation task_work.\nIf it's set, run the same cancelation that exit does.",
   "datePublished": "Jun 19, 2024, 2:53:45 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:22 AM",
+  "dateUpdated": "Aug 5, 2026, 8:48:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4b4e5bbf9386d4ec21d91c0cb0fd60b9bba778ec\nhttps://git.kernel.org/stable/c/71a85387546e50b1a37b0fa45dadcae3bfb35cf6\n",
   "aliases": "GHSA-5c74-rw46-pr2c\nCVE-2021-47577\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0e8241e4-23d3-382c-a489-cafb73900fce",

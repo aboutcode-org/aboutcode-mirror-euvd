@@ -3,7 +3,7 @@
   "enisaUuid": "92a9d838-2163-3809-ab02-2ee27584c044",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: intel-ish-hid: ipc: Fix potential use-after-free in work function\n\nWhen a reset notify IPC message is received, the ISR schedules a work\nfunction and passes the ISHTP device to it via a global pointer\nishtp_dev. If ish_probe() fails, the devm-managed device resources\nincluding ishtp_dev are freed, but the work is not cancelled, causing a\nuse-after-free when the work function tries to access ishtp_dev. Use\ndevm_work_autocancel() instead, so that the work is automatically\ncancelled if probe fails.",
   "datePublished": "May 2, 2025, 3:54:57 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:08 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:29 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "e7275157-1bf9-3122-9015-20b55de1b8b6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: gso: fix ownership in __udp_gso_segment\n\nIn __udp_gso_segment the skb destructor is removed before segmenting the\nskb but the socket reference is kept as-is. This is an issue if the\noriginal skb is later orphaned as we can hit the following bug:\n\n  kernel BUG at ./include/linux/skbuff.h:3312!  (skb_orphan)\n  RIP: 0010:ip_rcv_core+0x8b2/0xca0\n  Call Trace:\n   ip_rcv+0xab/0x6e0\n   __netif_receive_skb_one_core+0x168/0x1b0\n   process_backlog+0x384/0x1100\n   __napi_poll.constprop.0+0xa1/0x370\n   net_rx_action+0x925/0xe50\n\nThe above can happen following a sequence of events when using\nOpenVSwitch, when an OVS_ACTION_ATTR_USERSPACE action precedes an\nOVS_ACTION_ATTR_OUTPUT action:\n\n1. OVS_ACTION_ATTR_USERSPACE is handled (in do_execute_actions): the skb\n   goes through queue_gso_packets and then __udp_gso_segment, where its\n   destructor is removed.\n2. The segments' data are copied and sent to userspace.\n3. OVS_ACTION_ATTR_OUTPUT is handled (in do_execute_actions) and the\n   same original skb is sent to its path.\n4. If it later hits skb_orphan, we hit the bug.\n\nFix this by also removing the reference to the socket in\n__udp_gso_segment.",
   "datePublished": "Apr 1, 2025, 3:40:57 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:23 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9f28205ddb76e86cac418332e952241d85fed0dc\nhttps://git.kernel.org/stable/c/a2d1cca955ed34873e524cc2e6e885450d262f05\nhttps://git.kernel.org/stable/c/455217ac9db0cf9349b3933664355e907bb1a569\nhttps://git.kernel.org/stable/c/e8db70537878e1bb3fd83e5abcc6feefc0587828\nhttps://git.kernel.org/stable/c/01a83237644d6822bc7df2c5564fc81b0df84358\nhttps://git.kernel.org/stable/c/084819b0d8b1bd433b90142371eb9450d657f8ca\nhttps://git.kernel.org/stable/c/c32da44cc9298eaa6109e3fc2c2b4e07cc4bf11b\nhttps://git.kernel.org/stable/c/ee01b2f2d7d0010787c2343463965bbc283a497f\n",
   "aliases": "CVE-2025-21926\nGHSA-jwp5-c35f-qv38\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "05745006-474a-30cd-812b-9086929cf995",

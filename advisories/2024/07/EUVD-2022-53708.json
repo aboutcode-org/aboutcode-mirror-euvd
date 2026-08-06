@@ -3,14 +3,14 @@
   "enisaUuid": "f204c8dd-7753-319d-bd37-7d087e66550f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix NFSv3 SETATTR/CREATE's handling of large file sizes\n\niattr::ia_size is a loff_t, so these NFSv3 procedures must be\ncareful to deal with incoming client size values that are larger\nthan s64_max without corrupting the value.\n\nSilently capping the value results in storing a different value\nthan the client passed in which is unexpected behavior, so remove\nthe min_t() check in decode_sattr3().\n\nNote that RFC 1813 permits only the WRITE procedure to return\nNFS3ERR_FBIG. We believe that NFSv3 reference implementations\nalso return NFS3ERR_FBIG when ia_size is too large.",
   "datePublished": "Jul 16, 2024, 11:44:13 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:48 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:34 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/72c14aed6838b5d90b4dd926b6a339b34bb02e08\nhttps://git.kernel.org/stable/c/a231ae6bb50e7c0a9e9efd7b0d10687f1d71b3a3\nhttps://git.kernel.org/stable/c/37f2d2cd8eadddbbd9c7bda327a9393399b2f89b\nhttps://git.kernel.org/stable/c/aa9051ddb4b378bd22e72a67bc77b9fc1482c5f0\nhttps://git.kernel.org/stable/c/a648fdeb7c0e17177a2280344d015dba3fbe3314\n",
   "aliases": "GHSA-2294-53w4-gch9\nCVE-2022-48829\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.65,
   "enisaIdProduct": [
     {
       "id": "18867531-840e-331c-b432-2a7492f339c9",

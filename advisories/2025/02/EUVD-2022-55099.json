@@ -3,14 +3,14 @@
   "enisaUuid": "f5bc95c6-a172-325e-8a7c-1af3408c7df0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: libfc: Fix use after free in fc_exch_abts_resp()\n\nfc_exch_release(ep) will decrease the ep's reference count. When the\nreference count reaches zero, it is freed. But ep is still used in the\nfollowing code, which will lead to a use after free.\n\nReturn after the fc_exch_release() call to avoid use after free.",
   "datePublished": "Feb 26, 2025, 1:54:58 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:12 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:58 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4a131d4ea8b581ac9b01d3a72754db4848be3232\nhttps://git.kernel.org/stable/c/499d198494e77b6533251b9b909baf5c101129cb\nhttps://git.kernel.org/stable/c/6044ad64f41c87382cfeeca281573d1886d80cbe\nhttps://git.kernel.org/stable/c/5cf2ce8967b0d98c8cfa4dc42ef4fcf080f5c836\nhttps://git.kernel.org/stable/c/1d7effe5fff9d28e45e18ac3a564067c7ddfe898\nhttps://git.kernel.org/stable/c/f581df412bc45c95176e3c808ee2839c05b2ab0c\nhttps://git.kernel.org/stable/c/87909291762d08fdb60d19069d7a89b5b308d0ef\nhttps://git.kernel.org/stable/c/412dd8299b02e4410fe77b8396953c1a8dde183a\nhttps://git.kernel.org/stable/c/271add11994ba1a334859069367e04d2be2ebdd4\n",
   "aliases": "CVE-2022-49114\nGHSA-6f5q-x637-6prf\n",
   "assigner": "Linux",
-  "epss": 0.3,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "10c65433-7eda-3e96-a24d-174773d56ce2",

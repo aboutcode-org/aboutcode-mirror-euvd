@@ -3,14 +3,14 @@
   "enisaUuid": "badc3e8d-8d59-3f90-9dfd-82ba87fec2ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: target_core_configfs: Add length check to avoid buffer overflow\n\nA buffer overflow arises from the usage of snprintf to write into the\nbuffer \"buf\" in target_lu_gp_members_show function located in\n/drivers/target/target_core_configfs.c. This buffer is allocated with\nsize LU_GROUP_NAME_BUF (256 bytes).\n\nsnprintf(...) formats multiple strings into buf with the HBA name\n(hba->hba_group.cg_item), a slash character, a devicename (dev->\ndev_group.cg_item) and a newline character, the total formatted string\nlength may exceed the buffer size of 256 bytes.\n\nSince snprintf() returns the total number of bytes that would have been\nwritten (the length of %s/%sn ), this value may exceed the buffer length\n(256 bytes) passed to memcpy(), this will ultimately cause function\nmemcpy reporting a buffer overflow error.\n\nAn additional check of the return value of snprintf() can avoid this\nbuffer overflow.",
   "datePublished": "Oct 15, 2025, 7:58:22 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:22 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:00 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e6eeee5dc0d9221ff96d1b229b1d0222c8871b84\nhttps://git.kernel.org/stable/c/764a91e2fc9639e07aac93bc70e387e6b1e33084\nhttps://git.kernel.org/stable/c/ddc79fba132b807ff775467acceaf48b456e008b\nhttps://git.kernel.org/stable/c/e73fe0eefac3e15bf88fb5b4afae4c76215ee4d4\nhttps://git.kernel.org/stable/c/f03aa5e39da7d045615b3951d2a6ca1d7132f881\nhttps://git.kernel.org/stable/c/53c6351597e6a17ec6619f6f060d54128cb9a187\nhttps://git.kernel.org/stable/c/4b292286949588bd2818e66ff102db278de8dd26\nhttps://git.kernel.org/stable/c/a150275831b765b0f1de8b8ff52ec5c6933ac15d\nhttps://git.kernel.org/stable/c/27e06650a5eafe832a90fd2604f0c5e920857fae\n",
   "aliases": "CVE-2025-39998\nGHSA-h5vm-jvgf-qf7m\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "11b81025-7dfc-3ded-bcd2-73c48db4a85f",

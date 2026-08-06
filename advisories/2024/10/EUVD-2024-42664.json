@@ -3,7 +3,7 @@
   "enisaUuid": "79f898c0-ec28-3d1a-9e84-9aa40f985503",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost_vdpa: assign irq bypass producer token correctly\n\nWe used to call irq_bypass_unregister_producer() in\nvhost_vdpa_setup_vq_irq() which is problematic as we don't know if the\ntoken pointer is still valid or not.\n\nActually, we use the eventfd_ctx as the token so the life cycle of the\ntoken should be bound to the VHOST_SET_VRING_CALL instead of\nvhost_vdpa_setup_vq_irq() which could be called by set_status().\n\nFixing this by setting up irq bypass producer's token when handling\nVHOST_SET_VRING_CALL and un-registering the producer before calling\nvhost_vring_ioctl() to prevent a possible use after free as eventfd\ncould have been released in vhost_vring_ioctl(). And such registering\nand unregistering will only be done if DRIVER_OK is set.",
   "datePublished": "Oct 21, 2024, 12:14:14 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

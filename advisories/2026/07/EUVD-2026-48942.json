@@ -3,14 +3,14 @@
   "enisaUuid": "b9156088-f1e2-3002-afc0-28ee26351dc3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: add a permission check for FSCTL_SET_ZERO_DATA\n\nFSCTL_SET_ZERO_DATA in smb2_ioctl() destroys file data via\nksmbd_vfs_zero_data() -> vfs_fallocate(PUNCH_HOLE/ZERO_RANGE) after\nchecking only the share-level KSMBD_TREE_CONN_FLAG_WRITABLE, with no\nper-handle access check. A handle opened with only FILE_WRITE_ATTRIBUTES\nstill yields an FMODE_WRITE filp (FILE_WRITE_ATTRIBUTES is part of\nFILE_WRITE_DESIRE_ACCESS_LE, so smb2_create_open_flags() opens it\nO_WRONLY), so the vfs_fallocate FMODE_WRITE check does not stop it; only\nthe missing fp->daccess gate would. Reproduced on mainline 7.1-rc7 with\nKASAN by an authenticated SMB client: a FILE_WRITE_ATTRIBUTES-only handle\nzeroed 4096 bytes of file data it had no FILE_WRITE_DATA right to\n(6/6; a FILE_READ_DATA-only handle was correctly denied).\n\nThis is the unfixed sibling of commit cc57232cae23 (\"ksmbd: fix FSCTL\npermission bypass by adding a permission check for FSCTL_SET_SPARSE\").\nBecause SET_ZERO_DATA writes data (not an attribute), require\nFILE_WRITE_DATA.",
   "datePublished": "Jul 25, 2026, 8:50:42 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:29 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:36 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/25377f369688dd0bd814dc8965ed26d44238ecaa\nhttps://git.kernel.org/stable/c/3072d82461f498c85daea8766e9d8bfbada31605\nhttps://git.kernel.org/stable/c/ca53bb17f4e8232cfaece3953d3cef62c559b039\nhttps://git.kernel.org/stable/c/57f2042fd87d7ce8fc3ac8b6c176e554df68b1a7\nhttps://git.kernel.org/stable/c/deffa929086d7902e30918adf3dd27ccfe9c08b1\nhttps://git.kernel.org/stable/c/3320ba068198adc144c89d6661b805acce01735b\n",
   "aliases": "CVE-2026-64398\nGHSA-ch49-xqcg-99vv\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "1054f9f5-86c1-3ff5-a4f7-1bdf149bfa08",

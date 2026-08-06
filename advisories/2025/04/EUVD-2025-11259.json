@@ -3,14 +3,14 @@
   "enisaUuid": "5bb56c4f-fec9-358a-a315-64d609b0479b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: BPF: Don't override subprog's return value\n\nThe verifier test `calls: div by 0 in subprog` triggers a panic at the\nld.bu instruction. The ld.bu insn is trying to load byte from memory\naddress returned by the subprog. The subprog actually set the correct\naddress at the a5 register (dedicated register for BPF return values).\nBut at commit 73c359d1d356 (\"LoongArch: BPF: Sign-extend return values\")\nwe also sign extended a5 to the a0 register (return value in LoongArch).\nFor function call insn, we later propagate the a0 register back to a5\nregister. This is right for native calls but wrong for bpf2bpf calls\nwhich expect zero-extended return value in a5 register. So only move a0\nto a5 for native calls (i.e. non-BPF_PSEUDO_CALL).",
   "datePublished": "Apr 16, 2025, 2:12:07 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:03 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:20 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7df2696256a034405d3c5a71b3a4c54725de4404\nhttps://git.kernel.org/stable/c/223d565d8892481684091cfbaf3466f2b0e289d3\nhttps://git.kernel.org/stable/c/780628a780b622759d9e5adc76d15432144da1a3\nhttps://git.kernel.org/stable/c/996e90ab446641553e8e21707b38b9709605e0e0\nhttps://git.kernel.org/stable/c/60f3caff1492e5b8616b9578c4bedb5c0a88ed14\n",
   "aliases": "GHSA-4vfw-gvwq-xw7v\nCVE-2025-22048\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "17098626-7dc0-3170-a1ca-7e0bd6f45005",

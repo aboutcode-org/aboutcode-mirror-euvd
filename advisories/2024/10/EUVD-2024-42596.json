@@ -3,7 +3,7 @@
   "enisaUuid": "d56be971-4d0a-3e50-a59b-8f12c5ef86ed",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix use-after-free in bpf_uprobe_multi_link_attach()\n\nIf bpf_link_prime() fails, bpf_uprobe_multi_link_attach() goes to the\nerror_free label and frees the array of bpf_uprobe's without calling\nbpf_uprobe_unregister().\n\nThis leaks bpf_uprobe->uprobe and worse, this frees bpf_uprobe->consumer\nwithout removing it from the uprobe->consumers list.",
   "datePublished": "Oct 21, 2024, 11:53:19 AM",
-  "dateUpdated": "Aug 4, 2026, 9:32:39 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

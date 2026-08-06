@@ -3,7 +3,7 @@
   "enisaUuid": "162fe920-df7b-31f6-926b-f5573c4e410e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregmap: maple: Fix cache corruption in regcache_maple_drop()\n\nWhen keeping the upper end of a cache block entry, the entry[] array\nmust be indexed by the offset from the base register of the block,\ni.e. max - mas.index.\n\nThe code was indexing entry[] by only the register address, leading\nto an out-of-bounds access that copied some part of the kernel\nmemory over the cache contents.\n\nThis bug was not detected by the regmap KUnit test because it only\ntests with a block of registers starting at 0, so mas.index == 0.",
   "datePublished": "May 30, 2024, 2:59:42 PM",
-  "dateUpdated": "Aug 4, 2026, 9:24:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

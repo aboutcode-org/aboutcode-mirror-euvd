@@ -3,14 +3,14 @@
   "enisaUuid": "795df1ee-16ba-3ff8-8cbc-6e914d9078ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in ksmbd_session_rpc_open\n\nA UAF issue can occur due to a race condition between\nksmbd_session_rpc_open() and __session_rpc_close().\nAdd rpc_lock to the session to protect it.",
   "datePublished": "May 20, 2025, 3:21:53 PM",
-  "dateUpdated": "Jul 30, 2026, 5:50:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:26 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a4348710a7267705b75692dc1a000920481d1d92\nhttps://git.kernel.org/stable/c/1067361a1cc6ad9cdf7acfc47f90012b72ad1502\nhttps://git.kernel.org/stable/c/8fb3b6c85b7e3127161623586b62abcc366caa20\nhttps://git.kernel.org/stable/c/6323fec65fe54b365961fed260dd579191e46121\nhttps://git.kernel.org/stable/c/a1f46c99d9ea411f9bf30025b912d881d36fc709\n",
   "aliases": "GHSA-793v-2p67-gw99\nCVE-2025-37926\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "2a8c6c63-e8f5-3bb8-9502-80da890d3e29",

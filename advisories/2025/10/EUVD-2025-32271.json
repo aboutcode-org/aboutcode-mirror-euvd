@@ -3,14 +3,14 @@
   "enisaUuid": "40c7b558-b7d6-3d28-b407-a7f6395d9516",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix mid leak during reconnection after timeout threshold\n\nWhen the number of responses with status of STATUS_IO_TIMEOUT\nexceeds a specified threshold (NUM_STATUS_IO_TIMEOUT), we reconnect\nthe connection. But we do not return the mid, or the credits\nreturned for the mid, or reduce the number of in-flight requests.\n\nThis bug could result in the server->in_flight count to go bad,\nand also cause a leak in the mids.\n\nThis change moves the check to a few lines below where the\nresponse is decrypted, even of the response is read from the\ntransform header. This way, the code for returning the mids\ncan be reused.\n\nAlso, the cifs_reconnect was reconnecting just the transport\nconnection before. In case of multi-channel, this may not be\nwhat we want to do after several timeouts. Changed that to\nreconnect the session and the tree too.\n\nAlso renamed NUM_STATUS_IO_TIMEOUT to a more appropriate name\nMAX_STATUS_IO_TIMEOUT.",
   "datePublished": "Oct 4, 2025, 3:44:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:34 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:00 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/df31d05f0678cdd0796ea19983a2b93edca18bb0\nhttps://git.kernel.org/stable/c/c55901d381a22300c9922170e59704059f50977b\nhttps://git.kernel.org/stable/c/57d25e9905c71133e201f6d06b56a3403d4ad433\nhttps://git.kernel.org/stable/c/69cba9d3c1284e0838ae408830a02c4a063104bc\n",
   "aliases": "GHSA-g6xj-m5qj-cqp6\nCVE-2023-53597\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "1c50f3ae-f6fe-3716-ab24-dc774344aef1",

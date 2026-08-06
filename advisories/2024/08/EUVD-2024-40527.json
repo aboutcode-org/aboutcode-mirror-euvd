@@ -3,7 +3,7 @@
   "enisaUuid": "f572408f-2d79-3b1b-aaa9-7cdc6a619e4b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pci: ivtv: Add check for DMA map result\n\nIn case DMA fails, 'dma->SG_length' is 0. This value is later used to\naccess 'dma->SGarray[dma->SG_length - 1]', which will cause out of\nbounds access.\n\nAdd check to return early on invalid value. Adjust warnings accordingly.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Aug 21, 2024, 12:06:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:30:01 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

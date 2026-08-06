@@ -3,7 +3,7 @@
   "enisaUuid": "1b4b642c-8890-3d4a-b3c4-0294a9eb0ee3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: pca953x: fix pca953x_irq_bus_sync_unlock race\n\nEnsure that `i2c_lock' is held when setting interrupt latch and mask in\npca953x_irq_bus_sync_unlock() in order to avoid races.\n\nThe other (non-probe) call site pca953x_gpio_set_multiple() ensures the\nlock is held before calling pca953x_write_regs().\n\nThe problem occurred when a request raced against irq_bus_sync_unlock()\napproximately once per thousand reboots on an i.MX8MP based system.\n\n * Normal case\n\n   0-0022: write register AI|3a {03,02,00,00,01} Input latch P0\n   0-0022: write register AI|49 {fc,fd,ff,ff,fe} Interrupt mask P0\n   0-0022: write register AI|08 {ff,00,00,00,00} Output P3\n   0-0022: write register AI|12 {fc,00,00,00,00} Config P3\n\n * Race case\n\n   0-0022: write register AI|08 {ff,00,00,00,00} Output P3\n   0-0022: write register AI|08 {03,02,00,00,01} *** Wrong register ***\n   0-0022: write register AI|12 {fc,00,00,00,00} Config P3\n   0-0022: write register AI|49 {fc,fd,ff,ff,fe} Interrupt mask P0",
   "datePublished": "Aug 8, 2024, 8:46:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:05 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

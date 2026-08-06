@@ -3,14 +3,14 @@
   "enisaUuid": "3c0859d0-90c6-3611-8b58-f4f1306f72fb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: QOS: Refactor TC_HTB_LEAF_DEL_LAST callback\n\nThis patch addresses below issues,\n\n1. Active traffic on the leaf node must be stopped before its send queue\n   is reassigned to the parent. This patch resolves the issue by marking\n   the node as 'Inner'.\n\n2. During a system reboot, the interface receives TC_HTB_LEAF_DEL\n   and TC_HTB_LEAF_DEL_LAST callbacks to delete its HTB queues.\n   In the case of TC_HTB_LEAF_DEL_LAST, although the same send queue\n   is reassigned to the parent, the current logic still attempts to update\n   the real number of queues, leadning to below warnings\n\n        New queues can't be registered after device unregistration.\n        WARNING: CPU: 0 PID: 6475 at net/core/net-sysfs.c:1714\n        netdev_queue_update_kobjects+0x1e4/0x200",
   "datePublished": "Jul 10, 2025, 7:41:57 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:43 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:56 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5df8db01d6a4e9c35a5ba5d7e130d5cecd3ffcb4\nhttps://git.kernel.org/stable/c/ec62c99914a79d84c8de5ba1b94d62f2ed721f2a\nhttps://git.kernel.org/stable/c/f1fca0eae5a0573f226f46c6871260278e7dda12\nhttps://git.kernel.org/stable/c/67af4ec948e8ce3ea53a9cf614d01fddf172e56d\n",
   "aliases": "GHSA-62hm-rhvj-5p55\nCVE-2025-38278\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0088e777-f423-3be1-a9c7-ac2ee2083a1d",

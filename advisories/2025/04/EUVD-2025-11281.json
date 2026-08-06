@@ -3,7 +3,7 @@
   "enisaUuid": "617d6933-6482-35b1-bf11-aa2226c8fdec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\njfs: add check read-only before truncation in jfs_truncate_nolock()\n\nAdded a check for \"read-only\" mode in the `jfs_truncate_nolock`\nfunction to avoid errors related to writing to a read-only\nfilesystem.\n\nCall stack:\n\nblock_write_begin() {\n  jfs_write_failed() {\n    jfs_truncate() {\n      jfs_truncate_nolock() {\n        txEnd() {\n          ...\n          log = JFS_SBI(tblk->sb)->log;\n          // (log == NULL)\n\nIf the `isReadOnly(ip)` condition is triggered in\n`jfs_truncate_nolock`, the function execution will stop, and no\nfurther data modification will occur. Instead, the `xtTruncate`\nfunction will be called with the \"COMMIT_WMAP\" flag, preventing\nmodifications in \"read-only\" mode.",
   "datePublished": "Apr 16, 2025, 2:11:43 PM",
-  "dateUpdated": "Aug 4, 2026, 9:42:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

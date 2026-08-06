@@ -3,7 +3,7 @@
   "enisaUuid": "0bf6c415-e7c2-3a81-b9c2-75ee232f16c3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rtrs-clt: Reset cid to con_num - 1 to stay in bounds\n\nIn the function init_conns(), after the create_con() and create_cm() for\nloop if something fails. In the cleanup for loop after the destroy tag, we\naccess out of bound memory because cid is set to clt_path->s.con_num.\n\nThis commits resets the cid to clt_path->s.con_num - 1, to stay in bounds\nin the cleanup loop later.",
   "datePublished": "Oct 21, 2024, 11:53:33 AM",
-  "dateUpdated": "Aug 4, 2026, 9:32:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:28 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

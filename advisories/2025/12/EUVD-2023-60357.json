@@ -3,14 +3,14 @@
   "enisaUuid": "fe798c22-9dc7-30bf-b1da-31a761342466",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: hold queue_lock when removing blkg->q_node\n\nWhen blkg is removed from q->blkg_list from blkg_free_workfn(), queue_lock\nhas to be held, otherwise, all kinds of bugs(list corruption, hard lockup,\n..) can be triggered from blkg_destroy_all().",
   "datePublished": "Dec 24, 2025, 1:06:18 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:36 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b5dae1cd0d8368b4338430ff93403df67f0b8bcc\nhttps://git.kernel.org/stable/c/083b58373463a6e5ee60ecb135269348f68ad7df\nhttps://git.kernel.org/stable/c/cd4ffdf56791eec95af01f06bee1ec7665ca75c4\nhttps://git.kernel.org/stable/c/c164c7bc9775be7bcc68754bb3431fce5823822e\n",
   "aliases": "GHSA-vfv6-vxgw-2mv8\nCVE-2023-54088\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0372374a-8338-3fec-8e07-45941650aafb",

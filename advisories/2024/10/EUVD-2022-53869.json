@@ -3,7 +3,7 @@
   "enisaUuid": "306bafd7-b54d-3884-8c2e-745398a59d94",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix use-after-free during gpu recovery\n\n[Why]\n    [  754.862560] refcount_t: underflow; use-after-free.\n    [  754.862898] Call Trace:\n    [  754.862903]  <TASK>\n    [  754.862913]  amdgpu_job_free_cb+0xc2/0xe1 [amdgpu]\n    [  754.863543]  drm_sched_main.cold+0x34/0x39 [amd_sched]\n\n[How]\n    The fw_fence may be not init, check whether dma_fence_init\n    is performed before job free",
   "datePublished": "Oct 21, 2024, 8:06:07 PM",
-  "dateUpdated": "Aug 4, 2026, 9:03:33 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:19 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

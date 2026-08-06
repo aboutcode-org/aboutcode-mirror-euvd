@@ -3,7 +3,7 @@
   "enisaUuid": "afc8a979-37ef-369d-ab52-a9b51dd7bb40",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt: prevent skb UAF after handing over to PTP worker\n\nWhen reading the timestamp is required bnxt_tx_int() hands\nover the ownership of the completed skb to the PTP worker.\nThe skb should not be used afterwards, as the worker may\nrun before the rest of our code and free the skb, leading\nto a use-after-free.\n\nSince dev_kfree_skb_any() accepts NULL make the loss of\nownership more obvious and set skb to NULL.",
   "datePublished": "Apr 28, 2024, 12:59:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:50 AM",
+  "dateUpdated": "Aug 5, 2026, 8:51:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

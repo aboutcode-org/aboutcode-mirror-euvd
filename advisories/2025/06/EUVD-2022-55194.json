@@ -3,14 +3,14 @@
   "enisaUuid": "ef0f425e-0300-312e-9391-66ba1a705311",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: Fix UAF in ieee80211_scan_rx()\n\nieee80211_scan_rx() tries to access scan_req->flags after a\nnull check, but a UAF is observed when the scan is completed\nand __ieee80211_scan_completed() executes, which then calls\ncfg80211_scan_done() leading to the freeing of scan_req.\n\nSince scan_req is rcu_dereference()'d, prevent the racing in\n__ieee80211_scan_completed() by ensuring that from mac80211's\nPOV it is no longer accessed from an RCU read critical section\nbefore we call cfg80211_scan_done().",
   "datePublished": "Jun 18, 2025, 10:54:36 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:04 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:46 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6eb181a64fdabf10be9e54de728876667da20255\nhttps://git.kernel.org/stable/c/e0ff39448cea654843744c72c6780293c5082cb1\nhttps://git.kernel.org/stable/c/78a07732fbb0934d14827d8f09b9aa6a49ee1aa9\nhttps://git.kernel.org/stable/c/9ad48cbf8b07f10c1e4a7a262b32a9179ae9dd2d\nhttps://git.kernel.org/stable/c/4abc8c07a065ecf771827bde3c63fbbe4aa0c08b\nhttps://git.kernel.org/stable/c/5d20c6f932f2758078d0454729129c894fe353e7\nhttps://git.kernel.org/stable/c/c0445feb80a4d0854898118fa01073701f8d356b\nhttps://git.kernel.org/stable/c/60deb9f10eec5c6a20252ed36238b55d8b614a2c\n",
   "aliases": "CVE-2022-49934\nGHSA-w75g-vp3j-wh29\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0c90d693-01b5-3000-9c19-5504238a57cd",

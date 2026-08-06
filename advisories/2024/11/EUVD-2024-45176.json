@@ -3,7 +3,7 @@
   "enisaUuid": "382986e4-9286-3d4c-b425-0432855f00ca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: check outstanding simultaneous SMB operations\n\nIf Client send simultaneous SMB operations to ksmbd, It exhausts too much\nmemory through the \"ksmbd_work_cache\u201d. It will cause OOM issue.\nksmbd has a credit mechanism but it can't handle this problem. This patch\nadd the check if it exceeds max credits to prevent this problem by assuming\nthat one smb request consumes at least one credit.",
   "datePublished": "Nov 19, 2024, 1:30:28 AM",
-  "dateUpdated": "Aug 4, 2026, 9:36:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:43:04 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

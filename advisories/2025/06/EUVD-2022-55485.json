@@ -3,14 +3,14 @@
   "enisaUuid": "e3c46db5-f351-3184-ace9-b3b089d488a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86/xen: Initialize Xen timer only once\n\nAdd a check for existing xen timers before initializing a new one.\n\nCurrently kvm_xen_init_timer() is called on every\nKVM_XEN_VCPU_ATTR_TYPE_TIMER, which is causing the following ODEBUG\ncrash when vcpu->arch.xen.timer is already set.\n\nODEBUG: init active (active state 0)\nobject type: hrtimer hint: xen_timer_callbac0\nRIP: 0010:debug_print_object+0x16e/0x250 lib/debugobjects.c:502\nCall Trace:\n__debug_object_init\ndebug_hrtimer_init\ndebug_init\nhrtimer_init\nkvm_xen_init_timer\nkvm_xen_vcpu_set_attr\nkvm_arch_vcpu_ioctl\nkvm_vcpu_ioctl\nvfs_ioctl",
   "datePublished": "Jun 18, 2025, 11:03:59 AM",
-  "dateUpdated": "Aug 4, 2026, 9:08:04 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:47 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9a9b5771e930f408c3419799000f76a9abaf2278\nhttps://git.kernel.org/stable/c/af735db31285fa699384c649be72a9f32ecbb665\n",
   "aliases": "CVE-2022-50227\nGHSA-48p3-p675-p77f\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "031b77db-829d-36fc-8e48-c09d76e0dbf5",

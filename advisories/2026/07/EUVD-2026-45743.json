@@ -3,7 +3,7 @@
   "enisaUuid": "35f08687-3ed4-30e2-9012-76e5409e343f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: bind uarg before filling zerocopy skb\n\nvirtio_transport_send_pkt_info() allocates or reuses the zerocopy uarg\nbefore entering the send loop, but virtio_transport_alloc_skb() still\nfills the skb before it inherits that uarg. When fixed-buffer vectored\nzerocopy hits MAX_SKB_FRAGS, io_sg_from_iter() may partially attach\nmanaged frags and return -EMSGSIZE. The rollback path call kfree_skb()\nto free an skb that carries SKBFL_MANAGED_FRAG_REFS but no uarg, so\nskb_release_data() falls through to ordinary frag unref.\n\nPass the uarg into virtio_transport_alloc_skb() and bind it immediately\nbefore virtio_transport_fill_skb(). This keeps control or no-payload skbs\nuntouched while ensuring success and rollback share one lifetime rule.",
   "datePublished": "Jul 19, 2026, 2:55:57 PM",
-  "dateUpdated": "Jul 24, 2026, 2:34:16 PM",
+  "dateUpdated": "Aug 5, 2026, 12:37:41 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

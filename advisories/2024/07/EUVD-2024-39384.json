@@ -3,7 +3,7 @@
   "enisaUuid": "30397869-77e2-3395-9afc-77afae846330",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: cs_dsp: Prevent buffer overrun when processing V2 alg headers\n\nCheck that all fields of a V2 algorithm header fit into the available\nfirmware data buffer.\n\nThe wmfw V2 format introduced variable-length strings in the algorithm\nblock header. This means the overall header length is variable, and the\nposition of most fields varies depending on the length of the string\nfields. Each field must be checked to ensure that it does not overflow\nthe firmware data buffer.\n\nAs this ia bugfix patch, the fixes avoid making any significant change to\nthe existing code. This makes it easier to review and less likely to\nintroduce new bugs.",
   "datePublished": "Jul 29, 2024, 2:31:52 PM",
-  "dateUpdated": "Aug 4, 2026, 9:28:00 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

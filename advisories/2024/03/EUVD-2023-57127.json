@@ -3,14 +3,14 @@
   "enisaUuid": "3c733de2-c3ed-3333-be49-5108062bfe1d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: nfc: fix races in nfc_llcp_sock_get() and nfc_llcp_sock_get_sn()\n\nSili Luo reported a race in nfc_llcp_sock_get(), leading to UAF.\n\nGetting a reference on the socket found in a lookup while\nholding a lock should happen before releasing the lock.\n\nnfc_llcp_sock_get_sn() has a similar problem.\n\nFinally nfc_llcp_recv_snl() needs to make sure the socket\nfound by nfc_llcp_sock_from_sn() does not disappear.",
   "datePublished": "Mar 2, 2024, 9:52:17 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:46 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:16 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e863f5720a5680e50c4cecf12424d7cc31b3eb0a\nhttps://git.kernel.org/stable/c/7adcf014bda16cdbf804af5c164d94d5d025db2d\nhttps://git.kernel.org/stable/c/6ac22ecdaad2ecc662048f8c6b0ceb1ca0699ef9\nhttps://git.kernel.org/stable/c/d888d3f70b0de32b4f51534175f039ddab15eef8\nhttps://git.kernel.org/stable/c/e4f2611f07c87b3ddb57c4b9e8efcd1e330fc3dc\nhttps://git.kernel.org/stable/c/d1af8a39cf839d93c8967fdd858f6bbdc3e4a15c\nhttps://git.kernel.org/stable/c/31c07dffafce914c1d1543c135382a11ff058d93\n",
   "aliases": "GHSA-g754-37wh-7wv7\nCVE-2023-52502\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "000d7aaa-2320-3874-89dd-4f18db093f4c",

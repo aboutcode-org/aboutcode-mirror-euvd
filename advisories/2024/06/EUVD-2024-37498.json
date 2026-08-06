@@ -3,7 +3,7 @@
   "enisaUuid": "7f141c95-f73d-30cf-95cc-4e4d0d4d2b06",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoundwire: cadence: fix invalid PDI offset\n\nFor some reason, we add an offset to the PDI, presumably to skip the\nPDI0 and PDI1 which are reserved for BPT.\n\nThis code is however completely wrong and leads to an out-of-bounds\naccess. We were just lucky so far since we used only a couple of PDIs\nand remained within the PDI array bounds.\n\nA Fixes: tag is not provided since there are no known platforms where\nthe out-of-bounds would be accessed, and the initial code had problems\nas well.\n\nA follow-up patch completely removes this useless offset.",
   "datePublished": "Jun 21, 2024, 10:18:24 AM",
-  "dateUpdated": "Aug 4, 2026, 9:26:26 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

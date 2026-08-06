@@ -3,7 +3,7 @@
   "enisaUuid": "1ec9a201-2667-34e1-ab24-5639424f4c64",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: Fix prime with external buffers\n\nMake sure that for external buffers mapping goes through the dma_buf\ninterface instead of trying to access pages directly.\n\nExternal buffers might not provide direct access to readable/writable\npages so to make sure the bo's created from external dma_bufs can be\nread dma_buf interface has to be used.\n\nFixes crashes in IGT's kms_prime with vgem. Regular desktop usage won't\ntrigger this due to the fact that virtual machines will not have\nmultiple GPUs but it enables better test coverage in IGT.",
   "datePublished": "Sep 13, 2024, 6:33:41 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:23 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

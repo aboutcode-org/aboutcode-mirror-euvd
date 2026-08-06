@@ -3,14 +3,14 @@
   "enisaUuid": "68384931-759a-3f2f-b353-279c1b163d51",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/md-bitmap: fix wrong bitmap_limit for clustermd when write sb\n\nIn clustermd, separate write-intent-bitmaps are used for each cluster\nnode:\n\n0                    4k                     8k                    12k\n-------------------------------------------------------------------\n| idle                | md super            | bm super [0] + bits |\n| bm bits[0, contd]   | bm super[1] + bits  | bm bits[1, contd]   |\n| bm super[2] + bits  | bm bits [2, contd]  | bm super[3] + bits  |\n| bm bits [3, contd]  |                     |                     |\n\nSo in node 1, pg_index in __write_sb_page() could equal to\nbitmap->storage.file_pages. Then bitmap_limit will be calculated to\n0. md_super_write() will be called with 0 size.\nThat means the first 4k sb area of node 1 will never be updated\nthrough filemap_write_page().\nThis bug causes hang of mdadm/clustermd_tests/01r1_Grow_resize.\n\nHere use (pg_index % bitmap->storage.file_pages) to make calculation\nof bitmap_limit correct.",
   "datePublished": "Apr 16, 2025, 2:13:08 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/60196f92bbc7901eb5cfa5d456651b87ea50a4a3\nhttps://git.kernel.org/stable/c/bc3a9788961631359527763d7e1fcf26554c7cb1\nhttps://git.kernel.org/stable/c/6130825f34d41718c98a9b1504a79a23e379701e\n",
   "aliases": "GHSA-48f7-49jv-jj2v\nCVE-2025-22124\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "11d62013-96b9-3490-912c-de2890bdd935",

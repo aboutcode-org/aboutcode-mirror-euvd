@@ -3,14 +3,14 @@
   "enisaUuid": "431f3ae4-1c5a-31f7-affb-22ea86ddbd80",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: Fix accessing freed irq affinity_hint\n\nIn stmmac_request_irq_multi_msi(), a pointer to the stack variable\ncpu_mask is passed to irq_set_affinity_hint(). This value is stored in\nirq_desc->affinity_hint, but once stmmac_request_irq_multi_msi()\nreturns, the pointer becomes dangling.\n\nThe affinity_hint is exposed via procfs with S_IRUGO permissions,\nallowing any unprivileged process to read it. Accessing this stale\npointer can lead to:\n\n- a kernel oops or panic if the referenced memory has been released and\n  unmapped, or\n- leakage of kernel data into userspace if the memory is re-used for\n  other purposes.\n\nAll platforms that use stmmac with PCI MSI (Intel, Loongson, etc) are\naffected.",
   "datePublished": "May 1, 2025, 12:55:41 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:06 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/2fbf67ddb8a0d0efc00d2df496a9843ec318d48b\nhttps://git.kernel.org/stable/c/960dab23f6d405740c537d095f90a4ee9ddd9285\nhttps://git.kernel.org/stable/c/442312c2a90d60c7a5197246583fa91d9e579985\nhttps://git.kernel.org/stable/c/e148266e104fce396ad624079a6812ac3a9982ef\nhttps://git.kernel.org/stable/c/9e51a6a44e2c4de780a26e8fe110d708e806a8cd\nhttps://git.kernel.org/stable/c/c60d101a226f18e9a8f01bb4c6ca2b47dfcb15ef\n",
   "aliases": "GHSA-w4x2-878r-xjgp\nCVE-2025-23155\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "38d09ec0-5ea1-3173-bcd7-41172042a8ea",

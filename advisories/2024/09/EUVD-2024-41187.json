@@ -3,7 +3,7 @@
   "enisaUuid": "8c87b4ec-bc74-3933-9539-4841457a8f0f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: prevent possible UAF in ip6_xmit()\n\nIf skb_expand_head() returns NULL, skb has been freed\nand the associated dst/idev could also have been freed.\n\nWe must use rcu_read_lock() to prevent a possible UAF.",
   "datePublished": "Sep 4, 2024, 7:54:34 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:27 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

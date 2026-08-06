@@ -3,12 +3,14 @@
   "enisaUuid": "4ae42d7b-46cd-3ee1-a87e-65000c9571f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix netfs_read_folio() to wait on writeback\n\nFix netfs_read_folio() to wait for an ongoing writeback to complete so that\nit can trust the dirty flag and whatever is attached to folio->private\n(folio->private may get cleaned up by the collector before it clears the\nwriteback flag).",
   "datePublished": "Jul 19, 2026, 3:39:38 PM",
-  "dateUpdated": "Jul 19, 2026, 3:39:38 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:38:47 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f17b9121bb99f88188ec9be2db5da1d561f4c01b\nhttps://git.kernel.org/stable/c/b8271cccdd5e43cc8d738afb8b51f6ad05b1cb4b\nhttps://git.kernel.org/stable/c/ded0c6f1606061148c202825f7e53d711f9f84cf\n",
   "aliases": "GHSA-m5w8-868m-233w\nCVE-2026-64058\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "1c710a34-d9ca-38dd-8784-fbba0b13be1b",

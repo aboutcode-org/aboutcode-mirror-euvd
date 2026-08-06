@@ -3,14 +3,14 @@
   "enisaUuid": "c972830a-ed06-3fcf-a078-d1320c77058d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix overflow in dacloffset bounds check\n\nThe dacloffset field was originally typed as int and used in an\nunchecked addition, which could overflow and bypass the existing\nbounds check in both smb_check_perm_dacl() and smb_inherit_dacl().\n\nThis could result in out-of-bounds memory access and a kernel crash\nwhen dereferencing the DACL pointer.\n\nThis patch converts dacloffset to unsigned int and uses\ncheck_add_overflow() to validate access to the DACL.",
   "datePublished": "Apr 16, 2025, 2:11:56 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:47 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:12 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6a9cd9ff0fa2bcc30b2bfb8bdb161eb20e44b9dc\nhttps://git.kernel.org/stable/c/6b8d379048b168a0dff5ab1acb975b933f368514\nhttps://git.kernel.org/stable/c/443b373a4df5a2cb9f7b8c4658b2afedeb16397f\nhttps://git.kernel.org/stable/c/beff0bc9d69bc8e733f9bca28e2d3df5b3e10e42\n",
   "aliases": "CVE-2025-22039\nGHSA-xm3p-r4jv-jxcf\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.66,
   "enisaIdProduct": [
     {
       "id": "1450f26a-5aad-368b-ab21-7c22ae70be6c",

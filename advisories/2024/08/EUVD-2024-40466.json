@@ -3,7 +3,7 @@
   "enisaUuid": "58328f36-cbeb-3e1f-afca-2d3c224707f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Revise lpfc_prep_embed_io routine with proper endian macro usages\n\nOn big endian architectures, it is possible to run into a memory out of\nbounds pointer dereference when FCP targets are zoned.\n\nIn lpfc_prep_embed_io, the memcpy(ptr, fcp_cmnd, sgl->sge_len) is\nreferencing a little endian formatted sgl->sge_len value.  So, the memcpy\ncan cause big endian systems to crash.\n\nRedefine the *sgl ptr as a struct sli4_sge_le to make it clear that we are\nreferring to a little endian formatted data structure.  And, update the\nroutine with proper le32_to_cpu macro usages.",
   "datePublished": "Aug 17, 2024, 9:21:38 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

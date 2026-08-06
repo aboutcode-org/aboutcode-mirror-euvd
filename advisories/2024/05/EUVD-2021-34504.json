@@ -3,7 +3,7 @@
   "enisaUuid": "f9a88374-7a53-32a1-aa68-59bd8527e63b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: mma8452: Fix trigger reference couting\n\nThe mma8452 driver directly assigns a trigger to the struct iio_dev. The\nIIO core when done using this trigger will call `iio_trigger_put()` to drop\nthe reference count by 1.\n\nWithout the matching `iio_trigger_get()` in the driver the reference count\ncan reach 0 too early, the trigger gets freed while still in use and a\nuse-after-free occurs.\n\nFix this by getting a reference to the trigger before assigning it to the\nIIO device.",
   "datePublished": "May 24, 2024, 3:01:43 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:01 AM",
+  "dateUpdated": "Aug 5, 2026, 8:48:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

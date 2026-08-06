@@ -3,7 +3,7 @@
   "enisaUuid": "2df6a3a2-9cd8-334a-84e1-78871e6e5782",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: panasonic-laptop: Fix SINF array out of bounds accesses\n\nThe panasonic laptop code in various places uses the SINF array with index\nvalues of 0 - SINF_CUR_BRIGHT(0x0d) without checking that the SINF array\nis big enough.\n\nNot all panasonic laptops have this many SINF array entries, for example\nthe Toughbook CF-18 model only has 10 SINF array entries. So it only\nsupports the AC+DC brightness entries and mute.\n\nCheck that the SINF array has a minimum size which covers all AC+DC\nbrightness entries and refuse to load if the SINF array is smaller.\n\nFor higher SINF indexes hide the sysfs attributes when the SINF array\ndoes not contain an entry for that attribute, avoiding show()/store()\naccessing the array out of bounds and add bounds checking to the probe()\nand resume() code accessing these.",
   "datePublished": "Sep 27, 2024, 12:42:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:32:24 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

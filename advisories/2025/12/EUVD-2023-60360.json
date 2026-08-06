@@ -3,14 +3,14 @@
   "enisaUuid": "b9b06bad-9469-342c-88e7-7e98ce7e9fd8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix NULL pointer dereference on fastopen early fallback\n\nIn case of early fallback to TCP, subflow_syn_recv_sock() deletes\nthe subflow context before returning the newly allocated sock to\nthe caller.\n\nThe fastopen path does not cope with the above unconditionally\ndereferencing the subflow context.",
   "datePublished": "Dec 24, 2025, 1:06:16 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:34 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:06 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/95135835519b0ab931c39908b2c99e9fb3c9068b\nhttps://git.kernel.org/stable/c/c0ff6f6da66a7791a32c0234388b1bdc00244917\n",
   "aliases": "GHSA-459f-v5p8-p6w3\nCVE-2023-54085\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.37,
   "enisaIdProduct": [
     {
       "id": "29157dc1-518b-3e25-932f-bc97e53c505b",

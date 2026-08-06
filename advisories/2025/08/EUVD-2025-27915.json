@@ -3,7 +3,7 @@
   "enisaUuid": "32f36384-7497-3ab2-aedd-f89231dda345",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, arm64: Fix fp initialization for exception boundary\n\nIn the ARM64 BPF JIT when prog->aux->exception_boundary is set for a BPF\nprogram, find_used_callee_regs() is not called because for a program\nacting as exception boundary, all callee saved registers are saved.\nfind_used_callee_regs() sets `ctx->fp_used = true;` when it sees FP\nbeing used in any of the instructions.\n\nFor programs acting as exception boundary, ctx->fp_used remains false\neven if frame pointer is used by the program and therefore, FP is not\nset-up for such programs in the prologue. This can cause the kernel to\ncrash due to a pagefault.\n\nFix it by setting ctx->fp_used = true for exception boundary programs as\nfp is always saved in such programs.",
   "datePublished": "Aug 19, 2025, 5:03:08 PM",
-  "dateUpdated": "Jul 30, 2026, 5:55:29 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

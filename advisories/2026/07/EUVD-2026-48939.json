@@ -3,14 +3,14 @@
   "enisaUuid": "64367b7d-11c2-3a48-b72d-6b00fdca3c20",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: require source read access for duplicate extents\n\nFSCTL_DUPLICATE_EXTENTS_TO_FILE passes the source file directly to\nvfs_clone_file_range() or vfs_copy_file_range() without checking the SMB\naccess mask granted to the source handle. A handle opened with attribute\naccess can consequently be used to copy file contents into an\nattacker-readable destination.\n\nRequire FILE_READ_DATA on the source handle before either VFS operation,\nmatching other ksmbd data-copy paths.",
   "datePublished": "Jul 25, 2026, 8:50:40 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:25 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:32 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
   "references": "https://git.kernel.org/stable/c/2d2ab6983620c2d60ce7db72133984ca3873b929\nhttps://git.kernel.org/stable/c/67bdad9cf01b25030e3bf00bbce6c309319d6663\nhttps://git.kernel.org/stable/c/b0d4d5cb846a1ddb7aaab9adfb5986e4540e6e5f\nhttps://git.kernel.org/stable/c/db231af842868268839f9f9619c68cb27830d8be\nhttps://git.kernel.org/stable/c/a10942af27832c2761d020863a46e79bebe0567d\nhttps://git.kernel.org/stable/c/cedff600f1642aa982178503552f0d007bc829c8\n",
   "aliases": "CVE-2026-64395\nGHSA-33q2-xqvr-5v3j\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "022bc17d-0784-39dd-96e9-1d166eadee81",

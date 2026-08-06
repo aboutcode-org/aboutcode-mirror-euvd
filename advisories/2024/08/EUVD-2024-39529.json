@@ -3,7 +3,7 @@
   "enisaUuid": "c350ad7f-84c4-3843-8767-a8e7ad17762f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: Avoid using corrupted block bitmap buffer\n\nWhen the filesystem block bitmap is corrupted, we detect the corruption\nwhile loading the bitmap and fail the allocation with error. However the\nnext allocation from the same bitmap will notice the bitmap buffer is\nalready loaded and tries to allocate from the bitmap with mixed results\n(depending on the exact nature of the bitmap corruption). Fix the\nproblem by using BH_verified bit to indicate whether the bitmap is valid\nor not.",
   "datePublished": "Aug 17, 2024, 9:09:11 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

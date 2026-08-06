@@ -3,7 +3,7 @@
   "enisaUuid": "cb2cd017-6c4d-35ec-aac1-3321598286aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix possible Use-After-Free in irq_process_work_list\n\nUse list_for_each_entry_safe() to allow iterating through the list and\ndeleting the entry in the iteration process. The descriptor is freed via\nidxd_desc_complete() and there's a slight chance may cause issue for\nthe list iterator when the descriptor is reused by another thread\nwithout it being deleted from the list.",
   "datePublished": "Jul 12, 2024, 12:31:59 PM",
-  "dateUpdated": "Aug 4, 2026, 9:27:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

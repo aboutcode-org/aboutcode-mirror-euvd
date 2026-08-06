@@ -3,7 +3,7 @@
   "enisaUuid": "f7437378-b5a9-3b84-a368-4b44aecef54d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrcu-tasks: Fix show_rcu_tasks_trace_gp_kthread buffer overflow\n\nThere is a possibility of buffer overflow in\nshow_rcu_tasks_trace_gp_kthread() if counters, passed\nto sprintf() are huge. Counter numbers, needed for this\nare unrealistically high, but buffer overflow is still\npossible.\n\nUse snprintf() with buffer size instead of sprintf().\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Jun 19, 2024, 1:37:35 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:04 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:54 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

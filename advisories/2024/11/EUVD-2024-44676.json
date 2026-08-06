@@ -3,7 +3,7 @@
   "enisaUuid": "de65c8d1-31de-3bc6-92cf-29d18ab2d032",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix race when converting group handle to group object\n\nXArray provides it's own internal lock which protects the internal array\nwhen entries are being simultaneously added and removed. However there\nis still a race between retrieving the pointer from the XArray and\nincrementing the reference count.\n\nTo avoid this race simply hold the internal XArray lock when\nincrementing the reference count, this ensures there cannot be a racing\ncall to xa_erase().",
   "datePublished": "Nov 8, 2024, 5:23:56 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:32 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

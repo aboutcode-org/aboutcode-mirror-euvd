@@ -3,7 +3,7 @@
   "enisaUuid": "f9517587-c245-3b6e-a4ce-850ee27204ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: lzo - Fix compression buffer overrun\n\nUnlike the decompression code, the compression code in LZO never\nchecked for output overruns.  It instead assumes that the caller\nalways provides enough buffer space, disregarding the buffer length\nprovided by the caller.\n\nAdd a safe compression interface that checks for the end of buffer\nbefore each write.  Use the safe interface in crypto/lzo.",
   "datePublished": "Jun 18, 2025, 9:33:46 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:00 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:13 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

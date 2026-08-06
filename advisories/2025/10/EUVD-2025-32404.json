@@ -3,7 +3,7 @@
   "enisaUuid": "3cbcf167-8c03-3215-8464-8c798d8d8a04",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codec: sma1307: Fix memory corruption in sma1307_setting_loaded()\n\nThe sma1307->set.header_size is how many integers are in the header\n(there are 8 of them) but instead of allocating space of 8 integers\nwe allocate 8 bytes.  This leads to memory corruption when we copy data\nit on the next line:\n\n        memcpy(sma1307->set.header, data,\n               sma1307->set.header_size * sizeof(int));\n\nAlso since we're immediately copying over the memory in ->set.header,\nthere is no need to zero it in the allocator.  Use devm_kmalloc_array()\nto allocate the memory instead.",
   "datePublished": "Oct 4, 2025, 7:30:59 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:37 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

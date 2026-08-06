@@ -3,7 +3,7 @@
   "enisaUuid": "79598fed-aa37-3dee-8aaa-c2047bb63656",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers/amd/pm: fix a use-after-free in kv_parse_power_table\n\nWhen ps allocated by kzalloc equals to NULL, kv_parse_power_table\nfrees adev->pm.dpm.ps that allocated before. However, after the control\nflow goes through the following call chains:\n\nkv_parse_power_table\n  |-> kv_dpm_init\n        |-> kv_dpm_sw_init\n\t      |-> kv_dpm_fini\n\nThe adev->pm.dpm.ps is used in the for loop of kv_dpm_fini after its\nfirst free in kv_parse_power_table and causes a use-after-free bug.",
   "datePublished": "Feb 25, 2024, 8:16:33 AM",
-  "dateUpdated": "Aug 4, 2026, 9:10:36 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:06 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

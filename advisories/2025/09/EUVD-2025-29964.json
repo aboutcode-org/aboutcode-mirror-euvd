@@ -3,14 +3,14 @@
   "enisaUuid": "7bd957ee-fe9a-3447-a6c5-62e2652630b4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: SDMA update use unlocked iterator\n\nSDMA update page table may be called from unlocked context, this\ngenerate below warning. Use unlocked iterator to handle this case.\n\nWARNING: CPU: 0 PID: 1475 at\ndrivers/dma-buf/dma-resv.c:483 dma_resv_iter_next\nCall Trace:\n dma_resv_iter_first+0x43/0xa0\n amdgpu_vm_sdma_update+0x69/0x2d0 [amdgpu]\n amdgpu_vm_ptes_update+0x29c/0x870 [amdgpu]\n amdgpu_vm_update_range+0x2f6/0x6c0 [amdgpu]\n svm_range_unmap_from_gpus+0x115/0x300 [amdgpu]\n svm_range_cpu_invalidate_pagetables+0x510/0x5e0 [amdgpu]\n __mmu_notifier_invalidate_range_start+0x1d3/0x230\n unmap_vmas+0x140/0x150\n unmap_region+0xa8/0x110",
   "datePublished": "Sep 18, 2025, 1:33:12 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:49 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b892c57a3a04c8de247ab9ee08a0a8cf53290e19\nhttps://git.kernel.org/stable/c/4ff3d517cebe8a29b9f3c302b5292bb1ce291e00\nhttps://git.kernel.org/stable/c/3913f0179ba366f7d7d160c506ce00de1602bbc4\n",
   "aliases": "CVE-2022-50393\nGHSA-q8mf-qxc7-f7h5\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0017b2f3-8b40-3bd9-892e-95ee4e126bb6",

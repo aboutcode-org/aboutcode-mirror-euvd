@@ -3,14 +3,14 @@
   "enisaUuid": "45cf139b-f8ec-310e-a1cf-b688bffcdfd2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: revisit gc autotuning\n\nas of commit 4608fdfc07e1\n(\"netfilter: conntrack: collect all entries in one cycle\")\nconntrack gc was changed to run every 2 minutes.\n\nOn systems where conntrack hash table is set to large value, most evictions\nhappen from gc worker rather than the packet path due to hash table\ndistribution.\n\nThis causes netlink event overflows when events are collected.\n\nThis change collects average expiry of scanned entries and\nreschedules to the average remaining value, within 1 to 60 second interval.\n\nTo avoid event overflows, reschedule after each bucket and add a\nlimit for both run time and number of evictions per run.\n\nIf more entries have to be evicted, reschedule and restart 1 jiffy\ninto the future.",
   "datePublished": "Feb 26, 2025, 1:54:55 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:10 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:56 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/58d52743ae85d28c9335c6034d6ce350b8689951\nhttps://git.kernel.org/stable/c/7cd361d5e6d986c0d4cafb9ceaa803359048ae15\nhttps://git.kernel.org/stable/c/592e57591826f3d09c28d755a39ea8e9d13705ad\nhttps://git.kernel.org/stable/c/2cfadb761d3d0219412fd8150faea60c7e863833\n",
   "aliases": "GHSA-pv5x-cgg5-p627\nCVE-2022-49110\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "1bc5379b-bcac-3ded-895f-4d5a32b5ee13",

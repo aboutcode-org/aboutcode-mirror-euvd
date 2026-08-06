@@ -3,7 +3,7 @@
   "enisaUuid": "0518cdb1-320d-3a43-9c10-3a45eb24e0fd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: don't allow mapping the MMIO HDP page with large pages\n\nWe don't get the right offset in that case.  The GPU has\nan unused 4K area of the register BAR space into which you can\nremap registers.  We remap the HDP flush registers into this\nspace to allow userspace (CPU or GPU) to flush the HDP when it\nupdates VRAM.  However, on systems with >4K pages, we end up\nexposing PAGE_SIZE of MMIO space.",
   "datePublished": "Jul 18, 2024, 7:04:04 AM",
-  "dateUpdated": "Aug 4, 2026, 9:27:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:37 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

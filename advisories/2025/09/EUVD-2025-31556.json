@@ -3,14 +3,14 @@
   "enisaUuid": "3e40f613-8632-3dc0-aa90-68147bb2bb61",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/mm: Do not map lowcore with identity mapping\n\nSince the identity mapping is pinned to address zero the lowcore is always\nalso mapped to address zero, this happens regardless of the relocate_lowcore\ncommand line option. If the option is specified the lowcore is mapped\ntwice, instead of only once.\n\nThis means that NULL pointer accesses will succeed instead of causing an\nexception (low address protection still applies, but covers only parts).\nTo fix this never map the first two pages of physical memory with the\nidentity mapping.",
   "datePublished": "Sep 5, 2025, 5:20:33 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:44 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:23 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/30bf5728bb217a6d1ba73f44094c9b9c6bc9a567\nhttps://git.kernel.org/stable/c/1d7864acd497cb468a998d44631f84896f885e85\nhttps://git.kernel.org/stable/c/93f616ff870a1fb7e84d472cad0af651b18f9f87\n",
   "aliases": "GHSA-9w66-p46h-j52f\nCVE-2025-38733\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0e1bbbb1-e169-3001-aaf9-51ef006d9b77",

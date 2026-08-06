@@ -3,14 +3,14 @@
   "enisaUuid": "324bf80a-2a3d-3e1b-8a6a-8ce71a91cf4f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nvidia-shield: Reference hid_device devm allocation of input_dev name\n\nUse hid_device for devm allocation of the input_dev name to avoid a\nuse-after-free. input_unregister_device would trigger devres cleanup of all\nresources associated with the input_dev, free-ing the name. The name would\nsubsequently be used in a uevent fired at the end of unregistering the\ninput_dev.",
   "datePublished": "Sep 15, 2025, 2:46:23 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:56 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:17 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b85d3807e5ec368bfd5b20245347d7c1434aff76\nhttps://git.kernel.org/stable/c/197d3143520fec9fde89aebabc9f0d7464f08e50\n",
   "aliases": "CVE-2023-53253\nGHSA-2px4-3jpx-h38h\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "13bce637-bd02-3a6e-9322-fc5ff5817905",

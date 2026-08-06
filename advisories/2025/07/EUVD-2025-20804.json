@@ -3,7 +3,7 @@
   "enisaUuid": "028dfb23-be22-36c3-ae2a-ab500f72a305",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/pkey: Prevent overflow in size calculation for memdup_user()\n\nNumber of apqn target list entries contained in 'nr_apqns' variable is\ndetermined by userspace via an ioctl call so the result of the product in\ncalculation of size passed to memdup_user() may overflow.\n\nIn this case the actual size of the allocated area and the value\ndescribing it won't be in sync leading to various types of unpredictable\nbehaviour later.\n\nUse a proper memdup_array_user() helper which returns an error if an\noverflow is detected. Note that it is different from when nr_apqns is\ninitially zero - that case is considered valid and should be handled in\nsubsequent pkey_handler implementations.\n\nFound by Linux Verification Center (linuxtesting.org).",
   "datePublished": "Jul 9, 2025, 10:42:34 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:36 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:47 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "57f37bf0-4167-3332-ae26-82fac9337a9c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: reject iftype change with mesh ID change\n\nIt's currently possible to change the mesh ID when the\ninterface isn't yet in mesh mode, at the same time as\nchanging it into mesh mode. This leads to an overwrite\nof data in the wdev->u union for the interface type it\ncurrently has, causing cfg80211_change_iface() to do\nwrong things when switching.\n\nWe could probably allow setting an interface to mesh\nwhile setting the mesh ID at the same time by doing a\ndifferent order of operations here, but realistically\nthere's no userspace that's going to do this, so just\ndisallow changes in iftype when setting mesh ID.",
   "datePublished": "May 17, 2024, 11:50:43 AM",
-  "dateUpdated": "Aug 4, 2026, 9:22:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

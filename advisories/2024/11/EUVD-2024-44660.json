@@ -3,7 +3,7 @@
   "enisaUuid": "120de305-649c-3eec-8071-59e10c6aa221",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Fix out of bound check\n\nDriver exports pacing stats only on GenP5 and P7 adapters. But while\nparsing the pacing stats, driver has a check for \"rdev->dbr_pacing\".  This\ncaused a trace when KASAN is enabled.\n\nBUG: KASAN: slab-out-of-bounds in bnxt_re_get_hw_stats+0x2b6a/0x2e00 [bnxt_re]\nWrite of size 8 at addr ffff8885942a6340 by task modprobe/4809",
   "datePublished": "Nov 7, 2024, 9:31:35 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:23 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:08 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

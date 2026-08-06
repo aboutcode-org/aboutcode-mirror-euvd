@@ -3,14 +3,14 @@
   "enisaUuid": "647eed31-ccfc-378e-b180-62b5d94092fc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nax25: properly unshare skbs in ax25_kiss_rcv()\n\nBernard Pidoux reported a regression apparently caused by commit\nc353e8983e0d (\"net: introduce per netns packet chains\").\n\nskb->dev becomes NULL and we crash in __netif_receive_skb_core().\n\nBefore above commit, different kind of bugs or corruptions could happen\nwithout a major crash.\n\nBut the root cause is that ax25_kiss_rcv() can queue/mangle input skb\nwithout checking if this skb is shared or not.\n\nMany thanks to Bernard Pidoux for his help, diagnosis and tests.\n\nWe had a similar issue years ago fixed with commit 7aaed57c5c28\n(\"phonet: properly unshare skbs in phonet_rcv()\").",
   "datePublished": "Sep 19, 2025, 3:26:21 PM",
-  "dateUpdated": "Jul 30, 2026, 5:58:00 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:35 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/42b46684e2c78ee052d8c2ee8d9c2089233c9094\nhttps://git.kernel.org/stable/c/5b079be1b9da49ad88fc304c874d4be7085f7883\nhttps://git.kernel.org/stable/c/2bd0f67212908243ce88e35bf69fa77155b47b14\nhttps://git.kernel.org/stable/c/01a2984cb803f2d487b7074f9718db2bf3531f69\nhttps://git.kernel.org/stable/c/7d449b7a6c8ee434d10a483feed7c5c50108cf56\nhttps://git.kernel.org/stable/c/89064cf534bea4bb28c83fe6bbb26657b19dd5fe\nhttps://git.kernel.org/stable/c/b1c71d674a308d2fbc83efcf88bfc4217a86aa17\nhttps://git.kernel.org/stable/c/8156210d36a43e76372312c87eb5ea3dbb405a85\n",
   "aliases": "CVE-2025-39848\nGHSA-c6g6-j52p-pg8h\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "06b0e83c-541e-3f56-b0e6-a5266ff40274",

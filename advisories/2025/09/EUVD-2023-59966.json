@@ -3,14 +3,14 @@
   "enisaUuid": "e7a4b4a4-0b88-362c-b0cb-806621e03047",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4.2: Rework scratch handling for READ_PLUS (again)\n\nI found that the read code might send multiple requests using the same\nnfs_pgio_header, but nfs4_proc_read_setup() is only called once. This is\nhow we ended up occasionally double-freeing the scratch buffer, but also\nmeans we set a NULL pointer but non-zero length to the xdr scratch\nbuffer. This results in an oops the first time decoding needs to copy\nsomething to scratch, which frequently happens when decoding READ_PLUS\nhole segments.\n\nI fix this by moving scratch handling into the pageio read code. I\nprovide a function to allocate scratch space for decoding read replies,\nand free the scratch buffer when the nfs_pgio_header is freed.",
   "datePublished": "Sep 17, 2025, 2:56:50 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:19 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:39 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/adac9f0ddd2b291c7ce41f549fdb27a13616cff5\nhttps://git.kernel.org/stable/c/a2f4cb206bd94b3f4a7bb05fcdce9525283b5681\nhttps://git.kernel.org/stable/c/ae5d5672f1db711e91db6f52df5cb16ecd8f5692\nhttps://git.kernel.org/stable/c/303a78052091c81e9003915c521fdca1c7e117af\n",
   "aliases": "GHSA-4v4w-685q-cqmx\nCVE-2023-53360\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.37,
   "enisaIdProduct": [
     {
       "id": "1b9699da-af29-317e-a4df-bfeae94de986",

@@ -3,14 +3,14 @@
   "enisaUuid": "57fc966f-1ecd-3f2f-b661-3c3cb4f04c55",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmc: Use __sk_dst_get() and dst_dev_rcu() in in smc_clc_prfx_set().\n\nsmc_clc_prfx_set() is called during connect() and not under RCU\nnor RTNL.\n\nUsing sk_dst_get(sk)->dev could trigger UAF.\n\nLet's use __sk_dst_get() and dev_dst_rcu() under rcu_read_lock()\nafter kernel_getsockname().\n\nNote that the returned value of smc_clc_prfx_set() is not used\nin the caller.\n\nWhile at it, we change the 1st arg of smc_clc_prfx_set[46]_rcu()\nnot to touch dst there.",
   "datePublished": "Nov 12, 2025, 10:23:24 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:53 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:01 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0736993bfe5c7a9c744ae3fac62d769dfdae54e1\nhttps://git.kernel.org/stable/c/935d783e5de9b64587f3adb25641dd8385e64ddb\n",
   "aliases": "CVE-2025-40139\nGHSA-ffj5-vpjf-2hxm\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "1e86c5a1-8acc-3ba7-92b1-e6de693c4259",

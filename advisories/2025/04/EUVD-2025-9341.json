@@ -3,7 +3,7 @@
   "enisaUuid": "384b83dd-3cdb-39cd-9212-0118de3aed6d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: cancel wiphy_work before freeing wiphy\n\nA wiphy_work can be queued from the moment the wiphy is allocated and\ninitialized (i.e. wiphy_new_nm). When a wiphy_work is queued, the\nrdev::wiphy_work is getting queued.\n\nIf wiphy_free is called before the rdev::wiphy_work had a chance to run,\nthe wiphy memory will be freed, and then when it eventally gets to run\nit'll use invalid memory.\n\nFix this by canceling the work before freeing the wiphy.",
   "datePublished": "Apr 1, 2025, 3:47:08 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:10 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:49 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

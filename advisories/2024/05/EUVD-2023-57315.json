@@ -3,7 +3,7 @@
   "enisaUuid": "1b42b1f5-b9d8-3ca3-9318-25dbf46c9d5e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm: fix a double-free in si_dpm_init\n\nWhen the allocation of\nadev->pm.dpm.dyn_state.vddc_dependency_on_dispclk.entries fails,\namdgpu_free_extended_power_table is called to free some fields of adev.\nHowever, when the control flow returns to si_dpm_sw_init, it goes to\nlabel dpm_failed and calls si_dpm_fini, which calls\namdgpu_free_extended_power_table again and free those fields again. Thus\na double-free is triggered.",
   "datePublished": "May 17, 2024, 2:24:51 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:34 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

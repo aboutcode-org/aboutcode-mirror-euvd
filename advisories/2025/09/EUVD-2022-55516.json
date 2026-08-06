@@ -3,7 +3,7 @@
   "enisaUuid": "7532df6a-24c0-3922-96c7-776a6df3d759",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/af_unix: defer registered files gc to io_uring release\n\nInstead of putting io_uring's registered files in unix_gc() we want it\nto be done by io_uring itself. The trick here is to consider io_uring\nregistered files for cycle detection but not actually putting them down.\nBecause io_uring can't register other ring instances, this will remove\nall refs to the ring file triggering the ->release path and clean up\nwith io_ring_ctx_free().\n\n[axboe: add kerneldoc comment to skb, fold in skb leak fix]",
   "datePublished": "Sep 15, 2025, 2:01:38 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:07 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

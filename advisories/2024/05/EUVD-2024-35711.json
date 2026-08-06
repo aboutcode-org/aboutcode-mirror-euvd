@@ -3,7 +3,7 @@
   "enisaUuid": "67447fc6-e159-3785-ac12-52cc0b8c680f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: turn folio_test_hugetlb into a PageType\n\nThe current folio_test_hugetlb() can be fooled by a concurrent folio split\ninto returning true for a folio which has never belonged to hugetlbfs. \nThis can't happen if the caller holds a refcount on it, but we have a few\nplaces (memory-failure, compaction, procfs) which do not and should not\ntake a speculative reference.\n\nSince hugetlb pages do not use individual page mapcounts (they are always\nfully mapped and use the entire_mapcount field to record the number of\nmappings), the PageType field is available now that page_mapcount()\nignores the value in this field.\n\nIn compaction and with CONFIG_DEBUG_VM enabled, the current implementation\ncan result in an oops, as reported by Luis. This happens since 9c5ccf2db04b\n(\"mm: remove HUGETLB_PAGE_DTOR\") effectively added some VM_BUG_ON() checks\nin the PageHuge() testing path.\n\n[willy@infradead.org: update vmcoreinfo]",
   "datePublished": "May 20, 2024, 9:47:57 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

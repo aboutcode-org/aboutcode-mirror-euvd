@@ -3,14 +3,14 @@
   "enisaUuid": "9bdf7527-7329-36d1-8392-5a7c2c0b307e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoundwire: fix enumeration completion\n\nThe soundwire subsystem uses two completion structures that allow\ndrivers to wait for soundwire device to become enumerated on the bus and\ninitialised by their drivers, respectively.\n\nThe code implementing the signalling is currently broken as it does not\nsignal all current and future waiters and also uses the wrong\nreinitialisation function, which can potentially lead to memory\ncorruption if there are still waiters on the queue.\n\nNot signalling future waiters specifically breaks sound card probe\ndeferrals as codec drivers can not tell that the soundwire device is\nalready attached when being reprobed. Some codec runtime PM\nimplementations suffer from similar problems as waiting for enumeration\nduring resume can also timeout despite the device already having been\nenumerated.",
   "datePublished": "Dec 24, 2025, 1:06:23 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:41 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:14 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/48d1d0ce0782f995fda678508fdae35c5e9593f0\nhttps://git.kernel.org/stable/c/a36b522767f3a72688893a472e80c9aa03e67eda\nhttps://git.kernel.org/stable/c/e1d54962a63b6ec04ed0204a3ecca942fde3a6fe\nhttps://git.kernel.org/stable/c/c5265691cd065464d795de5666dcfb89c26b9bc1\nhttps://git.kernel.org/stable/c/c40d6b3249b11d60e09d81530588f56233d9aa44\n",
   "aliases": "CVE-2023-54096\nGHSA-qr7q-qr63-44c5\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "223f6253-867b-37be-8af9-65cea313c0d8",

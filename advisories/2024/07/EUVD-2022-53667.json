@@ -3,14 +3,14 @@
   "enisaUuid": "2143c11b-03da-3e1f-824f-74bfa76ef8a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-rdma: fix possible use-after-free in transport error_recovery work\n\nWhile nvme_rdma_submit_async_event_work is checking the ctrl and queue\nstate before preparing the AER command and scheduling io_work, in order\nto fully prevent a race where this check is not reliable the error\nrecovery work must flush async_event_work before continuing to destroy\nthe admin queue after setting the ctrl state to RESETTING such that\nthere is no race .submit_async_event and the error recovery handler\nitself changing the ctrl state.",
   "datePublished": "Jul 16, 2024, 11:43:45 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:33 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:18 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5593f72d1922403c11749532e3a0aa4cf61414e9\nhttps://git.kernel.org/stable/c/d411b2a5da68b8a130c23097014434ac140a2ace\nhttps://git.kernel.org/stable/c/324f5bdc52ecb6a6dadb31a62823ef8c709d1439\nhttps://git.kernel.org/stable/c/646952b2210f19e584d2bf9eb5d092abdca2fcc1\nhttps://git.kernel.org/stable/c/ea86027ac467a055849c4945906f799e7f65ab99\nhttps://git.kernel.org/stable/c/b6bb1722f34bbdbabed27acdceaf585d300c5fd2\n",
   "aliases": "CVE-2022-48788\nGHSA-grc2-v3f8-wj3j\n",
   "assigner": "Linux",
-  "epss": 0.32,
+  "epss": 0.93,
   "enisaIdProduct": [
     {
       "id": "003d2107-776d-3e5b-b17d-2a649ed20de4",

@@ -3,14 +3,14 @@
   "enisaUuid": "0f6d9218-4748-33f6-9627-df738bd86813",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: Fix race of snd_seq_timer_open()\n\nThe timer instance per queue is exclusive, and snd_seq_timer_open()\nshould have managed the concurrent accesses.  It looks as if it's\nchecking the already existing timer instance at the beginning, but\nit's not right, because there is no protection, hence any later\nconcurrent call of snd_seq_timer_open() may override the timer\ninstance easily.  This may result in UAF, as the leftover timer\ninstance can keep running while the queue itself gets closed, as\nspotted by syzkaller recently.\n\nFor avoiding the race, add a proper check at the assignment of\ntmr->timeri again, and return -EBUSY if it's been already registered.",
   "datePublished": "May 21, 2024, 2:20:07 PM",
-  "dateUpdated": "Aug 4, 2026, 8:59:48 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bd7d88b0874f82f7b29d1a53e574cedaf23166ba\nhttps://git.kernel.org/stable/c/536a7646c00a0f14fee49e5e313109e5da2f6031\nhttps://git.kernel.org/stable/c/83e197a8414c0ba545e7e3916ce05f836f349273\n",
   "aliases": "GHSA-fj34-p4r2-ghh5\nCVE-2021-47281\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "19e66f1d-4a8c-34ec-aa7b-32f41621f349",

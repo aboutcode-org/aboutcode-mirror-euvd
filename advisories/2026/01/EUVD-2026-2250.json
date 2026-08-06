@@ -3,14 +3,14 @@
   "enisaUuid": "2ee088b7-2eac-33ca-b807-1ae2ef501a79",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT\n\nOn PREEMPT_RT kernels, after rt6_get_pcpu_route() returns NULL, the\ncurrent task can be preempted. Another task running on the same CPU\nmay then execute rt6_make_pcpu_route() and successfully install a\npcpu_rt entry. When the first task resumes execution, its cmpxchg()\nin rt6_make_pcpu_route() will fail because rt6i_pcpu is no longer\nNULL, triggering the BUG_ON(prev). It's easy to reproduce it by adding\nmdelay() after rt6_get_pcpu_route().\n\nUsing preempt_disable/enable is not appropriate here because\nip6_rt_pcpu_alloc() may sleep.\n\nFix this by handling the cmpxchg() failure gracefully on PREEMPT_RT:\nfree our allocation and return the existing pcpu_rt installed by\nanother task. The BUG_ON is replaced by WARN_ON_ONCE for non-PREEMPT_RT\nkernels where such races should not occur.",
   "datePublished": "Jan 13, 2026, 3:34:44 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:07 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:55 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/1dc33ad0867325f8d2c6d7b2a6f542d4f3121f66\nhttps://git.kernel.org/stable/c/787515ccb2292f82eb0876993129154629a49651\nhttps://git.kernel.org/stable/c/1adaea51c61b52e24e7ab38f7d3eba023b2d050d\n",
   "aliases": "CVE-2025-71080\nGHSA-gmq5-qgc7-64gv\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "2b125fca-50df-340a-9fa1-9c5267790bf7",

@@ -3,14 +3,14 @@
   "enisaUuid": "74e0d9f4-43ba-33f1-a32f-99e6ec42cef4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: state: initialize state_ptrs earlier in xfrm_state_find\n\nIn case of preemption, xfrm_state_look_at will find a different\npcpu_id and look up states for that other CPU. If we matched a state\nfor CPU2 in the state_cache while the lookup started on CPU1, we will\njump to \"found\", but the \"best\" state that we got will be ignored and\nwe will enter the \"acquire\" block. This block uses state_ptrs, which\nisn't initialized at this point.\n\nLet's initialize state_ptrs just after taking rcu_read_lock. This will\nalso prevent a possible misuse in the future, if someone adjusts this\nfunction.",
   "datePublished": "Aug 22, 2025, 4:04:12 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:21 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:52 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6bf2daafc51bcb9272c0fdff2afd38217337d0d3\nhttps://git.kernel.org/stable/c/463562f9591742be62ddde3b426a0533ed496955\nhttps://git.kernel.org/stable/c/94d077c331730510d5611b438640a292097341f0\n",
   "aliases": "CVE-2025-38675\nGHSA-698j-xv88-2hj7\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "01c46ad2-e57a-3ed8-8863-bc34b2cf3645",

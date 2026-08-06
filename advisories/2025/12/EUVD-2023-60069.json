@@ -3,14 +3,14 @@
   "enisaUuid": "947cf47e-61b2-3dd9-a2ff-8e7b92ff8e62",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hidraw: fix data race on device refcount\n\nThe hidraw_open() function increments the hidraw device reference\ncounter. The counter has no dedicated synchronization mechanism,\nresulting in a potential data race when concurrently opening a device.\n\nThe race is a regression introduced by commit 8590222e4b02 (\"HID:\nhidraw: Replace hidraw device table mutex with a rwsem\"). While\nminors_rwsem is intended to protect the hidraw_table itself, by instead\nacquiring the lock for writing, the reference counter is also protected.\nThis is symmetrical to hidraw_release().",
   "datePublished": "Dec 8, 2025, 1:19:20 AM",
-  "dateUpdated": "Aug 4, 2026, 9:16:25 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/879e79c3aead41b8aa2e91164354b30bd1c4ef3b\nhttps://git.kernel.org/stable/c/ff348eabd97577da974d3db7038857f28c61d2bd\nhttps://git.kernel.org/stable/c/05b47034e2488c2924e5c032e20a1979d012b5b5\nhttps://git.kernel.org/stable/c/944ee77dc6ec7b0afd8ec70ffc418b238c92f12b\n",
   "aliases": "GHSA-hgww-pjhr-mwxr\nCVE-2023-53759\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "0f64a069-4b9e-3535-8f83-343dcfd7b1a6",

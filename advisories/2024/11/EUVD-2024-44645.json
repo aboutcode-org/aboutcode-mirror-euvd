@@ -3,7 +3,7 @@
   "enisaUuid": "dc3581c7-c5ca-33f9-b32b-2f0ee5a1b8cc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: fix uninit-value use in udf_get_fileshortad\n\nCheck for overflow when computing alen in udf_current_aext to mitigate\nlater uninit-value use in udf_get_fileshortad KMSAN bug[1].\nAfter applying the patch reproducer did not trigger any issue[2].\n\n[1] https://syzkaller.appspot.com/bug?extid=8901c4560b7ab5c2f9df\n[2] https://syzkaller.appspot.com/x/log.txt?x=10242227980000",
   "datePublished": "Nov 7, 2024, 9:31:20 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:16 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

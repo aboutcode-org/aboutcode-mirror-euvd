@@ -3,7 +3,7 @@
   "enisaUuid": "a330397d-8177-3374-88bc-3ae79f0bf6a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm: adv7511: Fix use-after-free in adv7533_attach_dsi()\n\nThe host_node pointer was assigned and freed in adv7533_parse_dt(), and\nlater, adv7533_attach_dsi() uses the same. Fix this use-after-free issue\nby\u00a0dropping of_node_put() in adv7533_parse_dt() and calling of_node_put()\nin error path of probe() and also in the remove().",
   "datePublished": "Jan 15, 2025, 1:05:39 PM",
-  "dateUpdated": "Aug 4, 2026, 9:40:51 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:46 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "2fa36789-d90d-3143-badf-57811edd1420",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\n9p/net: fix improper handling of bogus negative read/write replies\n\nIn p9_client_write() and p9_client_read_once(), if the server\nincorrectly replies with success but a negative write/read count then we\nwould consider written (negative) <= rsize (positive) because both\nvariables were signed.\n\nMake variables unsigned to avoid this problem.\n\nThe reproducer linked below now fails with the following error instead\nof a null pointer deref:\n9pnet: bogus RWRITE count (4294967295 > 3)",
   "datePublished": "May 9, 2025, 6:45:43 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:34 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:00 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/468ff4a7c61fb811c596a7c44b6a5455e40fd12b\nhttps://git.kernel.org/stable/c/a68768e280b7d0c967ea509e791bb9b90adc94a5\nhttps://git.kernel.org/stable/c/c548f95688e2b5ae0e2ae43d53cf717156c7d034\nhttps://git.kernel.org/stable/c/374e4cd75617c8c2552f562f39dd989583f5c330\nhttps://git.kernel.org/stable/c/d0259a856afca31d699b706ed5e2adf11086c73b\n",
   "aliases": "GHSA-9hq9-gv35-c42w\nCVE-2025-37879\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.67,
   "enisaIdProduct": [
     {
       "id": "025a0654-68fb-39db-b726-582e94985cc5",

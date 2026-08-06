@@ -3,7 +3,7 @@
   "enisaUuid": "a5282363-b2e9-3b08-86e1-ded5c58c09e9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: mcc: prevent shift wrapping in rtw89_core_mlsr_switch()\n\nThe \"link_id\" value comes from the user via debugfs.  If it's larger\nthan BITS_PER_LONG then that would result in shift wrapping and\npotentially an out of bounds access later.  In fact, we can limit it\nto IEEE80211_MLD_MAX_NUM_LINKS (15).\n\nFortunately, only root can write to debugfs files so the security\nimpact is minimal.",
   "datePublished": "Aug 22, 2025, 4:01:00 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:12 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:43 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",

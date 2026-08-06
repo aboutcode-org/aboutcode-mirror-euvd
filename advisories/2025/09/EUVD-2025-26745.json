@@ -3,14 +3,14 @@
   "enisaUuid": "bb867b95-9782-3629-be3d-edd2e117e67a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: handle get_client_locked() failure in nfsd4_setclientid_confirm()\n\nLei Lu recently reported that nfsd4_setclientid_confirm() did not check\nthe return value from get_client_locked(). a SETCLIENTID_CONFIRM could\nrace with a confirmed client expiring and fail to get a reference. That\ncould later lead to a UAF.\n\nFix this by getting a reference early in the case where there is an\nextant confirmed client. If that fails then treat it as if there were no\nconfirmed client found at all.\n\nIn the case where the unconfirmed client is expiring, just fail and\nreturn the result from get_client_locked().",
   "datePublished": "Sep 4, 2025, 3:33:22 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:40 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:18 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3f252a73e81aa01660cb426735eab932e6182e8d\nhttps://git.kernel.org/stable/c/d35ac850410966010e92f401f4e21868a9ea4d8b\nhttps://git.kernel.org/stable/c/f3aac6cf390d8b80e1d82975faf4ac61175519c0\nhttps://git.kernel.org/stable/c/22f45cedf281e6171817c8a3432c44d788c550e1\nhttps://git.kernel.org/stable/c/d71abd1ae4e0413707cd42b10c24a11d1aa71772\nhttps://git.kernel.org/stable/c/74ad36ed60df561a303a19ecef400c7096b20306\nhttps://git.kernel.org/stable/c/36e83eda90e0e4ac52f259f775b40b2841f8a0a3\nhttps://git.kernel.org/stable/c/571a5e46c71490285d2d8c06f6b5a7cbf6c7edd1\nhttps://git.kernel.org/stable/c/908e4ead7f757504d8b345452730636e298cbf68\n",
   "aliases": "GHSA-x8r2-g34h-2v3j\nCVE-2025-38724\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "1805cfa0-5509-3673-826c-c6aaf68ddd30",

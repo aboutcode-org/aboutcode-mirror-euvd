@@ -3,7 +3,7 @@
   "enisaUuid": "26b0e2b7-843d-30c5-bdfc-7413888c1970",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hid-steam: Fix use-after-free when detaching device\n\nWhen a hid-steam device is removed it must clean up the client_hdev used for\nintercepting hidraw access. This can lead to scheduling deferred work to\nreattach the input device. Though the cleanup cancels the deferred work, this\nwas done before the client_hdev itself is cleaned up, so it gets rescheduled.\nThis patch fixes the ordering to make sure the deferred work is properly\ncanceled.",
   "datePublished": "Apr 1, 2025, 3:40:56 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

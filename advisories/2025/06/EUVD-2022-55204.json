@@ -3,7 +3,7 @@
   "enisaUuid": "4d4c92ad-2107-3ded-831c-e0ebbfe8204a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scpi: Ensure scpi_info is not assigned if the probe fails\n\nWhen scpi probe fails, at any point, we need to ensure that the scpi_info\nis not set and will remain NULL until the probe succeeds. If it is not\ntaken care, then it could result use-after-free as the value is exported\nvia get_scpi_ops() and could refer to a memory allocated via devm_kzalloc()\nbut freed when the probe fails.",
   "datePublished": "Jun 18, 2025, 11:02:28 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:39 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

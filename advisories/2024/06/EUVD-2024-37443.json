@@ -3,7 +3,7 @@
   "enisaUuid": "b69eac18-cbc8-3ad6-9c9a-c5421526c730",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nepoll: be better about file lifetimes\n\nepoll can call out to vfs_poll() with a file pointer that may race with\nthe last 'fput()'. That would make f_count go down to zero, and while\nthe ep->mtx locking means that the resulting file pointer tear-down will\nbe blocked until the poll returns, it means that f_count is already\ndead, and any use of it won't actually get a reference to the file any\nmore: it's dead regardless.\n\nMake sure we have a valid ref on the file pointer before we call down to\nvfs_poll() from the epoll routines.",
   "datePublished": "Jun 19, 2024, 1:37:37 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:06 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

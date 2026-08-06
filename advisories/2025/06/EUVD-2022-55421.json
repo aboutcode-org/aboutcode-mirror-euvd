@@ -3,7 +3,7 @@
   "enisaUuid": "2df74e50-438b-3480-84e5-b5f24138a88f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: cp2112: prevent a buffer overflow in cp2112_xfer()\n\nSmatch warnings:\ndrivers/hid/hid-cp2112.c:793 cp2112_xfer() error: __memcpy()\n'data->block[1]' too small (33 vs 255)\ndrivers/hid/hid-cp2112.c:793 cp2112_xfer() error: __memcpy() 'buf' too\nsmall (64 vs 255)\n\nThe 'read_length' variable is provided by 'data->block[0]' which comes\nfrom user and it(read_length) can take a value between 0-255. Add an\nupper bound to 'read_length' variable to prevent a buffer overflow in\nmemcpy().",
   "datePublished": "Jun 18, 2025, 11:03:13 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

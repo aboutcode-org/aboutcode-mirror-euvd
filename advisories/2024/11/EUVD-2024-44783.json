@@ -3,7 +3,7 @@
   "enisaUuid": "1a8794ed-d8e1-3b17-b2ae-f24b2c7594dc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: dcp: fix NULL dereference in AEAD crypto operation\n\nWhen sealing or unsealing a key blob we currently do not wait for\nthe AEAD cipher operation to finish and simply return after submitting\nthe request. If there is some load on the system we can exit before\nthe cipher operation is done and the buffer we read from/write to\nis already removed from the stack. This will e.g. result in NULL\npointer dereference errors in the DCP driver during blob creation.\n\nFix this by waiting for the AEAD cipher operation to finish before\nresuming the seal and unseal calls.",
   "datePublished": "Nov 19, 2024, 1:30:23 AM",
-  "dateUpdated": "Aug 4, 2026, 9:36:15 AM",
+  "dateUpdated": "Aug 5, 2026, 11:43:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

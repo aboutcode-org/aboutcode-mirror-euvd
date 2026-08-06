@@ -3,14 +3,14 @@
   "enisaUuid": "b4ba008e-14f4-3260-9bf6-016a13e1afb6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: reject mismatching sum of field_len with set key length\n\nThe field length description provides the length of each separated key\nfield in the concatenation, each field gets rounded up to 32-bits to\ncalculate the pipapo rule width from pipapo_init(). The set key length\nprovides the total size of the key aligned to 32-bits.\n\nRegister-based arithmetics still allows for combining mismatching set\nkey length and field length description, eg. set key length 10 and field\ndescription [ 5, 4 ] leading to pipapo width of 12.",
   "datePublished": "Mar 6, 2025, 4:04:32 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:03 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6b467c8feac759f4c5c86d708beca2aa2b29584f\nhttps://git.kernel.org/stable/c/5083a7ae45003456c253e981b30a43f71230b4a3\nhttps://git.kernel.org/stable/c/2ac254343d3cf228ae0738b2615fedf85d000752\nhttps://git.kernel.org/stable/c/82e491e085719068179ff6a5466b7387cc4bbf32\nhttps://git.kernel.org/stable/c/49b7182b97bafbd5645414aff054b4a65d05823d\nhttps://git.kernel.org/stable/c/ab50d0eff4a939d20c37721fd9766347efcdb6f6\nhttps://git.kernel.org/stable/c/1b9335a8000fb70742f7db10af314104b6ace220\n",
   "aliases": "CVE-2025-21826\nGHSA-8376-779w-5hcf\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "029d5f59-1c9f-3e92-9cb9-b11850b717dc",

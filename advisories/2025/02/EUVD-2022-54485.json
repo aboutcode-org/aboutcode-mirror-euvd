@@ -3,14 +3,14 @@
   "enisaUuid": "e9d0810e-224b-3244-ad61-6408b6a6717b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nref_tracker: implement use-after-free detection\n\nWhenever ref_tracker_dir_init() is called, mark the struct ref_tracker_dir\nas dead.\n\nTest the dead status from ref_tracker_alloc() and ref_tracker_free()\n\nThis should detect buggy dev_put()/dev_hold() happening too late\nin netdevice dismantle process.",
   "datePublished": "Feb 26, 2025, 1:55:04 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:13 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:59 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3743c9de303fa36c2e2ca2522ab280c52bcafbd2\nhttps://git.kernel.org/stable/c/e3ececfe668facd87d920b608349a32607060e66\n",
   "aliases": "CVE-2022-49127\nGHSA-7vh4-856x-687c\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "00b368ae-0976-3c4f-9bfc-9b72539580f4",

@@ -3,7 +3,7 @@
   "enisaUuid": "35df3f0a-cab3-3713-80e3-b832a1e9dd2b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rtrs-srv: Avoid null pointer deref during path establishment\n\nFor RTRS path establishment, RTRS client initiates and completes con_num\nof connections. After establishing all its connections, the information\nis exchanged between the client and server through the info_req message.\nDuring this exchange, it is essential that all connections have been\nestablished, and the state of the RTRS srv path is CONNECTED.\n\nSo add these sanity checks, to make sure we detect and abort process in\nerror scenarios to avoid null pointer deref.",
   "datePublished": "Oct 21, 2024, 7:39:51 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:34 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:19 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

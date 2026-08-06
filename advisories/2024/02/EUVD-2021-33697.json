@@ -3,7 +3,7 @@
   "enisaUuid": "10178980-134d-30fe-8aa2-b87b0359ebc7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nDrivers: hv: vmbus: Use after free in __vmbus_open()\n\nThe \"open_info\" variable is added to the &vmbus_connection.chn_msg_list,\nbut the error handling frees \"open_info\" without removing it from the\nlist.  This will result in a use after free.  First remove it from the\nlist, and then free it.",
   "datePublished": "Feb 28, 2024, 8:13:52 AM",
-  "dateUpdated": "Aug 4, 2026, 8:58:28 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:44 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "3e1c23d4-8a2e-3d18-994b-e519443432d6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: Fix stale file descriptors on failed usercopy\n\nA failing usercopy of the fence_rep object will lead to a stale entry in\nthe file descriptor table as put_unused_fd() won't release it. This\nenables userland to refer to a dangling 'file' object through that still\nvalid file descriptor, leading to all kinds of use-after-free\nexploitation scenarios.\n\nFix this by deferring the call to fd_install() until after the usercopy\nhas succeeded.",
   "datePublished": "Jun 20, 2024, 11:13:45 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:26 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:12 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

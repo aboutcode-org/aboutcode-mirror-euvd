@@ -3,7 +3,7 @@
   "enisaUuid": "114b7423-8142-3d42-9ec0-f4a3f606e164",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: nci: Fix uninit-value in nci_rx_work\n\nsyzbot reported the following uninit-value access issue [1]\n\nnci_rx_work() parses received packet from ndev->rx_q. It should be\nvalidated header size, payload size and total packet size before\nprocessing the packet. If an invalid packet is detected, it should be\nsilently discarded.",
   "datePublished": "Jun 21, 2024, 10:18:12 AM",
-  "dateUpdated": "Aug 4, 2026, 9:25:42 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:33 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

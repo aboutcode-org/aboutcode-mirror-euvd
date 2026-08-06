@@ -3,7 +3,7 @@
   "enisaUuid": "8dcc0457-0500-3dc0-88dc-22be4adf717a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbfq: Update cgroup information before merging bio\n\nWhen the process is migrated to a different cgroup (or in case of\nwriteback just starts submitting bios associated with a different\ncgroup) bfq_merge_bio() can operate with stale cgroup information in\nbic. Thus the bio can be merged to a request from a different cgroup or\nit can result in merging of bfqqs for different cgroups or bfqqs of\nalready dead cgroups and causing possible use-after-free issues. Fix the\nproblem by updating cgroup information in bfq_merge_bio().",
   "datePublished": "Feb 26, 2025, 2:12:34 AM",
-  "dateUpdated": "Aug 4, 2026, 9:05:21 AM",
+  "dateUpdated": "Aug 5, 2026, 8:55:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

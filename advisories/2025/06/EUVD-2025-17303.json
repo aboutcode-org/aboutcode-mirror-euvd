@@ -3,14 +3,14 @@
   "enisaUuid": "216d235f-c178-3cfa-ad47-d49c02d9e13e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/fdinfo: grab ctx->uring_lock around io_uring_show_fdinfo()\n\nNot everything requires locking in there, which is why the 'has_lock'\nvariable exists. But enough does that it's a bit unwieldy to manage.\nWrap the whole thing in a ->uring_lock trylock, and just return\nwith no output if we fail to grab it. The existing trylock() will\nalready have greatly diminished utility/output for the failure case.\n\nThis fixes an issue with reading the SQE fields, if the ring is being\nactively resized at the same time.",
   "datePublished": "Jun 6, 2025, 1:43:41 PM",
-  "dateUpdated": "Jul 30, 2026, 5:50:39 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bdb7d2ec2e31c46c45d1f32667dfa8216a72705e\nhttps://git.kernel.org/stable/c/d871198ee431d90f5308d53998c1ba1d5db5619a\nhttps://project-zero.issues.chromium.org/issues/417522668\n",
   "aliases": "CVE-2025-38002\nGHSA-p6ff-97p8-xxmr\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "0bac9f12-ea5c-3c39-b592-804d5952bbce",

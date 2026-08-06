@@ -3,14 +3,14 @@
   "enisaUuid": "eb3a59a5-554c-3fc4-bfa2-dbbe3182e7b5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix UAF in __close_file_table_ids\n\nA use-after-free is possible if one thread destroys the file\nvia __ksmbd_close_fd while another thread holds a reference to\nit. The existing checks on fp->refcount are not sufficient to\nprevent this.\n\nThe fix takes ft->lock around the section which removes the\nfile from the file table. This prevents two threads acquiring the\nsame file pointer via __close_file_table_ids, as well as the other\nfunctions which retrieve a file from the IDR and which already use\nthis same lock.",
   "datePublished": "May 20, 2025, 4:01:47 PM",
-  "dateUpdated": "Jul 30, 2026, 5:50:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:35 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fec1f9e9a650e8e7011330a085c77e7bf2a08ea9\nhttps://git.kernel.org/stable/c/9e9841e232b51171ddf3bc4ee517d5d28dc8cad6\nhttps://git.kernel.org/stable/c/16727e442568a46d9cca69fe2595896de86e120d\nhttps://git.kernel.org/stable/c/36991c1ccde2d5a521577c448ffe07fcccfe104d\n",
   "aliases": "CVE-2025-37952\nGHSA-5m2x-9h8v-h39x\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.31,
   "enisaIdProduct": [
     {
       "id": "2cb219f3-2c38-3283-bb1f-87847b490137",

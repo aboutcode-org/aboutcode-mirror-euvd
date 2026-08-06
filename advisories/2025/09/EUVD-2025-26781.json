@@ -3,7 +3,7 @@
   "enisaUuid": "1de00949-462f-342d-891d-c87bf214b7b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Prevent ALIGN() overflow\n\nWhen allocating IOVA the candidate range gets aligned to the target\nalignment. If the range is close to ULONG_MAX then the ALIGN() can\nwrap resulting in a corrupted iova.\n\nOpen code the ALIGN() using get_add_overflow() to prevent this.\nThis simplifies the checks as we don't need to check for length earlier\neither.\n\nConsolidate the two copies of this code under a single helper.\n\nThis bug would allow userspace to create a mapping that overlaps with some\nother mapping or a reserved range.",
   "datePublished": "Sep 4, 2025, 3:32:42 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:27 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:58 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

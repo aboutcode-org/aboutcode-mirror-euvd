@@ -3,14 +3,14 @@
   "enisaUuid": "63f746b1-ad80-3f47-b317-9734462ff17d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nat: use kfree_rcu to release ops\n\nFlorian Westphal says:\n\n\"Historically this is not an issue, even for normal base hooks: the data\npath doesn't use the original nf_hook_ops that are used to register the\ncallbacks.\n\nHowever, in v5.14 I added the ability to dump the active netfilter\nhooks from userspace.\n\nThis code will peek back into the nf_hook_ops that are available\nat the tail of the pointer-array blob used by the datapath.\n\nThe nat hooks are special, because they are called indirectly from\nthe central nat dispatcher hook. They are currently invisible to\nthe nfnl hook dump subsystem though.\n\nBut once that changes the nat ops structures have to be deferred too.\"\n\nUpdate nf_nat_register_fn() to deal with partial exposition of the hooks\nfrom error path which can be also an issue for nfnetlink_hook.",
   "datePublished": "Jun 24, 2026, 4:29:12 PM",
-  "dateUpdated": "Jul 15, 2026, 12:45:26 AM",
+  "dateUpdated": "Aug 5, 2026, 12:32:31 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/32fdd2e38e7435a368d88f5977a7d6585ebc8b0e\nhttps://git.kernel.org/stable/c/3c7511f38ab511b791196b13ae48bf4973bf7dfd\nhttps://git.kernel.org/stable/c/6eda0d771f94267f73f57c94630aa47e90957915\n",
   "aliases": "CVE-2026-53000\nGHSA-6794-4vqv-w8qg\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "27c19170-57ee-3a60-bf4d-c2951ecaa596",

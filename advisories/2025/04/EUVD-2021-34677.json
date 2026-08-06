@@ -3,14 +3,14 @@
   "enisaUuid": "2848772c-cfb4-37ca-87f1-615c861a7371",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: peak_usb: fix use after free bugs\n\nAfter calling peak_usb_netif_rx_ni(skb), dereferencing skb is unsafe.\nEspecially, the can_frame cf which aliases skb memory is accessed\nafter the peak_usb_netif_rx_ni().\n\nReordering the lines solves the issue.",
   "datePublished": "Apr 17, 2025, 6:01:30 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:45 AM",
+  "dateUpdated": "Aug 5, 2026, 8:48:50 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5408824636fa0dfedb9ecb0d94abd573131bfbbe\nhttps://git.kernel.org/stable/c/ddd1416f44130377798c1430b76503513b7497c2\nhttps://git.kernel.org/stable/c/ec939c13c3fff2114479769c8380b7f1a54feca9\nhttps://git.kernel.org/stable/c/50aca891d7a554db0901b245167cd653d73aaa71\n",
   "aliases": "CVE-2021-47670\nGHSA-g3pp-67rc-cjg2\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "1de527c3-3103-3c50-acda-c044ca46a530",

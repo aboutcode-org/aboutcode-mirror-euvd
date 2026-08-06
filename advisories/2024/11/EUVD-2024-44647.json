@@ -3,7 +3,7 @@
   "enisaUuid": "995f78e3-a411-3b58-b308-d2879bbb2b72",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteon_ep: Add SKB allocation failures handling in __octep_oq_process_rx()\n\nbuild_skb() returns NULL in case of a memory allocation failure so handle\nit inside __octep_oq_process_rx() to avoid NULL pointer dereference.\n\n__octep_oq_process_rx() is called during NAPI polling by the driver. If\nskb allocation fails, keep on pulling packets out of the Rx DMA queue: we\nshouldn't break the polling immediately and thus falsely indicate to the\noctep_napi_poll() that the Rx pressure is going down. As there is no\nassociated skb in this case, don't process the packets and don't push them\nup the network stack - they are skipped.\n\nHelper function is implemented to unmmap/flush all the fragment buffers\nused by the dropped packet. 'alloc_failures' counter is incremented to\nmark the skb allocation error in driver statistics.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Nov 7, 2024, 9:31:22 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:01 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

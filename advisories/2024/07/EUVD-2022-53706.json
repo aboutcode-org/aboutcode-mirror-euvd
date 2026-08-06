@@ -3,14 +3,14 @@
   "enisaUuid": "b556c671-7d3b-3d89-864d-82fdb504fcd8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix the behavior of READ near OFFSET_MAX\n\nDan Aloni reports:\n> Due to commit 8cfb9015280d (\"NFS: Always provide aligned buffers to\n> the RPC read layers\") on the client, a read of 0xfff is aligned up\n> to server rsize of 0x1000.\n>\n> As a result, in a test where the server has a file of size\n> 0x7fffffffffffffff, and the client tries to read from the offset\n> 0x7ffffffffffff000, the read causes loff_t overflow in the server\n> and it returns an NFS code of EINVAL to the client. The client as\n> a result indefinitely retries the request.\n\nThe Linux NFS client does not handle NFS?ERR_INVAL, even though all\nNFS specifications permit servers to return that status code for a\nREAD.\n\nInstead of NFS?ERR_INVAL, have out-of-range READ requests succeed\nand return a short result. Set the EOF flag in the result to prevent\nthe client from retrying the READ request. This behavior appears to\nbe consistent with Solaris NFS servers.\n\nNote that NFSv3 and NFSv4 use u64 offset values on the wire. These\nmust be converted to loff_t internally before use -- an implicit\ntype cast is not adequate for this purpose. Otherwise VFS checks\nagainst sb->s_maxbytes do not work properly.",
   "datePublished": "Jul 16, 2024, 11:44:12 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:45 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:32 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/1726a39b0879acfb490b22dca643f26f4f907da9\nhttps://git.kernel.org/stable/c/c6eff5c4277146a78b4fb8c9b668dd64542c41b0\nhttps://git.kernel.org/stable/c/44502aca8e02ab32d6b0eb52e006a5ec9402719b\nhttps://git.kernel.org/stable/c/0cb4d23ae08c48f6bf3c29a8e5c4a74b8388b960\n",
   "aliases": "CVE-2022-48827\nGHSA-g43c-r7c6-fhrv\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.62,
   "enisaIdProduct": [
     {
       "id": "16043b9f-468e-3ec0-8660-8f3d0f97fb9a",

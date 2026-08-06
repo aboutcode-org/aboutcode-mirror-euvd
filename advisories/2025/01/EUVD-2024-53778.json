@@ -3,7 +3,7 @@
   "enisaUuid": "c04a65c4-ee45-37ea-b708-353bf44f37b5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: RCU protect disk->conv_zones_bitmap\n\nEnsure that a disk revalidation changing the conventional zones bitmap\nof a disk does not cause invalid memory references when using the\ndisk_zone_is_conv() helper by RCU protecting the disk->conv_zones_bitmap\npointer.\n\ndisk_zone_is_conv() is modified to operate under the RCU read lock and\nthe function disk_set_conv_zones_bitmap() is added to update a disk\nconv_zones_bitmap pointer using rcu_replace_pointer() with the disk\nzone_wplugs_lock spinlock held.\n\ndisk_free_zone_resources() is modified to call\ndisk_update_zone_resources() with a NULL bitmap pointer to free the disk\nconv_zones_bitmap. disk_set_conv_zones_bitmap() is also used in\ndisk_update_zone_resources() to set the new (revalidated) bitmap and\nfree the old one.",
   "datePublished": "Jan 11, 2025, 2:49:01 PM",
-  "dateUpdated": "Aug 4, 2026, 9:40:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

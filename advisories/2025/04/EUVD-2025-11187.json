@@ -3,14 +3,14 @@
   "enisaUuid": "25bed8c4-5fe5-381d-b226-8e5ae3d8d32b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: don't clobber ret in btrfs_validate_super()\n\nCommit 2a9bb78cfd36 (\"btrfs: validate system chunk array at\nbtrfs_validate_super()\") introduces a call to validate_sys_chunk_array()\nin btrfs_validate_super(), which clobbers the value of ret set earlier.\nThis has the effect of negating the validity checks done earlier, making\nit so btrfs could potentially try to mount invalid filesystems.",
   "datePublished": "Apr 16, 2025, 2:12:59 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:35 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ef6800a2015e706e9852a5ec15263fec9990d012\nhttps://git.kernel.org/stable/c/9db9c7dd5b4e1d3205137a094805980082c37716\n",
   "aliases": "GHSA-7rq4-gjpx-jq6g\nCVE-2025-22114\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "2edb1a32-9bb4-39b9-ad05-87c18bb79f39",

@@ -3,14 +3,14 @@
   "enisaUuid": "c02c972c-c98e-3d6f-9571-f88bbbdd3f59",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoundwire: qcom: fix storing port config out-of-bounds\n\nThe 'qcom_swrm_ctrl->pconfig' has size of QCOM_SDW_MAX_PORTS (14),\nhowever we index it starting from 1, not 0, to match real port numbers.\nThis can lead to writing port config past 'pconfig' bounds and\noverwriting next member of 'qcom_swrm_ctrl' struct.  Reported also by\nsmatch:\n\n  drivers/soundwire/qcom.c:1269 qcom_swrm_get_port_config() error: buffer overflow 'ctrl->pconfig' 14 <= 14",
   "datePublished": "Oct 1, 2025, 11:42:36 AM",
-  "dateUpdated": "Aug 4, 2026, 9:14:46 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:13 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/20f7c4d51c94abb1a1a7c21900db4fb5afe5c8ff\nhttps://git.kernel.org/stable/c/801daff0078087b5df9145c9f5e643c28129734b\nhttps://git.kernel.org/stable/c/32eb67d7360d48c15883e0d21b29c0aab9da022e\nhttps://git.kernel.org/stable/c/490937d479abe5f6584e69b96df066bc87be92e9\n",
   "aliases": "GHSA-qhgr-vhx2-3qm4\nCVE-2023-53465\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "10ceb1f8-ac18-3922-85c1-199cb5edb2f9",

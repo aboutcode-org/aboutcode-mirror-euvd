@@ -3,14 +3,14 @@
   "enisaUuid": "c1df9d63-a718-31a2-9899-b34a327c822c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsparc: fix accurate exception reporting in copy_{from_to}_user for UltraSPARC III\n\nAnthony Yznaga tracked down that a BUG_ON in ext4 code with large folios\nenabled resulted from copy_from_user() returning impossibly large values\ngreater than the size to be copied. This lead to __copy_from_iter()\nreturning impossible values instead of the actual number of bytes it was\nable to copy.\n\nThe BUG_ON has been reported in\nhttps://lore.kernel.org/r/b14f55642207e63e907965e209f6323a0df6dcee.camel@physik.fu-berlin.de\n\nThe referenced commit introduced exception handlers on user-space memory\nreferences in copy_from_user and copy_to_user. These handlers return from\nthe respective function and calculate the remaining bytes left to copy\nusing the current register contents. The exception handlers expect that\n%o2 has already been masked during the bulk copy loop, but the masking was\nperformed after that loop. This will fix the return value of copy_from_user\nand copy_to_user in the faulting case. The behaviour of memcpy stays\nunchanged.",
   "datePublished": "Nov 12, 2025, 10:23:19 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:48 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:57 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fdd43fe6d286f27b826572457a89c926f97e2d3a\nhttps://git.kernel.org/stable/c/1198077606aeffb102587c6ea079ce99641c99d4\nhttps://git.kernel.org/stable/c/1857cdca12c4aff58bf26a7005a4d02850c29927\nhttps://git.kernel.org/stable/c/91eda032eb16e5d2be27c95584665bc555bb5a90\nhttps://git.kernel.org/stable/c/dc766c4830a7e1e1ee9d7f77d4ab344f2eb23c8e\nhttps://git.kernel.org/stable/c/5ef9c94d7110e90260c06868cf1dcf899b9f25ee\nhttps://git.kernel.org/stable/c/e50377c6b3f278c9f3ef017ffce17f5fcc9dace4\nhttps://git.kernel.org/stable/c/47b49c06eb62504075f0f2e2227aee2e2c2a58b3\n",
   "aliases": "CVE-2025-40124\nGHSA-v3c5-2xf8-7jwx\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "37965123-8672-3e6d-ad2b-27634588b0ca",

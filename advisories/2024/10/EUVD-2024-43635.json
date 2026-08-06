@@ -3,7 +3,7 @@
   "enisaUuid": "699b5b21-f77d-30cb-83f6-bcb7db57a467",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: fix double destroy_workqueue error\n\nWhen gfs2_fill_super() fails, destroy_workqueue() is called within\ngfs2_gl_hash_clear(), and the subsequent code path calls\ndestroy_workqueue() on the same work queue again.\n\nThis issue can be fixed by setting the work queue pointer to NULL after\nthe first destroy_workqueue() call and checking for a NULL pointer\nbefore attempting to destroy the work queue again.",
   "datePublished": "Oct 21, 2024, 6:02:10 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:56 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

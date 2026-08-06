@@ -3,7 +3,7 @@
   "enisaUuid": "29f3a5f7-fff3-3a17-adce-4313b811c71e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: th1520: Fix memory corruption due to incorrect array size\n\nThe functions th1520_mbox_suspend_noirq and th1520_mbox_resume_noirq are\nintended to save and restore the interrupt mask registers in the MBOX\nICU0. However, the array used to store these registers was incorrectly\nsized, leading to memory corruption when accessing all four registers.\n\nThis commit corrects the array size to accommodate all four interrupt\nmask registers, preventing memory corruption during suspend and resume\noperations.",
   "datePublished": "Feb 27, 2025, 2:07:08 AM",
-  "dateUpdated": "Aug 4, 2026, 9:41:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:09 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

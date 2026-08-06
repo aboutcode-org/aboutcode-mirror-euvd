@@ -3,7 +3,7 @@
   "enisaUuid": "f6a435de-f46e-3d52-9665-8491be1ec2bb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrcu: Fix buffer overflow in print_cpu_stall_info()\n\nThe rcuc-starvation output from print_cpu_stall_info() might overflow the\nbuffer if there is a huge difference in jiffies difference.  The situation\nmight seem improbable, but computers sometimes get very confused about\ntime, which can result in full-sized integers, and, in this case,\nbuffer overflow.\n\nAlso, the unsigned jiffies difference is printed using %ld, which is\nnormally for signed integers.  This is intentional for debugging purposes,\nbut it is not obvious from the code.\n\nThis commit therefore changes sprintf() to snprintf() and adds a\nclarifying comment about intention of %ld format.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Jun 19, 2024, 1:37:35 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:03 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:53 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

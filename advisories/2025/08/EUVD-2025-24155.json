@@ -3,7 +3,7 @@
   "enisaUuid": "65c26182-a61a-3d1c-9593-788c30bc35ce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclone_private_mnt(): make sure that caller has CAP_SYS_ADMIN in the right userns\n\nWhat we want is to verify there is that clone won't expose something\nhidden by a mount we wouldn't be able to undo.  \"Wouldn't be able to undo\"\nmay be a result of MNT_LOCKED on a child, but it may also come from\nlacking admin rights in the userns of the namespace mount belongs to.\n\nclone_private_mnt() checks the former, but not the latter.\n\nThere's a number of rather confusing CAP_SYS_ADMIN checks in various\nuserns during the mount, especially with the new mount API; they serve\ndifferent purposes and in case of clone_private_mnt() they usually,\nbut not always end up covering the missing check mentioned above.",
   "datePublished": "Aug 11, 2025, 4:01:08 PM",
-  "dateUpdated": "Jul 30, 2026, 5:54:44 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:26 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

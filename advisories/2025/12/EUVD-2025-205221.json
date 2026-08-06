@@ -3,14 +3,14 @@
   "enisaUuid": "67b5aca6-c4c8-347f-ae9a-13d1aa9a7bd6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix improper freeing of purex item\n\nIn qla2xxx_process_purls_iocb(), an item is allocated via\nqla27xx_copy_multiple_pkt(), which internally calls\nqla24xx_alloc_purex_item().\n\nThe qla24xx_alloc_purex_item() function may return a pre-allocated item\nfrom a per-adapter pool for small allocations, instead of dynamically\nallocating memory with kzalloc().\n\nAn error handling path in qla2xxx_process_purls_iocb() incorrectly uses\nkfree() to release the item. If the item was from the pre-allocated\npool, calling kfree() on it is a bug that can lead to memory corruption.\n\nFix this by using the correct deallocation function,\nqla24xx_free_purex_item(), which properly handles both dynamically\nallocated and pre-allocated items.",
   "datePublished": "Dec 24, 2025, 12:09:38 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:23 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:13 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4bccd506a1f1ab01d1f45b2a3effff6bedc73cf9\nhttps://git.kernel.org/stable/c/8e9f0a0717ba31d5842721627ade1e62d7aec012\nhttps://git.kernel.org/stable/c/cfe3e2f768d248fd3d965d561d0768a56dd0b9f8\nhttps://git.kernel.org/stable/c/5fa1c8226b4532ad7011d295d3ab4ad45df105ae\nhttps://git.kernel.org/stable/c/78b1a242fe612a755f2158fd206ee6bb577d18ca\n",
   "aliases": "GHSA-mjw3-rr6r-w9h2\nCVE-2025-68741\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.37,
   "enisaIdProduct": [
     {
       "id": "10f19287-89d1-3a89-9b55-2759fe437b01",

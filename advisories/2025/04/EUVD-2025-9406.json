@@ -3,14 +3,14 @@
   "enisaUuid": "4320a4c9-fc21-3683-b30e-0351f4d4a48f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncdx: Fix possible UAF error in driver_override_show()\n\nFixed a possible UAF problem in driver_override_show() in drivers/cdx/cdx.c\n\nThis function driver_override_show() is part of DEVICE_ATTR_RW, which\nincludes both driver_override_show() and driver_override_store().\nThese functions can be executed concurrently in sysfs.\n\nThe driver_override_store() function uses driver_set_override() to\nupdate the driver_override value, and driver_set_override() internally\nlocks the device (device_lock(dev)). If driver_override_show() reads\ncdx_dev->driver_override without locking, it could potentially access\na freed pointer if driver_override_store() frees the string\nconcurrently. This could lead to printing a kernel address, which is a\nsecurity risk since DEVICE_ATTR can be read by all users.\n\nAdditionally, a similar pattern is used in drivers/amba/bus.c, as well\nas many other bus drivers, where device_lock() is taken in the show\nfunction, and it has been working without issues.\n\nThis potential bug was detected by our experimental static analysis\ntool, which analyzes locking APIs and paired functions to identify\ndata races and atomicity violations.",
   "datePublished": "Apr 1, 2025, 3:40:52 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:19 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d7b339bbc887bcfc1a5b620bfc70c6fbb8f733bf\nhttps://git.kernel.org/stable/c/8473135f89c0949436a22adb05b8cece2fb3da91\nhttps://git.kernel.org/stable/c/0439d541aa8d3444ad41c39e39eb71acb57acde3\nhttps://git.kernel.org/stable/c/91d44c1afc61a2fec37a9c7a3485368309391e0b\n",
   "aliases": "CVE-2025-21915\nGHSA-4v94-f8pq-mj8v\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "10045fbc-5b27-3c2b-9581-3fe12f6fa9d4",

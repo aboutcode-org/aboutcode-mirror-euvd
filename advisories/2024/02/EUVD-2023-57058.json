@@ -3,14 +3,14 @@
   "enisaUuid": "ade893c4-39de-3267-a2ad-29f89d0e84a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_set_rbtree: skip sync GC for new elements in this transaction\n\nNew elements in this transaction might expired before such transaction\nends. Skip sync GC for such elements otherwise commit path might walk\nover an already released object. Once transaction is finished, async GC\nwill collect such expired element.",
   "datePublished": "Feb 20, 2024, 12:52:56 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:22 AM",
+  "dateUpdated": "Aug 5, 2026, 9:09:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9db9feb841f7449772f9393c16b9ef4536d8c127\nhttps://git.kernel.org/stable/c/03caf75da1059f0460666c826e9f50e13dfd0017\nhttps://git.kernel.org/stable/c/c323ed65f66e5387ee0a73452118d49f1dae81b8\nhttps://git.kernel.org/stable/c/9af7dfb3c9d7985172a240f85e684c5cd33e29ce\nhttps://git.kernel.org/stable/c/9a8c544158f68f656d1734eb5ba00c4f817b76b1\nhttps://git.kernel.org/stable/c/e3213ff99a355cda811b41e8dbb3472d13167a3a\nhttps://git.kernel.org/stable/c/2ee52ae94baabf7ee09cf2a8d854b990dac5d0e4\n",
   "aliases": "GHSA-cmph-x6r4-4whr\nCVE-2023-52433\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "06bcbb02-897e-3bd4-a71f-54edcf0278e8",

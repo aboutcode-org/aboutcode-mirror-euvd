@@ -3,14 +3,14 @@
   "enisaUuid": "c5eac6ff-b365-3e08-89cd-dafc21af0a71",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: use dst_dev_rcu() in sk_setup_caps()\n\nUse RCU to protect accesses to dst->dev from sk_setup_caps()\nand sk_dst_gso_max_size().\n\nAlso use dst_dev_rcu() in ip6_dst_mtu_maybe_forward(),\nand ip_dst_mtu_maybe_forward().\n\nip4_dst_hoplimit() can use dst_dev_net_rcu().",
   "datePublished": "Nov 12, 2025, 10:46:52 AM",
-  "dateUpdated": "Jul 30, 2026, 6:01:07 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:15 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5d1be493d1110c9e720b4c51a6e587bb2fb4ac12\nhttps://git.kernel.org/stable/c/a805729c0091073d8f0415cfa96c7acd1bc17a48\nhttps://git.kernel.org/stable/c/99a2ace61b211b0be861b07fbaa062fca4b58879\n",
   "aliases": "GHSA-3vr4-gx8q-4fgg\nCVE-2025-40170\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "08f01d2a-4ea3-303e-8c02-000437504c77",

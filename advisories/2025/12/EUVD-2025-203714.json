@@ -3,14 +3,14 @@
   "enisaUuid": "bf718936-20e7-3e83-b9ad-d7b6e8b0c525",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: fix potential use after free in iwl_mld_remove_link()\n\nThis code frees \"link\" by calling kfree_rcu(link, rcu_head) and then it\ndereferences \"link\" to get the \"link->fw_id\".  Save the \"link->fw_id\"\nfirst to avoid a potential use after free.",
   "datePublished": "Dec 16, 2025, 1:43:00 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:18 AM",
+  "dateUpdated": "Aug 5, 2026, 12:10:05 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5b4a239c9f94e1606435f1842fc6fd426d607dbb\nhttps://git.kernel.org/stable/c/77e67d5daaf155f7d0f99f4e797c4842169ec19e\n",
   "aliases": "CVE-2025-68182\nGHSA-p4pr-mf33-rjq8\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "2b0f168f-de33-3707-a278-b5eaf4684d9d",

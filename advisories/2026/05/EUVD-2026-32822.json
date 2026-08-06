@@ -3,7 +3,7 @@
   "enisaUuid": "1d581dad-ba4b-350b-953c-103dd863fe0f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate dacloffset before building DACL pointers\n\nparse_sec_desc(), build_sec_desc(), and the chown path in\nid_mode_to_cifs_acl() all add the server-supplied dacloffset to pntsd\nbefore proving a DACL header fits inside the returned security\ndescriptor.\n\nOn 32-bit builds a malicious server can return dacloffset near\nU32_MAX, wrap the derived DACL pointer below end_of_acl, and then slip\npast the later pointer-based bounds checks. build_sec_desc() and\nid_mode_to_cifs_acl() can then dereference DACL fields from the wrapped\npointer in the chmod/chown rewrite paths.\n\nValidate dacloffset numerically before building any DACL pointer and\nreuse the same helper at the three DACL entry points.",
   "datePublished": "May 28, 2026, 9:36:48 AM",
-  "dateUpdated": "Jul 15, 2026, 12:51:07 AM",
+  "dateUpdated": "Aug 5, 2026, 12:30:20 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -61,16 +61,6 @@
         }
       },
       "product_version": "bc3e9dd9d104ca1b75644eab87b38ce8a924aef4 <8bd07e417b6bda67e317920584e48cb6ee442a8a"
-    },
-    {
-      "id": "54c7492e-ddc0-30c9-85dd-b9c07403170d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc3"
     },
     {
       "id": "6fdc307d-9c13-3bcd-b558-a5ab75df0994",

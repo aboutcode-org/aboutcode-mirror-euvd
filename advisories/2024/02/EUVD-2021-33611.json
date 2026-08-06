@@ -3,14 +3,14 @@
   "enisaUuid": "5d09159c-d42d-3da1-bdaa-d70dd6034d37",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix crash in qla2xxx_mqueuecommand()\n\n    RIP: 0010:kmem_cache_free+0xfa/0x1b0\n    Call Trace:\n       qla2xxx_mqueuecommand+0x2b5/0x2c0 [qla2xxx]\n       scsi_queue_rq+0x5e2/0xa40\n       __blk_mq_try_issue_directly+0x128/0x1d0\n       blk_mq_request_issue_directly+0x4e/0xb0\n\nFix incorrect call to free srb in qla2xxx_mqueuecommand(), as srb is now\nallocated by upper layers. This fixes smatch warning of srb unintended\nfree.",
   "datePublished": "Feb 27, 2024, 6:47:01 PM",
-  "dateUpdated": "Aug 4, 2026, 8:58:00 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c5ab9b67d8b061de74e2ca51bf787ee599bd7f89\nhttps://git.kernel.org/stable/c/77509a238547863040a42d57c72403f7d4c89a8f\nhttps://git.kernel.org/stable/c/702cdaa2c6283c135ef16d52e0e4e3c1005aa538\nhttps://git.kernel.org/stable/c/80ef24175df2cba3860d0369d1c662b49ee2de56\nhttps://git.kernel.org/stable/c/a73208e3244127ef9f2cdf24e4adb947aaa32053\nhttps://git.kernel.org/stable/c/6641df81ab799f28a5d564f860233dd26cca0d93\n",
   "aliases": "CVE-2021-46963\nGHSA-qfxp-cg32-f2jj\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "06e9266f-ab1f-3d39-8cfb-37456bf7ef38",

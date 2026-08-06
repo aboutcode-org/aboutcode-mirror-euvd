@@ -3,14 +3,14 @@
   "enisaUuid": "5c5e29c5-90fd-3930-b822-9b29512da607",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/ip6_tunnel: Prevent perpetual tunnel growth\n\nSimilarly to ipv4 tunnel, ipv6 version updates dev->needed_headroom, too.\nWhile ipv4 tunnel headroom adjustment growth was limited in\ncommit 5ae1e9922bbd (\"net: ip_tunnel: prevent perpetual headroom growth\"),\nipv6 tunnel yet increases the headroom without any ceiling.\n\nReflect ipv4 tunnel headroom adjustment limit on ipv6 version.\n\nCredits to Francesco Ruggeri, who was originally debugging this issue\nand wrote local Arista-specific patch and a reproducer.",
   "datePublished": "Nov 12, 2025, 10:53:49 AM",
-  "dateUpdated": "Jul 30, 2026, 6:01:10 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:18 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/566f8d5c8a443f2dd69c5460fdec43ed1c870c65\nhttps://git.kernel.org/stable/c/11f6066af3bfb8149aa16c42c0b0c5ea5b199a94\nhttps://git.kernel.org/stable/c/402b6985e872b4cf394bbbf33b503947a326a6cb\nhttps://git.kernel.org/stable/c/10fe967efe73c610e526ff7460581610633dee9c\nhttps://git.kernel.org/stable/c/48294a67863c9cfa367abb66bbf0ef6548ae124f\nhttps://git.kernel.org/stable/c/eeb4345488672584db4f8c20a1ae13a212ce31c4\nhttps://git.kernel.org/stable/c/b6eb25d870f1a8ae571fd3da2244b71df547824b\nhttps://git.kernel.org/stable/c/21f4d45eba0b2dcae5dbc9e5e0ad08735c993f16\n",
   "aliases": "GHSA-hr9g-hq4q-3hfj\nCVE-2025-40173\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "024cb14b-fb15-33de-83dc-544e7486ed18",

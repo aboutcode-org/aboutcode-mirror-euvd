@@ -3,7 +3,7 @@
   "enisaUuid": "b87a2e99-6b79-33a3-966e-1bff8f050fe8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: fix integer overflow in nl80211_parse_mbssid_elems()\n\nnl80211_parse_mbssid_elems() uses a u8 variable num_elems to count the\nnumber of MBSSID elements in the nested netlink attribute attrs, which can\nlead to an integer overflow if a user of the nl80211 interface specifies\n256 or more elements in the corresponding attribute in userspace. The\ninteger overflow can lead to a heap buffer overflow as num_elems determines\nthe size of the trailing array in elems, and this array is thereafter\nwritten to for each element in attrs.\n\nNote that this vulnerability only affects devices with the\nwiphy->mbssid_max_interfaces member set for the wireless physical device\nstruct in the device driver, and can only be triggered by a process with\nCAP_NET_ADMIN capabilities.\n\nFix this by checking for a maximum of 255 elements in attrs.",
   "datePublished": "Oct 4, 2025, 3:17:11 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:26 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

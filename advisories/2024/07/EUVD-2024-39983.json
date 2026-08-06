@@ -3,7 +3,7 @@
   "enisaUuid": "d162ee57-f123-3394-af3f-4580a7182aad",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: fix a possible leak when destroy a ctrl during qp establishment\n\nIn nvmet_sq_destroy we capture sq->ctrl early and if it is non-NULL we\nknow that a ctrl was allocated (in the admin connect request handler)\nand we need to release pending AERs, clear ctrl->sqs and sq->ctrl\n(for nvme-loop primarily), and drop the final reference on the ctrl.\n\nHowever, a small window is possible where nvmet_sq_destroy starts (as\na result of the client giving up and disconnecting) concurrently with\nthe nvme admin connect cmd (which may be in an early stage). But *before*\nkill_and_confirm of sq->ref (i.e. the admin connect managed to get an sq\nlive reference). In this case, sq->ctrl was allocated however after it was\ncaptured in a local variable in nvmet_sq_destroy.\nThis prevented the final reference drop on the ctrl.\n\nSolve this by re-capturing the sq->ctrl after all inflight request has\ncompleted, where for sure sq->ctrl reference is final, and move forward\nbased on that.\n\nThis issue was observed in an environment with many hosts connecting\nmultiple ctrls simoutanuosly, creating a delay in allocating a ctrl\nleading up to this race window.",
   "datePublished": "Jul 30, 2024, 7:46:44 AM",
-  "dateUpdated": "Aug 4, 2026, 9:28:59 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:52 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "d54828f5-61b0-3200-9f5b-966b458286f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: dcp: fix improper sg use with CONFIG_VMAP_STACK=y\n\nWith vmalloc stack addresses enabled (CONFIG_VMAP_STACK=y) DCP trusted\nkeys can crash during en- and decryption of the blob encryption key via\nthe DCP crypto driver. This is caused by improperly using sg_init_one()\nwith vmalloc'd stack buffers (plain_key_blob).\n\nFix this by always using kmalloc() for buffers we give to the DCP crypto\ndriver.",
   "datePublished": "Feb 27, 2025, 2:12:04 AM",
-  "dateUpdated": "Aug 4, 2026, 9:42:06 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

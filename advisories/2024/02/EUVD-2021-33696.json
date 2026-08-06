@@ -3,7 +3,7 @@
   "enisaUuid": "ec3b754b-ab5a-3217-ba60-0110beedb526",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: spi-zynqmp-gqspi: fix use-after-free in zynqmp_qspi_exec_op\n\nWhen handling op->addr, it is using the buffer \"tmpbuf\" which has been\nfreed. This will trigger a use-after-free KASAN warning. Let's use\ntemporary variables to store op->addr.val and op->cmd.opcode to fix\nthis issue.",
   "datePublished": "Feb 28, 2024, 8:13:51 AM",
-  "dateUpdated": "Aug 4, 2026, 8:58:27 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

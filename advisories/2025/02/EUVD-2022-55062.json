@@ -3,14 +3,14 @@
   "enisaUuid": "f0dd3f86-3f82-3b19-98e6-51d336de224a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: imx-jpeg: fix a bug of accessing array out of bounds\n\nWhen error occurs in parsing jpeg, the slot isn't acquired yet, it may\nbe the default value MXC_MAX_SLOTS.\nIf the driver access the slot using the incorrect slot number, it will\naccess array out of bounds.\nThe result is the driver will change num_domains, which follows\nslot_data in struct mxc_jpeg_dev.\nThen the driver won't detach the pm domain at rmmod, which will lead to\nkernel panic when trying to insmod again.",
   "datePublished": "Feb 26, 2025, 1:55:24 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:24 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:10 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/02f9f97d54ffc85b50ad77f5b1f3c8f69cd17747\nhttps://git.kernel.org/stable/c/20c8b90430c5d6c4a3936eaa7c35aac670581487\nhttps://git.kernel.org/stable/c/e209e6db2e527db6a93b14c2deedf969caca78fc\nhttps://git.kernel.org/stable/c/97558d170a1236280407e8d29a7d095d2c2ed554\n",
   "aliases": "CVE-2022-49163\nGHSA-4rpj-c283-5mg3\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "08082dd6-0899-370c-81c6-7f9d1ad17061",

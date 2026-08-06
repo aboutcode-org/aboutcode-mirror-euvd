@@ -3,7 +3,7 @@
   "enisaUuid": "314b8967-8b9b-3bf0-9b42-e67e3fb99365",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndebugfs: fix wait/cancellation handling during remove\n\nBen Greear further reports deadlocks during concurrent debugfs\nremove while files are being accessed, even though the code in\nquestion now uses debugfs cancellations. Turns out that despite\nall the review on the locking, we missed completely that the\nlogic is wrong: if the refcount hits zero we can finish (and\nneed not wait for the completion), but if it doesn't we have\nto trigger all the cancellations. As written, we can _never_\nget into the loop triggering the cancellations. Fix this, and\nexplain it better while at it.",
   "datePublished": "May 17, 2024, 12:24:56 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:54 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:59 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

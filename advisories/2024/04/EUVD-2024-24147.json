@@ -3,7 +3,7 @@
   "enisaUuid": "fc6ce491-4fe9-3675-b350-660e963211ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix DEVMAP_HASH overflow check on 32-bit arches\n\nThe devmap code allocates a number hash buckets equal to the next power\nof two of the max_entries value provided when creating the map. When\nrounding up to the next power of two, the 32-bit variable storing the\nnumber of buckets can overflow, and the code checks for overflow by\nchecking if the truncated 32-bit value is equal to 0. However, on 32-bit\narches the rounding up itself can overflow mid-way through, because it\nends up doing a left-shift of 32 bits on an unsigned long value. If the\nsize of an unsigned long is four bytes, this is undefined behaviour, so\nthere is no guarantee that we'll end up with a nice and tidy 0-value at\nthe end.\n\nSyzbot managed to turn this into a crash on arm32 by creating a\nDEVMAP_HASH with max_entries > 0x80000000 and then trying to update it.\nFix this by moving the overflow check to before the rounding up\noperation.",
   "datePublished": "Apr 17, 2024, 10:27:40 AM",
-  "dateUpdated": "Aug 4, 2026, 9:21:04 AM",
+  "dateUpdated": "Aug 5, 2026, 11:28:10 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

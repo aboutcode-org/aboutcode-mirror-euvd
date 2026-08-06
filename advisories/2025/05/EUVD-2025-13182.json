@@ -3,14 +3,14 @@
   "enisaUuid": "8da9de5d-daba-3ba7-ad4a-1b19ee09ccf1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: don't replace page in rq_pages if it's a continuation of last page\n\nThe splice read calls nfsd_splice_actor to put the pages containing file\ndata into the svc_rqst->rq_pages array. It's possible however to get a\nsplice result that only has a partial page at the end, if (e.g.) the\nfilesystem hands back a short read that doesn't cover the whole page.\n\nnfsd_splice_actor will plop the partial page into its rq_pages array and\nreturn. Then later, when nfsd_splice_actor is called again, the\nremainder of the page may end up being filled out. At this point,\nnfsd_splice_actor will put the page into the array _again_ corrupting\nthe reply. If this is done enough times, rq_next_page will overrun the\narray and corrupt the trailing fields -- the rq_respages and\nrq_next_page pointers themselves.\n\nIf we've already added the page to the array in the last pass, don't add\nit to the array a second time when dealing with a splice continuation.\nThis was originally handled properly in nfsd_splice_actor, but commit\n91e23b1c3982 (\"NFSD: Clean up nfsd_splice_actor()\") removed the check\nfor it.",
   "datePublished": "May 2, 2025, 3:55:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:18 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:39 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8235cd619db6e67f1d7d26c55f1f3e4e575c947d\nhttps://git.kernel.org/stable/c/12eca509234acb6b666802edf77408bb70d7bfca\nhttps://git.kernel.org/stable/c/51ddb84baff6f09ad62b5999ece3ec172e4e3568\nhttps://git.kernel.org/stable/c/0101067f376eb7b9afd00279270f25d5111a091d\nhttps://git.kernel.org/stable/c/27c934dd8832dd40fd34776f916dc201e18b319b\n",
   "aliases": "CVE-2023-53083\nGHSA-7wgq-p9vg-wmw2\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "11d40504-ed1c-379f-a895-0fbefcf8d4f6",

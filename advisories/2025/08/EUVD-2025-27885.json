@@ -3,14 +3,14 @@
   "enisaUuid": "2445f2e4-d085-38a6-9871-781d4be94fca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: add NULL check in eswitch lag check\n\nThe function ice_lag_is_switchdev_running() is being called from outside of\nthe LAG event handler code.  This results in the lag->upper_netdev being\nNULL sometimes.  To avoid a NULL-pointer dereference, there needs to be a\ncheck before it is dereferenced.",
   "datePublished": "Aug 16, 2025, 11:12:20 AM",
-  "dateUpdated": "Jul 30, 2026, 5:54:58 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:39 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/27591d926191e42b2332e4bad3bcd3a49def393b\nhttps://git.kernel.org/stable/c/5a5d64f0eec82076b2c09fee2195d640cfbe3379\nhttps://git.kernel.org/stable/c/245917d3c5ed7c6ae720302b64eac5c6f0c85177\nhttps://git.kernel.org/stable/c/3ce58b01ada408b372f15b7c992ed0519840e3cf\n",
   "aliases": "CVE-2025-38526\nGHSA-f2wc-6g38-9vmc\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "091c091b-e1b9-3b86-9698-a4ab188edd44",

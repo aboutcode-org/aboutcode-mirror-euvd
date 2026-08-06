@@ -3,23 +3,15 @@
   "enisaUuid": "0886750a-194e-3362-b791-851992c30245",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: use list_del_rcu for netlink hooks\n\nnft_netdev_unregister_hooks and __nft_unregister_flowtable_net_hooks need\nto use list_del_rcu(), this list can be walked by concurrent dumpers.\n\nAdd a new helper and use it consistently.",
   "datePublished": "Jun 9, 2026, 12:11:16 PM",
-  "dateUpdated": "Jun 9, 2026, 12:11:16 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:31:19 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0bd93ce4f3c35e845532184331d7917d7e562c80\nhttps://git.kernel.org/stable/c/0f33e8ad6ac563ae2233dd7f75884e0ee010521d\nhttps://git.kernel.org/stable/c/f3224ee463f8f6f6ced7dcdf6081add4f8128527\n",
   "aliases": "GHSA-42p7-8g8p-r7fh\nCVE-2026-46324\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
-    {
-      "id": "11e9f0b4-b076-3c4c-b312-bbb744ab2fdd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc2"
-    },
     {
       "id": "26bfbefd-2bf4-375a-9699-daf0b0e4a43e",
       "product": {
@@ -179,6 +171,16 @@
         }
       },
       "product_version": "5.15.45 <5.16"
+    },
+    {
+      "id": "cfb85449-7f78-3c95-bc14-a396f1319018",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.1"
     },
     {
       "id": "e0c15a63-e4d9-3d7e-883c-f3cea81419a5",

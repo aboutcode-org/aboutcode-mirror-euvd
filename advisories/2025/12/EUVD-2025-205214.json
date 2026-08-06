@@ -3,14 +3,14 @@
   "enisaUuid": "b056bad5-6924-3da5-9664-7830ba1b62b1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix UAF race between device unplug and FW event processing\n\nThe function panthor_fw_unplug() will free the FW memory sections.\nThe problem is that there could still be pending FW events which are yet\nnot handled at this point. process_fw_events_work() can in this case try\nto access said freed memory.\n\nSimply call disable_work_sync() to both drain and prevent future\ninvocation of process_fw_events_work().",
   "datePublished": "Dec 24, 2025, 12:09:43 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:28 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:17 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/31db188355a49337e3e8ec98b99377e482eab22c\nhttps://git.kernel.org/stable/c/5e3ff56d4cb591daea70786d07dc21d06dc34108\nhttps://git.kernel.org/stable/c/6c1da9ae2c123a9ffda5375e64cc81f9ed3cc04a\nhttps://git.kernel.org/stable/c/7051f6ba968fa69918d72cc26de4d6cf7ea05b90\n",
   "aliases": "CVE-2025-68748\nGHSA-wp6p-8vq9-pc32\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "07a6beaa-8bec-3aed-88da-b2043f777999",

@@ -3,14 +3,14 @@
   "enisaUuid": "3b8ba36e-cf22-387d-a527-897d331bb06d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: Use ktime_t rather than int when dealing with timestamps\n\nCode which interacts with timestamps needs to use the ktime_t type\nreturned by functions like ktime_get. The int type does not offer\nenough space to store these values, and attempting to use it is a\nrecipe for problems. In this particular case, overflows would occur\nwhen calculating/storing timestamps leading to incorrect values being\nreported to userspace. In some cases these bad timestamps cause input\nhandling in userspace to appear hung.",
   "datePublished": "Dec 9, 2025, 12:00:53 AM",
-  "dateUpdated": "Aug 4, 2026, 9:16:38 AM",
+  "dateUpdated": "Aug 5, 2026, 9:16:04 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/99036f1aed7e82773904f5d91a9897bb3e507fd9\nhttps://git.kernel.org/stable/c/9598a647ecc8f300b0540abf9d3b3439859d163b\nhttps://git.kernel.org/stable/c/67ce7724637c6adb66f788677cb50b82615de0ac\nhttps://git.kernel.org/stable/c/d89750b19681581796dfbe3689bbb5d439b99b24\nhttps://git.kernel.org/stable/c/bdeaa883b765709f231f47f9d6cc76c837a15396\nhttps://git.kernel.org/stable/c/d0198363f9108e4adb2511e607ba91e44779e8b1\nhttps://git.kernel.org/stable/c/9a6c0e28e215535b2938c61ded54603b4e5814c5\n",
   "aliases": "CVE-2023-53797\nGHSA-w9q3-wxhm-4gcg\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "09cae3df-eb75-304c-b985-3d227a900ab0",

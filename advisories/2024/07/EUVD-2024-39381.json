@@ -3,7 +3,7 @@
   "enisaUuid": "5236d29e-6698-3401-b2dc-7a087fa232c2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: vmalloc: check if a hash-index is in cpu_possible_mask\n\nThe problem is that there are systems where cpu_possible_mask has gaps\nbetween set CPUs, for example SPARC.  In this scenario addr_to_vb_xa()\nhash function can return an index which accesses to not-possible and not\nsetup CPU area using per_cpu() macro.  This results in an oops on SPARC.\n\nA per-cpu vmap_block_queue is also used as hash table, incorrectly\nassuming the cpu_possible_mask has no gaps.  Fix it by adjusting an index\nto a next possible CPU.",
   "datePublished": "Jul 29, 2024, 2:31:47 PM",
-  "dateUpdated": "Aug 4, 2026, 9:27:57 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

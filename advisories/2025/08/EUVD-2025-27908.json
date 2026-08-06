@@ -3,7 +3,7 @@
   "enisaUuid": "1edf7815-8514-3b55-8843-e3fba5bc8ceb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: fbnic: unlink NAPIs from queues on error to open\n\nCI hit a UaF in fbnic in the AF_XDP portion of the queues.py test.\nThe UaF is in the __sk_mark_napi_id_once() call in xsk_bind(),\nNAPI has been freed. Looks like the device failed to open earlier,\nand we lack clearing the NAPI pointer from the queue.",
   "datePublished": "Aug 19, 2025, 5:02:50 PM",
-  "dateUpdated": "Jul 30, 2026, 5:55:17 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:58 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "3b795a19-2c41-31ec-89fd-c28427aa0d68",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal: core: Reference count the zone in thermal_zone_get_by_id()\n\nThere are places in the thermal netlink code where nothing prevents\nthe thermal zone object from going away while being accessed after it\nhas been returned by thermal_zone_get_by_id().\n\nTo address this, make thermal_zone_get_by_id() get a reference on the\nthermal zone device object to be returned with the help of get_device(),\nunder thermal_list_lock, and adjust all of its callers to this change\nwith the help of the cleanup.h infrastructure.",
   "datePublished": "Oct 21, 2024, 7:39:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:19 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

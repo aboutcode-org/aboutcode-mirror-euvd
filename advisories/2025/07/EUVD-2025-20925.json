@@ -3,14 +3,14 @@
   "enisaUuid": "b292777a-1673-35b2-a566-ff0a32139e80",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: Log an error when close_all_cached_dirs fails\n\nUnder low-memory conditions, close_all_cached_dirs() can't move the\ndentries to a separate list to dput() them once the locks are dropped.\nThis will result in a \"Dentry still in use\" error, so add an error\nmessage that makes it clear this is what happened:\n\n[  495.281119] CIFS: VFS: \\\\otters.example.com\\share Out of memory while dropping dentries\n[  495.281595] ------------[ cut here ]------------\n[  495.281887] BUG: Dentry ffff888115531138{i=78,n=/}  still in use (2) [unmount of cifs cifs]\n[  495.282391] WARNING: CPU: 1 PID: 2329 at fs/dcache.c:1536 umount_check+0xc8/0xf0\n\nAlso, bail out of looping through all tcons as soon as a single\nallocation fails, since we're already in trouble, and kmalloc() attempts\nfor subseqeuent tcons are likely to fail just like the first one did.",
   "datePublished": "Jul 10, 2025, 8:14:57 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:55 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b8ced2b9a23a1a2c1e0ed8d0d02512e51bdf38da\nhttps://git.kernel.org/stable/c/43f26094d6702e494e800532c3f1606e7a68eb30\nhttps://git.kernel.org/stable/c/4479db143390bdcadc1561292aab579cdfa9f6c6\nhttps://git.kernel.org/stable/c/a2182743a8b4969481f64aec4908ff162e8a206c\n",
   "aliases": "CVE-2025-38321\nGHSA-v7vw-mgw4-jqvj\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "145c8380-be80-3c66-82b3-df4d4a016594",

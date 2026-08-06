@@ -3,14 +3,14 @@
   "enisaUuid": "276c260e-4c2c-35a2-a831-5476327489e2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/a3xx: fix error handling in a3xx_gpu_init()\n\nThese error paths returned 1 on failure, instead of a negative error\ncode.  This would lead to an Oops in the caller.  A second problem is\nthat the check for \"if (ret != -ENODATA)\" did not work because \"ret\" was\nset to 1.",
   "datePublished": "May 22, 2024, 6:19:39 AM",
-  "dateUpdated": "Aug 4, 2026, 9:00:44 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d59e44e7821a8f2bb6f2e846b9167397a5f01608\nhttps://git.kernel.org/stable/c/3eda901995371d390ef82d0b6462f4ea8efbcfdf\n",
   "aliases": "GHSA-94jm-5577-cx4g\nCVE-2021-47447\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0f6106c5-9e1f-3d2d-a004-27f6c526ad30",

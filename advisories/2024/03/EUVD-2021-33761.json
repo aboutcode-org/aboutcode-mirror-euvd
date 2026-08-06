@@ -3,7 +3,7 @@
   "enisaUuid": "475c5289-9bda-3d23-b58d-27e7a75b5c04",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: abort in rename_exchange if we fail to insert the second ref\n\nError injection stress uncovered a problem where we'd leave a dangling\ninode ref if we failed during a rename_exchange.  This happens because\nwe insert the inode ref for one side of the rename, and then for the\nother side.  If this second inode ref insert fails we'll leave the first\none dangling and leave a corrupt file system behind.  Fix this by\naborting if we did the insert for the first inode ref.",
   "datePublished": "Mar 15, 2024, 8:14:21 PM",
-  "dateUpdated": "Aug 4, 2026, 8:58:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:06 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",

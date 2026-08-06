@@ -3,7 +3,7 @@
   "enisaUuid": "e510fb10-050c-3779-ad49-2125853f03a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: Sparse-Memory/vmemmap out-of-bounds fix\n\nOffset vmemmap so that the first page of vmemmap will be mapped\nto the first page of physical memory in order to ensure that\nvmemmap\u2019s bounds will be respected during\npfn_to_page()/page_to_pfn() operations.\nThe conversion macros will produce correct SV39/48/57 addresses\nfor every possible/valid DRAM_BASE inside the physical memory limits.\n\nv2:Address Alex's comments",
   "datePublished": "Apr 4, 2024, 8:20:25 AM",
-  "dateUpdated": "Aug 4, 2026, 9:20:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:18 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

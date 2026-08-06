@@ -3,14 +3,14 @@
   "enisaUuid": "579da147-2079-3252-b23b-39ee010bc3a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix same-register dst/src OOB read and pointer leak in sock_ops\n\nWhen a BPF sock_ops program accesses ctx fields with dst_reg == src_reg,\nthe SOCK_OPS_GET_SK() and SOCK_OPS_GET_FIELD() macros fail to zero the\ndestination register in the !fullsock / !locked_tcp_sock path.\n\nBoth macros borrow a temporary register to check is_fullsock /\nis_locked_tcp_sock when dst_reg == src_reg, because dst_reg holds the\nctx pointer. When the check is false (e.g., TCP_NEW_SYN_RECV state with\na request_sock), dst_reg should be zeroed but is not, leaving the stale\nctx pointer:\n\n - SOCK_OPS_GET_SK: dst_reg retains the ctx pointer, passes NULL checks\n   as PTR_TO_SOCKET_OR_NULL, and can be used as a bogus socket pointer,\n   leading to stack-out-of-bounds access in helpers like\n   bpf_skc_to_tcp6_sock().\n\n - SOCK_OPS_GET_FIELD: dst_reg retains the ctx pointer which the\n   verifier believes is a SCALAR_VALUE, leaking a kernel pointer.\n\nFix both macros by:\n - Changing JMP_A(1) to JMP_A(2) in the fullsock path to skip the\n   added instruction.\n - Adding BPF_MOV64_IMM(si->dst_reg, 0) after the temp register\n   restore in the !fullsock path, placed after the restore because\n   dst_reg == src_reg means we need src_reg intact to read ctx->temp.",
   "datePublished": "Jun 24, 2026, 4:30:18 PM",
-  "dateUpdated": "Aug 3, 2026, 9:32:33 AM",
+  "dateUpdated": "Aug 5, 2026, 12:33:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2a2c98141e0a75f2d4a7d78b0316c88b3da784ac\nhttps://git.kernel.org/stable/c/22400725de070b787cd6d806c5795370ab46d269\nhttps://git.kernel.org/stable/c/18e3ffde1822f0b48b1753bf34aa97ce839df1d8\nhttps://git.kernel.org/stable/c/10f86a2a5c91fc4c4d001960f1c21abe52545ef6\n",
   "aliases": "CVE-2026-53078\nGHSA-pwr6-cvf5-35f3\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "034327ec-3cf3-3252-a434-737c9e6db1bb",

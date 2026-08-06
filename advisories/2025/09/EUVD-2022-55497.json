@@ -3,7 +3,7 @@
   "enisaUuid": "7d90838e-2cd3-38dc-ac4b-91eaf45be082",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix reading strings from synthetic events\n\nThe follow commands caused a crash:\n\n  # cd /sys/kernel/tracing\n  # echo 's:open char file[]' > dynamic_events\n  # echo 'hist:keys=common_pid:file=filename:onchange($file).trace(open,$file)' > events/syscalls/sys_enter_openat/trigger'\n  # echo 1 > events/synthetic/open/enable\n\nBOOM!\n\nThe problem is that the synthetic event field \"char file[]\" will read\nthe value given to it as a string without any memory checks to make sure\nthe address is valid. The above example will pass in the user space\naddress and the sythetic event code will happily call strlen() on it\nand then strscpy() where either one will cause an oops when accessing\nuser space addresses.\n\nUse the helper functions from trace_kprobe and trace_eprobe that can\nread strings safely (and actually succeed when the address is from user\nspace and the memory is mapped in).\n\nNow the above can show:\n\n     packagekitd-1721    [000] ...2.   104.597170: open: file=/usr/lib/rpm/fileattrs/cmake.attr\n    in:imjournal-978     [006] ...2.   104.599642: open: file=/var/lib/rsyslog/imjournal.state.tmp\n     packagekitd-1721    [000] ...2.   104.626308: open: file=/usr/lib/rpm/fileattrs/debuginfo.attr",
   "datePublished": "Sep 15, 2025, 2:02:37 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:15 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:58 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

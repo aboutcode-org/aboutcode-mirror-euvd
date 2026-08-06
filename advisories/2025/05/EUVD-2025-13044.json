@@ -3,7 +3,7 @@
   "enisaUuid": "d2662909-09c5-3ad4-adf3-cb1bb4d8c0ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix dangling pointer in krb_authenticate\n\nkrb_authenticate frees sess->user and does not set the pointer\nto NULL. It calls ksmbd_krb5_authenticate to reinitialise\nsess->user but that function may return without doing so. If\nthat happens then smb2_sess_setup, which calls krb_authenticate,\nwill be accessing free'd memory when it later uses sess->user.",
   "datePublished": "May 1, 2025, 1:07:16 PM",
-  "dateUpdated": "Aug 4, 2026, 9:43:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:29 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "786ebdf3-0663-3a76-ac51-3a45e2ee1bf9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sg: Avoid sg device teardown race\n\nsg_remove_sfp_usercontext() must not use sg_device_destroy() after calling\nscsi_device_put().\n\nsg_device_destroy() is accessing the parent scsi_device request_queue which\nwill already be set to NULL when the preceding call to scsi_device_put()\nremoved the last reference to the parent scsi_device.\n\nThe resulting NULL pointer exception will then crash the kernel.",
   "datePublished": "May 20, 2024, 9:41:47 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:11 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

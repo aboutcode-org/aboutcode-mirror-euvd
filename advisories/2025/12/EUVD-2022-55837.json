@@ -3,14 +3,14 @@
   "enisaUuid": "d44862c4-e5b4-338f-962b-62a69fa95747",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Finish converting the NFSv2 GETACL result encoder\n\nThe xdr_stream conversion inadvertently left some code that set the\npage_len of the send buffer. The XDR stream encoders should handle\nthis automatically now.\n\nThis oversight adds garbage past the end of the Reply message.\nClients typically ignore the garbage, but NFSD does not need to send\nit, as it leaks stale memory contents onto the wire.",
   "datePublished": "Dec 30, 2025, 12:15:34 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:08 AM",
+  "dateUpdated": "Aug 5, 2026, 8:59:50 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
   "references": "https://git.kernel.org/stable/c/a20b0abab966a189a79aba6ebf41f59024a3224d\nhttps://git.kernel.org/stable/c/5030d4d2bf8b6f6f3d16401ab92a88bc5aa2377a\nhttps://git.kernel.org/stable/c/d5b867fd2d7f79630b1a2906a7bb4f4b75bf297a\nhttps://git.kernel.org/stable/c/2b825efb0577a32a872e872a869e0947cf9dd6d3\nhttps://git.kernel.org/stable/c/ea5021e911d3479346a75ac9b7d9dcd751b0fb99\n",
   "aliases": "GHSA-fvjx-6c9m-3p89\nCVE-2022-50861\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.51,
   "enisaIdProduct": [
     {
       "id": "00abd880-d94a-3ab2-aa10-bb252006b513",

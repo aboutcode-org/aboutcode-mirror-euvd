@@ -3,7 +3,7 @@
   "enisaUuid": "e6ee14f8-0ae0-323d-be9d-94d03e86d4f2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/stm: Avoid use-after-free issues with crtc and plane\n\nltdc_load() calls functions drm_crtc_init_with_planes(),\ndrm_universal_plane_init() and drm_encoder_init(). These functions\nshould not be called with parameters allocated with devm_kzalloc()\nto avoid use-after-free issues [1].\n\nUse allocations managed by the DRM framework.\n\nFound by Linux Verification Center (linuxtesting.org).\n\n[1]\nhttps://lore.kernel.org/lkml/u366i76e3qhh3ra5oxrtngjtm2u5lterkekcz6y2jkndhuxzli@diujon4h7qwb/",
   "datePublished": "Oct 21, 2024, 6:02:34 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:13 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

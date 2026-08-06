@@ -3,14 +3,14 @@
   "enisaUuid": "c63e2b00-933d-3101-9ccb-bc3ce25010cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Return correct error code from smb2_get_enc_key\n\nAvoid a warning if the error percolates back up:\n\n[440700.376476] CIFS VFS: \\\\otters.example.com crypt_message: Could not get encryption key\n[440700.386947] ------------[ cut here ]------------\n[440700.386948] err = 1\n[440700.386977] WARNING: CPU: 11 PID: 2733 at /build/linux-hwe-5.4-p6lk6L/linux-hwe-5.4-5.4.0/lib/errseq.c:74 errseq_set+0x5c/0x70\n...\n[440700.397304] CPU: 11 PID: 2733 Comm: tar Tainted: G           OE     5.4.0-70-generic #78~18.04.1-Ubuntu\n...\n[440700.397334] Call Trace:\n[440700.397346]  __filemap_set_wb_err+0x1a/0x70\n[440700.397419]  cifs_writepages+0x9c7/0xb30 [cifs]\n[440700.397426]  do_writepages+0x4b/0xe0\n[440700.397444]  __filemap_fdatawrite_range+0xcb/0x100\n[440700.397455]  filemap_write_and_wait+0x42/0xa0\n[440700.397486]  cifs_setattr+0x68b/0xf30 [cifs]\n[440700.397493]  notify_change+0x358/0x4a0\n[440700.397500]  utimes_common+0xe9/0x1c0\n[440700.397510]  do_utimes+0xc5/0x150\n[440700.397520]  __x64_sys_utimensat+0x88/0xd0",
   "datePublished": "Feb 27, 2024, 6:46:59 PM",
-  "dateUpdated": "Aug 4, 2026, 8:57:59 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:14 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e94851629c49c65b4fbb29a5725ddfd7988f8f20\nhttps://git.kernel.org/stable/c/e486f8397f3f14a7cadc166138141fdb14379a54\nhttps://git.kernel.org/stable/c/93f3339b22ba17e66f0808737467b70ba087eaec\nhttps://git.kernel.org/stable/c/aaa0faa5c28a91c362352d6b35dc3ed10df56fb0\nhttps://git.kernel.org/stable/c/f59a9242942fef0de7b926e438ba4eae65d4b4dd\nhttps://git.kernel.org/stable/c/b399c1a3ea0b9d10047ff266d65533df7f15532f\nhttps://git.kernel.org/stable/c/83728cbf366e334301091d5b808add468ab46b27\n",
   "aliases": "GHSA-cxc6-784q-9f49\nCVE-2021-46960\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.63,
   "enisaIdProduct": [
     {
       "id": "1839648f-e133-344e-b757-10fe4ca1b696",

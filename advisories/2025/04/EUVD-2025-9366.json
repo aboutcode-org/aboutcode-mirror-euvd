@@ -3,14 +3,14 @@
   "enisaUuid": "d6cfd74a-2810-309e-8182-686c2b4133bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetmem: prevent TX of unreadable skbs\n\nCurrently on stable trees we have support for netmem/devmem RX but not\nTX. It is not safe to forward/redirect an RX unreadable netmem packet\ninto the device's TX path, as the device may call dma-mapping APIs on\ndma addrs that should not be passed to it.\n\nFix this by preventing the xmit of unreadable skbs.\n\nTested by configuring tc redirect:\n\nsudo tc qdisc add dev eth1 ingress\nsudo tc filter add dev eth1 ingress protocol ip prio 1 flower ip_proto \\\n\ttcp src_ip 192.168.1.12 action mirred egress redirect dev eth1\n\nBefore, I see unreadable skbs in the driver's TX path passed to dma\nmapping APIs.\n\nAfter, I don't see unreadable skbs in the driver's TX path passed to dma\nmapping APIs.",
   "datePublished": "Apr 1, 2025, 3:46:55 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:55 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:34 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/454825019d2f0c59e5174ece9e713f45ad80beff\nhttps://git.kernel.org/stable/c/1c17c8ced25c5fbe424c7ad7ea11d33014a986b1\nhttps://git.kernel.org/stable/c/f3600c867c99a2cc8038680ecf211089c50e7971\n",
   "aliases": "CVE-2025-21954\nGHSA-5mxp-4f79-c8g9\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.45,
   "enisaIdProduct": [
     {
       "id": "111fc004-6250-350d-94f4-9a49b10d6dd1",

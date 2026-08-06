@@ -3,14 +3,14 @@
   "enisaUuid": "704f0a63-9c1f-3bd2-975e-510ec68640d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: parse_dfs_referrals: prevent oob on malformed input\n\nMalicious SMB server can send invalid reply to FSCTL_DFS_GET_REFERRALS\n\n- reply smaller than sizeof(struct get_dfs_referral_rsp)\n- reply with number of referrals smaller than NumberOfReferrals in the\nheader\n\nProcessing of such replies will cause oob.\n\nReturn -EINVAL error on such replies to prevent oob-s.",
   "datePublished": "Oct 30, 2025, 9:48:05 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:40 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:48 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/cfacc7441f760e4a73cc71b6ff1635261d534657\nhttps://git.kernel.org/stable/c/15c73964da9df994302f579ed14ee5fdbce7a332\nhttps://git.kernel.org/stable/c/8bc4a8d39bac23d8b044fd3e2dbfd965f1d9b058\nhttps://git.kernel.org/stable/c/bb0f2e66e1ac043a5b238f5bcab4f26f3c317039\nhttps://git.kernel.org/stable/c/6447b0e355562a1ff748c4a2ffb89aae7e84d2c9\n",
   "aliases": "GHSA-58x9-22gw-84q7\nCVE-2025-40099\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "15f4f188-d035-3a47-8d2a-80c744c97f73",

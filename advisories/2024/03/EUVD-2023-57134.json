@@ -3,7 +3,7 @@
   "enisaUuid": "a8c50492-13b2-3d95-b106-8956412352df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nravb: Fix use-after-free issue in ravb_tx_timeout_work()\n\nThe ravb_stop() should call cancel_work_sync(). Otherwise,\nravb_tx_timeout_work() is possible to use the freed priv after\nravb_remove() was called like below:\n\nCPU0\t\t\tCPU1\n\t\t\travb_tx_timeout()\nravb_remove()\nunregister_netdev()\nfree_netdev(ndev)\n// free priv\n\t\t\travb_tx_timeout_work()\n\t\t\t// use priv\n\nunregister_netdev() will call .ndo_stop() so that ravb_stop() is\ncalled. And, after phy_stop() is called, netif_carrier_off()\nis also called. So that .ndo_tx_timeout() will not be called\nafter phy_stop().",
   "datePublished": "Mar 2, 2024, 9:52:22 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:48 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:18 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

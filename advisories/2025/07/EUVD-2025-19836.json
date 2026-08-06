@@ -3,7 +3,7 @@
   "enisaUuid": "93404c78-fdf6-376a-b063-736a4790b612",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: ets: fix a race in ets_qdisc_change()\n\nGerrard Tai reported a race condition in ETS, whenever SFQ perturb timer\nfires at the wrong time.\n\nThe race is as follows:\n\nCPU 0                                 CPU 1\n[1]: lock root\n[2]: qdisc_tree_flush_backlog()\n[3]: unlock root\n |\n |                                    [5]: lock root\n |                                    [6]: rehash\n |                                    [7]: qdisc_tree_reduce_backlog()\n |\n[4]: qdisc_put()\n\nThis can be abused to underflow a parent's qlen.\n\nCalling qdisc_purge_queue() instead of qdisc_tree_flush_backlog()\nshould fix the race, because all packets will be purged from the qdisc\nbefore releasing the lock.",
   "datePublished": "Jul 3, 2025, 8:35:17 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:35 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "c8e2eb35-1c48-380b-b7a8-1977a2faa3b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix possible double free in smb2_set_ea()\n\nClang static checker(scan-build) warning\uff1a\nfs/smb/client/smb2ops.c:1304:2: Attempt to free released memory.\n 1304 |         kfree(ea);\n      |         ^~~~~~~~~\n\nThere is a double free in such case:\n'ea is initialized to NULL' -> 'first successful memory allocation for\nea' -> 'something failed, goto sea_exit' -> 'first memory release for ea'\n-> 'goto replay_again' -> 'second goto sea_exit before allocate memory\nfor ea' -> 'second memory release for ea resulted in double free'.\n\nRe-initialie 'ea' to NULL near to the replay_again label, it can fix this\ndouble free problem.",
   "datePublished": "Nov 7, 2024, 9:31:28 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:21 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:06 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

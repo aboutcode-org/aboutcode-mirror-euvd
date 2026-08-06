@@ -3,7 +3,7 @@
   "enisaUuid": "ba65fb0f-90ed-3c34-bf56-e6170875c415",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau: fix a use-after-free in r535_gsp_rpc_push()\n\nThe RPC container is released after being passed to r535_gsp_rpc_send().\n\nWhen sending the initial fragment of a large RPC and passing the\ncaller's RPC container, the container will be freed prematurely. Subsequent\nattempts to send remaining fragments will therefore result in a\nuse-after-free.\n\nAllocate a temporary RPC container for holding the initial fragment of a\nlarge RPC when sending. Free the caller's container when all fragments\nare successfully sent.\n\n[ Rebase onto Blackwell changes. - Danilo ]",
   "datePublished": "Jul 4, 2025, 1:37:13 PM",
-  "dateUpdated": "Jul 30, 2026, 5:52:03 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

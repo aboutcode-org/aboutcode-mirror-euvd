@@ -3,14 +3,14 @@
   "enisaUuid": "22fcc89d-a36b-3c61-9ab2-e69f86eab0bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: don't call rq_qos_ops->done_bio if the bio isn't tracked\n\nrq_qos framework is only applied on request based driver, so:\n\n1) rq_qos_done_bio() needn't to be called for bio based driver\n\n2) rq_qos_done_bio() needn't to be called for bio which isn't tracked,\nsuch as bios ended from error handling code.\n\nEspecially in bio_endio():\n\n1) request queue is referred via bio->bi_bdev->bd_disk->queue, which\nmay be gone since request queue refcount may not be held in above two\ncases\n\n2) q->rq_qos may be freed in blk_cleanup_queue() when calling into\n__rq_qos_done_bio()\n\nFix the potential kernel panic by not calling rq_qos_ops->done_bio if\nthe bio isn't tracked. This way is safe because both ioc_rqos_done_bio()\nand blkcg_iolatency_done_bio() are nop if the bio isn't tracked.",
   "datePublished": "May 21, 2024, 3:04:03 PM",
-  "dateUpdated": "Aug 4, 2026, 9:00:34 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/db60edbfff332a6a5477c367af8125f034570989\nhttps://git.kernel.org/stable/c/004b8f8a691205a93d9e80d98b786b2b97424d6e\nhttps://git.kernel.org/stable/c/a647a524a46736786c95cdb553a070322ca096e3\n",
   "aliases": "CVE-2021-47412\nGHSA-6g88-wmq7-m8g5\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "0dbbe505-0f4c-36fd-909e-bfc205aa3f59",

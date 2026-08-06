@@ -3,7 +3,7 @@
   "enisaUuid": "7ea9ee1d-44d0-3e39-8f12-d5412143135e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncachefiles: add missing lock protection when polling\n\nAdd missing lock protection in poll routine when iterating xarray,\notherwise:\n\nEven with RCU read lock held, only the slot of the radix tree is\nensured to be pinned there, while the data structure (e.g. struct\ncachefiles_req) stored in the slot has no such guarantee.  The poll\nroutine will iterate the radix tree and dereference cachefiles_req\naccordingly.  Thus RCU read lock is not adequate in this case and\nspinlock is needed here.",
   "datePublished": "Aug 7, 2024, 3:14:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:29:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

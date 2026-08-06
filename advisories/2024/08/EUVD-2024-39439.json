@@ -3,7 +3,7 @@
   "enisaUuid": "0e850828-b396-3ce3-ad77-17f449bb0289",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/mm: Add NULL pointer check to crst_table_free() base_crst_free()\n\ncrst_table_free() used to work with NULL pointers before the conversion\nto ptdescs.  Since crst_table_free() can be called with a NULL pointer\n(error handling in crst_table_upgrade() add an explicit check.\n\nAlso add the same check to base_crst_free() for consistency reasons.\n\nIn real life this should not happen, since order two GFP_KERNEL\nallocations will not fail, unless FAIL_PAGE_ALLOC is enabled and used.",
   "datePublished": "Aug 7, 2024, 3:14:25 PM",
-  "dateUpdated": "Aug 4, 2026, 9:29:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

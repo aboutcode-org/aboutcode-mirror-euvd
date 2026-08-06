@@ -3,7 +3,7 @@
   "enisaUuid": "ccfa4726-cf14-3b2e-9a47-a5ad6ed0c17d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlib/generic-radix-tree.c: Fix rare race in __genradix_ptr_alloc()\n\nIf we need to increase the tree depth, allocate a new node, and then\nrace with another thread that increased the tree depth before us, we'll\nstill have a preallocated node that might be used later.\n\nIf we then use that node for a new non-root node, it'll still have a\npointer to the old root instead of being zeroed - fix this by zeroing it\nin the cmpxchg failure path.",
   "datePublished": "Oct 9, 2024, 2:14:00 PM",
-  "dateUpdated": "Aug 4, 2026, 9:32:34 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

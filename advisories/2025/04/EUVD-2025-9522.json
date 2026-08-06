@@ -3,14 +3,14 @@
   "enisaUuid": "cf97614d-f948-319d-beb1-b0de114bc301",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix incorrect validation for num_aces field of smb_acl\n\nparse_dcal() validate num_aces to allocate posix_ace_state_array.\n\nif (num_aces > ULONG_MAX / sizeof(struct smb_ace *))\n\nIt is an incorrect validation that we can create an array of size ULONG_MAX.\nsmb_acl has ->size field to calculate actual number of aces in request buffer\nsize. Use this to check invalid num_aces.",
   "datePublished": "Apr 2, 2025, 2:00:37 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:15 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:53 AM",
   "baseScore": 7.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/c3a3484d9d31b27a3db0fab91fcf191132d65236\nhttps://git.kernel.org/stable/c/9c4e202abff45f8eac17989e549fc7a75095f675\nhttps://git.kernel.org/stable/c/d0f87370622a853b57e851f7d5a5452b72300f19\nhttps://git.kernel.org/stable/c/a4cb17797a5d241f1e509cb5b46ed95a80c2f5fd\nhttps://git.kernel.org/stable/c/f6a6721802ac2f12f4c1bbe839a4c229b61866f2\nhttps://git.kernel.org/stable/c/1b8b67f3c5e5169535e26efedd3e422172e2db64\n",
   "aliases": "CVE-2025-21994\nGHSA-pcv3-r2v8-4964\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "04deb239-3a36-3993-a846-7853d7e0421d",

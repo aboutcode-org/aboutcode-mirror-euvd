@@ -3,7 +3,7 @@
   "enisaUuid": "f0d2d61d-8e4b-37d6-aa75-f9692e0304cd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nAvoid hw_desc array overrun in dw-axi-dmac\n\nI have a use case where nr_buffers = 3 and in which each descriptor is composed by 3\nsegments, resulting in the DMA channel descs_allocated to be 9. Since axi_desc_put()\nhandles the hw_desc considering the descs_allocated, this scenario would result in a\nkernel panic (hw_desc array will be overrun).\n\nTo fix this, the proposal is to add a new member to the axi_dma_desc structure,\nwhere we keep the number of allocated hw_descs (axi_desc_alloc()) and use it in\naxi_desc_put() to handle the hw_desc array correctly.\n\nAdditionally I propose to remove the axi_chan_start_first_queued() call after completing\nthe transfer, since it was identified that unbalance can occur (started descriptors can\nbe interrupted and transfer ignored due to DMA channel not being enabled).",
   "datePublished": "Jul 12, 2024, 12:32:08 PM",
-  "dateUpdated": "Aug 4, 2026, 9:27:24 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:18 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

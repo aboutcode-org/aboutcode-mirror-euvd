@@ -3,14 +3,14 @@
   "enisaUuid": "ee9ac4da-ef36-3b70-82a0-3c85008f2b17",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: Fix slab-out-of-bounds in r_page\n\nWhen PAGE_SIZE is 64K, if read_log_page is called by log_read_rst for\nthe first time, the size of *buffer would be equal to\nDefaultLogPageSize(4K).But for *buffer operations like memcpy,\nif the memory area size(n) which being assigned to buffer is larger\nthan 4K (log->page_size(64K) or bytes(64K-page_off)), it will cause\nan out of boundary error.\n Call trace:\n  [...]\n  kasan_report+0x44/0x130\n  check_memory_region+0xf8/0x1a0\n  memcpy+0xc8/0x100\n  ntfs_read_run_nb+0x20c/0x460\n  read_log_page+0xd0/0x1f4\n  log_read_rst+0x110/0x75c\n  log_replay+0x1e8/0x4aa0\n  ntfs_loadlog_and_replay+0x290/0x2d0\n  ntfs_fill_super+0x508/0xec0\n  get_tree_bdev+0x1fc/0x34c\n  [...]\n\nFix this by setting variable r_page to NULL in log_read_rst.",
   "datePublished": "Dec 30, 2025, 12:15:39 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:11 AM",
+  "dateUpdated": "Aug 5, 2026, 8:59:54 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ed686e7a26dd19ae6b46bb662f735acfa88ff7bc\nhttps://git.kernel.org/stable/c/bf86a640a34947d92062996e1a75b9cd9d83dd19\nhttps://git.kernel.org/stable/c/6d076293e5bffdf897ea5f975669206e09beed6a\nhttps://git.kernel.org/stable/c/ecfbd57cf9c5ca225184ae266ce44ae473792132\n",
   "aliases": "GHSA-qq73-f9v2-mjmw\nCVE-2022-50869\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "11c152e0-b7bd-3024-9991-2b15603b594f",

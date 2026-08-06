@@ -3,14 +3,14 @@
   "enisaUuid": "4f607b30-1639-327c-b37c-7b93af8711e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: tuner: xc5000: Fix use-after-free in xc5000_release\n\nThe original code uses cancel_delayed_work() in xc5000_release(), which\ndoes not guarantee that the delayed work item timer_sleep has fully\ncompleted if it was already running. This leads to use-after-free scenarios\nwhere xc5000_release() may free the xc5000_priv while timer_sleep is still\nactive and attempts to dereference the xc5000_priv.\n\nA typical race condition is illustrated below:\n\nCPU 0 (release thread)                 | CPU 1 (delayed work callback)\nxc5000_release()                       | xc5000_do_timer_sleep()\n  cancel_delayed_work()                |\n  hybrid_tuner_release_state(priv)     |\n    kfree(priv)                        |\n                                       |   priv = container_of() // UAF\n\nReplace cancel_delayed_work() with cancel_delayed_work_sync() to ensure\nthat the timer_sleep is properly canceled before the xc5000_priv memory\nis deallocated.\n\nA deadlock concern was considered: xc5000_release() is called in a process\ncontext and is not holding any locks that the timer_sleep work item might\nalso need. Therefore, the use of the _sync() variant is safe here.\n\nThis bug was initially identified through static analysis.\n\n[hverkuil: fix typo in Subject: tunner -> tuner]",
   "datePublished": "Oct 15, 2025, 7:58:19 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:21 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:59 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bc4ffd962ce16a154c44c68853b9d93f5b6fc4b8\nhttps://git.kernel.org/stable/c/e2f5eaafc0306a76fb1cb760aae804b065b8a341\nhttps://git.kernel.org/stable/c/3f876cd47ed8bca1e28d68435845949f51f90703\nhttps://git.kernel.org/stable/c/df0303b4839520b84d9367c2fad65b13650a4d42\nhttps://git.kernel.org/stable/c/71ed8b81a4906cb785966910f39cf7f5ad60a69e\nhttps://git.kernel.org/stable/c/effb1c19583bca7022fa641a70766de45c6d41ac\nhttps://git.kernel.org/stable/c/9a00de20ed8ba90888479749b87bc1532cded4ce\nhttps://git.kernel.org/stable/c/4266f012806fc18e46da4a04d130df59a4946f93\nhttps://git.kernel.org/stable/c/40b7a19f321e65789612ebaca966472055dab48c\n",
   "aliases": "CVE-2025-39994\nGHSA-ghgh-r6c5-cgx8\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "00e5e820-3fee-3a48-abe5-fe70a2a8e97a",

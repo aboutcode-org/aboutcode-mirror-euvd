@@ -3,7 +3,7 @@
   "enisaUuid": "2b569755-aa5a-313a-bf4b-31bde7e0b6de",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: core: delete incorrect free in pinctrl_enable()\n\nThe \"pctldev\" struct is allocated in devm_pinctrl_register_and_init().\nIt's a devm_ managed pointer that is freed by devm_pinctrl_dev_release(),\nso freeing it in pinctrl_enable() will lead to a double free.\n\nThe devm_pinctrl_dev_release() function frees the pindescs and destroys\nthe mutex as well.",
   "datePublished": "May 30, 2024, 3:29:28 PM",
-  "dateUpdated": "Aug 4, 2026, 9:25:19 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:10 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

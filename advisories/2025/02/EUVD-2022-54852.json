@@ -3,7 +3,7 @@
   "enisaUuid": "b7be79e2-223f-3f9b-a213-825c39fbc567",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-mq: don't touch ->tagset in blk_mq_get_sq_hctx\n\nblk_mq_run_hw_queues() could be run when there isn't queued request and\nafter queue is cleaned up, at that time tagset is freed, because tagset\nlifetime is covered by driver, and often freed after blk_cleanup_queue()\nreturns.\n\nSo don't touch ->tagset for figuring out current default hctx by the mapping\nbuilt in request queue, so use-after-free on tagset can be avoided. Meantime\nthis way should be fast than retrieving mapping from tagset.",
   "datePublished": "Feb 26, 2025, 2:11:16 AM",
-  "dateUpdated": "Aug 4, 2026, 9:05:12 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

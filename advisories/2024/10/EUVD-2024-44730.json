@@ -3,7 +3,7 @@
   "enisaUuid": "c44ee27e-d9a8-3dc8-bb3b-cba8594756e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix uninitialized pointer free in add_inode_ref()\n\nThe add_inode_ref() function does not initialize the \"name\" struct when\nit is declared.  If any of the following calls to \"read_one_inode()\nreturns NULL,\n\n\tdir = read_one_inode(root, parent_objectid);\n\tif (!dir) {\n\t\tret = -ENOENT;\n\t\tgoto out;\n\t}\n\n\tinode = read_one_inode(root, inode_objectid);\n\tif (!inode) {\n\t\tret = -EIO;\n\t\tgoto out;\n\t}\n\nthen \"name.name\" would be freed on \"out\" before being initialized.\n\nout:\n\t...\n\tkfree(name.name);\n\nThis issue was reported by Coverity with CID 1526744.",
   "datePublished": "Oct 29, 2024, 12:50:31 AM",
-  "dateUpdated": "Aug 4, 2026, 9:34:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

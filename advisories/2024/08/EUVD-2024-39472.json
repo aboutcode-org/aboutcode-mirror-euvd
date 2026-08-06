@@ -3,7 +3,7 @@
   "enisaUuid": "9b3de1c2-bc13-36e7-be07-1e49ddff0b04",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: don't unoptimize message in spi_async()\n\nCalling spi_maybe_unoptimize_message() in spi_async() is wrong because\nthe message is likely to be in the queue and not transferred yet. This\ncan corrupt the message while it is being used by the controller driver.\n\nspi_maybe_unoptimize_message() is already called in the correct place\nin spi_finalize_current_message() to balance the call to\nspi_maybe_optimize_message() in spi_async().",
   "datePublished": "Aug 7, 2024, 3:14:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:29:10 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

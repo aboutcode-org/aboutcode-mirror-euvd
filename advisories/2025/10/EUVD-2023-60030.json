@@ -3,14 +3,14 @@
   "enisaUuid": "f2ee90d9-6459-3c4b-96f8-2719990e68fc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: fix refcount underflow in error path\n\nFix a refcount underflow problem reported by syzbot that can happen\nwhen a system is running out of memory. If xp_alloc_tx_descs() fails,\nand it can only fail due to not having enough memory, then the error\npath is triggered. In this error path, the refcount of the pool is\ndecremented as it has incremented before. However, the reference to\nthe pool in the socket was not nulled. This means that when the socket\nis closed later, the socket teardown logic will think that there is a\npool attached to the socket and try to decrease the refcount again,\nleading to a refcount underflow.\n\nI chose this fix as it involved adding just a single line. Another\noption would have been to move xp_get_pool() and the assignment of\nxs->pool to after the if-statement and using xs_umem->pool instead of\nxs->pool in the whole if-statement resulting in somewhat simpler code,\nbut this would have led to much more churn in the code base perhaps\nmaking it harder to backport.",
   "datePublished": "Oct 22, 2025, 1:23:38 PM",
-  "dateUpdated": "Aug 4, 2026, 9:16:10 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/789fcd94c9cac133dd4d96e193188661aca9f6c3\nhttps://git.kernel.org/stable/c/15b453cf7348973217558235b9ece2ee5fea6777\nhttps://git.kernel.org/stable/c/3e7722c31d4167eb7f3ffd35aba52cab69b79072\nhttps://git.kernel.org/stable/c/85c2c79a07302fe68a1ad5cc449458cc559e314d\n",
   "aliases": "GHSA-f7vc-g3xh-9xx2\nCVE-2023-53698\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "149f29b7-15c0-3197-b8db-97faca0f0567",

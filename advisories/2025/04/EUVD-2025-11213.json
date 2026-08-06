@@ -3,14 +3,14 @@
   "enisaUuid": "f926c589-40af-38ac-98d6-8386bdca1234",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspufs: fix gang directory lifetimes\n\nprior to \"[POWERPC] spufs: Fix gang destroy leaks\" we used to have\na problem with gang lifetimes - creation of a gang returns opened\ngang directory, which normally gets removed when that gets closed,\nbut if somebody has created a context belonging to that gang and\nkept it alive until the gang got closed, removal failed and we\nended up with a leak.\n\nUnfortunately, it had been fixed the wrong way.  Dentry of gang\ndirectory was no longer pinned, and rmdir on close was gone.\nOne problem was that failure of open kept calling simple_rmdir()\nas cleanup, which meant an unbalanced dput().  Another bug was\nin the success case - gang creation incremented link count on\nroot directory, but that was no longer undone when gang got\ndestroyed.\n\nFix consists of\n\t* reverting the commit in question\n\t* adding a counter to gang, protected by ->i_rwsem\nof gang directory inode.\n\t* having it set to 1 at creation time, dropped\nin both spufs_dir_close() and spufs_gang_close() and bumped\nin spufs_create_context(), provided that it's not 0.\n\t* using simple_recursive_removal() to take the gang\ndirectory out when counter reaches zero.",
   "datePublished": "Apr 16, 2025, 2:12:24 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:14 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/880e7b3da2e765c1f90c94c0539be039e96c7062\nhttps://git.kernel.org/stable/c/324f280806aab28ef757aecc18df419676c10ef8\nhttps://git.kernel.org/stable/c/029d8c711f5e5fe8cf63e8a4a1a140a06e224e45\nhttps://git.kernel.org/stable/c/903733782f3ae28a2f7fe4dfb47c7fe3e079a528\nhttps://git.kernel.org/stable/c/fc646a6c6d14b5d581f162a7e32999f789e3a3ac\nhttps://git.kernel.org/stable/c/c134deabf4784e155d360744d4a6a835b9de4dd4\n",
   "aliases": "CVE-2025-22072\nGHSA-v6rx-qqxh-7pj6\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "26b3593d-e3bc-392e-b319-7858338e0a3f",

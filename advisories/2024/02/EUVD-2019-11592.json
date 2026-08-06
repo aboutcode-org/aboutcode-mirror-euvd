@@ -3,14 +3,14 @@
   "enisaUuid": "6c0c301b-a55c-3791-b0d3-5a78a5e5ab50",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetlabel: fix out-of-bounds memory accesses\n\nThere are two array out-of-bounds memory accesses, one in\ncipso_v4_map_lvl_valid(), the other in netlbl_bitmap_walk().  Both\nerrors are embarassingly simple, and the fixes are straightforward.\n\nAs a FYI for anyone backporting this patch to kernels prior to v4.8,\nyou'll want to apply the netlbl_bitmap_walk() patch to\ncipso_v4_bitmap_walk() as netlbl_bitmap_walk() doesn't exist before\nLinux v4.8.",
   "datePublished": "Feb 26, 2024, 5:20:19 PM",
-  "dateUpdated": "Aug 4, 2026, 8:57:36 AM",
+  "dateUpdated": "Aug 5, 2026, 8:43:45 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/97bc3683c24999ee621d847c9348c75d2fe86272\nhttps://git.kernel.org/stable/c/c61d01faa5550e06794dcf86125ccd325bfad950\nhttps://git.kernel.org/stable/c/dc18101f95fa6e815f426316b8b9a5cee28a334e\nhttps://git.kernel.org/stable/c/1c973f9c7cc2b3caae93192fdc8ecb3f0b4ac000\nhttps://git.kernel.org/stable/c/fcfe700acdc1c72eab231300e82b962bac2b2b2c\nhttps://git.kernel.org/stable/c/e3713abc4248aa6bcc11173d754c418b02a62cbb\nhttps://git.kernel.org/stable/c/fbf9578919d6c91100ec63acf2cba641383f6c78\nhttps://git.kernel.org/stable/c/5578de4834fe0f2a34fedc7374be691443396d1f\n",
   "aliases": "GHSA-gj7p-vqfr-xgjw\nCVE-2019-25160\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.75,
   "enisaIdProduct": [
     {
       "id": "2442f24c-c2c6-37f1-a3a3-3f0e3548d2b8",

@@ -3,7 +3,7 @@
   "enisaUuid": "3c33bd5e-9abe-385a-92cd-bed2a7fb3f81",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: use hweight16 to get correct tx antenna\n\nThe chainmask is u16 so using hweight8 cannot get correct tx_ant.\nWithout this patch, the tx_ant of band 2 would be -1 and lead to the\nfollowing issue:\nBUG: KASAN: stack-out-of-bounds in mt7996_mcu_add_sta+0x12e0/0x16e0 [mt7996e]",
   "datePublished": "Oct 21, 2024, 11:53:46 AM",
-  "dateUpdated": "Aug 4, 2026, 9:32:56 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:40 AM",
   "baseScore": 7.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",

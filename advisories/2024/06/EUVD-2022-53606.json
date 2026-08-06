@@ -3,7 +3,7 @@
   "enisaUuid": "bcb847ad-8d07-37fb-9986-af80fca59f93",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Avoid consuming a stale esr value when SError occur\n\nWhen any exception other than an IRQ occurs, the CPU updates the ESR_EL2\nregister with the exception syndrome. An SError may also become pending,\nand will be synchronised by KVM. KVM notes the exception type, and whether\nan SError was synchronised in exit_code.\n\nWhen an exception other than an IRQ occurs, fixup_guest_exit() updates\nvcpu->arch.fault.esr_el2 from the hardware register. When an SError was\nsynchronised, the vcpu esr value is used to determine if the exception\nwas due to an HVC. If so, ELR_EL2 is moved back one instruction. This\nis so that KVM can process the SError first, and re-execute the HVC if\nthe guest survives the SError.\n\nBut if an IRQ synchronises an SError, the vcpu's esr value is stale.\nIf the previous non-IRQ exception was an HVC, KVM will corrupt ELR_EL2,\ncausing an unrelated guest instruction to be executed twice.\n\nCheck ARM_EXCEPTION_CODE() before messing with ELR_EL2, IRQs don't\nupdate this register so don't need to check.",
   "datePublished": "Jun 20, 2024, 11:13:16 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:13 AM",
+  "dateUpdated": "Aug 5, 2026, 8:51:59 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H",

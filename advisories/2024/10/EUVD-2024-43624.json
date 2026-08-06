@@ -3,7 +3,7 @@
   "enisaUuid": "c22d5c62-03ac-3b57-a0e4-eb116a85d201",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/guc_submit: add missing locking in wedged_fini\n\nAny non-wedged queue can have a zero refcount here and can be running\nconcurrently with an async queue destroy, therefore dereferencing the\nqueue ptr to check wedge status after the lookup can trigger UAF if\nqueue is not wedged.  Fix this by keeping the submission_state lock held\naround the check to postpone the free and make the check safe, before\ndropping again around the put() to avoid the deadlock.\n\n(cherry picked from commit d28af0b6b9580b9f90c265a7da0315b0ad20bbfd)",
   "datePublished": "Oct 21, 2024, 6:02:01 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:51 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

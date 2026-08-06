@@ -3,14 +3,14 @@
   "enisaUuid": "71f1171c-6c60-30a4-af52-dc1bf0018e63",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Enforce expected_attach_type for tailcall compatibility\n\nYinhao et al. recently reported:\n\n  Our fuzzer tool discovered an uninitialized pointer issue in the\n  bpf_prog_test_run_xdp() function within the Linux kernel's BPF subsystem.\n  This leads to a NULL pointer dereference when a BPF program attempts to\n  deference the txq member of struct xdp_buff object.\n\nThe test initializes two programs of BPF_PROG_TYPE_XDP: progA acts as the\nentry point for bpf_prog_test_run_xdp() and its expected_attach_type can\nneither be of be BPF_XDP_DEVMAP nor BPF_XDP_CPUMAP. progA calls into a slot\nof a tailcall map it owns. progB's expected_attach_type must be BPF_XDP_DEVMAP\nto pass xdp_is_valid_access() validation. The program returns struct xdp_md's\negress_ifindex, and the latter is only allowed to be accessed under mentioned\nexpected_attach_type. progB is then inserted into the tailcall which progA\ncalls.\n\nThe underlying issue goes beyond XDP though. Another example are programs\nof type BPF_PROG_TYPE_CGROUP_SOCK_ADDR. sock_addr_is_valid_access() as well\nas sock_addr_func_proto() have different logic depending on the programs'\nexpected_attach_type. Similarly, a program attached to BPF_CGROUP_INET4_GETPEERNAME\nshould not be allowed doing a tailcall into a program which calls bpf_bind()\nout of BPF which is only enabled for BPF_CGROUP_INET4_CONNECT.\n\nIn short, specifying expected_attach_type allows to open up additional\nfunctionality or restrictions beyond what the basic bpf_prog_type enables.\nThe use of tailcalls must not violate these constraints. Fix it by enforcing\nexpected_attach_type in __bpf_prog_map_compatible().\n\nNote that we only enforce this for tailcall maps, but not for BPF devmaps or\ncpumaps: There, the programs are invoked through dev_map_bpf_prog_run*() and\ncpu_map_bpf_prog_run*() which set up a new environment / context and therefore\nthese situations are not prone to this issue.",
   "datePublished": "Nov 12, 2025, 10:23:19 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:47 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:56 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a99de19128aec0913f3d529f529fbbff5edfaff8\nhttps://git.kernel.org/stable/c/08cb3dc9d2b44f153d0bcf2cb966e4a94b5d0f32\nhttps://git.kernel.org/stable/c/f856c598080ba7ce1252867b8ecd6ad5bdaf9a6a\nhttps://git.kernel.org/stable/c/c1ad19b5d8e23123503dcaf2d4342e1b90b923ad\nhttps://git.kernel.org/stable/c/4540aed51b12bc13364149bf95f6ecef013197c0\n",
   "aliases": "GHSA-f5hr-qj5q-hc8f\nCVE-2025-40123\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "177c4b0d-8ecd-3b74-9670-6a05623461a7",

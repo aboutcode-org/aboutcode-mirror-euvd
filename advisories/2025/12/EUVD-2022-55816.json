@@ -3,14 +3,14 @@
   "enisaUuid": "fbfa6a38-b02a-3d71-a917-5f176e33b336",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: media: tegra-video: fix device_node use after free\n\nAt probe time this code path is followed:\n\n * tegra_csi_init\n   * tegra_csi_channels_alloc\n     * for_each_child_of_node(node, channel) -- iterates over channels\n       * automatically gets 'channel'\n         * tegra_csi_channel_alloc()\n           * saves into chan->of_node a pointer to the channel OF node\n       * automatically gets and puts 'channel'\n       * now the node saved in chan->of_node has refcount 0, can disappear\n   * tegra_csi_channels_init\n     * iterates over channels\n       * tegra_csi_channel_init -- uses chan->of_node\n\nAfter that, chan->of_node keeps storing the node until the device is\nremoved.\n\nof_node_get() the node and of_node_put() it during teardown to avoid any\nrisk.",
   "datePublished": "Dec 24, 2025, 1:05:41 PM",
-  "dateUpdated": "Aug 4, 2026, 9:09:52 AM",
+  "dateUpdated": "Aug 5, 2026, 8:59:34 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5451efb2ca30f3c42b9efb8327ce35b62870dbd3\nhttps://git.kernel.org/stable/c/ce50c612458091d926ccb05d7db11d9f93532db2\nhttps://git.kernel.org/stable/c/6512c9498fcb97e7c760e3ef86b2272f2c0f765f\nhttps://git.kernel.org/stable/c/0fd003d3c708c80350a815eaf37b8e1114b976cf\nhttps://git.kernel.org/stable/c/c4d344163c3a7f90712525f931a6c016bbb35e18\n",
   "aliases": "CVE-2022-50745\nGHSA-fcg8-cxrp-mrx7\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "16da1f59-fe7f-30a8-a72a-aff319990dc3",

@@ -3,14 +3,14 @@
   "enisaUuid": "493e14e4-c446-3a52-a945-ae2bac30f302",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4/pNFS: Clear NFS_INO_LAYOUTCOMMIT in pnfs_mark_layout_stateid_invalid\n\nFixes a crash when layout is null during this call stack:\n\nwrite_inode\n    -> nfs4_write_inode\n        -> pnfs_layoutcommit_inode\n\npnfs_set_layoutcommit relies on the lseg refcount to keep the layout\naround. Need to clear NFS_INO_LAYOUTCOMMIT otherwise we might attempt\nto reference a null layout.",
   "datePublished": "Dec 24, 2025, 10:32:41 AM",
-  "dateUpdated": "Jul 30, 2026, 6:04:09 AM",
+  "dateUpdated": "Aug 5, 2026, 12:10:59 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/084bebe82ad86f718a3af84f34761863e63164ed\nhttps://git.kernel.org/stable/c/b6e4e3a08c03200cc4b8067ec8ab3172a989d6fc\nhttps://git.kernel.org/stable/c/104080582ae0aa6dce6c6d75ff89062efe84673b\nhttps://git.kernel.org/stable/c/f718f9ea6094843b8c059b073af49ad61e9f49bb\nhttps://git.kernel.org/stable/c/59947dff0fb7c19c09ce6dccbcd253fd542b6c25\nhttps://git.kernel.org/stable/c/ca2e7fdad7c683b64821c94a58b9b68733214dad\nhttps://git.kernel.org/stable/c/38694f9aae00459ab443a7dc8b3949a6b33b560a\nhttps://git.kernel.org/stable/c/e0f8058f2cb56de0b7572f51cd563ca5debce746\n",
   "aliases": "CVE-2025-68349\nGHSA-pchw-pcf7-8p47\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.6,
   "enisaIdProduct": [
     {
       "id": "123aa437-bb6d-3768-8da4-c692c0ff05b3",

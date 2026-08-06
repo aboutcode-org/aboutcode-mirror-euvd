@@ -3,7 +3,7 @@
   "enisaUuid": "6f9ec474-7dc8-3d39-a59a-4523ec954a93",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: compress: fix to cover {reserve,release}_compress_blocks() w/ cp_rwsem lock\n\nIt needs to cover {reserve,release}_compress_blocks() w/ cp_rwsem lock\nto avoid racing with checkpoint, otherwise, filesystem metadata including\nblkaddr in dnode, inode fields and .total_valid_block_count may be\ncorrupted after SPO case.",
   "datePublished": "Jun 24, 2024, 1:56:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:48 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "c064d8c9-22e8-3a97-a85e-6b3ea1f34707",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-after-free in crypt_message when using async crypto\n\nThe CVE-2024-50047 fix removed asynchronous crypto handling from\ncrypt_message(), assuming all crypto operations are synchronous.\nHowever, when hardware crypto accelerators are used, this can cause\nuse-after-free crashes:\n\n  crypt_message()\n    // Allocate the creq buffer containing the req\n    creq = smb2_get_aead_req(..., &req);\n\n    // Async encryption returns -EINPROGRESS immediately\n    rc = enc ? crypto_aead_encrypt(req) : crypto_aead_decrypt(req);\n\n    // Free creq while async operation is still in progress\n    kvfree_sensitive(creq, ...);\n\nHardware crypto modules often implement async AEAD operations for\nperformance. When crypto_aead_encrypt/decrypt() returns -EINPROGRESS,\nthe operation completes asynchronously. Without crypto_wait_req(),\nthe function immediately frees the request buffer, leading to crashes\nwhen the driver later accesses the freed memory.\n\nThis results in a use-after-free condition when the hardware crypto\ndriver later accesses the freed request structure, leading to kernel\ncrashes with NULL pointer dereferences.\n\nThe issue occurs because crypto_alloc_aead() with mask=0 doesn't\nguarantee synchronous operation. Even without CRYPTO_ALG_ASYNC in\nthe mask, async implementations can be selected.\n\nFix by restoring the async crypto handling:\n- DECLARE_CRYPTO_WAIT(wait) for completion tracking\n- aead_request_set_callback() for async completion notification\n- crypto_wait_req() to wait for operation completion\n\nThis ensures the request buffer isn't freed until the crypto operation\ncompletes, whether synchronous or asynchronous, while preserving the\nCVE-2024-50047 fix.",
   "datePublished": "Jul 28, 2025, 11:21:52 AM",
-  "dateUpdated": "Jul 30, 2026, 5:54:37 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:19 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5d047b12f86cc3b9fde1171c02d9bccf4dba0632\nhttps://git.kernel.org/stable/c/6550b2bef095d0dd2d2c8390d2ea4c3837028833\nhttps://git.kernel.org/stable/c/9a1d3e8d40f151c2d5a5f40c410e6e433f62f438\nhttps://git.kernel.org/stable/c/15a0a5de49507062bc3be4014a403d8cea5533de\nhttps://git.kernel.org/stable/c/2a76bc2b24ed889a689fb1c9015307bf16aafb5b\nhttps://git.kernel.org/stable/c/8ac90f6824fc44d2e55a82503ddfc95defb19ae0\nhttps://git.kernel.org/stable/c/b220bed63330c0e1733dc06ea8e75d5b9962b6b6\n",
   "aliases": "CVE-2025-38488\nGHSA-8gh3-6693-hwj4\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.6,
   "enisaIdProduct": [
     {
       "id": "11f8de65-818b-39cf-afdb-18b63fd8f1f6",

@@ -3,7 +3,7 @@
   "enisaUuid": "436283e1-9bfd-3528-a4ff-1c4379e45be7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: Avoid potential vm use-after-free\n\nAdding the vm to the vm_xa table makes it visible to userspace, which\ncould try to race with us to close the vm.  So we need to take our extra\nreference before putting it in the table.\n\n(cherry picked from commit 99343c46d4e2b34c285d3d5f68ff04274c2f9fb4)",
   "datePublished": "Mar 27, 2025, 4:37:12 PM",
-  "dateUpdated": "Aug 4, 2026, 9:12:41 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

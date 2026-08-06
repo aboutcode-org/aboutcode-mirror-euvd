@@ -3,14 +3,14 @@
   "enisaUuid": "e9edcc41-9561-3eb8-b1b6-ca41f9f43961",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: handle SVC_GARBAGE during svc auth processing as auth error\n\ntianshuo han reported a remotely-triggerable crash if the client sends a\nkernel RPC server a specially crafted packet. If decoding the RPC reply\nfails in such a way that SVC_GARBAGE is returned without setting the\nrq_accept_statp pointer, then that pointer can be dereferenced and a\nvalue stored there.\n\nIf it's the first time the thread has processed an RPC, then that\npointer will be set to NULL and the kernel will crash. In other cases,\nit could create a memory scribble.\n\nThe server sunrpc code treats a SVC_GARBAGE return from svc_authenticate\nor pg_authenticate as if it should send a GARBAGE_ARGS reply. RFC 5531\nsays that if authentication fails that the RPC should be rejected\ninstead with a status of AUTH_ERR.\n\nHandle a SVC_GARBAGE return as an AUTH_ERROR, with a reason of\nAUTH_BADCRED instead of returning GARBAGE_ARGS in that case. This\nsidesteps the whole problem of touching the rpc_accept_statp pointer in\nthis situation and avoids the crash.",
   "datePublished": "Jun 30, 2025, 7:29:44 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:25 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/599c489eea793821232a2f69a00fa57d82b0ac98\nhttps://git.kernel.org/stable/c/353e75b55e583635bf71cde6abcec274dba05edd\nhttps://git.kernel.org/stable/c/c90459cd58bb421d275337093d8e901e0ba748dd\nhttps://git.kernel.org/stable/c/94d10a4dba0bc482f2b01e39f06d5513d0f75742\nhttps://www.openwall.com/lists/oss-security/2025/07/02/2\nhttps://github.com/keymaker-arch/NFSundown\n",
   "aliases": "GHSA-r4mq-hvhp-3h35\nCVE-2025-38089\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.48,
   "enisaIdProduct": [
     {
       "id": "22f4480a-9aa7-3eb6-8f53-b0a824d55b01",

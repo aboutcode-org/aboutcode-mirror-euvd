@@ -3,7 +3,7 @@
   "enisaUuid": "54f60711-4ec4-3933-a65c-1af0da5e8659",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrapidio: fix an API misues when rio_add_net() fails\n\nrio_add_net() calls device_register() and fails when device_register()\nfails.  Thus, put_device() should be used rather than kfree().  Add\n\"mport->net = NULL;\" to avoid a use after free issue.",
   "datePublished": "Apr 1, 2025, 3:41:02 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:48 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "ac2d0033-4f1c-36d2-a141-6acf9791af67",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: Fix memory leak in devm_clk_notifier_register()\n\ndevm_clk_notifier_register() allocates a devres resource for clk\nnotifier but didn't register that to the device, so the notifier didn't\nget unregistered on device detach and the allocated resource was leaked.\n\nFix the issue by registering the resource through devres_add().\n\nThis issue was found with kmemleak on a Chromebook.",
   "datePublished": "Oct 7, 2025, 3:21:30 PM",
-  "dateUpdated": "Aug 4, 2026, 9:16:01 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

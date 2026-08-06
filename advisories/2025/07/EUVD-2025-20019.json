@@ -3,14 +3,14 @@
   "enisaUuid": "e8959734-f424-36dc-8145-d19ec60f0609",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsch_hfsc: make hfsc_qlen_notify() idempotent\n\nhfsc_qlen_notify() is not idempotent either and not friendly\nto its callers, like fq_codel_dequeue(). Let's make it idempotent\nto ease qdisc_tree_reduce_backlog() callers' life:\n\n1. update_vf() decreases cl->cl_nactive, so we can check whether it is\nnon-zero before calling it.\n\n2. eltree_remove() always removes RB node cl->el_node, but we can use\n   RB_EMPTY_NODE() + RB_CLEAR_NODE() to make it safe.",
   "datePublished": "Jul 4, 2025, 12:47:09 PM",
-  "dateUpdated": "Jul 30, 2026, 5:51:57 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9a5fd5c2f4d4afdd5e405083ee53e0789ce76956\nhttps://git.kernel.org/stable/c/72c61ffbeeb8c50f6d4d70c65d3283aa1bac57a7\nhttps://git.kernel.org/stable/c/a5efc95a33bd4fcb879250852828cc58c7862970\nhttps://git.kernel.org/stable/c/0475c85426b18eccdcb7f9fb58d8f8e9c6c58c87\nhttps://git.kernel.org/stable/c/9030a91235ae4845ec71902c3e0cecfc9ed1f2df\nhttps://git.kernel.org/stable/c/d06476714d2819b550e0cc39222347e2c8941c9d\nhttps://git.kernel.org/stable/c/c1175c4ad01dbc9c979d099861fa90a754f72059\nhttps://git.kernel.org/stable/c/51eb3b65544c9efd6a1026889ee5fb5aa62da3bb\n",
   "aliases": "GHSA-9pjq-r2xc-hgwc\nCVE-2025-38177\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0865eff1-5931-34c1-8345-852cde96c74b",

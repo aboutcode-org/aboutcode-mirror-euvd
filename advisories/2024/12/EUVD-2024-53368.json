@@ -3,7 +3,7 @@
   "enisaUuid": "fd674cfe-80c1-3dcd-8799-9022e95f21d3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, sockmap: Several fixes to bpf_msg_pop_data\n\nSeveral fixes to bpf_msg_pop_data,\n1. In sk_msg_shift_left, we should put_page\n2. if (len == 0), return early is better\n3. pop the entire sk_msg (last == msg->sg.size) should be supported\n4. Fix for the value of variable \"a\"\n5. In sk_msg_shift_left, after shifting, i has already pointed to the next\nelement. Addtional sk_msg_iter_var_next may result in BUG.",
   "datePublished": "Dec 29, 2024, 11:29:58 AM",
-  "dateUpdated": "Aug 4, 2026, 9:39:57 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:18 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

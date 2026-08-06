@@ -3,7 +3,7 @@
   "enisaUuid": "fad248d4-2656-36b0-8cbd-0f57c221dfa7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: qat - validate slices count returned by FW\n\nThe function adf_send_admin_tl_start() enables the telemetry (TL)\nfeature on a QAT device by sending the ICP_QAT_FW_TL_START message to\nthe firmware. This triggers the FW to start writing TL data to a DMA\nbuffer in memory and returns an array containing the number of\naccelerators of each type (slices) supported by this HW.\nThe pointer to this array is stored in the adf_tl_hw_data data\nstructure called slice_cnt.\n\nThe array slice_cnt is then used in the function tl_print_dev_data()\nto report in debugfs only statistics about the supported accelerators.\nAn incorrect value of the elements in slice_cnt might lead to an out\nof bounds memory read.\nAt the moment, there isn't an implementation of FW that returns a wrong\nvalue, but for robustness validate the slice count array returned by FW.",
   "datePublished": "Jun 19, 2024, 1:48:16 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:16 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:06 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

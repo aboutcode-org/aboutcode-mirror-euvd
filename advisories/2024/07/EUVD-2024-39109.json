@@ -3,7 +3,7 @@
   "enisaUuid": "cce76019-25a6-37da-9cf8-e59eb10bb858",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfilelock: fix potential use-after-free in posix_lock_inode\n\nLight Hsieh reported a KASAN UAF warning in trace_posix_lock_inode().\nThe request pointer had been changed earlier to point to a lock entry\nthat was added to the inode's list. However, before the tracepoint could\nfire, another task raced in and freed that lock.\n\nFix this by moving the tracepoint inside the spinlock, which should\nensure that this doesn't happen.",
   "datePublished": "Jul 29, 2024, 2:32:05 PM",
-  "dateUpdated": "Aug 4, 2026, 9:28:06 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

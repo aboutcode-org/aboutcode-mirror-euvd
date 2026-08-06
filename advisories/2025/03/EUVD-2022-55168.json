@@ -3,7 +3,7 @@
   "enisaUuid": "efd23f95-b5a7-3dad-8a9a-57c9c157e83a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_fs: Prevent race during ffs_ep0_queue_wait\n\nWhile performing fast composition switch, there is a possibility that the\nprocess of ffs_ep0_write/ffs_ep0_read get into a race condition\ndue to ep0req being freed up from functionfs_unbind.\n\nConsider the scenario that the ffs_ep0_write calls the ffs_ep0_queue_wait\nby taking a lock &ffs->ev.waitq.lock. However, the functionfs_unbind isn't\nbounded so it can go ahead and mark the ep0req to NULL, and since there\nis no NULL check in ffs_ep0_queue_wait we will end up in use-after-free.\n\nFix this by making a serialized execution between the two functions using\na mutex_lock(ffs->mutex).",
   "datePublished": "Mar 27, 2025, 4:43:02 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:26 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:13 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

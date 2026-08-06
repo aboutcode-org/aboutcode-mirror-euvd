@@ -3,7 +3,7 @@
   "enisaUuid": "858f4a4a-95c6-33e8-bdc3-00a19b982515",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nicmp: change the order of rate limits\n\nICMP messages are ratelimited :\n\nAfter the blamed commits, the two rate limiters are applied in this order:\n\n1) host wide ratelimit (icmp_global_allow())\n\n2) Per destination ratelimit (inetpeer based)\n\nIn order to avoid side-channels attacks, we need to apply\nthe per destination check first.\n\nThis patch makes the following change :\n\n1) icmp_global_allow() checks if the host wide limit is reached.\n   But credits are not yet consumed. This is deferred to 3)\n\n2) The per destination limit is checked/updated.\n   This might add a new node in inetpeer tree.\n\n3) icmp_global_consume() consumes tokens if prior operations succeeded.\n\nThis means that host wide ratelimit is still effective\nin keeping inetpeer tree small even under DDOS.\n\nAs a bonus, I removed icmp_global.lock as the fast path\ncan use a lock-free operation.",
   "datePublished": "Oct 21, 2024, 11:53:21 AM",
-  "dateUpdated": "Aug 4, 2026, 9:32:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:24 AM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",

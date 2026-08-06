@@ -3,7 +3,7 @@
   "enisaUuid": "d6cc5161-de8d-358b-9b3c-55065aee67db",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ieee802154: do not leave a dangling sk pointer in ieee802154_create()\n\nsock_init_data() attaches the allocated sk object to the provided sock\nobject. If ieee802154_create() fails later, the allocated sk object is\nfreed, but the dangling pointer remains in the provided sock object, which\nmay allow use-after-free.\n\nClear the sk pointer in the sock object on error.",
   "datePublished": "Dec 27, 2024, 2:51:08 PM",
-  "dateUpdated": "Aug 4, 2026, 9:38:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:45:22 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

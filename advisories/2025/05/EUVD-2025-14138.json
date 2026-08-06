@@ -3,14 +3,14 @@
   "enisaUuid": "304d4980-5566-3646-949e-06314d092c73",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix mode1 reset crash issue\n\nIf HW scheduler hangs and mode1 reset is used to recover GPU, KFD signal\nuser space to abort the processes. After process abort exit, user queues\nstill use the GPU to access system memory before h/w is reset while KFD\ncleanup worker free system memory and free VRAM.\n\nThere is use-after-free race bug that KFD allocate and reuse the freed\nsystem memory, and user queue write to the same system memory to corrupt\nthe data structure and cause driver crash.\n\nTo fix this race, KFD cleanup worker terminate user queues, then flush\nreset_domain wq to wait for any GPU ongoing reset complete, and then\nfree outstanding BOs.",
   "datePublished": "May 9, 2025, 6:42:00 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:26 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/57c9dabda80ac167de8cd71231baae37cc2f442d\nhttps://git.kernel.org/stable/c/89af6b39f028c130d4362f57042927f005423e6a\nhttps://git.kernel.org/stable/c/ffd37d7d44d7e0b6e769d4fe6590e327f8cc3951\nhttps://git.kernel.org/stable/c/6f30a847432cae84c7428e9b684b3e3fa49b2391\nhttps://git.kernel.org/stable/c/9c4bcdf4068aae3e17e31c144300be405cfa03ff\nhttps://git.kernel.org/stable/c/f0b4440cdc1807bb6ec3dce0d6de81170803569b\n",
   "aliases": "GHSA-fq6q-p88p-jgr2\nCVE-2025-37854\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "2f26e5f3-8c08-37e3-b0d0-d0a88ed9efe7",

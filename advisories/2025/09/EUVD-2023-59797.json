@@ -3,7 +3,7 @@
   "enisaUuid": "6353067d-c57e-3817-b207-930419b235fe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: add the missing IP_SET_HASH_WITH_NET0 macro for ip_set_hash_netportnet.c\n\nThe missing IP_SET_HASH_WITH_NET0 macro in ip_set_hash_netportnet can\nlead to the use of wrong `CIDR_POS(c)` for calculating array offsets,\nwhich can lead to integer underflow. As a result, it leads to slab\nout-of-bound access.\nThis patch adds back the IP_SET_HASH_WITH_NET0 macro to\nip_set_hash_netportnet to address the issue.",
   "datePublished": "Sep 15, 2025, 2:04:26 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:37 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

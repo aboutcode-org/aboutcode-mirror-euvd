@@ -3,7 +3,7 @@
   "enisaUuid": "07bee9ca-1a2b-355d-af61-71834125b106",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: dev: fix skb drop check\n\nIn commit a6d190f8c767 (\"can: skb: drop tx skb if in listen only\nmode\") the priv->ctrlmode element is read even on virtual CAN\ninterfaces that do not create the struct can_priv at startup. This\nout-of-bounds read may lead to CAN frame drops for virtual CAN\ninterfaces like vcan and vxcan.\n\nThis patch mainly reverts the original commit and adds a new helper\nfor CAN interface drivers that provide the required information in\nstruct can_priv.\n\n[mkl: patch pch_can, too]",
   "datePublished": "May 1, 2025, 2:09:58 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:44 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:26 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

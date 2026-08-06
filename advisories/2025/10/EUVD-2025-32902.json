@@ -3,7 +3,7 @@
   "enisaUuid": "79bfb5f8-5c5d-3cfd-9e8e-21ea4dde43ea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/slub: avoid accessing metadata when pointer is invalid in object_err()\n\nobject_err() reports details of an object for further debugging, such as\nthe freelist pointer, redzone, etc. However, if the pointer is invalid,\nattempting to access object metadata can lead to a crash since it does\nnot point to a valid object.\n\nOne known path to the crash is when alloc_consistency_checks()\ndetermines the pointer to the allocated object is invalid because of a\nfreelist corruption, and calls object_err() to report it. The debug code\nshould report and handle the corruption gracefully and not crash in the\nprocess.\n\nIn case the pointer is NULL or check_valid_pointer() returns false for\nthe pointer, only print the pointer value and skip accessing metadata.",
   "datePublished": "Oct 1, 2025, 7:42:49 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:23 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:59 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

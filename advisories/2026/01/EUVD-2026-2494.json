@@ -3,14 +3,14 @@
   "enisaUuid": "d638057c-f126-3341-909b-633148a0343c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: svcauth_gss: avoid NULL deref on zero length gss_token in gss_read_proxy_verf\n\nA zero length gss_token results in pages == 0 and in_token->pages[0]\nis NULL. The code unconditionally evaluates\npage_address(in_token->pages[0]) for the initial memcpy, which can\ndereference NULL even when the copy length is 0. Guard the first\nmemcpy so it only runs when length > 0.",
   "datePublished": "Jan 14, 2026, 3:06:07 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:20 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:11 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a8f1e445ce3545c90d69c9e8ff8f7821825fe810\nhttps://git.kernel.org/stable/c/4dedb6a11243a5c9eb9dbb97bca3c98bd725e83d\nhttps://git.kernel.org/stable/c/f9e53f69ac3bc4ef568b08d3542edac02e83fefd\nhttps://git.kernel.org/stable/c/7452d53f293379e2c38cfa8ad0694aa46fc4788b\nhttps://git.kernel.org/stable/c/a2c6f25ab98b423f99ccd94874d655b8bcb01a19\nhttps://git.kernel.org/stable/c/1c8bb965e9b0559ff0f5690615a527c30f651dd8\nhttps://git.kernel.org/stable/c/d4b69a6186b215d2dc1ebcab965ed88e8d41768d\n",
   "aliases": "GHSA-f8g6-pm49-2rcv\nCVE-2025-71120\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "080c6f2b-1fab-39d3-b3b8-2346343b03e6",

@@ -3,7 +3,7 @@
   "enisaUuid": "3b01075b-1653-3fe2-b811-3ac80c829845",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nproc: use the same treatment to check proc_lseek as ones for proc_read_iter et.al\n\nCheck pde->proc_ops->proc_lseek directly may cause UAF in rmmod scenario. \nIt's a gap in proc_reg_open() after commit 654b33ada4ab(\"proc: fix UAF in\nproc_get_inode()\").  Followed by AI Viro's suggestion, fix it in same\nmanner.",
   "datePublished": "Aug 22, 2025, 4:00:57 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:10 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:41 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

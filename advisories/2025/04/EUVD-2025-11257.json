@@ -3,14 +3,14 @@
   "enisaUuid": "ce8c5a4e-a23a-38fe-b14e-eb7d74adcd46",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate zero num_subauth before sub_auth is accessed\n\nAccess psid->sub_auth[psid->num_subauth - 1] without checking\nif num_subauth is non-zero leads to an out-of-bounds read.\nThis patch adds a validation step to ensure num_subauth != 0\nbefore sub_auth is accessed.",
   "datePublished": "Apr 16, 2025, 2:11:56 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:11 AM",
   "baseScore": 8.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/3ac65de111c686c95316ade660f8ba7aea3cd3cc\nhttps://git.kernel.org/stable/c/0e36a3e080d6d8bd7a34e089345d043da4ac8283\nhttps://git.kernel.org/stable/c/56de7778a48560278c334077ace7b9ac4bfb2fd1\nhttps://git.kernel.org/stable/c/68c6c3142bfcdb049839d40a9a59ebe8ea865002\nhttps://git.kernel.org/stable/c/c8bfe1954a0b89e7b29b3a3e7f4c5e0ebd295e20\nhttps://git.kernel.org/stable/c/bf21e29d78cd2c2371023953d9c82dfef82ebb36\n",
   "aliases": "CVE-2025-22038\nGHSA-8xw7-j864-h87q\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.55,
   "enisaIdProduct": [
     {
       "id": "0a4a275f-6bca-30e6-a5bd-2e1145373354",

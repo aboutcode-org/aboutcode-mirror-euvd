@@ -3,7 +3,7 @@
   "enisaUuid": "93d8c512-9b72-35d6-ac73-95bba2ed07d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nethernet:enic: Fix a use after free bug in enic_hard_start_xmit\n\nIn enic_hard_start_xmit, it calls enic_queue_wq_skb(). Inside\nenic_queue_wq_skb, if some error happens, the skb will be freed\nby dev_kfree_skb(skb). But the freed skb is still used in\nskb_tx_timestamp(skb).\n\nMy patch makes enic_queue_wq_skb() return error and goto spin_unlock()\nincase of error. The solution is provided by Govind.\nSee https://lkml.org/lkml/2021/4/30/961.",
   "datePublished": "Feb 28, 2024, 8:13:21 AM",
-  "dateUpdated": "Aug 4, 2026, 8:58:12 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

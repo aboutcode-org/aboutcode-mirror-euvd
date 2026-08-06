@@ -3,7 +3,7 @@
   "enisaUuid": "64c19737-3903-36bf-8315-a4eba95ca038",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu: Restore lost return in iommu_report_device_fault()\n\nWhen iommu_report_device_fault gets called with a partial fault it is\nsupposed to collect the fault into the group and then return.\n\nInstead the return was accidently deleted which results in trying to\nprocess the fault and an eventual crash.\n\nDeleting the return was a typo, put it back.",
   "datePublished": "Sep 4, 2024, 7:54:40 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:33 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

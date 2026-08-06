@@ -3,14 +3,14 @@
   "enisaUuid": "26a33f79-2b80-356c-8c19-68a5522f134c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/radeon: Do not kfree() devres managed rdev\n\nSince the allocation of the drivers main structure was changed to\ndevm_drm_dev_alloc() rdev is managed by devres and we shouldn't be calling\nkfree() on it.\n\nThis fixes things exploding if the driver probe fails and devres cleans up\nthe rdev after we already free'd it.\n\n(cherry picked from commit 16c0681617b8a045773d4d87b6140002fa75b03b)",
   "datePublished": "Dec 16, 2025, 1:42:50 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:12 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:58 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f7482516002a11317912e29577bbf33cf59a0fb1\nhttps://git.kernel.org/stable/c/2413bbd1d692aed245c2aa38a369a1fa7590db84\nhttps://git.kernel.org/stable/c/3328443363a0895fd9c096edfe8ecd372ca9145e\n",
   "aliases": "GHSA-8rp7-mg54-f432\nCVE-2025-68170\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "18a3e865-4326-3d71-8857-5209aefeff11",

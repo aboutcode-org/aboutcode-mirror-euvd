@@ -3,7 +3,7 @@
   "enisaUuid": "1c69805d-40b4-3e49-9045-6d2b14829278",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkunit/overflow: Fix UB in overflow_allocation_test\n\nThe 'device_name' array doesn't exist out of the\n'overflow_allocation_test' function scope. However, it is being used as\na driver name when calling 'kunit_driver_create' from\n'kunit_device_register'. It produces the kernel panic with KASAN\nenabled.\n\nSince this variable is used in one place only, remove it and pass the\ndevice name into kunit_device_register directly as an ascii string.",
   "datePublished": "Sep 27, 2024, 12:39:23 PM",
-  "dateUpdated": "Aug 4, 2026, 9:32:09 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:50 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

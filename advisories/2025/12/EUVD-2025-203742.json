@@ -3,14 +3,14 @@
   "enisaUuid": "37b3d8cb-5f6e-3cba-8228-0b1a0f2577c6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix stack buffer overflow in OnAssocReq IE parsing\n\nThe Supported Rates IE length from an incoming Association Request frame\nwas used directly as the memcpy() length when copying into a fixed-size\n16-byte stack buffer (supportRate). A malicious station can advertise an\nIE length larger than 16 bytes, causing a stack buffer overflow.\n\nClamp ie_len to the buffer size before copying the Supported Rates IE,\nand correct the bounds check when merging Extended Supported Rates to\nprevent a second potential overflow.\n\nThis prevents kernel stack corruption triggered by malformed association\nrequests.",
   "datePublished": "Dec 16, 2025, 2:44:58 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:41 AM",
+  "dateUpdated": "Aug 5, 2026, 12:10:30 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/49b7806851f93fd342838c93f4f765e0cc5029b0\nhttps://git.kernel.org/stable/c/4445adedae770037078803d1ce41f9e88a1944b6\nhttps://git.kernel.org/stable/c/d129dc2a5d59b4d9cd2cc0b6eeb04df8461199f0\nhttps://git.kernel.org/stable/c/34620eb602aa432f090b2b784ee5c5070fb16cf9\nhttps://git.kernel.org/stable/c/61871c83259a511980ec2664964cecc69005398b\nhttps://git.kernel.org/stable/c/25411f5fcf5743131158f337c99c2bbf3f8477f5\nhttps://git.kernel.org/stable/c/e841d8ea722315b781c4fc5bf4f7670fbca88875\nhttps://git.kernel.org/stable/c/6ef0e1c10455927867cac8f0ed6b49f328f8cf95\n",
   "aliases": "GHSA-prq3-3cx6-vrj4\nCVE-2025-68255\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "037fafdf-2c97-3cd8-a02c-51ef98ab736e",

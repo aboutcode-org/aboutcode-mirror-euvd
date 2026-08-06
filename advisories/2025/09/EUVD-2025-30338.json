@@ -3,14 +3,14 @@
   "enisaUuid": "6e370c9f-d467-3b83-a1bb-48659360736b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix list corruption after hardware restart\n\nSince stations are recreated from scratch, all lists that wcids are added\nto must be cleared before calling ieee80211_restart_hw.\nSet wcid->sta = 0 for each wcid entry in order to ensure that they are\nnot added again before they are ready.",
   "datePublished": "Sep 19, 2025, 3:26:32 PM",
-  "dateUpdated": "Jul 30, 2026, 5:58:07 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:42 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8fa8eb52bc2eb08d93202863b5fc478e0bebc00c\nhttps://git.kernel.org/stable/c/065c79df595af21d6d1b27d642860faa1d938774\n",
   "aliases": "CVE-2025-39862\nGHSA-89h6-xrm9-52q6\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "96e0d239-366f-3794-a8d1-aa47a7026a56",

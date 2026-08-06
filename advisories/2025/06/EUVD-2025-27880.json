@@ -3,14 +3,14 @@
   "enisaUuid": "39daaa5f-2f6a-3485-a965-e792e2e88d08",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS/localio: Fix a race in nfs_local_open_fh()\n\nOnce the clp->cl_uuid.lock has been dropped, another CPU could come in\nand free the struct nfsd_file that was just added. To prevent that from\nhappening, take the RCU read lock before dropping the spin lock.",
   "datePublished": "Jun 18, 2025, 9:28:33 AM",
-  "dateUpdated": "Jul 30, 2026, 5:50:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/185a2f2ddabdcf999823f61de67f86376883920d\nhttps://git.kernel.org/stable/c/fa7ab64f1e2fdc8f2603aab8e0dd20de89cb10d9\n",
   "aliases": "CVE-2025-38028\nGHSA-g332-j9h9-prvg\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "13a1a058-9f45-3610-8f72-9ffda142ae70",

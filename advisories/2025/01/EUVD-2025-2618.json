@@ -3,14 +3,14 @@
   "enisaUuid": "a232ff18-b589-39f4-9694-50c4e4a6563f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: discard packets if the transport changes\n\nIf the socket has been de-assigned or assigned to another transport,\nwe must discard any packets received because they are not expected\nand would cause issues when we access vsk->transport.\n\nA possible scenario is described by Hyunwoo Kim in the attached link,\nwhere after a first connect() interrupted by a signal, and a second\nconnect() failed, we can find `vsk->transport` at NULL, leading to a\nNULL pointer dereference.",
   "datePublished": "Jan 31, 2025, 11:25:33 AM",
-  "dateUpdated": "Jul 30, 2026, 5:44:51 AM",
+  "dateUpdated": "Aug 5, 2026, 11:53:30 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/18a7fc371d1dbf8deff16c2dd9292bcc73f43040\nhttps://git.kernel.org/stable/c/6486915fa661584d70e8e7e4068c6c075c67dd6d\nhttps://git.kernel.org/stable/c/88244163bc7e7b0ce9dd7bf4c8a563b41525c3ee\nhttps://git.kernel.org/stable/c/d88b249e14bd0ee1e46bbe4f456e22e01b8c68de\nhttps://git.kernel.org/stable/c/677579b641af109613564460a4e3bdcb16850b61\nhttps://git.kernel.org/stable/c/2cb7c756f605ec02ffe562fb26828e4bcc5fdfc1\n",
   "aliases": "GHSA-7hhm-hgmx-pp76\nCVE-2025-21669\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "049500db-40f2-3b2b-ae73-f85a2607425c",

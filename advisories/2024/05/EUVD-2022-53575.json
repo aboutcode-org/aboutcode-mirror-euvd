@@ -3,14 +3,14 @@
   "enisaUuid": "249e9565-2b15-3167-82fe-3f2f669c2512",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregmap: spi: Reserve space for register address/padding\n\nCurrently the max_raw_read and max_raw_write limits in regmap_spi struct\ndo not take into account the additional size of the transmitted register\naddress and padding.  This may result in exceeding the maximum permitted\nSPI message size, which could cause undefined behaviour, e.g. data\ncorruption.\n\nFix regmap_get_spi_bus() to properly adjust the above mentioned limits\nby reserving space for the register address/padding as set in the regmap\nconfiguration.",
   "datePublished": "May 3, 2024, 3:09:48 PM",
-  "dateUpdated": "Aug 4, 2026, 9:02:03 AM",
+  "dateUpdated": "Aug 5, 2026, 8:51:49 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/15ff1f17847c19174b260bd7dd0de33edcebd45e\nhttps://git.kernel.org/stable/c/f5723cfc01932c7a8d5c78dbf7e067e537c91439\n",
   "aliases": "GHSA-2955-j2mm-qvcq\nCVE-2022-48696\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0e8d9a01-d3a4-3bac-b309-7d9ef2629661",

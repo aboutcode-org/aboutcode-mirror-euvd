@@ -3,14 +3,14 @@
   "enisaUuid": "72b536d6-2322-3645-8735-b9e496e5ef9b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: Fix NULL pointer dereferencing in smc_vlan_by_tcpsk()\n\nCoverity reports a possible NULL dereferencing problem:\n\nin smc_vlan_by_tcpsk():\n6. returned_null: netdev_lower_get_next returns NULL (checked 29 out of 30 times).\n7. var_assigned: Assigning: ndev = NULL return value from netdev_lower_get_next.\n1623                ndev = (struct net_device *)netdev_lower_get_next(ndev, &lower);\nCID 1468509 (#1 of 1): Dereference null return value (NULL_RETURNS)\n8. dereference: Dereferencing a pointer that might be NULL ndev when calling is_vlan_dev.\n1624                if (is_vlan_dev(ndev)) {\n\nRemove the manual implementation and use netdev_walk_all_lower_dev() to\niterate over the lower devices. While on it remove an obsolete function\nparameter comment.",
   "datePublished": "May 24, 2024, 3:12:48 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:18 AM",
+  "dateUpdated": "Aug 5, 2026, 8:48:24 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c94cbd262b6aa3b54d73a1ed1f9c0d19df57f4ff\nhttps://git.kernel.org/stable/c/bb851d0fb02547d03cd40106b5f2391c4fed6ed1\nhttps://git.kernel.org/stable/c/587acad41f1bc48e16f42bb2aca63bf323380be8\n",
   "aliases": "CVE-2021-47559\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "0723dd86-6c9f-3c65-aaf0-3fad3b1bf28a",

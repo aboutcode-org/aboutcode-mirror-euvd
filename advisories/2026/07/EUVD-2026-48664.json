@@ -3,14 +3,14 @@
   "enisaUuid": "e73add63-a153-3a40-8e2b-2a3cef1837f6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: validate sta_mask before ffs() in BA session handlers\n\nThree BA session handlers use ffs(ba_data->sta_mask) - 1 to derive a\nstation ID without checking that sta_mask is non-zero. When sta_mask is\nzero, ffs() returns 0 and the subtraction wraps to 0xFFFFFFFF, causing\nan out-of-bounds access on fw_id_to_link_sta[].\n\nAdd WARN_ON_ONCE(!ba_data->sta_mask) guards before each ffs() call,\nconsistent with the existing check in iwl_mld_ampdu_rx_start().",
   "datePublished": "Jul 24, 2026, 3:31:22 PM",
-  "dateUpdated": "Jul 27, 2026, 4:59:10 AM",
+  "dateUpdated": "Aug 5, 2026, 12:40:18 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1de92789ce31e46fa7e7d8e89c90b19cdb1c103b\nhttps://git.kernel.org/stable/c/fe7f339f63c9dc4ca546ed7ac38ba4bb3a99dcfc\nhttps://git.kernel.org/stable/c/f056fc2b927448d37eca6b6cacc3d1b0f67b20d2\n",
   "aliases": "GHSA-3prq-7cqf-r4ww\nCVE-2026-64255\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "216518fa-ed04-3844-b216-7e2e7bab2a1c",

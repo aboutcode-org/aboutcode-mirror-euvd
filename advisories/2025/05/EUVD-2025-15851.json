@@ -3,7 +3,7 @@
   "enisaUuid": "c8476906-ee9e-3266-bd3d-a6450701e001",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Verify event formats that have \"%*p..\"\n\nThe trace event verifier checks the formats of trace events to make sure\nthat they do not point at memory that is not in the trace event itself or\nin data that will never be freed. If an event references data that was\nallocated when the event triggered and that same data is freed before the\nevent is read, then the kernel can crash by reading freed memory.\n\nThe verifier runs at boot up (or module load) and scans the print formats\nof the events and checks their arguments to make sure that dereferenced\npointers are safe. If the format uses \"%*p..\" the verifier will ignore it,\nand that could be dangerous. Cover this case as well.\n\nAlso add to the sample code a use case of \"%*pbl\".",
   "datePublished": "May 20, 2025, 3:34:40 PM",
-  "dateUpdated": "Jul 30, 2026, 5:50:15 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:30 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

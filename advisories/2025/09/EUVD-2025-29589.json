@@ -3,14 +3,14 @@
   "enisaUuid": "66b6218b-8b50-3c11-a107-218ac62a292f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix race with concurrent opens in rename(2)\n\nBesides sending the rename request to the server, the rename process\nalso involves closing any deferred close, waiting for outstanding I/O\nto complete as well as marking all existing open handles as deleted to\nprevent them from deferring closes, which increases the race window\nfor potential concurrent opens on the target file.\n\nFix this by unhashing the dentry in advance to prevent any concurrent\nopens on the target.",
   "datePublished": "Sep 16, 2025, 1:00:23 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:51 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:27 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c9e7de284da0be5b44dbe79d71573f9f7f9b144c\nhttps://git.kernel.org/stable/c/24b9ed739c8c5b464d983e12cf308982f3ae93c2\nhttps://git.kernel.org/stable/c/c9991af5e09924f6f3b3e6996a5e09f9504b4358\nhttps://git.kernel.org/stable/c/289f945acb20b9b54fe4d13895e44aa58965ddb2\nhttps://git.kernel.org/stable/c/d84291fc7453df7881a970716f8256273aca5747\n",
   "aliases": "GHSA-3f3q-q5cj-phc5\nCVE-2025-39825\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "02c9db4c-da2b-3c49-9236-bf263c94ed53",

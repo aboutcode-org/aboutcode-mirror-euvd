@@ -3,7 +3,7 @@
   "enisaUuid": "e7eff065-a15a-3346-9eec-16c8c1a5ac1a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: Lock external INTx masking ops\n\nMask operations through config space changes to DisINTx may race INTx\nconfiguration changes via ioctl.  Create wrappers that add locking for\npaths outside of the core interrupt code.\n\nIn particular, irq_type is updated holding igate, therefore testing\nis_intx() requires holding igate.  For example clearing DisINTx from\nconfig space can otherwise race changes of the interrupt configuration.\n\nThis aligns interfaces which may trigger the INTx eventfd into two\ncamps, one side serialized by igate and the other only enabled while\nINTx is configured.  A subsequent patch introduces synchronization for\nthe latter flows.",
   "datePublished": "Apr 5, 2024, 8:24:41 AM",
-  "dateUpdated": "Aug 4, 2026, 9:20:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:29 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

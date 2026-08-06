@@ -3,7 +3,7 @@
   "enisaUuid": "b577de4b-85e2-3755-bf08-355763b548d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: do not allow SET_ID to refer to another table\n\nWhen doing lookups for sets on the same batch by using its ID, a set from a\ndifferent table can be used.\n\nThen, when the table is removed, a reference to the set may be kept after\nthe set is freed, leading to a potential use-after-free.\n\nWhen looking for sets by ID, use the table that was used for the lookup by\nname, and only return sets belonging to that same table.\n\nThis fixes CVE-2022-2586, also reported as ZDI-CAN-17470.",
   "datePublished": "Jun 18, 2025, 11:03:50 AM",
-  "dateUpdated": "Aug 4, 2026, 9:08:00 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:42 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "c048a1bb-f1f3-35cf-adff-b51a6542c23f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4.0: Fix a use-after-free problem in the asynchronous open()\n\nYang Erkun reports that when two threads are opening files at the same\ntime, and are forced to abort before a reply is seen, then the call to\nnfs_release_seqid() in nfs4_opendata_free() can result in a\nuse-after-free of the pointer to the defunct rpc task of the other\nthread.\nThe fix is to ensure that if the RPC call is aborted before the call to\nnfs_wait_on_sequence() is complete, then we must call nfs_release_seqid()\nin nfs4_open_release() before the rpc_task is freed.",
   "datePublished": "Dec 27, 2024, 1:49:17 PM",
-  "dateUpdated": "Aug 4, 2026, 9:37:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:44:20 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "7c9fd4da-2247-38a2-8bb4-1c9d16b312af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: iscsi_tcp: Fix UAF during login when accessing the shost ipaddress\n\nIf during iscsi_sw_tcp_session_create() iscsi_tcp_r2tpool_alloc() fails,\nuserspace could be accessing the host's ipaddress attr. If we then free the\nsession via iscsi_session_teardown() while userspace is still accessing the\nsession we will hit a use after free bug.\n\nSet the tcp_sw_host->session after we have completed session creation and\ncan no longer fail.",
   "datePublished": "Mar 27, 2025, 4:43:13 PM",
-  "dateUpdated": "Aug 4, 2026, 9:12:51 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:12 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

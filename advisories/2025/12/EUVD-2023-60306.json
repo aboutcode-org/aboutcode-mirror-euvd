@@ -3,14 +3,14 @@
   "enisaUuid": "541779a1-0089-321a-8ca5-b30db8ac6c66",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/user_events: Ensure write index cannot be negative\n\nThe write index indicates which event the data is for and accesses a\nper-file array. The index is passed by user processes during write()\ncalls as the first 4 bytes. Ensure that it cannot be negative by\nreturning -EINVAL to prevent out of bounds accesses.\n\nUpdate ftrace self-test to ensure this occurs properly.",
   "datePublished": "Dec 24, 2025, 1:06:54 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:58 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:34 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0489c2b2c3104b89f078dbcec8c744dfc157d3e9\nhttps://git.kernel.org/stable/c/4fe46b5adf18e3dc606e62c9e6a0413398a17572\nhttps://git.kernel.org/stable/c/fa7f2f5d1739452280c22727c4384a52b72ab5de\nhttps://git.kernel.org/stable/c/cd98c93286a30cc4588dfd02453bec63c2f4acf4\n",
   "aliases": "CVE-2023-54139\nGHSA-8m37-c7gh-2jmr\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "01911b0a-353e-3a9a-97c0-32e1e71d2def",

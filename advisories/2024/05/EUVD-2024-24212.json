@@ -3,7 +3,7 @@
   "enisaUuid": "a9038377-f94d-30b1-9fa1-131f2ff042a7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwireguard: netlink: access device through ctx instead of peer\n\nThe previous commit fixed a bug that led to a NULL peer->device being\ndereferenced. It's actually easier and faster performance-wise to\ninstead get the device from ctx->wg. This semantically makes more sense\ntoo, since ctx->wg->peer_allowedips.seq is compared with\nctx->allowedips_seq, basing them both in ctx. This also acts as a\ndefence in depth provision against freed peers.",
   "datePublished": "May 1, 2024, 5:18:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:21:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:28:30 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

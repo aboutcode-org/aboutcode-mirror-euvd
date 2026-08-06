@@ -3,7 +3,7 @@
   "enisaUuid": "3e380ca4-d5ae-364b-b971-cf6cf4f68527",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: always initialize cqe.result\n\nThe spec doesn't mandate that the first two double words (aka results)\nfor the command queue entry need to be set to 0 when they are not\nused (not specified). Though, the target implemention returns 0 for TCP\nand FC but not for RDMA.\n\nLet's make RDMA behave the same and thus explicitly initializing the\nresult field. This prevents leaking any data from the stack.",
   "datePublished": "Jul 29, 2024, 3:04:16 PM",
-  "dateUpdated": "Aug 4, 2026, 9:28:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:14 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",

@@ -3,14 +3,14 @@
   "enisaUuid": "7a81eb82-ba98-3d33-a76f-e10c59b1b669",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: virtio: Validate control metadata from the device\n\nvirtio-snd control handling trusts the device-provided control type and\nvalue count returned by the device.\n\nThat metadata is then used directly to index g_v2a_type_map[] in\nvirtsnd_kctl_info(), and to size loops and memcpy() operations in\nvirtsnd_kctl_get() and virtsnd_kctl_put() against fixed-size\nvirtio_snd_ctl_value and snd_ctl_elem_value arrays.\n\nA buggy or malicious device can therefore trigger out-of-bounds access by\nadvertising an invalid control type or an oversized value count.\n\nValidate control type and count once in virtsnd_kctl_parse_cfg(), before\nquerying enumerated items or exposing the control to ALSA.",
   "datePublished": "Jul 25, 2026, 8:51:48 AM",
-  "dateUpdated": "Jul 27, 2026, 5:01:28 AM",
+  "dateUpdated": "Aug 5, 2026, 12:42:27 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3243563f99ef5d3949b934bd6390a5679405d0e1\nhttps://git.kernel.org/stable/c/5da9742de22db0dbaa8d414214ab5e1bedde00f9\nhttps://git.kernel.org/stable/c/21584672fd699abe1768241d6c501b2de6139b6a\nhttps://git.kernel.org/stable/c/c77a6cbb36ff8cbc1f084d94f8dcda5250935271\n",
   "aliases": "CVE-2026-64490\nGHSA-4qj6-j88p-jqg9\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "1a78fcfb-6742-326a-a171-45023b1d1434",

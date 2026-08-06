@@ -3,14 +3,14 @@
   "enisaUuid": "c3ec8026-1c34-3691-86e7-5cf913abc9aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nIB/cm: Drop lockdep assert and WARN when freeing old msg\n\nThe send completion handler can run after cm_id has advanced to another\nmessage.  The cm_id lock is not needed in this case, but a recent change\nre-used cm_free_priv_msg(), which asserts that the lock is held and\nWARNs if the cm_id's currently outstanding msg is different than the one\nbeing freed.",
   "datePublished": "Jul 10, 2025, 7:42:04 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:45 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:59 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/fc096a0cd2017cb0aa1e7fb83131410af9283910\nhttps://git.kernel.org/stable/c/7590649ee7af381a9d1153143026dec124c5798e\n",
   "aliases": "CVE-2025-38287\nGHSA-759j-pggr-8g4v\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "1fa6a502-97b6-3ce3-b29e-2db56696dad3",

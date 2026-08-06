@@ -3,7 +3,7 @@
   "enisaUuid": "33a61367-0c61-3e5f-ac6d-168d69f07346",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Fix use-after-free when reverting termination table\n\nWhen having multiple dests with termination tables and second one\nor afterwards fails the driver reverts usage of term tables but\ndoesn't reset the assignment in attr->dests[num_vport_dests].termtbl\nwhich case a use-after-free when releasing the rule.\nFix by resetting the assignment of termtbl to null.",
   "datePublished": "Oct 21, 2024, 8:06:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:03:45 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

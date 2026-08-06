@@ -3,14 +3,14 @@
   "enisaUuid": "96575c0d-2813-3391-a65b-a2b28924f5d2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: avoid putting the realm twice when decoding snaps fails\n\nWhen decoding the snaps fails it maybe leaving the 'first_realm'\nand 'realm' pointing to the same snaprealm memory. And then it'll\nput it twice and could cause random use-after-free, BUG_ON, etc\nissues.",
   "datePublished": "May 1, 2025, 2:09:08 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:30 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:17 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/274e4c79a3a2a24fba7cfe0e41113f1138785c37\nhttps://git.kernel.org/stable/c/cb7495fe957526555782ce0723f79ce92a6db22e\nhttps://git.kernel.org/stable/c/044bc6d3c2c0e9090b0841e7b723875756534b45\nhttps://git.kernel.org/stable/c/2f6e2de3a5289004650118b61f138fe7c28e1905\nhttps://git.kernel.org/stable/c/fd879c83e87735ab8f00ef7755752cf0cbae24b2\nhttps://git.kernel.org/stable/c/51884d153f7ec85e18d607b2467820a90e0f4359\n",
   "aliases": "GHSA-vc2j-428r-9px5\nCVE-2022-49770\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.55,
   "enisaIdProduct": [
     {
       "id": "1956b33e-4f90-379d-a3d5-cc400596fae4",

@@ -3,14 +3,14 @@
   "enisaUuid": "9c34e889-3fd2-3466-8ef1-97ffdd97e16a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix wrong index reference in smb2_compound_op()\n\nIn smb2_compound_op(), the loop that processes each command's response\nuses wrong indices when accessing response bufferes.\n\nThis incorrect indexing leads to improper handling of command results.\nAlso, if incorrectly computed index is greather than or equal to\nMAX_COMPOUND, it can cause out-of-bounds accesses.",
   "datePublished": "Oct 15, 2025, 7:55:56 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:06 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:43 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ba7bcfd52c66dd1c2dfa5142aca7e4a70b62dfa5\nhttps://git.kernel.org/stable/c/bfb1e2aad1fecef8320fd71332acde0d53a8d699\nhttps://git.kernel.org/stable/c/093615fc76063ea08d454ba86677ce64c736e806\nhttps://git.kernel.org/stable/c/fbe2dc6a9c7318f7263f5e4d50f6272b931c5756\n",
   "aliases": "CVE-2025-39975\nGHSA-cm9p-f4x4-35gj\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "02ed5052-228b-3b27-ad8e-4ef0525f4465",

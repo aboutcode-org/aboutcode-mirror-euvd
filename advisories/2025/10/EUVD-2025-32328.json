@@ -3,14 +3,14 @@
   "enisaUuid": "b7bf7467-b2b1-3a38-af45-ef957976f834",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmgenet: Add a check for oversized packets\n\nOccasionnaly we may get oversized packets from the hardware which\nexceed the nomimal 2KiB buffer size we allocate SKBs with. Add an early\ncheck which drops the packet to avoid invoking skb_over_panic() and move\non to processing the next packet.",
   "datePublished": "Oct 4, 2025, 3:16:46 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:12 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:39 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/7cdb07e10c1258c08f31b24898930e4ece88d163\nhttps://git.kernel.org/stable/c/c34b1c0870323649d45c5074828d7f754dea2673\nhttps://git.kernel.org/stable/c/87363d1ab55e497702a9506ff423c422639c8a25\nhttps://git.kernel.org/stable/c/841881320562cbeac7046b537b91cd000480cea2\nhttps://git.kernel.org/stable/c/124ca24e0de958d2e20e0aa1e2434af7b72f8887\nhttps://git.kernel.org/stable/c/5f56767fb5f2df875b6553e08dbec6a45431c988\nhttps://git.kernel.org/stable/c/411317d2a4a7d6049d8efeef0d32ae43f8baefce\nhttps://git.kernel.org/stable/c/5c0862c2c962052ed5055220a00ac1cefb92fbcd\n",
   "aliases": "CVE-2023-53535\nGHSA-wh7j-wv38-gcf6\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1acea4b5-e87f-38af-b08a-1a601291d554",

@@ -3,14 +3,14 @@
   "enisaUuid": "64718852-3d4d-36e5-a58a-347b9a0d1452",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Ensure job pointer is set to NULL after job completion\n\nAfter a job completes, the corresponding pointer in the device must\nbe set to NULL. Failing to do so triggers a warning when unloading\nthe driver, as it appears the job is still active. To prevent this,\nassign the job pointer to NULL after completing the job, indicating\nthe job has finished.",
   "datePublished": "Feb 12, 2025, 1:27:55 PM",
-  "dateUpdated": "Jul 30, 2026, 5:45:02 AM",
+  "dateUpdated": "Aug 5, 2026, 11:53:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1bd6303d08c85072ce40ac01a767ab67195105bd\nhttps://git.kernel.org/stable/c/a34050f70e7955a359874dff1a912a748724a140\nhttps://git.kernel.org/stable/c/14e0a874488e79086340ba8e2d238cb9596b68a8\nhttps://git.kernel.org/stable/c/2a1c88f7ca5c12dff6fa6787492ac910bb9e4407\nhttps://git.kernel.org/stable/c/63195bae1cbf78f1d392b1bc9ae4b03c82d0ebf3\nhttps://git.kernel.org/stable/c/b22467b1ae104073dcb11aa78562a331cd7fb0e0\nhttps://git.kernel.org/stable/c/e4b5ccd392b92300a2b341705cc4805681094e49\n",
   "aliases": "GHSA-hv64-fpvc-rw9x\nCVE-2025-21697\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "00636486-cd7e-3b72-b8de-e7f23c757b47",

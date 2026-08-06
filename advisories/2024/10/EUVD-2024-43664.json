@@ -3,7 +3,7 @@
   "enisaUuid": "00100339-a977-39be-9cbe-1c1d65c24632",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: x86-android-tablets: Fix use after free on platform_device_register() errors\n\nx86_android_tablet_remove() frees the pdevs[] array, so it should not\nbe used after calling x86_android_tablet_remove().\n\nWhen platform_device_register() fails, store the pdevs[x] PTR_ERR() value\ninto the local ret variable before calling x86_android_tablet_remove()\nto avoid using pdevs[] after it has been freed.",
   "datePublished": "Oct 21, 2024, 6:02:30 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:10 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:54 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

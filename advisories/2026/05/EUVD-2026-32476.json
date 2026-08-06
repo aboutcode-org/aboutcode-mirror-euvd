@@ -3,7 +3,7 @@
   "enisaUuid": "be32c9c5-1a6b-361f-a0a4-3d45d9674c3f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/vmalloc: take vmap_purge_lock in shrinker\n\ndecay_va_pool_node() can be invoked concurrently from two paths:\n__purge_vmap_area_lazy() when pools are being purged, and the shrinker via\nvmap_node_shrink_scan().\n\nHowever, decay_va_pool_node() is not safe to run concurrently, and the\nshrinker path currently lacks serialization, leading to races and possible\nleaks.\n\nProtect decay_va_pool_node() by taking vmap_purge_lock in the shrinker\npath to ensure serialization with purge users.",
   "datePublished": "May 27, 2026, 12:58:43 PM",
-  "dateUpdated": "Jul 18, 2026, 3:00:45 PM",
+  "dateUpdated": "Aug 5, 2026, 12:29:35 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -81,16 +81,6 @@
         }
       },
       "product_version": "6.9"
-    },
-    {
-      "id": "b3d80f72-811d-36f3-b7b9-9c76d0130bf7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc1"
     },
     {
       "id": "bafb6e93-5f02-32f6-8630-4a5c24bf5073",

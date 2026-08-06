@@ -3,7 +3,7 @@
   "enisaUuid": "fcaab0f9-1d8c-3407-a3d9-918b663dd030",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/dasd: fix error recovery leading to data corruption on ESE devices\n\nExtent Space Efficient (ESE) or thin provisioned volumes need to be\nformatted on demand during usual IO processing.\n\nThe dasd_ese_needs_format function checks for error codes that signal\nthe non existence of a proper track format.\n\nThe check for incorrect length is to imprecise since other error cases\nleading to transport of insufficient data also have this flag set.\nThis might lead to data corruption in certain error cases for example\nduring a storage server warmstart.\n\nFix by removing the check for incorrect length and replacing by\nexplicitly checking for invalid track format in transport mode.\n\nAlso remove the check for file protected since this is not a valid\nESE handling case.",
   "datePublished": "Sep 11, 2024, 3:13:58 PM",
-  "dateUpdated": "Aug 4, 2026, 9:31:08 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:50 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

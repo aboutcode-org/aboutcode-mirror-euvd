@@ -3,7 +3,7 @@
   "enisaUuid": "ac9b3fa2-2693-3c5d-94e8-57fc12124805",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: amdtee: fix use-after-free vulnerability in amdtee_close_session\n\nThere is a potential race condition in amdtee_close_session that may\ncause use-after-free in amdtee_open_session. For instance, if a session\nhas refcount == 1, and one thread tries to free this session via:\n\n    kref_put(&sess->refcount, destroy_session);\n\nthe reference count will get decremented, and the next step would be to\ncall destroy_session(). However, if in another thread,\namdtee_open_session() is called before destroy_session() has completed\nexecution, alloc_session() may return 'sess' that will be freed up\nlater in destroy_session() leading to use-after-free in\namdtee_open_session.\n\nTo fix this issue, treat decrement of sess->refcount and removal of\n'sess' from session list in destroy_session() as a critical section, so\nthat it is executed atomically.",
   "datePublished": "Mar 2, 2024, 9:52:17 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:47 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "083fc9c9-fa67-3874-9165-4512b9e499a5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbluetooth/hci: disallow setting handle bigger than HCI_CONN_HANDLE_MAX\n\nSyzbot hit warning in hci_conn_del() caused by freeing handle that was\nnot allocated using ida allocator.\n\nThis is caused by handle bigger than HCI_CONN_HANDLE_MAX passed by\nhci_le_big_sync_established_evt(), which makes code think it's unset\nconnection.\n\nAdd same check for handle upper bound as in hci_conn_set_handle() to\nprevent warning.",
   "datePublished": "Jul 30, 2024, 7:46:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:28:56 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:49 AM",
   "baseScore": 7.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "6f05098f-1fca-3796-adf9-aaf35b687472",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: qcom: mdt_loader: Ensure we don't read past the ELF header\n\nWhen the MDT loader is used in remoteproc, the ELF header is sanitized\nbeforehand, but that's not necessary the case for other clients.\n\nValidate the size of the firmware buffer to ensure that we don't read\npast the end as we iterate over the header. e_phentsize and e_shentsize\nare validated as well, to ensure that the assumptions about step size in\nthe traversal are valid.",
   "datePublished": "Sep 11, 2025, 4:56:36 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:30 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1096eb63ecfc8df90b70cd068e6de0c2ff204dfd\nhttps://git.kernel.org/stable/c/e1720eb32acf411c328af6a8c8f556c94535808e\nhttps://git.kernel.org/stable/c/0d59ce2bfc3bb13abe6240335a1bf7b96536d022\nhttps://git.kernel.org/stable/c/43d26997d88c4056fce0324e72f62556bc7e8e8d\nhttps://git.kernel.org/stable/c/981c845f29838e468a9bfa87f784307193a31297\nhttps://git.kernel.org/stable/c/87bfabb3b2f46827639173f143aa43f7cfc0a7e6\nhttps://git.kernel.org/stable/c/81278be4eb5f08ba2c68c3055893e61cc03727fe\nhttps://git.kernel.org/stable/c/9f9967fed9d066ed3dae9372b45ffa4f6fccfeef\n",
   "aliases": "GHSA-xj56-cgwf-vr6c\nCVE-2025-39787\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "011ddabe-4f06-3c85-ad84-e65cee3c27c1",

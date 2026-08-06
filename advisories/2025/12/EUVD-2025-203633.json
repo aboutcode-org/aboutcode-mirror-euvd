@@ -3,14 +3,14 @@
   "enisaUuid": "689968f2-4fc2-356f-b41f-f150abd9d507",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: increase max link count and fix link->enc NULL pointer access\n\n[why]\n1.) dc->links[MAX_LINKS] array size smaller than actual requested.\nmax_connector + max_dpia + 4 virtual = 14.\nincrease from 12 to 14.\n\n2.) hw_init() access null LINK_ENC for dpia non display_endpoint.\n\n(cherry picked from commit d7f5a61e1b04ed87b008c8d327649d184dc5bb45)",
   "datePublished": "Dec 16, 2025, 1:30:27 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:04 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:51 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f28092be4e12b7df9e4f415d25bf0d767bc2d9ed\nhttps://git.kernel.org/stable/c/a3fc0d36cfb927f8986b83bf5fba47dbedad3c63\nhttps://git.kernel.org/stable/c/bec947cbe9a65783adb475a5fb47980d7b4f4796\n",
   "aliases": "GHSA-4hhj-gxrr-2grg\nCVE-2025-40354\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0899964b-7538-3e7f-afbe-353c3d4de437",

@@ -3,7 +3,7 @@
   "enisaUuid": "c5dd55a1-d193-349a-bb29-700ad20e73a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject %p% format string in bprintf-like helpers\n\nstatic const char fmt[] = \"%p%\";\n    bpf_trace_printk(fmt, sizeof(fmt));\n\nThe above BPF program isn't rejected and causes a kernel warning at\nruntime:\n\n    Please remove unsupported %\\x00 in format string\n    WARNING: CPU: 1 PID: 7244 at lib/vsprintf.c:2680 format_decode+0x49c/0x5d0\n\nThis happens because bpf_bprintf_prepare skips over the second %,\ndetected as punctuation, while processing %p. This patch fixes it by\nnot skipping over punctuation. %\\x00 is then processed in the next\niteration and rejected.",
   "datePublished": "Aug 16, 2025, 11:12:21 AM",
-  "dateUpdated": "Jul 30, 2026, 5:55:00 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:41 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

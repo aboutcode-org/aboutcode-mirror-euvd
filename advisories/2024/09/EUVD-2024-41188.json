@@ -3,7 +3,7 @@
   "enisaUuid": "c119cbcb-2000-3bec-9f40-5c80c4e3061d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: fix possible UAF in ip6_finish_output2()\n\nIf skb_expand_head() returns NULL, skb has been freed\nand associated dst/idev could also have been freed.\n\nWe need to hold rcu_read_lock() to make sure the dst and\nassociated idev are alive.",
   "datePublished": "Sep 4, 2024, 7:54:34 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:42 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:28 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",

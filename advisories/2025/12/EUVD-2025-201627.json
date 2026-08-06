@@ -3,14 +3,14 @@
   "enisaUuid": "06d389e1-b45b-31ec-ad39-be26d6cc9815",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix race in hci_cmd_sync_dequeue_once\n\nhci_cmd_sync_dequeue_once() does lookup and then cancel\nthe entry under two separate lock sections. Meanwhile,\nhci_cmd_sync_work() can also delete the same entry,\nleading to double list_del() and \"UAF\".\n\nFix this by holding cmd_sync_work_lock across both\nlookup and cancel, so that the entry cannot be removed\nconcurrently.",
   "datePublished": "Dec 8, 2025, 12:46:45 AM",
-  "dateUpdated": "Jul 30, 2026, 6:02:44 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:29 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0a94f7e017438935c09ef833a1aa908ad9875213\nhttps://git.kernel.org/stable/c/932c0a4f77ac13e526fdd5b42914d29c9821d389\nhttps://git.kernel.org/stable/c/ae76cf6c2c842944c6514c57df54d728f1916553\nhttps://git.kernel.org/stable/c/9cd536970192b72257afcdfba0bfc09993e6f19c\nhttps://git.kernel.org/stable/c/09b0cd1297b4dbfe736aeaa0ceeab2265f47f772\n",
   "aliases": "GHSA-m8vr-v3r8-7vqf\nCVE-2025-40318\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "1ac9cbff-036b-3507-bc71-71afca5ce059",

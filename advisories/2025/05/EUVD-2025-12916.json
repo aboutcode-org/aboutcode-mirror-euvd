@@ -3,14 +3,14 @@
   "enisaUuid": "251304de-12df-3721-8aa5-df262f923d64",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: Fix SQE threshold checking\n\nCurrent way of checking available SQE count which is based on\nHW updated SQB count could result in driver submitting an SQE\neven before CQE for the previously transmitted SQE at the same\nindex is processed in NAPI resulting losing SKB pointers,\nhence a leak. Fix this by checking a consumer index which\nis updated once CQE is processed.",
   "datePublished": "May 1, 2025, 2:10:11 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:46 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:28 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/015e3c0a3b16193aab23beefe4719484b9984c2d\nhttps://git.kernel.org/stable/c/f0dfc4c88ef39be0ba736aa0ce6119263fc19aeb\n",
   "aliases": "CVE-2022-49858\nGHSA-6chx-4cx4-vrw4\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0260e660-4092-3834-b9e0-8d43a58ea5db",

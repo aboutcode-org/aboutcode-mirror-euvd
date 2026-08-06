@@ -3,7 +3,7 @@
   "enisaUuid": "937faf60-d446-3ffc-9848-eb24321b317a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndriver core: fix potential NULL pointer dereference in dev_uevent()\n\nIf userspace reads \"uevent\" device attribute at the same time as another\nthreads unbinds the device from its driver, change to dev->driver from a\nvalid pointer to NULL may result in crash. Fix this by using READ_ONCE()\nwhen fetching the pointer, and take bus' drivers klist lock to make sure\ndriver instance will not disappear while we access it.\n\nUse WRITE_ONCE() when setting the driver pointer to ensure there is no\ntearing.",
   "datePublished": "May 8, 2025, 6:26:01 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:14 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:39 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

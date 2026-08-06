@@ -3,7 +3,7 @@
   "enisaUuid": "398c7714-4bed-38c1-ba7c-cba47c81f01b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, arm64: Fix address emission with tag-based KASAN enabled\n\nWhen BPF_TRAMP_F_CALL_ORIG is enabled, the address of a bpf_tramp_image\nstruct on the stack is passed during the size calculation pass and\nan address on the heap is passed during code generation. This may\ncause a heap buffer overflow if the heap address is tagged because\nemit_a64_mov_i64() will emit longer code than it did during the size\ncalculation pass. The same problem could occur without tag-based\nKASAN if one of the 16-bit words of the stack address happened to\nbe all-ones during the size calculation pass. Fix the problem by\nassuming the worst case (4 instructions) when calculating the size\nof the bpf_tramp_image address emission.",
   "datePublished": "Nov 8, 2024, 6:07:54 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:28 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

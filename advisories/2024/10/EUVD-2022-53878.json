@@ -3,7 +3,7 @@
   "enisaUuid": "a90c387b-c7f0-322b-9667-0ee025ca3bf7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: Handle attempt to delete multipath route when fib_info contains an nh reference\n\nGwangun Jung reported a slab-out-of-bounds access in fib_nh_match:\n    fib_nh_match+0xf98/0x1130 linux-6.0-rc7/net/ipv4/fib_semantics.c:961\n    fib_table_delete+0x5f3/0xa40 linux-6.0-rc7/net/ipv4/fib_trie.c:1753\n    inet_rtm_delroute+0x2b3/0x380 linux-6.0-rc7/net/ipv4/fib_frontend.c:874\n\nSeparate nexthop objects are mutually exclusive with the legacy\nmultipath spec. Fix fib_nh_match to return if the config for the\nto be deleted route contains a multipath spec while the fib_info\nis using a nexthop object.",
   "datePublished": "Oct 21, 2024, 8:06:14 PM",
-  "dateUpdated": "Aug 4, 2026, 9:03:36 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:22 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

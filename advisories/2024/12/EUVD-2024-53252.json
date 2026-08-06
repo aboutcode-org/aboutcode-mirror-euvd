@@ -3,7 +3,7 @@
   "enisaUuid": "198f9570-c370-3cc2-a294-1997c29a5ac1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: RFCOMM: avoid leaving dangling sk pointer in rfcomm_sock_alloc()\n\nbt_sock_alloc() attaches allocated sk object to the provided sock object.\nIf rfcomm_dlc_alloc() fails, we release the sk object, but leave the\ndangling pointer in the sock object, which may cause use-after-free.\n\nFix this by swapping calls to bt_sock_alloc() and rfcomm_dlc_alloc().",
   "datePublished": "Dec 27, 2024, 2:51:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:38:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:45:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

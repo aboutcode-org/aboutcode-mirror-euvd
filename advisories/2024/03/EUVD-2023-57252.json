@@ -3,7 +3,7 @@
   "enisaUuid": "5085c85b-78ed-33a5-acd9-587aa9f9e09b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nftables: exthdr: fix 4-byte stack OOB write\n\nIf priv->len is a multiple of 4, then dst[len / 4] can write past\nthe destination array which leads to stack corruption.\n\nThis construct is necessary to clean the remainder of the register\nin case ->len is NOT a multiple of the register size, so make it\nconditional just like nft_payload.c does.\n\nThe bug was added in 4.1 cycle and then copied/inherited when\ntcp/sctp and ip option support was added.\n\nBug reported by Zero Day Initiative project (ZDI-CAN-21950,\nZDI-CAN-21951, ZDI-CAN-21961).",
   "datePublished": "Mar 28, 2024, 7:33:46 AM",
-  "dateUpdated": "Aug 4, 2026, 9:11:17 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:47 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

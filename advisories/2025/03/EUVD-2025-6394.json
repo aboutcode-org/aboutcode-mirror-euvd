@@ -3,14 +3,14 @@
   "enisaUuid": "4fa690bd-6ee4-3455-959f-b571dd43916d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix softlockup in arena_map_free on 64k page kernel\n\nOn an aarch64 kernel with CONFIG_PAGE_SIZE_64KB=y,\narena_htab tests cause a segmentation fault and soft lockup.\nThe same failure is not observed with 4k pages on aarch64.\n\nIt turns out arena_map_free() is calling\napply_to_existing_page_range() with the address returned by\nbpf_arena_get_kern_vm_start().  If this address is not page-aligned\nthe code ends up calling apply_to_pte_range() with that unaligned\naddress causing soft lockup.\n\nFix it by round up GUARD_SZ to PAGE_SIZE << 1 so that the\ndivision by 2 in bpf_arena_get_kern_vm_start() returns\na page-aligned value.",
   "datePublished": "Mar 12, 2025, 9:42:06 AM",
-  "dateUpdated": "Jul 30, 2026, 5:46:15 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:55 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c1f3f3892d4526f18aaeffdb6068ce861e793ee3\nhttps://git.kernel.org/stable/c/787d556a3de447e70964a4bdeba9196f62a62b1e\nhttps://git.kernel.org/stable/c/517e8a7835e8cfb398a0aeb0133de50e31cae32b\n",
   "aliases": "GHSA-hc84-56cx-wr29\nCVE-2025-21851\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "2326450c-a227-3178-82b7-78c9a750fc2e",

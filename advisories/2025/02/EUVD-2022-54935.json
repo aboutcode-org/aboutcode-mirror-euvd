@@ -3,7 +3,7 @@
   "enisaUuid": "81738744-e423-3f57-b2da-21939b5a987d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: Fix races among concurrent hw_params and hw_free calls\n\nCurrently we have neither proper check nor protection against the\nconcurrent calls of PCM hw_params and hw_free ioctls, which may result\nin a UAF.  Since the existing PCM stream lock can't be used for\nprotecting the whole ioctl operations, we need a new mutex to protect\nthose racy calls.\n\nThis patch introduced a new mutex, runtime->buffer_mutex, and applies\nit to both hw_params and hw_free ioctl code paths.  Along with it, the\nboth functions are slightly modified (the mmap_count check is moved\ninto the state-check block) for code simplicity.",
   "datePublished": "Feb 26, 2025, 1:56:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:53 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

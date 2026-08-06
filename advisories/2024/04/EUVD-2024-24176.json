@@ -3,7 +3,7 @@
   "enisaUuid": "80ef70c5-4699-3a69-a5fa-034473811351",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: fix incorrect mpc_combine array size\n\n[why]\nMAX_SURFACES is per stream, while MAX_PLANES is per asic. The\nmpc_combine is an array that records all the planes per asic. Therefore\nMAX_PLANES should be used as the array size. Using MAX_SURFACES causes\narray overflow when there are more than 3 planes.\n\n[how]\nUse the MAX_PLANES for the mpc_combine array size.",
   "datePublished": "Apr 17, 2024, 3:59:24 PM",
-  "dateUpdated": "Aug 4, 2026, 9:21:10 AM",
+  "dateUpdated": "Aug 5, 2026, 11:28:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

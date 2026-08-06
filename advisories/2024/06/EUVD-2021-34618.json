@@ -3,7 +3,7 @@
   "enisaUuid": "cfd6fc0a-eae9-3a2f-b70a-5a074135bb12",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA: Fix use-after-free in rxe_queue_cleanup\n\nOn error handling path in rxe_qp_from_init() qp->sq.queue is freed and\nthen rxe_create_qp() will drop last reference to this object. qp clean up\nfunction will try to free this queue one time and it causes UAF bug.\n\nFix it by zeroing queue pointer after freeing queue in rxe_qp_from_init().",
   "datePublished": "Jun 19, 2024, 2:58:03 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:34 AM",
+  "dateUpdated": "Aug 5, 2026, 8:48:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

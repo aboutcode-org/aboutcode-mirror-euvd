@@ -3,14 +3,14 @@
   "enisaUuid": "2d46511c-251e-3ff2-a418-5f51a011e696",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Guard stack limits against 32bit overflow\n\nThis patch promotes the arithmetic around checking stack bounds to be\ndone in the 64-bit domain, instead of the current 32bit. The arithmetic\nimplies adding together a 64-bit register with a int offset. The\nregister was checked to be below 1<<29 when it was variable, but not\nwhen it was fixed. The offset either comes from an instruction (in which\ncase it is 16 bit), from another register (in which case the caller\nchecked it to be below 1<<29 [1]), or from the size of an argument to a\nkfunc (in which case it can be a u32 [2]). Between the register being\ninconsistently checked to be below 1<<29, and the offset being up to an\nu32, it appears that we were open to overflowing the `int`s which were\ncurrently used for arithmetic.\n\n[1] https://github.com/torvalds/linux/blob/815fb87b753055df2d9e50f6cd80eb10235fe3e9/kernel/bpf/verifier.c#L7494-L7498\n[2] https://github.com/torvalds/linux/blob/815fb87b753055df2d9e50f6cd80eb10235fe3e9/kernel/bpf/verifier.c#L11904",
   "datePublished": "May 17, 2024, 2:24:41 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:28 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:58 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ad140fc856f0b1d5e2215bcb6d0cc247a86805a2\nhttps://git.kernel.org/stable/c/e5ad9ecb84405637df82732ee02ad741a5f782a6\nhttps://git.kernel.org/stable/c/1d38a9ee81570c4bd61f557832dead4d6f816760\n",
   "aliases": "GHSA-x25x-hhpj-pjqp\nCVE-2023-52676\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "0c13a335-9c87-3564-9428-1bebd16f5f33",

@@ -3,14 +3,14 @@
   "enisaUuid": "71595a5d-4bbf-3029-a9d2-21be6abfb37a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: Fix the svc_deferred_event trace class\n\nFix a NULL deref crash that occurs when an svc_rqst is deferred\nwhile the sunrpc tracing subsystem is enabled. svc_revisit() sets\ndr->xprt to NULL, so it can't be relied upon in the tracepoint to\nprovide the remote's address.\n\nUnfortunately we can't revert the \"svc_deferred_class\" hunk in\ncommit ece200ddd54b (\"sunrpc: Save remote presentation address in\nsvc_xprt for trace events\") because there is now a specific check\nof event format specifiers for unsafe dereferences. The warning\nthat check emits is:\n\n  event svc_defer_recv has unsafe dereference of argument 1\n\nA \"%pISpc\" format specifier with a \"struct sockaddr *\" is indeed\nflagged by this check.\n\nInstead, take the brute-force approach used by the svcrdma_qp_error\ntracepoint. Convert the dr::addr field into a presentation address\nin the TP_fast_assign() arm of the trace event, and store that as\na string. This fix can be backported to -stable kernels.\n\nIn the meantime, commit c6ced22997ad (\"tracing: Update print fmt\ncheck to handle new __get_sockaddr() macro\") is now in v5.18, so\nthis wonky fix can be replaced with __sockaddr() and friends\nproperly during the v5.19 merge window.",
   "datePublished": "Feb 26, 2025, 1:54:33 AM",
-  "dateUpdated": "Aug 4, 2026, 9:03:56 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:42 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/85ee17ca21cf92989e8c923e3ea4514c291e9d38\nhttps://git.kernel.org/stable/c/726ae7300fcc25fefa46d188cc07eb16dc908f9e\nhttps://git.kernel.org/stable/c/c2456f470eea3bd06574d988bf6089e7c3f4c5cc\nhttps://git.kernel.org/stable/c/4d5004451ab2218eab94a30e1841462c9316ba19\n",
   "aliases": "GHSA-v2m4-f87m-9vv4\nCVE-2022-49065\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.62,
   "enisaIdProduct": [
     {
       "id": "2e8424d2-0d70-3c84-ba0d-e28ffbcb233e",

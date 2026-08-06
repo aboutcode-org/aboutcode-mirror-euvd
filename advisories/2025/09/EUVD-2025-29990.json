@@ -3,7 +3,7 @@
   "enisaUuid": "aa232f9c-571e-3bef-858f-3f873d9b634b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vme_user: Fix possible UAF in tsi148_dma_list_add\n\nSmatch report warning as follows:\n\ndrivers/staging/vme_user/vme_tsi148.c:1757 tsi148_dma_list_add() warn:\n  '&entry->list' not removed from list\n\nIn tsi148_dma_list_add(), the error path \"goto err_dma\" will not\nremove entry->list from list->entries, but entry will be freed,\nthen list traversal may cause UAF.\n\nFix by removeing it from list->entries before free().",
   "datePublished": "Sep 18, 2025, 1:33:05 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:46 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:29 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

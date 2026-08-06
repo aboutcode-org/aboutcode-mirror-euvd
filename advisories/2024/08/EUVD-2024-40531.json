@@ -3,7 +3,7 @@
   "enisaUuid": "584a78bc-484c-31f8-914b-40923a88f97e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: change DMA direction while mapping reinjected packets\n\nFor fragmented packets, ath12k reassembles each fragment as a normal\npacket and then reinjects it into HW ring. In this case, the DMA\ndirection should be DMA_TO_DEVICE, not DMA_FROM_DEVICE. Otherwise,\nan invalid payload may be reinjected into the HW and\nsubsequently delivered to the host.\n\nGiven that arbitrary memory can be allocated to the skb buffer,\nknowledge about the data contained in the reinjected buffer is lacking.\nConsequently, there\u2019s a risk of private information being leaked.\n\nTested-on: QCN9274 hw2.0 PCI WLAN.WBE.1.1.1-00209-QCAHKSWPL_SILICONZ-1",
   "datePublished": "Aug 21, 2024, 12:06:33 AM",
-  "dateUpdated": "Aug 4, 2026, 9:30:04 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:56 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

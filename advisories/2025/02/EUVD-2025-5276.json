@@ -3,7 +3,7 @@
   "enisaUuid": "980f9ccf-38f2-3e96-bece-51d27d54d30f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrdma/cxgb4: Prevent potential integer overflow on 32bit\n\nThe \"gl->tot_len\" variable is controlled by the user.  It comes from\nprocess_responses().  On 32bit systems, the \"gl->tot_len + sizeof(struct\ncpl_pass_accept_req) + sizeof(struct rss_header)\" addition could have an\ninteger wrapping bug.  Use size_add() to prevent this.",
   "datePublished": "Feb 27, 2025, 2:07:02 AM",
-  "dateUpdated": "Aug 4, 2026, 9:41:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:04 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",

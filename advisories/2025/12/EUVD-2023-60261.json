@@ -3,14 +3,14 @@
   "enisaUuid": "2c18f5f1-d8bf-3325-9514-25d65861c887",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: realtek: fix out-of-bounds access\n\nThe probe function sets priv->chip_data to (void *)priv + sizeof(*priv)\nwith the expectation that priv has enough trailing space.\n\nHowever, only realtek-smi actually allocated this chip_data space.\nDo likewise in realtek-mdio to fix out-of-bounds accesses.\n\nThese accesses likely went unnoticed so far, because of an (unused)\nbuf[4096] member in struct realtek_priv, which caused kmalloc to\nround up the allocated buffer to a big enough size, so nothing of\nvalue was overwritten. With a different allocator (like in the barebox\nbootloader port of the driver) or with KASAN, the memory corruption\nbecomes quickly apparent.",
   "datePublished": "Dec 24, 2025, 12:23:10 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:25 AM",
+  "dateUpdated": "Aug 5, 2026, 9:16:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cc0f9bb99735d2b68fac68f37b585d615728ce5b\nhttps://git.kernel.org/stable/c/fe668aa499b4b95425044ba11af9609db6ecf466\nhttps://git.kernel.org/stable/c/b93eb564869321d0dffaf23fcc5c88112ed62466\n",
   "aliases": "CVE-2023-54065\nGHSA-gwcx-q2c7-j3r5\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "2f47a445-305f-3773-bd79-c6831a082d7d",

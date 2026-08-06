@@ -3,14 +3,14 @@
   "enisaUuid": "ade676fa-c1d8-3732-839c-b3579efb3320",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-fc: move lsop put work to nvmet_fc_ls_req_op\n\nIt\u2019s possible for more than one async command to be in flight from\n__nvmet_fc_send_ls_req. For each command, a tgtport reference is taken.\n\nIn the current code, only one put work item is queued at a time, which\nresults in a leaked reference.\n\nTo fix this, move the work item to the nvmet_fc_ls_req_op struct, which\nalready tracks all resources related to the command.",
   "datePublished": "Nov 12, 2025, 10:46:52 AM",
-  "dateUpdated": "Jul 30, 2026, 6:01:08 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:16 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/11269c08013f4ee8b8f5edc6c56700acb34092d0\nhttps://git.kernel.org/stable/c/a28112cc55013cd8cbd5d36b5115a5b851151bd9\nhttps://git.kernel.org/stable/c/060ecc81240ef9d60d9485a3a5eb55a0d6e7a25c\nhttps://git.kernel.org/stable/c/7331925c247b03b7767b8cd93cfe1b7aa2377850\nhttps://git.kernel.org/stable/c/7a619f8c869117ffed08365b377f66b7e1d941b4\nhttps://git.kernel.org/stable/c/db5a5406fb7e5337a074385c7a3e53c77f2c1bd3\n",
   "aliases": "CVE-2025-40171\nGHSA-j97x-pm24-3q67\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "18517db8-a01c-38ad-ad9d-0e80d68e329e",

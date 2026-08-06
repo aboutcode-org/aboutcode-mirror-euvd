@@ -3,14 +3,14 @@
   "enisaUuid": "629dea03-0e24-373a-879b-089e716d879a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nndisc: extend RCU protection in ndisc_send_skb()\n\nndisc_send_skb() can be called without RTNL or RCU held.\n\nAcquire rcu_read_lock() earlier, so that we can use dev_net_rcu()\nand avoid a potential UAF.",
   "datePublished": "Feb 27, 2025, 2:18:13 AM",
-  "dateUpdated": "Jul 30, 2026, 5:45:32 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:13 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/10a1f3fece2f0d23a3a618b72b2b4e6f408ef7d1\nhttps://git.kernel.org/stable/c/4d576202b90b1b95a7c428a80b536f91b8201bcc\nhttps://git.kernel.org/stable/c/e24d225e4cb8cf108bde00b76594499b98f0a74d\nhttps://git.kernel.org/stable/c/a9319d800b5701e7f5e3fa71a5b7c4831fc20d6d\nhttps://git.kernel.org/stable/c/ae38982f521621c216fc2f5182cd091f4734641d\nhttps://git.kernel.org/stable/c/789230e5a8c1097301afc802e242c79bc8835c67\nhttps://git.kernel.org/stable/c/04e05112f10354ffc3bb6cc796d553bab161594c\nhttps://git.kernel.org/stable/c/ed6ae1f325d3c43966ec1b62ac1459e2b8e45640\n",
   "aliases": "GHSA-wm97-xp23-f4x4\nCVE-2025-21760\n",
   "assigner": "Linux",
-  "epss": 9.5,
+  "epss": 33.42,
   "enisaIdProduct": [
     {
       "id": "0fbd35c1-ceb3-3bf2-9461-427f0457097b",

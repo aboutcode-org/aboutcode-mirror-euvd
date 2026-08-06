@@ -3,7 +3,7 @@
   "enisaUuid": "5411771d-8a1a-35cf-883b-4c17d307b3dd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/kbuf: hold io_buffer_list reference over mmap\n\nIf we look up the kbuf, ensure that it doesn't get unregistered until\nafter we're done with it. Since we're inside mmap, we cannot safely use\nthe io_uring lock. Rely on the fact that we can lookup the buffer list\nunder RCU now and grab a reference to it, preventing it from being\nunregistered until we're done with it. The lookup returns the\nio_buffer_list directly with it referenced.",
   "datePublished": "May 19, 2024, 8:34:37 AM",
-  "dateUpdated": "Aug 4, 2026, 9:23:34 AM",
+  "dateUpdated": "Aug 5, 2026, 11:30:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

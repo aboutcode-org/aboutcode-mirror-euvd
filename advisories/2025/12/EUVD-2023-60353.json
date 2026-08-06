@@ -3,14 +3,14 @@
   "enisaUuid": "517fdf5a-62be-3ca0-9d69-87ce14d0abd7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pv: fix index value of replaced ASCE\n\nThe index field of the struct page corresponding to a guest ASCE should\nbe 0. When replacing the ASCE in s390_replace_asce(), the index of the\nnew ASCE should also be set to 0.\n\nHaving the wrong index might lead to the wrong addresses being passed\naround when notifying pte invalidations, and eventually to validity\nintercepts (VM crash) if the prefix gets unmapped and the notifier gets\ncalled with the wrong address.",
   "datePublished": "Dec 24, 2025, 1:06:21 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:38 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:10 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8e635da0e0d3cb45e32fa79b36218fb98281bc10\nhttps://git.kernel.org/stable/c/49a2686adddebe1ae76b4d368383208656ef6606\nhttps://git.kernel.org/stable/c/017f686bcb536ff23d49c143fdf9d1fd89a9a924\nhttps://git.kernel.org/stable/c/f1c7a776338f2ac5e34da40e58fe9f33ea390a5e\nhttps://git.kernel.org/stable/c/c2fceb59bbda16468bda82b002383bff59de89ab\n",
   "aliases": "CVE-2023-54092\nGHSA-g59x-v7cp-wpr9\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0100dbd0-f5b4-3d6e-a425-ef3d6940fa5d",

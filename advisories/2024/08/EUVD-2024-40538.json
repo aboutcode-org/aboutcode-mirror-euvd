@@ -3,7 +3,7 @@
   "enisaUuid": "81cbef26-4764-3c14-8aa3-07f604c0bd40",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: list_lru: fix UAF for memory cgroup\n\nThe mem_cgroup_from_slab_obj() is supposed to be called under rcu lock or\ncgroup_mutex or others which could prevent returned memcg from being\nfreed.  Fix it by adding missing rcu read lock.\n\nFound by code inspection.\n\n[songmuchun@bytedance.com: only grab rcu lock when necessary, per Vlastimil]",
   "datePublished": "Aug 26, 2024, 10:10:40 AM",
-  "dateUpdated": "Aug 4, 2026, 9:30:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:59 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

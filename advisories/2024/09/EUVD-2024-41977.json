@@ -3,7 +3,7 @@
   "enisaUuid": "6695a914-4abf-33f4-8aa4-fe2cf4afba5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: altera-msgdma: properly free descriptor in msgdma_free_descriptor\n\nRemove list_del call in msgdma_chan_desc_cleanup, this should be the role\nof msgdma_free_descriptor. In consequence replace list_add_tail with\nlist_move_tail in msgdma_free_descriptor.\n\nThis fixes the path:\n   msgdma_free_chan_resources -> msgdma_free_descriptors ->\n   msgdma_free_desc_list -> msgdma_free_descriptor\n\nwhich does not correctly free the descriptors as first nodes were not\nremoved from the list.",
   "datePublished": "Sep 18, 2024, 6:32:16 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:26 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

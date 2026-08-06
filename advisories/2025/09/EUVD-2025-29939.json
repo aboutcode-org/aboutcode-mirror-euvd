@@ -3,7 +3,7 @@
   "enisaUuid": "743b214a-2044-3e29-aec8-89436b5bd96f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Clean dangling pointer on bind error path\n\nmtk_drm_bind() can fail, in which case drm_dev_put() is called,\ndestroying the drm_device object. However a pointer to it was still\nbeing held in the private object, and that pointer would be passed along\nto DRM in mtk_drm_sys_prepare() if a suspend were triggered at that\npoint, resulting in a panic. Clean the pointer when destroying the\nobject in the error path to prevent this from happening.",
   "datePublished": "Sep 18, 2025, 1:33:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:31 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

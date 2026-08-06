@@ -3,7 +3,7 @@
   "enisaUuid": "0c46d036-976e-3af3-b0b4-dbc7fea75346",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: mqprio: fix stack out-of-bounds write in tc entry parsing\n\nTCA_MQPRIO_TC_ENTRY_INDEX is validated using\nNLA_POLICY_MAX(NLA_U32, TC_QOPT_MAX_QUEUE), which allows the value\nTC_QOPT_MAX_QUEUE (16). This leads to a 4-byte out-of-bounds stack\nwrite in the fp[] array, which only has room for 16 elements (0\u201315).\n\nFix this by changing the policy to allow only up to TC_QOPT_MAX_QUEUE - 1.",
   "datePublished": "Aug 19, 2025, 5:02:49 PM",
-  "dateUpdated": "Jul 30, 2026, 5:55:16 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:57 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

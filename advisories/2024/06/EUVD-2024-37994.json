@@ -3,7 +3,7 @@
   "enisaUuid": "f5065868-ab90-39b6-9e4c-b77af2183f32",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnilfs2: fix nilfs_empty_dir() misjudgment and long loop on I/O errors\n\nThe error handling in nilfs_empty_dir() when a directory folio/page read\nfails is incorrect, as in the old ext2 implementation, and if the\nfolio/page cannot be read or nilfs_check_folio() fails, it will falsely\ndetermine the directory as empty and corrupt the file system.\n\nIn addition, since nilfs_empty_dir() does not immediately return on a\nfailed folio/page read, but continues to loop, this can cause a long loop\nwith I/O if i_size of the directory's inode is also corrupted, causing the\nlog writer thread to wait and hang, as reported by syzbot.\n\nFix these issues by making nilfs_empty_dir() immediately return a false\nvalue (0) if it fails to get a directory folio/page.",
   "datePublished": "Jun 25, 2024, 2:28:55 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:27 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",

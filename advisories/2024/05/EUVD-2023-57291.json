@@ -3,7 +3,7 @@
   "enisaUuid": "e022fb44-3a72-3a3e-adf8-3fb586ebdd6a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: fix a potential double-free in fs_any_create_groups\n\nWhen kcalloc() for ft->g succeeds but kvzalloc() for in fails,\nfs_any_create_groups() will free ft->g. However, its caller\nfs_any_create_table() will free ft->g again through calling\nmlx5e_destroy_flow_table(), which will lead to a double-free.\nFix this by setting ft->g to NULL in fs_any_create_groups().",
   "datePublished": "May 17, 2024, 2:01:48 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:26 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "87a0512f-8d8d-3d04-b316-5cfe31f94fa7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrpmsg: char: Fix use-after-free on probe error path\n\nrpmsg_chrdev_probe() stores the newly allocated eptdev in the default\nendpoint's priv pointer before calling rpmsg_chrdev_eptdev_add(). If\nrpmsg_chrdev_eptdev_add() then fails, its error path frees eptdev while\nthe default endpoint may still dispatch callbacks with the stale priv\npointer.\n\nAvoid publishing eptdev through the default endpoint until\nrpmsg_chrdev_eptdev_add() succeeds. Messages received before the priv\npointer is published should be ignored by rpmsg_ept_cb(). Flow-control\nupdates can hit rpmsg_ept_flow_cb() in the same window, so make both\ncallbacks return success when priv is NULL.",
   "datePublished": "Jul 19, 2026, 12:02:05 PM",
-  "dateUpdated": "Jul 24, 2026, 2:34:04 PM",
+  "dateUpdated": "Aug 5, 2026, 12:35:46 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "92d5362f-3175-3ebb-9d79-94861a069075",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: fix dfs radar event locking\n\nThe ath11k active pdevs are protected by RCU but the DFS radar event\nhandling code calling ath11k_mac_get_ar_by_pdev_id() was not marked as a\nread-side critical section.\n\nMark the code in question as an RCU read-side critical section to avoid\nany potential use-after-free issues.\n\nCompile tested only.",
   "datePublished": "May 21, 2024, 3:31:11 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:56 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:26 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f882f51905517575c9f793a3dff567af90ef9a10\nhttps://git.kernel.org/stable/c/426e718ce9ba60013364a54233feee309356cb82\nhttps://git.kernel.org/stable/c/ca420ac4f9451f22347bae44b18ab47ba2c267ec\nhttps://git.kernel.org/stable/c/1fd878e1750190a612b5de2af357cca422ec0822\nhttps://git.kernel.org/stable/c/21ebb0aba580d347e12f01ce5f6e75044427b3d5\nhttps://git.kernel.org/stable/c/3b6c14833165f689cc5928574ebafe52bbce5f1e\n",
   "aliases": "CVE-2023-52798\nGHSA-gx69-h78g-vjrh\n",
   "assigner": "Linux",
-  "epss": 1.0,
+  "epss": 1.02,
   "enisaIdProduct": [
     {
       "id": "094daef7-0f57-341c-95d3-0e2c05b19d04",

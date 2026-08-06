@@ -3,7 +3,7 @@
   "enisaUuid": "fc46160d-eff7-3d9e-8a83-e682edafac20",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: aacraid: Fix double-free on probe failure\n\naac_probe_one() calls hardware-specific init functions through the\naac_driver_ident::init pointer, all of which eventually call down to\naac_init_adapter().\n\nIf aac_init_adapter() fails after allocating memory for aac_dev::queues,\nit frees the memory but does not clear that member.\n\nAfter the hardware-specific init function returns an error,\naac_probe_one() goes down an error path that frees the memory pointed to\nby aac_dev::queues, resulting.in a double-free.",
   "datePublished": "Sep 13, 2024, 5:29:09 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

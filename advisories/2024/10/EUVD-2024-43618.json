@@ -3,7 +3,7 @@
   "enisaUuid": "b29c0d89-e734-31a9-8023-6a4a2150fc3a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/xen-netback: prevent UAF in xenvif_flush_hash()\n\nDuring the list_for_each_entry_rcu iteration call of xenvif_flush_hash,\nkfree_rcu does not exist inside the rcu read critical section, so if\nkfree_rcu is called when the rcu grace period ends during the iteration,\nUAF occurs when accessing head->next after the entry becomes free.\n\nTherefore, to solve this, you need to change it to list_for_each_entry_safe.",
   "datePublished": "Oct 21, 2024, 6:01:57 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:48 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:33 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

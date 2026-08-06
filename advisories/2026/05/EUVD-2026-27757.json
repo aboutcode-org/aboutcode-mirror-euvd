@@ -3,14 +3,14 @@
   "enisaUuid": "03366109-088e-36cc-a248-ad12997853e0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix potential race in tcp_v6_syn_recv_sock()\n\nCode in tcp_v6_syn_recv_sock() after the call to tcp_v4_syn_recv_sock()\nis done too late.\n\nAfter tcp_v4_syn_recv_sock(), the child socket is already visible\nfrom TCP ehash table and other cpus might use it.\n\nSince newinet->pinet6 is still pointing to the listener ipv6_pinfo\nbad things can happen as syzbot found.\n\nMove the problematic code in tcp_v6_mapped_child_init()\nand call this new helper from tcp_v4_syn_recv_sock() before\nthe ehash insertion.\n\nThis allows the removal of one tcp_sync_mss(), since\ntcp_v4_syn_recv_sock() will call it with the correct\ncontext.",
   "datePublished": "May 6, 2026, 11:28:05 AM",
-  "dateUpdated": "Jun 30, 2026, 2:41:22 AM",
+  "dateUpdated": "Aug 5, 2026, 12:26:29 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fe89b2f05b854847784f91127319172945c1fadd\nhttps://git.kernel.org/stable/c/7178e2a8027423b2af17ab95df73a749a5b72e5b\nhttps://git.kernel.org/stable/c/858d2a4f67ff69e645a43487ef7ea7f28f06deae\n",
   "aliases": "GHSA-rhcj-6wxj-r34p\nCVE-2026-43198\n",
   "assigner": "Linux",
-  "epss": 0.37,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "62adf820-f5ef-32ab-a9d3-5750e3f54170",

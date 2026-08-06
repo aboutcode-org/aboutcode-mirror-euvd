@@ -3,7 +3,7 @@
   "enisaUuid": "f554d0c5-afab-3dfd-b597-6a7a274b88d6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: qcom: Fix uninitialized pointer dmactl\n\nIn the case where __lpass_get_dmactl_handle is called and the driver\nid dai_id is invalid the pointer dmactl is not being assigned a value,\nand dmactl contains a garbage value since it has not been initialized\nand so the null check may not work. Fix this to initialize dmactl to\nNULL. One could argue that modern compilers will set this to zero, but\nit is useful to keep this initialized as per the same way in functions\n__lpass_platform_codec_intf_init and lpass_cdc_dma_daiops_hw_params.\n\nCleans up clang scan build warning:\nsound/soc/qcom/lpass-cdc-dma.c:275:7: warning: Branch condition\nevaluates to a garbage value [core.uninitialized.Branch]",
   "datePublished": "Apr 4, 2024, 8:20:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:20:23 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:20 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

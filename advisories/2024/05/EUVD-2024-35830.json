@@ -3,7 +3,7 @@
   "enisaUuid": "58c71360-2e4e-368f-a7d6-f623ae29d457",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: fix vf may be used uninitialized in this function warning\n\nTo fix the regression introduced by commit 52424f974bc5, which causes\nservers hang in very hard to reproduce conditions with resets races.\nUsing two sources for the information is the root cause.\nIn this function before the fix bumping v didn't mean bumping vf\npointer. But the code used this variables interchangeably, so stale vf\ncould point to different/not intended vf.\n\nRemove redundant \"v\" variable and iterate via single VF pointer across\nwhole function instead to guarantee VF pointer validity.",
   "datePublished": "May 30, 2024, 2:59:44 PM",
-  "dateUpdated": "Aug 4, 2026, 9:24:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

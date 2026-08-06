@@ -3,14 +3,14 @@
   "enisaUuid": "7ecc2989-b514-309a-a173-44cd4b4740d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: make sure ptp clock is unregister and freed if hclge_ptp_get_cycle returns an error\n\nDuring the initialization of ptp, hclge_ptp_get_cycle might return an error\nand returned directly without unregister clock and free it. To avoid that,\ncall hclge_ptp_destroy_clock to unregist and free clock if\nhclge_ptp_get_cycle failed.",
   "datePublished": "Apr 1, 2025, 3:40:56 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:44 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:22 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b7d8d4529984e2d4a72a6d552fb886233e8e83cb\nhttps://git.kernel.org/stable/c/33244e98aa9503585e585335fe2ceb4492630949\nhttps://git.kernel.org/stable/c/2c04e507f3a5c5dc6e2b9ab37d8cdedee1ef1a37\nhttps://git.kernel.org/stable/c/9cfc43c0e6e6a31122b4008d763a2960c206aa2d\nhttps://git.kernel.org/stable/c/21dba813d9821687a7f9aff576798ba21a859a32\nhttps://git.kernel.org/stable/c/b7365eab39831487a84e63a9638209b68dc54008\n",
   "aliases": "CVE-2025-21924\nGHSA-8j66-r7fp-95mx\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0c91b428-b3a3-3fdd-8d99-8941ef1bf41d",

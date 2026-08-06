@@ -3,14 +3,14 @@
   "enisaUuid": "02c46be1-3789-3bbf-8f1e-baa264f8cf0f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix session state check in reconnect to avoid use-after-free issue\n\nDon't collect exiting session in smb2_reconnect_server(), because it\nwill be released soon.\n\nNote that the exiting session will stay in server->smb_ses_list until\nit complete the cifs_free_ipc() and logoff() and then delete itself\nfrom the list.",
   "datePublished": "Dec 9, 2025, 12:00:51 AM",
-  "dateUpdated": "Aug 4, 2026, 9:16:36 AM",
+  "dateUpdated": "Aug 5, 2026, 9:16:01 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7e4f5c3f01fb0e51ca438e43262d858daf9a0a76\nhttps://git.kernel.org/stable/c/759ffc164d95a32c09528766d74d9b4fb054e8f4\nhttps://git.kernel.org/stable/c/99f280700b4cc02d5f141b8d15f8e9fad0418f65\n",
   "aliases": "CVE-2023-53794\nGHSA-x47f-6fjp-7wj4\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "10ce8b75-c27e-3786-97e2-5ecc55ca6c17",

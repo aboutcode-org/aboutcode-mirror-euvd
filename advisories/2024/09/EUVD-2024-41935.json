@@ -3,7 +3,7 @@
   "enisaUuid": "8ab90dd0-2d91-332a-8ea5-3161fbe1b80b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: st: fix probed platform device ref count on probe error path\n\nThe probe function never performs any paltform device allocation, thus\nerror path \"undo_platform_dev_alloc\" is entirely bogus.  It drops the\nreference count from the platform device being probed.  If error path is\ntriggered, this will lead to unbalanced device reference counts and\npremature release of device resources, thus possible use-after-free when\nreleasing remaining devm-managed resources.",
   "datePublished": "Sep 13, 2024, 5:29:10 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "5f2f870f-9908-3aae-95b4-126198f1760f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: socket: Lookup orig tuple for IPv6 SNAT\n\nnf_sk_lookup_slow_v4 does the conntrack lookup for IPv4 packets to\nrestore the original 5-tuple in case of SNAT, to be able to find the\nright socket (if any). Then socket_match() can correctly check whether\nthe socket was transparent.\n\nHowever, the IPv6 counterpart (nf_sk_lookup_slow_v6) lacks this\nconntrack lookup, making xt_socket fail to match on the socket when the\npacket was SNATed. Add the same logic to nf_sk_lookup_slow_v6.\n\nIPv6 SNAT is used in Kubernetes clusters for pod-to-world packets, as\npods' addresses are in the fd00::/8 ULA subnet and need to be replaced\nwith the node's external address. Cilium leverages Envoy to enforce L7\npolicies, and Envoy uses transparent sockets. Cilium inserts an iptables\nprerouting rule that matches on `-m socket --transparent` and redirects\nthe packets to localhost, but it fails to match SNATed IPv6 packets due\nto that missing conntrack lookup.",
   "datePublished": "Apr 16, 2025, 10:20:37 AM",
-  "dateUpdated": "Jul 30, 2026, 5:47:37 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:03 AM",
   "baseScore": 10.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6488b96a79a26e19100ad872622f04e93b638d7f\nhttps://git.kernel.org/stable/c/58ab63d3ded2ca6141357a2b24eee8453d0f871d\nhttps://git.kernel.org/stable/c/1ca2169cc19dca893c7aae6af122852097435d16\nhttps://git.kernel.org/stable/c/1ec43100f7123010730b7ddfc3d5c2eac19e70e7\nhttps://git.kernel.org/stable/c/5251041573850e5020cd447374e23010be698898\nhttps://git.kernel.org/stable/c/2bb139e483f8cbe488d19d8c1135ac3615e2668c\nhttps://git.kernel.org/stable/c/41904cbb343d115931d6bf79aa2c815cac4ef72b\nhttps://git.kernel.org/stable/c/221c27259324ec1404f028d4f5a0f2ae7f63ee23\nhttps://git.kernel.org/stable/c/932b32ffd7604fb00b5c57e239a3cc4d901ccf6e\n",
   "aliases": "CVE-2025-22021\nGHSA-57hq-w56x-2gq6\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "12d3b94b-12af-3f33-ba8b-f9cc697672e5",

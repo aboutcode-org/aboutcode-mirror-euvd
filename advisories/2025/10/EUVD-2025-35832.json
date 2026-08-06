@@ -3,14 +3,14 @@
   "enisaUuid": "21e14546-97d2-3676-84e3-be7ab2812da2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: Defer ip_vs_ftp unregister during netns cleanup\n\nOn the netns cleanup path, __ip_vs_ftp_exit() may unregister ip_vs_ftp\nbefore connections with valid cp->app pointers are flushed, leading to a\nuse-after-free.\n\nFix this by introducing a global `exiting_module` flag, set to true in\nip_vs_ftp_exit() before unregistering the pernet subsystem. In\n__ip_vs_ftp_exit(), skip ip_vs_ftp unregister if called during netns\ncleanup (when exiting_module is false) and defer it to\n__ip_vs_cleanup_batch(), which unregisters all apps after all connections\nare flushed. If called during module exit, unregister ip_vs_ftp\nimmediately.",
   "datePublished": "Oct 24, 2025, 11:44:28 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:36 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:05 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8a6ecab3847c213ce2855b0378e63ce839085de3\nhttps://git.kernel.org/stable/c/421b1ae1574dfdda68b835c15ac4921ec0030182\nhttps://git.kernel.org/stable/c/1d79471414d7b9424d699afff2aa79fff322f52d\nhttps://git.kernel.org/stable/c/53717f8a4347b78eac6488072ad8e5adbaff38d9\nhttps://git.kernel.org/stable/c/8cbe2a21d85727b66d7c591fd5d83df0d8c4f757\nhttps://git.kernel.org/stable/c/dc1a481359a72ee7e548f1f5da671282a7c13b8f\nhttps://git.kernel.org/stable/c/a343811ef138a265407167294275201621e9ebb2\nhttps://git.kernel.org/stable/c/134121bfd99a06d44ef5ba15a9beb075297c0821\n",
   "aliases": "GHSA-25rg-2wrr-633h\nCVE-2025-40018\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "1cd052f4-6a55-3492-8bf9-5a0c21a69c1c",

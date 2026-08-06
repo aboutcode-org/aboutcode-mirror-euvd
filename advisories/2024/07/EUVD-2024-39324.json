@@ -3,7 +3,7 @@
   "enisaUuid": "e819d76a-6eda-3012-a28c-127fd1c54f9b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnilfs2: fix kernel bug on rename operation of broken directory\n\nSyzbot reported that in rename directory operation on broken directory on\nnilfs2, __block_write_begin_int() called to prepare block write may fail\nBUG_ON check for access exceeding the folio/page size.\n\nThis is because nilfs_dotdot(), which gets parent directory reference\nentry (\"..\") of the directory to be moved or renamed, does not check\nconsistency enough, and may return location exceeding folio/page size for\nbroken directories.\n\nFix this issue by checking required directory entries (\".\" and \"..\") in\nthe first chunk of the directory in nilfs_dotdot().",
   "datePublished": "Jul 29, 2024, 2:31:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:27:58 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

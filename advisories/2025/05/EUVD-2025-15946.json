@@ -3,14 +3,14 @@
   "enisaUuid": "46adb2a6-68bb-3d75-881b-a3afb89c47d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in session logoff\n\nThe sess->user object can currently be in use by another thread, for\nexample if another connection has sent a session setup request to\nbind to the session being free'd. The handler for that connection could\nbe in the smb2_sess_setup function which makes use of sess->user.",
   "datePublished": "May 20, 2025, 3:21:34 PM",
-  "dateUpdated": "Jul 30, 2026, 5:49:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:10 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/931dc8a3670f71c45c0b1379ea4e92dafbda1aca\nhttps://git.kernel.org/stable/c/70ad6455139e26e85f48f95d0e21f351c1909342\nhttps://git.kernel.org/stable/c/d5ec1d79509b3ee01de02c236f096bc050221b7f\nhttps://git.kernel.org/stable/c/02d16046cd11a5c037b28c12ffb818c56dd3ef43\nhttps://git.kernel.org/stable/c/2fc9feff45d92a92cd5f96487655d5be23fb7e2b\n",
   "aliases": "GHSA-3rcg-456g-86p6\nCVE-2025-37899\n",
   "assigner": "Linux",
-  "epss": 0.47,
+  "epss": 0.93,
   "enisaIdProduct": [
     {
       "id": "23cb7ccc-f78f-363d-93de-d0de71dd9cc5",

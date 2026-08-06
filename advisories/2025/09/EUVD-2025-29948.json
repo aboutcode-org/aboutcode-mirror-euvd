@@ -3,7 +3,7 @@
   "enisaUuid": "67c4d183-4826-33df-bb72-c882766f1d41",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmlx5: fix possible ptp queue fifo use-after-free\n\nFifo indexes are not checked during pop operations and it leads to\npotential use-after-free when poping from empty queue. Such case was\npossible during re-sync action. WARN_ON_ONCE covers future cases.\n\nThere were out-of-order cqe spotted which lead to drain of the queue and\nuse-after-free because of lack of fifo pointers check. Special check and\ncounter are added to avoid resync operation if SKB could not exist in the\nfifo because of OOO cqe (skb_id must be between consumer and producer\nindex).",
   "datePublished": "Sep 18, 2025, 1:33:38 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:33 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

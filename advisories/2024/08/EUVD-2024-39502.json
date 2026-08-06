@@ -3,7 +3,7 @@
   "enisaUuid": "31af35e0-9448-3081-8b85-2a3b15e63f9f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: microchip-core: ensure TX and RX FIFOs are empty at start of a transfer\n\nWhile transmitting with rx_len == 0, the RX FIFO is not going to be\nemptied in the interrupt handler. A subsequent transfer could then\nread crap from the previous transfer out of the RX FIFO into the\nstart RX buffer. The core provides a register that will empty the RX and\nTX FIFOs, so do that before each transfer.",
   "datePublished": "Aug 17, 2024, 9:08:46 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:18 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

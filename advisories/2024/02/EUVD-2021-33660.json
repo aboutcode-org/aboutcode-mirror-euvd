@@ -3,7 +3,7 @@
   "enisaUuid": "9101e18a-8a7f-355d-a4d8-21ad6461dba5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: Fix a use after free in siw_alloc_mr\n\nOur code analyzer reported a UAF.\n\nIn siw_alloc_mr(), it calls siw_mr_add_mem(mr,..). In the implementation of\nsiw_mr_add_mem(), mem is assigned to mr->mem and then mem is freed via\nkfree(mem) if xa_alloc_cyclic() failed. Here, mr->mem still point to a\nfreed object. After, the execution continue up to the err_out branch of\nsiw_alloc_mr, and the freed mr->mem is used in siw_mr_drop_mem(mr).\n\nMy patch moves \"mr->mem = mem\" behind the if (xa_alloc_cyclic(..)<0) {}\nsection, to avoid the uaf.",
   "datePublished": "Feb 28, 2024, 8:13:30 AM",
-  "dateUpdated": "Aug 4, 2026, 8:58:17 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

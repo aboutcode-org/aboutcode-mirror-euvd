@@ -3,14 +3,14 @@
   "enisaUuid": "e8226da2-085e-3b97-ad5b-238e196acdad",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix null pointer dereference after failing to issue FLOGI and PLOGI\n\nIf lpfc_issue_els_flogi() fails and returns non-zero status, the node\nreference count is decremented to trigger the release of the nodelist\nstructure. However, if there is a prior registration or dev-loss-evt work\npending, the node may be released prematurely.  When dev-loss-evt\ncompletes, the released node is referenced causing a use-after-free null\npointer dereference.\n\nSimilarly, when processing non-zero ELS PLOGI completion status in\nlpfc_cmpl_els_plogi(), the ndlp flags are checked for a transport\nregistration before triggering node removal.  If dev-loss-evt work is\npending, the node may be released prematurely and a subsequent call to\nlpfc_dev_loss_tmo_handler() results in a use after free ndlp dereference.\n\nAdd test for pending dev-loss before decrementing the node reference count\nfor FLOGI, PLOGI, PRLI, and ADISC handling.",
   "datePublished": "Feb 26, 2025, 2:13:53 AM",
-  "dateUpdated": "Aug 4, 2026, 9:05:44 AM",
+  "dateUpdated": "Aug 5, 2026, 8:55:30 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c7dc74ab7975c9b96284abfe4cca756d75fa4604\nhttps://git.kernel.org/stable/c/10663ebec0ad5c78493a0dd34c9ee4d73d7ca0df\nhttps://git.kernel.org/stable/c/577a942df3de2666f6947bdd3a5c9e8d30073424\n",
   "aliases": "CVE-2022-49535\nGHSA-84hr-q2hc-2m5c\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.31,
   "enisaIdProduct": [
     {
       "id": "08184037-7ee8-30a4-978c-4bd949f0bdef",

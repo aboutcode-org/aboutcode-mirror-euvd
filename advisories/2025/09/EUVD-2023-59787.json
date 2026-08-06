@@ -3,7 +3,7 @@
   "enisaUuid": "ecd7954d-4315-3bd7-ab48-45dcbd88466e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6/addrconf: fix a potential refcount underflow for idev\n\nNow in addrconf_mod_rs_timer(), reference idev depends on whether\nrs_timer is not pending. Then modify rs_timer timeout.\n\nThere is a time gap in [1], during which if the pending rs_timer\nbecomes not pending. It will miss to hold idev, but the rs_timer\nis activated. Thus rs_timer callback function addrconf_rs_timer()\nwill be executed and put idev later without holding idev. A refcount\nunderflow issue for idev can be caused by this.\n\n\tif (!timer_pending(&idev->rs_timer))\n\t\tin6_dev_hold(idev);\n\t\t  <--------------[1]\n\tmod_timer(&idev->rs_timer, jiffies + when);\n\nTo fix the issue, hold idev if mod_timer() return 0.",
   "datePublished": "Sep 15, 2025, 2:05:26 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:41 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:02 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

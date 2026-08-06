@@ -3,14 +3,14 @@
   "enisaUuid": "a8c8322d-9375-3284-b607-d13d7d22210b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: ccp - copy IV using skcipher ivsize\n\nAF_ALG rfc3686-ctr-aes-ccp requests pass an 8-byte IV to the driver.\n\nccp_aes_complete() restores AES_BLOCK_SIZE bytes into the caller's IV\nbuffer while RFC3686 skciphers expose an 8-byte IV, so the restore\noverruns the provided buffer.\n\nUse crypto_skcipher_ivsize() to copy only the algorithm's IV length.",
   "datePublished": "Jun 24, 2026, 4:29:26 PM",
-  "dateUpdated": "Jul 15, 2026, 12:45:15 AM",
+  "dateUpdated": "Aug 5, 2026, 12:32:39 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/939061b2d0f7f15114e34b4ce878ef50ff4089c3\nhttps://git.kernel.org/stable/c/798d409a8949f3f495f238549b86de2886b129bd\nhttps://git.kernel.org/stable/c/dfb2cf434829819268fe50f41542aad318ad62b2\nhttps://git.kernel.org/stable/c/eecee15e263ccb8cd77170a56ab6c969cb54dd6a\nhttps://git.kernel.org/stable/c/bb01d8f1f385bc9034ca114d3508c7fdea24fc9a\nhttps://git.kernel.org/stable/c/df9784bb5b637ac80f4a2768a58ca9a50bef28a9\nhttps://git.kernel.org/stable/c/227c1e1d9e2aa4cfc65ba446d5690da1f546cda4\nhttps://git.kernel.org/stable/c/a7a1f3cdd64d8a165d9b8c9e9ad7fb46ac19dfc4\n",
   "aliases": "CVE-2026-53016\nGHSA-4rx4-73jx-c5r8\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "02008888-3eff-33d1-bd7a-12138ceb8d6d",

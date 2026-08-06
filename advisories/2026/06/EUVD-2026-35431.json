@@ -3,12 +3,14 @@
   "enisaUuid": "20d1fe02-0a0d-3e20-a7b4-8ab9924c1aea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"net/smc: Introduce TCP ULP support\"\n\nThis reverts commit d7cd421da9da2cc7b4d25b8537f66db5c8331c40.\n\nAs reported by Al Viro, the TCP ULP support for SMC is fundamentally\nbroken. The implementation attempts to convert an active TCP socket\ninto an SMC socket by modifying the underlying `struct file`, dentry,\nand inode in-place, which violates core VFS invariants that assume\nthese structures are immutable for an open file, creating a risk of\nuse after free errors and general system instability.\n\nGiven the severity of this design flaw and the fact that cleaner\nalternatives (e.g., LD_PRELOAD, BPF) exist for legacy application\ntransparency, the correct course of action is to remove this feature\nentirely.",
   "datePublished": "Jun 9, 2026, 12:25:59 PM",
-  "dateUpdated": "Jun 9, 2026, 12:25:59 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:31:24 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6c505d95c69e27dbf28fea29dc84d2498d69515c\nhttps://git.kernel.org/stable/c/df31a6b0a3057e66994ad6ccf5d95b9b9514f033\n",
   "aliases": "CVE-2026-46330\nGHSA-fm5x-69c3-7mfj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "058ea3a9-0912-30f3-9efb-8832e5fa2ebe",

@@ -3,12 +3,14 @@
   "enisaUuid": "4972eeec-c37d-39d9-8f9b-4b1cef31ab5f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Validate XDomain request packet size before type cast\n\ntb_xdp_handle_request() casts the received packet buffer to\nprotocol-specific structs without verifying that the allocation\nis large enough for the target type.  A peer can send a minimal\nXDomain packet that passes the generic header length check but is\nshorter than the struct accessed after the cast, causing out-of-\nbounds reads from the kmemdup allocation.\n\nPlumb the packet length through xdomain_request_work and validate\nit against the expected struct size before each cast.",
   "datePublished": "Jun 25, 2026, 8:38:33 AM",
-  "dateUpdated": "Jun 25, 2026, 8:38:33 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:33:30 PM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a770e62923090d7572f1f5a8507ae551d354a057\nhttps://git.kernel.org/stable/c/0dd61ba03d05187726ecdf9c0e2175a81b9b24f6\nhttps://git.kernel.org/stable/c/79235c8add5da4bf27a12f5a5dbb579f300c059e\nhttps://git.kernel.org/stable/c/46da5c3ea011e884028a91cf913db093920a915b\nhttps://git.kernel.org/stable/c/07cd2787cdf8942d24a1a3ef81aa89b526fb6381\nhttps://git.kernel.org/stable/c/a504b9f2797b739e0304d537e8aa4ce883ecce39\n",
   "aliases": "CVE-2026-53147\nGHSA-vrfr-cw9w-gwrx\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "1237b37a-7800-3ab2-ad95-6c0c2c08d0c2",

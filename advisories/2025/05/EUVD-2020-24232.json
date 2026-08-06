@@ -3,7 +3,7 @@
   "enisaUuid": "f205491f-6093-3058-a55c-d0bf7961f649",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: keep alloc_hash updated after hash allocation\n\nIn commit 599be01ee567 (\"net_sched: fix an OOB access in cls_tcindex\")\nI moved cp->hash calculation before the first\ntcindex_alloc_perfect_hash(), but cp->alloc_hash is left untouched.\nThis difference could lead to another out of bound access.\n\ncp->alloc_hash should always be the size allocated, we should\nupdate it after this tcindex_alloc_perfect_hash().",
   "datePublished": "May 7, 2025, 1:17:33 PM",
-  "dateUpdated": "Aug 4, 2026, 8:57:42 AM",
+  "dateUpdated": "Aug 5, 2026, 8:44:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

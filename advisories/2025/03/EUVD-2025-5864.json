@@ -3,14 +3,14 @@
   "enisaUuid": "af5da042-edde-363c-a7ca-6cd1ac7fe3a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: oss: Fix race at SNDCTL_DSP_SYNC\n\nThere is a small race window at snd_pcm_oss_sync() that is called from\nOSS PCM SNDCTL_DSP_SYNC ioctl; namely the function calls\nsnd_pcm_oss_make_ready() at first, then takes the params_lock mutex\nfor the rest.  When the stream is set up again by another thread\nbetween them, it leads to inconsistency, and may result in unexpected\nresults such as NULL dereference of OSS buffer as a fuzzer spotted\nrecently.\n\nThe fix is simply to cover snd_pcm_oss_make_ready() call into the same\nparams_lock mutex with snd_pcm_oss_make_ready_locked() variant.",
   "datePublished": "Mar 2, 2025, 2:30:02 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:21 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:09 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4051324a6dafd7053c74c475e80b3ba10ae672b0\nhttps://git.kernel.org/stable/c/fce793a056c604b41a298317cf704dae255f1b36\nhttps://git.kernel.org/stable/c/8015ef9e8a0ee5cecfd0cb6805834d007ab26f86\nhttps://git.kernel.org/stable/c/723ac5ab2891b6c10dd6cc78ef5456af593490eb\nhttps://git.kernel.org/stable/c/8423f0b6d513b259fdab9c9bf4aaa6188d054c2d\n",
   "aliases": "GHSA-73xw-qxgf-j8c4\nCVE-2022-49733\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0b2c0f14-7997-30e6-832b-636252560f7a",

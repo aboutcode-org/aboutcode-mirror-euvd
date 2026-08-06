@@ -3,12 +3,14 @@
   "enisaUuid": "80e19032-1537-3c46-b8af-1aaec214a6b3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix incorrect FI_NO_EXTENT handling in __destroy_extent_node()\n\nWhen __destroy_extent_node() sets the inode flag FI_NO_EXTENT, it does\nnot reset the length of the largest extent to 0 and update the inode\nfolio. Since modifications to the extent tree are disallowed afterward,\nthe cached largest extent may become stale. This can trigger the\nfollowing error in xfstests generic/388:\n\nF2FS-fs (dm-0): sanity_check_extent_cache: inode (ino=1761) extent info [220057, 57, 6] is incorrect, run fsck to fix\n\nIn the f2fs_drop_inode path, __destroy_extent_node() does not need to\nguarantee that et->node_cnt is 0, because concurrency with writeback\nis expected in this path, and writeback may update the extent cache.\n\nThis patch reverts commit ed78aeebef05 (\"f2fs: fix node_cnt race between\nextent node destroy and writeback\"), and remove the unnecessary zero\ncheck of et->node_cnt.",
   "datePublished": "Jul 19, 2026, 12:02:13 PM",
-  "dateUpdated": "Jul 19, 2026, 12:02:13 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:35:58 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7e4d8f98be63f98856a5176b9188dada6e7ba9ee\nhttps://git.kernel.org/stable/c/58a5deb220bcac4c73bf58954c0845644c997487\nhttps://git.kernel.org/stable/c/20190e498057997532c7f186d081011f18e0a462\nhttps://git.kernel.org/stable/c/edf12cbeeeabe799bd2ee21fdb5c336cce6fbad7\nhttps://git.kernel.org/stable/c/1f70ddb28a3c71df124da5fa4040c808116d6bb9\n",
   "aliases": "GHSA-7w3g-6v3x-44mp\nCVE-2026-63812\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "01953242-d206-316f-8a1d-30fd857dcb44",

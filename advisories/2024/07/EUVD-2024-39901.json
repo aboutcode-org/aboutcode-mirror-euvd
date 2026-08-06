@@ -3,7 +3,7 @@
   "enisaUuid": "a120ca44-b138-3bd2-a5cb-757cc8cc258b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: Fix possible double free in error handling path\n\nWhen auxiliary_device_add() returns error and then calls\nauxiliary_device_uninit(), callback function adev_release\ncalls kfree(madev). We shouldn't call kfree(madev) again\nin the error handling path. Set 'madev' to NULL.",
   "datePublished": "Jul 29, 2024, 3:52:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:28:35 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:28 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

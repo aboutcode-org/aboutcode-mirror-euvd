@@ -3,7 +3,7 @@
   "enisaUuid": "288563e6-86e0-3215-8a3b-fb162a1d5bb4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Skip restore TC rules for vport rep without loaded flag\n\nDuring driver unload, unregister_netdev is called after unloading\nvport rep. So, the mlx5e_rep_priv is already freed while trying to get\nrpriv->netdev, or walk rpriv->tc_ht, which results in use-after-free.\nSo add the checking to make sure access the data of vport rep which is\nstill loaded.",
   "datePublished": "Jan 15, 2025, 1:10:24 PM",
-  "dateUpdated": "Aug 4, 2026, 9:40:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:35 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

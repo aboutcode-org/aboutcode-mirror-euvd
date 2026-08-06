@@ -3,7 +3,7 @@
   "enisaUuid": "9aeba010-472c-3761-bf21-5328c57aa293",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: venus: protect against spurious interrupts during probe\n\nMake sure the interrupt handler is initialized before the interrupt is\nregistered.\n\nIf the IRQ is registered before hfi_create(), it's possible that an\ninterrupt fires before the handler setup is complete, leading to a NULL\ndereference.\n\nThis error condition has been observed during system boot on Rb3Gen2.",
   "datePublished": "Sep 5, 2025, 5:21:16 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:06 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:44 PM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",

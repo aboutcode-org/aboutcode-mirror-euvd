@@ -3,7 +3,7 @@
   "enisaUuid": "ec4c8661-b156-3240-a81c-ebec82dd5111",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (ibmpex) Fix possible UAF when ibmpex_register_bmc() fails\n\nSmatch report warning as follows:\n\ndrivers/hwmon/ibmpex.c:509 ibmpex_register_bmc() warn:\n  '&data->list' not removed from list\n\nIf ibmpex_find_sensors() fails in ibmpex_register_bmc(), data will\nbe freed, but data->list will not be removed from driver_data.bmc_data,\nthen list traversal may cause UAF.\n\nFix by removeing it from driver_data.bmc_data before free().",
   "datePublished": "Oct 21, 2024, 8:06:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:03:47 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

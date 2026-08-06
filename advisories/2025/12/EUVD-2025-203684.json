@@ -3,14 +3,14 @@
   "enisaUuid": "4d356c4b-4bf1-3e68-a757-a738b567e95a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: Fix uninitialized 'offp' in statmount_string()\n\nIn statmount_string(), most flags assign an output offset pointer (offp)\nwhich is later updated with the string offset. However, the\nSTATMOUNT_MNT_UIDMAP and STATMOUNT_MNT_GIDMAP cases directly set the\nstruct fields instead of using offp. This leaves offp uninitialized,\nleading to a possible uninitialized dereference when *offp is updated.\n\nFix it by assigning offp for UIDMAP and GIDMAP as well, keeping the code\npath consistent.",
   "datePublished": "Dec 16, 2025, 1:57:08 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:28 AM",
+  "dateUpdated": "Aug 5, 2026, 12:10:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/acfde9400e611c8d2668f1c70053c4a1d6ecfc36\nhttps://git.kernel.org/stable/c/0778ac7df5137d5041783fadfc201f8fd55a1d9b\n",
   "aliases": "GHSA-qh7q-6f85-cjv9\nCVE-2025-68212\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "124ba040-8d0e-3e65-9fb2-4e9af3e156e4",

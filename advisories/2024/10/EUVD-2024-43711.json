@@ -3,7 +3,7 @@
   "enisaUuid": "8356f55d-ae02-372e-9ac4-04f8f69baf5d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock, bfq: fix uaf for accessing waker_bfqq after splitting\n\nAfter commit 42c306ed7233 (\"block, bfq: don't break merge chain in\nbfq_split_bfqq()\"), if the current procress is the last holder of bfqq,\nthe bfqq can be freed after bfq_split_bfqq(). Hence recored the bfqq and\nthen access bfqq->waker_bfqq may trigger UAF. What's more, the waker_bfqq\nmay in the merge chain of bfqq, hence just recored waker_bfqq is still\nnot safe.\n\nFix the problem by adding a helper bfq_waker_bfqq() to check if\nbfqq->waker_bfqq is in the merge chain, and current procress is the only\nholder.",
   "datePublished": "Oct 21, 2024, 12:18:46 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

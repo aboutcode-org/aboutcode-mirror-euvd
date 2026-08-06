@@ -3,14 +3,14 @@
   "enisaUuid": "0292c205-b32f-3884-b808-5440076c789b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: tun: unlink NAPI from device on destruction\n\nSyzbot found a race between tun file and device destruction.\nNAPIs live in struct tun_file which can get destroyed before\nthe netdev so we have to del them explicitly. The current\ncode is missing deleting the NAPI if the queue was detached\nfirst.",
   "datePublished": "Feb 26, 2025, 2:24:05 AM",
-  "dateUpdated": "Aug 4, 2026, 9:06:08 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:01 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/82e729aee59acefe135fceffadcbc5b86dd4f1b9\nhttps://git.kernel.org/stable/c/a8cf919022373c97a84fe596bbea544f909c485d\nhttps://git.kernel.org/stable/c/bec1be0a745ab420718217e3e0d9542a75108989\nhttps://git.kernel.org/stable/c/8145f77d38de4f88b8a69e1463f5c09ba189d77c\nhttps://git.kernel.org/stable/c/8661d4b8faa2f7ee7a559969c0a7c57f077b1728\nhttps://git.kernel.org/stable/c/3b9bc84d311104906d2b4995a9a02d7b7ddab2db\n",
   "aliases": "GHSA-g69g-p5jr-h7qf\nCVE-2022-49672\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "04047ec3-229f-309e-9bed-d57258a688d2",

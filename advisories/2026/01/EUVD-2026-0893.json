@@ -3,14 +3,14 @@
   "enisaUuid": "b2d599b6-3400-3ab1-9837-6b96729f3d63",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: firewire-motu: add bounds check in put_user loop for DSP events\n\nIn the DSP event handling code, a put_user() loop copies event data.\nWhen the user buffer size is not aligned to 4 bytes, it could overwrite\nbeyond the buffer boundary.\n\nFix by adding a bounds check before put_user().",
   "datePublished": "Jan 5, 2026, 9:32:27 AM",
-  "dateUpdated": "Jul 30, 2026, 6:04:30 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:20 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ea2c921d9de6e32ca50cb817b9d57bb881be70de\nhttps://git.kernel.org/stable/c/6d4f17782ce4facf3197e79707df411ee3d7b30a\nhttps://git.kernel.org/stable/c/0d71b3c2ed742f1ccb3b0b7a61afb90c0251093f\nhttps://git.kernel.org/stable/c/df692cf2b601a54b34edfdb9e683d67483aa8ce1\nhttps://git.kernel.org/stable/c/8f9e51cf2a2a43d0cd72d3dc0b5ccea3f639c187\nhttps://git.kernel.org/stable/c/298e753880b6ea99ac30df34959a7a03b0878eed\n",
   "aliases": "CVE-2025-68753\nGHSA-fg49-cm53-vpfx\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "1bd721ce-890c-3b52-a0f7-21a323e74d48",

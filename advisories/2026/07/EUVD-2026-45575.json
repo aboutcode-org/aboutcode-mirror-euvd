@@ -3,12 +3,14 @@
   "enisaUuid": "2205c38d-ba93-30e9-8ea0-af63795b5117",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: free net->ipv4.sysctl_local_reserved_ports after unregister_net_sysctl_table()\n\nipv4_sysctl_exit_net() is currently freeing net->ipv4.sysctl_local_reserved_ports\ntoo soon.\n\nOnly after unregister_net_sysctl_table() we can be sure no threads can possibly\nuse the sysctls, including /proc/sys/net/ipv4/ip_local_reserved_ports.",
   "datePublished": "Jul 19, 2026, 2:56:19 PM",
-  "dateUpdated": "Jul 19, 2026, 2:56:19 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:38:02 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ecf45080a4d3f4526cacb8b14060fe3b49a6913b\nhttps://git.kernel.org/stable/c/a0ffc6081a8b27082dd5eae5aa1e3f59bbecf06c\nhttps://git.kernel.org/stable/c/5b23a2ff379e70b6b9ff744a972b63e1f8f4d996\nhttps://git.kernel.org/stable/c/8e59d4d0dcde2dfb07a7ef855c849a2a0560aa57\nhttps://git.kernel.org/stable/c/6512c57c4638ddec113bf42439361ba85a12048d\nhttps://git.kernel.org/stable/c/a7f4eefb6e1458431eef9fa20fb363320d185f76\nhttps://git.kernel.org/stable/c/155f90be5ee8be5b110ebc0b7da33c54c83b0208\nhttps://git.kernel.org/stable/c/87a1e0fe7776da7ab411be332b4be58ac8840d10\n",
   "aliases": "CVE-2026-64002\nGHSA-gghq-r38g-rg55\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "004c8a31-7bc8-3b14-bb5f-97fa4b16885f",

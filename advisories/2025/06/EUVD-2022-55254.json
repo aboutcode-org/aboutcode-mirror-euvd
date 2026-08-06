@@ -3,14 +3,14 @@
   "enisaUuid": "d4de11b8-17b2-31c5-b435-b1ba2c3e76b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: fix rumble worker null pointer deref\n\nWe can dereference a null pointer trying to queue work to a destroyed\nworkqueue.\n\nIf the device is disconnected, nintendo_hid_remove is called, in which\nthe rumble_queue is destroyed. Avoid using that queue to defer rumble\nwork once the controller state is set to JOYCON_CTLR_STATE_REMOVED.\n\nThis eliminates the null pointer dereference.",
   "datePublished": "Jun 18, 2025, 11:00:37 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:16 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:57 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7c6e6c334154be16740b44dcd7638fb510b9bd91\nhttps://git.kernel.org/stable/c/1ff89e06c2e5fab30274e4b02360d4241d6e605e\n",
   "aliases": "GHSA-rrcr-75gv-j4qm\nCVE-2022-49974\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "07e7efa9-9795-322d-a68f-25d9846a75ab",

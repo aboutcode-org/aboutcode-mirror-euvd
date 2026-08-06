@@ -3,14 +3,14 @@
   "enisaUuid": "4d6bc093-653a-3889-a0b6-85df05c8e4c2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Flush cache for PASID table before using it\n\nWhen writing the address of a freshly allocated zero-initialized PASID\ntable to a PASID directory entry, do that after the CPU cache flush for\nthis PASID table, not before it, to avoid the time window when this\nPASID table may be already used by non-coherent IOMMU hardware while\nits contents in RAM is still some random old data, not zero-initialized.",
   "datePublished": "May 27, 2026, 12:15:41 PM",
-  "dateUpdated": "May 30, 2026, 10:45:42 AM",
+  "dateUpdated": "Aug 5, 2026, 12:28:37 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cd75e77125c8a51754ca4cd60b4ca083ed735d1d\nhttps://git.kernel.org/stable/c/0616137b70e6d9a547d4b60df8e1b64e36d83661\nhttps://git.kernel.org/stable/c/36990407cdd257473607e33802d00e978af2759e\nhttps://git.kernel.org/stable/c/c93f23375d8c410954b0df825e814b632fd62b9d\nhttps://git.kernel.org/stable/c/5962c30a6f05ea1ab73f039e235bb30716243517\nhttps://git.kernel.org/stable/c/36244dfd3853f7bf89d03b8e90d56b23ce7fbc16\nhttps://git.kernel.org/stable/c/d15cda135148ea7ba929cfdbcf208182bc29a7aa\nhttps://git.kernel.org/stable/c/22d169bdd2849fe6bd18c2643742e1c02be6451c\n",
   "aliases": "GHSA-qqmx-g3hj-x9h7\nCVE-2026-45862\n",
   "assigner": "Linux",
-  "epss": 0.01,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0f7e128e-5bcb-3742-9d1d-42a1d06b999a",

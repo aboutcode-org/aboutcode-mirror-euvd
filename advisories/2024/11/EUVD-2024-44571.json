@@ -3,7 +3,7 @@
   "enisaUuid": "8c4db765-58f1-3d90-b9e5-d99124809c8a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnouveau/dmem: Fix vulnerability in migrate_to_ram upon copy error\n\nThe `nouveau_dmem_copy_one` function ensures that the copy push command is\nsent to the device firmware but does not track whether it was executed\nsuccessfully.\n\nIn the case of a copy error (e.g., firmware or hardware failure), the\ncopy push command will be sent via the firmware channel, and\n`nouveau_dmem_copy_one` will likely report success, leading to the\n`migrate_to_ram` function returning a dirty HIGH_USER page to the user.\n\nThis can result in a security vulnerability, as a HIGH_USER page that may\ncontain sensitive or corrupted data could be returned to the user.\n\nTo prevent this vulnerability, we allocate a zero page. Thus, in case of\nan error, a non-dirty (zero) page will be returned to the user.",
   "datePublished": "Nov 5, 2024, 5:04:58 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:54 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:39 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",

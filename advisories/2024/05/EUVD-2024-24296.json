@@ -3,7 +3,7 @@
   "enisaUuid": "a1886f40-862f-3167-a65f-f540aa257e8c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: compress: fix to cover normal cluster write with cp_rwsem\n\nWhen we overwrite compressed cluster w/ normal cluster, we should\nnot unlock cp_rwsem during f2fs_write_raw_pages(), otherwise data\nwill be corrupted if partial blocks were persisted before CP & SPOR,\ndue to cluster metadata wasn't updated atomically.",
   "datePublished": "May 1, 2024, 12:53:39 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:03 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:08 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

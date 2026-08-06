@@ -3,14 +3,14 @@
   "enisaUuid": "872bcd6f-cc71-3a8a-893c-cd28e9008014",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs/hfsplus: avoid WARN_ON() for sanity check, use proper error handling\n\nCommit 55d1cbbbb29e (\"hfs/hfsplus: use WARN_ON for sanity check\") fixed\na build warning by turning a comment into a WARN_ON(), but it turns out\nthat syzbot then complains because it can trigger said warning with a\ncorrupted hfs image.\n\nThe warning actually does warn about a bad situation, but we are much\nbetter off just handling it as the error it is.  So rather than warn\nabout us doing bad things, stop doing the bad things and return -EIO.\n\nWhile at it, also fix a memory leak that was introduced by an earlier\nfix for a similar syzbot warning situation, and add a check for one case\nthat historically wasn't handled at all (ie neither comment nor\nsubsequent WARN_ON).",
   "datePublished": "Dec 24, 2025, 1:06:47 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:55 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cc2164ada548addfa8ee215196661c3afe0c5154\nhttps://git.kernel.org/stable/c/82725be426bce0a425cc5e26fbad61ffd29cff03\nhttps://git.kernel.org/stable/c/da23752d9660ba7a8ca6c5768fd8776f67f59ee7\nhttps://git.kernel.org/stable/c/be01f35efa876eb81cebab2cb0add068b7280ef4\nhttps://git.kernel.org/stable/c/f10defb0be6ac42fb6a97b45920d32da6bd6fde8\nhttps://git.kernel.org/stable/c/90e019006644dad35862cb4aa270f561b0732066\nhttps://git.kernel.org/stable/c/45917be9f0af339a45b4619f31c902d37b8aed59\nhttps://git.kernel.org/stable/c/cb7a95af78d29442b8294683eca4897544b8ef46\n",
   "aliases": "GHSA-2f2v-fxm5-25rj\nCVE-2023-54130\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0a073457-4ff8-31e5-a507-8230dfe86bcb",

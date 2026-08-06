@@ -3,14 +3,14 @@
   "enisaUuid": "16ad0292-735e-3636-9f21-63fb0c17b04b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Revert to requiring CAP_SYS_ADMIN for uprobes\n\nJann reports that uprobes can be used destructively when used in the\nmiddle of an instruction. The kernel only verifies there is a valid\ninstruction at the requested offset, but due to variable instruction\nlength cannot determine if this is an instruction as seen by the\nintended execution stream.\n\nAdditionally, Mark Rutland notes that on architectures that mix data\nin the text segment (like arm64), a similar things can be done if the\ndata word is 'mistaken' for an instruction.\n\nAs such, require CAP_SYS_ADMIN for uprobes.",
   "datePublished": "Jul 25, 2025, 3:27:48 PM",
-  "dateUpdated": "Jul 30, 2026, 5:54:26 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:07 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d7ef1afd5b3f43f4924326164cee5397b66abd9c\nhttps://git.kernel.org/stable/c/c0aec35f861fa746ca45aa816161c74352e6ada8\nhttps://git.kernel.org/stable/c/8e8bf7bc6aa6f583336c2fda280b6cea0aed5612\nhttps://git.kernel.org/stable/c/183bdb89af1b5193b1d1d9316986053b15ca6fa4\nhttps://git.kernel.org/stable/c/a0a8009083e569b5526c64f7d3f2a62baca95164\nhttps://git.kernel.org/stable/c/d5074256b642cdeb46a70ce2f15193e766edca68\nhttps://git.kernel.org/stable/c/ba677dbe77af5ffe6204e0f3f547f3ba059c6302\n",
   "aliases": "CVE-2025-38466\nGHSA-fr3c-c44p-6638\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "077851f1-0dae-38dc-a240-94e4438d0031",

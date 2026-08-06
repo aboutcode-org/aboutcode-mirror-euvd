@@ -3,7 +3,7 @@
   "enisaUuid": "8dda3f98-7ff2-3351-bd73-6c6b54fca2a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nleds: trigger: Unregister sysfs attributes before calling deactivate()\n\nTriggers which have trigger specific sysfs attributes typically store\nrelated data in trigger-data allocated by the activate() callback and\nfreed by the deactivate() callback.\n\nCalling device_remove_groups() after calling deactivate() leaves a window\nwhere the sysfs attributes show/store functions could be called after\ndeactivation and then operate on the just freed trigger-data.\n\nMove the device_remove_groups() call to before deactivate() to close\nthis race window.\n\nThis also makes the deactivation path properly do things in reverse order\nof the activation path which calls the activate() callback before calling\ndevice_add_groups().",
   "datePublished": "Aug 17, 2024, 9:21:48 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:48 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

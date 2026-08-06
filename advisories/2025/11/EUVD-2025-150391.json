@@ -3,14 +3,14 @@
   "enisaUuid": "56b311f9-f61d-37ee-9777-813d0fcdd06b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix metadata_dst leak __bpf_redirect_neigh_v{4,6}\n\nCilium has a BPF egress gateway feature which forces outgoing K8s Pod\ntraffic to pass through dedicated egress gateways which then SNAT the\ntraffic in order to interact with stable IPs outside the cluster.\n\nThe traffic is directed to the gateway via vxlan tunnel in collect md\nmode. A recent BPF change utilized the bpf_redirect_neigh() helper to\nforward packets after the arrival and decap on vxlan, which turned out\nover time that the kmalloc-256 slab usage in kernel was ever-increasing.\n\nThe issue was that vxlan allocates the metadata_dst object and attaches\nit through a fake dst entry to the skb. The latter was never released\nthough given bpf_redirect_neigh() was merely setting the new dst entry\nvia skb_dst_set() without dropping an existing one first.",
   "datePublished": "Nov 12, 2025, 9:56:27 PM",
-  "dateUpdated": "Jul 30, 2026, 6:01:15 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:23 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/3fba965a9aac0fa3cbd8138436a37af9ab466d79\nhttps://git.kernel.org/stable/c/057764172fcc6ee2ccb6c41351a55a9f054dc8fd\nhttps://git.kernel.org/stable/c/2e67c2037382abb56497bb9d7b7e10be04eb5598\nhttps://git.kernel.org/stable/c/b6bfe44b6dbb14a31d86c475cdc9c7689534fb09\nhttps://git.kernel.org/stable/c/f36a305d30f557306d87c787ddffe094ac5dac89\nhttps://git.kernel.org/stable/c/7404ce888a45eb7da0508b7cbbe6f2e95302eeb8\nhttps://git.kernel.org/stable/c/23f3770e1a53e6c7a553135011f547209e141e72\n",
   "aliases": "CVE-2025-40183\nGHSA-553v-hjpm-738q\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.57,
   "enisaIdProduct": [
     {
       "id": "043586ed-20d8-3ac2-a69c-734b7e11ac3f",

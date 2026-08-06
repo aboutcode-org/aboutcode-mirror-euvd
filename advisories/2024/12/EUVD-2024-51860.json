@@ -3,7 +3,7 @@
   "enisaUuid": "6e945691-dd4f-310c-b190-df428c918456",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix crash when unbinding\n\nIf there is an error during some initialization related to firmware,\nthe function ath12k_dp_cc_cleanup is called to release resources.\nHowever this is released again when the device is unbinded (ath12k_pci),\nand we get:\nBUG: kernel NULL pointer dereference, address: 0000000000000020\nat RIP: 0010:ath12k_dp_cc_cleanup.part.0+0xb6/0x500 [ath12k]\nCall Trace:\nath12k_dp_cc_cleanup\nath12k_dp_free\nath12k_core_deinit\nath12k_pci_remove\n...\n\nThe issue is always reproducible from a VM because the MSI addressing\ninitialization is failing.\n\nIn order to fix the issue, just set to NULL the released structure in\nath12k_dp_cc_cleanup at the end.",
   "datePublished": "Dec 27, 2024, 1:49:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:37:51 AM",
+  "dateUpdated": "Aug 5, 2026, 11:44:30 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

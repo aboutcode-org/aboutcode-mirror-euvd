@@ -3,7 +3,7 @@
   "enisaUuid": "f38785bb-a04b-3a31-9f32-43364fe9b3aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nima: Fix use-after-free on a dentry's dname.name\n\n->d_name.name can change on rename and the earlier value can be freed;\nthere are conditions sufficient to stabilize it (->d_lock on dentry,\n->d_lock on its parent, ->i_rwsem exclusive on the parent's inode,\nrename_lock), but none of those are met at any of the sites. Take a stable\nsnapshot of the name instead.",
   "datePublished": "Jul 12, 2024, 12:20:30 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:43 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

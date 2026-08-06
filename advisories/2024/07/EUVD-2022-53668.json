@@ -3,14 +3,14 @@
   "enisaUuid": "ab84c23e-8b14-3a60-96ad-e8fa1c71cf70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix possible use-after-free in transport error_recovery work\n\nWhile nvme_tcp_submit_async_event_work is checking the ctrl and queue\nstate before preparing the AER command and scheduling io_work, in order\nto fully prevent a race where this check is not reliable the error\nrecovery work must flush async_event_work before continuing to destroy\nthe admin queue after setting the ctrl state to RESETTING such that\nthere is no race .submit_async_event and the error recovery handler\nitself changing the ctrl state.",
   "datePublished": "Jul 16, 2024, 11:43:45 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:34 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:19 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/61a26ffd5ad3ece456d74c4c79f7b5e3f440a141\nhttps://git.kernel.org/stable/c/e192184cf8bce8dd55d619f5611a2eaba996fa05\nhttps://git.kernel.org/stable/c/5e42fca37ccc76f39f73732661bd47254cad5982\nhttps://git.kernel.org/stable/c/bb0d8fb35c4ff00a503c2c4dca4cce8d102a21c4\nhttps://git.kernel.org/stable/c/ff9fc7ebf5c06de1ef72a69f9b1ab40af8b07f9e\n",
   "aliases": "CVE-2022-48789\nGHSA-f27c-pqm6-956j\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.66,
   "enisaIdProduct": [
     {
       "id": "1bcb78e1-f7a3-3258-8b15-5e4f8227ce55",

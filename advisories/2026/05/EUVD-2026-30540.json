@@ -3,14 +3,14 @@
   "enisaUuid": "0e6ae35a-45cc-3504-b64c-3ea0973eecac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nptrace: slightly saner 'get_dumpable()' logic\n\nThe 'dumpability' of a task is fundamentally about the memory image of\nthe task - the concept comes from whether it can core dump or not - and\nmakes no sense when you don't have an associated mm.\n\nAnd almost all users do in fact use it only for the case where the task\nhas a mm pointer.\n\nBut we have one odd special case: ptrace_may_access() uses 'dumpable' to\ncheck various other things entirely independently of the MM (typically\nexplicitly using flags like PTRACE_MODE_READ_FSCREDS).  Including for\nthreads that no longer have a VM (and maybe never did, like most kernel\nthreads).\n\nIt's not what this flag was designed for, but it is what it is.\n\nThe ptrace code does check that the uid/gid matches, so you do have to\nbe uid-0 to see kernel thread details, but this means that the\ntraditional \"drop capabilities\" model doesn't make any difference for\nthis all.\n\nMake it all make a *bit* more sense by saying that if you don't have a\nMM pointer, we'll use a cached \"last dumpability\" flag if the thread\never had a MM (it will be zero for kernel threads since it is never\nset), and require a proper CAP_SYS_PTRACE capability to override.",
   "datePublished": "May 15, 2026, 12:58:44 PM",
-  "dateUpdated": "Jun 30, 2026, 2:44:31 AM",
+  "dateUpdated": "Aug 5, 2026, 12:31:28 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
   "references": "https://git.kernel.org/stable/c/93d4ba49d18e3d7fb41a9927c2d0cca5e9dfefd6\nhttps://git.kernel.org/stable/c/15b828a46f305ae9f05a7c16914b3ce273474205\nhttps://git.kernel.org/stable/c/4709234fd1b95136ceb789f639b1e7ea5de1b181\nhttps://git.kernel.org/stable/c/8f907d345bae8f4b3f004c5abc56bf2dfb851ea7\nhttps://git.kernel.org/stable/c/6e5b51e74a40d377bcd3081dd33fbaa0e1aa7e3d\nhttps://git.kernel.org/stable/c/2a93a4fac7b6051d3be7cd1b015fe7320cd0404d\nhttps://git.kernel.org/stable/c/01363cb3fbd0238ffdeb09f53e9039c9edf8a730\nhttps://git.kernel.org/stable/c/31e62c2ebbfdc3fe3dbdf5e02c92a9dc67087a3a\n",
   "aliases": "GHSA-pm8f-4p6p-6x53\nCVE-2026-46333\n",
   "assigner": "Linux",
-  "epss": 1.21,
+  "epss": 1.5,
   "enisaIdProduct": [
     {
       "id": "00e9c553-a20f-3256-aff6-ad126f332c84",
@@ -43,26 +43,6 @@
       "product_version": "3.16.52 <3.17"
     },
     {
-      "id": "1a841559-748f-3549-8b02-96ea4c17a45c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8f907d345bae8f4b3f004c5abc56bf2dfb851ea7"
-    },
-    {
-      "id": "201a9211-bcbb-335b-9315-97bb7625d2e1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <93d4ba49d18e3d7fb41a9927c2d0cca5e9dfefd6"
-    },
-    {
       "id": "26864310-0a04-37ab-a3c1-430d2db3f482",
       "product": {
         "name": "Linux",
@@ -71,16 +51,6 @@
         }
       },
       "product_version": "bfedb589252c01fa505ac9f6f2a3d5d68d707ef4 <01363cb3fbd0238ffdeb09f53e9039c9edf8a730"
-    },
-    {
-      "id": "2875aae0-52df-38f2-bd77-2f46f85b6dec",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <15b828a46f305ae9f05a7c16914b3ce273474205"
     },
     {
       "id": "3252bcf6-4bbf-353a-a2f5-fff7276e3d4d",
@@ -101,16 +71,6 @@
         }
       },
       "product_version": "bfedb589252c01fa505ac9f6f2a3d5d68d707ef4 <6e5b51e74a40d377bcd3081dd33fbaa0e1aa7e3d"
-    },
-    {
-      "id": "35cb81ee-6562-3128-8a3c-48226b25ad6c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2a93a4fac7b6051d3be7cd1b015fe7320cd0404d"
     },
     {
       "id": "35fbdb60-6cc4-3932-9e29-73e7acb1668b",
@@ -243,16 +203,6 @@
       "product_version": "patch: 6.12.89"
     },
     {
-      "id": "893178c2-eb2d-357c-9f5f-557f63f94bed",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4709234fd1b95136ceb789f639b1e7ea5de1b181"
-    },
-    {
       "id": "8d738a35-ad63-3cb1-bed1-712ecd217894",
       "product": {
         "name": "Linux",
@@ -283,16 +233,6 @@
       "product_version": "patch: 7.1"
     },
     {
-      "id": "a070c422-ae66-3eed-bda5-da7b51bd7477",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <01363cb3fbd0238ffdeb09f53e9039c9edf8a730"
-    },
-    {
       "id": "a811d432-62db-36eb-b68c-097f60fd248e",
       "product": {
         "name": "Linux",
@@ -313,16 +253,6 @@
       "product_version": "03eed7afbc09e061f66b448daf7863174c3dc3f3"
     },
     {
-      "id": "d86e6faa-e33f-3bd6-a882-91d95fd4d246",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6e5b51e74a40d377bcd3081dd33fbaa0e1aa7e3d"
-    },
-    {
       "id": "d9325cd9-dc1a-39bc-88db-3e54ed688313",
       "product": {
         "name": "Linux",
@@ -331,16 +261,6 @@
         }
       },
       "product_version": "bfedb589252c01fa505ac9f6f2a3d5d68d707ef4 <2a93a4fac7b6051d3be7cd1b015fe7320cd0404d"
-    },
-    {
-      "id": "dd5ef86f-6830-307d-bd91-9a9496c9d3ef",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc4"
     },
     {
       "id": "e836f857-75ea-3942-a3c3-4261ecec0d60",

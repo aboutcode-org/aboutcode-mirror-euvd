@@ -3,7 +3,7 @@
   "enisaUuid": "a77b6012-2238-37e6-8b5b-3ee77967299c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: fix kernel crash problem in concurrent scenario\n\nWhen link status change, the nic driver need to notify the roce\ndriver to handle this event, but at this time, the roce driver\nmay uninit, then cause kernel crash.\n\nTo fix the problem, when link status change, need to check\nwhether the roce registered, and when uninit, need to wait link\nupdate finish.",
   "datePublished": "Jul 12, 2024, 12:20:38 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:55 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:50 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "e2481d7d-c242-3d6f-aabd-26407f5737ff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfou: remove warn in gue_gro_receive on unsupported protocol\n\nDrop the WARN_ON_ONCE inn gue_gro_receive if the encapsulated type is\nnot known or does not have a GRO handler.\n\nSuch a packet is easily constructed. Syzbot generates them and sets\noff this warning.\n\nRemove the warning as it is expected and not actionable.\n\nThe warning was previously reduced from WARN_ON to WARN_ON_ONCE in\ncommit 270136613bf7 (\"fou: Do WARN_ON_ONCE in gue_gro_receive for bad\nproto callbacks\").",
   "datePublished": "Aug 26, 2024, 11:20:44 AM",
-  "dateUpdated": "Aug 4, 2026, 9:30:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:09 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

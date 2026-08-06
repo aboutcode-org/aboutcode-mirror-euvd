@@ -3,14 +3,14 @@
   "enisaUuid": "bbe0848a-8579-3abf-8c29-bcc97e5e2ec7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-auth: validate reply message payload bounds against transfer length\n\nnvmet_auth_reply() accesses the variable-length rval[] array using\nattacker-controlled hl (hash length) and dhvlen (DH value length) fields\nwithout verifying they fit within the allocated buffer of tl bytes.\n\nA malicious NVMe-oF initiator can craft a DHCHAP_REPLY message with a\nsmall transfer length but large hl/dhvlen values, causing out-of-bounds\nheap reads when the target processes the DH public key (rval + 2*hl) or\nperforms the host response memcmp.\n\nWith DH authentication configured, the OOB pointer is passed directly to\nsg_init_one() and read by crypto_kpp_compute_shared_secret(), reaching\nup to 526 bytes past the buffer. This is exploitable pre-authentication.\n\nAdd bounds validation ensuring sizeof(*data) + 2*hl + dhvlen <= tl before\nany access to the variable-length fields.\n\nDiscovered by Atuin - Automated Vulnerability Discovery Engine.",
   "datePublished": "Jul 25, 2026, 8:49:48 AM",
-  "dateUpdated": "Jul 27, 2026, 4:59:45 AM",
+  "dateUpdated": "Aug 5, 2026, 12:40:56 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/80cd28b56ab62d3e7ed0a7bf05282e6d3ee5b2a0\nhttps://git.kernel.org/stable/c/999f6205ede984a786f35f727b01f971b98e215d\nhttps://git.kernel.org/stable/c/6d7649c1231dac14d906985d2936967e23041c26\nhttps://git.kernel.org/stable/c/caa71b3a43ea5c13fe7141cb019ebcb03b8ac857\nhttps://git.kernel.org/stable/c/3a413ece2504c70aa34a20be4dafec04e8c741f9\n",
   "aliases": "GHSA-78p6-7rph-cp36\nCVE-2026-64319\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.52,
   "enisaIdProduct": [
     {
       "id": "122151f2-aa1b-399e-b527-0ab324772144",

@@ -3,14 +3,14 @@
   "enisaUuid": "a75ba27b-7073-32ac-8168-878a6e5fe648",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfunctionfs: fix the open/removal races\n\nffs_epfile_open() can race with removal, ending up with file->private_data\npointing to freed object.\n\nThere is a total count of opened files on functionfs (both ep0 and\ndynamic ones) and when it hits zero, dynamic files get removed.\nUnfortunately, that removal can happen while another thread is\nin ffs_epfile_open(), but has not incremented the count yet.\nIn that case open will succeed, leaving us with UAF on any subsequent\nread() or write().\n\nThe root cause is that ffs->opened is misused; atomic_dec_and_test() vs.\natomic_add_return() is not a good idea, when object remains visible all\nalong.\n\nTo untangle that\n\t* serialize openers on ffs->mutex (both for ep0 and for dynamic files)\n\t* have dynamic ones use atomic_inc_not_zero() and fail if we had\nzero ->opened; in that case the file we are opening is doomed.\n\t* have the inodes of dynamic files marked on removal (from the\ncallback of simple_recursive_removal()) - clear ->i_private there.\n\t* have open of dynamic ones verify they hadn't been already removed,\nalong with checking that state is FFS_ACTIVE.",
   "datePublished": "Jan 13, 2026, 3:31:27 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:04 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:53 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e5bf5ee266633cb18fff6f98f0b7d59a62819eee\n",
   "aliases": "GHSA-98h8-m6w9-qr4x\nCVE-2025-71074\n",
   "assigner": "Linux",
-  "epss": 0.09,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "1a575a96-16eb-31c8-8fe6-11624553bddb",

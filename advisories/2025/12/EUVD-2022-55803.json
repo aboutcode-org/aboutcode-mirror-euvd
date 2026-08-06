@@ -3,14 +3,14 @@
   "enisaUuid": "ddfabced-30f3-3e6d-9516-f5786a622895",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vt6655: fix potential memory leak\n\nIn function device_init_td0_ring, memory is allocated for member\ntd_info of priv->apTD0Rings[i], with i increasing from 0. In case of\nallocation failure, the memory is freed in reversed order, with i\ndecreasing to 0. However, the case i=0 is left out and thus memory is\nleaked.\n\nModify the memory freeing loop to include the case i=0.",
   "datePublished": "Dec 24, 2025, 1:05:51 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:01 AM",
+  "dateUpdated": "Aug 5, 2026, 8:59:44 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e741e38aa98704fbb959650ecd270b71b2670680\nhttps://git.kernel.org/stable/c/16a45e78a687eb6c69acc4e62b94b6508b0bfbda\nhttps://git.kernel.org/stable/c/1b3cebeca99e8e0aa4fa57faac8dbf41e967317a\nhttps://git.kernel.org/stable/c/ff8551d411f12b5abc5ca929ab87643afa8a9588\nhttps://git.kernel.org/stable/c/fb5f569bcda8f87bd47d8030bfae343d757fa3ea\nhttps://git.kernel.org/stable/c/cfdf139258614ef65b0f68b857ada5328fb7c0e5\nhttps://git.kernel.org/stable/c/c8ff91535880d41b49699b3829fb6151942de29e\n",
   "aliases": "GHSA-35g5-mqjg-qfr4\nCVE-2022-50758\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "04bba605-fa46-3d59-aed3-911af8736037",

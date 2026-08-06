@@ -3,7 +3,7 @@
   "enisaUuid": "37a6b805-faa1-3958-999f-dda26f3a6702",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Validate i_depth for exhash directories\n\nA fuzzer test introduced corruption that ends up with a depth of 0 in\ndir_e_read(), causing an undefined shift by 32 at:\n\n  index = hash >> (32 - dip->i_depth);\n\nAs calculated in an open-coded way in dir_make_exhash(), the minimum\ndepth for an exhash directory is ilog2(sdp->sd_hash_ptrs) and 0 is\ninvalid as sdp->sd_hash_ptrs is fixed as sdp->bsize / 16 at mount time.\n\nSo we can avoid the undefined behaviour by checking for depth values\nlower than the minimum in gfs2_dinode_in(). Values greater than the\nmaximum are already being checked for there.\n\nAlso switch the calculation in dir_make_exhash() to use ilog2() to\nclarify how the depth is calculated.\n\nTested with the syzkaller repro.c and xfstests '-g quick'.",
   "datePublished": "Sep 4, 2025, 3:33:00 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:33 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:10 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

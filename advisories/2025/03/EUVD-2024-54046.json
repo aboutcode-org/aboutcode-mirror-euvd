@@ -3,7 +3,7 @@
   "enisaUuid": "88fe9e5b-635d-3bdf-89ad-19eda0430fae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Fix handling of received connection abort\n\nFix the handling of a connection abort that we've received.  Though the\nabort is at the connection level, it needs propagating to the calls on that\nconnection.  Whilst the propagation bit is performed, the calls aren't then\nwoken up to go and process their termination, and as no further input is\nforthcoming, they just hang.\n\nAlso add some tracing for the logging of connection aborts.",
   "datePublished": "Mar 6, 2025, 3:53:57 PM",
-  "dateUpdated": "Aug 4, 2026, 9:42:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:29 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

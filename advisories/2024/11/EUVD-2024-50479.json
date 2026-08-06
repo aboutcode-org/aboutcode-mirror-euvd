@@ -3,7 +3,7 @@
   "enisaUuid": "498b2766-6204-31ed-8796-ebedbb017d3b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dvbdev: prevent the risk of out of memory access\n\nThe dvbdev contains a static variable used to store dvb minors.\n\nThe behavior of it depends if CONFIG_DVB_DYNAMIC_MINORS is set\nor not. When not set, dvb_register_device() won't check for\nboundaries, as it will rely that a previous call to\ndvb_register_adapter() would already be enforcing it.\n\nOn a similar way, dvb_device_open() uses the assumption\nthat the register functions already did the needed checks.\n\nThis can be fragile if some device ends using different\ncalls. This also generate warnings on static check analysers\nlike Coverity.\n\nSo, add explicit guards to prevent potential risk of OOM issues.",
   "datePublished": "Nov 19, 2024, 5:22:33 PM",
-  "dateUpdated": "Aug 4, 2026, 9:36:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:43:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

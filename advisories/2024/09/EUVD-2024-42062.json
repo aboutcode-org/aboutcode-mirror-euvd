@@ -3,7 +3,7 @@
   "enisaUuid": "ad4634b4-9670-30e8-a5ea-0a98edff8f26",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibfs: fix get_stashed_dentry()\n\nget_stashed_dentry() tries to optimistically retrieve a stashed dentry\nfrom a provided location.  It needs to ensure to hold rcu lock before it\ndereference the stashed location to prevent UAF issues.  Use\nrcu_dereference() instead of READ_ONCE() it's effectively equivalent\nwith some lockdep bells and whistles and it communicates clearly that\nthis expects rcu protection.",
   "datePublished": "Sep 18, 2024, 7:12:55 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:59 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

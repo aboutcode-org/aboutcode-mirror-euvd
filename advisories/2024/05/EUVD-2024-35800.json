@@ -3,7 +3,7 @@
   "enisaUuid": "ef830397-81d7-36f7-8d6f-f126ce9f15af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/dm-raid: don't call md_reap_sync_thread() directly\n\nCurrently md_reap_sync_thread() is called from raid_message() directly\nwithout holding 'reconfig_mutex', this is definitely unsafe because\nmd_reap_sync_thread() can change many fields that is protected by\n'reconfig_mutex'.\n\nHowever, hold 'reconfig_mutex' here is still problematic because this\nwill cause deadlock, for example, commit 130443d60b1b (\"md: refactor\nidle/frozen_sync_thread() to fix deadlock\").\n\nFix this problem by using stop_sync_thread() to unregister sync_thread,\nlike md/raid did.",
   "datePublished": "May 17, 2024, 1:23:15 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:59 AM",
+  "dateUpdated": "Aug 5, 2026, 11:30:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

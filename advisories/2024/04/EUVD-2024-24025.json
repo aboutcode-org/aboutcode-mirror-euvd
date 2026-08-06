@@ -3,7 +3,7 @@
   "enisaUuid": "3a2f2505-699f-357e-896d-d3eee2a31f1b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-crypt: don't modify the data when using authenticated encryption\n\nIt was said that authenticated encryption could produce invalid tag when\nthe data that is being encrypted is modified [1]. So, fix this problem by\ncopying the data into the clone bio first and then encrypt them inside the\nclone bio.\n\nThis may reduce performance, but it is needed to prevent the user from\ncorrupting the device by writing data with O_DIRECT and modifying them at\nthe same time.\n\n[1] https://lore.kernel.org/all/20240207004723.GA35324@sol.localdomain/T/",
   "datePublished": "Apr 3, 2024, 5:00:46 PM",
-  "dateUpdated": "Aug 4, 2026, 9:20:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:05 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",

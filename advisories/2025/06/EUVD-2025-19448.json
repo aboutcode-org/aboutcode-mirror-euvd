@@ -3,14 +3,14 @@
   "enisaUuid": "41f5e072-65cf-31cb-981a-1676fca23322",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race\n\nhuge_pmd_unshare() drops a reference on a page table that may have\npreviously been shared across processes, potentially turning it into a\nnormal page table used in another process in which unrelated VMAs can\nafterwards be installed.\n\nIf this happens in the middle of a concurrent gup_fast(), gup_fast() could\nend up walking the page tables of another process.  While I don't see any\nway in which that immediately leads to kernel memory corruption, it is\nreally weird and unexpected.\n\nFix it with an explicit broadcast IPI through tlb_remove_table_sync_one(),\njust like we do in khugepaged when removing page tables for a THP\ncollapse.",
   "datePublished": "Jun 28, 2025, 7:44:26 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:10 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:23 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/952596b08c74e8fe9e2883d1dc8a8f54a37384ec\nhttps://git.kernel.org/stable/c/a3d864c901a300c295692d129159fc3001a56185\nhttps://git.kernel.org/stable/c/b7754d3aa7bf9f62218d096c0c8f6c13698fac8b\nhttps://git.kernel.org/stable/c/fe684290418ef9ef76630072086ee530b92f02b8\nhttps://git.kernel.org/stable/c/034a52b5ef57c9c8225d94e9067f3390bb33922f\nhttps://git.kernel.org/stable/c/a6bfeb97941a9187833b526bc6cc4ff5706d0ce9\nhttps://git.kernel.org/stable/c/1013af4f585fccc4d3e5c5824d174de2257f7d6d\nhttps://project-zero.issues.chromium.org/issues/420715744\n",
   "aliases": "GHSA-5q6f-wm2q-mpgg\nCVE-2025-38085\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "07393587-d7b0-3cd1-a231-2373731b79d1",

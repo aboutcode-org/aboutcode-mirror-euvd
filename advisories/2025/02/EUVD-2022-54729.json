@@ -3,14 +3,14 @@
   "enisaUuid": "cc397ea1-9738-3ab3-8263-18b43d89e815",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwl1251: dynamically allocate memory used for DMA\n\nWith introduction of vmap'ed stacks, stack parameters can no\nlonger be used for DMA and now leads to kernel panic.\n\nIt happens at several places for the wl1251 (e.g. when\naccessed through SDIO) making it unuseable on e.g. the\nOpenPandora.\n\nWe solve this by allocating temporary buffers or use wl1251_read32().\n\nTested on v5.18-rc5 with OpenPandora.",
   "datePublished": "Feb 26, 2025, 2:13:34 AM",
-  "dateUpdated": "Aug 4, 2026, 9:05:36 AM",
+  "dateUpdated": "Aug 5, 2026, 8:55:22 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/da03bbfbf5acd1ab0b074617e865ad1e8a5779ef\nhttps://git.kernel.org/stable/c/454744754cbf2c21b3fc7344e46e10bee2768094\n",
   "aliases": "GHSA-fj72-9xhm-3qpx\nCVE-2022-49500\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "04db12b1-0d55-3df9-b9d0-71d9a2be7c09",

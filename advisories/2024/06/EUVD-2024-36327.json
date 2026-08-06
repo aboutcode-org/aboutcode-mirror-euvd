@@ -3,7 +3,7 @@
   "enisaUuid": "862f7a7f-1f76-39be-9007-36dd1a72c737",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: Wait unconditionally after issuing EndXfer command\n\nCurrently all controller IP/revisions except DWC3_usb3 >= 310a\nwait 1ms unconditionally for ENDXFER completion when IOC is not\nset. This is because DWC_usb3 controller revisions >= 3.10a\nsupports GUCTL2[14: Rst_actbitlater] bit which allows polling\nCMDACT bit to know whether ENDXFER command is completed.\n\nConsider a case where an IN request was queued, and parallelly\nsoft_disconnect was called (due to ffs_epfile_release). This\neventually calls stop_active_transfer with IOC cleared, hence\nsend_gadget_ep_cmd() skips waiting for CMDACT cleared during\nEndXfer. For DWC3 controllers with revisions >= 310a, we don't\nforcefully wait for 1ms either, and we proceed by unmapping the\nrequests. If ENDXFER didn't complete by this time, it leads to\nSMMU faults since the controller would still be accessing those\nrequests.\n\nFix this by ensuring ENDXFER completion by adding 1ms delay in\n__dwc3_stop_active_transfer() unconditionally.",
   "datePublished": "Jun 18, 2024, 7:27:58 PM",
-  "dateUpdated": "Aug 4, 2026, 9:25:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:26 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

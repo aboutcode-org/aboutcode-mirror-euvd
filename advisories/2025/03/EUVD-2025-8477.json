@@ -3,14 +3,14 @@
   "enisaUuid": "c69af369-d9c8-3095-a705-ee0801a698f3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: better track kernel sockets lifetime\n\nWhile kernel sockets are dismantled during pernet_operations->exit(),\ntheir freeing can be delayed by any tx packets still held in qdisc\nor device queues, due to skb_set_owner_w() prior calls.\n\nThis then trigger the following warning from ref_tracker_dir_exit() [1]\n\nTo fix this, make sure that kernel sockets own a reference on net->passive.\n\nAdd sk_net_refcnt_upgrade() helper, used whenever a kernel socket\nis converted to a refcounted one.\n\n[1]\n\n[  136.263918][   T35] ref_tracker: net notrefcnt@ffff8880638f01e0 has 1/2 users at\n[  136.263918][   T35]      sk_alloc+0x2b3/0x370\n[  136.263918][   T35]      inet6_create+0x6ce/0x10f0\n[  136.263918][   T35]      __sock_create+0x4c0/0xa30\n[  136.263918][   T35]      inet_ctl_sock_create+0xc2/0x250\n[  136.263918][   T35]      igmp6_net_init+0x39/0x390\n[  136.263918][   T35]      ops_init+0x31e/0x590\n[  136.263918][   T35]      setup_net+0x287/0x9e0\n[  136.263918][   T35]      copy_net_ns+0x33f/0x570\n[  136.263918][   T35]      create_new_namespaces+0x425/0x7b0\n[  136.263918][   T35]      unshare_nsproxy_namespaces+0x124/0x180\n[  136.263918][   T35]      ksys_unshare+0x57d/0xa70\n[  136.263918][   T35]      __x64_sys_unshare+0x38/0x40\n[  136.263918][   T35]      do_syscall_64+0xf3/0x230\n[  136.263918][   T35]      entry_SYSCALL_64_after_hwframe+0x77/0x7f\n[  136.263918][   T35]\n[  136.343488][   T35] ref_tracker: net notrefcnt@ffff8880638f01e0 has 1/2 users at\n[  136.343488][   T35]      sk_alloc+0x2b3/0x370\n[  136.343488][   T35]      inet6_create+0x6ce/0x10f0\n[  136.343488][   T35]      __sock_create+0x4c0/0xa30\n[  136.343488][   T35]      inet_ctl_sock_create+0xc2/0x250\n[  136.343488][   T35]      ndisc_net_init+0xa7/0x2b0\n[  136.343488][   T35]      ops_init+0x31e/0x590\n[  136.343488][   T35]      setup_net+0x287/0x9e0\n[  136.343488][   T35]      copy_net_ns+0x33f/0x570\n[  136.343488][   T35]      create_new_namespaces+0x425/0x7b0\n[  136.343488][   T35]      unshare_nsproxy_namespaces+0x124/0x180\n[  136.343488][   T35]      ksys_unshare+0x57d/0xa70\n[  136.343488][   T35]      __x64_sys_unshare+0x38/0x40\n[  136.343488][   T35]      do_syscall_64+0xf3/0x230\n[  136.343488][   T35]      entry_SYSCALL_64_after_hwframe+0x77/0x7f",
   "datePublished": "Mar 27, 2025, 2:57:12 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:28 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:06 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2668e038800b946d269f96ec1b258c01930a242c\nhttps://git.kernel.org/stable/c/4ceb0bd4ffd009821b585ce6a8033b12b59fb5fb\nhttps://git.kernel.org/stable/c/c31a732fac46b00b95b78fcc9c37cb48dd6f2e0c\nhttps://git.kernel.org/stable/c/5c70eb5c593d64d93b178905da215a9fd288a4b5\n",
   "aliases": "GHSA-f4wj-m43r-79jr\nCVE-2025-21884\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0f3c7c54-461c-3535-94f9-21bb528b6928",

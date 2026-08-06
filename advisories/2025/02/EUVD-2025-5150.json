@@ -3,14 +3,14 @@
   "enisaUuid": "b1261209-2c71-347c-8de1-a5f61c40e2c4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: ti: am65-cpsw: fix memleak in certain XDP cases\n\nIf the XDP program doesn't result in XDP_PASS then we leak the\nmemory allocated by am65_cpsw_build_skb().\n\nIt is pointless to allocate SKB memory before running the XDP\nprogram as we would be wasting CPU cycles for cases other than XDP_PASS.\nMove the SKB allocation after evaluating the XDP program result.\n\nThis fixes the memleak. A performance boost is seen for XDP_DROP test.\n\nXDP_DROP test:\nBefore: 460256 rx/s                  0 err/s\nAfter:  784130 rx/s                  0 err/s",
   "datePublished": "Feb 27, 2025, 2:18:27 AM",
-  "dateUpdated": "Jul 30, 2026, 5:45:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:25 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/1bba1d042107167164a0ae3a843fdf650ab005d7\nhttps://git.kernel.org/stable/c/dc11f049612b9d926aca2e55f8dc9d82850d0da3\nhttps://git.kernel.org/stable/c/5db843258de1e4e6b1ef1cbd1797923c9e3de548\n",
   "aliases": "CVE-2025-21788\nGHSA-2qj8-c2v4-6cg6\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.48,
   "enisaIdProduct": [
     {
       "id": "363d8546-14e8-33af-b1ed-cc5378e6c8d2",

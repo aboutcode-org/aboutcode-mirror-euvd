@@ -3,7 +3,7 @@
   "enisaUuid": "84b1a082-c0c4-3149-bf52-fa4afa96ffcd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_flat: Fix corruption when not offsetting data start\n\nCommit 04d82a6d0881 (\"binfmt_flat: allow not offsetting data start\")\nintroduced a RISC-V specific variant of the FLAT format which does\nnot allocate any space for the (obsolete) array of shared library\npointers. However, it did not disable the code which initializes the\narray, resulting in the corruption of sizeof(long) bytes before the DATA\nsegment, generally the end of the TEXT segment.\n\nIntroduce MAX_SHARED_LIBS_UPDATE which depends on the state of\nCONFIG_BINFMT_FLAT_NO_DATA_START_OFFSET to guard the initialization of\nthe shared library pointer region so that it will only be initialized\nif space is reserved for it.",
   "datePublished": "Sep 4, 2024, 6:38:45 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:28 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:20 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

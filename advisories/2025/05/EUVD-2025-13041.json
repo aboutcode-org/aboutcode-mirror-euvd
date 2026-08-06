@@ -3,14 +3,14 @@
   "enisaUuid": "0707f3fc-760e-3a9c-af1f-6073adbf0ce4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in smb_break_all_levII_oplock()\n\nThere is a room in smb_break_all_levII_oplock that can cause racy issues\nwhen unlocking in the middle of the loop. This patch use read lock\nto protect whole loop.",
   "datePublished": "May 1, 2025, 1:07:14 PM",
-  "dateUpdated": "Jul 30, 2026, 5:49:05 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:27 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/296cb5457cc6f4a754c4ae29855f8a253d52bcc6\nhttps://git.kernel.org/stable/c/d54ab1520d43e95f9b2e22d7a05fc9614192e5a5\nhttps://git.kernel.org/stable/c/d73686367ad68534257cd88a36ca3c52cb8b81d8\nhttps://git.kernel.org/stable/c/18b4fac5ef17f77fed9417d22210ceafd6525fc7\n",
   "aliases": "GHSA-68wc-qrqf-rfh5\nCVE-2025-37776\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "096b10ce-5e3e-39ab-8613-9bb77066e872",

@@ -3,7 +3,7 @@
   "enisaUuid": "20ae54e6-b224-333d-9c4a-2138aab94c6e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: complete validation of user input\n\nIn my recent commit, I missed that do_replace() handlers\nuse copy_from_sockptr() (which I fixed), followed\nby unsafe copy_from_sockptr_offset() calls.\n\nIn all functions, we can perform the @optlen validation\nbefore even calling xt_alloc_table_info() with the following\ncheck:\n\nif ((u64)optlen < (u64)tmp.size + sizeof(tmp))\n        return -EINVAL;",
   "datePublished": "May 20, 2024, 9:41:53 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:09 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:13 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

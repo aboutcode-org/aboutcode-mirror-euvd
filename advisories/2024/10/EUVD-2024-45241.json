@@ -3,7 +3,7 @@
   "enisaUuid": "15ddce9e-6e9c-32d5-a77a-edf7c4e14df4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: Fix an unsafe loop on the list\n\nThe kernel may crash when deleting a genetlink family if there are still\nlisteners for that family:\n\nOops: Kernel access of bad area, sig: 11 [#1]\n  ...\n  NIP [c000000000c080bc] netlink_update_socket_mc+0x3c/0xc0\n  LR [c000000000c0f764] __netlink_clear_multicast_users+0x74/0xc0\n  Call Trace:\n__netlink_clear_multicast_users+0x74/0xc0\ngenl_unregister_family+0xd4/0x2d0\n\nChange the unsafe loop on the list to a safe one, because inside the\nloop there is an element removal from this list.",
   "datePublished": "Oct 21, 2024, 7:39:29 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:02 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "2f7b5512-cfb1-3d79-92af-937f7857464b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnbd: fix race between timeout and normal completion\n\nIf request timetout is handled by nbd_requeue_cmd(), normal completion\nhas to be stopped for avoiding to complete this requeued request, other\nuse-after-free can be triggered.\n\nFix the race by clearing NBD_CMD_INFLIGHT in nbd_requeue_cmd(), meantime\nmake sure that cmd->lock is grabbed for clearing the flag and the\nrequeue.",
   "datePublished": "Oct 21, 2024, 12:18:47 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:21 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:05 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "3564dba7-95f7-3125-a010-22e2a809e689",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix WARNING \"do not call blocking ops when !TASK_RUNNING\"\n\nwait_event_timeout() will set the state of the current\ntask to TASK_UNINTERRUPTIBLE, before doing the condition check. This\nmeans that ksmbd_durable_scavenger_alive() will try to acquire the mutex\nwhile already in a sleeping state. The scheduler warns us by giving\nthe following warning:\n\ndo not call blocking ops when !TASK_RUNNING; state=2 set at\n [<0000000061515a6f>] prepare_to_wait_event+0x9f/0x6c0\nWARNING: CPU: 2 PID: 4147 at kernel/sched/core.c:10099 __might_sleep+0x12f/0x160\n\nmutex lock is not needed in ksmbd_durable_scavenger_alive().",
   "datePublished": "May 8, 2025, 6:26:03 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:16 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:41 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/8f805b3746d2f41702c77cba22f94f8415fadd1a\nhttps://git.kernel.org/stable/c/cd161198e091e8a62b9bd631be970ea9a87d2d6a\nhttps://git.kernel.org/stable/c/1df0d4c616138784e033ad337961b6e1a6bcd999\n",
   "aliases": "GHSA-56c5-8gc7-wj67\nCVE-2025-37802\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "077d8924-1fcd-391a-96c6-f59613d593ff",

@@ -3,14 +3,14 @@
   "enisaUuid": "d07b6aa1-34a4-3e10-a2d6-00e4a25da68c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Clear cmds after chip reset\n\nCommit aefed3e5548f (\"scsi: qla2xxx: target: Fix offline port handling\nand host reset handling\") caused two problems:\n\n1. Commands sent to FW, after chip reset got stuck and never freed as FW\n   is not going to respond to them anymore.\n\n2. BUG_ON(cmd->sg_mapped) in qlt_free_cmd().  Commit 26f9ce53817a\n   (\"scsi: qla2xxx: Fix missed DMA unmap for aborted commands\")\n   attempted to fix this, but introduced another bug under different\n   circumstances when two different CPUs were racing to call\n   qlt_unmap_sg() at the same time: BUG_ON(!valid_dma_direction(dir)) in\n   dma_unmap_sg_attrs().\n\nSo revert \"scsi: qla2xxx: Fix missed DMA unmap for aborted commands\" and\npartially revert \"scsi: qla2xxx: target: Fix offline port handling and\nhost reset handling\" at __qla2x00_abort_all_cmds.",
   "datePublished": "Dec 24, 2025, 12:09:41 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:24 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:14 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5c1fb3fd05da3d55b8cbc42d7d660b313cbdc936\nhttps://git.kernel.org/stable/c/d46c69a087aa3d1513f7a78f871b80251ea0c1ae\n",
   "aliases": "GHSA-vc2w-h9rc-mpxx\nCVE-2025-68745\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.32,
   "enisaIdProduct": [
     {
       "id": "334adcb2-476a-3cd3-aa46-d28f12063491",

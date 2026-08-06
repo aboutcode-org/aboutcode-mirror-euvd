@@ -3,14 +3,14 @@
   "enisaUuid": "f76fef3f-d160-3751-961a-08e537e7030b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate session id and tree id in compound request\n\n`smb2_get_msg()` in smb2_get_ksmbd_tcon() and smb2_check_user_session()\nwill always return the first request smb2 header in a compound request.\nif `SMB2_TREE_CONNECT_HE` is the first command in compound request, will\nreturn 0, i.e. The tree id check is skipped.\nThis patch use ksmbd_req_buf_next() to get current command in compound.",
   "datePublished": "Feb 21, 2024, 7:21:01 AM",
-  "dateUpdated": "Aug 4, 2026, 9:10:29 AM",
+  "dateUpdated": "Aug 5, 2026, 9:09:59 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/017d85c94f02090a87f4a473dbe0d6ee0da72693\nhttps://git.kernel.org/stable/c/becb5191d1d5fdfca0198a2e37457bbbf4fe266f\nhttps://git.kernel.org/stable/c/4c2b350b2e269e3fd17bbfa42de1b42775b777ac\nhttps://git.kernel.org/stable/c/3df0411e132ee74a87aa13142dfd2b190275332e\n",
   "aliases": "CVE-2023-52442\nGHSA-5wjx-fx3x-22c6\n",
   "assigner": "Linux",
-  "epss": 17.44,
+  "epss": 29.64,
   "enisaIdProduct": [
     {
       "id": "0e4e38d3-6073-3bbb-8162-e4d46abfd3a2",

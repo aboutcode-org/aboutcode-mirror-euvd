@@ -3,7 +3,7 @@
   "enisaUuid": "35a13223-500f-3dd2-b87e-5ab51989afb2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: Update log->page_{mask,bits} if log->page_size changed\n\nIf an NTFS file system is mounted to another system with different\nPAGE_SIZE from the original system, log->page_size will change in\nlog_replay(), but log->page_{mask,bits} don't change correspondingly.\nThis will cause a panic because \"u32 bytes = log->page_size - page_off\"\nwill get a negative value in the later read_log_page().",
   "datePublished": "Aug 17, 2024, 9:09:06 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:28 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

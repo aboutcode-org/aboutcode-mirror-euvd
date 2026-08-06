@@ -3,7 +3,7 @@
   "enisaUuid": "1e60b17d-307a-317f-8884-66dd9fcdd747",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbcon: fix integer overflow in fbcon_do_set_font\n\nFix integer overflow vulnerabilities in fbcon_do_set_font() where font\nsize calculations could overflow when handling user-controlled font\nparameters.\n\nThe vulnerabilities occur when:\n1. CALC_FONTSZ(h, pitch, charcount) performs h * pith * charcount\n   multiplication with user-controlled values that can overflow.\n2. FONT_EXTRA_WORDS * sizeof(int) + size addition can also overflow\n3. This results in smaller allocations than expected, leading to buffer\n   overflows during font data copying.\n\nAdd explicit overflow checking using check_mul_overflow() and\ncheck_add_overflow() kernel helpers to safety validate all size\ncalculations before allocation.",
   "datePublished": "Oct 15, 2025, 7:55:51 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:58 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:36 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

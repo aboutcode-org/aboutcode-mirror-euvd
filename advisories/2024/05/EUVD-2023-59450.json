@@ -3,7 +3,7 @@
   "enisaUuid": "24e820de-8b4f-332f-a8a0-0caa4f5fea96",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Fix invalid page access after closing deferred I/O devices\n\nWhen a fbdev with deferred I/O is once opened and closed, the dirty\npages still remain queued in the pageref list, and eventually later\nthose may be processed in the delayed work.  This may lead to a\ncorruption of pages, hitting an Oops.\n\nThis patch makes sure to cancel the delayed work and clean up the\npageref list at closing the device for addressing the bug.  A part of\nthe cleanup code is factored out as a new helper function that is\ncalled from the common fb_release().",
   "datePublished": "May 21, 2024, 3:22:57 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:37 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

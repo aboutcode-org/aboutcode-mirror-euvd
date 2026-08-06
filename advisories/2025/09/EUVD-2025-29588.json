@@ -3,14 +3,14 @@
   "enisaUuid": "81ce89e5-cd98-3d11-9a5a-dc584a95d5d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: rose: convert 'use' field to refcount_t\n\nThe 'use' field in struct rose_neigh is used as a reference counter but\nlacks atomicity. This can lead to race conditions where a rose_neigh\nstructure is freed while still being referenced by other code paths.\n\nFor example, when rose_neigh->use becomes zero during an ioctl operation\nvia rose_rt_ioctl(), the structure may be removed while its timer is\nstill active, potentially causing use-after-free issues.\n\nThis patch changes the type of 'use' from unsigned short to refcount_t and\nupdates all code paths to use rose_neigh_hold() and rose_neigh_put() which\noperate reference counts atomically.",
   "datePublished": "Sep 16, 2025, 1:00:24 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:52 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:28 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fb07156cc0742ba4e93dfcc84280c011d05b301f\nhttps://git.kernel.org/stable/c/f8c29fc437d03a98fb075c31c5be761cc8326284\nhttps://git.kernel.org/stable/c/0085b250fcc79f900c82a69980ec2f3e1871823b\nhttps://git.kernel.org/stable/c/203e4f42596ede31498744018716a3db6dbb7f51\nhttps://git.kernel.org/stable/c/d860d1faa6b2ce3becfdb8b0c2b048ad31800061\n",
   "aliases": "GHSA-xrj4-4g3m-87pf\nCVE-2025-39826\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "3aa7971b-84f1-3388-af9b-d9331305232c",

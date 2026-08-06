@@ -3,7 +3,7 @@
   "enisaUuid": "30c91d67-68ba-3a1e-845c-dcec7c0086fb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: bcm: add locking for bcm_op runtime updates\n\nThe CAN broadcast manager (CAN BCM) can send a sequence of CAN frames via\nhrtimer. The content and also the length of the sequence can be changed\nresp reduced at runtime where the 'currframe' counter is then set to zero.\n\nAlthough this appeared to be a safe operation the updates of 'currframe'\ncan be triggered from user space and hrtimer context in bcm_can_tx().\nAnderson Nascimento created a proof of concept that triggered a KASAN\nslab-out-of-bounds read access which can be prevented with a spin_lock_bh.\n\nAt the rework of bcm_can_tx() the 'count' variable has been moved into\nthe protected section as this variable can be modified from both contexts\ntoo.",
   "datePublished": "Jun 8, 2025, 10:34:56 AM",
-  "dateUpdated": "Jul 30, 2026, 5:50:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:55 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",

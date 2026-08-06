@@ -3,14 +3,14 @@
   "enisaUuid": "fdb71817-516e-3a78-afff-f62a26eb2151",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: af_alg - Disallow concurrent writes in af_alg_sendmsg\n\nIssuing two writes to the same af_alg socket is bogus as the\ndata will be interleaved in an unpredictable fashion.  Furthermore,\nconcurrent writes may create inconsistencies in the internal\nsocket state.\n\nDisallow this by adding a new ctx->write field that indiciates\nexclusive ownership for writing.",
   "datePublished": "Oct 13, 2025, 1:48:30 PM",
-  "dateUpdated": "Jul 30, 2026, 5:58:55 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:33 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0f28c4adbc4a97437874c9b669fd7958a8c6d6ce\nhttps://git.kernel.org/stable/c/e4c1ec11132ec466f7362a95f36a506ce4dc08c9\nhttps://git.kernel.org/stable/c/1f323a48e9b5ebfe6dc7d130fdf5c3c0e92a07c8\nhttps://git.kernel.org/stable/c/7c4491b5644e3a3708f3dbd7591be0a570135b84\nhttps://git.kernel.org/stable/c/9aee87da5572b3a14075f501752e209801160d3d\nhttps://git.kernel.org/stable/c/45bcf60fe49b37daab1acee57b27211ad1574042\nhttps://git.kernel.org/stable/c/1b34cbbf4f011a121ef7b2d7d6e6920a036d5285\n",
   "aliases": "GHSA-wr5g-mfhw-rpfj\nCVE-2025-39964\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "06f3e798-0c42-3feb-af3a-438399cbee58",

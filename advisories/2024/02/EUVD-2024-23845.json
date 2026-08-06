@@ -3,7 +3,7 @@
   "enisaUuid": "08cb0344-b669-3d4d-8047-17508d5344ef",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: fix race between async notify and socket close\n\nThe submitting thread (one which called recvmsg/sendmsg)\nmay exit as soon as the async crypto handler calls complete()\nso any code past that point risks touching already freed data.\n\nTry to avoid the locking and extra flags altogether.\nHave the main thread hold an extra reference, this way\nwe can depend solely on the atomic ref counter for\nsynchronization.\n\nDon't futz with reiniting the completion, either, we are now\ntightly controlling when completion fires.",
   "datePublished": "Feb 21, 2024, 2:59:11 PM",
-  "dateUpdated": "Aug 4, 2026, 9:19:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:26:02 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

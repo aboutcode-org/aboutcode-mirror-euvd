@@ -3,14 +3,14 @@
   "enisaUuid": "292424bc-465e-3be5-9e5c-41f077f10694",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Check the helper function is valid in get_helper_proto\n\nkernel test robot reported verifier bug [1] where the helper func\npointer could be NULL due to disabled config option.\n\nAs Alexei suggested we could check on that in get_helper_proto\ndirectly. Marking tail_call helper func with BPF_PTR_POISON,\nbecause it is unused by design.\n\n  [1] https://lore.kernel.org/oe-lkp/202507160818.68358831-lkp@intel.com",
   "datePublished": "Oct 15, 2025, 7:56:07 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:19 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:56 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3d429cb1278e995e22995ef117fa96d223a67e93\nhttps://git.kernel.org/stable/c/6233715b4b714068d6c831d214a4e8792109875a\nhttps://git.kernel.org/stable/c/e4414b01c1cd9887bbde92f946c1ba94e40d6d64\n",
   "aliases": "GHSA-2m9q-5w5g-jwfp\nCVE-2025-39990\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "01d312ef-5e71-35aa-b6ba-f8e921772496",

@@ -3,7 +3,7 @@
   "enisaUuid": "fe5a331a-cfdd-3273-935a-ef9efa7d1b87",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: msft: fix slab-use-after-free in msft_do_close()\n\nTying the msft->data lifetime to hdev by freeing it in\nhci_release_dev() to fix the following case:\n\n[use]\nmsft_do_close()\n  msft = hdev->msft_data;\n  if (!msft)                      ...(1) <- passed.\n    return;\n  mutex_lock(&msft->filter_lock); ...(4) <- used after freed.\n\n[free]\nmsft_unregister()\n  msft = hdev->msft_data;\n  hdev->msft_data = NULL;         ...(2)\n  kfree(msft);                    ...(3) <- msft is freed.\n\n==================================================================\nBUG: KASAN: slab-use-after-free in __mutex_lock_common\nkernel/locking/mutex.c:587 [inline]\nBUG: KASAN: slab-use-after-free in __mutex_lock+0x8f/0xc30\nkernel/locking/mutex.c:752\nRead of size 8 at addr ffff888106cbbca8 by task kworker/u5:2/309",
   "datePublished": "May 23, 2024, 7:03:06 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:35 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:34 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

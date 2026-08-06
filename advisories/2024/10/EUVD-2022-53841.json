@@ -3,14 +3,14 @@
   "enisaUuid": "a1ef3e78-adc8-378b-826b-e89f08929331",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hisilicon: Fix potential use-after-free in hisi_femac_rx()\n\nThe skb is delivered to napi_gro_receive() which may free it, after\ncalling this, dereferencing skb may trigger use-after-free.",
   "datePublished": "Oct 21, 2024, 8:05:46 PM",
-  "dateUpdated": "Aug 4, 2026, 9:03:23 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:09 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3501da8eb6d0f5f114a09ec953c54423f6f35885\nhttps://git.kernel.org/stable/c/196e12671cb629d9f3b77b4d8bec854fc445533a\nhttps://git.kernel.org/stable/c/aceec8ab752428d8e151321479e82cc1a40fee2e\nhttps://git.kernel.org/stable/c/e71a46cc8c9ad75f3bb0e4b361e81f79c0214cca\nhttps://git.kernel.org/stable/c/296a50aa8b2982117520713edc1375777a9f8506\nhttps://git.kernel.org/stable/c/6f4798ac9c9e98f41553c4f5e6c832c8860a6942\nhttps://git.kernel.org/stable/c/8595a2db8eb0ffcbb466eb9f4a7507a5ba06ebb9\nhttps://git.kernel.org/stable/c/4640177049549de1a43e9bc49265f0cdfce08cfd\n",
   "aliases": "GHSA-59m8-hg79-86pp\nCVE-2022-48962\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "13cba403-9169-3974-a415-6f5acf3b9fb9",

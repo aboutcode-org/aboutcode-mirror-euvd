@@ -3,14 +3,14 @@
   "enisaUuid": "fca514dc-d5fd-3594-abb4-afaafdf56638",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: rds: don't hold sock lock when cancelling work from rds_tcp_reset_callbacks()\n\nsyzbot is reporting lockdep warning at rds_tcp_reset_callbacks() [1], for\ncommit ac3615e7f3cffe2a (\"RDS: TCP: Reduce code duplication in\nrds_tcp_reset_callbacks()\") added cancel_delayed_work_sync() into a section\nprotected by lock_sock() without realizing that rds_send_xmit() might call\nlock_sock().\n\nWe don't need to protect cancel_delayed_work_sync() using lock_sock(), for\neven if rds_{send,recv}_worker() re-queued this work while __flush_work()\n from cancel_delayed_work_sync() was waiting for this work to complete,\nretried rds_{send,recv}_worker() is no-op due to the absence of RDS_CONN_UP\nbit.",
   "datePublished": "Dec 9, 2025, 1:29:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:09:40 AM",
+  "dateUpdated": "Aug 5, 2026, 8:59:22 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/5d2ba255e93211e541373469dffbda7c99dfa0e5\nhttps://git.kernel.org/stable/c/2425007c0967a7c04b0dee7cce05ecf0ca869ad1\nhttps://git.kernel.org/stable/c/e3cb25d3ad08f5dbd53ce2b31720cad529944322\nhttps://git.kernel.org/stable/c/360aa7219285fac63dab99706a16f2daf3222abe\nhttps://git.kernel.org/stable/c/da349221c4d2d4ac5f606c1c3b36d4ef0b3e6a0c\nhttps://git.kernel.org/stable/c/30bfa5aa7228eb1e67663d67e553627e572cc717\nhttps://git.kernel.org/stable/c/c380c28ab9b15fc53565909c814f6dd3e7f77c4b\nhttps://git.kernel.org/stable/c/afe7053c390fe8ff27d0c2ceaece5625283044ba\nhttps://git.kernel.org/stable/c/a91b750fd6629354460282bbf5146c01b05c4859\n",
   "aliases": "GHSA-3p2f-fj9w-3jg5\nCVE-2022-50676\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.85,
   "enisaIdProduct": [
     {
       "id": "348d2691-a72d-3af3-b42d-0fdfa74e06b4",

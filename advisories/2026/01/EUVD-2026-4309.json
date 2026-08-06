@@ -3,14 +3,14 @@
   "enisaUuid": "58cfc616-1241-3f3a-94ba-d2fb46aece1a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-verity: disable recursive forward error correction\n\nThere are two problems with the recursive correction:\n\n1. It may cause denial-of-service. In fec_read_bufs, there is a loop that\nhas 253 iterations. For each iteration, we may call verity_hash_for_block\nrecursively. There is a limit of 4 nested recursions - that means that\nthere may be at most 253^4 (4 billion) iterations. Red Hat QE team\nactually created an image that pushes dm-verity to this limit - and this\nimage just makes the udev-worker process get stuck in the 'D' state.\n\n2. It doesn't work. In fec_read_bufs we store data into the variable\n\"fio->bufs\", but fio bufs is shared between recursive invocations, if\n\"verity_hash_for_block\" invoked correction recursively, it would\noverwrite partially filled fio->bufs.",
   "datePublished": "Jan 23, 2026, 3:23:59 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:51 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:26 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/8b821ca892cfeeaf0bedc9fc72717294f67144d5\nhttps://git.kernel.org/stable/c/e227d2b229c7529bd98d348efc55262ccf24ab35\nhttps://git.kernel.org/stable/c/897d9006e75f46f8bd7df78faa424327ae6a4bcf\nhttps://git.kernel.org/stable/c/4220cb37406915c926c0e4a3dbab77cd9cceeb1e\nhttps://git.kernel.org/stable/c/232948cf600fba69aff36b25d85ef91a73a35756\nhttps://git.kernel.org/stable/c/d9f3e47d3fae0c101d9094bc956ed24e7a0ee801\n",
   "aliases": "CVE-2025-71161\nGHSA-m3cp-9jq6-3gg3\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "4114b889-857b-361e-94e2-22d1ec4c9541",

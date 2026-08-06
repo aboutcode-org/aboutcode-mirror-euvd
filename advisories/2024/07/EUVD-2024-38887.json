@@ -3,7 +3,7 @@
   "enisaUuid": "e5e8cf10-ed50-3e51-b1bc-2d351a911a2d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntap: add missing verification for short frame\n\nThe cited commit missed to check against the validity of the frame length\nin the tap_get_user_xdp() path, which could cause a corrupted skb to be\nsent downstack. Even before the skb is transmitted, the\ntap_get_user_xdp()-->skb_set_network_header() may assume the size is more\nthan ETH_HLEN. Once transmitted, this could either cause out-of-bound\naccess beyond the actual length, or confuse the underlayer with incorrect\nor inconsistent header length in the skb metadata.\n\nIn the alternative path, tap_get_user() already prohibits short frame which\nhas the length less than Ethernet header size from being transmitted.\n\nThis is to drop any frame shorter than the Ethernet header size just like\nhow tap_get_user() does.\n\nCVE: CVE-2024-41090",
   "datePublished": "Jul 29, 2024, 6:18:10 AM",
-  "dateUpdated": "Aug 4, 2026, 9:28:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:18 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

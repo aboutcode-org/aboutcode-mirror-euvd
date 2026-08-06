@@ -3,14 +3,14 @@
   "enisaUuid": "e72464ec-6993-3dbb-9878-d621e6d9b0d8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: essiv - Handle EBUSY correctly\n\nAs it is essiv only handles the special return value of EINPROGERSS,\nwhich means that in all other cases it will free data related to the\nrequest.\n\nHowever, as the caller of essiv may specify MAY_BACKLOG, we also need\nto expect EBUSY and treat it in the same way.  Otherwise backlogged\nrequests will trigger a use-after-free.",
   "datePublished": "Dec 24, 2025, 12:22:57 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:18 AM",
+  "dateUpdated": "Aug 5, 2026, 9:16:45 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c61e7d182ee3f3f5ecf18a2964e303d49c539b52\nhttps://git.kernel.org/stable/c/796e02cca30a67322161f0745e5ce994bbe75605\nhttps://git.kernel.org/stable/c/840a1d3b77c1b062bd62b4733969a5b1efc274ce\nhttps://git.kernel.org/stable/c/a006aa3eedb8bfd6fe317c3cfe9c86ffe76b2385\nhttps://git.kernel.org/stable/c/69c67d451fc19d88e54f7d97e8e7c093e08357e1\nhttps://git.kernel.org/stable/c/b5a772adf45a32c68bef28e60621f12617161556\n",
   "aliases": "GHSA-m7wm-fq3g-5gmr\nCVE-2023-54046\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "17600e6b-9fc7-3042-b502-a5239bbf1c1b",

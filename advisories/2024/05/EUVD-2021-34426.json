@@ -3,7 +3,7 @@
   "enisaUuid": "a221e780-e86e-311e-8666-eb0ed65b4136",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: handle the case of pci_channel_io_frozen only in amdgpu_pci_resume\n\nIn current code, when a PCI error state pci_channel_io_normal is detectd,\nit will report PCI_ERS_RESULT_CAN_RECOVER status to PCI driver, and PCI\ndriver will continue the execution of PCI resume callback report_resume by\npci_walk_bridge, and the callback will go into amdgpu_pci_resume\nfinally, where write lock is releasd unconditionally without acquiring\nsuch lock first. In this case, a deadlock will happen when other threads\nstart to acquire the read lock.\n\nTo fix this, add a member in amdgpu_device strucutre to cache\npci_channel_state, and only continue the execution in amdgpu_pci_resume\nwhen it's pci_channel_io_frozen.",
   "datePublished": "May 21, 2024, 3:04:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:00:38 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:45 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

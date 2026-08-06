@@ -3,7 +3,7 @@
   "enisaUuid": "05203572-1ea4-3f06-83f1-0aadb4600764",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Fix a bug while setting up Level-2 PBL pages\n\nAvoid memory corruption while setting up Level-2 PBL pages for the non MR\nresources when num_pages > 256K.\n\nThere will be a single PDE page address (contiguous pages in the case of >\nPAGE_SIZE), but, current logic assumes multiple pages, leading to invalid\nmemory access after 256K PBL entries in the PDE.",
   "datePublished": "Nov 8, 2024, 6:07:58 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

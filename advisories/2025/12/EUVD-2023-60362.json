@@ -3,14 +3,14 @@
   "enisaUuid": "aa02df89-5bfc-3bcf-a44f-fd63e5cc8e2d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: tegra: xusb: Clear the driver reference in usb-phy dev\n\nFor the dual-role port, it will assign the phy dev to usb-phy dev and\nuse the port dev driver as the dev driver of usb-phy.\n\nWhen we try to destroy the port dev, it will destroy its dev driver\nas well. But we did not remove the reference from usb-phy dev. This\nmight cause the use-after-free issue in KASAN.",
   "datePublished": "Dec 24, 2025, 1:06:14 PM",
-  "dateUpdated": "Aug 4, 2026, 9:17:33 AM",
+  "dateUpdated": "Aug 5, 2026, 9:17:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b6a107c52073496d2e5d2837915f59fb3103832f\nhttps://git.kernel.org/stable/c/b84998a407a882991916b1a61d987c400d8a0ce6\nhttps://git.kernel.org/stable/c/238edc04ddb9d272b38f5419bcd419ad3b92b91b\nhttps://git.kernel.org/stable/c/82187460347ad58fd6b06d2883da73c3f2df9631\nhttps://git.kernel.org/stable/c/c0c2fcb1325d0d4f3b322b5ee49385f8eca2560d\n",
   "aliases": "CVE-2023-54083\nGHSA-mr7q-47cq-r2xm\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "14367b7a-ab79-329f-8675-ade57d1a5ecb",

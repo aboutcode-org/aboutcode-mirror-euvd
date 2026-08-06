@@ -3,14 +3,14 @@
   "enisaUuid": "7d0011ea-3d4c-3a7c-8b7a-46984c44214f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Use local fence in error path of xe_migrate_clear\n\nThe intent of the error path in xe_migrate_clear is to wait on locally\ngenerated fence and then return. The code is waiting on m->fence which\ncould be the local fence but this is only stable under the job mutex\nleading to a possible UAF. Fix code to wait on local fence.\n\n(cherry picked from commit 762b7e95362170b3e13a8704f38d5e47eca4ba74)",
   "datePublished": "May 9, 2025, 6:43:58 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:29 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:55 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2ac5f466f62892a7d1ac2d1a3eb6cd14efbe2f2d\nhttps://git.kernel.org/stable/c/dc712938aa26b001f448d5e93f59d57fa80f2dbd\nhttps://git.kernel.org/stable/c/20659d3150f1a2a258a173fe011013178ff2a197\n",
   "aliases": "GHSA-59x3-j3qw-gjfx\nCVE-2025-37869\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "124b3b35-e9fa-3d82-b25d-9eedb1856a4d",

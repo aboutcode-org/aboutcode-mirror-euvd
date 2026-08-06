@@ -3,14 +3,14 @@
   "enisaUuid": "5346c689-f488-3f39-bc3c-1bdf755be76c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: core: ensure the allocated report buffer can contain the reserved report ID\n\nWhen the report ID is not used, the low level transport drivers expect\nthe first byte to be 0. However, currently the allocated buffer not\naccount for that extra byte, meaning that instead of having 8 guaranteed\nbytes for implement to be working, we only have 7.",
   "datePublished": "Jul 28, 2025, 11:22:04 AM",
-  "dateUpdated": "Jul 30, 2026, 5:54:42 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:24 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7228e36c7875e4b035374cf68ca5e44dffa596b2\nhttps://git.kernel.org/stable/c/9f2892f7233a8f1320fe671d0f95f122191bfbcd\nhttps://git.kernel.org/stable/c/7fa83d0043370003e9a0b46ab7ae8f53b00fab06\nhttps://git.kernel.org/stable/c/d3ed1d84a84538a39b3eb2055d6a97a936c108f2\nhttps://git.kernel.org/stable/c/fcda39a9c5b834346088c14b1374336b079466c1\nhttps://git.kernel.org/stable/c/a262370f385e53ff7470efdcdaf40468e5756717\nhttps://git.kernel.org/stable/c/a47d9d9895bad9ce0e840a39836f19ca0b2a343a\nhttps://git.kernel.org/stable/c/4f15ee98304b96e164ff2340e1dfd6181c3f42aa\n",
   "aliases": "GHSA-42gx-8xq5-j4pf\nCVE-2025-38495\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "10a318d0-f950-30b3-8842-8d871796a8f5",

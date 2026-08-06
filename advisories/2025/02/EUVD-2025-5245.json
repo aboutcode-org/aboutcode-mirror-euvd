@@ -3,7 +3,7 @@
   "enisaUuid": "313cda27-5797-374f-8c0e-5133dc625ea3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nOPP: add index check to assert to avoid buffer overflow in _read_freq()\n\nPass the freq index to the assert function to make sure\nwe do not read a freq out of the opp->rates[] table when called\nfrom the indexed variants:\ndev_pm_opp_find_freq_exact_indexed() or\ndev_pm_opp_find_freq_ceil/floor_indexed().\n\nAdd a secondary parameter to the assert function, unused\nfor assert_single_clk() then add assert_clk_index() which\nwill check for the clock index when called from the _indexed()\nfind functions.",
   "datePublished": "Feb 27, 2025, 2:07:17 AM",
-  "dateUpdated": "Aug 4, 2026, 9:41:54 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:18 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",

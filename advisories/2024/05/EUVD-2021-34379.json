@@ -3,14 +3,14 @@
   "enisaUuid": "6e33d1a4-c575-3318-b6ea-a5942efc35ff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma-debug: prevent an error message from causing runtime problems\n\nFor some drivers, that use the DMA API. This error message can be reached\nseveral millions of times per second, causing spam to the kernel's printk\nbuffer and bringing the CPU usage up to 100% (so, it should be rate\nlimited). However, since there is at least one driver that is in the\nmainline and suffers from the error condition, it is more useful to\nerr_printk() here instead of just rate limiting the error message (in hopes\nthat it will make it easier for other drivers that suffer from this issue\nto be spotted).",
   "datePublished": "May 21, 2024, 3:03:38 PM",
-  "dateUpdated": "Aug 4, 2026, 9:00:19 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:30 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/de4afec2d2946c92c62a15ab341c70b287289e6a\nhttps://git.kernel.org/stable/c/510e1a724ab1bf38150be2c1acabb303f98d0047\n",
   "aliases": "CVE-2021-47374\nGHSA-335x-9j96-mxcr\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
       "id": "0ef5bb66-0689-3681-bb17-309098325de7",

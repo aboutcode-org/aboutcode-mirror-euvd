@@ -3,7 +3,7 @@
   "enisaUuid": "7f21edf9-8ae0-3141-8bf4-9c6a0477fb6c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: Fix iterating over an empty bio with bio_for_each_folio_all\n\nIf the bio contains no data, bio_first_folio() calls page_folio() on a\nNULL pointer and oopses.  Move the test that we've reached the end of\nthe bio from bio_next_folio() to bio_first_folio().\n\n[axboe: add unlikely() to error case]",
   "datePublished": "Mar 18, 2024, 10:07:48 AM",
-  "dateUpdated": "Aug 4, 2026, 9:19:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:26:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

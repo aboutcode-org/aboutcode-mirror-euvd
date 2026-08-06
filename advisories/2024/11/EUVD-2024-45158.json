@@ -3,7 +3,7 @@
   "enisaUuid": "51309b57-f18e-367b-ad5b-5d3e8ca241d3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Initialize struct nfsd4_copy earlier\n\nEnsure the refcount and async_copies fields are initialized early.\ncleanup_async_copy() will reference these fields if an error occurs\nin nfsd4_copy(). If they are not correctly initialized, at the very\nleast, a refcount underflow occurs.",
   "datePublished": "Nov 9, 2024, 10:14:51 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:57 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:42 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

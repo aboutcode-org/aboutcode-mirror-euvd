@@ -3,14 +3,14 @@
   "enisaUuid": "aa79dfc5-acff-31d6-b49c-208466cc89a2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix htt mlo-offset event locking\n\nThe ath12k active pdevs are protected by RCU but the htt mlo-offset\nevent handling code calling ath12k_mac_get_ar_by_pdev_id() was not\nmarked as a read-side critical section.\n\nMark the code in question as an RCU read-side critical section to avoid\nany potential use-after-free issues.\n\nCompile tested only.",
   "datePublished": "May 21, 2024, 3:30:52 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:50 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:20 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d908ca431e20b0e4bfc5d911d1744910ed779bdb\nhttps://git.kernel.org/stable/c/afd3425bd69610f318403084fe491e24a1357fb9\nhttps://git.kernel.org/stable/c/6afc57ea315e0f660b1f870a681737bb7b71faef\n",
   "aliases": "CVE-2023-52769\nGHSA-ccfj-2gvm-cf3r\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "0a0fbfbf-ba07-3bf8-95d6-ad782bc3466e",

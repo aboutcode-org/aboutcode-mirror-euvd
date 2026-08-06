@@ -3,14 +3,14 @@
   "enisaUuid": "8a7519b1-dbab-36da-a4ef-ab4d8550b4b6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmc: Use __sk_dst_get() and dst_dev_rcu() in smc_clc_prfx_match().\n\nsmc_clc_prfx_match() is called from smc_listen_work() and\nnot under RCU nor RTNL.\n\nUsing sk_dst_get(sk)->dev could trigger UAF.\n\nLet's use __sk_dst_get() and dst_dev_rcu().\n\nNote that the returned value of smc_clc_prfx_match() is not\nused in the caller.",
   "datePublished": "Nov 12, 2025, 10:46:51 AM",
-  "dateUpdated": "Jul 30, 2026, 6:01:05 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:13 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d26e80f7fb62d77757b67a1b94e4ac756bc9c658\nhttps://git.kernel.org/stable/c/235f81045c008169cc4e1955b4a64e118eebe61b\n",
   "aliases": "GHSA-9cp7-m95w-q87h\nCVE-2025-40168\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "37f14e06-e16b-321e-a5c7-f024456f1143",

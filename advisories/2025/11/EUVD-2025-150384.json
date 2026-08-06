@@ -3,14 +3,14 @@
   "enisaUuid": "0c5e2141-1301-3c13-b7a5-ab3cbb0ab4d6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: guard against EA inode refcount underflow in xattr update\n\nsyzkaller found a path where ext4_xattr_inode_update_ref() reads an EA\ninode refcount that is already <= 0 and then applies ref_change (often\n-1). That lets the refcount underflow and we proceed with a bogus value,\ntriggering errors like:\n\n  EXT4-fs error: EA inode <n> ref underflow: ref_count=-1 ref_change=-1\n  EXT4-fs warning: ea_inode dec ref err=-117\n\nMake the invariant explicit: if the current refcount is non-positive,\ntreat this as on-disk corruption, emit ext4_error_inode(), and fail the\noperation with -EFSCORRUPTED instead of updating the refcount. Delete the\nWARN_ONCE() as negative refcounts are now impossible; keep error reporting\nin ext4_error_inode().\n\nThis prevents the underflow and the follow-on orphan/cleanup churn.",
   "datePublished": "Nov 12, 2025, 9:56:30 PM",
-  "dateUpdated": "Jul 30, 2026, 6:01:18 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:26 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ea39e712c2f5ae148ee5515798ae03523673e002\nhttps://git.kernel.org/stable/c/1cfb3e4ddbdc8e02e637b8852540bd4718bf4814\nhttps://git.kernel.org/stable/c/505e69f76ac497e788f4ea0267826ec7266b40c8\nhttps://git.kernel.org/stable/c/3d6269028246f4484bfed403c947a114bb583631\nhttps://git.kernel.org/stable/c/79ea7f3e11effe1bd9e753172981d9029133a278\nhttps://git.kernel.org/stable/c/6b879c4c6bbaab03c0ad2a983953bd1410bb165e\nhttps://git.kernel.org/stable/c/440b003f449a4ff2a00b08c8eab9ba5cd28f3943\nhttps://git.kernel.org/stable/c/57295e835408d8d425bef58da5253465db3d6888\n",
   "aliases": "CVE-2025-40190\nGHSA-j9x6-gmq6-xm5x\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "10184a39-fd38-3746-ac21-91c3b0d847e1",

@@ -3,7 +3,7 @@
   "enisaUuid": "864f23d4-855c-354b-8828-1e574d564d6b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix incomplete state save in rxe_requester\n\nIf a send packet is dropped by the IP layer in rxe_requester()\nthe call to rxe_xmit_packet() can fail with err == -EAGAIN.\nTo recover, the state of the wqe is restored to the state before\nthe packet was sent so it can be resent. However, the routines\nthat save and restore the state miss a significnt part of the\nvariable state in the wqe, the dma struct which is used to process\nthrough the sge table. And, the state is not saved before the packet\nis built which modifies the dma struct.\n\nUnder heavy stress testing with many QPs on a fast node sending\nlarge messages to a slow node dropped packets are observed and\nthe resent packets are corrupted because the dma struct was not\nrestored. This patch fixes this behavior and allows the test cases\nto succeed.",
   "datePublished": "Oct 4, 2025, 3:16:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:16 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:42 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

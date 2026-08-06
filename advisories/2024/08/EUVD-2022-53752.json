@@ -3,7 +3,7 @@
   "enisaUuid": "234cc8ec-0cef-3e8d-bb70-5309a3b08179",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Don't remove map on creater_process and device_release\n\nDo not remove the map from the list on error path in\nfastrpc_init_create_process, instead call fastrpc_map_put, to avoid\nuse-after-free. Do not remove it on fastrpc_device_release either,\ncall fastrpc_map_put instead.\n\nThe fastrpc_free_map is the only proper place to remove the map.\nThis is called only after the reference count is 0.",
   "datePublished": "Aug 21, 2024, 6:10:04 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:57 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:44 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

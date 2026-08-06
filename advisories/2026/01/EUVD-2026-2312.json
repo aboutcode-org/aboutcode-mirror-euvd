@@ -3,14 +3,14 @@
   "enisaUuid": "12476378-0471-3f79-94fc-5035545ff46e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: fix io-uring list corruption for terminated non-committed requests\n\nWhen a request is terminated before it has been committed, the request\nis not removed from the queue's list. This leaves a dangling list entry\nthat leads to list corruption and use-after-free issues.\n\nRemove the request from the queue's list for terminated non-committed\nrequests.",
   "datePublished": "Jan 13, 2026, 3:29:13 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:47 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:37 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a6d1f1ace16d0e777a85f84267160052d3499b6e\nhttps://git.kernel.org/stable/c/95c39eef7c2b666026c69ab5b30471da94ea2874\n",
   "aliases": "GHSA-264m-hxmc-hwjf\nCVE-2025-68805\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "1a39ddd4-3a73-37bd-a3aa-8bde6f7e48f5",

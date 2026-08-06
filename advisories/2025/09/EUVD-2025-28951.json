@@ -3,14 +3,14 @@
   "enisaUuid": "1a0316f1-2c95-3126-805a-9b7825fe9509",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: Decrement TID on RX peer frag setup error handling\n\nCurrently, TID is not decremented before peer cleanup, during error\nhandling path of ath12k_dp_rx_peer_frag_setup(). This could lead to\nout-of-bounds access in peer->rx_tid[].\n\nHence, add a decrement operation for TID, before peer cleanup to\nensures proper cleanup and prevents out-of-bounds access issues when\nthe RX peer frag setup fails.\n\nFound during code review. Compile tested only.",
   "datePublished": "Sep 11, 2025, 4:52:29 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:22 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:01 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/eb1e1526b82b8cf31f1ef9ca86a2647fb6cd89c6\nhttps://git.kernel.org/stable/c/7c3e99fd4a66a5ac9c7dd32db07359666efe0002\nhttps://git.kernel.org/stable/c/a3b73c72c42348bf1555fd2b00f32f941324b242\nhttps://git.kernel.org/stable/c/9530d666f4376c294cdf4348c29fe3542fec980a\nhttps://git.kernel.org/stable/c/7c0884fcd2ddde0544d2e77f297ae461e1f53f58\n",
   "aliases": "GHSA-55f8-prfx-mfvw\nCVE-2025-39761\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "25294d36-e437-3d0f-a603-46b537dfb58d",

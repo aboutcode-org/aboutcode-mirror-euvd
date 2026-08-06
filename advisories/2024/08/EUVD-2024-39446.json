@@ -3,7 +3,7 @@
   "enisaUuid": "52220dbc-9000-35ce-98d8-0068cbc2b0ee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: venus: fix use after free in vdec_close\n\nThere appears to be a possible use after free with vdec_close().\nThe firmware will add buffer release work to the work queue through\nHFI callbacks as a normal part of decoding. Randomly closing the\ndecoder device from userspace during normal decoding can incur\na read after free for inst.\n\nFix it by cancelling the work in vdec_close.",
   "datePublished": "Aug 17, 2024, 9:09:17 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:42 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:35 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

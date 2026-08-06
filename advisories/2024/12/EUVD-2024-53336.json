@@ -3,7 +3,7 @@
   "enisaUuid": "880a7534-a1c7-3bb3-a81b-147d48f8c651",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: clear XPRT_SOCK_UPD_TIMEOUT when reset transport\n\nSince transport->sock has been set to NULL during reset transport,\nXPRT_SOCK_UPD_TIMEOUT also needs to be cleared. Otherwise, the\nxs_tcp_set_socket_timeouts() may be triggered in xs_tcp_send_request()\nto dereference the transport->sock that has been set to NULL.",
   "datePublished": "Dec 28, 2024, 9:46:14 AM",
-  "dateUpdated": "Aug 4, 2026, 9:39:35 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:04 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

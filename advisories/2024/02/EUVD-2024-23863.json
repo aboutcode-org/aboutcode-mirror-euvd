@@ -3,7 +3,7 @@
   "enisaUuid": "b77cea65-52e0-375d-9684-899d7a956e49",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: regenerate buddy after block freeing failed if under fc replay\n\nThis mostly reverts commit 6bd97bf273bd (\"ext4: remove redundant\nmb_regenerate_buddy()\") and reintroduces mb_regenerate_buddy(). Based on\ncode in mb_free_blocks(), fast commit replay can end up marking as free\nblocks that are already marked as such. This causes corruption of the\nbuddy bitmap so we need to regenerate it in that case.",
   "datePublished": "Feb 24, 2024, 2:56:56 PM",
-  "dateUpdated": "Aug 4, 2026, 9:19:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:26:11 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

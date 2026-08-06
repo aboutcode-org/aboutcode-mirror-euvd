@@ -3,14 +3,14 @@
   "enisaUuid": "79450301-db60-3cdd-9dde-b89d9ff940bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix sample vs do_exit()\n\nBaisheng Gao reported an ARM64 crash, which Mark decoded as being a\nsynchronous external abort -- most likely due to trying to access\nMMIO in bad ways.\n\nThe crash further shows perf trying to do a user stack sample while in\nexit_mmap()'s tlb_finish_mmu() -- i.e. while tearing down the address\nspace it is trying to access.\n\nIt turns out that we stop perf after we tear down the userspace mm; a\nreceipie for disaster, since perf likes to access userspace for\nvarious reasons.\n\nFlip this order by moving up where we stop perf in do_exit().\n\nAdditionally, harden PERF_SAMPLE_CALLCHAIN and PERF_SAMPLE_STACK_USER\nto abort when the current task does not have an mm (exit_mm() makes\nsure to set current->mm = NULL; before commencing with the actual\nteardown). Such that CPU wide events don't trip on this same problem.",
   "datePublished": "Jul 25, 2025, 2:16:44 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:59 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:47 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7b8f3c72175c6a63a95cf2e219f8b78e2baad34e\nhttps://git.kernel.org/stable/c/507c9a595bad3abd107c6a8857d7fd125d89f386\nhttps://git.kernel.org/stable/c/a9f6aab7910a0ef2895797f15c947f6d1053160f\nhttps://git.kernel.org/stable/c/975ffddfa2e19823c719459d2364fcaa17673964\nhttps://git.kernel.org/stable/c/2ee6044a693735396bb47eeaba1ac3ae26c1c99b\nhttps://git.kernel.org/stable/c/456019adaa2f5366b89c868dea9b483179bece54\nhttps://git.kernel.org/stable/c/7311970d07c4606362081250da95f2c7901fc0db\nhttps://git.kernel.org/stable/c/4f6fc782128355931527cefe3eb45338abd8ab39\n",
   "aliases": "GHSA-6p9w-8r99-f39c\nCVE-2025-38424\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0ad991e9-bade-3309-ace0-15a87d36398a",

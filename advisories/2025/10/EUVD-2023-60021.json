@@ -3,14 +3,14 @@
   "enisaUuid": "74b4bf6b-75bd-3699-92ab-bda25c919543",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix integer overflow in amdgpu_cs_pass1\n\nThe type of size is unsigned int, if size is 0x40000000, there will\nbe an integer overflow, size will be zero after size *= sizeof(uint32_t),\nwill cause uninitialized memory to be referenced later.",
   "datePublished": "Oct 22, 2025, 1:23:43 PM",
-  "dateUpdated": "Aug 4, 2026, 9:16:12 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9f55d300541cb5b435984d269087810581580b00\nhttps://git.kernel.org/stable/c/c3deb091398e9e469d08dd1599b6d76fd6b29df8\nhttps://git.kernel.org/stable/c/87c2213e85bd81e4a9a4d0880c256568794ae388\n",
   "aliases": "GHSA-xc82-v759-f4jv\nCVE-2023-53707\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0b6ef361-6fe9-3c47-bc2d-8643b908a580",

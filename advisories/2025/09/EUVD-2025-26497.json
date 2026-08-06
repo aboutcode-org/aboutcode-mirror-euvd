@@ -3,14 +3,14 @@
   "enisaUuid": "7a1a4252-a7f6-3698-8fa7-fdceb6ec9985",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: reject duplicate device on updates\n\nA chain/flowtable update with duplicated devices in the same batch is\npossible. Unfortunately, netdev event path only removes the first\ndevice that is found, leaving unregistered the hook of the duplicated\ndevice.\n\nCheck if a duplicated device exists in the transaction batch, bail out\nwith EEXIST in such case.\n\nWARNING is hit when unregistering the hook:\n\n [49042.221275] WARNING: CPU: 4 PID: 8425 at net/netfilter/core.c:340 nf_hook_entry_head+0xaa/0x150\n [49042.221375] CPU: 4 UID: 0 PID: 8425 Comm: nft Tainted: G S                  6.16.0+ #170 PREEMPT(full)\n [...]\n [49042.221382] RIP: 0010:nf_hook_entry_head+0xaa/0x150",
   "datePublished": "Sep 3, 2025, 1:01:15 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:23 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:54 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0521e694d5b80899fba8695881a6349f9bc538cb\nhttps://git.kernel.org/stable/c/4681960bc0f4f8bcc782cbf2fd205f48ad314dfd\nhttps://git.kernel.org/stable/c/4ce2a0c3b8497a66cfc25fc7ca3d087258a785d2\nhttps://git.kernel.org/stable/c/3f358a66a04513311668ea4b40f5064e253d8386\nhttps://git.kernel.org/stable/c/cf23d531a9d496863aa4c5a0e2f71f0a23f3df3c\nhttps://git.kernel.org/stable/c/d7615bde541f16517d6790412da6ec46fa8a4c1f\nhttps://git.kernel.org/stable/c/cf5fb87fcdaaaafec55dcc0dc5a9e15ead343973\n",
   "aliases": "GHSA-g7rm-8pw5-wvg2\nCVE-2025-38678\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "1871c7ae-26e8-3cd0-861e-8e433b207bee",

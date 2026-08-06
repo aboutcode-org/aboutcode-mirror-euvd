@@ -3,14 +3,14 @@
   "enisaUuid": "8ae0d9f1-b257-3b56-b691-8dbc5ca6344b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: fix potential 32-bit overflow when accessing ARRAY map element\n\nIf BPF array map is bigger than 4GB, element pointer calculation can\noverflow because both index and elem_size are u32. Fix this everywhere\nby forcing 64-bit multiplication. Extract this formula into separate\nsmall helper and use it consistently in various places.\n\nSpeculative-preventing formula utilizing index_mask trick is left as is,\nbut explicit u64 casts are added in both places.",
   "datePublished": "Jun 18, 2025, 11:03:20 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:53 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/063e092534d4c6785228e5b1eb6e9329f66ccbe4\nhttps://git.kernel.org/stable/c/3c7256b880b3a5aa1895fd169a34aa4224a11862\nhttps://git.kernel.org/stable/c/87ac0d600943994444e24382a87aa19acc4cd3d4\n",
   "aliases": "CVE-2022-50167\nGHSA-mrhw-xcq4-7jw7\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0d446317-f598-301a-aa20-c38257d06534",

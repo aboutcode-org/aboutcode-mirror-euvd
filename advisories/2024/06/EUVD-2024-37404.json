@@ -3,7 +3,7 @@
   "enisaUuid": "5daf1a62-e178-33b2-9f62-b002d263e987",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof: module: add buffer overflow check in of_modalias()\n\nIn of_modalias(), if the buffer happens to be too small even for the 1st\nsnprintf() call, the len parameter will become negative and str parameter\n(if not NULL initially) will point beyond the buffer's end. Add the buffer\noverflow check after the 1st snprintf() call and fix such check after the\nstrlen() call (accounting for the terminating NUL char).",
   "datePublished": "Jun 19, 2024, 1:35:16 PM",
-  "dateUpdated": "Aug 4, 2026, 9:25:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

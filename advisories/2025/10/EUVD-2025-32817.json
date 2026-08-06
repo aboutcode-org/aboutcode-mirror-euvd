@@ -3,7 +3,7 @@
   "enisaUuid": "b66c9798-d465-3b77-89ec-d7d7a57424b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: improve error handling from ext4_dirhash()\n\nThe ext4_dirhash() will *almost* never fail, especially when the hash\ntree feature was first introduced.  However, with the addition of\nsupport of encrypted, casefolded file names, that function can most\ncertainly fail today.\n\nSo make sure the callers of ext4_dirhash() properly check for\nfailures, and reflect the errors back up to their callers.",
   "datePublished": "Oct 1, 2025, 11:42:42 AM",
-  "dateUpdated": "Aug 4, 2026, 9:14:47 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:14 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

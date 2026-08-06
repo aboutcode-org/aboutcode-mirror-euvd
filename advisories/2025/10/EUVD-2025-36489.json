@@ -3,14 +3,14 @@
   "enisaUuid": "2d8ad67f-2234-3885-a945-45b707fda372",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix race condition in RPC handle list access\n\nThe 'sess->rpc_handle_list' XArray manages RPC handles within a ksmbd\nsession. Access to this list is intended to be protected by\n'sess->rpc_lock' (an rw_semaphore). However, the locking implementation was\nflawed, leading to potential race conditions.\n\nIn ksmbd_session_rpc_open(), the code incorrectly acquired only a read lock\nbefore calling xa_store() and xa_erase(). Since these operations modify\nthe XArray structure, a write lock is required to ensure exclusive access\nand prevent data corruption from concurrent modifications.\n\nFurthermore, ksmbd_session_rpc_method() accessed the list using xa_load()\nwithout holding any lock at all. This could lead to reading inconsistent\ndata or a potential use-after-free if an entry is concurrently removed and\nthe pointer is dereferenced.\n\nFix these issues by:\n1. Using down_write() and up_write() in ksmbd_session_rpc_open()\n   to ensure exclusive access during XArray modification, and ensuring\n   the lock is correctly released on error paths.\n2. Adding down_read() and up_read() in ksmbd_session_rpc_method()\n   to safely protect the lookup.",
   "datePublished": "Oct 28, 2025, 11:48:19 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:58 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:13 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/69674b029002b1d90b655f014bdf64f404efa54d\nhttps://git.kernel.org/stable/c/6b615a8fb3af0baf8126cde3d4fee97d57222ffc\nhttps://git.kernel.org/stable/c/5cc679ba0f4505936124cd4179ba66bb0a4bd9f3\nhttps://git.kernel.org/stable/c/6bd7e0e55dcea2cf0d391bbc21c2eb069b4be3e1\nhttps://git.kernel.org/stable/c/305853cce379407090a73b38c5de5ba748893aee\n",
   "aliases": "GHSA-258w-3pq9-4jh3\nCVE-2025-40039\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "05615a41-f8bb-3690-8d95-b375bf110877",

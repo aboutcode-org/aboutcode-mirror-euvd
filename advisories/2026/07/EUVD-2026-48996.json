@@ -3,14 +3,14 @@
   "enisaUuid": "911c0c47-2172-3dd3-bdc9-e2551eed955e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: Ensure vendor's exit handler runs before fastpath userspace exits\n\nMove the handling of fastpath userspace exits into vendor code to ensure\nKVM runs vendor specific operations that need to run before userspace gains\ncontrol of the vCPU.  E.g. for VMX (and soon to be for SVM as well), KVM\nneeds to flush the PML buffer prior to exiting to userspace, otherwise any\nmemory written by the final KVM_RUN might never be flagged as dirty.\n\nNote, waiting to snapshot CR0 and CR3 until svm_handle_exit() is flawed in\ngeneral, as that risks consuming stale state in a fastpath handler.  That\nwill be addressed in a future change.",
   "datePublished": "Jul 25, 2026, 8:49:26 AM",
-  "dateUpdated": "Jul 27, 2026, 4:59:26 AM",
+  "dateUpdated": "Aug 5, 2026, 12:40:33 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b3436d9b9b1affe1c3191ac9831308923f5f03c3\nhttps://git.kernel.org/stable/c/4ad73ef0e7966ecfe67de0060537b4cb14d9acd4\nhttps://git.kernel.org/stable/c/f2ca2b5326211bd38490f0497eb583721ce0bbc0\nhttps://git.kernel.org/stable/c/0ffedf43910e44b76c2c1db4e9fbf12b268190c1\n",
   "aliases": "CVE-2026-64284\nGHSA-gv38-jcpj-j76h\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "028669fb-693b-3357-9cee-5ef174b695fd",

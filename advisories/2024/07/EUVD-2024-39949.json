@@ -3,7 +3,7 @@
   "enisaUuid": "a6ed971a-4ddc-3f52-b138-dd84a6863fbf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: ASSERT when failing to find index by plane/stream id\n\n[WHY]\nfind_disp_cfg_idx_by_plane_id and find_disp_cfg_idx_by_stream_id returns\nan array index and they return -1 when not found; however, -1 is not a\nvalid index number.\n\n[HOW]\nWhen this happens, call ASSERT(), and return a positive number (which is\nfewer than callers' array size) instead.\n\nThis fixes 4 OVERRUN and 2 NEGATIVE_RETURNS issues reported by Coverity.",
   "datePublished": "Jul 30, 2024, 7:46:09 AM",
-  "dateUpdated": "Aug 4, 2026, 9:28:53 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:46 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

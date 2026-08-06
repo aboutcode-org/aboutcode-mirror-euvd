@@ -3,14 +3,14 @@
   "enisaUuid": "20c485be-f85c-3f11-b572-ea837f88b732",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-fc: avoid scheduling association deletion twice\n\nWhen forcefully shutting down a port via the configfs interface,\nnvmet_port_subsys_drop_link() first calls nvmet_port_del_ctrls() and\nthen nvmet_disable_port(). Both functions will eventually schedule all\nremaining associations for deletion.\n\nThe current implementation checks whether an association is about to be\nremoved, but only after the work item has already been scheduled. As a\nresult, it is possible for the first scheduled work item to free all\nresources, and then for the same work item to be scheduled again for\ndeletion.\n\nBecause the association list is an RCU list, it is not possible to take\na lock and remove the list entry directly, so it cannot be looked up\nagain. Instead, a flag (terminating) must be used to determine whether\nthe association is already in the process of being deleted.",
   "datePublished": "Dec 9, 2025, 4:10:00 AM",
-  "dateUpdated": "Jul 30, 2026, 6:02:58 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:45 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2f4852db87e25d4e226b25cb6f652fef9504360e\nhttps://git.kernel.org/stable/c/85e2ce1920cb511d57aae59f0df6ff85b28bf04d\nhttps://git.kernel.org/stable/c/601ed47b2363c24d948d7bac0c23abc8bd459570\nhttps://git.kernel.org/stable/c/04d17540ef51e2c291eb863ca87fd332259b2d40\nhttps://git.kernel.org/stable/c/c09ac9a63fc3aaf4670ad7b5e4f5afd764424154\nhttps://git.kernel.org/stable/c/f2537be4f8421f6495edfa0bc284d722f253841d\n",
   "aliases": "GHSA-247j-3qhv-rpc8\nCVE-2025-40343\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "00f841bc-cf36-3878-8fb2-0f98e762e043",

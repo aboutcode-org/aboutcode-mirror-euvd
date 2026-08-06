@@ -3,14 +3,14 @@
   "enisaUuid": "97f7c486-46d2-3e87-a77e-f357f39f1259",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: fix region locking in hash types\n\nRegion locking introduced in v5.6-rc4 contained three macros to handle\nthe region locks: ahash_bucket_start(), ahash_bucket_end() which gave\nback the start and end hash bucket values belonging to a given region\nlock and ahash_region() which should give back the region lock belonging\nto a given hash bucket. The latter was incorrect which can lead to a\nrace condition between the garbage collector and adding new elements\nwhen a hash type of set is defined with timeouts.",
   "datePublished": "May 29, 2025, 1:15:55 PM",
-  "dateUpdated": "Jul 30, 2026, 5:50:35 AM",
+  "dateUpdated": "Aug 5, 2026, 11:58:49 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/00cfc5fad1491796942a948808afb968a0a3f35b\nhttps://git.kernel.org/stable/c/226ce0ec38316d9e3739e73a64b6b8304646c658\nhttps://git.kernel.org/stable/c/82c1eb32693bc48251d92532975e19160987e5b9\nhttps://git.kernel.org/stable/c/aa77294b0f73bb8265987591460cd25b8722c3df\nhttps://git.kernel.org/stable/c/a3dfec485401943e315c394c29afe2db8f9481d6\nhttps://git.kernel.org/stable/c/e2ab67672b2288521a6146034a971f9a82ffc5c5\nhttps://git.kernel.org/stable/c/6e002ecc1c8cfdfc866b9104ab7888da54613e59\nhttps://git.kernel.org/stable/c/8478a729c0462273188263136880480729e9efca\n",
   "aliases": "CVE-2025-37997\nGHSA-jgxp-fpw7-p364\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "06a14faa-5661-3cc9-bd7f-d35211baff3c",

@@ -3,14 +3,14 @@
   "enisaUuid": "13cdbf70-ba02-312f-b421-b6a8a8757598",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mdiobus: Fix potential out-of-bounds read/write access\n\nWhen using publicly available tools like 'mdio-tools' to read/write data\nfrom/to network interface and its PHY via mdiobus, there is no verification of\nparameters passed to the ioctl and it accepts any mdio address.\nCurrently there is support for 32 addresses in kernel via PHY_MAX_ADDR define,\nbut it is possible to pass higher value than that via ioctl.\nWhile read/write operation should generally fail in this case,\nmdiobus provides stats array, where wrong address may allow out-of-bounds\nread/write.\n\nFix that by adding address verification before read/write operation.\nWhile this excludes this access from any statistics, it improves security of\nread/write operation.",
   "datePublished": "Jul 3, 2025, 8:35:20 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/19c5875e26c4ed5686d82a7d8f7051385461b9eb\nhttps://git.kernel.org/stable/c/014ad9210373d2104f6ef10e6bb999a7a0a4c50e\nhttps://git.kernel.org/stable/c/73d478234a619f3476028cb02dee699c30ae8262\nhttps://git.kernel.org/stable/c/bab6bca0834cbb5be2a7cfe59ec6ad016ec72608\nhttps://git.kernel.org/stable/c/b02d9d2732483e670bc34cb233d28e1d43b15da4\nhttps://git.kernel.org/stable/c/049af7ac45a6b407748ee0995278fd861e36df8f\nhttps://git.kernel.org/stable/c/0e629694126ca388916f059453a1c36adde219c4\n",
   "aliases": "GHSA-vhm6-v69m-pxx6\nCVE-2025-38111\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "04ad7bae-d28c-36f7-b3eb-16427b3b9a13",

@@ -3,7 +3,7 @@
   "enisaUuid": "a87f4a17-9ee6-3487-aee1-80e74cec4c68",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwriteback: avoid use-after-free after removing device\n\nWhen a disk is removed, bdi_unregister gets called to stop further\nwriteback and wait for associated delayed work to complete.  However,\nwb_inode_writeback_end() may schedule bandwidth estimation dwork after\nthis has completed, which can result in the timer attempting to access the\njust freed bdi_writeback.\n\nFix this by checking if the bdi_writeback is alive, similar to when\nscheduling writeback work.\n\nSince this requires wb->work_lock, and wb_inode_writeback_end() may get\ncalled from interrupt, switch wb->work_lock to an irqsafe lock.",
   "datePublished": "Jun 18, 2025, 11:00:55 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:22 AM",
+  "dateUpdated": "Aug 5, 2026, 8:57:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

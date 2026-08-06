@@ -3,14 +3,14 @@
   "enisaUuid": "d8c96433-1024-3df8-8b12-a28ffa00817c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: appletalk: Fix device refcount leak in atrtr_create()\n\nWhen updating an existing route entry in atrtr_create(), the old device\nreference was not being released before assigning the new device,\nleading to a device refcount leak. Fix this by calling dev_put() to\nrelease the old device reference before holding the new one.",
   "datePublished": "Aug 16, 2025, 11:22:16 AM",
-  "dateUpdated": "Jul 30, 2026, 5:55:06 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:46 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b92bedf71f25303e203a4e657489d76691a58119\nhttps://git.kernel.org/stable/c/a7852b01793669248dce0348d14df89e77a32afd\nhttps://git.kernel.org/stable/c/b2f5dfa87367fdce9f8b995bc6c38f64f9ea2c90\nhttps://git.kernel.org/stable/c/d2e9f50f0bdad73b64a871f25186b899624518c4\nhttps://git.kernel.org/stable/c/4a17370da6e476d3d275534e9e9cd2d02c57ca46\nhttps://git.kernel.org/stable/c/473f3eadfc73b0fb6d8dee5829d19a5772e387f7\nhttps://git.kernel.org/stable/c/64124cf0aab0dd1e18c0fb5ae66e45741e727f8b\nhttps://git.kernel.org/stable/c/711c80f7d8b163d3ecd463cd96f07230f488e750\n",
   "aliases": "CVE-2025-38542\nGHSA-m82r-6669-cm5x\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "022f67e0-3eb5-3a97-b356-b93a8dd4813f",

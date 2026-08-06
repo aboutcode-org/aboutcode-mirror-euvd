@@ -3,14 +3,14 @@
   "enisaUuid": "7341ab2e-b86d-3cef-b131-39eab80e27c4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: fix memory leak in tipc_link_xmit\n\nIn case the backlog transmit queue for system-importance messages is overloaded,\ntipc_link_xmit() returns -ENOBUFS but the skb list is not purged. This leads to\nmemory leak and failure when a skb is allocated.\n\nThis commit fixes this issue by purging the skb list before tipc_link_xmit()\nreturns.",
   "datePublished": "May 1, 2025, 12:56:01 PM",
-  "dateUpdated": "Jul 30, 2026, 5:49:02 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:20 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/84895f5ce3829d9fc030e5ec2d8729da4c0c9d08\nhttps://git.kernel.org/stable/c/d4d40e437adb376be16b3a12dd5c63f0fa768247\nhttps://git.kernel.org/stable/c/ed06675d3b8cd37120b447646d53f7cd3e6fcd63\nhttps://git.kernel.org/stable/c/24e6280cdd7f8d01fc6b9b365fb800c2fb7ea9bb\nhttps://git.kernel.org/stable/c/09c2dcda2c551bba30710c33f6ac678ae7395389\nhttps://git.kernel.org/stable/c/7c5957f7905b4aede9d7a559d271438f3ca9e852\nhttps://git.kernel.org/stable/c/d0e02d3d27a0b4dcb13f954f537ca1dd8f282dcf\nhttps://git.kernel.org/stable/c/a40cbfbb8f95c325430f017883da669b2aa927d4\nhttps://git.kernel.org/stable/c/69ae94725f4fc9e75219d2d69022029c5b24bc9a\n",
   "aliases": "CVE-2025-37757\nGHSA-p267-6p34-qmhj\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "0ae5fe09-155d-3d32-bfb1-8d05b15eb4a7",

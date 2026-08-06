@@ -3,14 +3,14 @@
   "enisaUuid": "f5750cfd-6489-39b6-b265-fa5565251dbb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: always refresh the queue when reading sock\n\nAfter recent changes in net-next TCP compacts skbs much more\naggressively. This unearthed a bug in TLS where we may try\nto operate on an old skb when checking if all skbs in the\nqueue have matching decrypt state and geometry.\n\n    BUG: KASAN: slab-use-after-free in tls_strp_check_rcv+0x898/0x9a0 [tls]\n    (net/tls/tls_strp.c:436 net/tls/tls_strp.c:530 net/tls/tls_strp.c:544)\n    Read of size 4 at addr ffff888013085750 by task tls/13529\n\n    CPU: 2 UID: 0 PID: 13529 Comm: tls Not tainted 6.16.0-rc5-virtme\n    Call Trace:\n     kasan_report+0xca/0x100\n     tls_strp_check_rcv+0x898/0x9a0 [tls]\n     tls_rx_rec_wait+0x2c9/0x8d0 [tls]\n     tls_sw_recvmsg+0x40f/0x1aa0 [tls]\n     inet_recvmsg+0x1c3/0x1f0\n\nAlways reload the queue, fast path is to have the record in the queue\nwhen we wake, anyway (IOW the path going down \"if !strp->stm.full_len\").",
   "datePublished": "Jul 28, 2025, 11:21:32 AM",
-  "dateUpdated": "Jul 30, 2026, 5:54:28 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:10 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/730fed2ff5e259495712518e18d9f521f61972bb\nhttps://git.kernel.org/stable/c/1f3a429c21e0e43e8b8c55d30701e91411a4df02\nhttps://git.kernel.org/stable/c/cdb767915fc9a15d88d19d52a1455f1dc3e5ddc8\nhttps://git.kernel.org/stable/c/c76f6f437c46b2390888e0e1dc7aafafa9f4e0c6\nhttps://git.kernel.org/stable/c/4ab26bce3969f8fd925fe6f6f551e4d1a508c68b\n",
   "aliases": "CVE-2025-38471\nGHSA-8r96-vh27-xgf4\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.39,
   "enisaIdProduct": [
     {
       "id": "0c013cd2-a49b-3cae-8e60-96d6a4deaed2",

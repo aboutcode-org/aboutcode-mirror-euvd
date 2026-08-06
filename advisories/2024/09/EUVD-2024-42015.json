@@ -3,7 +3,7 @@
   "enisaUuid": "92dbbbe0-bbff-3726-b768-5113e4b692cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Remove tst_run from lwt_seg6local_prog_ops.\n\nThe syzbot reported that the lwt_seg6 related BPF ops can be invoked\nvia bpf_test_run() without without entering input_action_end_bpf()\nfirst.\n\nMartin KaFai Lau said that self test for BPF_PROG_TYPE_LWT_SEG6LOCAL\nprobably didn't work since it was introduced in commit 04d4b274e2a\n(\"ipv6: sr: Add seg6local action End.BPF\"). The reason is that the\nper-CPU variable seg6_bpf_srh_states::srh is never assigned in the self\ntest case but each BPF function expects it.\n\nRemove test_run for BPF_PROG_TYPE_LWT_SEG6LOCAL.",
   "datePublished": "Sep 18, 2024, 7:12:13 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:41 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:22 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

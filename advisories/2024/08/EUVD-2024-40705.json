@@ -3,7 +3,7 @@
   "enisaUuid": "60558083-9dfd-3c26-b98e-de3b91577325",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: apple: fix device reference counting\n\nDrivers must call nvme_uninit_ctrl after a successful nvme_init_ctrl.\nSplit the allocation side out to make the error handling boundary easier\nto navigate. The apple driver had been doing this wrong, leaking the\ncontroller device memory on a tagset failure.",
   "datePublished": "Aug 26, 2024, 10:11:18 AM",
-  "dateUpdated": "Aug 4, 2026, 9:30:13 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:05 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

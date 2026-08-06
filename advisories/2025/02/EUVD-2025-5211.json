@@ -3,7 +3,7 @@
   "enisaUuid": "9cdd65b4-7cce-35a7-ba1c-55ab9092751a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_flat: Fix integer overflow bug on 32 bit systems\n\nMost of these sizes and counts are capped at 256MB so the math doesn't\nresult in an integer overflow.  The \"relocs\" count needs to be checked\nas well.  Otherwise on 32bit systems the calculation of \"full_data\"\ncould be wrong.\n\n\tfull_data = data_len + relocs * sizeof(unsigned long);",
   "datePublished": "Feb 27, 2025, 2:12:05 AM",
-  "dateUpdated": "Aug 4, 2026, 9:42:08 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "3a42cabe-80d0-3f29-b2c4-e8acc042c337",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panfrost: Job should reference MMU not file_priv\n\nFor a while now it's been allowed for a MMU context to outlive it's\ncorresponding panfrost_priv, however the job structure still references\npanfrost_priv to get hold of the MMU context. If panfrost_priv has been\nfreed this is a use-after-free which I've been able to trigger resulting\nin a splat.\n\nTo fix this, drop the reference to panfrost_priv in the job structure\nand add a direct reference to the MMU structure which is what's actually\nneeded.",
   "datePublished": "Feb 26, 2025, 2:11:07 AM",
-  "dateUpdated": "Aug 4, 2026, 9:05:07 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

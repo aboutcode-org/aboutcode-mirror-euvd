@@ -3,14 +3,14 @@
   "enisaUuid": "9cbac1ab-3f6d-3cde-b66b-2c0b11af841d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: add validation for ring_len param\n\nThe `ring_len` parameter provided by the virtual function (VF)\nis assigned directly to the hardware memory context (HMC) without\nany validation.\n\nTo address this, introduce an upper boundary check for both Tx and Rx\nqueue lengths. The maximum number of descriptors supported by the\nhardware is 8k-32.\nAdditionally, enforce alignment constraints: Tx rings must be a multiple\nof 8, and Rx rings must be a multiple of 32.",
   "datePublished": "Oct 15, 2025, 7:55:55 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:05 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:42 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0543d40d6513cdf1c7882811086e59a6455dfe97\nhttps://git.kernel.org/stable/c/7d749e38dd2b7e8a80da2ca30c93e09de95bfcf9\nhttps://git.kernel.org/stable/c/45a7527cd7da4cdcf3b06b5c0cb1cae30b5a5985\nhttps://git.kernel.org/stable/c/d3b0d3f8d11fa957171fbb186e53998361a88d4e\nhttps://git.kernel.org/stable/c/c0c83f4cd074b75cecef107bfc349be7d516c9c4\nhttps://git.kernel.org/stable/c/05fe81fb9db20464fa532a3835dc8300d68a2f84\nhttps://git.kernel.org/stable/c/afec12adab55d10708179a64d95d650741e60fe0\nhttps://git.kernel.org/stable/c/55d225670def06b01af2e7a5e0446fbe946289e8\n",
   "aliases": "GHSA-j9g6-49hr-w92p\nCVE-2025-39973\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "1506a3aa-67fe-3fec-b771-2cffa1aa6bd4",

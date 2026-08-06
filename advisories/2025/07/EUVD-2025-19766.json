@@ -3,14 +3,14 @@
   "enisaUuid": "d06737f5-d96f-30c8-8867-1f98e28b9a19",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nespintcp: remove encap socket caching to avoid reference leak\n\nThe current scheme for caching the encap socket can lead to reference\nleaks when we try to delete the netns.\n\nThe reference chain is: xfrm_state -> enacp_sk -> netns\n\nSince the encap socket is a userspace socket, it holds a reference on\nthe netns. If we delete the espintcp state (through flush or\nindividual delete) before removing the netns, the reference on the\nsocket is dropped and the netns is correctly deleted. Otherwise, the\nnetns may not be reachable anymore (if all processes within the ns\nhave terminated), so we cannot delete the xfrm state to drop its\nreference on the socket.\n\nThis patch results in a small (~2% in my tests) performance\nregression.\n\nA GC-type mechanism could be added for the socket cache, to clear\nreferences if the state hasn't been used \"recently\", but it's a lot\nmore complex than just not caching the socket.",
   "datePublished": "Jul 3, 2025, 8:13:57 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:16 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:29 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e4cde54b46a87231c77256a633be1bef62687d69\nhttps://git.kernel.org/stable/c/b58a295d10065960bcb9d60cb8ca6ead9837cd27\nhttps://git.kernel.org/stable/c/9cbca30102028f9ad3d2098f935c4368f581fd07\nhttps://git.kernel.org/stable/c/74fd327767fb784c5875cf7c4ba1217f26020943\nhttps://git.kernel.org/stable/c/028363685bd0b7a19b4a820f82dd905b1dc83999\n",
   "aliases": "GHSA-jm67-vrwh-5hh6\nCVE-2025-38097\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "026f8bed-330a-33b6-8bc6-6690591f472c",

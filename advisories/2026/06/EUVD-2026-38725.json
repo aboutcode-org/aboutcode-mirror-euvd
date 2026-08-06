@@ -3,12 +3,14 @@
   "enisaUuid": "dd8d1b1b-b8f7-3e69-9514-f75ab0323397",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: dat: handle forward allocation error\n\nbatadv_dat_forward_data() calls pskb_copy_for_clone() to duplicate an skb\nfor each DHT candidate, but does not check the return value before passing\nit to batadv_send_skb_prepare_unicast_4addr(). That function dereferences\nthe skb unconditionally, so a failed allocation triggers a NULL pointer\ndereference.\n\nSkip forwarding to the current DHT candidate on allocation failure.",
   "datePublished": "Jun 24, 2026, 7:14:17 AM",
-  "dateUpdated": "Jun 24, 2026, 7:14:17 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:31:43 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/9bcebaedfb8479cb4affb23c7a0d000ca9a20e73\nhttps://git.kernel.org/stable/c/2edb8aeb3cdda9d00ec4997252dc5bcd6f54d8ef\nhttps://git.kernel.org/stable/c/ce0c381199402a2c58f4599f4f6ed100d872d0da\nhttps://git.kernel.org/stable/c/866ac1d57040ed0b44ca732e3c66b3aa6b93011c\nhttps://git.kernel.org/stable/c/4d420d9ee70a220a2cd95aa0dd2e15acad66a505\nhttps://git.kernel.org/stable/c/9cceea8eeba710def2a5707ee00f00c74a9a1cac\nhttps://git.kernel.org/stable/c/cf48e75fc4fe0d5cc7721c82d454221d01367b93\nhttps://git.kernel.org/stable/c/2d8826a2d3657cea66fb0370f9e521575a673871\n",
   "aliases": "CVE-2026-52922\nGHSA-jv9r-93q3-fcf8\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.39,
   "enisaIdProduct": [
     {
       "id": "09033f36-3c41-399c-b567-d0a8492add79",

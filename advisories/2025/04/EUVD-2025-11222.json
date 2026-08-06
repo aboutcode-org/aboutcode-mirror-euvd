@@ -3,14 +3,14 @@
   "enisaUuid": "02ed2ca2-002f-34b3-9ee1-7fd5d158977d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: validate l_tree_depth to avoid out-of-bounds access\n\nThe l_tree_depth field is 16-bit (__le16), but the actual maximum depth is\nlimited to OCFS2_MAX_PATH_DEPTH.\n\nAdd a check to prevent out-of-bounds access if l_tree_depth has an invalid\nvalue, which may occur when reading from a corrupted mounted disk [1].",
   "datePublished": "Apr 16, 2025, 2:12:29 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:34 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ef34840bda333fe99bafbd2d73b70ceaaf9eba66\nhttps://git.kernel.org/stable/c/538ed8b049ef801a86c543433e5061a91cc106e3\nhttps://git.kernel.org/stable/c/17c99ab3db2ba74096d36c69daa6e784e98fc0b8\nhttps://git.kernel.org/stable/c/11e24802e73362aa2948ee16b8fb4e32635d5b2a\nhttps://git.kernel.org/stable/c/3d012ba4404a0bb517658699ba85e6abda386dc3\nhttps://git.kernel.org/stable/c/49d2a2ea9d30991bae82107f9523915b91637683\nhttps://git.kernel.org/stable/c/b942f88fe7d2d789e51c5c30a675fa1c126f5a6d\nhttps://git.kernel.org/stable/c/e95d97c9c8cd0c239b7b59c79be0f6a9dcf7905c\nhttps://git.kernel.org/stable/c/a406aff8c05115119127c962cbbbbd202e1973ef\n",
   "aliases": "CVE-2025-22079\nGHSA-h8h5-wj84-22hp\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0316fc9e-799f-3e68-b4ba-488a4286be1e",

@@ -3,14 +3,14 @@
   "enisaUuid": "962b7630-6ca5-3aa1-8d6f-d9c06d93559c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nneighbour: allow NUD_NOARP entries to be forced GCed\n\nIFF_POINTOPOINT interfaces use NUD_NOARP entries for IPv6. It's possible to\nfill up the neighbour table with enough entries that it will overflow for\nvalid connections after that.\n\nThis behaviour is more prevalent after commit 58956317c8de (\"neighbor:\nImprove garbage collection\") is applied, as it prevents removal from\nentries that are not NUD_FAILED, unless they are more than 5s old.",
   "datePublished": "Mar 15, 2024, 8:14:18 PM",
-  "dateUpdated": "Aug 4, 2026, 8:58:48 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:03 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/d99029e6aab62aef0a0251588b2867e77e83b137\nhttps://git.kernel.org/stable/c/d17d47da59f726dc4c87caebda3a50333d7e2fd3\nhttps://git.kernel.org/stable/c/ddf088d7aaaaacfc836104f2e632b29b1d383cfc\nhttps://git.kernel.org/stable/c/7a6b1ab7475fd6478eeaf5c9d1163e7a18125c8f\n",
   "aliases": "CVE-2021-47109\nGHSA-4jvh-cf85-8374\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.68,
   "enisaIdProduct": [
     {
       "id": "0913500a-3911-3667-83b5-8420e28face5",

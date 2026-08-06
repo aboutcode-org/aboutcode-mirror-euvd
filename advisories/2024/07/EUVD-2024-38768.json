@@ -3,7 +3,7 @@
   "enisaUuid": "4fe05119-ae4c-332b-b4b0-f02a1be731db",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: remove clear SB_INLINECRYPT flag in default_options\n\nIn f2fs_remount, SB_INLINECRYPT flag will be clear and re-set.\nIf create new file or open file during this gap, these files\nwill not use inlinecrypt. Worse case, it may lead to data\ncorruption if wrappedkey_v0 is enable.\n\nThread A:                               Thread B:\n\n-f2fs_remount\t\t\t\t-f2fs_file_open or f2fs_new_inode\n  -default_options\n\t<- clear SB_INLINECRYPT flag\n\n                                          -fscrypt_select_encryption_impl\n\n  -parse_options\n\t<- set SB_INLINECRYPT again",
   "datePublished": "Jul 12, 2024, 12:32:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:27:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:19 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",

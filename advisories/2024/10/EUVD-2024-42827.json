@@ -3,7 +3,7 @@
   "enisaUuid": "5dead3ed-1037-33f2-92ce-a55866d9cffc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: hisilicon/qm - inject error before stopping queue\n\nThe master ooo cannot be completely closed when the\naccelerator core reports memory error. Therefore, the driver\nneeds to inject the qm error to close the master ooo. Currently,\nthe qm error is injected after stopping queue, memory may be\nreleased immediately after stopping queue, causing the device to\naccess the released memory. Therefore, error is injected to close master\nooo before stopping queue to ensure that the device does not access\nthe released memory.",
   "datePublished": "Oct 21, 2024, 12:14:02 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:03 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:47 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

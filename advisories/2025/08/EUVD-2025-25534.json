@@ -3,7 +3,7 @@
   "enisaUuid": "a0f0e006-1d19-3f59-a6cd-ceeb01cf9443",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: fix potential out-of-bound write\n\nThe buffer is set to 20 characters. If a caller write more characters,\ncount is truncated to the max available space in \"simple_write_to_buffer\".\nTo protect from OoB access, check that the input size fit into buffer and\nadd a zero terminator after copy to the end of the copied data.",
   "datePublished": "Aug 22, 2025, 4:02:58 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:18 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:50 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

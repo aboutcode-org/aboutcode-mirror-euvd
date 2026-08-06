@@ -3,7 +3,7 @@
   "enisaUuid": "4df0d4b9-5e92-38c0-aa0f-3faeff70671c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: hp-bioscfg: Fix out-of-bounds array access in ACPI package parsing\n\nThe hp_populate_*_elements_from_package() functions in the hp-bioscfg\ndriver contain out-of-bounds array access vulnerabilities.\n\nThese functions parse ACPI packages into internal data structures using\na for loop with index variable 'elem' that iterates through\nenum_obj/integer_obj/order_obj/password_obj/string_obj arrays.\n\nWhen processing multi-element fields like PREREQUISITES and\nENUM_POSSIBLE_VALUES, these functions read multiple consecutive array\nelements using expressions like 'enum_obj[elem + reqs]' and\n'enum_obj[elem + pos_values]' within nested loops.\n\nThe bug is that the bounds check only validated elem, but did not consider\nthe additional offset when accessing elem + reqs or elem + pos_values.\n\nThe fix changes the bounds check to validate the actual accessed index.",
   "datePublished": "Jan 13, 2026, 3:34:59 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:16 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:06 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

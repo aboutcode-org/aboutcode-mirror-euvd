@@ -3,14 +3,14 @@
   "enisaUuid": "ad12ee13-5dd6-3f50-ab2f-48fe8193d470",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\n[ceph] parse_longname(): strrchr() expects NUL-terminated string\n\n... and parse_longname() is not guaranteed that.  That's the reason\nwhy it uses kmemdup_nul() to build the argument for kstrtou64();\nthe problem is, kstrtou64() is not the only thing that need it.\n\nJust get a NUL-terminated copy of the entire thing and be done\nwith that...",
   "datePublished": "Aug 22, 2025, 4:01:03 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:15 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:47 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bb80f7618832d26f7e395f52f82b1dac76223e5f\nhttps://git.kernel.org/stable/c/3145b2b11492d61c512bbc59660bb823bc757f48\nhttps://git.kernel.org/stable/c/493479af8af3ab907f49e99323777d498a4fbd2b\nhttps://git.kernel.org/stable/c/101841c38346f4ca41dc1802c867da990ffb32eb\n",
   "aliases": "CVE-2025-38660\nGHSA-c68j-74mr-g84m\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "18063979-3de0-352d-aae4-926bf3e6a066",

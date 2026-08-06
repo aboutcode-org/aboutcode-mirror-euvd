@@ -3,14 +3,14 @@
   "enisaUuid": "fe0df0e2-f1b9-333f-8423-8c627f43e020",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: fix chown/chgrp with SMB3 POSIX Extensions\n\nOwnership (chown) and group (chgrp) modifications were being ignored when\nmounting with SMB3 POSIX Extensions unless CIFS_MOUNT_CIFS_ACL or\nCIFS_MOUNT_MODE_FROM_SID were also explicitly set.\n\nFix this by checking for posix_extensions in cifs_setattr_nounix() when\nupdating UID and GID, ensuring that id_mode_to_cifs_acl() is called to map\nand set the ownership/group information on the server.",
   "datePublished": "Jul 25, 2026, 8:50:36 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:17 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:25 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/550cfb8a81181331d4d0f76ab75ee58a0bf41e3e\nhttps://git.kernel.org/stable/c/760ef2c579c2609cf17fb1cd5392f64d42d43d33\n",
   "aliases": "CVE-2026-64388\nGHSA-p59x-f8qp-h8m2\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "1d380b9c-6c1b-3c02-a732-c64db34ae74d",

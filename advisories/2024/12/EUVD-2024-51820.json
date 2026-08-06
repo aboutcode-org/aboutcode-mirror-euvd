@@ -3,7 +3,7 @@
   "enisaUuid": "72362b60-026f-3f8d-86a0-aa35444bc967",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: Flush partial mappings in error case\n\nIf some remap_pfn_range() calls succeeded before one failed, we still have\nbuffer pages mapped into the userspace page tables when we drop the buffer\nreference with comedi_buf_map_put(bm). The userspace mappings are only\ncleaned up later in the mmap error path.\n\nFix it by explicitly flushing all mappings in our VMA on the error path.\n\nSee commit 79a61cc3fc04 (\"mm: avoid leaving partial pfn mappings around in\nerror case\").",
   "datePublished": "Dec 24, 2024, 11:28:48 AM",
-  "dateUpdated": "Aug 4, 2026, 9:37:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:44:10 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

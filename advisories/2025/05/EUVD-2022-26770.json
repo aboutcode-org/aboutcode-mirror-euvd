@@ -3,14 +3,14 @@
   "enisaUuid": "86680a92-64b8-35fe-9580-fba0fc561f9c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: Fix WRITE_SAME No Data Buffer crash\n\nIn newer version of the SBC specs, we have a NDOB bit that indicates there\nis no data buffer that gets written out. If this bit is set using commands\nlike \"sg_write_same --ndob\" we will crash in target_core_iblock/file's\nexecute_write_same handlers when we go to access the se_cmd->t_data_sg\nbecause its NULL.\n\nThis patch adds a check for the NDOB bit in the common WRITE SAME code\nbecause we don't support it. And, it adds a check for zero SG elements in\neach handler in case the initiator tries to send a normal WRITE SAME with\nno data buffer.",
   "datePublished": "May 2, 2025, 9:52:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:01:46 AM",
+  "dateUpdated": "Aug 5, 2026, 8:51:31 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/54e57be2573cf0b8bf650375fd8752987b6c3d3b\nhttps://git.kernel.org/stable/c/d8e6a27e9238dd294d6f2f401655f300dca20899\nhttps://git.kernel.org/stable/c/4226622647e3e5ac06d3ebc1605b917446157510\nhttps://git.kernel.org/stable/c/ccd3f449052449a917a3e577d8ba0368f43b8f29\n",
   "aliases": "CVE-2022-21546\nGHSA-4f99-6w2j-877c\n",
   "assigner": "oracle",
-  "epss": 0.2,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "0596fd04-7dd0-3d91-88c6-d411682358ee",

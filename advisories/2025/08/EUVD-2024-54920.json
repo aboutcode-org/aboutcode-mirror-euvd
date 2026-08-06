@@ -3,7 +3,7 @@
   "enisaUuid": "9fb410ec-fc4a-35c0-9955-5c55b20478a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: separate no-async decryption request handling from async\n\nIf we're not doing async, the handling is much simpler. There's no\nreference counting, we just need to wait for the completion to wake us\nup and return its result.\n\nWe should preferably also use a separate crypto_wait. I'm not seeing a\nUAF as I did in the past, I think aec7961916f3 (\"tls: fix race between\nasync notify and socket close\") took care of it.\n\nThis will make the next fix easier.",
   "datePublished": "Aug 28, 2025, 9:40:33 AM",
-  "dateUpdated": "Aug 4, 2026, 9:43:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:50 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

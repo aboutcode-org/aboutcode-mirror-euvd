@@ -3,14 +3,14 @@
   "enisaUuid": "916b0dd3-6e32-3538-85d9-11c817c14b9f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: don't trust firmware n_channels\n\nIf the firmware sends us a corrupted MCC response with\nn_channels much larger than the command response can be,\nwe might copy far too much (uninitialized) memory and\neven crash if the n_channels is large enough to make it\nrun out of the one page allocated for the FW response.\n\nFix that by checking the lengths. Doing a < comparison\nwould be sufficient, but the firmware should be doing\nit correctly, so check more strictly.",
   "datePublished": "Oct 4, 2025, 3:44:04 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:33 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:59 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e519a404a5bbba37693cb10fa61794a5fce4fd9b\nhttps://git.kernel.org/stable/c/d0d39bed9e95f27a246be91c5929254ac043ed30\nhttps://git.kernel.org/stable/c/05ad5a4d421ce65652fcb24d46b7e273130240d6\nhttps://git.kernel.org/stable/c/557ba100d8cf3661ff8d71c0b4a2cba8db555ec2\nhttps://git.kernel.org/stable/c/c176f03350954b795322de0bfe1d7b514db41f45\nhttps://git.kernel.org/stable/c/682b6dc29d98e857e6ca4bbc077c7dc2899b7473\n",
   "aliases": "CVE-2023-53589\nGHSA-fh27-hfj9-ccqv\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "187796fa-da57-3ad7-9ab2-28a1e24a8e81",

@@ -3,14 +3,14 @@
   "enisaUuid": "b0927742-6614-34fa-9298-08aa956bf3f5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: cortina: Use TOE/TSO on all TCP\n\nIt is desireable to push the hardware accelerator to also\nprocess non-segmented TCP frames: we pass the skb->len\nto the \"TOE/TSO\" offloader and it will handle them.\n\nWithout this quirk the driver becomes unstable and lock\nup and and crash.\n\nI do not know exactly why, but it is probably due to the\nTOE (TCP offload engine) feature that is coupled with the\nsegmentation feature - it is not possible to turn one\npart off and not the other, either both TOE and TSO are\nactive, or neither of them.\n\nNot having the TOE part active seems detrimental, as if\nthat hardware feature is not really supposed to be turned\noff.\n\nThe datasheet says:\n\n  \"Based on packet parsing and TCP connection/NAT table\n   lookup results, the NetEngine puts the packets\n   belonging to the same TCP connection to the same queue\n   for the software to process. The NetEngine puts\n   incoming packets to the buffer or series of buffers\n   for a jumbo packet. With this hardware acceleration,\n   IP/TCP header parsing, checksum validation and\n   connection lookup are offloaded from the software\n   processing.\"\n\nAfter numerous tests with the hardware locking up after\nsomething between minutes and hours depending on load\nusing iperf3 I have concluded this is necessary to stabilize\nthe hardware.",
   "datePublished": "Jul 10, 2025, 8:15:04 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:57 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:10 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/1b503b790109d19710ec83c589c3ee59e95347ec\nhttps://git.kernel.org/stable/c/a37888a435b0737128d2d9c6f67b8d608f83df7a\nhttps://git.kernel.org/stable/c/2bd434bb0eeb680c2b3dd6c68ca319b30cb8d47f\nhttps://git.kernel.org/stable/c/ebe12e232f1d58ebb4b53b6d9149962b707bed91\nhttps://git.kernel.org/stable/c/6a07e3af4973402fa199a80036c10060b922c92c\n",
   "aliases": "CVE-2025-38331\nGHSA-78v2-9wxw-73qf\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "117f8a50-7cc9-3786-8108-1967b167e8da",

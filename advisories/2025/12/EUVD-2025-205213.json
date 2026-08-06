@@ -3,14 +3,14 @@
   "enisaUuid": "0b3a5b13-56a9-3200-957b-59c8f54dd35a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Fix race condition when unbinding BOs\n\nFix 'Memory manager not clean during takedown' warning that occurs\nwhen ivpu_gem_bo_free() removes the BO from the BOs list before it\ngets unmapped. Then file_priv_unbind() triggers a warning in\ndrm_mm_takedown() during context teardown.\n\nProtect the unmapping sequence with bo_list_lock to ensure the BO is\nalways fully unmapped when removed from the list. This ensures the BO\nis either fully unmapped at context teardown time or present on the\nlist and unmapped by file_priv_unbind().",
   "datePublished": "Dec 24, 2025, 12:09:44 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:29 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:18 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0328bb097bef05a796217c54b3d651cc3782827c\nhttps://git.kernel.org/stable/c/fb16493ebd8f171bcf0772262619618a131f30f7\nhttps://git.kernel.org/stable/c/d71333ffdd3707d84cfb95acfaf8ba892adc066b\nhttps://git.kernel.org/stable/c/00812636df370bedf4e44a0c81b86ea96bca8628\n",
   "aliases": "CVE-2025-68749\nGHSA-8phj-p75x-7gv8\n",
   "assigner": "Linux",
-  "epss": 0.09,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "02c23921-b2f1-3a64-8dec-6e45daafab52",

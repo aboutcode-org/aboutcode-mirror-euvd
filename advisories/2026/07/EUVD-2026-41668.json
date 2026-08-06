@@ -3,14 +3,14 @@
   "enisaUuid": "5ddc1d58-8ada-317e-80d0-b7f47412ff47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_unix: Set gc_in_progress to true in unix_gc().\n\nIgor Ushakov reported that unix_gc() could run with gc_in_progress\nbeing false if the work is scheduled while running:\n\n  Thread 1         Thread 2                     Thread 3\n  --------         --------                     --------\n                   unix_schedule_gc()           unix_schedule_gc()\n                   `- if (!gc_in_progress)      `- if (!gc_in_progress)\n                      |- gc_in_progress = true     |\n                      `- queue_work()              |\n  unix_gc() <----------------/                     |\n  |                                                |- gc_in_progress = true\n  ...                                              `- queue_work()\n  |                                                       |\n  `- gc_in_progress = false                               |\n                                                          |\n  unix_gc() <---------------------------------------------'\n  |\n  ... /* gc_in_progress == false */\n  |\n  `- gc_in_progress = false\n\nunix_peek_fpl() relies on gc_in_progress not to confuse GC\nby MSG_PEEK.\n\nLet's set gc_in_progress to true in unix_gc().",
   "datePublished": "Jul 4, 2026, 11:54:52 AM",
-  "dateUpdated": "Jul 18, 2026, 7:33:30 AM",
+  "dateUpdated": "Aug 5, 2026, 12:35:10 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/82c17e13d404f686e164590483fd6c1abaa675d0\nhttps://git.kernel.org/stable/c/591f1ac217428a6d2b32a8ac14aac0fab44f155a\nhttps://git.kernel.org/stable/c/0cfa78c050662784fc8e3ab26dbfd1dc632b2082\nhttps://git.kernel.org/stable/c/d82ba05263c69fa2437fe93e4e561cc40f4c03af\n",
   "aliases": "GHSA-h72j-p4f7-vrcj\nCVE-2026-53361\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "11aa1f6a-81e1-314c-af59-d8e3815d17bd",

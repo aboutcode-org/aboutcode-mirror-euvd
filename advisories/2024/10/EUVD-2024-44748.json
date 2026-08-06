@@ -3,7 +3,7 @@
   "enisaUuid": "a98886be-4f50-3aea-9916-1c233898f365",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nparport: Proper fix for array out-of-bounds access\n\nThe recent fix for array out-of-bounds accesses replaced sprintf()\ncalls blindly with snprintf().  However, since snprintf() returns the\nwould-be-printed size, not the actually output size, the length\ncalculation can still go over the given limit.\n\nUse scnprintf() instead of snprintf(), which returns the actually\noutput letters, for addressing the potential out-of-bounds access\nproperly.",
   "datePublished": "Oct 29, 2024, 12:50:16 AM",
-  "dateUpdated": "Aug 4, 2026, 9:34:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:41:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "d537a3e7-53d9-3f50-aad4-8babab0916b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: fix validation of VF state in get resources\n\nVF state I40E_VF_STATE_ACTIVE is not the only state in which\nVF is actually active so it should not be used to determine\nif a VF is allowed to obtain resources.\n\nUse I40E_VF_STATE_RESOURCES_LOADED that is set only in\ni40e_vc_get_vf_resources_msg() and cleared during reset.",
   "datePublished": "Oct 15, 2025, 7:55:52 AM",
-  "dateUpdated": "Jul 30, 2026, 5:59:00 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:38 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/185745d56ec958bf8aa773828213237dfcc32f5a\nhttps://git.kernel.org/stable/c/f47876788a23de296c42ef9d505b5c1630f0b4b8\nhttps://git.kernel.org/stable/c/8e35c80f8570426fe0f0cc92b151ebd835975f22\nhttps://git.kernel.org/stable/c/6c3981fd59ef11a75005ac9978f034da5a168b6a\nhttps://git.kernel.org/stable/c/e748f1ee493f88e38b77363a60499f979d42c58a\nhttps://git.kernel.org/stable/c/6128bbc7adc25c87c2f64b5eb66a280b78ef7ab7\nhttps://git.kernel.org/stable/c/a991dc56d3e9a2c3db87d0c3f03c24f6595400f1\nhttps://git.kernel.org/stable/c/877b7e6ffc23766448236e8732254534c518ba42\n",
   "aliases": "CVE-2025-39969\nGHSA-xxpg-m5qg-jjxh\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "06154c18-36a4-3e36-92c6-8dcab3b72e78",

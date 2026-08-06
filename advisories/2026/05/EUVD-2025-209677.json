@@ -3,14 +3,14 @@
   "enisaUuid": "5ee6e011-e330-3984-b507-972407bda176",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: ipc4-topology: Correct the allocation size for bytes controls\n\nThe size of the data behind of scontrol->ipc_control_data for bytes\ncontrols is:\n[1] sizeof(struct sof_ipc4_control_data) + // kernel only struct\n[2] sizeof(struct sof_abi_hdr)) + payload\n\nThe max_size specifies the size of [2] and it is coming from topology.\n\nChange the function to take this into account and allocate adequate amount\nof memory behind scontrol->ipc_control_data.\n\nWith the change we will allocate [1] amount more memory to be able to hold\nthe full size of data.",
   "datePublished": "May 6, 2026, 11:32:19 AM",
-  "dateUpdated": "Jul 30, 2026, 6:06:20 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:40 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/59fe643f21b9d59bcbedb0dfbf988ee455c23736\nhttps://git.kernel.org/stable/c/491956b45b5f4933632ea6d8a8bdfdf045ab81e1\nhttps://git.kernel.org/stable/c/a704a1a4394b5877b9adc31b2c3165ad0b541896\nhttps://git.kernel.org/stable/c/1237cd9ff198cb882402572f29569e5247190974\nhttps://git.kernel.org/stable/c/a653820700b81c9e6f05ac23b7969ecec1a18e85\n",
   "aliases": "GHSA-wjfp-2w53-2rcg\nCVE-2025-71286\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0ca6cbb2-067e-3a24-959d-efefb7f99aaa",

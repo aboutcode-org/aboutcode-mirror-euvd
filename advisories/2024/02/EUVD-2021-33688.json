@@ -3,7 +3,7 @@
   "enisaUuid": "d0d837be-98f5-37b1-abed-e116a95f5444",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix overflows checks in provide buffers\n\nColin reported before possible overflow and sign extension problems in\nio_provide_buffers_prep(). As Linus pointed out previous attempt did nothing\nuseful, see d81269fecb8ce (\"io_uring: fix provide_buffers sign extension\").\n\nDo that with help of check_<op>_overflow helpers. And fix struct\nio_provide_buf::len type, as it doesn't make much sense to keep it\nsigned.",
   "datePublished": "Feb 28, 2024, 8:13:46 AM",
-  "dateUpdated": "Aug 4, 2026, 8:58:25 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

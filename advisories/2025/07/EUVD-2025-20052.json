@@ -3,14 +3,14 @@
   "enisaUuid": "6f453c7f-f1cd-3fc3-b60a-7adcb187deb5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\njfs: fix array-index-out-of-bounds read in add_missing_indices\n\nstbl is s8 but it must contain offsets into slot which can go from 0 to\n127.\n\nAdded a bound check for that error and return -EIO if the check fails.\nAlso make jfs_readdir return with error if add_missing_indices returns\nwith an error.",
   "datePublished": "Jul 4, 2025, 1:37:24 PM",
-  "dateUpdated": "Jul 30, 2026, 5:52:10 AM",
+  "dateUpdated": "Aug 5, 2026, 12:00:20 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/81af4b34fd72d390d7f237c6a545cc6d09707956\nhttps://git.kernel.org/stable/c/bfa4655d28f338e68d345aed80d19be7999bbce2\nhttps://git.kernel.org/stable/c/44618bee303bed151ef3a525ff79fbd7689593b5\nhttps://git.kernel.org/stable/c/c8399564a58fb6ea2ff21a6fd278417943cb51a5\nhttps://git.kernel.org/stable/c/5dff41a86377563f7a2b968aae00d25b4ceb37c9\n",
   "aliases": "GHSA-362h-j6ww-x5f8\nCVE-2025-38204\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "15b7d50f-61fd-3a3d-aee3-012da35c8e15",

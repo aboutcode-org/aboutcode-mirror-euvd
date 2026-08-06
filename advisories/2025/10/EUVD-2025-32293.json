@@ -3,14 +3,14 @@
   "enisaUuid": "eec8f564-4796-3ec0-9a13-da5de9d92bed",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_set_rbtree: fix null deref on element insertion\n\nThere is no guarantee that rb_prev() will not return NULL in nft_rbtree_gc_elem():\n\ngeneral protection fault, probably for non-canonical address 0xdffffc0000000003: 0000 [#1] PREEMPT SMP KASAN\nKASAN: null-ptr-deref in range [0x0000000000000018-0x000000000000001f]\n nft_add_set_elem+0x14b0/0x2990\n  nf_tables_newsetelem+0x528/0xb30\n\nFurthermore, there is a possible use-after-free while iterating,\n'node' can be free'd so we need to cache the next value to use.",
   "datePublished": "Oct 4, 2025, 3:17:08 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:25 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b76db53ee8802ee5683f8cb401d7e2ec6f9b3d56\nhttps://git.kernel.org/stable/c/899aa5638568abf5d69de7a7bb95e4615157375b\nhttps://git.kernel.org/stable/c/3fa13203b6d90cc3a33af47b058739f92ab82eef\nhttps://git.kernel.org/stable/c/ec5caa765f7f6960011c919c9aeb1467940421f6\nhttps://git.kernel.org/stable/c/a836be60a3aabcedcd9c79f545d409ace1f20ba6\nhttps://git.kernel.org/stable/c/a337706c1fb35aac3f26b48aca80421bdbe1d33a\nhttps://git.kernel.org/stable/c/61ae320a29b0540c16931816299eb86bf2b66c08\n",
   "aliases": "CVE-2023-53566\nGHSA-pcw3-hvmm-479h\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "27dbae33-aec5-3f46-8dee-4bdcd4ad9a99",

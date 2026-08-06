@@ -3,7 +3,7 @@
   "enisaUuid": "c4023b43-e31c-34d7-ae51-3bb29a09d100",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: allow exp not to be removed in nf_ct_find_expectation\n\nCurrently nf_conntrack_in() calling nf_ct_find_expectation() will\nremove the exp from the hash table. However, in some scenario, we\nexpect the exp not to be removed when the created ct will not be\nconfirmed, like in OVS and TC conntrack in the following patches.\n\nThis patch allows exp not to be removed by setting IPS_CONFIRMED\nin the status of the tmpl.",
   "datePublished": "Mar 14, 2025, 2:25:59 PM",
-  "dateUpdated": "Aug 4, 2026, 9:12:39 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:05 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

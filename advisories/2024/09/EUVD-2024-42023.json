@@ -3,7 +3,7 @@
   "enisaUuid": "7315e2e4-d885-30be-99a6-f82b22ece40d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen: privcmd: Fix possible access to a freed kirqfd instance\n\nNothing prevents simultaneous ioctl calls to privcmd_irqfd_assign() and\nprivcmd_irqfd_deassign(). If that happens, it is possible that a kirqfd\ncreated and added to the irqfds_list by privcmd_irqfd_assign() may get\nremoved by another thread executing privcmd_irqfd_deassign(), while the\nformer is still using it after dropping the locks.\n\nThis can lead to a situation where an already freed kirqfd instance may\nbe accessed and cause kernel oops.\n\nUse SRCU locking to prevent the same, as is done for the KVM\nimplementation for irqfds.",
   "datePublished": "Sep 18, 2024, 7:12:21 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

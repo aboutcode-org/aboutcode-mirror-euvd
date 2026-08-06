@@ -3,14 +3,14 @@
   "enisaUuid": "3337b005-8faa-3dcf-8dba-28b4c64b0298",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: Remove rcu locks from user resources\n\nUser resource lookups used rcu to avoid two extra atomics. Unfortunately\nthe rcu paths were buggy and it was easy to make the driver crash by\nsubmitting command buffers from two different threads. Because the\nlookups never show up in performance profiles replace them with a\nregular spin lock which fixes the races in accesses to those shared\nresources.\n\nFixes kernel oops'es in IGT's vmwgfx execution_buffer stress test and\nseen crashes with apps using shared resources.",
   "datePublished": "Aug 21, 2024, 6:10:19 AM",
-  "dateUpdated": "Aug 4, 2026, 9:03:02 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:48 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7ac9578e45b20e3f3c0c8eb71f5417a499a7226a\nhttps://git.kernel.org/stable/c/a309c7194e8a2f8bd4539b9449917913f6c2cd50\n",
   "aliases": "CVE-2022-48887\nGHSA-w8v8-pp27-rwcg\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "38981862-6b64-3278-87a2-59572dba2bea",

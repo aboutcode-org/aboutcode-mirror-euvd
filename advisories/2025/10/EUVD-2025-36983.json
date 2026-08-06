@@ -3,14 +3,14 @@
   "enisaUuid": "2414b5b3-5aff-3364-9801-59baf0d9dbda",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_rndis: Refactor bind path to use __free()\n\nAfter an bind/unbind cycle, the rndis->notify_req is left stale. If a\nsubsequent bind fails, the unified error label attempts to free this\nstale request, leading to a NULL pointer dereference when accessing\nep->ops->free_request.\n\nRefactor the error handling in the bind path to use the __free()\nautomatic cleanup mechanism.",
   "datePublished": "Oct 30, 2025, 9:48:03 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:37 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:46 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ef81226bb1f8b6e761cd0b53d2696e9c1bc955d1\nhttps://git.kernel.org/stable/c/5f65c8ad8c7292ed7e3716343fcd590a51818cc3\nhttps://git.kernel.org/stable/c/380353c3a92be7d928e6f973bd065c5b79755ac3\nhttps://git.kernel.org/stable/c/a8366263b7e5b663d7fb489d3a9ba1e2600049a6\nhttps://git.kernel.org/stable/c/08228941436047bdcd35a612c1aec0912a29d8cd\n",
   "aliases": "GHSA-6m5m-pcmh-qg5r\nCVE-2025-40095\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0786bc85-f8e1-3ab6-ae83-e7d661027c81",

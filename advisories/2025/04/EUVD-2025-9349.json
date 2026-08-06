@@ -3,14 +3,14 @@
   "enisaUuid": "b4d40723-fc38-3123-a081-d59df35cb4a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: Prevent creation of classes with TC_H_ROOT\n\nThe function qdisc_tree_reduce_backlog() uses TC_H_ROOT as a termination\ncondition when traversing up the qdisc tree to update parent backlog\ncounters. However, if a class is created with classid TC_H_ROOT, the\ntraversal terminates prematurely at this class instead of reaching the\nactual root qdisc, causing parent statistics to be incorrectly maintained.\nIn case of DRR, this could lead to a crash as reported by Mingi Cho.\n\nPrevent the creation of any Qdisc class with classid TC_H_ROOT\n(0xFFFFFFFF) across all qdisc types, as suggested by Jamal.",
   "datePublished": "Apr 1, 2025, 3:47:04 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:07 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:46 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e05d9938b1b0ac40b6054cc5fa0ccbd9afd5ed4c\nhttps://git.kernel.org/stable/c/7a82fe67a9f4d7123d8e5ba8f0f0806c28695006\nhttps://git.kernel.org/stable/c/003d92c91cdb5a64b25a9a74cb8543aac9a8bb48\nhttps://git.kernel.org/stable/c/e5ee00607bbfc97ef1526ea95b6b2458ac9e7cb7\nhttps://git.kernel.org/stable/c/78533c4a29ac3aeddce4b481770beaaa4f3bfb67\nhttps://git.kernel.org/stable/c/5c3ca9cb48b51bd72bf76b8b05e24f3cd53db5e7\nhttps://git.kernel.org/stable/c/94edfdfb9505ab608e86599d1d1e38c83816fc1c\nhttps://git.kernel.org/stable/c/0c3057a5a04d07120b3d0ec9c79568fceb9c921e\n",
   "aliases": "GHSA-37v5-vmq6-f37g\nCVE-2025-21971\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0dfc6282-43e4-3500-9260-f490e2212cdc",

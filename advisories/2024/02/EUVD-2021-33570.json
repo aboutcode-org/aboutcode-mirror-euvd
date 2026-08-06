@@ -3,14 +3,14 @@
   "enisaUuid": "f6a44d2f-66d0-359d-a86f-fefe5c507cf5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: Fix TPM reservation for seal/unseal\n\nThe original patch 8c657a0590de (\"KEYS: trusted: Reserve TPM for seal\nand unseal operations\") was correct on the mailing list:\n\nhttps://lore.kernel.org/linux-integrity/20210128235621.127925-4-jarkko@kernel.org/\n\nBut somehow got rebased so that the tpm_try_get_ops() in\ntpm2_seal_trusted() got lost.  This causes an imbalanced put of the\nTPM ops and causes oopses on TIS based hardware.\n\nThis fix puts back the lost tpm_try_get_ops()",
   "datePublished": "Feb 27, 2024, 9:36:27 AM",
-  "dateUpdated": "Aug 4, 2026, 8:57:50 AM",
+  "dateUpdated": "Aug 5, 2026, 8:45:06 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bf84ef2dd2ccdcd8f2658476d34b51455f970ce4\nhttps://git.kernel.org/stable/c/39c8d760d44cb3fa0d67e8cd505df81cf4d80999\nhttps://git.kernel.org/stable/c/9d5171eab462a63e2fbebfccf6026e92be018f20\n",
   "aliases": "CVE-2021-46922\nGHSA-g9mf-qvgg-vwxr\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "3f59f976-44fe-3c69-95ae-9b035b368431",

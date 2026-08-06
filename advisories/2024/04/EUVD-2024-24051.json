@@ -3,7 +3,7 @@
   "enisaUuid": "193191d3-d8fc-3104-84f2-2ed3508ac66a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: arm64/neonbs - fix out-of-bounds access on short input\n\nThe bit-sliced implementation of AES-CTR operates on blocks of 128\nbytes, and will fall back to the plain NEON version for tail blocks or\ninputs that are shorter than 128 bytes to begin with.\n\nIt will call straight into the plain NEON asm helper, which performs all\nmemory accesses in granules of 16 bytes (the size of a NEON register).\nFor this reason, the associated plain NEON glue code will copy inputs\nshorter than 16 bytes into a temporary buffer, given that this is a rare\noccurrence and it is not worth the effort to work around this in the asm\ncode.\n\nThe fallback from the bit-sliced NEON version fails to take this into\naccount, potentially resulting in out-of-bounds accesses. So clone the\nsame workaround, and use a temp buffer for short in/outputs.",
   "datePublished": "Apr 4, 2024, 8:20:21 AM",
-  "dateUpdated": "Aug 4, 2026, 9:20:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

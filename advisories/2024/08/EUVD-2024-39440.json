@@ -3,7 +3,7 @@
   "enisaUuid": "f6a1c490-b3f0-3db9-8d27-d1a3a2ee9410",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: configfs: Prevent OOB read/write in usb_string_copy()\n\nUserspace provided string 's' could trivially have the length zero. Left\nunchecked this will firstly result in an OOB read in the form\n`if (str[0 - 1] == '\\n') followed closely by an OOB write in the form\n`str[0 - 1] = '\\0'`.\n\nThere is already a validating check to catch strings that are too long.\nLet's supply an additional check for invalid strings that are too short.",
   "datePublished": "Aug 7, 2024, 3:14:25 PM",
-  "dateUpdated": "Aug 4, 2026, 9:29:08 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:01 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

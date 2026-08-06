@@ -3,14 +3,14 @@
   "enisaUuid": "e57b45ec-78e9-3afa-95df-36b41deacff8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnios2: ensure that memblock.current_limit is set when setting pfn limits\n\nOn nios2, with CONFIG_FLATMEM set, the kernel relies on\nmemblock_get_current_limit() to determine the limits of mem_map, in\nparticular for max_low_pfn.\nUnfortunately, memblock.current_limit is only default initialized to\nMEMBLOCK_ALLOC_ANYWHERE at this point of the bootup, potentially leading\nto situations where max_low_pfn can erroneously exceed the value of\nmax_pfn and, thus, the valid range of available DRAM.\n\nThis can in turn cause kernel-level paging failures, e.g.:\n\n[   76.900000] Unable to handle kernel paging request at virtual address 20303000\n[   76.900000] ea = c0080890, ra = c000462c, cause = 14\n[   76.900000] Kernel panic - not syncing: Oops\n[   76.900000] ---[ end Kernel panic - not syncing: Oops ]---\n\nThis patch fixes this by pre-calculating memblock.current_limit\nbased on the upper limits of the available memory ranges via\nadjust_lowmem_bounds, a simplified version of the equivalent\nimplementation within the arm architecture.",
   "datePublished": "Dec 4, 2025, 3:31:34 PM",
-  "dateUpdated": "Jul 30, 2026, 6:01:47 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:49 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/25f09699edd360b534ccae16bc276c3b52c471f3\nhttps://git.kernel.org/stable/c/5c3e38a367822f036227dd52bac82dc4a05157e2\nhttps://git.kernel.org/stable/c/b1ec9faef7e36269ca3ec890972a78effbaeb975\nhttps://git.kernel.org/stable/c/90f5f715550e07cd6a51f80fc3f062d832c8c997\nhttps://git.kernel.org/stable/c/8912814f14e298b83df072fecc1f7ed1b63b1b2c\nhttps://git.kernel.org/stable/c/a20b83cf45be2057f3d073506779e52c7fa17f94\n",
   "aliases": "GHSA-56rc-pfj3-9mx3\nCVE-2025-40245\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "321804d5-64fc-34d2-8570-1d95d37eb53b",

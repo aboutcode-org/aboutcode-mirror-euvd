@@ -3,14 +3,14 @@
   "enisaUuid": "688bf2b1-5dd5-3213-b2c8-f5f2156dd415",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: aead - Fix reqsize handling\n\nCommit afddce13ce81d (\"crypto: api - Add reqsize to crypto_alg\")\nintroduced cra_reqsize field in crypto_alg struct to replace type\nspecific reqsize fields. It looks like this was introduced specifically\nfor ahash and acomp from the commit description as subsequent commits\nadd necessary changes in these alg frameworks.\n\nHowever, this is being recommended for use in all crypto algs\ninstead of setting reqsize using crypto_*_set_reqsize(). Using\ncra_reqsize in aead algorithms, hence, causes memory corruptions and\ncrashes as the underlying functions in the algorithm framework have not\nbeen updated to set the reqsize properly from cra_reqsize. [1]\n\nAdd proper set_reqsize calls in the aead init function to properly\ninitialize reqsize for these algorithms in the framework.\n\n[1]: https://gist.github.com/Pratham-T/24247446f1faf4b7843e4014d5089f6b",
   "datePublished": "Dec 24, 2025, 10:33:10 AM",
-  "dateUpdated": "Jul 30, 2026, 6:04:19 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:09 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/64377e66e187164bd6737112d07257f5f0feb681\nhttps://git.kernel.org/stable/c/12b413f5460c393d1151a37f591140693eca0f84\nhttps://git.kernel.org/stable/c/9b04d8f00569573796dd05397f5779135593eb24\n",
   "aliases": "GHSA-hgjv-cpc3-r8f4\nCVE-2025-68726\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "122c7f85-1654-3b64-87bd-08e0f18a361a",

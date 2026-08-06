@@ -3,14 +3,14 @@
   "enisaUuid": "811b7511-fd28-3699-a0c7-94ece847d233",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: wait and exit until all work queues are done\n\nOn some host, a crash could be triggered simply by repeating these\ncommands several times:\n\n  # modprobe tipc\n  # tipc bearer enable media udp name UDP1 localip 127.0.0.1\n  # rmmod tipc\n\n  [] BUG: unable to handle kernel paging request at ffffffffc096bb00\n  [] Workqueue: events 0xffffffffc096bb00\n  [] Call Trace:\n  []  ? process_one_work+0x1a7/0x360\n  []  ? worker_thread+0x30/0x390\n  []  ? create_worker+0x1a0/0x1a0\n  []  ? kthread+0x116/0x130\n  []  ? kthread_flush_work_fn+0x10/0x10\n  []  ? ret_from_fork+0x35/0x40\n\nWhen removing the TIPC module, the UDP tunnel sock will be delayed to\nrelease in a work queue as sock_release() can't be done in rtnl_lock().\nIf the work queue is schedule to run after the TIPC module is removed,\nkernel will crash as the work queue function cleanup_beareri() code no\nlonger exists when trying to invoke it.\n\nTo fix it, this patch introduce a member wq_count in tipc_net to track\nthe numbers of work queues in schedule, and  wait and exit until all\nwork queues are done in tipc_exit_net().",
   "datePublished": "Mar 25, 2024, 9:16:16 AM",
-  "dateUpdated": "Aug 4, 2026, 8:59:11 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d1f76dfadaf8f47ed1753f97dbcbd41c16215ffa\nhttps://git.kernel.org/stable/c/5195ec5e365a2a9331bfeb585b613a6e94f98dba\nhttps://git.kernel.org/stable/c/b9f5b7ad4ac3af006443f535b1ce7bff1d130d7d\nhttps://git.kernel.org/stable/c/04c26faa51d1e2fe71cf13c45791f5174c37f986\n",
   "aliases": "GHSA-63cm-3458-95cr\nCVE-2021-47163\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "32fd3541-b141-374f-a35a-e3a5b5193ff8",

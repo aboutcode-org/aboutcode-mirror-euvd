@@ -3,7 +3,7 @@
   "enisaUuid": "868d10a1-978c-39d3-829a-062ac3c45692",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: Fix loading 64-bit NOMMU kernels past the start of RAM\n\ncommit 3335068f8721 (\"riscv: Use PUD/P4D/PGD pages for the linear\nmapping\") added logic to allow using RAM below the kernel load address.\nHowever, this does not work for NOMMU, where PAGE_OFFSET is fixed to the\nkernel load address. Since that range of memory corresponds to PFNs\nbelow ARCH_PFN_OFFSET, mm initialization runs off the beginning of\nmem_map and corrupts adjacent kernel memory. Fix this by restoring the\nprevious behavior for NOMMU kernels.",
   "datePublished": "May 20, 2024, 9:47:53 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:25 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

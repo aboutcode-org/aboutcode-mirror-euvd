@@ -3,14 +3,14 @@
   "enisaUuid": "aed91ec0-8bfc-3063-88dd-5766d09999a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: Increase ARCH_DMA_MINALIGN up to 16\n\nARCH_DMA_MINALIGN is 1 by default, but some LoongArch-specific devices\n(such as APBDMA) require 16 bytes alignment. When the data buffer length\nis too small, the hardware may make an error writing cacheline. Thus, it\nis dangerous to allocate a small memory buffer for DMA. It's always safe\nto define ARCH_DMA_MINALIGN as L1_CACHE_BYTES but unnecessary (kmalloc()\nneed small memory objects). Therefore, just increase it to 16.",
   "datePublished": "Apr 16, 2025, 2:12:08 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:05 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f39af67f03b564b763b06e44cb960c10a382d54a\nhttps://git.kernel.org/stable/c/279ec25c2df49fba1cd9488f2ddd045d9cb2112e\nhttps://git.kernel.org/stable/c/1d0def2d1658666ec1f32c9495df60e7411e3c82\nhttps://git.kernel.org/stable/c/bfff341cac7c650e6ca8d10503725992f5564d0f\nhttps://git.kernel.org/stable/c/8b82aea3666f8f2c78f86148d78aea99c46e0f82\nhttps://git.kernel.org/stable/c/4103cfe9dcb88010ae4911d3ff417457d1b6a720\n",
   "aliases": "CVE-2025-22049\nGHSA-q8p5-jh8j-ww29\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "00860ff7-19d5-336d-8cf0-eb15888a5d75",

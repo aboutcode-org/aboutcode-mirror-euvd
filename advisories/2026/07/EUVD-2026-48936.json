@@ -3,14 +3,14 @@
   "enisaUuid": "d8e9d3e9-74b8-37dd-a5b9-d1a62451655f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use opener credentials for delete-on-close\n\nDelete-on-close can be completed by deferred or durable handle teardown,\nwhere no request work is available. Both the base-file unlink and the ADS\nxattr removal consequently run with the ksmbd worker credentials and can\nbypass filesystem permission checks.\n\nRun both operations with the credentials captured in struct file when the\nhandle was opened. This preserves the authenticated user's fsuid, fsgid,\nsupplementary groups and capability restrictions at final close.",
   "datePublished": "Jul 25, 2026, 8:50:38 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:21 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:29 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f08b3f451f12eee4abd8a5981803bc36db84458b\nhttps://git.kernel.org/stable/c/18c59109bb6fb816d5102171666f87cf1e29901d\nhttps://git.kernel.org/stable/c/e72c15085b6d86f45d224d98aa75b5cace4aaab9\nhttps://git.kernel.org/stable/c/4b7059974549d278e30fe70e2a4e421f9839817d\nhttps://git.kernel.org/stable/c/52e2f21911158ec961cd5aae19c56460db382af0\n",
   "aliases": "GHSA-cq4q-mqm3-8r2p\nCVE-2026-64392\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "2749ce57-9d0e-35ed-b6ca-b4e576aa58d6",

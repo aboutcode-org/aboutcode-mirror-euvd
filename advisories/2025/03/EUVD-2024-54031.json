@@ -3,7 +3,7 @@
   "enisaUuid": "e09f71cd-7534-34b6-9f94-ca63f27c89f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: pcf85063: fix potential OOB write in PCF85063 NVMEM read\n\nThe nvmem interface supports variable buffer sizes, while the regmap\ninterface operates with fixed-size storage. If an nvmem client uses a\nbuffer size less than 4 bytes, regmap_read will write out of bounds\nas it expects the buffer to point at an unsigned int.\n\nFix this by using an intermediary unsigned int to hold the value.",
   "datePublished": "Mar 6, 2025, 3:54:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:42:21 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

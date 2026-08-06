@@ -3,7 +3,7 @@
   "enisaUuid": "5631cfa0-e7d3-335d-9424-31bf0df732ba",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: Block access to folio overlimit\n\nsyz reported a slab-out-of-bounds Write in fuse_dev_do_write.\n\nWhen the number of bytes to be retrieved is truncated to the upper limit\nby fc->max_pages and there is an offset, the oob is triggered.\n\nAdd a loop termination condition to prevent overruns.",
   "datePublished": "Sep 23, 2025, 6:00:54 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:18 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:54 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

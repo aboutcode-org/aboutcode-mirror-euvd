@@ -3,14 +3,14 @@
   "enisaUuid": "a0d4b453-103b-3f7c-9aad-5573b095fb2d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent path traversal bypass by restricting caseless retry\n\nksmbd_vfs_path_lookup() enforces LOOKUP_BENEATH to restrict path\nresolution within the share root. When a crafted path attempts to\nescape the share boundary using parent-directory components ('..'),\nvfs_path_parent_lookup() detects this and immediately fails,\nreturning -EXDEV.\n\nHowever, a bug exists in __ksmbd_vfs_kern_path() under caseless mode.\nThe function fails to intercept the -EXDEV error and erroneously\nfalls through to the caseless retry logic, which is intended only\nfor genuinely missing files. During this retry process, the path\nis reconstructed, leading to an unintended LOOKUP_BENEATH bypass\nthat allows write-capable users to create zero-length files or\ndirectories outside the exported share.\n\nFix this by ensuring that the execution only proceeds to the caseless\nlookup retry when the error is specifically -ENOENT. Any other errors,\nsuch as -EXDEV from a path traversal attempt, must be returned immediately.",
   "datePublished": "Jul 25, 2026, 8:50:43 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:31 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:38 PM",
   "baseScore": 8.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/8c9a4f1327eb71efbf14842e7b8a6d965077eb67\nhttps://git.kernel.org/stable/c/54bab9ba5a9f156ffa9324fcbe5a356fd0242f95\n",
   "aliases": "GHSA-cg5c-7728-29v7\nCVE-2026-64400\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "19028531-6f3f-3f22-9eb9-680314ae1e65",

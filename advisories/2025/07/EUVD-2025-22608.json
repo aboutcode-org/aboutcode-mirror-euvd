@@ -3,7 +3,7 @@
   "enisaUuid": "2a94e715-e317-3785-a5c7-76f8e7cb645f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: gpio: Fix the out-of-bounds access to drvdata::gpiods\n\ndrvdata::gpiods is supposed to hold an array of 'gpio_desc' pointers. But\nthe memory is allocated for only one pointer. This will lead to\nout-of-bounds access later in the code if 'config::ngpios' is > 1. So\nfix the code to allocate enough memory to hold 'config::ngpios' of GPIO\ndescriptors.\n\nWhile at it, also move the check for memory allocation failure to be below\nthe allocation to make it more readable.",
   "datePublished": "Jul 25, 2025, 12:53:39 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:20 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:33 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

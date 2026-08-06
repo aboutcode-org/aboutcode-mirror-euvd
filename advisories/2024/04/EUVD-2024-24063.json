@@ -3,7 +3,7 @@
   "enisaUuid": "90aaec37-17d5-3f89-b078-396e6fe83a62",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: Avoid potential use-after-free in hci_error_reset\n\nWhile handling the HCI_EV_HARDWARE_ERROR event, if the underlying\nBT controller is not responding, the GPIO reset mechanism would\nfree the hci_dev and lead to a use-after-free in hci_error_reset.\n\nHere's the call trace observed on a ChromeOS device with Intel AX201:\n   queue_work_on+0x3e/0x6c\n   __hci_cmd_sync_sk+0x2ee/0x4c0 [bluetooth <HASH:3b4a6>]\n   ? init_wait_entry+0x31/0x31\n   __hci_cmd_sync+0x16/0x20 [bluetooth <HASH:3b4a 6>]\n   hci_error_reset+0x4f/0xa4 [bluetooth <HASH:3b4a 6>]\n   process_one_work+0x1d8/0x33f\n   worker_thread+0x21b/0x373\n   kthread+0x13a/0x152\n   ? pr_cont_work+0x54/0x54\n   ? kthread_blkcg+0x31/0x31\n    ret_from_fork+0x1f/0x30\n\nThis patch holds the reference count on the hci_dev while processing\na HCI_EV_HARDWARE_ERROR event to avoid potential crash.",
   "datePublished": "Apr 4, 2024, 8:20:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:20:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:27:22 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

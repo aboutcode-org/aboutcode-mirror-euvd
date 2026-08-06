@@ -3,7 +3,7 @@
   "enisaUuid": "9c0847cb-836b-31ba-903a-e113be5590cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atlantic: eliminate double free in error handling logic\n\nDriver has a logic leak in ring data allocation/free,\nwhere aq_ring_free could be called multiple times on same ring,\nif system is under stress and got memory allocation error.\n\nRing pointer was used as an indicator of failure, but this is\nnot correct since only ring data is allocated/deallocated.\nRing itself is an array member.\n\nChanging ring allocation functions to return error code directly.\nThis simplifies error handling and eliminates aq_ring_free\non higher layer.",
   "datePublished": "May 17, 2024, 1:45:05 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:25 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:55 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

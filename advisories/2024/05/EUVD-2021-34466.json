@@ -3,14 +3,14 @@
   "enisaUuid": "444474ed-3b98-35f6-8259-f68882324fc7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nuserfaultfd: fix a race between writeprotect and exit_mmap()\n\nA race is possible when a process exits, its VMAs are removed by\nexit_mmap() and at the same time userfaultfd_writeprotect() is called.\n\nThe race was detected by KASAN on a development kernel, but it appears\nto be possible on vanilla kernels as well.\n\nUse mmget_not_zero() to prevent the race as done in other userfaultfd\noperations.",
   "datePublished": "May 22, 2024, 6:23:22 AM",
-  "dateUpdated": "Aug 4, 2026, 9:00:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3cda4bfffd4f755645577aaa9e96a606657b4525\nhttps://git.kernel.org/stable/c/149958ecd0627a9f1e9c678c25c665400054cd6a\nhttps://git.kernel.org/stable/c/cb185d5f1ebf900f4ae3bf84cee212e6dd035aca\n",
   "aliases": "CVE-2021-47461\nGHSA-q3gr-2743-cwm5\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0252df2e-48dd-3ccb-ad74-20c78972f4f6",

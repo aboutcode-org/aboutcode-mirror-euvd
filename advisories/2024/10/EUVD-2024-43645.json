@@ -3,7 +3,7 @@
   "enisaUuid": "964540c8-6be7-351f-aa7d-d53d5c467b28",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: cancel dqi_sync_work before freeing oinfo\n\nocfs2_global_read_info() will initialize and schedule dqi_sync_work at the\nend, if error occurs after successfully reading global quota, it will\ntrigger the following warning with CONFIG_DEBUG_OBJECTS_* enabled:\n\nODEBUG: free active (active state 0) object: 00000000d8b0ce28 object type: timer_list hint: qsync_work_fn+0x0/0x16c\n\nThis reports that there is an active delayed work when freeing oinfo in\nerror handling, so cancel dqi_sync_work first.  BTW, return status instead\nof -1 when .read_file_info fails.",
   "datePublished": "Oct 21, 2024, 6:02:17 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:00 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:45 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

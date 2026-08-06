@@ -3,14 +3,14 @@
   "enisaUuid": "4f54235c-9a76-3711-a8e4-fa971eab188e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Protect against send buffer overflow in NFSv2 READ\n\nSince before the git era, NFSD has conserved the number of pages\nheld by each nfsd thread by combining the RPC receive and send\nbuffers into a single array of pages. This works because there are\nno cases where an operation needs a large RPC Call message and a\nlarge RPC Reply at the same time.\n\nOnce an RPC Call has been received, svc_process() updates\nsvc_rqst::rq_res to describe the part of rq_pages that can be\nused for constructing the Reply. This means that the send buffer\n(rq_res) shrinks when the received RPC record containing the RPC\nCall is large.\n\nA client can force this shrinkage on TCP by sending a correctly-\nformed RPC Call header contained in an RPC record that is\nexcessively large. The full maximum payload size cannot be\nconstructed in that case.",
   "datePublished": "Sep 18, 2025, 4:03:54 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:56 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:39 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2007867c5874134f2271eb276398208070049dd3\nhttps://git.kernel.org/stable/c/2be9331ca6061bc6ea32247266f45b8b21030244\nhttps://git.kernel.org/stable/c/ea4c3eee0fd72fcedaa238556044825639cd3607\nhttps://git.kernel.org/stable/c/1868332032eccbab8c1878a0d918193058c0a905\nhttps://git.kernel.org/stable/c/401bc1f90874280a80b93f23be33a0e7e2d1f912\n",
   "aliases": "GHSA-fcpw-f2ff-x55p\nCVE-2022-50410\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "0a873b06-4f52-3255-9d7a-4cf27b744dd0",

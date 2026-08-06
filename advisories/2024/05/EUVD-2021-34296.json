@@ -3,7 +3,7 @@
   "enisaUuid": "5ebd4d8b-1b14-3edc-86e8-61570970b594",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: fix another slab-out-of-bounds in fib6_nh_flush_exceptions\n\nWhile running the self-tests on a KASAN enabled kernel, I observed a\nslab-out-of-bounds splat very similar to the one reported in\ncommit 821bbf79fe46 (\"ipv6: Fix KASAN: slab-out-of-bounds Read in\n fib6_nh_flush_exceptions\").\n\nWe additionally need to take care of fib6_metrics initialization\nfailure when the caller provides an nh.\n\nThe fix is similar, explicitly free the route instead of calling\nfib6_info_release on a half-initialized object.",
   "datePublished": "May 21, 2024, 2:35:16 PM",
-  "dateUpdated": "Aug 4, 2026, 8:59:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

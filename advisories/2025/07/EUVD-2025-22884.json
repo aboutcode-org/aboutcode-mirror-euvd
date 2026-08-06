@@ -3,14 +3,14 @@
   "enisaUuid": "101af7b2-d5f5-3cb7-8cfc-e1a55221af76",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: Fix initialization of data for instructions that write to subdevice\n\nSome Comedi subdevice instruction handlers are known to access\ninstruction data elements beyond the first `insn->n` elements in some\ncases.  The `do_insn_ioctl()` and `do_insnlist_ioctl()` functions\nallocate at least `MIN_SAMPLES` (16) data elements to deal with this,\nbut they do not initialize all of that.  For Comedi instruction codes\nthat write to the subdevice, the first `insn->n` data elements are\ncopied from user-space, but the remaining elements are left\nuninitialized.  That could be a problem if the subdevice instruction\nhandler reads the uninitialized data.  Ensure that the first\n`MIN_SAMPLES` elements are initialized before calling these instruction\nhandlers, filling the uncopied elements with 0.  For\n`do_insnlist_ioctl()`, the same data buffer elements are used for\nhandling a list of instructions, so ensure the first `MIN_SAMPLES`\nelements are initialized for each instruction that writes to the\nsubdevice.",
   "datePublished": "Jul 28, 2025, 11:21:44 AM",
-  "dateUpdated": "Jul 30, 2026, 5:54:33 AM",
+  "dateUpdated": "Aug 5, 2026, 12:02:15 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6f38c6380c3b38a05032b8881e41137385a6ce02\nhttps://git.kernel.org/stable/c/13e4d9038a1e869445a996a3f604a84ef52fe8f4\nhttps://git.kernel.org/stable/c/020eed5681d0f9bced73970368078a92d6cfaa9c\nhttps://git.kernel.org/stable/c/d3436638738ace8f101af7bdee2eae1bc38e9b29\nhttps://git.kernel.org/stable/c/673ee92bd2d31055bca98a1d96b653f5284289c4\nhttps://git.kernel.org/stable/c/c42116dc70af6664526f7aa82cf937824ab42649\nhttps://git.kernel.org/stable/c/fe8713fb4e4e82a4f91910d9a41bf0613e69a0b9\nhttps://git.kernel.org/stable/c/46d8c744136ce2454aa4c35c138cc06817f92b8e\n",
   "aliases": "CVE-2025-38478\nGHSA-55hq-rjfv-397f\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "08962b48-ce2b-3680-960a-c6c447a4d1f0",

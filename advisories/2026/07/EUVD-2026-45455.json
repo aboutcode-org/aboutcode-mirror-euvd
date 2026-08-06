@@ -3,14 +3,14 @@
   "enisaUuid": "40dd67c7-a596-3ded-9a0b-71facd72ea47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: core: fix adapter registration race\n\nAdapters can be looked up based on their id using i2c_get_adapter()\nwhich takes a reference to the embedded struct device.\n\nMake sure that the adapter (including its struct device) has been\ninitialised before adding it to the IDR to avoid accessing uninitialised\ndata which could, for example, lead to NULL-pointer dereferences or\nuse-after-free.\n\nNote that the i2c-dev chardev, which is registered from a bus notifier,\ncurrently uses i2c_get_adapter() so the adapter needs to be added to the\nIDR before registration.",
   "datePublished": "Jul 19, 2026, 12:02:00 PM",
-  "dateUpdated": "Jul 24, 2026, 2:34:02 PM",
+  "dateUpdated": "Aug 5, 2026, 12:35:39 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2e57c788e71f1763445f812eba4e0b4a2fbd0646\nhttps://git.kernel.org/stable/c/a4365bc41baaf67f3a5aa8556d23544e6ec7480a\nhttps://git.kernel.org/stable/c/1febb174815bcae56d73587e99e8f87e02f0784d\nhttps://git.kernel.org/stable/c/da9d8d9711f78deebc202d0cffcf577e45ee8621\nhttps://git.kernel.org/stable/c/78793c75dc6d0ff2e4d50ad617349b328a99054e\nhttps://git.kernel.org/stable/c/6a946038f2a5a8c29048c6af369d4e391448a5c5\nhttps://git.kernel.org/stable/c/a4c8094bbf4c6fa68b17e3b16f6a0a1b7a14f3e0\nhttps://git.kernel.org/stable/c/ba14d7cf2fe7284610a29854bdff22b2537d3ce6\n",
   "aliases": "GHSA-9p96-44q4-p2j5\nCVE-2026-53400\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "2052e38c-2dd4-39a2-9fee-da03158fb583",

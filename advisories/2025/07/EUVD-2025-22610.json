@@ -3,14 +3,14 @@
   "enisaUuid": "a9bf02f3-bfc2-344e-88f3-7d64c0dc14c2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN\n\nWe found a few different systems hung up in writeback waiting on the same\npage lock, and one task waiting on the NFS_LAYOUT_DRAIN bit in\npnfs_update_layout(), however the pnfs_layout_hdr's plh_outstanding count\nwas zero.\n\nIt seems most likely that this is another race between the waiter and waker\nsimilar to commit ed0172af5d6f (\"SUNRPC: Fix a race to wake a sync task\").\nFix it up by applying the advised barrier.",
   "datePublished": "Jul 25, 2025, 12:53:38 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:19 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:32 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/08287df60bac5b008b6bcdb03053988335d3d282\nhttps://git.kernel.org/stable/c/8846fd02c98da8b79e6343a20e6071be6f372180\nhttps://git.kernel.org/stable/c/e4b13885e7ef1e64e45268feef1e5f0707c47e72\nhttps://git.kernel.org/stable/c/8ca65fa71024a1767a59ffbc6a6e2278af84735e\nhttps://git.kernel.org/stable/c/864a54c1243ed3ca60baa4bc492dede1361f4c83\nhttps://git.kernel.org/stable/c/1f4da20080718f258e189a2c5f515385fa393da6\nhttps://git.kernel.org/stable/c/c01776287414ca43412d1319d2877cbad65444ac\n",
   "aliases": "CVE-2025-38393\nGHSA-93f5-rwwh-v8p5\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "0707e739-4109-359b-9a08-e892e15da4ad",

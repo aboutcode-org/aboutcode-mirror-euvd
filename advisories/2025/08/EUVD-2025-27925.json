@@ -3,7 +3,7 @@
   "enisaUuid": "998c5e23-cb8e-32d4-a9a3-2b737ffbddfd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix UAF in panthor_gem_create_with_handle() debugfs code\n\nThe object is potentially already gone after the drm_gem_object_put().\nIn general the object should be fully constructed before calling\ndrm_gem_handle_create(), except the debugfs tracking uses a separate\nlock and list and separate flag to denotate whether the object is\nactually initialized.\n\nSince I'm touching this all anyway simplify this by only adding the\nobject to the debugfs when it's ready for that, which allows us to\ndelete that separate flag. panthor_gem_debugfs_bo_rm() already checks\nwhether we've actually been added to the list or this is some error\npath cleanup.\n\nv2: Fix build issues for !CONFIG_DEBUGFS (Adri\u00e1n)\n\nv3: Add linebreak and remove outdated comment (Liviu)",
   "datePublished": "Aug 19, 2025, 5:03:26 PM",
-  "dateUpdated": "Jul 30, 2026, 5:55:36 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:18 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "eb528e3d-4646-3747-9c87-08483ff8b01d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Fix copy buffer page size\n\nFor non-registered buffer, fastrpc driver copies the buffer and\npass it to the remote subsystem. There is a problem with current\nimplementation of page size calculation which is not considering\nthe offset in the calculation. This might lead to passing of\nimproper and out-of-bounds page size which could result in\nmemory issue. Calculate page start and page end using the offset\nadjusted address instead of absolute address.",
   "datePublished": "Feb 27, 2025, 2:12:11 AM",
-  "dateUpdated": "Jul 30, 2026, 5:45:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

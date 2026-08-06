@@ -3,14 +3,14 @@
   "enisaUuid": "53d6dcf3-86f8-3eda-bc8c-17a84d3a3b9d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: amdtee: fix race condition in amdtee_open_session\n\nThere is a potential race condition in amdtee_open_session that may\nlead to use-after-free. For instance, in amdtee_open_session() after\nsess->sess_mask is set, and before setting:\n\n    sess->session_info[i] = session_info;\n\nif amdtee_close_session() closes this same session, then 'sess' data\nstructure will be released, causing kernel panic when 'sess' is\naccessed within amdtee_open_session().\n\nThe solution is to set the bit sess->sess_mask as the last step in\namdtee_open_session().",
   "datePublished": "May 2, 2025, 3:55:04 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:12 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:32 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f632a90f8e39db39b322107b9a8d438b826a7f4f\nhttps://git.kernel.org/stable/c/02b296978a2137d7128151c542e84dc96400bc00\nhttps://git.kernel.org/stable/c/a63cce9393e4e7dbc5af82dc87e68cb321cb1a78\nhttps://git.kernel.org/stable/c/b3ef9e6fe09f1a132af28c623edcf4d4f39d9f35\nhttps://git.kernel.org/stable/c/f8502fba45bd30e1a6a354d9d898bc99d1a11e6d\n",
   "aliases": "CVE-2023-53047\nGHSA-r348-7mvp-g684\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "071be288-14b3-32b7-87e2-5f4cbeb526d4",

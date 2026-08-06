@@ -3,7 +3,7 @@
   "enisaUuid": "0ea3f815-9aae-3fd1-8f91-b31894f24f06",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: inet6: do not leave a dangling sk pointer in inet6_create()\n\nsock_init_data() attaches the allocated sk pointer to the provided sock\nobject. If inet6_create() fails later, the sk object is released, but the\nsock object retains the dangling sk pointer, which may cause use-after-free\nlater.\n\nClear the sock sk pointer on error.",
   "datePublished": "Dec 27, 2024, 2:51:06 PM",
-  "dateUpdated": "Aug 4, 2026, 9:38:44 AM",
+  "dateUpdated": "Aug 5, 2026, 11:45:20 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

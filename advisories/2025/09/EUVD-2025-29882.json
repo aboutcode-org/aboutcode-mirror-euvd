@@ -3,7 +3,7 @@
   "enisaUuid": "7ddbf60c-ee3d-3a76-a669-e2844390c22e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panfrost: Fix GEM handle creation ref-counting\n\npanfrost_gem_create_with_handle() previously returned a BO but with the\nonly reference being from the handle, which user space could in theory\nguess and release, causing a use-after-free. Additionally if the call to\npanfrost_gem_mapping_get() in panfrost_ioctl_create_bo() failed then\na(nother) reference on the BO was dropped.\n\nThe _create_with_handle() is a problematic pattern, so ditch it and\ninstead create the handle in panfrost_ioctl_create_bo(). If the call to\npanfrost_gem_mapping_get() fails then this means that user space has\nindeed gone behind our back and freed the handle. In which case just\nreturn an error code.",
   "datePublished": "Sep 18, 2025, 4:04:00 PM",
-  "dateUpdated": "Aug 4, 2026, 9:08:59 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:42 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

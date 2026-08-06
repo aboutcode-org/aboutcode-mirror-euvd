@@ -3,7 +3,7 @@
   "enisaUuid": "e44ae32a-f26b-36f1-8592-c57469edac2a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: tsc2046: fix memory corruption by preventing array overflow\n\nOn one side we have indio_dev->num_channels includes all physical channels +\ntimestamp channel. On other side we have an array allocated only for\nphysical channels. So, fix memory corruption by ARRAY_SIZE() instead of\nnum_channels variable.\n\nNote the first case is a cleanup rather than a fix as the software\ntimestamp channel bit in active_scanmask is never set by the IIO core.",
   "datePublished": "Aug 22, 2024, 3:31:19 AM",
-  "dateUpdated": "Aug 4, 2026, 9:03:12 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:58 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

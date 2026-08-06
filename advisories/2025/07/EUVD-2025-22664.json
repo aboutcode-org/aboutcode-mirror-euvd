@@ -3,7 +3,7 @@
   "enisaUuid": "cd28781d-b500-3c3f-9173-f13fc57c4fb9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86/amd: pmf: Use device managed allocations\n\nIf setting up smart PC fails for any reason then this can lead to\na double free when unloading amd-pmf.  This is because dev->buf was\nfreed but never set to NULL and is again freed in amd_pmf_remove().\n\nTo avoid subtle allocation bugs in failures leading to a double free\nchange all allocations into device managed allocations.",
   "datePublished": "Jul 25, 2025, 2:16:42 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:47 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:44 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

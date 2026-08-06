@@ -3,7 +3,7 @@
   "enisaUuid": "29a93426-3a0a-3796-8147-c153218b4efb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: mv88e6xxx: Correct check for empty list\n\nSince commit a3c53be55c95 (\"net: dsa: mv88e6xxx: Support multiple MDIO\nbusses\") mv88e6xxx_default_mdio_bus() has checked that the\nreturn value of list_first_entry() is non-NULL.\n\nThis appears to be intended to guard against the list chip->mdios being\nempty.  However, it is not the correct check as the implementation of\nlist_first_entry is not designed to return NULL for empty lists.\n\nInstead, use list_first_entry_or_null() which does return NULL if the\nlist is empty.\n\nFlagged by Smatch.\nCompile tested only.",
   "datePublished": "Jul 30, 2024, 7:47:05 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:02 AM",
+  "dateUpdated": "Aug 5, 2026, 11:35:55 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

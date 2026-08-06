@@ -3,14 +3,14 @@
   "enisaUuid": "72eb4967-de1c-3400-af43-99d88df0d4fa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nuaccess: fix integer overflow on access_ok()\n\nThree architectures check the end of a user access against the\naddress limit without taking a possible overflow into account.\nPassing a negative length or another overflow in here returns\nsuccess when it should not.\n\nUse the most common correct implementation here, which optimizes\nfor a constant 'size' argument, and turns the common case into a\nsingle comparison.",
   "datePublished": "Feb 26, 2025, 1:56:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:37 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e65d28d4e9bf90a35ba79c06661a572a38391dec\nhttps://git.kernel.org/stable/c/99801e2f457824955da4aadaa035913a6dede03a\nhttps://git.kernel.org/stable/c/a1ad747fc1a0e06d1bf26b996ee8a56b5c8d02d8\nhttps://git.kernel.org/stable/c/222ca305c9fd39e5ed8104da25c09b2b79a516a8\n",
   "aliases": "CVE-2022-49289\nGHSA-vfhm-mc4c-75c8\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "5225ff1b-9975-3e31-990f-61b7636a244b",

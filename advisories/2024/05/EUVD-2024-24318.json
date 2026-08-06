@@ -3,7 +3,7 @@
   "enisaUuid": "677dcdf5-4d59-3be5-8607-4b11f7d9c851",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: ensure offloading TID queue exists\n\nThe resume code path assumes that the TX queue for the offloading TID\nhas been configured. At resume time it then tries to sync the write\npointer as it may have been updated by the firmware.\n\nIn the unusual event that no packets have been send on TID 0, the queue\nwill not have been allocated and this causes a crash. Fix this by\nensuring the queue exist at suspend time.",
   "datePublished": "May 1, 2024, 12:54:56 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:16 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "25320f3d-9e31-35ef-b53d-b83adc12f645",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64/sme: Set new vector length before reallocating\n\nAs part of fixing the allocation of the buffer for SVE state when changing\nSME vector length we introduced an immediate reallocation of the SVE state,\nthis is also done when changing the SVE vector length for consistency.\nUnfortunately this reallocation is done prior to writing the new vector\nlength to the task struct, meaning the allocation is done with the old\nvector length and can lead to memory corruption due to an undersized buffer\nbeing used.\n\nMove the update of the vector length before the allocation to ensure that\nthe new vector length is taken into account.\n\nFor some reason this isn't triggering any problems when running tests on\nthe arm64 fixes branch (even after repeated tries) but is triggering\nissues very often after merge into mainline.",
   "datePublished": "Sep 15, 2025, 2:04:36 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:38 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:58 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

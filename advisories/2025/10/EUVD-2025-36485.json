@@ -3,14 +3,14 @@
   "enisaUuid": "03e32279-3141-3f28-bee5-44d0df012c21",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: nfc: nci: Add parameter validation for packet data\n\nSyzbot reported an uninitialized value bug in nci_init_req, which was\nintroduced by commit 5aca7966d2a7 (\"Merge tag\n'perf-tools-fixes-for-v6.17-2025-09-16' of\ngit://git.kernel.org/pub/scm/linux/kernel/git/perf/perf-tools\").\n\nThis bug arises due to very limited and poor input validation\nthat was done at nic_valid_size(). This validation only\nvalidates the skb->len (directly reflects size provided at the\nuserspace interface) with the length provided in the buffer\nitself (interpreted as NCI_HEADER). This leads to the processing\nof memory content at the address assuming the correct layout\nper what opcode requires there. This leads to the accesses to\nbuffer of `skb_buff->data` which is not assigned anything yet.\n\nFollowing the same silent drop of packets of invalid sizes at\n`nic_valid_size()`, add validation of the data in the respective\nhandlers and return error values in case of failure. Release\nthe skb if error values are returned from handlers in\n`nci_nft_packet` and effectively do a silent drop\n\nPossible TODO: because we silently drop the packets, the\ncall to `nci_request` will be waiting for completion of request\nand will face timeouts. These timeouts can get excessively logged\nin the dmesg. A proper handling of them may require to export\n`nci_request_cancel` (or propagate error handling from the\nnft packets handlers).",
   "datePublished": "Oct 28, 2025, 11:48:22 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:06 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:16 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8fcc7315a10a84264e55bb65ede10f0af20a983f\nhttps://git.kernel.org/stable/c/bfdda0123dde406dbff62e7e9136037e97998a15\nhttps://git.kernel.org/stable/c/0ba68bea1e356f466ad29449938bea12f5f3711f\nhttps://git.kernel.org/stable/c/74837bca0748763a77f77db47a0bdbe63b347628\nhttps://git.kernel.org/stable/c/c395d1e548cc68e84584ffa2e3ca9796a78bf7b9\nhttps://git.kernel.org/stable/c/9c328f54741bd5465ca1dc717c84c04242fac2e1\n",
   "aliases": "GHSA-rwhf-69pj-m4jv\nCVE-2025-40043\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "02c3d8a5-b62f-3839-a643-764f166aa5eb",

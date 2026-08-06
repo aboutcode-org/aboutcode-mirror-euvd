@@ -3,7 +3,7 @@
   "enisaUuid": "c4f3bc40-546a-3006-9b08-d5630b0259b1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"xsk: Support redirect to any socket bound to the same umem\"\n\nThis reverts commit 2863d665ea41282379f108e4da6c8a2366ba66db.\n\nThis patch introduced a potential kernel crash when multiple napi instances\nredirect to the same AF_XDP socket. By removing the queue_index check, it is\npossible for multiple napi instances to access the Rx ring at the same time,\nwhich will result in a corrupted ring state which can lead to a crash when\nflushing the rings in __xsk_flush(). This can happen when the linked list of\nsockets to flush gets corrupted by concurrent accesses. A quick and small fix\nis not possible, so let us revert this for now.",
   "datePublished": "Jun 25, 2024, 2:22:39 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:23 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

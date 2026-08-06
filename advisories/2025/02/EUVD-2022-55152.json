@@ -3,14 +3,14 @@
   "enisaUuid": "6fb772ba-4fd4-3c1a-b79d-cdf0b1ebcbc2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: fix unexpected zeroed page mapping with zram swap\n\nTwo processes under CLONE_VM cloning, user process can be corrupted by\nseeing zeroed page unexpectedly.\n\n      CPU A                        CPU B\n\n  do_swap_page                do_swap_page\n  SWP_SYNCHRONOUS_IO path     SWP_SYNCHRONOUS_IO path\n  swap_readpage valid data\n    swap_slot_free_notify\n      delete zram entry\n                              swap_readpage zeroed(invalid) data\n                              pte_lock\n                              map the *zero data* to userspace\n                              pte_unlock\n  pte_lock\n  if (!pte_same)\n    goto out_nomap;\n  pte_unlock\n  return and next refault will\n  read zeroed data\n\nThe swap_slot_free_notify is bogus for CLONE_VM case since it doesn't\nincrease the refcount of swap slot at copy_mm so it couldn't catch up\nwhether it's safe or not to discard data from backing device.  In the\ncase, only the lock it could rely on to synchronize swap slot freeing is\npage table lock.  Thus, this patch gets rid of the swap_slot_free_notify\nfunction.  With this patch, CPU A will see correct data.\n\n      CPU A                        CPU B\n\n  do_swap_page                do_swap_page\n  SWP_SYNCHRONOUS_IO path     SWP_SYNCHRONOUS_IO path\n                              swap_readpage original data\n                              pte_lock\n                              map the original data\n                              swap_free\n                                swap_range_free\n                                  bd_disk->fops->swap_slot_free_notify\n  swap_readpage read zeroed data\n                              pte_unlock\n  pte_lock\n  if (!pte_same)\n    goto out_nomap;\n  pte_unlock\n  return\n  on next refault will see mapped data by CPU B\n\nThe concern of the patch would increase memory consumption since it\ncould keep wasted memory with compressed form in zram as well as\nuncompressed form in address space.  However, most of cases of zram uses\nno readahead and do_swap_page is followed by swap_free so it will free\nthe compressed form from in zram quickly.",
   "datePublished": "Feb 26, 2025, 1:54:26 AM",
-  "dateUpdated": "Aug 4, 2026, 9:03:51 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:36 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f86d55cf616199404c05f5b0c5c41b17351baa02\nhttps://git.kernel.org/stable/c/f098f8b9820fe3f2e41aefc4329dfe8a3859d1c1\nhttps://git.kernel.org/stable/c/20ed94f8181a25212e7404e44958e234f407624b\nhttps://git.kernel.org/stable/c/12ba1d38115a101c45d8e0ca3aa1181fd148e57f\nhttps://git.kernel.org/stable/c/afac4b88699a06c8b9369f9d759a1ec3c254b788\nhttps://git.kernel.org/stable/c/e914d8f00391520ecc4495dd0ca0124538ab7119\n",
   "aliases": "GHSA-783x-7hm8-jfwg\nCVE-2022-49052\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "0c212d64-9d4a-3fd1-b555-0d8fbcbf0a28",

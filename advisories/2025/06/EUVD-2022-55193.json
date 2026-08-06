@@ -3,7 +3,7 @@
   "enisaUuid": "d57125e8-038a-3c2e-8fbc-314ceb4748a5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma-buf/dma-resv: check if the new fence is really later\n\nPreviously when we added a fence to a dma_resv object we always\nassumed the the newer than all the existing fences.\n\nWith Jason's work to add an UAPI to explicit export/import that's not\nnecessary the case any more. So without this check we would allow\nuserspace to force the kernel into an use after free error.\n\nSince the change is very small and defensive it's probably a good\nidea to backport this to stable kernels as well just in case others\nare using the dma_resv object in the same way.",
   "datePublished": "Jun 18, 2025, 10:54:36 AM",
-  "dateUpdated": "Aug 4, 2026, 9:07:05 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:47 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

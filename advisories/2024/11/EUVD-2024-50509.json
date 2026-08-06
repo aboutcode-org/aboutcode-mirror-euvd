@@ -3,7 +3,7 @@
   "enisaUuid": "0efc89de-d52d-3235-94af-dcbc165c5038",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-multipath: defer partition scanning\n\nWe need to suppress the partition scan from occuring within the\ncontroller's scan_work context. If a path error occurs here, the IO will\nwait until a path becomes available or all paths are torn down, but that\naction also occurs within scan_work, so it would deadlock. Defer the\npartion scan to a different context that does not block scan_work.",
   "datePublished": "Nov 21, 2024, 6:17:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:36:55 AM",
+  "dateUpdated": "Aug 5, 2026, 11:43:36 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

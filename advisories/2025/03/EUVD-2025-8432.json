@@ -3,14 +3,14 @@
   "enisaUuid": "c3cf4eb4-6017-33be-a2d3-298cbb318cb4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: ipc4-topology: Harden loops for looking up ALH copiers\n\nOther, non DAI copier widgets could have the same  stream name (sname) as\nthe ALH copier and in that case the copier->data is NULL, no alh_data is\nattached, which could lead to NULL pointer dereference.\nWe could check for this NULL pointer in sof_ipc4_prepare_copier_module()\nand avoid the crash, but a similar loop in sof_ipc4_widget_setup_comp_dai()\nwill miscalculate the ALH device count, causing broken audio.\n\nThe correct fix is to harden the matching logic by making sure that the\n1. widget is a DAI widget - so dai = w->private is valid\n2. the dai (and thus the copier) is ALH copier",
   "datePublished": "Mar 27, 2025, 1:38:22 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:01 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/87c8768a96092ce75cd47fe076db5080db7ac515\nhttps://git.kernel.org/stable/c/93c6c2e5801aab09ef1ef99f248f3cd323c3f152\nhttps://git.kernel.org/stable/c/6fd60136d256b3b948333ebdb3835f41a95ab7ef\n",
   "aliases": "GHSA-fvjc-2g3g-9pm4\nCVE-2025-21870\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "1af0c31d-8724-3d2f-b1d6-e00f6a556bca",

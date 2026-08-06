@@ -3,7 +3,7 @@
   "enisaUuid": "52c16371-85e3-3319-8a59-806b9efc635e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: microchip: pci1xxxx: fix double free in the error handling of gp_aux_bus_probe()\n\nWhen auxiliary_device_add() returns error and then calls\nauxiliary_device_uninit(), callback function\ngp_auxiliary_device_release() calls ida_free() and\nkfree(aux_device_wrapper) to free memory. We should't\ncall them again in the error handling path.\n\nFix this by skipping the redundant cleanup functions.",
   "datePublished": "Jun 17, 2024, 5:51:52 PM",
-  "dateUpdated": "Aug 4, 2026, 9:25:34 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:24 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

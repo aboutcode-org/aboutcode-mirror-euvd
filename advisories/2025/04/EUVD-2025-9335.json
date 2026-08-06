@@ -3,7 +3,7 @@
   "enisaUuid": "1f8bd9f8-2418-371b-8a73-95bdf4a749ec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix out-of-bound accesses\n\n[WHAT & HOW]\nhpo_stream_to_link_encoder_mapping has size MAX_HPO_DP2_ENCODERS(=4),\nbut location can have size up to 6. As a result, it is necessary to\ncheck location against MAX_HPO_DP2_ENCODERS.\n\nSimiliarly, disp_cfg_stream_location can be used as an array index which\nshould be 0..5, so the ASSERT's conditions should be less without equal.",
   "datePublished": "Apr 1, 2025, 3:47:12 PM",
-  "dateUpdated": "Jul 30, 2026, 5:47:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

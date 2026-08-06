@@ -3,14 +3,14 @@
   "enisaUuid": "f32c66bb-9a8b-3bc2-bdee-95dfe351e3a6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: reject index allocation if $BITMAP is empty but blocks exist\n\nIndex allocation requires at least one bit in the $BITMAP attribute to\ntrack usage of index entries. If the bitmap is empty while index blocks\nare already present, this reflects on-disk corruption.\n\nsyzbot triggered this condition using a malformed NTFS image. During a\nrename() operation involving a long filename (which spans multiple\nindex entries), the empty bitmap allowed the name to be added without\nvalid tracking. Subsequent deletion of the original entry failed with\n-ENOENT, due to unexpected index state.\n\nReject such cases by verifying that the bitmap is not empty when index\nblocks exist.",
   "datePublished": "Oct 28, 2025, 11:48:37 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:21 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:30 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/978aac54e93ea35aab20b32ae393d3d33964e7ae\nhttps://git.kernel.org/stable/c/be66551da203862c689c12e1d35ce87217c017c1\nhttps://git.kernel.org/stable/c/039ddf353cc33f6546a87ec1ac3210637d714bec\nhttps://git.kernel.org/stable/c/0dc7117da8f92dd5fe077d712a756eccbe377d40\n",
   "aliases": "CVE-2025-40067\nGHSA-rxpf-8w5h-7fch\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "119548f2-aa66-308b-838e-b544eecfee62",

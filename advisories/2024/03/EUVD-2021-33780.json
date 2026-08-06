@@ -3,14 +3,14 @@
   "enisaUuid": "ff2f7a15-e85f-397b-aac4-c370bac7fe5f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix sk_forward_memory corruption on retransmission\n\nMPTCP sk_forward_memory handling is a bit special, as such field\nis protected by the msk socket spin_lock, instead of the plain\nsocket lock.\n\nCurrently we have a code path updating such field without handling\nthe relevant lock:\n\n__mptcp_retrans() -> __mptcp_clean_una_wakeup()\n\nSeveral helpers in __mptcp_clean_una_wakeup() will update\nsk_forward_alloc, possibly causing such field corruption, as reported\nby Matthieu.\n\nAddress the issue providing and using a new variant of blamed function\nwhich explicitly acquires the msk spin lock.",
   "datePublished": "Mar 15, 2024, 8:14:35 PM",
-  "dateUpdated": "Aug 4, 2026, 8:58:58 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:14 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/b9c78b1a95966a7bd2ddae05b73eafc0cda4fba3\nhttps://git.kernel.org/stable/c/b5941f066b4ca331db225a976dae1d6ca8cf0ae3\n",
   "aliases": "CVE-2021-47132\nGHSA-48qq-74v6-m9rv\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.48,
   "enisaIdProduct": [
     {
       "id": "074cee89-fdd3-3935-bd66-e78060a4bdc7",

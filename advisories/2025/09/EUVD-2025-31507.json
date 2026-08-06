@@ -3,14 +3,14 @@
   "enisaUuid": "c73d5d68-563b-36e4-b3fc-f2476cb355c7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix refcount leak causing resource not released\n\nWhen ksmbd_conn_releasing(opinfo->conn) returns true,the refcount was not\ndecremented properly, causing a refcount leak that prevents the count from\nreaching zero and the memory from being released.",
   "datePublished": "Sep 5, 2025, 5:21:28 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:12 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:51 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a1d2bab4d53368a526c97aba92671dd71814f95a\nhttps://git.kernel.org/stable/c/36e010bb865fbaa1202fe9bcce3fd486d6db7606\nhttps://git.kernel.org/stable/c/9a7abce6e8c0e2145b346a6d4abf0d9655e9b0e8\nhttps://git.kernel.org/stable/c/89bb430f621124af39bb31763c4a8b504c9651e2\n",
   "aliases": "GHSA-p63w-3x2m-q62g\nCVE-2025-39720\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "2bde7897-4dfb-3f8e-b56d-e6523a8e9033",

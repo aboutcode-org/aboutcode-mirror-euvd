@@ -3,14 +3,14 @@
   "enisaUuid": "2f78b152-039a-3165-a26e-beea4e5be2a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Zeroing allocated object from slab in bpf memory allocator\n\nCurrently the freed element in bpf memory allocator may be immediately\nreused, for htab map the reuse will reinitialize special fields in map\nvalue (e.g., bpf_spin_lock), but lookup procedure may still access\nthese special fields, and it may lead to hard-lockup as shown below:\n\n NMI backtrace for cpu 16\n CPU: 16 PID: 2574 Comm: htab.bin Tainted: G             L     6.1.0+ #1\n Hardware name: QEMU Standard PC (i440FX + PIIX, 1996),\n RIP: 0010:queued_spin_lock_slowpath+0x283/0x2c0\n ......\n Call Trace:\n  <TASK>\n  copy_map_value_locked+0xb7/0x170\n  bpf_map_copy_value+0x113/0x3c0\n  __sys_bpf+0x1c67/0x2780\n  __x64_sys_bpf+0x1c/0x20\n  do_syscall_64+0x30/0x60\n  entry_SYSCALL_64_after_hwframe+0x46/0xb0\n ......\n  </TASK>\n\nFor htab map, just like the preallocated case, these is no need to\ninitialize these special fields in map value again once these fields\nhave been initialized. For preallocated htab map, these fields are\ninitialized through __GFP_ZERO in bpf_map_area_alloc(), so do the\nsimilar thing for non-preallocated htab in bpf memory allocator. And\nthere is no need to use __GFP_ZERO for per-cpu bpf memory allocator,\nbecause __alloc_percpu_gfp() does it implicitly.",
   "datePublished": "Dec 9, 2025, 12:00:47 AM",
-  "dateUpdated": "Aug 4, 2026, 9:16:35 AM",
+  "dateUpdated": "Aug 5, 2026, 9:16:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/678ea18d6240299fd77d7000c8b1d7e5f274c8af\nhttps://git.kernel.org/stable/c/5d447e04290e78bdc1a3a6c321320d384e09c2f1\nhttps://git.kernel.org/stable/c/997849c4b969034e225153f41026657def66d286\n",
   "aliases": "GHSA-f32h-2m5f-x5c6\nCVE-2023-53790\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "15a26826-f8d8-3047-b11c-3f6e9b82e5b4",

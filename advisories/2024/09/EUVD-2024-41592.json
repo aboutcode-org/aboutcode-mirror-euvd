@@ -3,7 +3,7 @@
   "enisaUuid": "40943c21-3e84-3517-8d36-84600fe3eb47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: pm: only decrement add_addr_accepted for MPJ req\n\nAdding the following warning ...\n\n  WARN_ON_ONCE(msk->pm.add_addr_accepted == 0)\n\n... before decrementing the add_addr_accepted counter helped to find a\nbug when running the \"remove single subflow\" subtest from the\nmptcp_join.sh selftest.\n\nRemoving a 'subflow' endpoint will first trigger a RM_ADDR, then the\nsubflow closure. Before this patch, and upon the reception of the\nRM_ADDR, the other peer will then try to decrement this\nadd_addr_accepted. That's not correct because the attached subflows have\nnot been created upon the reception of an ADD_ADDR.\n\nA way to solve that is to decrement the counter only if the attached\nsubflow was an MP_JOIN to a remote id that was not 0, and initiated by\nthe host receiving the RM_ADDR.",
   "datePublished": "Sep 11, 2024, 3:13:47 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:53 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:39 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",

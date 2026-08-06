@@ -3,14 +3,14 @@
   "enisaUuid": "864487c7-f82a-3ccf-a055-6453635d3692",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Fix page fault in ivpu_bo_unbind_all_bos_from_context()\n\nDon't add BO to the vdev->bo_list in ivpu_gem_create_object().\nWhen failure happens inside drm_gem_shmem_create(), the BO is not\nfully created and ivpu_gem_bo_free() callback will not be called\ncausing a deleted BO to be left on the list.",
   "datePublished": "Dec 24, 2025, 10:33:13 AM",
-  "dateUpdated": "Jul 30, 2026, 6:04:20 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:10 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8172838a284c27190fa6782c2740a97020434750\nhttps://git.kernel.org/stable/c/c9ef5ccd8bd9bcf598b6d3f77e7eb4dde7149aec\nhttps://git.kernel.org/stable/c/8b694b405a84696f1d964f6da7cf9721e68c4714\n",
   "aliases": "GHSA-vvxc-w7f5-6422\nCVE-2025-68730\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0f603c78-4fee-3753-9dc6-5cf6675e4058",

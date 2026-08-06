@@ -3,7 +3,7 @@
   "enisaUuid": "33c934f9-21c0-3e12-a9e8-78d27de9c4d3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: sysctl: cookie_hmac_alg: avoid using current->nsproxy\n\nAs mentioned in a previous commit of this series, using the 'net'\nstructure via 'current' is not recommended for different reasons:\n\n- Inconsistency: getting info from the reader's/writer's netns vs only\n  from the opener's netns.\n\n- current->nsproxy can be NULL in some cases, resulting in an 'Oops'\n  (null-ptr-deref), e.g. when the current task is exiting, as spotted by\n  syzbot [1] using acct(2).\n\nThe 'net' structure can be obtained from the table->data using\ncontainer_of().\n\nNote that table->data could also be used directly, as this is the only\nmember needed from the 'net' structure, but that would increase the size\nof this fix, to use '*data' everywhere 'net->sctp.sctp_hmac_alg' is\nused.",
   "datePublished": "Jan 19, 2025, 10:17:57 AM",
-  "dateUpdated": "Jul 30, 2026, 5:44:40 AM",
+  "dateUpdated": "Aug 5, 2026, 11:53:19 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",

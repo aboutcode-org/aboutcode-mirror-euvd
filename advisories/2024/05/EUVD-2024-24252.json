@@ -3,7 +3,7 @@
   "enisaUuid": "b84d7a75-f201-3de1-ac66-85739e1dec45",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86/mmu: Write-protect L2 SPTEs in TDP MMU when clearing dirty status\n\nCheck kvm_mmu_page_ad_need_write_protect() when deciding whether to\nwrite-protect or clear D-bits on TDP MMU SPTEs, so that the TDP MMU\naccounts for any role-specific reasons for disabling D-bit dirty logging.\n\nSpecifically, TDP MMU SPTEs must be write-protected when the TDP MMU is\nbeing used to run an L2 (i.e. L1 has disabled EPT) and PML is enabled.\nKVM always disables PML when running L2, even when L1 and L2 GPAs are in\nthe some domain, so failing to write-protect TDP MMU SPTEs will cause\nwrites made by L2 to not be reflected in the dirty log.\n\n[sean: massage shortlog and changelog, tweak ternary op formatting]",
   "datePublished": "May 1, 2024, 5:27:48 AM",
-  "dateUpdated": "Aug 4, 2026, 9:21:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:28:51 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

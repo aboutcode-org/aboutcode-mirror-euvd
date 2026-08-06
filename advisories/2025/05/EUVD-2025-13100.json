@@ -3,14 +3,14 @@
   "enisaUuid": "1c523d19-0bec-3216-822f-fa83e971069f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix NULL pointer in can_accept_new_subflow\n\nWhen testing valkey benchmark tool with MPTCP, the kernel panics in\n'mptcp_can_accept_new_subflow' because subflow_req->msk is NULL.\n\nCall trace:\n\n  mptcp_can_accept_new_subflow (./net/mptcp/subflow.c:63 (discriminator 4)) (P)\n  subflow_syn_recv_sock (./net/mptcp/subflow.c:854)\n  tcp_check_req (./net/ipv4/tcp_minisocks.c:863)\n  tcp_v4_rcv (./net/ipv4/tcp_ipv4.c:2268)\n  ip_protocol_deliver_rcu (./net/ipv4/ip_input.c:207)\n  ip_local_deliver_finish (./net/ipv4/ip_input.c:234)\n  ip_local_deliver (./net/ipv4/ip_input.c:254)\n  ip_rcv_finish (./net/ipv4/ip_input.c:449)\n  ...\n\nAccording to the debug log, the same req received two SYN-ACK in a very\nshort time, very likely because the client retransmits the syn ack due\nto multiple reasons.\n\nEven if the packets are transmitted with a relevant time interval, they\ncan be processed by the server on different CPUs concurrently). The\n'subflow_req->msk' ownership is transferred to the subflow the first,\nand there will be a risk of a null pointer dereference here.\n\nThis patch fixes this issue by moving the 'subflow_req->msk' under the\n`own_req == true` conditional.\n\nNote that the !msk check in subflow_hmac_valid() can be dropped, because\nthe same check already exists under the own_req mpj branch where the\ncode has been moved to.",
   "datePublished": "May 1, 2025, 12:55:34 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:02 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/8cf7fef1bb2ffea7792bcbf71ca00216cecc725d\nhttps://git.kernel.org/stable/c/b3088bd2a6790c8efff139d86d7a9d0b1305977b\nhttps://git.kernel.org/stable/c/855bf0aacd51fced11ea9aa0d5101ee0febaeadb\nhttps://git.kernel.org/stable/c/7f9ae060ed64aef8f174c5f1ea513825b1be9af1\nhttps://git.kernel.org/stable/c/dc81e41a307df523072186b241fa8244fecd7803\nhttps://git.kernel.org/stable/c/efd58a8dd9e7a709a90ee486a4247c923d27296f\nhttps://git.kernel.org/stable/c/4b2649b9717678aeb097893cc49f59311a1ecab0\nhttps://git.kernel.org/stable/c/443041deb5ef6a1289a99ed95015ec7442f141dc\n",
   "aliases": "GHSA-3r7x-52q9-w4pw\nCVE-2025-23145\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.53,
   "enisaIdProduct": [
     {
       "id": "08008c4c-13cb-3005-b28a-9b1181ef4970",

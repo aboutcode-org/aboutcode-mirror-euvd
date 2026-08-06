@@ -3,12 +3,14 @@
   "enisaUuid": "064dee96-5e67-3c20-b522-5c4abcb31d75",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_policy: fix strict mode inbound policy matching\n\nmatch_policy_in() walks sec_path entries from the last transform to the\nfirst one, but strict policy matching needs to consume info->pol[] in\nthe same forward order as the rule layout.\n\nDerive the strict-match policy position from the number of transforms\nalready consumed so that multi-element inbound rules are matched\nconsistently.",
   "datePublished": "Jun 24, 2026, 7:14:15 AM",
-  "dateUpdated": "Jun 24, 2026, 7:14:15 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 5, 2026, 12:31:42 PM",
+  "baseScore": 8.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/eb323f7b82d2e2f638de0cc2a177803eb20e0707\nhttps://git.kernel.org/stable/c/fc1c518bb1f054831ecabb32da9b8e1dff9699c6\nhttps://git.kernel.org/stable/c/f98b7f85e04b40e28b08c461ded0cc79f14f5509\nhttps://git.kernel.org/stable/c/82664d0f1ba25e4f9a71994954abae24c60f4067\nhttps://git.kernel.org/stable/c/b130a6eefa02bd4d475f2f059da8bcfb3e7d18d9\nhttps://git.kernel.org/stable/c/938867e870fb5471bb16f442aeac81326e05bf65\nhttps://git.kernel.org/stable/c/392cc1d8408b5665215c1e9290bbf0f92339b043\nhttps://git.kernel.org/stable/c/4b2b4d7d4e203c92db8966b163edfacb1f0e1e29\n",
   "aliases": "GHSA-qgcc-gwgq-pq62\nCVE-2026-52920\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "0a2f75d3-b70c-3cd8-a8e5-05e71664f716",

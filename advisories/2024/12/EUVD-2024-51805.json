@@ -3,7 +3,7 @@
   "enisaUuid": "758607c6-66fd-3f65-adcd-dcbf84fe053a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Handle dml allocation failure to avoid crash\n\n[Why]\nIn the case where a dml allocation fails for any reason, the\ncurrent state's dml contexts would no longer be valid. Then\nsubsequent calls dc_state_copy_internal would shallow copy\ninvalid memory and if the new state was released, a double\nfree would occur.\n\n[How]\nReset dml pointers in new_state to NULL and avoid invalid\npointer\n\n(cherry picked from commit bcafdc61529a48f6f06355d78eb41b3aeda5296c)",
   "datePublished": "Dec 4, 2024, 2:20:39 PM",
-  "dateUpdated": "Aug 4, 2026, 9:37:18 AM",
+  "dateUpdated": "Aug 5, 2026, 11:43:58 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

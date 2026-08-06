@@ -3,14 +3,14 @@
   "enisaUuid": "e5a53873-8cd4-3245-a854-d965169d1670",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nubi: ubi_wl_put_peb: Fix infinite loop when wear-leveling work failed\n\nFollowing process will trigger an infinite loop in ubi_wl_put_peb():\n\n\tubifs_bgt\t\tubi_bgt\nubifs_leb_unmap\n  ubi_leb_unmap\n    ubi_eba_unmap_leb\n      ubi_wl_put_peb\twear_leveling_worker\n                          e1 = rb_entry(rb_first(&ubi->used)\n\t\t\t  e2 = get_peb_for_wl(ubi)\n\t\t\t  ubi_io_read_vid_hdr  // return err (flash fault)\n\t\t\t  out_error:\n\t\t\t    ubi->move_from = ubi->move_to = NULL\n\t\t\t    wl_entry_destroy(ubi, e1)\n\t\t\t      ubi->lookuptbl[e->pnum] = NULL\n      retry:\n        e = ubi->lookuptbl[pnum];\t// return NULL\n\tif (e == ubi->move_from) {\t// NULL == NULL gets true\n\t  goto retry;\t\t\t// infinite loop !!!\n\n$ top\n  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     COMMAND\n  7676 root     20   0       0      0      0 R 100.0  0.0  ubifs_bgt0_0\n\nFix it by:\n 1) Letting ubi_wl_put_peb() returns directly if wearl leveling entry has\n    been removed from 'ubi->lookuptbl'.\n 2) Using 'ubi->wl_lock' protecting wl entry deletion to preventing an\n    use-after-free problem for wl entry in ubi_wl_put_peb().\n\nFetch a reproducer in [Link].",
   "datePublished": "Oct 1, 2025, 11:42:49 AM",
-  "dateUpdated": "Aug 4, 2026, 9:14:51 AM",
+  "dateUpdated": "Aug 5, 2026, 9:14:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b40d2fbf47af58377e898b5062077a47bb28a132\nhttps://git.kernel.org/stable/c/f006f596fe851c3b6aae60b79f89f89f0e515d2f\nhttps://git.kernel.org/stable/c/b5be23f6ae610bdb262160a1f294afee6d0e6a69\nhttps://git.kernel.org/stable/c/8a18856e074479bd050b01e688c58defadce7ab0\nhttps://git.kernel.org/stable/c/3afaaf6f5867dc4ad383808d4053f428ec7b867d\nhttps://git.kernel.org/stable/c/cc4bc532acda66189bddc03b3fe1ad689d9a48a2\nhttps://git.kernel.org/stable/c/5af1c643184a5d09ff5b3f334077a4d0a163c677\nhttps://git.kernel.org/stable/c/4d57a7333e26040f2b583983e1970d9d460e56b0\n",
   "aliases": "GHSA-3pv3-rmr2-25g2\nCVE-2023-53481\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0bbbb6f6-58dc-3000-818d-174c58d572f3",

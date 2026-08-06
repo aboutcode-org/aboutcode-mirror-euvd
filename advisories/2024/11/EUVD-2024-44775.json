@@ -3,7 +3,7 @@
   "enisaUuid": "7aa34efb-da2e-3fc4-8227-368b3e09fe90",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: reinitialize delayed ref list after deleting it from the list\n\nAt insert_delayed_ref() if we need to update the action of an existing\nref to BTRFS_DROP_DELAYED_REF, we delete the ref from its ref head's\nref_add_list using list_del(), which leaves the ref's add_list member\nnot reinitialized, as list_del() sets the next and prev members of the\nlist to LIST_POISON1 and LIST_POISON2, respectively.\n\nIf later we end up calling drop_delayed_ref() against the ref, which can\nhappen during merging or when destroying delayed refs due to a transaction\nabort, we can trigger a crash since at drop_delayed_ref() we call\nlist_empty() against the ref's add_list, which returns false since\nthe list was not reinitialized after the list_del() and as a consequence\nwe call list_del() again at drop_delayed_ref(). This results in an\ninvalid list access since the next and prev members are set to poison\npointers, resulting in a splat if CONFIG_LIST_HARDENED and\nCONFIG_DEBUG_LIST are set or invalid poison pointer dereferences\notherwise.\n\nSo fix this by deleting from the list with list_del_init() instead.",
   "datePublished": "Nov 19, 2024, 1:30:12 AM",
-  "dateUpdated": "Aug 4, 2026, 9:36:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:57 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

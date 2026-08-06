@@ -3,14 +3,14 @@
   "enisaUuid": "29379c92-0676-3192-bbd9-901716e9ccb8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntb_hw_switchtec: Fix shift-out-of-bounds in switchtec_ntb_mw_set_trans\n\nThere is a kernel API ntb_mw_clear_trans() would pass 0 to both addr and\nsize. This would make xlate_pos negative.\n\n[   23.734156] switchtec switchtec0: MW 0: part 0 addr 0x0000000000000000 size 0x0000000000000000\n[   23.734158] ================================================================================\n[   23.734172] UBSAN: shift-out-of-bounds in drivers/ntb/hw/mscc/ntb_hw_switchtec.c:293:7\n[   23.734418] shift exponent -1 is negative\n\nEnsuring xlate_pos is a positive or zero before BIT.",
   "datePublished": "Apr 16, 2025, 2:11:41 PM",
-  "dateUpdated": "Aug 4, 2026, 9:13:07 AM",
+  "dateUpdated": "Aug 5, 2026, 9:12:28 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/f56951f211f181410a383d305e8d370993e45294\nhttps://git.kernel.org/stable/c/5b6857bb3bfb0dae17fab1e42c1e82c204a508b1\nhttps://git.kernel.org/stable/c/2429bdf26a0f3950fdd996861e9c1a3873af1dbe\nhttps://git.kernel.org/stable/c/7ed22f8d8be26225a78cf5e85b2036421a6bf2d5\nhttps://git.kernel.org/stable/c/c61a3f2df162ba424be0141649a9ef5f28eaccc1\nhttps://git.kernel.org/stable/c/cb153bdc1812a3375639ed6ca5f147eaefb65349\nhttps://git.kernel.org/stable/c/36d32cfb00d42e865396424bb5d340fc0a28870d\nhttps://git.kernel.org/stable/c/0df2e03e4620548b41891b4e0d1bd9d2e0d8a39a\nhttps://git.kernel.org/stable/c/de203da734fae00e75be50220ba5391e7beecdf9\n",
   "aliases": "GHSA-xph3-px55-p2mg\nCVE-2023-53034\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "08d3fa9c-feaf-3de0-97f3-3dfff12a92fc",

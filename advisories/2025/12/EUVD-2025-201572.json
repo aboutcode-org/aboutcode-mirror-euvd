@@ -3,14 +3,14 @@
   "enisaUuid": "3a75fb9c-636c-39fe-ad17-bb8a6f584b46",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btusb: reorder cleanup in btusb_disconnect to avoid UAF\n\nThere is a KASAN: slab-use-after-free read in btusb_disconnect().\nCalling \"usb_driver_release_interface(&btusb_driver, data->intf)\" will\nfree the btusb data associated with the interface. The same data is\nthen used later in the function, hence the UAF.\n\nFix by moving the accesses to btusb data to before the data is free'd.",
   "datePublished": "Dec 6, 2025, 9:51:07 PM",
-  "dateUpdated": "Jul 30, 2026, 6:02:23 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/297dbf87989e09af98f81f2bcb938041785557e8\nhttps://git.kernel.org/stable/c/f858f004bc343a7ae9f2533bbb2a3ab27428532f\nhttps://git.kernel.org/stable/c/7a6d1e740220ff9dfcb6a8c994d6ba49e76db198\nhttps://git.kernel.org/stable/c/5dc00065a0496c36694afe11e52a5bc64524a9b8\nhttps://git.kernel.org/stable/c/1c28c1e1522c773a94e26950ffb145e88cd9834b\nhttps://git.kernel.org/stable/c/95b9b98c93b1c0916a3d4cf4540b7f5d69145a0d\nhttps://git.kernel.org/stable/c/a2610ecd9fd5708be8997ca8f033e4200c0bb6af\nhttps://git.kernel.org/stable/c/23d22f2f71768034d6ef86168213843fc49bf550\n",
   "aliases": "GHSA-x57x-cxmg-52pw\nCVE-2025-40283\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0a5c299f-28ee-3a76-882b-32732472d618",

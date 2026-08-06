@@ -3,14 +3,14 @@
   "enisaUuid": "d44a3a28-cb1c-31ad-b13c-b1db96e97f4b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix invalid access to memory\n\nIn ath12k_dp_rx_msdu_coalesce(), rxcb is fetched from skb and boolean\nis_continuation is part of rxcb.\nCurrently, after freeing the skb, the rxcb->is_continuation accessed\nagain which is wrong since the memory is already freed.\nThis might lead use-after-free error.\n\nHence, fix by locally defining bool is_continuation from rxcb,\nso that after freeing skb, is_continuation can be used.\n\nCompile tested only.",
   "datePublished": "Jul 10, 2025, 7:42:07 AM",
-  "dateUpdated": "Jul 30, 2026, 5:52:49 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:02 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/371b340affa52f280f6eadfd25fbd43f09f0d5c0\nhttps://git.kernel.org/stable/c/5f09d16cd57764c95c8548fe5b70672c9ac01127\nhttps://git.kernel.org/stable/c/9f17747fbda6fca934854463873c4abf8061491d\n",
   "aliases": "GHSA-mhmh-rgmh-rf63\nCVE-2025-38292\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "243fb0e9-15fe-37be-a5ff-d4ffd6240a06",

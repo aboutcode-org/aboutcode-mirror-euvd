@@ -3,14 +3,14 @@
   "enisaUuid": "02aa722c-18f9-32c5-9bb5-5aa84895d878",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbus: mhi: host: Fix race between unprepare and queue_buf\n\nA client driver may use mhi_unprepare_from_transfer() to quiesce\nincoming data during the client driver's tear down. The client driver\nmight also be processing data at the same time, resulting in a call to\nmhi_queue_buf() which will invoke mhi_gen_tre(). If mhi_gen_tre() runs\nafter mhi_unprepare_from_transfer() has torn down the channel, a panic\nwill occur due to an invalid dereference leading to a page fault.\n\nThis occurs because mhi_gen_tre() does not verify the channel state\nafter locking it. Fix this by having mhi_gen_tre() confirm the channel\nstate is valid, or return error to avoid accessing deinitialized data.\n\n[mani: added stable tag]",
   "datePublished": "May 1, 2025, 12:55:38 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:48 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:05 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/899d0353ea69681f474b6bc9de32c663b89672da\nhttps://git.kernel.org/stable/c/3e7ecf181cbdde9753204ada3883ca1704d8702b\nhttps://git.kernel.org/stable/c/5f084993c90d9d0b4a52a349ede5120f992a7ca1\nhttps://git.kernel.org/stable/c/a77955f7704b2a00385e232cbcc1cb06b5c7a425\nhttps://git.kernel.org/stable/c/178e5657c8fd285125cc6743a81b513bce099760\nhttps://git.kernel.org/stable/c/ee1fce83ed56450087309b9b74ad9bcb2b010fa6\nhttps://git.kernel.org/stable/c/0686a818d77a431fc3ba2fab4b46bbb04e8c9380\n",
   "aliases": "GHSA-53c5-74px-fwch\nCVE-2025-23151\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "012744e7-a822-3d33-b927-38fb32726901",

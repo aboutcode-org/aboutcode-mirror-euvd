@@ -3,14 +3,14 @@
   "enisaUuid": "c9fac8de-511b-3dda-8af5-0c864a288de0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: hfsc: Fix a UAF vulnerability in class handling\n\nThis patch fixes a Use-After-Free vulnerability in the HFSC qdisc class\nhandling. The issue occurs due to a time-of-check/time-of-use condition\nin hfsc_change_class() when working with certain child qdiscs like netem\nor codel.\n\nThe vulnerability works as follows:\n1. hfsc_change_class() checks if a class has packets (q.qlen != 0)\n2. It then calls qdisc_peek_len(), which for certain qdiscs (e.g.,\n   codel, netem) might drop packets and empty the queue\n3. The code continues assuming the queue is still non-empty, adding\n   the class to vttree\n4. This breaks HFSC scheduler assumptions that only non-empty classes\n   are in vttree\n5. Later, when the class is destroyed, this can lead to a Use-After-Free\n\nThe fix adds a second queue length check after qdisc_peek_len() to verify\nthe queue wasn't emptied.",
   "datePublished": "May 2, 2025, 2:16:01 PM",
-  "dateUpdated": "Jul 30, 2026, 5:49:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/28b09a067831f7317c3841812276022d6c940677\nhttps://git.kernel.org/stable/c/39b9095dd3b55d9b2743df038c32138efa34a9de\nhttps://git.kernel.org/stable/c/fcc8ede663569c704fb00a702973bd6c00373283\nhttps://git.kernel.org/stable/c/20d584a33e480ae80d105f43e0e7b56784da41b9\nhttps://git.kernel.org/stable/c/3aa852e3605000d5c47035c3fc3a986d14ccfa9f\nhttps://git.kernel.org/stable/c/86cd4641c713455a4f1c8e54c370c598c2b1cee0\nhttps://git.kernel.org/stable/c/bb583c88d23b72d8d16453d24856c99bd93dadf5\nhttps://git.kernel.org/stable/c/3df275ef0a6ae181e8428a6589ef5d5231e58b5c\n",
   "aliases": "GHSA-hvr4-ppmm-c7fp\nCVE-2025-37797\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "08c7c006-486b-358d-8ccf-b3f2873e9c83",

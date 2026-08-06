@@ -3,14 +3,14 @@
   "enisaUuid": "9a06052d-23bf-3b87-ad46-999544c73c0b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: fix leaked reference count of nfsd4_ssc_umount_item\n\nThe reference count of nfsd4_ssc_umount_item is not decremented\non error conditions. This prevents the laundromat from unmounting\nthe vfsmount of the source file.\n\nThis patch decrements the reference count of nfsd4_ssc_umount_item\non error.",
   "datePublished": "Sep 18, 2025, 1:33:26 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:27 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:47 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/2da50149981d05955e51c28e982e9ac29bd73417\nhttps://git.kernel.org/stable/c/80a15dc4a0214b55ca42675bb0bb2a8d857eb1d0\nhttps://git.kernel.org/stable/c/9f0df37520a27ad99eaacf38418b3d2bb5023105\nhttps://git.kernel.org/stable/c/6c3c05402547aaca3edb23327b50f01a881831b9\nhttps://git.kernel.org/stable/c/34e8f9ec4c9ac235f917747b23a200a5e0ec857b\n",
   "aliases": "GHSA-593m-cjxc-9623\nCVE-2023-53381\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "072d8b4d-d7cd-3ef6-bc18-ddd8e0beaf2c",

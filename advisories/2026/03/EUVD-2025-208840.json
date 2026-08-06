@@ -3,14 +3,14 @@
   "enisaUuid": "0dfe2b91-9914-39ae-951a-64073e6ce2e4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix reservation leak in some error paths when inserting inline extent\n\nIf we fail to allocate a path or join a transaction, we return from\n__cow_file_range_inline() without freeing the reserved qgroup data,\nresulting in a leak. Fix this by ensuring we call btrfs_qgroup_free_data()\nin such cases.",
   "datePublished": "Mar 18, 2026, 5:40:58 PM",
-  "dateUpdated": "Jul 30, 2026, 6:06:17 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:37 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/f7156512c8166d385f574b9ec030479aa7b1e8c9\nhttps://git.kernel.org/stable/c/28b97fcbbf523779688e8de5fe55bf2dae3859f6\nhttps://git.kernel.org/stable/c/f3ee1732851aec6fe6b2cec2ef1b32d4e71d9913\nhttps://git.kernel.org/stable/c/28768bd3abf9995a93f6e01bfce01c60622964dd\nhttps://git.kernel.org/stable/c/c1c050f92d8f6aac4e17f7f2230160794fceef0c\n",
   "aliases": "CVE-2025-71268\nGHSA-62m8-jj4j-qm8p\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "1dca96ab-ffe1-347c-b482-85dba86f1398",

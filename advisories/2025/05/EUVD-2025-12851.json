@@ -3,14 +3,14 @@
   "enisaUuid": "08c3f6e8-0587-36e2-be23-be6a98574be7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: netlink notifier might race to release objects\n\ncommit release path is invoked via call_rcu and it runs lockless to\nrelease the objects after rcu grace period. The netlink notifier handler\nmight win race to remove objects that the transaction context is still\nreferencing from the commit release path.\n\nCall rcu_barrier() to ensure pending rcu callbacks run to completion\nif the list of transactions to be destroyed is not empty.",
   "datePublished": "May 1, 2025, 2:10:59 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:59 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1ffe7100411a8b9015115ce124cd6c9c9da6f8e3\nhttps://git.kernel.org/stable/c/e40b7c44d19e327ad8b49a491ef1fa8dcc4566e0\nhttps://git.kernel.org/stable/c/d4bc8271db21ea9f1c86a1ca4d64999f184d4aae\n",
   "aliases": "GHSA-8r5m-9xx4-3v9j\nCVE-2022-49920\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "3b5fc410-dd92-37f6-a793-944af986eede",

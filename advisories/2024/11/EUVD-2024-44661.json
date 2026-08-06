@@ -3,7 +3,7 @@
   "enisaUuid": "ce71f132-5fe8-3fc0-9cc3-ac3e5851ca11",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Fix the double free in scmi_debugfs_common_setup()\n\nClang static checker(scan-build) throws below warning\uff1a\n  |  drivers/firmware/arm_scmi/driver.c:line 2915, column 2\n  |        Attempt to free released memory.\n\nWhen devm_add_action_or_reset() fails, scmi_debugfs_common_cleanup()\nwill run twice which causes double free of 'dbg->name'.\n\nRemove the redundant scmi_debugfs_common_cleanup() to fix this problem.",
   "datePublished": "Nov 7, 2024, 9:31:36 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:09 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

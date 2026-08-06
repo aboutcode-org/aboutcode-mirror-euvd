@@ -3,7 +3,7 @@
   "enisaUuid": "e23a04c5-16a9-31ea-9672-70b60644805b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: ds90ub9x3: Fix extra fwnode_handle_put()\n\nThe ub913 and ub953 drivers call fwnode_handle_put(priv->sd.fwnode) as\npart of their remove process, and if the driver is removed multiple\ntimes, eventually leads to put \"overflow\", possibly causing memory\ncorruption or crash.\n\nThe fwnode_handle_put() is a leftover from commit 905f88ccebb1 (\"media:\ni2c: ds90ub9x3: Fix sub-device matching\"), which changed the code\nrelated to the sd.fwnode, but missed removing these fwnode_handle_put()\ncalls.",
   "datePublished": "Feb 27, 2025, 2:12:00 AM",
-  "dateUpdated": "Aug 4, 2026, 9:42:00 AM",
+  "dateUpdated": "Aug 5, 2026, 11:47:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

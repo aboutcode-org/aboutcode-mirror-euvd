@@ -3,14 +3,14 @@
   "enisaUuid": "108ac227-3618-38e3-8359-5be444abfce3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: use RCU in ip6_output()\n\nUse RCU in ip6_output() in order to use dst_dev_rcu() to prevent\npossible UAF.\n\nWe can remove rcu_read_lock()/rcu_read_unlock() pairs\nfrom ip6_finish_output2().",
   "datePublished": "Nov 12, 2025, 10:23:29 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:59 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:08 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0393f85c3241c19ba8550f04a812e7d19f6b3082\nhttps://git.kernel.org/stable/c/11709573cc4e48dc34c80fc7ab9ce5b159e29695\n",
   "aliases": "CVE-2025-40158\nGHSA-4g43-pmw7-v27w\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "16c020db-a925-3e46-a092-e1a780650237",

@@ -3,7 +3,7 @@
   "enisaUuid": "2f800f9d-b75e-3f8e-917e-01028e85af0c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: make sure ubq->canceling is set when queue is frozen\n\nNow ublk driver depends on `ubq->canceling` for deciding if the request\ncan be dispatched via uring_cmd & io_uring_cmd_complete_in_task().\n\nOnce ubq->canceling is set, the uring_cmd can be done via ublk_cancel_cmd()\nand io_uring_cmd_done().\n\nSo set ubq->canceling when queue is frozen, this way makes sure that the\nflag can be observed from ublk_queue_rq() reliably, and avoids\nuse-after-free on uring_cmd.",
   "datePublished": "Apr 16, 2025, 2:12:21 PM",
-  "dateUpdated": "Jul 30, 2026, 5:48:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:56:29 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

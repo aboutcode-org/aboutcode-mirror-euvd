@@ -3,14 +3,14 @@
   "enisaUuid": "ddbd6c68-55cb-30e6-85c8-ce26dd71a2d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: Fix possible leaked pernet namespace in smc_init()\n\nIn smc_init(), register_pernet_subsys(&smc_net_stat_ops) is called\nwithout any error handling.\nIf it fails, registering of &smc_net_ops won't be reverted.\nAnd if smc_nl_init() fails, &smc_net_stat_ops itself won't be reverted.\n\nThis leaves wild ops in subsystem linkedlist and when another module\ntries to call register_pernet_operations() it triggers page fault:\n\nBUG: unable to handle page fault for address: fffffbfff81b964c\nRIP: 0010:register_pernet_operations+0x1b9/0x5f0\nCall Trace:\n  <TASK>\n  register_pernet_subsys+0x29/0x40\n  ebtables_init+0x58/0x1000 [ebtables]\n  ...",
   "datePublished": "May 1, 2025, 2:10:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:06:56 AM",
+  "dateUpdated": "Aug 5, 2026, 8:56:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/61defd6450a9ef4a1487090449999b0fd83518ef\nhttps://git.kernel.org/stable/c/c97daf836f7caf81d3144b8cd2b2a51f9bc3bd09\nhttps://git.kernel.org/stable/c/62ff373da2534534c55debe6c724c7fe14adb97f\n",
   "aliases": "GHSA-8fmx-5gmc-pfcw\nCVE-2022-49905\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0a31c3d5-099c-3780-9458-c5cc4713a038",

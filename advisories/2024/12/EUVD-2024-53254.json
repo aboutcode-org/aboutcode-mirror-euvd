@@ -3,7 +3,7 @@
   "enisaUuid": "ff9d22d9-da11-3c38-8c19-7adbc02b7191",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_packet: avoid erroring out after sock_init_data() in packet_create()\n\nAfter sock_init_data() the allocated sk object is attached to the provided\nsock object. On error, packet_create() frees the sk object leaving the\ndangling pointer in the sock object on return. Some other code may try\nto use this pointer and cause use-after-free.",
   "datePublished": "Dec 27, 2024, 2:51:11 PM",
-  "dateUpdated": "Aug 4, 2026, 9:38:52 AM",
+  "dateUpdated": "Aug 5, 2026, 11:45:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

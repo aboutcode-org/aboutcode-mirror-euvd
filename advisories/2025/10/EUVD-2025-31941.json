@@ -3,14 +3,14 @@
   "enisaUuid": "ae9e5424-bfea-36fc-aab7-f7394be6f55c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: don't access released socket during error recovery\n\nWhile the error recovery work is temporarily failing reconnect attempts,\nrunning the 'nvme list' command causes a kernel NULL pointer dereference\nby calling getsockname() with a released socket.\n\nDuring error recovery work, the nvme tcp socket is released and a new one\ncreated, so it is not safe to access the socket without proper check.",
   "datePublished": "Oct 7, 2025, 3:19:42 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:52 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:19 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fe2d9e54165dadaa0d0cc3355c0be9c3e129fa0d\nhttps://git.kernel.org/stable/c/d82f762db4776fa11de88018f0f5de2d5db72a72\nhttps://git.kernel.org/stable/c/76d54bf20cdcc1ed7569a89885e09636e9a8d71d\n",
   "aliases": "GHSA-wvjj-gc57-3w9j\nCVE-2023-53643\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "11473ceb-b9b5-3505-b4dd-f8911ff73495",

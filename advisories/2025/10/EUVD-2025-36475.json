@@ -3,14 +3,14 @@
   "enisaUuid": "197bd6c5-d55b-3158-894f-3ac95df1b3b4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dlink: handle copy_thresh allocation failure\n\nThe driver did not handle failure of `netdev_alloc_skb_ip_align()`.\nIf the allocation failed, dereferencing `skb->protocol` could lead to\na NULL pointer dereference.\n\nThis patch tries to allocate `skb`. If the allocation fails, it falls\nback to the normal path.\n\nTested-on: D-Link DGE-550T Rev-A3",
   "datePublished": "Oct 28, 2025, 11:48:28 AM",
-  "dateUpdated": "Jul 30, 2026, 6:00:15 AM",
+  "dateUpdated": "Aug 5, 2026, 12:07:23 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/84fd710a704f3d53d4120e452e86cea558cf73a8\nhttps://git.kernel.org/stable/c/5aa9b885602811a026a3f45c92ea2b4b04c54f09\nhttps://git.kernel.org/stable/c/9d49e4b14609e1a20d931e718962c4b6b5485174\nhttps://git.kernel.org/stable/c/ea87151df398d407a632c7bf63013290f01c5009\nhttps://git.kernel.org/stable/c/7ed5010fef0930f4322d620052edc854ef3ec41f\nhttps://git.kernel.org/stable/c/fd7b6b2c920d7fd370a612be416a904d6e1ebe55\nhttps://git.kernel.org/stable/c/8169a6011c5fecc6cb1c3654c541c567d3318de8\n",
   "aliases": "GHSA-xxjc-4ppm-x655\nCVE-2025-40053\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.59,
   "enisaIdProduct": [
     {
       "id": "1d71a095-c325-3ca2-9399-7c5a86ee7e96",

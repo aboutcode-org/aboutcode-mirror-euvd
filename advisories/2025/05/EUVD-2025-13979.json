@@ -3,7 +3,7 @@
   "enisaUuid": "95fbc412-52ab-3417-bbf7-b19b3ba50ba1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: xhci: Fix invalid pointer dereference in Etron workaround\n\nThis check is performed before prepare_transfer() and prepare_ring(), so\nenqueue can already point at the final link TRB of a segment. And indeed\nit will, some 0.4% of times this code is called.\n\nThen enqueue + 1 is an invalid pointer. It will crash the kernel right\naway or load some junk which may look like a link TRB and cause the real\nlink TRB to be replaced with a NOOP. This wouldn't end well.\n\nUse a functionally equivalent test which doesn't dereference the pointer\nand always gives correct result.\n\nSomething has crashed my machine twice in recent days while playing with\nan Etron HC, and a control transfer stress test ran for confirmation has\njust crashed it again. The same test passes with this patch applied.",
   "datePublished": "May 8, 2025, 6:26:10 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:17 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:42 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

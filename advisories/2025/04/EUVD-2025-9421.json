@@ -3,14 +3,14 @@
   "enisaUuid": "4582146e-e4b6-3fcd-b1f3-1e05b946c5e7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4: Fix a deadlock when recovering state on a sillyrenamed file\n\nIf the file is sillyrenamed, and slated for delete on close, it is\npossible for a server reboot to triggeer an open reclaim, with can again\nrace with the application call to close(). When that happens, the call\nto put_nfs_open_context() can trigger a synchronous delegreturn call\nwhich deadlocks because it is not marked as privileged.\n\nInstead, ensure that the call to nfs4_inode_return_delegation_on_close()\ncatches the delegreturn, and schedules it asynchronously.",
   "datePublished": "Apr 1, 2025, 3:26:51 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:36 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:15 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/4fe4ae6c2e01d028856b73b6328b12b8945df871\nhttps://git.kernel.org/stable/c/f41a60bc43e7abbc636fee78bed0d74c31e738b0\nhttps://git.kernel.org/stable/c/8f8df955f078e1a023ee55161935000a67651f38\n",
   "aliases": "GHSA-5px9-qgxf-p79c\nCVE-2025-21900\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.32,
   "enisaIdProduct": [
     {
       "id": "00a81f5e-3b7f-322e-baf0-176c2be0ada8",

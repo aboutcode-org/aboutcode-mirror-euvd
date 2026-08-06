@@ -3,7 +3,7 @@
   "enisaUuid": "a6a99018-a4e1-38b4-ad47-ef6f9440502e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ad4851: fix ad4858 chan pointer handling\n\nThe pointer returned from ad4851_parse_channels_common() is incremented\ninternally as each channel is populated. In ad4858_parse_channels(),\nthe same pointer was further incremented while setting ext_scan_type\nfields for each channel. This resulted in indio_dev->channels being set\nto a pointer past the end of the allocated array, potentially causing\nmemory corruption or undefined behavior.\n\nFix this by iterating over the channels using an explicit index instead\nof incrementing the pointer. This preserves the original base pointer\nand ensures all channel metadata is set correctly.",
   "datePublished": "Jul 3, 2025, 8:35:36 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:38 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:49 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

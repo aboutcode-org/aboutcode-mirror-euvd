@@ -3,14 +3,14 @@
   "enisaUuid": "05539147-21d7-3aaf-96db-a0664ecffc88",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpiolib: fix invalid pointer access in debugfs\n\nIf the memory allocation in gpiolib_seq_start() fails, the s->private\nfield remains uninitialized and is later dereferenced without checking\nin gpiolib_seq_stop(). Initialize s->private to NULL before calling\nkzalloc() and check it before dereferencing it.",
   "datePublished": "Dec 16, 2025, 1:42:47 PM",
-  "dateUpdated": "Jul 30, 2026, 6:03:10 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:56 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/70180a6031056096c93ed2f47c41803268bdd91c\nhttps://git.kernel.org/stable/c/3c91c8f424d3e44c8645ab765a38773e58afb07d\nhttps://git.kernel.org/stable/c/2f6115ad8864cf3f48598f26c74c7c8e5c391919\n",
   "aliases": "GHSA-v8v6-qqfp-9rx7\nCVE-2025-68167\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "30b94984-36f7-393d-81b1-3a80184d8a6e",

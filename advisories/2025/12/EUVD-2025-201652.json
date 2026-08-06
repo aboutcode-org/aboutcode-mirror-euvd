@@ -3,14 +3,14 @@
   "enisaUuid": "bad70e2f-c689-31ee-b69b-3b0cf16659df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio-net: fix received length check in big packets\n\nSince commit 4959aebba8c0 (\"virtio-net: use mtu size as buffer length\nfor big packets\"), when guest gso is off, the allocated size for big\npackets is not MAX_SKB_FRAGS * PAGE_SIZE anymore but depends on\nnegotiated MTU. The number of allocated frags for big packets is stored\nin vi->big_packets_num_skbfrags.\n\nBecause the host announced buffer length can be malicious (e.g. the host\nvhost_net driver's get_rx_bufs is modified to announce incorrect\nlength), we need a check in virtio_net receive path. Currently, the\ncheck is not adapted to the new change which can lead to NULL page\npointer dereference in the below while loop when receiving length that\nis larger than the allocated one.\n\nThis commit fixes the received length check corresponding to the new\nchange.",
   "datePublished": "Dec 8, 2025, 12:46:15 AM",
-  "dateUpdated": "Jul 30, 2026, 6:02:33 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:18 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/82f9028e83944a9eee5229cbc6fee9be1de8a62d\nhttps://git.kernel.org/stable/c/946dec89c41726b94d31147ec528b96af0be1b5a\nhttps://git.kernel.org/stable/c/82fe78065450d2d07f36a22e2b6b44955cf5ca5b\nhttps://git.kernel.org/stable/c/3e9d89f2ecd3636bd4cbdfd0b2dfdaf58f9882e2\nhttps://git.kernel.org/stable/c/0c716703965ffc5ef4311b65cb5d84a703784717\n",
   "aliases": "GHSA-3mv7-84x4-8439\nCVE-2025-40292\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0eaad3f1-73aa-39e7-969c-786c5a8ad056",

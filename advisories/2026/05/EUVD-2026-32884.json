@@ -3,7 +3,7 @@
   "enisaUuid": "8fd1b5d9-f7d6-3e75-9b52-62751ca37758",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: remove station if connection prep fails\n\nIf connection preparation fails for MLO connections, then the\ninterface is completely reset to non-MLD. In this case, we must\nnot keep the station since it's related to the link of the vif\nbeing removed. Delete an existing station. Any \"new_sta\" is\nalready being removed, so that doesn't need changes.\n\nThis fixes a use-after-free/double-free in debugfs if that's\nenabled, because a vif going from MLD (and to MLD, but that's\nnot relevant here) recreates its entire debugfs.",
   "datePublished": "May 28, 2026, 9:35:39 AM",
-  "dateUpdated": "Jul 15, 2026, 12:51:27 AM",
+  "dateUpdated": "Aug 5, 2026, 12:29:54 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -91,16 +91,6 @@
         }
       },
       "product_version": "patch: 7.0.7"
-    },
-    {
-      "id": "bd3297ec-e11d-3ff6-b8b1-d2a170bc6622",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1-rc3"
     },
     {
       "id": "bff5c86c-bd91-321a-9bc8-1c8ab553a2ed",

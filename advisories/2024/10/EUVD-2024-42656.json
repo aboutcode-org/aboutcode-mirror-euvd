@@ -3,7 +3,7 @@
   "enisaUuid": "be222fce-990f-3aee-8f47-5f7f5dae2c92",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npadata: use integer wrap around to prevent deadlock on seq_nr overflow\n\nWhen submitting more than 2^32 padata objects to padata_do_serial, the\ncurrent sorting implementation incorrectly sorts padata objects with\noverflowed seq_nr, causing them to be placed before existing objects in\nthe reorder list. This leads to a deadlock in the serialization process\nas padata_find_next cannot match padata->seq_nr and pd->processed\nbecause the padata instance with overflowed seq_nr will be selected\nnext.\n\nTo fix this, we use an unsigned integer wrap around to correctly sort\npadata objects in scenarios with integer overflow.",
   "datePublished": "Oct 21, 2024, 12:14:08 PM",
-  "dateUpdated": "Aug 4, 2026, 9:33:05 AM",
+  "dateUpdated": "Aug 5, 2026, 11:39:49 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

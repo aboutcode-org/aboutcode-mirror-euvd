@@ -3,14 +3,14 @@
   "enisaUuid": "a862de89-922f-3217-86fd-34297e9387c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fec: handle page_pool_dev_alloc_pages error\n\nThe fec_enet_update_cbd function calls page_pool_dev_alloc_pages but did\nnot handle the case when it returned NULL. There was a WARN_ON(!new_page)\nbut it would still proceed to use the NULL pointer and then crash.\n\nThis case does seem somewhat rare but when the system is under memory\npressure it can happen. One case where I can duplicate this with some\nfrequency is when writing over a smbd share to a SATA HDD attached to an\nimx6q.\n\nSetting /proc/sys/vm/min_free_kbytes to higher values also seems to solve\nthe problem for my test case. But it still seems wrong that the fec driver\nignores the memory allocation error and can crash.\n\nThis commit handles the allocation error by dropping the current packet.",
   "datePublished": "Jan 31, 2025, 11:25:38 AM",
-  "dateUpdated": "Jul 30, 2026, 5:44:54 AM",
+  "dateUpdated": "Aug 5, 2026, 11:53:32 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/eacdcc14f3c8d4c1447565521e792ddb3a67e08d\nhttps://git.kernel.org/stable/c/8a0097db0544b658c159ac787319737712063a23\nhttps://git.kernel.org/stable/c/1425cb829556398f594658512d49292f988a2ab0\nhttps://git.kernel.org/stable/c/001ba0902046cb6c352494df610718c0763e77a5\n",
   "aliases": "GHSA-2cvp-cxm8-hg6v\nCVE-2025-21676\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "14d7fb3e-9efa-32a8-9afd-b5718b37be15",

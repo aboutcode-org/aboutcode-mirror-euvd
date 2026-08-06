@@ -3,14 +3,14 @@
   "enisaUuid": "a90af790-1d76-3cac-8f0b-e38feb3fce0e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: handle unreadable frags\n\nsashiko reports:\n When an skb with unreadable fragments (such as from devmem TCP, where\n skb_frags_readable(skb) returns false) is processed by the u32 module,\n skb_copy_bits() will safely return a negative error code [..]\n\nxt_u32: bail out with hotdrop in this case.\ngather_frags: return -1, just as if we had no fragment header.\nnfnetlink_queue: restrict to the linear part.\nnfnetlink_log: restrict to the linear part.\n\nv2:\n - skb_zerocopy helpers don't copy readable flag, i.e. nfnetlink_queue\n is broken too\n xt_u32 shouldn't return true if hotdrop was set.",
   "datePublished": "Jul 25, 2026, 8:50:54 AM",
-  "dateUpdated": "Jul 27, 2026, 5:00:45 AM",
+  "dateUpdated": "Aug 5, 2026, 12:41:49 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/3b13e7635795394705920cca1e1db7e4ca2e334b\nhttps://git.kernel.org/stable/c/fc5bfe63bacf8a3ae307b62b34206406ca733354\nhttps://git.kernel.org/stable/c/57056be3ec12e7d9ecd20a60d4060f510e4f284c\nhttps://git.kernel.org/stable/c/da5b58478a9c1b85608c9e40a3b8432d071b409e\n",
   "aliases": "CVE-2026-64414\nGHSA-p7m6-q3fj-3f6g\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.44,
   "enisaIdProduct": [
     {
       "id": "2b328d32-66f7-37c5-bc18-6a80ffc37eae",

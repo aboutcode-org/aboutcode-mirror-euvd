@@ -3,14 +3,14 @@
   "enisaUuid": "fe9069e8-ef74-3f37-a682-431cd25c8226",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix potential UAF in smb2_close_cached_fid()\n\nfind_or_create_cached_dir() could grab a new reference after kref_put()\nhad seen the refcount drop to zero but before cfid_list_lock is acquired\nin smb2_close_cached_fid(), leading to use-after-free.\n\nSwitch to kref_put_lock() so cfid_release() is called with\ncfid_list_lock held, closing that gap.",
   "datePublished": "Dec 9, 2025, 4:09:44 AM",
-  "dateUpdated": "Jul 30, 2026, 6:02:52 AM",
+  "dateUpdated": "Aug 5, 2026, 12:09:39 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cb52d9c86d70298de0ab7c7953653898cbc0efd6\nhttps://git.kernel.org/stable/c/065bd62412271a2d734810dd50336cae88c54427\nhttps://git.kernel.org/stable/c/bdb596ceb4b7c3f28786a33840263728217fbcf5\nhttps://git.kernel.org/stable/c/734e99623c5b65bf2c03e35978a0b980ebc3c2f8\n",
   "aliases": "GHSA-f255-x52r-mjq5\nCVE-2025-40328\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "00b98dc7-cc60-3efd-9fa8-1412ae1fdafb",

@@ -3,14 +3,14 @@
   "enisaUuid": "8c703204-1f19-334b-8b35-82e1662c4bf3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nswiotlb: fix out-of-bounds TLB allocations with CONFIG_SWIOTLB_DYNAMIC\n\nLimit the free list length to the size of the IO TLB. Transient pool can be\nsmaller than IO_TLB_SEGSIZE, but the free list is initialized with the\nassumption that the total number of slots is a multiple of IO_TLB_SEGSIZE.\nAs a result, swiotlb_area_find_slots() may allocate slots past the end of\na transient IO TLB buffer.",
   "datePublished": "May 21, 2024, 3:31:06 PM",
-  "dateUpdated": "Aug 4, 2026, 9:11:55 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:25 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ce7612496a4ba6068bc68aa1fa9d947dadb4ad9b\nhttps://git.kernel.org/stable/c/53c87e846e335e3c18044c397cc35178163d7827\n",
   "aliases": "GHSA-p3gx-mhhh-v7wr\nCVE-2023-52790\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0254b306-500a-3bfa-b23f-dee3c174863a",

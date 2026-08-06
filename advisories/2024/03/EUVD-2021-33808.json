@@ -3,14 +3,14 @@
   "enisaUuid": "393a31be-292b-3afa-9637-55c6b323f4de",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: mt7530: fix VLAN traffic leaks\n\nPCR_MATRIX field was set to all 1's when VLAN filtering is enabled, but\nwas not reset when it is disabled, which may cause traffic leaks:\n\n\tip link add br0 type bridge vlan_filtering 1\n\tip link add br1 type bridge vlan_filtering 1\n\tip link set swp0 master br0\n\tip link set swp1 master br1\n\tip link set br0 type bridge vlan_filtering 0\n\tip link set br1 type bridge vlan_filtering 0\n\t# traffic in br0 and br1 will start leaking to each other\n\nAs port_bridge_{add,del} have set up PCR_MATRIX properly, remove the\nPCR_MATRIX write from mt7530_port_set_vlan_aware.",
   "datePublished": "Mar 25, 2024, 9:16:14 AM",
-  "dateUpdated": "Aug 4, 2026, 8:59:09 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:25 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
   "references": "https://git.kernel.org/stable/c/ae389812733b1b1e8e07fcc238e41db166b5c78d\nhttps://git.kernel.org/stable/c/4fe4e1f48ba119bdbc7c897c83b04ba0d08f5488\nhttps://git.kernel.org/stable/c/b91117b66fe875723a4e79ec6263526fffdb44d2\nhttps://git.kernel.org/stable/c/82ae35b6c14feae5f216913d5b433e143c756d4e\nhttps://git.kernel.org/stable/c/474a2ddaa192777522a7499784f1d60691cd831a\n",
   "aliases": "CVE-2021-47160\nGHSA-9r37-jj74-qvw9\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "0af4a734-1a08-3efe-bc1a-41827e0ef821",

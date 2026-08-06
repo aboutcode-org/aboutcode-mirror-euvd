@@ -3,14 +3,14 @@
   "enisaUuid": "f84de461-9178-3d2e-bf92-c5ded64008a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS: Fix a race when updating an existing write\n\nAfter nfs_lock_and_join_requests() tests for whether the request is\nstill attached to the mapping, nothing prevents a call to\nnfs_inode_remove_request() from succeeding until we actually lock the\npage group.\nThe reason is that whoever called nfs_inode_remove_request() doesn't\nnecessarily have a lock on the page group head.\n\nSo in order to avoid races, let's take the page group lock earlier in\nnfs_lock_and_join_requests(), and hold it across the removal of the\nrequest in nfs_inode_remove_request().",
   "datePublished": "Sep 5, 2025, 5:21:03 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:01 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:38 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0ff42a32784e0f2cb46a46da8e9f473538c13e1b\nhttps://git.kernel.org/stable/c/f230d40147cc37eb3aef4d50e2e2c06ea73d9a77\nhttps://git.kernel.org/stable/c/c32e3c71aaa1c1ba05da88605e2ddd493c58794f\nhttps://git.kernel.org/stable/c/181feb41f0b268e6288bf9a7b984624d7fe2031d\nhttps://git.kernel.org/stable/c/92278ae36935a54e65fef9f8ea8efe7e80481ace\nhttps://git.kernel.org/stable/c/202a3432d21ac060629a760fff3b0a39859da3ea\nhttps://git.kernel.org/stable/c/76d2e3890fb169168c73f2e4f8375c7cc24a765e\n",
   "aliases": "CVE-2025-39697\nGHSA-3fr6-pgc4-qmrv\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0bd61d01-dc51-38c8-9398-693d1bbbd271",

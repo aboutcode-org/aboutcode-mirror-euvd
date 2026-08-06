@@ -3,14 +3,14 @@
   "enisaUuid": "4c8bfd98-a076-3856-9ab7-8c03159fc324",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: xfrm_alloc_spi shouldn't use 0 as SPI\n\nx->id.spi == 0 means \"no SPI assigned\", but since commit\n94f39804d891 (\"xfrm: Duplicate SPI Handling\"), we now create states\nand add them to the byspi list with this value.\n\n__xfrm_state_delete doesn't remove those states from the byspi list,\nsince they shouldn't be there, and this shows up as a UAF the next\ntime we go through the byspi list.",
   "datePublished": "Oct 13, 2025, 1:48:31 PM",
-  "dateUpdated": "Jul 30, 2026, 5:58:56 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:34 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0baf92d0b1590b903c1f4ead75e61715e50e8146\nhttps://git.kernel.org/stable/c/9fcedabaae0096f712bbb4ccca6a8538af1cd1c8\nhttps://git.kernel.org/stable/c/a78e55776522373c446f18d5002a8de4b09e6bf7\nhttps://git.kernel.org/stable/c/cd8ae32e4e4652db55bce6b9c79267d8946765a9\n",
   "aliases": "GHSA-jc8g-4mch-vjcv\nCVE-2025-39965\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "027b8263-aea1-33e6-a801-18617b20d055",

@@ -3,7 +3,7 @@
   "enisaUuid": "4e2d7952-07fc-3b9d-a13f-cd4184573f69",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix slab-out-of-bounds in smb_strndup_from_utf16()\n\nIf ->NameOffset of smb2_create_req is smaller than Buffer offset of\nsmb2_create_req, slab-out-of-bounds read can happen from smb2_open.\nThis patch set the minimum value of the name offset to the buffer offset\nto validate name length of smb2_create_req().",
   "datePublished": "May 1, 2024, 5:18:47 AM",
-  "dateUpdated": "Aug 4, 2026, 9:21:29 AM",
+  "dateUpdated": "Aug 5, 2026, 11:28:35 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "5776eaef-0f4c-387a-8f6d-e7548d91382d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: iscsi: Fix timeout on deleted connection\n\nNOPIN response timer may expire on a deleted connection and crash with\nsuch logs:\n\nDid not receive response to NOPIN on CID: 0, failing connection for I_T Nexus (null),i,0x00023d000125,iqn.2017-01.com.iscsi.target,t,0x3d\n\nBUG: Kernel NULL pointer dereference on read at 0x00000000\nNIP  strlcpy+0x8/0xb0\nLR iscsit_fill_cxn_timeout_err_stats+0x5c/0xc0 [iscsi_target_mod]\nCall Trace:\n iscsit_handle_nopin_response_timeout+0xfc/0x120 [iscsi_target_mod]\n call_timer_fn+0x58/0x1f0\n run_timer_softirq+0x740/0x860\n __do_softirq+0x16c/0x420\n irq_exit+0x188/0x1c0\n timer_interrupt+0x184/0x410\n\nThat is because nopin response timer may be re-started on nopin timer\nexpiration.\n\nStop nopin timer before stopping the nopin response timer to be sure\nthat no one of them will be re-started.",
   "datePublished": "Jun 18, 2025, 9:33:50 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:02 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:15 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/571ce6b6f5cbaf7d24af03cad592fc0e2a54de35\nhttps://git.kernel.org/stable/c/2c5081439c7ab8da08427befe427f0d732ebc9f9\nhttps://git.kernel.org/stable/c/019ca2804f3fb49a7f8e56ea6aeaa1ff32724c27\nhttps://git.kernel.org/stable/c/6815846e0c3a62116a7da9740e3a7c10edc5c7e9\nhttps://git.kernel.org/stable/c/fe8421e853ef289e1324fcda004751c89dd9c18a\nhttps://git.kernel.org/stable/c/87389bff743c55b6b85282de91109391f43e0814\nhttps://git.kernel.org/stable/c/3e6429e3707943078240a2c0c0b3ee99ea9b0d9c\nhttps://git.kernel.org/stable/c/7f533cc5ee4c4436cee51dc58e81dfd9c3384418\n",
   "aliases": "CVE-2025-38075\nGHSA-qr73-mcp4-c9g4\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "23962b9c-144e-347a-bc4f-78b26f73a62b",

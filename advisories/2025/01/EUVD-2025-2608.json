@@ -3,14 +3,14 @@
   "enisaUuid": "f28f75a1-24d9-348e-a6be-a4a5e000da58",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetdev: prevent accessing NAPI instances from another namespace\n\nThe NAPI IDs were not fully exposed to user space prior to the netlink\nAPI, so they were never namespaced. The netlink API must ensure that\nat the very least NAPI instance belongs to the same netns as the owner\nof the genl sock.\n\nnapi_by_id() can become static now, but it needs to move because of\ndev_get_by_napi_id().",
   "datePublished": "Jan 21, 2025, 12:18:15 PM",
-  "dateUpdated": "Jul 30, 2026, 5:44:47 AM",
+  "dateUpdated": "Aug 5, 2026, 11:53:25 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:L/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b683ba0df11ff563cc237eb1b74d6adfa77226bf\nhttps://git.kernel.org/stable/c/d1cacd74776895f6435941f86a1130e58f6dd226\n",
   "aliases": "GHSA-mg35-fw68-x22w\nCVE-2025-21659\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "320e1264-8fbc-3259-89f0-9581f2563591",

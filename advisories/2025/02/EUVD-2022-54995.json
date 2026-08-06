@@ -3,14 +3,14 @@
   "enisaUuid": "495cb568-179d-3153-87e6-336370b044f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtw88: fix memory overrun and memory leak during hw_scan\n\nPreviously we allocated less memory than actual required, overwrite\nto the buffer causes the mm module to complaint and raise access\nviolation faults. Along with potential memory leaks when returned\nearly. Fix these by passing the correct size and proper deinit flow.",
   "datePublished": "Feb 26, 2025, 1:55:58 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:39 AM",
+  "dateUpdated": "Aug 5, 2026, 8:54:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ec5da191bfcd5fd22b95459b623694f66c1cc10b\nhttps://git.kernel.org/stable/c/d95984b5580dcb8b1c0036577c52b609990a1dab\n",
   "aliases": "GHSA-whqx-pwjm-q9pc\nCVE-2022-49231\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "25e1162e-d405-3876-8c41-99828f7e9fa6",

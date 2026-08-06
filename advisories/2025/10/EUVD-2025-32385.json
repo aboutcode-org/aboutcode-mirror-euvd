@@ -3,14 +3,14 @@
   "enisaUuid": "c1b60aeb-9ad8-37bc-8eba-46b7501f7c7a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wilc1000: avoid buffer overflow in WID string configuration\n\nFix the following copy overflow warning identified by Smatch checker.\n\n drivers/net/wireless/microchip/wilc1000/wlan_cfg.c:184 wilc_wlan_parse_response_frame()\n        error: '__memcpy()' 'cfg->s[i]->str' copy overflow (512 vs 65537)\n\nThis patch introduces size check before accessing the memory buffer.\nThe checks are base on the WID type of received data from the firmware.\nFor WID string configuration, the size limit is determined by individual\nelement size in 'struct wilc_cfg_str_vals' that is maintained in 'len' field\nof 'struct wilc_cfg_str'.",
   "datePublished": "Oct 4, 2025, 7:31:12 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:47 AM",
+  "dateUpdated": "Aug 5, 2026, 12:06:25 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6085291a1a5865d4ad70f0e5812d524ebd5d1711\nhttps://git.kernel.org/stable/c/2203ef417044b10a8563ade6a17c74183745d72e\nhttps://git.kernel.org/stable/c/ae50f8562306a7ea1cf3c9722f97ee244f974729\nhttps://git.kernel.org/stable/c/fe9e4d0c39311d0f97b024147a0d155333f388b5\n",
   "aliases": "CVE-2025-39952\nGHSA-prff-pf2c-76w4\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0985d9c6-9a7e-3087-a05c-04180007947f",

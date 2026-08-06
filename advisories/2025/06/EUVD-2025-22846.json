@@ -3,7 +3,7 @@
   "enisaUuid": "5546cfbc-0220-3d1c-9f01-22aae2d90cb2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: fix use-after-free in taprio_dev_notifier\n\nSince taprio\u2019s taprio_dev_notifier() isn\u2019t protected by an\nRCU read-side critical section, a race with advance_sched()\ncan lead to a use-after-free.\n\nAdding rcu_read_lock() inside taprio_dev_notifier() prevents this.",
   "datePublished": "Jun 30, 2025, 7:29:43 AM",
-  "dateUpdated": "Jul 30, 2026, 5:51:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:59:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

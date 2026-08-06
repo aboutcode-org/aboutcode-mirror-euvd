@@ -3,14 +3,14 @@
   "enisaUuid": "c58f4189-607a-3ce7-8257-e711f577bf3e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix integer overflows on 32 bit systems\n\nOn 32bit systems the addition operations in ipc_msg_alloc() can\npotentially overflow leading to memory corruption.\nAdd bounds checking using KSMBD_IPC_MAX_PAYLOAD to avoid overflow.",
   "datePublished": "Feb 27, 2025, 2:12:19 AM",
-  "dateUpdated": "Jul 30, 2026, 5:45:25 AM",
+  "dateUpdated": "Aug 5, 2026, 11:54:06 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f3b9fb2764591d792d160f375851013665a9e820\nhttps://git.kernel.org/stable/c/760568c1f62ea874e8fb492f9cfa4f47b4b8391e\nhttps://git.kernel.org/stable/c/82f59d64e6297f270311b16b5dcf65be406d1ea3\nhttps://git.kernel.org/stable/c/b4b902737746c490258de5cb55cab39e79927a67\nhttps://git.kernel.org/stable/c/ecb9947fa7c99a77b04d43404c6988a0d326e4a0\nhttps://git.kernel.org/stable/c/aab98e2dbd648510f8f51b83fbf4721206ccae45\n",
   "aliases": "GHSA-6hjx-r579-83fp\nCVE-2025-21748\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "074a15a9-1def-35ca-87bb-a63b77dc3b4c",

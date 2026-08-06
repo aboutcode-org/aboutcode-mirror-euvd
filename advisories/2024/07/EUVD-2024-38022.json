@@ -3,7 +3,7 @@
   "enisaUuid": "796b8272-75f7-31be-82d9-d0fbe2292c78",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: zoned: fix use-after-free due to race with dev replace\n\nWhile loading a zone's info during creation of a block group, we can race\nwith a device replace operation and then trigger a use-after-free on the\ndevice that was just replaced (source device of the replace operation).\n\nThis happens because at btrfs_load_zone_info() we extract a device from\nthe chunk map into a local variable and then use the device while not\nunder the protection of the device replace rwsem. So if there's a device\nreplace operation happening when we extract the device and that device\nis the source of the replace operation, we will trigger a use-after-free\nif before we finish using the device the replace operation finishes and\nfrees the device.\n\nFix this by enlarging the critical section under the protection of the\ndevice replace rwsem so that all uses of the device are done inside the\ncritical section.",
   "datePublished": "Jul 12, 2024, 12:20:31 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:51 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:45 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

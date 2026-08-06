@@ -3,14 +3,14 @@
   "enisaUuid": "57a27a52-9ea6-314c-9680-0adafe370da2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix out-of-bound read in smb2_write\n\nksmbd_smb2_check_message doesn't validate hdr->NextCommand. If\n->NextCommand is bigger than Offset + Length of smb2 write, It will\nallow oversized smb2 write length. It will cause OOB read in smb2_write.",
   "datePublished": "Aug 16, 2025, 1:27:56 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:16 AM",
+  "dateUpdated": "Aug 5, 2026, 9:09:46 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/3813eee5154d6a4c5875cb4444cb2b63bac8947f\nhttps://git.kernel.org/stable/c/c86211159bc3178b891e0d60e586a32c7b6a231b\nhttps://git.kernel.org/stable/c/58a9c41064df27632e780c5a3ae3e0e4284957d1\nhttps://git.kernel.org/stable/c/5fe7f7b78290638806211046a99f031ff26164e1\n",
   "aliases": "GHSA-mr68-gqxj-cfm9\nCVE-2023-3865\n",
   "assigner": "Linux",
-  "epss": 0.36,
+  "epss": 0.59,
   "enisaIdProduct": [
     {
       "id": "001cbefc-5c94-39a9-b523-5bbeb8a1684d",

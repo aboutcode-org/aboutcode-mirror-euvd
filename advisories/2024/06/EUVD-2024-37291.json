@@ -3,7 +3,7 @@
   "enisaUuid": "7c063e31-45b4-339c-aaaf-a26ab12a50e1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix list corruption from reorder of WRITE ->lqueued\n\n__blkcg_rstat_flush() can be run anytime, especially when blk_cgroup_bio_start\nis being executed.\n\nIf WRITE of `->lqueued` is re-ordered with READ of 'bisc->lnode.next' in\nthe loop of __blkcg_rstat_flush(), `next_bisc` can be assigned with one\nstat instance being added in blk_cgroup_bio_start(), then the local\nlist in __blkcg_rstat_flush() could be corrupted.\n\nFix the issue by adding one barrier.",
   "datePublished": "Jun 24, 2024, 1:50:51 PM",
-  "dateUpdated": "Aug 4, 2026, 9:25:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:32:34 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

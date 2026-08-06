@@ -3,7 +3,7 @@
   "enisaUuid": "eb45a30c-b6a5-3e65-a9fc-bef04a676841",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncfg80211: call cfg80211_stop_ap when switch from P2P_GO type\n\nIf the userspace tools switch from NL80211_IFTYPE_P2P_GO to\nNL80211_IFTYPE_ADHOC via send_msg(NL80211_CMD_SET_INTERFACE), it\ndoes not call the cleanup cfg80211_stop_ap(), this leads to the\ninitialization of in-use data. For example, this path re-init the\nsdata->assigned_chanctx_list while it is still an element of\nassigned_vifs list, and makes that linked list corrupt.",
   "datePublished": "Apr 10, 2024, 6:56:31 PM",
-  "dateUpdated": "Aug 4, 2026, 8:59:22 AM",
+  "dateUpdated": "Aug 5, 2026, 8:46:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

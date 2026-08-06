@@ -3,14 +3,14 @@
   "enisaUuid": "02d1c943-3a30-3a73-b7b4-cf049a131781",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix refcount leak when invalid session is found on session lookup\n\nWhen a session is found but its state is not SMB2_SESSION_VALID, It\nindicates that no valid session was found, but it is missing to decrement\nthe reference count acquired by the session lookup, which results in\na reference count leak. This patch fixes the issue by explicitly calling\nksmbd_user_session_put to release the reference to the session.",
   "datePublished": "Jan 23, 2026, 2:15:16 PM",
-  "dateUpdated": "Jul 30, 2026, 6:05:46 AM",
+  "dateUpdated": "Aug 5, 2026, 12:12:21 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/11fe566b442e3bc2774191740fd377739a87a1c0\nhttps://git.kernel.org/stable/c/0fb87b28cafae71e9c8248432cc3a6a1fd759efc\nhttps://git.kernel.org/stable/c/e54fb2a4772545701766cba08aab20de5eace8cd\nhttps://git.kernel.org/stable/c/02e06785e85b4bd86ef3d23b7c8d87acc76773d5\nhttps://git.kernel.org/stable/c/8cabcb4dd3dc85dd83a37d26efcc59a66a4074d7\nhttps://git.kernel.org/stable/c/cafb57f7bdd57abba87725eb4e82bbdca4959644\n",
   "aliases": "CVE-2025-71150\nGHSA-4mf3-frrh-jfqw\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "282a7873-b20a-3941-bf45-fae0bfae41d4",

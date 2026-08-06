@@ -3,14 +3,14 @@
   "enisaUuid": "8418ff56-9267-3c98-a14e-e6dd384a0373",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: harden block_group::bg_list against list_del() races\n\nAs far as I can tell, these calls of list_del_init() on bg_list cannot\nrun concurrently with btrfs_mark_bg_unused() or btrfs_mark_bg_to_reclaim(),\nas they are in transaction error paths and situations where the block\ngroup is readonly.\n\nHowever, if there is any chance at all of racing with mark_bg_unused(),\nor a different future user of bg_list, better to be safe than sorry.\n\nOtherwise we risk the following interleaving (bg_list refcount in parens)\n\nT1 (some random op)                       T2 (btrfs_mark_bg_unused)\n                                        !list_empty(&bg->bg_list); (1)\nlist_del_init(&bg->bg_list); (1)\n                                        list_move_tail (1)\nbtrfs_put_block_group (0)\n                                        btrfs_delete_unused_bgs\n                                             bg = list_first_entry\n                                             list_del_init(&bg->bg_list);\n                                             btrfs_put_block_group(bg); (-1)\n\nUltimately, this results in a broken ref count that hits zero one deref\nearly and the real final deref underflows the refcount, resulting in a WARNING.",
   "datePublished": "May 9, 2025, 6:42:04 AM",
-  "dateUpdated": "Jul 30, 2026, 5:49:27 AM",
+  "dateUpdated": "Aug 5, 2026, 11:57:52 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bf089c4d1141b27332c092b1dcca5022c415a3b6\nhttps://git.kernel.org/stable/c/909e60fb469d4101c6b08cf6e622efb062bb24a1\nhttps://git.kernel.org/stable/c/185fd73e5ac06027c4be9a129e59193f6a3ef202\nhttps://git.kernel.org/stable/c/7511e29cf1355b2c47d0effb39e463119913e2f6\n",
   "aliases": "GHSA-ppp2-86mr-9vh3\nCVE-2025-37856\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "0e887b14-59ea-3e4b-ad3e-599a1f5f2a19",

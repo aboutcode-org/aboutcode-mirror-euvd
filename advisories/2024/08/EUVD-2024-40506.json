@@ -3,7 +3,7 @@
   "enisaUuid": "47e15fbe-44f3-385d-81dc-10e3e9305907",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma: fix call order in dmam_free_coherent\n\ndmam_free_coherent() frees a DMA allocation, which makes the\nfreed vaddr available for reuse, then calls devres_destroy()\nto remove and free the data structure used to track the DMA\nallocation. Between the two calls, it is possible for a\nconcurrent task to make an allocation with the same vaddr\nand add it to the devres list.\n\nIf this happens, there will be two entries in the devres list\nwith the same vaddr and devres_destroy() can free the wrong\nentry, triggering the WARN_ON() in dmam_match.\n\nFix by destroying the devres entry before freeing the DMA\nallocation.\n\n  kokonut //net/encryption\n    http://sponge2/b9145fe6-0f72-4325-ac2f-a84d81075b03",
   "datePublished": "Aug 17, 2024, 9:24:26 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:56 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:49 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

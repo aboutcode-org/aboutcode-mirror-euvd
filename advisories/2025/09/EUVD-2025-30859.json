@@ -3,14 +3,14 @@
   "enisaUuid": "16bacea4-e50e-3de6-9bb2-d0415f6f0927",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhsr: hold rcu and dev lock for hsr_get_port_ndev\n\nhsr_get_port_ndev calls hsr_for_each_port, which need to hold rcu lock.\nOn the other hand, before return the port device, we need to hold the\ndevice reference to avoid UaF in the caller function.",
   "datePublished": "Sep 23, 2025, 6:00:45 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:13 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:48 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9433ba79c2ec3ec7c9a711748701549339c3438c\nhttps://git.kernel.org/stable/c/68a6729afd3e8e9a2a32538642ce92b96ccf9b1d\nhttps://git.kernel.org/stable/c/847748fc66d08a89135a74e29362a66ba4e3ab15\n",
   "aliases": "GHSA-mmm9-rxc2-w4wp\nCVE-2025-39872\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "2d139b05-4135-3967-923c-ec57d5f77a9a",

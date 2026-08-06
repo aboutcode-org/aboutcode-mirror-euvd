@@ -3,7 +3,7 @@
   "enisaUuid": "95517d25-abce-32a0-a100-4b556b8847c4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfilelock: Remove locks reliably when fcntl/close race is detected\n\nWhen fcntl_setlk() races with close(), it removes the created lock with\ndo_lock_file_wait().\nHowever, LSMs can allow the first do_lock_file_wait() that created the lock\nwhile denying the second do_lock_file_wait() that tries to remove the lock.\nSeparately, posix_lock_file() could also fail to\nremove a lock due to GFP_KERNEL allocation failure (when splitting a range\nin the middle).\n\nAfter the bug has been triggered, use-after-free reads will occur in\nlock_get_status() when userspace reads /proc/locks. This can likely be used\nto read arbitrary kernel memory, but can't corrupt kernel memory.\n\nFix it by calling locks_remove_posix() instead, which is designed to\nreliably get rid of POSIX locks associated with the given file and\nfiles_struct and is also used by filp_flush().",
   "datePublished": "Jul 23, 2024, 8:06:02 AM",
-  "dateUpdated": "Aug 4, 2026, 9:27:44 AM",
+  "dateUpdated": "Aug 5, 2026, 11:34:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

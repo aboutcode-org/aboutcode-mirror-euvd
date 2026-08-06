@@ -3,7 +3,7 @@
   "enisaUuid": "da0c1f1a-c9b8-35cc-b186-31d9d4a55995",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Stop the active perfmon before being destroyed\n\nUpon closing the file descriptor, the active performance monitor is not\nstopped. Although all perfmons are destroyed in `vc4_perfmon_close_file()`,\nthe active performance monitor's pointer (`vc4->active_perfmon`) is still\nretained.\n\nIf we open a new file descriptor and submit a few jobs with performance\nmonitors, the driver will attempt to stop the active performance monitor\nusing the stale pointer in `vc4->active_perfmon`. However, this pointer\nis no longer valid because the previous process has already terminated,\nand all performance monitors associated with it have been destroyed and\nfreed.\n\nTo fix this, when the active performance monitor belongs to a given\nprocess, explicitly stop it before destroying and freeing it.",
   "datePublished": "Nov 8, 2024, 5:38:28 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:37 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:22 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

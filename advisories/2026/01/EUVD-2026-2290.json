@@ -3,14 +3,14 @@
   "enisaUuid": "34c4ba5c-db36-345f-950e-b002a5aa53df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncaif: fix integer underflow in cffrml_receive()\n\nThe cffrml_receive() function extracts a length field from the packet\nheader and, when FCS is disabled, subtracts 2 from this length without\nvalidating that len >= 2.\n\nIf an attacker sends a malicious packet with a length field of 0 or 1\nto an interface with FCS disabled, the subtraction causes an integer\nunderflow.\n\nThis can lead to memory exhaustion and kernel instability, potential\ninformation disclosure if padding contains uninitialized kernel memory.\n\nFix this by validating that len >= 2 before performing the subtraction.",
   "datePublished": "Jan 13, 2026, 3:29:09 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:43 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:33 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/f407f1c9f45bbf5c99fd80b3f3f4a94fdbe35691\nhttps://git.kernel.org/stable/c/c54091eec6fed19e94182aa05dd6846600a642f7\nhttps://git.kernel.org/stable/c/785c7be6361630070790f6235b696da156ac71b3\nhttps://git.kernel.org/stable/c/f818cd472565f8b0c2c409b040e0121c5cf8592c\nhttps://git.kernel.org/stable/c/4ec29714aa4e0601ea29d2f02b461fc0ac92c2c3\nhttps://git.kernel.org/stable/c/21fdcc00656a60af3c7aae2dea8dd96abd35519c\nhttps://git.kernel.org/stable/c/8a11ff0948b5ad09b71896b7ccc850625f9878d1\n",
   "aliases": "CVE-2025-68799\nGHSA-pxpq-p89v-xx8g\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "11d2a0eb-4a47-330d-95c3-f0837be43774",

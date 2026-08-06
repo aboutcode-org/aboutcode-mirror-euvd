@@ -3,14 +3,14 @@
   "enisaUuid": "37d3c972-7c82-3b1b-abe6-46ad6e9f4d1e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: skcipher - Fix reqsize handling\n\nCommit afddce13ce81d (\"crypto: api - Add reqsize to crypto_alg\")\nintroduced cra_reqsize field in crypto_alg struct to replace type\nspecific reqsize fields. It looks like this was introduced specifically\nfor ahash and acomp from the commit description as subsequent commits\nadd necessary changes in these alg frameworks.\n\nHowever, this is being recommended for use in all crypto algs [1]\ninstead of setting reqsize using crypto_*_set_reqsize(). Using\ncra_reqsize in skcipher algorithms, hence, causes memory\ncorruptions and crashes as the underlying functions in the algorithm\nframework have not been updated to set the reqsize properly from\ncra_reqsize. [2]\n\nAdd proper set_reqsize calls in the skcipher init function to\nproperly initialize reqsize for these algorithms in the framework.\n\n[1]: https://lore.kernel.org/linux-crypto/aCL8BxpHr5OpT04k@gondor.apana.org.au/\n[2]: https://gist.github.com/Pratham-T/24247446f1faf4b7843e4014d5089f6b",
   "datePublished": "Nov 12, 2025, 9:56:26 PM",
-  "dateUpdated": "Jul 30, 2026, 6:01:14 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:22 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f041339d6b9a5a46437f0c48fc7279c92af7a513\nhttps://git.kernel.org/stable/c/229c586b5e86979badb7cb0d38717b88a9e95ddd\n",
   "aliases": "CVE-2025-40182\nGHSA-fxwg-47f2-r9jw\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "02fc8895-db43-3e4f-af3b-2ed7616cc028",

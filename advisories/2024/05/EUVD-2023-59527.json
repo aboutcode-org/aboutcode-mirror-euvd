@@ -3,14 +3,14 @@
   "enisaUuid": "8e402dda-d427-3680-bf82-7709c163e515",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/jfs: Add check for negative db_l2nbperpage\n\nl2nbperpage is log2(number of blks per page), and the minimum legal\nvalue should be 0, not negative.\n\nIn the case of l2nbperpage being negative, an error will occur\nwhen subsequently used as shift exponent.\n\nSyzbot reported this bug:\n\nUBSAN: shift-out-of-bounds in fs/jfs/jfs_dmap.c:799:12\nshift exponent -16777216 is negative",
   "datePublished": "May 21, 2024, 3:31:19 PM",
-  "dateUpdated": "Aug 4, 2026, 9:12:02 AM",
+  "dateUpdated": "Aug 5, 2026, 9:11:32 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cc61fcf7d1c99f148fe8ddfb5c6ed0bb75861f01\nhttps://git.kernel.org/stable/c/8f2964df6bfce9d92d81ca552010b8677af8d9dc\nhttps://git.kernel.org/stable/c/a81a56b4cbe3142cc99f6b98e8f9b3a631c768e1\nhttps://git.kernel.org/stable/c/524b4f203afcf87accfe387e846f33f916f0c907\nhttps://git.kernel.org/stable/c/5f148b16972e5f4592629b244d5109b15135f53f\nhttps://git.kernel.org/stable/c/0cb567e727339a192f9fd0db00781d73a91d15a6\nhttps://git.kernel.org/stable/c/491085258185ffc4fb91555b0dba895fe7656a45\nhttps://git.kernel.org/stable/c/1a7c53fdea1d189087544d9a606d249e93c4934b\nhttps://git.kernel.org/stable/c/525b861a008143048535011f3816d407940f4bfa\n",
   "aliases": "CVE-2023-52810\nGHSA-8gjf-xqc3-q68r\n",
   "assigner": "Linux",
-  "epss": 0.27,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "001d07fb-8d93-389f-b446-7efd7b447d1c",

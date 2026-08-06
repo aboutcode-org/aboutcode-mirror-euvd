@@ -3,7 +3,7 @@
   "enisaUuid": "af7cc1f8-0477-3e5f-b8f2-98b499147d52",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: seqiv - Handle EBUSY correctly\n\nAs it is seqiv only handles the special return value of EINPROGERSS,\nwhich means that in all other cases it will free data related to the\nrequest.\n\nHowever, as the caller of seqiv may specify MAY_BACKLOG, we also need\nto expect EBUSY and treat it in the same way.  Otherwise backlogged\nrequests will trigger a use-after-free.",
   "datePublished": "Sep 18, 2025, 1:33:20 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:21 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

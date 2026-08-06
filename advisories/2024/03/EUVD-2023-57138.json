@@ -3,14 +3,14 @@
   "enisaUuid": "672df8db-499a-3196-99b7-5801303d91ca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: Fix connection failure handling\n\nIn case immediate MPA request processing fails, the newly\ncreated endpoint unlinks the listening endpoint and is\nready to be dropped. This special case was not handled\ncorrectly by the code handling the later TCP socket close,\ncausing a NULL dereference crash in siw_cm_work_handler()\nwhen dereferencing a NULL listener. We now also cancel\nthe useless MPA timeout, if immediate MPA request\nprocessing fails.\n\nThis patch furthermore simplifies MPA processing in general:\nScheduling a useless TCP socket read in sk_data_ready() upcall\nis now surpressed, if the socket is already moved out of\nTCP_ESTABLISHED state.",
   "datePublished": "Mar 2, 2024, 9:52:24 PM",
-  "dateUpdated": "Aug 4, 2026, 9:10:49 AM",
+  "dateUpdated": "Aug 5, 2026, 9:10:19 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/6e26812e289b374c17677d238164a5a8f5770594\nhttps://git.kernel.org/stable/c/0d520cdb0cd095eac5d00078dfd318408c9b5eed\nhttps://git.kernel.org/stable/c/81b7bf367eea795d259d0261710c6a89f548844d\nhttps://git.kernel.org/stable/c/5cf38e638e5d01b68f9133968a85e8b3fd1ecf2f\nhttps://git.kernel.org/stable/c/eeafc50a77f6a783c2c44e7ec3674a7b693e06f8\nhttps://git.kernel.org/stable/c/53a3f777049771496f791504e7dc8ef017cba590\n",
   "aliases": "CVE-2023-52513\nGHSA-2m3h-p692-qjp7\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.66,
   "enisaIdProduct": [
     {
       "id": "20adf175-4a54-328b-a13c-4ee49c52e1b5",

@@ -3,14 +3,14 @@
   "enisaUuid": "4f56116a-06ad-3ad7-9305-5041a0f4d390",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: adjust read range correctly for non-block-aligned positions\n\niomap_adjust_read_range() assumes that the position and length passed in\nare block-aligned. This is not always the case however, as shown in the\nsyzbot generated case for erofs. This causes too many bytes to be\nskipped for uptodate blocks, which results in returning the incorrect\nposition and length to read in. If all the blocks are uptodate, this\nunderflows length and returns a position beyond the folio.\n\nFix the calculation to also take into account the block offset when\ncalculating how many bytes can be skipped for uptodate blocks.",
   "datePublished": "Jan 13, 2026, 3:29:05 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:41 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:30 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/82b60ffbb532d919959702768dca04c3c0500ae5\nhttps://git.kernel.org/stable/c/12053695c8ef5410e8cc6c9ed4c0db9cd9c82b3e\nhttps://git.kernel.org/stable/c/142194fb21afe964d2d194cab1fc357cbf87e899\nhttps://git.kernel.org/stable/c/7aa6bc3e8766990824f66ca76c19596ce10daf3e\n",
   "aliases": "GHSA-3c24-c79w-qw24\nCVE-2025-68794\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "0b13553a-124f-35ad-a0fe-560c9e3ba7ca",

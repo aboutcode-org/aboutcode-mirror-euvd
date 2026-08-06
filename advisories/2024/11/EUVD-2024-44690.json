@@ -3,7 +3,7 @@
   "enisaUuid": "b661b149-3589-3581-8638-21f29e5d041b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phy: dp83869: fix memory corruption when enabling fiber\n\nWhen configuring the fiber port, the DP83869 PHY driver incorrectly\ncalls linkmode_set_bit() with a bit mask (1 << 10) rather than a bit\nnumber (10). This corrupts some other memory location -- in case of\narm64 the priv pointer in the same structure.\n\nSince the advertising flags are updated from supported at the end of the\nfunction the incorrect line isn't needed at all and can be removed.",
   "datePublished": "Nov 8, 2024, 5:38:29 AM",
-  "dateUpdated": "Aug 4, 2026, 9:35:39 AM",
+  "dateUpdated": "Aug 5, 2026, 11:42:23 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

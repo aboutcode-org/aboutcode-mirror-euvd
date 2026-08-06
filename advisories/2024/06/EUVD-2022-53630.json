@@ -3,14 +3,14 @@
   "enisaUuid": "5a009062-fe68-38dd-9ed2-982ab304c738",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: Transitional solution for clcsock race issue\n\nWe encountered a crash in smc_setsockopt() and it is caused by\naccessing smc->clcsock after clcsock was released.\n\n BUG: kernel NULL pointer dereference, address: 0000000000000020\n #PF: supervisor read access in kernel mode\n #PF: error_code(0x0000) - not-present page\n PGD 0 P4D 0\n Oops: 0000 [#1] PREEMPT SMP PTI\n CPU: 1 PID: 50309 Comm: nginx Kdump: loaded Tainted: G E     5.16.0-rc4+ #53\n RIP: 0010:smc_setsockopt+0x59/0x280 [smc]\n Call Trace:\n  <TASK>\n  __sys_setsockopt+0xfc/0x190\n  __x64_sys_setsockopt+0x20/0x30\n  do_syscall_64+0x34/0x90\n  entry_SYSCALL_64_after_hwframe+0x44/0xae\n RIP: 0033:0x7f16ba83918e\n  </TASK>\n\nThis patch tries to fix it by holding clcsock_release_lock and\nchecking whether clcsock has already been released before access.\n\nIn case that a crash of the same reason happens in smc_getsockopt()\nor smc_switch_to_fallback(), this patch also checkes smc->clcsock\nin them too. And the caller of smc_switch_to_fallback() will identify\nwhether fallback succeeds according to the return value.",
   "datePublished": "Jun 20, 2024, 11:13:32 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:22 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/38f0bdd548fd2ef5d481b88d8a2bfef968452e34\nhttps://git.kernel.org/stable/c/4284225cd8001e134f5cf533a7cd244bbb654d0f\nhttps://git.kernel.org/stable/c/c0bf3d8a943b6f2e912b7c1de03e2ef28e76f760\n",
   "aliases": "GHSA-j385-2ppr-7766\nCVE-2022-48751\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "048fb8f2-eaee-387a-9644-a6bde2509b2d",

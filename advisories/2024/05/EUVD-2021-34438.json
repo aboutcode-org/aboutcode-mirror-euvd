@@ -3,14 +3,14 @@
   "enisaUuid": "4b9dcab4-7fbb-34a5-8f51-daec8e5f0295",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix abort logic in btrfs_replace_file_extents\n\nError injection testing uncovered a case where we'd end up with a\ncorrupt file system with a missing extent in the middle of a file.  This\noccurs because the if statement to decide if we should abort is wrong.\n\nThe only way we would abort in this case is if we got a ret !=\n-EOPNOTSUPP and we called from the file clone code.  However the\nprealloc code uses this path too.  Instead we need to abort if there is\nan error, and the only error we _don't_ abort on is -EOPNOTSUPP and only\nif we came from the clone file code.",
   "datePublished": "May 22, 2024, 6:19:30 AM",
-  "dateUpdated": "Aug 4, 2026, 9:00:41 AM",
+  "dateUpdated": "Aug 5, 2026, 8:47:47 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0e32a2b85c7d92ece86c17dfef390c5ed79c6378\nhttps://git.kernel.org/stable/c/0e309e1152fc34ef75991d9d69b165dbf75bf26c\nhttps://git.kernel.org/stable/c/4afb912f439c4bc4e6a4f3e7547f2e69e354108f\n",
   "aliases": "CVE-2021-47433\nGHSA-6x3x-fg57-3vcm\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "39e0c4dc-ca33-3324-9765-79f5901a9d24",

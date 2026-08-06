@@ -3,7 +3,7 @@
   "enisaUuid": "9172d5d6-efe5-3e91-a7b0-62bb26427d61",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix extent map use-after-free when adding pages to compressed bio\n\nAt add_ra_bio_pages() we are accessing the extent map to calculate\n'add_size' after we dropped our reference on the extent map, resulting\nin a use-after-free. Fix this by computing 'add_size' before dropping our\nextent map reference.",
   "datePublished": "Aug 17, 2024, 9:09:23 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:43 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:36 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

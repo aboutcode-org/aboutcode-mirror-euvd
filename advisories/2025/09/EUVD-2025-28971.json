@@ -3,7 +3,7 @@
   "enisaUuid": "1c4b3df9-f6cb-3cb3-b4b5-ba72a6187bf6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/migrate: prevent potential UAF\n\nIf we hit the error path, the previous fence (if there is one) has\nalready been put() prior to this, so doing a fence_wait could lead to\nUAF. Tweak the flow to do to the put() until after we do the wait.\n\n(cherry picked from commit 9b7ca35ed28fe5fad86e9d9c24ebd1271e4c9c3e)",
   "datePublished": "Sep 11, 2025, 4:52:14 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:19 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:57 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

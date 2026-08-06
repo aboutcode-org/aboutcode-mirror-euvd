@@ -3,14 +3,14 @@
   "enisaUuid": "c77aa545-9e2e-36fd-8185-f67f5de46c77",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbus: mhi: ep: Update read pointer only after buffer is written\n\nInside mhi_ep_ring_add_element, the read pointer (rd_offset) is updated\nbefore the buffer is written, potentially causing race conditions where\nthe host sees an updated read pointer before the buffer is actually\nwritten. Updating rd_offset prematurely can lead to the host accessing\nan uninitialized or incomplete element, resulting in data corruption.\n\nInvoke the buffer write before updating rd_offset to ensure the element\nis fully written before signaling its availability.",
   "datePublished": "Jul 25, 2025, 2:16:48 PM",
-  "dateUpdated": "Jul 30, 2026, 5:54:07 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:49 PM",
   "baseScore": 10.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/44b9620e82bbec2b9a6ac77f63913636d84f96dc\nhttps://git.kernel.org/stable/c/f704a80d9fa268e51a6cc5242714502c3c1fa605\nhttps://git.kernel.org/stable/c/0007ef098dab48f1ba58364c40b4809f1e21b130\nhttps://git.kernel.org/stable/c/6f18d174b73d0ceeaa341f46c0986436b3aefc9a\n",
   "aliases": "GHSA-f5fc-m65h-gr9j\nCVE-2025-38429\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "08255c24-ed0c-3b0a-b004-e29f11085886",

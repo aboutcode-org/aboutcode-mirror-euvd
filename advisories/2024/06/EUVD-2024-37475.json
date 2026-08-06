@@ -3,7 +3,7 @@
   "enisaUuid": "faa91836-5a35-3ea0-9135-9d89c6dfa330",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: sr: fix invalid unregister error path\n\nThe error path of seg6_init() is wrong in case CONFIG_IPV6_SEG6_LWTUNNEL\nis not defined. In that case if seg6_hmac_init() fails, the\ngenl_unregister_family() isn't called.\n\nThis issue exist since commit 46738b1317e1 (\"ipv6: sr: add option to control\nlwtunnel support\"), and commit 5559cea2d5aa (\"ipv6: sr: fix possible\nuse-after-free and null-ptr-deref\") replaced unregister_pernet_subsys()\nwith genl_unregister_family() in this error path.",
   "datePublished": "Jun 19, 2024, 1:56:13 PM",
-  "dateUpdated": "Aug 4, 2026, 9:26:19 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:11 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

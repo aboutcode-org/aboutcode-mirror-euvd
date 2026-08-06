@@ -3,7 +3,7 @@
   "enisaUuid": "8207769f-04d6-3a26-a366-4ff99a3dfb14",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nefi: libstub: only free priv.runtime_map when allocated\n\npriv.runtime_map is only allocated when efi_novamap is not set.\nOtherwise, it is an uninitialized value.  In the error path, it is freed\nunconditionally.  Avoid passing an uninitialized value to free_pool.\nFree priv.runtime_map only when it was allocated.\n\nThis bug was discovered and resolved using Coverity Static Analysis\nSecurity Testing (SAST) by Synopsys, Inc.",
   "datePublished": "Jun 21, 2024, 10:18:05 AM",
-  "dateUpdated": "Aug 4, 2026, 9:22:46 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

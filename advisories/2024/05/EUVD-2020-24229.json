@@ -3,7 +3,7 @@
   "enisaUuid": "bb142a81-9102-3638-b599-07f5a81b6ea3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau: avoid a use-after-free when BO init fails\n\nnouveau_bo_init() is backed by ttm_bo_init() and ferries its return code\nback to the caller. On failures, ttm_bo_init() invokes the provided\ndestructor which should de-initialize and free the memory.\n\nThus, when nouveau_bo_init() returns an error the gem object has already\nbeen released and the memory freed by nouveau_bo_del_ttm().",
   "datePublished": "May 21, 2024, 3:03:27 PM",
-  "dateUpdated": "Aug 4, 2026, 8:57:40 AM",
+  "dateUpdated": "Aug 5, 2026, 8:44:32 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

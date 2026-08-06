@@ -3,7 +3,7 @@
   "enisaUuid": "e533d065-914a-37e4-b215-eb8772ec7491",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: use timestamp to check for set element timeout\n\nAdd a timestamp field at the beginning of the transaction, store it\nin the nftables per-netns area.\n\nUpdate set backend .insert, .deactivate and sync gc path to use the\ntimestamp, this avoids that an element expires while control plane\ntransaction is still unfinished.\n\n.lookup and .update, which are used from packet path, still use the\ncurrent time to check if the element has expired. And .get path and dump\nalso since this runs lockless under rcu read size lock. Then, there is\nasync gc which also needs to check the current time since it runs\nasynchronously from a workqueue.",
   "datePublished": "May 9, 2024, 4:37:22 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:26 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:31 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

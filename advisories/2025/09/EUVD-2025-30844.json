@@ -3,7 +3,7 @@
   "enisaUuid": "13fca270-5cdd-3e5c-8a14-6cd8ced9ae92",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: fix potential OF node use-after-free\n\nThe for_each_child_of_node() helper drops the reference it takes to each\nnode as it iterates over children and an explicit of_node_put() is only\nneeded when exiting the loop early.\n\nDrop the recently introduced bogus additional reference count decrement\nat each iteration that could potentially lead to a use-after-free.",
   "datePublished": "Sep 23, 2025, 6:00:51 AM",
-  "dateUpdated": "Jul 30, 2026, 5:58:17 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:53 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "f6d7bca5-31ee-3219-a5b4-7c8432369c3a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: account for fraggap on the paged allocation path\n\nIn __ip_append_data(), when the paged-allocation branch is taken,\nalloclen and pagedlen are computed as\n\n\talloclen = fragheaderlen + transhdrlen;\n\tpagedlen = datalen - transhdrlen;\n\ndatalen already includes fraggap, but the fraggap bytes carried over\nfrom the previous skb are copied into the new skb's linear area at\noffset transhdrlen by the subsequent skb_copy_and_csum_bits(). The\nlinear area is therefore undersized by fraggap bytes while pagedlen is\noverstated by the same amount.\n\nThe non-paged branch sets alloclen to fraglen, which already accounts\nfor fraggap because datalen does. Bring the paged branch in line by\nadding fraggap to alloclen and subtracting it from pagedlen.\n\nAfter this adjustment, copy no longer collapses to -fraggap on the\npaged path, so remove the stale comment describing that old arithmetic.",
   "datePublished": "Jul 16, 2026, 5:13:40 AM",
-  "dateUpdated": "Jul 24, 2026, 2:33:54 PM",
+  "dateUpdated": "Aug 5, 2026, 12:35:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5c6375bced6147ec2e460ee3b653f4860d5ecdc2\nhttps://git.kernel.org/stable/c/ce494707a9c07f27c219ca67f3e138061f53d9b3\nhttps://git.kernel.org/stable/c/a9c24eda24bd15f432e37824e6fc440977cb241c\nhttps://git.kernel.org/stable/c/77798d7be6ef71e72fb6fc8a2901bf74ebc9706f\nhttps://git.kernel.org/stable/c/c04d9ece23deb9e26c19f9ca215e98b3295aa1bb\nhttps://git.kernel.org/stable/c/eca856950f7cb1a221e02b99d758409f2c5cec42\n",
   "aliases": "CVE-2026-53366\nGHSA-r67c-r6r6-mj6m\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "039d92d6-f2ea-3199-827a-3fbb2d3f1fe7",

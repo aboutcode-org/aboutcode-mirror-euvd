@@ -3,7 +3,7 @@
   "enisaUuid": "ad883d95-19af-3d37-ab79-7e6098fd7bbe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nparisc: fix a possible DMA corruption\n\nARCH_DMA_MINALIGN was defined as 16 - this is too small - it may be\npossible that two unrelated 16-byte allocations share a cache line. If\none of these allocations is written using DMA and the other is written\nusing cached write, the value that was written with DMA may be\ncorrupted.\n\nThis commit changes ARCH_DMA_MINALIGN to be 128 on PA20 and 32 on PA1.1 -\nthat's the largest possible cache line size.\n\nAs different parisc microarchitectures have different cache line size, we\ndefine arch_slab_minalign(), cache_line_size() and\ndma_get_cache_alignment() so that the kernel may tune slab cache\nparameters dynamically, based on the detected cache line size.",
   "datePublished": "Sep 4, 2024, 6:35:49 PM",
-  "dateUpdated": "Aug 4, 2026, 9:30:22 AM",
+  "dateUpdated": "Aug 5, 2026, 11:37:14 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "bbf02570-3535-32a9-8a36-0f023aa4957e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkdb: Fix buffer overflow during tab-complete\n\nCurrently, when the user attempts symbol completion with the Tab key, kdb\nwill use strncpy() to insert the completed symbol into the command buffer.\nUnfortunately it passes the size of the source buffer rather than the\ndestination to strncpy() with predictably horrible results. Most obviously\nif the command buffer is already full but cp, the cursor position, is in\nthe middle of the buffer, then we will write past the end of the supplied\nbuffer.\n\nFix this by replacing the dubious strncpy() calls with memmove()/memcpy()\ncalls plus explicit boundary checks to make sure we have enough space\nbefore we start moving characters around.",
   "datePublished": "Jul 5, 2024, 6:55:09 AM",
-  "dateUpdated": "Aug 4, 2026, 9:26:42 AM",
+  "dateUpdated": "Aug 5, 2026, 11:33:34 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

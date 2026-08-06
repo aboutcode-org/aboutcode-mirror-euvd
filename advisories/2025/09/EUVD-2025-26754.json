@@ -3,14 +3,14 @@
   "enisaUuid": "74d1ffa0-520d-361f-81bd-227fd1b1faa4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs: fix slab-out-of-bounds in hfs_bnode_read()\n\nThis patch introduces is_bnode_offset_valid() method that checks\nthe requested offset value. Also, it introduces\ncheck_and_correct_requested_length() method that checks and\ncorrect the requested length (if it is necessary). These methods\nare used in hfs_bnode_read(), hfs_bnode_write(), hfs_bnode_clear(),\nhfs_bnode_copy(), and hfs_bnode_move() with the goal to prevent\nthe access out of allocated memory and triggering the crash.",
   "datePublished": "Sep 4, 2025, 3:33:09 PM",
-  "dateUpdated": "Jul 30, 2026, 5:56:36 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e7d2dc2421e821e4045775e6dc226378328de6f6\nhttps://git.kernel.org/stable/c/67ecc81f6492275c9c54280532f558483c99c90e\nhttps://git.kernel.org/stable/c/a1a60e79502279f996e55052f50cc14919020475\nhttps://git.kernel.org/stable/c/fe2891a9c43ab87d1a210d61e6438ca6936e2f62\nhttps://git.kernel.org/stable/c/384a66b89f9540a9a8cb0f48807697dfabaece4c\nhttps://git.kernel.org/stable/c/efc095b35b23297e419c2ab4fc1ed1a8f0781a29\nhttps://git.kernel.org/stable/c/fc7f732984ec91f30be3e574e0644066d07f2b78\nhttps://git.kernel.org/stable/c/eec522fd0d28106b14a59ab2d658605febe4a3bb\nhttps://git.kernel.org/stable/c/a431930c9bac518bf99d6b1da526a7f37ddee8d8\n",
   "aliases": "GHSA-vwf8-rq93-5m8v\nCVE-2025-38715\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1955d76f-c1e0-32d3-9104-278963ac4f60",

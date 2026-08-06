@@ -3,7 +3,7 @@
   "enisaUuid": "0079b2b0-a953-3fcd-b630-4d7289f366b2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cpum_sf: Fix and protect memory allocation of SDBs with mutex\n\nReservation of the PMU hardware is done at first event creation\nand is protected by a pair of mutex_lock() and mutex_unlock().\nAfter reservation of the PMU hardware the memory\nrequired for the PMUs the event is to be installed on is\nallocated by allocate_buffers() and alloc_sampling_buffer().\nThis done outside of the mutex protection.\nWithout mutex protection two or more concurrent invocations of\nperf_event_init() may run in parallel.\nThis can lead to allocation of Sample Data Blocks (SDBs)\nmultiple times for the same PMU.\nPrevent this and protect memory allocation of SDBs by\nmutex.",
   "datePublished": "Dec 28, 2024, 9:46:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:39:44 AM",
+  "dateUpdated": "Aug 5, 2026, 11:46:11 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

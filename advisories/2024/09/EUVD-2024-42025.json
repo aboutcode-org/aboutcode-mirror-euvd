@@ -3,7 +3,7 @@
   "enisaUuid": "9bfc7a87-03af-31d4-9eac-7d9b4fb00915",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: add check for invalid name in btf_name_valid_section()\n\nIf the length of the name string is 1 and the value of name[0] is NULL\nbyte, an OOB vulnerability occurs in btf_name_valid_section() and the\nreturn value is true, so the invalid name passes the check.\n\nTo solve this, you need to check if the first position is NULL byte and\nif the first character is printable.",
   "datePublished": "Sep 18, 2024, 7:12:23 AM",
-  "dateUpdated": "Aug 4, 2026, 9:31:45 AM",
+  "dateUpdated": "Aug 5, 2026, 11:38:26 AM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "8366bee9-7e9d-3a65-98d7-74b714ad98a5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix buffer validation by including null terminator size in EA length\n\nThe smb2_set_ea function, which handles Extended Attributes (EA),\nwas performing buffer validation checks that incorrectly omitted the size\nof the null terminating character (+1 byte) for EA Name.\nThis patch fixes the issue by explicitly adding '+ 1' to EaNameLength where\nthe null terminator is expected to be present in the buffer, ensuring\nthe validation accurately reflects the total required buffer size.",
   "datePublished": "Jan 13, 2026, 3:29:13 PM",
-  "dateUpdated": "Jul 30, 2026, 6:04:48 AM",
+  "dateUpdated": "Aug 5, 2026, 12:11:38 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
   "references": "https://git.kernel.org/stable/c/cae52c592a07e1d3fa3338a5f064a374a5f26750\nhttps://git.kernel.org/stable/c/a28a375a5439eb474e9f284509a407efb479c925\nhttps://git.kernel.org/stable/c/d26af6d14da43ab92d07bc60437c62901dc522e6\nhttps://git.kernel.org/stable/c/6dc8cf6e7998ef7aeb9383a4c2904ea5d22fa2e4\nhttps://git.kernel.org/stable/c/95d7a890e4b03e198836d49d699408fd1867cb55\n",
   "aliases": "GHSA-4wfq-6xp5-vp47\nCVE-2025-68806\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.37,
   "enisaIdProduct": [
     {
       "id": "375251ac-f7db-328d-b25b-658451ff4a6b",

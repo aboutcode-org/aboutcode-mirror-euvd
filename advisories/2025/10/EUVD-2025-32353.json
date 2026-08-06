@@ -3,7 +3,7 @@
   "enisaUuid": "22fb0a2d-f686-3f0f-80ea-3943d5ba4538",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Propagate error from htab_lock_bucket() to userspace\n\nIn __htab_map_lookup_and_delete_batch() if htab_lock_bucket() returns\n-EBUSY, it will go to next bucket. Going to next bucket may not only\nskip the elements in current bucket silently, but also incur\nout-of-bound memory access or expose kernel memory to userspace if\ncurrent bucket_cnt is greater than bucket_size or zero.\n\nFixing it by stopping batch operation and returning -EBUSY when\nhtab_lock_bucket() fails, and the application can retry or skip the busy\nbatch as needed.",
   "datePublished": "Oct 4, 2025, 3:43:43 PM",
-  "dateUpdated": "Aug 4, 2026, 9:09:14 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:56 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

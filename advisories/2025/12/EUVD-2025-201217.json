@@ -3,14 +3,14 @@
   "enisaUuid": "b8ba329b-8f25-3a3c-9599-63ab3ced50d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Fix unlikely race in gdlm_put_lock\n\nIn gdlm_put_lock(), there is a small window of time in which the\nDFL_UNMOUNT flag has been set but the lockspace hasn't been released,\nyet.  In that window, dlm may still call gdlm_ast() and gdlm_bast().\nTo prevent it from dereferencing freed glock objects, only free the\nglock if the lockspace has actually been released.",
   "datePublished": "Dec 4, 2025, 3:31:31 PM",
-  "dateUpdated": "Jul 30, 2026, 6:01:37 AM",
+  "dateUpdated": "Aug 5, 2026, 12:08:46 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5fdc1474e678eea1700aa266c0b7c2c96f81dd0d\nhttps://git.kernel.org/stable/c/4913592a3358f6ec366b8346b733d5e2360b08e1\nhttps://git.kernel.org/stable/c/279bde3bbb0ac0bad5c729dfa85983d75a5d7641\nhttps://git.kernel.org/stable/c/64c61b4ac645222fa7b724cef616c1f862a72a40\nhttps://git.kernel.org/stable/c/28c4d9bc0708956c1a736a9e49fee71b65deee81\n",
   "aliases": "GHSA-4g8j-hwjq-h8fr\nCVE-2025-40242\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "059acc65-41b8-33ff-a46b-72f4da92f0d1",

@@ -3,14 +3,14 @@
   "enisaUuid": "d2dafed5-a6d6-335c-b3f4-b4969998962d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/cxgb4: Fix potential null-ptr-deref in pass_establish()\n\nIf get_ep_from_tid() fails to lookup non-NULL value for ep, ep is\ndereferenced later regardless of whether it is empty.\nThis patch adds a simple sanity check to fix the issue.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Sep 17, 2025, 2:56:29 PM",
-  "dateUpdated": "Aug 4, 2026, 9:14:14 AM",
+  "dateUpdated": "Aug 5, 2026, 9:13:34 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/9dca64042d855a24b0bd81ce242e5dc7e939f6eb\nhttps://git.kernel.org/stable/c/2cfc00e974d75a3aa8155f2660f57d342e1f67ca\nhttps://git.kernel.org/stable/c/9ddc77eefb2a567b705c3c86ab2ddabe43cadf1b\nhttps://git.kernel.org/stable/c/283861a4c52c1ea4df3dd1b6fc75a50796ce3524\n",
   "aliases": "CVE-2023-53335\nGHSA-9pwf-89r7-36h6\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.45,
   "enisaIdProduct": [
     {
       "id": "12fa8440-0c8c-3e61-a93c-68dd832a1bbd",

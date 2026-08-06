@@ -3,14 +3,14 @@
   "enisaUuid": "3ef36653-6005-346f-9591-b9e5366b1f45",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix tcx/netkit detach permissions when prog fd isn't given\n\nThis commit fixes a security issue where BPF_PROG_DETACH on tcx or\nnetkit devices could be executed by any user when no program fd was\nprovided, bypassing permission checks. The fix adds a capability\ncheck for CAP_NET_ADMIN or CAP_SYS_ADMIN in this case.",
   "datePublished": "May 27, 2026, 12:17:50 PM",
-  "dateUpdated": "May 30, 2026, 10:45:59 AM",
+  "dateUpdated": "Aug 5, 2026, 12:28:46 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4e0772cded109c238411f2fac36ac39302758b81\nhttps://git.kernel.org/stable/c/3f04cc1e5374da4c5e791ae010a06cfea7bacbe6\nhttps://git.kernel.org/stable/c/ae23bc81ddf7c17b663c4ed1b21e35527b0a7131\n",
   "aliases": "GHSA-p87w-4q4g-fjpw\nCVE-2026-45932\n",
   "assigner": "Linux",
-  "epss": 0.01,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "14eaa8de-075a-3141-b486-691dddc9aa4f",

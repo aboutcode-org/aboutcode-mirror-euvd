@@ -3,14 +3,14 @@
   "enisaUuid": "8c275cbe-0def-35a4-a85d-73a310b1ab20",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: fix memory leak of bio integrity\n\nIf nvmet receives commands with metadata there is a continuous memory\nleak of kmalloc-128 slab or more precisely bio->bi_integrity.\n\nSince commit bf4c89fc8797 (\"block: don't call bio_uninit from bio_endio\")\neach user of bio_init has to use bio_uninit as well. Otherwise the bio\nintegrity is not getting free. Nvmet uses bio_init for inline bios.\n\nUninit the inline bio to complete deallocation of integrity in bio.",
   "datePublished": "Jul 25, 2025, 1:12:07 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:34 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:38 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/431e58d56fcb5ff1f9eb630724a922e0d2a941df\nhttps://git.kernel.org/stable/c/2e2028fcf924d1c6df017033c8d6e28b735a0508\nhttps://git.kernel.org/stable/c/190f4c2c863af7cc5bb354b70e0805f06419c038\n",
   "aliases": "GHSA-5g8h-g27f-mh64\nCVE-2025-38405\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "25d0b835-0aa5-3f11-972e-d0c0d7b04092",

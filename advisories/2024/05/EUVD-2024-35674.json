@@ -3,7 +3,7 @@
   "enisaUuid": "bce91af6-9091-3dfc-b01c-bd0ed8d072d2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Use device rbtree in iopf reporting path\n\nThe existing I/O page fault handler currently locates the PCI device by\ncalling pci_get_domain_bus_and_slot(). This function searches the list\nof all PCI devices until the desired device is found. To improve lookup\nefficiency, replace it with device_rbtree_find() to search the device\nwithin the probed device rbtree.\n\nThe I/O page fault is initiated by the device, which does not have any\nsynchronization mechanism with the software to ensure that the device\nstays in the probed device tree. Theoretically, a device could be released\nby the IOMMU subsystem after device_rbtree_find() and before\niopf_get_dev_fault_param(), which would cause a use-after-free problem.\n\nAdd a mutex to synchronize the I/O page fault reporting path and the IOMMU\nrelease device path. This lock doesn't introduce any performance overhead,\nas the conflict between I/O page fault reporting and device releasing is\nvery rare.",
   "datePublished": "May 17, 2024, 2:40:10 PM",
-  "dateUpdated": "Aug 4, 2026, 9:23:11 AM",
+  "dateUpdated": "Aug 5, 2026, 11:30:15 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

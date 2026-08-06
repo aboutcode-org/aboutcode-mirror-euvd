@@ -3,7 +3,7 @@
   "enisaUuid": "6f7ac2e9-0e5c-3449-9c91-d5443c85cc0e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ad7173: fix channels index for syscalib_mode\n\nFix the index used to look up the channel when accessing the\nsyscalib_mode attribute. The address field is a 0-based index (same\nas scan_index) that it used to access the channel in the\nad7173_channels array throughout the driver. The channels field, on\nthe other hand, may not match the address field depending on the\nchannel configuration specified in the device tree and could result\nin an out-of-bounds access.",
   "datePublished": "Sep 11, 2025, 4:56:35 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:28 AM",
+  "dateUpdated": "Aug 5, 2026, 12:05:07 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

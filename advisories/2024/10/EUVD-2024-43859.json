@@ -3,7 +3,7 @@
   "enisaUuid": "d6d466b2-5b3b-3aa4-8bab-28e3c5c05570",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix buffer overflow when parsing NFS reparse points\n\nReparseDataLength is sum of the InodeType size and DataBuffer size.\nSo to get DataBuffer size it is needed to subtract InodeType's size from\nReparseDataLength.\n\nFunction cifs_strndup_from_utf16() is currentlly accessing buf->DataBuffer\nat position after the end of the buffer because it does not subtract\nInodeType size from the length. Fix this problem and correctly subtract\nvariable len.\n\nMember InodeType is present only when reparse buffer is large enough. Check\nfor ReparseDataLength before accessing InodeType to prevent another invalid\nmemory access.\n\nMajor and minor rdev values are present also only when reparse buffer is\nlarge enough. Check for reparse buffer size before calling reparse_mkdev().",
   "datePublished": "Oct 21, 2024, 6:02:37 PM",
-  "dateUpdated": "Aug 4, 2026, 9:34:14 AM",
+  "dateUpdated": "Aug 5, 2026, 11:40:59 AM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",

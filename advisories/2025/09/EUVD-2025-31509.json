@@ -3,14 +3,14 @@
   "enisaUuid": "c7c21550-9d17-3b18-a35f-1854cd2a50b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: Validate length in packet header before skb_put()\n\nWhen receiving a vsock packet in the guest, only the virtqueue buffer\nsize is validated prior to virtio_vsock_skb_rx_put(). Unfortunately,\nvirtio_vsock_skb_rx_put() uses the length from the packet header as the\nlength argument to skb_put(), potentially resulting in SKB overflow if\nthe host has gone wonky.\n\nValidate the length as advertised by the packet header before calling\nvirtio_vsock_skb_rx_put().",
   "datePublished": "Sep 5, 2025, 5:21:25 PM",
-  "dateUpdated": "Jul 30, 2026, 5:57:11 AM",
+  "dateUpdated": "Aug 5, 2026, 12:04:50 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/969b06bd8b7560efb100a34227619e7d318fbe05\nhttps://git.kernel.org/stable/c/ee438c492b2e0705d819ac0e25d04fae758d8f8f\nhttps://git.kernel.org/stable/c/faf332a10372390ce65d0b803888f4b25a388335\nhttps://git.kernel.org/stable/c/676f03760ca1d69c2470cef36c44dc152494b47c\nhttps://git.kernel.org/stable/c/0dab92484474587b82e8e0455839eaf5ac7bf894\n",
   "aliases": "CVE-2025-39718\nGHSA-4whh-7h4c-xh74\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "0b07ffd4-9b3d-3487-9002-403847e91820",

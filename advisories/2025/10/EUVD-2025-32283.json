@@ -3,14 +3,14 @@
   "enisaUuid": "16193d28-89ac-3b8e-9147-fb726abedc07",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: Revert \"scsi: core: Do not increase scsi_device's iorequest_cnt if dispatch failed\"\n\nThe \"atomic_inc(&cmd->device->iorequest_cnt)\" in scsi_queue_rq() would\ncause kernel panic because cmd->device may be freed after returning from\nscsi_dispatch_cmd().\n\nThis reverts commit cfee29ffb45b1c9798011b19d454637d1b0fe87d.",
   "datePublished": "Oct 4, 2025, 3:44:18 PM",
-  "dateUpdated": "Aug 4, 2026, 9:15:40 AM",
+  "dateUpdated": "Aug 5, 2026, 9:15:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/35fe6fa57b994e7da222893adf0bb748d6055e73\nhttps://git.kernel.org/stable/c/6ca9818d1624e136a76ae8faedb6b6c95ca66903\n",
   "aliases": "CVE-2023-53609\nGHSA-3r4v-9hh7-vrpx\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "59017e86-5f48-3d87-a398-2697e706d6e8",

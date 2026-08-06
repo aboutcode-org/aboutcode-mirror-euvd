@@ -3,7 +3,7 @@
   "enisaUuid": "13db9328-f011-3fdd-8ce8-4ea46ca20ec2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npstore: inode: Only d_invalidate() is needed\n\nUnloading a modular pstore backend with records in pstorefs would\ntrigger the dput() double-drop warning:\n\n  WARNING: CPU: 0 PID: 2569 at fs/dcache.c:762 dput.part.0+0x3f3/0x410\n\nUsing the combo of d_drop()/dput() (as mentioned in\nDocumentation/filesystems/vfs.rst) isn't the right approach here, and\nleads to the reference counting problem seen above. Use d_invalidate()\nand update the code to not bother checking for error codes that can\nnever happen.\n\n---",
   "datePublished": "May 1, 2024, 1:05:09 PM",
-  "dateUpdated": "Aug 4, 2026, 9:22:20 AM",
+  "dateUpdated": "Aug 5, 2026, 11:29:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

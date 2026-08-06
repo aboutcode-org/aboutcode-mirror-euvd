@@ -3,7 +3,7 @@
   "enisaUuid": "7ff23634-dc13-3240-b4f5-23650dae2e16",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/uv: Don't call folio_wait_writeback() without a folio reference\n\nfolio_wait_writeback() requires that no spinlocks are held and that\na folio reference is held, as documented. After we dropped the PTL, the\nfolio could get freed concurrently. So grab a temporary reference.",
   "datePublished": "Aug 17, 2024, 9:21:50 AM",
-  "dateUpdated": "Aug 4, 2026, 9:29:49 AM",
+  "dateUpdated": "Aug 5, 2026, 11:36:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

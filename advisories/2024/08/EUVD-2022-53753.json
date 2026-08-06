@@ -3,7 +3,7 @@
   "enisaUuid": "a9473711-9df2-3195-a361-725f5dd087e7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Fix use-after-free and race in fastrpc_map_find\n\nCurrently, there is a race window between the point when the mutex is\nunlocked in fastrpc_map_lookup and the reference count increasing\n(fastrpc_map_get) in fastrpc_map_find, which can also lead to\nuse-after-free.\n\nSo lets merge fastrpc_map_find into fastrpc_map_lookup which allows us\nto both protect the maps list by also taking the &fl->lock spinlock and\nthe reference count, since the spinlock will be released only after.\nAdd take_ref argument to make this suitable for all callers.",
   "datePublished": "Aug 21, 2024, 6:10:05 AM",
-  "dateUpdated": "Aug 4, 2026, 9:02:58 AM",
+  "dateUpdated": "Aug 5, 2026, 8:52:45 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

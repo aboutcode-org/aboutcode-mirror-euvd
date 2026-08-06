@@ -3,14 +3,14 @@
   "enisaUuid": "dfec35a5-2707-3e2e-ab3b-94f18378ba42",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/core: Add RCU read lock protection to perf_iterate_ctx()\n\nThe perf_iterate_ctx() function performs RCU list traversal but\ncurrently lacks RCU read lock protection. This causes lockdep warnings\nwhen running perf probe with unshare(1) under CONFIG_PROVE_RCU_LIST=y:\n\n\tWARNING: suspicious RCU usage\n\tkernel/events/core.c:8168 RCU-list traversed in non-reader section!!\n\n\t Call Trace:\n\t  lockdep_rcu_suspicious\n\t  ? perf_event_addr_filters_apply\n\t  perf_iterate_ctx\n\t  perf_event_exec\n\t  begin_new_exec\n\t  ? load_elf_phdrs\n\t  load_elf_binary\n\t  ? lock_acquire\n\t  ? find_held_lock\n\t  ? bprm_execve\n\t  bprm_execve\n\t  do_execveat_common.isra.0\n\t  __x64_sys_execve\n\t  do_syscall_64\n\t  entry_SYSCALL_64_after_hwframe\n\nThis protection was previously present but was removed in commit\nbd2756811766 (\"perf: Rewrite core context handling\"). Add back the\nnecessary rcu_read_lock()/rcu_read_unlock() pair around\nperf_iterate_ctx() call in perf_event_exec().\n\n[ mingo: Use scoped_guard() as suggested by Peter ]",
   "datePublished": "Mar 27, 2025, 2:57:15 PM",
-  "dateUpdated": "Jul 30, 2026, 5:46:31 AM",
+  "dateUpdated": "Aug 5, 2026, 11:55:10 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f390c2eea571945f357a2d3b9fcb1c015767132e\nhttps://git.kernel.org/stable/c/a2475ccad6120546ea45dbcd6cd1f74dc565ef6b\nhttps://git.kernel.org/stable/c/dd536566dda9a551fc2a2acfab5313a5bb13ed02\nhttps://git.kernel.org/stable/c/0fe8813baf4b2e865d3b2c735ce1a15b86002c74\n",
   "aliases": "CVE-2025-21889\nGHSA-mcf6-fpvv-xxr4\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "06d1fcd7-a690-3cc5-89c6-93d39e6b164a",

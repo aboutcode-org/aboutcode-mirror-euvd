@@ -3,7 +3,7 @@
   "enisaUuid": "d5453278-202b-3152-8950-6f18d5aca604",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau: fix a use-after-free in nouveau_gem_prime_import_sg_table()\n\nnouveau_bo_init() is backed by ttm_bo_init() and ferries its return code\nback to the caller. On failures, ttm will call nouveau_bo_del_ttm() and\nfree the memory.Thus, when nouveau_bo_init() returns an error, the gem\nobject has already been released. Then the call to nouveau_bo_ref() will\nuse the freed \"nvbo->bo\" and lead to a use-after-free bug.\n\nWe should delete the call to nouveau_bo_ref() to avoid the use-after-free.",
   "datePublished": "Oct 1, 2025, 11:45:27 AM",
-  "dateUpdated": "Aug 4, 2026, 9:09:08 AM",
+  "dateUpdated": "Aug 5, 2026, 8:58:51 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

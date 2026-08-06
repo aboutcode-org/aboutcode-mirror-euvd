@@ -3,14 +3,14 @@
   "enisaUuid": "44f3c480-0f88-3662-a6c3-37dc09d3ccb8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nqede: confirm skb is allocated before using\n\nqede_build_skb() assumes build_skb() always works and goes straight\nto skb_reserve(). However, build_skb() can fail under memory pressure.\nThis results in a kernel panic because the skb to reserve is NULL.\n\nAdd a check in case build_skb() failed to allocate and return NULL.\n\nThe NULL return is handled correctly in callers to qede_build_skb().",
   "datePublished": "Feb 26, 2025, 1:54:43 AM",
-  "dateUpdated": "Aug 4, 2026, 9:04:01 AM",
+  "dateUpdated": "Aug 5, 2026, 8:53:47 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/9648adb1b3ece55c657d3a4f52bfee663b710dfe\nhttps://git.kernel.org/stable/c/034a92c6a81048128fc7b18d278d52438a13902a\nhttps://git.kernel.org/stable/c/8928239e5e2e460d95b8a0b89f61671625e7ece0\nhttps://git.kernel.org/stable/c/c9bdce2359b5f4986eb38d1e81865b3586cc20d2\nhttps://git.kernel.org/stable/c/b2d6b3db9d1cf80908964036dbe1c52a86b1afb1\nhttps://git.kernel.org/stable/c/e1fd0c42acfa22bb34d2ab6a111484f466ab8093\nhttps://git.kernel.org/stable/c/4e910dbe36508654a896d5735b318c0b88172570\n",
   "aliases": "GHSA-f6f6-f4j2-hrcf\nCVE-2022-49084\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.64,
   "enisaIdProduct": [
     {
       "id": "0bad756b-e66f-353a-bf10-08cd27e5e71e",

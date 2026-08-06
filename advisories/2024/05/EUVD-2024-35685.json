@@ -3,7 +3,7 @@
   "enisaUuid": "c653aeac-c904-3d19-8589-9a831062e335",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: Fix not validating setsockopt user input\n\nsyzbot reported sco_sock_setsockopt() is copying data without\nchecking user input length.\n\nBUG: KASAN: slab-out-of-bounds in copy_from_sockptr_offset\ninclude/linux/sockptr.h:49 [inline]\nBUG: KASAN: slab-out-of-bounds in copy_from_sockptr\ninclude/linux/sockptr.h:55 [inline]\nBUG: KASAN: slab-out-of-bounds in sco_sock_setsockopt+0xc0b/0xf90\nnet/bluetooth/sco.c:893\nRead of size 4 at addr ffff88805f7b15a3 by task syz-executor.5/12578",
   "datePublished": "May 20, 2024, 9:41:56 AM",
-  "dateUpdated": "Aug 4, 2026, 9:24:12 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:16 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

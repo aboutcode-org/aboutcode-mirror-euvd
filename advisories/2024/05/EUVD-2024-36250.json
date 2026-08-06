@@ -3,7 +3,7 @@
   "enisaUuid": "2ab7fe77-2e22-3381-980e-28dd92e59e58",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpiolib: cdev: fix uninitialised kfifo\n\nIf a line is requested with debounce, and that results in debouncing\nin software, and the line is subsequently reconfigured to enable edge\ndetection then the allocation of the kfifo to contain edge events is\noverlooked.  This results in events being written to and read from an\nuninitialised kfifo.  Read events are returned to userspace.\n\nInitialise the kfifo in the case where the software debounce is\nalready active.",
   "datePublished": "May 30, 2024, 3:29:02 PM",
-  "dateUpdated": "Aug 4, 2026, 9:24:57 AM",
+  "dateUpdated": "Aug 5, 2026, 11:31:54 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

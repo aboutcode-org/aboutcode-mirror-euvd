@@ -3,7 +3,7 @@
   "enisaUuid": "ab694932-b276-3dab-b753-8483c3b2c60b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock: Do not allow binding to VMADDR_PORT_ANY\n\nIt is possible for a vsock to autobind to VMADDR_PORT_ANY. This can\ncause a use-after-free when a connection is made to the bound socket.\nThe socket returned by accept() also has port VMADDR_PORT_ANY but is not\non the list of unbound sockets. Binding it will result in an extra\nrefcount decrement similar to the one fixed in fcdd2242c023 (vsock: Keep\nthe binding until socket destruction).\n\nModify the check in __vsock_bind_connectible() to also prevent binding\nto VMADDR_PORT_ANY.",
   "datePublished": "Aug 22, 2025, 1:01:24 PM",
-  "dateUpdated": "Jul 30, 2026, 5:55:49 AM",
+  "dateUpdated": "Aug 5, 2026, 12:03:33 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

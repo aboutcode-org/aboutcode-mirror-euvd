@@ -3,14 +3,14 @@
   "enisaUuid": "7fc53be5-893d-3dc8-9078-e63074eda900",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrose: fix dangling neighbour pointers in rose_rt_device_down()\n\nThere are two bugs in rose_rt_device_down() that can cause\nuse-after-free:\n\n1. The loop bound `t->count` is modified within the loop, which can\n   cause the loop to terminate early and miss some entries.\n\n2. When removing an entry from the neighbour array, the subsequent entries\n   are moved up to fill the gap, but the loop index `i` is still\n   incremented, causing the next entry to be skipped.\n\nFor example, if a node has three neighbours (A, A, B) with count=3 and A\nis being removed, the second A is not checked.\n\n    i=0: (A, A, B) -> (A, B) with count=2\n          ^ checked\n    i=1: (A, B)    -> (A, B) with count=2\n             ^ checked (B, not A!)\n    i=2: (doesn't occur because i < count is false)\n\nThis leaves the second A in the array with count=2, but the rose_neigh\nstructure has been freed. Code that accesses these entries assumes that\nthe first `count` entries are valid pointers, causing a use-after-free\nwhen it accesses the dangling pointer.\n\nFix both issues by iterating over the array in reverse order with a fixed\nloop bound. This ensures that all entries are examined and that the removal\nof an entry doesn't affect subsequent iterations.",
   "datePublished": "Jul 25, 2025, 12:53:19 PM",
-  "dateUpdated": "Jul 30, 2026, 5:53:15 AM",
+  "dateUpdated": "Aug 5, 2026, 12:01:27 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/94e0918e39039c47ddceb609500817f7266be756\nhttps://git.kernel.org/stable/c/fe62a35fb1f77f494ed534fc69a9043dc5a30ce1\nhttps://git.kernel.org/stable/c/2b952dbb32fef835756f07ff0cd77efbb836dfea\nhttps://git.kernel.org/stable/c/b6b232e16e08c6dc120672b4753392df0d28c1b4\nhttps://git.kernel.org/stable/c/7a1841c9609377e989ec41c16551309ce79c39e4\nhttps://git.kernel.org/stable/c/446ac00b86be1670838e513b643933d78837d8db\nhttps://git.kernel.org/stable/c/2c6c82ee074bfcfd1bc978ec45bfea37703d840a\nhttps://git.kernel.org/stable/c/34a500caf48c47d5171f4aa1f237da39b07c6157\n",
   "aliases": "GHSA-2v78-h87m-hpx9\nCVE-2025-38377\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "02e62877-e7a1-307b-b983-1dcf200c7713",
