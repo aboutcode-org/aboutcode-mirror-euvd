@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-54170",
+  "enisaUuid": "cbe77db1-dc29-3e49-b456-f2e5c8390787",
+  "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards. Prior to versions 3.13.6 and 4.0.2, PHP_CodeSniffer contains a command injection vulnerability in the code that generates the Gitblame, Hgblame, and Svnblame report formats. As a result, running PHP_CodeSniffer over untrusted files, for example in a continuous integration pipeline that scans pull requests, or on a developer machine reviewing third party code, could result in attacker controlled shell commands being executed when the Gitblame, Hgblame, or Svnblame report processes a file whose name contains shell metacharacters. Users using the default Full report, or any of the other non-blame reports, are not affected. Users on a runtime platform which does not allow filenames to contain shell metacharacters, such as \" and ;, are not affected. This issue is fixed in versions 3.13.6 and 4.0.2.",
+  "datePublished": "Aug 6, 2026, 9:31:32 PM",
+  "dateUpdated": "Aug 6, 2026, 9:31:32 PM",
+  "baseScore": 7.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/advisories/GHSA-hmqg-cxww-wqhq\nhttps://github.com/PHPCSStandards/PHP_CodeSniffer/pull/1473\nhttps://github.com/PHPCSStandards/PHP_CodeSniffer/commit/7a3a6bbf153a03fa3a9413afc60bded6b764e76b\nhttps://github.com/PHPCSStandards/PHP_CodeSniffer/commit/f0e1ebb0563f0e5d7f190497a787bcaf8474f3fe\nhttps://github.com/PHPCSStandards/PHP_CodeSniffer/releases/tag/3.13.6\nhttps://github.com/PHPCSStandards/PHP_CodeSniffer/releases/tag/4.0.2\n",
+  "aliases": "CVE-2026-67434\nGHSA-hmqg-cxww-wqhq\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "c7e136c4-936c-3e66-ba59-acf3ee713a4a",
+      "product": {
+        "name": "PHP_CodeSniffer",
+        "vendor": {
+          "name": "PHPCSStandards"
+        }
+      },
+      "product_version": "< 3.13.6"
+    },
+    {
+      "id": "d6cb1514-ef49-3fd8-8c06-269e55529975",
+      "product": {
+        "name": "PHP_CodeSniffer",
+        "vendor": {
+          "name": "PHPCSStandards"
+        }
+      },
+      "product_version": "4.0.0, < 4.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f1ef6099-e5d4-33bd-bc9e-26702380e7d7",
+      "vendor": {
+        "name": "PHPCSStandards"
+      }
+    }
+  ]
+}

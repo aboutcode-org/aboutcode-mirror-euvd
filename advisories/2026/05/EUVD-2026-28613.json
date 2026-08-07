@@ -3,7 +3,7 @@
   "enisaUuid": "7d07b1a3-1b33-3718-aef2-9c647b6da5fb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: strictly check for maximum number of actions\n\nThe maximum number of flowtable hardware offload actions in IPv6 is:\n\n* ethernet mangling (4 payload actions, 2 for each ethernet address)\n* SNAT (4 payload actions)\n* DNAT (4 payload actions)\n* Double VLAN (4 vlan actions, 2 for popping vlan, and 2 for pushing)\n  for QinQ.\n* Redirect (1 action)\n\nWhich makes 17, while the maximum is 16. But act_ct supports for tunnels\nactions too. Note that payload action operates at 32-bit word level, so\nmangling an IPv6 address takes 4 payload actions.\n\nUpdate flow_action_entry_next() calls to check for the maximum number of\nsupported actions.\n\nWhile at it, rise the maximum number of actions per flow from 16 to 24\nso this works fine with IPv6 setups.",
   "datePublished": "May 8, 2026, 1:31:17 PM",
-  "dateUpdated": "Aug 5, 2026, 12:27:15 PM",
+  "dateUpdated": "Aug 6, 2026, 12:08:48 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

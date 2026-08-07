@@ -3,24 +3,34 @@
   "enisaUuid": "d44f0dfb-3c68-3a52-a146-5882b3d37127",
   "description": "`Element.findall()` and fully-consumed `Element.iterfind()` exhibit `O(n^2)` time complexity when using XPath index predicates (e.g. `[1]`, `[last()]`, `[last()-N]`) on XML documents with many same-tag siblings. `Element.find()` is only affected when the first match is near the end\u00a0 of the sibling list, such as with `[last()]` or `[last()-N]`;\u00a0 `.//item[1]` short-circuits after the first match.",
   "datePublished": "Jul 28, 2026, 1:46:30 PM",
-  "dateUpdated": "Aug 5, 2026, 1:26:43 PM",
+  "dateUpdated": "Aug 6, 2026, 12:34:25 AM",
   "baseScore": 2.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
   "references": "https://github.com/python/cpython/pull/152676\nhttps://github.com/python/cpython/issues/152674\nhttps://mail.python.org/archives/list/security-announce@python.org/thread/7YMZ6DDZVR26TJJBVO3RDNBAVGHNYAKR/\nhttps://github.com/python/cpython/commit/2ffab083782968a4d732738f4f1dff6bbd69d2b0\nhttps://github.com/python/cpython/commit/02c08e6b747ac43d0d866a4ffa916bedf3423f81\nhttps://github.com/python/cpython/commit/390337b8ba1658833fdef379e1739c9f9533a8db\nhttps://github.com/python/cpython/commit/cb409342a19f25656f62e679f8bac265fe1442c3\nhttps://github.com/python/cpython/commit/96510a3758f4a075f43223afdee3b6ee1a7a7f02\n",
   "aliases": "CVE-2026-6879\nGHSA-77qw-3xm6-r2pp\n",
   "assigner": "PSF",
-  "epss": 0.29,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
-      "id": "5569c0ef-6885-3db1-88f1-c64295da31a5",
+      "id": "193921ae-4e72-3c7c-a93e-6ae2b8073d38",
       "product": {
         "name": "CPython",
         "vendor": {
           "name": "Python Software Foundation"
         }
       },
-      "product_version": "0 <3.14.7"
+      "product_version": "0 <3.13.15"
+    },
+    {
+      "id": "c38eff0c-4966-3483-9a99-984cddd17271",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.14.0 <3.14.7"
     },
     {
       "id": "eac729dd-ceb1-332b-a494-0d88d95e93f4",
