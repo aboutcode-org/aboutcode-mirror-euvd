@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-54526",
+  "enisaUuid": "97c6e85a-98ab-331b-8042-96f0d93c8155",
+  "description": "go-git is an extensible git implementation library written in pure Go. Prior to 5.19.2 and 6.0.0-alpha.5, worktree operations (including checkout, status, and add) resolve symbolic links inside the working tree without confining resolution to the worktree boundary, so a maliciously crafted repository containing a symlink can cause go-git to read from or write to files outside the intended working directory when the repository is cloned and its worktree operations are used. Versions 5.19.2 and 6.0.0-alpha.5.",
+  "datePublished": "Aug 7, 2026, 4:37:40 PM",
+  "dateUpdated": "Aug 7, 2026, 4:58:19 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:L",
+  "references": "https://github.com/go-git/go-git/security/advisories/GHSA-hc8v-wwc9-vgxm\nhttps://github.com/go-git/go-git/commit/008a78f2dd86f52544ddff8b8e8ddeecdf3f7aab\nhttps://github.com/go-git/go-git/commit/661d1c7f101d34e002a3cfcf8dbea5b7421d07ac\nhttps://github.com/go-git/go-git/releases/tag/v5.19.2\nhttps://github.com/go-git/go-git/releases/tag/v6.0.0-alpha.5\n",
+  "aliases": "GHSA-hc8v-wwc9-vgxm\nCVE-2026-71556\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "52e0735a-b7e3-3b22-8a6b-8fd3e6f0e98c",
+      "product": {
+        "name": "go-git",
+        "vendor": {
+          "name": "go-git"
+        }
+      },
+      "product_version": "6.0.0-alpha.1, < 6.0.0-alpha.5"
+    },
+    {
+      "id": "99304e56-5dfc-3e62-b2c6-562d4aafed59",
+      "product": {
+        "name": "go-git",
+        "vendor": {
+          "name": "go-git"
+        }
+      },
+      "product_version": "< 5.19.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cace4fd3-ce66-3ed2-8bdd-48263cde098a",
+      "vendor": {
+        "name": "go-git"
+      }
+    }
+  ]
+}
