@@ -3,11 +3,11 @@
   "enisaUuid": "d032d422-7979-315a-a665-83940c8c858b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/handshake: Take a long-lived file reference at submit\n\nhandshake_nl_accept_doit() needs the file pointer backing\nreq->hr_sk->sk_socket to survive the window between\nhandshake_req_next() and the subsequent FD_PREPARE() and get_file().\nThe submit-side sock_hold() does not provide that.  sk_refcnt keeps\nstruct sock alive, but struct socket is owned by sock->file: when\nthe consumer fputs the last file reference, sock_release() tears\nthe socket down regardless of any sock_hold.\n\nAdd an hr_file pointer to struct handshake_req and acquire an\nexplicit reference on sock->file during handshake_req_submit().\nhandshake_complete() and handshake_req_cancel() release the\nreference on the completion-bit-winning path.\n\nThe submit error path must also release the file reference, but\nafter rhashtable insertion a concurrent handshake_req_cancel() can\ndiscover the request and race the error path.  Gate the error-path\ncleanup -- sk_destruct restoration, fput, and request destruction\n-- with test_and_set_bit(HANDSHAKE_F_REQ_COMPLETED), the same\nserialization handshake_complete() and handshake_req_cancel()\nalready use.  When cancel has already claimed ownership, the submit\nerror path returns without touching the request; socket teardown\nhandles final destruction.\n\nThe accept-side dereferences are not yet retargeted; that change\ncomes in the next patch.",
   "datePublished": "Jul 25, 2026, 9:20:47 AM",
-  "dateUpdated": "Aug 5, 2026, 12:42:36 PM",
+  "dateUpdated": "Aug 9, 2026, 6:34:58 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/685b10dd0e32c7782cead16c8cf055c609678583\nhttps://git.kernel.org/stable/c/16eaba5aa89c04eea125905bb8f988c1897f4f29\nhttps://git.kernel.org/stable/c/09dba37eee70d0596e26645015f1aa95a9848e9d\n",
+  "references": "https://git.kernel.org/stable/c/685b10dd0e32c7782cead16c8cf055c609678583\nhttps://git.kernel.org/stable/c/b913801ad9b9a51437d84d030ec6843e08976bd6\nhttps://git.kernel.org/stable/c/16eaba5aa89c04eea125905bb8f988c1897f4f29\nhttps://git.kernel.org/stable/c/09dba37eee70d0596e26645015f1aa95a9848e9d\n",
   "aliases": "GHSA-fc48-5g6g-x546\nCVE-2026-64523\n",
   "assigner": "Linux",
   "epss": 0.35,
@@ -43,6 +43,16 @@
       "product_version": "3b3009ea8abb713b022d94fba95ec270cf6e7eae <685b10dd0e32c7782cead16c8cf055c609678583"
     },
     {
+      "id": "2ccfad10-40c0-39f2-9a00-bf097551be3e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3b3009ea8abb713b022d94fba95ec270cf6e7eae <b913801ad9b9a51437d84d030ec6843e08976bd6"
+    },
+    {
       "id": "335a2dfd-2132-3d36-9aca-3e4ef1567ac1",
       "product": {
         "name": "Linux",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "6.4"
+    },
+    {
+      "id": "9db9da48-644f-36de-b1bb-1bb74e2c03fe",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.44"
     },
     {
       "id": "afd82f90-26f5-353c-9141-b898955a6b86",
