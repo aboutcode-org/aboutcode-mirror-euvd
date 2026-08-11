@@ -1,0 +1,16 @@
+{
+  "id": "EUVD-2026-55615",
+  "enisaUuid": "b657cdea-e743-3a25-97ac-d6210285894f",
+  "description": "Jenkins FilePath.untarFrom() in all versions, including those with the CVE-2026-33001 patch applied, validates symlink destinations but not targets. The CVE-2026-33001 fix enforces that the symlink file is created within the workspace boundary, but the symlink target \u2014 the path returned by te.getLinkName() and passed directly to symlinkTo() \u2014 is never validated and may point to any path on the controller filesystem. An attacker with Item/Configure permission can configure a job to extract a malicious .tar or .tar.gz archive via a tool installer or custom build step. When FilePath.untarFrom() processes the archive, it creates symlinks inside the workspace that resolve to arbitrary controller paths. By targeting the entire $JENKINS_HOME/secrets/ directory \u2014 including master.key, hudson.util.Secret, hudson.model.Secrets.xml, and any other files present \u2014 an attacker can exfiltrate all Jenkins cryptographic material through the workspace viewer (GET /job/{name}/ws/) or build artifacts. Combined with credentials.xml and per-user config.xml files, this enables offline AES-128 decryption of all {AQA...}-format credential entries, exposing in plaintext every password, API key, cloud provider secret, and SSH private key stored in the Jenkins credential store \u2014 compromising all downstream systems those credentials protect.",
+  "datePublished": "Aug 10, 2026, 12:07:02 PM",
+  "dateUpdated": "Aug 10, 2026, 6:21:50 PM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
+  "references": "https://www.jenkins.io/security/advisory/2026-03-18/#SECURITY-3657\nhttps://github.com/jenkinsci/jenkins\n",
+  "aliases": "CVE-2026-19429\nGHSA-83x3-qgq9-rfcq\n",
+  "assigner": "TuranSec",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}

@@ -3,14 +3,14 @@
   "enisaUuid": "9867fe32-894e-3175-a253-b08d4616ba9a",
   "description": "A double free issue has been identified in libarchive's RAR5 reader. During parsing of a specially crafted RAR5 archive, the filtered_buf pointer may remain stale after being freed during unpacking state reinitialization. Subsequent processing of another archive entry can trigger a second free of the same memory region, resulting in a double-free condition. Successful exploitation may cause applications using the vulnerable libarchive API to terminate unexpectedly, leading to a denial of service.",
   "datePublished": "Jun 30, 2026, 6:29:23 AM",
-  "dateUpdated": "Jun 30, 2026, 5:09:25 PM",
+  "dateUpdated": "Aug 10, 2026, 9:45:13 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30333\nhttps://access.redhat.com/security/cve/CVE-2026-14164\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2493411\nhttps://github.com/libarchive/libarchive/issues/3069\nhttps://github.com/libarchive/libarchive/pull/3071\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30333\nhttps://access.redhat.com/errata/RHSA-2026:52674\nhttps://access.redhat.com/errata/RHSA-2026:52675\nhttps://access.redhat.com/security/cve/CVE-2026-14164\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2493411\nhttps://github.com/libarchive/libarchive/issues/3069\nhttps://github.com/libarchive/libarchive/pull/3071\n",
   "aliases": "GHSA-xq96-f7x8-gfx3\nCVE-2026-14164\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "4c89f665-cd88-3e5f-989b-e3a6e3612b7f",
@@ -21,6 +21,26 @@
         }
       },
       "product_version": "patch: 3.8.8-2.hum1"
+    },
+    {
+      "id": "9001da1f-8019-36b1-97b3-40facecde3d9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.5.3-11.el9_8"
+    },
+    {
+      "id": "c2a3cec2-26bf-3cde-a1b7-1e8f104444dc",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.7.7-10.el10_2"
     }
   ],
   "enisaIdVendor": [

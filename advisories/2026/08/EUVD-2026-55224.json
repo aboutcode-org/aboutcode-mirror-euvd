@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-55224",
+  "enisaUuid": "4c562aa4-ea9c-3b00-bbb6-59afb5f5c17f",
+  "description": "A NULL pointer dereference vulnerability in fastschema through v0.15.1 allows an unauthenticated remote attacker to crash the server process with a single HTTP request. The sendOTPEmail function in pkg/auth/local.go dereferences a pointer obtained from an unchecked error path without validating it is non-nil, causing a fatal panic that terminates the entire server when a recovery request is sent to the /api/auth/local/recover endpoint.",
+  "datePublished": "Aug 10, 2026, 10:41:21 AM",
+  "dateUpdated": "Aug 10, 2026, 1:17:44 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://github.com/fastschema/fastschema\nhttps://github.com/fastschema/fastschema/blob/main/pkg/auth/local.go\n",
+  "aliases": "CVE-2026-72582\nGHSA-x3w9-j9j5-qcw7\n",
+  "assigner": "TuranSec",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "17fcaf75-69c0-32a1-8e3a-d6fb947797d2",
+      "product": {
+        "name": "fastschema",
+        "vendor": {
+          "name": "fastschema"
+        }
+      },
+      "product_version": "0 \u22640.15.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c59ec100-e72b-31cd-9a4c-4920e4463cee",
+      "vendor": {
+        "name": "fastschema"
+      }
+    }
+  ]
+}
