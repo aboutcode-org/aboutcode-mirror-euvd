@@ -1,16 +1,44 @@
 {
   "id": "EUVD-2026-55615",
   "enisaUuid": "b657cdea-e743-3a25-97ac-d6210285894f",
-  "description": "Jenkins FilePath.untarFrom() in all versions, including those with the CVE-2026-33001 patch applied, validates symlink destinations but not targets. The CVE-2026-33001 fix enforces that the symlink file is created within the workspace boundary, but the symlink target \u2014 the path returned by te.getLinkName() and passed directly to symlinkTo() \u2014 is never validated and may point to any path on the controller filesystem. An attacker with Item/Configure permission can configure a job to extract a malicious .tar or .tar.gz archive via a tool installer or custom build step. When FilePath.untarFrom() processes the archive, it creates symlinks inside the workspace that resolve to arbitrary controller paths. By targeting the entire $JENKINS_HOME/secrets/ directory \u2014 including master.key, hudson.util.Secret, hudson.model.Secrets.xml, and any other files present \u2014 an attacker can exfiltrate all Jenkins cryptographic material through the workspace viewer (GET /job/{name}/ws/) or build artifacts. Combined with credentials.xml and per-user config.xml files, this enables offline AES-128 decryption of all {AQA...}-format credential entries, exposing in plaintext every password, API key, cloud provider secret, and SSH private key stored in the Jenkins credential store \u2014 compromising all downstream systems those credentials protect.",
+  "description": "Jenkins FilePath.untarFrom() does not validate symlink targets in extracted TAR archives, even in versions patched for CVE-2026-33001 and CVE-2026-70427. An authenticated attacker with job configuration privileges can include a malicious archive in a build step that creates workspace symlinks pointing to arbitrary files on the Jenkins controller. By reading the secrets directory, the attacker obtains the cryptographic keys used to sign remember-me cookies, forges a valid administrator session cookie without any admin interaction, and gains access to the Script Console for remote code execution. Jenkins 2.576 is additionally affected by a bypass of the CVE-2026-70427 blank-name check via Unicode zero-width characters (U+200B, U+200C, U+200D, U+2060, U+00AD), which Java's String.isBlank() does not recognize as whitespace.",
   "datePublished": "Aug 10, 2026, 12:07:02 PM",
-  "dateUpdated": "Aug 10, 2026, 6:21:50 PM",
-  "baseScore": 8.1,
+  "dateUpdated": "Aug 11, 2026, 7:23:15 AM",
+  "baseScore": 9.4,
   "baseScoreVersion": "4.0",
-  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N",
-  "references": "https://www.jenkins.io/security/advisory/2026-03-18/#SECURITY-3657\nhttps://github.com/jenkinsci/jenkins\n",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+  "references": "https://www.jenkins.io/security/advisory/2026-03-18/#SECURITY-3657\nhttps://www.jenkins.io/security/advisory/2026-08-05/\nhttps://github.com/jenkinsci/jenkins\n",
   "aliases": "CVE-2026-19429\nGHSA-83x3-qgq9-rfcq\n",
   "assigner": "TuranSec",
   "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "5d85c36e-18de-317c-bab3-1abb8d89e178",
+      "product": {
+        "name": "Jenkins",
+        "vendor": {
+          "name": "Jenkins Project"
+        }
+      },
+      "product_version": "1.0 \u22642.568.2"
+    },
+    {
+      "id": "d641b76e-3315-3d51-8293-23777e9aca4b",
+      "product": {
+        "name": "Jenkins",
+        "vendor": {
+          "name": "Jenkins Project"
+        }
+      },
+      "product_version": "1.0 \u22642.576"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4f1444e2-edfe-37a5-8161-87ac213e2361",
+      "vendor": {
+        "name": "Jenkins Project"
+      }
+    }
+  ]
 }

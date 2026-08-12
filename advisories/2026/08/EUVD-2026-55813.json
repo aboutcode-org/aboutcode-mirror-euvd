@@ -3,14 +3,52 @@
   "enisaUuid": "1915b20d-cace-3525-8e54-e1fb4cdc1cb2",
   "description": "A flaw was found in the Data Science Pipelines Operator (DSPO). A namespace editor can exploit a vulnerability in the spec.database.customExtraParams field, which allows for the injection of dangerous parameters into the MySQL Data Source Name (DSN) string. By manipulating these parameters, an attacker can enable LOCAL INFILE functionality and exfiltrate sensitive files, such as the service account token, from the operator pod. This can lead to privilege escalation, allowing a namespace editor to gain cluster-admin privileges.",
   "datePublished": "Aug 10, 2026, 8:44:33 PM",
-  "dateUpdated": "Aug 10, 2026, 8:44:33 PM",
+  "dateUpdated": "Aug 11, 2026, 6:38:50 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-18617\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510304\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:53261\nhttps://access.redhat.com/errata/RHSA-2026:53262\nhttps://access.redhat.com/errata/RHSA-2026:53263\nhttps://access.redhat.com/security/cve/CVE-2026-18617\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510304\n",
   "aliases": "GHSA-g6qh-932v-chpq\nCVE-2026-18617\n",
   "assigner": "redhat",
   "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "02bc2fc0-ee00-3306-989c-f874a398d949",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1784833428"
+    },
+    {
+      "id": "168c9e4e-e619-33cc-bce2-d695327a721d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1785187936"
+    },
+    {
+      "id": "cf4622bd-7c8b-3b0e-a31a-eba01a4f1f96",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1785189332"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2e3df3ce-76dd-3aaa-81d9-87188cb626bd",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

@@ -3,147 +3,1774 @@
   "enisaUuid": "ada37329-0543-3847-ab6d-e8b257469ad7",
   "description": "A flaw was found in Go. When FIPS mode is enabled on a system, container runtimes may incorrectly handle certain file paths due to improper validation in the containers/common Go library. This flaw allows an attacker to exploit symbolic links and trick the system into mounting sensitive host directories inside a container. This issue also allows attackers to access critical host files, bypassing the intended isolation between containers and the host system.",
   "datePublished": "Oct 1, 2024, 6:52:00 PM",
-  "dateUpdated": "Jan 23, 2026, 5:03:58 PM",
+  "dateUpdated": "Aug 11, 2026, 3:22:33 PM",
   "baseScore": 5.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:L/A:N",
-  "references": "https://nvd.nist.gov/vuln/detail/CVE-2024-9341\nhttps://github.com/containers/common/commit/e7db06585c32e1a782c1d9aa3b71ccd708f5e23f\nhttps://github.com/containers/common/blob/384f77532f67afc8a73d8e0c4adb0d195df57714/pkg/subscriptions/subscriptions.go#L349\nhttps://github.com/containers/common/blob/384f77532f67afc8a73d8e0c4adb0d195df57714/pkg/subscriptions/subscriptions.go#L169\nhttps://github.com/containers/common\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2315691\nhttps://access.redhat.com/security/cve/CVE-2024-9341\nhttps://access.redhat.com/errata/RHSA-2024:9459\nhttps://access.redhat.com/errata/RHSA-2024:9454\nhttps://access.redhat.com/errata/RHSA-2024:8846\nhttps://access.redhat.com/errata/RHSA-2024:8694\nhttps://access.redhat.com/errata/RHSA-2024:8690\nhttps://access.redhat.com/errata/RHSA-2024:8428\nhttps://access.redhat.com/errata/RHSA-2024:8263\nhttps://access.redhat.com/errata/RHSA-2024:8238\nhttps://access.redhat.com/errata/RHSA-2024:8112\nhttps://access.redhat.com/errata/RHSA-2024:8039\nhttps://access.redhat.com/errata/RHSA-2024:7925\nhttps://access.redhat.com/errata/RHSA-2024:10818\nhttps://access.redhat.com/errata/RHSA-2024:10147\n",
+  "references": "https://access.redhat.com/errata/RHSA-2024:10147\nhttps://access.redhat.com/errata/RHSA-2024:10818\nhttps://access.redhat.com/errata/RHSA-2024:6122\nhttps://access.redhat.com/errata/RHSA-2024:7925\nhttps://access.redhat.com/errata/RHSA-2024:8039\nhttps://access.redhat.com/errata/RHSA-2024:8112\nhttps://access.redhat.com/errata/RHSA-2024:8238\nhttps://access.redhat.com/errata/RHSA-2024:8263\nhttps://access.redhat.com/errata/RHSA-2024:8428\nhttps://access.redhat.com/errata/RHSA-2024:8690\nhttps://access.redhat.com/errata/RHSA-2024:8694\nhttps://access.redhat.com/errata/RHSA-2024:8846\nhttps://access.redhat.com/errata/RHSA-2024:9454\nhttps://access.redhat.com/errata/RHSA-2024:9459\nhttps://access.redhat.com/security/cve/CVE-2024-9341\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2315691\nhttps://github.com/containers/common/blob/384f77532f67afc8a73d8e0c4adb0d195df57714/pkg/subscriptions/subscriptions.go#L169\nhttps://github.com/containers/common/blob/384f77532f67afc8a73d8e0c4adb0d195df57714/pkg/subscriptions/subscriptions.go#L349\n",
   "aliases": "GHSA-mc76-5925-c5p6\nCVE-2024-9341\n",
   "assigner": "redhat",
-  "epss": 0.9,
+  "epss": 0.97,
   "enisaIdProduct": [
     {
-      "id": "1070bea6-8a02-3e5e-8d59-d948a7728b2f",
+      "id": "01525256-6402-33a7-a344-66953f9d0d62",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.12"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.25.5-5.rhaos4.12.git53dc492.el9"
+      "product_version": "patch: v4.18.0-202501230001.p0.g7cf7fe2.assembly.stream.el9"
+    },
+    {
+      "id": "07df12f6-73fd-38d6-b5e3-0a8bcafd1210",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502110432.p0.ga5a8299.assembly.stream.el9"
+    },
+    {
+      "id": "08044819-c715-3cfa-acc3-55b6651f4f5b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g391c1b0.assembly.stream.el9"
+    },
+    {
+      "id": "0828d091-f4ce-34a4-b477-287d283a31df",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g987615c.assembly.stream.el9"
+    },
+    {
+      "id": "0cd4cdfd-f3f7-31ec-84cd-b0de38952909",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g5fd8525.assembly.stream.el9"
+    },
+    {
+      "id": "0fc58fd3-652d-3f1c-a24d-560aa136b791",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd17bf3a.assembly.stream.el9"
+    },
+    {
+      "id": "0fd6a59c-1725-35de-86b4-56091e89b4cc",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ga33026b.assembly.stream.el9"
+    },
+    {
+      "id": "0ff77c5e-6e19-328b-8870-aca1004ae091",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g39b37c0.assembly.stream.el9"
+    },
+    {
+      "id": "103b4d4d-449f-39af-9dfa-ee6113b233ef",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gef05fb5.assembly.stream.el9"
+    },
+    {
+      "id": "1216614d-3c50-3cd2-8d6c-18799d2a8caa",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502111035.p0.gf76635f.assembly.stream.el9"
+    },
+    {
+      "id": "13592646-08bf-334a-8ead-ebcf31105a59",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502141933.p0.g8cbca44.assembly.stream.el9"
+    },
+    {
+      "id": "147896f6-9405-3da0-8989-272e2ab19f3f",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g474ad65.assembly.stream.el9"
+    },
+    {
+      "id": "151c4c00-f086-3f90-9cb4-6361820904d3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gcb1abfa.assembly.stream.el9"
+    },
+    {
+      "id": "17abd93e-3b95-3018-9890-cb33f2aab334",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g4e26a69.assembly.stream.el9"
+    },
+    {
+      "id": "184cb36d-ed53-30a6-add2-4742d4a9d938",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041302.p0.g51a74ac.assembly.stream.el9"
+    },
+    {
+      "id": "19480766-0d0e-3994-9532-ec95c3e77921",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g18590a1.assembly.stream.el9"
     },
     {
       "id": "196c3d5d-2bd0-3bf3-82c0-dec610e25820",
       "product": {
-        "name": "Red Hat Enterprise Linux 9"
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 2:1.33.9-1.el9_4"
     },
     {
-      "id": "287eee4d-6d70-359e-930c-47e828c4d69f",
+      "id": "1a6d192e-1d7c-390c-851b-068ccd987686",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.16"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.29.9-5.rhaos4.16.git34690b9.el9"
+      "product_version": "patch: v4.18.0-202502110432.p0.gb707be6.assembly.stream.el9"
+    },
+    {
+      "id": "1a9813f4-c376-3f99-86f5-e04a811f5d83",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gb7efb8c.assembly.stream.el9"
+    },
+    {
+      "id": "1b6d26f7-9b45-3b82-9d36-1733f27b4006",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g5bfc808.assembly.stream.el9"
+    },
+    {
+      "id": "1bcbdd63-7800-33b9-aea5-8e7bcf85f124",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd914e77.assembly.stream.el9"
+    },
+    {
+      "id": "1c6f22d9-4532-3c7a-859f-07d99bc392a1",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g1f7d647.assembly.stream.el9"
+    },
+    {
+      "id": "1f190155-b9b4-31e4-af5d-8f7500628e66",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g5348c85.assembly.stream.el9"
+    },
+    {
+      "id": "204dcc51-bed0-36f5-b566-b269b30f862c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202412170221.p0.ga26fffe.assembly.stream.el9"
+    },
+    {
+      "id": "205b6c2f-56a8-3ad8-8dde-c8da7d43da76",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g07daee4.assembly.stream.el9"
+    },
+    {
+      "id": "207f7295-033e-3374-acc0-d0e889ae6744",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g3f6d1d8.assembly.stream.el9"
+    },
+    {
+      "id": "2515d689-5b62-3640-b050-b545c7f40224",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g700802f.assembly.stream.el9"
+    },
+    {
+      "id": "270c932b-bb03-3ebb-8bbf-b6ce2d448f75",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041632.p0.ge36d365.assembly.stream.el9"
+    },
+    {
+      "id": "28bd01e5-1816-3edb-b4dd-551c439df7c9",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041632.p0.gd1e0195.assembly.stream.el9"
+    },
+    {
+      "id": "2941a562-e901-3455-99ec-e45c15218a28",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gc395190.assembly.stream.el9"
     },
     {
       "id": "297d7dc3-4b31-3c50-bd1b-6588812d07e7",
       "product": {
-        "name": "Red Hat Enterprise Linux 9"
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 2:1.37.5-1.el9_5"
     },
     {
+      "id": "2bf675ad-e732-36e4-90f6-dbecbe9ea352",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd05a6de.assembly.stream.el9"
+    },
+    {
+      "id": "2c43de56-6b67-3778-9531-640a6d533a36",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd664fe2.assembly.stream.el9"
+    },
+    {
+      "id": "2c61ffba-e62b-3554-8331-4c24aa9dc072",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g11ced00.assembly.stream.el9"
+    },
+    {
+      "id": "309e4d11-c9c8-3559-a27d-39f8404bb720",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9506a1f.assembly.stream.el9"
+    },
+    {
+      "id": "31e58849-0006-38b2-a47a-445fa31a0071",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502100934.p0.gc00c7c9.assembly.stream.el9"
+    },
+    {
+      "id": "3347cb5d-fe47-3fcc-bb0f-0cc91172331e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g8be1749.assembly.stream.el9"
+    },
+    {
+      "id": "338fad2c-6dfe-31e1-bc33-f200d2b8f24d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502051931.p0.g74a2477.assembly.stream.el9"
+    },
+    {
+      "id": "34990b65-31e4-34ab-b835-a92101d6ce7b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 418.94.202502100215-0"
+    },
+    {
+      "id": "3504f1b2-9a15-31cb-95ff-65b4c732cc4a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9c24d76.assembly.stream.el9"
+    },
+    {
+      "id": "35344ae5-12d6-3134-9d0a-a297b770152d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041632.p0.g0fac9aa.assembly.stream.el9"
+    },
+    {
+      "id": "37861045-d279-3377-8212-8f3d8658832d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9e2015c.assembly.stream.el9"
+    },
+    {
+      "id": "38769ca7-0575-36ab-92ec-8d85eeadbe0b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501201133.p0.g4674e81.assembly.stream.el9"
+    },
+    {
+      "id": "38f2ce21-bb24-31b3-a86c-20fc8b5248d6",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g59ba356.assembly.stream.el9"
+    },
+    {
+      "id": "3d59e303-0ca8-3ecb-8803-9a8a8cb073a4",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g838d248.assembly.stream.el9"
+    },
+    {
+      "id": "3f7617af-26f9-3489-8e6a-4a120705bfa5",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gc21f5d0.assembly.stream.el9"
+    },
+    {
+      "id": "40072a00-53eb-3403-b301-9a2c46e9c4bd",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gcfcad01.assembly.stream.el9"
+    },
+    {
+      "id": "406464f0-2111-35eb-ac4d-fc96489484de",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501231202.p0.gde85e47.assembly.stream.el9"
+    },
+    {
+      "id": "42119d81-235a-3f4c-b274-41b5f938775e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501272332.p0.g74f285c.assembly.stream.el9"
+    },
+    {
       "id": "438ae247-bd2f-3b93-9608-b7a8b14c6019",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.16"
+        "name": "Red Hat OpenShift Container Platform 4.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.29.9-5.rhaos4.16.git34690b9.el8"
     },
     {
+      "id": "439da35f-a440-3c68-84ee-ee4cdfaa49fb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g914783c.assembly.stream.el9"
+    },
+    {
+      "id": "43dbf903-afbb-3582-a308-ee879de5fc54",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9852f98.assembly.stream.el9"
+    },
+    {
       "id": "44e5643b-93a5-37f0-95a2-b018508427aa",
       "product": {
-        "name": "Red Hat Enterprise Linux 8"
+        "name": "Red Hat Enterprise Linux 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 8100020241023085649.afee755d"
     },
     {
+      "id": "470e8f04-3bea-38af-a3bf-edd055f65621",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g3f4542e.assembly.stream.el9"
+    },
+    {
+      "id": "48c5335a-c995-35f6-a0b9-2adac00a0984",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g088dcaf.assembly.stream.el9"
+    },
+    {
       "id": "496c4300-1118-33ed-a378-5a13b80babc7",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.16"
+        "name": "Red Hat OpenShift Container Platform 4.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 416.94.202411201433-0"
     },
     {
-      "id": "5b646b77-ee76-34ff-9aa1-d3bc8d9cc818",
+      "id": "4b758ccd-cdc8-3b9f-814b-d24600d8063f",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.14"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.27.8-10.rhaos4.14.git807f92c.el9"
+      "product_version": "patch: v4.18.0-202501230001.p0.g6da706d.assembly.stream.el9"
+    },
+    {
+      "id": "504952e5-a0c7-3039-92f9-3cfeaefd3f74",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gf648c78.assembly.stream.el9"
+    },
+    {
+      "id": "51374eea-90db-3a91-8444-53af5ecf39ce",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd44fca5.assembly.stream.el9"
+    },
+    {
+      "id": "5209e282-1b39-3c63-8814-64188f503934",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502110632.p0.g24ccf7a.assembly.stream.el9"
+    },
+    {
+      "id": "5422a43f-7701-3d3b-b477-8cbfdc8f137a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g0feae25.assembly.stream.el9"
+    },
+    {
+      "id": "5517eca5-df5f-34c4-9cbe-7bbe23d9daaa",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502101302.p0.g763313c.assembly.stream.el9"
+    },
+    {
+      "id": "58c2c4d1-6eb1-3115-90f8-aa6aeef98785",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g50d1714.assembly.stream.el9"
+    },
+    {
+      "id": "58f5d258-3606-3812-8bec-d7edd203fd7c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd352778.assembly.stream.el9"
+    },
+    {
+      "id": "5c4e7715-d514-3566-9607-a3880b7b6d49",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502110432.p0.gbd32ac5.assembly.stream.el9"
+    },
+    {
+      "id": "5d747ed4-f48f-34f4-b2b6-b1736e328e89",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g1ede6c3.assembly.stream.el9"
+    },
+    {
+      "id": "5ee1af51-f1c1-302c-9bd5-849389237e94",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502100301.p0.g04c22ee.assembly.stream.el9"
+    },
+    {
+      "id": "620885cf-4c0b-3f8d-8779-10fe6c34622b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ge4c214c.assembly.stream.el9"
+    },
+    {
+      "id": "6369a144-9b8b-3340-83b5-68e666c95116",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd9fe8f3.assembly.stream.el9"
+    },
+    {
+      "id": "64b4b11a-bc62-304c-954f-5329e9f037eb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g020f8b8.assembly.stream.el9"
+    },
+    {
+      "id": "6506204c-0472-33b7-abbb-3a797021bf66",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd4fb1b6.assembly.stream.el9"
+    },
+    {
+      "id": "6769e72f-b7e7-3c4e-a9b2-425137d3c5b5",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g7149f2d.assembly.stream.el9"
+    },
+    {
+      "id": "67cd970d-c0fe-3782-a00d-10aba6a3ea45",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g59a8340.assembly.stream.el9"
+    },
+    {
+      "id": "690c73c5-2bf2-3c33-8a28-f02cda9df04c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g716eb0e.assembly.stream.el9"
     },
     {
       "id": "6c9054bb-23bc-38a1-8d83-d0f759fc6e47",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.14"
+        "name": "Red Hat OpenShift Container Platform 4.14",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.27.8-10.rhaos4.14.git807f92c.el8"
     },
     {
+      "id": "6dd5a8de-b9a3-3819-bc73-cb3cbbd2e60e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502060238.p0.g73d65db.assembly.stream.el9"
+    },
+    {
+      "id": "6effee09-c905-3bd0-93d3-0cd6cb6933ed",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9c2ff5e.assembly.stream.el9"
+    },
+    {
       "id": "70f51f8f-9c25-3795-9673-6d05bbc9ebfd",
       "product": {
-        "name": "Red Hat Enterprise Linux 9"
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 4:4.9.4-13.el9_4"
     },
     {
-      "id": "75f9ec38-0b38-3995-bc7f-2ee4d6d2464a",
+      "id": "73b499a2-50c4-3695-9637-47cb263a6c2e",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.13"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.26.5-26.rhaos4.13.giteb3d487.el9"
+      "product_version": "patch: v4.18.0-202501230001.p0.gf1711cf.assembly.stream.el9"
     },
     {
-      "id": "7b903546-0cd7-3ac7-ac97-93c52b1d7f16",
+      "id": "744b0166-639f-3be3-ad0c-17c554ad5ca9",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.15"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.28.11-5.rhaos4.15.git35a2431.el9"
+      "product_version": "patch: v4.18.0-202502110432.p0.g0c7bed9.assembly.stream.el9"
     },
     {
-      "id": "874a2321-8ec3-33d2-9361-0c75ce089aaa",
+      "id": "775170ad-868d-3f80-b838-147964970814",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.17"
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: 0:1.30.6-3.rhaos4.17.git49b5172.el9"
+      "product_version": "patch: v4.18.0-202501230001.p0.g3385690.assembly.stream.el9"
+    },
+    {
+      "id": "775c21a9-75ce-3d10-b047-3d9f58f1567e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g32e7759.assembly.stream.el9"
+    },
+    {
+      "id": "7949ddcc-00ef-387a-8b93-597c235c118a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502040032.p0.g5348c85.assembly.stream.el9"
+    },
+    {
+      "id": "794a1663-37b3-35b0-993a-83b8c920ec1b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g3646a10.assembly.stream.el9"
+    },
+    {
+      "id": "7b1d17bb-5a04-3d59-89d1-642b349fdc72",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041302.p0.g1ad8f2e.assembly.stream.el9"
+    },
+    {
+      "id": "7b285386-c869-3755-80c4-7911db293dcf",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g5c43fe8.assembly.stream.el9"
+    },
+    {
+      "id": "7be3c0cd-f0c4-320a-8857-7dac0e4844d7",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ge253fa3.assembly.stream.el9"
+    },
+    {
+      "id": "7c1b4e74-a569-3223-b802-f9e89f6f5f24",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501290901.p0.g5a1e906.assembly.stream.el9"
+    },
+    {
+      "id": "7cf41b49-1ee2-3bc1-9877-746d138f3412",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gcb5a929.assembly.stream.el9"
+    },
+    {
+      "id": "7d371041-9eb3-35d6-97a5-b2644ac44e4a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g53c01a7.assembly.stream.el9"
+    },
+    {
+      "id": "7e54990c-41bf-3da0-b37b-5b20a294ad1b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g17ae6fb.assembly.stream.el9"
+    },
+    {
+      "id": "7e70ed15-f504-3c92-a9fa-be3d8a91a81e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g3a97784.assembly.stream.el9"
+    },
+    {
+      "id": "801bb307-5e84-3c72-981b-42dcfcff7dd5",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ga371641.assembly.stream.el9"
+    },
+    {
+      "id": "8247954c-6088-3714-803e-7bce434e3321",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g33a1141.assembly.stream.el9"
+    },
+    {
+      "id": "83d52a16-a4ea-3f4c-83de-b09c56d1c443",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g01d5fbb.assembly.stream.el9"
+    },
+    {
+      "id": "848265dc-a094-36ef-8445-a0bca04c3634",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ga336f0b.assembly.stream.el9"
+    },
+    {
+      "id": "85e9c564-48bc-303a-8e0b-fe137c522600",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502051601.p0.gd5869b2.assembly.stream.el9"
+    },
+    {
+      "id": "8975c7f7-7cd7-35e8-b47d-dc6793665dfc",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502060601.p0.g39b3034.assembly.stream.el9"
+    },
+    {
+      "id": "8bdfb323-d959-35c0-979f-fa4f2d8a5bd3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g208d50c.assembly.stream.el9"
     },
     {
       "id": "8db6466f-9f2f-3a33-84d4-4293047bf0fe",
       "product": {
-        "name": "Red Hat Enterprise Linux 9"
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 4:5.2.2-9.el9_5"
     },
     {
+      "id": "8dc1612a-8cc4-38a8-a00b-32282c6d768c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502071731.p0.g603ad0c.assembly.stream.el9"
+    },
+    {
+      "id": "8e058922-3427-3c74-b1f2-c0bcbbc51387",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g24a6532.assembly.stream.el9"
+    },
+    {
+      "id": "904b40d1-08d2-381c-8c0e-67a1a596dc07",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502050001.p0.g3175f30.assembly.stream.el9"
+    },
+    {
+      "id": "905825ce-26f8-3954-a8e8-f6584a61d155",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g9432fd3.assembly.stream.el9"
+    },
+    {
+      "id": "948d5e77-b852-3c40-a093-de6599296fdb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd36aea3.assembly.stream.el9"
+    },
+    {
+      "id": "9503319e-4034-36b8-9159-022011d83912",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gede3c14.assembly.stream.el9"
+    },
+    {
+      "id": "95e11b2e-2e4d-366f-a20b-1c9ee8fb0f02",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g5c8b715.assembly.stream.el9"
+    },
+    {
+      "id": "990ee5ac-dca3-35a5-b1b7-00bb163a5302",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502040032.p0.ge5a4005.assembly.stream.el9"
+    },
+    {
+      "id": "9a7833dd-b169-359c-b8e9-44b8bf66e50a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g962ccca.assembly.stream.el9"
+    },
+    {
+      "id": "9af7eae3-2134-3e3a-9956-53b7a7fbc60d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g1b2791b.assembly.stream.el9"
+    },
+    {
+      "id": "9b7e264f-7788-3974-a0b4-4f01c53db62e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g376f0ea.assembly.stream.el9"
+    },
+    {
+      "id": "9be7d2c8-3226-3b0b-8c2d-6010a28242e6",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502061801.p0.gb48488a.assembly.stream.el9"
+    },
+    {
+      "id": "a1d3d467-5781-33d3-aa7c-b76095f23a36",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ge905646.assembly.stream.el9"
+    },
+    {
+      "id": "a203f448-80e0-30d2-8b5b-d6e87dc4f922",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041201.p0.g3d9304e.assembly.stream.el9"
+    },
+    {
+      "id": "a42e286d-558b-39be-bd42-fac2fbfd445e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g182471a.assembly.stream.el9"
+    },
+    {
+      "id": "a4dfc010-7479-3eb0-9253-ece7414fe041",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502110632.p0.gbe2ef91.assembly.stream.el9"
+    },
+    {
+      "id": "a591546d-acd4-3660-9c76-be864de03a75",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ge8c7c47.assembly.stream.el9"
+    },
+    {
+      "id": "a6be0464-ab95-3cde-93bd-4f1771d5062a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g14fa4d9.assembly.stream.el9"
+    },
+    {
+      "id": "aafe5253-8b99-319d-9033-27f17caae907",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gaf54f52.assembly.stream.el9"
+    },
+    {
+      "id": "ab2b3714-bcec-3d8f-815f-d734790ea6a3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502040032.p0.gc864494.assembly.stream.el9"
+    },
+    {
+      "id": "ad3ec040-adbb-3388-a2b5-f3d9d4153178",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g00882ba.assembly.stream.el9"
+    },
+    {
       "id": "aed9b4e2-74b7-3f1c-a7be-14ef18949477",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.13"
+        "name": "Red Hat OpenShift Container Platform 4.13",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.26.5-26.rhaos4.13.giteb3d487.el8"
     },
     {
+      "id": "aeeccac9-a59c-394b-86bd-436c6f14a8eb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501281202.p0.g336d783.assembly.stream.el9"
+    },
+    {
+      "id": "af136350-30aa-307e-b2cc-3fd83ace8bbb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501291931.p0.g01fc505.assembly.stream.el9"
+    },
+    {
+      "id": "b2f0b10c-b973-3307-a1aa-c5c818f7a0a3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502111035.p0.g5f6ad07.assembly.stream.el9"
+    },
+    {
       "id": "b4a41cac-9b93-3281-9525-fd7e7d161e5a",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.17"
+        "name": "Red Hat OpenShift Container Platform 4.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.30.6-3.rhaos4.17.git49b5172.el8"
     },
     {
       "id": "b528a9e7-4c7e-39e2-bfcd-af3cb4e3968d",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.17"
+        "name": "Red Hat OpenShift Container Platform 4.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 417.94.202412040832-0"
     },
     {
+      "id": "b533decf-9d1f-3c8c-92d5-ef9247407282",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502100153.p0.g120ba67.assembly.stream.el9"
+    },
+    {
+      "id": "b5f5364c-ab70-3581-8c35-053dd3cf7e9c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041302.p0.g0a6f6eb.assembly.stream.el9"
+    },
+    {
+      "id": "b65c5d53-9af7-3ca4-960b-72a908fe2e7b",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502010001.p0.g061909a.assembly.stream.el9"
+    },
+    {
+      "id": "b712cce2-6676-302a-8638-e8a79de5fd4d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gfeae260.assembly.stream.el9"
+    },
+    {
+      "id": "b7480fcd-6416-35c1-9c30-0bd900188452",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gdfc6c06.assembly.stream.el9"
+    },
+    {
+      "id": "b87b18f1-4aa1-3638-a4f9-d69b20855eef",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gb51cd6b.assembly.stream.el9"
+    },
+    {
       "id": "b8d38e80-f1cd-37b6-b3a2-5963bb021828",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.12"
+        "name": "Red Hat OpenShift Container Platform 4.12",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.25.5-30.rhaos4.12.git53dc492.el8"
     },
     {
+      "id": "ba7ecf01-89f9-3662-bb0f-2ba8a020cc49",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502040032.p0.ga50d4c0.assembly.stream.el9"
+    },
+    {
+      "id": "bb61aec8-b982-32bc-bb14-07879c09e1dc",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502100301.p0.g2e139ed.assembly.stream.el9"
+    },
+    {
+      "id": "bcd04ee2-4169-34f3-83ba-180b8be58356",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gf0a670c.assembly.stream.el9"
+    },
+    {
+      "id": "c0d8cfad-2230-3dd9-9bc6-32a1d77a30df",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502060334.p0.g2575ff4.assembly.stream.el9"
+    },
+    {
+      "id": "c152bf8f-814a-3dba-8df2-e4f09be64027",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g82c7731.assembly.stream.el9"
+    },
+    {
+      "id": "c4141826-c35f-3421-97ea-a54182010a0e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502041632.p0.g6182930.assembly.stream.el9"
+    },
+    {
+      "id": "c549b0a6-3d36-3563-a9a4-5afefc3a848c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gc414d1f.assembly.stream.el9"
+    },
+    {
+      "id": "c6efc617-7d7c-3a32-a3ce-112cc6362422",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502071432.p0.g62f62f7.assembly.stream.el9"
+    },
+    {
       "id": "c928b688-7724-3964-a1c3-74b9f0bfb077",
       "product": {
-        "name": "Red Hat OpenShift Container Platform 4.15"
+        "name": "Red Hat OpenShift Container Platform 4.15",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:1.28.11-5.rhaos4.15.git35a2431.el8"
+    },
+    {
+      "id": "c95c3d8b-7881-3f09-855e-a3f5b8843069",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g6bd77fc.assembly.stream.el9"
+    },
+    {
+      "id": "ca197953-0b75-37b6-aa92-e1e38ff2f849",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g69733b2.assembly.stream.el9"
+    },
+    {
+      "id": "ca7eb62e-a930-3a22-a6b0-14a49a637946",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g8de8eb1.assembly.stream.el9"
+    },
+    {
+      "id": "cb754045-dafa-3d4b-b1c9-42d26e68eab9",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g526498a.assembly.stream.el9"
+    },
+    {
+      "id": "cb834e41-acfd-351e-9d82-1d7e76d323e9",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g53274f1.assembly.stream.el9"
+    },
+    {
+      "id": "cbf6527a-6496-3574-abd9-3d21ad10b808",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g7ec03e9.assembly.stream.el9"
+    },
+    {
+      "id": "cce4ed2a-acff-3ca2-a433-90a7f6291409",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g0e11616.assembly.stream.el9"
+    },
+    {
+      "id": "cda07c55-05b0-3c69-9116-ed31aeb5d214",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202412170221.p0.gcfbae04.assembly.stream.el9"
+    },
+    {
+      "id": "ceafa683-090d-3a7d-bb73-d8382afdf2ce",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gb0f0dc4.assembly.stream.el9"
+    },
+    {
+      "id": "cf93b7d5-177c-3f26-bb2f-a4f4b8882f09",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502052031.p0.gf95a88f.assembly.stream.el9"
+    },
+    {
+      "id": "d0d70172-1024-34d2-8343-75a396dbf610",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gd9fe2d8.assembly.stream.el9"
+    },
+    {
+      "id": "d1b16ed6-3983-396a-8c77-05c640dfda1c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g344c5dc.assembly.stream.el9"
+    },
+    {
+      "id": "d6380229-fa1a-3891-8896-eca87d4d2c72",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.ge513c91.assembly.stream.el9"
+    },
+    {
+      "id": "d895702f-59d7-376f-bc02-3ba5a25fb94a",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gf5b1470.assembly.stream.el9"
+    },
+    {
+      "id": "d8a2f0c3-61d1-3ae8-8634-eb782439139d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gcde5e47.assembly.stream.el9"
+    },
+    {
+      "id": "d8ecceb9-a08c-3235-afb5-61fb55aa2ca2",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gba2234b.assembly.stream.el9"
+    },
+    {
+      "id": "d9883fc6-3eae-3a32-a40d-555ba2b0612e",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g314589c.assembly.stream.el9"
+    },
+    {
+      "id": "da5245a1-67f4-3033-8393-ce05889a8e43",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502051032.p0.gacb9630.assembly.stream.el9"
+    },
+    {
+      "id": "db55e27d-b2df-3cd0-904c-66e61c075684",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g3193a75.assembly.stream.el9"
+    },
+    {
+      "id": "dcaa3060-3740-3e7e-ac67-d9bfe2ca34a3",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502042101.p0.g26f6cb2.assembly.stream.el9"
+    },
+    {
+      "id": "dd3e3f54-56c0-3ab5-90c6-6c687178e6a4",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g7cb8b38.assembly.stream.el9"
+    },
+    {
+      "id": "dd92884e-a97f-36d5-9c41-82933d11c6a6",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g4b34592.assembly.stream.el9"
+    },
+    {
+      "id": "e04af537-77d3-3aa8-8226-36aaf303a5d9",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g85cb407.assembly.stream.el9"
+    },
+    {
+      "id": "e0fc515c-a57e-3d30-9860-145abbaa7768",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.gcca3837.assembly.stream.el9"
+    },
+    {
+      "id": "e4ee6692-2fe3-3dac-bf50-252b919edef1",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502141933.p0.g6d082d8.assembly.stream.el9"
+    },
+    {
+      "id": "ed9907ed-7d1b-3087-b286-6f99e11160a8",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202412200107.p0.g2957f13.assembly.stream.el9"
+    },
+    {
+      "id": "f0977daa-aa82-38f9-b5b9-43c807bf29d5",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502110432.p0.ga50d4c0.assembly.stream.el9"
+    },
+    {
+      "id": "f09a485a-d84c-3c68-ac97-7600b33f280d",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202502051601.p0.g6fe7000.assembly.stream.el9"
+    },
+    {
+      "id": "f4d57a14-d057-39f8-921a-f33986a722c6",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g90891d4.assembly.stream.el9"
+    },
+    {
+      "id": "f5b74f15-aa26-3699-bb4e-f9d0de52e1f0",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501241902.p0.g6cced66.assembly.stream.el9"
+    },
+    {
+      "id": "f8910a67-2b37-3d87-8744-6f90d5935048",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g6ea2356.assembly.stream.el9"
+    },
+    {
+      "id": "fa06e246-35b9-371f-a6e0-25b32e0bdc20",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g1db726a.assembly.stream.el9"
+    },
+    {
+      "id": "fce43177-5e60-336c-9e8d-1661f2435344",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: v4.18.0-202501230001.p0.g0fdb727.assembly.stream.el9"
     }
   ],
   "enisaIdVendor": [

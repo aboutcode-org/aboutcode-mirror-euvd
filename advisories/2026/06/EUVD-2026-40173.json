@@ -3,11 +3,11 @@
   "enisaUuid": "9752cb34-4157-3c53-af8b-32421d31ad42",
   "description": "A flaw was found in p11-kit. The RPC message attribute parsing functions p11_rpc_message_get_attribute() and p11_rpc_message_get_attribute_array_value() form a mutually-recursive call chain with no recursion depth limit when processing nested CKA_WRAP_TEMPLATE, CKA_UNWRAP_TEMPLATE, and CKA_DERIVE_TEMPLATE attributes. An unauthenticated attacker with local access to the p11-kit RPC Unix domain socket can send a specially crafted request with deeply nested template attributes, causing stack exhaustion and crashing the p11-kit server process and its dependent services.",
   "datePublished": "Jun 29, 2026, 6:44:24 PM",
-  "dateUpdated": "Aug 3, 2026, 9:59:20 PM",
+  "dateUpdated": "Aug 11, 2026, 9:31:24 AM",
   "baseScore": 6.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:37469\nhttps://access.redhat.com/errata/RHSA-2026:38342\nhttps://access.redhat.com/errata/RHSA-2026:49667\nhttps://access.redhat.com/errata/RHSA-2026:49668\nhttps://access.redhat.com/security/cve/CVE-2026-13757\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494556\nhttps://github.com/advisories/GHSA-p2wm-69qx-x25w\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:37469\nhttps://access.redhat.com/errata/RHSA-2026:38342\nhttps://access.redhat.com/errata/RHSA-2026:49667\nhttps://access.redhat.com/errata/RHSA-2026:49668\nhttps://access.redhat.com/errata/RHSA-2026:53371\nhttps://access.redhat.com/security/cve/CVE-2026-13757\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494556\nhttps://github.com/advisories/GHSA-p2wm-69qx-x25w\n",
   "aliases": "GHSA-p2wm-69qx-x25w\nCVE-2026-13757\n",
   "assigner": "redhat",
   "epss": 0.14,
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 0.26.4-1.hum1"
+    },
+    {
+      "id": "797c5e8c-aa6c-3288-b89d-faaf3dea7dc1",
+      "product": {
+        "name": "Red Hat Insights proxy 1.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1786433656"
     },
     {
       "id": "e441dcb2-8f23-323d-948f-dff8dfd6c4e7",
