@@ -3,14 +3,32 @@
   "enisaUuid": "f07050a4-a61f-3ddc-ad0e-1f1ae1eccb95",
   "description": "A symlink following vulnerability was found in the ABRT post-create event handler scripts in libreport. Event scripts write output files using shell redirections without the O_NOFOLLOW flag. If the target file is replaced with a symlink, the shell process running as root follows the symlink and writes content to the symlink target, allowing arbitrary file overwrites on the system.",
   "datePublished": "Jun 13, 2026, 2:34:35 AM",
-  "dateUpdated": "Jul 15, 2026, 12:43:38 AM",
+  "dateUpdated": "Aug 12, 2026, 3:18:58 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-54230\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2488568\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:54272\nhttps://access.redhat.com/security/cve/CVE-2026-54230\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2488568\n",
   "aliases": "GHSA-gvjc-4rfj-mxxj\nCVE-2026-54230\n",
   "assigner": "redhat",
   "epss": 0.14,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "12dc1680-98be-355c-90c5-fecefd8076a7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.10.9-26.el8_10"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "35d57ae5-1967-3d98-8b0a-f3d448a33df9",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }
