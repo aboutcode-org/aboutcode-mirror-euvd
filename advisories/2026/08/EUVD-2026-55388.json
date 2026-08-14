@@ -3,12 +3,14 @@
   "enisaUuid": "771e33f6-a30c-3812-962d-fec45cf3133f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrop_monitor: fix size calculations for 64-bit attributes\n\nnet_dm_packet_report_fill() and net_dm_hw_packet_report_fill() use\nnla_put_u64_64bit() to append 64-bit attributes (NET_DM_ATTR_PC and\nNET_DM_ATTR_TIMESTAMP).\n\nOn 32-bit architectures without CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS,\nnla_put_u64_64bit() may append a 4-byte NET_DM_ATTR_PAD attribute for\n64-bit alignment.\n\nHowever, net_dm_packet_report_size() and net_dm_hw_packet_report_size()\nused nla_total_size(sizeof(u64)) instead of nla_total_size_64bit(sizeof(u64)),\nbudgeting 12 bytes instead of up to 16 bytes.\n\nThis under-estimation of SKB size can lead to an skb_over_panic() when\n__nla_reserve() or skb_put() is subsequently called.\n\nFix this by using nla_total_size_64bit(sizeof(u64)) in both size calculations.",
   "datePublished": "Aug 10, 2026, 12:02:20 PM",
-  "dateUpdated": "Aug 10, 2026, 12:02:20 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:42:49 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/4a9e30764e80693bcf875c776170edce20f94fe0\nhttps://git.kernel.org/stable/c/7089f7ab99c89f443c92d8fcc585e63f2727f0b3\n",
   "aliases": "GHSA-mc29-r954-2m26\nCVE-2026-68287\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "8fb8b1ee-7816-39a6-8ff8-9c1ca2ca1626",

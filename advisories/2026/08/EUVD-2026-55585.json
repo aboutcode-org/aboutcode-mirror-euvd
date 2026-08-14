@@ -3,12 +3,14 @@
   "enisaUuid": "c65ae483-0db9-36cb-b293-381f20fd57d4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix UAF in sock clone early bailouts\n\nSimilar to recent commit 9b51a6155d14 (\"bpf,fork: wipe ->bpf_storage\nbefore bailouts that access it\"), sk_clone() performs an initial\nshallow copy of the socket field ->sk_bpf_storage via sock_copy()\nfor the cloned socket newsk.\n\nIf sk_clone() bails out early (e.g. if sk_filter_charge() fails) prior\nto calling bpf_sk_storage_clone(), newsk->sk_bpf_storage still points\nto the parent socket's BPF local storage. When newsk is subsequently\nfreed via sk_free(), the deallocation path (__sk_destruct() ->\nbpf_sk_storage_free()) destroys the parent socket's BPF local storage,\nleading to a use-after-free (UAF) on the parent socket.\n\nFix this by resetting newsk->sk_bpf_storage to NULL immediately after\nsock_copy() in sk_clone(), and remove the now redundant initialization\nfrom bpf_sk_storage_clone().",
   "datePublished": "Aug 10, 2026, 12:04:18 PM",
-  "dateUpdated": "Aug 10, 2026, 12:04:18 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:44:32 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/14b49b5ab29979552c219a09e569b424fbbf4a6e\nhttps://git.kernel.org/stable/c/7cbd0c4cebe4c9f678d15e6b9ba975e1155a107f\n",
   "aliases": "CVE-2026-68399\nGHSA-f9jq-9v6w-22v9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "65f0848c-ec50-338e-88ac-6993b1069cd5",

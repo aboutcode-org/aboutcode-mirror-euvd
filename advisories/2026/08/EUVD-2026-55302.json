@@ -3,12 +3,14 @@
   "enisaUuid": "e09e72f7-8e59-312e-af23-169b1f699f1a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: timer: drain a slave's callback before its master detaches it\n\nsnd_timer_close_locked() drains the closing instance's own in-flight\ncallback (IFLG_CALLBACK) before freeing it, but not its slaves'. When a\nmaster instance is closed, remove_slave_links() clears each slave's\n->timer; the slave's own close then reads timer == NULL and takes the\nbranch that skips the drain entirely (snd_timer_stop_slave() also no-ops\non a NULL timer). So a slave whose callback is still running when the\nmaster is closed is freed underneath the live callback, leading to\nuse-after-free.\n\nDrain the slaves too before remove_slave_links() severs them.\nsnd_timer_stop() has already taken this instance off the active list, so\nno new slave callback can be queued. Take the slaves off the ack list so\na pending one can't fire either, then wait for any that is already in\nflight.",
   "datePublished": "Aug 10, 2026, 12:00:20 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:20 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:41:40 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cd461bcfcdf8d6b6b5365941c1d3859f8bc77aa0\nhttps://git.kernel.org/stable/c/426c0ff1c433d6030610ad4f9375746dfe931caa\nhttps://git.kernel.org/stable/c/2b298997786876b225cff2446e11a0fa6f602f6d\nhttps://git.kernel.org/stable/c/bdefe1346a8e6b8dc8593406dc2617e985fcbcab\n",
   "aliases": "CVE-2026-68201\nGHSA-793q-4mv8-rvwh\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "160f73c5-e2e0-32a0-aad4-6f1abff943db",

@@ -3,7 +3,7 @@
   "enisaUuid": "c5c2270f-d7fa-342f-98cc-a946d17b9713",
   "description": "Use-after-free (UAF) was possible in the `lzma.LZMADecompressor`, `bz2.BZ2Decompressor`, and `gzip.GzipFile` when a memory allocation fails with a `MemoryError` and the decompression instance is re-used. This scenario can be triggered if the process is under memory pressure. The fix cleans up the dangling pointer in this specific error condition.\n\nThe vulnerability is only present if the program re-uses decompressor instances across multiple decompression calls even after a `MemoryError` is raised during decompression. Using the helper functions to one-shot decompress data such as `lzma.decompress()`, `bz2.decompress()`, `gzip.decompress()`, and `zlib.decompress()` are not affected as a new decompressor instance is used per call. If the decompressor instance is not re-used after an error condition, this usage is similarly not vulnerable.",
   "datePublished": "Apr 13, 2026, 5:15:47 PM",
-  "dateUpdated": "Aug 10, 2026, 12:05:45 PM",
+  "dateUpdated": "Aug 13, 2026, 12:27:12 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
@@ -12,6 +12,36 @@
   "assigner": "PSF",
   "epss": 0.58,
   "enisaIdProduct": [
+    {
+      "id": "3716b66e-5ff0-3c74-ae3b-f2f3a633b1f8",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.12.0 <3.12.14"
+    },
+    {
+      "id": "3f0c17b8-2653-3e07-9de9-458e46275313",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.11.0 <3.11.16"
+    },
+    {
+      "id": "6e21b74f-f4b9-3e19-a41c-849475cece66",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "0 <3.10.21"
+    },
     {
       "id": "7dc534dd-0d8c-3789-a805-301f6ae1cf1b",
       "product": {
@@ -33,14 +63,14 @@
       "product_version": "3.15.0a1 <3.15.0b1"
     },
     {
-      "id": "bed8d5b4-4e48-3851-a695-5b46b4559850",
+      "id": "cc8a989d-1086-3eaa-bc45-c3094f415479",
       "product": {
         "name": "CPython",
         "vendor": {
           "name": "Python Software Foundation"
         }
       },
-      "product_version": "0 <3.13.14"
+      "product_version": "3.13.0 <3.13.14"
     }
   ],
   "enisaIdVendor": [

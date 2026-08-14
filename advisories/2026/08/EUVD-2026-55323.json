@@ -3,12 +3,14 @@
   "enisaUuid": "2454619a-bdf2-30c7-93c4-f63c635a4985",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: msi2500: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those buffers via vb2_buffer_done(),\nvb2_start_streaming() fires WARN_ON(owned_by_drv_count) and the queued\nbuffers leak.\n\nmsi2500_start_streaming() had five error paths that all hit this trap\nand were further tangled by ret-overwriting between calls:\n\n  - -ENODEV when the USB device was already disconnected\n  - -ERESTARTSYS when mutex_lock_interruptible() was interrupted\n  - msi2500_set_usb_adc() failure: ret was silently overwritten by\n    the next call (msi2500_isoc_init), so the error was lost entirely\n  - msi2500_isoc_init() failure: cleanup_queued_bufs was called, but\n    the function then fell through to msi2500_ctrl_msg() and again\n    masked the original error by overwriting ret\n  - msi2500_ctrl_msg(CMD_START_STREAMING) failure: no cleanup at all,\n    leaving isoc URBs submitted with no way for the driver to consume\n    them\n\nConsolidate the error paths into a small goto chain.  Every failure\nnow stops the function, drains the queued-buffer list, and returns\nthe real error code.  The ctrl_msg failure path also rolls back the\npreceding msi2500_isoc_init() via msi2500_isoc_cleanup() before\nunlocking and draining.\n\nThe cleanup helper takes a vb2_buffer_state argument so that the\nstart_streaming error paths can pass VB2_BUF_STATE_QUEUED (as\nexpected by userspace on start_streaming failure) while stop_streaming\nkeeps its existing VB2_BUF_STATE_ERROR semantics.\n\nThis mirrors the uvcvideo fix in commit 4cf3b6fd54eb (\"media: uvcvideo:\nReturn queued buffers on start_streaming() failure\").",
   "datePublished": "Aug 10, 2026, 12:00:42 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:42 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:42:04 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1d58229b330b7f67fbfa07e0f2a8a51fbeafaa9a\nhttps://git.kernel.org/stable/c/bab9d5a67d4db96ae8c187b92b37979911302a10\nhttps://git.kernel.org/stable/c/264b5380c4f8aa92dbc2983ecd2b627f1d5e0061\nhttps://git.kernel.org/stable/c/3673cb0a5711e910074d69201da9e1535c03f97a\nhttps://git.kernel.org/stable/c/7201c17786a498497bca57752883b90914d405ac\n",
   "aliases": "CVE-2026-68222\nGHSA-c87f-75wq-m23q\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "36d8c9ec-9f7d-3cae-9148-2a6acee61601",

@@ -3,14 +3,32 @@
   "enisaUuid": "69e3f9ee-4f5f-3487-99ef-e2c2b1bb897b",
   "description": "`openvt -u` is intended to identify the owner of the current VT and then execute `login` as that user from a privileged context. In the documented `kbrequest`/init usage, the ownership test in `authenticate_user()` relies on `stat(\"/proc/<pid>/fd/0\")`. `stat()` on `/proc/<pid>/fd/0` follows the symlink to the underlying TTY device node. As a result, `buf.st_uid` reflects the owner of the TTY node rather than the owner of the process holding the file descriptor. If the TTY owner returns to `root` or the getty owner after logout while an unprivileged process still has `fd 0` attached to that TTY, the check can incorrectly treat that process as belonging to the privileged console owner. Once that check succeeds, the `-u` path executes a passwordless login as the selected user. In the documented `kbrequest`/init deployment using `openvt -us`, this can result in passwordless `login -f root` on the spawned VT. This report establishes that privilege escalation path for that documented deployment; it does not claim equivalent reachability for deployments that do not use `openvt -u` from a privileged `kbrequest`/init path.",
   "datePublished": "Aug 11, 2026, 8:39:24 AM",
-  "dateUpdated": "Aug 11, 2026, 5:51:17 PM",
+  "dateUpdated": "Aug 13, 2026, 10:43:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-72693\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2462115\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:41136\nhttps://access.redhat.com/security/cve/CVE-2026-72693\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2462115\n",
   "aliases": "GHSA-6766-cx7r-c5q6\nCVE-2026-72693\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "ecf8743f-ea3f-3d0f-a37f-14b9e977cde4",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2.10.0-2.hum1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8a062d21-c00e-3beb-a63a-63fbdaaa0fd2",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

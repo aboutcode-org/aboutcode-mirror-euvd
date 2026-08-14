@@ -3,12 +3,14 @@
   "enisaUuid": "209de516-7fb2-3b3c-8e29-b48695f571a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: fix out-of-bounds bitmap_set() with zero-length range\n\nifs_set_range_dirty() and ifs_set_range_uptodate() compute last_blk\nas (off + len - 1) >> i_blkbits.  When off is 0 and len is 0, the\nunsigned subtraction underflows to SIZE_MAX, producing a huge\nlast_blk and nr_blks value that causes bitmap_set() to write far\nbeyond the ifs->state allocation.\n\nRegarding ifs_set_range_uptodate(), it is temporarily safe because len\ncannot be passed in as 0. However, for ifs_set_range_dirty() this is\nreachable from __iomap_write_end(): when copy_folio_from_iter_atomic()\nreturns 0 (e.g. user buffer fault) and the folio is already uptodate,\nthe guard at the top of __iomap_write_end() does not trigger because\n!folio_test_uptodate() is false, and iomap_set_range_dirty() is called\nwith copied == 0.\n\nAdd a !len guard to both functions before the computation, so that a\nzero-length range is a no-op.",
   "datePublished": "Aug 10, 2026, 11:59:09 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:09 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:40:38 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fb4fad9105c88b1d82f1b3c39e3b6abea8249af6\nhttps://git.kernel.org/stable/c/7037e7bdcd26f46c080b8ce307dee5cb471c4b7c\nhttps://git.kernel.org/stable/c/c5b6a48a8a716a7730e39af1cad083dc4ec955ce\nhttps://git.kernel.org/stable/c/9c7d8f7c8994c790fca501dc45ce66e7356cbe05\n",
   "aliases": "CVE-2026-68145\nGHSA-gr2w-phmc-qw83\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "09844724-0fcc-3632-aab6-8ca56a601c4a",

@@ -3,12 +3,14 @@
   "enisaUuid": "ab023fa6-d817-3b11-9507-146c2ceb3ce9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix TIME_WAIT socket reference leak on PSP policy failure\n\nRelease the TIME_WAIT socket reference and jump to discard_it\nupon PSP policy failure in both IPv4 and IPv6 receive paths.\nThis prevents a memory leak of tcp_tw_bucket structures.",
   "datePublished": "Aug 10, 2026, 12:03:57 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:57 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:43:58 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e666af5dcc905ba694745963174d232deb478c55\nhttps://git.kernel.org/stable/c/374742a961becbbfc7fbfd1382d978a05e492741\nhttps://git.kernel.org/stable/c/2c1931a81122c3cdc4c89448fe0442c69e21c0d5\n",
   "aliases": "GHSA-hqwg-h56w-34xh\nCVE-2026-68379\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0435aa23-e045-3b46-a14b-6b52d55c370c",

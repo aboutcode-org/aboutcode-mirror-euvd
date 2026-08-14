@@ -3,12 +3,14 @@
   "enisaUuid": "0957d372-4937-3b40-a5c9-b133b1ae4930",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/guc: Keep scheduler timeline name alive\n\nThe scheduler keeps a pointer to the timeline name, but q->name\nis freed with the exec queue while scheduler fences can still\nreference it.\n\nStore the name in struct xe_guc_exec_queue so it shares\nthe scheduler's RCU-deferred lifetime.\n\n(cherry picked from commit 41075f0eb5dcbd3b065d15f15ef7bbe9315188e8)",
   "datePublished": "Aug 10, 2026, 12:04:02 PM",
-  "dateUpdated": "Aug 10, 2026, 12:04:02 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:44:07 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/77fd62412431e8c80ef2ad61466bc76fe425f80a\nhttps://git.kernel.org/stable/c/299bc6d50b1bed7d1f408391736712f01a0855e2\n",
   "aliases": "GHSA-hf5h-j5wg-pf5g\nCVE-2026-68383\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "05644da5-ee29-37ed-8f02-570ff37837dd",

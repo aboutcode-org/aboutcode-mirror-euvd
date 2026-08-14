@@ -3,12 +3,14 @@
   "enisaUuid": "402dc05c-e998-3655-ad46-f7e66594cc15",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: Fix multiplication overflow in decode_new_up_state_weight()\n\nIf a message of type CEPH_MSG_OSD_MAP contains a (maliciously) corrupted\nosdmap, out-of-bounds memory accesses may occur in\ndecode_new_up_state_weight(). This happens because the bounds check for\nthe new_state part is based on calculating its length depending on a len\nvalue read from the incoming message. This calculation may overflow\nleading to an incorrect bounds check. Subsequently, out-of-bounds reads\nmay occur when decoding this part.\n\nThis patch switches the multiplication to use check_mul_overflow() to\nabort processing the osdmap if an overflow occurred. Therefore,\nosdmaps/messages containing large values for len that result in a\nmultiplication overflow are treated as invalid.\n\n[ idryomov: rename new_state_len -> new_state_item_size, formatting ]",
   "datePublished": "Aug 10, 2026, 11:59:24 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:24 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:41:01 PM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/05c90e059269f087becfcce23348496085835c29\nhttps://git.kernel.org/stable/c/143ba49ead77ec483c0326f8aaad8649874e99c4\nhttps://git.kernel.org/stable/c/1732d89dfcd74f6fde9ce70900d316c4a151c153\nhttps://git.kernel.org/stable/c/bee4b5b53e7bff0467fd916cc44c9b190733c6bd\nhttps://git.kernel.org/stable/c/98917a499ec7064c14fc56d180a4fd636fc2784c\n",
   "aliases": "GHSA-jg8v-h49p-mvhw\nCVE-2026-68158\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "01ad8e24-b873-3118-abe1-0fdac1bf3ca2",

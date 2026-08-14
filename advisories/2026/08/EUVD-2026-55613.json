@@ -3,12 +3,14 @@
   "enisaUuid": "8ffd5dd4-dfc3-3064-9e71-b4f6a218083a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpu: host1x: Fix use-after-free in host1x_bo_clear_cached_mappings\n\n__host1x_bo_unpin() drops the last reference to the mapping and frees\nit, so we can't dereference mapping afterwards. The cache itself\noutlives the mapping, so use the cache local variable instead.",
   "datePublished": "Aug 10, 2026, 12:04:47 PM",
-  "dateUpdated": "Aug 10, 2026, 12:04:47 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:44:58 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/abeff53233b984571b87582bb588b4b38ef4ea50\nhttps://git.kernel.org/stable/c/5b7e5f84d3d4cea10c3764d2da274810a7934228\nhttps://git.kernel.org/stable/c/5f4de3c717d34a24d555af581947742980778c02\nhttps://git.kernel.org/stable/c/b773faa32b0a98c3eb2b50d96de631681e5d1157\nhttps://git.kernel.org/stable/c/266cddf7bd0f6c79b6c0633aef742a22bf70265b\n",
   "aliases": "CVE-2026-68427\nGHSA-8v73-w5j7-p4x2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "216918ba-61c2-3c16-8668-9279772547af",

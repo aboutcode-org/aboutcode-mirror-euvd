@@ -3,12 +3,14 @@
   "enisaUuid": "e13d91d0-d380-38b8-add2-e0d8508eb685",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Delay module ref count for \"enable_event\" trigger\n\nTriggers are now delayed from freeing, but can still be triggered until\nafter the RCU grace period has ended. The freeing of the enable_event data\nis put into the private_data_free() callback, but the put of the module\nrefcount is done immediately.\n\nIt is possible that if a module is removed that has an event that would\nenable (or disable) it is still active, it can read the data of the module\nafter it is removed causing a use-after-free bug.\n\nMove the trace_event_put_ref() that releases the module into the delayed\ncallback so that the module can not be removed until any reference to its\nevents are finished.",
   "datePublished": "Aug 10, 2026, 11:59:48 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:48 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:41:19 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/159fdc3e01dca5fdbc412fcd8b239895733a270d\nhttps://git.kernel.org/stable/c/e091351b38818ef620d27f44f4bfd625f13afbff\n",
   "aliases": "GHSA-h49p-x9p9-q3f3\nCVE-2026-68177\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "101bb705-322f-3867-82a4-4d8cff3d7e05",

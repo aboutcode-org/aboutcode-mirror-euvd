@@ -3,12 +3,14 @@
   "enisaUuid": "2eb06826-967a-333f-837e-39efcd2a59be",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: occ: validate poll response sensor blocks\n\nThe OCC poll response parser walks a counted list of sensor data blocks.\nIt used the static backing-array capacity as the parse boundary, but a\ntransport response makes only data_length bytes current and valid. A\ntruncated response can therefore make the parser consume a block header or\nblock extent outside the current response.\n\nUse data_length as the parent boundary, prove the fixed poll header and\neach current block header before reading them, and prove the complete block\nbefore advancing. Keep parsed sensor metadata local until the complete\nresponse has passed validation, then publish it. Propagate\nmalformed-response errors before publishing the OCC as active.",
   "datePublished": "Aug 10, 2026, 12:03:16 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:16 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:43:32 PM",
+  "baseScore": 7.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/112525534ab5cff482d35897ca4ca11fd3a76f46\nhttps://git.kernel.org/stable/c/54cb78eceb4e286ccd5a5c01a4632157860d47f0\nhttps://git.kernel.org/stable/c/538d862cc0dbd5c732fe26d5aad98eae039e6676\nhttps://git.kernel.org/stable/c/b042e538e98b939fccfffc464e2c34c29f0e96ef\nhttps://git.kernel.org/stable/c/70e76e700fc6c46afb4e17aec099a1ea089b4a22\n",
   "aliases": "CVE-2026-68340\nGHSA-jq56-qr42-62xw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "4475247e-eef9-39be-82d3-227a813aadb9",

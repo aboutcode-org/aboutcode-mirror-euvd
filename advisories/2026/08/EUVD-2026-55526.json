@@ -3,12 +3,14 @@
   "enisaUuid": "6242d130-e94c-3a89-a216-7636a3e4c348",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: slip: serialize receive against buffer reallocation\n\nsl_realloc_bufs() replaces rbuff and updates buffsize while holding\nsl->lock. slip_receive_buf() reads those fields and writes through rbuff\nwithout holding the lock.\n\nAn MTU change can therefore race with receive processing. An MTU shrink\ncan expose the new smaller rbuff with the old larger bound, causing an\nout-of-bounds write. A receive callback which already loaded the old\nrbuff can instead continue writing after that buffer has been freed.\n\nSerialize receive processing with sl_realloc_bufs() by holding sl->lock\nwhile consuming each receive batch.",
   "datePublished": "Aug 10, 2026, 11:59:07 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:07 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:40:34 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/eb3836eab47487823f362e6985e170a1e15f20fd\nhttps://git.kernel.org/stable/c/44401f7dd9940ced7098930ef64f5a332f279fc2\nhttps://git.kernel.org/stable/c/5d07b178bef511d69558cfc89fe1129258dc39f8\nhttps://git.kernel.org/stable/c/0e37bbd6d617eb52bace49390e99eaedc1af73ce\nhttps://git.kernel.org/stable/c/ee7f9bb9320add61f7b367d7e6cd55e3a3a4d65d\n",
   "aliases": "CVE-2026-68143\nGHSA-7xg5-v5hr-7r34\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "003bdb4b-af94-3ca3-8481-715b95942aac",

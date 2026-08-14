@@ -3,12 +3,14 @@
   "enisaUuid": "ecbc6484-0f86-3088-b4a2-1d7c4ba52dab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: BPF: Zero-extend signed ALU32 div/mod results\n\nALU32 operations write a 32-bit result and leave the upper 32 bits of\nthe BPF register zero. The LoongArch JIT sign-extends the result of\nsigned ALU32 BPF_DIV and BPF_MOD (off=1), so a negative 32-bit quotient\nor remainder leaves bits 63:32 set in JITted code while the verifier\nand interpreter model those bits as zero.\n\nKeep sign-extension on the operands, which signed divide needs, and\nzero-extend the ALU32 result after the divide or modulo instruction,\nmatching the unsigned ALU32 div/mod paths and every other ALU32\noperation in this JIT.",
   "datePublished": "Aug 10, 2026, 12:02:28 PM",
-  "dateUpdated": "Aug 10, 2026, 12:02:28 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:42:58 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/716cb29dbed4d62e9e108950a1a82bcba4cc2d45\nhttps://git.kernel.org/stable/c/dacd348b8a993373576fe2ee2d8b114740ba57a6\n",
   "aliases": "CVE-2026-68295\nGHSA-vrqj-mf6p-p2fv\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "690eacfe-47ee-35ea-8d63-56c43f4a336c",

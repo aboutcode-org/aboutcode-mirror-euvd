@@ -3,12 +3,14 @@
   "enisaUuid": "6e40e26a-f6e5-38d8-8588-57fe24710e38",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix context pstate override handling\n\nThere are several problems in the context pstate handling code.\n\nThe most serious ones are potential use-after-free and NULL pointer\ndereferences at context initialization time. Both are due\namdgpu_ctx_init() not holding the adev->pm.stable_pstate_ctx_lock, which\nis otherwise used from both sysfs and the context code itself for\nmodifying and clearing the stored context pointer.\n\nSecond issue is that context fini can trample over the pstate\nconfiguration set via sysfs. This is due the restore state\n(ctx->stable_pstate) being saved at context init time, and not if, or when\nthe context actually changes the pstate. As the context exits it will\ntherefore incorrectly restore to what was set before the sysfs override\nwas requested.\n\nThe simplest fix is to drastically simplify how the state is tracked, by\nclearly defining the points at which pstate ownership is taken and\nreleased, and to handle all transitions under the correct lock.\n\nInstead of at context init time, the previous state is saved only at the\npoint the context overrides the current state, and is restored on context\nexit only if the context is still the owner of the current override state.\n\n(cherry picked from commit 1b5e413713c0a93bc1818394d0ce49aaad21bd27)",
   "datePublished": "Aug 10, 2026, 12:01:48 PM",
-  "dateUpdated": "Aug 10, 2026, 12:01:48 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:42:40 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/23a8726e1d7597fe7c9a59d5dc42ba8b7d345b8a\nhttps://git.kernel.org/stable/c/e06c39cc1c48dca68a5ffd971c23025a52d46634\nhttps://git.kernel.org/stable/c/9f9c88eb298c54348be3ca4087f4f4c615065b87\nhttps://git.kernel.org/stable/c/c1dc4ccb82c9e56325d8e7514ca4c90bd1efb351\n",
   "aliases": "GHSA-vqhc-jp86-9g52\nCVE-2026-68273\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "023f2e4c-041f-36cd-9d1b-2d8d3ff64ca2",

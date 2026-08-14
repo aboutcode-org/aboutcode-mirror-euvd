@@ -3,12 +3,14 @@
   "enisaUuid": "a442b8be-aaf3-364b-a3ee-b80008877988",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: remove debugfs files before client teardown\n\nceph_destroy_client() tears down the monitor client before removing\nthe per-client debugfs files. A concurrent read of the monmap debugfs\nfile can enter monmap_show() after ceph_monc_stop() has freed\nmonc->monmap, triggering a use-after-free.\n\nRemove the debugfs files before stopping the OSD and monitor clients.\ndebugfs_remove() drains active handlers and prevents new accesses, so\nthe debugfs callbacks can no longer race the rest of client teardown.",
   "datePublished": "Aug 10, 2026, 11:59:19 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:19 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 13, 2026, 10:40:50 PM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fc1010e7e0204ece6cc0f9af4f473e9553535eab\nhttps://git.kernel.org/stable/c/d3dc8889d39a676bf840132bd5c5c48cb0daba23\nhttps://git.kernel.org/stable/c/8f5a3abc54ba24dbceb14cc3a719908c4f688091\nhttps://git.kernel.org/stable/c/b9fedda2f628e030384228de0dafc574b7fb0c2f\nhttps://git.kernel.org/stable/c/e4c804726c4afce3ba648b982d564f6af2cfa328\n",
   "aliases": "GHSA-3j44-h3h4-hxhf\nCVE-2026-68153\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03f451ab-4cd9-3d7a-864b-5aaa057481c7",
