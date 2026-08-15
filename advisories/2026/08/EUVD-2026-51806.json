@@ -3,7 +3,7 @@
   "enisaUuid": "b2311a78-2516-34f6-a451-fac65ef14e88",
   "description": "@better-auth/stripe versions >= 1.4.11 and < 1.6.21, and >= 1.7.0-beta.0 and < 1.7.0-beta.10, contain an authorization bypass in organization subscription actions. The middleware validates the organization ID taken from the request query string against the authorizeReference callback, but the handler reads the organization ID only from the request body and falls back to the caller's active organization from their session. When these differ, an authenticated member of multiple organizations can perform subscription actions (cancel, change plan, restore, billing portal access) against an organization they belong to but should not manage, and can access another organization's billing details including payment methods, invoices, and subscription state.",
   "datePublished": "Aug 1, 2026, 12:22:18 PM",
-  "dateUpdated": "Aug 3, 2026, 6:23:06 PM",
+  "dateUpdated": "Aug 14, 2026, 4:50:55 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N",

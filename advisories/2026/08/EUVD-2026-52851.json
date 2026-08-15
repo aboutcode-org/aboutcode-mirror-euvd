@@ -3,14 +3,14 @@
   "enisaUuid": "e1a34494-1d7b-33fb-ad51-f4c8a95bb6a8",
   "description": "SnailJob 1.7.0 contains a denial of service vulnerability in the FuryUtil.deserialize helper that allows authenticated attackers to crash the server by supplying a crafted Zstandard-compressed payload with an inflated frame_content_size field in the frame header. Attackers can store a base64-encoded Zstandard payload declaring an arbitrarily large decompressed size in a retry task argument, causing the JVM to attempt an unbounded array allocation and triggering an unrecoverable java.lang.OutOfMemoryError when the task is dispatched through the retry-task pipeline.",
   "datePublished": "Aug 4, 2026, 5:45:32 PM",
-  "dateUpdated": "Aug 5, 2026, 7:48:28 PM",
+  "dateUpdated": "Aug 14, 2026, 4:51:17 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://gitee.com/aizuda/snail-job/issues/ICRJMI\nhttps://gitee.com/aizuda/snail-job\nhttps://gitee.com/aizuda/snail-job/releases#release-vsj2.0.0\nhttps://www.vulncheck.com/advisories/snailjob-denial-of-service-via-furyutil-deserialize-oom\n",
   "aliases": "CVE-2026-69702\nGHSA-ppxj-mvph-j9w4\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.31,
   "enisaIdProduct": [
     {
       "id": "4c9ff26f-9364-3ba2-8796-1e7cc424f074",

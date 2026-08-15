@@ -3,14 +3,14 @@
   "enisaUuid": "4f273e89-aef8-3889-b15d-64fca7804239",
   "description": "llama.cpp builds b3978 through b9058 contain an integer underflow and out-of-bounds read vulnerability in the DRY sampler that allows unauthenticated attackers to trigger a heap buffer underflow by sending a crafted HTTP request with dry_allowed_length set to INT32_MIN to the /v1/completions or /v1/chat/completions endpoints. Attackers can exploit this vulnerability to crash the server with SIGSEGV causing denial of service for all connected users, or corrupt token sampling probabilities by reading garbage values from memory before the allocated buffer.",
   "datePublished": "Aug 6, 2026, 3:45:52 PM",
-  "dateUpdated": "Aug 7, 2026, 7:04:31 PM",
+  "dateUpdated": "Aug 14, 2026, 4:49:53 PM",
   "baseScore": 8.5,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/Vladimir-tokarev-cyera/llama-cpp-security-patches\nhttps://www.vulncheck.com/advisories/llama-cpp-b3978-b9058-integer-underflow-via-dry-sampler\n",
   "aliases": "GHSA-wvf4-v63v-mwm5\nCVE-2026-43628\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "e8afc48c-ce6d-32a9-a568-7377f8958648",
