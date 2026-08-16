@@ -3,7 +3,7 @@
   "enisaUuid": "8300cf7f-b027-3d57-95c7-b5d19a7e0dd6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix race condition between session lookup and expire\n\n Thread A                        +  Thread B\n ksmbd_session_lookup            |  smb2_sess_setup\n   sess = xa_load                |\n                                 |\n                                 |    xa_erase(&conn->sessions, sess->id);\n                                 |\n                                 |    ksmbd_session_destroy(sess) --> kfree(sess)\n                                 |\n   // UAF!                       |\n   sess->last_active = jiffies   |\n                                 +\n\nThis patch add rwsem to fix race condition between ksmbd_session_lookup\nand ksmbd_expire_session.",
   "datePublished": "Feb 29, 2024, 5:43:12 AM",
-  "dateUpdated": "Aug 5, 2026, 9:10:10 AM",
+  "dateUpdated": "Aug 15, 2026, 12:23:49 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -23,14 +23,44 @@
       "product_version": "patch: 6.1.57"
     },
     {
-      "id": "21acf87f-a1ac-3929-830b-0647a12be45e",
+      "id": "0fe53f05-cdf5-375d-b00d-f0eda28a9891",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 5.15.145"
+      "product_version": "a6a9601ba995d0fec635324cb9fd8d14f9bea14e <c77fd3e25a51ac92b0f1b347a96eff6a0b4f066f"
+    },
+    {
+      "id": "15d1337c-dc49-3a36-b5e3-385b6c7f317f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.2.16 <6.3"
+    },
+    {
+      "id": "1e5b1464-1702-301f-bb24-a11a0fab90de",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6775ee7ef4b37c521aa4cf3730f54554c4875542"
+    },
+    {
+      "id": "2c1cce6a-8844-3bd9-8ae9-3425999471fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "750a2d772e9d9ff377fd32e3b6797bf2cd847a7a"
     },
     {
       "id": "326077e9-5175-3f20-a6aa-770875b95dd0",
@@ -43,54 +73,44 @@
       "product_version": "patch: 6.5.7"
     },
     {
-      "id": "523dd0e1-e41e-3298-a19a-8f6bd63d92d1",
+      "id": "80790d42-b3a4-3967-8112-338c4fde5318",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <18ced78b0ebccc2d16f426143dc56ab3aad666be"
+      "product_version": "6.3.2 <6.4"
     },
     {
-      "id": "6e9c53ea-3c18-3c39-b3fd-7bb73413d14d",
+      "id": "95f95905-c2c4-323e-8850-385a0deb4e54",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "5.15"
+      "product_version": "ea174a91893956450510945a0c5d1a10b5323656 <53ff5cf89142b978b1a5ca8dc4d4425e6a09745f"
     },
     {
-      "id": "ab073ef9-a3a0-32b8-843a-d3e3d6badc15",
+      "id": "aa6af4cc-c10a-3908-9684-bb851e4215db",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <a2ca5fd3dbcc665e1169044fa0c9e3eba779202b"
+      "product_version": "ea174a91893956450510945a0c5d1a10b5323656 <18ced78b0ebccc2d16f426143dc56ab3aad666be"
     },
     {
-      "id": "b75a7c9f-44f7-39e6-97e0-2318697106d9",
+      "id": "d2e36335-e78e-364b-bb95-b96ceaf382bc",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <53ff5cf89142b978b1a5ca8dc4d4425e6a09745f"
-    },
-    {
-      "id": "b9113e08-9f1d-3a37-9927-7f3c3fb21a90",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <c77fd3e25a51ac92b0f1b347a96eff6a0b4f066f"
+      "product_version": "6.1.29 <6.1.57"
     },
     {
       "id": "d8918190-f25c-3cb1-8207-b200fbf60e91",
@@ -111,6 +131,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ed154f8b-51e8-358a-84aa-e750a3855de1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.4"
+    },
+    {
+      "id": "fee26ee5-94ac-3a50-8fe8-d9cf5d6ca779",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1fc8a2b14ef5223f8e0b95faba2ee0a6e4d0f99d <a2ca5fd3dbcc665e1169044fa0c9e3eba779202b"
     }
   ],
   "enisaIdVendor": [

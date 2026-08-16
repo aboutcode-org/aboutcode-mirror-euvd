@@ -3,14 +3,14 @@
   "enisaUuid": "bf775d19-7fad-3a4e-8b58-3f525e6527d0",
   "description": "A flaw was found in the libssh library in versions less than 0.11.2. An out-of-bounds read can be triggered in the sftp_handle function due to an incorrect comparison check that permits the function to access memory beyond the valid handle list and to return an invalid pointer, which is used in further processing. This vulnerability allows an authenticated remote attacker to potentially read unintended memory regions, exposing sensitive information or affect service behavior.",
   "datePublished": "Jun 24, 2025, 2:10:07 PM",
-  "dateUpdated": "Aug 9, 2026, 4:36:09 AM",
+  "dateUpdated": "Aug 15, 2026, 6:36:57 PM",
   "baseScore": 5.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2025:18231\nhttps://access.redhat.com/errata/RHSA-2025:18275\nhttps://access.redhat.com/errata/RHSA-2025:18286\nhttps://access.redhat.com/errata/RHSA-2025:19012\nhttps://access.redhat.com/errata/RHSA-2025:19098\nhttps://access.redhat.com/errata/RHSA-2025:19101\nhttps://access.redhat.com/errata/RHSA-2025:19295\nhttps://access.redhat.com/errata/RHSA-2025:19300\nhttps://access.redhat.com/errata/RHSA-2025:19313\nhttps://access.redhat.com/errata/RHSA-2025:19400\nhttps://access.redhat.com/errata/RHSA-2025:19401\nhttps://access.redhat.com/errata/RHSA-2025:19470\nhttps://access.redhat.com/errata/RHSA-2025:19472\nhttps://access.redhat.com/errata/RHSA-2025:19807\nhttps://access.redhat.com/errata/RHSA-2025:19864\nhttps://access.redhat.com/errata/RHSA-2025:20943\nhttps://access.redhat.com/errata/RHSA-2025:21013\nhttps://access.redhat.com/errata/RHSA-2025:21329\nhttps://access.redhat.com/errata/RHSA-2025:21829\nhttps://access.redhat.com/errata/RHSA-2025:22275\nhttps://access.redhat.com/errata/RHSA-2025:23078\nhttps://access.redhat.com/errata/RHSA-2025:23079\nhttps://access.redhat.com/errata/RHSA-2025:23080\nhttps://access.redhat.com/errata/RHSA-2026:0326\nhttps://access.redhat.com/errata/RHSA-2026:1541\nhttps://access.redhat.com/errata/RHSA-2026:3461\nhttps://access.redhat.com/errata/RHSA-2026:3462\nhttps://access.redhat.com/security/cve/CVE-2025-5318\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2369131\nhttps://www.libssh.org/security/advisories/CVE-2025-5318.txt\n",
   "aliases": "CVE-2025-5318\nGHSA-98qw-prqm-9f4p\n",
   "assigner": "redhat",
-  "epss": 1.49,
+  "epss": 1.54,
   "enisaIdProduct": [
     {
       "id": "03d197bb-6c26-32f8-a281-37ebc5488581",
@@ -63,6 +63,16 @@
       "product_version": "patch: 3.2.2-1765379088"
     },
     {
+      "id": "1eae1c28-8b04-3a48-98fb-0f02c12209f2",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: rhosdt-3.7-1762254552"
+    },
+    {
       "id": "20dc0244-edbd-3fc5-8ee4-67dea77fe736",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.14",
@@ -93,16 +103,6 @@
       "product_version": "patch: 1772160593"
     },
     {
-      "id": "380f34f6-c455-3508-a5c0-7485782cf665",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: rhosdt-3.7-1762254545"
-    },
-    {
       "id": "446157e5-d202-338b-8ce0-d8900e6fe210",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.20",
@@ -113,14 +113,14 @@
       "product_version": "patch: 4.20.9.6.202510290321-0"
     },
     {
-      "id": "471dbd23-b35e-3718-9ca2-d15bc45641ab",
+      "id": "48031975-3389-3e1a-9297-9a5ece0541cc",
       "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
         "vendor": {
           "name": "Red Hat"
         }
       },
-      "product_version": "patch: rhosdt-3.7-1762255881"
+      "product_version": "patch: rhosdt-3.7-1762254530"
     },
     {
       "id": "4ac69ee3-50e5-3fbf-b9c1-9958d64028db",
@@ -133,16 +133,6 @@
       "product_version": "patch: 418.94.202511041748-0"
     },
     {
-      "id": "4b099d4a-9e01-3e16-93aa-77e3223155c2",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: rhosdt-3.7-1762254530"
-    },
-    {
       "id": "4b431b7e-6178-37dd-8177-e2813fe7c31c",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Update Services for SAP Solutions",
@@ -153,6 +143,16 @@
       "product_version": "patch: 0:0.9.6-4.el8_6.1"
     },
     {
+      "id": "5885ba7b-184e-368c-a352-2682d74a154b",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: rhosdt-3.7-1762254546"
+    },
+    {
       "id": "58f98249-03e0-33ca-8738-99cb0a103888",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.16",
@@ -161,16 +161,6 @@
         }
       },
       "product_version": "patch: 416.94.202601071926-0"
-    },
-    {
-      "id": "5fad4a61-12ed-35aa-b5ca-68a9bbd04ad0",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: rhosdt-3.7-1762254546"
     },
     {
       "id": "5ffc28a2-08a2-3777-a29e-da7a7590c357",
@@ -203,14 +193,14 @@
       "product_version": "patch: 0:0.11.1-4.el10_0"
     },
     {
-      "id": "766285a2-053f-38eb-b313-b14b35593073",
+      "id": "6e7a1a77-a92f-3b70-b7ec-baa6b68f12eb",
       "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
         "vendor": {
           "name": "Red Hat"
         }
       },
-      "product_version": "patch: rhosdt-3.7-1762254552"
+      "product_version": "patch: rhosdt-3.7-1762254545"
     },
     {
       "id": "81686bb8-8913-31fc-b7c4-f1b8d2203c30",
@@ -273,6 +263,16 @@
       "product_version": "patch: 0:0.10.4-15.el9_6"
     },
     {
+      "id": "a33fba6b-5259-3ed9-a6a7-2fc063cd27f3",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: rhosdt-3.7-1762254519"
+    },
+    {
       "id": "a8ec5ccf-9abe-3829-a135-af763bd72547",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.13",
@@ -333,16 +333,6 @@
       "product_version": "patch: 0:0.10.4-9.el9_2.1"
     },
     {
-      "id": "de343862-26b7-366b-a7a9-c443096b2486",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.7.1",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: rhosdt-3.7-1762254519"
-    },
-    {
       "id": "e1ebcc7d-bde4-3260-ba77-54cf7907fefd",
       "product": {
         "name": "Red Hat Enterprise Linux 9",
@@ -351,6 +341,16 @@
         }
       },
       "product_version": "patch: 0:0.10.4-15.el9_7"
+    },
+    {
+      "id": "e79bb7ec-fa02-329b-bf27-f39097ebf7ce",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.7.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: rhosdt-3.7-1762255881"
     },
     {
       "id": "f35ca2c4-0ffa-3ba7-b925-02ba6f804cc0",

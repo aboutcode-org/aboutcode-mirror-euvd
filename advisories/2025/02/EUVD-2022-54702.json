@@ -1,0 +1,82 @@
+{
+  "id": "EUVD-2022-54702",
+  "enisaUuid": "4d056ad2-c522-363d-af08-853730ef5bc7",
+  "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: dw9714: Disable the regulator when the driver fails to probe\n\nWhen the driver fails to probe, we will get the following splat:\n\n[   59.305988] ------------[ cut here ]------------\n[   59.306417] WARNING: CPU: 2 PID: 395 at drivers/regulator/core.c:2257 _regulator_put+0x3ec/0x4e0\n[   59.310345] RIP: 0010:_regulator_put+0x3ec/0x4e0\n[   59.318362] Call Trace:\n[   59.318582]  <TASK>\n[   59.318765]  regulator_put+0x1f/0x30\n[   59.319058]  devres_release_group+0x319/0x3d0\n[   59.319420]  i2c_device_probe+0x766/0x940\n\nFix this by disabling the regulator in error handling.",
+  "datePublished": "Feb 26, 2025, 2:13:50 AM",
+  "dateUpdated": "Aug 15, 2026, 12:22:52 PM",
+  "baseScore": 0.0,
+  "references": "https://git.kernel.org/stable/c/fa83ea1de5b3efd87fe01408d5db1fd2ff4767fa\nhttps://git.kernel.org/stable/c/02276e18defa2fccf16413b44440277d98c2b1ea\n",
+  "aliases": "GHSA-3f5c-xpwv-8wgm\nCVE-2022-49528\n",
+  "assigner": "Linux",
+  "epss": 0.22,
+  "enisaIdProduct": [
+    {
+      "id": "2a8169fc-2cac-3b4f-90a2-3304cbeab364",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "932de2cd49943faf03b2c99eaebcd30c402bed0c <02276e18defa2fccf16413b44440277d98c2b1ea"
+    },
+    {
+      "id": "45b6b1a0-1496-3cc7-882f-5ac79fb84c9b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.18.3"
+    },
+    {
+      "id": "65120a6d-275d-3d7a-b30c-75e24dfa522c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "932de2cd49943faf03b2c99eaebcd30c402bed0c <fa83ea1de5b3efd87fe01408d5db1fd2ff4767fa"
+    },
+    {
+      "id": "c403d4e3-0e3d-38f4-bfae-75e4a0dcee38",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.18"
+    },
+    {
+      "id": "f645bb7f-f159-30f2-8228-7432def2a945",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.19"
+    },
+    {
+      "id": "f76194d9-e543-31e8-941e-86dce21b1928",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "baa0f37b-96fe-3df9-8791-7ea2206e63f5",
+      "vendor": {
+        "name": "Linux"
+      }
+    }
+  ]
+}

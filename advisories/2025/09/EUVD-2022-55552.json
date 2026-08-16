@@ -3,7 +3,7 @@
   "enisaUuid": "84347856-fbbb-3920-b779-629b0d949378",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix double release compute pasid\n\nIf kfd_process_device_init_vm returns failure after vm is converted to\ncompute vm and vm->pasid set to compute pasid, KFD will not take\npdd->drm_file reference. As a result, drm close file handler maybe\ncalled to release the compute pasid before KFD process destroy worker to\nrelease the same pasid and set vm->pasid to zero, this generates below\nWARNING backtrace and NULL pointer access.\n\nAdd helper amdgpu_amdkfd_gpuvm_set_vm_pasid and call it at the last step\nof kfd_process_device_init_vm, to ensure vm pasid is the original pasid\nif acquiring vm failed or is the compute pasid with pdd->drm_file\nreference taken to avoid double release same pasid.\n\n amdgpu: Failed to create process VM object\n ida_free called for id=32770 which is not allocated.\n WARNING: CPU: 57 PID: 72542 at ../lib/idr.c:522 ida_free+0x96/0x140\n RIP: 0010:ida_free+0x96/0x140\n Call Trace:\n  amdgpu_pasid_free_delayed+0xe1/0x2a0 [amdgpu]\n  amdgpu_driver_postclose_kms+0x2d8/0x340 [amdgpu]\n  drm_file_free.part.13+0x216/0x270 [drm]\n  drm_close_helper.isra.14+0x60/0x70 [drm]\n  drm_release+0x6e/0xf0 [drm]\n  __fput+0xcc/0x280\n  ____fput+0xe/0x20\n  task_work_run+0x96/0xc0\n  do_exit+0x3d0/0xc10\n\n BUG: kernel NULL pointer dereference, address: 0000000000000000\n RIP: 0010:ida_free+0x76/0x140\n Call Trace:\n  amdgpu_pasid_free_delayed+0xe1/0x2a0 [amdgpu]\n  amdgpu_driver_postclose_kms+0x2d8/0x340 [amdgpu]\n  drm_file_free.part.13+0x216/0x270 [drm]\n  drm_close_helper.isra.14+0x60/0x70 [drm]\n  drm_release+0x6e/0xf0 [drm]\n  __fput+0xcc/0x280\n  ____fput+0xe/0x20\n  task_work_run+0x96/0xc0\n  do_exit+0x3d0/0xc10",
   "datePublished": "Sep 15, 2025, 2:45:58 PM",
-  "dateUpdated": "Aug 5, 2026, 8:58:06 AM",
+  "dateUpdated": "Aug 15, 2026, 12:23:17 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -23,44 +23,24 @@
       "product_version": "patch: 6.1.5"
     },
     {
-      "id": "12febc4c-fbd2-3319-9575-275c1a0e0614",
+      "id": "043446af-a46d-3431-92cf-c507c35cb4f9",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "88f7f88159bcdff96b2a5d244b26c8ba99b5e773 <1a799c4c190ea9f0e81028e3eb3037ed0ab17ff5"
+      "product_version": "4.20"
     },
     {
-      "id": "1c1c6268-9c3f-3d77-9736-eef621eb26a5",
+      "id": "97320256-8ff0-3872-90f8-0295e08bd548",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "5.15"
-    },
-    {
-      "id": "2faa4025-d715-32a3-b139-05f55cdcc759",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "88f7f88159bcdff96b2a5d244b26c8ba99b5e773 <89f0d766c9e3fdeafbed6f855d433c2768cde862"
-    },
-    {
-      "id": "898c8d5a-774a-342a-88fe-c6b21ca889a4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "88f7f88159bcdff96b2a5d244b26c8ba99b5e773 <a02c07b619899179384fde06f951530438a3512d"
+      "product_version": "1685b01a858872075bc258a350153de0c7e95404 <a02c07b619899179384fde06f951530438a3512d"
     },
     {
       "id": "aa004c07-d64b-3030-8c95-f0c41a26fc5d",
@@ -81,6 +61,26 @@
         }
       },
       "product_version": "patch: 6.0.19"
+    },
+    {
+      "id": "c6342463-cd91-3938-87b0-07268d9055fb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1685b01a858872075bc258a350153de0c7e95404 <1a799c4c190ea9f0e81028e3eb3037ed0ab17ff5"
+    },
+    {
+      "id": "dbd8acd1-7bb6-3c02-b0b8-206a2beeab85",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1685b01a858872075bc258a350153de0c7e95404 <89f0d766c9e3fdeafbed6f855d433c2768cde862"
     },
     {
       "id": "e05a157d-33c9-3404-a011-51b4dd2c2429",
