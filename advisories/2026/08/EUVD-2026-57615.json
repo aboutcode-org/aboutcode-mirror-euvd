@@ -3,14 +3,14 @@
   "enisaUuid": "169f1d4a-fdd8-3bde-97c8-20c7042daa58",
   "description": "A symlink following vulnerability was found in KubeVirt's virt-handler migration proxy. During live migration, virt-handler dials Unix sockets inside the target virt-launcher pod via /proc/<pid>/root/ paths using net.Dial() without symlink protection. These socket paths reside in qemu-owned directories writable by the virt-launcher user. An attacker with namespace edit and pods/exec permissions can replace a migration proxy socket with a symlink to the host CRI-O socket. Because virt-handler runs as root in the host mount namespace, absolute symlink targets resolve against the host filesystem, and the bidirectional io.Copy proxy relays attacker-controlled bytes to the container runtime, enabling full node compromise.",
   "datePublished": "Aug 12, 2026, 8:46:15 PM",
-  "dateUpdated": "Aug 14, 2026, 10:01:06 AM",
+  "dateUpdated": "Aug 16, 2026, 1:04:07 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://access.redhat.com/errata/RHEA-2026:53670\nhttps://access.redhat.com/errata/RHSA-2026:51031\nhttps://access.redhat.com/errata/RHSA-2026:53655\nhttps://access.redhat.com/errata/RHSA-2026:53671\nhttps://access.redhat.com/errata/RHSA-2026:53684\nhttps://access.redhat.com/errata/RHSA-2026:53721\nhttps://access.redhat.com/errata/RHSA-2026:53728\nhttps://access.redhat.com/errata/RHSA-2026:53763\nhttps://access.redhat.com/errata/RHSA-2026:53797\nhttps://access.redhat.com/errata/RHSA-2026:53826\nhttps://access.redhat.com/errata/RHSA-2026:53838\nhttps://access.redhat.com/security/cve/CVE-2026-13622\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494142\n",
   "aliases": "CVE-2026-13622\nGHSA-4336-pf6g-hp94\n",
   "assigner": "redhat",
-  "epss": 0.14,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "2f4c60a6-d03a-37e3-8e26-23c98a33227f",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 1786348529"
+    },
+    {
+      "id": "5298b1b4-b604-37de-b597-f8af2d72c559",
+      "product": {
+        "name": "Red Hat Container Native Virtualization 4.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1785831334"
     },
     {
       "id": "5a627dd8-eb9d-3fd7-81f1-67772db5ef9d",
@@ -51,16 +61,6 @@
         }
       },
       "product_version": "patch: 1786309624"
-    },
-    {
-      "id": "7edc84b7-1100-3d93-a79f-8b1e072ac9f6",
-      "product": {
-        "name": "Red Hat Container Native Virtualization 4.20",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1785831334"
     },
     {
       "id": "903b59a6-2b8c-3eaa-bee3-94e45502948f",
