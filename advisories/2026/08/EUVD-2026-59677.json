@@ -3,12 +3,12 @@
   "enisaUuid": "e6dc5813-5f96-38dd-993f-39ae75905321",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: don't let an 'F' entry pin its own instance\n\nAn entry registered with 'F' opens its interpreter at registration time\nand holds that file until the entry is freed. Any entry nobody removes\nby hand only gets closed once the binfmt_misc superblock is shut down.\nIf the interpreter lives on a mount that keeps that superblock alive the\ntwo pin each other:\n\n    binfmt_misc sb -> inode -> entry -> interp_file -> vfsmount -> binfmt_misc sb\n\nTL;DR the file is never closed. Once the mount namespace is gone there\nis nothing left to unregister through either.\n\nThere are two ways to trigger this bug:\n\n- Point the interpreter at the instance itself. Its files are regular\n  files owned by the mounter and both bm_get_inode() and\n  simple_fill_super() leave i_op at empty_iops. So notify_change() falls\n  back to simple_setattr() and chmod +x works. We never set SB_I_NOEXEC\n  and so open_exec() accepts it.\n\n- Use the instance as an overlayfs lower layer. The overlay superblock\n  holds a clone_private_mount() of every layer until it is destroyed and\n  that clone is in no namespace. So umount_tree() never reaches it.\n\nThat's a DoS. And it isn't only the superblock that leaks. It pins the\nuser namespace it was mounted in, so every iteration permanently eats\none of the caller's user namespace charges.\n\nSo let's just do the sane thing. SB_I_NOEXEC makes open_exec() fail on\nthe instance's own files and s_stack_depth makes overlayfs reject the\nlayer before it ever takes a clone. That also covers the ecryptfs and\nfuse passthrough variants. What 'F' promises is unchanged.\n\nThe stable tag is narrower than the Fixes tags on purpose. Before\nsandboxed mounts this needed global root against the single instance\neveryone shares, and the change doesn't apply to those trees anyway.\n\nNote that SB_I_NODEV is implicitly raised for userns mounts but raise it\nexplicitly here as well.",
   "datePublished": "Aug 15, 2026, 12:27:16 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:16 PM",
+  "dateUpdated": "Aug 17, 2026, 5:20:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1cc2decee06acc939337304e9b3f737fd5d8c4bd\nhttps://git.kernel.org/stable/c/4dad8ca637d44d5a6d5c23fa80c9e2e455198c2b\nhttps://git.kernel.org/stable/c/098e92fe0f1bde5af99c8cf504f13f01ef139f85\nhttps://git.kernel.org/stable/c/79055d82772b9584f259b747fe40ff56a076678d\n",
   "aliases": "CVE-2026-74484\nGHSA-649r-6xhp-rm3w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "13af4d2f-78a6-3764-91e1-dae9bcec0a68",
@@ -61,6 +61,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "8a7476bb-1ca9-323c-8b59-49ea199fb488",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "98767490-37e8-3f32-8eb0-f78e1376d775",
       "product": {
         "name": "Linux",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "948b701a607f123df92ed29084413e5dd8cda2ed <1cc2decee06acc939337304e9b3f737fd5d8c4bd"
-    },
-    {
-      "id": "ac7ea063-2c27-3aa4-9ee7-1ecf7a3e19a6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "e8845184-6922-3deb-8a40-37e72d4d7574",

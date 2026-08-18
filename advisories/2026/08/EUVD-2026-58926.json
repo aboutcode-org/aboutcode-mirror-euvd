@@ -3,13 +3,23 @@
   "enisaUuid": "c639986b-5fd4-3ae8-bc30-8d19fb31d88b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: maps: vmu-flash: fix fault in unaligned fixup\n\nUse kzalloc_obj() / kzalloc_objs() to allocate the memcard structs,\ninstead of kmalloc_obj() / kmalloc_objs() to prevent access to\nuninitialized data.\n\nFixes runtime error: Fault in unaligned fixup: 0000 [#1] at\nmtd_get_fact_prot_info.",
   "datePublished": "Aug 15, 2026, 5:53:34 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:34 AM",
+  "dateUpdated": "Aug 17, 2026, 5:09:29 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/01928835d80829e615a492aa66c629b953ec7bef\nhttps://git.kernel.org/stable/c/19360c25135fccb6bbafbee49a5f66baf9a311af\nhttps://git.kernel.org/stable/c/455519f6b70f46ac6cbf41a75ac76ec5e59040f2\nhttps://git.kernel.org/stable/c/79d1661502c6e4b6f626185cef72cf2fa78116e1\n",
   "aliases": "GHSA-24w7-qc46-mvh6\nCVE-2026-72168\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "09eb82bf-3884-30e6-bb11-212280c68fd4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "0c3f38b8-d301-3c99-bd27-6748a77342a0",
       "product": {
@@ -29,16 +39,6 @@
         }
       },
       "product_version": "patch: 6.12.101"
-    },
-    {
-      "id": "53f33de4-5607-3b13-8809-b611849e79ab",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "56305eef-accb-3109-839f-1164442f7f7b",

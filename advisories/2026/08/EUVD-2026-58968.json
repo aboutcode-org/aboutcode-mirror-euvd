@@ -3,22 +3,24 @@
   "enisaUuid": "be8acf20-9285-3e8d-90df-1a19f85d6ab2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: fix off-by-one in mapping pairs decoding bounds checks\n\nIn ntfs_mapping_pairs_decompress(), attr_end points one byte past the\nend of the attribute record:\n\n    attr_end = (u8 *)attr + le32_to_cpu(attr->length);\n\nThe two bounds checks validating that mapping pair data bytes fit within\nthe attribute use strict greater-than (>), which allows a one-byte\nout-of-bounds read when the data extends exactly to attr_end:\n\n  b = *buf & 0xf;\n  if (b) {\n      if (unlikely(buf + b > attr_end))   // off-by-one\n          goto io_error;\n      for (deltaxcn = (s8)buf[b--]; b; b--)\n          deltaxcn = (deltaxcn << 8) + buf[b];\n  }\n\nWhen buf + b == attr_end, the check evaluates to false and buf[b] reads\none byte past the valid attribute boundary. The same pattern appears in\nthe LCN delta bytes check.\n\nFix both checks to use >= so that buf[b] at exactly attr_end is\ncorrectly rejected as out of bounds.",
   "datePublished": "Aug 15, 2026, 5:54:05 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:05 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:41:37 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bfe835e535fe0aa5767fdd8116f62e835ba50b55\nhttps://git.kernel.org/stable/c/18760a74ef7c28df93726445b5595162e62ed341\n",
   "aliases": "CVE-2026-72210\nGHSA-hpv2-jq93-768m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
-      "id": "43402b02-c97e-3bd1-a72e-1d5e8618fe2b",
+      "id": "29ddc4ad-63a6-3a49-83c8-507a59bb2b7e",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "8e1a03e7-732f-3804-b456-10f3a2373c5a",

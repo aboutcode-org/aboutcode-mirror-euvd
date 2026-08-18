@@ -3,7 +3,7 @@
   "enisaUuid": "64367b7d-11c2-3a48-b72d-6b00fdca3c20",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: require source read access for duplicate extents\n\nFSCTL_DUPLICATE_EXTENTS_TO_FILE passes the source file directly to\nvfs_clone_file_range() or vfs_copy_file_range() without checking the SMB\naccess mask granted to the source handle. A handle opened with attribute\naccess can consequently be used to copy file contents into an\nattacker-readable destination.\n\nRequire FILE_READ_DATA on the source handle before either VFS operation,\nmatching other ksmbd data-copy paths.",
   "datePublished": "Jul 25, 2026, 8:50:40 AM",
-  "dateUpdated": "Aug 5, 2026, 12:41:32 PM",
+  "dateUpdated": "Aug 17, 2026, 4:54:49 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -103,6 +103,16 @@
       "product_version": "eb817368f50c1cbe1bd07044124aad7db6330e3a <b0d4d5cb846a1ddb7aaab9adfb5986e4540e6e5f"
     },
     {
+      "id": "b910ecbf-78a9-3e1b-873f-3ecd9f62f1b3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "d14ed3ef-b817-33ed-b466-c385bd9c97c4",
       "product": {
         "name": "Linux",
@@ -121,16 +131,6 @@
         }
       },
       "product_version": "eb817368f50c1cbe1bd07044124aad7db6330e3a <67bdad9cf01b25030e3bf00bbce6c309319d6663"
-    },
-    {
-      "id": "d9ea730e-9422-39b4-94ae-e59189857316",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "da87ffbf-fcde-3911-b4c6-560a90c21207",

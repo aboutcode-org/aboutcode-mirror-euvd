@@ -3,14 +3,14 @@
   "enisaUuid": "75c2de2e-4737-389d-bdd4-4c35a41a30d9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: dummy_hcd: prevent fifo_req reuse during giveback\n\ndummy_hcd embeds a single shared usb_request (dum->fifo_req) that the\n\"emulated single-request FIFO\" fast-path in dummy_queue() reuses for\nsmall IN transfers: it copies the caller's request into it\n(req->req = *_req) and queues it, treating list_empty(&fifo_req.queue)\nas \"the slot is free\".\n\nThe completion side (dummy_timer/transfer/nuke/dummy_dequeue) follows\nthe standard pattern: list_del_init(&req->queue) unlinks the request,\nthen the lock is dropped and usb_gadget_giveback_request() invokes\nreq->complete().  But list_del_init() makes fifo_req.queue look empty\n*before* the completion callback returns, so a concurrent dummy_queue()\non another CPU sees the slot as free, reuses fifo_req and runs\nreq->req = *_req -- overwriting req->complete while dummy_timer is\nmid-calling it.  The indirect call then jumps to a clobbered pointer,\ncausing a general protection fault / page fault in dummy_timer\n(syzkaller extid faf3a6cf579fc65591ca).  The clobbering write is an\nin-bounds memcpy on a live shared object, so KASAN cannot flag it.\n\nAdd a fifo_req_busy bit covering the shared request's whole lifetime:\nset it in dummy_queue() when the FIFO fast-path takes fifo_req (making\nit the fast-path guard, replacing the list_empty(&fifo_req.queue)\ntest), and clear it after the completion callback has returned, via a\ndummy_giveback() helper used at all four gadget-request giveback\nsites.  The shared slot can no longer be reused until its completion\ncallback has finished.",
   "datePublished": "Aug 10, 2026, 12:03:48 PM",
-  "dateUpdated": "Aug 13, 2026, 10:43:47 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e2b2740f1242bc70b5b46da2cdbbaa419f490e59\nhttps://git.kernel.org/stable/c/67b589d09a96882d56842dced5698ed8dd06ce45\nhttps://git.kernel.org/stable/c/e239ea91b48180ed48a86ac25643832a02c88456\nhttps://git.kernel.org/stable/c/e24b33618231034bf01dfaff4fd3409d4b4d5b2e\nhttps://git.kernel.org/stable/c/d5e5cd3654d2b5359a12ea6586120f05b28634ee\n",
   "aliases": "CVE-2026-68370\nGHSA-c79g-9hcr-cr2x\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "1fd2b2d7-b5bc-366a-802e-1e7a8a37e236",
@@ -33,14 +33,14 @@
       "product_version": "2.6.12"
     },
     {
-      "id": "43d6fcbf-5ba9-3436-adaa-fcfdb7781b77",
+      "id": "5108090a-d96c-33c3-a72a-150166a87644",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc5"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "539d5418-465b-3c53-9e8f-a15e1f9ec939",

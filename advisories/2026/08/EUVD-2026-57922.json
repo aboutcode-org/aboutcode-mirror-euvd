@@ -3,14 +3,14 @@
   "enisaUuid": "f2c6f406-9fac-317c-8516-eb389e24db6d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/zcrypt: Fix buffer over-read in cca_cipher2protkey\n\nAdd validation of both the actual key buffer size and token length\nfields in all the cca_check_sec*token() functions. Additionally check\nin cca_gencipherkey() for possible underflow with returned key size.\n\nThe CCA token structures contain user-controlled len fields that\nwere used in operations without proper validation against both the\nactual buffer size and minimum token structure size. An attacker\ncould set this field larger than the actual buffer size, leading to\nreading beyond buffer boundaries. This may result in a kernel crash or\nexposure of memory via sending this as part of a request down to the\ncrypto card. Also an attacker could have used a very small len value\nand thus enforce a buffer under-run which may produce similar effects\nas a over-read.\n\nSo now a key must\n- key buf length must be at least sizeof the token struct\n- the key len field inside the token must fit into the range of\n  sizeof key token struct ... key buf length",
   "datePublished": "Aug 13, 2026, 1:59:56 PM",
-  "dateUpdated": "Aug 13, 2026, 10:45:19 PM",
+  "dateUpdated": "Aug 17, 2026, 5:05:53 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a57fd7fcdb63e2d5ceac78bbe825ec986062a9da\nhttps://git.kernel.org/stable/c/3b2abee2a678607ae27975bc6833785c2002df43\nhttps://git.kernel.org/stable/c/36b230835b8a008266aad22168ca52afacc8a58d\n",
   "aliases": "CVE-2026-68453\nGHSA-fwfm-5245-f8pj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "01e40724-20ad-3384-8149-09852d489d1d",
@@ -53,6 +53,16 @@
       "product_version": "4bc123b18ce6ae6c42c69d0456b5acbd2f7bc8bd <a57fd7fcdb63e2d5ceac78bbe825ec986062a9da"
     },
     {
+      "id": "437f344f-1f70-32e1-ae3f-1a53df7e338e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "5a7c8f5f-ddce-39ed-9a48-4ad7572b6398",
       "product": {
         "name": "Linux",
@@ -71,16 +81,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "88771d8a-fcc2-39fe-aafb-47fee1ac159d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "e8505dbc-421f-3973-a451-690d8065ac38",

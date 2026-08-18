@@ -3,12 +3,14 @@
   "enisaUuid": "a04fbac7-4241-3551-86e4-244375680284",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: bcm: defer rx_op deallocation to workqueue to fix thrtimer UAF\n\nCommit f1b4e32aca08 (\"can: bcm: use call_rcu() instead of costly\nsynchronize_rcu()\") replaced synchronize_rcu() in bcm_delete_rx_op()\nwith call_rcu() and introduced the RX_NO_AUTOTIMER flag.\n\nHowever, this flag check was omitted for thrtimer in the packet rx\nfast-path. During BCM RX operation teardown, a concurrent RCU reader\n(bcm_rx_handler) can race and re-arm thrtimer via\nbcm_rx_update_and_send() after call_rcu() has been scheduled.  Once\nthe RCU grace period elapses, bcm_op is freed.  The subsequently\nfiring thrtimer then dereferences the deallocated op, causing a UAF.\n\nAdding flag checks to the rx fast-path (bcm_rx_update_and_send) does not\nfully close the TOCTOU race and introduces latency for every CAN frame.\nConversely, calling hrtimer_cancel() directly inside the RCU callback\n(softirq context) is fatal as hrtimer_cancel() can sleep, triggering\na \"scheduling while atomic\" panic.\n\nResolve this by deferring the timer cancellation and memory free to a\ndedicated unbound workqueue (bcm_wq).  The RCU callback now queues a\nwork item to bcm_wq, which safely cancels both timers and deallocates\nmemory in sleepable process context.  A dedicated workqueue is used to\nprevent system-wide WQ saturation and is cleanly flushed/destroyed\non module unload to avoid rmmod page faults.\n\nSince the deferred work can now outlive the calling context by an\nunbounded amount, also take a reference on op->sk when it is assigned\nand drop it only once the deferred work has cancelled both timers, so a\nsocket can no longer be freed out from under a still-armed timer whose\ncallback (bcm_send_to_user()) dereferences op->sk.",
   "datePublished": "Aug 15, 2026, 5:53:01 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:01 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:40:36 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3cf4fd5316f449811d8baf1bc6978ef5a7b743a9\nhttps://git.kernel.org/stable/c/4177762f70646ac48a2af382e45a795cbd295198\nhttps://git.kernel.org/stable/c/6fd08e8d826c3aa4cc7021f5f9cdbb7fa7441d3f\nhttps://git.kernel.org/stable/c/cd830e0bc25ee2d38cbfbdbb3cd77c5f53b2b6d5\nhttps://git.kernel.org/stable/c/ce2d4b121fb7545e1ed588e860c8e5fd5ad45224\nhttps://git.kernel.org/stable/c/68973f9db76144825e4f35dfdc80fb8279eb2d57\n",
   "aliases": "CVE-2026-72123\nGHSA-8862-mgcq-cgrw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "044ef1ef-4ac2-3017-9596-b5f4d58ec343",
@@ -211,6 +213,16 @@
       "product_version": "f1b4e32aca0811aa011c76e5d6cf2fa19224b386 <3cf4fd5316f449811d8baf1bc6978ef5a7b743a9"
     },
     {
+      "id": "c6f47291-aa84-3a76-b94a-ddd2d719441d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "da5333dc-51f3-3f82-896d-ca25a8c1a7b9",
       "product": {
         "name": "Linux",
@@ -239,16 +251,6 @@
         }
       },
       "product_version": "5b48f5711f1c630841ab78dcc061de902f0e37bf"
-    },
-    {
-      "id": "fe912da7-ddf7-328c-aa9d-4d65222ea584",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     }
   ],
   "enisaIdVendor": [

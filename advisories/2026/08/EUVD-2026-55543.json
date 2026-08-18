@@ -3,14 +3,14 @@
   "enisaUuid": "e68e75b6-e61d-3a79-a606-f202c7c217aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: guard missing CRUSH type name lookup\n\nLocalized read selection can walk a parent bucket whose name exists in\nthe CRUSH map while its type has no matching entry in type_names.\nget_immediate_parent() then dereferences a NULL type_cn and passes an\ninvalid pointer into strcmp(), causing a null-ptr-deref.\n\nSkip such malformed parent buckets unless both the bucket name and type\nname metadata are present. This keeps malformed hierarchy data from\ncrashing locality lookup and safely falls back to \"not local\".\n\n[ idryomov: add WARN_ON_ONCE ]",
   "datePublished": "Aug 10, 2026, 11:59:23 AM",
-  "dateUpdated": "Aug 13, 2026, 10:40:59 PM",
+  "dateUpdated": "Aug 17, 2026, 4:59:53 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c46d82c47afc968d6ee8ef4470fa2dd35b765c21\nhttps://git.kernel.org/stable/c/3767c9f0c1bbd98dd25cb088356a0fc6c1f09f50\nhttps://git.kernel.org/stable/c/4716a64b7cc2797741f7be4e283ace78a9dff37d\nhttps://git.kernel.org/stable/c/db9cc9fd9660b2d69ee66f5a4cbec83c21a1c64d\nhttps://git.kernel.org/stable/c/bbeae12fda3384a90fbebc8a19ba9d33f85b5361\n",
   "aliases": "GHSA-mr29-956m-24vp\nCVE-2026-68157\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.6,
   "enisaIdProduct": [
     {
       "id": "08994787-1a5f-3559-ae79-9acc79c20080",
@@ -93,6 +93,16 @@
       "product_version": "117d96a04f007ce8fc2e292369056c3bd09f6f63 <bbeae12fda3384a90fbebc8a19ba9d33f85b5361"
     },
     {
+      "id": "7f2df440-8033-3033-8724-ca4cc85b0055",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "a1c81902-36af-3574-a561-d48c3453ca7b",
       "product": {
         "name": "Linux",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "117d96a04f007ce8fc2e292369056c3bd09f6f63 <4716a64b7cc2797741f7be4e283ace78a9dff37d"
-    },
-    {
-      "id": "db423757-1617-3d28-8de8-28bb165a155d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "e3d1da47-2677-3ee9-929f-103c06891328",

@@ -3,12 +3,14 @@
   "enisaUuid": "62158ab8-0f53-30b6-8617-0b306237aa1d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: bcm: add locking when updating filter and timer values\n\nKCSAN detected a simultaneous access to timer values that can be\noverwritten in bcm_rx_setup() when updating timer and filter content\nwhile bcm_rx_handler(), bcm_rx_timeout_handler() or bcm_rx_thr_handler()\nrun concurrently on incoming CAN traffic.\n\nProtect the timer (ival1/ival2/kt_ival1/kt_ival2/kt_lastmsg) and filter\n(nframes/flags/frames/last_frames) updates in bcm_rx_setup() with a new\nper-op bcm_rx_update_lock, taken with the matching scope in the RX\nhandlers. memcpy_from_msg() is staged into a temporary buffer before the\nlock is taken, since it can sleep and must not run under a spinlock.\n\nhrtimer_cancel() is always called without bcm_rx_update_lock held, since\nbcm_rx_timeout_handler()/bcm_rx_thr_handler() take the same lock and a\nrunning callback would otherwise deadlock against the canceller.\n\nAlso close a related race: bcm_rx_setup() cleared the RTR flag in the\nstored reply frame's can_id as a separate, unprotected step after the\nframe content was already installed, so a concurrent bcm_rx_handler()\ncould transmit a stale reply with CAN_RTR_FLAG still set. Fold that\nnormalization into the initial frame preparation instead (on the staged\nbuffer for updates, directly on op->frames pre-registration for new\nops), so the installed frame is always atomically self-consistent.\n\nbcm_rx_handler()'s RX_RTR_FRAME check now takes a lock-protected\nsnapshot of op->flags before deciding whether to call bcm_can_tx(),\nbut does not hold the lock across that call.\n\nAlso take a lock-protected snapshot of the currframe in bcm_can_tx()\nto avoid partly overwrites by content updates in bcm_tx_setup().\nFinally check if a TX_RESET_MULTI_IDX/SETTIMER might have reset\nop->currframe between the two locked sections in bcm_can_tx().\n\nOmit calling hrtimer_forward() with zero interval in bcm_rx_thr_handler().\nkt_ival2 may have been concurrently cleared by bcm_rx_setup() before it\ncancels this timer, so check kt_ival2 inside the bcm_rx_update_lock.",
   "datePublished": "Aug 15, 2026, 5:52:59 AM",
-  "dateUpdated": "Aug 15, 2026, 5:52:59 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:40:34 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a7eb6db1cd3f7b556a301dc1265945ad112089f7\nhttps://git.kernel.org/stable/c/834cbca3b12e46887f7a9b35f1981a888360ea4c\nhttps://git.kernel.org/stable/c/19b1994069dd29478ba767de1f98f14a088198dc\nhttps://git.kernel.org/stable/c/fc9f5ee1b073bd233d9c604e338af4ebb42cbc33\nhttps://git.kernel.org/stable/c/749179c2e25b95d22499ed29096b3e02d6dfd2b4\n",
   "aliases": "CVE-2026-72121\nGHSA-85wx-h4w2-c465\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "00431c7e-c3b1-316c-ba04-911a9000c539",
@@ -141,16 +143,6 @@
       "product_version": "2a437b86ac5a9893c902f30ef66815bf13587bf6"
     },
     {
-      "id": "7d25e2bf-ff3b-3a2e-9859-b37afd4748e6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
-    },
-    {
       "id": "834207b2-4e92-3d3a-b989-a7f4907c5691",
       "product": {
         "name": "Linux",
@@ -189,6 +181,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "d3d1f6e9-22c7-39ce-99be-6b9e27489a81",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d583a575-d75b-3e9d-98ae-fc5bf24c7b4d",

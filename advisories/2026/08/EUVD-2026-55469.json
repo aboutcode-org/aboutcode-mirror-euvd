@@ -3,12 +3,12 @@
   "enisaUuid": "b78e602a-9d4c-3b8f-8d69-e91cae02a25f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ncm: validate datagram bounds in ncm_unwrap_ntb()\n\nWhen unpacking host-supplied NTBs, ncm_unwrap_ntb() checks datagram length\nagainst frame_max but does not verify that the datagram fits within the\ndeclared block length. Additionally, when decoding multiple NTBs from a\nsingle socket buffer, subsequent block lengths are not checked against the\nactual remaining buffer data.\n\nWith these checks missing, a malicious USB host can specify datagram\noffsets and lengths that point beyond the block, or supply secondary NTB\nheaders declaring lengths larger than the buffer. skb_put_data() then\ncopies adjacent kernel memory from skb_shared_info into the network skb.\n\nFix this by verifying that sufficient buffer space remains for the NTB\nheader before parsing, handling zero-length block declarations, ensuring\nthat block lengths never exceed the remaining buffer space, and verifying\nthat each datagram payload stays strictly within the block boundary.",
   "datePublished": "Aug 10, 2026, 12:03:45 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:45 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:13 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e07751d0527ccc2a1c32eb0b0b7da3b4b9b5381f\nhttps://git.kernel.org/stable/c/fff1059d139ef798bab917990524faaf25854ca8\nhttps://git.kernel.org/stable/c/40c706a0224bde194667e3378c689b542fec4b44\nhttps://git.kernel.org/stable/c/41fd5f2fb0027d3773ae949e3247c2e0a2a7fe5c\nhttps://git.kernel.org/stable/c/1febec7e47cdcd01f43fb0211094e3010474666e\n",
   "aliases": "GHSA-jmw8-f562-3f2g\nCVE-2026-68368\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "00f46b41-d8a6-352f-8a4d-5f1a90acfd3d",
@@ -181,6 +181,16 @@
       "product_version": "ae6a5394d9fbe118bc95cfe376d6a9d91d7547e8"
     },
     {
+      "id": "991d3be1-6bd8-3ab7-a7ff-27811962badf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "a82dbfa8-c90a-306a-a680-89973a8dee65",
       "product": {
         "name": "Linux",
@@ -229,16 +239,6 @@
         }
       },
       "product_version": "4.14.196 <4.15"
-    },
-    {
-      "id": "c4ab683a-0a55-32d6-abcc-8d40941058ef",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "ddef5d92-32ac-3f2c-bfd5-8107020da5b7",

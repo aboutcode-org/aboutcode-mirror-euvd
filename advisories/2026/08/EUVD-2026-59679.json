@@ -3,12 +3,12 @@
   "enisaUuid": "055e858a-b1bc-3cf5-8337-663bf8e19520",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: use exe_file_deny_write_access() for the interpreter clone\n\nFor MISC_FMT_OPEN_FILE entries load_misc_binary() clones the\nregistered interpreter file and denies write access to the clone via\nplain deny_write_access(). The clone is installed as\nbprm->interpreter and later released by the exec machinery through\nexe_file_allow_write_access() which skips the i_writecount increment\nfor files with FMODE_FSNOTIFY_HSM set.\n\nThe deny and allow side can therefore come to different conclusions\nwhen pre-content watches are in play: if a pre-content watch is added\nto the interpreter after registration every subsequent exec through\nthat entry takes a write denial on the clone that is never paired\nwith a write allowance, driving the interpreter inode's i_writecount\nfurther down with each exec and leaving the interpreter unwritable\neven after the entry and all its users are gone.\n\nTake the write denial via exe_file_deny_write_access() so both sides\nof the pairing base their decision on the same file mode, and\npropagate failure instead of silently ignoring it: an interpreter\nthat is concurrently open for writing now fails the exec with\nETXTBSY, exactly like an interpreter freshly opened via open_exec()\nwould.",
   "datePublished": "Aug 15, 2026, 12:27:17 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:17 PM",
+  "dateUpdated": "Aug 17, 2026, 5:20:19 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/255a758697da87a205e072e0cfc35897b8f743b1\nhttps://git.kernel.org/stable/c/f0edbaf487e4653a680a7abb91c1df94cb7886aa\nhttps://git.kernel.org/stable/c/fa5990ca8fd917003e526036bcc50413edb9722c\n",
   "aliases": "CVE-2026-74486\nGHSA-jmvv-89q4-p2wr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "12c9ed15-e138-3336-8b5b-2f32ae6d8107",
@@ -71,14 +71,14 @@
       "product_version": "0357ef03c94ef835bd44a0658b8edb672a9dbf51 <f0edbaf487e4653a680a7abb91c1df94cb7886aa"
     },
     {
-      "id": "c203080f-2f94-3906-8a85-9016d3276332",
+      "id": "b6ae4d48-1baa-3e23-90ad-4cc2f8cb7711",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc6"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f92d870b-01b5-309b-ad54-217980bab8bb",

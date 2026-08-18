@@ -3,12 +3,12 @@
   "enisaUuid": "698fa3d3-2bb4-373e-8c31-129ebb0f135f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/gntdev: fix error handling in ioctl\n\nWhen gntdev_ioctl_map_grant_ref() fails to copy the operation result\nback to userspace after successfully adding the mapping to the list,\nthe error path returns -EFAULT without releasing the reference\nacquired by gntdev_alloc_map(). The mapping remains in priv->maps\nwith a refcount of 1, causing a memory leak and a dangling list\nentry.\n\nAdditionally, gntdev_add_map() may modify map->index to avoid overlap\nwith existing mappings. Therefore, the index returned to userspace\nmust be obtained after gntdev_add_map() completes.\n\nFix this by holding the mutex across gntdev_add_map(), retrieving\nthe correct index, and copy_to_user(). If copy_to_user() fails,\nremove the mapping from the list and release the reference while\nstill holding the lock.\n\n\nFix these issues by properly handling all error cases.",
   "datePublished": "Aug 15, 2026, 5:53:12 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:12 AM",
+  "dateUpdated": "Aug 17, 2026, 5:08:56 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/52dc40ef0cfee6ae89b7524967e73f0ba37906d7\nhttps://git.kernel.org/stable/c/1dd9cb98fe228e017fff9efb33862ff38c741b65\nhttps://git.kernel.org/stable/c/6df926130aee6cab9b5d2e5b7862e49ccac348dc\nhttps://git.kernel.org/stable/c/311011f8cc206c5af2877b03e3f627ee1b8fe024\nhttps://git.kernel.org/stable/c/18a693733f7ad004e1ab0466693121ca70cd95dd\nhttps://git.kernel.org/stable/c/16d3ccdabb8dee9be2cdcd6d3f9a125572ec0454\nhttps://git.kernel.org/stable/c/6883269a323609f68f6faa903f8f8ff3d191cec8\nhttps://git.kernel.org/stable/c/45ca1afe2fd14c04e37227e79d3f8455831d8408\n",
   "aliases": "GHSA-2fp3-4qp4-w8m7\nCVE-2026-72138\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "025041f5-a2d1-304a-b654-88b93b873c74",
@@ -49,16 +49,6 @@
         }
       },
       "product_version": "patch: 6.12.97"
-    },
-    {
-      "id": "20b21490-2324-313f-847b-6727aad72267",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc2"
     },
     {
       "id": "459587dd-da85-3409-9847-e49a7a150519",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "patch: 5.15.212"
+    },
+    {
+      "id": "de586e7c-49f2-38d4-9ae4-7fa02ccdddc2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "e839592d-b737-3dd9-8061-0022761df188",

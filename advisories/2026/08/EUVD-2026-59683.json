@@ -3,13 +3,25 @@
   "enisaUuid": "c90de217-3628-30bb-937b-adea91132835",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: avoid use-after-free in poll trace queue dumps\n\nTIPC socket tracepoints dump queue state through tipc_sk_dump(). Most\nqueue-dump callsites already serialize that walk under the socket lock or\nsk->sk_lock.slock, but tipc_poll() calls trace_tipc_sk_poll(...,\nTIPC_DUMP_ALL, ...) without holding either lock.\n\nThat lets the poll trace path reach tipc_list_dump() and backlog head/tail\ndumping while another context dequeues and frees an skb, leaving the trace\nhelper dereferencing a stale queue entry.\n\nStop the unlocked poll trace site from requesting queue dumps. Other queue\ndump trace callsites keep their existing output under the locking they\nalready provide, while poll still emits the event itself without walking\nlive queue members from an unlocked context.",
   "datePublished": "Aug 15, 2026, 12:27:20 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:20 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:47:47 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d7940bb6a8e7ab28f972c2875cb05783216312dc\nhttps://git.kernel.org/stable/c/5e82beba4bc1f91d0e64c9c43f2b2fa9cd1c2a7d\nhttps://git.kernel.org/stable/c/bed792737b5f1ba773054dbe984502958bdfe6ce\nhttps://git.kernel.org/stable/c/ac2f787980fdf4364cd5651a4c8128e59b8de3aa\nhttps://git.kernel.org/stable/c/b4f1719dfea023220e0e6bd892b087d76b2a6a49\n",
   "aliases": "GHSA-5445-w6x8-6hfq\nCVE-2026-74490\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "0244bbf9-8adb-39bc-b40f-984bbc71cb59",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "105bc417-560e-3d97-98bb-b4b2aeae3c93",
       "product": {
@@ -39,16 +51,6 @@
         }
       },
       "product_version": "b4b9771bcbbd5839b0f77aba55e2f85989ed6779 <b4f1719dfea023220e0e6bd892b087d76b2a6a49"
-    },
-    {
-      "id": "43b45092-c83b-36c9-a7ac-251602ecb797",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "60cd6726-6829-3347-bd63-4de408df33d5",

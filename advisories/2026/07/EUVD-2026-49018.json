@@ -3,12 +3,12 @@
   "enisaUuid": "75bfa8e5-7ed5-3e32-9bce-69fc346b0b84",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: drbg - Fix returning success on failure in CTR_DRBG\n\ndrbg_ctr_generate() sometimes returns success when it fails, leaving the\noutput buffer uninitialized.  Fix it.",
   "datePublished": "Jul 25, 2026, 8:49:40 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:40 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:05 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/074db6db03a0aaa78f05ca9d4838053713796665\nhttps://git.kernel.org/stable/c/7b03312491f9fe6ba4d60c4023e7e61d2d1fed96\nhttps://git.kernel.org/stable/c/75597e8774f319152744d24e0683d9393540a951\nhttps://git.kernel.org/stable/c/cc42fb40171c249bb859071d81b4eb007398a0bc\nhttps://git.kernel.org/stable/c/bbbac12083eff489b35d848332f0dff311131344\nhttps://git.kernel.org/stable/c/23b8b188cb32e5531d0f8d3af9506f8959cb369e\nhttps://git.kernel.org/stable/c/a9e886f73dd717027028bb7e3bbca93601ecdfc7\nhttps://git.kernel.org/stable/c/39a31ad9e2a5ed7e9c9c6f711dca96c8c8f5f26b\n",
   "aliases": "GHSA-9h5h-wjm4-4jqg\nCVE-2026-64306\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1be1ca62-806d-3d2a-be2f-e4fa54047e0f",
@@ -101,16 +101,6 @@
       "product_version": "cde001e4c3c3625c60b68a83eb1f1c2572dee07a <a9e886f73dd717027028bb7e3bbca93601ecdfc7"
     },
     {
-      "id": "93b34899-ab16-3dd7-9442-2e10332f6c87",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "9f40dbff-581e-311c-a21d-a59ccde12d8e",
       "product": {
         "name": "Linux",
@@ -159,6 +149,16 @@
         }
       },
       "product_version": "patch: 6.18.39"
+    },
+    {
+      "id": "cc0ae7a7-7ba2-3603-85e7-8d4b56d762c3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "ce4ef28a-7d33-3192-b04a-c3e28721e0d4",

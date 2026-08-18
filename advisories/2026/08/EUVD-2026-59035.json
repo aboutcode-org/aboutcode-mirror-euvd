@@ -3,13 +3,23 @@
   "enisaUuid": "5c3feb02-db28-317f-874e-0a2a33f77e8e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - fix firmware leak in async update\n\nThe firmware object was not being released if validation failed.\nUse __free(firmware) to ensure the firmware is always released.",
   "datePublished": "Aug 15, 2026, 5:52:27 AM",
-  "dateUpdated": "Aug 15, 2026, 5:52:27 AM",
+  "dateUpdated": "Aug 17, 2026, 5:07:45 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a5dd47ea3904dedb1ae7a5fe0e6b44a458f0c5ec\nhttps://git.kernel.org/stable/c/1f7bdfbe791aacad77db87f044e78ef60a93ae0d\nhttps://git.kernel.org/stable/c/99c428d7ef644d3e394f3072f905040c16dab18d\nhttps://git.kernel.org/stable/c/47a9889a9325b87698b6d6eaf3187a9af6e4773d\nhttps://git.kernel.org/stable/c/d48795b5cd6828d36b707e8d62fc9e5c90e004ab\n",
   "aliases": "CVE-2026-72077\nGHSA-h3wj-cv4f-364h\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "00c76912-15ea-3f11-ba23-8e650f639b1d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "3b0ce0ee-c9ad-38a2-8192-3144037eefb5",
       "product": {
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "patch: 6.12.97"
-    },
-    {
-      "id": "953338c1-7ab4-33f0-ba54-edc2aafb7766",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "9810eef3-bd3f-3f9c-b882-40b63227dcb5",

@@ -3,12 +3,12 @@
   "enisaUuid": "417b5b22-b9f1-3656-9d20-2d7e1b25154b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pwc: Drain fill_buf on start_streaming() failure\n\npwc_isoc_init() submits its isochronous URBs with\nusb_submit_urb(.., GFP_KERNEL) in a loop. After the first URB is\nsubmitted, its completion handler pwc_isoc_handler() can run on another\nCPU before the loop finishes:\n\n  start_streaming()\n    pwc_isoc_init()\n      usb_submit_urb(urbs[0], GFP_KERNEL)\n                                  pwc_isoc_handler(urbs[0])\n                                    pdev->fill_buf =\n                                      pwc_get_next_fill_buf(pdev)\n      usb_submit_urb(urbs[i>0], ..)  -> fails\n      pwc_isoc_cleanup(pdev)           /* kills URBs */\n      return ret;\n    pwc_cleanup_queued_bufs(pdev, VB2_BUF_STATE_QUEUED)\n\npwc_get_next_fill_buf() detaches a buffer from pdev->queued_bufs and\nstores it in pdev->fill_buf. The error path in start_streaming() only\ndrains pdev->queued_bufs, so the buffer parked in pdev->fill_buf is\nleaked. vb2_start_streaming() then triggers\nWARN_ON(owned_by_drv_count).\n\nstop_streaming() already handles this since commit 80b0963e1698\n(\"[media] pwc: fix WARN_ON\"), which added the fill_buf drain in the\nteardown path but not in the start_streaming() error path. Mirror that\nhandling on failure so start_streaming() returns with no buffer owned\nby the driver.\n\nIssue identified by automated review of the INV-003 series at\nhttps://sashiko.dev/",
   "datePublished": "Aug 10, 2026, 12:00:36 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:36 PM",
+  "dateUpdated": "Aug 17, 2026, 5:01:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a56e7641e09bd80b976e944ae759109b86fd5b38\nhttps://git.kernel.org/stable/c/acc789b2173070638cad89c2b61d33ed338be0dd\nhttps://git.kernel.org/stable/c/9afd605dcd96c7a45f338eded1de16679b30e1df\nhttps://git.kernel.org/stable/c/5d4812668b03f823b5044789d6aa77fe56b42587\nhttps://git.kernel.org/stable/c/906e410dcffbbd99fb4081abab817a830033aa28\n",
   "aliases": "CVE-2026-68217\nGHSA-mj4m-5r47-3f8j\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "082e4791-147d-3803-a891-8c2e720192e1",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "patch: 6.6.148"
-    },
-    {
-      "id": "49326b2a-738a-3aed-b742-30f00cf0a704",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "574f8fb2-309a-3f83-9572-a7c000b5ca1e",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "e1d63966-3d01-365f-b201-d11c18a90f4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "e6122654-40ce-3594-a432-9069debbda83",

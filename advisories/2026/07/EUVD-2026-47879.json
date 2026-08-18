@@ -3,7 +3,7 @@
   "enisaUuid": "07414883-69d1-3d0e-98ed-9d9dbdc9ee44",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: resample the data fork mapping after cycling ILOCK\n\nxfs_reflink_fill_{cow_hole,delalloc} are both presented with an inode,\na data fork mapping, and a cow fork mapping.  Unfortunately, these two\nhelpers cycle the ILOCK to grab a transaction, which means that the\nmappings are stale as soon as we reacquire the ILOCK.  Currently we\nrefresh the cow fork mapping by re-calling xfs_find_trim_cow_extent, but\nwe don't refresh the data fork mapping beforehand, which means that the\nxfs_bmap_trim_cow in that function queries the refcount btree about the\nwrong physical blocks and returns an inaccurate value in *shared.\n\nIf *shared is now false, the directio write proceeds with a stale data\nfork mapping.  Fix this by querying the data fork mapping if the\nsequence counter changes across the ILOCK cycle.",
   "datePublished": "Jul 23, 2026, 5:46:56 AM",
-  "dateUpdated": "Aug 5, 2026, 12:43:07 PM",
+  "dateUpdated": "Aug 17, 2026, 4:58:23 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -93,6 +93,16 @@
       "product_version": "patch: 6.18.39"
     },
     {
+      "id": "94650bfc-4713-31fb-8171-062627eb65e2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "951e75b6-d6d5-339c-8a5d-beb9742047f8",
       "product": {
         "name": "Linux",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "3c68d44a2b49a0ac9165faa9c191e1e618c8a8d5 <44f891bc088958399eec27f7604928694aa35581"
-    },
-    {
-      "id": "9575bb21-b13b-351c-bfdb-758fff4cdc5e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     },
     {
       "id": "adf91507-049a-35fc-8473-0f9c107118b6",

@@ -3,12 +3,12 @@
   "enisaUuid": "d7435a86-fbad-3175-bca2-0beeb6935686",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: altera: Fix resource leaks on probe failure\n\nThe chained IRQ handler is set during probe, but is only removed during the\ndriver remove(). If pci_host_probe() fails, the handler and INTx IRQ\ndomain remain set even though the devm-managed host bridge storage\ncontaining struct altera_pcie will be released, leaving the handler with\na stale data pointer.\n\nInterrupts are also enabled before pci_host_probe() is called. If probe\nfails after that point, the controller interrupt source should be disabled\nbefore the chained handler and INTx domain are removed.\n\nSo set the chained handler only after the INTx domain has been created.\nDisable controller interrupts during IRQ teardown, and tear the IRQ setup\ndown if pci_host_probe() fails.\n\n[mani: commit log]",
   "datePublished": "Jul 25, 2026, 8:51:29 AM",
-  "dateUpdated": "Jul 25, 2026, 8:51:29 AM",
+  "dateUpdated": "Aug 17, 2026, 4:56:07 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/af7cf5d56d7d57c4fbfdb7b5b693790f331b07b7\nhttps://git.kernel.org/stable/c/9cf0cc481e1645ec65e61486ae41c486c59781cb\nhttps://git.kernel.org/stable/c/99fc088d6cc6890ae35fa2f29c50ebe027844c20\nhttps://git.kernel.org/stable/c/a25bfa2a6665a1d77324d4a609e7513b87680227\nhttps://git.kernel.org/stable/c/0db9aa9ec51be0a0ffdcdfd9af2b7bf3aeb7911a\nhttps://git.kernel.org/stable/c/09c43b7b7d29c6fadb27f32cdf7f3bb6598befa9\nhttps://git.kernel.org/stable/c/6864c789b570e57f932847fa83f6b56917182d73\nhttps://git.kernel.org/stable/c/7a94138caeb27f3c49c1dbd93bf422098925bb28\n",
   "aliases": "CVE-2026-64462\nGHSA-w9v7-p38p-x494\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "487138ae-4ca6-348d-a79f-5c1acd1dad77",
@@ -91,14 +91,14 @@
       "product_version": "patch: 5.10.261"
     },
     {
-      "id": "a64e30fb-b96c-36f6-909a-1af6cd73a7ad",
+      "id": "a9265f72-352e-34db-99de-81d2200029d4",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "ba50a5b4-eebb-30d3-8d56-a079183b7f76",

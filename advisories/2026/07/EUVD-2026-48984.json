@@ -3,12 +3,12 @@
   "enisaUuid": "30334a7c-f856-3b18-8c35-4ec199655d52",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: mms114 - fix touch indexing for MMS134S and MMS136\n\nThe MMS134S and MMS136 touch controllers have an event size of 6 bytes\nrather than 8 bytes. When __mms114_read_reg() reads the touch data\npacket from the device into the touch buffer, the events are packed\ntightly at 6-byte intervals. However, the driver iterates through the\nevents using standard C array indexing (touch[index]), where each\nelement is sizeof(struct mms114_touch) (8 bytes) apart. As a result, any\ntouch events beyond the first one are read from incorrect offsets and\nparsed improperly.\n\nFix this by explicitly calculating the byte offset for each touch event\nbased on the device's specific event size.",
   "datePublished": "Jul 25, 2026, 8:49:18 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:18 AM",
+  "dateUpdated": "Aug 17, 2026, 4:52:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/112666835071d935fef764aab590339e97216d4a\nhttps://git.kernel.org/stable/c/7c00a0787af7164438bdbc97fcae9733cfc58d21\nhttps://git.kernel.org/stable/c/75b12874b4172533b9efc349db328cb1a59c3981\nhttps://git.kernel.org/stable/c/a747c4eb02656afdbd92eea83b88e92715a23977\nhttps://git.kernel.org/stable/c/a6ac4e24c1a8a533bb61035184fdcc7eede4cc8d\n",
   "aliases": "GHSA-prw5-9985-9rc7\nCVE-2026-64272\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "010f9412-a7e8-383a-96dd-ba481a008c77",
@@ -81,14 +81,14 @@
       "product_version": "patch: 6.6.145"
     },
     {
-      "id": "bd768373-15fc-3d33-9e4a-0467b3439d45",
+      "id": "c5718b12-3f99-3b15-8630-64d3487ac785",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d0d63bb9-8600-340a-9294-23be29703d07",

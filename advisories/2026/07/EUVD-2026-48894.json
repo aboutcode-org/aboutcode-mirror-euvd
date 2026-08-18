@@ -3,12 +3,12 @@
   "enisaUuid": "c17c11cb-712f-3363-8cef-c118d6c11aaf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: cdnsp: fix stream context array leak in cdnsp_alloc_stream_info()\n\ncdnsp_alloc_stream_info() allocates stream_info->stream_ctx_array with\ncdnsp_alloc_stream_ctx(). If a later stream ring allocation or stream\nmapping update fails, the error path frees the allocated stream rings\nand stream_rings array, but leaves stream_ctx_array allocated.\n\nFree the stream context array before falling through to the stream_rings\ncleanup path.",
   "datePublished": "Jul 25, 2026, 8:50:10 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:10 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:55 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/37283f5a47127fbdea567749a2110766af53d18d\nhttps://git.kernel.org/stable/c/cb8e9391b7f4f77d112c51910cd7c355a337ef76\nhttps://git.kernel.org/stable/c/fde3c095e1d48e0ac3ab8bc32905da42fe58a36a\nhttps://git.kernel.org/stable/c/d9643bbe93a6aee24edee1a86e0303aa74bcd320\nhttps://git.kernel.org/stable/c/c00826e87bb75e14e0381b05da5f18ffd0241ab6\nhttps://git.kernel.org/stable/c/963075c4da0cd43b3d17b107c355e1eb0ee64a58\nhttps://git.kernel.org/stable/c/3348f444a4ce43dd5c2d1aa41634cb6eff33aa64\n",
   "aliases": "CVE-2026-64350\nGHSA-73mh-7h7w-22q3\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0a711448-82da-3846-8a23-bd2807c4f963",
@@ -51,16 +51,6 @@
       "product_version": "patch: 6.12.96"
     },
     {
-      "id": "3e20cad3-b63a-3714-bdc8-1ae8734ab031",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
-    },
-    {
       "id": "49539109-6b9c-3a6d-a468-9a290b045aef",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 5.15.212"
+    },
+    {
+      "id": "80d13f66-13ab-3b07-9481-aeeb956c2be9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "95bd28bd-f437-3abd-b62d-b836fdb83adc",

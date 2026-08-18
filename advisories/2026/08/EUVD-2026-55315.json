@@ -3,12 +3,12 @@
   "enisaUuid": "1b755e07-8ea4-3d36-a08a-497f57bc32f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rtl2832: fix use-after-free in rtl2832_remove()\n\ncancel_delayed_work_sync() is called before i2c_mux_del_adapters()\nin rtl2832_remove(). While the cancel waits for any running instance\nof i2c_gate_work to finish, it does not prevent the timer from being\nrescheduled by a concurrent thread.\n\nDuring probe, the r820t_attach() call attempts I2C transfers through\nthe mux adapter. These transfers go through i2c_mux_master_xfer(),\nwhich calls rtl2832_deselect() after the transfer completes,\nrescheduling i2c_gate_work via schedule_delayed_work(). If this\ntransfer is still in flight when rtl2832_remove() runs,\nrtl2832_deselect() can reschedule i2c_gate_work after it has been\ncancelled, causing a use-after-free when kfree(dev) is called.\n\nFix this by calling i2c_mux_del_adapters() before\ncancel_delayed_work_sync(). Once the mux adapter is unregistered, no\nnew I2C transfers can go through it, so rtl2832_deselect() can no\nlonger reschedule i2c_gate_work. The subsequent\ncancel_delayed_work_sync() is then guaranteed to be final.",
   "datePublished": "Aug 10, 2026, 12:00:33 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:33 PM",
+  "dateUpdated": "Aug 17, 2026, 5:00:59 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9acd5bbbe1df8e487e49488692c224496d4c9e16\nhttps://git.kernel.org/stable/c/24bef237eef8dd1ebcffb129ba21891ddad0d309\nhttps://git.kernel.org/stable/c/2c71bda6edc630a1f8c3c45d8df5fc22d234e042\nhttps://git.kernel.org/stable/c/90d781711418881f8c836c2a859cc2886625d750\nhttps://git.kernel.org/stable/c/680daf40a82d483949f87f0d8f98639dc47e610c\n",
   "aliases": "CVE-2026-68214\nGHSA-9rcq-4828-985w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "05df1e5c-0d64-3a9c-bcd4-884303d1dd60",
@@ -61,16 +61,6 @@
       "product_version": "4.7"
     },
     {
-      "id": "7d5154e8-b480-3b5d-8c03-e1db53efb891",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "99eee719-565e-3d9c-86e2-7363bb054d8d",
       "product": {
         "name": "Linux",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.18.42"
+    },
+    {
+      "id": "cbfbf0c2-0843-3e4d-904f-57188766ecec",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "ea4dd442-a5e2-3b24-bace-0aeefc76d8c6",

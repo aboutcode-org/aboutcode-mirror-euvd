@@ -3,12 +3,12 @@
   "enisaUuid": "2ed0a0ed-835a-315f-877d-6eed1c1903c1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix bo->pin leaking in amdgpu_bo_create_reserved\n\namdgpu_bo_create_reserved() only allocates a new BO when\n*bo_ptr (struct amdgpu_bo **bo_ptr as input parameter) is\nNULL, it simply skips creation when *bo_ptr is non-NULL.\nBut it unconditionally reserves, pins, gart allocates\nand maps the BO afterwards.\n\nWhen the same non-NULL BO pointer is passed in again,\nfor example firmware buffers that live in adev and are\nre-loaded on every resume / cp_resume / start\nunder AMDGPU_FW_LOAD_DIRECT, amdgpu_bo_pin() just increases\npin_count unconditionally, however the matching teardown only unpins\nonce, so pin_count never drops to zero, so TTM is not able\nto move, swap or evict a BO, causing BO leaks.\n\nThis commit fixes this issue by only pinning the bo\nonce at creation, and repeated calls no longer\ntake additional pin references.\n\n(cherry picked from commit 3ddc0ae76202c447b6aec61e907b852bc94671cf)",
   "datePublished": "Aug 10, 2026, 12:00:59 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:59 PM",
+  "dateUpdated": "Aug 17, 2026, 5:01:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/51eeef1949c11d3dcb5f422a5d9b3f09ebe8a1bc\nhttps://git.kernel.org/stable/c/2f390b4c83011452753fd84972f657d2b00a952b\nhttps://git.kernel.org/stable/c/ba7b6444097a73ccd3d3ac9e2be4ebb73d226460\nhttps://git.kernel.org/stable/c/9743f60013273987abf415dc47474683d22aaee9\nhttps://git.kernel.org/stable/c/a2f895f3c852063258d62e9f74b081de07ca95df\n",
   "aliases": "CVE-2026-68234\nGHSA-4jjq-9h58-5wmm\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "02b5be43-0e38-3d5e-9534-bac3e5de0c7d",
@@ -81,6 +81,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9743f60013273987abf415dc47474683d22aaee9"
     },
     {
+      "id": "90757b92-31d2-3460-b7e8-d0a445154492",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "9b842543-64cc-31bb-b269-ebd565b3bcb7",
       "product": {
         "name": "Linux",
@@ -129,16 +139,6 @@
         }
       },
       "product_version": "0 <7.1.6"
-    },
-    {
-      "id": "efb41238-390b-3883-a06a-7c90837f7f06",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     },
     {
       "id": "f5c80c74-6aaa-3f35-a1f5-c696f78a02ba",

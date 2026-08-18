@@ -3,12 +3,12 @@
   "enisaUuid": "f54a8a6d-e751-3c2e-89db-336ea2aff23c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: v: prevent OGM aggregation on disabled hardif\n\nWhen an interface gets disabled, the worker is correctly disabled by\nbatadv_hardif_disable_interface() -> ... -> batadv_v_ogm_iface_disable().\nIn this process, the skb aggr_list is also freed.\n\nBut batadv_v_ogm_send_meshif() can still queue new skbs (via\nbatadv_v_ogm_queue_on_if()) to the aggr_list. This will only stop after all\ncores can no longer find the RCU protected list of hard interfaces. These\nqueued skbs will never be freed or consumed by batadv_v_ogm_aggr_work.\n\nThe batadv_v_ogm_iface_disable() function must block\nbatadv_v_ogm_queue_on_if() to avoid leak of skbs.",
   "datePublished": "Jul 19, 2026, 12:02:26 PM",
-  "dateUpdated": "Jul 19, 2026, 12:02:26 PM",
+  "dateUpdated": "Aug 17, 2026, 4:51:45 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d462ced79dd430200cf888984e8005da77fc810b\nhttps://git.kernel.org/stable/c/f79deaaf822ab0ee2424cf28781f9ab91576bea3\nhttps://git.kernel.org/stable/c/d3569327fc7395b2b0461a0a0cb77a0bb74786c0\nhttps://git.kernel.org/stable/c/97644fdaaf6446ffbe182c5eb804fceb5b1a51b7\nhttps://git.kernel.org/stable/c/f04dde74399431fb07abbdd9cd5d0ed624771d04\nhttps://git.kernel.org/stable/c/3d4548c96d6f21ac1a9b06c5f82f3ef439c87023\nhttps://git.kernel.org/stable/c/86ab6b6fb5b82163bf6c45780bb72150021d7349\nhttps://git.kernel.org/stable/c/d11c00b95b2a3b3934007fc003dccc6fdcc061ad\n",
   "aliases": "CVE-2026-63835\nGHSA-vcwj-xjx6-gq5q\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0d9a0b03-7829-3d66-8196-3d7b43d26c94",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "f89255a02f1d75d8e1b9d1c31435fcb64840cb2a <97644fdaaf6446ffbe182c5eb804fceb5b1a51b7"
-    },
-    {
-      "id": "334da620-fd3a-36af-8221-d29edad0ee19",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "3d6a6508-4fd5-3170-931c-605cfefd80c7",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "5.4"
+    },
+    {
+      "id": "7fb45c86-d65b-3ede-bf58-fc44eae0ff3e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "8a9e28bb-87af-3fe1-ba04-431a545b0f1a",

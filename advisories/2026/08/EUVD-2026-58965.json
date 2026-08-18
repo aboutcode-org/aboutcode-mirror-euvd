@@ -3,13 +3,25 @@
   "enisaUuid": "cdbbecc3-87ff-38a8-8a6b-8fe09728d335",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: not change 0-byte $DATA attribute to non-resident\n\nWhen ntfs_resident_attr_resize() cannot grow a resident attribute in\nplace, it retries after converting other resident attributes to\nnon-resident to free space in the MFT recrord.\n\nDo not select zero-length resident $DATA attributes for this conversion.\nfsck treats 0-byte non-resident $DATA attribute as corruptions.",
   "datePublished": "Aug 15, 2026, 5:54:03 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:03 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:41:33 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ceb49c37250125d418410988f2376ed4d57a6706\nhttps://git.kernel.org/stable/c/0aad21570197973af4a1b25b3fb8ed3aeb9e7670\n",
   "aliases": "CVE-2026-72207\nGHSA-vqw4-mmgx-m8xp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
+    {
+      "id": "2572597a-0ad5-3973-bb4f-813e58f2cf83",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "99a44b79-2ec5-391c-b4d9-fe844ce78f10",
       "product": {
@@ -19,16 +31,6 @@
         }
       },
       "product_version": "patch: 7.1.5"
-    },
-    {
-      "id": "b0903a4f-a60c-3e6e-ab59-e0066720d857",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "ba862753-64f1-33da-9272-8f0e285becd3",

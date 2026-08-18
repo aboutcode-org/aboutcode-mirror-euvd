@@ -3,12 +3,12 @@
   "enisaUuid": "bd35804a-e8bb-3693-a153-545adf8a9fab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/bugs: Make Safe-RET robust against interrupt injection\n\nAn attacker injecting interrupts while the Safe-RET mitigation executes\non machines affected by SRSO can neutralize the safe return sequence,\npotentially leading to data leakage through speculative execution.\n\nFixup register state as if the Safe-RET sequence executed successfully\nby \"emulating\" it, in a manner of speaking, and avoid executing a RET\ninstruction after returning from the interrupt.",
   "datePublished": "Aug 6, 2026, 5:36:43 PM",
-  "dateUpdated": "Aug 11, 2026, 6:29:34 AM",
+  "dateUpdated": "Aug 17, 2026, 5:06:23 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/dfefa3c51370f84acb643cddf98bb42c885d0483\nhttps://git.kernel.org/stable/c/52db77a13be224e09eb4ba6b4252ae8ab9085c2c\nhttps://git.kernel.org/stable/c/d0208e08d64d99383e09852a76cc3038c5a4c3ab\nhttps://git.kernel.org/stable/c/6703dba1d14cbd6647cd1ccfa3a3fa94b64dd096\nhttps://git.kernel.org/stable/c/e262f28a69ae9e0791248f93b0173c1d1f3e1d5d\nhttps://git.kernel.org/stable/c/bfe7f9993467ba431b2731437949ac1e2634e771\nhttps://git.kernel.org/stable/c/61649a2d61cb0dbc673f0f232f0f0c298bf50442\nhttps://git.kernel.org/stable/c/7e7f81cf6f5ca3311e526308f55d7c54d3ba71f9\nhttps://people.csail.mit.edu/mengjia/data/2026.USENIX.TONTOU.pdf\n",
   "aliases": "CVE-2026-68480\nGHSA-76mh-mwm6-543c\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "0eded68c-2a9d-36dd-b0da-c1635b298fca",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dfefa3c51370f84acb643cddf98bb42c885d0483"
+    },
+    {
+      "id": "2bc22222-e6f8-39b4-8c5a-08f9d28df6c1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "2c2d3088-8264-370f-ae09-f452fd0043da",
@@ -179,16 +189,6 @@
         }
       },
       "product_version": "patch: 5.10.264"
-    },
-    {
-      "id": "a7af55a3-c8c7-33bf-af22-48a316c47d00",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc7"
     },
     {
       "id": "b93808f0-c17c-324d-bbcf-14735e78a222",

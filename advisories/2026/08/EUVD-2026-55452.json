@@ -3,23 +3,13 @@
   "enisaUuid": "1c6dbcc3-bae2-3786-b8c1-72099816d713",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: carl9170: bound memcpy length in cmd callback to prevent OOB read\n\nWhen the firmware sends a command response with a length mismatch,\ncarl9170_cmd_callback() logs the mismatch and calls carl9170_restart()\nbut then falls through to memcpy(ar->readbuf, buffer + 4, len - 4).\nSince len comes from the firmware and can exceed ar->readlen, this\ncopies more data than the readbuf was allocated for.\n\nBound the memcpy to min(len - 4, ar->readlen) so that the response\nis still completed -- avoiding repeated restarts from queued garbage --\nwhile preventing an overread past the response buffer.",
   "datePublished": "Aug 10, 2026, 12:03:28 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:28 PM",
+  "dateUpdated": "Aug 17, 2026, 5:03:53 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f74e34e66379e487a09009a4f2d42470051672bd\nhttps://git.kernel.org/stable/c/500c36649f270de05a56591fcc1aaaa36687958e\nhttps://git.kernel.org/stable/c/9aee949c68dc6dccbc54333537b109c53fe2079f\nhttps://git.kernel.org/stable/c/cb7a38810cf25738176dac32dec7a146b3f959cf\nhttps://git.kernel.org/stable/c/4cde55b2feff9504d1f993ab80e84e7ccb62791c\n",
   "aliases": "CVE-2026-68351\nGHSA-grvp-5p4h-rcmp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
-    {
-      "id": "1c47de9e-eca1-32cc-8245-13c4e0eaffe8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
     {
       "id": "1d771c77-0574-35ff-87ac-ea8930decd5b",
       "product": {
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.6.148"
+    },
+    {
+      "id": "83dfb099-6735-351c-8778-b15e0074ceed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "9eeb8241-d9cf-3874-95bc-412c40a31d0a",

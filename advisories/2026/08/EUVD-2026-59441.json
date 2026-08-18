@@ -3,12 +3,14 @@
   "enisaUuid": "bae4deed-575b-3b7d-a0df-e24701524da3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: meson: aiu: Validate written enum values\n\nThe AIU HDMI and internal codec mux put callbacks use the written enum\nvalue with snd_soc_enum_item_to_val() before checking whether the value is\nvalid for the enumeration.\n\nReject out-of-range values before converting the enum item, matching the\nvalidation already done by the G12A HDMI and internal codec mux controls.",
   "datePublished": "Aug 15, 2026, 5:57:59 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:59 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:32 AM",
+  "baseScore": 7.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/0965892cc486ca554d72eeb62d85ccf8d0137a5a\nhttps://git.kernel.org/stable/c/d65adf85477247be04ac86886f8edfaa047b5d4a\n",
   "aliases": "GHSA-wv7f-69g8-fhc5\nCVE-2026-74294\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "2d60387d-b052-33c7-832e-869e7264ed0d",
@@ -61,14 +63,14 @@
       "product_version": "patch: 7.1.5"
     },
     {
-      "id": "bf935b7a-cb1f-3d4a-b1af-1f61d99533fa",
+      "id": "d22be364-ebe1-3eb4-a82c-11bcc8514336",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

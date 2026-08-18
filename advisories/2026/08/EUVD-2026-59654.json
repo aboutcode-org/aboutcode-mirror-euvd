@@ -3,12 +3,14 @@
   "enisaUuid": "621dc7fd-7d81-3de9-adfc-99c6fd7e211f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: imx: Cancel hrtimer before clearing slave pointer\n\nIn i2c_imx_unreg_slave(), the slave pointer is set to NULL after\ndisabling interrupts.  However, a pending interrupt might already\nhave started the hrtimer (i2c_imx_slave_timeout) before the pointer\nwas cleared.  If the hrtimer fires after i2c_imx->slave is set to\nNULL, the timer callback i2c_imx_slave_finish_op() will call\ni2c_imx_slave_event() with a NULL slave pointer, which results in a\nuse-after-free / NULL pointer dereference.\n\nFix by canceling the hrtimer and waiting for it to complete after\ndisabling interrupts, before clearing the slave pointer.",
   "datePublished": "Aug 15, 2026, 12:27:01 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:01 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:47:27 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a8a1f9ac3d763e721586f15479ef9140b216ddf3\nhttps://git.kernel.org/stable/c/753060f2b77ff2f386addbd3ecadb95b9f90cddd\nhttps://git.kernel.org/stable/c/affd62f5719a78135b7441aa49c8cab3c3b5e838\nhttps://git.kernel.org/stable/c/dab4762ee7f3fd0a01980d5407ba48d0261d3bff\nhttps://git.kernel.org/stable/c/6ac7702b6cc2b94aaed9ef2d95bfbefcdc90061f\n",
   "aliases": "CVE-2026-74461\nGHSA-9hpv-5pc5-wf9w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "224c1bf4-3181-3310-85f6-9f2ece1f2407",
@@ -29,16 +31,6 @@
         }
       },
       "product_version": "patch: 6.18.44"
-    },
-    {
-      "id": "618a50d3-7a8b-333b-b2dd-2119b9332890",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "68da7e71-c1ab-36d9-a919-47c799dfca25",
@@ -129,6 +121,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "f0ee9d05-c8f9-3bbd-8d83-90701e397575",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

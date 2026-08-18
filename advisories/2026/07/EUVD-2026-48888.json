@@ -3,12 +3,12 @@
   "enisaUuid": "bb8b0160-d8c3-3baa-aed8-76093678cc6c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: idmouse: fix use-after-free on disconnect race\n\nmutex_unlock() may access the mutex structure after releasing the lock\nand therefore cannot be used to manage lifetime of objects directly\n(unlike spinlocks and refcounts). [1][2]\n\nUse a kref to release the driver data to avoid use-after-free in\nmutex_unlock() when release() races with disconnect().\n\n[1] a51749ab34d9 (\"locking/mutex: Document that mutex_unlock() is\n                   non-atomic\")\n[2] 2b9d9e0a9ba0 (\"locking/mutex: Clarify that mutex_unlock(), and most\n                   other sleeping locks, can still use the lock object\n                   after it's unlocked\")",
   "datePublished": "Jul 25, 2026, 8:50:06 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:06 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/31e75fed8f90cfea9f8285e7ed135b0e452bf872\nhttps://git.kernel.org/stable/c/8d53b14ad4ccbff6d306b3a39c812303f4a87d41\nhttps://git.kernel.org/stable/c/f62622e947f82a3854a8502d09492ffbdeb252b4\nhttps://git.kernel.org/stable/c/60fc5ef4ecea3e3d1fe556cecf53ddd13096ef09\nhttps://git.kernel.org/stable/c/d0f61acb51a8c8f3fd41c303ddb7770cd83e7ed4\nhttps://git.kernel.org/stable/c/54c2b7356b4aeea467f9fb13b85e9e036bc428cb\nhttps://git.kernel.org/stable/c/e88cff5fbaa629f3cab45c8b46f395d62c2eb515\nhttps://git.kernel.org/stable/c/ff002c153f9722caece3983cc23dc4d9d4652cb4\n",
   "aliases": "GHSA-fpmv-m5rr-683w\nCVE-2026-64344\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0fe2d3da-d875-3ff1-b032-b3bcf1dbc671",
@@ -101,16 +101,6 @@
       "product_version": "patch: 6.12.96"
     },
     {
-      "id": "c62d8b5a-cc94-34d6-a82b-71f3dd288133",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
-    },
-    {
       "id": "c8ece131-522c-3045-9ea9-a3ade80ad19e",
       "product": {
         "name": "Linux",
@@ -149,6 +139,16 @@
         }
       },
       "product_version": "patch: 6.18.39"
+    },
+    {
+      "id": "d687cf95-6dad-3a2e-86a8-9aa2c3b322d7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "e02755af-fabe-3cae-b553-6931d719b395",

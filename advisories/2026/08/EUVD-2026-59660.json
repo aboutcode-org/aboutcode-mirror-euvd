@@ -3,12 +3,14 @@
   "enisaUuid": "9a6fd974-8c56-3056-8545-39af40d21372",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/qeth: Check CAP_NET_ADMIN for private ioctls\n\nGate the SIOCDEVPRIVATE ioctl commands SIOC_QETH_ADP_SET_SNMP_CONTROL,\nSIOC_QETH_GET_CARD_TYPE and SIOC_QETH_QUERY_OAT with CAP_NET_ADMIN\ncapable check to ensure unprivileged users cannot invoke them.",
   "datePublished": "Aug 15, 2026, 12:27:05 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:05 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:47:29 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4e48168825818bf4a13c743582227d15f1d30d04\nhttps://git.kernel.org/stable/c/b40c74262f7e1e601221cebccdbdb2b392ff9976\nhttps://git.kernel.org/stable/c/bd63c7879eaa87f1958f7ee027813356fcd9ff11\nhttps://git.kernel.org/stable/c/93a0a846ec59a88e0c402878a15357a5ce430eb4\nhttps://git.kernel.org/stable/c/d211028bac1bd0fff0026bfa2a8328e5b78cd0e6\n",
   "aliases": "CVE-2026-74467\nGHSA-gc56-w4qv-mcc4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "08f3c425-0807-31c7-8adf-97e54b95b2b0",
@@ -49,16 +51,6 @@
         }
       },
       "product_version": "patch: 6.12.103"
-    },
-    {
-      "id": "49e0f039-e5c8-3ebc-aaf0-6f6ffd93288e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "5b5c1d5c-9dcf-3b35-ab71-a63c5b032bd2",
@@ -119,6 +111,16 @@
         }
       },
       "product_version": "patch: 6.6.151"
+    },
+    {
+      "id": "d159b02f-cd8c-3009-860a-188c69b090f2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d9da4523-51df-3b76-b444-b7b0d6f008e7",

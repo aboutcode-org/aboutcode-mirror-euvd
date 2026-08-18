@@ -3,12 +3,12 @@
   "enisaUuid": "69b1dca3-19e3-3d9f-b67c-65c337713b1d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: light: gp2ap002: fix runtime PM leak on read error\n\ngp2ap002_read_raw() calls pm_runtime_get_sync() before reading the\nlux value, but if gp2ap002_get_lux() fails, it returns directly. This\nskips the pm_runtime_put_autosuspend() call at the \"out\" label,\npermanently leaking a runtime PM reference and preventing the device\nfrom autosuspending.\n\nReplace the direct return with a \"goto out\" to ensure the reference\nis properly dropped on the error path.",
   "datePublished": "Jul 25, 2026, 8:51:51 AM",
-  "dateUpdated": "Jul 25, 2026, 8:51:51 AM",
+  "dateUpdated": "Aug 17, 2026, 4:56:42 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/62e0d74821a02f0e0c5c79b99ae64dc83a9a90f5\nhttps://git.kernel.org/stable/c/7110201c6b21455240c63388f30113f3baafacfc\nhttps://git.kernel.org/stable/c/2593f0c6ea37df168975694a3b17e7086f11453e\nhttps://git.kernel.org/stable/c/f350883989ced96d6da7f582f9a6f9c6ffc94e34\nhttps://git.kernel.org/stable/c/29137052c4485c74bc2d1b0717f69ca4de14274f\nhttps://git.kernel.org/stable/c/0c655d067ac69ee24e2e9d706c54179ea58a43db\nhttps://git.kernel.org/stable/c/2ebaea7f3089decb01a8294d89d7e0cf288146c4\nhttps://git.kernel.org/stable/c/38b72267b7e22768a1f26d9935de4e1752a1dc85\n",
   "aliases": "GHSA-gpwj-cvm7-rmhj\nCVE-2026-64494\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0107f16b-c7ee-3613-a830-a9d54c6860c7",
@@ -79,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.1.4"
+    },
+    {
+      "id": "55e59e5b-0a7d-3513-b189-b510ac96a52f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "5ec651d9-cc77-3efd-a4f3-e14f917d9e40",
@@ -199,16 +209,6 @@
         }
       },
       "product_version": "f6dbf83c17cb223ceabd7c42d441414f3e0e8a86 <7110201c6b21455240c63388f30113f3baafacfc"
-    },
-    {
-      "id": "fc7cc8cf-126f-3351-bb75-f24fb40d2a6d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     }
   ],
   "enisaIdVendor": [

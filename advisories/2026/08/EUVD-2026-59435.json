@@ -3,12 +3,14 @@
   "enisaUuid": "f8ba7b60-a820-320b-96a2-e6f8b7b52c0d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fib_rules: Don't dump dying fib_rule in fib_rules_dump().\n\nrocker_router_fib_event() calls fib_rule_get() during RCU dump.\n\nIf the fib_rule is dying, refcount_inc() will complain about it.\n\nLet's call refcount_inc_not_zero() in fib_rules_dump().",
   "datePublished": "Aug 15, 2026, 5:57:55 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:55 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:27 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0f929b59f4cd0e05bb1ecefe12b77e85911d4be2\nhttps://git.kernel.org/stable/c/4b7ae30c81c2ee10a644749a3704a5c797ccc308\nhttps://git.kernel.org/stable/c/2dfdc210d240bd48bb2ea746430b02b5571b6db9\nhttps://git.kernel.org/stable/c/a7ef30753353ba6a95d693b1863a0214222a199a\nhttps://git.kernel.org/stable/c/1fbc6c6efe78f4454a51afa0587efb6826f60f00\nhttps://git.kernel.org/stable/c/bb4a5b3c91af3c8d705bb2e9f6f8069a70db26fc\nhttps://git.kernel.org/stable/c/3af0bc1bd9039e2e50abf3e2d7fee411f38bce4e\nhttps://git.kernel.org/stable/c/2821e85c058f81c9948a2fb1a634f7b47457d51c\n",
   "aliases": "GHSA-mfph-jxq2-hg99\nCVE-2026-74288\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0ad6a01a-9b73-3b84-99d7-a91383b812a2",
@@ -61,16 +63,6 @@
       "product_version": "5d7bfd141924a5ece21eb612ad3c56612f041c1e <a7ef30753353ba6a95d693b1863a0214222a199a"
     },
     {
-      "id": "5638bee6-baee-3831-be21-14bec3a9ed5c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "5d3adb05-302a-3b87-87d4-71497bc468d6",
       "product": {
         "name": "Linux",
@@ -99,6 +91,16 @@
         }
       },
       "product_version": "5d7bfd141924a5ece21eb612ad3c56612f041c1e <2821e85c058f81c9948a2fb1a634f7b47457d51c"
+    },
+    {
+      "id": "7bff8f89-2a9e-300e-bf3f-4379fd007a3c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "878ac1ab-74a8-30a5-8b80-fad86f8df8a4",

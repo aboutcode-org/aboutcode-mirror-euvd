@@ -3,12 +3,12 @@
   "enisaUuid": "dd81423b-a470-3a9c-bea5-a12c5da64ee0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmei: bus: access mei_device under device_lock on cleanup\n\nFix couple of problems in mei_cl_bus_dev_release():\n\nmei_cl_flush_queues() is running without lock.\nbus->file_list access after mei_dev_bus_put(bus) can become a\nuse-after-free if this was the last reference to bus.\n\nProtect queues cleanup and WARN traversal by device lock there\nto avoid the concurrent access problems.\nMove WARN traversal before mei_dev_bus_put(bus).\n\nThis file uses bus variable name for mei_device, adjust\ncode of mei_cl_bus_dev_release() to use bus variable too.",
   "datePublished": "Aug 10, 2026, 11:59:52 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:52 AM",
+  "dateUpdated": "Aug 17, 2026, 5:00:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/441559d4c595f839b39f0ab6a4ae628427c2fd9e\nhttps://git.kernel.org/stable/c/c88c030a324c9018b77894a19b2564eb66862020\nhttps://git.kernel.org/stable/c/59dd34854202d9a3faaa87a85205e553fe7150e1\nhttps://git.kernel.org/stable/c/7cf79e8d682fe93777268f029668ce5e214237fd\nhttps://git.kernel.org/stable/c/f112ea910e554d58b4b39a4492b7d302f0f4204f\n",
   "aliases": "CVE-2026-68181\nGHSA-xmj6-8mrg-f8fx\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "00c65128-97e3-3c62-9230-6a993fbbb975",
@@ -31,16 +31,6 @@
       "product_version": "6.12.43 <6.12.101"
     },
     {
-      "id": "1bbeb193-ed49-3334-9d64-6769841fba12",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
-    {
       "id": "27f83e18-8500-391a-b95b-db11005cb5ae",
       "product": {
         "name": "Linux",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "2a4022c9-c2db-3344-be9c-5eb077af4e32",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "369e87d8-ac49-31e2-a841-6cedd60eb9b9",

@@ -3,7 +3,7 @@
   "enisaUuid": "d8e9d3e9-74b8-37dd-a5b9-d1a62451655f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use opener credentials for delete-on-close\n\nDelete-on-close can be completed by deferred or durable handle teardown,\nwhere no request work is available. Both the base-file unlink and the ADS\nxattr removal consequently run with the ksmbd worker credentials and can\nbypass filesystem permission checks.\n\nRun both operations with the credentials captured in struct file when the\nhandle was opened. This preserves the authenticated user's fsuid, fsgid,\nsupplementary groups and capability restrictions at final close.",
   "datePublished": "Jul 25, 2026, 8:50:38 AM",
-  "dateUpdated": "Aug 5, 2026, 12:41:29 PM",
+  "dateUpdated": "Aug 17, 2026, 4:54:44 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
@@ -12,6 +12,16 @@
   "assigner": "Linux",
   "epss": 0.47,
   "enisaIdProduct": [
+    {
+      "id": "0c54d4ec-18d0-33fb-b8cd-5914f1b2ea67",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "2749ce57-9d0e-35ed-b6ca-b4e576aa58d6",
       "product": {
@@ -121,16 +131,6 @@
         }
       },
       "product_version": "patch: 6.6.145"
-    },
-    {
-      "id": "be0628b4-6e0d-3da0-b04f-cb5fb6f3cdf1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

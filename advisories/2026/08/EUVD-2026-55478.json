@@ -3,14 +3,14 @@
   "enisaUuid": "02247aa7-ba59-3a2f-ad3e-a68ce8aae125",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate ACE size against SID sub-authorities\n\nset_ntacl_dacl() validates sid.num_subauth before copying an ACE, but\ndoes not verify that the declared ACE size contains all sub-authorities\ndescribed by that field. An undersized ACE can therefore be copied\nand later make the POSIX ACL deduplication walk inspect data beyond\nthe copied ACE boundary.\n\nThe existing initial bound check is also too small. It only ensures\nthat the ACE size field is accessible before set_ntacl_dacl() reads\nsid.num_subauth farther into the input buffer.\n\nRequire enough input for the fixed SID header before accessing\nnum_subauth, reject ACEs smaller than that header, and skip ACEs\nwhose declared size cannot contain the complete SID. This makes the\nvalidation consistent with the other ACE walk paths.",
   "datePublished": "Aug 10, 2026, 11:58:11 AM",
-  "dateUpdated": "Aug 13, 2026, 10:39:27 PM",
+  "dateUpdated": "Aug 17, 2026, 4:58:45 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b7cb5bf0855470799f12da825de91e48951b3876\nhttps://git.kernel.org/stable/c/62d80d7c2d9428085e7458ad4c06ca8c0984039b\nhttps://git.kernel.org/stable/c/337022d9dfac441c3b35e4455a51aa981996e02e\nhttps://git.kernel.org/stable/c/61fd3559199f7fa693dcbff35e59477e24af041a\nhttps://git.kernel.org/stable/c/5152c6d49e3fd4e9f2e857c57527aead752f1f87\n",
   "aliases": "GHSA-m2gq-x88q-682f\nCVE-2026-68097\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "0b0ce69f-461b-3a57-9dec-c53b50acea5b",
@@ -41,16 +41,6 @@
         }
       },
       "product_version": "patch: 6.6.148"
-    },
-    {
-      "id": "39ed6b8e-1acf-3233-a690-aa1256908e63",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "3ea06513-37c5-35e1-866a-e4482757bec2",
@@ -111,6 +101,16 @@
         }
       },
       "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <337022d9dfac441c3b35e4455a51aa981996e02e"
+    },
+    {
+      "id": "d4b4f7b1-f291-3728-bff9-bd374053223e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d774ba9e-501a-3c6c-8919-035c12c92fd3",

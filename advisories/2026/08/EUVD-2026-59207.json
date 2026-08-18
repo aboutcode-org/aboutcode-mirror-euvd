@@ -3,12 +3,12 @@
   "enisaUuid": "a0343734-5b56-39c5-894e-44aeb26708cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmlxsw: fix refcount leak in mlxsw_sp_port_lag_join()\n\nWhen mlxsw_sp_port_lag_index_get() fails, mlxsw_sp_port_lag_join()\nreturns an error without releasing the lag reference obtained by\nthe earlier mlxsw_sp_lag_get().  All other error paths in the\nfunction jump to the cleanup label that ends with\nmlxsw_sp_lag_put(), so this is a single missed release.\n\nFix the leak by replacing the bare 'return err' with a goto to the\nexisting error cleanup label, which will drop the reference safely.",
   "datePublished": "Aug 15, 2026, 5:55:25 AM",
-  "dateUpdated": "Aug 15, 2026, 5:55:25 AM",
+  "dateUpdated": "Aug 17, 2026, 5:12:12 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8b3350eacd9df0597bfe36a594df7b9def0b3edf\nhttps://git.kernel.org/stable/c/1cf8a1af42b1f12a30b7abd34fe4fc23b3170e7e\nhttps://git.kernel.org/stable/c/2d8b3c3e129973a51ae924bdcf6993a76b828814\nhttps://git.kernel.org/stable/c/cab468c3c03f4bcd7530ce2783a4140da14efb7b\nhttps://git.kernel.org/stable/c/41c8c1d65b32beacd8d916a22457b4f6e47f45af\n",
   "aliases": "CVE-2026-72308\nGHSA-62qp-mh75-mrwp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0e351d21-9dc3-3244-9c05-c1392ec470fc",
@@ -81,16 +81,6 @@
       "product_version": "0d65fc13042fce6a2d6de58ff0dc9531e8523c07 <1cf8a1af42b1f12a30b7abd34fe4fc23b3170e7e"
     },
     {
-      "id": "61e6fb4a-2bf2-35df-9883-c6a665f8e6cd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "6df55719-24f7-364b-9fa2-b64446c436d2",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "d753d247-ff74-3a31-9324-48c78f2bc8a7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "ed788fa4-2394-3150-9c35-83188d52e76f",

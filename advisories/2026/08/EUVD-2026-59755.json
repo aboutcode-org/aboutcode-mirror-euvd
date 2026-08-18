@@ -3,12 +3,12 @@
   "enisaUuid": "5592abb2-f608-3ccd-93d1-a52795265340",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix QID bit leak in pqm_create_queue()\n\nWhen MES is enabled and amdgpu_amdkfd_alloc_kernel_mem() fails during\nthe first queue creation for a process, pqm_create_queue() returns\nearly via 'return retval' without going through the err_create_queue\ncleanup label.\n\nThis means clear_bit(*qid, pqm->queue_slot_bitmap) is never called,\nleaving the reserved QID bit permanently set in queue_slot_bitmap.\nOver time this leaks QID slots, potentially exhausting all available\nqueue slots.\n\nFix this by replacing 'return retval' with 'goto err_allocate_pqn'\nso that clear_bit() is always called on the error path without\ntouching the uninitialized pqn pointer.\n\nAILIKFD-813\n\n(cherry picked from commit a107f74c38edbb80d6ab64dcaeeb292c14e9779f)",
   "datePublished": "Aug 15, 2026, 12:26:53 PM",
-  "dateUpdated": "Aug 15, 2026, 12:26:53 PM",
+  "dateUpdated": "Aug 17, 2026, 5:19:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8924e2594a15bdbd07f8696770864366d787ab70\nhttps://git.kernel.org/stable/c/2ff5bb3645c72b3690e70c513a62a86600c4632f\nhttps://git.kernel.org/stable/c/5f0f2ddeac738e2ca9d12cb76a1ff2904e85ecc3\nhttps://git.kernel.org/stable/c/7c35bf94150d872e670a6632aa819d320279effb\nhttps://git.kernel.org/stable/c/38b73293f38658a4685ffcea666462024f858ad9\n",
   "aliases": "GHSA-8x3r-qg94-9qh5\nCVE-2026-74448\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "144e9cbf-4747-3aae-80d7-afb520dfec41",
@@ -61,16 +61,6 @@
       "product_version": "patch: 6.6.151"
     },
     {
-      "id": "5b719e8e-c2d2-375d-9e08-a46ec604e75a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
-    },
-    {
       "id": "5df05b84-4e58-3680-bdb7-9ff14d63b5c7",
       "product": {
         "name": "Linux",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.12.103"
+    },
+    {
+      "id": "7118bac2-fe51-399a-a512-d8fc86eb7cd9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "7169628b-f225-3f8c-9407-05774d1c9fcf",

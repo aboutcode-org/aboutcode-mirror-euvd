@@ -3,7 +3,7 @@
   "enisaUuid": "bbe0848a-8579-3abf-8c29-bcc97e5e2ec7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-auth: validate reply message payload bounds against transfer length\n\nnvmet_auth_reply() accesses the variable-length rval[] array using\nattacker-controlled hl (hash length) and dhvlen (DH value length) fields\nwithout verifying they fit within the allocated buffer of tl bytes.\n\nA malicious NVMe-oF initiator can craft a DHCHAP_REPLY message with a\nsmall transfer length but large hl/dhvlen values, causing out-of-bounds\nheap reads when the target processes the DH public key (rval + 2*hl) or\nperforms the host response memcmp.\n\nWith DH authentication configured, the OOB pointer is passed directly to\nsg_init_one() and read by crypto_kpp_compute_shared_secret(), reaching\nup to 526 bytes past the buffer. This is exploitable pre-authentication.\n\nAdd bounds validation ensuring sizeof(*data) + 2*hl + dhvlen <= tl before\nany access to the variable-length fields.\n\nDiscovered by Atuin - Automated Vulnerability Discovery Engine.",
   "datePublished": "Jul 25, 2026, 8:49:48 AM",
-  "dateUpdated": "Aug 5, 2026, 12:40:56 PM",
+  "dateUpdated": "Aug 17, 2026, 4:53:19 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
@@ -63,6 +63,16 @@
       "product_version": "patch: 7.1.4"
     },
     {
+      "id": "654ab1ff-c902-323a-b7f0-cf14f0ff6fab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "6631bc99-c2d8-3791-b071-8387dff3fd3b",
       "product": {
         "name": "Linux",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "db1312dd95488b5e6ff362ff66fcf953a46b1821 <80cd28b56ab62d3e7ed0a7bf05282e6d3ee5b2a0"
-    },
-    {
-      "id": "bbc3cde2-e9b4-334a-9637-81d2a03cbe68",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "f4291e5b-1ec9-31c3-8503-32b32b44305f",

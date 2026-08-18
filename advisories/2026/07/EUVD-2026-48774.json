@@ -3,7 +3,7 @@
   "enisaUuid": "e723409f-0ee1-3d2a-b2fd-042cc82dc547",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: epf: Avoid calling pci_irq_vector() from hardirq context\n\nntb_epf_vec_isr() calls pci_irq_vector() in hardirq context to derive\nthe vector number. pci_irq_vector() calls msi_get_virq() that takes a\nmutex and can therefore trigger \"scheduling while atomic\" splats:\n\n  BUG: scheduling while atomic: kworker/u33:0/55/0x00010001\n  ...\n  Call trace:\n   ...\n   schedule+0x38/0x110\n   schedule_preempt_disabled+0x28/0x50\n   __mutex_lock.constprop.0+0x848/0x908\n   __mutex_lock_slowpath+0x18/0x30\n   mutex_lock+0x4c/0x60\n   msi_domain_get_virq+0xe8/0x138\n   pci_irq_vector+0x2c/0x60\n   ntb_epf_vec_isr+0x28/0x120 [ntb_hw_epf]\n   __handle_irq_event_percpu+0x70/0x3a8\n   handle_irq_event+0x48/0x100\n   handle_edge_irq+0x100/0x1c8\n   ...\n\nCache the Linux IRQ number for vector 0 when vectors are allocated and\nuse it as a base in the ISR. Running the ISR in a threaded IRQ handler\nwould also avoid the problem, but that would be unnecessary here.",
   "datePublished": "Jul 25, 2026, 8:51:06 AM",
-  "dateUpdated": "Aug 5, 2026, 12:41:54 PM",
+  "dateUpdated": "Aug 17, 2026, 4:55:30 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 6.12.96"
+    },
+    {
+      "id": "2c847559-94c7-3fc1-86b7-8794ed3e3678",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "3229b201-7438-325a-862f-a6ce4f780401",
@@ -61,16 +71,6 @@
         }
       },
       "product_version": "patch: 6.6.145"
-    },
-    {
-      "id": "797065b1-244f-33f0-9a0a-c39bdab5330e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "7c4ffe9c-8cb0-3a0a-8349-ce9329e7f6ed",

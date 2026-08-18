@@ -3,12 +3,12 @@
   "enisaUuid": "d0e0a52b-0946-33df-b5df-fe096e74f023",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: RFCOMM: Fix session UAF in set_termios\n\nrfcomm_tty_set_termios() tests dlc->session without rfcomm_mutex and\nlater passes the pointer to rfcomm_send_rpn(). The latter dereferences\nboth session->initiator and session->sock. Meanwhile, krfcommd can\nunlink the DLC and free the session while holding rfcomm_mutex.\n\nThe race can proceed as follows:\n\n  TTY ioctl task                 krfcommd\n  --------------                 --------\n  load dlc->session\n  enter rfcomm_send_rpn()\n                                 lock rfcomm_mutex\n                                 clear dlc->session\n                                 free session\n                                 unlock rfcomm_mutex\n  read session->initiator\n\nKASAN reported:\n\n  BUG: KASAN: slab-use-after-free in rfcomm_send_rpn+0x297/0x2a0\n  Read of size 4 at addr ffff88810012a850 by task poc/92\n\n  Call Trace:\n   rfcomm_send_rpn+0x297/0x2a0\n   rfcomm_tty_set_termios+0x50d/0x850\n   tty_set_termios+0x596/0x950\n   set_termios+0x46a/0x6e0\n   tty_mode_ioctl+0x152/0xbd0\n   tty_ioctl+0x915/0x1240\n   __x64_sys_ioctl+0x134/0x1c0\n\n  Allocated by task 92:\n   rfcomm_session_add+0x9e/0x2e0\n   rfcomm_dlc_open+0x8b1/0xe00\n   rfcomm_dev_activate+0x85/0x1a0\n   rfcomm_tty_open+0x90/0x280\n\n  Freed by task 68:\n   kfree+0x131/0x3c0\n   rfcomm_session_del+0x119/0x180\n   rfcomm_run+0x737/0x4710\n\nAdd rfcomm_dlc_send_rpn(), which holds rfcomm_mutex while it verifies\nthat the DLC is still attached and sends the RPN frame. Have the TTY\npath use the helper and drop its unlocked session check. This keeps the\nsession valid through both the frame construction and socket send.",
   "datePublished": "Aug 10, 2026, 12:00:00 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:00 PM",
+  "dateUpdated": "Aug 17, 2026, 5:00:30 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2894bd8c68e97accd758ca6e5fc375d7e9e8882c\nhttps://git.kernel.org/stable/c/a82a9d3891f5607030b0672c255087a12bb9837b\nhttps://git.kernel.org/stable/c/780b04d09c941262ee2a2b4a09906451b69df8a6\nhttps://git.kernel.org/stable/c/98bc68194e37bfa5e8ddc80b5c1eb0be4dc607ea\nhttps://git.kernel.org/stable/c/c783399efc22d035443f1dfbf2a09bf9562aaa5e\n",
   "aliases": "GHSA-qrj4-v2pf-wj3g\nCVE-2026-68188\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "02cd016c-8634-38b2-be46-53a98b882709",
@@ -101,16 +101,6 @@
       "product_version": "3a5e903c09aed19ca4a1bb26d87b8d6461a93818 <98bc68194e37bfa5e8ddc80b5c1eb0be4dc607ea"
     },
     {
-      "id": "8f157a1f-58f1-38fc-bb8b-9931690a8452",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
-    {
       "id": "9025ccca-40c2-3d52-b239-38a3a78855f6",
       "product": {
         "name": "Linux",
@@ -129,6 +119,16 @@
         }
       },
       "product_version": "3a5e903c09aed19ca4a1bb26d87b8d6461a93818 <2894bd8c68e97accd758ca6e5fc375d7e9e8882c"
+    },
+    {
+      "id": "a7b6cbc0-84df-3de0-8353-16917da5655f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

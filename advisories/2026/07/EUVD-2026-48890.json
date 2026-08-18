@@ -3,7 +3,7 @@
   "enisaUuid": "4287869f-08f0-3675-861b-635c8b396519",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: udc: Fix use-after-free in gadget_match_driver\n\nThe udc structure acts as the management structure for the gadget,\nbut their lifecycles are decoupled. A race condition exists where\nusb_del_gadget() frees the udc memory (e.g., via mode-switch work)\nwhile gadget_match_driver() concurrently accesses the freed udc memory\n(e.g., via configfs), causing a Use-After-Free (UAF) that triggers a\nNULL pointer dereference when the freed memory is zeroed:\n\n[39430.908615][ T1171] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000\n[39430.911397][ T1171] pc : __pi_strcmp+0x20/0x140\n[39430.911441][ T1171] lr : gadget_match_driver+0x34/0x60\n...\n[39430.911890][ T1171]  usb_gadget_register_driver_owner+0x50/0xf8\n[39430.911910][ T1171]  gadget_dev_desc_UDC_store+0xf4/0x140\n[39430.931308][ T1171]  configfs_write_iter+0xec/0x134\n\n[39430.957058][ T1171] Workqueue: events_freezable __dwc3_set_mode\n[39430.957287][ T1171]  dwc3_gadget_exit+0x34/0x8c\n[39430.957304][ T1171]  __dwc3_set_mode+0xc0/0x664\n\nFix this by ensuring the udc structure remains allocated until the\ngadget is released. To achieve this, introduce a new\nusb_gadget_release() routine to the core. When the gadget is added,\nusb_add_gadget() stores the gadget's release routine in the udc\nstructure and takes a reference to the udc. When the gadget is\nreleased, usb_gadget_release() drops the reference to the udc and\nthen calls the gadget's release routine.",
   "datePublished": "Jul 25, 2026, 8:50:07 AM",
-  "dateUpdated": "Jul 27, 2026, 4:37:30 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/50eeb8e8a4f389efc91b93cff14a683e714ec194\nhttps://git.kernel.org/stable/c/7a5214dae906d9f58e07bc4995e8181ee74439f4\nhttps://git.kernel.org/stable/c/d026f71df141c9b064ff32a78af5391a31ef75c2\nhttps://git.kernel.org/stable/c/b52476a83d9e12df00765359d728a875b128bef1\nhttps://git.kernel.org/stable/c/54fa390aae393eb130f307a85562e3001cc39a52\nhttps://git.kernel.org/stable/c/67e511d2989eb1c8c588b599ce2fcc6bb8e6f7ea\n",
   "aliases": "GHSA-8737-2w76-fpfm\nCVE-2026-64346\n",
@@ -131,14 +131,14 @@
       "product_version": "patch: 6.1.178"
     },
     {
-      "id": "e4ed2609-2dc9-3acd-9977-e8a2fa5ee265",
+      "id": "e636b1c0-82ae-3d59-95df-7895e451a045",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc3"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f5d8513f-72c5-317d-93e2-365c8fbceb3a",

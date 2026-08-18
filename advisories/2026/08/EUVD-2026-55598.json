@@ -3,13 +3,23 @@
   "enisaUuid": "010cd8ed-a26f-3462-b0c3-3768748c0be0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: Fix an error handling path in cfg80211_wext_siwscan()\n\nIf the test against IEEE80211_MAX_SSID_LEN fails, then 'creq' leaks.\nUse the existing error handling path to fix it.",
   "datePublished": "Aug 10, 2026, 12:04:32 PM",
-  "dateUpdated": "Aug 10, 2026, 12:04:32 PM",
+  "dateUpdated": "Aug 17, 2026, 5:05:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e67dc2b8d5ac4bb804000b6732768a9ae678912f\nhttps://git.kernel.org/stable/c/99d2e850c643e2c70fa165b722a1ad28347a8b3a\nhttps://git.kernel.org/stable/c/c6659f66d4ee4841aafae5659d2ef5e4c5c63cb6\n",
   "aliases": "CVE-2026-68412\nGHSA-xpf7-vhxr-qr93\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "114b539c-3687-35a6-b848-4d86238d5583",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "26c8956f-5d13-31de-b7ef-c728ee1774be",
       "product": {
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "f6e9f142-4731-3d97-a08e-dc544e0cc904",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     }
   ],
   "enisaIdVendor": [

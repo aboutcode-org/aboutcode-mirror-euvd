@@ -3,12 +3,12 @@
   "enisaUuid": "652ee1eb-145d-387e-b47b-0f8bc4194b81",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nleds: uleds: Fix potential buffer overread\n\nThe name string supplied by userspace is not guaranteed to be\nnull-terminated, so using strchr() on it might result in a buffer\noverread. The same thing will happen when said string is used by\nthe LED class device.\n\nFix this by using strnchr() instead and explicitly check that\nthe name string is properly null-terminated.",
   "datePublished": "Aug 15, 2026, 5:54:29 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:29 AM",
+  "dateUpdated": "Aug 17, 2026, 5:10:59 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a84c59121dfdc7b324f72dc5012aa8fe5e7d2d7b\nhttps://git.kernel.org/stable/c/5bb89e23729f3a59592d699a437bb001f24b8f67\nhttps://git.kernel.org/stable/c/5ad6f6c9209e5777b896def9876708853ae26d0d\nhttps://git.kernel.org/stable/c/8bf529571cca60fb8af65d6d034bdbbc99a9127c\nhttps://git.kernel.org/stable/c/a91ac9fdac7385cbc98aeae55b4e5302125497a2\nhttps://git.kernel.org/stable/c/6dd51d84a9502553e58beade72823258871b8111\nhttps://git.kernel.org/stable/c/263ccdd627caeda6e980ed3c6e32bb4fd6b380b1\nhttps://git.kernel.org/stable/c/c19fe864f667afc49d1391d764e20b66555bcf7a\n",
   "aliases": "GHSA-p332-q22m-rchg\nCVE-2026-72241\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "05d7dbc2-2fc4-366e-acac-369e4949ff86",
@@ -151,6 +151,16 @@
       "product_version": "patch: 6.1.178"
     },
     {
+      "id": "b62f3322-7d0c-31c9-80c3-1f96956eaf53",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "b743a782-31c9-3fd4-8642-642bf54bf096",
       "product": {
         "name": "Linux",
@@ -159,16 +169,6 @@
         }
       },
       "product_version": "patch: 5.10.261"
-    },
-    {
-      "id": "da402942-5cc5-3d1b-ac1a-ffd706c175fd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "dd652d29-cdd1-3187-b524-8ba50490a63f",

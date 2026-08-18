@@ -3,14 +3,14 @@
   "enisaUuid": "6866d272-dd50-34cc-8eec-5fc4d1e575af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate orphan inode entry count\n\nf2fs_recover_orphan_inodes() trusts the orphan block entry_count when\nreplaying orphan inodes from the checkpoint pack. A corrupted entry_count\nlarger than F2FS_ORPHANS_PER_BLOCK makes the recovery loop read past the\nino[] array and interpret footer or following data as inode numbers.\n\nOn a crafted image, mounting an unpatched kernel can drive orphan recovery\ninto f2fs_bug_on() and panic the kernel. Validate entry_count before\nconsuming entries so corrupted checkpoint data fails the mount with\n-EFSCORRUPTED and requests fsck instead.\n\nSet ERROR_INCONSISTENT_ORPHAN as well, so the corruption reason can be\nrecorded in the superblock s_errors[] field. This gives fsck a persistent\nhint even though mount-time orphan recovery failure may leave no chance to\npersist SBI_NEED_FSCK through a checkpoint.",
   "datePublished": "Jul 19, 2026, 12:02:17 PM",
-  "dateUpdated": "Aug 5, 2026, 12:36:04 PM",
+  "dateUpdated": "Aug 17, 2026, 4:51:25 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/210c210c92d78fdf5051bc55c5c69044b1a2150a\nhttps://git.kernel.org/stable/c/ad101d15716f5a24d1fa82a849f80430c805a3dd\nhttps://git.kernel.org/stable/c/d18c81f5d0ecd5796aa47d66d98f2dd54d8d0f70\nhttps://git.kernel.org/stable/c/d2f236196d542ccd8505736e41c3a1d3f0305f6f\nhttps://git.kernel.org/stable/c/550511a2470f6d204fa07b331f048bd2d3c51280\nhttps://git.kernel.org/stable/c/8aad54746c251f2c2370118df766c0c82e2d2091\nhttps://git.kernel.org/stable/c/2e12381d4495dc8b0ff042c6856022b2e359835c\nhttps://git.kernel.org/stable/c/846c499a65816d13f1186e3090e825e8bb8bcb8b\n",
   "aliases": "CVE-2026-63818\nGHSA-2q7w-rghx-vwh8\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "08d53b92-9414-3cb4-ba47-b9307e7f9f4f",
@@ -143,6 +143,16 @@
       "product_version": "patch: 5.10.261"
     },
     {
+      "id": "bcd6b80e-35f8-36f6-89d8-e41f840645d1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "c2b2d06b-3b25-355f-b104-c7e6b57e8fd0",
       "product": {
         "name": "Linux",
@@ -181,16 +191,6 @@
         }
       },
       "product_version": "127e670abfa7fa150f6550d620ded930f5bdb4e7 <2e12381d4495dc8b0ff042c6856022b2e359835c"
-    },
-    {
-      "id": "fc94172b-60e5-3635-ae71-2dedab2a81a0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

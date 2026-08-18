@@ -3,7 +3,7 @@
   "enisaUuid": "4b428fb0-98a2-3954-ab7f-823f0d5f2166",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ip_gre: require CAP_NET_ADMIN in the device netns for changelink\n\nA tunnel changelink() operates on at most two netns, dev_net(dev) and\nthe tunnel link netns t->net. They differ once the device is created in\nor moved to a netns other than the one the request runs in. The rtnl\nchangelink path checks CAP_NET_ADMIN only against dev_net(dev), so a\ncaller privileged there but not in t->net can rewrite a tunnel that\nlives in t->net.\n\nAdd rtnl_dev_link_net_capable() next to rtnl_get_net_ns_capable() in\nnet/core/rtnetlink.c. It requires CAP_NET_ADMIN in the link netns and is\nskipped when the link netns is dev_net(dev), where the rtnl path already\nchecked it. The other patches in this series use the same helper.\n\nGate ipgre_changelink() and erspan_changelink() with it, at the top of\nthe op before any attribute is parsed, because the parsers update live\ntunnel fields first. ipgre_netlink_parms() sets t->collect_md before\nip_tunnel_changelink() runs.\n\nCommit 8b484efd5cb4 (\"ip6: vti: Use ip6_tnl.net in\nvti6_siocdevprivate().\") added the same check on the ioctl path. This\nadds it on RTM_NEWLINK.",
   "datePublished": "Jul 19, 2026, 12:02:23 PM",
-  "dateUpdated": "Aug 5, 2026, 12:36:12 PM",
+  "dateUpdated": "Aug 17, 2026, 4:51:37 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -51,16 +51,6 @@
         }
       },
       "product_version": "b57708add31494175be741ed3fd24023b50c3423 <8165f7ff57d9667d2bb477ef6af83ede7fed4ad7"
-    },
-    {
-      "id": "34ab0cba-d68b-3d12-b0e4-495daeb8457b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "4dd98b27-d77c-3884-99de-6082e93ddc81",
@@ -191,6 +181,16 @@
         }
       },
       "product_version": "b57708add31494175be741ed3fd24023b50c3423 <47b5d3d506609b08b2e1f7c14f0b681a1953d572"
+    },
+    {
+      "id": "f5570f66-7710-308d-9314-4e89dc32dcc0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

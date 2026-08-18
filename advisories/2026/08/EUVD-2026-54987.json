@@ -3,14 +3,52 @@
   "enisaUuid": "001b9a02-72c8-35b0-83f2-5c4701db0f8b",
   "description": "Multiple integer overflow and underflow vulnerabilities were found in the GStreamer gst-plugins-ugly ASF demuxer (asfdemux) when parsing header objects from crafted ASF, WMV, or WMA files. Insufficient validation of attacker-controlled length and size values can bypass bounds checks and cause out-of-bounds heap reads. This can result in application crash, denial of service, or limited information disclosure when untrusted media is processed.",
   "datePublished": "Aug 10, 2026, 2:57:42 AM",
-  "dateUpdated": "Aug 10, 2026, 5:25:37 PM",
+  "dateUpdated": "Aug 17, 2026, 11:33:13 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-19389\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2513016\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12233\nhttps://gstreamer.freedesktop.org/releases/1.28/\nhttps://gstreamer.freedesktop.org/security/sa-2026-0075.html\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:55435\nhttps://access.redhat.com/errata/RHSA-2026:55865\nhttps://access.redhat.com/security/cve/CVE-2026-19389\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2513016\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12233\nhttps://gstreamer.freedesktop.org/releases/1.28/\nhttps://gstreamer.freedesktop.org/security/sa-2026-0075.html\n",
   "aliases": "GHSA-p44h-f9j6-g9ff\nCVE-2026-19389\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.24,
+  "enisaIdProduct": [
+    {
+      "id": "29b5b473-6a11-3f8c-9f70-ed7332b99bdf",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.26.7-2.el10_2.2"
+    },
+    {
+      "id": "328c99d6-657f-3969-95d9-c1732c88b780",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.22.12-6.el9_8.2"
+    },
+    {
+      "id": "9950aa2a-b1f0-39be-953e-e588b19bfad4",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.22.12-7.el9_8.4"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "bb1f8ca2-7511-3371-8a16-75a04e851a18",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

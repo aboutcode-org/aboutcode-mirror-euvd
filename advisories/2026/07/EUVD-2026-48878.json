@@ -3,12 +3,12 @@
   "enisaUuid": "6079a536-736d-33a7-b9e5-6475dc089434",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: digi_acceleport: fix hard lockup on disconnect\n\nIf submitting the OOB write urb fails persistently (e.g if the device is\nbeing disconnected) the driver would loop indefinitely with interrupts\ndisabled.\n\nCheck for urb submission errors when sending OOB commands to avoid\nhanging if, for example, open(), set_termios() or close() races with a\nphysical disconnect.\n\nThis is issue was flagged by Sashiko when reviewing an unrelated change\nto the driver.",
   "datePublished": "Jul 25, 2026, 8:50:00 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:00 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6e51147c2744d15730084dc89cc99180d3de4184\nhttps://git.kernel.org/stable/c/6a8592ace932081ea11aea41c460a1ca0f6344a4\nhttps://git.kernel.org/stable/c/5a82d842e8c35227d7227f19e5e654df1451782c\nhttps://git.kernel.org/stable/c/bcfeae431db9986c2b313e6a760f2ac8df61e138\nhttps://git.kernel.org/stable/c/2067b3838da6e4af03bae3630414193188d754b2\nhttps://git.kernel.org/stable/c/2b7dc482f859f2d027db07ff0efc1c5df5b3451a\nhttps://git.kernel.org/stable/c/79bc131df0e50f8f663c1fdbbe952aaf193a8d39\nhttps://git.kernel.org/stable/c/5c1ea24b53bf3bfb859f0a05573997487975da23\n",
   "aliases": "GHSA-v647-r38j-39fq\nCVE-2026-64334\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "02e93bf1-d143-325b-aa27-af10262d4190",
@@ -41,6 +41,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2067b3838da6e4af03bae3630414193188d754b2"
     },
     {
+      "id": "2832dcaf-2420-3943-91d7-525a02d43891",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "30cba6f0-3d8d-388e-92b1-600dde5121fa",
       "product": {
         "name": "Linux",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <79bc131df0e50f8f663c1fdbbe952aaf193a8d39"
-    },
-    {
-      "id": "3c9ab80c-3cd2-3c44-a4b5-209878cfe37b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "4737a7d2-c266-3016-b036-974fc072d627",

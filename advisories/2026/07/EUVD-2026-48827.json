@@ -3,12 +3,12 @@
   "enisaUuid": "d34143cb-6f68-31f7-8cec-392276af653d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: firewire: isight: bound the sample count to the packet payload\n\nisight_packet() takes the frame count from the device iso packet and\nchecks it only against the device claimed iso length.\n\n\tcount = be32_to_cpu(payload->sample_count);\n\tif (likely(count <= (length - 16) / 4))\n\t\tisight_samples(isight, payload->samples, count);\n\nlength is the iso header data_length. It can be up to 0xffff. So the\ngate allows a count up to about 16379. isight_samples() then copies\ncount frames out of payload->samples into the PCM DMA buffer.\n\npayload->samples holds only 2 * MAX_FRAMES_PER_PACKET values. The\ndevice multiplexes two samples per frame. A count past\nMAX_FRAMES_PER_PACKET reads past the payload. A count past the buffer\nsize writes past runtime->dma_area. The smallest PCM buffer is larger\nthan MAX_FRAMES_PER_PACKET. Bounding the count to MAX_FRAMES_PER_PACKET\nkeeps both the read and the write in range.\n\nA malicious or faulty Apple iSight on the FireWire bus reaches this\nduring a normal capture.\n\nAdd the MAX_FRAMES_PER_PACKET bound to the gate.",
   "datePublished": "Jul 25, 2026, 8:51:43 AM",
-  "dateUpdated": "Jul 25, 2026, 8:51:43 AM",
+  "dateUpdated": "Aug 17, 2026, 4:56:30 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/24423e0a9251d348c3f1fb0bb0e61b879e1e976c\nhttps://git.kernel.org/stable/c/ebbffacda6733dcbcef601b5b523460f8d8b671e\nhttps://git.kernel.org/stable/c/57e4d9043afc1eaddee8f50d11def6e65415d273\nhttps://git.kernel.org/stable/c/3ed2fa1ed8cc65f910b8bbc0be3cc366b30f8478\nhttps://git.kernel.org/stable/c/31da82b9676c6b112e7c72c7529e6812b919742a\nhttps://git.kernel.org/stable/c/8e48a29813df8dd71503800b7acf69c12c035045\nhttps://git.kernel.org/stable/c/31a01b70bb90e3ef3147f308e2ea899e1d2485ca\nhttps://git.kernel.org/stable/c/29b9667982e4df2ed7744f86b1144f8bb58eb698\n",
   "aliases": "CVE-2026-64483\nGHSA-j22x-mh97-frw2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "16fa09a8-5b25-3bc7-93ce-ce8e9ea4b3da",
@@ -49,16 +49,6 @@
         }
       },
       "product_version": "patch: 6.12.96"
-    },
-    {
-      "id": "52ba2e1e-c82a-39dd-b5ff-1d9b2944b487",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "83173eac-7744-3f74-b371-21b86ba8be0e",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "patch: 6.18.39"
+    },
+    {
+      "id": "ecfcc67a-4092-302d-9471-25b1aad1bf02",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "fa001a9c-0df4-36e9-8ff6-b939527e202c",

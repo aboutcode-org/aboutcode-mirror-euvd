@@ -3,14 +3,14 @@
   "enisaUuid": "92d3d5d8-6703-396c-a701-e28e39f43bc2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: stop hardware after post-start probe failures\n\nwacom_parse_and_register() starts HID hardware before registering inputs\nand initializing pad LEDs/remotes. Those later steps can fail, but their\nerror paths currently release Wacom resources without stopping the HID\nhardware.\n\nRoute post-hid_hw_start() failures through hid_hw_stop() before\nreleasing driver resources.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
   "datePublished": "Aug 10, 2026, 11:51:46 AM",
-  "dateUpdated": "Aug 13, 2026, 10:39:22 PM",
+  "dateUpdated": "Aug 17, 2026, 4:58:39 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5a7ca028facf04921b2c1c2e4d1ee7f282510555\nhttps://git.kernel.org/stable/c/3e6473a4f0596182acdda5219b4bebfbee76514f\nhttps://git.kernel.org/stable/c/46d8b8c85ae0589fb85746a64e8908160e52aac3\nhttps://git.kernel.org/stable/c/1a1ebdcb56ae58a0ee2c54dd15d75121e30424e3\nhttps://git.kernel.org/stable/c/75eb2173b63ab41c24d80cd641af18f3c117a267\nhttps://git.kernel.org/stable/c/416095e9a6037b4b39fcadd0d2bd77a8852211ec\nhttps://git.kernel.org/stable/c/e2cc711a9df37f359159b21db56cea9c21f58a9c\nhttps://git.kernel.org/stable/c/ec2612b8ad9e642596db011dd8b6568ef1edeaa1\n",
   "aliases": "CVE-2026-68091\nGHSA-jmfj-p2w9-43g4\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "0b4aeafa-e4d3-387d-a609-cdc390deba3f",
@@ -83,16 +83,6 @@
       "product_version": "c1d6708bf0d3dd976460d435373cf5abf21ce258 <75eb2173b63ab41c24d80cd641af18f3c117a267"
     },
     {
-      "id": "2b88bcca-9669-350d-b6bc-a60940eaacb5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "2c168099-a75c-3a63-9439-cc33950a4069",
       "product": {
         "name": "Linux",
@@ -101,6 +91,16 @@
         }
       },
       "product_version": "patch: 5.15.212"
+    },
+    {
+      "id": "4762b755-d60a-3a56-8f2d-461d6cc15cc9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "50b81136-165a-32eb-83c5-d3ecd2f6dc4f",

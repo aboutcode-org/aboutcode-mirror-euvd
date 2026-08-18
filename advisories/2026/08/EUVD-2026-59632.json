@@ -3,12 +3,14 @@
   "enisaUuid": "00b697f4-32f4-3116-a544-77ccf9c174f9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkeys: fix out-of-bounds read in keyring_get_key_chunk()\n\nFor description-level chunks keyring_get_key_chunk() advances the read\npointer by level * sizeof(long) past the inline prefix but only\nbounds-checks the prefix, so a long enough key description is read past\nits kmemdup(desc, desc_len + 1) allocation.  Compute the full byte\noffset and bounds-check the description against it before reading.\n\nThe walk only reaches a description-level chunk when two keys collide\nthrough the hash, x, type and domain_tag chunks, so this is reached from\nan unprivileged add_key(2) with a crafted pair of same-type keys whose\nindex hashes collide; KASAN reports a slab-out-of-bounds read.",
   "datePublished": "Aug 15, 2026, 12:28:08 PM",
-  "dateUpdated": "Aug 15, 2026, 12:28:08 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:46 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/d1933e03e8c74a018550c31a393b79c4d95bff40\nhttps://git.kernel.org/stable/c/3a744838453fb9309ce5a5526d3252e211d60152\nhttps://git.kernel.org/stable/c/e9417d21a22ad2ec398e78fcf084b717ce92cf2f\nhttps://git.kernel.org/stable/c/8dba33c1e779d0fb9a2acb31e354cf0fc0229111\nhttps://git.kernel.org/stable/c/63918731f9ae25b5deb022f118e941e6dddfcef4\n",
   "aliases": "CVE-2026-74567\nGHSA-fp4g-wh5w-9xf4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "27e50812-3a95-3228-acb0-23ae541e16cf",
@@ -39,6 +41,16 @@
         }
       },
       "product_version": "f771fde82051976a6fc0fd570f8b86de4a92124b <d1933e03e8c74a018550c31a393b79c4d95bff40"
+    },
+    {
+      "id": "3d44de30-4ddc-303f-a961-1cc73d49c34b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "718c9ed1-414c-3dbf-b19a-9fd045ce5e7b",
@@ -109,16 +121,6 @@
         }
       },
       "product_version": "patch: 6.6.151"
-    },
-    {
-      "id": "d2da1594-4dae-341a-9b20-3890506738b3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "eeebcb81-9192-3a22-a021-e7a2b0907915",

@@ -3,7 +3,7 @@
   "enisaUuid": "7bcf892b-a5f5-3fae-a607-527bb2db1a5b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: fix overflow in keyctl_pkey_params_get_2()\n\nThe length for the internal output buffer is calculated incorrectly, which\ncan result overflow when a too small buffer is provided.\n\nFix the bug by allocating internal output with the size of the maximum\nlength of the cryptographic primitive instead of caller provided size.",
   "datePublished": "Jul 19, 2026, 12:02:20 PM",
-  "dateUpdated": "Aug 5, 2026, 12:36:07 PM",
+  "dateUpdated": "Aug 17, 2026, 4:51:32 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -113,6 +113,16 @@
       "product_version": "patch: 5.15.211"
     },
     {
+      "id": "77b4ff0f-15b6-31e2-a139-f42cdeda4ea4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "8813eaa2-bb0c-3774-8b48-23c6640be6c0",
       "product": {
         "name": "Linux",
@@ -181,16 +191,6 @@
         }
       },
       "product_version": "patch: 5.10.260"
-    },
-    {
-      "id": "ee201bb7-7614-3845-9a9b-52271502b643",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

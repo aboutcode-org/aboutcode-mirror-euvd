@@ -3,12 +3,14 @@
   "enisaUuid": "b501e27a-769f-3934-9931-27916a585fb1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix potential use-after-free in audit_del_rule()\n\n`audit_del_rule()` destroys `e->rule.exe` via `audit_remove_mark_rule()`\nbefore unlinking the rule from RCU-visible filter lists and waiting for a\ngrace period. Concurrent readers in `audit_filter()` and\n`audit_filter_rules()` still dereference `e->rule.exe`, while the fsnotify\nmark can be freed on an independent lifetime path. This creates a\nuse-after-free window during rule deletion.\n\nFix this by unlinking the rule from the RCU-visible lists and invoking\n`synchronize_rcu()` before calling `audit_remove_mark_rule()` (and other\nrule removal helpers). This ensures that all existing RCU readers have\nexited the critical section before any underlying resources are destroyed.",
   "datePublished": "Aug 15, 2026, 12:27:33 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:33 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:03 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/45bf3df5b32e5a49953e7ceabc55f7dd85380e46\nhttps://git.kernel.org/stable/c/78bde7e9bd36eaae1b8e8cfcd47f12a34f301dbf\nhttps://git.kernel.org/stable/c/cae0dfed5d307b240bff71c3cf206652d1b6f215\nhttps://git.kernel.org/stable/c/5b8f46864f06d6dbacb7dcea52bc084dfd122638\nhttps://git.kernel.org/stable/c/246df90b5f1a8a6e6abbd2f058b029558720adec\n",
   "aliases": "GHSA-4248-7w5j-8g9p\nCVE-2026-74512\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1d5d71a5-06f1-3703-98fe-5b1c5d9b31cd",
@@ -21,14 +23,14 @@
       "product_version": "4.3"
     },
     {
-      "id": "3960ad95-186c-359d-8be3-60054e6d01c5",
+      "id": "216c7010-f913-30d1-ab15-58d13ae47492",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc6"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "4d5e26bc-5fe9-3131-b26d-e88313b787c8",

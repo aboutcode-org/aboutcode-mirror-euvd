@@ -3,14 +3,14 @@
   "enisaUuid": "048336bc-5cc5-304a-a0c2-bd07800bdce0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: mgmt: fix locking in unpair_device/disconnect_sync\n\nDereferencing RCU-protected pointers outside critical sections is\ninvalid and may lead to UAF.\n\nTake hdev->lock for hci_conn lookup and hci_abort_conn().  Don't use RCU\nto ensure the conn is fully initialized at this point.",
   "datePublished": "Aug 10, 2026, 12:04:11 PM",
-  "dateUpdated": "Aug 13, 2026, 10:44:22 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8bc83f9ef6789571f399ff631a2a14a12b6d8585\nhttps://git.kernel.org/stable/c/579faba5ede6df6b7f36777c431dc8dcf9d272e7\nhttps://git.kernel.org/stable/c/ca58ad287bfc5b9d31a72ecb8650289df2b57250\nhttps://git.kernel.org/stable/c/b11511006f9e17000de3f4cadee451364f658ca3\nhttps://git.kernel.org/stable/c/16cd66443957e4ad42155c6fec401012f600c6f8\n",
   "aliases": "GHSA-29hq-hf65-36hv\nCVE-2026-68392\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "1099cebe-18e2-3622-9c3a-51db76470587",
@@ -53,16 +53,6 @@
       "product_version": "227a0cdf4a028a73dc256d0f5144b4808d718893 <ca58ad287bfc5b9d31a72ecb8650289df2b57250"
     },
     {
-      "id": "2c4731d4-69cc-3ca4-8235-fc3db297444b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
-    },
-    {
       "id": "3df0d417-d4db-3e60-af44-576aca0e29af",
       "product": {
         "name": "Linux",
@@ -81,6 +71,16 @@
         }
       },
       "product_version": "patch: 6.18.42"
+    },
+    {
+      "id": "40694743-b3bc-3c45-bcd3-2038d198f91b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "65388e79-ee30-31bf-87f8-b5e73281ae54",

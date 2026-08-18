@@ -3,12 +3,12 @@
   "enisaUuid": "97694289-5843-33f9-ab80-2995f8d4e1ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: restore DACL size on check_add_overflow() to avoid malformed ACL\n\ncheck_add_overflow() unconditionally writes the truncated sum into *d\neven on overflow, per its contract in include/linux/overflow.h.\nThe four check_add_overflow() guards in set_posix_acl_entries_dacl()\nand set_ntacl_dacl() break out of the ACE-building loops on overflow,\nbut the truncated *size is then consumed downstream at the end of\nset_ntacl_dacl():\n\n    pndacl->size = cpu_to_le16(le16_to_cpu(pndacl->size) + size);\n\nThis produces an on-wire NT ACL whose pndacl->size under-reports the\nbytes actually written by the preceding fill_ace_for_sid()/memcpy()\ncalls, yielding a malformed ACL that can trigger out-of-bounds reads\nwhen re-parsed by clients or ksmbd itself.\n\nRestore *size to its pre-addition value on each overflow branch (via\n`*size -= ace_sz` / `size -= nt_ace_size`) so that after the break,\n*size once again holds the cumulative size of the successfully-written\nACEs. The committed ACL is then truncated-but-self-consistent rather\nthan malformed.\n\nThe ksmbd DACL builders are the only check_add_overflow() sites found\nwhere an overflow path breaks out of a loop and the destination value\nis consumed afterward. The other nearby break-style cases either\nreturn -EINVAL on overflow (transport_ipc.c) or break without\nconsuming the overflowed destination value afterward (buildid.c).",
   "datePublished": "Aug 10, 2026, 11:58:13 AM",
-  "dateUpdated": "Aug 10, 2026, 11:58:13 AM",
+  "dateUpdated": "Aug 17, 2026, 4:58:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f4fcd0c1a243d449307b887fafee23921e9db5ab\nhttps://git.kernel.org/stable/c/0bf38372821b1526f31538a7d9811844c55c7f38\nhttps://git.kernel.org/stable/c/847ecd4eb3c117c3d2f13f1e7ab506543aad8183\nhttps://git.kernel.org/stable/c/bc90144ce8bb7fcf05ad9417c7adb4e9509d9e13\nhttps://git.kernel.org/stable/c/bbf0a8e931204ecdab494a88d43b0a24a04285c5\n",
   "aliases": "GHSA-xjwm-2vhv-89mg\nCVE-2026-68099\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1a360f4b-e050-309f-a968-39c27953d4c9",
@@ -79,16 +79,6 @@
         }
       },
       "product_version": "6.12.84 <6.12.101"
-    },
-    {
-      "id": "360a384a-ca5c-32e6-aa23-e904482e27e0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "3bed050c-de8d-344e-bd71-0b524bc2408f",
@@ -189,6 +179,16 @@
         }
       },
       "product_version": "299f962c0b02d048fb45d248b4da493d03f3175d <bc90144ce8bb7fcf05ad9417c7adb4e9509d9e13"
+    },
+    {
+      "id": "f51dc473-7953-3664-b51f-6f5ab122a2a3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f5570cbd-f92f-329b-a04f-575731c29340",

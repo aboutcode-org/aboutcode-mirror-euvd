@@ -3,12 +3,14 @@
   "enisaUuid": "558dd7d6-a78e-3d19-8621-bce07e3f1211",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nuprobes/x86: Use proper mm_struct in __in_uprobe_trampoline\n\nIn the unregister path we use __in_uprobe_trampoline check with\ncurrent->mm for the VMA lookup, which is wrong, because we are\nin the tracer context, not the traced process.\n\nAdd mm_struct pointer argument to __in_uprobe_trampoline and\nchanging related callers to pass proper mm_struct pointer.",
   "datePublished": "Aug 15, 2026, 5:55:58 AM",
-  "dateUpdated": "Aug 15, 2026, 5:55:58 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:43:15 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c9170c83b0e0fc2065a4c2bca5bf1f90c5880156\nhttps://git.kernel.org/stable/c/1acddd3e22dd6912dd5d54f80462405a1f1e6bae\nhttps://git.kernel.org/stable/c/169328645663bae30e9abad4012d52441e085a71\n",
   "aliases": "CVE-2026-72357\nGHSA-hfv7-f5x8-pgrv\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "2b2ca29a-0b6a-331e-a25b-a8ee530a2dcf",
@@ -51,6 +53,16 @@
       "product_version": "patch: 6.18.40"
     },
     {
+      "id": "505594dd-4f0b-31ae-9962-ef5a69583292",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "5d4ba0b5-9820-3e58-86f6-76381e02ecf7",
       "product": {
         "name": "Linux",
@@ -69,16 +81,6 @@
         }
       },
       "product_version": "ba2bfc97b4629b10bd8d02b36e04f3932a04cac4 <c9170c83b0e0fc2065a4c2bca5bf1f90c5880156"
-    },
-    {
-      "id": "9df8c071-0d7a-3d76-976a-c090f0663ccd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc2"
     },
     {
       "id": "ce154034-6ad8-3c8d-b8bd-210fcc47e0f6",

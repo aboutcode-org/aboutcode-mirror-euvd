@@ -3,7 +3,7 @@
   "enisaUuid": "892cf310-cb95-3fb3-b978-4e86c7a556d8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: light: veml6075: add bounds check to veml6075_it_ms index\n\nveml6075_it_ms has 5 elements but VEML6075_CONF_IT can yield values 0-7.\nIf it returns a value >= 5, this causes an out-of-bounds array access.\nAdd a bounds check and return -EINVAL if the index is out of range.\n\nThe problem values are reserved so should never be read from the\nregister. Hence this is hardening against fault device, missprogramming\nor bus corruption.",
   "datePublished": "Jul 19, 2026, 11:59:33 AM",
-  "dateUpdated": "Aug 5, 2026, 12:35:26 PM",
+  "dateUpdated": "Aug 17, 2026, 4:50:38 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
@@ -41,16 +41,6 @@
         }
       },
       "product_version": "patch: 6.18.37"
-    },
-    {
-      "id": "1ef0ff60-c56f-32ad-ac7c-8b7e91a09fed",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "207ea1bb-8b14-3d7c-9f44-fd7e35e5ad00",
@@ -121,6 +111,16 @@
         }
       },
       "product_version": "3b82f43238aecd73464aeacc9c73407079511533 <df9127a1d2d748e426c49c8fcd9b6801e4eb743d"
+    },
+    {
+      "id": "bdbfdf4e-030b-34a3-a309-20390f636cc4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "dfb1f11c-ede6-3a83-8c87-09357b5e7377",

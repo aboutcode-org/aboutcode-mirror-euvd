@@ -3,12 +3,12 @@
   "enisaUuid": "e00b1988-2752-3b6d-91e0-a74a0f0b799d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: 6fire: Fix UAF at error handling during probe\n\nAlthough 6fire driver had a few fixes for dealing with the early error\nhandling during the probe phase, it forgot a pending URB before\nfreeing the resources, which may lead to a UAF.\n\nThis patch addresses it by doing the almost same cleanup procedure\nlike the normal disconnect phase at the error path.",
   "datePublished": "Aug 15, 2026, 12:27:29 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:29 PM",
+  "dateUpdated": "Aug 17, 2026, 5:20:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/49bc7741cd2761c703a292dc69245041ae8a67bd\nhttps://git.kernel.org/stable/c/2de734dcbb210bd59983e13d36988acbcc122194\nhttps://git.kernel.org/stable/c/11e2953d9f4c7c3d2af94a889c2d805c537d633f\nhttps://git.kernel.org/stable/c/630c8d6a93cbd9b2a207f1a67ef1fd21af098b0c\nhttps://git.kernel.org/stable/c/a54bf16965f896415c3337bc4fbb40fb11941d99\n",
   "aliases": "CVE-2026-74505\nGHSA-3wq3-vrpr-9c55\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1b73105d-32d0-3f12-a46b-7de21485fb10",
@@ -61,6 +61,16 @@
       "product_version": "0 <6.12.103"
     },
     {
+      "id": "922ba7d2-e19c-3be2-a684-01e261499e8c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "95cb6961-04d0-3909-ba33-d53a5f82263e",
       "product": {
         "name": "Linux",
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2de734dcbb210bd59983e13d36988acbcc122194"
-    },
-    {
-      "id": "ab6b7461-80f5-3e9f-9983-199449031489",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "af0d791c-cb11-3aa8-aa27-bc7935f0b651",

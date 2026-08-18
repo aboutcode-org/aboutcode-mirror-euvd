@@ -3,7 +3,7 @@
   "enisaUuid": "3a1820cb-1f56-3f2b-95db-ad99eedc813b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: free mapping node on duplicate reloc root insert\n\n__add_reloc_root() allocates a mapping_node before inserting it into\nrc->reloc_root_tree.  If rb_simple_insert() finds an existing entry, it\nreturns the existing rb_node and leaves the newly allocated node unlinked.\n\nThe error path then returns -EEXIST without freeing the new node.  Since\nthe node was never inserted into reloc_root_tree, the later cleanup in\nput_reloc_control() cannot find it either.\n\nFree the newly allocated node before returning -EEXIST.\n\nThe callers currently assert that -EEXIST should not happen, so this is a\ndefensive cleanup for an unexpected duplicate insert path.  If the path is\never reached, the local allocation should still be released.",
   "datePublished": "Aug 12, 2026, 12:51:48 AM",
-  "dateUpdated": "Aug 12, 2026, 12:51:48 AM",
+  "dateUpdated": "Aug 17, 2026, 5:05:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/92bedc0455552b42ada1a1f42b0e3a8593cdfccc\nhttps://git.kernel.org/stable/c/14a8be9428435ee17f17fae7991215c246b7fd43\nhttps://git.kernel.org/stable/c/797dc567146c7e3c4f8d9680e4fbc76e0a6d9151\nhttps://git.kernel.org/stable/c/ae0629ff9ccb836416ada129f4edc7efea6eaaad\nhttps://git.kernel.org/stable/c/6a8269b6459ed870a8156c106a0f597383907872\n",
   "aliases": "GHSA-mmwm-g85r-pjj6\nCVE-2026-68450\n",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "5.13"
-    },
-    {
-      "id": "1c35e0b8-ecee-385d-96fc-0e977835cef8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "380d20b5-16b1-3f44-bf5f-3455575c702d",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "6faad24f-782d-31a7-b344-90b428b644a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "840d8e37-0593-371a-b762-b0c4edfdd88a",

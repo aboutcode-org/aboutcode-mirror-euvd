@@ -3,7 +3,7 @@
   "enisaUuid": "003b8448-d726-38d3-92df-aaefbef3cc21",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ti-ads1298: add bounds check to pga_settings index\n\nads1298_pga_settings has 7 elements but ADS1298_MASK_CH_PGA can yield\nvalues 0-7. If it yields a value >= 7, this causes an out-of-bounds\narray access. Add a bounds check and return -EINVAL if the index\nis out of range.\n\nNote that the remaining value b111 is reserved so should not be seen\nin a correctly functioning system.",
   "datePublished": "Jul 19, 2026, 11:59:33 AM",
-  "dateUpdated": "Aug 5, 2026, 12:35:25 PM",
+  "dateUpdated": "Aug 17, 2026, 4:50:37 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "00ef7708fa6073a84f6898fdcdfe965d903b0378 <95e8a48d7a85d4226934020e57815a3316d3a14b"
+    },
+    {
+      "id": "49a86168-f166-37ca-84fc-981b227f7d84",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "4bf64439-478f-36c0-bb31-e0ee15fa4241",
@@ -81,16 +91,6 @@
         }
       },
       "product_version": "patch: 7.1.2"
-    },
-    {
-      "id": "8e76d3f5-4df2-301a-b124-d6a435fc90b7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "8e9d667a-4aee-3ec8-af06-94e7c6879643",

@@ -3,12 +3,12 @@
   "enisaUuid": "9e6bfc6e-4424-323a-88c3-aed798dd434a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: vivid: fix cleanup bugs in vivid_init()\n\nWhen platform_device_register() fails in vivid_init(), the embedded\nstruct device in vivid_pdev has already been initialized by\ndevice_initialize(), but the failure path jumps to free_output_strings\nwithout dropping the device reference for the current platform device:\n\n  vivid_init()\n    -> platform_device_register(&vivid_pdev)\n       -> device_initialize(&vivid_pdev.dev)\n       -> setup_pdev_dma_masks(&vivid_pdev)\n       -> platform_device_add(&vivid_pdev)\n\nThis leads to a reference leak when platform_device_register() fails.\nFix this by calling platform_device_put() before jumping to the common\ncleanup path.\n\nAlso, the unreg_driver label incorrectly calls\nplatform_driver_register() instead of platform_driver_unregister(),\nwhich breaks cleanup when workqueue creation fails after successful\ndriver registration. Fix that as well.\n\nThe reference leak was identified by a static analysis tool I developed\nand confirmed by manual review. The incorrect cleanup call was found\nduring code inspection.",
   "datePublished": "Aug 10, 2026, 12:00:22 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:22 PM",
+  "dateUpdated": "Aug 17, 2026, 5:00:47 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4385092a86b94e1f332db35a3766108978c0722f\nhttps://git.kernel.org/stable/c/1349af7f87df57940619f5b87990b799dac9ed8a\nhttps://git.kernel.org/stable/c/6d51ad8f1c50c50d1abcc97fd243179967184c6a\nhttps://git.kernel.org/stable/c/a07c179a92e949172ca52f6d4a13202ea88cd4b7\n",
   "aliases": "CVE-2026-68203\nGHSA-m883-8hm9-jvgx\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0e68860f-1cac-3390-add1-33bdca4f9e2c",
@@ -91,14 +91,14 @@
       "product_version": "f46d740fb0258982f00ffdbddc6486e674edafb5 <1349af7f87df57940619f5b87990b799dac9ed8a"
     },
     {
-      "id": "cb72a339-6a85-313d-abbf-c1bfe333677f",
+      "id": "d7f443ee-34b3-3d26-992c-1cb0878d8542",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f59a65e0-5fdc-330c-ab4d-0e466d7e7329",

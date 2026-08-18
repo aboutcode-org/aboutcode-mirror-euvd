@@ -3,12 +3,12 @@
   "enisaUuid": "dbccf2b6-9b05-3cc1-9f58-0e9ae7e43df8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix memory leak in ath12k_wifi7_dp_rx_h_verify_tkip_mic()\n\nIn ath12k_wifi7_dp_rx_h_verify_tkip_mic(), the call to\nath12k_dp_rx_check_nwifi_hdr_len_valid() may return false when the\nNWIFI header length is invalid, causing the function to abort early with\n-EINVAL.\n\nWhen this happens, the error propagates to\nath12k_wifi7_dp_rx_h_defrag(), which clears first_frag by setting it\nto NULL. As a result, the corresponding MSDU is no longer referenced\nby the defragmentation path and is never freed.\n\nThis leads to a memory leak for the affected MSDU on this error path.\nProper cleanup is required to ensure the MSDU is released when header\nvalidation fails during TKIP MIC verification.\n\nTested-on: WCN7850 hw2.0 PCI WLAN.HMT.1.1.c5-00302-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1.115823.3",
   "datePublished": "Aug 15, 2026, 5:58:49 AM",
-  "dateUpdated": "Aug 15, 2026, 5:58:49 AM",
+  "dateUpdated": "Aug 17, 2026, 5:18:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5187a92099778501f21af76ed6c8415d128e7298\nhttps://git.kernel.org/stable/c/98d4f92ab6a1af2ea2ab590d7e2801b203110981\n",
   "aliases": "CVE-2026-74368\nGHSA-jx2p-wmx4-9hvq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1e56f9e1-09a2-3662-b9a4-d44f337cacfe",
@@ -81,6 +81,16 @@
       "product_version": "6.13.12 <6.14"
     },
     {
+      "id": "957e9fec-a06f-3f6a-a73f-e98748b1710e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "95a98e7a-ab40-3a99-8cec-9cdd33354594",
       "product": {
         "name": "Linux",
@@ -139,16 +149,6 @@
         }
       },
       "product_version": "6.12.24 <6.13"
-    },
-    {
-      "id": "fcbbb270-e70e-3bee-a4c7-cc80d01b4c20",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

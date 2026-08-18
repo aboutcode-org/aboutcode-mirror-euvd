@@ -3,13 +3,23 @@
   "enisaUuid": "ad89fe4e-ba03-3a00-a7ef-d57180cb16e2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: fix memory leak in ieee80211_register_hw()\n\nIf kmemdup() fails while copying supported band structures, the error\npath jumps to fail_rate. This skips rate_control_deinitialize() and\nleaks the initialized local->rate_ctrl.\n\nFix this by adding a fail_band label that shares the rate-control cleanup\npath before falling through to the remaining teardown.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still present in\nv7.1-rc7.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have a\nsuitable mac80211 device/driver combination to test with, no runtime\ntesting was able to be performed.",
   "datePublished": "Aug 15, 2026, 5:51:35 AM",
-  "dateUpdated": "Aug 15, 2026, 5:51:35 AM",
+  "dateUpdated": "Aug 17, 2026, 5:06:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f01eec75fd372961550b928902f3a2c11fca1daf\nhttps://git.kernel.org/stable/c/3d8b9b290421c3cd505fcd2f551f143f8142786a\nhttps://git.kernel.org/stable/c/08b71bd92317f99642b842cfc0d30200868162fc\nhttps://git.kernel.org/stable/c/a02b52fe54f7b5107aefa1ce28c2f69749c57616\nhttps://git.kernel.org/stable/c/45e9ac538cdff7bce656d731114a64eda85af0d7\nhttps://git.kernel.org/stable/c/bdc0b8bfdc142439d6708b072e8159eb515ee7b0\nhttps://git.kernel.org/stable/c/a7584f261e64fe14e45bdf70f343e16c1ee3a037\nhttps://git.kernel.org/stable/c/95fc02722edde02946d0d475221f2b2054d3d8ba\n",
   "aliases": "CVE-2026-72004\nGHSA-3wcv-wrgc-m95c\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "09a7a0ce-ad55-3395-91ff-f2e26ab24e93",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "0ce57174-edfb-3ced-96cc-119350716db5",
       "product": {
@@ -139,16 +149,6 @@
         }
       },
       "product_version": "09b4a4faf9d037990ac4f8110dd944b27b42d5df <45e9ac538cdff7bce656d731114a64eda85af0d7"
-    },
-    {
-      "id": "cc2b12b1-4c78-3aa7-847c-3a3b2f053444",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     },
     {
       "id": "d0405da9-01b8-309d-9a62-a99368afc142",

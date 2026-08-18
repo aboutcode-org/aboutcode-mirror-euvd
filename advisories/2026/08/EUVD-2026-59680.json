@@ -3,12 +3,12 @@
   "enisaUuid": "a39d050d-6c64-39a8-9caf-d8741f911fdb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: restore write access when removing an entry\n\nRegistering an entry with the MISC_FMT_OPEN_FILE flag opens the\ninterpreter via open_exec() which denies write access to it for as\nlong as the entry exists. Removing the entry closes the interpreter\nfile via filp_close() but never restores write access, leaving the\ninode's i_writecount permanently negative. Opening the interpreter\nfor writing keeps failing with ETXTBSY long after the entry is gone\nuntil the inode is evicted from the inode cache.\n\nCommit 90f601b497d7 (\"binfmt_misc: restore write access before\nclosing files opened by open_exec()\") fixed the same imbalance in the\nerror path of bm_register_write() but the actual removal path has\nbeen leaking the write denial since the introduction of the flag.\n\nRestore write access in put_binfmt_handler() before closing the\ninterpreter file.",
   "datePublished": "Aug 15, 2026, 12:27:18 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:18 PM",
+  "dateUpdated": "Aug 17, 2026, 5:20:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fdc1d702bf3001586221fa07e598e876a0a854c5\nhttps://git.kernel.org/stable/c/3b522487a3a9162b1b519eefde7998d103e3e07b\nhttps://git.kernel.org/stable/c/db1856ea9196cf6e015d12199a34c0b9313c7bfa\n",
   "aliases": "CVE-2026-74487\nGHSA-fq4p-qqh8-rhh7\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03b603f2-d9d0-3461-a87d-8855ecf91332",
@@ -41,6 +41,16 @@
       "product_version": "948b701a607f123df92ed29084413e5dd8cda2ed <3b522487a3a9162b1b519eefde7998d103e3e07b"
     },
     {
+      "id": "7e7d3e82-7960-3220-9cb7-d169d4f800a4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "c9bb5e9e-f647-3d06-8ba4-d4fc3a728602",
       "product": {
         "name": "Linux",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "948b701a607f123df92ed29084413e5dd8cda2ed <db1856ea9196cf6e015d12199a34c0b9313c7bfa"
-    },
-    {
-      "id": "fa9b9f92-9cc1-321f-8405-be319374a6ff",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "ff37a447-4ec8-3c98-9d08-200f60c933e8",

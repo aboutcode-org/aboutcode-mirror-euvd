@@ -3,12 +3,12 @@
   "enisaUuid": "b9529388-603c-3a84-812a-10e874020faa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: ems_usb: validate CPC message lengths\n\nems_usb_read_bulk_callback() walks CPC messages packed in one USB\nreceive buffer.\n\nCheck that each declared message fits in the URB payload. Also require the\ntype-specific payload to cover the fields used by the CAN, state, error and\noverrun handlers.",
   "datePublished": "Aug 15, 2026, 12:27:01 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:01 PM",
+  "dateUpdated": "Aug 17, 2026, 5:19:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ce8125566b1d0b0f16449407e014addf451804ea\nhttps://git.kernel.org/stable/c/0b9090717c7e2184e2c427bbcc752f295116ac1d\nhttps://git.kernel.org/stable/c/0b23144c59c126beb4a7761a85a194ae0fe668a5\nhttps://git.kernel.org/stable/c/df3ac2a672a5284441f120d486acabdd6740fc2a\nhttps://git.kernel.org/stable/c/02925f51377f2a42a6724f00549167499c9302e5\n",
   "aliases": "GHSA-596r-rcx5-45wx\nCVE-2026-74460\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "09de1beb-c7bf-3737-960c-0ed717550659",
@@ -21,16 +21,6 @@
       "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <ce8125566b1d0b0f16449407e014addf451804ea"
     },
     {
-      "id": "4d89c33c-2d79-3df3-85fb-8c190a49ff8d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
-    },
-    {
       "id": "6e2f1f39-5a0e-3c67-a40a-0b704fef93f6",
       "product": {
         "name": "Linux",
@@ -39,6 +29,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "7bfb61c4-ca83-3ced-b31f-750eebddfb53",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "86494935-bd82-38ac-8978-9d89eddc0d8b",

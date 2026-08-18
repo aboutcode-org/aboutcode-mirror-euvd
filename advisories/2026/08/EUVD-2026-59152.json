@@ -3,13 +3,25 @@
   "enisaUuid": "02f4b7fd-246c-377d-afca-7096adedeb71",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_sip: validate skb_dst() before accessing it\n\ntc ingress and openvswitch do not guarantee routing information to be\navailable. These subsystems use the conntrack helper infrastructure, and\nthe SIP helper relies on the skb_dst() to be present if\nsip_external_media is set to 1 (which is disabled by default as a module\nparameter).\n\nThis effectively disables the sip_external_media toggle for these\nsubsystems without resulting in a crash.",
   "datePublished": "Aug 15, 2026, 5:54:41 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:41 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:42:06 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e64a48c50a1ff565a98c6a98d82b5b942868e76e\nhttps://git.kernel.org/stable/c/c199ed687c00841daf60e9d131976958583a8c09\nhttps://git.kernel.org/stable/c/09755dc62b026076b1d47f83489eb0547c8135e0\nhttps://git.kernel.org/stable/c/b843a96252f672332837ea2ecb7c8db0acf68e20\nhttps://git.kernel.org/stable/c/e5e24a365a5e024efef63cc49abb345fbd4852c5\n",
   "aliases": "CVE-2026-72253\nGHSA-7j9w-2xg9-r3v4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "125c9466-581a-35f3-87ee-b195b4867b69",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "1780daa1-b470-3c4a-892a-cabd64a2fe3e",
       "product": {
@@ -109,16 +121,6 @@
         }
       },
       "product_version": "patch: 6.12.101"
-    },
-    {
-      "id": "f5a8ccbd-40f1-32f6-9346-3172f6dc7693",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc2"
     },
     {
       "id": "f85e7712-bbe6-32fe-bb52-3ba6838d1324",

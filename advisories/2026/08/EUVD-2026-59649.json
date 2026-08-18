@@ -3,12 +3,14 @@
   "enisaUuid": "babee386-8c45-368f-b8c2-fa4156ccf4e2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: peak_usb: peak_usb_start(): fix double free of transfer buffer on URB submit error\n\nIn peak_usb_start(), each RX URB transfer buffer is allocated with kmalloc()\nand the URB is flagged URB_FREE_BUFFER so that the final usb_free_urb() also\nfrees the transfer buffer.\n\nIf usb_submit_urb() fails, the error path frees the buffer explicitly with\nkfree(buf) and then calls usb_free_urb(urb). Because URB_FREE_BUFFER is set,\nusb_free_urb() -> urb_destroy() frees the same buffer a second time, a double\nfree of the transfer buffer.\n\n  BUG: KASAN: double-free in usb_free_urb.part.0+0x91/0xb0\n  Free of addr ffff8881069ccb80 by task trigger.sh/285\n\n  Call Trace:\n   kfree+0x113/0x3c0\n   usb_free_urb.part.0+0x91/0xb0\n\nDrop the redundant kfree(buf); usb_free_urb() already releases the transfer\nbuffer. This mirrors commit 03819abbeb11 (\"net: usb: lan78xx: Fix double free\nissue with interrupt buffer allocation\").",
   "datePublished": "Aug 15, 2026, 12:26:58 PM",
-  "dateUpdated": "Aug 15, 2026, 12:26:58 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:47:26 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/525640b93d3e5f82f4ebea4730f4e0cf799522ba\nhttps://git.kernel.org/stable/c/4bb3325075138dd5346b71589a959878b564dc0b\nhttps://git.kernel.org/stable/c/92d0de80ca2223b9c7da78020155b6cb27824cc0\nhttps://git.kernel.org/stable/c/dfb17bf04a764462000f11258a7c06aa92d1f261\nhttps://git.kernel.org/stable/c/9b3d5a6d952c38bbcf07f903cbeadefdb56b9bc9\n",
   "aliases": "GHSA-crgv-x77w-rh88\nCVE-2026-74456\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "01746aa0-2cad-399a-8cd3-fbae2b5b2716",
@@ -71,6 +73,16 @@
       "product_version": "bb4785551f64e18b2c8bb15a3bd2b22f5ebf624d <9b3d5a6d952c38bbcf07f903cbeadefdb56b9bc9"
     },
     {
+      "id": "75fbf418-7f8a-3e8e-aa60-53daf07505a6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "777315d6-568b-3643-8f45-7d23a1acf2e0",
       "product": {
         "name": "Linux",
@@ -99,16 +111,6 @@
         }
       },
       "product_version": "patch: 6.6.151"
-    },
-    {
-      "id": "baa551f0-b1b4-36ce-9335-bedebde041de",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "e3e37d63-fd1e-3909-b26d-fcf066ce7ecd",

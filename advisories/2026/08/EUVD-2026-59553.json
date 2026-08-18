@@ -3,12 +3,14 @@
   "enisaUuid": "2db67cee-c07d-3d01-b3b2-5ad6b2f957b8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: Fix potential null-ptr-deref in vxlan_gro_prepare_receive().\n\nudp_tunnel_sock_release() could set sk->sk_user_data to NULL\nwhile vxlan_gro_prepare_receive() is running.\n\nLet's check if rcu_dereference_sk_user_data() is NULL after\nskb_gro_remcsum_init().",
   "datePublished": "Aug 15, 2026, 5:59:15 AM",
-  "dateUpdated": "Aug 15, 2026, 5:59:15 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:46:49 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9c58c729d32e7cea5772cc44929c6cd61e5a31cd\nhttps://git.kernel.org/stable/c/f79c80f173fda9545b220c1f094b65fc06c252d0\nhttps://git.kernel.org/stable/c/08f40c0d23c67c3aa4224c3311e134999c721fb4\nhttps://git.kernel.org/stable/c/4a8cde6f7281ea2c4c290f9ad9923b3631defceb\nhttps://git.kernel.org/stable/c/ef44dac2a37f86eeae6b88ed10a6d60b35387dfd\nhttps://git.kernel.org/stable/c/30a45c0bffdd62350261e2f2689fdba426a33578\n",
   "aliases": "CVE-2026-74406\nGHSA-86mr-r4jr-f66c\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "13f3b06b-90de-37bd-9682-e7e9360c1adb",
@@ -81,14 +83,14 @@
       "product_version": "5602c48cf87562c2f95b831d690631935e834295 <4a8cde6f7281ea2c4c290f9ad9923b3631defceb"
     },
     {
-      "id": "d7382737-5104-38d4-a959-13f7ec65fb54",
+      "id": "d17a3dab-dd3f-3938-a9f2-3316546e5e63",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "da08e4ad-6966-3e0e-8dd9-65afc0e732a0",

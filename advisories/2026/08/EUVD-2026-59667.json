@@ -3,12 +3,14 @@
   "enisaUuid": "aa761b69-90b8-308e-bb2e-9c97a21db535",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use pskb_network_may_pull() for transmit path header pulls\n\nIn vxlan_xmit(), arp_reduce(), and vxlan_mdb_entry_skb_get(), pskb_may_pull() was\nbeing called to verify the availability of network layer headers (ARP, IPv6/ND,\nIP/IPv6 MDB keys).\n\nHowever, during transmit skb->data points to the MAC header, so skb_network_offset(skb)\nis ETH_HLEN (14 bytes). Using pskb_may_pull(skb, len) only checks len bytes from skb->data\nrather than skb_network_offset(skb) + len, which can leave part of the network header\nin non-linear frags.\n\nReplace these remaining pskb_may_pull() calls with pskb_network_may_pull() to properly\naccount for the MAC header offset.",
   "datePublished": "Aug 15, 2026, 12:27:10 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:10 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:47:35 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/94dee751aad627b3645d424b5d0c736d394573e9\nhttps://git.kernel.org/stable/c/7076a34b6e33315dc160b4612bfea1c597495585\nhttps://git.kernel.org/stable/c/b9553558b48db54ac9273e6b98d7263ef5c1a329\n",
   "aliases": "CVE-2026-74474\nGHSA-59jj-4qq4-v9f9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "07dffca7-687f-32cf-b392-ea2801a92fb8",
@@ -29,6 +31,16 @@
         }
       },
       "product_version": "e4f67addf158f98f8197e08974966b18480dc751 <7076a34b6e33315dc160b4612bfea1c597495585"
+    },
+    {
+      "id": "367c4871-edd2-369f-84f8-2f4b10e7dfd6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "40aba4ea-b730-3bf2-abbc-d00221a404ec",
@@ -69,16 +81,6 @@
         }
       },
       "product_version": "e4f67addf158f98f8197e08974966b18480dc751 <94dee751aad627b3645d424b5d0c736d394573e9"
-    },
-    {
-      "id": "cffa407c-42be-3751-b1bd-0cb92152c4b4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "d0cbdb48-67b4-3b4e-8187-2c1b74cec243",

@@ -3,12 +3,12 @@
   "enisaUuid": "fb451108-b074-34e3-aa5a-69b08d9f36cd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: sxgbe: free TX rings on RX allocation failure\n\nWhen RX descriptor ring allocation fails, init_dma_desc_rings() only\nfrees the partially allocated RX rings and returns. The TX rings that\nwere allocated earlier in the same function are leaked.\n\nRearrange error labels to clean up TX rings upon RX failures.",
   "datePublished": "Aug 15, 2026, 12:27:42 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:42 PM",
+  "dateUpdated": "Aug 17, 2026, 5:21:08 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3563e2486dcd50a751dbcbc1de37e5186646dce6\nhttps://git.kernel.org/stable/c/b33644a4f6d8f127c62d7b39f24114d3d2499204\nhttps://git.kernel.org/stable/c/42b87cfd9666ef156637c90ff3f6f6dd9a5ad4cb\nhttps://git.kernel.org/stable/c/f2e5bb9fb710553e76a3be9097b448b4e73d8c92\nhttps://git.kernel.org/stable/c/c870f7e2890b9f78ac84515a9809cc5c183c975e\n",
   "aliases": "GHSA-45w5-jffw-4g9x\nCVE-2026-74525\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1ccf3981-ebb4-3145-8eb5-eaa58c4ca2cd",
@@ -39,16 +39,6 @@
         }
       },
       "product_version": "1edb9ca69e8a7988900fc0283e10550b5592164d <b33644a4f6d8f127c62d7b39f24114d3d2499204"
-    },
-    {
-      "id": "466e93f2-aac1-3286-b4e0-951cc3afc261",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "5d372091-bace-3cb3-8f2d-2cdd5105106b",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "3.15"
+    },
+    {
+      "id": "b190e4fa-dd1f-36c4-bbd7-19ec5762db82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "c43da34a-371d-3027-842a-0c4b4c070885",

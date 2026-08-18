@@ -3,12 +3,14 @@
   "enisaUuid": "7a829351-1817-3ebb-8fb8-b87f56583584",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (pmbus/core) honor vrm_version in pmbus_data2reg_vid()\n\npmbus_data2reg_vid() hardcoded the VR11 encoding regardless of the\nvrm_version configured by the driver, while pmbus_reg2data_vid()\nalready switched on it. Any driver that selects a non-VR11 VID mode\nand exposes a regulator (or hwmon vout setter) sent dangerously\nwrong codes to PMBUS_VOUT_COMMAND -- e.g. an nvidia195mv part asked\nfor 200 mV got the VR11 clamp to 500 mV encoded as 0xB2, which the\nchip interprets as 1080 mV.\n\nMirror pmbus_reg2data_vid() so writes round-trip with reads.",
   "datePublished": "Aug 15, 2026, 5:56:23 AM",
-  "dateUpdated": "Aug 15, 2026, 5:56:23 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:43:39 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5bd0d47640395f8a8c34446b62d1781b88869dfa\nhttps://git.kernel.org/stable/c/828cd614e2af053ca5e1d6da767bbd8a1b5cabfb\n",
   "aliases": "GHSA-xrxg-rjqm-5pr4\nCVE-2026-72397\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "00b38fcf-e815-35d6-a22d-62dfc4c0fca9",
@@ -21,14 +23,14 @@
       "product_version": "068c227056b9223fea1a759e08db2558d5cbb5ad <828cd614e2af053ca5e1d6da767bbd8a1b5cabfb"
     },
     {
-      "id": "62a4e54e-0164-36dc-94f3-844a019179b5",
+      "id": "1c1b6220-dbb5-39d1-bc91-5525489d8ed7",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc2"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "6ee8b11d-b417-32e1-ac42-493da788ee6d",

@@ -3,14 +3,14 @@
   "enisaUuid": "edee37ee-081c-343e-b15b-a83a70174a8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: mgmt: hold reference for hci_conn in mgmt_pending_cmds\n\nDereferencing RCU-protected pointers outside critical sections is\ninvalid and may lead to UAF.  Use of hci_conn in hci_sync callbacks also\nneeds to hold refcount to avoid UAF.\n\nTake appropriate locks for hci_conn lookups, and take refcount for\nhci_conn pointers stored in mgmt_pending_cmd so that the pointer stays\nvalid.\n\nWhen accessing conn->state, ensure hdev->lock is held to avoid data\nrace.",
   "datePublished": "Aug 10, 2026, 12:04:10 PM",
-  "dateUpdated": "Aug 13, 2026, 10:44:21 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b56f2ecafc08f372bf0529f9c4f3f429cb1702dc\nhttps://git.kernel.org/stable/c/f915e74b6f18293d1d69a2a3305ef321ff7c0172\nhttps://git.kernel.org/stable/c/d5b3b484b62bb0f4542e7622789d28871626cdf0\nhttps://git.kernel.org/stable/c/ecdcb55ea1c01dda074406f38058785a69526734\nhttps://git.kernel.org/stable/c/da55f570191d5d72f10c607a7043b947eb05ea46\n",
   "aliases": "CVE-2026-68391\nGHSA-r93r-qrfp-h69j\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "07c901f3-eee6-3d76-b4ec-f77d6864dc43",
@@ -73,6 +73,16 @@
       "product_version": "patch: 6.18.42"
     },
     {
+      "id": "48c920ec-e9ce-38d1-97c8-dbde096546d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "4b12a3e5-dbce-3c78-bd69-88d3a5c8710f",
       "product": {
         "name": "Linux",
@@ -111,16 +121,6 @@
         }
       },
       "product_version": "6.0"
-    },
-    {
-      "id": "cab377ae-1426-366f-821b-ee6da7257129",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     },
     {
       "id": "eb436e83-c307-3e1a-b739-b0f45394dfa3",

@@ -3,12 +3,12 @@
   "enisaUuid": "264800bd-6ad6-3889-933f-4acc19ecd548",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/perf_cpum_cf: Add missing array_index_nospec() to __hw_perf_event_init()\n\nev variable is userspace controlled via event->attr.config and used\nas an array index after bounds checking, but without speculation\nbarriers.\n\nAdd the missing array_index_nospec() call to prevent speculative\nexecution.",
   "datePublished": "Aug 15, 2026, 5:54:25 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:25 AM",
+  "dateUpdated": "Aug 17, 2026, 5:10:53 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/27206bb57c47bdbe33bccc78fa7f7e2a719a06b9\nhttps://git.kernel.org/stable/c/a21f3615c88421df81060b6ff89220fd34094c4d\nhttps://git.kernel.org/stable/c/fa1ebae4206e6afc8caa642e9eb1bbe39a9a724f\nhttps://git.kernel.org/stable/c/f79dff8c721bbb1f3fc312ea55e0551c2cc28801\nhttps://git.kernel.org/stable/c/49145bce539117db4b6e9e83c0e5ef528e361050\n",
   "aliases": "GHSA-54pj-2wqr-j294\nCVE-2026-72236\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "003faa16-bbc6-3e21-b46c-035b5192e499",
@@ -101,16 +101,6 @@
       "product_version": "212188a596d17d519842ef2173150315735b54e1 <a21f3615c88421df81060b6ff89220fd34094c4d"
     },
     {
-      "id": "e967b730-4dbf-3984-b596-b4fcb9919bcf",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
-    },
-    {
       "id": "ebc7e6b2-9ce6-334f-8424-eca7ddf275d2",
       "product": {
         "name": "Linux",
@@ -129,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.12.97"
+    },
+    {
+      "id": "fa10d702-a03a-3b83-88b3-8f98c882d514",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

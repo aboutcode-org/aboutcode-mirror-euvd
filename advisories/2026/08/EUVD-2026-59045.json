@@ -3,12 +3,12 @@
   "enisaUuid": "36fb99e0-4e6d-3d28-92e3-713936702ead",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix memory leak in lpfc_sli4_driver_resource_setup()\n\nThe memory allocated for mboxq using mempool_alloc() is not freed in\nsome of the early exit error paths. Fix that by moving the\nmempool_free() call to an earlier point after last use.",
   "datePublished": "Aug 15, 2026, 5:52:35 AM",
-  "dateUpdated": "Aug 15, 2026, 5:52:35 AM",
+  "dateUpdated": "Aug 17, 2026, 5:07:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/299f5baa1321a0951cc3ebbacc72b67433a65391\nhttps://git.kernel.org/stable/c/c3f4e407661542d1d284fc889cf9f27afd11b3d3\nhttps://git.kernel.org/stable/c/25cac8a302626f59ca84fa3339e2506c3ac761bc\nhttps://git.kernel.org/stable/c/ed08497977820e002a62cb114440f365cc7a087f\nhttps://git.kernel.org/stable/c/0ce5a37f7ddf2fc12210e8700350274da79fbb3a\nhttps://git.kernel.org/stable/c/1bd28625e25be549ee7c47532e7c3ef91c682410\n",
   "aliases": "CVE-2026-72087\nGHSA-rvm2-xhxc-gx7f\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "063526ca-c69e-334d-9eb3-86de83b8b048",
@@ -61,14 +61,14 @@
       "product_version": "patch: 6.1.178"
     },
     {
-      "id": "3efb0e64-03a1-3dfb-9f17-e047a3c54cf0",
+      "id": "5c3a2557-bc1e-3c39-9fa0-ea7b7239fcad",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc4"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "721d0e6b-fa0a-314b-b403-1c5ab9b46c77",

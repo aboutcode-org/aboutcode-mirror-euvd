@@ -3,14 +3,14 @@
   "enisaUuid": "b38af454-5c4e-348b-8a4e-8af554d38121",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pwc: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those buffers via vb2_buffer_done(),\nvb2_start_streaming() fires WARN_ON(owned_by_drv_count) and the queued\nbuffers leak.\n\npwc's start_streaming() had two early returns that hit this trap:\n-ENODEV when the USB device was already disconnected, and -ERESTARTSYS\nwhen mutex_lock_interruptible() was interrupted by a signal.  Call the\nexisting pwc_cleanup_queued_bufs() helper with VB2_BUF_STATE_QUEUED\nbefore returning (matching the state already used by the\npwc_isoc_init() error path in the same function).\n\nThis mirrors the uvcvideo fix in commit 4cf3b6fd54eb (\"media: uvcvideo:\nReturn queued buffers on start_streaming() failure\").",
   "datePublished": "Aug 10, 2026, 12:00:35 PM",
-  "dateUpdated": "Aug 13, 2026, 10:42:00 PM",
+  "dateUpdated": "Aug 17, 2026, 5:01:02 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f2f9fcacd81953dde6cb86312ab13ca13e689664\nhttps://git.kernel.org/stable/c/5d7cc2634c3843a1414a0f6407aa17f1f91dee60\nhttps://git.kernel.org/stable/c/cb16b79a2be2cec9c3ebe4147490817c4d8b1de3\nhttps://git.kernel.org/stable/c/a4f8f629983f643333e49df90557805469bcbb25\nhttps://git.kernel.org/stable/c/975b2ee20e569d47821e4f6c9761b4664d48a6a4\n",
   "aliases": "CVE-2026-68216\nGHSA-3p7c-r2j9-9rqv\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1b3c6720-540a-3b91-b861-0aba57a478d1",
@@ -63,6 +63,16 @@
       "product_version": "ceede9fa8939e40ad0ddb4ad1355f45c6f1d3478 <f2f9fcacd81953dde6cb86312ab13ca13e689664"
     },
     {
+      "id": "76ea1141-af3a-3a8b-b768-6beff7a9b09f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "8116d67a-5b77-36de-aa59-d5d70821fdfd",
       "product": {
         "name": "Linux",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "ceede9fa8939e40ad0ddb4ad1355f45c6f1d3478 <a4f8f629983f643333e49df90557805469bcbb25"
-    },
-    {
-      "id": "ad7c457f-ca24-3465-ac74-06a35937ab6a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "b6a676d3-fded-33f3-a4b4-3793d1a33b91",

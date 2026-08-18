@@ -3,12 +3,14 @@
   "enisaUuid": "5521979b-e9b8-316c-9dcc-f91ab1e57548",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_core: Fix UAF in hci_unregister_dev()\n\nhci_unregister_dev() does not disable cmd_timer and ncmd_timer\nbefore the hci_dev structure is freed. If a timeout fires\nduring device teardown, the callback dereferences freed memory\n(including the hdev->reset function pointer), leading to a\nuse-after-free.\n\nAdd disable_delayed_work_sync() calls alongside the existing\ndisable_work_sync() calls to ensure both timers are fully\nquiesced before teardown proceeds.",
   "datePublished": "Aug 15, 2026, 5:58:04 AM",
-  "dateUpdated": "Aug 15, 2026, 5:58:04 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:38 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/48c7ad6afcc58c2cda11fed39791708103b6a644\nhttps://git.kernel.org/stable/c/a0fd1086a57b982f8c24ae4ab165c2af39fe1735\nhttps://git.kernel.org/stable/c/672d52d9412252e61b8de8d773ccdf5a277cf540\nhttps://git.kernel.org/stable/c/5edcc018fa6e80b2c478454a4a8229c23d67c181\n",
   "aliases": "CVE-2026-74302\nGHSA-78xg-w78v-wc27\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "149ad7d9-4ac4-3b80-a470-d0957865949f",
@@ -29,16 +31,6 @@
         }
       },
       "product_version": "6.1.101 <6.2"
-    },
-    {
-      "id": "464bb213-5f0f-3689-8ed4-0e22342bbb57",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "558f33ec-ff77-318b-9b8e-f86d4af18eff",
@@ -179,6 +171,16 @@
         }
       },
       "product_version": "0d151a103775dd9645c78c97f77d6e2a5298d913 <48c7ad6afcc58c2cda11fed39791708103b6a644"
+    },
+    {
+      "id": "cca05b8d-ed04-3113-90d9-54918dc1eb8c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "cda1bda1-861d-3db9-9368-4bc1031b1e58",

@@ -3,12 +3,14 @@
   "enisaUuid": "65e8efee-1941-349f-8f34-1ea9d572dfa9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: cavium/cpt - fix DMA cleanup using wrong loop index\n\nThe sg_cleanup error path used list[i] instead of list[j] when unmapping\nDMA buffers, leaking successfully mapped entries and repeatedly unmapping\nthe failed one.",
   "datePublished": "Aug 15, 2026, 5:57:50 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:50 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:20 AM",
+  "baseScore": 10.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/23c6174e48f66fc10b998b0acdb406cb0caf5c80\nhttps://git.kernel.org/stable/c/23d3a7e896a1fe2d7a6bcb42f093948b79f8a198\nhttps://git.kernel.org/stable/c/28141f95ae93b18f9bfde953cb787fcb151fb9da\nhttps://git.kernel.org/stable/c/8afd1007ef79898a6e010eaade97097e49405fce\nhttps://git.kernel.org/stable/c/3b8a1e1f4e4071a62b20374028744e8cc8310d48\nhttps://git.kernel.org/stable/c/fb4d57b83356d4bd411b45ede3024e0ff42c9b5e\nhttps://git.kernel.org/stable/c/d319b83b97b3585550d9ae592dfa78c755b6129e\nhttps://git.kernel.org/stable/c/9dbf173bd32d5f81b005008b682bfb50aa093455\n",
   "aliases": "GHSA-4p2p-ww9m-h8rq\nCVE-2026-74279\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "19e9309c-ef77-3694-881d-26cf22872eed",
@@ -39,6 +41,16 @@
         }
       },
       "product_version": "4.11"
+    },
+    {
+      "id": "5e7a8059-b26f-3ce1-81c7-e41a38af4597",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "61c66a71-e49d-3efe-8e6f-b0bf6e1c729e",
@@ -119,16 +131,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "9af46853-4690-3685-aff5-8038d827bb2e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "a5605940-dcf2-389b-9487-5707af6059a9",

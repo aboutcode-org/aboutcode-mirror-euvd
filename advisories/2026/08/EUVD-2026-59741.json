@@ -3,12 +3,14 @@
   "enisaUuid": "5e5deade-5b6b-3aed-a575-8eeb0408f8c9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nforcedeth: fix UAF of txrx_stats in nv_remove\n\nnv_remove() frees the per-CPU txrx_stats before unregister_netdev().\nUntil unregister completes, ndo_get_stats64, the NAPI/xmit data path,\nand nv_close()/drain may still access txrx_stats, leading to a\nuse-after-free.\n\nFree the stats only after unregister_netdev().",
   "datePublished": "Aug 15, 2026, 12:27:56 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:56 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:33 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cf2dcde2284562ff87830ca0b7fa2b06e95aef1e\nhttps://git.kernel.org/stable/c/c9d24a205fd508b9999fcab6aca4c590490a12cf\nhttps://git.kernel.org/stable/c/ae20a8a4de06a289d40b0a0633d8d573f1fcb049\nhttps://git.kernel.org/stable/c/201e05aa531eba0dfe2ee05b4e178f6ffa12c8b1\nhttps://git.kernel.org/stable/c/22666ba1420164753d7b0f5a841986b25ace5435\n",
   "aliases": "CVE-2026-74548\nGHSA-xvfj-3828-276m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "3a5421d5-abb2-338d-8236-7782ab681550",
@@ -51,6 +53,16 @@
       "product_version": "patch: 6.18.44"
     },
     {
+      "id": "6479e724-054c-30d5-87af-92d2111d08c0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "6b6c2995-d644-337c-b075-e68e2e418398",
       "product": {
         "name": "Linux",
@@ -79,16 +91,6 @@
         }
       },
       "product_version": "5.3"
-    },
-    {
-      "id": "815e43aa-33bd-3773-ae41-7b6917111409",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "81e40470-f5d9-3a12-8ea3-d902c40fc50b",

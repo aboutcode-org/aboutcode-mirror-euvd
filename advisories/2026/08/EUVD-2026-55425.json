@@ -3,12 +3,12 @@
   "enisaUuid": "e2605961-75c0-3747-9f10-a6752822c5bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/intel: Fix out-of-bounds memset in dmar_latency_disable()\n\ndmar_latency_disable() intends to zero out only the single\nlatency_statistic entry for the given type, but the memset size was\ncomputed as sizeof(*lstat) * DMAR_LATENCY_NUM, which clears the entire\narray starting from &lstat[type].\n\nWhen type > 0, this writes beyond the end of the allocated array,\ncorrupting adjacent memory.\n\nFix by using sizeof(*lstat) to clear only the target entry.",
   "datePublished": "Aug 10, 2026, 12:03:00 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:00 PM",
+  "dateUpdated": "Aug 17, 2026, 5:03:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3078d82e7fe9048a2b90a992e71af7cd7ef881fa\nhttps://git.kernel.org/stable/c/866a35735e56b9dc81cbc33899255134adf6d8b3\nhttps://git.kernel.org/stable/c/d06fea9b85f038690f55e72fe0c45e113715a85a\nhttps://git.kernel.org/stable/c/0e28ca1c3204b51068579defc904a0dfba5e5c57\nhttps://git.kernel.org/stable/c/754f8efe45f87e3a9c6871b645b2f9d46d1b407b\n",
   "aliases": "GHSA-hrwq-83vm-hr68\nCVE-2026-68324\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "291bbba8-eaaf-305a-ab9a-061582eb3360",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "55ee5e67a59a1b6f388d7a1c7b24022145f47a3e <d06fea9b85f038690f55e72fe0c45e113715a85a"
+    },
+    {
+      "id": "4af8a708-d5d3-314b-b58e-94f7a8d80bb4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "6337b6d2-be05-35a1-83b3-555e4b8aa3d1",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "55ee5e67a59a1b6f388d7a1c7b24022145f47a3e <754f8efe45f87e3a9c6871b645b2f9d46d1b407b"
-    },
-    {
-      "id": "f60134a8-1bf0-3366-9eb1-4672f43eb4a6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "fc68ba80-7dc6-3b2c-b839-e7ab016144b4",

@@ -3,12 +3,12 @@
   "enisaUuid": "2dd6caf5-deca-35a6-8445-3b0897e0af5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: etas_es58x: es58x_read_bulk_callback(): fix RX buffer leak on URB resubmit failure\n\nes58x_read_bulk_callback() resubmits the RX URB after processing a received\npacket. If the resubmit succeeds, the URB remains anchored and will be\nhandled by the normal RX path or by teardown.\n\nHowever, if usb_submit_urb() fails, the callback unanchors the URB and then\nreturns directly. This skips the existing free_urb path, so the coherent\ntransfer buffer allocated with usb_alloc_coherent() is not released.\n\nReuse the existing free_urb path after a resubmit failure so that the RX\ncoherent buffer is freed before leaving the callback.",
   "datePublished": "Aug 15, 2026, 12:27:00 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:00 PM",
+  "dateUpdated": "Aug 17, 2026, 5:19:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0ef136ba052101243ba117a1aca6f4a4c3a81142\nhttps://git.kernel.org/stable/c/b85e5c310382803d27adf6fe6554d4208bc8951c\nhttps://git.kernel.org/stable/c/c311f17c261fd375ddf5755f2ebe1f022c19c5b0\nhttps://git.kernel.org/stable/c/19c6c8c6cd5dd14fab5fcd744584812a57cbb78d\nhttps://git.kernel.org/stable/c/7a0cf2b2497c757c3cb1286eddf2986abb0d387b\n",
   "aliases": "GHSA-5m9p-vm8m-7vmc\nCVE-2026-74459\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03f8fd94-1f7f-3565-b571-2dcedceeb79f",
@@ -81,16 +81,6 @@
       "product_version": "2185ea6e4ebcb61d1224dc7d187c59723cb5ad59"
     },
     {
-      "id": "6f97eef4-6339-3706-a3c5-f6f8082a014a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
-    },
-    {
       "id": "7acab2a6-66be-3005-b0a7-6ead39cc5208",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.12.103"
+    },
+    {
+      "id": "95eac8ec-e920-3251-8761-494b5cb0713d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "98178fe9-cd58-3dc3-ad86-01196c7ab116",

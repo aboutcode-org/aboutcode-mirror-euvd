@@ -3,12 +3,14 @@
   "enisaUuid": "ec48f878-a424-3497-8ed6-242d3bf4c10d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: fix UBSAN array-index-out-of-bounds in ocfs2_sum_rightmost_rec\n\n[BUG]\nOn-disk corruption setting l_next_free_rec to 0 in an inode's embedded\nextent list triggers a UBSAN panic on the next write to that file.\n\n[CAUSE]\nocfs2_sum_rightmost_rec() computes\ni = le16_to_cpu(el->l_next_free_rec) - 1\nand accesses el->l_recs[i] without validating i. When l_next_free_rec\nis 0, i becomes -1; when l_next_free_rec exceeds l_count, i falls\npast the end of the array. Either case violates the\n__counted_by_le(l_count) annotation on l_recs[] and triggers UBSAN.\n\n[FIX]\nValidate the inode's embedded extent list when the inode is read, in\nocfs2_validate_inode_block(): l_count must be non-zero and no larger\nthan the inode block can hold, and l_next_free_rec must not exceed\nl_count. A corrupt list is rejected at read time, before the b-tree\ncode can index l_recs[] out of bounds.",
   "datePublished": "Aug 15, 2026, 5:53:30 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:30 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:41:04 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/671889c553ea55e2da6a4f3b15f4c0fa40f2f0d1\nhttps://git.kernel.org/stable/c/858aa4965ffa8c0d4bb5dd835ac4f1c9a1dcab85\nhttps://git.kernel.org/stable/c/452a8467be8143747292218212671deeb186d2ae\n",
   "aliases": "CVE-2026-72162\nGHSA-w4g7-33m6-26g5\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "21e03837-15b9-360c-87b9-d7a3fb5c5743",
@@ -31,16 +33,6 @@
       "product_version": "0 <6.18.40"
     },
     {
-      "id": "508d6ca5-7349-3390-8e19-fd87e56ba2b3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "535b6c58-3d13-339a-8548-1c5420271e4d",
       "product": {
         "name": "Linux",
@@ -49,6 +41,16 @@
         }
       },
       "product_version": "0 <7.1.5"
+    },
+    {
+      "id": "8d6bf894-127f-3ac1-9053-5753fed9e7e2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d26d1ea9-def4-3f2c-988e-95e62a579e7c",

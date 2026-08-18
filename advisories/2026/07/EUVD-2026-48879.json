@@ -3,12 +3,12 @@
   "enisaUuid": "618ae2bf-e493-3827-a9b5-e6cf6910a578",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: digi_acceleport: fix broken rx after throttle\n\nIf the port is closed while throttled, the read urb is never resubmitted\nand the port will not receive any further data until the device is\nreconnected (or the driver is rebound).\n\nClear the throttle flags and submit the urb if needed when opening the\nport.",
   "datePublished": "Jul 25, 2026, 8:50:00 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:00 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:38 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4f3f6f44db71e469933a7c36c5d57d937ba0a21b\nhttps://git.kernel.org/stable/c/d5d2660caef78d4c996d34d123574c8e86f5b5ac\nhttps://git.kernel.org/stable/c/61954033326fc7e637ed2aeeb4b52021e0ee4657\nhttps://git.kernel.org/stable/c/8d50a910194f66566a5eb252b33283855c8d5203\nhttps://git.kernel.org/stable/c/abacd67e6f689c62d8a13e3da25f4272bc9ad4af\nhttps://git.kernel.org/stable/c/eab394781e9321c0c7e97a24fd092387cb262f40\nhttps://git.kernel.org/stable/c/92fa3e1a49848509ea3f7995751963fc65095998\nhttps://git.kernel.org/stable/c/83a3dfc018943b05b6daf3a6f891833e1aabfa1f\n",
   "aliases": "CVE-2026-64335\nGHSA-pfpg-cf3x-8p3v\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "028a3fc6-dea3-3de4-98c8-93aef66b71a6",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <abacd67e6f689c62d8a13e3da25f4272bc9ad4af"
+    },
+    {
+      "id": "036ee864-90b1-3c8c-b6ec-5447c28645fc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "041ae5c4-1d63-3a4f-a335-035fa9dfad4d",
@@ -169,16 +179,6 @@
         }
       },
       "product_version": "2.6.12"
-    },
-    {
-      "id": "e2521904-71de-3255-8239-26e9aca1e8ef",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "ecbf8da4-d600-354e-93e7-88f3e1cb0cfd",

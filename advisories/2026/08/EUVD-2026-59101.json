@@ -3,12 +3,14 @@
   "enisaUuid": "c4a3c025-b2d7-3697-95f5-fa97631a586f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btrtl: validate firmware patch bounds\n\nrtlbt_parse_firmware() copies patch_length - 4 bytes before appending the\nfirmware version. A malformed firmware patch shorter than the version field\ncan make this subtraction underflow and turn the copy into an oversized\nread and write during Bluetooth setup.\n\nThe existing patch_offset + patch_length check can also wrap on 32-bit\narchitectures. Validate the patch length and range without arithmetic\noverflow before allocating or copying the patch.",
   "datePublished": "Aug 15, 2026, 5:51:34 AM",
-  "dateUpdated": "Aug 15, 2026, 5:51:34 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:39:20 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/39e01b4addfbbe177567d6ed1dfb81f9cccb19e6\nhttps://git.kernel.org/stable/c/bda3c598ade6ea03884074b91e31608326684921\nhttps://git.kernel.org/stable/c/a4cb830e0b55ac76c849fd7840afb251f4c028fa\nhttps://git.kernel.org/stable/c/68c5a2a19987c035eb129e627e579adafb04f637\nhttps://git.kernel.org/stable/c/83534891c058ed71e251135072640911670869aa\nhttps://git.kernel.org/stable/c/6744ab60dfac55d1df5733960aad5be300984301\nhttps://git.kernel.org/stable/c/f1ca750c0510bdbb504bf084d2f196ef2af92ea6\nhttps://git.kernel.org/stable/c/609c5b04a28dc1b0f3af6a7bc93055135b2d2059\n",
   "aliases": "GHSA-2gq6-hg5j-367v\nCVE-2026-68479\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "04bfcb16-bb16-3910-8d86-f38ae05d0f5e",
@@ -121,16 +123,6 @@
       "product_version": "patch: 6.12.97"
     },
     {
-      "id": "a67ad61d-e704-3756-80d6-008bc8c2efec",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
-    },
-    {
       "id": "d0808956-c696-3fe6-ab72-8fb1008a4494",
       "product": {
         "name": "Linux",
@@ -189,6 +181,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "fc81a3c7-adc5-38aa-8bec-91022ef6f820",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

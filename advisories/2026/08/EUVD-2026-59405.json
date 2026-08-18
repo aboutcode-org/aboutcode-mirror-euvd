@@ -3,12 +3,14 @@
   "enisaUuid": "8431ce6a-d130-3e9a-8aff-a2978e5b34df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Guard __get_user acesss with access_ok for uprobe_multi data\n\nAs reported by sashiko [1] we need to use access_ok to check the user\nspace data bounds before we use __get-user to get it.\n\n[1] https://lore.kernel.org/bpf/20260610145235.CB1441F00893@smtp.kernel.org/",
   "datePublished": "Aug 15, 2026, 5:57:36 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:36 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:07 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c6d51ad36490013ee9df94a372d3bf794bd304d1\nhttps://git.kernel.org/stable/c/4d87a251d45b4a95eb4c0abcfab809c9f231258a\n",
   "aliases": "CVE-2026-74258\nGHSA-pwvf-7f5w-2qr5\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "01f27275-648c-3715-a086-0381f02b1013",
@@ -19,6 +21,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "20a345bf-b1a2-313e-b1e2-e5b23662ce60",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "706687d4-2986-3988-accc-7c909f5436ba",
@@ -59,16 +71,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "fdbcb870-2e82-397f-86ab-09f46746fd4a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

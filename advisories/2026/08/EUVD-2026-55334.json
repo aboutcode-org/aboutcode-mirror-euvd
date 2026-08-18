@@ -3,12 +3,12 @@
   "enisaUuid": "19952c39-57ab-3fe2-9932-07bc06f9b112",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Shut down BO cache timer before teardown\n\nThe BO cache timer callback schedules time_work, and time_work can rearm\nthe timer through vc4_bo_cache_free_old().\n\nvc4_bo_cache_destroy() deletes the timer and then cancels the work, which\ndoes not break that cycle: the work being cancelled can rearm the timer,\nand the timer then queues work again after teardown.\n\nUse timer_shutdown_sync() instead, so the timer cannot be rearmed and the\ncycle ends with cancel_work_sync().",
   "datePublished": "Aug 10, 2026, 12:00:57 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:57 PM",
+  "dateUpdated": "Aug 17, 2026, 5:01:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a38f2724eb93a78ba250b01e0caf3468df4d3956\nhttps://git.kernel.org/stable/c/bac4c1a9af690b8635c6924872075c41d8763ed9\nhttps://git.kernel.org/stable/c/6273dd3ffb54ec581855b82ae77331b66028249c\n",
   "aliases": "CVE-2026-68233\nGHSA-q3jj-fvxw-r3cf\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1ecb1304-9366-31eb-b39f-bd29b513600e",
@@ -31,16 +31,6 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "30cb0095-9b05-39ec-819e-810af0b831ba",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
-    {
       "id": "65103d8e-7db9-331b-ad11-b446914d7d04",
       "product": {
         "name": "Linux",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "patch: 6.18.42"
+    },
+    {
+      "id": "6e15969f-a813-3847-b517-16c8071fb172",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "70fd7e53-ac13-3c0e-bffa-bee2bef48a4e",

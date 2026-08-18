@@ -3,12 +3,14 @@
   "enisaUuid": "72df045f-50df-38c1-8c93-8154ba1229f3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Fix dev use-after-free in xfrm async resumption\n\nxfrm async resumption hold skb->dev refcnt until after transport_finish.\nHowever, xfrm_rcv_cb may modify skb->dev to tunnel dev without taking\ndevice reference, such as vti_rcv_cb. The subsequent async resumption\nwill decrement the tunnel device's reference count, which lead to uaf\nof tunnel dev and refcnt leak of orig dev as below:\n\nunregister_netdevice: waiting for vti1 to become free. Usage count = -2\n\nStash the original skb->dev to fix refcnt imbalance. The new skb->dev set\nby xfrm_rcv_cb can race with device teardown. Extend rcu protection over\nxfrm_rcv_cb and transport_finish to prevent races.",
   "datePublished": "Aug 15, 2026, 5:57:07 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:07 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:44:29 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/63a30015199912bd5055bead8001b1ae68a67cdb\nhttps://git.kernel.org/stable/c/8045c0df98d4f14c54e5cb875f1c9c0ce89fe4ff\n",
   "aliases": "CVE-2026-72463\nGHSA-23r2-6gqr-3m38\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0b440230-b181-33eb-ae40-7b24f00ed469",
@@ -19,16 +21,6 @@
         }
       },
       "product_version": "6.19.13 <6.20"
-    },
-    {
-      "id": "1116fb75-c755-3b9e-b7f8-21ce121806e2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "438b2482-0d8d-3b54-b9f2-eab3fbe4e0a4",
@@ -109,6 +101,16 @@
         }
       },
       "product_version": "6.12.94 <6.13"
+    },
+    {
+      "id": "dcf4a149-686e-325b-b50c-44f3b46ee5cb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "efe26d06-58c6-37fb-986f-eb7a27674063",

@@ -3,13 +3,23 @@
   "enisaUuid": "3efa8ac4-4c8d-3df2-8ee5-5e4ee438aafa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: clean untagged VLAN on netdev registration failure\n\nWhen an mesh interface is registered, it creates an untagged struct\nbatadv_meshif_vlan on top of it via the NETDEV_REGISTER notifier. But in\nthis process, another receiver of this notification can veto the\nregistration. The netdev registration will be aborted because of this veto.\n\nThe register_netdevice() call will try to clean up the net_device using\nunregister_netdevice_queue() - which only uses the .priv_destructor to\nfree private resources. In this situation, .dellink will not be called.\n\nThe cleanup of the untagged batadv_meshif_vlan must thefore be done in the\ndestructor to avoid a leak of this object.",
   "datePublished": "Aug 15, 2026, 5:54:20 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:20 AM",
+  "dateUpdated": "Aug 17, 2026, 5:10:45 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/86e32dfb6a6fe29898f4a562b7b6e38e480bba4d\nhttps://git.kernel.org/stable/c/06ae245168268b705a204f93c318b30107d10e92\nhttps://git.kernel.org/stable/c/dbca15fcbeed5276af440a53aed3901590fa7fc9\nhttps://git.kernel.org/stable/c/f2423da55976ea249f73029e468aefda4b94acba\nhttps://git.kernel.org/stable/c/f15ca6250591cfe78408114a54eaa8d58da51bfa\nhttps://git.kernel.org/stable/c/c945f6007e7851e74706c72f98763023699bcd97\nhttps://git.kernel.org/stable/c/5a82c558098889cc8bfff85cc62f563833205d91\nhttps://git.kernel.org/stable/c/8669a550c752d86baebc5fdc83b8ff35c4372c0e\n",
   "aliases": "CVE-2026-72229\nGHSA-7p74-4rvh-gr76\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "03ace47b-2ceb-31de-a495-72a0eba7466c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
     {
       "id": "0993dc96-ca43-36a7-8975-162828681097",
       "product": {
@@ -129,16 +139,6 @@
         }
       },
       "product_version": "5d2c05b213377694a2aa8ce1ed9b23f7c39b0569 <5a82c558098889cc8bfff85cc62f563833205d91"
-    },
-    {
-      "id": "b7648a10-310e-30cf-b6fd-3221d4e9b0aa",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "b9a6b71b-fbde-3d30-89c6-c9806254f75c",

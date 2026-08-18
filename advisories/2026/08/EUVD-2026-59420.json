@@ -3,12 +3,12 @@
   "enisaUuid": "2bec4006-da2e-3f4d-ad9e-08ef34da44af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Block region delete during region creation\n\nExpand the range lock, rename it \"regions_lock\", to disable region deletion\nin the critical period between construct_region() and attach_target(), as\nwell as the period between device_add() and registering the remove actions.\n\nOtherwise, userspace can confuse the kernel. It can violate the assumption\nthe region stays registered through the completion of cxl_add_to_region().\nIt can violate the assumption that devm_add_action_or_reset() is working\nwith a live 'struct cxl_region'.\n\nIt is ok for the region to disappear outside of those windows as that\nmirrors device hotplug flows where the proper locks are held.",
   "datePublished": "Aug 15, 2026, 5:57:46 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:46 AM",
+  "dateUpdated": "Aug 17, 2026, 5:16:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b0b6a9c65cb72c901fdcc6ae83d7afd70cdca1b8\nhttps://git.kernel.org/stable/c/d91feb88692e81b00cd22f0125cfcd04970b4a0b\n",
   "aliases": "GHSA-447m-c2m6-7v5x\nCVE-2026-74273\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0fa87909-1a18-32ba-a123-036f442c0283",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "6.3"
-    },
-    {
-      "id": "158e9b54-12de-3d55-9f49-936d3c71e137",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "16b3cb2b-782c-3419-84fb-96b5cff28796",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "34ae88e9-a8e6-30fb-b6d8-78fe55adb81d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "776f2a93-4924-34bc-9c72-b3a750fea4d7",

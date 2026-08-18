@@ -3,12 +3,12 @@
   "enisaUuid": "7ff0abf6-c005-3363-853a-3d992bd0a02f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: fail policy unpack on accept2 allocation failure\n\nunpack_pdb() may need to allocate a missing ACCEPT2 table for older policy\ndata. If that allocation failed, it set an error message but jumped to the\nsuccess path, returning a policydb with the required table missing.\n\nReturn -ENOMEM through the normal failure path when the ACCEPT2 allocation\nfails. Remove the now-unused out label.",
   "datePublished": "Aug 15, 2026, 5:57:03 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:03 AM",
+  "dateUpdated": "Aug 17, 2026, 5:15:01 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/22dc9433d458cff1270f120685114a9753e0ad1b\nhttps://git.kernel.org/stable/c/106e909e12baf059538f0b0f1a59f87781d25b3c\nhttps://git.kernel.org/stable/c/45cf568241048e560a81aa2053f06a62069f5640\n",
   "aliases": "GHSA-4vqv-ff48-xvv6\nCVE-2026-72457\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "07b33b13-e0c9-3d49-b697-b77f18d4350b",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "2e12c5f060176ede209673e4f63ea5d0e3c5814c <106e909e12baf059538f0b0f1a59f87781d25b3c"
+    },
+    {
+      "id": "24d8836c-55d5-3ec6-804b-6382db988357",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "26e5d981-2f54-3131-919d-815849b7f1a9",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "e9af6363-9a05-34a1-8ec6-6c0190c7cb85",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "eb5a63c1-c144-34a9-923b-5f65fa30dde7",

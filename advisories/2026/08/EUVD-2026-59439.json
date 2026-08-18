@@ -3,12 +3,14 @@
   "enisaUuid": "46f1b62a-0d26-3b50-bdd6-baa6d9b66835",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: tegra: tegra210_ahub: Validate written enum value\n\ntegra_ahub_put_value_enum() reads e->values[item[0]] before\nchecking whether item[0] is within the enum item range. The existing\ncheck therefore happens too late to prevent an out-of-range read of the\nvalues array.\n\nMove the check before the array access.",
   "datePublished": "Aug 15, 2026, 5:57:58 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:58 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:45:30 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/4e45e4c2015519a39c40eb575c03b77807fb5080\nhttps://git.kernel.org/stable/c/964f8f9015fb117402d8d2186593397cd93388e9\nhttps://git.kernel.org/stable/c/2ec7d16fe21c68b0879873a2abf9aac854c96134\nhttps://git.kernel.org/stable/c/4bcb23635d5059ee71f3fb89719ea14aada6fd59\nhttps://git.kernel.org/stable/c/f67d63628fe158b3a6e6b33a2b8c83ff118699d1\nhttps://git.kernel.org/stable/c/e098c9c6477dfa3cb363282100108484ceba5cc5\nhttps://git.kernel.org/stable/c/226d93b65f4f99b35fb7a03bdb24acb577364ebc\nhttps://git.kernel.org/stable/c/1d8aabb413b5638670dfd1162169edc0ba276a2e\n",
   "aliases": "GHSA-86v6-c9p3-rm2j\nCVE-2026-74292\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "00191b5d-a891-3d4b-853f-fb4c2272bcbf",
@@ -91,16 +93,6 @@
       "product_version": "patch: 6.6.145"
     },
     {
-      "id": "93e1fd6b-6c4a-3df4-ae57-00806710c221",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "9720afc1-8a57-389c-9774-4455a1ee1386",
       "product": {
         "name": "Linux",
@@ -109,6 +101,16 @@
         }
       },
       "product_version": "16e1bcc2caf446fa3e1daa040b59fd6f6272a766 <1d8aabb413b5638670dfd1162169edc0ba276a2e"
+    },
+    {
+      "id": "99a3a229-59fb-3061-8aa3-ee3051a98420",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "9a040a8f-952d-3900-997a-ce8aabde0d21",

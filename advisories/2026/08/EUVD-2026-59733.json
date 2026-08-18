@@ -3,12 +3,14 @@
   "enisaUuid": "4f16d0f0-0811-3ad2-a370-c230fb0f5568",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: fix UAF in l2cap_le_connect_rsp\n\nl2cap_le_connect_rsp() obtains a channel via\n__l2cap_get_chan_by_ident() but neither holds a reference nor uses\nl2cap_chan_hold_unless_zero() before locking and operating on it.\nA concurrent l2cap_chan_del() triggered by a remote disconnect can\nfree the channel between the lookup and l2cap_chan_lock(), causing\na use-after-free.\n\nThe BR/EDR counterpart l2cap_connect_rsp() and the sibling handler\nl2cap_le_command_rej() already use l2cap_chan_hold_unless_zero()\nto safely hold a reference, but l2cap_le_connect_rsp() was left\nunprotected.\n\nFix by adding l2cap_chan_hold_unless_zero() after the ident lookup\nand l2cap_chan_put() on the exit path, consistent with other L2CAP\nresponse handlers.",
   "datePublished": "Aug 15, 2026, 12:27:51 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:51 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:28 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fd4c1e301bdec60a40728ea37de531cbccda501a\nhttps://git.kernel.org/stable/c/522b730c62c53a1981604fd73524697fd347830d\nhttps://git.kernel.org/stable/c/58e3c5289ad230a7e24ae4b0c7b43f5ee6e32136\nhttps://git.kernel.org/stable/c/09f447accc2570751e7d17f0dc0788b40d3edade\nhttps://git.kernel.org/stable/c/c4740e7f23ff9a8210198d8b4703259e21b9f69d\n",
   "aliases": "CVE-2026-74540\nGHSA-j62w-h52r-54ch\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "15e1cb49-2daf-3836-8769-ba541a0e4edc",
@@ -19,16 +21,6 @@
         }
       },
       "product_version": "patch: 6.18.44"
-    },
-    {
-      "id": "2dd3effa-11fc-36c8-947a-c0e219ffbabe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
     },
     {
       "id": "3b276fae-4370-375d-9d4f-a0846e319b9e",
@@ -99,6 +91,16 @@
         }
       },
       "product_version": "f1496dee9cbde2a62821f4441dadb0d3360f60c3 <c4740e7f23ff9a8210198d8b4703259e21b9f69d"
+    },
+    {
+      "id": "a56069ad-e446-3f81-844a-6db67c13cdad",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "a8ffdb95-4493-38eb-9b46-04d016a15296",

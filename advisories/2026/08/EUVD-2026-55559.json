@@ -3,14 +3,14 @@
   "enisaUuid": "00c99dec-923d-3675-9e5d-243bfb5a9d96",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: at76c50x-usb: avoid length underflow in at76_guess_freq()\n\nat76_guess_freq() checks only that the received frame is at least a bare\n802.11 header (24 bytes) before subtracting the fixed management-body\noffset:\n\n\tlen -= el_off;\n\nFor both beacon and probe response frames, el_off is 36. If the frame is\nshorter than el_off, subtracting it causes the calculated IE length to\nwrap. The length is eventually passed to cfg80211_find_elem_match() as a\nvery large unsigned value, so the element walk runs beyond the RX skb.\n\nThis path is reached from at76_rx_tasklet() while scanning. If the device\ndelivers a truncated beacon or probe response, the oversized IE length\ncauses an out-of-bounds read during scanning.\n\nSkip the IE lookup if the frame does not reach the variable elements,\nbefore subtracting el_off.",
   "datePublished": "Aug 10, 2026, 12:03:51 PM",
-  "dateUpdated": "Aug 13, 2026, 10:43:50 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:18 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e165a1d295e7e814e13b0f92c86e5d48309509ce\nhttps://git.kernel.org/stable/c/bcde7249d45f52f994a9872bedf45994472ade77\nhttps://git.kernel.org/stable/c/fb1b50ab699211e777dca5ccfb648788b6a6e519\nhttps://git.kernel.org/stable/c/f742d9c98b5c504fc9e6744eef13a721c2aea486\nhttps://git.kernel.org/stable/c/61a799ffd1e5a4fd3702d547828b7ff3d161468e\n",
   "aliases": "CVE-2026-68373\nGHSA-rhfx-w25m-wcjf\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "112f7b90-194c-33c8-b03b-51bc6a52073f",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "2.6.30"
-    },
-    {
-      "id": "16e1f863-92df-31e9-82e7-321ca004b887",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "425b94f2-1e08-38d2-94cc-9e5e3d75b448",
@@ -111,6 +101,16 @@
         }
       },
       "product_version": "patch: 6.6.148"
+    },
+    {
+      "id": "d3474636-cff5-3847-ad77-eeca9b21763c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "d382ea33-a192-3960-81a8-7e8066a6dc69",

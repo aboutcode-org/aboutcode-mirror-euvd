@@ -3,12 +3,12 @@
   "enisaUuid": "8dfba42a-7b51-3f18-b4a0-da47ff3f5294",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: fix uninitialized xprt_create_args structure\n\nThe xprt_create_args structure is allocated on the stack without\ninitialization in rpc_sysfs_xprt_switch_add_xprt_store(). While some\nfields are manually populated, critical fields like srcaddr, bc_xps,\nand flags contain uninitialized stack garbage.\n\nThis can lead to:\n1. Kernel panic when xs_setup_xprt() dereferences garbage srcaddr\n2. Information leak if srcaddr points to sensitive stack data\n3. Unpredictable behavior if flags has random bits set\n\nThe fix is to zero-initialize the structure to ensure all unused\nfields are NULL/0, preventing the transport setup code from acting\non garbage data.",
   "datePublished": "Aug 15, 2026, 5:53:21 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:21 AM",
+  "dateUpdated": "Aug 17, 2026, 5:09:09 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/933654508b2bc36e2c3c086c0365e2403fb2141f\nhttps://git.kernel.org/stable/c/7d3ce3bd23c062a7c1c6d372d1b08e48b9e17cc3\nhttps://git.kernel.org/stable/c/17d90b68c3a3d7d7e95b49e1fe9381a723f637a8\n",
   "aliases": "GHSA-3r6v-v38p-c2r8\nCVE-2026-72150\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0a691dbf-7d7d-366b-8483-7e413a3fed89",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7d3ce3bd23c062a7c1c6d372d1b08e48b9e17cc3"
-    },
-    {
-      "id": "636f8110-2731-3d4d-a83c-831e4a0ec7e3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "8af4f29f-bd9f-300b-be44-f92d3df833ee",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <17d90b68c3a3d7d7e95b49e1fe9381a723f637a8"
+    },
+    {
+      "id": "d31d86c0-9509-3088-b2b7-2e2b7eb8d3aa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "e33517cc-72c4-358b-9125-dc500442485b",

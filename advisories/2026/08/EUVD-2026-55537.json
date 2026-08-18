@@ -3,12 +3,12 @@
   "enisaUuid": "ccaa403e-5516-3fd4-a4e9-f67c0b84830b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_elf_fdpic: only honour the first PT_INTERP\n\nThe program header scan handles PT_INTERP from a switch nested in the\nscan loop, so its break leaves the switch and not the loop. A binary\ncarrying more than one PT_INTERP runs the case again and overwrites both\ninterpreter_name and interpreter. The previous name allocation leaks and\nso does the previous interpreter reference, along with the write denial\nopen_exec() took on it. The denial is never released, so the file stays\nunwritable for as long as the system runs.\n\nAn unprivileged caller reaches this with a crafted binary and repeats it\nat will. binfmt_elf stops at the first PT_INTERP. Do the same here.\n\nThe flaw dates back to the driver's introduction in the pre-git history\ntree introduced in v2.6.11 by 91808d6ebe39 (\"[PATCH] FRV: Add FDPIC ELF\nbinary format driver\").",
   "datePublished": "Aug 10, 2026, 11:59:16 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:16 AM",
+  "dateUpdated": "Aug 17, 2026, 4:59:46 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e4563e07ef5c938d5332c5c44721db976f214bc6\nhttps://git.kernel.org/stable/c/21eaf5594a33d16343a011c752624099c30e918f\nhttps://git.kernel.org/stable/c/89b9121c3b0162655fc2f190b714ae64f1aa8cae\nhttps://git.kernel.org/stable/c/69ecc199880bf7e8d06224c82dc411d18f9285f8\nhttps://git.kernel.org/stable/c/3349ef6a366a61d631f6a263d12cea240957719d\n",
   "aliases": "CVE-2026-68151\nGHSA-vrxm-q8gm-fcvq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "03b7c219-6947-33ad-bb26-c2fec1c8c4ee",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <89b9121c3b0162655fc2f190b714ae64f1aa8cae"
+    },
+    {
+      "id": "08f01554-60fa-3835-878d-fcec9dc9d889",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "127f49bb-f459-3077-a6f7-e65f42fe7783",
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "patch: 6.6.148"
-    },
-    {
-      "id": "e0452e44-3d48-36d0-85a6-800b7a602b69",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "88cb19da-9199-3d31-848b-15362aa13734",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: keyspan_pda: fix information leak\n\nThe write() callback is supposed to return the number of characters\naccepted or a negative errno. Since the addition of write fifo support\nthe keyspan_pda implementation will however return the number characters\nsubmitted to the device if the write urb is not already in use. If this\nnumber is larger than the number of characters passed to write(), the\nline discipline continues writing data from beyond the tty write buffer.\n\nFix the information leak by making sure that keyspan_pda_write_start()\nreturns zero on success as intended.",
   "datePublished": "Jul 25, 2026, 8:50:01 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:01 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:39 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b069b7029862fafaff331d4c664d97d4ae828d6d\nhttps://git.kernel.org/stable/c/e52ca411f50539ff1d0c877b9312771ca8a858c1\nhttps://git.kernel.org/stable/c/2f7a6b8ab3845bd1da02604f1a874b52a4555a72\nhttps://git.kernel.org/stable/c/e1494191a3aac665d3a2fce16169a97c346253ec\nhttps://git.kernel.org/stable/c/cf6ca0aefae03958cfb5b189b0adbfb25c06bfac\nhttps://git.kernel.org/stable/c/d4b12b6b395e43a2b1d80be3745631fcaa9c047b\nhttps://git.kernel.org/stable/c/6bfc8d01ac4068eced509f8fc74d0cd205e4dcec\n",
   "aliases": "GHSA-mhg5-fr5x-3g7c\nCVE-2026-64336\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1f00818f-a2b9-3219-9700-fd25273d4dbf",
@@ -81,16 +81,6 @@
       "product_version": "patch: 6.6.145"
     },
     {
-      "id": "5feee787-9d25-3187-82a8-c21566f9e1f7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
-    },
-    {
       "id": "6aa52f14-8226-350f-9e1f-84e59400b191",
       "product": {
         "name": "Linux",
@@ -159,6 +149,16 @@
         }
       },
       "product_version": "034e38e8f68767fb5438ae3e608ee82919674177 <2f7a6b8ab3845bd1da02604f1a874b52a4555a72"
+    },
+    {
+      "id": "dd7c4fab-935b-3439-b6a8-5ae2b90364c8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "ef85277a-b0c5-38ca-9846-f8a8e9a3ee85",

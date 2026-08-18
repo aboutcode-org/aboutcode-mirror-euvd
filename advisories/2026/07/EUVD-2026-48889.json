@@ -3,12 +3,12 @@
   "enisaUuid": "a0912cd9-c30c-3cb7-82f2-fd86bdcf37fd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_printer: take kref only for successful open\n\nprinter_open() returns -EBUSY when the character device is already\nopen, but it increments dev->kref regardless of the return value. VFS\ndoes not call ->release() for a failed open, so every rejected second\nopen permanently leaks one reference.\n\nMove kref_get() into the successful-open branch.",
   "datePublished": "Jul 25, 2026, 8:50:07 AM",
-  "dateUpdated": "Jul 25, 2026, 8:50:07 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/94ec20d97aa51547965a539f660a1fe79c6929a3\nhttps://git.kernel.org/stable/c/75c0ad13e136961328253742501b4efc3988a587\nhttps://git.kernel.org/stable/c/bf20c94fa6aaff945f0ae3a23f3212cd299f28d9\nhttps://git.kernel.org/stable/c/8a5eba992c862b0c94411eecf9b7121e8636db38\nhttps://git.kernel.org/stable/c/7f1f24c367938c5537e2308bf9a965f051d14774\nhttps://git.kernel.org/stable/c/30adce93d5c4a5a1ec29d9249e3fdfcc391d406b\n",
   "aliases": "CVE-2026-64345\nGHSA-j7g9-89xm-vfhf\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "003b4233-625a-3c64-846f-964adf948fa2",
@@ -101,16 +101,6 @@
       "product_version": "e8d5f92b8d30bb4ade76494490c3c065e12411b1 <75c0ad13e136961328253742501b4efc3988a587"
     },
     {
-      "id": "4c2a580b-616c-349b-8f93-2387d39522de",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
-    },
-    {
       "id": "556d6156-6ccc-33eb-b63b-e68c132316fc",
       "product": {
         "name": "Linux",
@@ -159,6 +149,16 @@
         }
       },
       "product_version": "e8d5f92b8d30bb4ade76494490c3c065e12411b1 <7f1f24c367938c5537e2308bf9a965f051d14774"
+    },
+    {
+      "id": "86f5238d-a6f8-332a-bbb9-d771ef90a7e5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "901291d0-6c6c-3b21-986a-0528d2bea227",

@@ -3,12 +3,14 @@
   "enisaUuid": "a99220c8-58c2-3589-8d34-86a8f960056b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: uniphier: Fix completion initialization order before devm_request_irq()\n\nThe driver calls devm_request_irq() before initializing the completion\nused by the interrupt handler. Because the interrupt may occur immediately\nafter devm_request_irq(), the handler may execute before init_completion().\n\nThis may result in calling complete() on an uninitialized completion,\ncausing undefined behavior. This has been observed with KASAN.\n\nFix this by initializing the completion before registering the IRQ.",
   "datePublished": "Aug 15, 2026, 5:53:08 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:08 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:40:43 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b9fcf0db433d79648ace74bc2b8b88f91e306304\nhttps://git.kernel.org/stable/c/82a5746c4c9e94f6f816ec7edea6ddc24417c6a5\nhttps://git.kernel.org/stable/c/f4bb0a91f7badd6d15ac8d783a1169d9e1e95c17\nhttps://git.kernel.org/stable/c/49f6705d80b5e6175d8435d9c72b66bd516a8e89\nhttps://git.kernel.org/stable/c/8b5798ce0007874c14611b8ee4ce6c749855260e\nhttps://git.kernel.org/stable/c/d44b828eb551bd59ba9f22457825cc3db3a39fc1\nhttps://git.kernel.org/stable/c/077a7bc1c32d3da9670c5e282ea3e5ac8a94be59\nhttps://git.kernel.org/stable/c/f3ad1c87d8201e54b66bd6072442f0b5d5a308ee\n",
   "aliases": "GHSA-24h9-gmhv-mhpq\nCVE-2026-72133\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "01efd775-d750-385b-8b89-95ddfe2e60ca",
@@ -29,6 +31,16 @@
         }
       },
       "product_version": "patch: 5.10.261"
+    },
+    {
+      "id": "1142da3a-c1f3-361d-9c65-ed9089b0e473",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "1265d538-9419-3904-90c6-6f1f7dc9cd86",
@@ -89,16 +101,6 @@
         }
       },
       "product_version": "5ba155a4d4cc8e4cdd3db6df7d03271a3bd91177 <8b5798ce0007874c14611b8ee4ce6c749855260e"
-    },
-    {
-      "id": "481e0c6e-de0d-3697-b6f6-85d7d251bbd9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "4b75fe28-8885-3f08-b440-18d37edb3d86",

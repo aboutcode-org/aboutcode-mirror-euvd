@@ -3,12 +3,12 @@
   "enisaUuid": "1fbf17df-d4f4-3f04-bca7-71cdbe93a5dc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: do file ownership checks with the proper mount idmap\n\nEver since idmapped mounts were introduced, inode ownership checks (for\nside-channel protection) in mincore() and madvise(MADV_PAGEOUT) were done\nagainst the nop_mnt_idmap, which completely ignores the file's mount's\nidmap.  This results in odd edgecases like:\n\n1) mount/bind-mount with an idmap userA:userB:1\n2) userB runs an owner_or_capable() check on file that is owned by userA\non-disk/in-memory, but owned by userB after idmap translation\n3) owner_or_capable() mysteriously fails as the correct idmap wasn't supplied\n\nIn the case of mincore/madvise MADV_PAGEOUT, this is usually benign,\nbecause file_permission(file, MAY_WRITE) will probably succeed, as it uses\nthe proper idmap internally, but it does not need to be the case on e.g a\n0444 file where even the owner itself doesn't have permissions to write to\nit.\n\nSince this is clearly not trivial to get right, introduce a\nfile_owner_or_capable() that can carry the correct semantics, and switch\nthe various users in mm to it.\n\nThe issue was found by manual code inspection & an off-list discussion\nwith Jan Kara.",
   "datePublished": "Jul 25, 2026, 8:49:32 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:32 AM",
+  "dateUpdated": "Aug 17, 2026, 4:52:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/744b23aa430d52f5c8e4dbff7d71496d6643bed2\nhttps://git.kernel.org/stable/c/8344bdf0629457e532797b42d9d2bbf2a2900bbf\nhttps://git.kernel.org/stable/c/5c942ad7df75925ee166e7f0fb36892d8dde376b\nhttps://git.kernel.org/stable/c/04ba248d02d9eaa3d9077b00a6134caa75fa3e90\nhttps://git.kernel.org/stable/c/e187bc02f8fa4226d62814592cf064ee4557c470\n",
   "aliases": "CVE-2026-64294\nGHSA-rgg7-9234-2h22\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "2e08d93b-e846-32f9-b074-88aadcdfc66e",
@@ -21,14 +21,14 @@
       "product_version": "patch: 6.6.145"
     },
     {
-      "id": "2e4c0251-f31e-3c96-8559-fc7e5e094342",
+      "id": "6098002a-238d-3e4e-a949-1f91adf83680",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc3"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "61ae02d6-b1f3-3bbe-aa72-d11945bc751d",

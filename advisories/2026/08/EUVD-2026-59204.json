@@ -3,12 +3,12 @@
   "enisaUuid": "5c9602f5-ceb6-3356-94ab-0ce5c1a1b97d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nVDUSE: avoid leaking information to userspace\n\nThe bounceing is not necessarily page aligned, so current VDUSE can\nleak kernel information through mapping bounce pages to\nuserspace. Allocate bounce pages with __GFP_ZERO to avoid leaking\ninformation to userspace.",
   "datePublished": "Aug 15, 2026, 5:55:22 AM",
-  "dateUpdated": "Aug 15, 2026, 5:55:22 AM",
+  "dateUpdated": "Aug 17, 2026, 5:12:09 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fde25641cbddd0c084e3320d08f755e7e6acfae5\nhttps://git.kernel.org/stable/c/5e88c1bc3a41d9a260dd42bae8ad18fd4f35bbe1\nhttps://git.kernel.org/stable/c/690fb82c4122f8c2656fa4f842275132771b68b9\nhttps://git.kernel.org/stable/c/00335df9da2011e095f846d645cc2e9fd2907659\nhttps://git.kernel.org/stable/c/9c1523803445ee0348f62b77793266dd981596e0\n",
   "aliases": "CVE-2026-72305\nGHSA-j4px-38fv-h9g9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "007f67b8-6595-362a-a022-e85036620e26",
@@ -31,16 +31,6 @@
       "product_version": "patch: 7.1.5"
     },
     {
-      "id": "25fd114a-4eea-3f00-8610-2903d23457af",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "50b87257-9cf4-3244-8e2e-902cf43044b7",
       "product": {
         "name": "Linux",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "8c773d53fb7b64267b0f55c1d3517cb8c5e29b3c <00335df9da2011e095f846d645cc2e9fd2907659"
+    },
+    {
+      "id": "576a296e-6ce3-39a4-ac9e-bb2e95616b9f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "9d161d85-1cc0-393c-adc6-63e3aeafbe5f",

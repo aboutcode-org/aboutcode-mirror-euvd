@@ -3,12 +3,12 @@
   "enisaUuid": "c2866269-bbcb-348b-b4fb-3c9f15392c70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: reset write verifier on deferred writeback errors\n\nnfsd_vfs_write() and nfsd_commit() both call filemap_check_wb_err() to\ndetect deferred writeback errors, but neither rotates the server's write\nverifier (nn->writeverf) when this check fails. Every other\ndurable-storage-failure path in these functions calls\ncommit_reset_write_verifier() before returning an error.\n\nThe missing rotation means clients holding UNSTABLE write data under the\ncurrent verifier will COMMIT, receive the unchanged verifier back, and\nconclude their data is durable \u2014 silently dropping data that failed\nwriteback. This violates the UNSTABLE+COMMIT durability contract\n(RFC 1813 \u00a73.3.7, RFC 8881 \u00a718.32).\n\nAdd commit_reset_write_verifier() calls at both filemap_check_wb_err()\nerror sites, matching the pattern used by adjacent error paths in the\nsame functions. The helper already filters -EAGAIN and -ESTALE\ninternally, so the calls are unconditionally safe.",
   "datePublished": "Jul 19, 2026, 12:01:56 PM",
-  "dateUpdated": "Jul 24, 2026, 2:33:59 PM",
+  "dateUpdated": "Aug 17, 2026, 4:50:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b8e5894e56cff70fa245628fe16f0ad6367f8090\nhttps://git.kernel.org/stable/c/bc2baca02ec56da7707a74ed5d340b0a1dff1841\nhttps://git.kernel.org/stable/c/43b65d2997963e80e8d8d86520bcb1e0751227de\nhttps://git.kernel.org/stable/c/666e837b247fcadf2d8d508b9b0e49d720393eb4\nhttps://git.kernel.org/stable/c/1dd664b39774a9c89b72de8e59bf9ef4b3aaff2e\nhttps://git.kernel.org/stable/c/4367afc119c51e17a616f6908772b7e2c2c4013f\nhttps://git.kernel.org/stable/c/b027cca33c97354149fcc0ddeede4525c41093cd\nhttps://git.kernel.org/stable/c/2090b05803faab8a9fa62fbff871007862cac1b7\n",
   "aliases": "GHSA-wm3m-j54f-523v\nCVE-2026-53393\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "149044d8-2b5a-3eba-88cc-e2dbe3d06ba1",
@@ -91,6 +91,16 @@
       "product_version": "5.17"
     },
     {
+      "id": "9e318054-c571-3476-bba5-93a402dbe71b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "a443e459-0e73-319e-b358-507fa6377dd7",
       "product": {
         "name": "Linux",
@@ -169,16 +179,6 @@
         }
       },
       "product_version": "555dbf1a9aac6d3150c8b52fa35f768a692f4eeb <1dd664b39774a9c89b72de8e59bf9ef4b3aaff2e"
-    },
-    {
-      "id": "eb468892-aa40-341f-9afb-84fcaeee2177",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "f08e196b-e098-3a87-b8eb-4387ad01cf7b",

@@ -3,12 +3,12 @@
   "enisaUuid": "3d9987ec-ba8b-3918-acd9-9f346de17051",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/resctrl: Fix double-add of pseudo-locked region's RMID to free list\n\nA pseudo-locked group's RMID is freed when it is created. On unmount\nrmdir_all_sub() unconditionally frees all RMID of all groups, resulting\nin a double-free of the pseudo-locked group's RMID. The consequence of this\nis that the original free results in the pseudo-locked group's RMID being\nadded to the rmid_free_lru linked list and the second free then attempts\nto add the same RMID entry to the rmid_free_lru again.\n\nDo not double-free a pseudo-locked group's RMID.",
   "datePublished": "Aug 15, 2026, 5:51:43 AM",
-  "dateUpdated": "Aug 15, 2026, 5:51:43 AM",
+  "dateUpdated": "Aug 17, 2026, 5:06:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9168176894332312c12ef052e784735dbf4ffe3f\nhttps://git.kernel.org/stable/c/b2fe9e140aa94b2816aab7ebc692b543e418f5e3\nhttps://git.kernel.org/stable/c/52007bfdce5310e8c8a29849bfbfb188a1e50ca0\nhttps://git.kernel.org/stable/c/f7628eea9212e185a09df3aea603ca8580b8678d\nhttps://git.kernel.org/stable/c/b9f089723aee892efc77c349ae47a6b452b293c4\n",
   "aliases": "CVE-2026-72015\nGHSA-wxqw-c972-64f8\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1786ee23-4309-38dd-9652-277e3cc1f030",
@@ -31,14 +31,14 @@
       "product_version": "e0bdfe8e36f3fbbdc91e70bf927f743ca23917b0 <f7628eea9212e185a09df3aea603ca8580b8678d"
     },
     {
-      "id": "39442ce7-103d-35ca-b631-218162a616a2",
+      "id": "29f8d89c-51da-389d-bb9c-ba9fc6f8a6e7",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc3"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "486e993e-38f6-3d08-8198-646141ae7c3b",

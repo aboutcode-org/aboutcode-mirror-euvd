@@ -3,12 +3,14 @@
   "enisaUuid": "11130289-c24b-37b5-b0e8-45a24bc59ef6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ip6_tunnel: require CAP_NET_ADMIN in the device netns for changelink\n\nip6_tnl_changelink() operates on at most two netns, dev_net(dev) and the\ntunnel link netns t->net. They differ once the device is created in or\nmoved to a netns other than the one the request runs in. The rtnl\nchangelink path checks CAP_NET_ADMIN only against dev_net(dev), so a\ncaller privileged there but not in t->net can rewrite a tunnel that\nlives in t->net.\n\nGate ip6_tnl_changelink() on rtnl_dev_link_net_capable() at its top,\nbefore any attribute is parsed.",
   "datePublished": "Aug 15, 2026, 5:52:08 AM",
-  "dateUpdated": "Aug 15, 2026, 5:52:08 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:39:47 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2636d061bc237a2446a146e42dcc6563acfa7432\nhttps://git.kernel.org/stable/c/7f68f7928484f463a5bc0d50e6fdd8d16f55a5aa\nhttps://git.kernel.org/stable/c/234cd54fc500f69db43e37de38603da617fbbeea\nhttps://git.kernel.org/stable/c/d4bcc202a3530c856e1cb183384bc9cc8fddab22\nhttps://git.kernel.org/stable/c/2496fa0b7d180b3ad356b514e7ff93bb14e6140a\n",
   "aliases": "CVE-2026-72051\nGHSA-q3jr-w6wf-464w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0031f56f-a17e-3df5-9496-dba2c57c6fc0",
@@ -29,6 +31,16 @@
         }
       },
       "product_version": "0bd8762824e73a3cce7b7560a97463301764b616 <7f68f7928484f463a5bc0d50e6fdd8d16f55a5aa"
+    },
+    {
+      "id": "165d2c67-81e1-3c29-abd6-617ebae98e1f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "16994ce9-4a9b-381a-91b4-cd8ed424a2fd",
@@ -59,16 +71,6 @@
         }
       },
       "product_version": "patch: 7.1.5"
-    },
-    {
-      "id": "5c097c17-8263-3891-bd04-d52df79bb9b7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "6c9d53ec-fb04-371b-bf09-61b8b8811451",

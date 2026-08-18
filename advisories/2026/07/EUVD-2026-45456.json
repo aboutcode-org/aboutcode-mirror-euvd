@@ -3,7 +3,7 @@
   "enisaUuid": "7f0be646-87cb-3bb5-a3c1-cd2ef076bc42",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: omap2: fix use-after-free in omapfb_mmap\n\nomapfb_mmap() has a race condition with OMAPFB_SETUP_PLANE ioctl that\ncan lead to use-after-free:\n\nThe fb_mmap() entry point holds mm_lock but not lock (fb_info->lock),\nwhile ioctl handlers like OMAPFB_SETUP_PLANE hold lock but not mm_lock.\nThis allows concurrent execution.\n\nIn omapfb_mmap():\n1. rg = omapfb_get_mem_region(ofbi->region);      // Get old region ref\n2. start = omapfb_get_region_paddr(ofbi);          // Read from NEW region\n3. len = fix->smem_len;                             // Read from NEW region\n4. vm_iomap_memory(vma, start, len);               // Map NEW region memory\n5. atomic_inc(&rg->map_count);                      // Increment OLD region!\n\nConcurrently, OMAPFB_SETUP_PLANE can:\n- Reassign ofbi->region = new_rg\n- Update fix->smem_len\n- OMAPFB_SETUP_MEM then checks NEW region's map_count (0!) and frees it\n\nThis leaves userspace with a mapping to freed physical memory.\n\nThe fix is to read all required values (start, len) from the same\nregion reference (rg) that will have its map_count incremented,\npreventing the region from being freed while still mapped.",
   "datePublished": "Jul 19, 2026, 12:02:01 PM",
-  "dateUpdated": "Aug 5, 2026, 12:35:40 PM",
+  "dateUpdated": "Aug 17, 2026, 4:50:53 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -43,16 +43,6 @@
       "product_version": "078ff546a806b2c2ab74c25c8edd4c6d4680656a <7958e67375aa111522086286bba13cfc0816ce8d"
     },
     {
-      "id": "e962cc24-8fcc-3cc3-8670-09df700aa39f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "edbf1d0a-4520-320c-9d2a-c9dd23046e3f",
       "product": {
         "name": "Linux",
@@ -61,6 +51,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ee67c873-8d1f-3149-8b9f-4b31bfea8916",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f1979ca4-c79c-344e-9975-81f762151768",

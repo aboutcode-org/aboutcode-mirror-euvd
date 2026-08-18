@@ -3,12 +3,14 @@
   "enisaUuid": "636ed952-bc6f-325b-a223-f3cc4daab64c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: reject non-resident records for resident-only attributes\n\nThe shared lookup-time attribute validator rejects non-resident\n$FILE_NAME and $VOLUME_NAME records because their formats require\nresident values and callers handle returned records as resident\nattributes. Other resident-only attribute types still pass through the\ngeneric non-resident mapping-pairs checks.\n\nThat leaves real resident/non-resident union confusion paths. Inode load\nlooks up $STANDARD_INFORMATION and then reads data.resident.value_offset\nwithout checking a->non_resident. ntfs_inode_sync_standard_information()\ndoes the same when updating the standard information value.\nntfs_write_volume_flags() also looks up $VOLUME_INFORMATION and reads\ndata.resident.value_offset directly. $INDEX_ROOT callers in dir.c and\nindex.c depend on the same lookup contract before consuming the resident\nindex root value.\n\nReject non-resident records for all resident-only attribute types in the\nshared validator. Keep the existing $FILE_NAME and $VOLUME_NAME behavior,\nbut factor it through a helper and extend it to\n$STANDARD_INFORMATION, $OBJECT_ID, $VOLUME_INFORMATION, $INDEX_ROOT, and\n$EA_INFORMATION. For $OBJECT_ID and $EA_INFORMATION this is contract\nhardening for resident-only formats; this patch only rejects the\nnon-resident form and does not add new resident value validation for\nthose types.",
   "datePublished": "Aug 15, 2026, 5:53:56 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:56 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:41:25 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b54c9beb90e570bae17a9c18442aeeaf17165ccb\nhttps://git.kernel.org/stable/c/097cdfd0a55df5af82c9753833f39a8bfadbcfcb\n",
   "aliases": "CVE-2026-72198\nGHSA-v45q-rmh4-rr86\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "1fbffbbd-f6c3-36bc-afed-f9ccc3df8319",
@@ -41,6 +43,16 @@
       "product_version": "patch: 7.1.5"
     },
     {
+      "id": "5ffeb2da-bab4-3c8e-b97a-2598b4cd89b5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "bdefbfcd-11f9-340a-979d-2597ba081c27",
       "product": {
         "name": "Linux",
@@ -49,16 +61,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b54c9beb90e570bae17a9c18442aeeaf17165ccb"
-    },
-    {
-      "id": "da6bb7fe-0e7e-39b3-85d7-b1f352e7a4fc",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     }
   ],
   "enisaIdVendor": [

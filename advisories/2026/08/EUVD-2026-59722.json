@@ -3,12 +3,14 @@
   "enisaUuid": "3e4bc510-fad9-3a0c-a3d0-05179eedbbd5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hold conn in hci_connect_pa_sync() callback\n\nThere is theoretical UAF if the conn is freed while the hci_sync task is\nrunning.\n\nHold refcount to avoid that.",
   "datePublished": "Aug 15, 2026, 12:27:44 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:44 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:18 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c53c70ec289ee12f20c4f1b2fbfd151762c01f67\nhttps://git.kernel.org/stable/c/44fc74069d8988f2825246f9401218e29de2c0ab\n",
   "aliases": "GHSA-7xff-628x-fqq8\nCVE-2026-74529\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "06711b8e-0824-3579-8676-df56d4cb12f1",
@@ -61,16 +63,6 @@
       "product_version": "6d0417e4e1cf66fd917f06f0454958362714ef7d <c53c70ec289ee12f20c4f1b2fbfd151762c01f67"
     },
     {
-      "id": "3e27ce81-d586-39b5-8319-53525328aa6e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc6"
-    },
-    {
       "id": "5b0ffea1-ea0c-3ebe-a0ba-6f4f0f13547a",
       "product": {
         "name": "Linux",
@@ -109,6 +101,16 @@
         }
       },
       "product_version": "6.15"
+    },
+    {
+      "id": "bf04acba-82e9-39c1-be3c-e4cbd327ec6b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

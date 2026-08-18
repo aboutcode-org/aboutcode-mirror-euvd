@@ -3,12 +3,12 @@
   "enisaUuid": "9c7e5138-207c-3557-aa79-ca490f1da33d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix mmiotrace possible NULL dereferencing of hiter->dev\n\nIf the mmio_pipe_open() fails to find a PCI device, the hiter->dev\nwill be assigned to NULL. The mmiotrace read() function dereferences the\nhiter->dev if hiter exists.\n\nChange the test of the read to not only check hiter being NULL, but also\nthe hiter->dev before dereferencing it.",
   "datePublished": "Aug 10, 2026, 11:59:47 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:47 AM",
+  "dateUpdated": "Aug 17, 2026, 5:00:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/faaf95135184208ee3ac6f33175c8d1800669dfc\nhttps://git.kernel.org/stable/c/201a01102c529772168181190cb084471082cf5c\nhttps://git.kernel.org/stable/c/8464427e1c177809a9488a97dfa2807d9dcf323b\nhttps://git.kernel.org/stable/c/724cd84b0546c07806840fa658714488553d13a2\nhttps://git.kernel.org/stable/c/144f29e85702234b23d2a62abf723e6a17eb5427\n",
   "aliases": "GHSA-ghxj-phm3-49fw\nCVE-2026-68176\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "23382a73-5635-3e85-957f-3ec558778730",
@@ -81,16 +81,6 @@
       "product_version": "f984b51e0779a6dd30feedc41404013ca54e5d05 <faaf95135184208ee3ac6f33175c8d1800669dfc"
     },
     {
-      "id": "8620face-c50f-373a-aec8-46bd54ad79b5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
-    {
       "id": "93028adb-993e-3a83-967d-98256aa6d52c",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.6.148"
+    },
+    {
+      "id": "baf996d1-9ca5-31ef-9903-93b91d189a43",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f9737456-8bcb-3e59-884e-94142bb4982a",

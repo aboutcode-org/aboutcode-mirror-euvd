@@ -3,12 +3,12 @@
   "enisaUuid": "7774877e-59d3-36e0-a8de-71138f7ff2db",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Handle partially initialized auxiliary devices\n\nbnxt_aux_devices_init() calls auxiliary_device_init() before all fields\nused by bnxt_aux_dev_release() are initialized.  After\nauxiliary_device_init() succeeds, later errors must unwind with\nauxiliary_device_uninit(), which invokes the release callback.\n\nThe release callback assumes that aux_priv->id, aux_priv->edev,\nedev->net and edev->ulp_tbl are all populated.  If allocation fails\nafter auxiliary_device_init(), the release path can otherwise dereference\nor clear partially initialized state.\n\nAllocate and attach the bnxt_en_dev and ULP table before calling\nauxiliary_device_init(), so the release callback only sees a fully\ninitialized auxiliary private object.  If auxiliary_device_init() itself\nfails, free those allocations directly because device_initialize() has not\nrun and the release callback will not be invoked.\n\nThis issue was found by a static analysis checker and confirmed by manual\nsource review.",
   "datePublished": "Aug 10, 2026, 12:03:53 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:53 PM",
+  "dateUpdated": "Aug 17, 2026, 5:04:20 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4e1caa5fdd0dea36938fe39cceb1522e9d86c937\nhttps://git.kernel.org/stable/c/1cb8553c02e93e5a150cebd42f9ee3db0ece4707\n",
   "aliases": "GHSA-77xg-jxfp-c69m\nCVE-2026-68375\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "3a33a52c-00e4-361f-b9a6-29cb26127373",
@@ -61,14 +61,14 @@
       "product_version": "194fad5b27815ca80e832ac875c0026ff96fc243 <4e1caa5fdd0dea36938fe39cceb1522e9d86c937"
     },
     {
-      "id": "c3b0c432-dbb3-3cc4-84a0-f47552634e65",
+      "id": "cfaf31d0-d029-38ba-8f54-5b11fb529f9b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc4"
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

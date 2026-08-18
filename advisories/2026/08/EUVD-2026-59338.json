@@ -3,12 +3,12 @@
   "enisaUuid": "d85a8a05-e4f3-30e5-8d16-d7b6d2acee5f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: fix writes_pending leak on write request failures\n\nraid10_make_request() acquires a writes_pending reference with\nmd_write_start() before dispatching write requests. Several failure\npaths in raid10_write_request() complete the bio and return without\nreaching the normal write completion path, causing the corresponding\nmd_write_end() to be skipped.\n\nMake raid10_write_request() return a status indicating whether the write\nrequest was successfully queued. This allows raid10_make_request() to\nrelease the writes_pending reference with md_write_end() when a write\nrequest fails.",
   "datePublished": "Aug 15, 2026, 5:56:52 AM",
-  "dateUpdated": "Aug 15, 2026, 5:56:52 AM",
+  "dateUpdated": "Aug 17, 2026, 5:14:39 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f94031c94eaebe14a7c9e91720064de0c5a54a6c\nhttps://git.kernel.org/stable/c/e045d6ed33f8faa3e3dd6dc33c62ec01e3ad275d\n",
   "aliases": "CVE-2026-72439\nGHSA-xqj6-523w-5f3g\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0e716b40-6ee3-3bd0-8f89-a56f4af4a86a",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "patch: 7.1.5"
-    },
-    {
-      "id": "30d8810f-99b3-3a1b-a441-b32eae415d68",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "54f2e852-0493-340d-8195-fc8e1c73239b",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "5.15.111 <5.16"
+    },
+    {
+      "id": "ea5d275c-edfb-388c-bfa6-a7fd6b8c4e86",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

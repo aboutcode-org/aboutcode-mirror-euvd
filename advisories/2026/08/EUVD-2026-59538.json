@@ -3,12 +3,12 @@
   "enisaUuid": "e59743ac-36ce-3301-bb32-e330fed83e56",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Bound synthetic-field strings with seq_buf\n\nThe synthetic field helpers build a prefixed synthetic variable name and\na generated hist command in fixed MAX_FILTER_STR_VAL buffers. The\ncurrent code appends those strings with raw strcat(), so long key lists,\nfield names, or saved filters can run past the end of the staging\nbuffers.\n\nBuild both strings with seq_buf and propagate -E2BIG if either the\nsynthetic variable name or the generated command exceeds\nMAX_FILTER_STR_VAL. This keeps the existing tracing-side limit while\nusing the helper intended for bounded command construction.\n\n[ sdr: Moved struct seq_buf *s for upside-down x-mas tree formatting ]",
   "datePublished": "Aug 15, 2026, 5:59:05 AM",
-  "dateUpdated": "Aug 15, 2026, 5:59:05 AM",
+  "dateUpdated": "Aug 17, 2026, 5:18:30 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0c584c27f6649a93ec12061cc779a4bd8f7c1434\nhttps://git.kernel.org/stable/c/88b901fdc1662b131ff908cbd017333b61e7acc8\nhttps://git.kernel.org/stable/c/baa333b2700a7fa3529d504529c8c10060fd687c\nhttps://git.kernel.org/stable/c/cf334620036ad2250e008c7e7bb6646a3938b7b0\nhttps://git.kernel.org/stable/c/f07883450eb14d1cf020b55d9f3a7ec5683bcd26\n",
   "aliases": "GHSA-853c-pg29-mfgr\nCVE-2026-74391\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "050a1241-7cac-34d4-b463-7b7a69d5bdc9",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "02205a6752f223779a1b0e9e8ffacbea6e717851 <cf334620036ad2250e008c7e7bb6646a3938b7b0"
-    },
-    {
-      "id": "1339b1e5-aabf-3a8e-b0bb-767476cddd25",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "19071304-7a51-3bc2-935e-b3a666248f5e",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.6.145"
+    },
+    {
+      "id": "b82bebbb-c572-338a-ab3b-316bbb46c4cb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "c86a482e-1626-3403-a96f-ab1aab3e99b6",

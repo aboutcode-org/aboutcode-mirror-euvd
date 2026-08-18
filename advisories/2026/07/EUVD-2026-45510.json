@@ -3,7 +3,7 @@
   "enisaUuid": "cad227e4-180a-3ffd-abc3-7102dfccb043",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: re-lock request before replacing page cache folio\n\nfuse_try_move_folio() unlocks the request on entry but does not\nre-lock it on the success path. This means fuse_chan_abort() can end the\nrequest and free the fuse_io_args (eg fuse_readpages_end()) while the\nsubsequent copy chain logic after fuse_try_move_folio() accesses the\nfuse_io_args, leading to use-after-free issues.\n\nFix this by calling lock_request() before replace_page_cache_folio().\nThis ensures the request is locked on the success path which will\nprevent the fuse_io_args from being freed while the later copying logic\nruns, and also ensures that the ap->folios[i]->mapping is never null\nsince ap->folios[i] will always point to the newfolio after\nreplace_page_cache_folio().",
   "datePublished": "Jul 19, 2026, 11:59:34 AM",
-  "dateUpdated": "Aug 5, 2026, 12:35:27 PM",
+  "dateUpdated": "Aug 17, 2026, 4:50:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -81,16 +81,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "93094b58-d255-3f99-95b5-49e83353cbb1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "978e8cd4-4b4d-336e-85dd-154d31b019e1",
@@ -171,6 +161,16 @@
         }
       },
       "product_version": "patch: 7.0.14"
+    },
+    {
+      "id": "f65961c8-4291-3df4-8225-acf41c1814d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f6ae652d-d74c-399a-b6b3-07893470f2ac",

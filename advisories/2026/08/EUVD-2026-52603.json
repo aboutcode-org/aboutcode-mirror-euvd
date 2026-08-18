@@ -3,14 +3,14 @@
   "enisaUuid": "74c09d55-d2dc-3c54-91f8-c6e13d7b5cdb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Hide shadow VMCS right after VMCLEAR\n\nfree_nested() frees the shadow VMCS while vmcs01 still points to it. But\nbecause it is asynchronous with respect to loaded_vmcs_clear(), the vCPU\nmight migrate before the pointer is cleared and __loaded_vmcs_clear()\nmay then execute VMCLEAR.\n\nThe VMCS needs to stay attached until its explicit VMCLEAR completes, but\nthen it can be hidden and the page safely freed.",
   "datePublished": "Aug 4, 2026, 6:23:21 AM",
-  "dateUpdated": "Aug 8, 2026, 3:13:03 PM",
+  "dateUpdated": "Aug 17, 2026, 4:57:41 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/af56298e9d86e6098cd1d2e155cb2949b7c45412\nhttps://git.kernel.org/stable/c/589419470030a89f16cf19300658b6dc644ca946\nhttps://git.kernel.org/stable/c/8001d2ce9d9bd09118ce523aef595aa094573ae3\nhttps://git.kernel.org/stable/c/1dabef6e206568bf9d9ade74f6e56a48ea35695d\nhttps://git.kernel.org/stable/c/622ebfac01ba4f9c0060cebd41257fe46fc4a0b3\n",
   "aliases": "CVE-2026-64562\nGHSA-mc77-r35g-cpmm\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "06a2dc14-5e2a-3266-a5f7-e0f5fc89cb18",
@@ -73,6 +73,16 @@
       "product_version": "4.9"
     },
     {
+      "id": "72cceab4-1b84-30ea-93c2-4ee11316f361",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "7352f068-71d5-3b81-8f8b-42da40009475",
       "product": {
         "name": "Linux",
@@ -121,16 +131,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "fa42c2f2-af9a-3e58-a487-487d237c76aa",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     }
   ],
   "enisaIdVendor": [

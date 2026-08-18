@@ -3,12 +3,12 @@
   "enisaUuid": "b0254653-23a6-3273-bede-151090ba4daa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregcache: Do not overwrite error code when finalizing cache after error\n\nDuring regcache initialization, if an error occurs in the\ncache_ops->populate callback, and if cache operations include an exit\ncallback, the error code from populate() is overwritten with the return\nvalue from exit(). This hides the error condition from the caller of\nregcache_init(), and can cause NULL pointer dereferences when the regcache\nis later accessed.",
   "datePublished": "Aug 15, 2026, 5:57:00 AM",
-  "dateUpdated": "Aug 15, 2026, 5:57:00 AM",
+  "dateUpdated": "Aug 17, 2026, 5:14:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9f171aa115ec76be02c76c5765cd2c865279e34a\nhttps://git.kernel.org/stable/c/9108f7fa493b4c88cbc09503e0c164244456bad5\n",
   "aliases": "CVE-2026-72453\nGHSA-cv9g-v92m-34rj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "204b2b4b-c12d-32d9-b083-9b21cde1e583",
@@ -51,16 +51,6 @@
       "product_version": "patch: 7.1.5"
     },
     {
-      "id": "be718239-bfcc-30a3-b612-e26304be6f52",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "c1c146d9-5bb6-3624-9c38-530061965810",
       "product": {
         "name": "Linux",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "cedbd228-31a6-3bb1-8f1c-d6b456082773",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

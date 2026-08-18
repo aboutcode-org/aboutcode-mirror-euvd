@@ -3,14 +3,14 @@
   "enisaUuid": "63b53c1e-e9b5-3f11-a873-31a0bff42519",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npppoe: reload header pointer after dev_hard_header()\n\npppoe_sendmsg() saves a pointer to the PPPoE header before calling\ndev_hard_header(). Device header callbacks are allowed to reallocate the\nskb head, invalidating pointers into it.\n\nThis can happen when a send is blocked in copy_from_user() while the first\nnon-Ethernet port is added to an empty team device. The team's delegated\nGRE header callback then expands the skb head. PPPoE subsequently writes\nsix bytes through the stale pointer into the freed head.\n\nReload the PPPoE header through the skb's network-header offset after\ndevice header creation. pskb_expand_head() updates that offset when it\nrelocates the head.",
   "datePublished": "Aug 10, 2026, 11:58:41 AM",
-  "dateUpdated": "Aug 13, 2026, 10:40:00 PM",
+  "dateUpdated": "Aug 17, 2026, 4:59:11 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e6493a4d1ee17595766165fa446d45b7e0c318d0\nhttps://git.kernel.org/stable/c/7e9fbd7f96bcde63a7c798fe16b38cedee7a1501\nhttps://git.kernel.org/stable/c/6866abf59976d273164a6624234d96a967280223\nhttps://git.kernel.org/stable/c/bed4caecd723693f750e13adbb2c42ca1249a3fd\nhttps://git.kernel.org/stable/c/e9c238f6fe42fb1b4dba3a578277de32cb487937\n",
   "aliases": "CVE-2026-68121\nGHSA-7hvc-v975-w6v4\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "056b2242-d0ff-3bbe-95d2-8b8a78645679",
@@ -33,6 +33,16 @@
       "product_version": "2.6.12"
     },
     {
+      "id": "5c95cfd0-8230-3b0d-beca-968093fb9db6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "9e8e1b99-7212-3508-bb0f-1b78792c98d5",
       "product": {
         "name": "Linux",
@@ -41,16 +51,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "a0c4295b-0bca-3686-998d-3c9a30292968",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "a0f68cb3-33aa-3e7c-98ce-609179aaaae3",

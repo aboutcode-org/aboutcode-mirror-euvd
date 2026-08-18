@@ -3,7 +3,7 @@
   "enisaUuid": "09370d68-6a59-33a3-8a85-f360e181c294",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: 8250_mid: Fix NULL function pointer dereference on DNV/ICX-D/SNR platforms\n\nCommit b1b4efea05a5 (\"serial: 8250_mid: Disable DMA for selected\nplatforms\") replaced the dnv_board setup and exit callbacks with\nPTR_IF(false, ...), which evaluates to NULL. However, the three call\nsites in mid8250_probe() and mid8250_remove() unconditionally\ndereference these function pointers without NULL checks, causing a NULL\npointer dereference (kernel oops) on any Denverton (DNV), Ice Lake Xeon\nD (ICX-D/CDF), or Snowridge (SNR) platform.\n\nFix this by adding the missing NULL checks before calling the setup and\nexit callbacks.",
   "datePublished": "Aug 12, 2026, 12:07:21 AM",
-  "dateUpdated": "Aug 12, 2026, 12:07:21 AM",
+  "dateUpdated": "Aug 17, 2026, 5:05:30 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1096397c31f6bffa95e77bdd18fbca085be83e10\nhttps://git.kernel.org/stable/c/600dcd548fb2b00a69f447684f52ba45d5a3540e\nhttps://git.kernel.org/stable/c/b2a3eeb57ba24f8a0e34a69d40adcc63e5b9ca56\nhttps://git.kernel.org/stable/c/8cbad52ccfa6a7f089cfab34979bc6cc3bff25be\nhttps://git.kernel.org/stable/c/7fb13fd7e9a59a37cd911efff83abe19e3ee029d\n",
   "aliases": "CVE-2026-68434\nGHSA-97r7-mpr3-66vh\n",
@@ -19,26 +19,6 @@
         }
       },
       "product_version": "0b3ed3fa227ba778cabed96e7f8d84addb8bdf9c"
-    },
-    {
-      "id": "1e189f64-e215-387b-8a1a-b0bdf0810655",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "7.2-rc3"
-    },
-    {
-      "id": "24cb5ed1-1078-3143-bc32-35713a9d4e12",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.1.6"
     },
     {
       "id": "29bb469a-dba0-31bd-8875-4f5494de64f2",
@@ -71,36 +51,6 @@
       "product_version": "7.1.4 <7.1.6"
     },
     {
-      "id": "3ffd3536-4206-3fc9-b5f6-da818d7f9f1d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 6.12.101"
-    },
-    {
-      "id": "4bc07f15-96d7-3068-a101-926239e21fdb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 6.18.42"
-    },
-    {
-      "id": "6559f3a2-b548-3250-b008-08be0fcb1e8c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
-    },
-    {
       "id": "661b4e2a-1bc4-34f2-9a8d-2419cbacaf24",
       "product": {
         "name": "Linux",
@@ -129,16 +79,6 @@
         }
       },
       "product_version": "9690e8a342632344984af72bc56b7a1fba61e6cb <8cbad52ccfa6a7f089cfab34979bc6cc3bff25be"
-    },
-    {
-      "id": "8f757b95-d6bd-339a-9c20-f9fd3b793674",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 0"
     },
     {
       "id": "b8420339-c69b-3603-a5e6-1315526ca8c4",
@@ -199,16 +139,6 @@
         }
       },
       "product_version": "6.6.145 <6.6.148"
-    },
-    {
-      "id": "ead9b982-d437-388b-b7b2-705e8736e11c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 6.6.148"
     },
     {
       "id": "edac5361-2178-3cd9-992c-635c2c9b57e7",

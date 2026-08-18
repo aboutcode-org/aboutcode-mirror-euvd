@@ -3,23 +3,13 @@
   "enisaUuid": "1280640d-4fa6-39b5-9d1a-394b84820000",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: airspy: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those buffers via vb2_buffer_done(),\nvb2_start_streaming() fires WARN_ON(owned_by_drv_count) and the queued\nbuffers leak.\n\nairspy_start_streaming() returned -ENODEV early when the USB device had\nbeen disconnected (s->udev == NULL) without returning any buffers that\nbuf_queue() had already accepted.  Take v4l2_lock first and jump to the\nexisting err_clear_bit label, which already drains s->queued_bufs via\nvb2_buffer_done(..., VB2_BUF_STATE_QUEUED) before unlocking.\n\nThis mirrors the uvcvideo fix in commit 4cf3b6fd54eb (\"media: uvcvideo:\nReturn queued buffers on start_streaming() failure\").",
   "datePublished": "Aug 10, 2026, 12:00:54 PM",
-  "dateUpdated": "Aug 10, 2026, 12:00:54 PM",
+  "dateUpdated": "Aug 17, 2026, 5:01:19 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/877686a74ecdc93dcaee09dbac566e819059c9e7\nhttps://git.kernel.org/stable/c/cd42623d698b59f1fe5768f78a4101c28d5feb2e\nhttps://git.kernel.org/stable/c/73bd2779865372b1017d4f555b45270aa2d0d710\nhttps://git.kernel.org/stable/c/170fcc945bc094b1c956bf555c070692826a3eff\nhttps://git.kernel.org/stable/c/04344d0b4929caa94c0df72f767752aa0935ef5d\n",
   "aliases": "GHSA-rw4h-36vm-p4p5\nCVE-2026-68231\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
-    {
-      "id": "08ea83e8-7ffc-347c-8f41-3b2ba2091ffe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
     {
       "id": "1bf994f3-5c2a-3c39-a75c-10b2e087aef3",
       "product": {
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "3.17"
+    },
+    {
+      "id": "9428817d-7455-34d3-897a-9ce2619622d2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "98d81bae-c293-3285-8aa6-11962a2d7f23",

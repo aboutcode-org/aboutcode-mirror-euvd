@@ -3,12 +3,12 @@
   "enisaUuid": "cf4b0646-d5b0-3a9d-a04a-6d700c5ee1f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: target: rdma: fix ndev refcount leak on queue connect\n\nnvmet_rdma_queue_connect() calls nvmet_rdma_find_get_device() which\nacquires a reference on the returned ndev via kref_get(). On the path\nwhere the host queue backlog is exceeded and the function returns\nNVME_SC_CONNECT_CTRL_BUSY, reference of ndev is not released, leaking\nthe kref.\n\nFix this by adding a goto to the existing put_device label before the\nearly return.",
   "datePublished": "Jul 25, 2026, 8:49:49 AM",
-  "dateUpdated": "Jul 25, 2026, 8:49:49 AM",
+  "dateUpdated": "Aug 17, 2026, 4:53:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d65fe42820b890a6a4644de0a95a812471f79ad3\nhttps://git.kernel.org/stable/c/a8803c4f0ac3fa7df5551bbb5a8800c434a94357\nhttps://git.kernel.org/stable/c/5828517d17eda27f21d29ea14800c9e0a57bad11\nhttps://git.kernel.org/stable/c/badc53620fe813b3a9f727ef9526f98567c2c898\n",
   "aliases": "CVE-2026-64321\nGHSA-727c-mjrq-h39g\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0b1496d6-e07f-3d58-9246-1e18b4f6ea17",
@@ -51,6 +51,16 @@
       "product_version": "patch: 6.12.96"
     },
     {
+      "id": "8a2b9437-a5ff-34b2-a243-a5b8ee0c349b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "8b378f04-b08e-3cbe-b5ed-7a18188886e8",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "31deaeb11ba7a885116c9c30892b9f763c04d59c <5828517d17eda27f21d29ea14800c9e0a57bad11"
-    },
-    {
-      "id": "ca2bbadf-2c24-3fd5-af52-a819a4c82abc",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "fcc10135-81bb-33da-9a6b-0fbac5fc8555",

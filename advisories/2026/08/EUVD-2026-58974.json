@@ -3,12 +3,12 @@
   "enisaUuid": "d05abed2-199a-363e-a5b6-3c3893ae3ec0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom: Fix leak when custom dump_segments addition fails\n\nFree allocated minidump_region 'name' in qcom_add_minidump_segments()\nwhen failing before adding the region to 'dump_segments'. Otherwise,\nthe 'name' is not tracked and is never freed by qcom_minidump_cleanup().\n\nReturn error when adding to 'dump_segments' fails.",
   "datePublished": "Aug 15, 2026, 5:54:10 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:10 AM",
+  "dateUpdated": "Aug 17, 2026, 5:10:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/65104d6eb43f066dcf73ca9ade6478824b17d867\nhttps://git.kernel.org/stable/c/381c8a7a59da06293951c343857f4a2465b2c655\nhttps://git.kernel.org/stable/c/51aad3d89a2dd2bd34713785b0f2fd5177eb33b6\nhttps://git.kernel.org/stable/c/e5b1aaa74118e91f0c0f18b22b6f853199873db4\nhttps://git.kernel.org/stable/c/ecf9fc18e62c58eae1ceb65dab2bccb8a724de2d\n",
   "aliases": "GHSA-hpxv-9w4f-7523\nCVE-2026-72216\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0a22d0c5-7a51-37ef-9bef-23c7161b4f04",
@@ -51,6 +51,16 @@
       "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <ecf9fc18e62c58eae1ceb65dab2bccb8a724de2d"
     },
     {
+      "id": "62476e10-23d7-3adf-b758-352d2a8e429f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "6d6976c3-7917-3da7-8ea5-245d8baf8a9f",
       "product": {
         "name": "Linux",
@@ -59,16 +69,6 @@
         }
       },
       "product_version": "patch: 7.1.5"
-    },
-    {
-      "id": "c0249a9c-f385-39b1-a2d1-4e1ec91b6b18",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "c3e50565-01ac-313c-af1f-5643b8a60284",

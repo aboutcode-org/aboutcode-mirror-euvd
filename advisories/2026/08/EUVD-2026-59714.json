@@ -3,22 +3,24 @@
   "enisaUuid": "a6841b5a-65f2-39ec-a511-b412b9c98c51",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use memcmp() to compare ClientGUIDs\n\nClientGUID is a fixed-size binary value and can contain embedded NUL\nbytes. strncmp() stops comparing at the first NUL byte, so different\nClientGUID values can incorrectly be treated as equal.\n\nUse memcmp() in SMB3 multichannel session binding and\nFSCTL_VALIDATE_NEGOTIATE_INFO to compare all SMB2_CLIENT_GUID_SIZE\nbytes.",
   "datePublished": "Aug 15, 2026, 12:27:39 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:39 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:48:13 AM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
   "references": "https://git.kernel.org/stable/c/d535363299822c5caa543787b21bd5cfa3e41949\nhttps://git.kernel.org/stable/c/e8bb506e6ef749ac0336f3e579d8d02396b7d832\n",
   "aliases": "CVE-2026-74521\nGHSA-336h-563m-gwm9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
-      "id": "130c9e57-e700-3689-862a-55859e97182b",
+      "id": "215336fc-dd0a-37b2-a196-960d72a83a64",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc6"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "6231c9bd-768f-351f-aa48-b6adde314803",

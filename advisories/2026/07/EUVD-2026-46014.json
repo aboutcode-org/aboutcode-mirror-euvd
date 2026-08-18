@@ -3,7 +3,7 @@
   "enisaUuid": "f3ad464d-8bac-32f6-a7c2-deb55a87b58a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: cancel pending_rx_work before taking conn->lock\n\nl2cap_conn_del() takes conn->lock and then calls cancel_work_sync() for\npending_rx_work.  process_pending_rx() takes the same mutex, so teardown\ncan deadlock against the worker it is flushing.\n\nThis issue was found by our static analysis tool and then manually\nreviewed against the current tree.\n\nThe grounded PoC kept the l2cap_conn_ready() -> queue_work(...,\n&conn->pending_rx_work) submit path, the l2cap_conn_del() ->\ncancel_work_sync(&conn->pending_rx_work) teardown path, and the\nprocess_pending_rx() -> mutex_lock(&conn->lock) worker edge.  Lockdep\n\n  WARNING: possible circular locking dependency detected\n  process_pending_rx+0x21/0x2a [vuln_msv]\n  l2cap_conn_del.constprop.0+0x3f/0x4e [vuln_msv]\n  *** DEADLOCK ***\n\nCancel pending_rx_work before taking conn->lock, matching the existing\nlock-before-drain ordering used for the two delayed works in the same\nteardown path.  The pending_rx queue is still purged after the work has\nbeen cancelled and conn->lock has been acquired.",
   "datePublished": "Jul 20, 2026, 4:27:53 PM",
-  "dateUpdated": "Aug 5, 2026, 12:40:00 PM",
+  "dateUpdated": "Aug 17, 2026, 4:51:53 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -123,6 +123,16 @@
       "product_version": "7ab56c3a6eccb215034b0cb096e0313441cbf2a4 <2641a9e0a1dd4af2e21995470a21d55dd35e5203"
     },
     {
+      "id": "74d837ac-e26a-3a99-b3e4-892b03a33df2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "7ed48378-dc83-31f2-9d6e-432d1059638b",
       "product": {
         "name": "Linux",
@@ -181,16 +191,6 @@
         }
       },
       "product_version": "7ab56c3a6eccb215034b0cb096e0313441cbf2a4 <9901f847a762a5d953871dd95767ce2aed3d684d"
-    },
-    {
-      "id": "e0d89221-5f4b-321d-bb05-57d08115d6b7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "e9db272e-d144-399f-8185-e6da06a5f287",

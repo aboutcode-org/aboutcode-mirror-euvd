@@ -3,12 +3,12 @@
   "enisaUuid": "578f56cf-6002-3663-8f1d-f1d13c247457",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix folio_queue ENOMEM in writeback by adding a mempool\n\nFix the handling of folio_queue allocation failure in writeback by adding a\nmempool and passing in gfp_t flags to the rolling buffer functions that\nallocate memory, using the mempool if gfp != GFP_KERNEL.\n\nThis is then extended upwards and the gfp to be used for a request is stored\nin the netfs_io_request struct and is then used for both requests and\nsubrequests, eliminating the sleeping loops there.\n\nThe failure caused:\n\n    folio != NULL\n    WARNING: fs/netfs/write_issue.c:603 at netfs_writepages+0x883/0xa10 fs/netfs/write_issue.c:603, CPU#3: syz.0.17/5919",
   "datePublished": "Aug 15, 2026, 12:27:52 PM",
-  "dateUpdated": "Aug 15, 2026, 12:27:52 PM",
+  "dateUpdated": "Aug 17, 2026, 5:21:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3f6d7f8a5416d852648d15a05e895f1195ee8a85\nhttps://git.kernel.org/stable/c/1d78d56c43ef3768183e8370e7367b162700e049\n",
   "aliases": "CVE-2026-74542\nGHSA-6qrf-jjmp-5pjw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1ee1284f-bb3c-314b-90cb-514a25f219d1",
@@ -41,14 +41,14 @@
       "product_version": "patch: 7.1.8"
     },
     {
-      "id": "da61b86d-d08f-3c22-b06d-f7acffd2262d",
+      "id": "e1e953a7-1844-37d2-af1f-1a0bfcc90437",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc6"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "f5c1bb35-c4b9-350e-9d0a-9f23e90bf534",

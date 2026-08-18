@@ -3,12 +3,14 @@
   "enisaUuid": "8427195d-05db-30e3-a80d-64abff61ec36",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: avoid heap allocation for free-cluster readahead state\n\nget_nr_free_clusters() allocates a temporary file_ra_state before it\npublishes the precomputed free cluster count, sets NVolFreeClusterKnown(),\nand wakes vol->free_waitq. If that allocation fails, the worker returns\nwithout setting the flag or waking waiters, so callers waiting for the free\ncount can block indefinitely.\n\nThe readahead state is only used synchronously while scanning the bitmap.\nKeep it on the stack and pass it by address to the readahead helper. This\neliminates the early allocation failure path instead of adding a special\ncase that publishes a conservative count and wakes the waitqueue.\nZero-initialize the on-stack state because file_ra_state_init() only sets\nra_pages and prev_pos.\n\nApply the same treatment to __get_nr_free_mft_records(), which scans the\nMFT bitmap with the same short-lived readahead state.",
   "datePublished": "Aug 15, 2026, 5:53:59 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:59 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:41:29 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/40ee64e633e5e413f2255bb48c063977d8c86f34\nhttps://git.kernel.org/stable/c/c05132077df57a384919f61d7f8a8e76d748a6d4\n",
   "aliases": "CVE-2026-72202\nGHSA-r757-m3xv-cw84\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "0070c67e-710e-343d-be67-f970153b330e",
@@ -31,16 +33,6 @@
       "product_version": "0 <7.1.5"
     },
     {
-      "id": "987924f4-2083-3ba2-b601-0a388bcf073f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
-    },
-    {
       "id": "a0b257a0-4ff1-3af4-aff0-18cf428d7f86",
       "product": {
         "name": "Linux",
@@ -59,6 +51,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "b5e6ce38-c951-3bff-9bf8-f11dcc5af8ce",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     }
   ],
   "enisaIdVendor": [

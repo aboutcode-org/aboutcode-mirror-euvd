@@ -3,12 +3,12 @@
   "enisaUuid": "de7b473b-c687-3247-b6e6-84649fcc75ee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/dp/mst: fix OOB reads on 2-byte fields in sideband reply parsers\n\nThree sideband reply parsers read 16-bit fields as:\n\n  val = (raw->msg[idx] << 8) | (raw->msg[idx+1]);\n\nand check bounds only after the fact. When idx == raw->curlen,\nraw->msg[idx+1] reads one byte past the received message data into\nthe following struct fields (curchunk_len, curchunk_idx, curlen).\n\nAffected functions:\n - drm_dp_sideband_parse_enum_path_resources_ack()\n   full_payload_bw_number and avail_payload_bw_number fields\n - drm_dp_sideband_parse_allocate_payload_ack()\n   allocated_pbn field\n - drm_dp_sideband_parse_query_payload_ack()\n   allocated_pbn field\n\nFix by using a single combined check (idx + 2 > curlen) before each\n2-byte read. Since the check is strictly tighter than idx > curlen,\nno separate step is needed.\n\n[added fixes tag]",
   "datePublished": "Aug 10, 2026, 12:01:53 PM",
-  "dateUpdated": "Aug 10, 2026, 12:01:53 PM",
+  "dateUpdated": "Aug 17, 2026, 5:02:11 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/bdf0508b1e6785d4a8982c637e97e68d60b47d7b\nhttps://git.kernel.org/stable/c/0bcd7675c69a2462a8531fcd9e4d096e9c7ec5df\nhttps://git.kernel.org/stable/c/d5c70523cafa26ad2c7a37b612849abe2683baa8\nhttps://git.kernel.org/stable/c/68a624416d1dd481b3e5b7ea0e8a070a9b8a2c73\nhttps://git.kernel.org/stable/c/6b89ba3dba2f583626fb693e47e951ffb8bf591f\n",
   "aliases": "CVE-2026-68277\nGHSA-5g47-cvq4-4x2c\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0a9e9a8c-ff4c-3964-8017-1a413eff5b54",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "3.17"
-    },
-    {
-      "id": "0f2d116e-abc6-3072-b77d-b424976676a2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc1"
     },
     {
       "id": "28ee5a2e-94d0-3339-bb6d-5fd868a301fc",
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.12.101"
+    },
+    {
+      "id": "44c26986-c535-34c0-9f76-ee0a8aa96550",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "4db15822-29e3-3a40-b07f-a0f3d8923396",

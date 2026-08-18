@@ -3,12 +3,12 @@
   "enisaUuid": "82363461-fe6d-3056-b35d-8470d3f620f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: frag: fix primary_if leak on failed linearization\n\nIf the skb has a frag_list, it must be linearized before it can be split\nusing skb_split(). But when this step failed, it must not only free the skb\nbut also take care of the reference to the already found primary_if.",
   "datePublished": "Aug 15, 2026, 5:54:19 AM",
-  "dateUpdated": "Aug 15, 2026, 5:54:19 AM",
+  "dateUpdated": "Aug 17, 2026, 5:10:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e59b1960f71521ce4eb4397c4e82f5285601ab57\nhttps://git.kernel.org/stable/c/c1b28432fd6345e0d2308f39c507ed5750c265d2\nhttps://git.kernel.org/stable/c/4f3bf293f7662500142234ae6f23725953690bc9\nhttps://git.kernel.org/stable/c/d2148aeee93197ccf821114489775132f28eebf5\nhttps://git.kernel.org/stable/c/db3c700826e8126fbdaa83468a9c4ee4ee65319f\nhttps://git.kernel.org/stable/c/a90f4fff9025371bce5371daa610af957de8dd6a\nhttps://git.kernel.org/stable/c/777a88256d6f70672116e53400659cc417e1feaa\nhttps://git.kernel.org/stable/c/353d2c1d5492e53ae34f490a84494124dc3d3531\n",
   "aliases": "GHSA-pp95-v844-r482\nCVE-2026-72228\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0246dac6-b7f5-3711-bbcb-13000e2d7a0a",
@@ -121,6 +121,16 @@
       "product_version": "8f37aad74f46dd5d8b95fac17804b75f77931fa9 <c1b28432fd6345e0d2308f39c507ed5750c265d2"
     },
     {
+      "id": "7f89c73f-37e4-3752-bf9b-71ed8222f426",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "801eee2d-f771-3f51-8714-080fa1a09ef5",
       "product": {
         "name": "Linux",
@@ -209,16 +219,6 @@
         }
       },
       "product_version": "patch: 7.1.5"
-    },
-    {
-      "id": "c8c83fe9-9887-3a98-9092-edc849aefcc7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "c9a15b0f-c4ab-3079-80fb-819c7f4a19df",

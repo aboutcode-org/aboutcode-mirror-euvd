@@ -3,7 +3,7 @@
   "enisaUuid": "afeb5136-1d4b-32dc-9c49-5442e4206b03",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: pin L2CAP connection during netdev registration\n\nbnep_add_connection() reads the L2CAP connection without holding the\nchannel lock, then passes its HCI device to register_netdev(). Controller\nteardown can clear and release that connection concurrently, leaving the\nnetwork device registration path to dereference a freed parent device.\n\nTake a reference to the L2CAP connection while holding the channel lock.\nRetain it until register_netdev() has taken the parent device reference.",
   "datePublished": "Jul 25, 2026, 8:50:49 AM",
-  "dateUpdated": "Aug 5, 2026, 12:41:43 PM",
+  "dateUpdated": "Aug 17, 2026, 4:55:06 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 6.12.96"
+    },
+    {
+      "id": "1cbb7ddc-a6d2-3474-98d9-6783d60bac3a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
     },
     {
       "id": "1d6f9f8e-619d-3952-9422-099b2f78ddfc",
@@ -161,16 +171,6 @@
         }
       },
       "product_version": "65f53e9802dbfae0e5758a91793c3f5f8bece49b <563a8573047182f550b1e1e030615755cd8c41da"
-    },
-    {
-      "id": "f0d4dc26-6327-3f9c-8f20-3f09c13dfbeb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc3"
     },
     {
       "id": "f1eaf116-408f-3c28-aeb9-23e1b42666b9",

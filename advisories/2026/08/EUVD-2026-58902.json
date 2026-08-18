@@ -3,12 +3,14 @@
   "enisaUuid": "e1576208-9a97-341f-ad53-e2d8bdbbaf0b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: dell-laptop: fix missing cleanups in init error path\n\ndell_init() initializes several resources after dell_setup_rfkill(),\nincluding the optional touchpad LED, keyboard backlight LED, battery\nhook, debugfs directory and dell-laptop notifier.\n\nIf a later LED or backlight registration fails, the error path only\ntears down the battery hook and rfkill resources. This leaves the\nnotifier, debugfs directory, keyboard backlight LED and optional\ntouchpad LED registered after dell_init() returns an error.\n\nAdd the missing cleanup calls before tearing down rfkill.",
   "datePublished": "Aug 15, 2026, 5:53:16 AM",
-  "dateUpdated": "Aug 15, 2026, 5:53:16 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 17, 2026, 5:40:53 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e4908b3bed755f73870416b971e162a8d0ef0aef\nhttps://git.kernel.org/stable/c/6bd76d5421a72d2526c9be8f01f55bee960f899f\nhttps://git.kernel.org/stable/c/1e41ca4a7fba2e680d6950e9511245255fffa46c\nhttps://git.kernel.org/stable/c/b351e082711d12f075a36a6cd67709693689315f\nhttps://git.kernel.org/stable/c/6e9cab2247e5b243ae2d907ce7c948a8a9c8d61a\n",
   "aliases": "GHSA-v9hf-qh3h-mwjj\nCVE-2026-72144\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1184ffb3-f010-35d5-8a66-405ebcd6740b",
@@ -51,14 +53,14 @@
       "product_version": "patch: 6.6.148"
     },
     {
-      "id": "51472a21-0b36-3dba-9cda-f8843aef60ab",
+      "id": "6e41dac0-d476-3409-a873-74184925e381",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.2-rc1"
+      "product_version": "patch: 7.2"
     },
     {
       "id": "7de96dcc-ef79-3044-8fd3-56ec62d83a07",

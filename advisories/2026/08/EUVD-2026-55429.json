@@ -3,12 +3,12 @@
   "enisaUuid": "6eac80c6-4d2d-3dbc-9b6c-bf42e783b8e2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfp: Check resource mutex allocation\n\nnfp_cpp_resource_find() allocates a CPP mutex handle for the matching\nresource-table entry and then reports success.  nfp_resource_try_acquire()\nimmediately passes that handle to nfp_cpp_mutex_trylock().\n\nHowever, nfp_cpp_mutex_alloc() returns NULL on failure.  If that happens\nfor a matching table entry, the resource lookup still returns success and\nthe following trylock dereferences a NULL mutex pointer while opening the\nresource.\n\nnfp_resource_acquire() already treats failure to allocate the table mutex\nas -ENOMEM.  Do the same for the resource mutex and fail the lookup before\npublishing the rest of the resource handle.\n\nThis issue was found by a static analysis checker and confirmed by\nmanual source review.",
   "datePublished": "Aug 10, 2026, 12:03:04 PM",
-  "dateUpdated": "Aug 10, 2026, 12:03:04 PM",
+  "dateUpdated": "Aug 17, 2026, 5:03:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6dbd428119cb1fd1b73cf6968c711f4ea964dc8b\nhttps://git.kernel.org/stable/c/cfa119aa781c4044dab5b4c1e5864600f53a26bc\nhttps://git.kernel.org/stable/c/3b1d4fc3b73ea6faf008a0996ce6190c6e43efc3\nhttps://git.kernel.org/stable/c/a7dc30b6828c3a30252892827b12b676749f250f\nhttps://git.kernel.org/stable/c/a61b4db34a753bdf5c9e77a7f3d3dddd41dcfacc\n",
   "aliases": "GHSA-pcvh-8mrv-q3wv\nCVE-2026-68328\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "05315b97-dea6-36c2-827c-68775fe4f60f",
@@ -51,6 +51,16 @@
       "product_version": "f01a2161577d31b14581e0db3bbbdfa963f145b6 <a7dc30b6828c3a30252892827b12b676749f250f"
     },
     {
+      "id": "4fcc5afe-0faa-3d7b-9805-d33ba659513c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "5d65bee9-d745-3261-8465-81fa7e65476e",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "patch: 6.18.42"
-    },
-    {
-      "id": "a753133a-4428-348f-9f96-78abe18ab12a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     },
     {
       "id": "c1c35ec4-8f5f-3380-bd4e-b9b87d78f1f8",

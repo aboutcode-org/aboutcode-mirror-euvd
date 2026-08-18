@@ -3,12 +3,12 @@
   "enisaUuid": "0bcb093d-3204-3f07-98b6-bf4102cf3154",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: Move jump_label_init() before parse_early_param()\n\nWhen enabling both CONFIG_MEM_ALLOC_PROFILING=y and\nCONFIG_MEM_ALLOC_PROFILING_ENABLED_BY_DEFAULT=y, then diabling memory\nprofiling by adding the boot parameter 'sysctl.vm.mem_profiling=0' will\ncause the kernel failed to boot.\n\nAfter analysis, this is because jump_label_init() must be called before\nparse_early_param(), the early param handlers may modify static keys by\nstatic_branch_enable/disable().\n\nFix this by moving jump_label_init() to before parse_early_param(). The\nsolution is similar to other architectures.",
   "datePublished": "Aug 10, 2026, 11:59:57 AM",
-  "dateUpdated": "Aug 10, 2026, 11:59:57 AM",
+  "dateUpdated": "Aug 17, 2026, 5:00:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4b40e590efb350c54480d7e883f054d3609a94c6\nhttps://git.kernel.org/stable/c/38b025fcdc45bdf5140a5726a1fbb2e694ea047b\nhttps://git.kernel.org/stable/c/881e9f3c4e117b100880b1c5de3a0da8e455a78f\nhttps://git.kernel.org/stable/c/ea68d444a658783234a06f05414e41cf93a18fb2\n",
   "aliases": "GHSA-pcxf-938w-xxq5\nCVE-2026-68185\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "103f897f-3bb5-327a-b2b2-7cf7ca21f02d",
@@ -91,6 +91,16 @@
       "product_version": "0 <6.12.101"
     },
     {
+      "id": "d3193f13-215a-31c5-873b-e885df3d30bd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "d3e142cb-c040-322e-b717-8173dcbc393c",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "patch: 6.12.101"
-    },
-    {
-      "id": "eda97e3a-be35-3872-9b8a-808bb0c73d39",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc5"
     }
   ],
   "enisaIdVendor": [

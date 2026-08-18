@@ -3,12 +3,12 @@
   "enisaUuid": "e7f8c0cc-0906-369f-8875-eb3608951642",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libertas: fix memory leak in helper_firmware_cb()\n\nhelper_firmware_cb() neglects to free the single-stage firmware image\nafter a successful async load, leading to a memory leak in the USB\nfirmware-download path.\n\nFix this memory leak by calling release_firmware() immediately after\nlbs_fw_loaded() returns.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still present in\nthe current wireless tree.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have\ncompatible Libertas USB hardware for exercising this firmware-download\npath, no runtime testing was able to be performed.",
   "datePublished": "Aug 10, 2026, 12:04:30 PM",
-  "dateUpdated": "Aug 10, 2026, 12:04:30 PM",
+  "dateUpdated": "Aug 17, 2026, 5:05:00 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d497b7566e74920acfe283dd6b2cbf1682890796\nhttps://git.kernel.org/stable/c/eaeb1d74a47fc4864f2c754c0b9d654a9b7dc55c\nhttps://git.kernel.org/stable/c/6cda91bbb8dc3d22ef0323008a12dcf73a5129da\nhttps://git.kernel.org/stable/c/644640cde2fb216e6567de5eee780a38dbc95928\nhttps://git.kernel.org/stable/c/63c2391deefb31e1b801b7f32bd502ca4808639b\n",
   "aliases": "CVE-2026-68410\nGHSA-wjgw-rwg6-p893\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "01b1309e-7284-35cb-a179-daba6718c519",
@@ -71,6 +71,16 @@
       "product_version": "1dfba3060fe7ee03ccec25a91d35085142dfc295 <d497b7566e74920acfe283dd6b2cbf1682890796"
     },
     {
+      "id": "842c3488-0879-3051-a702-08fbd9194867",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2"
+    },
+    {
       "id": "a210650e-0869-3631-92d2-a8e6fc3297b7",
       "product": {
         "name": "Linux",
@@ -99,16 +109,6 @@
         }
       },
       "product_version": "1dfba3060fe7ee03ccec25a91d35085142dfc295 <63c2391deefb31e1b801b7f32bd502ca4808639b"
-    },
-    {
-      "id": "e94bed8d-e862-3b50-9695-c3387abf6a24",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2-rc4"
     },
     {
       "id": "ea5a89cd-afcd-3fcb-be75-990859e71a27",
