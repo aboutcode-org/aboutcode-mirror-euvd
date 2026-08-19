@@ -3,7 +3,7 @@
   "enisaUuid": "26e1634c-17c3-3dee-8c63-30467d90653d",
   "description": "openssl_encrypt before 1.4.0 imports Python's non-cryptographic 'random' module (Mersenne Twister PRNG) at line 15 of openssl_encrypt/modules/pqc.py. No direct calls to random.* were present in the code, so no cryptographic operation is currently affected; however, the import creates a hazard that future code could inadvertently use random.randint() instead of a cryptographically secure alternative (secrets/os.urandom), producing predictable values since the Mersenne Twister state can be recovered from approximately 624 outputs. Fixed by removing the import in 1.4.0.",
   "datePublished": "Aug 17, 2026, 11:04:51 AM",
-  "dateUpdated": "Aug 17, 2026, 11:04:51 AM",
+  "dateUpdated": "Aug 18, 2026, 2:38:19 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",

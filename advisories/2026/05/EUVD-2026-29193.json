@@ -1,30 +1,36 @@
 {
   "id": "EUVD-2026-29193",
   "enisaUuid": "990571cf-54ed-3c99-b70d-1b1d7006e4ef",
-  "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in ninenines cowlib allows HTTP request splitting and cookie smuggling via unvalidated cookie name and value fields.\n\ncow_cookie:cookie/1 in cowlib builds a client-side Cookie: request header from a list of name-value pairs without validating either field. An attacker who controls the cookie names or values passed to this function can inject ;, ,, CR, LF, or TAB characters into the serialized header. This enables two classes of attack: cookie smuggling within a single header (e.g. injecting \"; admin=1\" to introduce a phantom cookie that the receiving server treats as authentic) and HTTP request header splitting (injecting CRLF to append arbitrary headers or smuggle a complete second request against a shared upstream proxy). The decoder side (parse_cookie_name/1, parse_cookie_value/1) and setcookie/3 already validate and reject these characters; the encoder alone is missing the check.\n\nThis issue affects cowlib from 2.9.0.",
-  "datePublished": "May 11, 2026, 9:31:34 PM",
-  "dateUpdated": "May 11, 2026, 9:31:34 PM",
+  "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in ninenines cowlib allows HTTP request splitting and cookie smuggling via unvalidated cookie name and value fields.\n\ncow_cookie:cookie/1 in cowlib builds a client-side Cookie: request header from a list of name-value pairs without validating either field. An attacker who controls the cookie names or values passed to this function can inject ;, ,, CR, LF, or TAB characters into the serialized header. This enables two classes of attack: cookie smuggling within a single header (e.g. injecting ; admin=1 to introduce a phantom cookie that the receiving server treats as authentic) and HTTP request header splitting (injecting CRLF to append arbitrary headers or smuggle a complete second request against a shared upstream proxy). The decoder side (parse_cookie_name/1, parse_cookie_value/1) and setcookie/3 already validate and reject these characters; the encoder alone is missing the check.\n\nThis issue affects cowlib: from 2.9.0 onward.",
+  "datePublished": "May 11, 2026, 6:06:40 PM",
+  "dateUpdated": "Aug 18, 2026, 11:26:01 AM",
   "baseScore": 2.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N",
-  "references": "https://cna.erlef.org/cves/CVE-2026-43969.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-43969\nhttps://github.com/erlef/cowlib/commit/177953dd51540da11090666c1f007214127a1144\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-43969\n",
+  "references": "https://github.com/erlef/cowlib/commit/177953dd51540da11090666c1f007214127a1144\nhttps://cna.erlef.org/cves/CVE-2026-43969.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-43969\n",
   "aliases": "CVE-2026-43969\nGHSA-g2wm-735q-3f56\n",
   "assigner": "EEF",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
-      "id": "cad2ccfc-e97a-349e-aede-f031aade89e6",
+      "id": "5cead78a-7242-3569-b0c2-8e5a66e7e1d8",
       "product": {
-        "name": "cowlib"
+        "name": "cowlib",
+        "vendor": {
+          "name": "ninenines"
+        }
       },
-      "product_version": "2.9.0"
+      "product_version": "f017f8a0ecbffd5033d9ab49bf180186f7a523a7 <*"
     },
     {
-      "id": "e13f43e5-9b97-3fe7-926a-04a341ac1f2f",
+      "id": "b48d1515-9295-3d69-91ba-b6209ed528d2",
       "product": {
-        "name": "cowlib"
+        "name": "cowlib",
+        "vendor": {
+          "name": "ninenines"
+        }
       },
-      "product_version": "f017f8a0ecbffd5033d9ab49bf180186f7a523a7"
+      "product_version": "2.9.0 <*"
     }
   ],
   "enisaIdVendor": [

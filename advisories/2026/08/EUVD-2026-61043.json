@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-61043",
+  "enisaUuid": "3322206f-d36f-3cdf-babe-f53c225fd68d",
+  "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, com.rabbitmq.tools.jsonrpc.ProcedureDescription receives a javaReturnType value in an untrusted system.describe response and passes it through JSONUtil.tryFill, setJavaReturnType, and computeReturnTypeAsJavaClass to Class.forName(javaReturnType) with initialization enabled. An attacker able to answer the JsonRpcClient request through a shared broker or network interception can select a class already present in the victim JVM and trigger its static initializer, while JsonRpcClient.java later passes getReturnType output to mapper.parse and may also create type confusion. Successful exploitation can affect confidentiality, integrity, and availability in the client process. This issue is fixed in version 5.33.0.",
+  "datePublished": "Aug 18, 2026, 4:27:09 PM",
+  "dateUpdated": "Aug 18, 2026, 7:09:03 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L",
+  "references": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-6g32-pxv4-2wfj\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/2000\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/2002\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/0032f75f9dc3df847f94b2b85a16119250bf63cb\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/9f8e7efd0c648f235dc0e96232ae7efa75ea4fa8\nhttps://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0\n",
+  "aliases": "CVE-2026-63337\nGHSA-6g32-pxv4-2wfj\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "04668855-7f30-3622-8156-e10ed967ac4b",
+      "product": {
+        "name": "rabbitmq-java-client",
+        "vendor": {
+          "name": "rabbitmq"
+        }
+      },
+      "product_version": "< 5.33.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "a8800b78-7876-3203-bc25-4ee5b12a99d5",
+      "vendor": {
+        "name": "rabbitmq"
+      }
+    }
+  ]
+}

@@ -3,14 +3,14 @@
   "enisaUuid": "175c7cd3-8d0e-335a-9ae4-f5a989e88238",
   "description": "The Toocheke Companion plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.10 via the 'series_bg_color' post meta field. This is due to insufficient input sanitization in the toocheke_series_bg_color_save() function (which stores the raw $_POST value in post meta) and insufficient output escaping in the series admin column rendering (where the stored value is concatenated into a style attribute without esc_attr()). This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user, such as an administrator, accesses the series list table in the admin dashboard.",
   "datePublished": "Aug 16, 2026, 5:27:27 AM",
-  "dateUpdated": "Aug 16, 2026, 5:27:27 AM",
+  "dateUpdated": "Aug 18, 2026, 7:38:03 PM",
   "baseScore": 6.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
   "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1bf78bc1-55d7-4230-913f-d7c521225367?source=cve\nhttps://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-admin-columns.php#L296\nhttps://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-metaboxes.php#L959\nhttps://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-metaboxes.php#L960\nhttps://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.11/inc/class-toocheke-companion-admin-columns.php#L296\n",
   "aliases": "GHSA-vrrh-33qv-f36q\nCVE-2026-15604\n",
   "assigner": "Wordfence",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "15a24308-359f-3742-97f7-a53696745c78",

@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-61045",
+  "enisaUuid": "d85b4324-a13a-321d-ac02-9409589abb6b",
+  "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, com.rabbitmq.client.ConnectionFactory.useSslProtocol() and ConnectionFactory.useSslProtocol(String) configure com.rabbitmq.client.TrustEverythingTrustManager and leave hostname verification disabled, causing arbitrary server certificates, including self-signed certificates, to be accepted. A network attacker able to intercept a TLS connection can impersonate the RabbitMQ broker, read protected AMQP traffic, and modify traffic without certificate or hostname validation. The fix changes the production TLS helpers to use the JVM default trust store and enables hostname verification, while retaining an explicitly named development-only no-verification helper. This issue is fixed in version 5.33.0.",
+  "datePublished": "Aug 18, 2026, 4:29:23 PM",
+  "dateUpdated": "Aug 18, 2026, 5:34:30 PM",
+  "baseScore": 5.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:N/SC:H/SI:L/SA:N",
+  "references": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-5m9f-rphj-c435\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/1999\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/2001\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/1e7deb2e6020c9793a81385a53ea378ec63b9339\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/a4bf571dd368765baaa9cecfae68ce09f1bdcc01\nhttps://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0\n",
+  "aliases": "CVE-2026-63336\nGHSA-5m9f-rphj-c435\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "7e01298f-7146-3104-8fe9-3068e6e731f9",
+      "product": {
+        "name": "rabbitmq-java-client",
+        "vendor": {
+          "name": "rabbitmq"
+        }
+      },
+      "product_version": "< 5.33.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b8d591f9-8408-3e54-baaf-38a849bd342e",
+      "vendor": {
+        "name": "rabbitmq"
+      }
+    }
+  ]
+}

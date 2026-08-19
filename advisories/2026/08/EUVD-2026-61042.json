@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-61042",
+  "enisaUuid": "ce4408fa-fd30-3a33-ab8c-747b458ab021",
+  "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.1, src/main/java/com/rabbitmq/client/impl/ValueReader.java permits ValueReader.readTable and ValueReader.readArray to call ValueReader.readFieldValue recursively for AMQP table type F and AMQP array type A values without a nesting-depth limit. A malicious AMQP server or network intermediary can send approximately 580 nested table levels in the pre-authentication connection.start frame, fitting within the default 131072-byte frame maximum, to trigger StackOverflowError. The error terminates the client input processing thread and causes denial of service. This issue is fixed in version 5.33.1.",
+  "datePublished": "Aug 18, 2026, 4:25:16 PM",
+  "dateUpdated": "Aug 18, 2026, 5:45:59 PM",
+  "baseScore": 8.7,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-93j5-89vc-pph4\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/2007\nhttps://github.com/rabbitmq/rabbitmq-java-client/pull/2008\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/09af76fce136f3136931654a0a1d43095c80e2f0\nhttps://github.com/rabbitmq/rabbitmq-java-client/commit/db89e34809fbc6ba4e946615f297f3684ccd0acc\nhttps://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.1\n",
+  "aliases": "GHSA-93j5-89vc-pph4\nCVE-2026-69220\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "b063118e-2864-34ad-92f8-8f672aeafe77",
+      "product": {
+        "name": "rabbitmq-java-client",
+        "vendor": {
+          "name": "rabbitmq"
+        }
+      },
+      "product_version": "< 5.33.1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "43552a82-9f75-3349-b1e2-136b01c79f2b",
+      "vendor": {
+        "name": "rabbitmq"
+      }
+    }
+  ]
+}
