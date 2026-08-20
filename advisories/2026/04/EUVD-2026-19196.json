@@ -3,11 +3,11 @@
   "enisaUuid": "1d23e24e-b297-36dc-b4b7-d0b8d71606f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: Fix use-after-free in sco_recv_frame() due to missing sock_hold\n\nsco_recv_frame() reads conn->sk under sco_conn_lock() but immediately\nreleases the lock without holding a reference to the socket. A concurrent\nclose() can free the socket between the lock release and the subsequent\nsk->sk_state access, resulting in a use-after-free.\n\nOther functions in the same file (sco_sock_timeout(), sco_conn_del())\ncorrectly use sco_sock_hold() to safely hold a reference under the lock.\n\nFix by using sco_sock_hold() to take a reference before releasing the\nlock, and adding sock_put() on all exit paths.",
   "datePublished": "Apr 6, 2026, 7:38:20 AM",
-  "dateUpdated": "Aug 5, 2026, 12:22:17 PM",
+  "dateUpdated": "Aug 19, 2026, 4:27:56 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/d57384e27d1ebf0047e3f00a6e1181b8be9857a2\nhttps://git.kernel.org/stable/c/b0a7da0e3f7442545f071499beb36374714bb9de\nhttps://git.kernel.org/stable/c/45aaca995e4a7a05b272a58e7ab2fff4f611b8f1\nhttps://git.kernel.org/stable/c/108b81514d8f2535eb16651495cefb2250528db3\nhttps://git.kernel.org/stable/c/7197462e90b8ce15caa1ae15d4bc2bb8cd21b11e\nhttps://git.kernel.org/stable/c/e76e8f0581ef555eacc11dbb095e602fb30a5361\nhttps://git.kernel.org/stable/c/598dbba9919c5e36c54fe1709b557d64120cb94b\n",
+  "references": "https://git.kernel.org/stable/c/37e18bc8c9a70d77bd099e2273f328b3bc7f6d0d\nhttps://git.kernel.org/stable/c/d57384e27d1ebf0047e3f00a6e1181b8be9857a2\nhttps://git.kernel.org/stable/c/b0a7da0e3f7442545f071499beb36374714bb9de\nhttps://git.kernel.org/stable/c/45aaca995e4a7a05b272a58e7ab2fff4f611b8f1\nhttps://git.kernel.org/stable/c/108b81514d8f2535eb16651495cefb2250528db3\nhttps://git.kernel.org/stable/c/7197462e90b8ce15caa1ae15d4bc2bb8cd21b11e\nhttps://git.kernel.org/stable/c/e76e8f0581ef555eacc11dbb095e602fb30a5361\nhttps://git.kernel.org/stable/c/598dbba9919c5e36c54fe1709b557d64120cb94b\n",
   "aliases": "CVE-2026-31408\nGHSA-82h6-xw4j-pq2m\n",
   "assigner": "Linux",
   "epss": 0.3,
@@ -61,6 +61,16 @@
         }
       },
       "product_version": "patch: 7.0"
+    },
+    {
+      "id": "654ef61c-56cf-308a-a116-08870e78765c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.265"
     },
     {
       "id": "72bed15a-d343-3c6c-888d-b0455b668dba",
@@ -151,6 +161,16 @@
         }
       },
       "product_version": "patch: 5.15.203"
+    },
+    {
+      "id": "b709b356-4949-3660-b4ac-6fa2c249cc82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <37e18bc8c9a70d77bd099e2273f328b3bc7f6d0d"
     },
     {
       "id": "beb58c3d-afc6-3729-8d75-c482c330a5c7",

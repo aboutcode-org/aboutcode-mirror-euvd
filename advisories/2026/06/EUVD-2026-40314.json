@@ -3,11 +3,11 @@
   "enisaUuid": "e9ddaf8b-3ea5-35f5-97ff-d57aa903c53e",
   "description": "A flaw was found in GLib. A buffer over-read can occur in the g_regex_replace function when used with the `G_REGEX_RAW` compile flag and case-change replacement escapes because the string_append function processes matched substrings using UTF-8 functions that assume valid UTF-8 input, even when the string is treated as raw bytes. This vulnerability can cause a minor information disclosure of 1-5 bytes and a denial of service when the buffer over-read crosses a page boundary.",
   "datePublished": "Jun 30, 2026, 12:57:21 PM",
-  "dateUpdated": "Aug 17, 2026, 9:11:18 AM",
+  "dateUpdated": "Aug 19, 2026, 5:46:36 PM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/security/cve/CVE-2026-58012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492247\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3918\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/security/cve/CVE-2026-58012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492247\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3918\n",
   "aliases": "CVE-2026-58012\nGHSA-vwg8-37h9-g38g\n",
   "assigner": "redhat",
   "epss": 0.36,
@@ -51,6 +51,16 @@
         }
       },
       "product_version": "patch: 0:2.70.1-9.el8_10"
+    },
+    {
+      "id": "fdfa66fe-8c2a-322f-9cec-63920ddff350",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.80.4-12.el10_2.21"
     }
   ],
   "enisaIdVendor": [

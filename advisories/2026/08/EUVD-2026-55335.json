@@ -3,13 +3,23 @@
   "enisaUuid": "2ed0a0ed-835a-315f-877d-6eed1c1903c1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix bo->pin leaking in amdgpu_bo_create_reserved\n\namdgpu_bo_create_reserved() only allocates a new BO when\n*bo_ptr (struct amdgpu_bo **bo_ptr as input parameter) is\nNULL, it simply skips creation when *bo_ptr is non-NULL.\nBut it unconditionally reserves, pins, gart allocates\nand maps the BO afterwards.\n\nWhen the same non-NULL BO pointer is passed in again,\nfor example firmware buffers that live in adev and are\nre-loaded on every resume / cp_resume / start\nunder AMDGPU_FW_LOAD_DIRECT, amdgpu_bo_pin() just increases\npin_count unconditionally, however the matching teardown only unpins\nonce, so pin_count never drops to zero, so TTM is not able\nto move, swap or evict a BO, causing BO leaks.\n\nThis commit fixes this issue by only pinning the bo\nonce at creation, and repeated calls no longer\ntake additional pin references.\n\n(cherry picked from commit 3ddc0ae76202c447b6aec61e907b852bc94671cf)",
   "datePublished": "Aug 10, 2026, 12:00:59 PM",
-  "dateUpdated": "Aug 18, 2026, 6:55:44 AM",
+  "dateUpdated": "Aug 19, 2026, 4:32:06 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/51eeef1949c11d3dcb5f422a5d9b3f09ebe8a1bc\nhttps://git.kernel.org/stable/c/2f390b4c83011452753fd84972f657d2b00a952b\nhttps://git.kernel.org/stable/c/ba7b6444097a73ccd3d3ac9e2be4ebb73d226460\nhttps://git.kernel.org/stable/c/9743f60013273987abf415dc47474683d22aaee9\nhttps://git.kernel.org/stable/c/a2f895f3c852063258d62e9f74b081de07ca95df\n",
+  "references": "https://git.kernel.org/stable/c/7aea619d9f186dcf0f1289879e9edb69d2b56639\nhttps://git.kernel.org/stable/c/b572d0814c1366701ca704286589fab025802566\nhttps://git.kernel.org/stable/c/e06e0885725a16304b7723aeb478a78cca9dc96a\nhttps://git.kernel.org/stable/c/51eeef1949c11d3dcb5f422a5d9b3f09ebe8a1bc\nhttps://git.kernel.org/stable/c/2f390b4c83011452753fd84972f657d2b00a952b\nhttps://git.kernel.org/stable/c/ba7b6444097a73ccd3d3ac9e2be4ebb73d226460\nhttps://git.kernel.org/stable/c/9743f60013273987abf415dc47474683d22aaee9\nhttps://git.kernel.org/stable/c/a2f895f3c852063258d62e9f74b081de07ca95df\n",
   "aliases": "CVE-2026-68234\nGHSA-4jjq-9h58-5wmm\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "03a6260e-b61e-3f28-8062-6f8ccea6cf7f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.216"
+    },
     {
       "id": "0ccd58d8-b2d7-3a9f-b2dd-23f7beb0a3cb",
       "product": {
@@ -31,6 +41,16 @@
       "product_version": "patch: 6.18.42"
     },
     {
+      "id": "2bb9e280-3e79-3549-9464-6c9a10ed97d7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "53766e5adac75872e9d413cdbfd0e47ae40701f9 <7aea619d9f186dcf0f1289879e9edb69d2b56639"
+    },
+    {
       "id": "3c732745-ef6f-3713-92bc-6ce2d922136b",
       "product": {
         "name": "Linux",
@@ -41,6 +61,26 @@
       "product_version": "patch: 6.12.101"
     },
     {
+      "id": "47a7dd0f-f97f-3cdb-a358-0439f60adcb7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.265"
+    },
+    {
+      "id": "50cb0b78-4cf0-3d90-8da2-e325be08f1a0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "53766e5adac75872e9d413cdbfd0e47ae40701f9 <b572d0814c1366701ca704286589fab025802566"
+    },
+    {
       "id": "52986891-d8e8-3c27-bf9c-5dad5378b2bd",
       "product": {
         "name": "Linux",
@@ -49,6 +89,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5fa02d84-bac2-3f37-8d4b-c7627d1cd933",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.183"
     },
     {
       "id": "6e045b22-87f2-3830-bf8b-e976c316468a",
@@ -79,6 +129,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "90c8384e-46bf-38b0-a589-07d2ebd1c49e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "53766e5adac75872e9d413cdbfd0e47ae40701f9 <e06e0885725a16304b7723aeb478a78cca9dc96a"
     },
     {
       "id": "a678adc5-4f2e-3168-becb-f988cf35ccac",

@@ -3,13 +3,23 @@
   "enisaUuid": "6a8e618b-81ef-3103-b72e-39ea8a06b8f9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/bugs: Enable IBPB flush on BPF JIT allocation\n\nEnable hardening against JIT spraying when Spectre-v2 mitigations are in\nuse. Specifically, issue an IBPB flush on BPF JIT memory reuse. Skip\nenabling the IBPB flush if the BPF dispatcher is already using a retpoline\nsequence.\n\nThis hardening applies only when BPF-JIT is in use. Guard the enabling\nunder CONFIG_BPF_JIT so that bugs.c still builds with CONFIG_BPF_JIT=n.",
   "datePublished": "Jul 25, 2026, 8:52:01 AM",
-  "dateUpdated": "Aug 17, 2026, 4:56:57 AM",
+  "dateUpdated": "Aug 19, 2026, 4:28:18 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/cb27f3bf915cc0f20fc0c48da9059304e39ebd35\nhttps://git.kernel.org/stable/c/9354248fc1c33a844ca1872761f6668b393e8c37\nhttps://git.kernel.org/stable/c/8a4c8af9ae67eb072d90d1b339f14d27a82bd2a1\nhttps://git.kernel.org/stable/c/52440e15d9628f8f239373c0f2e5e8f92feea2df\nhttps://git.kernel.org/stable/c/a3af84b0fa00ead01fcd0e28b5d773ff25990a0d\n",
+  "references": "https://git.kernel.org/stable/c/25dbcd31781e2bc3cd63d873af1fcd06f863a126\nhttps://git.kernel.org/stable/c/cb27f3bf915cc0f20fc0c48da9059304e39ebd35\nhttps://git.kernel.org/stable/c/9354248fc1c33a844ca1872761f6668b393e8c37\nhttps://git.kernel.org/stable/c/8a4c8af9ae67eb072d90d1b339f14d27a82bd2a1\nhttps://git.kernel.org/stable/c/52440e15d9628f8f239373c0f2e5e8f92feea2df\nhttps://git.kernel.org/stable/c/a3af84b0fa00ead01fcd0e28b5d773ff25990a0d\n",
   "aliases": "GHSA-mfjh-rff8-525v\nCVE-2026-64507\n",
   "assigner": "Linux",
   "epss": 0.16,
   "enisaIdProduct": [
+    {
+      "id": "13704f43-7c79-309e-8a6f-e4fb54fb7704",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "57631054fae6dcc9c892ae6310b58bbb6f6e5048 <25dbcd31781e2bc3cd63d873af1fcd06f863a126"
+    },
     {
       "id": "1e0bb323-d8d2-3259-a4f2-81705c9cfcab",
       "product": {
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "a210b33f-86c2-3ef8-a0fe-ebb58b9b1fff",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.183"
     },
     {
       "id": "d51fcee1-d154-3bbf-b7cd-233e0b3b55c2",

@@ -3,9 +3,9 @@
   "enisaUuid": "618119ca-6606-3db2-889f-226dc2c56564",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check bounds in allocate_event_notification_slot\n\nThe valid event ids go from 0 to KFD_SIGNAL_EVENT_LIMIT\n\nallocate_event_notification_slot has an option to specify\nan event id to allocate at, used by CRIU. We weren't checking\nthe bounds on that value.\n\nCheck them.\n\nv2: Lower bounds check is unecessary because of idr_alloc\nalready rejecting negative numbers. Upper bounds check should\nbe KFD_SIGNAL_EVENT_LIMIT since the signal mode mappings might\nnot yet exist\n\n(cherry picked from commit 6853f1f6cbbeb3f53ebbbd7286536aeb2c5d5f50)",
   "datePublished": "Aug 10, 2026, 12:01:33 PM",
-  "dateUpdated": "Aug 18, 2026, 6:55:56 AM",
+  "dateUpdated": "Aug 19, 2026, 4:32:28 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/85eedff5f0c4aba5a66bc37a1bd6bcecd0d77b53\nhttps://git.kernel.org/stable/c/4622214f0542f64b02c250db0f9c677eeb032d9b\nhttps://git.kernel.org/stable/c/50319efb865f72db45f191c8709511746d58ee0a\nhttps://git.kernel.org/stable/c/abeeb1947d81610c65349db4d89c6151f270e136\nhttps://git.kernel.org/stable/c/bb52249fbbe948875155ccd45cd8d74bf4ae747b\n",
+  "references": "https://git.kernel.org/stable/c/6884fc142b17f456caac50c14505f509bfbcd012\nhttps://git.kernel.org/stable/c/85eedff5f0c4aba5a66bc37a1bd6bcecd0d77b53\nhttps://git.kernel.org/stable/c/4622214f0542f64b02c250db0f9c677eeb032d9b\nhttps://git.kernel.org/stable/c/50319efb865f72db45f191c8709511746d58ee0a\nhttps://git.kernel.org/stable/c/abeeb1947d81610c65349db4d89c6151f270e136\nhttps://git.kernel.org/stable/c/bb52249fbbe948875155ccd45cd8d74bf4ae747b\n",
   "aliases": "GHSA-3gmf-h2jg-hwv2\nCVE-2026-68259\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -91,6 +91,16 @@
       "product_version": "5.18"
     },
     {
+      "id": "5906b66a-03d0-3bef-8286-c285c2e9af2b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.183"
+    },
+    {
       "id": "7a14f1de-19ec-3c9a-86fe-d6e4c9517e5d",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "40e8a766a761f7fdc8530347527b344fddf6f1a8 <85eedff5f0c4aba5a66bc37a1bd6bcecd0d77b53"
+    },
+    {
+      "id": "9c66f686-92af-38f3-a101-9bb80eeea81e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "40e8a766a761f7fdc8530347527b344fddf6f1a8 <6884fc142b17f456caac50c14505f509bfbcd012"
     },
     {
       "id": "b27d12a2-8cdd-3ec7-8a9d-6bfd3d02ab70",

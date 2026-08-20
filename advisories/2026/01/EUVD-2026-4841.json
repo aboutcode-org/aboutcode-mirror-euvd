@@ -3,7 +3,7 @@
   "enisaUuid": "f006d289-16b3-302b-83c5-bc5832106d16",
   "description": "Every uncached /avatar/:hash request spawns a goroutine that refreshes the Gravatar image. If the refresh sits in the 10-slot worker queue longer than three seconds, the handler times out and stops listening for the result, so that goroutine blocks forever trying to send on an unbuffered channel. Sustained traffic with random hashes keeps tripping this timeout, so goroutine count grows linearly, eventually exhausting memory and causing Grafana to crash on some systems.",
   "datePublished": "Jan 27, 2026, 9:07:04 AM",
-  "dateUpdated": "Aug 17, 2026, 9:28:27 PM",
+  "dateUpdated": "Aug 19, 2026, 7:03:25 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
