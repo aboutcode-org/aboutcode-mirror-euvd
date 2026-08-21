@@ -3,14 +3,14 @@
   "enisaUuid": "d2d82398-251f-3e25-9d52-e60cd12ce7ff",
   "description": "A flaw was found in Yelp due to an overly permissive Content Security Policy (CSP) implementation provided by yelp-xsl. A malicious Flatpak application can open crafted help content through the OpenURI portal. By embedding an untrusted CSS stylesheet within a structured SVG document, attacker-controlled content can bypass Flatpak's intended sandbox isolation, allowing Yelp to evaluate local XML inclusions and disclose arbitrary user-readable host files through remote CSS resource requests. This may result in the unauthorized disclosure of sensitive information.",
   "datePublished": "Jun 29, 2026, 9:20:40 AM",
-  "dateUpdated": "Aug 14, 2026, 12:04:37 PM",
+  "dateUpdated": "Aug 20, 2026, 12:31:55 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:47177\nhttps://access.redhat.com/errata/RHSA-2026:47178\nhttps://access.redhat.com/errata/RHSA-2026:54539\nhttps://access.redhat.com/errata/RHSA-2026:54540\nhttps://access.redhat.com/errata/RHSA-2026:54605\nhttps://access.redhat.com/errata/RHSA-2026:54624\nhttps://access.redhat.com/errata/RHSA-2026:54637\nhttps://access.redhat.com/errata/RHSA-2026:54666\nhttps://access.redhat.com/security/cve/CVE-2026-13601\nhttps://blogs.gnome.org/mcatanzaro/2026/05/11/flatpak-sandbox-escape-via-yelp/\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494110\nhttps://gitlab.gnome.org/GNOME/yelp/-/commit/c8c8244c8a812860782d635890c9b6c43ecc2639\nhttps://gitlab.gnome.org/GNOME/yelp/-/work_items/238\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:47177\nhttps://access.redhat.com/errata/RHSA-2026:47178\nhttps://access.redhat.com/errata/RHSA-2026:54539\nhttps://access.redhat.com/errata/RHSA-2026:54540\nhttps://access.redhat.com/errata/RHSA-2026:54605\nhttps://access.redhat.com/errata/RHSA-2026:54624\nhttps://access.redhat.com/errata/RHSA-2026:54637\nhttps://access.redhat.com/errata/RHSA-2026:54666\nhttps://access.redhat.com/errata/RHSA-2026:57417\nhttps://access.redhat.com/security/cve/CVE-2026-13601\nhttps://blogs.gnome.org/mcatanzaro/2026/05/11/flatpak-sandbox-escape-via-yelp/\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494110\nhttps://gitlab.gnome.org/GNOME/yelp/-/commit/c8c8244c8a812860782d635890c9b6c43ecc2639\nhttps://gitlab.gnome.org/GNOME/yelp/-/work_items/238\n",
   "aliases": "GHSA-f4vh-qr53-q5gv\nCVE-2026-13601\n",
   "assigner": "redhat",
-  "epss": 0.12,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "0418c701-4491-3c5a-8086-cbddb047049d",
@@ -81,6 +81,16 @@
         }
       },
       "product_version": "patch: 2:40.3-2.el9_6.2"
+    },
+    {
+      "id": "8e51ee67-1a47-336d-bfbd-f26ced4e1dc7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2:3.28.1-2.el7_9"
     },
     {
       "id": "9118ab23-ff8e-388f-ac31-275f233e2a15",

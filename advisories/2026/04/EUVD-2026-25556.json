@@ -3,7 +3,7 @@
   "enisaUuid": "fd51b761-50d4-30a0-bc4c-54dcd75127dc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: hold dev ref until after transport_finish NF_HOOK\n\nAfter async crypto completes, xfrm_input_resume() calls dev_put()\nimmediately on re-entry before the skb reaches transport_finish.\nThe skb->dev pointer is then used inside NF_HOOK and its okfn,\nwhich can race with device teardown.\n\nRemove the dev_put from the async resumption entry and instead\ndrop the reference after the NF_HOOK call in transport_finish,\nusing a saved device pointer since NF_HOOK may consume the skb.\nThis covers NF_DROP, NF_QUEUE and NF_STOLEN paths that skip\nthe okfn.\n\nFor non-transport exits (decaps, gro, drop) and secondary\nasync return points, release the reference inline when\nasync is set.",
   "datePublished": "Apr 24, 2026, 2:45:13 PM",
-  "dateUpdated": "Aug 19, 2026, 12:05:12 PM",
+  "dateUpdated": "Aug 20, 2026, 12:31:54 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
