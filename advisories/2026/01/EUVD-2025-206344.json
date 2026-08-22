@@ -3,84 +3,204 @@
   "enisaUuid": "740e248f-4a25-3b15-949e-d4a9fa77a87c",
   "description": "A flaw was found in the GnuTLS library, specifically in the gnutls_pkcs11_token_init() function that handles PKCS#11 token initialization. When a token label longer than expected is processed, the function writes past the end of a fixed-size stack buffer. This programming error can cause the application using GnuTLS to crash or, in certain conditions, be exploited for code execution. As a result, systems or applications relying on GnuTLS may be vulnerable to a denial of service or local privilege escalation attacks.",
   "datePublished": "Jan 26, 2026, 7:58:32 PM",
-  "dateUpdated": "Jan 26, 2026, 8:12:19 PM",
+  "dateUpdated": "Aug 21, 2026, 5:14:37 PM",
   "baseScore": 4.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://access.redhat.com/security/cve/CVE-2025-9820\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2392528\nhttps://gitlab.com/gnutls/gnutls/-/commit/1d56f96f6ab5034d677136b9d50b5a75dff0faf5\nhttps://gitlab.com/gnutls/gnutls/-/issues/1732\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2025-11-18\n",
-  "aliases": "CVE-2025-9820\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:13812\nhttps://access.redhat.com/errata/RHSA-2026:3477\nhttps://access.redhat.com/errata/RHSA-2026:4188\nhttps://access.redhat.com/errata/RHSA-2026:4655\nhttps://access.redhat.com/errata/RHSA-2026:4943\nhttps://access.redhat.com/errata/RHSA-2026:5585\nhttps://access.redhat.com/errata/RHSA-2026:5606\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7477\nhttps://access.redhat.com/security/cve/CVE-2025-9820\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2392528\nhttps://gitlab.com/gnutls/gnutls/-/commit/1d56f96f6ab5034d677136b9d50b5a75dff0faf5\nhttps://gitlab.com/gnutls/gnutls/-/issues/1732\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2025-11-18\n",
+  "aliases": "GHSA-337w-h8w7-m899\nCVE-2025-9820\n",
   "assigner": "redhat",
-  "epss": 0.01,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "00618e43-dcd3-3b6c-8344-74657171e685",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1773672059"
+    },
     {
       "id": "07a71380-06cb-3c84-9a85-02c7c34dbb3e",
       "product": {
-        "name": "Red Hat Enterprise Linux 8"
+        "name": "Red Hat Enterprise Linux 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:3.6.16-8.el8_10.5"
     },
     {
-      "id": "0d0c21b8-a939-3ec4-9017-8d7c5024e7a7",
+      "id": "0e2e95aa-17fb-3a88-aca0-ec61f17016f4",
       "product": {
-        "name": "Red Hat Insights proxy 1.5"
+        "name": "Red Hat Ceph Storage 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:86431fdb1ba7fa0cbc8e82cc5fe518b7c0946b8847991fc95604b1d1cfd45e06"
+      "product_version": "patch: 1774002867"
     },
     {
-      "id": "4085350c-528b-3762-91b5-62693aaee494",
+      "id": "1918b493-1298-3579-b89f-bfd94fe63d24",
       "product": {
-        "name": "Red Hat Update Infrastructure 5"
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:2c50c87906a1abebf427a70f401c409f1258cb55d2096f517db870ec991cfd7f"
+      "product_version": "patch: 7.13.5-4.1777325680"
+    },
+    {
+      "id": "1e516adf-6341-3981-a24c-9681bb95d7a4",
+      "product": {
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 7.13.5-4.1777325708"
     },
     {
       "id": "4e99831c-b99a-31dd-94a5-225d9200bc8a",
       "product": {
-        "name": "Red Hat Enterprise Linux 9"
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:3.8.3-10.el9_7"
     },
     {
-      "id": "68773b51-9880-3bba-ad9b-f084cff3ecca",
+      "id": "50dfe76f-8a56-3338-bb83-588aac44e3c9",
       "product": {
-        "name": "Red Hat Insights proxy 1.5"
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:325c34e2506d715975171557d40afb449c79cf6e0c41b35760977d5cafb827b8"
+      "product_version": "patch: 7.13.5-4.1777325710"
     },
     {
-      "id": "8b0d4285-bcb2-326a-be95-6277fa0a29c0",
+      "id": "765a2a6a-d923-3c73-8281-3b949e366b91",
       "product": {
-        "name": "Red Hat Update Infrastructure 5"
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:5f1fbf66fb349a7baf066a1216d39989c3b89f18ec5108b96d9643baf4856778"
+      "product_version": "patch: 7.13.5-3.1777325680"
+    },
+    {
+      "id": "788d175c-51a2-3107-9d14-3cfb339554ef",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1773668803"
+    },
+    {
+      "id": "85e83391-2ef4-33be-8c91-3216f300ac54",
+      "product": {
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 7.13.5-4.1777325711"
+    },
+    {
+      "id": "8641a65f-a540-314a-bc9a-b66b8fe63aa9",
+      "product": {
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 7.13.5-4.1777325709"
     },
     {
       "id": "8c15a79b-f4f8-3167-b7f4-2091059609c6",
       "product": {
-        "name": "Red Hat Enterprise Linux 10"
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
       "product_version": "patch: 0:3.8.10-3.el10_1"
     },
     {
-      "id": "d5009b9e-45c5-3f00-9ec7-618f71e8541b",
+      "id": "90f6cf53-9ba7-3f05-8757-0418d317fd56",
       "product": {
-        "name": "Red Hat Update Infrastructure 5"
+        "name": "Red Hat Insights proxy 1.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:d98fd3fe5f5f9acd0efae7db19b61b864be1eb2fbe2586a1b6be2429fa2cc7a3"
+      "product_version": "patch: 1773685509"
     },
     {
-      "id": "efbf9035-ec58-32b8-9e1f-1f7d001dfaca",
+      "id": "adf3a6a6-281b-3cde-bd18-184c02dce774",
       "product": {
-        "name": "Red Hat Update Infrastructure 5"
+        "name": "Red Hat Discovery 2",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:200c27e9b396276bd505c6b41127ac5eb1d94d620172cb818ae733f2a21ac524"
+      "product_version": "patch: 1775668717"
     },
     {
-      "id": "f1f284e9-82b2-339d-bb07-d70e15b45186",
+      "id": "bcd30070-3458-3e1c-a306-8e208fd2578b",
       "product": {
-        "name": "Red Hat Ceph Storage 8"
+        "name": "RHEL-8 based Middleware Containers",
+        "vendor": {
+          "name": "Red Hat"
+        }
       },
-      "product_version": "patch: sha256:a0f0f9770911d6a0fc522f304942765059643193e95c9f6e505462f98a979db1"
+      "product_version": "patch: 7.13.5-4.1777325677"
+    },
+    {
+      "id": "cf4c95da-6795-3e42-bc07-6006c36dcb59",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 3.8.12-1.1.hum1"
+    },
+    {
+      "id": "d11dc63f-076b-3654-bef6-71aac9bed339",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1773670073"
+    },
+    {
+      "id": "d912afe4-8627-3d35-a0ea-b8b29b3b11d7",
+      "product": {
+        "name": "Red Hat Discovery 2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1775675922"
+    },
+    {
+      "id": "efed8ad4-cfbc-391b-95d3-b2adf0d73157",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1773670137"
     }
   ],
   "enisaIdVendor": [
