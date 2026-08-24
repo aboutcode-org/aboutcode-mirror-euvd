@@ -3,9 +3,9 @@
   "enisaUuid": "dd81423b-a470-3a9c-bea5-a12c5da64ee0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmei: bus: access mei_device under device_lock on cleanup\n\nFix couple of problems in mei_cl_bus_dev_release():\n\nmei_cl_flush_queues() is running without lock.\nbus->file_list access after mei_dev_bus_put(bus) can become a\nuse-after-free if this was the last reference to bus.\n\nProtect queues cleanup and WARN traversal by device lock there\nto avoid the concurrent access problems.\nMove WARN traversal before mei_dev_bus_put(bus).\n\nThis file uses bus variable name for mei_device, adjust\ncode of mei_cl_bus_dev_release() to use bus variable too.",
   "datePublished": "Aug 10, 2026, 11:59:52 AM",
-  "dateUpdated": "Aug 17, 2026, 5:00:22 AM",
+  "dateUpdated": "Aug 23, 2026, 12:46:04 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/441559d4c595f839b39f0ab6a4ae628427c2fd9e\nhttps://git.kernel.org/stable/c/c88c030a324c9018b77894a19b2564eb66862020\nhttps://git.kernel.org/stable/c/59dd34854202d9a3faaa87a85205e553fe7150e1\nhttps://git.kernel.org/stable/c/7cf79e8d682fe93777268f029668ce5e214237fd\nhttps://git.kernel.org/stable/c/f112ea910e554d58b4b39a4492b7d302f0f4204f\n",
+  "references": "https://git.kernel.org/stable/c/02e3a755086db847d795f2593ebc45e8ee4f1755\nhttps://git.kernel.org/stable/c/441559d4c595f839b39f0ab6a4ae628427c2fd9e\nhttps://git.kernel.org/stable/c/c88c030a324c9018b77894a19b2564eb66862020\nhttps://git.kernel.org/stable/c/59dd34854202d9a3faaa87a85205e553fe7150e1\nhttps://git.kernel.org/stable/c/7cf79e8d682fe93777268f029668ce5e214237fd\nhttps://git.kernel.org/stable/c/f112ea910e554d58b4b39a4492b7d302f0f4204f\n",
   "aliases": "CVE-2026-68181\nGHSA-xmj6-8mrg-f8fx\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -91,6 +91,36 @@
       "product_version": "35e8a426b16adbecae7a4e0e3c00fc8d0273db53 <f112ea910e554d58b4b39a4492b7d302f0f4204f"
     },
     {
+      "id": "543ca51b-5a00-3ad1-a777-e249f574ed6a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.149 <6.1.184"
+    },
+    {
+      "id": "589e7c30-dacb-3138-8f68-9ecd1dec0399",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6f2a6ef86b23a30b92ad57981de537bce67bfa45 <02e3a755086db847d795f2593ebc45e8ee4f1755"
+    },
+    {
+      "id": "5946256a-676a-31fe-9461-eebc6e131ea4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.184"
+    },
+    {
       "id": "5c99df85-749a-3d46-bdaf-6d429dcd0b42",
       "product": {
         "name": "Linux",
@@ -139,26 +169,6 @@
         }
       },
       "product_version": "612c8d21ce6e37b73f3106aec7ffa35959d40261 <c88c030a324c9018b77894a19b2564eb66862020"
-    },
-    {
-      "id": "8d6e3cbb-a59f-310d-ab8d-5feb0b281ca3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6f2a6ef86b23a30b92ad57981de537bce67bfa45"
-    },
-    {
-      "id": "a08194ec-51cf-3b20-9a4a-40041d8b56a3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.149 <6.2"
     },
     {
       "id": "ab2e9087-8a32-3ac2-b116-c36e3011d7e4",

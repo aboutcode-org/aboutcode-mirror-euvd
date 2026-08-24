@@ -3,9 +3,9 @@
   "enisaUuid": "264800bd-6ad6-3889-933f-4acc19ecd548",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/perf_cpum_cf: Add missing array_index_nospec() to __hw_perf_event_init()\n\nev variable is userspace controlled via event->attr.config and used\nas an array index after bounds checking, but without speculation\nbarriers.\n\nAdd the missing array_index_nospec() call to prevent speculative\nexecution.",
   "datePublished": "Aug 15, 2026, 5:54:25 AM",
-  "dateUpdated": "Aug 17, 2026, 5:10:53 AM",
+  "dateUpdated": "Aug 23, 2026, 12:47:04 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/27206bb57c47bdbe33bccc78fa7f7e2a719a06b9\nhttps://git.kernel.org/stable/c/a21f3615c88421df81060b6ff89220fd34094c4d\nhttps://git.kernel.org/stable/c/fa1ebae4206e6afc8caa642e9eb1bbe39a9a724f\nhttps://git.kernel.org/stable/c/f79dff8c721bbb1f3fc312ea55e0551c2cc28801\nhttps://git.kernel.org/stable/c/49145bce539117db4b6e9e83c0e5ef528e361050\n",
+  "references": "https://git.kernel.org/stable/c/4c249b214c686f9a1c4cf4f32893b59b189e897a\nhttps://git.kernel.org/stable/c/27206bb57c47bdbe33bccc78fa7f7e2a719a06b9\nhttps://git.kernel.org/stable/c/a21f3615c88421df81060b6ff89220fd34094c4d\nhttps://git.kernel.org/stable/c/fa1ebae4206e6afc8caa642e9eb1bbe39a9a724f\nhttps://git.kernel.org/stable/c/f79dff8c721bbb1f3fc312ea55e0551c2cc28801\nhttps://git.kernel.org/stable/c/49145bce539117db4b6e9e83c0e5ef528e361050\n",
   "aliases": "GHSA-54pj-2wqr-j294\nCVE-2026-72236\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "212188a596d17d519842ef2173150315735b54e1 <49145bce539117db4b6e9e83c0e5ef528e361050"
+    },
+    {
+      "id": "19deabf3-a17f-32f5-a3db-a016d29073f9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.184"
     },
     {
       "id": "3e4ffcf8-7bf7-3e39-bea0-d749e11545eb",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "212188a596d17d519842ef2173150315735b54e1 <27206bb57c47bdbe33bccc78fa7f7e2a719a06b9"
+    },
+    {
+      "id": "c41ad839-e9d0-3e10-8f66-4c3cb4544e6c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "212188a596d17d519842ef2173150315735b54e1 <4c249b214c686f9a1c4cf4f32893b59b189e897a"
     },
     {
       "id": "e726e250-f868-3b86-8825-f432f2c91b82",

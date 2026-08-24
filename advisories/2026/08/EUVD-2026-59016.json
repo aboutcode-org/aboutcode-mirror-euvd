@@ -3,9 +3,9 @@
   "enisaUuid": "617eef03-c214-31fe-bead-edd8d3701c33",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ixp4xx_hss: fix duplicate HDLC netdev allocation\n\nixp4xx_hss_probe() allocates two HDLC netdevs. The first one is stored\nin ndev, initialized, and registered with register_hdlc_device(). The\nsecond one is stored in port->netdev and later used by the remove path\nfor unregister_hdlc_device() and free_netdev().\n\nThis means that the registered netdev is not the same object that is\nunregistered and freed on remove. It also leaks the first allocation if\nthe second alloc_hdlcdev() call fails, and the first allocation is not\nchecked before ndev is used.\n\nOlder code allocated the HDLC netdev only once and stored the same object\nin both the local variable and port->netdev. The buggy conversion split\nthis into two alloc_hdlcdev() calls. A later rename changed the local\nvariable name to ndev, but the underlying mismatch remained.\n\nFix this by allocating the HDLC netdev only once and assigning the same\nobject to port->netdev.",
   "datePublished": "Aug 15, 2026, 5:52:13 AM",
-  "dateUpdated": "Aug 17, 2026, 5:07:25 AM",
+  "dateUpdated": "Aug 23, 2026, 12:46:37 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8f4c3c384092becbf4835a3f8ed8a3df1f544578\nhttps://git.kernel.org/stable/c/fd0b939ebd1eee29945a539c5ed65c35dddac8d6\nhttps://git.kernel.org/stable/c/ffba16e6f55948d94b7f16aa113d587c1c4c0643\nhttps://git.kernel.org/stable/c/3f85fcd520aa703824b1958f35169925ddae2558\nhttps://git.kernel.org/stable/c/91850f582783098415a334f8bd0a84c87ff15a8c\nhttps://git.kernel.org/stable/c/db818b0e8af7bac16860116a19c341a63d6677b4\n",
+  "references": "https://git.kernel.org/stable/c/77d925b948ee594a79afe66f85bb94b67940140b\nhttps://git.kernel.org/stable/c/8f4c3c384092becbf4835a3f8ed8a3df1f544578\nhttps://git.kernel.org/stable/c/fd0b939ebd1eee29945a539c5ed65c35dddac8d6\nhttps://git.kernel.org/stable/c/ffba16e6f55948d94b7f16aa113d587c1c4c0643\nhttps://git.kernel.org/stable/c/3f85fcd520aa703824b1958f35169925ddae2558\nhttps://git.kernel.org/stable/c/91850f582783098415a334f8bd0a84c87ff15a8c\nhttps://git.kernel.org/stable/c/db818b0e8af7bac16860116a19c341a63d6677b4\n",
   "aliases": "GHSA-c9wj-7pm2-vx6f\nCVE-2026-72058\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -81,6 +81,16 @@
       "product_version": "patch: 6.12.97"
     },
     {
+      "id": "4e2c6d54-8dc6-3c0f-8701-5bae62e72a72",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.217"
+    },
+    {
       "id": "6603d82d-b603-39de-b7fb-4d13d6e8e2ba",
       "product": {
         "name": "Linux",
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "dda9f8bf-855c-34ec-8220-74063e9f6cdb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "99ebe65eb9c0ada015931d239d9f2d1dc8897fee <77d925b948ee594a79afe66f85bb94b67940140b"
     },
     {
       "id": "e0188eb9-c5e9-3844-a940-2a0c8c788cad",

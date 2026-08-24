@@ -3,9 +3,9 @@
   "enisaUuid": "977ef152-c056-3fc1-b785-a31c792d5a25",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: ntb_netdev: Preserve RX queue depth on allocation failure\n\nntb_netdev_rx_handler() hands the received skb to the network stack\nbefore allocating its replacement. If the allocation fails, nothing is\nreposted. Every failure therefore takes one buffer out of the RX queue\nwhile the interface remains up, and enough failures eventually stall\nreception.\n\nA retry path could refill the queue later, but ntb_netdev has none.\nAllocate the replacement first instead. If that fails, drop the packet\nand repost the same skb. This keeps the queue full and lets packet\ndelivery resume as soon as memory is available again.",
   "datePublished": "Aug 22, 2026, 3:32:08 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:08 PM",
+  "dateUpdated": "Aug 23, 2026, 12:47:50 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/755fd7843f300d724caceabdf9bb13adc8701540\nhttps://git.kernel.org/stable/c/d2121faf133ac3bf9531b53a7e21273649a08517\n",
+  "references": "https://git.kernel.org/stable/c/a4e340971fe8ccd245d206db4d43b2a0eec240bd\nhttps://git.kernel.org/stable/c/755fd7843f300d724caceabdf9bb13adc8701540\nhttps://git.kernel.org/stable/c/d2121faf133ac3bf9531b53a7e21273649a08517\n",
   "aliases": "CVE-2026-74626\nGHSA-2vc2-fj43-9qhc\n",
   "assigner": "Linux",
   "epss": 0.0,
@@ -51,6 +51,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "94483354-0a7c-3792-9ad2-d5a967ac57cd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "548c237c0a9972df5d1afaca38aa733ee577128d <a4e340971fe8ccd245d206db4d43b2a0eec240bd"
+    },
+    {
       "id": "bd000b6b-c63d-3147-93fc-6df7b6984905",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "c04e0eb9-b581-33bc-9a26-0db8f285bcd1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.46"
     },
     {
       "id": "cf7cf17a-7049-38cd-881b-518476b15df9",

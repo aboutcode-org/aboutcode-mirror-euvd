@@ -3,9 +3,9 @@
   "enisaUuid": "d05abed2-199a-363e-a5b6-3c3893ae3ec0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom: Fix leak when custom dump_segments addition fails\n\nFree allocated minidump_region 'name' in qcom_add_minidump_segments()\nwhen failing before adding the region to 'dump_segments'. Otherwise,\nthe 'name' is not tracked and is never freed by qcom_minidump_cleanup().\n\nReturn error when adding to 'dump_segments' fails.",
   "datePublished": "Aug 15, 2026, 5:54:10 AM",
-  "dateUpdated": "Aug 17, 2026, 5:10:31 AM",
+  "dateUpdated": "Aug 23, 2026, 12:47:02 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/65104d6eb43f066dcf73ca9ade6478824b17d867\nhttps://git.kernel.org/stable/c/381c8a7a59da06293951c343857f4a2465b2c655\nhttps://git.kernel.org/stable/c/51aad3d89a2dd2bd34713785b0f2fd5177eb33b6\nhttps://git.kernel.org/stable/c/e5b1aaa74118e91f0c0f18b22b6f853199873db4\nhttps://git.kernel.org/stable/c/ecf9fc18e62c58eae1ceb65dab2bccb8a724de2d\n",
+  "references": "https://git.kernel.org/stable/c/491edca252d1256b57e805c6e3acae320b53f53e\nhttps://git.kernel.org/stable/c/8bfe7e7729617e73233ab5f1a2edbeee5e75c722\nhttps://git.kernel.org/stable/c/65104d6eb43f066dcf73ca9ade6478824b17d867\nhttps://git.kernel.org/stable/c/381c8a7a59da06293951c343857f4a2465b2c655\nhttps://git.kernel.org/stable/c/51aad3d89a2dd2bd34713785b0f2fd5177eb33b6\nhttps://git.kernel.org/stable/c/e5b1aaa74118e91f0c0f18b22b6f853199873db4\nhttps://git.kernel.org/stable/c/ecf9fc18e62c58eae1ceb65dab2bccb8a724de2d\n",
   "aliases": "GHSA-hpxv-9w4f-7523\nCVE-2026-72216\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <e5b1aaa74118e91f0c0f18b22b6f853199873db4"
+    },
+    {
+      "id": "3f35b845-7635-364a-8d99-98d1049cc6dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <8bfe7e7729617e73233ab5f1a2edbeee5e75c722"
     },
     {
       "id": "45254826-dabd-381d-a4f5-6a6e33bd14ab",
@@ -111,6 +121,16 @@
       "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <65104d6eb43f066dcf73ca9ade6478824b17d867"
     },
     {
+      "id": "e56530f3-a87a-3213-87ad-89360265ba6d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.217"
+    },
+    {
       "id": "e6d18d34-04da-32eb-8f99-4640f9d72257",
       "product": {
         "name": "Linux",
@@ -121,6 +141,16 @@
       "product_version": "patch: 6.18.40"
     },
     {
+      "id": "ea778f4a-49b4-3541-b966-ed9377f97fb0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <491edca252d1256b57e805c6e3acae320b53f53e"
+    },
+    {
       "id": "f3644d8e-8d2c-37cb-89e2-876c0e0efa21",
       "product": {
         "name": "Linux",
@@ -129,6 +159,16 @@
         }
       },
       "product_version": "8ed8485c4f056d488d17a2b56581c86aeb42955d <381c8a7a59da06293951c343857f4a2465b2c655"
+    },
+    {
+      "id": "f6d776de-691c-36db-98ad-8794295757f1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.184"
     }
   ],
   "enisaIdVendor": [

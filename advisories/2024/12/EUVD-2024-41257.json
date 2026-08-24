@@ -3,7 +3,7 @@
   "enisaUuid": "c57f2156-d7ae-33a3-a029-2d4576a52bda",
   "description": "A flaw was found in the OpenShift build process, where the docker-build container is configured with a hostPath volume mount that maps the node's /var/lib/kubelet/config.json file into the build pod. This file contains sensitive credentials necessary for pulling images from private repositories. The mount is not read-only, which allows the attacker to overwrite it. By modifying the config.json file, the attacker can cause a denial of service by preventing the node from pulling new images and potentially exfiltrating sensitive secrets. This flaw impacts the availability of services dependent on image pulls and exposes sensitive information to unauthorized parties.",
   "datePublished": "Dec 31, 2024, 2:19:22 AM",
-  "dateUpdated": "Aug 21, 2026, 5:08:35 PM",
+  "dateUpdated": "Aug 23, 2026, 12:34:36 PM",
   "baseScore": 7.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H",
@@ -531,16 +531,6 @@
         }
       },
       "product_version": "patch: v4.19.0-202506111842.p0.g32b15d8.assembly.stream.el9"
-    },
-    {
-      "id": "458010ee-dbc5-39fe-969a-41c1f1d7534b",
-      "product": {
-        "name": "Red Hat OpenShift Container Platform 4.20",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: ose-openshift-controller-manager-container-v4.20.0-202509261327.p2.gd9e543d.assembly.stream.el9"
     },
     {
       "id": "459d3b68-b301-32c6-9e5c-72d2341ebbe4",
@@ -1331,6 +1321,16 @@
         }
       },
       "product_version": "patch: v4.19.0-202506111547.p0.g1366646.assembly.stream.el9"
+    },
+    {
+      "id": "c3457a9f-a22f-35b5-9b09-a00921659172",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: ose-openshift-controller-manager-container-v4.20.0-202509261327.p2.gd9e543d.assembly.stream.el9"
     },
     {
       "id": "c614a04b-731f-3a8f-b6e3-2e410d66dec6",

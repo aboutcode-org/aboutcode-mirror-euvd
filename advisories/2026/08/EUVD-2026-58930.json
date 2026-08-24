@@ -3,14 +3,14 @@
   "enisaUuid": "ae886bf8-f99b-344f-a40d-0e8c650b46b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/mm_init: fix uninitialized struct pages for ZONE_DEVICE\n\nIf DAX memory is hotplugged into an unoccupied subsection of an early\nsection, section_activate() reuses the unoptimized boot memmap.  However,\ncompound_nr_pages() still assumes that vmemmap optimization is in effect\nand initializes only the reduced number of struct pages.  As a result, the\nremaining tail struct pages are left uninitialized, which can later lead\nto unexpected behavior or crashes.\n\nFix this by treating early sections as unoptimized when calculating how\nmany struct pages to initialize.",
   "datePublished": "Aug 15, 2026, 5:53:37 AM",
-  "dateUpdated": "Aug 17, 2026, 5:41:10 AM",
+  "dateUpdated": "Aug 23, 2026, 12:47:00 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/511a60e71aec308b24722cffc1912bf6befb87bf\nhttps://git.kernel.org/stable/c/11f2826e9ee6f24aaa774e3dcd75abbe4b3091b6\nhttps://git.kernel.org/stable/c/da5234df0941665f3a3f5b80f3dab94046537be0\nhttps://git.kernel.org/stable/c/b91e27bce37cab9f35de0059278ebe457ca9878b\nhttps://git.kernel.org/stable/c/cd681403a87085562499d60325b7b45d3be11217\n",
+  "references": "https://git.kernel.org/stable/c/c5ef574d57e4a701485c13f26822328c91f05413\nhttps://git.kernel.org/stable/c/511a60e71aec308b24722cffc1912bf6befb87bf\nhttps://git.kernel.org/stable/c/11f2826e9ee6f24aaa774e3dcd75abbe4b3091b6\nhttps://git.kernel.org/stable/c/da5234df0941665f3a3f5b80f3dab94046537be0\nhttps://git.kernel.org/stable/c/b91e27bce37cab9f35de0059278ebe457ca9878b\nhttps://git.kernel.org/stable/c/cd681403a87085562499d60325b7b45d3be11217\n",
   "aliases": "CVE-2026-72172\nGHSA-535q-qpmg-c9q4\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "05da97a5-625f-3e8c-b77d-ae65feefc752",
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "5cd7dab7-7560-35f2-8b2c-eca716110f75",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.184"
     },
     {
       "id": "5f953ad9-ee76-3de3-a1ce-62c54e3dca2e",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "6fd3620b342861de9547ea01d28f664892ef51a1 <cd681403a87085562499d60325b7b45d3be11217"
+    },
+    {
+      "id": "c9d0fe2c-68da-37de-9c82-a9a1251b4bf5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6fd3620b342861de9547ea01d28f664892ef51a1 <c5ef574d57e4a701485c13f26822328c91f05413"
     },
     {
       "id": "e82ebe0c-0236-33ad-ab54-ebd1f47a381f",

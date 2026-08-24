@@ -3,9 +3,9 @@
   "enisaUuid": "88cb19da-9199-3d31-848b-15362aa13734",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: keyspan_pda: fix information leak\n\nThe write() callback is supposed to return the number of characters\naccepted or a negative errno. Since the addition of write fifo support\nthe keyspan_pda implementation will however return the number characters\nsubmitted to the device if the write urb is not already in use. If this\nnumber is larger than the number of characters passed to write(), the\nline discipline continues writing data from beyond the tty write buffer.\n\nFix the information leak by making sure that keyspan_pda_write_start()\nreturns zero on success as intended.",
   "datePublished": "Jul 25, 2026, 8:50:01 AM",
-  "dateUpdated": "Aug 17, 2026, 4:53:39 AM",
+  "dateUpdated": "Aug 23, 2026, 12:45:41 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b069b7029862fafaff331d4c664d97d4ae828d6d\nhttps://git.kernel.org/stable/c/e52ca411f50539ff1d0c877b9312771ca8a858c1\nhttps://git.kernel.org/stable/c/2f7a6b8ab3845bd1da02604f1a874b52a4555a72\nhttps://git.kernel.org/stable/c/e1494191a3aac665d3a2fce16169a97c346253ec\nhttps://git.kernel.org/stable/c/cf6ca0aefae03958cfb5b189b0adbfb25c06bfac\nhttps://git.kernel.org/stable/c/d4b12b6b395e43a2b1d80be3745631fcaa9c047b\nhttps://git.kernel.org/stable/c/6bfc8d01ac4068eced509f8fc74d0cd205e4dcec\n",
+  "references": "https://git.kernel.org/stable/c/cccef1711efbcdbe999738ac27d37b9ef6271abd\nhttps://git.kernel.org/stable/c/b069b7029862fafaff331d4c664d97d4ae828d6d\nhttps://git.kernel.org/stable/c/e52ca411f50539ff1d0c877b9312771ca8a858c1\nhttps://git.kernel.org/stable/c/2f7a6b8ab3845bd1da02604f1a874b52a4555a72\nhttps://git.kernel.org/stable/c/e1494191a3aac665d3a2fce16169a97c346253ec\nhttps://git.kernel.org/stable/c/cf6ca0aefae03958cfb5b189b0adbfb25c06bfac\nhttps://git.kernel.org/stable/c/d4b12b6b395e43a2b1d80be3745631fcaa9c047b\nhttps://git.kernel.org/stable/c/6bfc8d01ac4068eced509f8fc74d0cd205e4dcec\n",
   "aliases": "GHSA-mhg5-fr5x-3g7c\nCVE-2026-64336\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -169,6 +169,16 @@
         }
       },
       "product_version": "5.11"
+    },
+    {
+      "id": "f073d3f4-4245-3915-a248-ec71a22cc1dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "02407bc7d42347da7ed2a3926a0b824bfc614914 <cccef1711efbcdbe999738ac27d37b9ef6271abd"
     }
   ],
   "enisaIdVendor": [
