@@ -3,7 +3,7 @@
   "enisaUuid": "7e49848b-bb3e-3c0e-b928-727197614758",
   "description": "kafka-python prior to 2.3.2 contains a denial-of-service vulnerability in SCRAM authentication handling that allows a malicious or machine-in-the-middle broker to freeze the client event loop by supplying an excessively large iteration count. In scram.py, ScramClient.process_server_first_message() passes the broker-controlled SCRAM iteration count directly to hashlib.pbkdf2_hmac() without validation, blocking producer sends, consumer polls, admin operations, and heartbeats, which can cause consumer group eviction and repeated reconnect failures.",
   "datePublished": "Jun 10, 2026, 8:22:39 PM",
-  "dateUpdated": "Aug 17, 2026, 12:05:00 PM",
+  "dateUpdated": "Aug 24, 2026, 12:06:52 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",

@@ -3,11 +3,11 @@
   "enisaUuid": "9867fe32-894e-3175-a253-b08d4616ba9a",
   "description": "A double free issue has been identified in libarchive's RAR5 reader. During parsing of a specially crafted RAR5 archive, the filtered_buf pointer may remain stale after being freed during unpacking state reinitialization. Subsequent processing of another archive entry can trigger a second free of the same memory region, resulting in a double-free condition. Successful exploitation may cause applications using the vulnerable libarchive API to terminate unexpectedly, leading to a denial of service.",
   "datePublished": "Jun 30, 2026, 6:29:23 AM",
-  "dateUpdated": "Aug 21, 2026, 12:13:03 PM",
+  "dateUpdated": "Aug 24, 2026, 12:08:00 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30333\nhttps://access.redhat.com/errata/RHSA-2026:52674\nhttps://access.redhat.com/errata/RHSA-2026:52675\nhttps://access.redhat.com/errata/RHSA-2026:54387\nhttps://access.redhat.com/errata/RHSA-2026:54760\nhttps://access.redhat.com/errata/RHSA-2026:54769\nhttps://access.redhat.com/errata/RHSA-2026:56954\nhttps://access.redhat.com/security/cve/CVE-2026-14164\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2493411\nhttps://github.com/libarchive/libarchive/issues/3069\nhttps://github.com/libarchive/libarchive/pull/3071\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30333\nhttps://access.redhat.com/errata/RHSA-2026:52674\nhttps://access.redhat.com/errata/RHSA-2026:52675\nhttps://access.redhat.com/errata/RHSA-2026:54387\nhttps://access.redhat.com/errata/RHSA-2026:54760\nhttps://access.redhat.com/errata/RHSA-2026:54769\nhttps://access.redhat.com/errata/RHSA-2026:56954\nhttps://access.redhat.com/errata/RHSA-2026:58558\nhttps://access.redhat.com/errata/RHSA-2026:58573\nhttps://access.redhat.com/errata/RHSA-2026:58574\nhttps://access.redhat.com/security/cve/CVE-2026-14164\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2493411\nhttps://github.com/libarchive/libarchive/issues/3069\nhttps://github.com/libarchive/libarchive/pull/3071\n",
   "aliases": "GHSA-xq96-f7x8-gfx3\nCVE-2026-14164\n",
   "assigner": "redhat",
   "epss": 0.47,
@@ -33,6 +33,16 @@
       "product_version": "patch: 3.8.8-2.hum1"
     },
     {
+      "id": "50013ede-a3cc-34ce-bac8-2cf6f3e64e91",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.5.3-5.el9_4.2"
+    },
+    {
       "id": "53a20340-3d07-3f4b-8c82-c645ee1f5b29",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -51,6 +61,16 @@
         }
       },
       "product_version": "patch: 1786435483"
+    },
+    {
+      "id": "78179e5e-a28a-3333-8b40-d0c2acb5ecd3",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.5.3-7.el9_6.2"
     },
     {
       "id": "9001da1f-8019-36b1-97b3-40facecde3d9",
@@ -121,6 +141,16 @@
         }
       },
       "product_version": "patch: 1786533449"
+    },
+    {
+      "id": "fff71148-6b76-377a-8ac6-5226b408f79c",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.5.3-5.el9_2.3"
     }
   ],
   "enisaIdVendor": [

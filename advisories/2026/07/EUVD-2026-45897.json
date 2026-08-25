@@ -3,7 +3,7 @@
   "enisaUuid": "0eb859ea-0a76-38c4-978b-64f6667780b0",
   "description": "A flaw was found in the Konnectivity proxy-server configuration for hosted control planes. The agent-facing listener was started without --cluster-ca-cert (and without token-based agent authentication), so client certificates were not validated. A remote attacker who can reach the Konnectivity cluster endpoint could connect as an unauthenticated agent, join the routing pool, and potentially proxy, inspect, modify, or drop control-plane-to-node traffic.",
   "datePublished": "Jul 20, 2026, 7:33:16 AM",
-  "dateUpdated": "Aug 23, 2026, 11:37:09 AM",
+  "dateUpdated": "Aug 24, 2026, 7:34:23 AM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
@@ -103,6 +103,16 @@
       "product_version": "patch: 1784905804"
     },
     {
+      "id": "cb1edca9-a475-3697-89e2-d5dcec95b3f7",
+      "product": {
+        "name": "multicluster engine for Kubernetes 2.9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1784905769"
+    },
+    {
       "id": "de43c5c6-178f-3bb8-b3b4-c8c0204b84d6",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.18",
@@ -131,16 +141,6 @@
         }
       },
       "product_version": "patch: 1784856942"
-    },
-    {
-      "id": "facad898-6c99-3290-8bcb-e43558cd13e9",
-      "product": {
-        "name": "multicluster engine for Kubernetes 2.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1784905769"
     }
   ],
   "enisaIdVendor": [

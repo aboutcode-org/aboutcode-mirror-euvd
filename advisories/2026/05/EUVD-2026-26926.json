@@ -3,14 +3,14 @@
   "enisaUuid": "a6ca346c-c323-31cd-ab75-51ac65db119d",
   "description": "A heap buffer overflow vulnerability exists in the DTLS handshake fragment reassembly logic of GnuTLS. The issue arises in merge_handshake_packet() where incoming handshake fragments are matched and merged based solely on handshake type, without validating that the message_length field remains consistent across all fragments of the same logical message. An attacker can exploit this by sending crafted DTLS fragments with conflicting message_length values, causing the implementation to allocate a buffer based on a smaller initial fragment and subsequently write beyond its bounds using larger, inconsistent fragments. Because the merge operation does not enforce proper bounds checking against the allocated buffer size, this results in an out-of-bounds write on the heap. The vulnerability is remotely exploitable without authentication via the DTLS handshake path and can lead to application crashes or potential memory corruption.",
   "datePublished": "May 4, 2026, 9:08:51 AM",
-  "dateUpdated": "Jun 30, 2026, 2:41:27 AM",
+  "dateUpdated": "Aug 24, 2026, 4:15:09 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/security/cve/CVE-2026-33846\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450625\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/security/cve/CVE-2026-33846\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450625\n",
   "aliases": "GHSA-qcj7-gqxf-2cqq\nCVE-2026-33846\n",
   "assigner": "redhat",
-  "epss": 1.22,
+  "epss": 1.26,
   "enisaIdProduct": [
     {
       "id": "007829dd-4f60-37b4-9c94-1116ecde1d2a",
@@ -53,6 +53,16 @@
       "product_version": "patch: 0:3.8.10-4.el9_8"
     },
     {
+      "id": "07f79bc8-fe2e-3b91-a515-e58e9796d44d",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782951012"
+    },
+    {
       "id": "0c73beeb-5da2-3377-a8f5-68bb5900c54e",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -71,6 +81,16 @@
         }
       },
       "product_version": "patch: 0:3.6.16-8.el8_10.6"
+    },
+    {
+      "id": "24919039-41d4-3cf4-a18e-fd128b66c200",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782951244"
     },
     {
       "id": "43945142-cf4b-3560-86ff-362e092073e2",
@@ -133,6 +153,16 @@
       "product_version": "patch: 0:3.6.16-7.el8_8.4"
     },
     {
+      "id": "68f37e5e-be7b-3e05-9d58-1659586f60f0",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1782951051"
+    },
+    {
       "id": "6e353928-103e-3737-81b2-f0a53d046d93",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -163,6 +193,16 @@
       "product_version": "patch: 1782159791"
     },
     {
+      "id": "899d437b-caf9-37dc-a3d1-1bce030b262a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.7.6-21.el9_2.7"
+    },
+    {
       "id": "8ca950dd-5f18-335c-aa94-72b71788debe",
       "product": {
         "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
@@ -181,6 +221,16 @@
         }
       },
       "product_version": "patch: 0:3.6.16-5.el8_6.5"
+    },
+    {
+      "id": "9f5ffd56-b9dc-35b4-be06-00f40d3455f0",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.3.29-9.el7_9.1"
     },
     {
       "id": "a59d9dea-8722-3cca-a940-fa6b09bff08d",

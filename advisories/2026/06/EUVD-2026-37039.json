@@ -3,7 +3,7 @@
   "enisaUuid": "efb50b0d-5294-330e-85e7-10ac79070af5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: fix pedit partial COW leading to page cache corruption\n\ntcf_pedit_act() computes the COW range for skb_ensure_writable()\nonce before the key loop using tcfp_off_max_hint, but the hint does\nnot account for the runtime header offset added by typed keys. This\ncan leave part of the write region un-COW'd.\n\nFix by moving skb_ensure_writable() inside the per-key loop where\nthe actual write offset is known, and add overflow checking on the\noffset arithmetic. For negative offsets (e.g. Ethernet header edits\nat ingress), use skb_cow() to COW the headroom instead. Guard\noffset_valid() against INT_MIN, where negation is undefined.",
   "datePublished": "Jun 16, 2026, 6:26:21 AM",
-  "dateUpdated": "Aug 5, 2026, 12:31:25 PM",
+  "dateUpdated": "Aug 24, 2026, 12:06:51 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
