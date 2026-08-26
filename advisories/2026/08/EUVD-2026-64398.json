@@ -3,12 +3,14 @@
   "enisaUuid": "eefb9798-23ea-3828-aca8-a28686a3a14d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (pmbus) Fix type confusion in notification logic\n\nSashiko reports:\n\nAt the start of the loop in pmbus_notify(), the code unconditionally casts\nevery attribute to a struct sensor_device_attribute:\n\ndrivers/hwmon/pmbus/pmbus_core.c:pmbus_notify() {\n    for (i = 0; i < data->num_attributes; i++) {\n        struct device_attribute *da = to_dev_attr(data->group.attrs[i]);\n        struct sensor_device_attribute *attr = to_sensor_dev_attr(da);\n        int index = attr->index;\n...\n}\n\nHowever, data->group.attrs can contain other types like struct\npmbus_samples_reg or struct pmbus_sensor, which only embed a base\nstruct device_attribute.\n\nIf da is a struct pmbus_samples_reg, dev_attr is the last member. Casting\nit to struct sensor_device_attribute and reading the index field appears\nto access memory past the end of the allocation, which might trigger a\nslab-out-of-bounds read.\n\nAdditionally, if da is a struct pmbus_sensor, casting it causes the index\nfield to overlap with the page, phase, and reg fields. Could this produce\na garbage mask on little-endian systems that spuriously matches the target\nreg, page, and flags during an alert?\n\nFix the problem by using struct sensor_device_attr in struct pmbus_sensor\nand struct pmbus_label. Since those attributes never trigger a\nnotification, set the value of attr->index to -1 for them. Use this value\nto distinguish from boolean attributes which _can_ trigger a notification\nand use the index field to encode mask, page, and register values.",
   "datePublished": "Aug 22, 2026, 3:33:07 PM",
-  "dateUpdated": "Aug 22, 2026, 3:33:07 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:53 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/821f6416e69782fa662aff94b5ea52c943042790\nhttps://git.kernel.org/stable/c/0b121de89a99c54bcf516999b04e8531c84f08d5\nhttps://git.kernel.org/stable/c/59bd68ab05a8f9c9a60b6ec44682084184803ff4\n",
   "aliases": "CVE-2026-74711\nGHSA-vxvv-ch48-4fvp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "4491526d-6701-3e23-9a0e-d3d3c7b19abb",

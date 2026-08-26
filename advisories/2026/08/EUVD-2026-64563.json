@@ -3,12 +3,14 @@
   "enisaUuid": "977ef152-c056-3fc1-b785-a31c792d5a25",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: ntb_netdev: Preserve RX queue depth on allocation failure\n\nntb_netdev_rx_handler() hands the received skb to the network stack\nbefore allocating its replacement. If the allocation fails, nothing is\nreposted. Every failure therefore takes one buffer out of the RX queue\nwhile the interface remains up, and enough failures eventually stall\nreception.\n\nA retry path could refill the queue later, but ntb_netdev has none.\nAllocate the replacement first instead. If that fails, drop the packet\nand repost the same skb. This keeps the queue full and lets packet\ndelivery resume as soon as memory is available again.",
   "datePublished": "Aug 22, 2026, 3:32:08 PM",
-  "dateUpdated": "Aug 23, 2026, 12:47:50 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:40:49 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a4e340971fe8ccd245d206db4d43b2a0eec240bd\nhttps://git.kernel.org/stable/c/755fd7843f300d724caceabdf9bb13adc8701540\nhttps://git.kernel.org/stable/c/d2121faf133ac3bf9531b53a7e21273649a08517\n",
   "aliases": "CVE-2026-74626\nGHSA-2vc2-fj43-9qhc\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1f16021d-2b68-3df7-bb74-359c2799af81",

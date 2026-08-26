@@ -3,12 +3,14 @@
   "enisaUuid": "2dcc01c9-916b-311f-8425-e90c036f836a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_flow_table: drop existing skb dst before skb_dst_set_noref()\n\nIncoming skbs passing through netfilter flowtable offload hooks (or XFRM\noffload path) might already carry a ref-counted dst_entry assigned during\nearlier RX or routing steps.\n\nCalling skb_dst_set_noref() when skb already holds a ref-counted dst\noverwrites skb->_skb_refdst, leaking the previous dst_entry reference\ncount and triggering a DEBUG_NET_WARN_ON_ONCE assertion in\nskb_dst_check_unset():\n\n  WARNING: at skb_dst_check_unset include/linux/skbuff.h:1170\n  WARNING: at skb_dst_set_noref include/linux/skbuff.h:1234\n  WARNING: at nf_flow_offload_ip_hook+0xf6c/0x2b60 net/netfilter/nf_flow_table_ip.c:864\n\nDrop any existing dst_entry reference with skb_dst_drop(skb) before\nsetting the non-referenced flowtable destination.",
   "datePublished": "Aug 22, 2026, 3:32:57 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:57 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:38 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/12afa450a6a6c0cce2c42b7545a9958f62d8a00c\nhttps://git.kernel.org/stable/c/538e67e8c7889cf5f93951f5309d1bcb41f86036\nhttps://git.kernel.org/stable/c/8aecf0bbcc72605592134c917c222207d8f63ab0\n",
   "aliases": "GHSA-cx4h-xjm7-pqxp\nCVE-2026-74695\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0ecd7741-24a0-34a8-bbc3-b53195877d9e",

@@ -3,12 +3,14 @@
   "enisaUuid": "6af4e57b-be14-3ab9-95b5-51bce815dd3f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: avoid out-of-bounds write in ip_vs_nat_icmp\n\nSashiko warns that local attacker can modify the packet\nwhile it is processed by IPVS. Some places read the\nIP ihl field multiple times which can cause out-of-bounds\naccess. One such place is ip_vs_nat_icmp where we\ncan write after the validated area.\n\nFix it by providing ciph argument just like it is done for\nIPv6 and use ciph->len as offset to the embedded transport\nheader.\n\nModify some IPv4 header checks by reading the ihl field\nonly once.",
   "datePublished": "Aug 22, 2026, 3:33:15 PM",
-  "dateUpdated": "Aug 22, 2026, 3:33:15 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:42:04 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3b8f79af0e98f27b932b0b416e9c52b692d31ff9\nhttps://git.kernel.org/stable/c/3c779b258c9c3c3567af68d4f45c2f751f35bd0e\nhttps://git.kernel.org/stable/c/be65fa324640c7a95e30b146159a2be5cc73f22e\nhttps://git.kernel.org/stable/c/a69a4b3fff5814d079beff9a1e9d369994b2ed47\nhttps://git.kernel.org/stable/c/243d0187ec4c3837b9b0004f18d1068e46115760\nhttps://git.kernel.org/stable/c/646922a0379496154e8c8faca4f8e2fd9100cacc\n",
   "aliases": "CVE-2026-74724\nGHSA-qcch-2r2r-xcw2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0259a556-f8a8-3040-acb3-538ddcc74e63",

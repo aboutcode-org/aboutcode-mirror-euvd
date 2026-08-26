@@ -1,0 +1,44 @@
+{
+  "id": "EUVD-2026-65497",
+  "enisaUuid": "93f84cf3-29aa-33fd-ac28-c8489b99f22f",
+  "description": "PraisonAI is a multi-agent teams system. Prior to praisonaiagents 1.6.58, AgentServer exposes ServerConfig.auth_token but AgentServer._create_app does not check it on any route. A remote caller can subscribe, publish, and perform other actions without a valid bearer token or X-Auth-Token even when authentication is configured. This issue is fixed in version 1.6.58.",
+  "datePublished": "Aug 25, 2026, 2:32:05 PM",
+  "dateUpdated": "Aug 25, 2026, 6:17:51 PM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
+  "references": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-7g3p-92qq-8wvh\nhttps://github.com/MervinPraison/PraisonAI/commit/2f9677abb2ea68eab864ee8b6a828fd0141612e1\nhttps://github.com/MervinPraison/PraisonAI/releases/tag/v4.6.58\n",
+  "aliases": "GHSA-7g3p-92qq-8wvh\nCVE-2026-55528\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "1db765b6-0dc6-3d44-9eae-a1359fb283e2",
+      "product": {
+        "name": "PraisonAI",
+        "vendor": {
+          "name": "mervinpraison"
+        }
+      },
+      "product_version": "< 4.6.58"
+    },
+    {
+      "id": "a9371ce2-81ea-3abd-92ba-e6cb66e262f7",
+      "product": {
+        "name": "praisonaiagents",
+        "vendor": {
+          "name": "mervinpraison"
+        }
+      },
+      "product_version": "< 1.6.58"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d1c05f70-28c3-387e-a97b-cb675fc132a3",
+      "vendor": {
+        "name": "mervinpraison"
+      }
+    }
+  ]
+}

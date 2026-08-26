@@ -3,12 +3,14 @@
   "enisaUuid": "acef8c73-fe3f-3dd0-817d-96a752708900",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npacket: synchronize pressure clearing with ring reconfiguration\n\npacket_set_ring() updates the RX ring state under sk_receive_queue.lock,\nbut used to publish the tpacket receive mode through po->prot_hook.func\nafter releasing that lock. packet_poll() and packet_recvmsg() can then\nrun the pressure clearing path after the ring has been cleared while\nstill seeing tpacket_rcv, causing __packet_rcv_has_room() to dereference\nstale or NULL ring storage.\n\nMove the existing receive hook assignment into the same\nsk_receive_queue.lock section as the ring state update. Keep the\nassignment otherwise unchanged, including on TX ring reconfiguration, to\navoid adding behavior changes that are not required for the fix.\n\nSerialize packet_recvmsg() pressure clearing with the same queue lock\nonly after PACKET_SOCK_PRESSURE has been observed. If the flag is clear\nand the socket has moved away from tpacket_rcv, packet_set_ring() has\nalready detached the socket and waited for synchronize_net(), so no new\npacket input can set the flag again.\n\npacket_poll() already holds sk_receive_queue.lock, so it uses the new\nunlocked helper directly.",
   "datePublished": "Aug 22, 2026, 3:32:38 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:38 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:20 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cf8189b82bb93f219ab740e0346c919ad65ada62\nhttps://git.kernel.org/stable/c/ad740b4990347521f0db260d381f9f74e7b340ba\nhttps://git.kernel.org/stable/c/2c7b5eb87b2b288cdbde825f21d2b83b2f5da747\nhttps://git.kernel.org/stable/c/a08196c3cc105947746ec21309edfbb60275fcdb\nhttps://git.kernel.org/stable/c/1a35da325cac4d5bcad76a2aa943408a6f1d9000\n",
   "aliases": "GHSA-qv67-9r8f-5pqx\nCVE-2026-74666\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "05123e31-48cc-3cf7-bb17-38f25f301d61",

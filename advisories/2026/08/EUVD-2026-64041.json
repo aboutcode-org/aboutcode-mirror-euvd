@@ -3,14 +3,14 @@
   "enisaUuid": "5b44ff5f-5a1a-39d6-87c9-d62de277b060",
   "description": "Unleash is an open-source feature management platform. Prior to 7.5.2, 7.6.5, and 8.0.2, the shared OpenAPI validation error path in src/lib/error/bad-data-error.ts passes a raw request value from lodash.get to JSON.stringify in genericErrorMessage and fromOpenApiValidationErrors without guarding stack exhaustion. An unauthenticated attacker can send a roughly 10 KB JSON value nested thousands of levels deep to POST /edge/validate, POST /edge/issue-token, or another OpenAPI-validated endpoint, causing RangeError: Maximum call stack size exceeded in openAPIValidationMiddleware and terminating the Node process because no uncaughtException handler recovers it. Replaying the request can sustain a complete service outage. This issue is fixed in versions 7.5.2, 7.6.5, and 8.0.2.",
   "datePublished": "Aug 21, 2026, 6:12:32 PM",
-  "dateUpdated": "Aug 21, 2026, 6:12:32 PM",
+  "dateUpdated": "Aug 25, 2026, 5:33:23 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://github.com/Unleash/unleash/security/advisories/GHSA-r5pq-6chh-j3xp\nhttps://github.com/Unleash/unleash/commit/b0e4da63249a9403bc209e0581db223326cb8dcf\nhttps://github.com/Unleash/unleash/commit/d45f99df924c0d24747b3e45e46fcda7dcd3c1c1\nhttps://github.com/Unleash/unleash/commit/d862562a5ab8f2d1e40f6519c64cf0b4fdaf806d\nhttps://github.com/Unleash/unleash/releases/tag/v7.5.2\nhttps://github.com/Unleash/unleash/releases/tag/v7.6.5\nhttps://github.com/Unleash/unleash/releases/tag/v8.0.2\n",
   "aliases": "CVE-2026-63462\nGHSA-r5pq-6chh-j3xp\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "2106f3ec-3600-3db6-8845-ee4288e83b95",

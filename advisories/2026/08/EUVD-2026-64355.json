@@ -3,12 +3,14 @@
   "enisaUuid": "78b8dcdc-9cbb-3ae2-9be3-25605c14d97d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npacket: use consistent hard_header_len in TX_RING send path\n\ntpacket_snd() reads dev->hard_header_len independently for skb\nallocation and header construction in tpacket_fill_skb(). Concurrent\nnetdevice reconfiguration can therefore make the reserved headroom\nsmaller than the amount later pushed, or make copylen - hard_header_len\nnegative.\n\nSnapshot hard_header_len once before processing ring frames and use it\nfor the frame limit, headroom allocation, copy length, and skb\nconstruction. Pass the snapshot to tpacket_fill_skb().\n\nThe separate SOCK_DGRAM consistency problem between hard_header_len and\nheader_ops->create is not addressed here.",
   "datePublished": "Aug 22, 2026, 3:32:39 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:39 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:22 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d85d2fd54e901637c81d847811e03c662aee13cd\nhttps://git.kernel.org/stable/c/016763e829cac37b3234eace86fd0a4c560de4a7\nhttps://git.kernel.org/stable/c/27e068d1b35dbec10a3cf268887c94407be4badc\nhttps://git.kernel.org/stable/c/d48ea5c9c4c34dc0df621f0e39ed3a16b644621a\nhttps://git.kernel.org/stable/c/21b5953e7494c16a42e6cd8cf110e18d13ae4a6b\n",
   "aliases": "GHSA-j5cf-5xp4-r57f\nCVE-2026-74668\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0f874ee1-e015-3a9e-aedd-d4b726ff6d17",

@@ -3,12 +3,14 @@
   "enisaUuid": "9cdddfc3-9d73-3062-87bf-c96c01c811bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Serialize accesses to the owner and mirror list with separate lock\n\nInteraction between KVM_CAP_VM_MOVE_ENC_CONTEXT_FROM and\nKVM_CAP_VM_COPY_ENC_CONTEXT_FROM can cause two separate issues:\n\n- in sev_migrate_from(), when the destination KVM is a mirror, the mirror\n  entry is moved from the source's list to the owner's mirror_vms list,\n  without holding the owner's lock unlike other writers of the owner's\n  mirror list (sev_vm_copy_enc_context_from(), sev_vm_destroy()).\n  A concurrent COPY or destroy can race with sev_migrate_from() and\n  corrupt the list.\n\n- In sev_vm_destroy(), the *owner* is still active and could receive\n  concurrently a KVM_CAP_VM_MOVE_ENC_CONTEXT_FROM that causes\n  sev->enc_context_owner to change.  In this case the incorrect VM\n  receives kvm_put_kvm().\n\nThe second issue needs particular care because the owner could disappear\naltogether (even though the race window is impossibly small) between\nreading it and locking it.  There is thus no way to perform the checks\nunder the owner lock without putting struct kvm under SLAB_TYPESAFE_BY_RCU\n(which would allow kvm_get_kvm_safe() under RCU critical section).\n\nIt is much simpler to just use a global lock, since the critical\nsections are so small and the new lock is always a leaf lock.",
   "datePublished": "Aug 22, 2026, 3:31:54 PM",
-  "dateUpdated": "Aug 23, 2026, 12:47:44 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:40:32 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7943ec3a6d0e7e0a2eb4943300bce089ac3e8c3e\nhttps://git.kernel.org/stable/c/28afde1edbd8b20058cbf4d75fb57876471ec334\nhttps://git.kernel.org/stable/c/328ab4fabe05af004d886659f8744076e320ddce\nhttps://git.kernel.org/stable/c/47976eaaf0a4eb46dade48b3246779090db9e3ec\nhttps://git.kernel.org/stable/c/d728baba0f20e49439fc7831bf3e4e7dee82161a\nhttps://git.kernel.org/stable/c/1d78d33275ef2a16c6d080910b291d0a97a0e613\n",
   "aliases": "GHSA-v5cv-jrwx-xxrg\nCVE-2026-74607\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0d7ed3c7-9d76-3933-a460-334755a38fb2",

@@ -3,12 +3,14 @@
   "enisaUuid": "9c5c57f3-b54a-3f91-9634-b2630f8ca619",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/dibs: Correct freeing of dmb_clientid_arr\n\nA dibs device interrupt handler can be active after dibs_dev_del() and\nmay still access dmb_clientid_arr. (UAF)\n\nIn case of a failure in dibs_dev_add() being called by dibs_lo_dev_probe()\ndmb_clientid_arr is freed twice (double free).\n\nFree dmb_clientid_arr in dibs_dev_release() after last reference is gone.\nNote that allocating in dibs_dev_add() instead of dibs_dev_alloc() is ok\nfor now, because no dmbs can be registered before dibs_dev_add().",
   "datePublished": "Aug 22, 2026, 3:32:10 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:10 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:40:53 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ece6426b61241e9bfb41aa131f235168f55229b1\nhttps://git.kernel.org/stable/c/7a1df20a8d2cc89e3a442b6e0b43b1cacde8d403\nhttps://git.kernel.org/stable/c/9e6869be49064915edb6c8776b27c376cfdb0df5\n",
   "aliases": "CVE-2026-74629\nGHSA-8jrf-fhpg-2ggp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "384638a6-a284-32ed-8dc0-6ad9f9beaa7f",

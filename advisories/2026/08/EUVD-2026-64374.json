@@ -3,12 +3,14 @@
   "enisaUuid": "4d54a266-d397-353e-8f5c-8cc6df3e064e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwatchdog: at91sam9_wdt: prevent timer rearm during teardown\n\nat91_ping() rearms the watchdog timer from its callback. timer_delete()\nneither waits for a running callback nor prevents it from rearming the\ntimer, so probe failure or driver removal can leave the timer accessing the\ndevm-allocated at91wdt after it has been freed.\n\nUse timer_shutdown_sync() on both teardown paths. It waits for a running\ncallback and rejects any attempt by the callback to rearm the timer.",
   "datePublished": "Aug 22, 2026, 3:32:52 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:52 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:31 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/29fe74c9aa69d78c1c6a3930f1d9fc5db71a6eed\nhttps://git.kernel.org/stable/c/b7949b0a7d998013b7ec8617a0ef5b07cca80be4\nhttps://git.kernel.org/stable/c/8444d66aa6b6e7fe0a26fa1a00a11cb4d0523783\n",
   "aliases": "CVE-2026-74687\nGHSA-x3hg-mqqh-m29v\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "4264c65b-8f89-3be7-bb6b-b1e01529e15c",

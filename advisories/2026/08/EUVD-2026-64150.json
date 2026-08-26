@@ -3,14 +3,14 @@
   "enisaUuid": "8ce98974-593d-3a18-8d3e-4aa45ae80baa",
   "description": "kin-openapi is a Go project for handling OpenAPI files. From 0.10.0 until 0.141.0, openapi3filter.convertParseError in openapi3filter/validation_error_encoder.go dereferences e.Parameter.In without checking whether e.Parameter is nil. A malformed non-string scalar field in a multipart/form-data request body produces a nested ParseError with a nil RequestError.Parameter, and applications that render the validation error through openapi3filter.ConvertErrors or ValidationErrorEncoder panic. An unauthenticated client can repeatedly send such requests to deny service when the application lacks a recovery boundary. JSON request bodies and applications that do not use these error-rendering helpers are not affected. This issue is fixed in version 0.141.0.",
   "datePublished": "Aug 21, 2026, 8:43:07 PM",
-  "dateUpdated": "Aug 21, 2026, 8:43:07 PM",
+  "dateUpdated": "Aug 25, 2026, 2:21:42 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://github.com/getkin/kin-openapi/security/advisories/GHSA-mmfr-pmjx-hw9w\nhttps://github.com/getkin/kin-openapi/commit/1d0a337c9b1570fab283be8a04c8af6e43b9a22c\nhttps://github.com/getkin/kin-openapi/releases/tag/v0.141.0\n",
   "aliases": "CVE-2026-76905\nGHSA-mmfr-pmjx-hw9w\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "2eb912c0-e59d-3c85-8987-320ab326f283",

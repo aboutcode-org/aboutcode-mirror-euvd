@@ -3,12 +3,14 @@
   "enisaUuid": "328556a9-171c-3b31-a344-84aa398cc0fe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: pca953x: fix pca953x_irq_bus_sync_unlock regmap lock\n\nLocking is disabled in the regmap config as this driver uses its own\nlock. This means that all calls to regmap functions (read or write) must\nhold the i2c_lock. The function pca953x_irq_bus_sync_unlock() did not do\nthis, and it was therefore possible that multiple threads could cause an\nincorrect register to be read/written.\n\nA previous patch partly fixed this, but only protected the write to the\ninterrupt mask register, and not the read from the direction register.",
   "datePublished": "Aug 22, 2026, 3:33:21 PM",
-  "dateUpdated": "Aug 22, 2026, 3:33:21 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:42:11 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e6a2f5f845f50b0c4299bace5111f56d3390a090\nhttps://git.kernel.org/stable/c/9dc325327babe7f159e84cbe9380a45342da0585\n",
   "aliases": "GHSA-p6rq-qpqh-5f25\nCVE-2026-74733\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "066031f3-2792-3abf-a20b-1d5c95dcc39e",

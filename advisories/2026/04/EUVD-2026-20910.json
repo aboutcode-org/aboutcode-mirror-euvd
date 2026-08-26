@@ -3,11 +3,11 @@
   "enisaUuid": "381d7914-116e-38c7-a246-6bd29366da1e",
   "description": "A flaw was found in libcap. A local unprivileged user can exploit a Time-of-check-to-time-of-use (TOCTOU) race condition in the `cap_set_file()` function. This allows an attacker with write access to a parent directory to redirect file capability updates to an attacker-controlled file. By doing so, capabilities can be injected into or stripped from unintended executables, leading to privilege escalation.",
   "datePublished": "Apr 9, 2026, 2:49:02 PM",
-  "dateUpdated": "Aug 24, 2026, 12:14:09 PM",
+  "dateUpdated": "Aug 25, 2026, 12:05:56 PM",
   "baseScore": 6.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:12423\nhttps://access.redhat.com/errata/RHSA-2026:12441\nhttps://access.redhat.com/errata/RHSA-2026:13285\nhttps://access.redhat.com/errata/RHSA-2026:14162\nhttps://access.redhat.com/errata/RHSA-2026:14937\nhttps://access.redhat.com/errata/RHSA-2026:19130\nhttps://access.redhat.com/errata/RHSA-2026:19346\nhttps://access.redhat.com/errata/RHSA-2026:19456\nhttps://access.redhat.com/errata/RHSA-2026:19458\nhttps://access.redhat.com/errata/RHSA-2026:20595\nhttps://access.redhat.com/errata/RHSA-2026:21254\nhttps://access.redhat.com/errata/RHSA-2026:21275\nhttps://access.redhat.com/errata/RHSA-2026:22634\nhttps://access.redhat.com/errata/RHSA-2026:22957\nhttps://access.redhat.com/errata/RHSA-2026:23233\nhttps://access.redhat.com/errata/RHSA-2026:23245\nhttps://access.redhat.com/errata/RHSA-2026:24346\nhttps://access.redhat.com/errata/RHSA-2026:25044\nhttps://access.redhat.com/errata/RHSA-2026:25096\nhttps://access.redhat.com/errata/RHSA-2026:25181\nhttps://access.redhat.com/errata/RHSA-2026:26542\nhttps://access.redhat.com/errata/RHSA-2026:27998\nhttps://access.redhat.com/errata/RHSA-2026:28887\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30078\nhttps://access.redhat.com/errata/RHSA-2026:30087\nhttps://access.redhat.com/errata/RHSA-2026:30088\nhttps://access.redhat.com/errata/RHSA-2026:30089\nhttps://access.redhat.com/errata/RHSA-2026:34098\nhttps://access.redhat.com/errata/RHSA-2026:39981\nhttps://access.redhat.com/errata/RHSA-2026:7473\nhttps://access.redhat.com/security/cve/CVE-2026-4878\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2447554\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2451615\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:12423\nhttps://access.redhat.com/errata/RHSA-2026:12441\nhttps://access.redhat.com/errata/RHSA-2026:13285\nhttps://access.redhat.com/errata/RHSA-2026:14162\nhttps://access.redhat.com/errata/RHSA-2026:14937\nhttps://access.redhat.com/errata/RHSA-2026:19130\nhttps://access.redhat.com/errata/RHSA-2026:19346\nhttps://access.redhat.com/errata/RHSA-2026:19456\nhttps://access.redhat.com/errata/RHSA-2026:19458\nhttps://access.redhat.com/errata/RHSA-2026:20595\nhttps://access.redhat.com/errata/RHSA-2026:21254\nhttps://access.redhat.com/errata/RHSA-2026:21275\nhttps://access.redhat.com/errata/RHSA-2026:22634\nhttps://access.redhat.com/errata/RHSA-2026:22957\nhttps://access.redhat.com/errata/RHSA-2026:23233\nhttps://access.redhat.com/errata/RHSA-2026:23245\nhttps://access.redhat.com/errata/RHSA-2026:24346\nhttps://access.redhat.com/errata/RHSA-2026:25044\nhttps://access.redhat.com/errata/RHSA-2026:25096\nhttps://access.redhat.com/errata/RHSA-2026:25181\nhttps://access.redhat.com/errata/RHSA-2026:26542\nhttps://access.redhat.com/errata/RHSA-2026:27998\nhttps://access.redhat.com/errata/RHSA-2026:28887\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30078\nhttps://access.redhat.com/errata/RHSA-2026:30087\nhttps://access.redhat.com/errata/RHSA-2026:30088\nhttps://access.redhat.com/errata/RHSA-2026:30089\nhttps://access.redhat.com/errata/RHSA-2026:34098\nhttps://access.redhat.com/errata/RHSA-2026:39981\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:7473\nhttps://access.redhat.com/security/cve/CVE-2026-4878\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2447554\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2451615\n",
   "aliases": "CVE-2026-4878\n",
   "assigner": "redhat",
   "epss": 0.21,
@@ -23,6 +23,16 @@
       "product_version": "patch: 1780681984"
     },
     {
+      "id": "04c0ea98-52b7-3ca5-8c04-71a52181b6ce",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.9.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1778056245"
+    },
+    {
       "id": "05252737-2d3f-32c6-a010-cb45fb453c61",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:2.48-4.el8_6.1"
+    },
+    {
+      "id": "06101ba5-92ca-3f5d-ad14-b14be5731df9",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.9.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1778056267"
     },
     {
       "id": "0c9e8700-3e28-3fe3-a1b9-ed327e9ac41d",
@@ -73,6 +93,16 @@
       "product_version": "patch: 413.92.202606160406-0"
     },
     {
+      "id": "2b8d5901-33ce-3485-88fa-6bdaf9cbf559",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787241211"
+    },
+    {
       "id": "2c0a3f50-192a-317e-8c34-830c43072b48",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -83,6 +113,16 @@
       "product_version": "patch: 1779798165"
     },
     {
+      "id": "33d1dc59-96e7-31ff-81cb-ec3bc5567566",
+      "product": {
+        "name": "Red Hat OpenShift distributed tracing 3.9.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1778056233"
+    },
+    {
       "id": "34a07c63-a6cb-3149-9511-f95e32255af0",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -91,16 +131,6 @@
         }
       },
       "product_version": "patch: 1782166952"
-    },
-    {
-      "id": "36b782e2-4cfc-3020-b722-b5d30f676680",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1778056245"
     },
     {
       "id": "4b19a970-72bb-39ee-b89e-aff13c92f11f",
@@ -213,6 +243,16 @@
       "product_version": "patch: 1779798164"
     },
     {
+      "id": "8f717ff5-46da-3f26-8046-d8da2f565df8",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787135742"
+    },
+    {
       "id": "8fd185f5-31b8-39df-9a5d-cb7292d4a0e3",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -273,16 +313,6 @@
       "product_version": "patch: 0:2.69-7.el10_0.1"
     },
     {
-      "id": "b04070e8-476c-3461-a15b-e1d5124732f9",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1778056267"
-    },
-    {
       "id": "b094072b-a59a-3281-84ca-b18709bdc40d",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.19",
@@ -301,6 +331,16 @@
         }
       },
       "product_version": "patch: 1782159791"
+    },
+    {
+      "id": "bcaad7e8-1182-3cc1-9f9f-9eabfd3f10d8",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787241260"
     },
     {
       "id": "becbe2a5-8983-31c7-a47f-ba03c02a8681",
@@ -361,16 +401,6 @@
         }
       },
       "product_version": "patch: 414.92.202606231112-0"
-    },
-    {
-      "id": "ded60447-4561-36a9-8ca1-9521c03e6f49",
-      "product": {
-        "name": "Red Hat OpenShift distributed tracing 3.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1778056233"
     },
     {
       "id": "e1e0958b-6c10-35fb-b2ae-320d1212e851",

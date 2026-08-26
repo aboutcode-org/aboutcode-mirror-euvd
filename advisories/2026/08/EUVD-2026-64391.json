@@ -3,12 +3,14 @@
   "enisaUuid": "fa4fc9ef-02d2-37b2-a496-5692fd7dc4a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_cake: drop WARN_ON(1) for malformed packets in ACK filter\n\nThe sch_cake ACK filter parses packets to find the TCP header and filter\nduplicated ACKs if the flow is backlogged. The parsing code contains a\nWARN_ON(1) which can be triggered by a malformed IP header in certain\ncases. Depending on the system configuration, this leads either to\neither spamming dmesg with warnings, or a panic if panic_on_warn is set.\n\nThe code already correctly skips the offending packet in the branch that\ntriggers the warning, so the WARN_ON itself doesn't really serve any\npurpose. So just drop it altogether to avoid the inconvenient side\neffects.",
   "datePublished": "Aug 22, 2026, 3:33:03 PM",
-  "dateUpdated": "Aug 22, 2026, 3:33:03 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:47 AM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c1693b7844a6c06d31a565e5a494948034dfd235\nhttps://git.kernel.org/stable/c/a4b52612004a5639c4bfc30ba93ba414b8326e2a\nhttps://git.kernel.org/stable/c/ae1b2f8e21a41e7c7e75511bea0c4ccc59ec1bd3\nhttps://git.kernel.org/stable/c/0c4882bff34558d8d53fb04c3e96da5c327c7dc8\nhttps://git.kernel.org/stable/c/2504a76e5c0694e14e15562730e1339f2d9f9458\nhttps://git.kernel.org/stable/c/cd2f1d9fe8a507c2dc86ad326fe221f121c47734\nhttps://git.kernel.org/stable/c/a1ae353d8355407c1bea971d1c1af5e7f242bb7d\nhttps://git.kernel.org/stable/c/2a33516f9ef59ad11844d4fc152f889449b5daf3\n",
   "aliases": "GHSA-5x69-69gj-gg3f\nCVE-2026-74704\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0a765da5-3144-35f1-a71d-e63b12bbf6ff",

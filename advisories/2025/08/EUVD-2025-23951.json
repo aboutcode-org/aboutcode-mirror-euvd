@@ -3,7 +3,7 @@
   "enisaUuid": "cd072336-5336-3c51-8083-7208e80ec989",
   "description": "Early versions of Operator-SDK provided an insecure method to allow operator containers to run in environments that used a random UID. Operator-SDK before 0.15.2 provided a script, user_setup, which modifies the permissions of the /etc/passwd file to 664 during build time. Developers who used Operator-SDK before 0.15.2 to scaffold their operator may still be impacted by this if the insecure user_setup script is still being used to build new container images. \n\nIn affected images, the /etc/passwd file is created during build time with group-writable permissions and a group ownership of root (gid=0). An attacker who can execute commands within an affected container, even as a non-root user, may be able to leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container.",
   "datePublished": "Aug 7, 2025, 7:05:08 PM",
-  "dateUpdated": "Aug 24, 2026, 9:16:40 AM",
+  "dateUpdated": "Aug 25, 2026, 9:26:09 AM",
   "baseScore": 6.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",

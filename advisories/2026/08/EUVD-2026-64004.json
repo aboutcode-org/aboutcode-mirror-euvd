@@ -3,12 +3,14 @@
   "enisaUuid": "befead0d-3b26-35b3-8786-2178ac4a6966",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npacket: use consistent hard_header_len in non-ring send paths\n\npacket_snd() reads dev->hard_header_len multiple times while allocating\nand constructing an skb. Device reconfiguration can change this value\nconcurrently, for example through bonding device type changes.\n\nFor SOCK_RAW, packet_snd() can save a larger value in reserve and later\nallocate headroom using a smaller value. Moving skb->data back by reserve\nthen places it before skb->head, and the following copy from userspace can\nattempt an out-of-bounds write.\n\npacket_sendmsg_spkt() has the same issue because it calculates its\nreservation and header offset from separate reads before dropping the RCU\nread lock to allocate the skb.\n\nAdd LL_RESERVED_SPACE_EX() for callers that already saved a header length.\nRead hard_header_len once in packet_snd() and use it for allocation and\nconstruction. In packet_sendmsg_spkt(), preserve the allocation-time value\nthrough the device lookup retry.\n\nThe separate SOCK_DGRAM consistency problem between hard_header_len and\nheader_ops->create is not addressed here.",
   "datePublished": "Aug 21, 2026, 4:31:55 PM",
-  "dateUpdated": "Aug 21, 2026, 4:31:55 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:40:08 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/91f041451f967cd87ed722a8f43c0b767a64f1a0\nhttps://git.kernel.org/stable/c/9052756290962ffb9a661bcf319e92dedaaedfed\nhttps://git.kernel.org/stable/c/5bb10753d428aadfc356a2bfe9acea09c82a62ec\nhttps://git.kernel.org/stable/c/b06b6fce6d7deaf7238e09b48ce3b1125ff41acd\nhttps://git.kernel.org/stable/c/03390aa32e669cc4ecd7d34108e2e1afc13d689d\n",
   "aliases": "CVE-2026-74582\nGHSA-6g47-hqw2-hv2r\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0b3a137e-48be-34c3-9899-7209194c0b57",

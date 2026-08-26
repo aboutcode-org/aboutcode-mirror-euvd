@@ -3,12 +3,14 @@
   "enisaUuid": "6fcfc9d1-3d64-3311-a0c6-c3fb57ee6594",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: reject overly deep qdisc hierarchies\n\nDeep qdisc hierarchies can lead to excessive recursion in qdisc tree\nwalkers and exhaust the kernel stack. The existing loop check does not\ncover the create-and-graft path, so a hierarchy can still be extended by\ncreating a new child qdisc below an already deep parent.\n\nStore the hierarchy depth in struct Qdisc and update it when qdiscs are\ngrafted. Reject new child qdiscs once the parent is already at the maximum\nallowed depth.",
   "datePublished": "Aug 22, 2026, 3:32:35 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:35 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 25, 2026, 5:41:17 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9f69bb9fdaa2fe64b68bb62fb84d405784bee540\nhttps://git.kernel.org/stable/c/8ca8cdb74939581339e1ae370193c0adb5a85336\nhttps://git.kernel.org/stable/c/2759acf08a3454866660edcd3ef4e64139f254a6\nhttps://git.kernel.org/stable/c/a4b14a4df29d36458a943f9b521ddd0f940363cc\nhttps://git.kernel.org/stable/c/e2d658c6427844cee5bc654b436ca68d680b6148\nhttps://git.kernel.org/stable/c/dedd34b0f2310e28c5f6d4875cfbf4b7ed821c01\n",
   "aliases": "GHSA-qwcm-6g6c-27vm\nCVE-2026-74663\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "14274eba-a4d3-3d66-94f8-823a81e40de5",
