@@ -3,14 +3,52 @@
   "enisaUuid": "bc5ae2b8-1f4a-3815-9dd4-1148b2ba6233",
   "description": "A flaw was found in the submariner-operator component. The `submariner-k8s-broker-cluster` Role, which is assigned to joined clusters, possesses excessive permissions. This allows a compromised cluster to alter network configurations, specifically by overwriting other clusters' endpoint information. Consequently, an attacker can redirect inter-cluster tunnel traffic, enabling a Man-in-the-Middle (MITM) attack across the entire cluster mesh.",
   "datePublished": "Aug 18, 2026, 5:32:00 PM",
-  "dateUpdated": "Aug 18, 2026, 6:45:01 PM",
+  "dateUpdated": "Aug 26, 2026, 9:36:22 PM",
   "baseScore": 9.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-66780\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2507524\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:60386\nhttps://access.redhat.com/errata/RHSA-2026:60389\nhttps://access.redhat.com/errata/RHSA-2026:60390\nhttps://access.redhat.com/security/cve/CVE-2026-66780\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2507524\n",
   "aliases": "CVE-2026-66780\nGHSA-3xmh-phwc-5f4g\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.24,
+  "enisaIdProduct": [
+    {
+      "id": "67a054b2-bb67-3ed1-be2f-ca4c6919516c",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787362658"
+    },
+    {
+      "id": "68b95314-c18b-344b-b75f-2e9903d12cce",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.15",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787362733"
+    },
+    {
+      "id": "d080d4fc-d7ea-38b5-8304-cff8220a1015",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.13",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787365971"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "d35c6ecf-6ab4-376f-876e-db49cf6c61dc",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

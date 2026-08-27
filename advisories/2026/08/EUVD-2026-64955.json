@@ -3,14 +3,14 @@
   "enisaUuid": "4ec1b8db-7c03-30b8-9607-d22401bdb21e",
   "description": "rConfig Core 8.0.0 before 8.2.13 contains an authentication bypass vulnerability that allows unauthenticated attackers to self-register accounts with full Administrator privileges due to a duplicate bare Auth::routes() call in routes/web.php that re-enables the POST /register route after it was explicitly disabled. Attackers can register a new account that is immediately authenticated with Admin-level access because the registration controller does not assign a role and the users.role column defaults to Admin, enabling access to stored device credentials, user data, and API token issuance.",
   "datePublished": "Aug 24, 2026, 4:11:44 PM",
-  "dateUpdated": "Aug 25, 2026, 12:43:19 PM",
+  "dateUpdated": "Aug 26, 2026, 4:15:08 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/rconfig/rconfig/security/advisories/GHSA-w3hx-9cxg-5ccr\nhttps://github.com/rconfig/rconfig/releases#release-core-8.2.10\nhttps://www.vulncheck.com/advisories/rconfig-unauthorized-admin-registration-via-web-php\n",
   "aliases": "GHSA-3xhw-7rxv-vwc7\nCVE-2026-77915\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.41,
   "enisaIdProduct": [
     {
       "id": "47120aab-1dc5-3136-bc7d-d3d6b757366d",

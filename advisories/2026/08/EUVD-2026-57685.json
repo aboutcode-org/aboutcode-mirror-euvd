@@ -3,14 +3,52 @@
   "enisaUuid": "ee30064c-b4bf-37a4-8d63-8af52eeb7a9e",
   "description": "A flaw was found in the `search-v2-operator` component. A user with specific administrative permissions on a managed cluster can exploit a vulnerability that allows them to inject arbitrary configuration data. This manipulation can override critical settings, leading to the replacement of container images. This ultimately results in container image injection on the managed cluster, potentially compromising its integrity.",
   "datePublished": "Aug 12, 2026, 9:40:09 PM",
-  "dateUpdated": "Aug 13, 2026, 1:35:44 PM",
+  "dateUpdated": "Aug 26, 2026, 9:37:21 PM",
   "baseScore": 8.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-71473\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2512152\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:60386\nhttps://access.redhat.com/errata/RHSA-2026:60389\nhttps://access.redhat.com/errata/RHSA-2026:60390\nhttps://access.redhat.com/security/cve/CVE-2026-71473\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2512152\n",
   "aliases": "GHSA-mm7v-f498-mqrj\nCVE-2026-71473\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.26,
+  "enisaIdProduct": [
+    {
+      "id": "69dee366-3b06-38cc-850b-ea7ac6fb9727",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.15",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787681674"
+    },
+    {
+      "id": "b450591b-e6c8-34dd-a7ff-1ecc6a836631",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.13",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787682112"
+    },
+    {
+      "id": "c3e0b795-c332-37eb-960c-60148f98589f",
+      "product": {
+        "name": "Red Hat Advanced Cluster Management for Kubernetes 2.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787681651"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "2ee6a83c-d43c-3be8-8bd4-e1103e51ce01",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

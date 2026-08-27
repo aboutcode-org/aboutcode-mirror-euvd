@@ -1,0 +1,100 @@
+{
+  "id": "EUVD-2026-66558",
+  "enisaUuid": "23aec426-9204-3736-a4ce-5a7f3ccef6e6",
+  "description": "Http4s is a Scala interface for HTTP services. Prior to 0.23.35 and 1.0.0-M47, an unauthenticated HTTP/2 peer can cause an out-of-memory denial of service in the Ember backend with HTTP/2 enabled. The Hpack wrapper in ember-core/shared/src/main/scala/org/http4s/ember/core/h2/Hpack.scala concatenates HEADERS and CONTINUATION frame fragments and decodes them into a single List, but maxHeaderSize accounting does not include indexed headers or HPACK per-header overhead. A small compressed header block can therefore expand into a much larger decoded representation that remains in memory for processing. Servers exposed to untrusted HTTP/2 traffic and clients directed to an untrusted HTTP/2 server are affected, and concurrent malicious connections can exhaust the process heap. This issue is fixed in versions 0.23.35 and 1.0.0-M47.",
+  "datePublished": "Aug 26, 2026, 2:10:22 PM",
+  "dateUpdated": "Aug 26, 2026, 2:10:22 PM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/http4s/http4s/security/advisories/GHSA-vmm3-xgcx-67hm\nhttps://github.com/http4s/http4s/commit/6e8eccd64a6a74ab4811897881e95e0e1b3a818e\nhttps://github.com/http4s/http4s/releases/tag/v0.23.35\nhttps://github.com/http4s/http4s/releases/tag/v1.0.0-M47\n",
+  "aliases": "GHSA-vmm3-xgcx-67hm\nCVE-2026-54556\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "06bcf862-6cfe-3711-b0be-abd6ab09c2dd",
+      "product": {
+        "name": "http4s-ember-core_2.12",
+        "vendor": {
+          "name": "org.http4s"
+        }
+      },
+      "product_version": "< 0.23.35"
+    },
+    {
+      "id": "5d266e5b-a0b2-367f-8a71-1ab785dd0849",
+      "product": {
+        "name": "http4s",
+        "vendor": {
+          "name": "http4s"
+        }
+      },
+      "product_version": "1.0.0-M1, < 1.0.0-M46"
+    },
+    {
+      "id": "85f8f520-e766-35b1-9a83-bf51ed9d1486",
+      "product": {
+        "name": "http4s-ember-core_3",
+        "vendor": {
+          "name": "org.http4s"
+        }
+      },
+      "product_version": "< 0.23.35"
+    },
+    {
+      "id": "9cda52c4-a223-3b0f-9bf5-1123cddc921f",
+      "product": {
+        "name": "http4s-ember-core_3",
+        "vendor": {
+          "name": "org.http4s"
+        }
+      },
+      "product_version": "1.0.0-M1, < 1.0.0-M46"
+    },
+    {
+      "id": "ad22430b-3856-3715-ba71-4aa11daad178",
+      "product": {
+        "name": "http4s",
+        "vendor": {
+          "name": "http4s"
+        }
+      },
+      "product_version": "< 0.23.35"
+    },
+    {
+      "id": "dd3b0987-9ae3-3cd7-bb93-22f68fd2dbb4",
+      "product": {
+        "name": "http4s-ember-core_2.13",
+        "vendor": {
+          "name": "org.http4s"
+        }
+      },
+      "product_version": "< 0.23.35"
+    },
+    {
+      "id": "f1123c21-dd88-3362-83e8-127d90cb4177",
+      "product": {
+        "name": "http4s-ember-core_2.13",
+        "vendor": {
+          "name": "org.http4s"
+        }
+      },
+      "product_version": "1.0.0-M1, < 1.0.0-M46"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "95e7f96f-901a-3537-aed1-04c011de1afc",
+      "vendor": {
+        "name": "org.http4s"
+      }
+    },
+    {
+      "id": "9e16d1af-c6bd-33a5-bafa-b1df211ab161",
+      "vendor": {
+        "name": "http4s"
+      }
+    }
+  ]
+}
