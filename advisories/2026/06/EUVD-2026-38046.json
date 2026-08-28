@@ -3,15 +3,25 @@
   "enisaUuid": "e464ae52-6b09-31d2-ba12-c4fae0743ba0",
   "description": "A heap-buffer-overflow read vulnerability was found in libaom, the reference AV1 codec implementation. A missing bounds check in the SVC (Scalable Video Coding) layer ID control function allows setting a spatial_layer_id exceeding the configured number of layers. This causes an out-of-bounds heap read of approximately 40,728 bytes when computing a layer context array index. An attacker who can influence SVC encoder parameters in a network-facing service could exploit this for information disclosure (heap content leak) or denial of service (segmentation fault from hitting unmapped memory).",
   "datePublished": "Jun 19, 2026, 4:28:33 PM",
-  "dateUpdated": "Aug 18, 2026, 12:05:35 PM",
+  "dateUpdated": "Aug 27, 2026, 3:17:51 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/security/cve/CVE-2026-56210\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490801\nhttps://issues.chromium.org/issues/503975732\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/security/cve/CVE-2026-56210\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490801\nhttps://issues.chromium.org/issues/503975732\n",
   "aliases": "GHSA-xpjh-7q9g-cgj5\nCVE-2026-56210\n",
   "assigner": "redhat",
   "epss": 0.29,
   "enisaIdProduct": [
+    {
+      "id": "0af606e8-9178-3c56-b83a-1cc85f273505",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787077779"
+    },
     {
       "id": "3c660cf4-db00-3414-88dd-095897548095",
       "product": {
@@ -33,6 +43,26 @@
       "product_version": "patch: 0:3.14.0-1.el9ai"
     },
     {
+      "id": "76a86ede-2131-34bf-a145-d84725761deb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787076778"
+    },
+    {
+      "id": "a95402bd-bceb-33fd-adab-73de2af6106d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1786611800"
+    },
+    {
       "id": "dbbd933c-56a2-30aa-94c7-3d75fc46e215",
       "product": {
         "name": "Red Hat Hardened Images",
@@ -41,6 +71,16 @@
         }
       },
       "product_version": "patch: 3.14.0-0.1.hum1"
+    },
+    {
+      "id": "f50faa4b-3709-3140-adf5-a26724bb774a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787076481"
     },
     {
       "id": "fddfb244-241d-3ea9-81ab-cbd074374d4e",

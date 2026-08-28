@@ -3,9 +3,9 @@
   "enisaUuid": "9d3ec6de-ec57-3bc6-a69d-4f32b9a6f6a1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - fix race condition in reset_device sysfs callback\n\nThe ims_pcu_reset_device() sysfs callback calls ims_pcu_execute_command()\nwithout acquiring pcu->cmd_mutex. This can lead to data races and\ncorruption of the shared command buffer if triggered concurrently with\nother commands.\n\nAcquire pcu->cmd_mutex before calling ims_pcu_execute_command().",
   "datePublished": "Aug 15, 2026, 5:52:26 AM",
-  "dateUpdated": "Aug 23, 2026, 12:46:44 PM",
+  "dateUpdated": "Aug 27, 2026, 12:39:45 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8b9ff928aa71a2ff6f559da45821b64fa4886a75\nhttps://git.kernel.org/stable/c/0fb84b1a3cdc74c453abc5f961c7d318c267ea4c\nhttps://git.kernel.org/stable/c/129187ec3f868829f61f6f07381ca72fe642d0b7\nhttps://git.kernel.org/stable/c/54c2237fc69541c75fe4cd321622ebb8ecc3587f\nhttps://git.kernel.org/stable/c/f516cba88bf952d847e5c96d0e87f17eaae7ee6f\nhttps://git.kernel.org/stable/c/025955847e1500ced4719ac178beff6a3b2f0e3c\nhttps://git.kernel.org/stable/c/411b8c4b274737c3bf08e1e025801161603cfffc\n",
+  "references": "https://git.kernel.org/stable/c/0fb84b1a3cdc74c453abc5f961c7d318c267ea4c\nhttps://git.kernel.org/stable/c/129187ec3f868829f61f6f07381ca72fe642d0b7\nhttps://git.kernel.org/stable/c/54c2237fc69541c75fe4cd321622ebb8ecc3587f\nhttps://git.kernel.org/stable/c/f516cba88bf952d847e5c96d0e87f17eaae7ee6f\nhttps://git.kernel.org/stable/c/025955847e1500ced4719ac178beff6a3b2f0e3c\nhttps://git.kernel.org/stable/c/411b8c4b274737c3bf08e1e025801161603cfffc\n",
   "aliases": "CVE-2026-72075\nGHSA-h7gg-4wfx-9hw5\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "patch: 6.1.178"
-    },
-    {
-      "id": "6671f059-62aa-3fd4-8de5-b16666b23927",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "628329d52474323938a03826941e166bc7c8eff4 <8b9ff928aa71a2ff6f559da45821b64fa4886a75"
     },
     {
       "id": "79bccff2-daf0-31f6-b8ef-0ea8f08d072b",
@@ -109,16 +99,6 @@
         }
       },
       "product_version": "patch: 6.12.97"
-    },
-    {
-      "id": "bf0d2999-0433-3920-80c5-1969e0afcba4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 5.10.266"
     },
     {
       "id": "c397d3a1-0dfd-32e5-9d68-57bf9231273b",

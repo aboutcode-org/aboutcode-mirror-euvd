@@ -3,11 +3,11 @@
   "enisaUuid": "1915b20d-cace-3525-8e54-e1fb4cdc1cb2",
   "description": "A flaw was found in the Data Science Pipelines Operator (DSPO). A namespace editor can exploit a vulnerability in the spec.database.customExtraParams field, which allows for the injection of dangerous parameters into the MySQL Data Source Name (DSN) string. By manipulating these parameters, an attacker can enable LOCAL INFILE functionality and exfiltrate sensitive files, such as the service account token, from the operator pod. This can lead to privilege escalation, allowing a namespace editor to gain cluster-admin privileges.",
   "datePublished": "Aug 10, 2026, 8:44:33 PM",
-  "dateUpdated": "Aug 12, 2026, 3:41:59 PM",
+  "dateUpdated": "Aug 27, 2026, 3:06:39 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:53261\nhttps://access.redhat.com/errata/RHSA-2026:53262\nhttps://access.redhat.com/errata/RHSA-2026:53263\nhttps://access.redhat.com/security/cve/CVE-2026-18617\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510304\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:53261\nhttps://access.redhat.com/errata/RHSA-2026:53262\nhttps://access.redhat.com/errata/RHSA-2026:53263\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/security/cve/CVE-2026-18617\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510304\n",
   "aliases": "GHSA-g6qh-932v-chpq\nCVE-2026-18617\n",
   "assigner": "redhat",
   "epss": 0.45,
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 1785189332"
+    },
+    {
+      "id": "ef4659aa-0ab4-32cd-b50e-73920fc967d5",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787002057"
     }
   ],
   "enisaIdVendor": [

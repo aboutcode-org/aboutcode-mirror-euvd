@@ -3,15 +3,25 @@
   "enisaUuid": "d71b024d-9c39-3580-977e-b05d13b30b3f",
   "description": "A flaw was found in Feast. The system improperly deserializes user-defined functions (UDFs) stored in its registry, which are serialized using the 'dill' library. This allows a remote attacker to store a malicious UDF, leading to unauthenticated arbitrary code execution on the feature server in default configurations. An authenticated attacker can also achieve arbitrary code execution on the registry server by bypassing authorization checks during deserialization. This vulnerability can result in cross-tenant data access and lateral movement within the system.",
   "datePublished": "Aug 10, 2026, 8:44:56 PM",
-  "dateUpdated": "Aug 19, 2026, 10:21:07 AM",
+  "dateUpdated": "Aug 27, 2026, 3:06:49 PM",
   "baseScore": 9.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:53261\nhttps://access.redhat.com/errata/RHSA-2026:53262\nhttps://access.redhat.com/errata/RHSA-2026:53263\nhttps://access.redhat.com/security/cve/CVE-2026-18948\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2511167\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:53261\nhttps://access.redhat.com/errata/RHSA-2026:53262\nhttps://access.redhat.com/errata/RHSA-2026:53263\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/security/cve/CVE-2026-18948\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2511167\n",
   "aliases": "GHSA-gg2p-37pv-v7fq\nCVE-2026-18948\n",
   "assigner": "redhat",
   "epss": 0.69,
   "enisaIdProduct": [
+    {
+      "id": "10c5d393-2d66-30db-bcac-211040088df6",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787068065"
+    },
     {
       "id": "440cd07a-b34a-36b1-b675-ff278b1bd2e2",
       "product": {
