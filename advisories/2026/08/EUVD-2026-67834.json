@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-67834",
+  "enisaUuid": "2ac4b422-2b2e-37f0-bcdc-5c20df1118e9",
+  "description": "Vikunja is an open-source self-hosted task management platform. Prior to 2.4.0, POST /api/v1/projects/{project}/views/{view}/buckets/{bucket} allows the request body project_view_id value to be mass assigned by Bucket.Update in pkg/models/kanban.go. The permission check validates that the bucket currently belongs to the URL project and view but does not validate the body selected destination view, allowing any authenticated user to relocate an attacker-owned bucket into another tenant\u2019s Kanban view. The injected bucket retains attacker-controlled content and ownership, enabling cross-tenant defacement. This issue is fixed in version 2.4.0.",
+  "datePublished": "Aug 28, 2026, 4:53:59 PM",
+  "dateUpdated": "Aug 28, 2026, 7:55:24 PM",
+  "baseScore": 5.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N",
+  "references": "https://github.com/go-vikunja/vikunja/security/advisories/GHSA-569v-q83c-3j3g\nhttps://github.com/go-vikunja/vikunja/pull/3239\nhttps://github.com/go-vikunja/vikunja/commit/b31d606b8879ebe98fbb2ac5d8b3066b86f59868\nhttps://github.com/go-vikunja/vikunja/releases/tag/v2.4.0\n",
+  "aliases": "GHSA-569v-q83c-3j3g\nCVE-2026-55067\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "3221324a-3a7f-325c-ad47-e8e499a6e417",
+      "product": {
+        "name": "vikunja",
+        "vendor": {
+          "name": "go-vikunja"
+        }
+      },
+      "product_version": "< 2.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cc127239-acca-3fb1-bc93-ff2907b7d158",
+      "vendor": {
+        "name": "go-vikunja"
+      }
+    }
+  ]
+}

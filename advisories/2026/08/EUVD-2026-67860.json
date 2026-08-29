@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-67860",
+  "enisaUuid": "5ef64c8a-ce0e-3126-a7cb-81305d4dbebe",
+  "description": "Bifrost is an enterprise AI gateway for routing requests to model providers. Prior to 1.5.17, the isPublicIP function in core/providers/utils/fetch.go, reached through FetchAndEncodeURL for Bedrock and Vertex image or document URLs, classifies Carrier-Grade NAT 100.64.0.0/10, IPv6 6to4 2002::/16, NAT64 64:ff9b::/96 and 64:ff9b:1::/48, and deprecated IPv6 site-local fec0::/10 addresses as public. A remote attacker who controls a multimodal request URL can make the gateway fetch internal services, including a cloud instance metadata endpoint encoded through 6to4 or NAT64. This issue is fixed in version 1.5.17.",
+  "datePublished": "Aug 28, 2026, 6:24:16 PM",
+  "dateUpdated": "Aug 28, 2026, 7:54:10 PM",
+  "baseScore": 8.7,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/maximhq/bifrost/security/advisories/GHSA-w98g-5w9p-p3rc\nhttps://github.com/maximhq/bifrost/pull/4092\nhttps://github.com/maximhq/bifrost/commit/54ec431fc5255ff42c36420d88549477e0b33d89\nhttps://github.com/maximhq/bifrost/releases/tag/core/v1.5.17\n",
+  "aliases": "CVE-2026-55245\nGHSA-w98g-5w9p-p3rc\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "0ccbcfff-0a01-3420-9482-5f23e9a5780b",
+      "product": {
+        "name": "Bifrost",
+        "vendor": {
+          "name": "brokercap"
+        }
+      },
+      "product_version": "< 1.5.17"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f706157e-fb8e-335a-8331-e2017fa20909",
+      "vendor": {
+        "name": "maximhq"
+      }
+    }
+  ]
+}

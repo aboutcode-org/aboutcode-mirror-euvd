@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-67865",
+  "enisaUuid": "557faef3-d4c7-3cd3-990b-e13f0de35f24",
+  "description": "Protego is a pure-Python robots.txt parser with support for modern conventions. Prior to 0.6.2, protego._urlpattern._URLPattern._prepare_pattern_for_regex translates every asterisk in an Allow or Disallow directive into a lazy regular-expression wildcard, so a directive containing many asterisks creates exponential backtracking. After protego.Protego.parse processes a crafted robots.txt file, protego.Protego.can_fetch can spend an attacker-controlled period matching a near-miss URL and deny service to the crawler. The vulnerable path is src/protego/_urlpattern.py in the _URLPattern match logic. This issue is fixed in version 0.6.2.",
+  "datePublished": "Aug 28, 2026, 6:42:38 PM",
+  "dateUpdated": "Aug 28, 2026, 6:42:38 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/scrapy/protego/security/advisories/GHSA-wjmf-p669-5m5p\nhttps://github.com/scrapy/protego/commit/785940181659bf440ba82f1da148fade5087e858\nhttps://github.com/scrapy/protego/releases/tag/0.6.2\n",
+  "aliases": "CVE-2026-55520\nGHSA-wjmf-p669-5m5p\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "6df89e9c-260f-3c95-9860-695bf0bf45f4",
+      "product": {
+        "name": "protego",
+        "vendor": {
+          "name": "scrapy"
+        }
+      },
+      "product_version": "< 0.6.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "ce33d895-bfc4-3768-b8f0-920bfebf8ef3",
+      "vendor": {
+        "name": "scrapy"
+      }
+    }
+  ]
+}

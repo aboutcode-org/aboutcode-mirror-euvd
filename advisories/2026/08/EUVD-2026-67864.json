@@ -1,0 +1,54 @@
+{
+  "id": "EUVD-2026-67864",
+  "enisaUuid": "af516312-ce24-30a9-96e6-990edda1a86e",
+  "description": "plone.app.portlets provides portlets and a Plone-specific user interface for plone.portlets. Prior to 5.0.8, 6.0.4, and 7.0.2, a member who can add an RSS portlet can set its feed URL to a very large response, causing src/plone/app/portlets/portlets/rss.py to download and retain excessive data in memory and deny service. The same RSS URL handling accepts internal hosts, IP addresses, single-word domains, and explicit ports, allowing server-side requests that can probe internal network services and open ports. A malicious feed item can also supply a JavaScript URL that is retained as the item link and can execute script when used by a victim. The affected logic includes _rss_feed_url_validator, _normal_url_validator, RSSFeed._retrieveFeed, RSSFeed._buildItemDict, and the FEED_DATA in-memory cache. This issue is fixed in versions 5.0.8, 6.0.4, and 7.0.2.",
+  "datePublished": "Aug 28, 2026, 6:40:50 PM",
+  "dateUpdated": "Aug 28, 2026, 8:35:21 PM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H",
+  "references": "https://github.com/plone/plone.app.portlets/security/advisories/GHSA-x5g3-w747-2h8q\nhttps://github.com/plone/plone.app.portlets/commit/09da52ef7b297daa8e0cfd2361e47c37d9b073ad\nhttps://github.com/plone/plone.app.portlets/commit/9f16b6fb10211916686c6c346ea174bf517e3fbd\nhttps://github.com/plone/plone.app.portlets/commit/a3b2c2887165b308cd915cbb87b8276f90a76680\nhttps://github.com/plone/plone.app.portlets/commit/df5e256baee55083cbd6b9a2623675d4cb26b6cd\n",
+  "aliases": "GHSA-x5g3-w747-2h8q\nCVE-2026-55248\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "0268851c-6d11-3d15-ae2e-8573198ec2cf",
+      "product": {
+        "name": "plone.app.portlets",
+        "vendor": {
+          "name": "plone"
+        }
+      },
+      "product_version": "7.0.0, < 7.0.2"
+    },
+    {
+      "id": "0d6c5f05-9616-31fb-95bf-d9c1a0b3ab61",
+      "product": {
+        "name": "plone.app.portlets",
+        "vendor": {
+          "name": "plone"
+        }
+      },
+      "product_version": "6.0.0, < 6.0.4"
+    },
+    {
+      "id": "aa49c737-41a0-3bf3-889f-d98ec1f99e4d",
+      "product": {
+        "name": "plone.app.portlets",
+        "vendor": {
+          "name": "plone"
+        }
+      },
+      "product_version": "< 5.0.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "350277bf-805c-3613-83f5-a6afe1e51e67",
+      "vendor": {
+        "name": "plone"
+      }
+    }
+  ]
+}

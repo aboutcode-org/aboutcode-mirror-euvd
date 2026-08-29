@@ -3,14 +3,14 @@
   "enisaUuid": "31093f93-66d6-3fd6-85b6-9ac715869543",
   "description": "ZLMediaKit confines the downloadFile API to a configured set of root directories with a prefix comparison that does not account for directory boundaries. The configuration loader in server/WebApi.cpp builds each root with File::absolutePath(\"\", item, true); because the relative-path argument is empty that helper returns the value without a trailing separator. The handler then accepts a requested path when start_with(file_path, root) holds, so a sibling directory whose name merely begins with the configured root string satisfies the test and is served. The only other guard rejects a path containing two dots, which this requires none of. The equivalent confinement check for the ordinary static file server in src/Http/HttpFileManager.cpp computes its root with a non-empty second argument, which appends the separator before comparing, and so is not affected. The endpoint requires the configured API secret, so this grants no privilege beyond what that secret already implies, but it reads files outside the directory the operator confined it to, and the reference container runs the server as root.",
   "datePublished": "Aug 26, 2026, 3:44:57 PM",
-  "dateUpdated": "Aug 26, 2026, 3:44:57 PM",
+  "dateUpdated": "Aug 28, 2026, 4:00:38 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/ZLMediaKit/ZLMediaKit\nhttps://github.com/ZLMediaKit/ZLMediaKit/issues/4817\nhttps://github.com/ZLMediaKit/ZLMediaKit/blob/fa347d7dbe48dfdce525d3a0fdb92e576970ef9f/server/WebApi.cpp\nhttps://www.vulncheck.com/advisories/zlmediakit-downloadfile-root-directory-confinement-bypass-via-prefix-collision\n",
   "aliases": "CVE-2026-81028\nGHSA-4j5x-jgmh-j582\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "21bc326d-36c5-3325-9e99-e1d0bda1edae",

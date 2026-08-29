@@ -1,0 +1,54 @@
+{
+  "id": "EUVD-2026-67870",
+  "enisaUuid": "41cc3110-b4e4-3286-8178-a66a44b2b3cc",
+  "description": "Pimcore is an Open Source Data & Experience Management Platform. Prior to 11.5.19, 12.3.10, and 2026.1.6, Pimcore\\Model\\DataObject\\ClassDefinition\\Data\\Hotspotimage::getDataFromResource() in models/DataObject/ClassDefinition/Data/Hotspotimage.php passes the field __hotspots object-store column to Pimcore\\Tool\\Serialize::unserialize() without an allowed-classes restriction after JSON decoding fails. An attacker with a separate capability to write crafted PHP serialized bytes into that column can instantiate available classes and trigger magic methods when an affected DataObject is loaded, which can produce arbitrary file writes or code execution through bundled gadget chains. The related ImageGallery, Block, and Video callers use the same fallback pattern, but the identified June fix changes the Hotspotimage caller only. This issue is fixed for Hotspotimage in versions 11.5.19, 12.3.10, and 2026.1.6.",
+  "datePublished": "Aug 28, 2026, 7:12:43 PM",
+  "dateUpdated": "Aug 28, 2026, 7:12:43 PM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/pimcore/pimcore/security/advisories/GHSA-w23p-wrp7-ch38\nhttps://github.com/pimcore/pimcore/pull/19181\nhttps://github.com/pimcore/pimcore/commit/b184c01bf11e213e601d965b4e96c8bb7248e980\nhttps://github.com/pimcore/pimcore/releases/tag/v12.3.10\nhttps://github.com/pimcore/pimcore/releases/tag/v2026.1.6\n",
+  "aliases": "CVE-2026-55220\nGHSA-w23p-wrp7-ch38\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "4c5c05ca-8f17-35da-b8d0-654255f12aba",
+      "product": {
+        "name": "pimcore",
+        "vendor": {
+          "name": "pimcore"
+        }
+      },
+      "product_version": "12.0.0-RC1, < 12.3.10"
+    },
+    {
+      "id": "b4aefc3a-e71a-3a49-97dd-c931040e2538",
+      "product": {
+        "name": "pimcore",
+        "vendor": {
+          "name": "pimcore"
+        }
+      },
+      "product_version": "< 11.5.19"
+    },
+    {
+      "id": "ef3953c6-9a3f-37e4-b68e-7b180eeaea0b",
+      "product": {
+        "name": "pimcore",
+        "vendor": {
+          "name": "pimcore"
+        }
+      },
+      "product_version": "2026.1.0, < 2026.1.6"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5da0595c-9a18-3099-8856-480f15831b4a",
+      "vendor": {
+        "name": "pimcore"
+      }
+    }
+  ]
+}

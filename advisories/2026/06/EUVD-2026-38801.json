@@ -3,14 +3,14 @@
   "enisaUuid": "ab59551d-8fd8-353d-ad68-e02ed3fb6cac",
   "description": "Feast before 0.63.0 contains an unsafe deserialization vulnerability that allows unauthenticated or unauthorized attackers to achieve remote code execution by sending a crafted gRPC request to the registry server. The user_defined_function.body field of an OnDemandFeatureView spec is decoded from base64 and passed to dill.loads() before any authorization check is performed, enabling attackers to embed a malicious serialized Python object with an arbitrary __reduce__ method to execute OS commands as the feast service account.",
   "datePublished": "Jun 24, 2026, 2:49:11 PM",
-  "dateUpdated": "Jul 15, 2026, 12:42:58 AM",
+  "dateUpdated": "Aug 28, 2026, 12:04:16 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://huntr.com/bounties/d64b8111-180b-46ba-afa3-c877fda2ede6\nhttps://github.com/feast-dev/feast/releases/tag/v0.63.0\nhttps://github.com/feast-dev/feast/commit/835cda8e2c1359f1f496ad72701dbd6a73bdb25a\nhttps://www.vulncheck.com/advisories/feast-unauthenticated-rce-via-applyfeatureview-grpc-deserialization\n",
   "aliases": "GHSA-q63x-9pfm-mjx4\nCVE-2026-56121\n",
   "assigner": "VulnCheck",
-  "epss": 0.86,
+  "epss": 1.37,
   "enisaIdProduct": [
     {
       "id": "c7b97559-90a9-372c-8934-e170d78e9a70",
