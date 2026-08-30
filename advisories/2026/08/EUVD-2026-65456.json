@@ -3,24 +3,24 @@
   "enisaUuid": "abd4c54c-3762-3216-9ad9-22d9a9c26112",
   "description": "Ech0 before 5.0.1 does not impose any size or shape limit on the Accept-Language header processed by its i18n middleware, which runs on every HTTP request. The header is passed unfiltered to go-i18n's NewLocalizer, which internally calls golang.org/x/text/language.ParseAcceptLanguage. The CVE-2022-32149 mitigation in x/text caps '-' characters but not '_' characters, which the parser aliases to '-', allowing quadratic-time parsing to be triggered with a large header (up to Go's default 1 MiB) built from underscore separators. An unauthenticated attacker can send such requests to consume roughly 1.5 seconds of CPU each, and concurrent requests can saturate a multi-core server (denial of service).",
   "datePublished": "Aug 25, 2026, 11:33:23 AM",
-  "dateUpdated": "Aug 26, 2026, 4:12:11 PM",
+  "dateUpdated": "Aug 29, 2026, 1:38:26 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/lin-snow/Ech0/security/advisories/GHSA-mqxv-9rm6-w8qc\nhttps://www.vulncheck.com/advisories/ech0-before-denial-of-service-via-accept-language\n",
   "aliases": "GHSA-j8jc-x8v7-x64g\nCVE-2026-79658\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
-      "id": "81aff107-0a53-3d58-8ed6-15ce3f826b7a",
+      "id": "6dbd7c3e-b3db-3ba3-b4c4-3e527133c2b3",
       "product": {
         "name": "Ech0",
         "vendor": {
           "name": "lin-snow"
         }
       },
-      "product_version": "0 <5.0.1+"
+      "product_version": "0 <5.0.1"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,14 @@
   "enisaUuid": "b6ebe9a4-b9cb-394f-9641-a82b0dfee2d6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: mtk_eth_soc: pass eth to mtk_handle_irq_rx in poll_controller\n\nmtk_handle_irq_rx expects a struct mtk_eth * (matching the request_irq\ncookie), but mtk_poll_controller incorrectly passed the net_device *.\nCalling ndo_poll_controller with CONFIG_NET_POLL_CONTROLLER enabled\nwould then crash.",
   "datePublished": "Aug 28, 2026, 6:53:00 AM",
-  "dateUpdated": "Aug 28, 2026, 6:53:00 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 29, 2026, 6:22:18 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3bd58ac9ca0c552651f533c1bd280dd19ae7d4e8\nhttps://git.kernel.org/stable/c/276f1f180f55d56cf5992a581e20ed2b3dfa6ced\nhttps://git.kernel.org/stable/c/7eb46318d53940dab63dea7130e720b67a656104\nhttps://git.kernel.org/stable/c/e095f249e2209674f6366f6db0383a2b96e19239\n",
   "aliases": "GHSA-55j9-p2qj-gvrc\nCVE-2026-80694\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "15c4274e-c60a-3811-877e-037454308102",

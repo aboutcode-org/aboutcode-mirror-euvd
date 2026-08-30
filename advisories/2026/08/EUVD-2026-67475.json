@@ -3,12 +3,14 @@
   "enisaUuid": "bcee2032-2a06-3a9f-9127-868758de770a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: dat: ensure accessible eth_hdr proto field\n\nWhen batadv_get_vid() accesses the proto field of the ethernet header, it\nis not checking if the data itself is accessible. The caller is responsible\nfor it. But in contrast to other call sites, batadv_dat_get_vid() and its\ncaller didn't make sure this is true. This could have caused an\nout-of-bounds access.",
   "datePublished": "Aug 28, 2026, 6:48:26 AM",
-  "dateUpdated": "Aug 28, 2026, 6:48:26 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 29, 2026, 6:21:11 AM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/da3677b5ed362742d30ceab31bfafcdc74dc2642\nhttps://git.kernel.org/stable/c/6d3ea37074bb747f745d28138f87745ba9bd97c5\nhttps://git.kernel.org/stable/c/7913935d41f166c367bbf7cc76a79e50044388e8\nhttps://git.kernel.org/stable/c/3c62694c31f043568c3f4784b8d247cc3bea6b4c\nhttps://git.kernel.org/stable/c/5836a050d02e9598fa0f71e88dde28b63dfa35e3\nhttps://git.kernel.org/stable/c/8f76277d02176cd739945bba3379448e2e22e799\nhttps://git.kernel.org/stable/c/4407ff3af469356f9641c4a6e7072309bae86bea\nhttps://git.kernel.org/stable/c/26560c4a03dc4d607331600c187f59ab2df5f341\n",
   "aliases": "GHSA-j72w-p49p-cjqq\nCVE-2026-80599\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "0fffe703-cbef-302d-922b-9e619e83bb85",

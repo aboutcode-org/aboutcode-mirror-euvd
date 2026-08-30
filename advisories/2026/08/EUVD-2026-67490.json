@@ -3,12 +3,14 @@
   "enisaUuid": "4e49b9d8-9642-3497-a027-4ca9199052e8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: emac: Fix NULL pointer dereference in emac_probe\n\nMove devm_request_irq() after devm_platform_ioremap_resource() so that\ndev->emacp is mapped before the interrupt handler can fire.  An early\ninterrupt hitting emac_irq() would dereference the NULL dev->emacp and\ncrash.\n\nAlso remove redundant error message. devm_platform_ioremap_resource()\nalready returns an error message with dev_err_probe().",
   "datePublished": "Aug 28, 2026, 6:48:35 AM",
-  "dateUpdated": "Aug 28, 2026, 6:48:35 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Aug 29, 2026, 6:21:22 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a103cdb0681e7185d1b0a12ce6a7c5416c208ccd\nhttps://git.kernel.org/stable/c/44068b6863fbda78fc810921ddf61642c377b3ca\nhttps://git.kernel.org/stable/c/f623d38fe6c4e8c40b23f42cc6fe6963fa49997b\n",
   "aliases": "GHSA-72vm-9gwv-cwmm\nCVE-2026-80614\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.43,
   "enisaIdProduct": [
     {
       "id": "0a5a5525-8ae4-3a7a-89c2-f2d327416863",

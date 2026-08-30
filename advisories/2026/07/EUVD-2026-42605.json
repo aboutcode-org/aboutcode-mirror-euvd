@@ -3,14 +3,14 @@
   "enisaUuid": "33e8fd44-f0f0-3404-a9d9-dcde40654c76",
   "description": "Cesanta Mongoose before 7.22 contains an out-of-bounds read in the built-in TLS server function mg_tls_server_recv_hello(), which uses an attacker-controlled session_id_len byte from a TLS ClientHello as a buffer index without validating it against the length of received data. A remote, unauthenticated attacker can send a single crafted ClientHello with an oversized session id length to read past the receive buffer, crashing any HTTPS, MQTTS, or WSS service built on MG_TLS_BUILTIN.",
   "datePublished": "Jul 9, 2026, 3:13:40 PM",
-  "dateUpdated": "Jul 28, 2026, 1:48:21 AM",
+  "dateUpdated": "Aug 29, 2026, 1:38:25 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/cesanta/mongoose/releases/tag/7.22\nhttps://github.com/cesanta/mongoose\n",
   "aliases": "CVE-2026-11404\nGHSA-cvgj-gr8r-q762\n",
   "assigner": "VulnCheck",
-  "epss": 0.44,
+  "epss": 0.61,
   "enisaIdProduct": [
     {
       "id": "9e68ea1b-8f39-356d-8a1d-8ca5a3ba5ff2",
