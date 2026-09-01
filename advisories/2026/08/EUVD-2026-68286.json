@@ -3,7 +3,7 @@
   "enisaUuid": "24bd9758-dc51-3e87-8d31-fa49d00d9efb",
   "description": "Allocation of Resources Without Limits or Throttling vulnerability in ash-project ash_graphql allows an unauthenticated client to bypass the configured GraphQL query-complexity limit and force an unbounded database read.\n\nAshGraphql.Graphql.Resolver.query_complexity/3 multiplies child complexity by the requested page size only when the argument map contains :limit (offset pagination). Relay connections and keyset pagination use first and last, which never match that clause and fall through to the catch-all that returns child_complexity + 1. A nested relay query such as posts(first: 500) { edges { node { comments(first: 500) { ... } } } } therefore scores as trivially cheap while materializing the full fan-out, passing an Absinthe max_complexity cap that rejects the equivalent limit-based query. The fix adds first and last clauses clamped to the action's page size.\n\nThis issue affects ash_graphql: from 0.16.23 before 1.11.0.",
   "datePublished": "Aug 30, 2026, 6:25:29 PM",
-  "dateUpdated": "Aug 30, 2026, 6:25:29 PM",
+  "dateUpdated": "Aug 31, 2026, 3:57:06 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",

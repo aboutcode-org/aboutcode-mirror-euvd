@@ -3,11 +3,11 @@
   "enisaUuid": "a6ca346c-c323-31cd-ab75-51ac65db119d",
   "description": "A heap buffer overflow vulnerability exists in the DTLS handshake fragment reassembly logic of GnuTLS. The issue arises in merge_handshake_packet() where incoming handshake fragments are matched and merged based solely on handshake type, without validating that the message_length field remains consistent across all fragments of the same logical message. An attacker can exploit this by sending crafted DTLS fragments with conflicting message_length values, causing the implementation to allocate a buffer based on a smaller initial fragment and subsequently write beyond its bounds using larger, inconsistent fragments. Because the merge operation does not enforce proper bounds checking against the allocated buffer size, this results in an out-of-bounds write on the heap. The vulnerability is remotely exploitable without authentication via the DTLS handshake path and can lead to application crashes or potential memory corruption.",
   "datePublished": "May 4, 2026, 9:08:51 AM",
-  "dateUpdated": "Aug 27, 2026, 12:04:50 PM",
+  "dateUpdated": "Aug 31, 2026, 2:48:54 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:57402\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/security/cve/CVE-2026-33846\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450625\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:56786\nhttps://access.redhat.com/errata/RHSA-2026:56853\nhttps://access.redhat.com/errata/RHSA-2026:56911\nhttps://access.redhat.com/errata/RHSA-2026:57402\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/security/cve/CVE-2026-33846\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2450625\n",
   "aliases": "GHSA-qcj7-gqxf-2cqq\nCVE-2026-33846\n",
   "assigner": "redhat",
   "epss": 1.26,
@@ -153,6 +153,16 @@
       "product_version": "patch: 0:3.6.14-10.el8_4.1"
     },
     {
+      "id": "4bcc166b-307b-3d1e-befb-1d88bb424d74",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.14",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 414.92.202608172040-0"
+    },
+    {
       "id": "521f29eb-cb1c-318a-969d-2985dba81599",
       "product": {
         "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
@@ -191,6 +201,16 @@
         }
       },
       "product_version": "patch: 0:3.6.16-7.el8_8.4"
+    },
+    {
+      "id": "5ec7e02c-8bf6-31dc-92dd-1c5601a4ccf0",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 416.94.202608150307-0"
     },
     {
       "id": "68f37e5e-be7b-3e05-9d58-1659586f60f0",
@@ -341,6 +361,16 @@
         }
       },
       "product_version": "patch: 0:3.8.10-4.el10_2"
+    },
+    {
+      "id": "ed738bb7-4f51-38e6-88ce-5e228b804631",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.15",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 415.92.202608180329-0"
     },
     {
       "id": "eee59fab-cc86-3234-bc18-39d3078b9e82",

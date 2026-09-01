@@ -3,14 +3,14 @@
   "enisaUuid": "e3b56672-fa44-37ba-8025-37388ba0c477",
   "description": "The OpenFaaS gateway registers GET /system/telemetry in gateway/main.go and, when basic_auth is enabled, wraps each administrative /system/* handler in auth.DecorateWithBasicAuth. TelemetryHandler was left out of that wrap block from 0.27.11, which introduced the route, until 0.27.14, which added it. On an affected gateway the route therefore reaches the forwarding proxy with no credential check and returns whatever the configured provider serves for /system/telemetry, so any client that can reach the gateway port can read the provider's telemetry regardless of the basic_auth setting. The exposed content depends on the provider, and covers resource and invocation metrics for faasd and pod or cluster state for faas-netes.",
   "datePublished": "Aug 27, 2026, 2:50:43 PM",
-  "dateUpdated": "Aug 27, 2026, 2:50:43 PM",
+  "dateUpdated": "Aug 31, 2026, 3:55:11 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/geo-chen/oss/blob/main/faas.md\nhttps://github.com/openfaas/faas\nhttps://github.com/openfaas/faas/commit/8d803bf9e2655aec6a60fd0e25b392839f96af95\nhttps://github.com/openfaas/faas/blob/0.27.13/gateway/main.go#L216\nhttps://www.vulncheck.com/advisories/openfaas-gateway-0.27.11-through-0.27.13-missing-authentication-on-the-system-telemetry-route\n",
   "aliases": "GHSA-gwq3-cphc-pwmg\nCVE-2026-81664\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "be7ca83d-22b4-3da3-8060-88a961af7cca",

@@ -3,14 +3,14 @@
   "enisaUuid": "d46297d2-ef91-3bc6-ad52-0298bd0dc329",
   "description": "A remote code execution vulnerability was found in libaom, the reference AV1 codec implementation. Insufficient bounds validation in the AV1 encoder's SVC (Scalable Video Coding) layer ID control allows an attacker to supply crafted video frame pixels that overlap with internal encoder layer context structures. In fork-based video processing services, an attacker can use this to hijack the cyclic refresh map pointer, brute-force the process base address via a crash oracle, and redirect control flow to achieve arbitrary command execution. Exploitation requires the target service to use libaom with SVC encoding enabled and accept attacker-supplied video frames.",
   "datePublished": "Jun 19, 2026, 4:28:33 PM",
-  "dateUpdated": "Aug 28, 2026, 12:04:25 PM",
+  "dateUpdated": "Aug 31, 2026, 2:23:43 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
   "aliases": "GHSA-qr4p-j2pf-4w4x\nCVE-2026-56211\n",
   "assigner": "redhat",
-  "epss": 0.45,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "15ae7774-532d-33a0-938f-a9c04bfd7911",
@@ -43,6 +43,26 @@
       "product_version": "patch: 1787077779"
     },
     {
+      "id": "4d7c010a-6f4d-39ff-86ca-11de1ca470bb",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787772157"
+    },
+    {
+      "id": "891a1c5e-ca83-31ad-a107-ea4613f2a08b",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787860580"
+    },
+    {
       "id": "95ba61fc-dd3c-3983-836f-700822bc2a5e",
       "product": {
         "name": "Red Hat Hardened Images",
@@ -61,6 +81,16 @@
         }
       },
       "product_version": "patch: 0:3.14.0-1.el9ai"
+    },
+    {
+      "id": "bb0864c1-8b05-3190-a7cf-1fd75ba4def7",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787884873"
     },
     {
       "id": "c440bb1d-f654-3203-9637-20bcd9b6b529",

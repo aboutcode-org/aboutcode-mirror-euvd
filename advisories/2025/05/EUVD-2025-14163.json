@@ -3,7 +3,7 @@
   "enisaUuid": "1e170c71-9f09-3d3f-8e93-837803116eb3",
   "description": "A flaw was found in systems utilizing LUKS-encrypted disks with GRUB configured for TPM-based auto-decryption. When GRUB is set to automatically decrypt disks using keys stored in the TPM, it reads the decryption key into system memory. If an attacker with physical access can corrupt the underlying filesystem superblock, GRUB will fail to locate a valid filesystem and enter rescue mode. At this point, the disk is already decrypted, and the decryption key remains loaded in system memory. This scenario may allow an attacker with physical access to access the unencrypted data without any further authentication, thereby compromising data confidentiality. Furthermore, the ability to force this state through filesystem corruption also presents a data integrity concern.",
   "datePublished": "May 9, 2025, 11:59:33 AM",
-  "dateUpdated": "Aug 21, 2026, 12:25:41 PM",
+  "dateUpdated": "Aug 31, 2026, 2:58:05 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
