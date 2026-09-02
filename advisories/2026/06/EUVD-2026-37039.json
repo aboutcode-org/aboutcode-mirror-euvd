@@ -3,14 +3,14 @@
   "enisaUuid": "efb50b0d-5294-330e-85e7-10ac79070af5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: fix pedit partial COW leading to page cache corruption\n\ntcf_pedit_act() computes the COW range for skb_ensure_writable()\nonce before the key loop using tcfp_off_max_hint, but the hint does\nnot account for the runtime header offset added by typed keys. This\ncan leave part of the write region un-COW'd.\n\nFix by moving skb_ensure_writable() inside the per-key loop where\nthe actual write offset is known, and add overflow checking on the\noffset arithmetic. For negative offsets (e.g. Ethernet header edits\nat ingress), use skb_cow() to COW the headroom instead. Guard\noffset_valid() against INT_MIN, where negation is undefined.",
   "datePublished": "Jun 16, 2026, 6:26:21 AM",
-  "dateUpdated": "Aug 24, 2026, 12:06:51 PM",
+  "dateUpdated": "Sep 1, 2026, 12:04:48 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/544d857b42a1734b923040e13aa61a6fd4746cf2\nhttps://git.kernel.org/stable/c/d5d01d35a5a7d36f7cb679b67d9cbdd5205672dc\nhttps://git.kernel.org/stable/c/a071e057518decc5e3bec89855758f5f8786f2c5\nhttps://git.kernel.org/stable/c/b685d6ef6f07a3b5ce814565a25f39f2157538a5\nhttps://git.kernel.org/stable/c/2bec122b9fb91507a758ab5e3e5c4fbe7cb3f61b\nhttps://git.kernel.org/stable/c/b198ed4e52580a7238c7c7082f03906f8b310313\nhttps://git.kernel.org/stable/c/3dee9d0c198faeb95d052c1b94c2958751a28512\nhttps://git.kernel.org/stable/c/899ee91156e57784090c5565e4f31bd7dbffbc5a\n",
   "aliases": "CVE-2026-46331\nGHSA-cr2w-747q-47qc\n",
   "assigner": "Linux",
-  "epss": 0.52,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "05c61b9a-eb36-34ee-8a44-e1d6adc5057f",

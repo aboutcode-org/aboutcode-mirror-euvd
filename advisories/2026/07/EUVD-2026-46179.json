@@ -3,15 +3,25 @@
   "enisaUuid": "de652735-3faf-3784-8e36-60429d113915",
   "description": "A flaw was found in libssh. A remote authenticated client can issue SSH_FXP_READ requests with an arbitrarily large length, causing a libssh SFTP server to allocate excessive memory and potentially exhaust it through repeated requests.",
   "datePublished": "Jul 21, 2026, 11:32:16 AM",
-  "dateUpdated": "Aug 17, 2026, 9:54:14 PM",
+  "dateUpdated": "Sep 1, 2026, 8:01:43 PM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:42922\nhttps://access.redhat.com/errata/RHSA-2026:55855\nhttps://access.redhat.com/security/cve/CVE-2026-59844\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2498177\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:42922\nhttps://access.redhat.com/errata/RHSA-2026:55855\nhttps://access.redhat.com/errata/RHSA-2026:62217\nhttps://access.redhat.com/errata/RHSA-2026:62218\nhttps://access.redhat.com/security/cve/CVE-2026-59844\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2498177\n",
   "aliases": "CVE-2026-59844\nGHSA-qp28-hpg5-j7xc\n",
   "assigner": "redhat",
-  "epss": 0.51,
+  "epss": 0.53,
   "enisaIdProduct": [
+    {
+      "id": "1011e09e-d633-30e4-a3b1-a412ada5a0b6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:0.10.4-19.el9_8"
+    },
     {
       "id": "94859fbd-923f-3c80-be00-90d54695d6c2",
       "product": {
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 0.12.1-4.hum1"
+    },
+    {
+      "id": "f0db1fa1-9698-3d02-907c-91a521fdcb11",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:0.9.6-17.el8_10"
     }
   ],
   "enisaIdVendor": [
