@@ -3,7 +3,7 @@
   "enisaUuid": "53623444-3db0-3cf6-b3e8-4594de65bf6b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nSVM: Always use vmcb01 in VMLOAD/VMSAVE emulation\n\nCommit cc3ed80ae69f (\"KVM: nSVM: always use vmcb01 to for vmsave/vmload\nof guest state\") made KVM always use vmcb01 for the fields controlled by\nVMSAVE/VMLOAD, but it missed updating the VMLOAD/VMSAVE emulation code\nto always use vmcb01.\n\nAs a result, if VMSAVE/VMLOAD is executed by an L2 guest and is not\nintercepted by L1, KVM will mistakenly use vmcb02. Always use vmcb01\ninstead of the current VMCB.",
   "datePublished": "May 6, 2026, 11:27:20 AM",
-  "dateUpdated": "Sep 1, 2026, 12:04:42 PM",
+  "dateUpdated": "Sep 2, 2026, 12:04:19 PM",
   "baseScore": 7.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H",

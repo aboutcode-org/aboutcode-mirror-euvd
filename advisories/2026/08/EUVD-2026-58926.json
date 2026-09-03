@@ -3,12 +3,12 @@
   "enisaUuid": "c639986b-5fd4-3ae8-bc30-8d19fb31d88b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: maps: vmu-flash: fix fault in unaligned fixup\n\nUse kzalloc_obj() / kzalloc_objs() to allocate the memcard structs,\ninstead of kmalloc_obj() / kmalloc_objs() to prevent access to\nuninitialized data.\n\nFixes runtime error: Fault in unaligned fixup: 0000 [#1] at\nmtd_get_fact_prot_info.",
   "datePublished": "Aug 15, 2026, 5:53:34 AM",
-  "dateUpdated": "Aug 23, 2026, 12:46:58 PM",
+  "dateUpdated": "Sep 2, 2026, 12:49:44 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f781e80c9f1e52d92535c076573b0cdafab04864\nhttps://git.kernel.org/stable/c/631edc934e476991a04723d3283e6628d077f8c1\nhttps://git.kernel.org/stable/c/90494884cd9f02c38b4eafb0ed3b0e1a4410e2ac\nhttps://git.kernel.org/stable/c/01928835d80829e615a492aa66c629b953ec7bef\nhttps://git.kernel.org/stable/c/19360c25135fccb6bbafbee49a5f66baf9a311af\nhttps://git.kernel.org/stable/c/455519f6b70f46ac6cbf41a75ac76ec5e59040f2\nhttps://git.kernel.org/stable/c/79d1661502c6e4b6f626185cef72cf2fa78116e1\n",
+  "references": "https://git.kernel.org/stable/c/01928835d80829e615a492aa66c629b953ec7bef\nhttps://git.kernel.org/stable/c/19360c25135fccb6bbafbee49a5f66baf9a311af\nhttps://git.kernel.org/stable/c/455519f6b70f46ac6cbf41a75ac76ec5e59040f2\nhttps://git.kernel.org/stable/c/79d1661502c6e4b6f626185cef72cf2fa78116e1\n",
   "aliases": "GHSA-24w7-qc46-mvh6\nCVE-2026-72168\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "09eb82bf-3884-30e6-bb11-212280c68fd4",
@@ -31,16 +31,6 @@
       "product_version": "patch: 7.1.5"
     },
     {
-      "id": "2343fef7-d996-3b12-9820-90c0f8515762",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 6.1.184"
-    },
-    {
       "id": "2c22a1bb-8017-3d6a-ac84-36677c3bea17",
       "product": {
         "name": "Linux",
@@ -51,16 +41,6 @@
       "product_version": "patch: 6.12.101"
     },
     {
-      "id": "43e87dfc-78f4-35fb-9a53-8cbcdace7790",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "47a72688fae7298e1ad5fdc9bff7e04b6a549620 <631edc934e476991a04723d3283e6628d077f8c1"
-    },
-    {
       "id": "56305eef-accb-3109-839f-1164442f7f7b",
       "product": {
         "name": "Linux",
@@ -69,26 +49,6 @@
         }
       },
       "product_version": "patch: 6.18.42"
-    },
-    {
-      "id": "638aaa80-d1bf-326d-9752-4abf40a528f6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "47a72688fae7298e1ad5fdc9bff7e04b6a549620 <f781e80c9f1e52d92535c076573b0cdafab04864"
-    },
-    {
-      "id": "6d99d004-419a-3493-9f19-b001cd9a7be8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 5.15.217"
     },
     {
       "id": "7256262c-5f93-350a-9cac-dd17e7d7c06e",
@@ -141,16 +101,6 @@
       "product_version": "47a72688fae7298e1ad5fdc9bff7e04b6a549620 <19360c25135fccb6bbafbee49a5f66baf9a311af"
     },
     {
-      "id": "c713a4c3-aab8-3800-a8c3-4cced8c579c2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 5.10.266"
-    },
-    {
       "id": "e824137b-d50c-300f-94ef-b0add2db8b90",
       "product": {
         "name": "Linux",
@@ -159,16 +109,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "ee658848-03cc-3963-baf2-abf0899c028e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "47a72688fae7298e1ad5fdc9bff7e04b6a549620 <90494884cd9f02c38b4eafb0ed3b0e1a4410e2ac"
     }
   ],
   "enisaIdVendor": [

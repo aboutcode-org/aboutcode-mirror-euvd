@@ -3,14 +3,14 @@
   "enisaUuid": "e449eaa6-50c4-31c2-a41b-a8de2d685744",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Add RDSEED fix for Zen5\n\nThere's an issue with RDSEED's 16-bit and 32-bit register output\nvariants on Zen5 which return a random value of 0 \"at a rate inconsistent\nwith randomness while incorrectly signaling success (CF=1)\". Search the\nweb for AMD-SB-7055 for more detail.\n\nAdd a fix glue which checks microcode revisions.\n\n  [ bp: Add microcode revisions checking, rewrite. ]",
   "datePublished": "Dec 16, 2025, 3:39:43 PM",
-  "dateUpdated": "Aug 5, 2026, 12:10:47 PM",
+  "dateUpdated": "Sep 2, 2026, 12:49:29 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
   "references": "https://git.kernel.org/stable/c/e980de2ff109dacb6d9d3a77f01b27c467115ecb\nhttps://git.kernel.org/stable/c/36ff93e66d0efc46e39fab536a9feec968daa766\nhttps://git.kernel.org/stable/c/607b9fb2ce248cc5b633c5949e0153838992c152\n",
   "aliases": "CVE-2025-68313\nGHSA-hccf-2qv6-3rfj\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "26cf018c-eb6f-3d6a-a720-75fe98d48271",
@@ -41,6 +41,26 @@
         }
       },
       "product_version": "6.8"
+    },
+    {
+      "id": "5e69240a-2f38-3612-a679-18e690bdc6f3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.156 <6.7"
+    },
+    {
+      "id": "63e0f7b4-e15e-3462-9f43-ba33232a52e5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5953e7a89966fc5a42124a08ba33a9c57ba5173c"
     },
     {
       "id": "6c213f12-dea7-3a98-a11c-959aef1d0202",
