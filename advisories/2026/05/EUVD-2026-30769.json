@@ -3,11 +3,11 @@
   "enisaUuid": "b04baa24-0d6b-3f72-a7bd-105804fec8c5",
   "description": "A flaw was found in gnutls. A remote attacker could exploit an issue in the Datagram Transport Layer Security (DTLS) packet reordering logic. The comparator function, responsible for ordering DTLS packets by sequence numbers, did not correctly handle packets with duplicate sequence numbers. This could lead to unstable packet ordering or undefined behavior, resulting in a denial of service.",
   "datePublished": "May 18, 2026, 12:44:45 PM",
-  "dateUpdated": "Sep 1, 2026, 12:05:00 PM",
+  "dateUpdated": "Sep 3, 2026, 2:10:00 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:29794\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:34764\nhttps://access.redhat.com/errata/RHSA-2026:34788\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:40762\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:56786\nhttps://access.redhat.com/errata/RHSA-2026:56853\nhttps://access.redhat.com/errata/RHSA-2026:56911\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/security/cve/CVE-2026-42009\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2467279\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2026-04-29-2\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:29794\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:34764\nhttps://access.redhat.com/errata/RHSA-2026:34788\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:40762\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:56786\nhttps://access.redhat.com/errata/RHSA-2026:56853\nhttps://access.redhat.com/errata/RHSA-2026:56911\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:59831\nhttps://access.redhat.com/errata/RHSA-2026:60019\nhttps://access.redhat.com/security/cve/CVE-2026-42009\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2467279\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2026-04-29-2\n",
   "aliases": "GHSA-9gx7-g5hv-xjjj\nCVE-2026-42009\n",
   "assigner": "redhat",
   "epss": 1.33,
@@ -223,6 +223,16 @@
       "product_version": "patch: 0:3.7.6-21.el9_2.7"
     },
     {
+      "id": "72fb3c8d-1fa8-3c12-9f3a-b4d9fa6f9159",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 417.94.202608250221-0"
+    },
+    {
       "id": "7b947184-c161-37ce-b6d5-724be5fbc006",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.19",
@@ -271,6 +281,16 @@
         }
       },
       "product_version": "patch: 1782166952"
+    },
+    {
+      "id": "c3716d98-1865-36d8-a056-6ac6616a04df",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.12",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 412.86.202608241157-0"
     },
     {
       "id": "c54a83de-6f48-32a6-bf02-189a23aed1c9",
