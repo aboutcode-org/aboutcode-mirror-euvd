@@ -3,7 +3,7 @@
   "enisaUuid": "8ea4f8aa-d6b0-391f-944f-180a3a1e52c0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/smb/client: fix out-of-bounds read in cifs_sanitize_prepath\n\nWhen cifs_sanitize_prepath is called with an empty string or a string\ncontaining only delimiters (e.g., \"/\"), the current logic attempts to\ncheck *(cursor2 - 1) before cursor2 has advanced. This results in an\nout-of-bounds read.\n\nThis patch adds an early exit check after stripping prepended\ndelimiters. If no path content remains, the function returns NULL.\n\nThe bug was identified via manual audit and verified using a\nstandalone test case compiled with AddressSanitizer, which\ntriggered a SEGV on affected inputs.",
   "datePublished": "May 6, 2026, 7:40:38 AM",
-  "dateUpdated": "Sep 3, 2026, 12:04:33 PM",
+  "dateUpdated": "Sep 4, 2026, 12:04:53 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

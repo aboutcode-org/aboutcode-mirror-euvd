@@ -3,12 +3,14 @@
   "enisaUuid": "b69777b6-81f5-377e-89e9-d693d8ee61cd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: amba-pl011: synchronize DMA teardown\n\ndmaengine_terminate_all() does not wait for a running callback, so the TX\ncallback can still touch the TX buffer after it is freed. The RX poll\ntimer reads the RX buffers without the port lock.\n\nSwitch to dmaengine_terminate_sync() and delete the RX timer before\nfreeing the buffers.",
   "datePublished": "Sep 3, 2026, 8:21:52 AM",
-  "dateUpdated": "Sep 3, 2026, 8:21:52 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 4, 2026, 4:58:22 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a38fae9d212e2d3ed5e9ec0ef773f8c0a27fb76e\nhttps://git.kernel.org/stable/c/44bd0ecc3444882d08ecfbc2b2418d2f463d3186\nhttps://git.kernel.org/stable/c/f70c9d4fba46463a5b1c7b3ee9ee3b40c90dac03\nhttps://git.kernel.org/stable/c/c8c8e895f65fbf71ea6224e27cf8dab91b776e0d\nhttps://git.kernel.org/stable/c/9f6989e477f03a4721d34bb4b09b17accd40283e\nhttps://git.kernel.org/stable/c/5974cb66681eac367107b05924744d7e3b49d41c\nhttps://git.kernel.org/stable/c/fdfb46c387241b4eddd36d746793764413285913\nhttps://git.kernel.org/stable/c/440915499231e9db1c361aa45bb702e8fd3b4a32\n",
   "aliases": "GHSA-j4vm-79j3-8jfc\nCVE-2026-80737\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0140df52-0cd2-3978-a0bb-86a8a23f32cc",

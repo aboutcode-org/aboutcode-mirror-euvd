@@ -3,32 +3,24 @@
   "enisaUuid": "624d69bc-907a-327c-a353-3091fd45ff09",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Add bounds check for CRAT subtype length\n\nThe CRAT parser validates that the subtype header fits within the image,\nbut does not verify that the advertised subtype length fits. A malformed\nCRAT table with an oversized length field causes out-of-bounds reads when\nkfd_parse_subtype() casts the header to specific subtype structures.\n\nAdd validation that sub_type_hdr + length does not exceed the image\nboundary before parsing the subtype contents.\n\n(cherry picked from commit 48e1d1e6e8798aef0312e68d8e586021b5b3cf4d)",
   "datePublished": "Sep 3, 2026, 8:26:28 AM",
-  "dateUpdated": "Sep 3, 2026, 8:26:28 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 4, 2026, 4:58:27 AM",
+  "baseScore": 8.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/ca91e0cc8087568e4b791648a7c01e804f48cb73\nhttps://git.kernel.org/stable/c/6e7566ba4739dd573c331adde1c96690f7a567bd\n",
   "aliases": "GHSA-9jrx-pr9x-qp88\nCVE-2026-80747\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
-      "id": "1d9017a4-fc53-37af-9e65-abf42c5058d6",
+      "id": "52f58025-285a-398e-8eee-bfbc0ddf3fa2",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ca91e0cc8087568e4b791648a7c01e804f48cb73"
-    },
-    {
-      "id": "6c9be419-8460-351d-86a5-e6e867dc5143",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <7.1.10"
+      "product_version": "patch: 0"
     },
     {
       "id": "7ff30067-03c3-3818-8d3c-adb68ebf85a7",
@@ -41,6 +33,16 @@
       "product_version": "patch: 7.2"
     },
     {
+      "id": "99cf3c43-4450-320f-838f-853795e4ba88",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5b5c4e40a37e858e2bff8cd91be8e972256392c4 <6e7566ba4739dd573c331adde1c96690f7a567bd"
+    },
+    {
       "id": "b700c6ae-6fe8-361f-ad44-6d56f6c62b0d",
       "product": {
         "name": "Linux",
@@ -51,14 +53,24 @@
       "product_version": "patch: 7.1.10"
     },
     {
-      "id": "b87946b8-39ab-3d92-9edb-a770b870e868",
+      "id": "dd9f4af2-32ea-3d54-aea8-3ca7bb1b93a3",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6e7566ba4739dd573c331adde1c96690f7a567bd"
+      "product_version": "3.19"
+    },
+    {
+      "id": "e261757b-3eff-3a98-9de0-acfbfa7c3a55",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5b5c4e40a37e858e2bff8cd91be8e972256392c4 <ca91e0cc8087568e4b791648a7c01e804f48cb73"
     }
   ],
   "enisaIdVendor": [
