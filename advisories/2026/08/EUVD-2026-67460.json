@@ -3,11 +3,11 @@
   "enisaUuid": "f7a4a261-896d-393d-a7ab-9f0134a6d999",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: vmclock: prevent read-only mappings from becoming writable\n\nvmclock_miscdev_mmap() rejects writable mappings of the shared vmclock\nABI page with -EROFS, but leaves VM_MAYWRITE set.  Userspace can map the\npage read-only and then upgrade it to writable with mprotect(), after\nwhich the guest can corrupt the host-written timekeeping data (sequence\ncounter, UTC time, TSC offset) that the vmclock ABI defines as read-only.\n\nClear VM_MAYWRITE on the read-only path so the mapping cannot be\nupgraded, as i915 does for its read-only objects and as fixed in drm/vc4\n(CVE-2026-68445) and drm/panthor (CVE-2024-53071).",
   "datePublished": "Aug 28, 2026, 7:03:08 AM",
-  "dateUpdated": "Aug 31, 2026, 6:12:23 AM",
+  "dateUpdated": "Sep 7, 2026, 3:45:07 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/5b4f2bec7bea6c04084d720d731bedee7caf878d\nhttps://git.kernel.org/stable/c/2496e141827102d6af512950057d402a2cfb2bfc\nhttps://git.kernel.org/stable/c/2e596e7814ba38cdc129991058b6c254ed37cb11\nhttps://git.kernel.org/stable/c/a5edadbae57e2298a56cf7a4e774a027905a331f\n",
+  "references": "https://git.kernel.org/stable/c/5b4f2bec7bea6c04084d720d731bedee7caf878d\nhttps://git.kernel.org/stable/c/3f5677d2f817355147337f0453174c7bb0f3b66a\nhttps://git.kernel.org/stable/c/2496e141827102d6af512950057d402a2cfb2bfc\nhttps://git.kernel.org/stable/c/2e596e7814ba38cdc129991058b6c254ed37cb11\nhttps://git.kernel.org/stable/c/0ce59c4148ecd1520c5592a63bb3c8991ee2d326\nhttps://git.kernel.org/stable/c/a5edadbae57e2298a56cf7a4e774a027905a331f\n",
   "aliases": "CVE-2026-80724\nGHSA-66mv-wq2c-77c3\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -33,6 +33,16 @@
       "product_version": "20503272422693d793b84f88bf23fe4e955d3a33 <2496e141827102d6af512950057d402a2cfb2bfc"
     },
     {
+      "id": "43d8133c-e0cf-3117-ad31-29c84eb08389",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "20503272422693d793b84f88bf23fe4e955d3a33 <3f5677d2f817355147337f0453174c7bb0f3b66a"
+    },
+    {
       "id": "58e7dc2b-212e-3d3c-9514-20f8fcb89f21",
       "product": {
         "name": "Linux",
@@ -53,6 +63,26 @@
       "product_version": "20503272422693d793b84f88bf23fe4e955d3a33 <2e596e7814ba38cdc129991058b6c254ed37cb11"
     },
     {
+      "id": "63362e03-5c1f-3e07-9c8b-174e524700c3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.2.4"
+    },
+    {
+      "id": "70c9b453-0adf-3c8d-8a52-ebba63a9ac8e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "20503272422693d793b84f88bf23fe4e955d3a33 <0ce59c4148ecd1520c5592a63bb3c8991ee2d326"
+    },
+    {
       "id": "7f9f6756-16c4-3630-bf5b-c73a5ecf68de",
       "product": {
         "name": "Linux",
@@ -71,6 +101,16 @@
         }
       },
       "product_version": "patch: 7.3-rc1"
+    },
+    {
+      "id": "d44f4847-6c59-30ec-adc2-6c3f1c493ab6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.50"
     },
     {
       "id": "d481589a-02b6-33bf-bf05-a7c10e03222c",

@@ -3,7 +3,7 @@
   "enisaUuid": "058a62a4-885c-3c71-8aaf-d5472be6129a",
   "description": "A flaw was found in the clusterclaims-controller component of multicluster engine (MCE). A tenant with standard permissions to create and delete ClusterClaim resources can exploit this by manipulating the `spec.namespace` field. This allows the tenant to specify and delete any ManagedCluster, including the hub's local-cluster or other tenants' clusters, due to a missing ownership check. This vulnerability can lead to a denial of service by enabling unauthorized deletion of ManagedClusters.",
   "datePublished": "Aug 21, 2026, 2:43:36 AM",
-  "dateUpdated": "Sep 5, 2026, 2:11:40 PM",
+  "dateUpdated": "Sep 7, 2026, 6:34:46 PM",
   "baseScore": 7.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H",
@@ -33,16 +33,6 @@
       "product_version": "patch: 1787259059"
     },
     {
-      "id": "86fefe10-83c9-3d42-b016-820b77b9a988",
-      "product": {
-        "name": "multicluster engine for Kubernetes 2.9",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1787195995"
-    },
-    {
       "id": "aa4ade3e-fa01-3e60-957d-3864661c57f8",
       "product": {
         "name": "multicluster engine for Kubernetes 2.6",
@@ -61,6 +51,16 @@
         }
       },
       "product_version": "patch: 1787196014"
+    },
+    {
+      "id": "f6a7e4f7-64a7-386b-b673-10d76e331bfa",
+      "product": {
+        "name": "multicluster engine for Kubernetes 2.9.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787195995"
     },
     {
       "id": "f8af6458-e276-30ab-bad1-cdf5cc9bafbf",
