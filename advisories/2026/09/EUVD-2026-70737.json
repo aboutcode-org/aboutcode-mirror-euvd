@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-70737",
   "enisaUuid": "9e8b2e3f-03e7-338d-b7b3-ab20665d9537",
-  "description": "node-csv is a full-featured CSV parser with a simple API that is tested against large datasets. Prior to 7.0.2, csv-parse with the columns and group_columns_by_name options enabled treats a duplicate __proto__ header as an existing property in packages/csv-parse/lib/api/index.js, assigns an attacker-controlled array through obj['__proto__'], and replaces the parsed record object's prototype. A malicious CSV header can therefore inject inherited array values into the returned record, hide those inherited values from JSON serialization, and affect property enumeration and type or shape checks in applications that process the record. This issue is fixed in version 7.0.2.",
-  "datePublished": "Sep 3, 2026, 8:32:46 PM",
-  "dateUpdated": "Sep 4, 2026, 5:44:08 PM",
+  "description": "node-csv: Prototype replacement still reachable via columns path",
+  "datePublished": "Sep 8, 2026, 6:01:39 PM",
+  "dateUpdated": "Sep 8, 2026, 6:01:39 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N",
-  "references": "https://github.com/adaltas/node-csv/security/advisories/GHSA-8cw4-87c7-c6xx\nhttps://github.com/adaltas/node-csv/issues/496\nhttps://github.com/adaltas/node-csv/pull/497\nhttps://github.com/adaltas/node-csv/commit/eb4d1484589c976dcb977db8dd0b90e015a6f66e\n",
-  "aliases": "CVE-2026-85063\n",
+  "references": "https://github.com/adaltas/node-csv/security/advisories/GHSA-8cw4-87c7-c6xx\nhttps://github.com/adaltas/node-csv/issues/496\nhttps://github.com/adaltas/node-csv/pull/497\nhttps://github.com/adaltas/node-csv/commit/eb4d1484589c976dcb977db8dd0b90e015a6f66e\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-85063\n",
+  "aliases": "CVE-2026-85063\nGHSA-8cw4-87c7-c6xx\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "57cadabe-50da-32ff-808d-6e5cdc09b8b9",

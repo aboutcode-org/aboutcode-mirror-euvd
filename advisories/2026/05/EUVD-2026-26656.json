@@ -3,7 +3,7 @@
   "enisaUuid": "db85f759-ff62-31a9-ad53-d146d5d0e63b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: correctly handle tunneled traffic on IPV6_CSUM GSO fallback\n\nNETIF_F_IPV6_CSUM only advertises support for checksum offload of\npackets without IPv6 extension headers. Packets with extension\nheaders must fall back onto software checksumming. Since TSO\ndepends on checksum offload, those must revert to GSO.\n\nThe below commit introduces that fallback. It always checks\nnetwork header length. For tunneled packets, the inner header length\nmust be checked instead. Extend the check accordingly.\n\nA special case is tunneled packets without inner IP protocol. Such as\nRFC 6951 SCTP in UDP. Those are not standard IPv6 followed by\ntransport header either, so also must revert to the software GSO path.",
   "datePublished": "May 1, 2026, 2:15:49 PM",
-  "dateUpdated": "Aug 5, 2026, 12:25:38 PM",
+  "dateUpdated": "Sep 8, 2026, 8:48:43 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

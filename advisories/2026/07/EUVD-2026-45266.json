@@ -3,14 +3,42 @@
   "enisaUuid": "b14c31d4-519a-3b55-b527-502e7fb7baad",
   "description": "A flaw was found in xdgmime. A heap-based buffer overflow can be triggered in _xdg_mime_magic_parse_magic_line() in the xdgmimemagic.c file on little-endian systems when an attacker-controlled MIME magic file in a user-writable XDG data location (e.g., in the $XDG_DATA_HOME/mime/magic path) is parsed by an application performing MIME type detection (e.g., via g_content_type_guess()). When performing byte-swap, incorrect pointer arithmetic on the write side causes an out-of-bounds write of 2 bytes, resulting in an application crash or memory corruption.",
   "datePublished": "Jul 17, 2026, 7:44:40 PM",
-  "dateUpdated": "Sep 3, 2026, 8:29:32 AM",
+  "dateUpdated": "Sep 8, 2026, 12:24:18 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64799\nhttps://access.redhat.com/errata/RHSA-2026:64800\nhttps://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
   "aliases": "GHSA-cp7g-r78m-cc2g\nCVE-2026-16118\n",
   "assigner": "redhat",
   "epss": 0.13,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "enisaIdProduct": [
+    {
+      "id": "6a454fe1-8129-375c-903e-49650b88488b",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-19.el9_8.10"
+    },
+    {
+      "id": "dc84d696-19d5-3c50-b79c-dc5abdd37db9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.80.4-12.el10_2.22"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "14f467b6-f80f-3522-8dfe-70315227d380",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

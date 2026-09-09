@@ -3,7 +3,7 @@
   "enisaUuid": "a24b6e5f-5240-34b3-a605-bb766f452261",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ti-adc161s626: use DMA-safe memory for spi_read()\n\nAdd a DMA-safe buffer and use it for spi_read() instead of a stack\nmemory. All SPI buffers must be DMA-safe.\n\nSince we only need up to 3 bytes, we just use a u8[] instead of __be16\nand __be32 and change the conversion functions appropriately.",
   "datePublished": "May 1, 2026, 2:14:57 PM",
-  "dateUpdated": "Aug 5, 2026, 12:25:01 PM",
+  "dateUpdated": "Sep 8, 2026, 8:48:16 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

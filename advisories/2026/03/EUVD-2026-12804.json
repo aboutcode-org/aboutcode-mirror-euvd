@@ -3,7 +3,7 @@
   "enisaUuid": "24ea6f91-1314-34f2-8113-19167c169721",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/umad: Reject negative data_len in ib_umad_write\n\nib_umad_write computes data_len from user-controlled count and the\nMAD header sizes. With a mismatched user MAD header size and RMPP\nheader length, data_len can become negative and reach ib_create_send_mad().\nThis can make the padding calculation exceed the segment size and trigger\nan out-of-bounds memset in alloc_send_rmpp_list().\n\nAdd an explicit check to reject negative data_len before creating the\nsend buffer.\n\nKASAN splat:\n[  211.363464] BUG: KASAN: slab-out-of-bounds in ib_create_send_mad+0xa01/0x11b0\n[  211.364077] Write of size 220 at addr ffff88800c3fa1f8 by task spray_thread/102\n[  211.365867] ib_create_send_mad+0xa01/0x11b0\n[  211.365887] ib_umad_write+0x853/0x1c80",
   "datePublished": "Mar 18, 2026, 10:05:05 AM",
-  "dateUpdated": "Aug 5, 2026, 12:20:53 PM",
+  "dateUpdated": "Sep 8, 2026, 8:45:08 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

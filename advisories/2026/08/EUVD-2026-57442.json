@@ -3,7 +3,7 @@
   "enisaUuid": "8951bf47-3af4-3baf-89bd-b5b507d2f7ab",
   "description": "A flaw was found in the cluster-curator-controller component of multicluster engine (MCE). A tenant with create or update permissions on ClusterCurator resources can inject an arbitrary Job specification. This is possible because the CreateJob() function does not validate user-controlled input when unmarshaling the spec.install.overrideJob raw extension. Successful exploitation allows the injected Job to run with the controller's elevated privileges, leading to arbitrary code execution and privilege escalation, potentially accessing cluster-wide secrets.",
   "datePublished": "Aug 12, 2026, 7:05:12 PM",
-  "dateUpdated": "Sep 7, 2026, 6:34:54 PM",
+  "dateUpdated": "Sep 8, 2026, 12:15:30 PM",
   "baseScore": 9.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "patch: 1787238383"
-    },
-    {
-      "id": "2a234c77-67d9-3447-9b55-4365b9166da2",
-      "product": {
-        "name": "multicluster engine for Kubernetes 2.9.0",
-        "vendor": {
-          "name": "Red Hat"
-        }
-      },
-      "product_version": "patch: 1787201646"
     },
     {
       "id": "31c4d011-ead7-3c65-9d1a-0276ff2ce2b9",
@@ -71,6 +61,16 @@
         }
       },
       "product_version": "patch: 1787259011"
+    },
+    {
+      "id": "cb4d4fad-4744-3ef0-9d6e-80d238496dfc",
+      "product": {
+        "name": "multicluster engine for Kubernetes 2.9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1787201646"
     }
   ],
   "enisaIdVendor": [

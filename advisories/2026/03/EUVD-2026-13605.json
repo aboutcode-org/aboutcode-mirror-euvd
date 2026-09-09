@@ -3,7 +3,7 @@
   "enisaUuid": "7901002c-5cbf-31b2-b79e-25a37c0c07df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix __perf_event_overflow() vs perf_remove_from_context() race\n\nMake sure that __perf_event_overflow() runs with IRQs disabled for all\npossible callchains. Specifically the software events can end up running\nit with only preemption disabled.\n\nThis opens up a race vs perf_event_exit_event() and friends that will go\nand free various things the overflow path expects to be present, like\nthe BPF program.",
   "datePublished": "Mar 20, 2026, 8:08:46 AM",
-  "dateUpdated": "Aug 5, 2026, 12:21:01 PM",
+  "dateUpdated": "Sep 8, 2026, 8:45:14 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

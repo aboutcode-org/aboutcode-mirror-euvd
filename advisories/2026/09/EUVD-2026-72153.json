@@ -3,12 +3,14 @@
   "enisaUuid": "dd1d3f00-505c-35df-a291-4fe460c3253e",
   "description": "When libpsl support is enabled, libcurl fails to enforce the Public Suffix\nList boundary check when processing a `Set-Cookie` header where the `Domain`\nattribute explicitly matches an origin host that is itself a public suffix\n(e.g., `Domain=co.uk` set by `co.uk`).\n\nInstead of coercing it into a strict host-only cookie, libcurl saves the\ncookie with wildcard domain scope (`.co.uk`). Consequently, the cookie is\ninappropriately included in subsequent outbound requests or HTTP redirects to\narbitrary sibling subdomains under the same public suffix (e.g.,\n`attacker.co.uk`).",
   "datePublished": "Sep 6, 2026, 5:49:35 PM",
-  "dateUpdated": "Sep 6, 2026, 5:49:35 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 8, 2026, 6:48:32 PM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
   "references": "https://curl.se/docs/CVE-2026-82209.json\nhttps://curl.se/docs/CVE-2026-82209.html\nhttps://hackerone.com/reports/3972385\n",
   "aliases": "GHSA-3hpw-4mfr-9f85\nCVE-2026-82209\n",
   "assigner": "curl",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "08d787f2-5f7c-3614-9dca-0e54125ed8b4",

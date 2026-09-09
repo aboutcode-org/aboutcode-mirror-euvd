@@ -3,7 +3,7 @@
   "enisaUuid": "16f29fff-22dc-3065-af8c-99b0ee55c42e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: icmp: validate reply type before using icmp_pointers\n\nExtended echo replies use ICMP_EXT_ECHOREPLY as the outbound reply type.\nThat value is outside the range covered by icmp_pointers[], which only\ndescribes the traditional ICMP types up to NR_ICMP_TYPES.\n\nAvoid consulting icmp_pointers[] for reply types outside that range, and\nuse array_index_nospec() for the remaining in-range lookup. Normal ICMP\nreplies keep their existing behavior unchanged.",
   "datePublished": "May 27, 2026, 12:56:47 PM",
-  "dateUpdated": "Aug 5, 2026, 12:29:16 PM",
+  "dateUpdated": "Sep 8, 2026, 8:49:09 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",

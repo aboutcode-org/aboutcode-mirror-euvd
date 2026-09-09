@@ -3,7 +3,7 @@
   "enisaUuid": "fa868aa1-e99b-310d-a4f6-f85fce6b7ade",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: release flowtable after rcu grace period on error\n\nCall synchronize_rcu() after unregistering the hooks from error path,\nsince a hook that already refers to this flowtable can be already\nregistered, exposing this flowtable to packet path and nfnetlink_hook\ncontrol plane.\n\nThis error path is rare, it should only happen by reaching the maximum\nnumber hooks or by failing to set up to hardware offload, just call\nsynchronize_rcu().\n\nThere is a check for already used device hooks by different flowtable\nthat could result in EEXIST at this late stage. The hook parser can be\nupdated to perform this check earlier to this error path really becomes\nrarely exercised.\n\nUncovered by KASAN reported as use-after-free from nfnetlink_hook path\nwhen dumping hooks.",
   "datePublished": "Mar 25, 2026, 10:33:16 AM",
-  "dateUpdated": "Aug 5, 2026, 12:21:23 PM",
+  "dateUpdated": "Sep 8, 2026, 8:45:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

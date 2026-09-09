@@ -3,7 +3,7 @@
   "enisaUuid": "b5c53338-e28d-358f-b0a9-ca792091946a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_h323: check for zero length in DecodeQ931()\n\nIn DecodeQ931(), the UserUserIE code path reads a 16-bit length from\nthe packet, then decrements it by 1 to skip the protocol discriminator\nbyte before passing it to DecodeH323_UserInformation(). If the encoded\nlength is 0, the decrement wraps to -1, which is then passed as a\nlarge value to the decoder, leading to an out-of-bounds read.\n\nAdd a check to ensure len is positive after the decrement.",
   "datePublished": "Apr 3, 2026, 3:15:36 PM",
-  "dateUpdated": "Aug 5, 2026, 12:21:54 PM",
+  "dateUpdated": "Sep 8, 2026, 8:46:22 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",

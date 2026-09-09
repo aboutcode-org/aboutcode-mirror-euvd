@@ -3,7 +3,7 @@
   "enisaUuid": "b2da742a-f33d-3d07-a4d0-d80076fce88f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_sip: fix Content-Length u32 truncation in sip_help_tcp()\n\nsip_help_tcp() parses the SIP Content-Length header with\nsimple_strtoul(), which returns unsigned long, but stores the result in\nunsigned int clen.  On 64-bit systems, values exceeding UINT_MAX are\nsilently truncated before computing the SIP message boundary.\n\nFor example, Content-Length 4294967328 (2^32 + 32) is truncated to 32,\ncausing the parser to miscalculate where the current message ends.  The\nloop then treats trailing data in the TCP segment as a second SIP\nmessage and processes it through the SDP parser.\n\nFix this by changing clen to unsigned long to match the return type of\nsimple_strtoul(), and reject Content-Length values that exceed the\nremaining TCP payload length.",
   "datePublished": "Apr 3, 2026, 3:15:38 PM",
-  "dateUpdated": "Aug 5, 2026, 12:21:56 PM",
+  "dateUpdated": "Sep 8, 2026, 8:46:25 AM",
   "baseScore": 8.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",

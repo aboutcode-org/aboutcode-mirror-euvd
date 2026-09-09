@@ -3,12 +3,14 @@
   "enisaUuid": "ab64b372-a8d8-3fcc-ad17-4e26b3fc43c2",
   "description": "When performing transfers via libcurl\u2019s multi interface, pooled TLS\nconnections can outlive their originating easy handles. In OpenSSL 3 provider\nconfigurations, libcurl attaches an allocated library context to the easy\nhandle's state and passes it to OpenSSL without acquiring an ownership\nreference; destroying the easy handle prematurely frees this context while the\nactive connection retains a dangling pointer, leading to a heap-use-after-free\nupon subsequent I/O or post-handshake operations.",
   "datePublished": "Sep 6, 2026, 5:47:59 PM",
-  "dateUpdated": "Sep 6, 2026, 5:47:59 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 8, 2026, 3:43:53 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://curl.se/docs/CVE-2026-80229.json\nhttps://curl.se/docs/CVE-2026-80229.html\nhttps://hackerone.com/reports/3969255\n",
   "aliases": "CVE-2026-80229\nGHSA-jrp3-jq4v-w9gc\n",
   "assigner": "curl",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0abfd1aa-5491-3752-abcc-117083c2bc4c",

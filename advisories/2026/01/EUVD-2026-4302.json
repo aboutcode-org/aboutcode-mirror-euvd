@@ -3,7 +3,7 @@
   "enisaUuid": "f9e9f744-7517-3877-b40c-1b47853a1ae6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: return the handler error from mon_handle_auth_done()\n\nCurrently any error from ceph_auth_handle_reply_done() is propagated\nvia finish_auth() but isn't returned from mon_handle_auth_done().  This\nresults in higher layers learning that (despite the monitor considering\nus to be successfully authenticated) something went wrong in the\nauthentication phase and reacting accordingly, but msgr2 still trying\nto proceed with establishing the session in the background.  In the\ncase of secure mode this can trigger a WARN in setup_crypto() and later\nlead to a NULL pointer dereference inside of prepare_auth_signature().",
   "datePublished": "Jan 23, 2026, 3:24:12 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:00 PM",
+  "dateUpdated": "Sep 8, 2026, 8:44:30 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

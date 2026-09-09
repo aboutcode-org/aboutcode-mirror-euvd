@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-72687",
+  "enisaUuid": "3bbd7932-f9c6-3203-ada7-c2f869fa7e6e",
+  "description": "electerm before 5.3.15 exposes 40+ main-process functions through an unvalidated Electron IPC handler with no function-name allowlist or sender validation. Renderer-side script execution can invoke openFileWithEditor and other functions with arbitrary arguments to execute system commands in the main process.",
+  "datePublished": "Sep 8, 2026, 11:23:04 AM",
+  "dateUpdated": "Sep 8, 2026, 12:17:37 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/electerm/electerm/security/advisories/GHSA-qc8j-6jr2-qr32\nhttps://github.com/electerm/electerm/issues/4509\nhttps://github.com/electerm/electerm/commit/b1f880534b8ae066c5d25bbf291ca7437e052750\nhttps://github.com/electerm/electerm/releases/tag/v5.3.15\nhttps://github.com/electerm/electerm/blob/v5.3.5/src/app/lib/ipc.js\nhttps://github.com/electerm/electerm\nhttps://www.vulncheck.com/advisories/electerm-before-5.3.15-arbitrary-command-execution-via-unvalidated-runglobalasync-ipc-bridge\n",
+  "aliases": "CVE-2026-86711\nGHSA-hxxx-8rvv-qg5m\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "eaed7626-6239-3839-9c4c-2e23eb0193fd",
+      "product": {
+        "name": "electerm",
+        "vendor": {
+          "name": "electerm"
+        }
+      },
+      "product_version": "0 <5.3.15"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "e9c125e3-0312-337f-be32-131cdf67ea70",
+      "vendor": {
+        "name": "electerm"
+      }
+    }
+  ]
+}

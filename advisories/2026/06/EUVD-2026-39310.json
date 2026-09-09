@@ -3,12 +3,12 @@
   "enisaUuid": "4a923efc-9a14-3d10-a7a9-d8d876cb4f19",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: x_tables: avoid leaking percpu counter pointers\n\nThe native and compat get-entries paths copy the fixed rule entry header\nfrom the kernelized rule blob to userspace before overwriting the entry's\ncounter fields with a sanitized counter snapshot.\n\nOn SMP kernels, entry->counters.pcnt contains the percpu allocation\naddress used by x_tables rule counters. A caller can provide a userspace\nbuffer that faults during the initial fixed-header copy after pcnt has\nbeen copied but before the later sanitized counter copy runs. The syscall\nthen returns -EFAULT while leaving the raw percpu pointer in userspace.\n\nCopy only the fixed entry prefix before counters from the kernelized rule\nblob, then copy the sanitized counter snapshot into the counter field.\nApply this ordering to the IPv4, IPv6, and ARP native and compat\nget-entries implementations so a fault cannot expose the internal percpu\ncounter pointer.",
   "datePublished": "Jun 25, 2026, 8:39:21 AM",
-  "dateUpdated": "Jun 25, 2026, 8:39:21 AM",
+  "dateUpdated": "Sep 8, 2026, 8:50:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b74ba3343eb44b2cbf7e9665918c287df1d52ebb\nhttps://git.kernel.org/stable/c/0b35dc8527ccc16b7dc34e8a3164313e68cd4e45\nhttps://git.kernel.org/stable/c/b28e2fcad3db7e8687b15bc20bced26b5b7c920e\nhttps://git.kernel.org/stable/c/a0d16941adf3a501956d74aefd8d6e217906e79c\nhttps://git.kernel.org/stable/c/8d67e42ad3b1a95a152541015a07110e06992d6c\nhttps://git.kernel.org/stable/c/08a3e218064db11f154ad9ad5541751ea7f34ebe\nhttps://git.kernel.org/stable/c/fb0521aff1e10e300d89725cc439d3ea74c828c5\nhttps://git.kernel.org/stable/c/f7f2fbb0e893a0238dc464f8d8c0f5609bec584f\n",
   "aliases": "CVE-2026-53219\nGHSA-gv3c-2ghh-53g2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0cb842d9-a29c-366e-b869-f52a4af6ca6f",

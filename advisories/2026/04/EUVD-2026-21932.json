@@ -3,7 +3,7 @@
   "enisaUuid": "1c1d6d62-a5f7-3f7d-8cec-ee2779976a6a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_expect: use expect->helper\n\nUse expect->helper in ctnetlink and /proc to dump the helper name.\nUsing nfct_help() without holding a reference to the master conntrack\nis unsafe.\n\nUse exp->master->helper in ctnetlink path if userspace does not provide\nan explicit helper when creating an expectation to retain the existing\nbehaviour. The ctnetlink expectation path holds the reference on the\nmaster conntrack and nf_conntrack_expect lock and the nfnetlink glue\npath refers to the master ct that is attached to the skb.",
   "datePublished": "Apr 13, 2026, 1:21:02 PM",
-  "dateUpdated": "Aug 5, 2026, 12:22:20 PM",
+  "dateUpdated": "Sep 8, 2026, 8:46:49 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

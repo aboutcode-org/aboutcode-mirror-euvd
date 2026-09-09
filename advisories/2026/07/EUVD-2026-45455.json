@@ -3,7 +3,7 @@
   "enisaUuid": "40dd67c7-a596-3ded-9a0b-71facd72ea47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: core: fix adapter registration race\n\nAdapters can be looked up based on their id using i2c_get_adapter()\nwhich takes a reference to the embedded struct device.\n\nMake sure that the adapter (including its struct device) has been\ninitialised before adding it to the IDR to avoid accessing uninitialised\ndata which could, for example, lead to NULL-pointer dereferences or\nuse-after-free.\n\nNote that the i2c-dev chardev, which is registered from a bus notifier,\ncurrently uses i2c_get_adapter() so the adapter needs to be added to the\nIDR before registration.",
   "datePublished": "Jul 19, 2026, 12:02:00 PM",
-  "dateUpdated": "Aug 17, 2026, 4:50:52 AM",
+  "dateUpdated": "Sep 8, 2026, 8:50:19 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

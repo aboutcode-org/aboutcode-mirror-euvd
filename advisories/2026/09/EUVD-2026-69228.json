@@ -3,14 +3,14 @@
   "enisaUuid": "3b7653bf-3fd4-39ce-8ab0-9685d39a5a09",
   "description": "The Erlang/OTP httpc HTTP client does not enforce a limit on the total size of response headers received from a server. The max_header_size option defaults to nolimit, and httpc_response:parse_headers/6 accumulates every header into a list before the length check runs (which only fires after the terminating CRLF CRLF is received).\n\nA malicious or compromised HTTP server can send an arbitrarily large number of headers, or headers with very large values, causing the client process to allocate unbounded memory until the system runs out of memory or the BEAM VM crashes. A proof-of-concept server sending 100,000 headers of roughly 4000 bytes each caused the client VM to allocate over 13 GB of memory in under 30 seconds.\n\nAny application using httpc:request/4,5 to connect to untrusted servers is affected. No authentication is required: any server the client connects to (including via a redirect or man-in-the-middle) can trigger the exhaustion.\n\nThis issue affects OTP from OTP\u00a017.0 before OTP\u00a027.3.4.17, from OTP\u00a028.0 before OTP\u00a028.5.0.6, and from OTP\u00a029.0 before OTP\u00a029.0.6, corresponding to inets from 5.10 before 9.3.2.7, from 9.4 before 9.6.2.3, and from 9.7 before 9.7.2. Whether OTP before OTP\u00a017.0, corresponding to inets before 5.10, is affected is unknown.",
   "datePublished": "Sep 1, 2026, 2:37:02 PM",
-  "dateUpdated": "Sep 1, 2026, 3:54:18 PM",
+  "dateUpdated": "Sep 8, 2026, 1:06:43 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/erlang/otp/security/advisories/GHSA-f9fw-mg7q-4g3x\nhttps://cna.erlef.org/cves/CVE-2026-55951.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-55951\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/aba0fe8c2d700bf4ac94607cf7f00e53bbe4042d\nhttps://github.com/erlang/otp/commit/e3be1cfe9f6cedd0cd20d9905e05601dfb31c8aa\n",
   "aliases": "CVE-2026-55951\n",
   "assigner": "EEF",
-  "epss": 0.0,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "125a9e58-2487-37ae-9aa1-237a0f293d8c",

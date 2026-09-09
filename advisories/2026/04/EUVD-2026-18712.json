@@ -3,7 +3,7 @@
   "enisaUuid": "4b05349f-7508-3695-b2a8-e1e2062c8c38",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_h323: fix OOB read in decode_int() CONS case\n\nIn decode_int(), the CONS case calls get_bits(bs, 2) to read a length\nvalue, then calls get_uint(bs, len) without checking that len bytes\nremain in the buffer. The existing boundary check only validates the\n2 bits for get_bits(), not the subsequent 1-4 bytes that get_uint()\nreads. This allows a malformed H.323/RAS packet to cause a 1-4 byte\nslab-out-of-bounds read.\n\nAdd a boundary check for len bytes after get_bits() and before\nget_uint().",
   "datePublished": "Apr 3, 2026, 3:15:37 PM",
-  "dateUpdated": "Aug 5, 2026, 12:21:55 PM",
+  "dateUpdated": "Sep 8, 2026, 8:46:23 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",

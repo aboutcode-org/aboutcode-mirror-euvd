@@ -3,7 +3,7 @@
   "enisaUuid": "fe60f955-4771-316c-b995-02a193e9c599",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv6: flowlabel: defer exclusive option free until RCU teardown\n\n`ip6fl_seq_show()` walks the global flowlabel hash under the seq-file\nRCU read-side lock and prints `fl->opt->opt_nflen` when an option block\nis present.\n\nExclusive flowlabels currently free `fl->opt` as soon as `fl->users`\ndrops to zero in `fl_release()`. However, the surrounding\n`struct ip6_flowlabel` remains visible in the global hash table until\nlater garbage collection removes it and `fl_free_rcu()` finally tears it\ndown.\n\nA concurrent `/proc/net/ip6_flowlabel` reader can therefore race that\nearly `kfree()` and dereference freed option state, triggering a crash\nin `ip6fl_seq_show()`.\n\nFix this by keeping `fl->opt` alive until `fl_free_rcu()`. That matches\nthe lifetime already required for the enclosing flowlabel while readers\ncan still reach it under RCU.",
   "datePublished": "Apr 25, 2026, 8:46:56 AM",
-  "dateUpdated": "Aug 5, 2026, 12:24:26 PM",
+  "dateUpdated": "Sep 8, 2026, 8:48:05 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

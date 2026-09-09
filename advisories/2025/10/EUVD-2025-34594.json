@@ -3,7 +3,7 @@
   "enisaUuid": "3a706ec6-ddb3-3889-b5b8-65a3684471b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: Fix potential use after free in otx2_tc_add_flow()\n\nThis code calls kfree_rcu(new_node, rcu) and then dereferences \"new_node\"\nand then dereferences it on the next line.  Two lines later, we take\na mutex so I don't think this is an RCU safe region.  Re-order it to do\nthe dereferences before queuing up the free.",
   "datePublished": "Oct 15, 2025, 7:55:58 AM",
-  "dateUpdated": "Aug 5, 2026, 12:06:47 PM",
+  "dateUpdated": "Sep 8, 2026, 8:42:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

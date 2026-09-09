@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-69239",
   "enisaUuid": "395da649-f433-34b0-ae76-ee2b89f42de3",
-  "description": "xmldom is a pure JavaScript W3C standard-based (XML DOM Level 2 Core) DOMParser and XMLSerializer module. Prior to @xmldom/xmldom versions 0.8.15 and 0.9.12, and in xmldom version 0.6.0 and earlier, Document.createProcessingInstruction(target, data) in lib/dom.js accepts an unvalidated target, while the requireWellFormed: true serializer checks only for a colon and the reserved case-insensitive xml name on 0.9.x and performs no target check on 0.8.x. Because serialization emits <?target data?>, a target containing >, ?, whitespace, or another invalid XML-name character can break the processing-instruction boundary and inject XML structure. This issue is fixed in @xmldom/xmldom versions 0.8.15 and 0.9.12; no fixed version is available for xmldom.",
-  "datePublished": "Sep 1, 2026, 2:45:44 PM",
-  "dateUpdated": "Sep 1, 2026, 3:18:45 PM",
+  "description": "xmldom: Processing Instruction Target Injection Bypasses requireWellFormed",
+  "datePublished": "Sep 8, 2026, 9:03:28 PM",
+  "dateUpdated": "Sep 8, 2026, 9:03:28 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://github.com/xmldom/xmldom/security/advisories/GHSA-c7q8-3ch8-vqpv\nhttps://github.com/xmldom/xmldom/pull/1071\nhttps://github.com/xmldom/xmldom/pull/1072\nhttps://github.com/xmldom/xmldom/commit/1cde3e31a07c41c87cfd368d6946aa477f16b4f9\nhttps://github.com/xmldom/xmldom/commit/3b694872bcb5c7e3cbadba961a4be2488750ce5b\nhttps://github.com/xmldom/xmldom/releases/tag/0.8.15\nhttps://github.com/xmldom/xmldom/releases/tag/0.9.12\n",
-  "aliases": "CVE-2026-83616\n",
+  "references": "https://github.com/xmldom/xmldom/security/advisories/GHSA-c7q8-3ch8-vqpv\nhttps://github.com/xmldom/xmldom/pull/1071\nhttps://github.com/xmldom/xmldom/pull/1072\nhttps://github.com/xmldom/xmldom/commit/1cde3e31a07c41c87cfd368d6946aa477f16b4f9\nhttps://github.com/xmldom/xmldom/commit/3b694872bcb5c7e3cbadba961a4be2488750ce5b\nhttps://github.com/xmldom/xmldom/releases/tag/0.8.15\nhttps://github.com/xmldom/xmldom/releases/tag/0.9.12\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-83616\n",
+  "aliases": "GHSA-c7q8-3ch8-vqpv\nCVE-2026-83616\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "966703de-29f6-3acb-b1a1-aaacc078f40d",

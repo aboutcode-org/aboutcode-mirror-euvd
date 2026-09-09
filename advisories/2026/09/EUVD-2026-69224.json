@@ -3,14 +3,14 @@
   "enisaUuid": "2974cdd5-6ff0-3cf1-a1b3-f5494866c827",
   "description": "Improper Validation of Specified Quantity in Input vulnerability in Erlang/OTP inets httpc allows a malicious or compromised HTTP server to degrade availability by returning a numeric header whose value is a very long run of digits.\n\nhttpc_handler.erl converts the server-supplied Content-Length with list_to_integer/1 before comparing it against max_body_size, so the size check cannot protect the conversion, and the option defaults to nolimit in any case. The same unbounded conversion appears in httpc_response:format_response/1 for Content-Length and in httpc_response:get_ms_from_retry_after/1 for Retry-After, which is guarded only by a check that the first character is a digit. A value of up to roughly 1.26 million digits converts successfully and costs the requesting process hundreds of milliseconds of arbitrary-precision arithmetic per response. The conversion function is documented to accept integers of any size, so bounding the input is the caller's responsibility.\n\nThis issue affects OTP from OTP\u00a017.0 before OTP\u00a027.3.4.17, from OTP\u00a028.0 before OTP\u00a028.5.0.6, and from OTP\u00a029.0 before OTP\u00a029.0.6, corresponding to inets from 5.10 before 9.3.2.7, from 9.4 before 9.6.2.3, and from 9.7 before 9.7.2. Whether OTP before OTP\u00a017.0, corresponding to inets before 5.10, is affected is unknown.",
   "datePublished": "Sep 1, 2026, 2:33:41 PM",
-  "dateUpdated": "Sep 1, 2026, 3:53:23 PM",
+  "dateUpdated": "Sep 8, 2026, 1:09:37 AM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
   "references": "https://github.com/erlang/otp/security/advisories/GHSA-cqx9-9hq6-m8wf\nhttps://cna.erlef.org/cves/CVE-2026-71562.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-71562\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/aba0fe8c2d700bf4ac94607cf7f00e53bbe4042d\nhttps://github.com/erlang/otp/commit/e3be1cfe9f6cedd0cd20d9905e05601dfb31c8aa\n",
   "aliases": "CVE-2026-71562\n",
   "assigner": "EEF",
-  "epss": 0.0,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "23c23240-e3f8-3754-93a5-751ba5561df1",

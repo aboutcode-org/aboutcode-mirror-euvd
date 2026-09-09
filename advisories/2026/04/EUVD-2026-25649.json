@@ -3,7 +3,7 @@
   "enisaUuid": "78fd6a4d-3791-3231-a6c0-4bb836433fba",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbridge: br_nd_send: linearize skb before parsing ND options\n\nbr_nd_send() parses neighbour discovery options from ns->opt[] and\nassumes that these options are in the linear part of request.\n\nIts callers only guarantee that the ICMPv6 header and target address\nare available, so the option area can still be non-linear. Parsing\nns->opt[] in that case can access data past the linear buffer.\n\nLinearize request before option parsing and derive ns from the linear\nnetwork header.",
   "datePublished": "Apr 25, 2026, 8:46:59 AM",
-  "dateUpdated": "Aug 5, 2026, 12:24:27 PM",
+  "dateUpdated": "Sep 8, 2026, 8:48:09 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
