@@ -3,15 +3,25 @@
   "enisaUuid": "31c212c9-5393-342c-91e6-62dd08adf415",
   "description": "A flaw was found in GLib. The D-Bus client-side implementation of the DBUS_COOKIE_SHA1 SASL authentication mechanism does not validate the cookie_context parameter received from the server. A malicious D-Bus server can supply a cookie_context containing path traversal sequences, causing the client to read an arbitrary file and exfiltrate sensitive data by verifying guessed file contents against a generated hash.",
   "datePublished": "Jun 30, 2026, 1:02:45 PM",
-  "dateUpdated": "Sep 8, 2026, 10:51:30 PM",
+  "dateUpdated": "Sep 9, 2026, 7:46:09 AM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
   "aliases": "GHSA-hmpf-72wc-2r6x\nCVE-2026-58015\n",
   "assigner": "redhat",
   "epss": 0.62,
   "enisaIdProduct": [
+    {
+      "id": "0c4e6322-27e7-393b-bb3c-cc4850fc151a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.80.4-4.el10_0.17"
+    },
     {
       "id": "1787d3d8-959b-304f-bf0a-7d4c0fccd389",
       "product": {
@@ -43,6 +53,56 @@
       "product_version": "patch: 0:2.68.4-19.el9_8.9"
     },
     {
+      "id": "32f1aa29-072f-3a3b-bfb7-289730acb12b",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-158.el8_6.7"
+    },
+    {
+      "id": "343e5366-e8d8-349a-955f-db64d33a3863",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-14.el9_4.8"
+    },
+    {
+      "id": "368f8b30-063f-3fb6-96d2-fa4350d7e927",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-16.el9_6.7"
+    },
+    {
+      "id": "4197c6fe-288e-3420-9f19-cab5c86d8b94",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-165.el8_8.2"
+    },
+    {
+      "id": "670cfc10-0171-323b-b34f-ac98a28d9538",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-10.el8_4.7"
+    },
+    {
       "id": "70579a38-b9e9-3796-bfa3-08e54589dda2",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -61,6 +121,46 @@
         }
       },
       "product_version": "patch: 1788348522"
+    },
+    {
+      "id": "8922269c-40bc-3e85-883f-23494c3b8ab6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.1-13.el7_9.1"
+    },
+    {
+      "id": "955f85a5-fb6e-3d13-bd87-249099ecf20d",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-10.el8_4.7"
+    },
+    {
+      "id": "a0b9258e-75ef-3fe6-a5ad-ec4533299161",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-158.el8_6.7"
+    },
+    {
+      "id": "aed00ef3-f596-35dc-91f6-1903e821f874",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-7.el9_2.7"
     },
     {
       "id": "b8527262-b275-3fd0-902c-917bffdaa6f4",
@@ -131,6 +231,16 @@
         }
       },
       "product_version": "patch: 1787241260"
+    },
+    {
+      "id": "edd6009c-b1e0-3c1c-8f29-f1846a991416",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-165.el8_8.2"
     },
     {
       "id": "f48a201f-d73e-3785-a8e4-8b4848d350c4",

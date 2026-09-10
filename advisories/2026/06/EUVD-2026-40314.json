@@ -3,15 +3,25 @@
   "enisaUuid": "e9ddaf8b-3ea5-35f5-97ff-d57aa903c53e",
   "description": "A flaw was found in GLib. A buffer over-read can occur in the g_regex_replace function when used with the `G_REGEX_RAW` compile flag and case-change replacement escapes because the string_append function processes matched substrings using UTF-8 functions that assume valid UTF-8 input, even when the string is treated as raw bytes. This vulnerability can cause a minor information disclosure of 1-5 bytes and a denial of service when the buffer over-read crosses a page boundary.",
   "datePublished": "Jun 30, 2026, 12:57:21 PM",
-  "dateUpdated": "Sep 8, 2026, 10:51:25 PM",
+  "dateUpdated": "Sep 9, 2026, 7:45:47 AM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/security/cve/CVE-2026-58012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492247\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3918\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/security/cve/CVE-2026-58012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492247\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3918\n",
   "aliases": "CVE-2026-58012\nGHSA-vwg8-37h9-g38g\n",
   "assigner": "redhat",
   "epss": 0.46,
   "enisaIdProduct": [
+    {
+      "id": "0821e5f1-4468-3a8f-8717-7c1b1386f438",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-158.el8_6.7"
+    },
     {
       "id": "12db60c3-1b62-3962-b90b-bc9490b33b09",
       "product": {
@@ -23,6 +33,16 @@
       "product_version": "patch: 0:2.56.4-177.el8_10"
     },
     {
+      "id": "1b2c91c1-4d77-365b-91b9-a8f46c8f9b96",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-165.el8_8.2"
+    },
+    {
       "id": "1e7d45bf-1b4d-3c88-8b56-5c51bcece3ba",
       "product": {
         "name": "glib",
@@ -31,6 +51,26 @@
         }
       },
       "product_version": "0 <2.86.5"
+    },
+    {
+      "id": "22506a3d-e21b-3642-8a94-b9f7910564be",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-16.el9_6.7"
+    },
+    {
+      "id": "2ed490df-37ce-3078-acde-9cba8ffa4f9e",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-7.el9_2.7"
     },
     {
       "id": "302fafe0-2cc5-3af0-8d76-9429a64f331a",
@@ -63,6 +103,16 @@
       "product_version": "patch: 1787241260"
     },
     {
+      "id": "63c96a33-919f-34b5-9321-db06303cebe0",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-165.el8_8.2"
+    },
+    {
       "id": "6c6238c7-376f-3bc4-ae2d-0187adce103f",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.19",
@@ -71,6 +121,16 @@
         }
       },
       "product_version": "patch: 1788348571"
+    },
+    {
+      "id": "758379f7-9116-3834-9d74-1772506153ef",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-10.el8_4.7"
     },
     {
       "id": "78a2ccca-2483-382a-9845-cb6675e752c4",
@@ -93,6 +153,36 @@
       "product_version": "patch: 1787135742"
     },
     {
+      "id": "a180959d-ebc0-3429-8ce1-836a2afe85da",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.1-13.el7_9.1"
+    },
+    {
+      "id": "a5af899c-4962-3476-981d-d3fc38dab69f",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.68.4-14.el9_4.8"
+    },
+    {
+      "id": "b3d57d34-8b8c-3341-b7d8-b901078cedb4",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-10.el8_4.7"
+    },
+    {
       "id": "bd0262c8-dcf1-331a-8100-092939fddc81",
       "product": {
         "name": "Red Hat Enterprise Linux 8",
@@ -101,6 +191,26 @@
         }
       },
       "product_version": "patch: 0:2.70.1-9.el8_10"
+    },
+    {
+      "id": "bd846745-dcb7-310b-ab73-0bf0eb1ac698",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.56.4-158.el8_6.7"
+    },
+    {
+      "id": "cf44195e-ed6c-3e68-8c99-ed91211ca015",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.80.4-4.el10_0.17"
     },
     {
       "id": "d2700112-7746-399f-83c6-e83689cdf562",
