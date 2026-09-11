@@ -3,11 +3,11 @@
   "enisaUuid": "58f78454-cc3d-3cc9-8eca-78fd89519fd9",
   "description": "There's a vulnerability in podman where an attacker may use the kube play command to overwrite host files when the kube file container a Secrete or a ConfigMap volume mount and such volume contains a symbolic link to a host file path. In a successful attack, the attacker can only control the target file to be overwritten but not the content to be written into the file.\n\nBinary-Affected: podman\nUpstream-version-introduced: v4.0.0\nUpstream-version-fixed: v5.6.1",
   "datePublished": "Sep 5, 2025, 7:54:30 PM",
-  "dateUpdated": "Aug 24, 2026, 10:42:16 AM",
+  "dateUpdated": "Sep 10, 2026, 9:22:09 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHBA-2025:15692\nhttps://access.redhat.com/errata/RHBA-2025:15712\nhttps://access.redhat.com/errata/RHBA-2025:16158\nhttps://access.redhat.com/errata/RHBA-2025:16163\nhttps://access.redhat.com/errata/RHEA-2025:4782\nhttps://access.redhat.com/errata/RHSA-2025:15900\nhttps://access.redhat.com/errata/RHSA-2025:15901\nhttps://access.redhat.com/errata/RHSA-2025:15904\nhttps://access.redhat.com/errata/RHSA-2025:16480\nhttps://access.redhat.com/errata/RHSA-2025:16481\nhttps://access.redhat.com/errata/RHSA-2025:16482\nhttps://access.redhat.com/errata/RHSA-2025:16488\nhttps://access.redhat.com/errata/RHSA-2025:16515\nhttps://access.redhat.com/errata/RHSA-2025:16724\nhttps://access.redhat.com/errata/RHSA-2025:17669\nhttps://access.redhat.com/errata/RHSA-2025:18217\nhttps://access.redhat.com/errata/RHSA-2025:18218\nhttps://access.redhat.com/errata/RHSA-2025:18240\nhttps://access.redhat.com/errata/RHSA-2025:19002\nhttps://access.redhat.com/errata/RHSA-2025:19041\nhttps://access.redhat.com/errata/RHSA-2025:19046\nhttps://access.redhat.com/errata/RHSA-2025:19094\nhttps://access.redhat.com/errata/RHSA-2025:19894\nhttps://access.redhat.com/errata/RHSA-2025:20909\nhttps://access.redhat.com/errata/RHSA-2025:20983\nhttps://access.redhat.com/errata/RHSA-2026:18289\nhttps://access.redhat.com/errata/RHSA-2026:18722\nhttps://access.redhat.com/errata/RHSA-2026:8211\nhttps://access.redhat.com/security/cve/CVE-2025-9566\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2393152\nhttps://github.com/containers/podman/commit/43fbde4e665fe6cee6921868f04b7ccd3de5ad89\nhttps://github.com/containers/podman/security/advisories/GHSA-wp3j-xq48-xpjw\n",
+  "references": "https://access.redhat.com/errata/RHBA-2025:15692\nhttps://access.redhat.com/errata/RHBA-2025:15712\nhttps://access.redhat.com/errata/RHBA-2025:16158\nhttps://access.redhat.com/errata/RHBA-2025:16163\nhttps://access.redhat.com/errata/RHEA-2025:4782\nhttps://access.redhat.com/errata/RHSA-2025:15900\nhttps://access.redhat.com/errata/RHSA-2025:15901\nhttps://access.redhat.com/errata/RHSA-2025:15904\nhttps://access.redhat.com/errata/RHSA-2025:16480\nhttps://access.redhat.com/errata/RHSA-2025:16481\nhttps://access.redhat.com/errata/RHSA-2025:16482\nhttps://access.redhat.com/errata/RHSA-2025:16488\nhttps://access.redhat.com/errata/RHSA-2025:16515\nhttps://access.redhat.com/errata/RHSA-2025:16724\nhttps://access.redhat.com/errata/RHSA-2025:17669\nhttps://access.redhat.com/errata/RHSA-2025:18217\nhttps://access.redhat.com/errata/RHSA-2025:18218\nhttps://access.redhat.com/errata/RHSA-2025:18240\nhttps://access.redhat.com/errata/RHSA-2025:19002\nhttps://access.redhat.com/errata/RHSA-2025:19041\nhttps://access.redhat.com/errata/RHSA-2025:19046\nhttps://access.redhat.com/errata/RHSA-2025:19094\nhttps://access.redhat.com/errata/RHSA-2025:19894\nhttps://access.redhat.com/errata/RHSA-2025:20909\nhttps://access.redhat.com/errata/RHSA-2025:20983\nhttps://access.redhat.com/errata/RHSA-2026:18289\nhttps://access.redhat.com/errata/RHSA-2026:18722\nhttps://access.redhat.com/errata/RHSA-2026:62549\nhttps://access.redhat.com/errata/RHSA-2026:8211\nhttps://access.redhat.com/security/cve/CVE-2025-9566\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2393152\nhttps://github.com/containers/podman/commit/43fbde4e665fe6cee6921868f04b7ccd3de5ad89\nhttps://github.com/containers/podman/security/advisories/GHSA-wp3j-xq48-xpjw\n",
   "aliases": "GHSA-wp3j-xq48-xpjw\nCVE-2025-9566\n",
   "assigner": "redhat",
   "epss": 1.08,
@@ -361,6 +361,16 @@
         }
       },
       "product_version": "patch: 8080020250919060528.0f77c1b7"
+    },
+    {
+      "id": "d7fcc418-fb65-3acc-aa86-d92be66f0138",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 416.94.202609011112-0"
     },
     {
       "id": "d92d6707-5a14-38cf-93e9-c227412c6586",

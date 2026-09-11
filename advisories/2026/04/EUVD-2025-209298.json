@@ -3,15 +3,25 @@
   "enisaUuid": "964c3ba8-5589-3da0-9693-7cf924e5ed8a",
   "description": "A container privilege escalation flaw was found in certain Ansible Automation Platform images. This issue arises from the /etc/passwd file being created with group-writable permissions during the build process. In certain conditions, an attacker who can execute commands within an affected container, even as a non-root user, can leverage their membership in the root group to modify the /etc/passwd file. This vulnerability allows an attacker to add a new user with any arbitrary UID, including UID 0, gaining full root privileges within the container.",
   "datePublished": "Apr 8, 2026, 1:55:00 PM",
-  "dateUpdated": "Aug 27, 2026, 12:48:34 PM",
+  "dateUpdated": "Sep 10, 2026, 10:01:55 PM",
   "baseScore": 6.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:42141\nhttps://access.redhat.com/errata/RHSA-2026:42144\nhttps://access.redhat.com/security/cve/CVE-2025-57847\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2391092\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:42141\nhttps://access.redhat.com/errata/RHSA-2026:42144\nhttps://access.redhat.com/errata/RHSA-2026:66482\nhttps://access.redhat.com/errata/RHSA-2026:66485\nhttps://access.redhat.com/errata/RHSA-2026:66486\nhttps://access.redhat.com/errata/RHSA-2026:66487\nhttps://access.redhat.com/security/cve/CVE-2025-57847\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2391092\n",
   "aliases": "GHSA-49g2-wpmf-55pv\nCVE-2025-57847\n",
   "assigner": "redhat",
   "epss": 0.16,
   "enisaIdProduct": [
+    {
+      "id": "6873f1be-a7bd-3c1c-9224-61dbc0b11c50",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789023329"
+    },
     {
       "id": "6f5bc47c-9d82-3621-9f0f-e68276fb1eea",
       "product": {
@@ -31,6 +41,36 @@
         }
       },
       "product_version": "patch: 1784051694"
+    },
+    {
+      "id": "9d556f64-25e4-3359-8e8b-83dceabf5d8c",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789001438"
+    },
+    {
+      "id": "9e36c2ab-356e-3ca9-a644-d847ab18668a",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789023765"
+    },
+    {
+      "id": "ae94a075-53cb-3d8d-8dd4-13b1943def70",
+      "product": {
+        "name": "Red Hat Ansible Automation Platform 2.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789001715"
     }
   ],
   "enisaIdVendor": [

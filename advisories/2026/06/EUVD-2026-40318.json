@@ -3,15 +3,25 @@
   "enisaUuid": "31c212c9-5393-342c-91e6-62dd08adf415",
   "description": "A flaw was found in GLib. The D-Bus client-side implementation of the DBUS_COOKIE_SHA1 SASL authentication mechanism does not validate the cookie_context parameter received from the server. A malicious D-Bus server can supply a cookie_context containing path traversal sequences, causing the client to read an arbitrary file and exfiltrate sensitive data by verifying guessed file contents against a generated hash.",
   "datePublished": "Jun 30, 2026, 1:02:45 PM",
-  "dateUpdated": "Sep 9, 2026, 7:46:09 AM",
+  "dateUpdated": "Sep 10, 2026, 5:24:00 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
   "aliases": "GHSA-hmpf-72wc-2r6x\nCVE-2026-58015\n",
   "assigner": "redhat",
-  "epss": 0.62,
+  "epss": 0.66,
   "enisaIdProduct": [
+    {
+      "id": "064d40d3-27c7-376d-a5d3-32db96ba172c",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880464"
+    },
     {
       "id": "0c4e6322-27e7-393b-bb3c-cc4850fc151a",
       "product": {
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:2.80.4-12.el10_2.21"
+    },
+    {
+      "id": "27d3b6d5-4093-39d8-ac0f-7de7338a6c80",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788765051"
     },
     {
       "id": "2d774dc4-1f38-3ad9-8fdd-9015ef4184f0",
@@ -91,6 +111,16 @@
         }
       },
       "product_version": "patch: 0:2.56.4-165.el8_8.2"
+    },
+    {
+      "id": "5929a892-5595-3a7c-99af-7d9511ba9a5e",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880581"
     },
     {
       "id": "670cfc10-0171-323b-b34f-ac98a28d9538",
@@ -173,6 +203,16 @@
       "product_version": "patch: 1788348571"
     },
     {
+      "id": "c01a0fc5-dccf-3637-9a18-8e1e95da7d58",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880456"
+    },
+    {
       "id": "c4dc08b9-ea9b-3b4a-9bdb-f1a928012ee9",
       "product": {
         "name": "Red Hat Enterprise Linux 8",
@@ -181,6 +221,16 @@
         }
       },
       "product_version": "patch: 0:2.70.1-9.el8_10"
+    },
+    {
+      "id": "d2fc7c20-1e91-33e9-9fe8-cb6c14a9e9c0",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880445"
     },
     {
       "id": "d73e096d-3d70-3e93-9e91-df98db281f09",

@@ -3,14 +3,14 @@
   "enisaUuid": "b3de3da1-af39-36ed-a0a3-2e7110626780",
   "description": "A flaw was found in GLib. A buffer over-read can occur in g_io_channel_read_line_backend() in the giochannel.c file when a custom line terminator with a length greater than one is set, causing memcmp to read past the GString buffer. This vulnerability can cause a minor information disclosure of 7 bytes or a denial of service when the buffer over-read crosses a page boundary.",
   "datePublished": "Jun 30, 2026, 12:57:34 PM",
-  "dateUpdated": "Sep 9, 2026, 7:45:54 AM",
+  "dateUpdated": "Sep 10, 2026, 5:23:56 PM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/security/cve/CVE-2026-58013\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492248\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3925\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/security/cve/CVE-2026-58013\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492248\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3925\n",
   "aliases": "CVE-2026-58013\nGHSA-4x46-h598-64qr\n",
   "assigner": "redhat",
-  "epss": 0.47,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
       "id": "0e023625-259d-33b2-b973-5b487d821215",
@@ -123,6 +123,26 @@
       "product_version": "patch: 1788348571"
     },
     {
+      "id": "5013ff1e-f2b5-3c42-853a-58337d3f0e56",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880445"
+    },
+    {
+      "id": "561935f1-304a-3759-a18e-d7b09c954136",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880581"
+    },
+    {
       "id": "64a47ef4-e191-3d44-88bf-3a6248bd0001",
       "product": {
         "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
@@ -233,6 +253,26 @@
       "product_version": "patch: 0:2.68.4-16.el9_6.7"
     },
     {
+      "id": "cddcec54-001f-3fe3-a5fb-b909e7b08e02",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880456"
+    },
+    {
+      "id": "d11ca9d8-212c-3c6b-a72f-6612cfdd12ec",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788765051"
+    },
+    {
       "id": "f6fc4fa4-31bb-322d-ac1e-9dcba1f07028",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
@@ -251,6 +291,16 @@
         }
       },
       "product_version": "patch: 0:2.56.4-158.el8_6.7"
+    },
+    {
+      "id": "f9f5bfab-8045-3cea-9213-e0f554546b0e",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788880464"
     }
   ],
   "enisaIdVendor": [
