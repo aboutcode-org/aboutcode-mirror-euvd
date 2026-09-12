@@ -3,13 +3,23 @@
   "enisaUuid": "9968d676-b8b0-3eef-bab6-f08794ccde65",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: fix race between interrupt and resend\n\nAfter commit f8fce75fedf7 (\"fuse: clear intr_entry in fuse_resend and\nfuse_remove_pending_req\") the WARN_ON(!list_empty(&req->intr_entry)) in\nfuse_request_free() still triggers due to the following race:\n\nIn request_wait_answer()\n  if (test_bit(FR_SENT, &req->flags)) -> returns true\n\nIn fuse_chan_resend()\n  clear_bit(FR_SENT, &req->flags)\n\nIn request_wait_answer()\n  queue_interrupt(req)\n\nFix by:\n\n - move clearing FR_SENT inside fpq->lock\n\n - move setting FR_PENDING inside fiq->lock\n\n - recheck FR_SENT after acquiring fiq->lock in fuse_dev_queue_interrupt()",
   "datePublished": "Sep 4, 2026, 3:55:14 PM",
-  "dateUpdated": "Sep 4, 2026, 3:55:14 PM",
+  "dateUpdated": "Sep 11, 2026, 9:57:16 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/26fbe4bc3ef3ab0200407681cbef182af5d151de\nhttps://git.kernel.org/stable/c/ed9c881f3b498383f73c42712b359419da42a7b0\n",
+  "references": "https://git.kernel.org/stable/c/0f930904452945f409eeeb0c9afa08bf27185cb1\nhttps://git.kernel.org/stable/c/26fbe4bc3ef3ab0200407681cbef182af5d151de\nhttps://git.kernel.org/stable/c/ed9c881f3b498383f73c42712b359419da42a7b0\n",
   "aliases": "CVE-2026-80860\nGHSA-8279-rm4w-j7mp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
+    {
+      "id": "00d6ec20-e3a4-3f8c-8c17-89e6366b3328",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7366e6f4d2b4c7002b13fb01219e83679dad4127 <0f930904452945f409eeeb0c9afa08bf27185cb1"
+    },
     {
       "id": "07523d8d-0b3f-341a-bf5e-daef9b1d9676",
       "product": {
@@ -19,16 +29,6 @@
         }
       },
       "product_version": "893479015cb6442fd389d3b553ab3036c9541715"
-    },
-    {
-      "id": "2d3c6a8a-dcfa-3b03-8666-72c503782c11",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.18.39 <6.19"
     },
     {
       "id": "35184c2e-823d-36ab-8de4-8e33f42905b6",
@@ -91,6 +91,16 @@
       "product_version": "f8fce75fedf73ac72aa09163deb8f4291fdcaad2 <26fbe4bc3ef3ab0200407681cbef182af5d151de"
     },
     {
+      "id": "8a0fc05a-c1f9-3ef5-a0cc-52958524e56d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.18.39 <6.18.51"
+    },
+    {
       "id": "991870ed-f011-3e30-882c-77055a538c6c",
       "product": {
         "name": "Linux",
@@ -101,14 +111,14 @@
       "product_version": "patch: 7.2.3"
     },
     {
-      "id": "b85ee552-2b5d-3717-a236-c93d99c4a854",
+      "id": "9d40b29c-766a-3310-b0f7-67fa82a2355d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "7366e6f4d2b4c7002b13fb01219e83679dad4127"
+      "product_version": "patch: 6.18.51"
     },
     {
       "id": "bc0f1fdd-13a3-3638-9e69-19e8e0951eae",
