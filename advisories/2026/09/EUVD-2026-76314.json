@@ -3,12 +3,14 @@
   "enisaUuid": "aff171cf-3b0e-3c09-b2d0-56228786e338",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ravb: serialize PTP clock teardown\n\nravb_ptp_interrupt() can race with ravb_ptp_stop() and pass the clock to\nptp_clock_event() while ptp_clock_unregister() is freeing it. This can\nlead to a use-after-free.\n\nUse READ_ONCE() and WRITE_ONCE() for lockless access to the clock pointer.\nAtomically detach it with xchg() before disabling PTP interrupts, then\nsynchronize all IRQs which can invoke ravb_ptp_interrupt() before\nunregistering the detached clock.\n\nA handler which read the old pointer completes before the clock is\nunregistered, while later handlers read NULL and skip the event.",
   "datePublished": "Sep 11, 2026, 7:42:48 PM",
-  "dateUpdated": "Sep 11, 2026, 7:42:48 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:28:55 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/695acb5534a9e366efb47b40c7487fc56488b09b\nhttps://git.kernel.org/stable/c/67a82e6f886beed0de8f8da08bb767e68fba952d\nhttps://git.kernel.org/stable/c/66b50c31419e7946e9aa325a468ad9b64c961a25\nhttps://git.kernel.org/stable/c/1cb9663789c5b7a12fcd419fcca6d6254c398252\n",
   "aliases": "GHSA-h2g3-mgp6-wj27\nCVE-2026-80991\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1bd15e61-0d43-3c31-95df-84321f7faaa0",

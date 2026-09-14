@@ -3,12 +3,14 @@
   "enisaUuid": "76606944-04b3-3424-8e2b-cfe3b166d880",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: ensure nfsd_file_do_acquire() does not use a non-opened file\n\n->atomic_open is permitted to return success without actually opening\nthe file.  It indicates this by calling finish_no_open().\nThis means dentry_create() can return a file which hasn't been opened.\nThis is extremely unlikely as ->atomic_open handlers typically\nuse finish_no_open() only for already existing files, and dentry_create()\nisn't called in that case, and the parent being locked should prevent\nraces.\n\nHowever out of an abundance of caution it seems wise to teach nfsd to\nonly use the file returned by dentry_create() if FMODE_OPENED is set,\nindicating that it has in fact been opened.",
   "datePublished": "Sep 11, 2026, 7:46:08 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:08 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:11 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a95a1cffacd0203100297001719160160f443dd6\nhttps://git.kernel.org/stable/c/5859cc01fee06a2cd7458905a9593082fbab06e1\n",
   "aliases": "GHSA-vpqx-gvmc-m7vf\nCVE-2026-89687\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "27fa4776-3461-300d-a557-585d2b2419ab",

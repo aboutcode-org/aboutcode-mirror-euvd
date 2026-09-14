@@ -3,12 +3,14 @@
   "enisaUuid": "270d06f8-833b-360d-a568-cac6bda14fbb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: xdr_buf_trim: clamp buf->len to avoid underflow\n\nxdr_buf_trim() trims `len` bytes from the tail of an xdr_buf by\nwalking the tail, pages, and head iovecs.  Each per-section step\nuses min_t() so it never removes more bytes than that section\nholds, but the final accounting at the fix_len label subtracts the\ntotal bytes actually consumed from buf->len without any clamp:\n\n    fix_len:\n            buf->len -= (len - trim);\n\nWhen the caller has set buf->len to a value smaller than the sum\nof the iov_lens, (len - trim) can exceed buf->len and the unsigned\nsubtraction wraps to near UINT_MAX.  gss_krb5_unwrap_v2() reaches\nxdr_buf_trim() in exactly that state:\n\n    buf->head[0].iov_len -= GSS_KRB5_TOK_HDR_LEN + headskip;\n    buf->len = len - (GSS_KRB5_TOK_HDR_LEN + headskip);\n    xdr_buf_trim(buf, ec + GSS_KRB5_TOK_HDR_LEN + tailskip);\n\nbuf->len is a small wire-derived value while the iov_lens are at\npage scale, so the per-section loops legitimately consume far more\nbytes than buf->len records.  The wrapped buf->len then propagates\nas the authoritative stream bound into every downstream XDR\ndecoder.\n\nFix by clamping the decrement so buf->len bottoms out at zero:\n\n    buf->len -= min_t(unsigned int, buf->len, len - trim);\n\nOn the normal path where the iov_lens sum to buf->len, (len - trim)\nis always <= buf->len and the result is identical to before.  No\ncallers change behavior outside the underflow case.",
   "datePublished": "Sep 11, 2026, 7:44:25 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:25 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:51 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e6267cccd7b05cc514e57f2160aa8db85f5c2701\nhttps://git.kernel.org/stable/c/ad0cce80d4af2f74674e8b635d97aa3880e83da8\nhttps://git.kernel.org/stable/c/85e9602650e9df07190abe817cee3b4d9bc3df17\nhttps://git.kernel.org/stable/c/3f491306dcb673ff5e78e1044ba450c58978774e\n",
   "aliases": "CVE-2026-89551\nGHSA-7gqj-379q-cvhq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "21296df7-7b9d-3999-97e3-2557688dc3ce",

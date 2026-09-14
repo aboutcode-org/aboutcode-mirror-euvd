@@ -3,12 +3,14 @@
   "enisaUuid": "cedabcb0-b1e2-3fb7-b70f-cb2cdffb1945",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: ipmb: validate write message length\n\nipmb_write() read message fields before validating the length byte.\n\nA zero or short write can read uninitialized stack bytes.\n\nA length smaller than the SMBus header underflows the block write length.\n\nRequire a non-empty buffer and the minimum IPMB request length.\n\nAlso require the length byte plus payload before parsing the message.",
   "datePublished": "Sep 11, 2026, 7:42:58 PM",
-  "dateUpdated": "Sep 11, 2026, 7:42:58 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:11 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/60939bcda6f3f104ef456fdbf3cc5733c0720fb1\nhttps://git.kernel.org/stable/c/5719431ca2b5fa26560bb38f6202f8b97fa3bbb0\nhttps://git.kernel.org/stable/c/a84c6e3d188f2c6e674910929eb790634299d6d5\nhttps://git.kernel.org/stable/c/53637506884dbd5c91a89b1a3547d99d80f8ed2c\n",
   "aliases": "GHSA-7w7r-xvw6-m4c6\nCVE-2026-81007\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0e8f53f0-1632-39da-b589-4e30f0890d3d",

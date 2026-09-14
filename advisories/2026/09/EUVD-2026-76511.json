@@ -3,12 +3,14 @@
   "enisaUuid": "b0af733b-022c-3abb-96fc-059fd36b5924",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: omapfb: panel-dsi-cm: initialize lock before registering display\n\ndsicm_probe() registers the display before initializing ddata->lock.\nOnce omapdss_register_display() publishes the display, another consumer\ncan reach a dsicm callback that takes this mutex while it is still\nuninitialized.\n\nInitialize the mutex before registering the display so the published\ncallbacks always see a valid lock.",
   "datePublished": "Sep 11, 2026, 7:45:02 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:02 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:30 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2c3f8c9c995db185284b079f39177e85b2258176\nhttps://git.kernel.org/stable/c/76818e81cfcae33b09b739de09162c7d8d89bf0b\nhttps://git.kernel.org/stable/c/09db79078f25c048cfb5d7849795c70415ab8574\nhttps://git.kernel.org/stable/c/f8e43fe0f22b7137ce456e6fe3581d3098174f74\n",
   "aliases": "GHSA-vq32-rv69-wv5x\nCVE-2026-89599\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0d795e49-60e8-3181-ad82-de030e70a58f",

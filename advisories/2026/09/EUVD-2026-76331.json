@@ -3,12 +3,14 @@
   "enisaUuid": "40e9406c-cf29-32c8-9dc8-9237828490cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ninterconnect: Fix use after free in icc_get() and of_icc_get_by_index()\n\nIn of_icc_get_by_index() and icc_get(), if the dynamic allocation for\npath->name fails via kasprintf(), the error handling path directly\ncalls kfree(path) to free the path object and returns an error.\n\nHowever, prior to this point, path_find() calls path_init(), which\nalready links the path's requests into the req_list of the respective\ninterconnect nodes via hlist_add_head(). Directly invoking kfree(path)\nleaves dangling pointers in the hlist. A subsequent call to icc_get()\nor icc_set_bw() will traverse or modify these corrupted lists, triggering\na slab use afterfree.\n\nKASAN report showing the vulnerability when reproducing via debugfs:\n\n  BUG: KASAN: slab-use-after-free in path_find+0x6f8/0xcfc\n  Write of size 8 at addr fff000000d43f748 by task sh/1\n  ...\n  Call trace:\n   kasan_report+0xac/0xfc\n   path_find+0x6f8/0xcfc\n   icc_get+0x148/0x380\n   icc_get_set+0xf8/0x2d0\n  ...\n  Freed by task 1:\n   kfree+0x1a0/0x4a4\n   icc_get+0x2cc/0x380\n   icc_get_set+0xf8/0x2d0\n\nFix this by replacing kfree(path) with the proper teardown function,\nicc_put(path), which safely removes the requests from the req_list using\nhlist_del() and drops the provider usage references before freeing the\nmemory.\n\nAdditionally, in icc_get(), ensure that the icc_lock mutex is released\nprior to calling icc_put(path) to avoid a deadlock, as icc_put()\ninternally acquires the same lock.",
   "datePublished": "Sep 11, 2026, 7:42:59 PM",
-  "dateUpdated": "Sep 11, 2026, 7:42:59 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:12 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a4e9aa7907ade87d1d96853d14e05dcf682f8363\nhttps://git.kernel.org/stable/c/db8147c5d5ad2cfa21c2be566f95981b41b05de6\nhttps://git.kernel.org/stable/c/d715d19cfcfe99f361adb05cefc143a95d400b87\nhttps://git.kernel.org/stable/c/25c7e242aca084fdc1098248194032317dca625d\n",
   "aliases": "GHSA-3v62-228g-v2c5\nCVE-2026-81008\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0cc6aaa0-b0e8-3134-b342-581a0372f162",

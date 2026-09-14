@@ -3,12 +3,14 @@
   "enisaUuid": "39c78fdd-89d2-310b-940b-a49dbc9c9803",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Force requesting ACS when tboot is enabled\n\nCurrently the conditions of requesting ACS in detect_intel_iommu()\ndon't include tboot, leading to a possible misconfiguration with ACS\ndisabled (e.g. due to user opts) while iommu is later forced on by\ntboot_force_iommu().\n\nFix it by checking tboot in detect_intel_iommu().",
   "datePublished": "Sep 11, 2026, 7:43:14 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:14 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:28 AM",
+  "baseScore": 9.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/aaeb81241e802c86be69394f72d49fde3f861fbb\nhttps://git.kernel.org/stable/c/45705a6bfdb283f7b3b509010fd617b72f942537\nhttps://git.kernel.org/stable/c/87bc611c6c98a41c00feb7b06b0c297dd141a2ae\nhttps://git.kernel.org/stable/c/607432b2618b61df81134be0ef2562b8300c1216\n",
   "aliases": "CVE-2026-89448\nGHSA-mhhr-wjj6-vjmr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "00263473-3f60-397e-bca4-c0e5b03d8a7e",

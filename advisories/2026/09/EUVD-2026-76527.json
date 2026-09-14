@@ -3,12 +3,14 @@
   "enisaUuid": "17140998-dc38-33e8-aea0-7d77f52f2de6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: bound page_lcns[] index by the log record\n\nThe copy_lcns loop and the redo shorten loop index page_lcns[] at j + i,\nwhere i runs up to the log record's lcns_follow. That count is checked only\nagainst the record's own length, not the target entry, so check_dp_table()\n(which validates the entry's lcns_follow) does not cover it: the copy_lcns\nentry may even be freshly allocated after that check, and find_dp() bounds j\nbut not i. A crafted record thus overflows page_lcns[] of an otherwise valid\nentry.\n\nAdd dp_range_ok() and reject, before each loop, any record whose run does\nnot fit the entry. These are the only two page_lcns[] accesses indexed by\nthe record rather than the entry, so together with the entry validation\nevery access is now bounded.\n\n[almaz.alexandrovich@paragon-software.com: original patch contained changes to the problem already handled, applied partly]",
   "datePublished": "Sep 11, 2026, 7:45:15 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:15 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:53 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f4c1bc6d7331f344ffcea93c2a37badcbe15baa6\nhttps://git.kernel.org/stable/c/7ccb94901f38a062034b56b43c774050b113758f\nhttps://git.kernel.org/stable/c/1135ebc225996b3ac1a295652b19a0a706737a6c\nhttps://git.kernel.org/stable/c/6f7b9dbdc1b7520206abce0049bdd143eb536e75\n",
   "aliases": "CVE-2026-89615\nGHSA-r33c-hmhm-vc95\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0cf992cc-afd2-3aed-9cc7-4cd98aa8fb92",

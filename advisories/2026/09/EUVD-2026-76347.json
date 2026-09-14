@@ -3,12 +3,14 @@
   "enisaUuid": "1acff023-6741-3de9-ba92-cc2a08241976",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: via-sdmmc: cancel card-detect work on remove\n\nDisabling the device interrupt and freeing the IRQ prevents new card-detect\nwork from being queued, but carddet_work already queued by the handler can\nstill run after via_sd_remove() returns. via_sdc_card_detect() recovers the\nhost through container_of() and dereferences its MMIO base; once remove()\nreturns the host can be freed, so that work would touch freed memory.\n\nCancel carddet_work after freeing the IRQ and before cancelling\nfinish_bh_work, which the card-detect handler can also queue. carddet_work\ncan re-enable the interrupt through via_reset_pcictrl(); mask it again\nafterwards.\n\nThis issue was found by an in-house static analysis tool and confirmed by\nmanual code review.",
   "datePublished": "Sep 11, 2026, 7:43:10 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:10 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:23 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f7ff3027ef004a331ef911a4886f12bc2e996037\nhttps://git.kernel.org/stable/c/eaca730c6f5e3609df62a0469fb789235a93d276\nhttps://git.kernel.org/stable/c/57e5d877f898d5e5c9d672a77bb6bdd24f0d9bf5\n",
   "aliases": "GHSA-6v98-4pph-jq73\nCVE-2026-89441\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "033071b2-ff52-39f4-a929-230294f1c6d0",

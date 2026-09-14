@@ -3,12 +3,14 @@
   "enisaUuid": "6cef6949-0c87-3e0f-bb81-06d82d7990c2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: skip sufficiently large global buffers when resizing\n\nz_erofs_gbuf_nrpages is advanced only after every global buffer has been\ngrown. If a resize fails after some buffers were enlarged, a retry\nrevisits those enlarged buffers.\n\nRetrying the same size then returns -ENOMEM because alloc_pages_bulk()\nhas no pages to add and the unchanged return value is treated as a\nfailure. Retrying an intermediate size allocates a temporary pointer\narray smaller than gbuf->nrpages and copies more existing pointers than\nthe array can hold.\n\nSkip buffers that already satisfy the request. Once all remaining\nbuffers have caught up, advancing z_erofs_gbuf_nrpages again describes\nthe guaranteed minimum size across the pool.",
   "datePublished": "Sep 11, 2026, 7:45:05 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:05 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:35 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7267557ce98ccd07faaf3bc86382448950cc4ff6\nhttps://git.kernel.org/stable/c/7f4a89d4f0d6acaf4b756c31de48f2109a257b70\nhttps://git.kernel.org/stable/c/a7d097cf01301c5da37927c8f26123d006f0fd8a\n",
   "aliases": "CVE-2026-89602\nGHSA-jv24-3qj8-gmg3\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "03645e8c-1a82-3ff3-99f2-e7843833b36c",

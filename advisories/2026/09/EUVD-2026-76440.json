@@ -3,12 +3,14 @@
   "enisaUuid": "b75b24dd-858c-3495-9c9f-88d7ad6cd880",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Clear sc_cm_id when ADDR_CHANGE replacement fails\n\nWhen svc_rdma_listen_handler() handles RDMA_CM_EVENT_ADDR_CHANGE,\nit creates a replacement listener cm_id and returns 1, telling\nthe CM core to destroy the old one. If the replacement allocation\nfails, sc_cm_id still points at the old cm_id that the CM core is\nabout to destroy. Any subsequent dereference of sc_cm_id --\nsuch as svc_rdma_detach()'s rdma_disconnect() call -- is a\nuse-after-free.\n\nNULL sc_cm_id on the failure path and guard svc_rdma_detach()'s\nrdma_disconnect() call against NULL so that the listener can\nbe torn down safely when the server shuts down.",
   "datePublished": "Sep 11, 2026, 7:44:12 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:12 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:31 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/673e358ab7c11f8cec223c6a36a793056a67facd\nhttps://git.kernel.org/stable/c/01500306e1d50de7ca7a2cdcdfa28ac0523eb747\n",
   "aliases": "GHSA-9cv8-xv6f-2jmx\nCVE-2026-89534\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "12ed933c-3925-30df-b5a3-57e6ad74a169",

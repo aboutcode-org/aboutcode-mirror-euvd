@@ -3,12 +3,14 @@
   "enisaUuid": "0d823088-21e0-3adc-b76e-09c5c2e1a6d3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: vicodec: fix out-of-bounds write in FWHT encoder\n\nvidioc_s_fmt_vid_out() sizes the encoder CAPTURE buffer from the\ncompressed descriptor pixfmt_fwht, whose sizeimage_mult is 3:\ncoded_w * coded_h * 3 + sizeof(struct fwht_cframe_hdr). fwht_encode_frame()\nencodes one plane per component, and an incompressible plane takes the\nFWHT_FRAME_UNENCODED path in encode_plane(), copying the plane verbatim.\n\nFor a 4-component pixel format all four planes are full resolution\n(width_div == height_div == 1), so a frame that forces every plane\nthrough the unencoded fallback writes\nsizeof(struct fwht_cframe_hdr) + 4 * coded_w * coded_h bytes, overrunning\nthe plane by coded_w * coded_h, which can result in corruption\nof adjacent kernel heap memory.\n\nBump pixfmt_fwht.sizeimage_mult from 3 to 4, matching the largest\ncomponents_num among the supported raw formats, so the capture buffer is\nalways large enough for the unencoded fallback.",
   "datePublished": "Sep 11, 2026, 7:46:35 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:35 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:41 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/84cfebf7f4229d748cca8eb9c4e1f1c4099d3ab7\nhttps://git.kernel.org/stable/c/8c14472431e27f13661d0db9d837156eaced0ecb\nhttps://git.kernel.org/stable/c/b95315ffc66b39856396c1043618bb4e4d5785ba\nhttps://git.kernel.org/stable/c/cf4500ebf6fb57bf4ab83c3dd349a40257dbe2a9\n",
   "aliases": "GHSA-8cqc-p4qr-2jqq\nCVE-2026-89724\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2b8943e7-3f87-3c9e-9996-a4c1dcf3a3f9",

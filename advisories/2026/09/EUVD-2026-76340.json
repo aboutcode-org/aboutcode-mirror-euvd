@@ -3,12 +3,14 @@
   "enisaUuid": "c5115b23-f393-3789-9b56-0067f48d4ba9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/chrome: sensorhub: Bound the EC-reported sensor number\n\nEach EC FIFO event carries an 8-bit sensor number (in->sensor_num).\ncros_ec_sensorhub_ring_handler() validates the FIFO event count, the\nper-read count and the ring bound, but not the sensor number, which\ncros_ec_sensor_ring_process_event() then uses unchecked to index\nsensorhub->batch_state[] - allocated with only sensorhub->sensor_num\nentries. A sensor number of sensor_num or larger is an out-of-bounds\nread and write of batch_state[].\n\nValidate the sensor number in the ring handler, where each event is read\nfrom the EC, and drop a malformed event before it is used.",
   "datePublished": "Sep 11, 2026, 7:43:05 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:05 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:19 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3d2636dce0a8fe9eecad29010699847be425dc80\nhttps://git.kernel.org/stable/c/5eaf7faa99578ae090030d1e2e6ea3b37a615496\nhttps://git.kernel.org/stable/c/4d9bf63ed74f859c6698bc01d8fb216ef9253867\nhttps://git.kernel.org/stable/c/833740a2333c2e4db4e02e3d0ffba04e8718a5f3\n",
   "aliases": "GHSA-9fvp-phgh-6gx2\nCVE-2026-81017\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "01b178bf-8f6d-3f6d-b023-2da9d88b951b",

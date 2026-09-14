@@ -3,12 +3,14 @@
   "enisaUuid": "5b4dbb2f-3e23-38cd-b6ad-451284714ca0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix nfsd_file leak on inter-server COPY setup failure\n\nWhen nfsd4_setup_inter_ssc() fails, nfsd4_copy() returns\nnfserr_offload_denied directly, bypassing the out: label where\nrelease_copy_files() would drop the nf_dst reference taken by\nnfs4_preprocess_stateid_op(). Each failed inter-server COPY\nleaks one nfsd_file, pinning file/inode/dentry/vfsmount.\n\nFix by setting status and jumping to out: instead of returning\ndirectly.",
   "datePublished": "Sep 11, 2026, 7:46:03 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:03 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:03 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/1a6a41b848455bf6ba2c9da2dfb0730e608ce7ab\nhttps://git.kernel.org/stable/c/424d5c95108a4809b832cb0a312c61de4aec0078\nhttps://git.kernel.org/stable/c/6ed8d6de7ec90c4ba84eb82673058f506e5777fd\nhttps://git.kernel.org/stable/c/88a76145451d703eedd867b5989bf73d17340399\n",
   "aliases": "CVE-2026-89680\nGHSA-x88v-7xqf-ff34\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1465cbbb-fbd2-3c08-99f1-4649b64764e2",

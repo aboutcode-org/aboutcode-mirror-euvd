@@ -3,12 +3,14 @@
   "enisaUuid": "b32a40bc-c2c1-3aed-9b8a-4bb51cc840d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate dirty page table on log replay\n\nEach DIR_PAGE_ENTRY ends in a page_lcns[] array whose length is the on-disk\nlcns_follow field. check_rstbl() validates the table bookkeeping but never\nchecks that this array fits in the entry, so a crafted lcns_follow lets the\nv0->v1 conversion memmove and later replay passes run off the entry.\n\nAdd check_dp_table() to reject, right after check_rstbl(), any entry larger\nthan its size claims via struct_size() (the same expression used to allocate\nthese entries, so the check is overflow-safe by construction). All consumers\ncan then trust lcns_follow as the real capacity. This covers every\npage_lcns[] access whose index is bounded by the entry itself (the\nconversion memmove, the HotFix store via find_dp(), and the self-bounded\nscan loops). Accesses whose index comes from the log record need a separate\nbound and are handled in a follow-up patch.",
   "datePublished": "Sep 11, 2026, 7:45:16 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:16 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:56 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1200c2779c43b62656ccbb67df9468a7a9af2484\nhttps://git.kernel.org/stable/c/2d94ffc9d7b5bb3517b129fe63b52d84bcd4ae56\nhttps://git.kernel.org/stable/c/0908da07c23be4f94b99dfd9a94765525f0fe4bd\nhttps://git.kernel.org/stable/c/006cb7713dec10368e699abc4367e5faa334c9a5\n",
   "aliases": "CVE-2026-89617\nGHSA-gfmm-7qwj-299m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "06982e36-487e-3b4c-8dec-db773d4604fb",

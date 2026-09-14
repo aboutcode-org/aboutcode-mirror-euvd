@@ -3,12 +3,14 @@
   "enisaUuid": "abd3ddd6-1c7b-3253-baef-13d59bd63e69",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix loff_t underflow in cifs_remap_file_range() when len == 0\n\nWith len == 0 (clone to EOF), the effective length is computed as:\n\n    len = src_inode->i_size - off;\n\nIf off > i_size, this is a negative loff_t, corrupting the ByteCount\nin the FSCTL_DUPLICATE_EXTENTS_TO_FILE request and inverting the range\nin filemap_write_and_wait_range().  The existing off >= i_size check\nfires only after the ioctl has already been sent.\n\nSnapshot i_size_read() once for both the bounds check and the length\ncalculation, eliminating the TOCTOU and 32-bit torn-read risk.  Reject\noff > src_size with -EINVAL.  Treat off == src_size as a no-op,\nconsistent with __generic_remap_file_range_prep().",
   "datePublished": "Sep 11, 2026, 7:45:33 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:33 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:32:20 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b098f5e5858797827666e6cd73033f52fc39b5f6\nhttps://git.kernel.org/stable/c/c2a0dcb5a7a1516aa6eb6d5cedca6a8e76527028\nhttps://git.kernel.org/stable/c/b057ca17b656345d04669cb87f2aff9b31d873db\nhttps://git.kernel.org/stable/c/6c322f5cf7476ded7a9a20f7be72462065a03c68\n",
   "aliases": "CVE-2026-89640\nGHSA-hwfc-7pp7-m5j3\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0f5bf50a-53d2-3305-87f3-cd1a22da7a8b",

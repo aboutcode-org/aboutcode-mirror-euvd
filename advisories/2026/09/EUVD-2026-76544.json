@@ -3,12 +3,14 @@
   "enisaUuid": "d27f89db-c411-3b48-846e-3be91b75db4b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-before-check of ReparseDataLength in reparse_buf_ptr()\n\nreparse_buf_ptr() reads buf->ReparseDataLength before checking that\ncount covers the full fixed header:\n\n    buf = (struct reparse_data_buffer *)((u8 *)io + off);\n    len = sizeof(*buf);                          /* 8 bytes */\n    rdlen = le16_to_cpu(buf->ReparseDataLength); /* offset 4, 2 bytes */\n\n    if (count < len || count < rdlen + len)      /* check comes after */\n\nstruct reparse_data_buffer has ReparseDataLength at offset 4.  If a\nserver returns OutputCount < 6, the read at offset 4-5 reaches past\nthe end of the received data.  The off+count bounds against iov_len\nwere already validated, but that does not protect against count being\nsmaller than sizeof(*buf).\n\nSplit the check: verify count >= sizeof(*buf) before reading\nReparseDataLength, then verify count covers the data region.",
   "datePublished": "Sep 11, 2026, 7:45:27 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:27 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:32:11 AM",
+  "baseScore": 8.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/711cf71300d7992f450600df8864917d3538679f\nhttps://git.kernel.org/stable/c/05f78e6cf34ea3a285053bd5999e08e8ac298bd5\n",
   "aliases": "GHSA-j6wx-7c3w-595c\nCVE-2026-89632\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "164e3154-b814-369a-9491-508ea0438efd",

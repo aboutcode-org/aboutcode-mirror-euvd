@@ -3,12 +3,14 @@
   "enisaUuid": "5edb6852-e81d-3bd0-9017-abab0771922b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/waitid: honor task_work cancellation\n\nio_waitid_cb() may run through the fallback task_work path when\ntask_work_add() can no longer queue work to the originating task. The\nfallback runs from a kworker and io_uring marks such task work as\ncanceled through tw.cancel.\n\nio_waitid_cb() currently ignores tw.cancel and calls __do_wait().\nwaitid is task-context dependent: __do_wait() performs child lookup\nrelative to current, and the retry path also uses\ncurrent->signal->wait_chldexit. If the callback runs from the fallback\nkworker, current is therefore not the task that submitted the request.\n\nHonor tw.cancel before entering __do_wait(). Complete the request with\n-ECANCELED and skip the siginfo copy, since canceled task work may run\nwithout the submitting task's userspace execution context.\n\nKeep the existing siginfo handling for normal waitid completion and\nexplicit cancellation.",
   "datePublished": "Sep 11, 2026, 7:43:00 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:00 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:13 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7bc98e2de8c58a2bfaf0f540eb096a386ecfc96c\nhttps://git.kernel.org/stable/c/14572de82e5022899e5856008bc9cac97004a88c\n",
   "aliases": "GHSA-qqff-gjp9-r6f6\nCVE-2026-81010\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "48579d8d-e98d-3dbe-8e53-6b9e67794304",

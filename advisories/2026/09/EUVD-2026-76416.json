@@ -3,12 +3,14 @@
   "enisaUuid": "ea6b7458-3987-3561-8a03-ed11ff0fca8a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/cxgb4: Cancel reg_work before freeing device on remove\n\nc4iw_uld_state_change() queues reg_work to register the RDMA device.\nc4iw_remove() can free ctx->dev while this work is pending or running,\nleaving c4iw_register_device() accessing the freed device.\n\nCancel reg_work before removing the device.  The registration work can\ntear down ctx->dev when registration fails, so do not unregister or\ndeallocate it again in that case.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Sep 11, 2026, 7:43:55 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:55 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:14 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fe9c591026c576d8b1f72aab5e4cd67350530763\nhttps://git.kernel.org/stable/c/85f438382a865a4dc4c50e6b884310bb2b60fc4d\nhttps://git.kernel.org/stable/c/320e5258a53af0abc5abd9eb01519a48bab2dee8\nhttps://git.kernel.org/stable/c/a7100601aa1a39f799a566acce10db20eaf4b7f2\n",
   "aliases": "GHSA-82cq-j2q5-4p5v\nCVE-2026-89510\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "04f1a7ca-a8a6-383c-b305-0831aaebc44a",

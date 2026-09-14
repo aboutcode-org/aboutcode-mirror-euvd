@@ -3,12 +3,14 @@
   "enisaUuid": "3ccf9978-bff4-3fba-9aaa-a599a25ad465",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: verify run length exceeding volume boundary\n\nThe mapping pairs decoder validates that the starting LCN is within the\nvolume but does not check if the run extends beyond the volume boundary.\n\nA malformed NTFS image with a crafted mapping pairs array could cause\nthe kernel to access memory beyond the volume boundary, potentially leading\nto memory corruption and privilege escalation.\n\nAdd validation to ensure lcn + length stays within nr_clusters.",
   "datePublished": "Sep 11, 2026, 7:45:11 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:11 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:47 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6e844d4b82434a781b80d02145fd1b17cf90e3c3\nhttps://git.kernel.org/stable/c/fea9e4488f384c0ef1c0e3d96b565127c1b98447\n",
   "aliases": "GHSA-whjw-7h99-rmg2\nCVE-2026-89610\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "12fe5c90-4d45-3d49-b2a7-288895ff1a27",

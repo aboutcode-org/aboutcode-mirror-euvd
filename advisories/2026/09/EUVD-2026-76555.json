@@ -3,12 +3,14 @@
   "enisaUuid": "fe71f5e4-72cb-3af8-a383-2e049b49dab2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: avoid dropping live tree ref on fsnotify rule autoremove\n\naudit_del_rule() is used for both netlink deletion templates and internal\nfsnotify autoremove.  The former passes a parsed template which owns a\ntemporary tree reference; the latter passes the installed entry itself.\n\nThe unconditional audit_put_tree() at the end of audit_del_rule() assumes\nthe template case.  For mixed AUDIT_DIR plus AUDIT_EXE rules, an fsnotify\nautoremove event therefore drops the installed rule's live tree reference.\nRepeating this across rules sharing the same tree can free the tree while\nanother rule still references it, and a later autoremove dereferences the\nfreed pathname while comparing rules.\n\nMove the temporary-tree put to audit_rule_change(), the caller that owns\ndeletion templates.  Keep it in the AUDIT_DEL_RULE cleanup so both\nsuccessful deletion and -ENOENT still release the parser-owned tree.\n\n[PM: dropped unnecessary comment for line length reasons]",
   "datePublished": "Sep 11, 2026, 7:45:35 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:35 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:32:22 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cf37b61b5420fd4600fe78cf8c24da6e4d9bfe28\nhttps://git.kernel.org/stable/c/636a99bab36ba27515363d325866c0273ac83b3e\nhttps://git.kernel.org/stable/c/583cf579b32d99e3fe4e9c8ecc4d852e3708fbec\nhttps://git.kernel.org/stable/c/783f0f0974c156aca630f4ffff248671082a098d\n",
   "aliases": "GHSA-qh9h-fg7c-vgxw\nCVE-2026-89643\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1aef0d19-945b-35aa-866c-6e946edf88a7",

@@ -3,12 +3,14 @@
   "enisaUuid": "3d79b61b-1b33-3378-b690-799ee478d4f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: uvesafb: unregister connector callback on init failure\n\nuvesafb_init() registers the v86d connector callback before registering\nthe platform driver. If platform_driver_register() fails, the function\nreturns the error directly and leaves the connector callback registered.\n\nThe later platform-device failure path already unregisters the callback.\nAdd the same cleanup before the final return when platform-driver\nregistration fails.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
   "datePublished": "Sep 11, 2026, 7:44:59 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:59 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:29 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9f8a822b44c42502f105cf6574f4867067eecdd0\nhttps://git.kernel.org/stable/c/466a8af0dee2cf745307155e26884e19a37b7e15\nhttps://git.kernel.org/stable/c/9e768ae51426af2034d479133cfd73010d641b1a\nhttps://git.kernel.org/stable/c/de8db23aa7c337e606fca9faf48b3ba72968597a\n",
   "aliases": "GHSA-4qm2-vqpp-wwm8\nCVE-2026-89597\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "12e2c3da-39cf-3abb-8f1e-812ea8618511",

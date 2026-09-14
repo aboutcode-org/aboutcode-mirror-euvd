@@ -3,12 +3,14 @@
   "enisaUuid": "7ca9bf40-b99b-392f-b9c3-acd7b0da793f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix layout fence worker double-reference race\n\nThe workqueue core clears WORK_STRUCT_PENDING before the callback\nis invoked, so delayed_work_pending() in lm_breaker_timedout() can\nreturn false while the fence worker is already running. This lets\nthe breaker take a duplicate sc_count reference and schedule a new\nworker that coalesces with the in-progress one. The extra reference\nis never put, leaking the layout stateid.\n\nReplace the racy delayed_work_pending() check with an\nls_fence_inflight boolean set atomically with\nrefcount_inc_not_zero() under ls_lock, and cleared under ls_lock\nbefore the final nfs4_put_stid() on the dispose path; the retry\npath intentionally retains it.  Remove the self-rearm\nmod_delayed_work() at the top of the worker.",
   "datePublished": "Sep 11, 2026, 7:46:04 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:04 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:04 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a278d361e0e8f242211891193d56483a7a9f47a8\nhttps://git.kernel.org/stable/c/8580571227451384399b3fa53fcde19848c48e5a\n",
   "aliases": "CVE-2026-89681\nGHSA-3x6w-r97p-5874\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1e72bb48-cb80-38cf-9d1e-4ea1886efa76",

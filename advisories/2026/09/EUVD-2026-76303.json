@@ -3,12 +3,14 @@
   "enisaUuid": "86d945ca-7ea0-31aa-90dd-89b764725a5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: stop killed, freed and out_of_sync sharing a byte\n\nThe three connection state flags are single-bit bitfields, so they occupy\none byte of struct smc_connection and every store to one is a\nread-modify-write of the other two:\n\n    u8  killed : 1;\n    u8  freed : 1;\n    u8  out_of_sync : 1;\n\nThey are not written under a common lock. smc_cdc_msg_validate() sets\nout_of_sync from the receive tasklet, while smc_conn_kill() sets killed\nfrom process context under lock_sock(), and the receive path does not defer\nto the backlog when the socket is owned -- smc_cdc_msg_recv() takes only\nbh_lock_sock().\n\nGive each flag its own byte so a store no longer touches its neighbours.\nAll readers test them as booleans and are unchanged. struct smc_connection\ngrows by two bytes.",
   "datePublished": "Sep 11, 2026, 7:42:40 PM",
-  "dateUpdated": "Sep 11, 2026, 7:42:40 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:28:46 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/313f79149eb337411c64e2c247234b62ef9a3cb9\nhttps://git.kernel.org/stable/c/2cb7a8d64b7e8ccdc69bbe48fe9c4eaa79c33aec\nhttps://git.kernel.org/stable/c/db51a8658c11a82432b64999519a269c3aabb447\n",
   "aliases": "CVE-2026-80980\nGHSA-74wv-6pxv-7x55\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "3ef3dd9c-18c5-38c4-94cd-9ffdb54a1282",

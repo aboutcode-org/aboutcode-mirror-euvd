@@ -3,12 +3,14 @@
   "enisaUuid": "58add36e-2b37-39ff-bf5b-485f6743dd4a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: sensor: custom: Fix field sysfs group cleanup on failure\n\nhid_sensor_custom_add_attributes() creates one sysfs group for each\ncustom sensor field. If sysfs_create_group() fails after some groups\nhave already been created, the function returns the error without\nremoving the previously created groups.\n\nAdd a local unwind path to remove the groups that were already created.\nWith enable_sensor exposed only after the field attributes are ready,\nthis path can free sensor_inst->fields without leaving enable_sensor\nable to access pointers into that array.",
   "datePublished": "Sep 11, 2026, 7:45:22 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:22 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:32:07 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/79154fad98ee843e5363940841e2d831503c190a\nhttps://git.kernel.org/stable/c/f3f37b937a6ea2a00fb5e6189e74f855caa43eb5\nhttps://git.kernel.org/stable/c/d96f8958d4469ac02d9c563686cdd968005b944d\nhttps://git.kernel.org/stable/c/3789d0802ddb4b3be04062caf4bfadd23496e9a7\n",
   "aliases": "GHSA-5r2j-h2g4-5h5v\nCVE-2026-89626\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2f9f2c09-93ee-3fdc-90bb-b90cfbc4c924",

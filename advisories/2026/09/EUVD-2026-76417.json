@@ -3,12 +3,14 @@
   "enisaUuid": "9c6f2ef1-c29f-3f7f-a242-a0a000b84497",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nqede: Fix NULL pointer dereference in TPA fragment processing\n\nUnder memory pressure, the qede driver encounters NULL pointer\ndereferences when processing TPA continuation fragments.\n\nCommit 8a8633978b84 (\"qede: Add build_skb() support.\") accidentally\ndropped the assignment of tpa_info->buffer.data in qede_tpa_start().\n\nWhen memory pressure causes an SKB allocation failure in qede_tpa_start(),\nthe driver sets tpa_start_fail = true and attempts to recycle the physical\npage later in qede_tpa_end() via qede_reuse_page(). However, because\nbuffer.data was left uninitialized (NULL), qede_reuse_page() pushes a\n\"ghost\" BD (valid DMA mapping but NULL data pointer) back into the\nactive Rx ring.\n\nThe next time the hardware uses this ring slot, it passes a NULL page\nto qede_fill_frag_skb(), causing a kernel panic.\n\nExample crash from production system:\n BUG: unable to handle kernel NULL pointer dereference at 0x8\n RIP: qede_fill_frag_skb+0x96/0x430 [qede]\n Call Trace:\n   qede_rx_int+0xb06/0x1de0\n   qede_poll+0x2f4/0x6c0\n   __napi_poll+0x2d/0x130\n\nFix the root cause by restoring the tpa_info->buffer.data assignment\nin qede_tpa_start(), ensuring valid pages are correctly tracked and\nrecycled. Additionally, update the stale comment for\nstruct qede_agg_info::buffer to reflect its current usage.",
   "datePublished": "Sep 11, 2026, 7:43:56 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:56 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:16 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/7f911e208b3ca2c76d9f2bbba1f54b9403568c10\nhttps://git.kernel.org/stable/c/2a952fb1b20d83e83ca852773e6188511f7d2191\nhttps://git.kernel.org/stable/c/f5c8619ccbd70102642120c4c6fda1c048a555fd\nhttps://git.kernel.org/stable/c/06aa3d26327f24edd039ff249672fdf6f2ba5695\n",
   "aliases": "GHSA-7j5j-83jx-4ffc\nCVE-2026-89511\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "004c513c-81c0-3510-9c2b-eb523117976c",

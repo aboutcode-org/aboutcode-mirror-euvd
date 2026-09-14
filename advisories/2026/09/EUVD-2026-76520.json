@@ -3,12 +3,14 @@
   "enisaUuid": "1be5c4b3-6175-3587-80ea-364f8aa5e90b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\necryptfs: pass packet set buffer size to parser\n\necryptfs_parse_packet_set() receives a pointer into the file header, but\nit calculates the remaining packet buffer size from PAGE_SIZE - 8.  For\nversion 1 headers the packet set starts later in the header, so this can\noverstate the available buffer.\n\nPass the actual packet set buffer length from the caller and calculate\nper-packet limits from the remaining bytes in that buffer.  Recompute the\nremaining length after consuming a tag 3 packet before parsing the\nfollowing tag 11 packet.",
   "datePublished": "Sep 11, 2026, 7:45:10 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:10 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:45 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/329de8b9e988b152b938f09224670d97bada0b96\nhttps://git.kernel.org/stable/c/e5d254e654f2311a3c4b9c791d7f216554bcd17a\nhttps://git.kernel.org/stable/c/747fd45be396a6aea3420ab657a0ab4e60185b05\nhttps://git.kernel.org/stable/c/2602b79c5b3e2f6fce12e38a670f8e3fda4e46a2\n",
   "aliases": "GHSA-m87w-w8mv-rf6c\nCVE-2026-89608\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "06990b43-cc8b-3351-8881-01c3daac8987",

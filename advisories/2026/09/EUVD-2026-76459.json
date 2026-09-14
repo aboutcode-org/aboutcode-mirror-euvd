@@ -3,12 +3,14 @@
   "enisaUuid": "ec198ee5-b39c-32c5-98e6-e46ea956385b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: always drain cache_cleaner before destroying a cache_detail\n\nsunrpc_destroy_cache_detail() only cancels the global cache_cleaner\ndelayed_work when cache_list is empty.  During per-netns teardown\ncache_list is never empty because init_net's caches remain registered,\nso the cancel never fires.  After unlink, the caller proceeds to\ncache_destroy_net() which kfrees the cache_detail while cache_clean()\nmay still hold a dangling pointer to it.  The result is a\nuse-after-free: cache_dequeue() takes cd->queue_lock on freed memory,\nand cache_put() dereferences cd->cache_put as a function pointer from\nfreed slab.\n\nDrop the list_empty guard so that cancel_delayed_work_sync() always\nruns, ensuring any in-flight cache_clean() completes before the\ncache_detail is freed.  Re-arm the cleaner afterwards if other caches\nare still registered.",
   "datePublished": "Sep 11, 2026, 7:44:23 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:23 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:47 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9d44836f60c8c29bcdb1471fd9202387c642a890\nhttps://git.kernel.org/stable/c/2e861ce2aaa468351a6a47c4cbb4971ebb740c7b\nhttps://git.kernel.org/stable/c/3d60fdf951143d6ef4e352e2f8eb852286701726\nhttps://git.kernel.org/stable/c/f42d0fda0c67695db6bc704b04b7c10240805377\n",
   "aliases": "CVE-2026-89548\nGHSA-3g7j-4hj7-8rgc\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1c48734c-49ec-3f24-ae80-d6159708e1ca",

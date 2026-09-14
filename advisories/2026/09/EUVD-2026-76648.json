@@ -3,12 +3,14 @@
   "enisaUuid": "2b9f4598-1475-3cad-a91c-ea1cd02190a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: u_audio: Fix use-after-free on sound card disconnect\n\ng_audio_cleanup() invokes snd_card_free_when_closed() to initiate sound\ncard teardown and immediately frees the underlying struct snd_uac_chip\ncontext. However, snd_card_free_when_closed() returns asynchronously\nwhile ALSA control elements (kctls) remain open in userspace.\n\nWhen userspace control applications access or close these open file\ndescriptors, kctl callbacks attempt to dereference kctl->private_data\npointing to &uac->c_prm or &uac->p_prm within the freed uac structure,\nresulting in a use-after-free (UAF) memory corruption.\n\nFix this issue by deferring the destruction of struct snd_uac_chip until\nall references to the ALSA sound card are released. Register a custom\ncard->private_free callback (u_audio_card_free) during g_audio_setup()\nthat frees uac and its associated playback/capture request and ring\nbuffers only when the sound card reference count drops to zero.",
   "datePublished": "Sep 11, 2026, 7:46:44 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:44 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:47 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c74ff0b1a0fca53d3ac185873c87d6a719b30a47\nhttps://git.kernel.org/stable/c/4e747c864a88537e18b1ffc19a1954c9686bb8e1\nhttps://git.kernel.org/stable/c/79a92896e2bb9471550c56fc23d8d93592f04c27\nhttps://git.kernel.org/stable/c/858965947081d10d41d9a1010a540d3d5eea958b\n",
   "aliases": "CVE-2026-89736\nGHSA-hjw3-qcfv-9g4p\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "04d5d4fb-8ed3-3a5f-8009-068a96d2ef47",

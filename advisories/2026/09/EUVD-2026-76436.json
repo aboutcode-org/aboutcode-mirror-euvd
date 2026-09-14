@@ -3,12 +3,14 @@
   "enisaUuid": "2708f5c2-d0d3-3d4e-b22f-c62f0befcef6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Reject inline replies that overflow the pull-up buffer\n\nAn RPC-over-RDMA client can request a reply, such as an NFS READ\npayload, without providing a Write list or a Reply chunk to carry\nit. When such a reply needs more scatter/gather entries than the\ndevice's Send Queue supports, svc_rdma_pull_up_needed() selects\npull-up and svc_rdma_pull_up_reply_msg() linearizes the whole\nreply into sctxt->sc_xprt_buf. That buffer is only sc_max_req_size\nbytes, while the reply on this path is bounded only by the client's\nrequest, so svc_rdma_xb_linearize() copies past the end of the\nbuffer and corrupts adjacent slab memory. The oversized length is\nthen stored in sc_sges[0].length and posted, so the device also\nreads beyond the mapped region.\n\nThe SGE-exhaustion branch is the only pull-up path that can exceed\nthe buffer: the threshold branch pulls up only replies smaller\nthan RPCRDMA_PULLUP_THRESH, and replies that fit the device's SGE\nbudget are sent directly without linearization. Make\nsvc_rdma_pull_up_needed() report -E2BIG when the reply it would\npull up cannot fit sc_max_req_size, and fail the request with\nERR_CHUNK as RFC 8166 Section 4.5.3 directs rather than dropping\nthe connection.\n\nThe helper no longer answers a simple yes/no question: it now\nreports pull-up, no pull-up, or -E2BIG for a reply too large to\nlinearize. Rename svc_rdma_pull_up_needed() to\nsvc_rdma_check_pull_up() so its name no longer implies a boolean\npredicate.",
   "datePublished": "Sep 11, 2026, 7:44:10 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:10 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:30:27 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fcd91b9957462d398792201c239dffaeff1cc8b2\nhttps://git.kernel.org/stable/c/1949dd1576f7a8aa161b1330c6125df9d53046d5\nhttps://git.kernel.org/stable/c/8ec60eb51fae37cd3d334ff26e4a7d6fb21ff7cf\nhttps://git.kernel.org/stable/c/0fbe20dfe74b783d255bf389a6ea77aa25dc7860\n",
   "aliases": "CVE-2026-89530\nGHSA-xp7j-g6r9-v9rw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1d79fb24-7f72-3579-9142-ee77bc90057e",

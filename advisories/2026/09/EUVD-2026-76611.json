@@ -3,12 +3,14 @@
   "enisaUuid": "e12db468-d174-3ff7-9bfa-a812937aa38e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: validate symlink target length in NFSv4 CREATE\n\nnfsd4_decode_create() accepts an unbounded cr_datalen from the wire for\nNF4LNK symlink targets, allowing a client to force a kmalloc of up to\nthe maximum RPC payload size (several MiB) per COMPOUND op that persists\nuntil compound teardown.  The VFS rejects oversized targets with\nENAMETOOLONG, but the allocation has already occurred.\n\nReject cr_datalen == 0 early with nfserr_inval and cr_datalen greater\nthan NFS4_MAXPATHLEN (PATH_MAX) with nfserr_nametoolong to bound the\nallocation.",
   "datePublished": "Sep 11, 2026, 7:46:17 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:17 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:22 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/b24843ea3de1676b29902457b38507c95a80649b\nhttps://git.kernel.org/stable/c/895a485cd3758031ef9993c0d53cf19ce8fb4ccc\nhttps://git.kernel.org/stable/c/45ec115cbfecb4b3cfab7fca6f73d1b60696a25a\nhttps://git.kernel.org/stable/c/041f57056e5fb9c80adc088269322d2c61074406\n",
   "aliases": "GHSA-864v-pq9r-vg9w\nCVE-2026-89699\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "04db715d-f4d9-39b9-be10-6f8e1f6750c8",

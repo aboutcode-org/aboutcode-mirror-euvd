@@ -3,12 +3,14 @@
   "enisaUuid": "dbbc6b8b-62e7-3daf-a714-403ba4f6b7b2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nauxdisplay: charlcd: cancel backlight work on registration failure\n\nWith CONFIG_CHARLCD_BL_FLASH, charlcd_init() schedules bl_work before\ncharlcd_register() calls misc_register(). If registration fails, the\ncaller frees the charlcd object while delayed work still contains its\naddress.\n\nAdd charlcd_deinit() to cancel the delayed work and turn the backlight\noff. Use it for both registration rollback and normal unregistration.",
   "datePublished": "Sep 11, 2026, 7:44:50 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:50 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:20 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fe7ba73dde94c5f413b1588cd444b49105015dda\nhttps://git.kernel.org/stable/c/84858671842ae5857b9ed1202b62f9045373dcd1\nhttps://git.kernel.org/stable/c/ff2fb3c1e60cb247ea3e28c0ea0bea81c18f7755\nhttps://git.kernel.org/stable/c/e3e3bf40916c1e810df03958cfa7ba6883cdce79\n",
   "aliases": "GHSA-72rp-5pw2-wrgc\nCVE-2026-89585\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "10897f6d-c4bc-34d7-869c-129631d43555",

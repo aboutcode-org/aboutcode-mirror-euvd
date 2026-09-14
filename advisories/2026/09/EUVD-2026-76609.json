@@ -3,12 +3,14 @@
   "enisaUuid": "39d25f1f-b005-3a26-8035-221cd0a89d55",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: add fh_want_write() for early-verified SETATTR in nfsd_proc_setattr()\n\nThe BOTH_TIME_SET branch calls fh_verify() early so setattr_prepare()\ncan inspect the dentry. This causes nfsd_setattr() to skip\nfh_want_write(), so notify_change() runs without a mount write\nreference.\n\nAdd the missing fh_want_write() call after the early fh_verify().",
   "datePublished": "Sep 11, 2026, 7:46:15 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:15 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:21 AM",
+  "baseScore": 9.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/15ca3b64a69caa6194bed8f98a20ed90a11c11dd\nhttps://git.kernel.org/stable/c/533964d420d385e11b08dd4c56c66ef5dcccaf08\nhttps://git.kernel.org/stable/c/c4a409b86a92815181a8e9395c6bf1696ad19175\nhttps://git.kernel.org/stable/c/4e475be769aa9f7a2c1ce55a2b8592cfccacddcc\n",
   "aliases": "GHSA-36mf-r537-f6c6\nCVE-2026-89697\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "14d3207f-fbec-3a3d-9714-c1a21ba62b2b",

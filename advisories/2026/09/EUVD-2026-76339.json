@@ -3,12 +3,14 @@
   "enisaUuid": "6027dc83-6536-323a-97d7-a3f584f56260",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86/amd/pmc: Propagate SMU errors and validate S2D address\n\namd_stb_s2d_init() discards the return value of several S2D SMU commands.\nWhen the SMU refuses a command (e.g. \"SMU cmd failed. err: 0xff\") the\nfailure is only noticed indirectly - if at all - and reported as -EIO,\nmasking the real error.\n\nMore seriously, the S2D_PHYS_ADDR_LOW/HIGH return values are ignored, so\non failure phys_addr_low/hi are left uninitialised and the assembled\naddress is passed straight to devm_ioremap().  When the SMU leaves them at\nzero this maps physical address 0 and trips the ioremap-on-RAM warning:\n\n  amd_pmc AMDI000B:00: SMU cmd failed. err: 0xff\n  ioremap on RAM at 0x0000000000000000 - 0x0000000000ffffff\n  WARNING: CPU: 13 PID: 4592 at arch/x86/mm/ioremap.c:...\n\nCheck the return value of each SMU command and propagate it, and reject a\nzero physical address before calling devm_ioremap().",
   "datePublished": "Sep 11, 2026, 7:43:04 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:04 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:18 AM",
+  "baseScore": 7.7,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/8178f59d76570b152d836bde07f5997f15861f04\nhttps://git.kernel.org/stable/c/775d4cde1f9737796ce7d8393521e9e8c5b49891\nhttps://git.kernel.org/stable/c/0225c1d637687b03726f00ac65b6def843d2c464\n",
   "aliases": "GHSA-wv8r-9hh3-p28x\nCVE-2026-81016\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0130508d-dc91-3fde-b4a1-5f354dea49bc",

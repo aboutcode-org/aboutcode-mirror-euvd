@@ -3,12 +3,14 @@
   "enisaUuid": "3eac7787-f6fc-31fb-b76e-d169845973a7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/msm: Unwind probe state on registration failure\n\nmsm_iommu_probe() adds its devm-managed IOMMU object to\nqcom_iommu_devices before adding the IOMMU sysfs device and registering\nit with the IOMMU core.\n\nIf iommu_device_sysfs_add() fails, probe returns with the object still on\nqcom_iommu_devices. The driver core then releases the devm allocation,\nleaving a dangling list entry that later list walks may dereference.\n\nIf iommu_device_register() fails, the same dangling list entry remains\nand the sysfs device is left registered as well.\n\nUnwind the sysfs device and global list entry in reverse setup order on\nthe corresponding failure paths.",
   "datePublished": "Sep 11, 2026, 7:43:17 PM",
-  "dateUpdated": "Sep 11, 2026, 7:43:17 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:29:31 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f532401be9312ecd166f616bb74a65b0b4c150fa\nhttps://git.kernel.org/stable/c/7f7074a886c4a93e3d12076ce60a510a1ebe400c\nhttps://git.kernel.org/stable/c/535a200220ca2c83bc8bf54bd2cbe045d6ee70c4\n",
   "aliases": "CVE-2026-89452\nGHSA-g6rr-fv4f-cc2j\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1e9587be-d262-3426-99fe-8ee6bbd9b4e9",

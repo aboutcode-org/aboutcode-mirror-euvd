@@ -3,12 +3,14 @@
   "enisaUuid": "87d1bce9-f391-3b69-8b59-98c60a29835f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: sensor-hub: Fix out-of-bounds write in sensor_hub_get_feature\n\nsensor_hub_get_feature() clamps its return value to the caller's buffer\nsize, but the copy loop still copies field->report_size / 8 bytes for\neach report value. A malicious HID descriptor can advertise a large\nfeature field size while an IIO caller supplies a small stack buffer,\nsuch as a single s32, causing an out-of-bounds write.\n\nHID core stores parsed report values in __s32 slots and clamps extracted\nvalues to 32 bits. Reject feature fields that require more than one slot\nper value, guard the total byte count calculation, and clamp each\nper-value copy to the remaining caller buffer.",
   "datePublished": "Sep 11, 2026, 7:46:39 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:39 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:33:44 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/fa95b14198b6c8ea721b4784f466d3c2c2bac83a\nhttps://git.kernel.org/stable/c/9f43499ce6458a572b781f6bb46c464ab59fa825\nhttps://git.kernel.org/stable/c/bc3d72c44bff17688dc5f3e5132a53b51dae0f04\nhttps://git.kernel.org/stable/c/c92693f3ed099401d0383ef35ca1fe1e6ba033de\n",
   "aliases": "GHSA-2hjf-83c6-w88p\nCVE-2026-89729\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0dde12ae-b977-3bbe-b0fa-c86142c14fef",

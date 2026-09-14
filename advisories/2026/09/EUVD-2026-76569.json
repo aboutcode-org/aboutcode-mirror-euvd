@@ -3,12 +3,14 @@
   "enisaUuid": "c903eec1-0284-30ca-a1ef-337984e9dfc9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: validate OSD extent maps before cursor advance\n\nnet/ceph/osd_client.c:osd_sparse_read() validates that the sparse-read\ndata length matches the summed extent lengths, but it does not validate\nthat each OSD-supplied extent is monotonic and lies inside the original\nrequest range. A malformed authenticated OSD reply can advertise a\nfar-forward nonzero extent offset with a matching data length and make\nthe client advance the message-data cursor beyond the request buffer.\nThis reaches the BUG_ON(!*length) assertion in ceph_msg_data_next() from\nthe client receive path.\n\nImpact: A malicious or compromised authenticated Ceph OSD peer can crash\na kernel Ceph client via a malformed sparse-read reply.\n\nReject sparse extent maps that overflow, move backwards, overlap, or\nextend outside the original sparse-read request before advancing the\ncursor.\n\n[ idryomov: perform sparse_extent_map_valid() check a bit earlier,\n  in CEPH_SPARSE_READ_DATA_LEN instead of CEPH_SPARSE_READ_DATA_PRE\n  state ]",
   "datePublished": "Sep 11, 2026, 7:45:46 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:46 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:32:38 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/058ffa81f9440c5b4714685611cf697fd3739ec9\nhttps://git.kernel.org/stable/c/2571b35883268a266554e80d368e67fdfea7fb9d\nhttps://git.kernel.org/stable/c/201db408872ca12cf09e36bf0f560138c3dcfa1c\nhttps://git.kernel.org/stable/c/9ec08b7499a62c6d4afa93d36ab47a43fcad57d1\n",
   "aliases": "CVE-2026-89657\nGHSA-9478-77xp-cr7g\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1807f6a8-6b5b-38cd-92af-d7f1ee48df48",

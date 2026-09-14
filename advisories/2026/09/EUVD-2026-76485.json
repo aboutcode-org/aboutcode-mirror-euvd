@@ -3,12 +3,14 @@
   "enisaUuid": "5b900083-1ff9-37aa-ae80-c2a8582a2b23",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm array: reject an array block whose value size is not the caller's\n\narray_block_check() can only compare the header against itself, so a block\nwith value_size 4 and max_entries 1018 is internally consistent and passes.\ndm-cache keeps two arrays -- mappings at 8 bytes and hints at 4 -- and the\nroots for both live in the superblock. Point the mappings root at a hint\nblock and __load_mappings() walks it through an info whose value size is 8,\nso element_at() strides 8 bytes over 4-byte entries and reaches offset 8160\nof a 4096-byte block.\n\nget_ablock() and __shadow_ablock() are the two places that hold the block\nand the caller at once. Reject there when the two value sizes disagree.\nArrays only ever read their own blocks, so this fires on crafted metadata\nonly.",
   "datePublished": "Sep 11, 2026, 7:44:41 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:41 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 13, 2026, 6:31:10 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7bf4b5cb42a4e27f36bcbc6209d82a5da9c0168c\nhttps://git.kernel.org/stable/c/ac4a5eb8b002a0742c938fc98b922e243f53573a\nhttps://git.kernel.org/stable/c/cb409b38b0232ee4385ef55cddcd6fbdd011a8a2\nhttps://git.kernel.org/stable/c/4538a287bdf5d0f9a379c678e5262b9f5783f547\n",
   "aliases": "CVE-2026-89573\nGHSA-pg3h-8qxx-35hj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0af7bd38-99f5-3d71-a1b0-ba55ad9b055c",
