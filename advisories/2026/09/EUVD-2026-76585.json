@@ -3,12 +3,12 @@
   "enisaUuid": "072d2ea7-f31a-3e3c-b653-da92298a7be9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix XDR padding calculation in ff_encode_getdeviceinfo\n\nnfsd4_ff_encode_getdeviceinfo() computes the da_addr_body reservation\nas 16 + netid_len + addr_len, but the subsequent xdr_encode_opaque()\ncalls emit 8 + round_up(netid_len, 4) + round_up(addr_len, 4) bytes.\nThe mismatch means the declared da_addr_body length exceeds the actual\nencoded data by 2-8 bytes on every flexfile GETDEVICEINFO reply,\nleaking stale reply-page content to the client and mis-aligning the\nsubsequent version list decode.\n\nUse xdr_align_size() for each string length to match what\nxdr_encode_opaque() actually writes.",
   "datePublished": "Sep 11, 2026, 7:45:58 PM",
-  "dateUpdated": "Sep 11, 2026, 7:45:58 PM",
+  "dateUpdated": "Sep 14, 2026, 12:01:58 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/74015b7be806ad9e21d46f7bd2831df280c6c783\nhttps://git.kernel.org/stable/c/41ebca28e17f84293650598f86bd69532ec1a8e0\nhttps://git.kernel.org/stable/c/62e5949f0dd5ec837af144860ff908369df4c7c9\nhttps://git.kernel.org/stable/c/8b989aaec85e1293a871d602590c951fe44b8647\n",
+  "references": "https://git.kernel.org/stable/c/88bce7e326c368d7df15126ccac537e54bebd467\nhttps://git.kernel.org/stable/c/74015b7be806ad9e21d46f7bd2831df280c6c783\nhttps://git.kernel.org/stable/c/41ebca28e17f84293650598f86bd69532ec1a8e0\nhttps://git.kernel.org/stable/c/62e5949f0dd5ec837af144860ff908369df4c7c9\nhttps://git.kernel.org/stable/c/8b989aaec85e1293a871d602590c951fe44b8647\n",
   "aliases": "CVE-2026-89673\nGHSA-fpgc-gpfg-74f9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "16ee56f0-ea25-377b-9473-a7f7f88a98df",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "6.4.16 <6.18.50"
+    },
+    {
+      "id": "1eb951e6-42c6-3acf-8bc2-a977faef358f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.4.16 <6.6.157"
     },
     {
       "id": "3843c956-d576-378c-b065-7615be501479",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "efcae97fa425ca6db9d126e37daccf2d7225cb09 <8b989aaec85e1293a871d602590c951fe44b8647"
+    },
+    {
+      "id": "c5b06523-f16d-3c30-900a-91a508ff01db",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "efcae97fa425ca6db9d126e37daccf2d7225cb09 <88bce7e326c368d7df15126ccac537e54bebd467"
     },
     {
       "id": "d4551dc9-2ca8-3422-a830-a987190febba",

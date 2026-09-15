@@ -3,7 +3,7 @@
   "enisaUuid": "81cb3387-6a42-3545-a439-f4da869f87b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: cancel mlo_scan_start_wk\n\nmlo_scan_start_wk is not canceled on disconnection. In fact, it is not\ncanceled anywhere except in the restart cleanup, where we don't really\nhave to.\n\nThis can cause an init-after-queue issue: if, for example, the work was\nqueued and then drv_change_interface got executed.\n\nThis can also cause use-after-free: if the work is executed after the\nvif is freed.",
   "datePublished": "Feb 14, 2026, 4:27:14 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:32 PM",
+  "dateUpdated": "Sep 14, 2026, 12:04:29 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

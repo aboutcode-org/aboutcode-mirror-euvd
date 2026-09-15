@@ -3,14 +3,14 @@
   "enisaUuid": "52b27d0a-0abf-3f0b-8789-da783578f3ec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: hp-bioscfg: pass validated element count to package parsers\n\nThe per-type package parsers are handed the wrong element count.\n\nhp_init_bios_package_attribute() validates obj->package.count and then\ncalls one of the five hp_populate_*_package_data() wrappers (string,\ninteger, enumeration, ordered list, password). Each wrapper forwards a\ncount to its hp_populate_*_elements_from_package() parser, but instead\nof forwarding the validated obj->package.count it derives the count\nfrom elements[0]. elements[0] is the NAME field and is always an\nACPI_TYPE_STRING, so reading ->package.count from it in fact reads\n->string.length through the union acpi_object. The parsers thus bound\nthemselves against the length of the name string rather than against\nthe real number of elements in the package.\n\nThis is safe today because hp_init_bios_package_attribute() refuses any\npackage that has fewer than the type's element count, so a parser only\never runs on a full package and never reads past it regardless of the\nbogus bound.\n\nAn upcoming change relaxes that check to accept shorter packages. Once\na parser can receive fewer elements than its per-type count, a bound\ntaken from the name length no longer reflects the array size, and the\n\"elem < count\" loop conditions and \"elem + n >= count\" sub-loop guards\nread past the end of elements[] - an out-of-bounds heap read.\n\nForward the validated obj->package.count to every *_package_data()\nwrapper so the parsers bound themselves against the real package size.\nThis does not change behaviour for the packages that enumerate\ncorrectly today and is a prerequisite for accepting shorter packages\nsafely.",
   "datePublished": "Sep 11, 2026, 7:43:01 PM",
-  "dateUpdated": "Sep 13, 2026, 6:29:14 AM",
+  "dateUpdated": "Sep 14, 2026, 11:59:43 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/436017808c7cbcdb5e49b2142090d4391e3de9a6\nhttps://git.kernel.org/stable/c/a38127df99ae8b1851560b35b837c9952416143a\nhttps://git.kernel.org/stable/c/400cbc3ccc88a5ad37cd85056224635ce9eba018\nhttps://git.kernel.org/stable/c/e0ddfd77c0c320b7d12b6c9169303b140b798775\n",
+  "references": "https://git.kernel.org/stable/c/467e53f231f77a1677191b8cdabdaf1448439d55\nhttps://git.kernel.org/stable/c/436017808c7cbcdb5e49b2142090d4391e3de9a6\nhttps://git.kernel.org/stable/c/a38127df99ae8b1851560b35b837c9952416143a\nhttps://git.kernel.org/stable/c/400cbc3ccc88a5ad37cd85056224635ce9eba018\nhttps://git.kernel.org/stable/c/e0ddfd77c0c320b7d12b6c9169303b140b798775\n",
   "aliases": "GHSA-9rrq-fppg-695h\nCVE-2026-81011\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "1de20f1a-f483-36c0-8fbc-e7e56cde2b2a",
@@ -43,6 +43,16 @@
       "product_version": "a34fc329b1895fc8a6eb12099adc47009421ba6a <e0ddfd77c0c320b7d12b6c9169303b140b798775"
     },
     {
+      "id": "43176bda-0751-3fd9-a337-8cff836fe267",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.157"
+    },
+    {
       "id": "50b3c347-ac94-38af-bdae-90b46d484044",
       "product": {
         "name": "Linux",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "a34fc329b1895fc8a6eb12099adc47009421ba6a <a38127df99ae8b1851560b35b837c9952416143a"
+    },
+    {
+      "id": "92db713e-ae4c-3db4-8d5f-0525bc602ffb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a34fc329b1895fc8a6eb12099adc47009421ba6a <467e53f231f77a1677191b8cdabdaf1448439d55"
     },
     {
       "id": "94e43759-ab97-3b5f-bb13-82ebdf844130",

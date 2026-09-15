@@ -3,14 +3,14 @@
   "enisaUuid": "aa761b69-90b8-308e-bb2e-9c97a21db535",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use pskb_network_may_pull() for transmit path header pulls\n\nIn vxlan_xmit(), arp_reduce(), and vxlan_mdb_entry_skb_get(), pskb_may_pull() was\nbeing called to verify the availability of network layer headers (ARP, IPv6/ND,\nIP/IPv6 MDB keys).\n\nHowever, during transmit skb->data points to the MAC header, so skb_network_offset(skb)\nis ETH_HLEN (14 bytes). Using pskb_may_pull(skb, len) only checks len bytes from skb->data\nrather than skb_network_offset(skb) + len, which can leave part of the network header\nin non-linear frags.\n\nReplace these remaining pskb_may_pull() calls with pskb_network_may_pull() to properly\naccount for the MAC header offset.",
   "datePublished": "Aug 15, 2026, 12:27:10 PM",
-  "dateUpdated": "Aug 23, 2026, 12:47:21 PM",
+  "dateUpdated": "Sep 14, 2026, 11:58:47 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/bb01c51950c3ff3c76acdd54b85ab38ccc2a8bb4\nhttps://git.kernel.org/stable/c/6146901881f09ef063eb34ad389f63231f8486f5\nhttps://git.kernel.org/stable/c/94dee751aad627b3645d424b5d0c736d394573e9\nhttps://git.kernel.org/stable/c/7076a34b6e33315dc160b4612bfea1c597495585\nhttps://git.kernel.org/stable/c/b9553558b48db54ac9273e6b98d7263ef5c1a329\n",
+  "references": "https://git.kernel.org/stable/c/371425d4be7795e9158388af9eee0201e6047410\nhttps://git.kernel.org/stable/c/bb01c51950c3ff3c76acdd54b85ab38ccc2a8bb4\nhttps://git.kernel.org/stable/c/6146901881f09ef063eb34ad389f63231f8486f5\nhttps://git.kernel.org/stable/c/94dee751aad627b3645d424b5d0c736d394573e9\nhttps://git.kernel.org/stable/c/7076a34b6e33315dc160b4612bfea1c597495585\nhttps://git.kernel.org/stable/c/b9553558b48db54ac9273e6b98d7263ef5c1a329\n",
   "aliases": "CVE-2026-74474\nGHSA-59jj-4qq4-v9f9\n",
   "assigner": "Linux",
-  "epss": 0.44,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "07dffca7-687f-32cf-b392-ea2801a92fb8",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 7.1.8"
+    },
+    {
+      "id": "14c3192a-3dd3-3b9f-8733-25f26b8eeaca",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.188"
     },
     {
       "id": "3444b61c-25c7-3a2c-a6db-e83657216239",
@@ -81,6 +91,16 @@
         }
       },
       "product_version": "3.8"
+    },
+    {
+      "id": "c0fb2979-8e27-3e3e-839f-3ca1edbbe265",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e4f67addf158f98f8197e08974966b18480dc751 <371425d4be7795e9158388af9eee0201e6047410"
     },
     {
       "id": "cb3759d7-ae8e-3f28-8f0e-3c67ee085bda",

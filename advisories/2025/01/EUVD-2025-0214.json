@@ -3,14 +3,14 @@
   "enisaUuid": "9a4cde76-521e-30dc-8a02-f5ae3983e1a7",
   "description": "A flaw was found in the Wildfly Server Role Based Access Control (RBAC) provider. When authorization to control management operations is secured using the Role Based Access Control provider, a user without the required privileges can suspend or resume the server. A user with a Monitor or Auditor role is supposed to have only read access permissions and should not be able to suspend the server. \nThe vulnerability is caused by the Suspend and Resume handlers not performing authorization checks to validate whether the current user has the required permissions to proceed with the action.",
   "datePublished": "Jan 30, 2025, 2:30:04 PM",
-  "dateUpdated": "Aug 21, 2026, 9:19:54 AM",
+  "dateUpdated": "Sep 14, 2026, 2:19:32 PM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2025:3465\nhttps://access.redhat.com/errata/RHSA-2025:3467\nhttps://access.redhat.com/errata/RHSA-2025:3989\nhttps://access.redhat.com/errata/RHSA-2025:3990\nhttps://access.redhat.com/errata/RHSA-2025:3992\nhttps://access.redhat.com/security/cve/CVE-2025-23367\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2337620\nhttps://github.com/advisories/GHSA-qr6x-62gq-4ccp\n",
   "aliases": "GHSA-qr6x-62gq-4ccp\nCVE-2025-23367\n",
   "assigner": "redhat",
-  "epss": 0.67,
+  "epss": 0.68,
   "enisaIdProduct": [
     {
       "id": "07b814fa-e429-3317-8605-5b0a61280e6a",
@@ -101,6 +101,16 @@
         }
       },
       "product_version": "patch: 0:800.7.0-2.GA_redhat_00002.1.el8eap"
+    },
+    {
+      "id": "6c1aa395-ce13-350c-a054-f5ac5c829ac2",
+      "product": {
+        "name": "Red Hat JBoss Enterprise Application Platform",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 15.0.45.Final-redhat-00001"
     },
     {
       "id": "7770b39f-55bb-34e8-9818-785a855469c4",

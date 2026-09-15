@@ -3,13 +3,23 @@
   "enisaUuid": "cd7ad544-b558-3c59-91c6-c1dce20bd59b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: portman2x4: Check card index validity at probe\n\nAlthough portman2x4 driver has a check of the given devptr->id value,\nit doesn't check for a negative id, which is often given as \"none\" or\nsuch value when bound via sysfs.  This may lead to OOB access for\nindex[] and other parameters.\n\nAdd a sanity check for the card index and warn/correct it if it's a\nvalue out of the range.",
   "datePublished": "Sep 11, 2026, 7:42:31 PM",
-  "dateUpdated": "Sep 13, 2026, 6:23:57 AM",
+  "dateUpdated": "Sep 14, 2026, 11:59:12 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0ce391090809d610647f424b9b1dc24aa2c546fd\nhttps://git.kernel.org/stable/c/d7ef7890e3e35b4ba09e76fc6b72047a1599a5e8\nhttps://git.kernel.org/stable/c/e1ce8ad1009b1736b3044b3324350dcfdd516f42\nhttps://git.kernel.org/stable/c/3690ef20469d5959378260e2752f2314a2572913\n",
+  "references": "https://git.kernel.org/stable/c/45ea0707298798678a60ff861b695aea049a5469\nhttps://git.kernel.org/stable/c/5d7ac5e9ee5ba76b567ace13b46075caf79dcca0\nhttps://git.kernel.org/stable/c/0048994854f3e9c57b7a754de43ef8da5818d140\nhttps://git.kernel.org/stable/c/64898e9bd8b7b229efa8642b85b56b326a6ec3dc\nhttps://git.kernel.org/stable/c/0ce391090809d610647f424b9b1dc24aa2c546fd\nhttps://git.kernel.org/stable/c/d7ef7890e3e35b4ba09e76fc6b72047a1599a5e8\nhttps://git.kernel.org/stable/c/e1ce8ad1009b1736b3044b3324350dcfdd516f42\nhttps://git.kernel.org/stable/c/3690ef20469d5959378260e2752f2314a2572913\n",
   "aliases": "CVE-2026-80966\nGHSA-q972-jx45-qf27\n",
   "assigner": "Linux",
   "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "032ab907-4e2d-3b3a-b210-53b9c31982dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "757e119bf52b014b3181eed97b01f87a245b8ff9 <45ea0707298798678a60ff861b695aea049a5469"
+    },
     {
       "id": "0452a692-d471-3c2b-a944-5d214a980690",
       "product": {
@@ -31,6 +41,16 @@
       "product_version": "757e119bf52b014b3181eed97b01f87a245b8ff9 <0ce391090809d610647f424b9b1dc24aa2c546fd"
     },
     {
+      "id": "0e9c23bc-e87d-3d05-86a0-9407e5ab297b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.157"
+    },
+    {
       "id": "1a8a76b1-63c8-32c6-908f-ddce1766b2db",
       "product": {
         "name": "Linux",
@@ -39,6 +59,26 @@
         }
       },
       "product_version": "patch: 7.3-rc1"
+    },
+    {
+      "id": "1cd51d6d-2f8f-325b-8d92-5cbbd7d16022",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.221"
+    },
+    {
+      "id": "2f3f146a-b90a-39ec-b2de-0cee4c4008a4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "757e119bf52b014b3181eed97b01f87a245b8ff9 <0048994854f3e9c57b7a754de43ef8da5818d140"
     },
     {
       "id": "324f6352-91b5-3ecc-8215-d02d821b669e",
@@ -101,6 +141,36 @@
       "product_version": "patch: 6.12.109"
     },
     {
+      "id": "b57a41aa-f30b-34fc-a2ef-e9c15af4dcf0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.270"
+    },
+    {
+      "id": "c212bfa8-c665-3a6f-894f-dcaebdcaf58b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.188"
+    },
+    {
+      "id": "e60496b9-10ef-36b7-8c89-4ca46d9c01ca",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "757e119bf52b014b3181eed97b01f87a245b8ff9 <64898e9bd8b7b229efa8642b85b56b326a6ec3dc"
+    },
+    {
       "id": "e9e49b02-3168-3505-9cb6-e3ec3ac19824",
       "product": {
         "name": "Linux",
@@ -109,6 +179,16 @@
         }
       },
       "product_version": "patch: 6.18.50"
+    },
+    {
+      "id": "ebdfac8f-334d-363d-933a-19dc2f5de287",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "757e119bf52b014b3181eed97b01f87a245b8ff9 <5d7ac5e9ee5ba76b567ace13b46075caf79dcca0"
     }
   ],
   "enisaIdVendor": [
