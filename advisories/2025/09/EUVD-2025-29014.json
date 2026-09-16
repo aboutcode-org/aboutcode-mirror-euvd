@@ -3,7 +3,7 @@
   "enisaUuid": "ed4de98b-005a-3c81-a64b-202c00060ebd",
   "description": "1. A cookie is set using the `secure` keyword for `https://target`\n2. curl is redirected to or otherwise made to speak with `http://target` (same\n   hostname, but using clear text HTTP) using the same cookie set\n3. The same cookie name is set - but with only a slash as path (`path=\"/\"`).\n   Since this site is not secure, the cookie *should* be ignored.\n4. A bug in the path comparison logic makes curl read outside a heap buffer\n   boundary\n\nThe bug either causes a crash or it potentially makes the comparison come to\nthe wrong conclusion and lets the clear-text site override the contents of the\nsecure cookie, contrary to expectations and depending on the memory contents\nimmediately following the single-byte allocation that holds the path.\n\nThe presumed and correct behavior would be to plainly ignore the second set of\nthe cookie since it was already set as secure on a secure host so overriding\nit on an insecure host should not be okay.",
   "datePublished": "Sep 12, 2025, 5:10:03 AM",
-  "dateUpdated": "Sep 14, 2026, 8:31:32 PM",
+  "dateUpdated": "Sep 15, 2026, 6:02:35 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
