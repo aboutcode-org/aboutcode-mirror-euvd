@@ -3,14 +3,42 @@
   "enisaUuid": "f4e2ae86-e5f9-3cf6-b03c-e6fa04d25544",
   "description": "A flaw was found in RESTEasy's SourceProvider. This vulnerability allows an unauthenticated attacker to perform an unauthenticated remote file read. By sending a specially crafted XML body with a DOCTYPE declaration referencing external entities to an endpoint that accepts application/xml and returns Source or StreamSource, the server can be tricked into resolving the entity and including sensitive file contents in the HTTP response. This is due to the SourceProvider.writeTo() method creating a SAXParser without disabling external entity resolution, leading to an XML External Entity (XXE) vulnerability.",
   "datePublished": "Aug 31, 2026, 4:15:01 PM",
-  "dateUpdated": "Sep 11, 2026, 5:30:12 PM",
+  "dateUpdated": "Sep 16, 2026, 6:09:08 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:62515\nhttps://access.redhat.com/errata/RHSA-2026:62555\nhttps://access.redhat.com/errata/RHSA-2026:63302\nhttps://access.redhat.com/security/cve/CVE-2026-17615\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2507635\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:62515\nhttps://access.redhat.com/errata/RHSA-2026:62555\nhttps://access.redhat.com/errata/RHSA-2026:63302\nhttps://access.redhat.com/errata/RHSA-2026:68277\nhttps://access.redhat.com/errata/RHSA-2026:68278\nhttps://access.redhat.com/security/cve/CVE-2026-17615\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2507635\n",
   "aliases": "CVE-2026-17615\nGHSA-h82j-45qh-f65r\n",
   "assigner": "redhat",
-  "epss": 0.47,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.32,
+  "enisaIdProduct": [
+    {
+      "id": "88aae4ba-2299-3daf-9378-18cb5dd7e96e",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6.7-3"
+    },
+    {
+      "id": "eb3d0eb3-f5db-3647-aa56-85d28f796bb3",
+      "product": {
+        "name": "Red Hat build of Keycloak 26.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 26.6-20"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8ba9d5a6-6ac9-35fa-b1d7-109a22647f5e",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }
