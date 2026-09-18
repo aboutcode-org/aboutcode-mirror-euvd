@@ -3,14 +3,14 @@
   "enisaUuid": "9717428c-483f-3d2e-b3bb-a450c42f180e",
   "description": "Vouch Proxy is an SSO and OAuth/OIDC login solution for Nginx using the auth_request module. Prior to 0.48.0, Cookie in pkg/cookie/cookie.go parses the total part count from an attacker-controlled multipart cookie name and passes the value to make([]string, numParts) without checking that the value is positive or reasonably bounded. Requests to /validate and /_external-auth-:id reach JWTCacheHandler in pkg/jwtmanager/jwtcache.go, FindJWT in pkg/jwtmanager/jwtmanager.go, and the vulnerable cookie reassembly before JWT validation, so no account or valid session is required. A cookie name such as VouchCookie_1of10000000000 causes an attempted slice allocation of roughly 160 GB and a fatal Go runtime out-of-memory condition, allowing one request to crash the authentication proxy and repeated requests to sustain unavailability. This vulnerability is fixed in 0.48.0.",
   "datePublished": "Sep 15, 2026, 4:30:37 PM",
-  "dateUpdated": "Sep 15, 2026, 4:30:37 PM",
+  "dateUpdated": "Sep 17, 2026, 4:08:18 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://github.com/vouch/vouch-proxy/security/advisories/GHSA-qqff-5854-px68\nhttps://github.com/vouch/vouch-proxy/commit/fa18ce30ba50a4863a436acad044c22965329c4f\nhttps://github.com/vouch/vouch-proxy/releases/tag/v0.48.0\n",
   "aliases": "GHSA-qqff-5854-px68\nCVE-2026-55149\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "c9de4bb2-d753-32f8-a46d-a4bc23de0ece",

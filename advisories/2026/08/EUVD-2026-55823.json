@@ -3,15 +3,45 @@
   "enisaUuid": "ae1da7ba-40f5-319a-ae42-9f0c3ae617dc",
   "description": "A flaw was found in libvirt. A local attacker, specifically a process running as the confined `swtpm` user, could exploit a symlink-following vulnerability in the `virFileChownFiles()` function. By planting a symbolic link within the `swtpm` state directory, the attacker could trick the root-level libvirt daemon into changing the ownership of an arbitrary file to the `swtpm` user. This allows for privilege escalation from the `swtpm` sandbox to root-level file ownership control.",
   "datePublished": "Aug 10, 2026, 8:45:24 PM",
-  "dateUpdated": "Sep 9, 2026, 6:11:38 AM",
+  "dateUpdated": "Sep 17, 2026, 12:30:52 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:64773\nhttps://access.redhat.com/errata/RHSA-2026:65515\nhttps://access.redhat.com/errata/RHSA-2026:65516\nhttps://access.redhat.com/errata/RHSA-2026:65803\nhttps://access.redhat.com/security/cve/CVE-2026-63622\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2513065\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64773\nhttps://access.redhat.com/errata/RHSA-2026:65515\nhttps://access.redhat.com/errata/RHSA-2026:65516\nhttps://access.redhat.com/errata/RHSA-2026:65803\nhttps://access.redhat.com/errata/RHSA-2026:68513\nhttps://access.redhat.com/errata/RHSA-2026:68594\nhttps://access.redhat.com/security/cve/CVE-2026-63622\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2513065\n",
   "aliases": "GHSA-r329-fjhj-3cw3\nCVE-2026-63622\n",
   "assigner": "redhat",
   "epss": 0.13,
   "enisaIdProduct": [
+    {
+      "id": "2291c899-7071-3f60-a483-98e45f42ffa5",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 8080020260910092120.63b34585"
+    },
+    {
+      "id": "687b7956-ca26-3ad6-bf8e-f8e0f7ce625c",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 8060020260910092451.ad008a3a"
+    },
+    {
+      "id": "6eb56462-0e90-3706-b956-c5098205e021",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 8060020260910092451.ad008a3a"
+    },
     {
       "id": "7387c2fd-fc60-3347-b5b9-70be1c300271",
       "product": {
@@ -21,6 +51,16 @@
         }
       },
       "product_version": "patch: 0:10.0.0-6.23.el9_4"
+    },
+    {
+      "id": "7f17a38b-8073-35c0-9783-792731323ecc",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 8080020260910092120.63b34585"
     },
     {
       "id": "c068bc5f-22eb-348b-8303-da74b59c61a4",

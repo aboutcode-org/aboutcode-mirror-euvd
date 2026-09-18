@@ -3,13 +3,33 @@
   "enisaUuid": "66b435ef-7e41-3a96-9b7e-2c7c0376868a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: force complete the KIQ ring fences on reset\n\nLike the MES scheduler ring, the KIQ ring sets no_scheduler = true and uses a\npolling fence, so it is skipped by the force-completion loop in\namdgpu_device_pre_asic_reset(). Its hw fence value lives in wb (GTT) memory and\nsurvives a MODE1 reset while fence_drv.sync_seq keeps advancing, so after a\nreset the first KIQ submission can poll forever on a seq that is never written\nback.\n\nForce complete the KIQ ring fences too so their hw fence is realigned to\nsync_seq.",
   "datePublished": "Sep 16, 2026, 10:30:46 AM",
-  "dateUpdated": "Sep 16, 2026, 10:30:46 AM",
+  "dateUpdated": "Sep 17, 2026, 9:29:12 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/bdd6a58743e00ebc6d52b9cdf9aafb4e535e0b71\nhttps://git.kernel.org/stable/c/fd65d1742992361fc2201ecb4e43411e6e417fcb\n",
   "aliases": "CVE-2026-89813\nGHSA-r5wm-5xw8-prj5\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
+    {
+      "id": "27b54e51-3ba4-37fb-9b40-9184e62433ce",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "65781c78ad74e4260fbec92c0ecc05738044e177 <bdd6a58743e00ebc6d52b9cdf9aafb4e535e0b71"
+    },
+    {
+      "id": "3da21cfb-66d5-3bda-a613-cd5b22d6957c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "65781c78ad74e4260fbec92c0ecc05738044e177 <fd65d1742992361fc2201ecb4e43411e6e417fcb"
+    },
     {
       "id": "457804fb-0b5f-3e10-bb78-604c133d70b6",
       "product": {
@@ -31,34 +51,24 @@
       "product_version": "patch: 7.3-rc1"
     },
     {
-      "id": "a6a0ca73-c5b2-3c42-bb08-6750f6ed8e4e",
+      "id": "995afae7-b17a-35fa-a32f-d3014bacebef",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fd65d1742992361fc2201ecb4e43411e6e417fcb"
+      "product_version": "patch: 0"
     },
     {
-      "id": "af591853-6016-3298-9166-11e4d8ee2224",
+      "id": "9a7d2e14-9f8b-3053-b079-c40a2a6c0690",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <7.2.5"
-    },
-    {
-      "id": "c5b0f159-0605-3279-87f9-d91cab6167a9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <bdd6a58743e00ebc6d52b9cdf9aafb4e535e0b71"
+      "product_version": "4.13"
     }
   ],
   "enisaIdVendor": [
