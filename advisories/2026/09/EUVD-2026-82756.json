@@ -3,14 +3,14 @@
   "enisaUuid": "4b7120dc-9b6d-3ff0-b58a-e830e30838fa",
   "description": "The Mapster WP Maps plugin for WordPress is vulnerable to Arbitrary User Meta Write in all versions up to, and including, 1.23.0 via the `my_profile_update()` function. This is due to the function performing no nonce verification, no capability check, and no allowlist validation on the meta key supplied via the `acf-photo-gallery-groups` POST parameter before passing both the meta key and its corresponding value directly to `update_user_meta()`. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update arbitrary user meta values, though privilege escalation is not possible.",
   "datePublished": "Sep 18, 2026, 7:40:02 AM",
-  "dateUpdated": "Sep 18, 2026, 7:40:02 AM",
+  "dateUpdated": "Sep 19, 2026, 2:21:51 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a70757f7-63a0-452a-a078-0fb7f82844b6?source=cve\nhttps://plugins.trac.wordpress.org/browser/mapster-wp-maps/tags/1.21.0/includes/acf-photo-gallery-field/includes/acf_photo_gallery_save.php#L47\nhttps://plugins.trac.wordpress.org/browser/mapster-wp-maps/tags/1.23.0/includes/acf-photo-gallery-field/includes/acf_photo_gallery_save.php#L47\nhttps://plugins.trac.wordpress.org/browser/mapster-wp-maps/tags/1.23.0/includes/acf-photo-gallery-field/includes/acf_photo_gallery_save.php#L43\nhttps://plugins.trac.wordpress.org/browser/mapster-wp-maps/tags/1.21.0/includes/acf-photo-gallery-field/includes/acf_photo_gallery_save.php#L43\nhttps://plugins.trac.wordpress.org/changeset?reponame=&old=3611280%40mapster-wp-maps&new=3611280%40mapster-wp-maps\n",
   "aliases": "GHSA-gxqq-92xq-fjh7\nCVE-2026-12954\n",
   "assigner": "Wordfence",
-  "epss": 0.0,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "dbe6e498-3bc5-3443-9402-ad525d7c77c1",
