@@ -3,14 +3,14 @@
   "enisaUuid": "f3feae97-70ab-3585-8f69-7e65ef17c2b8",
   "description": "Ghostscript before 10.08.0 contains a heap-based buffer overflow vulnerability in the JPEG 2000 output adapter (base/sjpx_openjpeg.c) that allows attackers to cause memory corruption by supplying a crafted PDF containing a JPEG 2000 image with mismatched component subsampling factors. When image components declare different subsampling values, the non-samescale sub-byte-depth output path allocates a row buffer sized for packed output but writes a full byte per output column regardless of bit depth, overflowing the allocation and corrupting internal chunk-allocator metadata to achieve code execution.",
   "datePublished": "Sep 15, 2026, 2:26:06 PM",
-  "dateUpdated": "Sep 15, 2026, 2:26:06 PM",
+  "dateUpdated": "Sep 20, 2026, 12:35:30 AM",
   "baseScore": 9.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10080\nhttps://github.com/ArtifexSoftware/ghostpdl/commit/0a8bf88e39db07b0751a58d6ec1cf992073e4dc1\nhttps://bugs.ghostscript.com/show_bug.cgi?id=709666\nhttps://www.vulncheck.com/advisories/ghostscript-heap-buffer-overflow-via-jpeg-2000-output-adapter\n",
   "aliases": "GHSA-v865-hp77-22rm\nCVE-2026-39919\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.49,
   "enisaIdProduct": [
     {
       "id": "ea30a2fc-363c-31d2-9d2c-1f38cb0eb97e",
