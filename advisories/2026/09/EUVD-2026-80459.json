@@ -3,12 +3,12 @@
   "enisaUuid": "2cfba384-3070-3223-8b0f-cb7f618ec6ae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Zero dport diagnostics buffer to avoid info leak\n\nqla2x00_do_dport_diagnostics() allocates the qla_dport_diag response\nbuffer with kmalloc_obj() (non-zeroing) and, on success, copies the full\nsizeof(*dd) back to user space via sg_copy_from_buffer(). The inbound\nsg_copy_to_buffer() only fills as many bytes as the user request payload\nprovides, and qla26xx_dport_diagnostics() zeroes only dd->buf. The\noptions and unused[] fields are therefore copied out uninitialized,\nleaking kernel heap contents to user space.\n\nAllocate with kzalloc_obj(), matching qla2x00_do_dport_diagnostics_v2().",
   "datePublished": "Sep 16, 2026, 10:31:31 AM",
-  "dateUpdated": "Sep 16, 2026, 10:31:31 AM",
+  "dateUpdated": "Sep 21, 2026, 1:15:09 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9fc03be982763a131913f84fe73b240ae45bca37\nhttps://git.kernel.org/stable/c/a152edab3854f01dd2daf3eaf8f32cbabdb3834e\n",
+  "references": "https://git.kernel.org/stable/c/d6e2411516bb95e52cb74c9c56b60ad2548a2730\nhttps://git.kernel.org/stable/c/9fc03be982763a131913f84fe73b240ae45bca37\nhttps://git.kernel.org/stable/c/a152edab3854f01dd2daf3eaf8f32cbabdb3834e\n",
   "aliases": "CVE-2026-89859\nGHSA-77jx-g549-23wh\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "0b1eb98a-c96a-39f3-9885-18d8aa6dece1",
@@ -59,6 +59,26 @@
         }
       },
       "product_version": "ec89146215d124c429bff84b498dccdc4919ffa7 <a152edab3854f01dd2daf3eaf8f32cbabdb3834e"
+    },
+    {
+      "id": "d3bd5274-04d9-3197-840a-f40892ee8741",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ec89146215d124c429bff84b498dccdc4919ffa7 <d6e2411516bb95e52cb74c9c56b60ad2548a2730"
+    },
+    {
+      "id": "d4803eea-9004-3de1-b680-9e11550aec51",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.53"
     },
     {
       "id": "e4419c59-2ee8-36a0-bce4-87e817051c44",

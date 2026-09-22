@@ -3,12 +3,12 @@
   "enisaUuid": "4b45bb1d-0049-3e48-a588-af652b472226",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nzram: fix out-of-bounds access in read_block_state()\n\nread_block_state() calculates nr_pages before taking dev_lock.  If the\ndevice is reset and reinitialized with a smaller disksize before lock\nacquisition, nr_pages still describes the old table.  The subsequent loop\ncan then call slot_lock() past the end of the newly allocated table.\n\nRead disksize after acquiring dev_lock and checking that the device is\ninitialized.  The read lock then keeps the table and its bound stable for\nthe duration of the scan.",
   "datePublished": "Sep 11, 2026, 7:46:32 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:32 PM",
+  "dateUpdated": "Sep 21, 2026, 1:14:54 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e7dbcb7a561a21e9a8f5b5fa90bb95aefbd0739d\nhttps://git.kernel.org/stable/c/5e458fa714a55b6b64a9fe0c6d4fa609609f9ec3\nhttps://git.kernel.org/stable/c/391f057f44a51cc9418da5cba78b014324174264\n",
+  "references": "https://git.kernel.org/stable/c/6d52c1f43ff39ea1ebf8f016e847677f0b60cf2b\nhttps://git.kernel.org/stable/c/e7dbcb7a561a21e9a8f5b5fa90bb95aefbd0739d\nhttps://git.kernel.org/stable/c/5e458fa714a55b6b64a9fe0c6d4fa609609f9ec3\nhttps://git.kernel.org/stable/c/391f057f44a51cc9418da5cba78b014324174264\n",
   "aliases": "GHSA-5pfc-pqwh-23px\nCVE-2026-89719\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03bf8f50-03e6-390f-a577-a6cf028ce1f5",
@@ -61,6 +61,16 @@
       "product_version": "4.18"
     },
     {
+      "id": "7f669a3f-1233-3276-b224-30328621d9d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c0265342bff4fcaa2cdf13f4596244c18d4a7ae5 <6d52c1f43ff39ea1ebf8f016e847677f0b60cf2b"
+    },
+    {
       "id": "9678baa8-b917-36b1-86b2-0a852d1e6f91",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "b36a9bba-a78f-31e1-8289-48a4b187e908",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
     },
     {
       "id": "ea077a64-d5cb-3026-974f-658799dc1b74",

@@ -3,15 +3,25 @@
   "enisaUuid": "d79b5b15-ff9c-3f1c-831b-8ab3d294c3cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent out-of-bounds reads in share config responses\n\nValidate IPC share configuration payload sizes before consuming\nvariable-length fields. Bound veto list parsing and account for\nthe separator byte when deriving the path length.",
   "datePublished": "Sep 16, 2026, 8:50:06 AM",
-  "dateUpdated": "Sep 16, 2026, 2:38:41 PM",
+  "dateUpdated": "Sep 21, 2026, 1:15:00 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/61a8d06600c8c397f9a7e01940479d4c94a82f5f\nhttps://git.kernel.org/stable/c/f25e93768fcc5d8287e50b1ec52a42e4c276df34\n",
+  "references": "https://git.kernel.org/stable/c/ffa507f5f774cb4d45136b106989ebc051361263\nhttps://git.kernel.org/stable/c/cd2bcee450bc94770be56c0b896c1a1dc6838bd8\nhttps://git.kernel.org/stable/c/61a8d06600c8c397f9a7e01940479d4c94a82f5f\nhttps://git.kernel.org/stable/c/f25e93768fcc5d8287e50b1ec52a42e4c276df34\n",
   "aliases": "CVE-2026-89792\nGHSA-5h65-jm98-j8f7\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
+    {
+      "id": "0256fa2b-a121-329f-bedd-a010d32ae7c0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.53"
+    },
     {
       "id": "0468bc6b-22a1-36c9-bc7c-6c6da344401f",
       "product": {
@@ -53,6 +63,16 @@
       "product_version": "6.9"
     },
     {
+      "id": "34ca8aa6-a69f-3d86-9931-0f9ed1c2347e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a677ebd8ca2f2632ccdecbad7b87641274e15aac <cd2bcee450bc94770be56c0b896c1a1dc6838bd8"
+    },
+    {
       "id": "437d7a39-c4ad-3f59-803e-95d13bf6c575",
       "product": {
         "name": "Linux",
@@ -71,6 +91,16 @@
         }
       },
       "product_version": "6.1.85 <6.2"
+    },
+    {
+      "id": "8da6faa9-265b-31ab-adb6-e4ad20720dda",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
     },
     {
       "id": "a4df8753-20b0-376d-a83c-e34fb7cac350",
@@ -151,6 +181,16 @@
         }
       },
       "product_version": "patch: 7.3-rc2"
+    },
+    {
+      "id": "f7d035bc-a76f-3fbd-b19a-5b7519036fcd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a677ebd8ca2f2632ccdecbad7b87641274e15aac <ffa507f5f774cb4d45136b106989ebc051361263"
     }
   ],
   "enisaIdVendor": [

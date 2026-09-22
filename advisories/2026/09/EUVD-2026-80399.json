@@ -3,14 +3,14 @@
   "enisaUuid": "2c02dc96-d104-35bd-98a1-c6bb839cc462",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Disable preemption in bpf_get_stackid\n\nThe get_perf_callchain call needs disabled preemption plus we need\nit disabled as long as we access its returned trace entries buffer.\n\nNote the bpf_get_stackid_pe function is executed already with\npreemption disabled.",
   "datePublished": "Sep 16, 2026, 10:30:31 AM",
-  "dateUpdated": "Sep 16, 2026, 2:38:45 PM",
+  "dateUpdated": "Sep 21, 2026, 1:15:04 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/ccf481d73bce6e851cec364fe831c86fe66877cf\nhttps://git.kernel.org/stable/c/c4efdc1d4cb3e9183e41a1b2a5e0901dbbb31cdf\nhttps://git.kernel.org/stable/c/15f1bd8574662f1b7b26aaa2e23ebf4066f0117d\n",
+  "references": "https://git.kernel.org/stable/c/18c71e4b65ee60b8611fc071bdd7159f10185117\nhttps://git.kernel.org/stable/c/ccf481d73bce6e851cec364fe831c86fe66877cf\nhttps://git.kernel.org/stable/c/c4efdc1d4cb3e9183e41a1b2a5e0901dbbb31cdf\nhttps://git.kernel.org/stable/c/15f1bd8574662f1b7b26aaa2e23ebf4066f0117d\n",
   "aliases": "GHSA-p7rj-gh7c-64vc\nCVE-2026-89799\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1a7c9c6a-fe4f-317a-af3b-b45e95632765",
@@ -31,6 +31,26 @@
         }
       },
       "product_version": "d5a3b1f691865be576c2bffa708549b8cdccda19 <15f1bd8574662f1b7b26aaa2e23ebf4066f0117d"
+    },
+    {
+      "id": "45ad7eba-b26b-3523-ac4c-5537b662b81e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "5b2f10c9-1fcb-39dd-ba8d-125a9f5010ef",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d5a3b1f691865be576c2bffa708549b8cdccda19 <18c71e4b65ee60b8611fc071bdd7159f10185117"
     },
     {
       "id": "65b30308-31d0-3c36-a845-5fce1b11cbbb",

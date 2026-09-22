@@ -3,11 +3,11 @@
   "enisaUuid": "712b3786-c61a-3c9c-9a0a-fa672d4d6638",
   "description": "A flaw was found in Vim's netrw plugin. A crafted filename containing quote characters and expression fragments can break out of the quoted context during mark/unmark operations, allowing arbitrary Vimscript execution. This can be leveraged to run shell commands with the privileges of the user running Vim.",
   "datePublished": "Aug 19, 2026, 2:06:09 PM",
-  "dateUpdated": "Sep 1, 2026, 8:33:23 AM",
+  "dateUpdated": "Sep 21, 2026, 11:04:04 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-43961\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2460434\nhttps://github.com/vim/vim/security/advisories/GHSA-66hr-7p6x-x5j3\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:57614\nhttps://access.redhat.com/security/cve/CVE-2026-43961\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2460434\nhttps://github.com/vim/vim/security/advisories/GHSA-66hr-7p6x-x5j3\n",
   "aliases": "CVE-2026-43961\n",
   "assigner": "redhat",
   "epss": 0.16,
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "0 <9.2.0480"
+    },
+    {
+      "id": "fda1e6d3-6508-3fba-82df-563ce9219f7e",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 9.2.967-1.1.hum1"
     }
   ],
   "enisaIdVendor": [
@@ -28,6 +38,12 @@
       "id": "285c33f2-ed4c-30e1-bfb8-0989765e3756",
       "vendor": {
         "name": "vim"
+      }
+    },
+    {
+      "id": "91d410e6-f060-30cb-8c94-c328f2bff178",
+      "vendor": {
+        "name": "Red Hat"
       }
     }
   ]

@@ -3,12 +3,12 @@
   "enisaUuid": "79984d4f-c672-3a83-a611-d49e528ce1e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq: apple-soc: Fix OPP table cleanup\n\napple_soc_cpufreq_init() adds OPP tables from firmware, but\nsome failure paths do not remove them. The driver also uses\ndev_pm_opp_remove_all_dynamic(), which is not the right cleanup\nhelper for OPP tables loaded from firmware.\n\nUse the cpumask OPP helper after the policy CPU mask has been\npopulated. Pair it with the matching cpumask remove helper on\nfailure paths and in apple_soc_cpufreq_exit(). This also removes\nthe separate dev_pm_opp_set_sharing_cpus() call, as the cpumask\nhelper loads the DT OPP tables for all CPUs in the policy.",
   "datePublished": "Sep 11, 2026, 7:44:41 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:41 PM",
+  "dateUpdated": "Sep 21, 2026, 1:14:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7c19b94c625dc7042b0a7dff4c8da158358ffa2c\nhttps://git.kernel.org/stable/c/36c55d118d5ecd2fb444f52802955903937b9ccd\nhttps://git.kernel.org/stable/c/d87cb889dc7ab1f2deecadf2a5e9023184bd7900\n",
+  "references": "https://git.kernel.org/stable/c/d28ad9bb050e80770f0b644304cb75932e289238\nhttps://git.kernel.org/stable/c/7c19b94c625dc7042b0a7dff4c8da158358ffa2c\nhttps://git.kernel.org/stable/c/36c55d118d5ecd2fb444f52802955903937b9ccd\nhttps://git.kernel.org/stable/c/d87cb889dc7ab1f2deecadf2a5e9023184bd7900\n",
   "aliases": "GHSA-pmg8-6cwh-c6vh\nCVE-2026-89572\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "48e99687-14e9-3e91-b947-cb5baa5269d3",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "6286bbb40576ffadfde206c332b61345c19af57f <d87cb889dc7ab1f2deecadf2a5e9023184bd7900"
+    },
+    {
+      "id": "6b47900d-7a28-3ed8-8c8d-878a9809265e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6286bbb40576ffadfde206c332b61345c19af57f <d28ad9bb050e80770f0b644304cb75932e289238"
     },
     {
       "id": "834096f1-bfd5-3363-8d6d-eb52f73b2962",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "f90d91fd-d5c5-39a4-87f7-856ea0adcda0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
     }
   ],
   "enisaIdVendor": [

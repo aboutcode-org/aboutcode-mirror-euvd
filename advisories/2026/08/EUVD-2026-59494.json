@@ -3,15 +3,25 @@
   "enisaUuid": "7afdf0bd-9c4a-3bab-a898-6db4cbd9140d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: cttimeout: detach dataplane timeout policy and repurpose refcount\n\nAdd a refcount for struct nf_ct_timeout which is used by ct extension to\nset the custom ct timeout policy, this tells us that the ct timeout is\nbeing used by a conntrack entry. When the last conntrack entry drops the\nrefcount on the ct timeout, the ct timeout is released.\n\nRemove the refcount for control plane which controls if the ruleset\nrefers to the timeout policy. After this update, it is possible to\nremove the ct timeout policy from nfnetlink_cttimeout immediately.\nThis is for simplicity not to handle two refcounts on a single object.\n\nRemove nf_queue_nf_hook_drop(): a packet sitting in nfqueue will just\nhold a reference to the nf_ct_timeout object until packet is reinjected,\nsince this is part of the ct extension, this will be released by the\ntime the conntrack is freed.\n\nnf_ct_untimeout() is still called to clean up in a best effort basis:\nthe ct timeout on existing entries gets removed when the ct timeout goes\naway, but as long as the iptables ruleset still refers to the ct timeout\nthrough a template, new conntracks may keep attaching it and extend its\nlifetime until the rule is removed.\n\nnf_ct_untimeout() is not called anymore from module removal path, this\nis unlikely to find timeouts give module refcount is bumped, and the new\nrefcount already tracks the ct timeout policy use so it is released when\nunused.",
   "datePublished": "Aug 15, 2026, 5:58:35 AM",
-  "dateUpdated": "Aug 17, 2026, 5:46:11 AM",
+  "dateUpdated": "Sep 21, 2026, 1:14:03 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/9aeb0dcfeb460d33d61d434148b51103ab1d2013\nhttps://git.kernel.org/stable/c/7d6a9cdb8d3a51d9cfe546a09a518ab3d2671549\n",
+  "references": "https://git.kernel.org/stable/c/44583fd5735cb0bdf3bfe11b1e51504ce387bdb7\nhttps://git.kernel.org/stable/c/9aeb0dcfeb460d33d61d434148b51103ab1d2013\nhttps://git.kernel.org/stable/c/7d6a9cdb8d3a51d9cfe546a09a518ab3d2671549\n",
   "aliases": "CVE-2026-74347\nGHSA-7mmw-w232-r226\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
+    {
+      "id": "0ded70df-25f7-3df9-a14e-28b12d27eb63",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50978462300f74dc48aea4a38471cb69bdf741a5 <44583fd5735cb0bdf3bfe11b1e51504ce387bdb7"
+    },
     {
       "id": "3dd94b83-90f1-3482-a0d8-4b0f1a626990",
       "product": {
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "715faf48-46cf-3238-9c84-8ed1ab92cfec",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.53"
     },
     {
       "id": "7d79cdd8-d5e6-3b09-ba26-b5247b4b40e4",

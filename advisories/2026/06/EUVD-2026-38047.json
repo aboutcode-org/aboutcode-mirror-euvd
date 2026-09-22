@@ -3,15 +3,35 @@
   "enisaUuid": "d46297d2-ef91-3bc6-ad52-0298bd0dc329",
   "description": "A remote code execution vulnerability was found in libaom, the reference AV1 codec implementation. Insufficient bounds validation in the AV1 encoder's SVC (Scalable Video Coding) layer ID control allows an attacker to supply crafted video frame pixels that overlap with internal encoder layer context structures. In fork-based video processing services, an attacker can use this to hijack the cyclic refresh map pointer, brute-force the process base address via a crash oracle, and redirect control flow to achieve arbitrary command execution. Exploitation requires the target service to use libaom with SVC encoding enabled and accept attacker-supplied video frames.",
   "datePublished": "Jun 19, 2026, 4:28:33 PM",
-  "dateUpdated": "Sep 1, 2026, 12:05:00 PM",
+  "dateUpdated": "Sep 21, 2026, 10:34:41 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/errata/RHSA-2026:68634\nhttps://access.redhat.com/errata/RHSA-2026:68637\nhttps://access.redhat.com/errata/RHSA-2026:68638\nhttps://access.redhat.com/errata/RHSA-2026:68639\nhttps://access.redhat.com/errata/RHSA-2026:68640\nhttps://access.redhat.com/errata/RHSA-2026:68696\nhttps://access.redhat.com/errata/RHSA-2026:68697\nhttps://access.redhat.com/errata/RHSA-2026:68698\nhttps://access.redhat.com/errata/RHSA-2026:68699\nhttps://access.redhat.com/errata/RHSA-2026:68708\nhttps://access.redhat.com/errata/RHSA-2026:68709\nhttps://access.redhat.com/errata/RHSA-2026:68710\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
   "aliases": "GHSA-qr4p-j2pf-4w4x\nCVE-2026-56211\n",
   "assigner": "redhat",
-  "epss": 0.46,
+  "epss": 0.48,
   "enisaIdProduct": [
+    {
+      "id": "01c5c4f6-03ad-3e66-be53-0d42943f4b2a",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789504371"
+    },
+    {
+      "id": "03f8212c-52f0-364e-9748-97560bc6bc8a",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789508287"
+    },
     {
       "id": "15ae7774-532d-33a0-938f-a9c04bfd7911",
       "product": {
@@ -21,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:3.14.0-1.el9ai"
+    },
+    {
+      "id": "3f7510b0-feb2-3c8c-a135-66cbf416ec4f",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789137641"
     },
     {
       "id": "431c9e7b-cbd6-3504-bc6c-e683425255fc",
@@ -53,6 +83,36 @@
       "product_version": "patch: 1787772157"
     },
     {
+      "id": "4e52303c-e876-3db3-85a5-ef3f94a5a9bf",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789502493"
+    },
+    {
+      "id": "710d8e04-4953-3996-a1fc-736495c65b2c",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789582776"
+    },
+    {
+      "id": "76bb8e3f-6541-3890-95c0-b6d006ba08b3",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789137607"
+    },
+    {
       "id": "891a1c5e-ca83-31ad-a107-ea4613f2a08b",
       "product": {
         "name": "Red Hat AI Inference Server 3.2",
@@ -83,6 +143,26 @@
       "product_version": "patch: 0:3.14.0-1.el9ai"
     },
     {
+      "id": "a404ac79-6dda-33b4-b1de-8692b4604829",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789137552"
+    },
+    {
+      "id": "a650c56a-3f03-33b4-b259-c22a555da3e1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789137548"
+    },
+    {
       "id": "bb0864c1-8b05-3190-a7cf-1fd75ba4def7",
       "product": {
         "name": "Red Hat AI Inference Server 3.2",
@@ -111,6 +191,16 @@
         }
       },
       "product_version": "patch: 1787076481"
+    },
+    {
+      "id": "d0e9e943-80e2-384d-ad7f-e96c08cd54b4",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789137636"
     },
     {
       "id": "e212a578-8dbb-37aa-a4d0-d2c3ddf32651",

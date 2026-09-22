@@ -3,14 +3,14 @@
   "enisaUuid": "d417d78d-62a7-3362-b845-b8308d22fe75",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Prevent client use-after-free during close_lru reaping\n\nAn nfs4_openowner left on nn->close_lru after its final CLOSE keeps\nits last closed stateid in oo_last_closed_stid, holding only a raw\npointer to its nfs4_client. The laundromat reaps timed-out entries,\ndrops nn->client_lock, and calls nfs4_put_stid(), which dereferences\nthe client through cl_lock. Nothing pins the client across that\nwindow, so a concurrent force_expire_client() can free it and\nnfs4_put_stid() reads freed memory. __destroy_client() hits the same\nrace, walking clp->cl_openowners without cl_lock.\n\nPin the client with cl_rpc_users before dropping client_lock, and\nskip clients already expiring. __destroy_client() then cleans up its\nown close_lru entries through release_last_closed_stateid(), so\nteardown no longer races the laundromat.",
   "datePublished": "Sep 16, 2026, 10:33:36 AM",
-  "dateUpdated": "Sep 16, 2026, 2:41:49 PM",
+  "dateUpdated": "Sep 21, 2026, 1:15:13 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/83dd59ac1c3455c2c7d8ddb582d980a13199b9b3\nhttps://git.kernel.org/stable/c/e57a9ed34ea8c17e831de59b8f1a6b2d80d347a1\nhttps://git.kernel.org/stable/c/2330b788d732f43668b965b3105b37ceb276dfea\n",
+  "references": "https://git.kernel.org/stable/c/0763482227822f7343557f086afc382086d56c4c\nhttps://git.kernel.org/stable/c/83dd59ac1c3455c2c7d8ddb582d980a13199b9b3\nhttps://git.kernel.org/stable/c/e57a9ed34ea8c17e831de59b8f1a6b2d80d347a1\nhttps://git.kernel.org/stable/c/2330b788d732f43668b965b3105b37ceb276dfea\n",
   "aliases": "GHSA-cj69-89jw-ggxp\nCVE-2026-90037\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "0e691039-1308-32e2-9f78-fa194d161986",
@@ -53,6 +53,16 @@
       "product_version": "3.17"
     },
     {
+      "id": "63b3913c-d216-30d3-9e00-453581c73bae",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "217526e7ecc9f6f243e976772e81eab7ab986a4c <0763482227822f7343557f086afc382086d56c4c"
+    },
+    {
       "id": "7a1d485c-0edd-39ca-9eb6-596d98a7a829",
       "product": {
         "name": "Linux",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "patch: 7.2.5"
+    },
+    {
+      "id": "8c12b04d-aaf3-30c4-9fa7-85e3ae7f9efd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
     },
     {
       "id": "a01ce3ff-b07e-3279-b676-5501b4ef6589",

@@ -3,14 +3,14 @@
   "enisaUuid": "31a2cfc8-0160-3a29-8dcc-f44c7730b4ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: limit recovery filename logging to stored length\n\nF2FS stores recovery filenames as a length plus a fixed-size i_name\nbuffer.  The buffer is not NUL-terminated, but recover_inode() and\nrecover_dentry() print it with %s.\n\nFor a 255-byte filename, recovery logging can read past i_name into the\nfollowing raw inode fields.\n\nPrint the name with a precision bounded by i_namelen and F2FS_NAME_LEN.",
   "datePublished": "Sep 16, 2026, 10:31:12 AM",
-  "dateUpdated": "Sep 16, 2026, 2:39:09 PM",
+  "dateUpdated": "Sep 21, 2026, 1:15:07 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/317d32e1a8deaf1c01c388badc667334c39e62ca\nhttps://git.kernel.org/stable/c/01027b2fcb74dade59fb833b51023f6593b6a9a2\n",
+  "references": "https://git.kernel.org/stable/c/35c5abccd0924b02ad34126f562d93c8d75b0831\nhttps://git.kernel.org/stable/c/317d32e1a8deaf1c01c388badc667334c39e62ca\nhttps://git.kernel.org/stable/c/01027b2fcb74dade59fb833b51023f6593b6a9a2\n",
   "aliases": "GHSA-jfgp-78p5-g7hq\nCVE-2026-89838\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "1b43d831-f67c-3ad5-8987-b149a6e79d74",
@@ -43,6 +43,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "41cf761e-85e0-3247-a5b8-224919e361c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.53"
+    },
+    {
       "id": "62d98fb4-d168-3f1a-8337-014e242c9481",
       "product": {
         "name": "Linux",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "3.11"
+    },
+    {
+      "id": "8da6d1e3-8dc5-3209-8ab4-02f0a692607b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f356fe0cba0e3523e538987916bd2acedd4e6f41 <35c5abccd0924b02ad34126f562d93c8d75b0831"
     },
     {
       "id": "9d659a80-7106-3e17-8895-20236cf5c8d1",

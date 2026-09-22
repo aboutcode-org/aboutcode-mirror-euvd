@@ -3,9 +3,9 @@
   "enisaUuid": "2e917f43-ce06-31cb-aef0-0a2c2d41fb75",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: topology: Check PCM and DAI name strings before use\n\nTopology objects store several PCM and DAI names in fixed-size UAPI\narrays. Other topology parser paths validate these fields with bounded\nstrnlen() checks before using them as C strings, but the PCM and DAI\npaths still pass some fixed-size arrays directly to strlen(),\ndevm_kstrdup(), DAI lookup, and diagnostic prints.\n\nA malformed topology blob with a non-NUL-terminated PCM, DAI, or stream\ncapability name can therefore make the parser read past the end of the\nfixed-size field.\n\nReject unterminated PCM and DAI name fields before consuming them as C\nstrings.",
   "datePublished": "Aug 15, 2026, 5:57:57 AM",
-  "dateUpdated": "Aug 17, 2026, 5:16:37 AM",
+  "dateUpdated": "Sep 21, 2026, 1:14:01 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ba37b62ed0a443b8e23f53a7477e7f2537fd34c7\nhttps://git.kernel.org/stable/c/b7e44d1986d6671342c19b82192189ca5db5dab7\n",
+  "references": "https://git.kernel.org/stable/c/473f7d25d93e80db526a9d05887f0071abdc6d9b\nhttps://git.kernel.org/stable/c/5c2537cf24d673956b4e58029001667f89586fa2\nhttps://git.kernel.org/stable/c/ba37b62ed0a443b8e23f53a7477e7f2537fd34c7\nhttps://git.kernel.org/stable/c/b7e44d1986d6671342c19b82192189ca5db5dab7\n",
   "aliases": "GHSA-wrjf-2g4j-cfrg\nCVE-2026-74291\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -19,6 +19,36 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "11b8d417-a769-3c4a-938f-6f43080761cb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "36082640-de46-3b37-bbe8-3d6433848b8a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "64527e8a352968bda529f01df1c9dd5fe581ff04 <5c2537cf24d673956b4e58029001667f89586fa2"
+    },
+    {
+      "id": "573b7012-361f-3521-ad38-0bd59b3dd800",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "64527e8a352968bda529f01df1c9dd5fe581ff04 <473f7d25d93e80db526a9d05887f0071abdc6d9b"
     },
     {
       "id": "5fd13a52-d212-37b0-b0c5-2fda53129cc9",
@@ -69,6 +99,16 @@
         }
       },
       "product_version": "64527e8a352968bda529f01df1c9dd5fe581ff04 <b7e44d1986d6671342c19b82192189ca5db5dab7"
+    },
+    {
+      "id": "fafc4c82-0be9-30df-b790-0e4045b32e59",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.53"
     }
   ],
   "enisaIdVendor": [
