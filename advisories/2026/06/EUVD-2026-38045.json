@@ -3,11 +3,11 @@
   "enisaUuid": "73478194-626b-36a2-8394-68f0cd33fbc1",
   "description": "A heap buffer overflow vulnerability was found in libaom, the reference AV1 codec implementation. A flaw in the AV1 encoder's Look-Ahead Processing (LAP) mode causes the first-pass stats ring buffer wrap-around guard to be bypassed when g_lag_in_frames is set to 1 or higher. This results in a 232-byte out-of-bounds write on every encoded frame after the second, corrupting adjacent heap objects. An attacker who can influence encoder configuration in a transcoding service or WebRTC session could exploit this to cause a denial of service (process crash) or potentially achieve code execution.",
   "datePublished": "Jun 19, 2026, 4:28:26 PM",
-  "dateUpdated": "Sep 21, 2026, 10:34:30 AM",
+  "dateUpdated": "Sep 22, 2026, 12:03:11 PM",
   "baseScore": 7.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:47104\nhttps://access.redhat.com/errata/RHSA-2026:47105\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:54180\nhttps://access.redhat.com/errata/RHSA-2026:54181\nhttps://access.redhat.com/errata/RHSA-2026:54182\nhttps://access.redhat.com/errata/RHSA-2026:54185\nhttps://access.redhat.com/errata/RHSA-2026:54248\nhttps://access.redhat.com/errata/RHSA-2026:54249\nhttps://access.redhat.com/errata/RHSA-2026:54259\nhttps://access.redhat.com/errata/RHSA-2026:54339\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/errata/RHSA-2026:68634\nhttps://access.redhat.com/errata/RHSA-2026:68637\nhttps://access.redhat.com/errata/RHSA-2026:68638\nhttps://access.redhat.com/errata/RHSA-2026:68639\nhttps://access.redhat.com/errata/RHSA-2026:68640\nhttps://access.redhat.com/errata/RHSA-2026:68696\nhttps://access.redhat.com/errata/RHSA-2026:68697\nhttps://access.redhat.com/errata/RHSA-2026:68698\nhttps://access.redhat.com/errata/RHSA-2026:68699\nhttps://access.redhat.com/errata/RHSA-2026:68708\nhttps://access.redhat.com/errata/RHSA-2026:68709\nhttps://access.redhat.com/errata/RHSA-2026:68710\nhttps://access.redhat.com/security/cve/CVE-2026-56208\nhttps://aomedia.googlesource.com/aom/+/243f8ae84b\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490799\nhttps://issues.chromium.org/issues/504317456\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:47104\nhttps://access.redhat.com/errata/RHSA-2026:47105\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:54180\nhttps://access.redhat.com/errata/RHSA-2026:54181\nhttps://access.redhat.com/errata/RHSA-2026:54182\nhttps://access.redhat.com/errata/RHSA-2026:54185\nhttps://access.redhat.com/errata/RHSA-2026:54248\nhttps://access.redhat.com/errata/RHSA-2026:54249\nhttps://access.redhat.com/errata/RHSA-2026:54259\nhttps://access.redhat.com/errata/RHSA-2026:54339\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/errata/RHSA-2026:68634\nhttps://access.redhat.com/errata/RHSA-2026:68637\nhttps://access.redhat.com/errata/RHSA-2026:68638\nhttps://access.redhat.com/errata/RHSA-2026:68639\nhttps://access.redhat.com/errata/RHSA-2026:68640\nhttps://access.redhat.com/errata/RHSA-2026:68696\nhttps://access.redhat.com/errata/RHSA-2026:68697\nhttps://access.redhat.com/errata/RHSA-2026:68698\nhttps://access.redhat.com/errata/RHSA-2026:68699\nhttps://access.redhat.com/errata/RHSA-2026:68708\nhttps://access.redhat.com/errata/RHSA-2026:68709\nhttps://access.redhat.com/errata/RHSA-2026:68710\nhttps://access.redhat.com/errata/RHSA-2026:69927\nhttps://access.redhat.com/errata/RHSA-2026:69929\nhttps://access.redhat.com/errata/RHSA-2026:69930\nhttps://access.redhat.com/errata/RHSA-2026:69931\nhttps://access.redhat.com/errata/RHSA-2026:69932\nhttps://access.redhat.com/errata/RHSA-2026:69933\nhttps://access.redhat.com/errata/RHSA-2026:69934\nhttps://access.redhat.com/errata/RHSA-2026:69935\nhttps://access.redhat.com/security/cve/CVE-2026-56208\nhttps://aomedia.googlesource.com/aom/+/243f8ae84b\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490799\nhttps://issues.chromium.org/issues/504317456\n",
   "aliases": "GHSA-mgv2-4j37-m3x6\nCVE-2026-56208\n",
   "assigner": "redhat",
   "epss": 0.42,
@@ -31,6 +31,26 @@
         }
       },
       "product_version": "patch: 3.14.0-0.1.hum1"
+    },
+    {
+      "id": "0d790189-2183-394f-8ebb-6c93852f8ba4",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197747"
+    },
+    {
+      "id": "0ef71677-139a-3a3f-b88c-283ccabf09e5",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197680"
     },
     {
       "id": "13154d0a-6422-3711-9bae-14522f468265",
@@ -103,6 +123,16 @@
       "product_version": "patch: 0:140.13.0-1.el10_0"
     },
     {
+      "id": "3e77840d-cf52-3a68-9f3f-43262ded75e3",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788199622"
+    },
+    {
       "id": "4adc1df4-e665-3bae-b583-1012d5ef6a37",
       "product": {
         "name": "Red Hat Enterprise Linux AI 3.4 for RHEL 9",
@@ -133,6 +163,16 @@
       "product_version": "patch: 0:140.13.0-1.el9_4"
     },
     {
+      "id": "79414543-29f0-397a-ba78-86a43e51131c",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197530"
+    },
+    {
       "id": "928977b3-7bc9-3053-9c3e-07011a9ca284",
       "product": {
         "name": "Red Hat Enterprise Linux 9",
@@ -141,6 +181,16 @@
         }
       },
       "product_version": "patch: 0:140.13.0-1.el9_8"
+    },
+    {
+      "id": "93695d6e-173c-3692-b440-be33c0c35335",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197744"
     },
     {
       "id": "974a45fd-743e-38ff-9f23-13a3820fb59e",
@@ -201,6 +251,16 @@
         }
       },
       "product_version": "patch: 1789137641"
+    },
+    {
+      "id": "ba1b6eeb-612f-3f8e-8e08-da64dd9edd3e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197632"
     },
     {
       "id": "bbf8d297-1b12-35d7-8734-12f81bca5be5",
@@ -303,6 +363,16 @@
       "product_version": "patch: 0:140.13.0-1.el8_6"
     },
     {
+      "id": "e07859ca-df0f-3c18-85e1-762b9d43ecf7",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197677"
+    },
+    {
       "id": "e0b157f1-cf9d-3992-ad86-32562a46c190",
       "product": {
         "name": "Red Hat Enterprise Linux 8",
@@ -331,6 +401,16 @@
         }
       },
       "product_version": "patch: 1789137636"
+    },
+    {
+      "id": "fe500be5-e258-3e92-8469-d65a2520cd87",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1788197549"
     },
     {
       "id": "ffc28074-2114-3b19-b69a-dc097b3a69eb",
