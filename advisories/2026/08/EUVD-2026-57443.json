@@ -3,11 +3,11 @@
   "enisaUuid": "cb072b0f-4bd2-362a-aeab-8c6e3f20de67",
   "description": "A flaw was found in GStreamer gst-plugins-good (avidemux). In gst_avi_demux_riff_parse_vprp(), the number of available gst_riff_vprp_video_field_desc entries is calculated by dividing the remaining buffer size by the attacker-controlled vprp->fields value, rather than by sizeof(gst_riff_vprp_video_field_desc). This can cause the parser to treat more field descriptors as available than fit in the input buffer, resulting in out-of-bounds reads. Processing a crafted AVI via playbin/decodebin can crash the application (denial of service). Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072).",
   "datePublished": "Aug 12, 2026, 7:05:23 PM",
-  "dateUpdated": "Sep 22, 2026, 3:47:06 PM",
+  "dateUpdated": "Sep 23, 2026, 3:06:16 PM",
   "baseScore": 6.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:55434\nhttps://access.redhat.com/errata/RHSA-2026:55436\nhttps://access.redhat.com/errata/RHSA-2026:56966\nhttps://access.redhat.com/errata/RHSA-2026:65959\nhttps://access.redhat.com/errata/RHSA-2026:68642\nhttps://access.redhat.com/errata/RHSA-2026:68644\nhttps://access.redhat.com/errata/RHSA-2026:68645\nhttps://access.redhat.com/errata/RHSA-2026:69232\nhttps://access.redhat.com/errata/RHSA-2026:70264\nhttps://access.redhat.com/security/cve/CVE-2026-73434\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2514807\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12231\nhttps://gstreamer.freedesktop.org/security/sa-2026-0072.html\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:55434\nhttps://access.redhat.com/errata/RHSA-2026:55436\nhttps://access.redhat.com/errata/RHSA-2026:56966\nhttps://access.redhat.com/errata/RHSA-2026:65959\nhttps://access.redhat.com/errata/RHSA-2026:68642\nhttps://access.redhat.com/errata/RHSA-2026:68644\nhttps://access.redhat.com/errata/RHSA-2026:68645\nhttps://access.redhat.com/errata/RHSA-2026:69232\nhttps://access.redhat.com/errata/RHSA-2026:70264\nhttps://access.redhat.com/errata/RHSA-2026:70584\nhttps://access.redhat.com/errata/RHSA-2026:70803\nhttps://access.redhat.com/security/cve/CVE-2026-73434\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2514807\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12231\nhttps://gstreamer.freedesktop.org/security/sa-2026-0072.html\n",
   "aliases": "CVE-2026-73434\nGHSA-wfhj-v65x-vjp5\n",
   "assigner": "redhat",
   "epss": 0.14,
@@ -43,6 +43,36 @@
       "product_version": "patch: 0:1.16.1-5.el8_8.3"
     },
     {
+      "id": "16d59550-5433-3ddd-aa1a-b2dc1de5e662",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_6.3"
+    },
+    {
+      "id": "2ca93a36-bc63-39aa-bf08-b809b916595a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_4.2"
+    },
+    {
+      "id": "37970ec9-97b6-393b-a5a3-95c30500de76",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_4.2"
+    },
+    {
       "id": "40d96394-5b88-3521-bfc9-6303d80a41d5",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -71,6 +101,16 @@
         }
       },
       "product_version": "0 <1.28.6"
+    },
+    {
+      "id": "64d9e13e-c1ea-3e3c-8fb4-adef5a2dedec",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_6.3"
     },
     {
       "id": "70e66da0-e75d-3eb2-8c4c-96eec131dbeb",

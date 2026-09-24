@@ -3,15 +3,25 @@
   "enisaUuid": "aa1a7e40-e305-3a8b-9477-2d9b7f4b06c5",
   "description": "A flaw was found in the GStreamer gst-plugins-good package. The rtph264depay and rtph265depay RTP depayloader elements do not enforce a maximum size limit on the reassembly buffer used during fragmented RTP packet processing. A remote, unauthenticated attacker can send a continuous stream of RTP fragments without ever transmitting an end-of-fragment marker, causing the reassembly buffer to grow without bound until process memory is exhausted. This results in a denial of service through process termination.",
   "datePublished": "Aug 6, 2026, 6:48:10 AM",
-  "dateUpdated": "Sep 22, 2026, 3:47:05 PM",
+  "dateUpdated": "Sep 23, 2026, 3:06:16 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://0xsemizzz.vercel.app/projects/cve-2026-18649-gstreamer-rtp-dos/\nhttps://access.redhat.com/errata/RHSA-2026:53451\nhttps://access.redhat.com/errata/RHSA-2026:53452\nhttps://access.redhat.com/errata/RHSA-2026:56966\nhttps://access.redhat.com/errata/RHSA-2026:61588\nhttps://access.redhat.com/errata/RHSA-2026:61943\nhttps://access.redhat.com/errata/RHSA-2026:65959\nhttps://access.redhat.com/errata/RHSA-2026:65999\nhttps://access.redhat.com/errata/RHSA-2026:69232\nhttps://access.redhat.com/errata/RHSA-2026:70264\nhttps://access.redhat.com/security/cve/CVE-2026-18649\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510614\nhttps://github.com/0xSemizzz/CVE-2026-18649\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer-security/-/merge_requests/113\n",
+  "references": "https://0xsemizzz.vercel.app/projects/cve-2026-18649-gstreamer-rtp-dos/\nhttps://access.redhat.com/errata/RHSA-2026:53451\nhttps://access.redhat.com/errata/RHSA-2026:53452\nhttps://access.redhat.com/errata/RHSA-2026:56966\nhttps://access.redhat.com/errata/RHSA-2026:61588\nhttps://access.redhat.com/errata/RHSA-2026:61943\nhttps://access.redhat.com/errata/RHSA-2026:65959\nhttps://access.redhat.com/errata/RHSA-2026:65999\nhttps://access.redhat.com/errata/RHSA-2026:69232\nhttps://access.redhat.com/errata/RHSA-2026:70264\nhttps://access.redhat.com/errata/RHSA-2026:70584\nhttps://access.redhat.com/errata/RHSA-2026:70803\nhttps://access.redhat.com/security/cve/CVE-2026-18649\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2510614\nhttps://github.com/0xSemizzz/CVE-2026-18649\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer-security/-/merge_requests/113\n",
   "aliases": "GHSA-wr93-5xph-995g\nCVE-2026-18649\n",
   "assigner": "redhat",
   "epss": 0.96,
   "enisaIdProduct": [
+    {
+      "id": "07e5e578-c80e-3c49-9c08-a92c2c2d7ffb",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_4.2"
+    },
     {
       "id": "40a2f0f8-d8e6-3254-bf6c-8b1f71296131",
       "product": {
@@ -53,6 +63,16 @@
       "product_version": "patch: 0:1.24.11-1.el10_0.4"
     },
     {
+      "id": "621b25f8-2132-3795-adf9-7056128ab67c",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_6.3"
+    },
+    {
       "id": "6e648570-14ce-3b64-90c0-b9911036a871",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -61,6 +81,26 @@
         }
       },
       "product_version": "patch: 0:1.26.7-2.el10_2.3"
+    },
+    {
+      "id": "791c7a2a-8d61-39cb-a449-7535cf0b7483",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_4.2"
+    },
+    {
+      "id": "a7c646b5-b674-349e-9a48-f990387ad461",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.16.1-4.el8_6.3"
     },
     {
       "id": "add73802-c303-360d-a803-e59bf59c69ed",
