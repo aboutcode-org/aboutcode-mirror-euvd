@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-84512",
   "enisaUuid": "b1bae0f7-fde8-3e2a-9614-56d688be0637",
-  "description": "Lantronix SLC8000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a stack-based buffer overflow vulnerability that allows authenticated attackers to potentially execute arbitrary code by exploiting an undocumented mfc eeprom write command that copies unbounded user input into a bounded stack buffer before passing it to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and supply an oversized input to trigger the overflow, potentially achieving complete loss of confidentiality, integrity, and availability on the affected device and impacting downstream serial-attached devices.",
+  "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a stack-based buffer overflow vulnerability that allows authenticated attackers to potentially execute arbitrary code by exploiting an undocumented mfc eeprom write command that copies unbounded user input into a bounded stack buffer before passing it to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and supply an oversized input to trigger the overflow, potentially achieving complete loss of confidentiality, integrity, and availability on the affected device and impacting downstream serial-attached devices.",
   "datePublished": "Sep 22, 2026, 3:20:01 PM",
-  "dateUpdated": "Sep 22, 2026, 4:04:04 PM",
+  "dateUpdated": "Sep 24, 2026, 7:04:09 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.2R1/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-stack-based-buffer-overflow-via-mfc-eeprom-write\n",
+  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.2R1/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-stack-based-buffer-overflow-via-mfc-eeprom-write\n",
   "aliases": "GHSA-gqp9-cvw4-f6q4\nCVE-2026-80147\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.79,
   "enisaIdProduct": [
     {
       "id": "166e2133-84f6-3347-85b1-3c5a380fa024",
@@ -71,6 +71,16 @@
         }
       },
       "product_version": "*"
+    },
+    {
+      "id": "eaacf9c0-dced-3dd1-9100-720145bc7428",
+      "product": {
+        "name": "SLC9000",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "0 <9.7.0.2"
     }
   ],
   "enisaIdVendor": [

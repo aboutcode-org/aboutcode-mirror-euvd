@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-84521",
   "enisaUuid": "0d956fbf-0329-3ac6-b6a1-b97d75f80f62",
-  "description": "Lantronix SLC8000 before firmware v9.7.0.5, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain an authentication bypass vulnerability in the web management portal upload endpoint that allows unauthenticated attackers to read sensitive configuration files and upload files to arbitrary filesystem locations, leading to remote code execution. The web configuration server constructs the session cookie file path using snprintf with a fixed-size buffer; by supplying a cookie value of a specific length an attacker causes the path to truncate at the required delimiter and leverages path traversal to redirect authentication validation to an arbitrary on-disk file such as the local user database, bypassing all session checks. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
+  "description": "Lantronix SLC8000 before firmware v9.7.0.5, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain an authentication bypass vulnerability in the web management portal upload endpoint that allows unauthenticated attackers to read sensitive configuration files and upload files to arbitrary filesystem locations, leading to remote code execution. The web configuration server constructs the session cookie file path using snprintf with a fixed-size buffer; by supplying a cookie value of a specific length an attacker causes the path to truncate at the required delimiter and leverages path traversal to redirect authentication validation to an arbitrary on-disk file such as the local user database, bypassing all session checks. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
   "datePublished": "Sep 22, 2026, 3:22:57 PM",
-  "dateUpdated": "Sep 22, 2026, 3:43:00 PM",
+  "dateUpdated": "Sep 24, 2026, 7:11:02 PM",
   "baseScore": 10.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.5R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-unauthenticated-authentication-bypass-via-snprintf-path-truncation\n",
+  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.5R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-unauthenticated-authentication-bypass-via-snprintf-path-truncation\n",
   "aliases": "GHSA-h7c7-c453-99x2\nCVE-2026-80155\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 1.58,
   "enisaIdProduct": [
     {
       "id": "33714840-6f10-3e4b-81d1-0cf7ce6a763a",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "*"
+    },
+    {
+      "id": "3d1bc3f2-32ab-3531-a978-4eb610374c46",
+      "product": {
+        "name": "SLC9000",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "0 <9.7.0.2"
     },
     {
       "id": "62724621-9660-382d-a518-6088310024d6",

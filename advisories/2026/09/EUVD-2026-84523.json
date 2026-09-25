@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-84523",
   "enisaUuid": "173720e7-e179-353b-a3ed-952171f63116",
-  "description": "Lantronix SLC8000 before firmware v9.7.0.5, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a path traversal vulnerability in the web management portal upload endpoint that allows authenticated attackers to write arbitrary data to any location on the device's filesystem, leading to remote code execution. The upload filename validation strips backslash characters but does not subsequently check for forward slashes when a backslash is detected; by supplying a filename containing both characters an attacker writes outside the intended upload directory to any writable path. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
+  "description": "Lantronix SLC8000 before firmware v9.7.0.5, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a path traversal vulnerability in the web management portal upload endpoint that allows authenticated attackers to write arbitrary data to any location on the device's filesystem, leading to remote code execution. The upload filename validation strips backslash characters but does not subsequently check for forward slashes when a backslash is detected; by supplying a filename containing both characters an attacker writes outside the intended upload directory to any writable path. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
   "datePublished": "Sep 22, 2026, 3:23:24 PM",
-  "dateUpdated": "Sep 23, 2026, 3:42:10 PM",
+  "dateUpdated": "Sep 24, 2026, 7:11:50 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.5R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-arbitrary-file-write-via-upload-filename-validation-bypass\n",
+  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.5R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-arbitrary-file-write-via-upload-filename-validation-bypass\n",
   "aliases": "GHSA-hmch-26g2-q5qx\nCVE-2026-80156\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 1.02,
   "enisaIdProduct": [
     {
       "id": "5d6f0ebc-6dcc-3fa8-b18d-19b2feff7595",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "0 <9.7.0.1"
+    },
+    {
+      "id": "9e598bb9-89ba-3073-ba06-64bcd46a33b7",
+      "product": {
+        "name": "SLC9000",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "0 <9.7.0.2"
     },
     {
       "id": "a3b0e4d1-e402-391e-9a39-db4c480083d4",

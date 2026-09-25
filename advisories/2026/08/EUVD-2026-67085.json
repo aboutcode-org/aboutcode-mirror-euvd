@@ -3,15 +3,25 @@
   "enisaUuid": "cb5ffb98-d151-317a-8a99-fcd9eb9f0b9b",
   "description": "A flaw was found in rsyslog. An unauthenticated remote attacker can trigger a heap buffer overflow in the RainerScript `replace()` function by sending specially crafted syslog messages. This vulnerability arises from an incorrect buffer size calculation during string replacement, causing memory corruption. Successful exploitation can lead to a denial of service (DoS) for the affected system.",
   "datePublished": "Aug 27, 2026, 4:12:59 PM",
-  "dateUpdated": "Sep 22, 2026, 3:29:02 AM",
+  "dateUpdated": "Sep 24, 2026, 9:56:38 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:69540\nhttps://access.redhat.com/errata/RHSA-2026:69541\nhttps://access.redhat.com/security/cve/CVE-2026-78002\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2521135\nhttps://github.com/rsyslog/rsyslog/security/advisories/GHSA-g72f-gc6v-f2w3\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:69540\nhttps://access.redhat.com/errata/RHSA-2026:69541\nhttps://access.redhat.com/errata/RHSA-2026:71603\nhttps://access.redhat.com/security/cve/CVE-2026-78002\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2521135\nhttps://github.com/rsyslog/rsyslog/security/advisories/GHSA-g72f-gc6v-f2w3\n",
   "aliases": "CVE-2026-78002\n",
   "assigner": "redhat",
-  "epss": 0.61,
+  "epss": 0.66,
   "enisaIdProduct": [
+    {
+      "id": "11f09a11-4cde-36f1-80bd-9805fa3e72f9",
+      "product": {
+        "name": "Red Hat Update Infrastructure 5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790241900"
+    },
     {
       "id": "6d1c2312-e0ed-3156-86db-e4219279b8da",
       "product": {

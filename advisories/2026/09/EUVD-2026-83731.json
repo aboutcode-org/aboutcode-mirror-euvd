@@ -3,14 +3,14 @@
   "enisaUuid": "7674cca8-0893-3494-a810-ae103a30cf01",
   "description": "openEQUELLA before 2026.1.0 contains an authenticated stored server-side template injection vulnerability in FreemarkerPortletRenderer.renderHtml() that allows any authenticated non-guest user to achieve remote code execution by storing a malicious FreeMarker payload through a POST request to the RemotePortletService invoker endpoint. The markup field from stored portlet configuration is passed directly to custFactory.createResult() without a TemplateClassResolver restriction or FreeMarker sandboxing in BasicConfiguration, leaving built-ins such as ?new and freemarker.template.utility.Execute available, causing the payload to execute in the application server process context when any user renders a dashboard containing the affected portlet.",
   "datePublished": "Sep 20, 2026, 11:33:55 AM",
-  "dateUpdated": "Sep 23, 2026, 1:20:11 PM",
+  "dateUpdated": "Sep 24, 2026, 11:58:07 AM",
   "baseScore": 8.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://blog.evan.lat/posts/openeq\nhttps://github.com/openequella/openEQUELLA/commit/d6e165afc986f8a3ed912cdb367d5ad8c1eeab5c\nhttps://github.com/openequella/openEQUELLA/releases/tag/2026.1.0\nhttps://www.vulncheck.com/advisories/openequella-authenticated-stored-ssti-via-freemarkerportletrenderer\n",
   "aliases": "GHSA-w599-5qgp-f3cf\nCVE-2026-94109\n",
   "assigner": "VulnCheck",
-  "epss": 0.92,
+  "epss": 0.53,
   "enisaIdProduct": [
     {
       "id": "36821f9c-d9fa-3535-bc4f-2303fedf5d62",

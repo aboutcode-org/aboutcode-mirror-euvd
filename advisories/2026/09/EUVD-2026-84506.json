@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-84506",
   "enisaUuid": "48537805-fabe-376d-84f8-a880a6f13388",
-  "description": "Lantronix SLC8000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers to execute arbitrary shell commands as root by exploiting an undocumented mfc eeprom read command that passes unsanitized user input to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+  "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers to execute arbitrary shell commands as root by exploiting an undocumented mfc eeprom read command that passes unsanitized user input to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
   "datePublished": "Sep 22, 2026, 3:17:21 PM",
-  "dateUpdated": "Sep 22, 2026, 5:44:26 PM",
+  "dateUpdated": "Sep 24, 2026, 7:02:44 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.2R1/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-cli-command-injection-via-mfc-eeprom-read\n",
+  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.2R1/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-cli-command-injection-via-mfc-eeprom-read\n",
   "aliases": "CVE-2026-80143\nGHSA-8m6g-v32x-vpvf\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 2.8,
   "enisaIdProduct": [
     {
       "id": "34e270f0-befb-3948-b62c-539d5c7a87d5",
@@ -61,6 +61,16 @@
         }
       },
       "product_version": "*"
+    },
+    {
+      "id": "afab1d28-c237-305c-92e3-0e733438062e",
+      "product": {
+        "name": "SLC9000",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "0 <9.7.0.2"
     },
     {
       "id": "c0bb0db3-0087-3528-b9c8-6dbeb92c2899",

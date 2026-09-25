@@ -1,21 +1,31 @@
 {
   "id": "EUVD-2026-84520",
   "enisaUuid": "a4244574-ab2a-3eaa-8636-653ea69e8f9d",
-  "description": "All firmware versions of Lantronix SLC8000, EMG8500, EMG7500, SLB882, SLCx-03, and SLCx-02 contain an authentication bypass vulnerability in the web management portal that allows unauthenticated attackers to derive valid session tokens of logged-in users and bypass source IP and User-Agent validation. Session tokens are generated deterministically from the device model and the current time at one-second resolution, resulting in a small enumerable set of possible active tokens. Attackers can construct a crafted URI that exploits file extension handling in the web server path routing to bypass per-session source-address validation, then use a derived token from a different source address to gain elevated privileges on the affected device and potentially impact downstream serial-attached devices.",
+  "description": "All firmware versions of Lantronix SLC8000, SLC9000, EMG8500, EMG7500, SLB882, SLCx-03, and SLCx-02 contain an authentication bypass vulnerability in the web management portal that allows unauthenticated attackers to derive valid session tokens of logged-in users and bypass source IP and User-Agent validation. Session tokens are generated deterministically from the device model and the current time at one-second resolution, resulting in a small enumerable set of possible active tokens. Attackers can construct a crafted URI that exploits file extension handling in the web server path routing to bypass per-session source-address validation, then use a derived token from a different source address to gain elevated privileges on the affected device and potentially impact downstream serial-attached devices.",
   "datePublished": "Sep 22, 2026, 3:22:33 PM",
-  "dateUpdated": "Sep 22, 2026, 5:44:14 PM",
+  "dateUpdated": "Sep 24, 2026, 7:10:15 PM",
   "baseScore": 8.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
   "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-predictable-session-token-with-validation-bypass\n",
   "aliases": "GHSA-c7q9-4pfw-ph5m\nCVE-2026-80154\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.63,
   "enisaIdProduct": [
     {
       "id": "1664c37f-7976-3af1-8a70-440675966909",
       "product": {
         "name": "EMG7500",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "*"
+    },
+    {
+      "id": "9453b2f6-d839-37e5-888b-16e23c9e352f",
+      "product": {
+        "name": "SLC9000",
         "vendor": {
           "name": "Lantronix"
         }

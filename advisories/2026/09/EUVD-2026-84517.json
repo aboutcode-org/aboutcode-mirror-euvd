@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-84517",
   "enisaUuid": "5e36f22a-7e19-3fb1-aee1-b70cd5ce502d",
-  "description": "Lantronix SLC8000 before firmware v9.7.0.3, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers with the services permission to execute arbitrary shell commands as root by exploiting the set nfs download command that passes unsanitized user input to a system() call. Attackers with the services permission can authenticate to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+  "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers with the services permission to execute arbitrary shell commands as root by exploiting the set nfs download command that passes unsanitized user input to a system() call. Attackers with the services permission can authenticate to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
   "datePublished": "Sep 22, 2026, 3:21:45 PM",
-  "dateUpdated": "Sep 22, 2026, 3:21:45 PM",
+  "dateUpdated": "Sep 24, 2026, 7:08:45 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
-  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.3R3/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-os-command-injection-via-set-nfs-download\n",
+  "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.3R3/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-os-command-injection-via-set-nfs-download\n",
   "aliases": "CVE-2026-80151\nGHSA-h8x4-hr84-5rp5\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 2.51,
   "enisaIdProduct": [
     {
       "id": "573bd7cc-bbf4-319d-b12f-16d9ba17e177",
@@ -71,6 +71,16 @@
         }
       },
       "product_version": "0 <9.7.0.1"
+    },
+    {
+      "id": "e53f2e8a-e73f-3717-8a23-32acb06bc783",
+      "product": {
+        "name": "SLC9000",
+        "vendor": {
+          "name": "Lantronix"
+        }
+      },
+      "product_version": "0 <9.7.0.2"
     }
   ],
   "enisaIdVendor": [
