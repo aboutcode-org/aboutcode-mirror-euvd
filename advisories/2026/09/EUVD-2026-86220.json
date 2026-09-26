@@ -3,7 +3,7 @@
   "enisaUuid": "f1f89219-c778-379a-ae18-5903591542d7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rockchip: rockchip_pdm: Handle runtime PM resume failures in set_fmt\n\nrockchip_pdm_set_fmt() calls pm_runtime_get_sync() before accessing\nhardware registers, but ignores its return value.\nIf the runtime resume fails, the function continues to perform register\naccesses while the device state is undefined.\nReplace pm_runtime_get_sync() with pm_runtime_resume_and_get() and\nreturn early on failure to avoid unpowered register accesses.",
   "datePublished": "Sep 24, 2026, 4:03:13 PM",
-  "dateUpdated": "Sep 24, 2026, 4:03:13 PM",
+  "dateUpdated": "Sep 25, 2026, 12:43:41 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a9cc27a4a9b5fe013e152841fd8408061fa2312f\nhttps://git.kernel.org/stable/c/b2b5c2ca5a4924271fa86d75a252de32fa285375\nhttps://git.kernel.org/stable/c/ee7b5f7b39332febf917f9ebf212842cc9379815\n",
   "aliases": "GHSA-c9v7-6fmw-v2g3\nCVE-2026-97407\n",
@@ -31,44 +31,114 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "30833c5a-cdbe-3985-93ab-629d4e2b334a",
+      "id": "259acce3-bba4-39a3-ae75-05d99abe8509",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "c85064435fe7a216ec0f0238ef2b8f7cd850a450 <b2b5c2ca5a4924271fa86d75a252de32fa285375"
     },
     {
-      "id": "4b5adace-8668-3613-800f-8a34a19366a5",
+      "id": "48ec8a12-667a-3ce3-9155-28334449eadb",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ee7b5f7b39332febf917f9ebf212842cc9379815"
+      "product_version": "c85064435fe7a216ec0f0238ef2b8f7cd850a450 <a9cc27a4a9b5fe013e152841fd8408061fa2312f"
     },
     {
-      "id": "be1fc359-3dac-3e8c-92bc-95366744022a",
+      "id": "529394e9-105d-3061-8cc2-828a210ddffb",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "a8f82720673d41b85145f232c954fe3a365f72b5"
     },
     {
-      "id": "cb4f7e18-8fae-30c8-9640-8174b1df3ddf",
+      "id": "6dbed6c2-14c5-301f-ac77-f6ea1caee381",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a9cc27a4a9b5fe013e152841fd8408061fa2312f"
+      "product_version": "5.0.15 <5.1"
+    },
+    {
+      "id": "8ddb3731-c9d2-3782-9533-6c72490b1fb9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4.14.118 <4.15"
+    },
+    {
+      "id": "8f7900c5-fd25-34a0-b030-6be19ed3e27b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4.19.42 <4.20"
+    },
+    {
+      "id": "98327c4c-95eb-368c-aff9-5a41e3b8c41d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.1"
+    },
+    {
+      "id": "9b3e6302-3ac4-3fba-83ab-0f7f43c96446",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c85064435fe7a216ec0f0238ef2b8f7cd850a450 <ee7b5f7b39332febf917f9ebf212842cc9379815"
+    },
+    {
+      "id": "b1999fb2-6652-32fa-bd23-b4cca907e929",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2f0ec100032e9f23b7561ec6f3b5c8a9806a7100"
+    },
+    {
+      "id": "e0e02628-f63d-30ec-afc3-765422f4404b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "f0333493-f048-35ce-bfe1-cd7ceefa0872",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "88294658ddbe0e35fa48e1679252e86b3b5ba1d2"
     },
     {
       "id": "f4b230cf-4f88-39c0-b3e9-3af0dce5057b",
@@ -79,16 +149,6 @@
         }
       },
       "product_version": "patch: 6.18.53"
-    },
-    {
-      "id": "fe973960-b593-31b4-b115-2ac8e40a255e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <b2b5c2ca5a4924271fa86d75a252de32fa285375"
     }
   ],
   "enisaIdVendor": [

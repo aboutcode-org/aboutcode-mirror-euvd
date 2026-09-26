@@ -3,12 +3,12 @@
   "enisaUuid": "f4fc6e7f-e0ac-329e-bdc3-7cc2af64538a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_qca: fix NULL pointer dereference in qca_setup() for non-serdev device\n\nhu->serdev is NULL for hci_uart attached via non-serdev paths, but\nqca_setup() unconditionally calls serdev_device_get_drvdata(hu->serdev)\nand dereferences the result, causing a NULL pointer dereference.\n\nFix by guarding the dereference with a NULL check, consistent with the\nrest of qca_setup().",
   "datePublished": "Aug 15, 2026, 5:58:05 AM",
-  "dateUpdated": "Aug 17, 2026, 5:16:51 AM",
+  "dateUpdated": "Sep 25, 2026, 2:44:24 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0704c04769ccc1a0939682db35d816dfa5fe75dc\nhttps://git.kernel.org/stable/c/3ec629fee178d429f01ae843e4ea888de93012bf\n",
+  "references": "https://git.kernel.org/stable/c/74f179e75ab03bdc818a5e9709d8a8440c351463\nhttps://git.kernel.org/stable/c/0704c04769ccc1a0939682db35d816dfa5fe75dc\nhttps://git.kernel.org/stable/c/3ec629fee178d429f01ae843e4ea888de93012bf\n",
   "aliases": "CVE-2026-74304\nGHSA-3qvf-qw9p-g662\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2280d525-05b3-3465-bbae-386ef3951922",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "7dfc97da-89aa-3a67-acf8-337b66e2d110",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7812a441617ad7cf3e62281d3fa518d2ba17c100 <74f179e75ab03bdc818a5e9709d8a8440c351463"
     },
     {
       "id": "a4b31a1f-79dd-37b8-9406-000e93bdf691",

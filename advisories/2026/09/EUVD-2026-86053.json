@@ -3,13 +3,33 @@
   "enisaUuid": "17dbb36c-a747-3dc1-9086-6d42e521b496",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: fix node refcount leak on ctrl packet alloc failure\n\nqrtr_send_resume_tx() calls qrtr_node_lookup() which takes a\nreference on the returned node. If the subsequent call to\nqrtr_alloc_ctrl_packet() fails due to memory allocation failure, the\nfunction returns -ENOMEM without calling qrtr_node_release() to\nrelease the node reference.\n\nAdd qrtr_node_release(node) before returning on the allocation failure\npath to properly release the reference.",
   "datePublished": "Sep 24, 2026, 4:03:53 PM",
-  "dateUpdated": "Sep 24, 2026, 4:03:53 PM",
+  "dateUpdated": "Sep 25, 2026, 12:44:17 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/477353db343663d5502ca442c6de785d2f23f273\nhttps://git.kernel.org/stable/c/9d969c98732a4d42212ec580dd5bbad53f246103\nhttps://git.kernel.org/stable/c/3b09ff54114566864eea59020f6b69c5bb325b9d\n",
   "aliases": "GHSA-x3xx-p253-pwh4\nCVE-2026-97440\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
+    {
+      "id": "0673bf4e-705b-3f19-918c-edcac3d2950b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cb6530b99fafea6c0636c4640bd21301d12cdbc9 <477353db343663d5502ca442c6de785d2f23f273"
+    },
+    {
+      "id": "5005eb26-b466-37fb-b76e-a7b7c12bdd1c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.6"
+    },
     {
       "id": "566c7a70-6dbc-3028-8146-b3898dd760ee",
       "product": {
@@ -21,14 +41,14 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "74e9ed3c-0c7c-31da-a9ea-4fc10da7be8b",
+      "id": "748a7ee4-e6a8-3693-abec-0821a6c9ff04",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <477353db343663d5502ca442c6de785d2f23f273"
+      "product_version": "cb6530b99fafea6c0636c4640bd21301d12cdbc9 <3b09ff54114566864eea59020f6b69c5bb325b9d"
     },
     {
       "id": "765c630e-5534-38ac-8e9f-a5e4c3f65e46",
@@ -41,26 +61,6 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "79ad44c6-efef-3c6e-aa46-e2218873c144",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.12.111"
-    },
-    {
-      "id": "80570985-cdf0-3ca8-92e1-8b62ffe624fa",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9d969c98732a4d42212ec580dd5bbad53f246103"
-    },
-    {
       "id": "9e2f0e36-be81-3740-8abf-a8b7e3136aac",
       "product": {
         "name": "Linux",
@@ -71,24 +71,24 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "b992d87a-546f-3c4b-9f53-2b1a1a298da8",
+      "id": "aa8b6825-1c11-3e9f-acfc-78608df5e343",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "patch: 0"
     },
     {
-      "id": "f04afc07-3900-3fc7-98e5-5de71013220d",
+      "id": "b319203b-d8fe-3c6e-856a-85b46a8a6a19",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3b09ff54114566864eea59020f6b69c5bb325b9d"
+      "product_version": "cb6530b99fafea6c0636c4640bd21301d12cdbc9 <9d969c98732a4d42212ec580dd5bbad53f246103"
     }
   ],
   "enisaIdVendor": [

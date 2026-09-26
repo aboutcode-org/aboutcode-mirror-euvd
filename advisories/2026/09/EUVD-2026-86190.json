@@ -3,7 +3,7 @@
   "enisaUuid": "9a1a6657-76e2-34d4-a097-83f7f62c3340",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libipw: fix key index receive bound checks\n\nlibipw_rx() reads skb->data[hdrlen + 3] to extract the WEP key index in\nboth the software-decrypt key selection path and the hardware-decrypted\nIV/ICV strip path. In both places the existing guard only checks\nskb->len >= hdrlen + 3, which proves bytes up to hdrlen + 2 but not the\nbyte at hdrlen + 3.\n\nRequire hdrlen + 4 bytes before reading that item in both paths. This is\na local source-boundary check only; it does not change the key index\nsemantics.",
   "datePublished": "Sep 24, 2026, 4:02:37 PM",
-  "dateUpdated": "Sep 24, 2026, 4:02:37 PM",
+  "dateUpdated": "Sep 25, 2026, 12:43:10 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/062840bdc9ee06169b3c371bf66711f1d7ec0bf4\nhttps://git.kernel.org/stable/c/c54b643e9a0936d038921c547736574fd7382cea\nhttps://git.kernel.org/stable/c/74ed3669f26803b1761c1f55403062bea44c3466\n",
   "aliases": "GHSA-7f2h-763g-25cr\nCVE-2026-93803\n",
@@ -11,14 +11,14 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "459457a6-cb71-31e8-90e4-d43e5920c716",
+      "id": "267c8637-b4ca-39b9-a9a2-21ef14aec7f6",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "b453872c35cfcbdbf5a794737817f7d4e7b1b579 <c54b643e9a0936d038921c547736574fd7382cea"
     },
     {
       "id": "47f9c617-6d18-3424-bdc2-93f36cf132b6",
@@ -31,6 +31,16 @@
       "product_version": "patch: 6.12.111"
     },
     {
+      "id": "50634703-bd03-3f4f-a219-9dd1d76635d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b453872c35cfcbdbf5a794737817f7d4e7b1b579 <74ed3669f26803b1761c1f55403062bea44c3466"
+    },
+    {
       "id": "50e6feae-c13f-3694-8202-1e5be8eb2f51",
       "product": {
         "name": "Linux",
@@ -41,24 +51,24 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "63816709-7bd7-3226-8cbb-9f1c0d9df1e6",
+      "id": "5b60e44a-8087-34b1-bc61-73b469f2ba7d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <74ed3669f26803b1761c1f55403062bea44c3466"
+      "product_version": "b453872c35cfcbdbf5a794737817f7d4e7b1b579 <062840bdc9ee06169b3c371bf66711f1d7ec0bf4"
     },
     {
-      "id": "6d1e0eef-826f-36e6-a7af-08088756c5a8",
+      "id": "8b7da717-25ff-3e56-a196-5d531b391339",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c54b643e9a0936d038921c547736574fd7382cea"
+      "product_version": "patch: 0"
     },
     {
       "id": "dc27fe17-c196-3956-8a33-d80bb3afde59",
@@ -71,24 +81,14 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "f31d299b-0635-3e96-b3eb-994e7214977a",
+      "id": "f8055578-c9e6-3160-9dde-68825c38e6fd",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
-    },
-    {
-      "id": "ff2aeaa9-a196-30ad-9896-9d626fd02aca",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <062840bdc9ee06169b3c371bf66711f1d7ec0bf4"
+      "product_version": "2.6.14"
     }
   ],
   "enisaIdVendor": [

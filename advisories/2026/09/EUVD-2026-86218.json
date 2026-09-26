@@ -3,7 +3,7 @@
   "enisaUuid": "a1a9191d-2196-361d-b199-4200c081fca2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix races in cifsd thread creation\n\nThe cifsd demultiplex thread can run and access tcp_ses before the parent\nthread has finished populating tcp_ses, which the worker thread accesses\nlocklessly.\n\nAlso, the kthread_run macro may start the thread before returning the\nthread pointer. Because the pointer is part of the structure that the\nthread can access, if the kernel is preempted after the thread is spawned,\nbut before the thread pointer is populated and the thread attempts to exit,\nit will sleep, waiting for a SIGKILL signal.\n\nFix this by moving creation of the thread to after all of tcp_ses'es\nfields are populated, and spawning the thread last, using a split\nkthread_create/wake_up_process logic.",
   "datePublished": "Sep 24, 2026, 4:03:11 PM",
-  "dateUpdated": "Sep 24, 2026, 4:03:11 PM",
+  "dateUpdated": "Sep 25, 2026, 12:43:39 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ee8f811cbac56ffb738b3a73671a9e75b0f56e99\nhttps://git.kernel.org/stable/c/0eee1e6cddd1d9ce14da06e0238ca8d3362dec90\nhttps://git.kernel.org/stable/c/e8a5cf2ff5a13fefb228f2069e29dd7d8e37185d\n",
   "aliases": "GHSA-v43p-8x6p-65w4\nCVE-2026-93829\n",
@@ -11,34 +11,24 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "0198e362-2d47-3a46-afd7-691e68811632",
+      "id": "62b4ec40-2bef-3d39-bff3-f40cc0aee039",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "2.6.22"
     },
     {
-      "id": "26b3a8e0-b3b4-3f33-9c3c-686d0070b59b",
+      "id": "9470261d-d24a-3358-afee-9662ebb93f35",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0eee1e6cddd1d9ce14da06e0238ca8d3362dec90"
-    },
-    {
-      "id": "2a7cbffa-6574-3fb3-979d-1b2c257028c5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ee8f811cbac56ffb738b3a73671a9e75b0f56e99"
+      "product_version": "aaf737adb6937339494d5a7111f0433cd9676db8 <e8a5cf2ff5a13fefb228f2069e29dd7d8e37185d"
     },
     {
       "id": "99019836-99f5-3adf-ad1a-dbd89d3ef135",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "990efdf8-a838-3f33-90dd-30580b1ebe32",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "aaf737adb6937339494d5a7111f0433cd9676db8 <0eee1e6cddd1d9ce14da06e0238ca8d3362dec90"
     },
     {
       "id": "a0744d4d-732b-35f0-b5da-330b0acd0fb9",
@@ -71,24 +71,24 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "cee96ee5-2a68-3eb6-aeb7-aa100e85cb9d",
+      "id": "ce3b650a-319e-345a-811a-680f06b82279",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e8a5cf2ff5a13fefb228f2069e29dd7d8e37185d"
+      "product_version": "aaf737adb6937339494d5a7111f0433cd9676db8 <ee8f811cbac56ffb738b3a73671a9e75b0f56e99"
     },
     {
-      "id": "f946f97b-6a4c-3121-b61c-add899982ffc",
+      "id": "d5711eb4-0450-384c-9ac8-cc7a430b31c4",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "patch: 0"
     }
   ],
   "enisaIdVendor": [

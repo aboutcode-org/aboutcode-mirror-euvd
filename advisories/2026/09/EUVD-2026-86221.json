@@ -3,7 +3,7 @@
   "enisaUuid": "eaa00441-6b86-3baa-a658-0966bc06f903",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: validate connectionless PSM length\n\nConnectionless L2CAP frames carry a two-byte PSM at the start of the\npayload.  l2cap_recv_frame() currently reads that PSM unconditionally\nafter validating only the outer L2CAP length.\n\nA malformed connectionless frame with a zero- or one-byte payload can\ntherefore make the parser read beyond the advertised skb payload and use\ntailroom bytes as part of the PSM.  A VHCI-backed QEMU reproducer\ninjected a one-byte connectionless payload and reached the unchecked\nread.\n\nReject connectionless frames that cannot contain the PSM before reading\nor pulling it.  This preserves all valid connectionless frames while\ndropping only structurally incomplete packets.",
   "datePublished": "Sep 24, 2026, 4:03:15 PM",
-  "dateUpdated": "Sep 24, 2026, 4:03:15 PM",
+  "dateUpdated": "Sep 25, 2026, 12:43:42 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3502ede8aed3c3ee1786d952a11054ac737d1a38\nhttps://git.kernel.org/stable/c/ae69dca122f6d6046a68cf40153e6e827c77ff5c\nhttps://git.kernel.org/stable/c/a40a5f922546b3bd7c094d882b29177db4f2abe0\n",
   "aliases": "CVE-2026-97408\nGHSA-39rm-4xq5-hvr6\n",
@@ -31,6 +31,16 @@
       "product_version": "patch: 7.2"
     },
     {
+      "id": "63fd733c-4e8b-3988-9448-e635274fe93c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
+    },
+    {
       "id": "64d68c27-a143-3786-b3a4-a96aa73e18c3",
       "product": {
         "name": "Linux",
@@ -41,16 +51,6 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "72294457-a2a7-3079-bb40-c5f7c3d409e3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.12.111"
-    },
-    {
       "id": "7e241a30-450b-3e9a-89be-99b762c74548",
       "product": {
         "name": "Linux",
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3502ede8aed3c3ee1786d952a11054ac737d1a38"
+    },
+    {
+      "id": "7ea879e7-af5b-30f1-ad63-0ba86676ca4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2.6.12"
     },
     {
       "id": "9239570a-199a-3505-b3c3-bccb23b4b108",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ae69dca122f6d6046a68cf40153e6e827c77ff5c"
-    },
-    {
-      "id": "bd7f40a0-6948-3f33-90b6-31147b04e263",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.18.53"
     }
   ],
   "enisaIdVendor": [

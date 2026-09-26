@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-87314",
+  "enisaUuid": "734337bb-ef58-359e-b685-a333417574a4",
+  "description": "GNU libextractor before 1.16 loads plugins from an untrusted search path specified by the LIBEXTRACTOR_PREFIX environment variable without proper privilege checks. A local attacker can exploit this by setting LIBEXTRACTOR_PREFIX to a directory containing a malicious plugin that executes arbitrary code with elevated privileges when loaded by a setuid or setgid program.",
+  "datePublished": "Sep 25, 2026, 9:33:02 PM",
+  "dateUpdated": "Sep 25, 2026, 9:33:02 PM",
+  "baseScore": 7.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/Haitam-lazaar/libextractor-privesc\nhttps://git.gnunet.org/gnunet/libextractor/commit/6edfa653c048800e24a17f7e8cc2bb42659b8d01.html\nhttps://ftp.gnu.org/gnu/libextractor/\nhttps://www.gnu.org/software/libextractor/\nhttps://www.vulncheck.com/advisories/gnu-libextractor-before-1.16-privilege-escalation-via-libextractor-prefix\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-100310\n",
+  "aliases": "CVE-2026-100310\nGHSA-rxpm-xfjv-mq65\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "1a35c190-74f1-3664-ba7a-c30aaee3590e",
+      "product": {
+        "name": "libextractor",
+        "vendor": {
+          "name": "GNU"
+        }
+      },
+      "product_version": "0 <1.16"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5074a412-1d52-3dab-8396-1dee5705f174",
+      "vendor": {
+        "name": "GNU"
+      }
+    }
+  ]
+}

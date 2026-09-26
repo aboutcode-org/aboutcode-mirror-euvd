@@ -3,8 +3,10 @@
   "enisaUuid": "5556b074-636c-30ce-8619-017c3d1072e6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate inline dentry name lengths before conversion\n\nInline dentry conversion copies names out of the inline dentry area\nbefore checking that each recorded name length fits in the available\nfilename slots.\n\nA corrupted image can therefore make the conversion path read past\nthe inline filename storage while building the regular dentry block.\n\nValidate each inline dentry name length against the inline filename\narea before copying it.",
   "datePublished": "Sep 24, 2026, 4:02:53 PM",
-  "dateUpdated": "Sep 24, 2026, 4:02:53 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Sep 25, 2026, 12:43:24 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/2ce0bc5853bec7cdc724477a87ea579fde664243\nhttps://git.kernel.org/stable/c/7caa8a0ae94b132576c2e46e9b4fd4e0f356f373\nhttps://git.kernel.org/stable/c/cfcd0e49a178b3dac2c0ece656079081dbf5da74\n",
   "aliases": "CVE-2026-93816\nGHSA-g6g4-c2jh-p7hg\n",
   "assigner": "Linux",
@@ -21,14 +23,14 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "15bed0da-b488-3a5d-b2e7-afee63c97f31",
+      "id": "3c1acea9-eceb-3e3e-9472-3dd301ff7a3b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2ce0bc5853bec7cdc724477a87ea579fde664243"
+      "product_version": "675f10bde6cc3874632a8f684df2a8a2a8ace76e <cfcd0e49a178b3dac2c0ece656079081dbf5da74"
     },
     {
       "id": "582afe41-bf3d-3b3a-ad93-eb0c4c15ec6f",
@@ -51,44 +53,44 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "70522782-58bf-3e55-bfb4-f08fe543619b",
+      "id": "82f13f74-5a11-36d6-99ea-70e3df23eb3f",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cfcd0e49a178b3dac2c0ece656079081dbf5da74"
+      "product_version": "675f10bde6cc3874632a8f684df2a8a2a8ace76e <7caa8a0ae94b132576c2e46e9b4fd4e0f356f373"
     },
     {
-      "id": "74e19d83-f134-3f43-a871-f8909531b0db",
+      "id": "91b53d9f-cba1-30fc-ac9d-a80f59955e96",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "675f10bde6cc3874632a8f684df2a8a2a8ace76e <2ce0bc5853bec7cdc724477a87ea579fde664243"
     },
     {
-      "id": "dc2b97b2-1fcb-318d-9654-11ca7550edbf",
+      "id": "9584a941-22fc-3d3c-b706-73d01f30fb76",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <7caa8a0ae94b132576c2e46e9b4fd4e0f356f373"
+      "product_version": "4.7"
     },
     {
-      "id": "f8fb5bc5-3b0c-3fd3-ba20-f43ba7efadc5",
+      "id": "d4549da9-4298-39a2-85db-3c78add97dd8",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "patch: 0"
     }
   ],
   "enisaIdVendor": [

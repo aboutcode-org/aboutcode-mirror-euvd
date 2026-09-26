@@ -3,7 +3,7 @@
   "enisaUuid": "ad88db36-5333-3696-94a6-30a6851b3b1c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: sja1105: flower: reject cross-chip redirect\n\ndsa_port_from_netdev() may return a valid port from a different switch\nchip. Programming another chip's port index into the local hardware\ncauses redirection to the wrong port, or an out-of-bounds access if the\nindex exceeds the local chip's port count.\n\nApply a minimal fix that adds a check to catch this case and adjusts the\nextack message. When cls->common.skip_sw is not set, the operation could\ninstead redirect to the upstream port and let the software or upstream\nswitch(es) handle the forward, but that is not addressed here.",
   "datePublished": "Sep 24, 2026, 4:03:48 PM",
-  "dateUpdated": "Sep 24, 2026, 4:03:48 PM",
+  "dateUpdated": "Sep 25, 2026, 12:44:12 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c999cc39775381b68ed66eae57c1425452672c0f\nhttps://git.kernel.org/stable/c/abd7511e12b231798332afa04ed9bee9e84f9445\nhttps://git.kernel.org/stable/c/cfa5274a5dc2a23b957da5dc806d2ac0c7a66af0\n",
   "aliases": "GHSA-fv9v-g8xq-3w88\nCVE-2026-97435\n",
@@ -11,24 +11,14 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "162cf744-2a53-3943-8c9f-03f9ff05f445",
+      "id": "3715f766-865a-3e3d-9436-14d877e0ee4c",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cfa5274a5dc2a23b957da5dc806d2ac0c7a66af0"
-    },
-    {
-      "id": "3459fb77-8f1e-3d34-b382-ded6c918dca7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c999cc39775381b68ed66eae57c1425452672c0f"
+      "product_version": "patch: 0"
     },
     {
       "id": "3bab0f5c-601d-3b1a-88ca-6473751060fe",
@@ -41,24 +31,34 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "57ea72f2-7d74-3b76-bce6-7511c8deedfc",
+      "id": "60bf8927-e482-363f-b401-862b8db3d181",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <abd7511e12b231798332afa04ed9bee9e84f9445"
+      "product_version": "dfacc5a23e227cabdff41b6202f510398e90d36b <abd7511e12b231798332afa04ed9bee9e84f9445"
     },
     {
-      "id": "9ba93001-21c7-3997-b9e6-1840fa0cae48",
+      "id": "7dc24ba8-ab89-3bc8-a03b-6eb5817f87e2",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "5.8"
+    },
+    {
+      "id": "86382787-632c-3c09-bf98-14507abcd50d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dfacc5a23e227cabdff41b6202f510398e90d36b <cfa5274a5dc2a23b957da5dc806d2ac0c7a66af0"
     },
     {
       "id": "cabfab8c-6b65-3c21-b0fc-99102837cb96",
@@ -71,6 +71,16 @@
       "product_version": "patch: 6.12.111"
     },
     {
+      "id": "ddee62de-179d-3da8-9a77-7b9209031285",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dfacc5a23e227cabdff41b6202f510398e90d36b <c999cc39775381b68ed66eae57c1425452672c0f"
+    },
+    {
       "id": "e1acd2c5-b9c8-3f51-9b3a-30c1cb63554c",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "patch: 7.2"
-    },
-    {
-      "id": "f162587c-3c7b-3017-9b2e-e3245199883a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.18.53"
     }
   ],
   "enisaIdVendor": [
