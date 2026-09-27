@@ -3,14 +3,14 @@
   "enisaUuid": "4ddc24fe-29ad-3940-8978-a99f6dd2d37c",
   "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882 contain a server-side request forgery vulnerability in the WebSSH/WebTelnet listener that allows unauthenticated attackers to cause the affected device to establish SSH connections to attacker-controlled endpoints. The custom shellinaboxd uses the rooturl parameter from the web connection to determine its own IP address; by modifying this parameter an attacker redirects the SSH terminal connection to an arbitrary host or IP. Attackers can use this capability to enumerate or communicate with internal network endpoints that would otherwise be inaccessible.",
   "datePublished": "Sep 22, 2026, 3:20:57 PM",
-  "dateUpdated": "Sep 24, 2026, 7:06:54 PM",
+  "dateUpdated": "Sep 26, 2026, 1:29:52 PM",
   "baseScore": 7.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N",
   "references": "https://revrb.net/2026/09/21/revrb-lantern.html\nhttps://ts.lantronix.com/ftp/slc8000/9.7.0.3R3/\nhttps://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2/\nhttps://ts.lantronix.com/ftp/SLC9000/9.7.0.2R1/\nhttps://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-webssh-ssrf-via-rooturl-parameter\n",
   "aliases": "GHSA-rpxf-vw4h-fp98\nCVE-2026-80149\n",
   "assigner": "VulnCheck",
-  "epss": 0.54,
+  "epss": 0.58,
   "enisaIdProduct": [
     {
       "id": "239c5f54-7a40-3a37-876a-e39f06ed758f",
@@ -23,14 +23,14 @@
       "product_version": "0 <9.7.0.2"
     },
     {
-      "id": "8c70e99e-97be-3adb-b3a0-6dcba3b4907c",
+      "id": "979a18f2-4911-3ea2-95d3-68789f9725f8",
       "product": {
         "name": "SLC8000",
         "vendor": {
           "name": "Lantronix"
         }
       },
-      "product_version": "0 <9.7.0.2"
+      "product_version": "0 <9.7.0.3"
     },
     {
       "id": "d99bf641-5ed1-367c-bef9-612e5155b21d",
