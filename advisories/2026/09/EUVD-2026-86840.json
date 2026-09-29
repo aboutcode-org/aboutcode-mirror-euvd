@@ -3,32 +3,22 @@
   "enisaUuid": "1f3d6dea-6951-3dad-a709-eefdfbe9d4cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Null out freed pointers in qla2x00_mem_alloc() error path\n\nWhen qla2x00_mem_alloc() fails, qla2x00_probe_one() jumps to\nprobe_hw_failed and calls qla2x00_mem_free(). Several error labels in\nqla2x00_mem_alloc() freed adapter members (elsrej.c, purex_dma_pool,\nflt, sfp_data, loop_id_map, async_pd, sf_init_cb, ex_init_cb, npiv_info)\nbut left the pointers dangling. qla2x00_mem_free() then freed them a\nsecond time. Worse, for the dma_pool members it issued\ndma_pool_free(ha->s_dma_pool, ...) after s_dma_pool had already been\ndestroyed and set to NULL at fail_s_dma_pool, dereferencing a NULL pool.\n\nClear each freed pointer (and its DMA handle) in the error labels so the\nsubsequent qla2x00_mem_free() skips them.",
   "datePublished": "Sep 25, 2026, 10:21:32 AM",
-  "dateUpdated": "Sep 25, 2026, 10:21:32 AM",
+  "dateUpdated": "Sep 28, 2026, 5:31:00 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a57570229edb7a0990d5c8067daeb9ac8858a961\nhttps://git.kernel.org/stable/c/286d9594a022dd7e0caa3de9daa63b896bc70d43\nhttps://git.kernel.org/stable/c/6d90f0feb929f6c0f3010f9af4747c7230b75993\n",
   "aliases": "GHSA-r4g5-5hq8-92x8\nCVE-2026-97532\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
-      "id": "0ee00c7d-023d-382f-afb2-a77ed921fc02",
+      "id": "1a62fd93-bbb1-3c87-95ad-2860eff4d416",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <286d9594a022dd7e0caa3de9daa63b896bc70d43"
-    },
-    {
-      "id": "260ee5f2-1513-3702-b842-cb3632967506",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <7.2.7"
+      "product_version": "7142b10b87d5b393a0688358b16a4b1d3680ec7d"
     },
     {
       "id": "30965d6f-0323-3cf8-8748-e7b735dd3220",
@@ -41,24 +31,44 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "71e0ab42-177a-30b5-8c72-4cab729cf5bc",
+      "id": "33687ef7-33f1-30dc-b594-e179f73e12af",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6d90f0feb929f6c0f3010f9af4747c7230b75993"
+      "product_version": "patch: 0"
     },
     {
-      "id": "9daf23dd-6c8d-388a-9763-54710952845d",
+      "id": "54045c4b-7556-35ce-9269-1362eb7bf65a",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "4.16"
+    },
+    {
+      "id": "a990d82d-733c-33b4-931c-ae9b90f8561f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d64d6c5671db5e693a0caaee79f2571b098749c9 <6d90f0feb929f6c0f3010f9af4747c7230b75993"
+    },
+    {
+      "id": "c0661f09-6bdf-343d-88dc-707e29b69f75",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d64d6c5671db5e693a0caaee79f2571b098749c9 <286d9594a022dd7e0caa3de9daa63b896bc70d43"
     },
     {
       "id": "c51f3b23-5787-3faf-a5fd-a32fff35334c",
@@ -81,14 +91,44 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "eabdb60c-9d54-3e5a-b9f4-b3832ed90cb7",
+      "id": "c795caad-c906-309d-b5b5-169770626790",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <a57570229edb7a0990d5c8067daeb9ac8858a961"
+      "product_version": "4.15.10 <4.16"
+    },
+    {
+      "id": "d79cbe4d-b0c1-374f-96d0-520b8c21d96f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8540351ee8a4d540b1b7ee64b88d5e42c7c0bfbc"
+    },
+    {
+      "id": "dbf93a03-5657-31b1-9b98-7da69209bd81",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d64d6c5671db5e693a0caaee79f2571b098749c9 <a57570229edb7a0990d5c8067daeb9ac8858a961"
+    },
+    {
+      "id": "e5d79784-ca80-3fd4-8e67-a36d481f5110",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4.14.27 <4.15"
     }
   ],
   "enisaIdVendor": [

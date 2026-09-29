@@ -3,12 +3,12 @@
   "enisaUuid": "0fac1a19-0e47-3782-ba7c-9f5742284d29",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Release request if tb_cfg_request() fails in __tb_xdomain_response()\n\nIf tb_cfg_request() fails setting up the request (for example the\ncontrol channel is shut down already) it returns an error without\ncalling the callback. To avoid leaking that memory, call\ntb_cfg_request_put() if tb_cfg_request() fails.",
   "datePublished": "Sep 24, 2026, 4:05:05 PM",
-  "dateUpdated": "Sep 24, 2026, 4:05:05 PM",
+  "dateUpdated": "Sep 28, 2026, 5:30:46 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/42dddadf6b6131af4d12bfa8bdc84ef954e8cef8\nhttps://git.kernel.org/stable/c/0325d017bf4354a015a02413ee1c7e51266cecf4\nhttps://git.kernel.org/stable/c/4c63f29872cb444b33665348bbd2f45cab06afcd\n",
   "aliases": "CVE-2026-97510\nGHSA-rcq8-h22x-4p97\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0f3622e9-5f97-38c0-844e-bab9f233f876",
@@ -31,24 +31,14 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "22e295b7-6930-3db6-a54c-dd7c67ed243b",
+      "id": "3ee9fec3-4beb-3fd8-bf09-6a006e4d2765",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <42dddadf6b6131af4d12bfa8bdc84ef954e8cef8"
-    },
-    {
-      "id": "41339aef-b21b-3422-96bc-7db04c97c7b3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.12.111"
+      "product_version": "d1ff70241a275133e1a0258b7c23588b122276c8 <0325d017bf4354a015a02413ee1c7e51266cecf4"
     },
     {
       "id": "59e74e4c-bb2b-3b5b-b4dc-541a73d7cfcb",
@@ -61,34 +51,44 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "a78e2bd8-4a72-383c-b8de-3e783e3db391",
+      "id": "777c8cbc-922a-3a1f-ab38-51d89ea5f719",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "4.15"
     },
     {
-      "id": "ba5c3f8a-7c10-3764-b7b5-96fe14c06578",
+      "id": "796e9593-a883-3897-ba29-4bc9cc79c816",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0325d017bf4354a015a02413ee1c7e51266cecf4"
+      "product_version": "d1ff70241a275133e1a0258b7c23588b122276c8 <4c63f29872cb444b33665348bbd2f45cab06afcd"
     },
     {
-      "id": "fe82404b-a3b1-36f3-bf3b-355b0bbd3db7",
+      "id": "98a2168d-8e27-3790-af92-775dcba8a186",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4c63f29872cb444b33665348bbd2f45cab06afcd"
+      "product_version": "d1ff70241a275133e1a0258b7c23588b122276c8 <42dddadf6b6131af4d12bfa8bdc84ef954e8cef8"
+    },
+    {
+      "id": "e964cdf0-5084-3a36-a62e-1b56cbd1680f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
     }
   ],
   "enisaIdVendor": [

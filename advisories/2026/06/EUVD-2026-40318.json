@@ -3,14 +3,14 @@
   "enisaUuid": "31c212c9-5393-342c-91e6-62dd08adf415",
   "description": "A flaw was found in GLib. The D-Bus client-side implementation of the DBUS_COOKIE_SHA1 SASL authentication mechanism does not validate the cookie_context parameter received from the server. A malicious D-Bus server can supply a cookie_context containing path traversal sequences, causing the client to read an arbitrary file and exfiltrate sensitive data by verifying guessed file contents against a generated hash.",
   "datePublished": "Jun 30, 2026, 1:02:45 PM",
-  "dateUpdated": "Sep 15, 2026, 11:37:22 AM",
+  "dateUpdated": "Sep 28, 2026, 2:09:41 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
   "aliases": "GHSA-hmpf-72wc-2r6x\nCVE-2026-58015\n",
   "assigner": "redhat",
-  "epss": 0.66,
+  "epss": 0.91,
   "enisaIdProduct": [
     {
       "id": "064d40d3-27c7-376d-a5d3-32db96ba172c",
@@ -23,6 +23,26 @@
       "product_version": "patch: 1788880464"
     },
     {
+      "id": "090b3688-8d65-30b0-9b63-b4f28c5a2cb1",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790272426"
+    },
+    {
+      "id": "0a751e33-993f-3ff1-a88f-7e7bb9040da3",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790223279"
+    },
+    {
       "id": "0c4e6322-27e7-393b-bb3c-cc4850fc151a",
       "product": {
         "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
@@ -31,6 +51,16 @@
         }
       },
       "product_version": "patch: 0:2.80.4-4.el10_0.17"
+    },
+    {
+      "id": "13954b85-dda9-36f7-b246-929fb7241c42",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790223719"
     },
     {
       "id": "1787d3d8-959b-304f-bf0a-7d4c0fccd389",
@@ -123,6 +153,16 @@
       "product_version": "patch: 1788880581"
     },
     {
+      "id": "62a0a1b3-4aeb-356b-aab6-69627c9985d6",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790589998"
+    },
+    {
       "id": "670cfc10-0171-323b-b34f-ac98a28d9538",
       "product": {
         "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
@@ -133,6 +173,16 @@
       "product_version": "patch: 0:2.56.4-10.el8_4.7"
     },
     {
+      "id": "6dc34db4-363e-35a0-8dc2-cf54621633d6",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790589914"
+    },
+    {
       "id": "70579a38-b9e9-3796-bfa3-08e54589dda2",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -141,6 +191,16 @@
         }
       },
       "product_version": "patch: 1788205779"
+    },
+    {
+      "id": "7a597c5f-290f-31ad-9ae9-4e0ad7ca6b01",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790589855"
     },
     {
       "id": "8868e0bc-9576-33d9-873d-99d26f40c913",
@@ -251,6 +311,16 @@
         }
       },
       "product_version": "patch: 1787135742"
+    },
+    {
+      "id": "df8c3232-6516-3ef0-bacd-5b7346e84946",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790589912"
     },
     {
       "id": "e1cb949f-e826-346a-bacd-701e4f55d0c4",

@@ -3,32 +3,52 @@
   "enisaUuid": "c38bc570-8c94-3b0b-8d46-90db7045cdea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: core: hcd: fix possible deadlock in rh control transfers\n\n>From within the SCSI error handler memory allocations must not\ntrigger IO. Handling errors in UAS and the storage driver may\ninvolve resetting a device. The thread doing the reset itself\nrelies on VM magic. However, that is insufficient, as resetting\na device involves resuming it. Resumption as well as resetting\ninvolves conrol transfers to the parent of the device to be reset.\nThat may be a root hub. Hence usbcore must heed the flags passed\nto usb_submit_urb() processing control transfers to root hubs.\n\nThe problem exist since the storage driver has been merged.",
   "datePublished": "Sep 24, 2026, 4:04:27 PM",
-  "dateUpdated": "Sep 24, 2026, 4:04:27 PM",
+  "dateUpdated": "Sep 28, 2026, 5:30:13 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fff917c85d37a294397c5440a795591ca9d6b602\nhttps://git.kernel.org/stable/c/549672a3fb6b36ea408238f89ecf9f41d2da6225\nhttps://git.kernel.org/stable/c/d5559f43d76b398392b26a15cbc16d731969cd1c\n",
   "aliases": "GHSA-47j5-5c6r-5qfh\nCVE-2026-97483\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
-      "id": "0d74e670-4419-3119-bdcf-dfbf282f02b3",
+      "id": "2e3d7420-54ce-3fee-9efc-2e39d6025d60",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <549672a3fb6b36ea408238f89ecf9f41d2da6225"
+      "product_version": "3.12"
     },
     {
-      "id": "20efcee2-36ee-3631-8640-2dedc1cdbee6",
+      "id": "2e7525fb-9a2c-384a-aa32-574e871f4747",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "e57e780b346a7277fdd3bde765d9d8728b99bfa1 <fff917c85d37a294397c5440a795591ca9d6b602"
+    },
+    {
+      "id": "7f7b0f75-8c22-3f7b-80b3-6e23153b0c48",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e57e780b346a7277fdd3bde765d9d8728b99bfa1 <d5559f43d76b398392b26a15cbc16d731969cd1c"
+    },
+    {
+      "id": "8374886c-552e-3733-8cdb-4ca6b758c478",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "83d6a7f8-2449-39c0-82b2-90dc68518e93",
@@ -39,16 +59,6 @@
         }
       },
       "product_version": "patch: 6.12.111"
-    },
-    {
-      "id": "a649ff45-4e99-3157-9b24-bae8562d7965",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <fff917c85d37a294397c5440a795591ca9d6b602"
     },
     {
       "id": "c9c75f6d-8847-3bfd-bfc3-fd19d9c1e351",
@@ -71,24 +81,14 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "dd6cf9f6-8c76-305a-b73f-9fed9076d022",
+      "id": "db374ce0-9414-376f-a085-50cb3e5f1aae",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
-    },
-    {
-      "id": "fb7cd114-2bc5-31c7-a4c8-840e0befb05f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d5559f43d76b398392b26a15cbc16d731969cd1c"
+      "product_version": "e57e780b346a7277fdd3bde765d9d8728b99bfa1 <549672a3fb6b36ea408238f89ecf9f41d2da6225"
     }
   ],
   "enisaIdVendor": [

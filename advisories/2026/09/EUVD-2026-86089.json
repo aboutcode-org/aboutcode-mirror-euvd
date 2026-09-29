@@ -3,22 +3,22 @@
   "enisaUuid": "3e49869d-a9dc-3502-b3a6-e3e215dc4089",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: Don't sleep inside rds_ib_conn_path_shutdown\n\nNew rds rdma self tests exposed a hang when tearing down\nthe ib network configs.  This is caused by the shutdown worker\nthread sleeping on the wait_event call, which blocks other work\nitems in the queue. Fix this by changing wait_event to\nwait_event timeout, and looping until the wait check succeeds.",
   "datePublished": "Sep 24, 2026, 4:04:39 PM",
-  "dateUpdated": "Sep 24, 2026, 4:04:39 PM",
+  "dateUpdated": "Sep 28, 2026, 5:30:23 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/db22e77df66353f1299153f6fa9620a2825bc63f\nhttps://git.kernel.org/stable/c/caa51e6da596ed6008cd06605a725568b8e7be4e\nhttps://git.kernel.org/stable/c/16f48efaeb6991193fb7775c577f06f5b20b0c90\n",
   "aliases": "GHSA-rj2j-ff3c-jjm2\nCVE-2026-97491\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
-      "id": "16e90c81-e130-3524-a573-8cbf71a88fca",
+      "id": "49485074-385b-3660-a2f1-723074ed93a7",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <caa51e6da596ed6008cd06605a725568b8e7be4e"
+      "product_version": "2.6.30"
     },
     {
       "id": "60693c14-9356-30e6-8492-c513f9c6510c",
@@ -31,14 +31,14 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "6328d2be-b0a0-35aa-801f-184ffd7f3809",
+      "id": "65abf747-1b74-3271-ad10-cbe9506d72e8",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <db22e77df66353f1299153f6fa9620a2825bc63f"
+      "product_version": "ec16227e14141e4fd7ae76354c09dadfe2449d9e <16f48efaeb6991193fb7775c577f06f5b20b0c90"
     },
     {
       "id": "71039451-b4e8-35ae-888f-8ba727723ce2",
@@ -51,34 +51,24 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "723aa59f-14bd-3e7e-8715-a178b900eec5",
+      "id": "738add75-d961-3dc1-9161-0aeea085a98f",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "ec16227e14141e4fd7ae76354c09dadfe2449d9e <caa51e6da596ed6008cd06605a725568b8e7be4e"
     },
     {
-      "id": "98ca1059-8b9a-395d-8e90-512ca09da015",
+      "id": "cb1e9793-6b95-33ee-825a-9d26e686272f",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
-    },
-    {
-      "id": "9dceccea-adbb-3afe-b683-77ce35a2a23a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <16f48efaeb6991193fb7775c577f06f5b20b0c90"
+      "product_version": "patch: 0"
     },
     {
       "id": "cfda4d04-26da-3e96-9a60-24603dbb7964",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "d79f9984-d628-3eae-9b1b-1bb26a89fb78",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ec16227e14141e4fd7ae76354c09dadfe2449d9e <db22e77df66353f1299153f6fa9620a2825bc63f"
     }
   ],
   "enisaIdVendor": [

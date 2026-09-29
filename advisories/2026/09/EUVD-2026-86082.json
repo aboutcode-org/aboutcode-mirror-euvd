@@ -3,32 +3,32 @@
   "enisaUuid": "6526065f-c766-3b10-b686-59400ab50ddb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusbip: vhci_hcd: fix NULL deref in status_show_vhci\n\nplatform_get_drvdata() can return NULL if a VHCI host controller's\nprobe failed (e.g. due to USB bus number exhaustion). status_show_vhci()\nchecked for a NULL pdev but not for a NULL hcd returned by\nplatform_get_drvdata(). Passing NULL to hcd_to_vhci_hcd() does not\nreturn NULL - it returns a pointer offset of 0x260, causing a NULL\npointer dereference when that value is subsequently dereferenced.\n\nAdd a NULL check on hcd before calling hcd_to_vhci_hcd(). Move\nstatus_show_not_ready() above status_show_vhci() to make it callable\nfrom the new error path without a forward declaration.",
   "datePublished": "Sep 24, 2026, 4:04:27 PM",
-  "dateUpdated": "Sep 24, 2026, 4:04:27 PM",
+  "dateUpdated": "Sep 28, 2026, 5:30:15 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/046a94fdb02eb1df86c8fa4614104ff801ba3ab7\nhttps://git.kernel.org/stable/c/dacd7c317ba12e035653c28a0eaaf23d91abc073\nhttps://git.kernel.org/stable/c/bc150783542ba2e7c1257d1299c6f3269bdba270\n",
   "aliases": "GHSA-gwrg-cchr-q69g\nCVE-2026-97484\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
-      "id": "43116280-d614-3068-b550-7b40cb352c85",
+      "id": "0d122dd1-e24f-3d56-834f-167eea0cd579",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.111"
+      "product_version": "0775a9cbc694e8c7276688be3bbd2f386167ab54 <dacd7c317ba12e035653c28a0eaaf23d91abc073"
     },
     {
-      "id": "4f1c0d98-1193-321a-8ae3-a4baab5225a8",
+      "id": "2459ec23-0599-3a05-bb04-865570ce901e",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dacd7c317ba12e035653c28a0eaaf23d91abc073"
+      "product_version": "patch: 0"
     },
     {
       "id": "56c98b5a-c8d6-331b-97aa-709e9ff37782",
@@ -41,26 +41,6 @@
       "product_version": "patch: 6.18.53"
     },
     {
-      "id": "58368307-6ae5-3b71-96da-66c731300a77",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <bc150783542ba2e7c1257d1299c6f3269bdba270"
-    },
-    {
-      "id": "8a5ccd2b-82f9-3cfa-922e-69c20828c33e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <046a94fdb02eb1df86c8fa4614104ff801ba3ab7"
-    },
-    {
       "id": "9bf2966d-ee35-337f-b0c6-68530f6cb17c",
       "product": {
         "name": "Linux",
@@ -69,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "be31d9dc-cbf3-3c44-9b01-7a4363ed5211",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0775a9cbc694e8c7276688be3bbd2f386167ab54 <046a94fdb02eb1df86c8fa4614104ff801ba3ab7"
     },
     {
       "id": "cd23deb3-dbe4-3900-bd60-97e11029a3d9",
@@ -81,14 +71,24 @@
       "product_version": "patch: 7.2"
     },
     {
-      "id": "e9489949-1a25-321c-b2c1-e2a9610e31a6",
+      "id": "fb81bac7-cf0b-3e02-963a-62d422038560",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.18.53"
+      "product_version": "4.9"
+    },
+    {
+      "id": "fcee004f-78d5-329d-a3d1-a101095fe32a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0775a9cbc694e8c7276688be3bbd2f386167ab54 <bc150783542ba2e7c1257d1299c6f3269bdba270"
     }
   ],
   "enisaIdVendor": [
