@@ -3,14 +3,52 @@
   "enisaUuid": "019ae744-76f5-3b09-9f7f-c47b4d44bc57",
   "description": "A flaw was found in the OpenShift console. Unauthenticated access to the `/api/devfile/` and `/api/devfile/samples/` endpoints allows a remote attacker to send crafted devfile payloads. This can lead to Server-Side Request Forgery (SSRF), where the console pod makes requests to internal services and reflects partial responses to the attacker. Additionally, by sending repeated large requests without a specified content length, an attacker can cause unbounded memory growth, leading to a Denial of Service (DoS).",
   "datePublished": "Sep 18, 2026, 9:58:11 PM",
-  "dateUpdated": "Sep 21, 2026, 8:47:11 PM",
+  "dateUpdated": "Sep 29, 2026, 4:46:27 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-75885\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2517885\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:71450\nhttps://access.redhat.com/errata/RHSA-2026:71453\nhttps://access.redhat.com/errata/RHSA-2026:71454\nhttps://access.redhat.com/security/cve/CVE-2026-75885\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2517885\n",
   "aliases": "GHSA-hm52-6738-r26p\nCVE-2026-75885\n",
   "assigner": "redhat",
-  "epss": 0.41,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.53,
+  "enisaIdProduct": [
+    {
+      "id": "0894c101-7d69-3120-8f01-3c70821c3de0",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.21",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790142788"
+    },
+    {
+      "id": "8197c264-3257-3a4e-b56b-b1ef77b2faf4",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.22",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790130905"
+    },
+    {
+      "id": "8854d59e-c72b-3a44-ad94-fcfbe2fc1254",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.20",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790112153"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1af98bf2-ff31-3ebb-a710-6dad04bd869a",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

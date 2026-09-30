@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-71617",
   "enisaUuid": "c7664062-1fb3-3c45-925c-2168e50150a5",
-  "description": "undici's retry handler can leave an already-exposed response body pending forever. When a server returns a successful response that declares a Content-Length, sends only part of the body, and closes the connection, the retry handler retries the request. If the retry returns a non-retryable status such as 400, the handler forwards that new response downstream and replaces its internal response stream, but the original response body that the application still holds is never ended or destroyed. As a result calls that read that body never settle, and the configured body timeout does not fire because its timer is tied to the connection parser rather than the orphaned body. An attacker-controlled server can trigger this with two short responses without keeping a connection open, and repeated requests accumulate pending promises and streams that can exhaust application concurrency or memory. This affects undici versions from 7.11.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.",
-  "datePublished": "Sep 4, 2026, 5:21:46 PM",
-  "dateUpdated": "Sep 4, 2026, 5:49:50 PM",
+  "description": "undici vulnerable to Denial of Service via orphaned RetryHandler response body",
+  "datePublished": "Sep 29, 2026, 6:22:34 PM",
+  "dateUpdated": "Sep 29, 2026, 6:22:35 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-pmjh-fq2x-6v4x\nhttps://cna.openjsf.org/security-advisories.html\n",
-  "aliases": "CVE-2026-18149\n",
+  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-pmjh-fq2x-6v4x\nhttps://cna.openjsf.org/security-advisories.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-18149\nhttps://github.com/nodejs/undici/commit/3c6726599cea8646384dde846c97d630da472a74\nhttps://github.com/nodejs/undici/commit/e905b5b87e6953bcc542af90557b2fee5b7b5974\nhttps://hackerone.com/reports/3892751\nhttps://github.com/nodejs/undici/releases/tag/v7.29.1\nhttps://github.com/nodejs/undici/releases/tag/v8.10.2\n",
+  "aliases": "GHSA-pmjh-fq2x-6v4x\nCVE-2026-18149\n",
   "assigner": "openjs",
-  "epss": 0.0,
+  "epss": 0.36,
   "enisaIdProduct": [
     {
       "id": "36bb5ef2-fe65-3e85-8e73-673919ddd677",

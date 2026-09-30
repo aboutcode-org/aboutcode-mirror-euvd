@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-71636",
   "enisaUuid": "1873b552-d0ef-3263-82ca-5576445762cb",
-  "description": "undici's WebSocket client crashes the whole Node.js process during the opening handshake when a server responds with a subprotocol that the client never requested. A default WebSocket connection sends no subprotocol, but if the server's 101 response includes a Sec-WebSocket-Protocol header, undici dereferences a null value while checking it against the requested list and throws an uncaught TypeError. Because that code runs inside a microtask with no surrounding error handling, the exception propagates and terminates the process under Node's default behavior, instead of gracefully failing the connection as required by the WebSocket protocol. Any application that opens a WebSocket to an attacker-controlled or compromised server, or over a plaintext connection subject to a machine-in-the-middle, can be crashed remotely without authentication in the default configuration. This affects undici versions from 6.7.0 up to 6.28.1, from 7.0.0 up to 7.29.1, and from 8.0.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.",
-  "datePublished": "Sep 4, 2026, 5:10:05 PM",
-  "dateUpdated": "Sep 4, 2026, 6:18:31 PM",
+  "description": "undici vulnerable to Denial of Service via unrequested WebSocket subprotocol",
+  "datePublished": "Sep 29, 2026, 6:21:33 PM",
+  "dateUpdated": "Sep 29, 2026, 6:21:33 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-rfgv-xxqx-mfg5\nhttps://cna.openjsf.org/security-advisories.html\n",
-  "aliases": "CVE-2026-19534\n",
+  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-rfgv-xxqx-mfg5\nhttps://cna.openjsf.org/security-advisories.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-19534\nhttps://github.com/nodejs/undici/commit/2af0faf88b906d3127a360c3ac75164c0f95e5a5\nhttps://github.com/nodejs/undici/commit/6615e0175e9b635bcd2e3e87a47daa82f6f5b728\nhttps://github.com/nodejs/undici/commit/66e12816064cf3068f63bd134748b7fc4e779bad\nhttps://github.com/nodejs/undici/releases/tag/v6.28.1\nhttps://github.com/nodejs/undici/releases/tag/v7.29.1\nhttps://github.com/nodejs/undici/releases/tag/v8.10.2\n",
+  "aliases": "GHSA-rfgv-xxqx-mfg5\nCVE-2026-19534\n",
   "assigner": "openjs",
-  "epss": 0.0,
+  "epss": 0.39,
   "enisaIdProduct": [
     {
       "id": "22170db2-7d92-38c3-8f81-fe55bbe4496a",

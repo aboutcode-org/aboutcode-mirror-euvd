@@ -3,14 +3,14 @@
   "enisaUuid": "867d479e-2ce3-3603-84e9-aa1ae9b03ef3",
   "description": "A flaw was found in multicluster-global-hub. The manager component improperly validates the source identity of incoming CloudEvents on Kafka status topics. A remote attacker, after compromising a managed hub and obtaining its Kafka client certificate, can manipulate the self-asserted source identity. This allows the attacker to falsify or delete critical data, such as compliance, inventory, and cluster health information, belonging to other hubs in the database.",
   "datePublished": "Aug 10, 2026, 4:41:53 PM",
-  "dateUpdated": "Sep 24, 2026, 4:15:24 PM",
+  "dateUpdated": "Sep 29, 2026, 4:43:50 PM",
   "baseScore": 8.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:67516\nhttps://access.redhat.com/errata/RHSA-2026:67842\nhttps://access.redhat.com/errata/RHSA-2026:68515\nhttps://access.redhat.com/errata/RHSA-2026:71597\nhttps://access.redhat.com/security/cve/CVE-2026-71576\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2512513\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:67516\nhttps://access.redhat.com/errata/RHSA-2026:67842\nhttps://access.redhat.com/errata/RHSA-2026:68515\nhttps://access.redhat.com/errata/RHSA-2026:71597\nhttps://access.redhat.com/errata/RHSA-2026:73038\nhttps://access.redhat.com/errata/RHSA-2026:73419\nhttps://access.redhat.com/security/cve/CVE-2026-71576\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2512513\n",
   "aliases": "CVE-2026-71576\nGHSA-q5c4-r3vh-f379\n",
   "assigner": "redhat",
-  "epss": 0.15,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "0149d2c8-47e3-3a36-b120-f51cbf228090",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 1789515288"
+    },
+    {
+      "id": "37bf5bac-737b-347b-b304-a3161a2f52b1",
+      "product": {
+        "name": "Multicluster Global Hub 1.6.6",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790086176"
     },
     {
       "id": "625e2460-6c82-32e1-95fb-6ef5a1f66c84",
