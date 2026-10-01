@@ -3,24 +3,44 @@
   "enisaUuid": "4d2e99ec-d093-30e6-8b1d-6deedb55d299",
   "description": "In CPython 3.13 and earlier, the tarfile\u00a0module's data\u00a0and tar extraction filters are vulnerable to crafted archives containing a hard link to a symbolic link. Such archives may cause extraction to modify the permissions or modification time of a file outside the destination directory, or expose the contents of that file within the extracted tree.",
   "datePublished": "Sep 14, 2026, 7:14:03 PM",
-  "dateUpdated": "Sep 16, 2026, 3:56:12 AM",
+  "dateUpdated": "Sep 30, 2026, 10:40:12 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://github.com/python/cpython/commit/5a57248b22ad3b9aafcaaadae2c304a1923daeca\nhttps://github.com/python/cpython/issues/157190\nhttps://github.com/python/cpython/pull/157191\nhttps://mail.python.org/archives/list/security-announce@python.org/thread/EFJWGAZJA56AKSBR2WHMHQZO7RRLZPRH/\nhttps://github.com/python/cpython/commit/b38be2e6cf9d989075ab73412c63e003ebad4ff3\nhttps://github.com/python/cpython/commit/b8f23e307097552eaea2604383a12ab280520d0d\n",
+  "references": "https://github.com/python/cpython/commit/5a57248b22ad3b9aafcaaadae2c304a1923daeca\nhttps://github.com/python/cpython/issues/157190\nhttps://github.com/python/cpython/pull/157191\nhttps://mail.python.org/archives/list/security-announce@python.org/thread/EFJWGAZJA56AKSBR2WHMHQZO7RRLZPRH/\nhttps://github.com/python/cpython/commit/b38be2e6cf9d989075ab73412c63e003ebad4ff3\nhttps://github.com/python/cpython/commit/b8f23e307097552eaea2604383a12ab280520d0d\nhttps://github.com/python/cpython/commit/197663d63afed27f66e10e23c194e8a634e60913\nhttps://github.com/python/cpython/commit/28f315486b3da0352b9a1de1c3c97f4127ba4771\nhttps://github.com/python/cpython/commit/c66df4e70435d257fd488b35ea129c6f317433a8\nhttps://github.com/python/cpython/commit/cc1689830c6b9aaddded2fb9f2fe8116867e2c0e\n",
   "aliases": "GHSA-ghff-gcpf-9r9p\nCVE-2026-82049\n",
   "assigner": "PSF",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
-      "id": "ee820779-e14b-34e8-ba2f-92ac371d705c",
+      "id": "95ad9b5a-1885-34c0-a4d7-1e5a2071d7f2",
       "product": {
         "name": "CPython",
         "vendor": {
           "name": "Python Software Foundation"
         }
       },
-      "product_version": "0 <3.14.0b1"
+      "product_version": "0 <3.12.15"
+    },
+    {
+      "id": "a3d4ad0f-7a14-38f6-83ea-9caebbdf227f",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.14.0a1 <3.14.0b1"
+    },
+    {
+      "id": "a6274d49-e773-3ef5-a6fd-577de7794db8",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.13.0 <3.13.16"
     }
   ],
   "enisaIdVendor": [

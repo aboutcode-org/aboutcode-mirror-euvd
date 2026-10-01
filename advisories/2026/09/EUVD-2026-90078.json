@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2026-90078",
+  "enisaUuid": "742c677c-52c6-3c9e-acee-ef6c0914053e",
+  "description": "ssl.SSLContext.wrap_bio() didn't require the server_hostname argument\nto not be None if ssl.SSLContext.check_hostname was set. Due to a\nmissing parameter check in SSLObject, if the server_hostname argument\nisn't supplied then hostname verification would be silently skipped.\n\n\nThis defect could lead to programs where certificate hostname verification\n*appeared* to be succeeding with SSLContext.check_hostname = True and no\nValueError being raised due to misconfiguration.\n\n\nIf the program passes a server_hostname value that isn't an empty string\nor None to any of these APIs then certificate hostname verification\nproceeds as expected and the program is not affected by this vulnerability.\n\n\nMitigating this vulnerability doesn't require updating Python or applying\nthe patch. To mitigate, pass a valid non-None and non-empty\nserver_hostname value to SSLContext.wrap_bio(),\nasyncio.create_connection(), or asyncio.loop.start_tls() and\ncertificate hostname verification will proceed as expected. Upgrading to\nthe latest version of Python or applying the patch only changes the\nbehavior from silently skipping hostname verification to raising a\nValueError, similar to SSLContext.wrap_socket(), when server_hostname\nisn't supplied.",
+  "datePublished": "Sep 30, 2026, 4:17:39 PM",
+  "dateUpdated": "Sep 30, 2026, 10:43:45 PM",
+  "baseScore": 7.6,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/python/cpython/pull/158503\nhttps://github.com/python/cpython/issues/156793\nhttps://mail.python.org/archives/list/security-announce@python.org/thread/QNZRG3YOAMTHDCMVCICXGY6YEFPY2VDL/\nhttps://github.com/python/cpython/commit/1697ea386c707142555d98a1263176bbbc014a96\nhttps://github.com/python/cpython/commit/641390146a16a38e6701923f4ee4f1940ae77082\nhttps://github.com/python/cpython/commit/966bf426d0b6c31c1b0a255ff14a17143a466ced\nhttps://github.com/python/cpython/commit/f4e43ba525187282f2011da0e6ffc0d2b08d8062\nhttps://github.com/python/cpython/commit/869069d52ce0efab2f8c38197e92cdaaa312f1ed\n",
+  "aliases": "CVE-2026-19553\nGHSA-xx9w-qm94-hghj\n",
+  "assigner": "PSF",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "2ee02cc0-7231-3ff2-8eed-db32c920dd69",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "0 <3.12.15"
+    },
+    {
+      "id": "85c9406a-aeaa-327f-b5b5-cfecf1f315a4",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.13.0 <3.13.16"
+    },
+    {
+      "id": "8b571513-1db2-307d-8342-0efa60bb9073",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.14.0 <3.14.8"
+    },
+    {
+      "id": "9662a973-1f75-32d2-aa68-91a1868e46d4",
+      "product": {
+        "name": "CPython",
+        "vendor": {
+          "name": "Python Software Foundation"
+        }
+      },
+      "product_version": "3.15.0a1 <3.15.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "03415595-9012-3e4c-88ed-d8ebde25301c",
+      "vendor": {
+        "name": "Python Software Foundation"
+      }
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-85003",
   "enisaUuid": "3d7b8593-f113-31b5-b3f1-4a73d81716ca",
-  "description": "Forward-reference completion for @JsonIdentityInfo object IDs in FasterXML jackson-databind performs a linear scan of the pending-reference accumulator for every resolved ID. The affected paths are CollectionDeserializer.CollectionReferringAccumulator.resolveForwardReference() and the equivalent implementation in MapDeserializer. When a document first creates N unresolved object-ID references in an identity-enabled collection or map and then defines those same IDs in reverse order, completion performs on the order of N * (N + 1) / 2 identity comparisons, so a shallow document whose size grows linearly causes quadratic CPU work during deserialization. The reporter instrumented equals() calls on the ID class and measured exactly 2,003,000 comparisons at N = 2,000, against zero comparisons in the pending-reference lookup path for an equally sized control in which every reference was already resolved. The input requires no deep nesting and no syntactically unusual JSON. Exploitation requires an application that deserializes attacker-influenced JSON into an identity-enabled collection or map. The fix replaces the repeated linear lookup with a keyed pending-reference structure.",
-  "datePublished": "Sep 23, 2026, 2:21:48 AM",
-  "dateUpdated": "Sep 23, 2026, 2:05:17 PM",
+  "description": "jackson-databind quadratic forward-reference completion ",
+  "datePublished": "Sep 30, 2026, 3:37:24 PM",
+  "dateUpdated": "Sep 30, 2026, 3:37:24 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-cxp5-3px4-pw24\nhttps://github.com/FasterXML/jackson-databind/issues/6204\n",
-  "aliases": "CVE-2026-91777\n",
+  "references": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-cxp5-3px4-pw24\nhttps://github.com/FasterXML/jackson-databind/issues/6204\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-91777\nhttps://github.com/FasterXML/jackson-databind/pull/6204\nhttps://github.com/FasterXML/jackson-databind/commit/37ad9b81712cbb9fb62c2d2c1813593252a24b67\nhttps://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.18.11\nhttps://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.21.7\nhttps://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-2.22.3\nhttps://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.1.7\nhttps://github.com/FasterXML/jackson-databind/releases/tag/jackson-databind-3.2.3\n",
+  "aliases": "GHSA-cxp5-3px4-pw24\nCVE-2026-91777\n",
   "assigner": "HeroDevs",
-  "epss": 0.0,
+  "epss": 0.45,
   "enisaIdProduct": [
     {
       "id": "24416ab9-6e26-3dec-8db9-54a52c4aaeff",

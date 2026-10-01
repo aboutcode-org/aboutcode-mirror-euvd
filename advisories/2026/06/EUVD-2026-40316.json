@@ -3,11 +3,11 @@
   "enisaUuid": "d9db682b-4d25-3eab-a048-fc021956335f",
   "description": "A flaw was found in GLib. An off-by-one error can occur in the g_key_file_get_locale_string_list function in the gkeyfile.c file when loading a key file with an empty value. This flaw can cause an out-of-bounds access of 1 byte or a denial of service when the out-of-bounds access crosses a page boundary.",
   "datePublished": "Jun 30, 2026, 12:57:35 PM",
-  "dateUpdated": "Sep 29, 2026, 12:22:16 AM",
+  "dateUpdated": "Sep 30, 2026, 4:38:20 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/security/cve/CVE-2026-58014\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492255\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3930\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/security/cve/CVE-2026-58014\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492255\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3930\n",
   "aliases": "GHSA-h88q-m8mm-7243\nCVE-2026-58014\n",
   "assigner": "redhat",
   "epss": 0.72,
@@ -153,6 +153,16 @@
       "product_version": "patch: 1790598593"
     },
     {
+      "id": "578f4c8e-5837-310e-bc99-6e7f42724397",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276974"
+    },
+    {
       "id": "5828ca52-9d29-38a5-aae9-63ae07f10fd4",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -253,6 +263,16 @@
       "product_version": "patch: 1788880581"
     },
     {
+      "id": "7ab2c5bb-eb97-3f0b-8768-a8c54b651090",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276884"
+    },
+    {
       "id": "7c001358-871c-31eb-8da5-f85883c42e49",
       "product": {
         "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
@@ -261,6 +281,16 @@
         }
       },
       "product_version": "patch: 0:2.56.4-165.el8_8.2"
+    },
+    {
+      "id": "815c3312-5ee8-369a-8256-296624cfd1df",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621718"
     },
     {
       "id": "83327b70-c1e7-3800-9ce6-9e42351046b3",
@@ -313,6 +343,16 @@
       "product_version": "patch: 0:2.68.4-7.el9_2.7"
     },
     {
+      "id": "9c70d2b0-4ff6-3a62-922f-dbf62812abcf",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790277045"
+    },
+    {
       "id": "a14505d1-dec5-36c4-949b-b2ca8fb5f245",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
@@ -343,6 +383,16 @@
       "product_version": "patch: 1788880456"
     },
     {
+      "id": "b53a02f1-0380-35fc-b067-ad891c14ae46",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276889"
+    },
+    {
       "id": "c84041a8-468a-3343-bd7f-b202cc03e756",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -361,6 +411,36 @@
         }
       },
       "product_version": "patch: 1787241260"
+    },
+    {
+      "id": "cd909966-2d92-3d10-9950-61e02f14a009",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276886"
+    },
+    {
+      "id": "d3f23038-4bd2-3bf7-94c1-c98cbe682a49",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621713"
+    },
+    {
+      "id": "e0ff3da5-369d-3aa3-bbba-2db99508f43f",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621714"
     },
     {
       "id": "e77f56a3-fcc0-34f0-876a-1478b1954603",

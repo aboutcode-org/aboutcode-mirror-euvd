@@ -3,11 +3,11 @@
   "enisaUuid": "b14c31d4-519a-3b55-b527-502e7fb7baad",
   "description": "A flaw was found in xdgmime. A heap-based buffer overflow can be triggered in _xdg_mime_magic_parse_magic_line() in the xdgmimemagic.c file on little-endian systems when an attacker-controlled MIME magic file in a user-writable XDG data location (e.g., in the $XDG_DATA_HOME/mime/magic path) is parsed by an application performing MIME type detection (e.g., via g_content_type_guess()). When performing byte-swap, incorrect pointer arithmetic on the write side causes an out-of-bounds write of 2 bytes, resulting in an application crash or memory corruption.",
   "datePublished": "Jul 17, 2026, 7:44:40 PM",
-  "dateUpdated": "Sep 29, 2026, 12:21:21 AM",
+  "dateUpdated": "Sep 30, 2026, 4:37:33 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:64799\nhttps://access.redhat.com/errata/RHSA-2026:64800\nhttps://access.redhat.com/errata/RHSA-2026:66451\nhttps://access.redhat.com/errata/RHSA-2026:67956\nhttps://access.redhat.com/errata/RHSA-2026:70636\nhttps://access.redhat.com/errata/RHSA-2026:71403\nhttps://access.redhat.com/errata/RHSA-2026:71404\nhttps://access.redhat.com/errata/RHSA-2026:71405\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64799\nhttps://access.redhat.com/errata/RHSA-2026:64800\nhttps://access.redhat.com/errata/RHSA-2026:66451\nhttps://access.redhat.com/errata/RHSA-2026:67956\nhttps://access.redhat.com/errata/RHSA-2026:70636\nhttps://access.redhat.com/errata/RHSA-2026:71403\nhttps://access.redhat.com/errata/RHSA-2026:71404\nhttps://access.redhat.com/errata/RHSA-2026:71405\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
   "aliases": "GHSA-cp7g-r78m-cc2g\nCVE-2026-16118\n",
   "assigner": "redhat",
   "epss": 0.28,
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:2.68.4-14.el9_4.9"
+    },
+    {
+      "id": "108dbb7f-6d79-3f42-8134-784c8885c102",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276884"
     },
     {
       "id": "16761afd-cdfe-32f1-81d4-7d7ff6a1f5ce",
@@ -93,6 +103,16 @@
       "product_version": "patch: 1789479900"
     },
     {
+      "id": "388c0233-15b9-35c2-b318-87e11b7b38ba",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621714"
+    },
+    {
       "id": "42ab32dd-20d5-31b1-bba7-45c4ac74ac9c",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -113,6 +133,26 @@
       "product_version": "patch: 1789479891"
     },
     {
+      "id": "5a6f8425-fe81-321c-bfdd-41c37d4a33f3",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276886"
+    },
+    {
+      "id": "5f34991d-52f3-3b5c-8720-7e41a65e8572",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621718"
+    },
+    {
       "id": "67680f29-0806-3914-8998-6245463fe1ae",
       "product": {
         "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
@@ -131,6 +171,26 @@
         }
       },
       "product_version": "patch: 0:2.68.4-19.el9_8.10"
+    },
+    {
+      "id": "7a906668-6565-3b62-a5df-48e8b5752e4a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276889"
+    },
+    {
+      "id": "891874ac-41af-3eae-8897-4ea449ae67e7",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790621713"
     },
     {
       "id": "96c63c25-b32b-30bb-9c15-efcc9789d9b0",
@@ -163,6 +223,16 @@
       "product_version": "patch: 1789478095"
     },
     {
+      "id": "9ef02cd2-f930-3e7d-ac21-9ebe52d1eb0b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790277045"
+    },
+    {
       "id": "c57dd5d8-1398-3314-ab38-f98b1419553f",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -171,6 +241,16 @@
         }
       },
       "product_version": "patch: 1790272426"
+    },
+    {
+      "id": "c6950aa0-7981-352e-842c-72a3366c1f9e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790276974"
     },
     {
       "id": "ce1e662f-c7c1-353e-a3bf-0f285e8f4d61",
