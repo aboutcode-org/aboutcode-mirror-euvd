@@ -3,15 +3,35 @@
   "enisaUuid": "31c212c9-5393-342c-91e6-62dd08adf415",
   "description": "A flaw was found in GLib. The D-Bus client-side implementation of the DBUS_COOKIE_SHA1 SASL authentication mechanism does not validate the cookie_context parameter received from the server. A malicious D-Bus server can supply a cookie_context containing path traversal sequences, causing the client to read an arbitrary file and exfiltrate sensitive data by verifying guessed file contents against a generated hash.",
   "datePublished": "Jun 30, 2026, 1:02:45 PM",
-  "dateUpdated": "Sep 30, 2026, 4:38:27 PM",
+  "dateUpdated": "Oct 1, 2026, 5:17:47 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:49512\nhttps://access.redhat.com/errata/RHSA-2026:55440\nhttps://access.redhat.com/errata/RHSA-2026:57015\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:61766\nhttps://access.redhat.com/errata/RHSA-2026:61783\nhttps://access.redhat.com/errata/RHSA-2026:63135\nhttps://access.redhat.com/errata/RHSA-2026:63138\nhttps://access.redhat.com/errata/RHSA-2026:63140\nhttps://access.redhat.com/errata/RHSA-2026:65762\nhttps://access.redhat.com/errata/RHSA-2026:65763\nhttps://access.redhat.com/errata/RHSA-2026:65767\nhttps://access.redhat.com/errata/RHSA-2026:65768\nhttps://access.redhat.com/errata/RHSA-2026:65769\nhttps://access.redhat.com/errata/RHSA-2026:65770\nhttps://access.redhat.com/errata/RHSA-2026:65771\nhttps://access.redhat.com/errata/RHSA-2026:65773\nhttps://access.redhat.com/errata/RHSA-2026:66018\nhttps://access.redhat.com/errata/RHSA-2026:66357\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/errata/RHSA-2026:74458\nhttps://access.redhat.com/errata/RHSA-2026:74459\nhttps://access.redhat.com/errata/RHSA-2026:74460\nhttps://access.redhat.com/errata/RHSA-2026:74461\nhttps://access.redhat.com/errata/RHSA-2026:74462\nhttps://access.redhat.com/errata/RHSA-2026:74463\nhttps://access.redhat.com/security/cve/CVE-2026-58015\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2492256\nhttps://gitlab.gnome.org/GNOME/glib/-/issues/3931\n",
   "aliases": "GHSA-hmpf-72wc-2r6x\nCVE-2026-58015\n",
   "assigner": "redhat",
   "epss": 0.91,
   "enisaIdProduct": [
+    {
+      "id": "00a7f54c-5d18-3b04-bac1-4c17ed74530e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703494"
+    },
+    {
+      "id": "027b0497-e099-375f-9a61-ae6919b7c61e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703586"
+    },
     {
       "id": "064d40d3-27c7-376d-a5d3-32db96ba172c",
       "product": {
@@ -173,6 +193,16 @@
       "product_version": "patch: 1788880581"
     },
     {
+      "id": "59998de4-7ba0-3e04-888a-4c43de20f114",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703497"
+    },
+    {
       "id": "62a0a1b3-4aeb-356b-aab6-69627c9985d6",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -231,6 +261,16 @@
         }
       },
       "product_version": "patch: 1790589855"
+    },
+    {
+      "id": "8772c28a-d129-3fd8-a5bf-1baf0e84f50d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703506"
     },
     {
       "id": "8868e0bc-9576-33d9-873d-99d26f40c913",
@@ -453,6 +493,16 @@
       "product_version": "patch: 1788348594"
     },
     {
+      "id": "f4a3c74e-f6a2-3497-98ad-82ffbc56f48a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703568"
+    },
+    {
       "id": "f61855b7-6569-3f27-8046-bd767af7e8d1",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.22",
@@ -471,6 +521,16 @@
         }
       },
       "product_version": "patch: 1790621713"
+    },
+    {
+      "id": "fc8a4435-ce4f-3dbd-979e-ed40c1b10f33",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703590"
     }
   ],
   "enisaIdVendor": [

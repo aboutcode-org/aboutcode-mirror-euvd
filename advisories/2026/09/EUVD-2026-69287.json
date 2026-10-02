@@ -3,14 +3,14 @@
   "enisaUuid": "8ec5f862-688c-3778-a2ff-27cea06df35d",
   "description": "A flaw was found in the SFTP backend in gvfs. When mounting a share and reading a file, a malicious SFTP server can cause read_reply() to process a length that exceeds the size requested by the client. The function does not verify the server-provided length against the allocated buffer size, causing the operation to write past the intended boundaries. This issue allows a malicious server to corrupt adjacent heap memory in the gvfsd-sftp process, resulting in a denial of service as the process aborts upon detecting the heap corruption or potentially allowing arbitrary code execution.",
   "datePublished": "Sep 1, 2026, 3:15:23 PM",
-  "dateUpdated": "Sep 30, 2026, 10:58:09 PM",
+  "dateUpdated": "Oct 1, 2026, 4:19:38 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:73997\nhttps://access.redhat.com/errata/RHSA-2026:73998\nhttps://access.redhat.com/security/cve/CVE-2026-84268\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2526485\nhttps://gitlab.gnome.org/GNOME/gvfs/-/issues/862\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:73997\nhttps://access.redhat.com/errata/RHSA-2026:73998\nhttps://access.redhat.com/errata/RHSA-2026:74370\nhttps://access.redhat.com/security/cve/CVE-2026-84268\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2526485\nhttps://gitlab.gnome.org/GNOME/gvfs/-/issues/862\n",
   "aliases": "CVE-2026-84268\nGHSA-8cxg-v7p7-qc7j\n",
   "assigner": "redhat",
-  "epss": 0.61,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "6c534cca-3493-3988-aeea-ceef218fcb03",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 0:1.36.2-22.el8_10"
+    },
+    {
+      "id": "76b8df46-e330-307b-80ea-3d349fca397b",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.48.1-8.el9_8.1"
     },
     {
       "id": "db62dafb-114c-3aa9-96fd-1c3faaeee28b",

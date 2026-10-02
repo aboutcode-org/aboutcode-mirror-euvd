@@ -1,0 +1,64 @@
+{
+  "id": "EUVD-2026-90915",
+  "enisaUuid": "c29a7107-a935-362b-ac7a-3e7def4256af",
+  "description": "A flaw was found in Foreman. The Red Hat Satellite /unattended/provision API endpoint is vulnerable to an authentication bypass due to a semantic logic flaw in host_verifier.rb. The application verifies the database state of a provisioning token rather than its actual presence in the incoming HTTP request. Because a host actively undergoing provisioning has an unexpired token in the database, the server's valid_host_token? method evaluates to true, granting access to the kickstart template even if the requester provides no token at all in the URL.",
+  "datePublished": "Oct 1, 2026, 4:21:52 PM",
+  "dateUpdated": "Oct 1, 2026, 11:25:49 PM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "references": "https://access.redhat.com/errata/RHSA-2026:74503\nhttps://access.redhat.com/errata/RHSA-2026:74504\nhttps://access.redhat.com/errata/RHSA-2026:74506\nhttps://access.redhat.com/security/cve/CVE-2026-12423\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2488956\n",
+  "aliases": "CVE-2026-12423\nGHSA-6m3j-qcjr-3vqm\n",
+  "assigner": "redhat",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "80f6a515-e228-3ba1-af1d-9383c972fd33",
+      "product": {
+        "name": "Red Hat Satellite 6.16 for RHEL 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.12.0.23-1.el8sat"
+    },
+    {
+      "id": "99a83905-0e25-34ea-802d-d85cb9bd7da0",
+      "product": {
+        "name": "Red Hat Satellite 6.18 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.16.0.25-1.el9sat"
+    },
+    {
+      "id": "f368427b-f634-3c66-9a48-1b082c490d3e",
+      "product": {
+        "name": "Red Hat Satellite 6.19 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.18.0.14-1.el9sat"
+    },
+    {
+      "id": "fe80048f-f664-3d56-97eb-938371abd842",
+      "product": {
+        "name": "Red Hat Satellite 6.16 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.12.0.23-1.el9sat"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5f863236-5f45-3990-9823-e1828c526baa",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
+}
