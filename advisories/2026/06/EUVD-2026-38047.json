@@ -3,14 +3,14 @@
   "enisaUuid": "d46297d2-ef91-3bc6-ad52-0298bd0dc329",
   "description": "A remote code execution vulnerability was found in libaom, the reference AV1 codec implementation. Insufficient bounds validation in the AV1 encoder's SVC (Scalable Video Coding) layer ID control allows an attacker to supply crafted video frame pixels that overlap with internal encoder layer context structures. In fork-based video processing services, an attacker can use this to hijack the cyclic refresh map pointer, brute-force the process base address via a crash oracle, and redirect control flow to achieve arbitrary command execution. Exploitation requires the target service to use libaom with SVC encoding enabled and accept attacker-supplied video frames.",
   "datePublished": "Jun 19, 2026, 4:28:33 PM",
-  "dateUpdated": "Sep 24, 2026, 8:03:17 AM",
+  "dateUpdated": "Oct 2, 2026, 2:04:19 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/errata/RHSA-2026:68634\nhttps://access.redhat.com/errata/RHSA-2026:68637\nhttps://access.redhat.com/errata/RHSA-2026:68638\nhttps://access.redhat.com/errata/RHSA-2026:68639\nhttps://access.redhat.com/errata/RHSA-2026:68640\nhttps://access.redhat.com/errata/RHSA-2026:68696\nhttps://access.redhat.com/errata/RHSA-2026:68697\nhttps://access.redhat.com/errata/RHSA-2026:68698\nhttps://access.redhat.com/errata/RHSA-2026:68699\nhttps://access.redhat.com/errata/RHSA-2026:68708\nhttps://access.redhat.com/errata/RHSA-2026:68709\nhttps://access.redhat.com/errata/RHSA-2026:68710\nhttps://access.redhat.com/errata/RHSA-2026:69927\nhttps://access.redhat.com/errata/RHSA-2026:69929\nhttps://access.redhat.com/errata/RHSA-2026:69930\nhttps://access.redhat.com/errata/RHSA-2026:69931\nhttps://access.redhat.com/errata/RHSA-2026:69932\nhttps://access.redhat.com/errata/RHSA-2026:69933\nhttps://access.redhat.com/errata/RHSA-2026:69934\nhttps://access.redhat.com/errata/RHSA-2026:69935\nhttps://access.redhat.com/errata/RHSA-2026:71392\nhttps://access.redhat.com/errata/RHSA-2026:71393\nhttps://access.redhat.com/errata/RHSA-2026:71394\nhttps://access.redhat.com/errata/RHSA-2026:71395\nhttps://access.redhat.com/errata/RHSA-2026:71396\nhttps://access.redhat.com/errata/RHSA-2026:71397\nhttps://access.redhat.com/errata/RHSA-2026:71398\nhttps://access.redhat.com/errata/RHSA-2026:71399\nhttps://access.redhat.com/errata/RHSA-2026:71401\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:30814\nhttps://access.redhat.com/errata/RHSA-2026:42875\nhttps://access.redhat.com/errata/RHSA-2026:51100\nhttps://access.redhat.com/errata/RHSA-2026:51146\nhttps://access.redhat.com/errata/RHSA-2026:60520\nhttps://access.redhat.com/errata/RHSA-2026:61627\nhttps://access.redhat.com/errata/RHSA-2026:61628\nhttps://access.redhat.com/errata/RHSA-2026:61629\nhttps://access.redhat.com/errata/RHSA-2026:68634\nhttps://access.redhat.com/errata/RHSA-2026:68637\nhttps://access.redhat.com/errata/RHSA-2026:68638\nhttps://access.redhat.com/errata/RHSA-2026:68639\nhttps://access.redhat.com/errata/RHSA-2026:68640\nhttps://access.redhat.com/errata/RHSA-2026:68696\nhttps://access.redhat.com/errata/RHSA-2026:68697\nhttps://access.redhat.com/errata/RHSA-2026:68698\nhttps://access.redhat.com/errata/RHSA-2026:68699\nhttps://access.redhat.com/errata/RHSA-2026:68708\nhttps://access.redhat.com/errata/RHSA-2026:68709\nhttps://access.redhat.com/errata/RHSA-2026:68710\nhttps://access.redhat.com/errata/RHSA-2026:69927\nhttps://access.redhat.com/errata/RHSA-2026:69929\nhttps://access.redhat.com/errata/RHSA-2026:69930\nhttps://access.redhat.com/errata/RHSA-2026:69931\nhttps://access.redhat.com/errata/RHSA-2026:69932\nhttps://access.redhat.com/errata/RHSA-2026:69933\nhttps://access.redhat.com/errata/RHSA-2026:69934\nhttps://access.redhat.com/errata/RHSA-2026:69935\nhttps://access.redhat.com/errata/RHSA-2026:71392\nhttps://access.redhat.com/errata/RHSA-2026:71393\nhttps://access.redhat.com/errata/RHSA-2026:71394\nhttps://access.redhat.com/errata/RHSA-2026:71395\nhttps://access.redhat.com/errata/RHSA-2026:71396\nhttps://access.redhat.com/errata/RHSA-2026:71397\nhttps://access.redhat.com/errata/RHSA-2026:71398\nhttps://access.redhat.com/errata/RHSA-2026:71399\nhttps://access.redhat.com/errata/RHSA-2026:71401\nhttps://access.redhat.com/errata/RHSA-2026:74771\nhttps://access.redhat.com/security/cve/CVE-2026-56211\nhttps://aomedia.googlesource.com/aom/+/a93ba0ffaa\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490802\nhttps://issues.chromium.org/issues/503993985\n",
   "aliases": "GHSA-qr4p-j2pf-4w4x\nCVE-2026-56211\n",
   "assigner": "redhat",
-  "epss": 0.48,
+  "epss": 0.88,
   "enisaIdProduct": [
     {
       "id": "01c5c4f6-03ad-3e66-be53-0d42943f4b2a",
@@ -71,6 +71,16 @@
         }
       },
       "product_version": "patch: 1788198404"
+    },
+    {
+      "id": "35df22ae-376b-3730-83de-d340c632b831",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703552"
     },
     {
       "id": "3f7510b0-feb2-3c8c-a135-66cbf416ec4f",

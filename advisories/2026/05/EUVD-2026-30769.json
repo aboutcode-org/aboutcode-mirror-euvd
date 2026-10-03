@@ -3,11 +3,11 @@
   "enisaUuid": "b04baa24-0d6b-3f72-a7bd-105804fec8c5",
   "description": "A flaw was found in gnutls. A remote attacker could exploit an issue in the Datagram Transport Layer Security (DTLS) packet reordering logic. The comparator function, responsible for ordering DTLS packets by sequence numbers, did not correctly handle packets with duplicate sequence numbers. This could lead to unstable packet ordering or undefined behavior, resulting in a denial of service.",
   "datePublished": "May 18, 2026, 12:44:45 PM",
-  "dateUpdated": "Sep 29, 2026, 12:12:48 AM",
+  "dateUpdated": "Oct 2, 2026, 2:07:04 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:29794\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:34764\nhttps://access.redhat.com/errata/RHSA-2026:34788\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:40762\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:56786\nhttps://access.redhat.com/errata/RHSA-2026:56853\nhttps://access.redhat.com/errata/RHSA-2026:56911\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:59831\nhttps://access.redhat.com/errata/RHSA-2026:60019\nhttps://access.redhat.com/errata/RHSA-2026:65839\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/security/cve/CVE-2026-42009\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2467279\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2026-04-29-2\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:13274\nhttps://access.redhat.com/errata/RHSA-2026:20611\nhttps://access.redhat.com/errata/RHSA-2026:20612\nhttps://access.redhat.com/errata/RHSA-2026:20613\nhttps://access.redhat.com/errata/RHSA-2026:26319\nhttps://access.redhat.com/errata/RHSA-2026:26409\nhttps://access.redhat.com/errata/RHSA-2026:29197\nhttps://access.redhat.com/errata/RHSA-2026:29794\nhttps://access.redhat.com/errata/RHSA-2026:30004\nhttps://access.redhat.com/errata/RHSA-2026:30849\nhttps://access.redhat.com/errata/RHSA-2026:30850\nhttps://access.redhat.com/errata/RHSA-2026:32962\nhttps://access.redhat.com/errata/RHSA-2026:33125\nhttps://access.redhat.com/errata/RHSA-2026:34372\nhttps://access.redhat.com/errata/RHSA-2026:34764\nhttps://access.redhat.com/errata/RHSA-2026:34788\nhttps://access.redhat.com/errata/RHSA-2026:36004\nhttps://access.redhat.com/errata/RHSA-2026:36005\nhttps://access.redhat.com/errata/RHSA-2026:36006\nhttps://access.redhat.com/errata/RHSA-2026:40762\nhttps://access.redhat.com/errata/RHSA-2026:41921\nhttps://access.redhat.com/errata/RHSA-2026:56786\nhttps://access.redhat.com/errata/RHSA-2026:56853\nhttps://access.redhat.com/errata/RHSA-2026:56911\nhttps://access.redhat.com/errata/RHSA-2026:57483\nhttps://access.redhat.com/errata/RHSA-2026:58981\nhttps://access.redhat.com/errata/RHSA-2026:59831\nhttps://access.redhat.com/errata/RHSA-2026:60019\nhttps://access.redhat.com/errata/RHSA-2026:65839\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:74674\nhttps://access.redhat.com/security/cve/CVE-2026-42009\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2467279\nhttps://www.gnutls.org/security-new.html#GNUTLS-SA-2026-04-29-2\n",
   "aliases": "GHSA-9gx7-g5hv-xjjj\nCVE-2026-42009\n",
   "assigner": "redhat",
   "epss": 1.13,
@@ -451,6 +451,16 @@
         }
       },
       "product_version": "patch: 0:3.8.3-6.el9_6.4"
+    },
+    {
+      "id": "fe7b0c30-54db-30e3-9f77-45ab014ae98e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1790703542"
     },
     {
       "id": "fef508cc-2229-3b1e-8758-f3f4ab54a380",
