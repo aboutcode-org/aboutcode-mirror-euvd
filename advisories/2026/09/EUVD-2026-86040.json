@@ -3,12 +3,12 @@
   "enisaUuid": "de6be797-ce23-3afc-9976-2bf4dc411e80",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm: bound pp_dpm_set_pp_table() memcpy\n\nThe powerplay path allocates hardcode_pp_table once with kmemdup(...,\nsoft_pp_table_size). memcpy(..., size) used the sysfs store count (up to\nPAGE_SIZE) with no upper bound, causing heap overflow. Reject\nwrites where size exceeds soft_pp_table_size.",
   "datePublished": "Sep 24, 2026, 4:03:40 PM",
-  "dateUpdated": "Sep 25, 2026, 12:44:03 PM",
+  "dateUpdated": "Oct 3, 2026, 10:58:15 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/43d2ab8408f9f468b232350c74160ae21e763020\nhttps://git.kernel.org/stable/c/3334985f8b4c7c637a829744c81518ad9a671bcb\nhttps://git.kernel.org/stable/c/f193e71fa9fab2e68ef85201b106e8f580d3a25b\n",
+  "references": "https://git.kernel.org/stable/c/abe61d067b48b947bedc9bae3725cb8f48dc8c0a\nhttps://git.kernel.org/stable/c/9b5cb2e4eb297fe52be26fd895fc5ea28fc22bf9\nhttps://git.kernel.org/stable/c/43d2ab8408f9f468b232350c74160ae21e763020\nhttps://git.kernel.org/stable/c/3334985f8b4c7c637a829744c81518ad9a671bcb\nhttps://git.kernel.org/stable/c/f193e71fa9fab2e68ef85201b106e8f580d3a25b\n",
   "aliases": "CVE-2026-97427\nGHSA-797r-35j2-ppqg\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "04ac3a23-fdc9-312c-842b-b5986d0f7168",
@@ -49,6 +49,46 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "32a30b03-0871-35e3-9ef7-1ffd2cd76194",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b9c1a77e8cd73aa42c2736b6b0ffddda6230af1a <9b5cb2e4eb297fe52be26fd895fc5ea28fc22bf9"
+    },
+    {
+      "id": "395277e1-b45e-355e-9e58-42a74c52ef03",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b9c1a77e8cd73aa42c2736b6b0ffddda6230af1a <abe61d067b48b947bedc9bae3725cb8f48dc8c0a"
+    },
+    {
+      "id": "6f3f6bf6-0064-33c5-85ef-abfaf6156a83",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "7597b466-ed48-39ad-8ee6-3788c7d5f62e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
     },
     {
       "id": "75e1a606-beca-3b47-96a0-75fe0a8d5a37",

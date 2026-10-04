@@ -3,12 +3,12 @@
   "enisaUuid": "a4230478-2190-3757-b87a-01d06cec17e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: add a check on the tid coming from the firmware\n\nba_notif->tid is a firmware-controlled u8 that is used directly\nas an array index into tid_data[] without any validation. Add a\nbounds check against IWL_MAX_TID_COUNT before dereferencing the\narray.",
   "datePublished": "Sep 24, 2026, 4:02:24 PM",
-  "dateUpdated": "Sep 25, 2026, 12:42:57 PM",
+  "dateUpdated": "Oct 3, 2026, 10:57:26 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0b5325a0771674f1d65618de7db3df9d49186a12\nhttps://git.kernel.org/stable/c/59f64c2839022f41a7867b38f9e38c185ff39283\nhttps://git.kernel.org/stable/c/0e4c0d83267261cf67ec9690856edf4a56bb7dfc\n",
+  "references": "https://git.kernel.org/stable/c/0f690fd3b5535d110898b99ae6214f29c9060941\nhttps://git.kernel.org/stable/c/0b5325a0771674f1d65618de7db3df9d49186a12\nhttps://git.kernel.org/stable/c/59f64c2839022f41a7867b38f9e38c185ff39283\nhttps://git.kernel.org/stable/c/0e4c0d83267261cf67ec9690856edf4a56bb7dfc\n",
   "aliases": "CVE-2026-93791\nGHSA-6m6g-gjgc-588p\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "25ae191a-86e0-34d4-889b-8ab57ecd8f96",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "63d04644-1d0f-3e73-953f-bfac4f39d9de",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c46e7724bfe9bbff17bc468903a757248b99e4ed <0f690fd3b5535d110898b99ae6214f29c9060941"
     },
     {
       "id": "65c0d1a5-3dbf-3519-a8d4-a460ee83d666",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "c46e7724bfe9bbff17bc468903a757248b99e4ed <59f64c2839022f41a7867b38f9e38c185ff39283"
+    },
+    {
+      "id": "c3c6e341-9eab-399a-a668-d48f035e4a35",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
     },
     {
       "id": "cf7a21d0-2101-3171-94d1-18699d17a2a1",

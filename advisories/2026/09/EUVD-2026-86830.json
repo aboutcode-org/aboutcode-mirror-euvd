@@ -3,12 +3,12 @@
   "enisaUuid": "f29c0a03-1120-36c1-a0f4-849f744abb2c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix bad accounting in __mptcp_subflow_push_pending()\n\nIf __subflow_push_pending() errors out we should avoid updating the\ncopied byte counters, to avoid mismatch push call later on.",
   "datePublished": "Sep 25, 2026, 10:21:26 AM",
-  "dateUpdated": "Sep 25, 2026, 10:21:26 AM",
+  "dateUpdated": "Oct 3, 2026, 10:59:14 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9781fa35d9f7a87a83115acd3a88bc9ce35b5407\nhttps://git.kernel.org/stable/c/a0a64525f3414268ed4b1945a1dc690aa974dd4f\nhttps://git.kernel.org/stable/c/dc054821e639a2e14f1419436612db70b6af45fc\nhttps://git.kernel.org/stable/c/f3ef03357396d4b147d8e76c75fb612c2f264ffc\n",
+  "references": "https://git.kernel.org/stable/c/ddbf9f03c1cc7d5b86eebe7c2beea0db4286d354\nhttps://git.kernel.org/stable/c/9781fa35d9f7a87a83115acd3a88bc9ce35b5407\nhttps://git.kernel.org/stable/c/a0a64525f3414268ed4b1945a1dc690aa974dd4f\nhttps://git.kernel.org/stable/c/dc054821e639a2e14f1419436612db70b6af45fc\nhttps://git.kernel.org/stable/c/f3ef03357396d4b147d8e76c75fb612c2f264ffc\n",
   "aliases": "GHSA-pwwm-ccjp-fwfv\nCVE-2026-97522\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1cade76c-79f5-369b-94d7-982c274878b5",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.18.53"
     },
     {
+      "id": "a6c8937f-0a09-32fc-b4d7-c2d349f84dec",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
       "id": "aa6550a6-6276-3edc-aedd-111123a94b88",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "6.6"
+    },
+    {
+      "id": "ef091153-74b8-325f-bbfd-2d592a05c86c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0fa1b3783a17d75a4aa1651a18ede041ffca5750 <ddbf9f03c1cc7d5b86eebe7c2beea0db4286d354"
     },
     {
       "id": "f6c2b6d3-ca6e-34b2-ab8b-32c44548d77b",

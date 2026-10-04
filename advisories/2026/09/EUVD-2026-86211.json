@@ -3,12 +3,12 @@
   "enisaUuid": "182bdc83-93f7-3ba1-85ee-fe5edb337e46",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: iproc: Protect root bus removal with rescan lock\n\nHold the pci_rescan_remove_lock lock while stopping and removing a root bus\nto avoid racing with concurrent rescan or hotplug operations triggered via\nsysfs.  Such races may lead to use-after-free issues or system crashes.\n\n[bhelgaas: commit log]",
   "datePublished": "Sep 24, 2026, 4:03:00 PM",
-  "dateUpdated": "Sep 25, 2026, 12:43:31 PM",
+  "dateUpdated": "Oct 3, 2026, 10:57:53 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bd2bf1e0d973c93fc1637b90cbb9a5a5f6884bd3\nhttps://git.kernel.org/stable/c/ee06aafc2d760a4ee023e0b2e95ce1ec71bddc6c\nhttps://git.kernel.org/stable/c/a6a64e150f12ad5391e0a0d60f6a3d119b06ce50\n",
+  "references": "https://git.kernel.org/stable/c/e7d9d7be2c1f8d434032983bc86a05805178c9c9\nhttps://git.kernel.org/stable/c/1618e374ba4c7117c04662422ef985e9d64e2466\nhttps://git.kernel.org/stable/c/4e1d34d824050a4e700ca442f815a95d9f214b83\nhttps://git.kernel.org/stable/c/aaf4153caed9f1760b9f266612b0599bfd97150c\nhttps://git.kernel.org/stable/c/bd2bf1e0d973c93fc1637b90cbb9a5a5f6884bd3\nhttps://git.kernel.org/stable/c/ee06aafc2d760a4ee023e0b2e95ce1ec71bddc6c\nhttps://git.kernel.org/stable/c/a6a64e150f12ad5391e0a0d60f6a3d119b06ce50\n",
   "aliases": "GHSA-cg47-h57j-rvmx\nCVE-2026-93822\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0edf4f6d-2667-3cb5-a1f8-e943284651ec",
@@ -41,6 +41,76 @@
       "product_version": "1fb37a8178da007cad75f48e2355b9dcb0711e06 <a6a64e150f12ad5391e0a0d60f6a3d119b06ce50"
     },
     {
+      "id": "2b8f7450-22d4-3776-b4da-d147e3f75c3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1fb37a8178da007cad75f48e2355b9dcb0711e06 <e7d9d7be2c1f8d434032983bc86a05805178c9c9"
+    },
+    {
+      "id": "2ba43e22-3c55-3510-a13c-f2d8ba9cc24c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
+    },
+    {
+      "id": "442106b5-01cb-333d-912e-9c4e9e300cde",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.222"
+    },
+    {
+      "id": "5c2f430c-c5e7-339b-b864-8a35d339c5fd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "aa4af353-4170-32bc-aa9f-8fc0098fc642",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1fb37a8178da007cad75f48e2355b9dcb0711e06 <4e1d34d824050a4e700ca442f815a95d9f214b83"
+    },
+    {
+      "id": "b0be500d-67af-39a7-bc2b-a7fe52f9971c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.271"
+    },
+    {
+      "id": "b538225a-17b7-36bb-a1a2-538b09050cf7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1fb37a8178da007cad75f48e2355b9dcb0711e06 <aaf4153caed9f1760b9f266612b0599bfd97150c"
+    },
+    {
       "id": "bc8532e2-2008-3103-8ef9-16a31e9b9421",
       "product": {
         "name": "Linux",
@@ -49,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "c0e354e4-485a-35ff-af59-e69bb74a41ee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1fb37a8178da007cad75f48e2355b9dcb0711e06 <1618e374ba4c7117c04662422ef985e9d64e2466"
     },
     {
       "id": "c25c4457-e9ab-36aa-b94b-edb1adce62ed",

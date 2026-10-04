@@ -3,14 +3,14 @@
   "enisaUuid": "313368e6-2129-3dd0-995f-4d87f929d28f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: fix out-of-bounds tid_data access in BA notif\n\nmvmsta->tid_data was indexed by the TFD loop counter 'i' instead of\nthe actual TID value 'tid'. This writes lq_color into a random tid_data\nslot unrelated to the BA entry.\nSince multi-TID blockack is not really in use, 'i' was always 0 and no\nharm was done.\nAdd a out-of-bound check before accessing the array.",
   "datePublished": "Sep 24, 2026, 4:02:24 PM",
-  "dateUpdated": "Sep 25, 2026, 12:42:56 PM",
+  "dateUpdated": "Oct 3, 2026, 10:57:25 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/c48b741277b01b2c3b4ecccedc72fc575b71dc04\nhttps://git.kernel.org/stable/c/e8ac5e91b1296f65c3d119fac3fa917ff458f811\nhttps://git.kernel.org/stable/c/94d3982806c7f194b23484befde12934dda23064\n",
+  "references": "https://git.kernel.org/stable/c/35f991d685feafd27255bd33272512c434e52527\nhttps://git.kernel.org/stable/c/c48b741277b01b2c3b4ecccedc72fc575b71dc04\nhttps://git.kernel.org/stable/c/e8ac5e91b1296f65c3d119fac3fa917ff458f811\nhttps://git.kernel.org/stable/c/94d3982806c7f194b23484befde12934dda23064\n",
   "aliases": "GHSA-rh32-7cxx-qxq4\nCVE-2026-93790\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "519a386d-f8e9-34d1-8b3b-095aeb26eb1c",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "8c9e9088-ee16-3d45-9cf2-702f56f4a489",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "41fd2fec56db2564f02532ed7244e1f69193b4ad <35f991d685feafd27255bd33272512c434e52527"
     },
     {
       "id": "a2e42121-7358-3787-84a1-fcaf64511201",
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "41fd2fec56db2564f02532ed7244e1f69193b4ad <94d3982806c7f194b23484befde12934dda23064"
+    },
+    {
+      "id": "feaea329-5f63-3221-a619-17d7ddb829a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
     }
   ],
   "enisaIdVendor": [

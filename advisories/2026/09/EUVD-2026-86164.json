@@ -3,13 +3,23 @@
   "enisaUuid": "ee1e244a-9971-3c90-a71f-63c2ac3b0ca7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: embed f2fs_gc_kthread in f2fs_sb_info\n\nInstead of allocating f2fs_gc_kthread dynamically, embed it in\nf2fs_sb_info. This simplifies lifetime management and prepares for\nfixing race conditions during teardown.\n\n- __sbi_store\t\t\t- remount|shutdown\n\t\t\t\t - f2fs_stop_gc_thread\n - access sbi->gc_thread\n\t\t\t\t  - sbi->gc_thread = NULL\n - access sbi->gc_thread->f2fs_gc_task",
   "datePublished": "Sep 24, 2026, 4:02:09 PM",
-  "dateUpdated": "Sep 24, 2026, 4:02:09 PM",
+  "dateUpdated": "Oct 3, 2026, 10:57:11 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/23eee01c732ec8c62b05416a05f0f88129df2960\nhttps://git.kernel.org/stable/c/99d14d61aa8beb6cb9a984b9fcddd45e35b24494\nhttps://git.kernel.org/stable/c/3d7bca9d583793bb7d0bac0d95a24ddd2e129eed\n",
+  "references": "https://git.kernel.org/stable/c/7ee6be9ee7f9a803e0f539af26ab1154fdde48ba\nhttps://git.kernel.org/stable/c/23eee01c732ec8c62b05416a05f0f88129df2960\nhttps://git.kernel.org/stable/c/99d14d61aa8beb6cb9a984b9fcddd45e35b24494\nhttps://git.kernel.org/stable/c/3d7bca9d583793bb7d0bac0d95a24ddd2e129eed\n",
   "aliases": "CVE-2026-93285\nGHSA-g7j3-cmg6-483m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "08381150-91a9-37fe-84ec-e8a6f35e6b00",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.112"
+    },
     {
       "id": "13d68fe3-916a-330e-8f9c-e4134b17134a",
       "product": {
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "7950e9ac638e84518fbdd5c930939ad46a1068c5 <3d7bca9d583793bb7d0bac0d95a24ddd2e129eed"
+    },
+    {
+      "id": "8dad2f21-a804-345b-8f2b-73d4ede42b75",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7950e9ac638e84518fbdd5c930939ad46a1068c5 <7ee6be9ee7f9a803e0f539af26ab1154fdde48ba"
     },
     {
       "id": "9ddbd94a-8267-3192-96e0-72f57846afb8",

@@ -3,12 +3,12 @@
   "enisaUuid": "b9529388-603c-3a84-812a-10e874020faa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: ems_usb: validate CPC message lengths\n\nems_usb_read_bulk_callback() walks CPC messages packed in one USB\nreceive buffer.\n\nCheck that each declared message fits in the URB payload. Also require the\ntype-specific payload to cover the fields used by the CAN, state, error and\noverrun handlers.",
   "datePublished": "Aug 15, 2026, 12:27:01 PM",
-  "dateUpdated": "Aug 19, 2026, 4:36:57 PM",
+  "dateUpdated": "Oct 3, 2026, 10:56:02 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bb3cc8da8a2967c0f8e83d148fc6870b19fa32c6\nhttps://git.kernel.org/stable/c/db5655287d78f00daf98888a520bb8da4d30126d\nhttps://git.kernel.org/stable/c/ce8125566b1d0b0f16449407e014addf451804ea\nhttps://git.kernel.org/stable/c/0b9090717c7e2184e2c427bbcc752f295116ac1d\nhttps://git.kernel.org/stable/c/0b23144c59c126beb4a7761a85a194ae0fe668a5\nhttps://git.kernel.org/stable/c/df3ac2a672a5284441f120d486acabdd6740fc2a\nhttps://git.kernel.org/stable/c/02925f51377f2a42a6724f00549167499c9302e5\n",
+  "references": "https://git.kernel.org/stable/c/1c380a332e342b7d58c86c4f556cb0823b16a9b8\nhttps://git.kernel.org/stable/c/bb3cc8da8a2967c0f8e83d148fc6870b19fa32c6\nhttps://git.kernel.org/stable/c/db5655287d78f00daf98888a520bb8da4d30126d\nhttps://git.kernel.org/stable/c/ce8125566b1d0b0f16449407e014addf451804ea\nhttps://git.kernel.org/stable/c/0b9090717c7e2184e2c427bbcc752f295116ac1d\nhttps://git.kernel.org/stable/c/0b23144c59c126beb4a7761a85a194ae0fe668a5\nhttps://git.kernel.org/stable/c/df3ac2a672a5284441f120d486acabdd6740fc2a\nhttps://git.kernel.org/stable/c/02925f51377f2a42a6724f00549167499c9302e5\n",
   "aliases": "GHSA-596r-rcx5-45wx\nCVE-2026-74460\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "09de1beb-c7bf-3737-960c-0ed717550659",
@@ -19,6 +19,26 @@
         }
       },
       "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <ce8125566b1d0b0f16449407e014addf451804ea"
+    },
+    {
+      "id": "0b1f6185-a913-3038-b91f-643a56aae5be",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.271"
+    },
+    {
+      "id": "0ddff3a4-1202-31dd-a84d-b8f5fc00021b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "702171adeed3607ee9603ec30ce081411e36ae42 <1c380a332e342b7d58c86c4f556cb0823b16a9b8"
     },
     {
       "id": "65e2ea13-ec04-3891-bfc5-c8df9fea54f1",

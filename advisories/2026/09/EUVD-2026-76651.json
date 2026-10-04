@@ -3,12 +3,12 @@
   "enisaUuid": "087a8a14-857d-3647-a8a6-5d9600fad788",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: gadget: Fix use-after-free in dwc3_gadget_free_endpoints due to race condition\n\nIn dwc3_gadget_init_endpoint, &dep->nostream_work is bound with\ndwc3_nostream_work, and dwc3_gadget_endpoint_stream_event can queue\nthis delayed work on system_percpu_wq when a DEPEVT_STREAM_NOSTREAM\nevent is received.\n\nIf we remove the gadget, dwc3_gadget_free_endpoints makes cleanup and\nthe memory allocated for dep with kzalloc() is released by kfree(dep),\nwhile the delayed work mentioned above may still be pending or\nrunning. The sequence of operations that may lead to a UAF bug is as\nfollows:\n\nCPU0                                      CPU1\n\n                                          | dwc3_thread_interrupt\n                                          | dwc3_endpoint_interrupt\n                                          | dwc3_gadget_endpoint_stream_event\n                                          | queue_delayed_work(system_percpu_wq,\n                                          |                    &dep->nostream_work)\ndwc3_gadget_free_endpoints                |\ndwc3_free_trb_pool(dep)                   |\nlist_del(&dep->endpoint.ep_list)          |\ndwc3_debugfs_remove_endpoint_dir(dep)     |\nkfree(dep)                                |\n// dep is freed                           |\n                                          | dwc3_nostream_work\n                                          | // use dep (use-after-free)\n\nFix it by canceling the delayed work before kfree(dep) in\ndwc3_gadget_free_endpoints.",
   "datePublished": "Sep 11, 2026, 7:46:46 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:46 PM",
+  "dateUpdated": "Oct 3, 2026, 10:56:35 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/448e95c0f3eaa8d99f16ccae92ab94545f14413b\nhttps://git.kernel.org/stable/c/93e08b13a7a30e4e78556d993720e0bc36231ec7\nhttps://git.kernel.org/stable/c/9c855832790cd488d87de1885974f4c37cfe7358\n",
+  "references": "https://git.kernel.org/stable/c/5f359265f616873edf32db418bd1513fdae3ddec\nhttps://git.kernel.org/stable/c/448e95c0f3eaa8d99f16ccae92ab94545f14413b\nhttps://git.kernel.org/stable/c/93e08b13a7a30e4e78556d993720e0bc36231ec7\nhttps://git.kernel.org/stable/c/9c855832790cd488d87de1885974f4c37cfe7358\n",
   "aliases": "CVE-2026-89739\nGHSA-5q8g-48x9-ppw2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "052e8b96-c026-3822-bf0a-7bccab9c9a65",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "4aa2fc9d-e42a-359b-8f94-b0d0dac7e482",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f41ffcd656615754741f190afca00ca3c4bde9f1 <5f359265f616873edf32db418bd1513fdae3ddec"
     },
     {
       "id": "58708e33-5f3f-3319-a26c-b166c28e6dea",

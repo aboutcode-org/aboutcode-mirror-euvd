@@ -3,9 +3,9 @@
   "enisaUuid": "fa6326ab-1b74-38e5-9543-d8c62e78af7a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: Add NULL check for chip->edcca_th in rtw_fw_adaptivity_result()\n\nIt was recently reported that rtw_fw_adaptivity_result()\nin fw.c dereferences rtwdev->chip->edcca_th without\na NULL check. The issue is that devices with the\n8821CE chip don't define edcca_th in their chip\ninfo. As a result, when rtw_fw_adaptivity_result()\ntries to dereference it, the kernel triggers an oops.\n\nAdd a NULL check for edcca_th before dereferencing\nit in rtw_fw_adaptivity_result() in fw.c. Placing\nthe check at the function entry avoids logging any\ngarbage values.\n\nThis change does not address the root cause for\nthis behavior, but it prevents the NULL dereference\nand the resulting oops while a more permanent solution\nis developed.\n\nTested on a 8822CE chip which defines edcca_th, so\nthis issue is not present on it, but it still uses\nthis driver and I can verify there are no regressions.",
   "datePublished": "Sep 24, 2026, 4:05:14 PM",
-  "dateUpdated": "Sep 28, 2026, 5:30:53 AM",
+  "dateUpdated": "Oct 3, 2026, 10:59:10 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6fa23cafaf30f4877e357f8eebcff00dff4aa9cb\nhttps://git.kernel.org/stable/c/1d1f250432cd8704c3c125168887f9724021c81a\nhttps://git.kernel.org/stable/c/d5e6f353ce1e1c25b8458ea390ed09d2377412c5\n",
+  "references": "https://git.kernel.org/stable/c/a8cdb18ef80d67790d8611ba94ae3d81901c9e04\nhttps://git.kernel.org/stable/c/0b58a5ac9170a6f5e6425f8e1a4b3e1d9c2bf53d\nhttps://git.kernel.org/stable/c/6fa23cafaf30f4877e357f8eebcff00dff4aa9cb\nhttps://git.kernel.org/stable/c/1d1f250432cd8704c3c125168887f9724021c81a\nhttps://git.kernel.org/stable/c/d5e6f353ce1e1c25b8458ea390ed09d2377412c5\n",
   "aliases": "GHSA-4jwf-r7m6-8rg5\nCVE-2026-97516\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "fe7bc23a8c5eba8a49061c1d15d0a9d45ef18130 <1d1f250432cd8704c3c125168887f9724021c81a"
+    },
+    {
+      "id": "3865b79e-629d-3e4d-9de1-2f57dd2c8c29",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
     },
     {
       "id": "46abd445-ff22-3aa8-830d-19dcf3de7eb3",
@@ -81,6 +91,26 @@
       "product_version": "patch: 6.12.111"
     },
     {
+      "id": "97969532-86e9-3055-bc55-2db800d5a13d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "bd3b71b8-375d-33dd-9ebe-6ee3ccc40df6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe7bc23a8c5eba8a49061c1d15d0a9d45ef18130 <0b58a5ac9170a6f5e6425f8e1a4b3e1d9c2bf53d"
+    },
+    {
       "id": "ec17a812-a97e-3daf-ad27-7e7c34dfb27c",
       "product": {
         "name": "Linux",
@@ -89,6 +119,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "fd6e1029-06ed-38c4-a3b8-570055367587",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe7bc23a8c5eba8a49061c1d15d0a9d45ef18130 <a8cdb18ef80d67790d8611ba94ae3d81901c9e04"
     }
   ],
   "enisaIdVendor": [

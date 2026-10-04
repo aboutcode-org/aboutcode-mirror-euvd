@@ -3,9 +3,9 @@
   "enisaUuid": "9eddd0cb-29a2-3621-ae09-dad7773ac2d2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: ixp4xx - fix buffer chain unwind on allocation failure\n\nchainup_buffers() builds a linked list of buffer descriptors for a\nscatterlist. If dma_pool_alloc() fails while constructing the list, the\ncurrent code sets buf to NULL and later dereferences it unconditionally\nat the end of the function:\n\n  buf->next = NULL;\n  buf->phys_next = 0;\n\nThis can lead to a null-pointer dereference on allocation failure.\n\nIf the failure happens after part of the descriptor chain has already\nbeen allocated and DMA-mapped, the partially constructed chain also\nneeds to be released.\n\nFix this by terminating the partially constructed chain on allocation\nfailure and letting the callers unwind it via their existing cleanup\npaths. Also fix ablk_perform() to preserve the hook pointers before\nchecking for failure, so partially built chains can be freed correctly.",
   "datePublished": "Sep 24, 2026, 4:04:55 PM",
-  "dateUpdated": "Sep 28, 2026, 5:30:41 AM",
+  "dateUpdated": "Oct 3, 2026, 10:59:03 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/04cb00106ca4d0fa9eca24cadc4eda6036e855c8\nhttps://git.kernel.org/stable/c/028a7f4f3d69e551f6bf9f728d547bbf4cfc707d\nhttps://git.kernel.org/stable/c/25056329384010a8672552b134f609601dc4f80e\n",
+  "references": "https://git.kernel.org/stable/c/d4007867be42d71795b78fa7f8ce7514dda9ca83\nhttps://git.kernel.org/stable/c/4918b0bd7d2baafb45d87dca9e322137c96005c2\nhttps://git.kernel.org/stable/c/8c37bc8d6a6f77bf9593fb1bcab6c14c7cf02991\nhttps://git.kernel.org/stable/c/04cb00106ca4d0fa9eca24cadc4eda6036e855c8\nhttps://git.kernel.org/stable/c/028a7f4f3d69e551f6bf9f728d547bbf4cfc707d\nhttps://git.kernel.org/stable/c/25056329384010a8672552b134f609601dc4f80e\n",
   "aliases": "GHSA-mh76-mg38-r432\nCVE-2026-97506\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "481cff38-6680-3955-a962-f49c72ea2b83",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.222"
     },
     {
       "id": "4ce91e01-85f2-38c8-946d-fbb441e1f2ce",
@@ -121,6 +131,16 @@
       "product_version": "68845515c8b11791b547a2838e22c27dfa3115ee"
     },
     {
+      "id": "94118c2d-2d7f-3546-be14-a1b388f55218",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
+    },
+    {
       "id": "9e99b280-979e-3a92-bdfb-9bef886191c4",
       "product": {
         "name": "Linux",
@@ -131,6 +151,36 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "c4460634-22fe-3249-83b8-4c3f6826deb9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0d44dc59b2b434b29aafeae581d06f81efac7c83 <8c37bc8d6a6f77bf9593fb1bcab6c14c7cf02991"
+    },
+    {
+      "id": "d827b110-30be-3513-8ffe-b915eae7ea40",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "e21ea2c4-bc52-3695-b850-e462085bade3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0d44dc59b2b434b29aafeae581d06f81efac7c83 <4918b0bd7d2baafb45d87dca9e322137c96005c2"
+    },
+    {
       "id": "e247bad0-723f-32bd-ab89-98e36c271b5e",
       "product": {
         "name": "Linux",
@@ -139,6 +189,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "e66401ba-fc77-352e-ae8d-0387d5b5e872",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0d44dc59b2b434b29aafeae581d06f81efac7c83 <d4007867be42d71795b78fa7f8ce7514dda9ca83"
     },
     {
       "id": "ebbf6d9a-8c82-3560-b0a0-b24e277393a4",

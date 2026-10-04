@@ -3,13 +3,33 @@
   "enisaUuid": "7404bd8c-5ea1-3920-8632-99a12e43061f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: sun8i-ss - Remove crypto_rng interface\n\nSince the crypto_rng interface for hardware PRNGs is unused and is\nredundant with hwrng and the actual Linux RNG, it's being phased out.\nMost drivers for it were already removed.  Go ahead and remove the\nsun8i-ss support which is one of the only remaining ones.\n\nAs usual for crypto_rng, this driver was also buggy: its ->generate()\nfunction had a use-after-free vulnerability due to using\nwait_for_completion_interruptible_timeout() without handling shutting\ndown the DMA operation if a signal is sent.  Also, it had a buffer\noverread bug in the line 'memcpy(ctx->seed, d + dlen, ctx->slen);'.\nThere's no point in fixing these bugs separately only to remove the code\nanyway, so this commit is marked with Fixes and Cc stable.",
   "datePublished": "Sep 4, 2026, 3:54:41 PM",
-  "dateUpdated": "Sep 7, 2026, 3:45:11 PM",
+  "dateUpdated": "Oct 3, 2026, 10:56:08 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d29ccf9eeb67d775221e49a079caa1af83427afa\nhttps://git.kernel.org/stable/c/7c257a295e05ceb8f78aa3efecc4e9ce19c3313f\nhttps://git.kernel.org/stable/c/8ab58786b4c63b8f1b6c522f33bb67a3c8c2791f\nhttps://git.kernel.org/stable/c/a78446ee6fae86ac8733f120e3ffce2e5d9384f5\n",
+  "references": "https://git.kernel.org/stable/c/9127d2a88c1795ddc4ba7687fea01cab1908fae1\nhttps://git.kernel.org/stable/c/64f3406ad082c00fb7a80240a24943ccb6d9a538\nhttps://git.kernel.org/stable/c/6117968fe2cdcde28ac3aa6ec814485320af4049\nhttps://git.kernel.org/stable/c/a41e4ba94ad4571aa2e566baa395e6e871e0fd4f\nhttps://git.kernel.org/stable/c/d29ccf9eeb67d775221e49a079caa1af83427afa\nhttps://git.kernel.org/stable/c/7c257a295e05ceb8f78aa3efecc4e9ce19c3313f\nhttps://git.kernel.org/stable/c/8ab58786b4c63b8f1b6c522f33bb67a3c8c2791f\nhttps://git.kernel.org/stable/c/a78446ee6fae86ac8733f120e3ffce2e5d9384f5\n",
   "aliases": "CVE-2026-80833\nGHSA-qw2f-jr36-6mwm\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "1aeffa50-64f2-3d6a-9ebb-423c3a6e9e2f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ac2614d721dea2ff273af19c6c5d508d58a2bb3e <64f3406ad082c00fb7a80240a24943ccb6d9a538"
+    },
+    {
+      "id": "3004cc46-85e6-3d46-873b-ac1f0be3aa4d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.222"
+    },
     {
       "id": "33a7ddbd-029b-3409-9fee-2876a2b602b3",
       "product": {
@@ -61,6 +81,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "72398454-3125-32d3-a905-a62ca6a5dbc9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.271"
+    },
+    {
       "id": "786cfa61-ebae-399a-84a5-9a31b197e46f",
       "product": {
         "name": "Linux",
@@ -69,6 +99,16 @@
         }
       },
       "product_version": "5.10"
+    },
+    {
+      "id": "87d8cc3f-36d1-3df9-a13f-e9311eb87a59",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ac2614d721dea2ff273af19c6c5d508d58a2bb3e <9127d2a88c1795ddc4ba7687fea01cab1908fae1"
     },
     {
       "id": "b013c965-95bc-356d-b349-f898f28084ef",
@@ -91,6 +131,16 @@
       "product_version": "patch: 6.18.50"
     },
     {
+      "id": "b66d992d-d69c-3088-b4d1-b736472be38b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ac2614d721dea2ff273af19c6c5d508d58a2bb3e <6117968fe2cdcde28ac3aa6ec814485320af4049"
+    },
+    {
       "id": "b6ae572e-252e-330d-9a50-8f164fb28ebf",
       "product": {
         "name": "Linux",
@@ -99,6 +149,36 @@
         }
       },
       "product_version": "ac2614d721dea2ff273af19c6c5d508d58a2bb3e <a78446ee6fae86ac8733f120e3ffce2e5d9384f5"
+    },
+    {
+      "id": "b92c2256-2d41-3708-9763-0c418761833d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "bffc48b7-d49d-3956-8acc-99a000154d6f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
+    },
+    {
+      "id": "d7c2a580-6c08-37dc-ac53-c074daa7ef2b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ac2614d721dea2ff273af19c6c5d508d58a2bb3e <a41e4ba94ad4571aa2e566baa395e6e871e0fd4f"
     },
     {
       "id": "ed72d8aa-3ce4-3e8d-b2ae-a008cdb55806",

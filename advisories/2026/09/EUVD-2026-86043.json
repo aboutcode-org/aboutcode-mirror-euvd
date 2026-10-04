@@ -3,12 +3,12 @@
   "enisaUuid": "3f28adbb-403b-35db-94ed-7ef5936846c0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxhci: Prevent queuing new commands if xhci is inaccessible\n\nRefuse to queue a new command on the command ring if xHC is marked\ninaccessible with the HCD_FLAG_HW_ACCESSIBLE.\n\nHCD_FLAG_HW_ACCESSIBLE is set and cleared in suspend and resume.\n\nAlso print a warning if xhci is being suspended with commands\nstill pending on the command ring.",
   "datePublished": "Sep 24, 2026, 4:03:43 PM",
-  "dateUpdated": "Sep 25, 2026, 12:44:06 PM",
+  "dateUpdated": "Oct 3, 2026, 10:58:17 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a50948386256b24d73971b9a152fe1de808446ab\nhttps://git.kernel.org/stable/c/a05e54c1eeaba10414aa2fde94589a7c9885f2a1\nhttps://git.kernel.org/stable/c/82b70c799281cc24506085be978b829149ba0ca4\n",
+  "references": "https://git.kernel.org/stable/c/0e2eaa000e4e5ad46b7cf8fcf1e4a2585ef8b5a8\nhttps://git.kernel.org/stable/c/add3aeb74e2c7d82fa1035af2a027666c6906210\nhttps://git.kernel.org/stable/c/a215190ef68ca3602fe00674e0efffad71beb3aa\nhttps://git.kernel.org/stable/c/fec259e46d44317379834a44115fae66122dc93f\nhttps://git.kernel.org/stable/c/a50948386256b24d73971b9a152fe1de808446ab\nhttps://git.kernel.org/stable/c/a05e54c1eeaba10414aa2fde94589a7c9885f2a1\nhttps://git.kernel.org/stable/c/82b70c799281cc24506085be978b829149ba0ca4\n",
   "aliases": "GHSA-57g2-jm7m-f2mp\nCVE-2026-97430\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0509fb40-3ab2-35b7-a977-c5bc56b16562",
@@ -41,6 +41,46 @@
       "product_version": "2.6.37"
     },
     {
+      "id": "235073b7-9c76-3a07-b4b7-29e0f1bf84f1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
+    },
+    {
+      "id": "29d746ce-6ea8-3fcf-896b-171de9e7167d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5535b1d5f8885695c6ded783c692e3c0d0eda8ca <add3aeb74e2c7d82fa1035af2a027666c6906210"
+    },
+    {
+      "id": "3a6f0e6c-1d1a-3e4e-a9ed-4aaea80f711b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.222"
+    },
+    {
+      "id": "3e924dcf-2d46-3a56-a774-e7d6d5987b43",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5535b1d5f8885695c6ded783c692e3c0d0eda8ca <0e2eaa000e4e5ad46b7cf8fcf1e4a2585ef8b5a8"
+    },
+    {
       "id": "503bafe3-e66c-3259-9d8a-9a6230d8e962",
       "product": {
         "name": "Linux",
@@ -49,6 +89,26 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "5e633eb4-4e3d-3464-ba78-d81881e16cbc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "611499de-521f-3681-a804-4e34b949c862",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.271"
     },
     {
       "id": "7597219a-3de8-3e23-b2fb-7f5637e06110",
@@ -71,6 +131,16 @@
       "product_version": "patch: 6.12.111"
     },
     {
+      "id": "7be82b00-8cb4-3d2a-b965-1dd1709a2af6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5535b1d5f8885695c6ded783c692e3c0d0eda8ca <a215190ef68ca3602fe00674e0efffad71beb3aa"
+    },
+    {
       "id": "832a61da-89dd-35ab-be17-d38168d5756a",
       "product": {
         "name": "Linux",
@@ -79,6 +149,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "eef680b5-2545-3c10-9bf6-e371c2874a10",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5535b1d5f8885695c6ded783c692e3c0d0eda8ca <fec259e46d44317379834a44115fae66122dc93f"
     },
     {
       "id": "fdb62db8-c4ec-3b4e-829c-b0fe7f6a1d53",

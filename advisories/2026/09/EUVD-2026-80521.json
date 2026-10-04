@@ -3,12 +3,12 @@
   "enisaUuid": "f26f67df-f1a4-3b42-bbde-6d45f9848957",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Zero initialize data structures for inject_pfault_token\n\n__kvm_inject_pfault_token() only sets .type and .u.ext.ext_params2 of\nthe on-stack struct kvm_s390_irq but the full ext substructure is copied\ninto the cpu local variable on inject. ext_params and pad contain stale\nstack values.\n\nInterrupt delivery only uses ext_params2, so nothing leaks to the guest,\nbut a host user can use the migration ioctls to get to the data.\n\nFix by zero-initializing the irq struct.\nDo the same for the inti data structure.",
   "datePublished": "Sep 16, 2026, 10:32:15 AM",
-  "dateUpdated": "Sep 16, 2026, 10:32:15 AM",
+  "dateUpdated": "Oct 3, 2026, 10:56:51 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/9b046de62b8098af6e2ba820b125ec9dc5f162c8\nhttps://git.kernel.org/stable/c/134f235e0e8de54611a72d3cc3f63e5f31246baa\nhttps://git.kernel.org/stable/c/4e2c7f7cbc27418f9a290399b986c1b85ff93b90\n",
+  "references": "https://git.kernel.org/stable/c/b8abc760fa18a389319d977834a30550b3ec18e8\nhttps://git.kernel.org/stable/c/9b046de62b8098af6e2ba820b125ec9dc5f162c8\nhttps://git.kernel.org/stable/c/134f235e0e8de54611a72d3cc3f63e5f31246baa\nhttps://git.kernel.org/stable/c/4e2c7f7cbc27418f9a290399b986c1b85ff93b90\n",
   "aliases": "CVE-2026-89921\nGHSA-fm87-69w9-6w3j\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "190f3e21-f904-34d5-a12f-8ba30d8a766a",
@@ -21,6 +21,16 @@
       "product_version": "patch: 6.18.52"
     },
     {
+      "id": "4078f26f-1501-3724-a8f4-1e2790963174",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "383d0b050106abecb82f43101cac94fa423af5cd <b8abc760fa18a389319d977834a30550b3ec18e8"
+    },
+    {
       "id": "5fbdc3c9-f467-3364-a326-07542d86eb9b",
       "product": {
         "name": "Linux",
@@ -29,6 +39,16 @@
         }
       },
       "product_version": "patch: 7.3-rc1"
+    },
+    {
+      "id": "6357d507-2461-3477-8911-ed84930b47ba",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.112"
     },
     {
       "id": "80957f61-2117-3558-b958-0760472b8444",

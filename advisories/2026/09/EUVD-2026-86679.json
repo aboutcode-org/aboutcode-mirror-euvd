@@ -3,12 +3,12 @@
   "enisaUuid": "55cb885a-5427-3834-bcaa-c738c7617c05",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: mcast: properly convert mglist to rcu\n\nSashiko reported a bug [1] that br_multicast_del_port_group unlists the\nport group not using proper rcu helper that preserves the next pointer and\nafter that immediately frees the port group without waiting for rcu grace\nperiod. The only rcu walker of mglist is br_multicast_list_adjacent() and\nit turns out that function has always been buggy because mglist was never\nproperly converted to RCU. Fix it by converting it to rcu and moving its\ninitialization after eth_addr's. Initializing p->next can use\nRCU_INIT_POINTER because we have a barrier from the hlist_add_head_rcu call\nlater, besides we're initializing an unpublished structure anyway.\n\n[1] https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260826014200.362304-1-littleddfu%40gmail.com",
   "datePublished": "Sep 25, 2026, 10:23:44 AM",
-  "dateUpdated": "Sep 25, 2026, 10:23:44 AM",
+  "dateUpdated": "Oct 3, 2026, 11:01:45 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/98247c8264d2076f81fa114bdfa2c2271953ac7c\nhttps://git.kernel.org/stable/c/38ab2a435001a3c4dbeb70a52f5921e1ccd66f55\nhttps://git.kernel.org/stable/c/f7bf57e94a5d6214b87be08486cb33836fbfa573\nhttps://git.kernel.org/stable/c/4b772869a1e5f9da5cef5b9c722ec0aa424ee0a0\n",
+  "references": "https://git.kernel.org/stable/c/37cb9a81600da8250f24e25edc07253b62353cbe\nhttps://git.kernel.org/stable/c/98247c8264d2076f81fa114bdfa2c2271953ac7c\nhttps://git.kernel.org/stable/c/38ab2a435001a3c4dbeb70a52f5921e1ccd66f55\nhttps://git.kernel.org/stable/c/f7bf57e94a5d6214b87be08486cb33836fbfa573\nhttps://git.kernel.org/stable/c/4b772869a1e5f9da5cef5b9c722ec0aa424ee0a0\n",
   "aliases": "CVE-2026-98026\nGHSA-r366-wr25-m9fj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "20ef7c96-1baa-3ea2-978f-a4dac1357b7d",
@@ -71,6 +71,16 @@
       "product_version": "07f8ac4a1e26e8283542cdaf658a6e2a12fd6980 <f7bf57e94a5d6214b87be08486cb33836fbfa573"
     },
     {
+      "id": "71c78de3-5417-316a-af65-812608516b36",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
+    {
       "id": "73f8c4ec-6c92-3e55-954a-b4f56bfcc7b3",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ba9541fb-8f0e-3720-8e19-8b356b77b9b2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "07f8ac4a1e26e8283542cdaf658a6e2a12fd6980 <37cb9a81600da8250f24e25edc07253b62353cbe"
     },
     {
       "id": "be0e927d-8b9d-3b96-83cc-4acba326688a",

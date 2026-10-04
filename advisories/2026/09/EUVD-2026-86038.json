@@ -3,13 +3,23 @@
   "enisaUuid": "902a19f8-a577-3958-b16f-77c7702f96ad",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix buffer overflow during vBIOS update\n\nClamp the buffer postion to write by setting the bin attribute\nto the maximum buffer size so that VFS layer will block the\nout-of-bounds accessing.",
   "datePublished": "Sep 24, 2026, 4:03:38 PM",
-  "dateUpdated": "Sep 25, 2026, 12:44:01 PM",
+  "dateUpdated": "Oct 3, 2026, 10:58:14 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c7b2af01ee2ecfb8f2289dc83524d8fb1ec72992\nhttps://git.kernel.org/stable/c/29fef371331e87311822000535f491ffc3d7a64f\nhttps://git.kernel.org/stable/c/6229898d46c0cbc238a6fe9f11c1ea12cf8bb9c5\n",
+  "references": "https://git.kernel.org/stable/c/4a1b0a4c5acbe96368d71157b264dcd917ba6c9e\nhttps://git.kernel.org/stable/c/c7b2af01ee2ecfb8f2289dc83524d8fb1ec72992\nhttps://git.kernel.org/stable/c/29fef371331e87311822000535f491ffc3d7a64f\nhttps://git.kernel.org/stable/c/6229898d46c0cbc238a6fe9f11c1ea12cf8bb9c5\n",
   "aliases": "CVE-2026-97425\nGHSA-pv43-wh94-fv25\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "05f6bb47-c80a-3e5e-8778-8a99d4188faf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8424f2ccb3c0dd43369288a47d15c980136c3bd5 <4a1b0a4c5acbe96368d71157b264dcd917ba6c9e"
+    },
     {
       "id": "06218736-2843-30b3-8206-adaa72c1c5a7",
       "product": {
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "fc1fb1dc-6bfb-3657-b7d7-ef048837f973",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
     }
   ],
   "enisaIdVendor": [

@@ -3,15 +3,25 @@
   "enisaUuid": "72df045f-50df-38c1-8c93-8154ba1229f3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Fix dev use-after-free in xfrm async resumption\n\nxfrm async resumption hold skb->dev refcnt until after transport_finish.\nHowever, xfrm_rcv_cb may modify skb->dev to tunnel dev without taking\ndevice reference, such as vti_rcv_cb. The subsequent async resumption\nwill decrement the tunnel device's reference count, which lead to uaf\nof tunnel dev and refcnt leak of orig dev as below:\n\nunregister_netdevice: waiting for vti1 to become free. Usage count = -2\n\nStash the original skb->dev to fix refcnt imbalance. The new skb->dev set\nby xfrm_rcv_cb can race with device teardown. Extend rcu protection over\nxfrm_rcv_cb and transport_finish to prevent races.",
   "datePublished": "Aug 15, 2026, 5:57:07 AM",
-  "dateUpdated": "Sep 25, 2026, 2:44:23 PM",
+  "dateUpdated": "Oct 3, 2026, 10:55:53 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/1acd93259b6be269e26be5d71c224bccd1f8352f\nhttps://git.kernel.org/stable/c/63a30015199912bd5055bead8001b1ae68a67cdb\nhttps://git.kernel.org/stable/c/8045c0df98d4f14c54e5cb875f1c9c0ce89fe4ff\n",
+  "references": "https://git.kernel.org/stable/c/fed4d3195a31125566876952ce66113ec1eb9008\nhttps://git.kernel.org/stable/c/1acd93259b6be269e26be5d71c224bccd1f8352f\nhttps://git.kernel.org/stable/c/63a30015199912bd5055bead8001b1ae68a67cdb\nhttps://git.kernel.org/stable/c/8045c0df98d4f14c54e5cb875f1c9c0ce89fe4ff\n",
   "aliases": "CVE-2026-72463\nGHSA-23r2-6gqr-3m38\n",
   "assigner": "Linux",
-  "epss": 0.55,
+  "epss": 0.63,
   "enisaIdProduct": [
+    {
+      "id": "078b451f-e7cc-38a0-9e4f-29f8e1c4b35a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4236c30b437b80f673b9e08c8fae38b8d471ac9e <fed4d3195a31125566876952ce66113ec1eb9008"
+    },
     {
       "id": "0b440230-b181-33eb-ae40-7b24f00ed469",
       "product": {
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 6.18.54"
+    },
+    {
+      "id": "302b8f85-5c81-35ff-b39e-864d65ede8a4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.112"
     },
     {
       "id": "438b2482-0d8d-3b54-b9f2-eab3fbe4e0a4",
@@ -63,16 +83,6 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "524dd2d6-c285-31c6-8182-c9a28f3a1b06",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "4236c30b437b80f673b9e08c8fae38b8d471ac9e"
-    },
-    {
       "id": "5619a468-0efe-36a9-badd-f5d7b36ca87b",
       "product": {
         "name": "Linux",
@@ -93,6 +103,16 @@
       "product_version": "6.18.23 <6.18.54"
     },
     {
+      "id": "5f6ff751-9807-3a04-804c-ad58fdee5b3d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.12.94 <6.12.112"
+    },
+    {
       "id": "90f2f55a-ddab-38cd-ae27-fca9543fa2aa",
       "product": {
         "name": "Linux",
@@ -111,16 +131,6 @@
         }
       },
       "product_version": "1c428b03840094410c5fb6a5db30640486bbbfcb <63a30015199912bd5055bead8001b1ae68a67cdb"
-    },
-    {
-      "id": "b5c35046-bc7f-31f6-8ce0-a808b35a7b49",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.12.94 <6.13"
     },
     {
       "id": "dcf4a149-686e-325b-b50c-44f3b46ee5cb",

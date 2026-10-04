@@ -3,13 +3,23 @@
   "enisaUuid": "f3193c95-dc80-31c7-a52a-b1d8c0dc4f46",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nreboot: fix cad_pid use-after-free race\n\ncad_pid is a single kernel-wide struct pid pointer. proc_do_cad_pid()\nreads it and passes it to pid_vnr() without protecting the lifetime of\nthe referenced struct pid. A concurrent writer can replace cad_pid and\ndrop the final reference to the old struct pid after the reader has\nloaded the pointer but before pid_vnr() has finished dereferencing it,\ncausing a use-after-free.\n\nkill_cad_pid() has the same lifetime race when it passes cad_pid to\nkill_pid().\n\nAt the time this issue was reported, an unprivileged user could reach the\nsysctl through user and PID namespaces because cad_pid was registered in\npid_table[]. Moving cad_pid back to the global reboot sysctl table\ncorrected that namespace and permission mismatch, but did not fix the\nunderlying lifetime race.\n\nFix this by treating cad_pid as an RCU-protected pointer at both read\nsites and by waiting for a grace period before dropping the old reference\non the write side.\n\ncall_rcu(&old_pid->rcu, ...) cannot be used here because free_pid()\nalso queues pid->rcu; queueing the same rcu_head twice can corrupt the\nRCU callback list.\n\nOriginal KASAN crash stack:\n  kernel/pid.c:545 pid_nr_ns()        # reads freed pid->level\n  kernel/pid.c:556 pid_vnr()          # calls pid_nr_ns()\n  kernel/pid.c:775 proc_do_cad_pid()  # calls pid_vnr(cad_pid)",
   "datePublished": "Sep 25, 2026, 10:22:51 AM",
-  "dateUpdated": "Sep 25, 2026, 10:22:51 AM",
+  "dateUpdated": "Oct 3, 2026, 11:00:48 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ad72e2566643fff7f01666d845fb026898155e1f\nhttps://git.kernel.org/stable/c/9a17b0e053197a6a42cdc75e75a35b17aa662088\nhttps://git.kernel.org/stable/c/5a88f78df753993469dab4d1831f8fb4256a9468\n",
+  "references": "https://git.kernel.org/stable/c/ae3e53fe3c1241855e3a88f74877738349948c78\nhttps://git.kernel.org/stable/c/ad72e2566643fff7f01666d845fb026898155e1f\nhttps://git.kernel.org/stable/c/9a17b0e053197a6a42cdc75e75a35b17aa662088\nhttps://git.kernel.org/stable/c/5a88f78df753993469dab4d1831f8fb4256a9468\n",
   "aliases": "GHSA-9x8r-8wjj-jgjv\nCVE-2026-97938\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "1c28b2b8-a72b-39e3-bd4a-48772309c79a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.112"
+    },
     {
       "id": "3f9aac9b-86c5-35b4-bbb7-2149b721e8f9",
       "product": {
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "bd1700fb-ca9f-31a0-9972-60333b7bbfae",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9ec52099e4b8678a60e9f93e41ad87885d64f3e6 <ae3e53fe3c1241855e3a88f74877738349948c78"
     },
     {
       "id": "c2293109-d8a5-318b-b9f6-75a99cc74ec5",

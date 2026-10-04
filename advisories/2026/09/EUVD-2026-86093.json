@@ -3,13 +3,23 @@
   "enisaUuid": "a754f586-5c1d-3801-bea2-c148c584b324",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check bounds on allocate_doorbell\n\nallocated_doorbell has an option to set the doorbell id\nto a specific value (used by CRIU). This value was not\nbounds checked.\n\nCheck to confirm it's less than KFD_MAX_NUM_OF_QUEUES_PER_PROCESS.",
   "datePublished": "Sep 24, 2026, 4:04:42 PM",
-  "dateUpdated": "Sep 28, 2026, 5:30:27 AM",
+  "dateUpdated": "Oct 3, 2026, 10:58:58 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e0cecd04a4fc4c75e375b91cf53eab5ba2e4ab7f\nhttps://git.kernel.org/stable/c/c2c89118c27cbd3adace62c5df19d15b0e96ade1\nhttps://git.kernel.org/stable/c/1f087bb8cf9e8797633da35c85435e557ef74d06\n",
+  "references": "https://git.kernel.org/stable/c/7e06636260a2d95e3fa181bc337d0eeb812b7a41\nhttps://git.kernel.org/stable/c/3d2ddfc9b361b0d38c3ff4804ce42503e4bc97de\nhttps://git.kernel.org/stable/c/e0cecd04a4fc4c75e375b91cf53eab5ba2e4ab7f\nhttps://git.kernel.org/stable/c/c2c89118c27cbd3adace62c5df19d15b0e96ade1\nhttps://git.kernel.org/stable/c/1f087bb8cf9e8797633da35c85435e557ef74d06\n",
   "aliases": "CVE-2026-97495\nGHSA-jwq7-cf4h-qr55\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "0b5b9f22-6c5b-32ed-9221-1a94efc5dd51",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.158"
+    },
     {
       "id": "1119e1a9-a8e1-36dc-89ea-ae938b50fc30",
       "product": {
@@ -71,6 +81,16 @@
       "product_version": "5.18"
     },
     {
+      "id": "7ff90d7e-6a2b-31da-998f-703e1e8e0ccb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5bb6a8fa75fcfda93592bee0a4910420ceab15f3 <3d2ddfc9b361b0d38c3ff4804ce42503e4bc97de"
+    },
+    {
       "id": "8eeec582-8d1c-3df8-b4ce-723e64812318",
       "product": {
         "name": "Linux",
@@ -79,6 +99,26 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "a3cd5859-3bdf-3f45-8c57-d0f27a3f5bf5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5bb6a8fa75fcfda93592bee0a4910420ceab15f3 <7e06636260a2d95e3fa181bc337d0eeb812b7a41"
+    },
+    {
+      "id": "d389e48e-1500-321d-b59f-b16fb1006697",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.189"
     },
     {
       "id": "d405a91e-93db-39db-b812-c002041e615c",

@@ -3,14 +3,14 @@
   "enisaUuid": "74b4bf6b-75bd-3699-92ab-bda25c919543",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix integer overflow in amdgpu_cs_pass1\n\nThe type of size is unsigned int, if size is 0x40000000, there will\nbe an integer overflow, size will be zero after size *= sizeof(uint32_t),\nwill cause uninitialized memory to be referenced later.",
   "datePublished": "Oct 22, 2025, 1:23:43 PM",
-  "dateUpdated": "Aug 5, 2026, 9:15:38 AM",
+  "dateUpdated": "Oct 3, 2026, 10:54:59 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/9f55d300541cb5b435984d269087810581580b00\nhttps://git.kernel.org/stable/c/c3deb091398e9e469d08dd1599b6d76fd6b29df8\nhttps://git.kernel.org/stable/c/87c2213e85bd81e4a9a4d0880c256568794ae388\n",
+  "references": "https://git.kernel.org/stable/c/8fb035232b505ab12119adf78f5fc1f93f2b7e24\nhttps://git.kernel.org/stable/c/6e03634f44cd5988ee5b6cdd4f849e73762095e7\nhttps://git.kernel.org/stable/c/9f55d300541cb5b435984d269087810581580b00\nhttps://git.kernel.org/stable/c/c3deb091398e9e469d08dd1599b6d76fd6b29df8\nhttps://git.kernel.org/stable/c/87c2213e85bd81e4a9a4d0880c256568794ae388\n",
   "aliases": "GHSA-xc82-v759-f4jv\nCVE-2023-53707\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0b6ef361-6fe9-3c47-bc2d-8643b908a580",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 6.5"
+    },
+    {
+      "id": "13e6b142-6109-3cf0-91c4-197359c9f5f3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <8fb035232b505ab12119adf78f5fc1f93f2b7e24"
     },
     {
       "id": "1a63d650-04d5-36db-b4c5-80214ba5c821",
@@ -53,6 +63,16 @@
       "product_version": "patch: 6.1.47"
     },
     {
+      "id": "43d5d967-665a-3af6-b7ce-5fabacfb4932",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.271"
+    },
+    {
       "id": "73824dd0-5c5f-3fcd-9b11-85e2f0d23aa6",
       "product": {
         "name": "Linux",
@@ -61,6 +81,26 @@
         }
       },
       "product_version": "patch: 6.4.12"
+    },
+    {
+      "id": "c60d9e16-38a2-3b13-889e-e5b8a26eee6c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.222"
+    },
+    {
+      "id": "c7f91895-bf4d-3a83-b425-fb0a8dd522eb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <6e03634f44cd5988ee5b6cdd4f849e73762095e7"
     },
     {
       "id": "cf229d5e-57c0-3284-842f-d9f3aa2397dc",
