@@ -1,9 +1,9 @@
 {
   "id": "EUVD-2026-92815",
   "enisaUuid": "04946787-9bd6-3985-9a4a-9ba80541b23b",
-  "description": "Docling: Arbitrary local file read via draw:image xlink:href in the OpenDocument backend",
-  "datePublished": "Oct 5, 2026, 10:33:52 PM",
-  "dateUpdated": "Oct 5, 2026, 10:33:52 PM",
+  "description": "Docling simplifies document processing by parsing diverse formats and providing integrations with the generative AI ecosystem. From 2.107.0 until 2.120.3, docling/backend/opendocument_backend.py uses the xlink:href attribute value of a draw:image element as a filesystem path when the referenced part is not found in the document archive. The _image_ref_from_odf_image function reads that attacker-controlled path without a scheme check, extraction-directory confinement, or the enable_local_fetch setting used by other backends. Readable files that Pillow can decode as images are embedded in converted output, and other existing paths can be distinguished through the attempted read. This issue is fixed in 2.120.3.",
+  "datePublished": "Oct 5, 2026, 9:40:45 PM",
+  "dateUpdated": "Oct 6, 2026, 4:36:34 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:L/SI:N/SA:N",
