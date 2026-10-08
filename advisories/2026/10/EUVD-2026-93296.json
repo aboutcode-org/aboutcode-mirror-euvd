@@ -3,12 +3,14 @@
   "enisaUuid": "ecd7800f-7e2f-3d10-9efa-f11877184c34",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: virt_wifi: don't transfer operstate before register\n\nvirt_wifi_newlink() calls netif_stacked_transfer_operstate() before\nregister_netdevice(). If the lower device is dormant, that queues the\nnew netdev on lweventlist while it is still uninitialized. If\nregistration fails after that, for example because of an invalid name\nsuch as \"bad/name\", free_netdev() immediately frees the object. A\nlater linkwatch_fire_event() then use-after-frees the list entry.\n\nMove the transfer to after netdev_upper_dev_link(), as macvlan and\nipvlan already do.",
   "datePublished": "Oct 6, 2026, 8:46:07 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:07 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:58 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ee9ea1afd6990def51d52b3a0aecd5cfcc951da0\nhttps://git.kernel.org/stable/c/9ce26201f6dedf3fa02b97da8c67ee6f6c5f7225\nhttps://git.kernel.org/stable/c/f9526054c2b2cace5916b7225603d008834ec011\nhttps://git.kernel.org/stable/c/e8304e25c6dabb8accf38b807969438d0ce84fd7\nhttps://git.kernel.org/stable/c/ca49763c42c1089d654bf11b037980a9ede3772c\nhttps://git.kernel.org/stable/c/293c56a66510bb7de073a1aba388e38abddff1fb\nhttps://git.kernel.org/stable/c/b808a9af5fd21f9c68b0d024eda7535b5dce6a4e\nhttps://git.kernel.org/stable/c/e5c8d7acd31b27057ea42cd405d0b3ece097bc89\n",
   "aliases": "CVE-2026-98311\nGHSA-f5fm-f6q9-vwv9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "02fe5a88-4322-35ba-ab83-0541da264e12",

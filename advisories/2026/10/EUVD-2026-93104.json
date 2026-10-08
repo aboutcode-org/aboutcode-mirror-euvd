@@ -3,22 +3,42 @@
   "enisaUuid": "27396837-7924-3432-9930-b7763ce1b4f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Avoid integer underflow with ffs in EOP ring size calc\n\nThe low 6 bits of cp_hqd_eop_control store the base-2 logarithm\nof the EOP ring size. This was calculated as\n\nffs(q->eop_ring_buffer_size / sizeof(unsigned int)) - 1 - 1\n\nBut ffs can in theory return 1 or 0, so this could underflow\n(although in practice the ring buffer size cannot be less than 4096).\n\nChange this to\n\nffs(q->eop_ring_buffer_size / sizeof(unsigned int) / 4)\n\nusing properties of logarithms.\n\n(cherry picked from commit 4f18c56630383c14bfc6b2d65f88f2f895d2121a)",
   "datePublished": "Oct 6, 2026, 8:44:20 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:20 AM",
+  "dateUpdated": "Oct 7, 2026, 6:49:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/82e1b8299c6da02ce02185c208d2fdf7572b5ea1\nhttps://git.kernel.org/stable/c/c883d0a132d430ef7ebb23fd94323be94d0fbdb8\n",
   "aliases": "GHSA-mv47-6r4w-p28q\nCVE-2026-98176\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
-      "id": "0b7b8bf5-b9e3-3552-adb0-e5c0f33ccf42",
+      "id": "136dc274-e683-32c9-9e66-32e0eac453b8",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <7.2.8"
+      "product_version": "14328aa58ce523a59996c5a82681c43ec048cc33 <c883d0a132d430ef7ebb23fd94323be94d0fbdb8"
+    },
+    {
+      "id": "213f6511-f731-3b02-b6e4-4ca46c503aea",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "14328aa58ce523a59996c5a82681c43ec048cc33 <82e1b8299c6da02ce02185c208d2fdf7572b5ea1"
+    },
+    {
+      "id": "574c9c59-f061-3ceb-a061-6c2f2a902347",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 0"
     },
     {
       "id": "5b90a164-1384-3e6b-bb14-e4a7f207418e",
@@ -41,24 +61,14 @@
       "product_version": "patch: 7.2.8"
     },
     {
-      "id": "cd5a9338-8881-3087-a3c8-98f0ec75f59f",
+      "id": "c72cab6b-6cc3-3883-9d34-4180111a2ae1",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <82e1b8299c6da02ce02185c208d2fdf7572b5ea1"
-    },
-    {
-      "id": "e0e9cb2f-75ad-381a-9527-b37ace392fc6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c883d0a132d430ef7ebb23fd94323be94d0fbdb8"
+      "product_version": "5.3"
     }
   ],
   "enisaIdVendor": [

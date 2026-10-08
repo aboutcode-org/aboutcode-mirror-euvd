@@ -3,12 +3,14 @@
   "enisaUuid": "4a5ff326-59c0-3171-a42f-a86c34e44e8f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: RFCOMM: avoid socket lock inversion in listener cleanup\n\nrfcomm_sock_cleanup_listen() closes unaccepted child sockets through\nrfcomm_sock_close(), which takes the child socket lock before\nrfcomm_dlc_close() acquires rfcomm_mutex. The RFCOMM worker takes these\nlocks in reverse order while handling connections and DLC state changes,\nso lockdep reports a possible deadlock.\n\nClose dequeued children without taking their socket lock. The accept queue\nowns a reference to each child, and bt_accept_dequeue() locks the child\nwhile unlinking it and clearing its parent pointer.\n\nDropping the child lock makes it important to prevent a concurrent\nrfcomm_connect_ind() from enqueueing a new child after cleanup observes an\nempty queue. Set a listening socket to BT_CLOSED while its lock is still\nheld, before dropping the lock and draining the queue. The state check in\nrfcomm_connect_ind() then rejects new children once cleanup starts.",
   "datePublished": "Oct 6, 2026, 8:45:50 AM",
-  "dateUpdated": "Oct 6, 2026, 8:45:50 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:55 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/eb4adaa46e4c9e6efa7be3ce06398f4d7c39b57c\nhttps://git.kernel.org/stable/c/4aafb47301a799d3e01230d6568c4e93524e1523\nhttps://git.kernel.org/stable/c/c741977e413f5b49d306700820fb55ccb8269f5a\nhttps://git.kernel.org/stable/c/c6792c441767256030606eb82dca5d5fc360dd9a\nhttps://git.kernel.org/stable/c/bfce253f039eb5f58b810af267942a9f59207254\nhttps://git.kernel.org/stable/c/18174b166547ef41973cc19feb5ef9cab39a8def\nhttps://git.kernel.org/stable/c/801fb950cae7048eb7d83b18857d1ca37b8cd5a4\n",
   "aliases": "CVE-2026-98290\nGHSA-vgg6-jhr8-9c2m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "16a4d78b-daee-364d-9a1f-ef38102eb0c5",

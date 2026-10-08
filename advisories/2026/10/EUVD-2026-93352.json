@@ -3,12 +3,14 @@
   "enisaUuid": "12b409e7-9647-34c4-869f-86a978e3f56e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: Clear association under lock if siw_qp_modify fails in siw_accept\n\nWe need to clear cep before release state_lock as siw_qp_llp_close and\nsiw_qp_modify->siw_qp_llp_close did.\n\nOtherwise if siw_qp_modify() fails in siw_accept(), the QP's state_lock\nis released before the error path cleanup. A concurrent ibv_modify_qp()\ntransitioning the QP to ERROR can race in this window:\n\n  siw_accept()                       ibv_modify_qp(ERROR)\n  ----------------------             ----------------------\n  siw_qp_modify() fails\n  up_write(&qp->state_lock)\n                                     down_write(&qp->state_lock)\n                                     nextstate_from_idle():\n\t\t\t\t     if (qp->cep)\n                                       siw_cep_put(qp->cep) <- frees cep\n                                       qp->cep = NULL\n  goto error\n    cep->qp = NULL                   <- UAF\n\nClear qp->cep and drop the association reference taken by siw_cep_get(),\nall under the write lock held from the initial down_write(&qp->state_lock).\nThread B therefore sees qp->cep == NULL, skips its own put, and cannot free\nthe cep before siw_accept() is done with it.",
   "datePublished": "Oct 6, 2026, 8:46:52 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:52 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:50:20 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f11e09fe2fc3a11ccdf8f932b68181b0bb1d2078\nhttps://git.kernel.org/stable/c/e3f039082856adab7e195dea1af45d93dd6a3f1c\nhttps://git.kernel.org/stable/c/ad50d19f3d1ce052b3a146143581e930a1efb33e\nhttps://git.kernel.org/stable/c/030306bbb9273af80f14d7af20129661964cd9a7\nhttps://git.kernel.org/stable/c/df2584750314336edcbcc21fb388e04b260f35b7\nhttps://git.kernel.org/stable/c/9dcc0f4e488b70cff81e0e5717a498c929cf5de3\nhttps://git.kernel.org/stable/c/bfdc744bf20ae4c3ef2e470298de5237c5c9a13c\nhttps://git.kernel.org/stable/c/32cd87f54dd1070020e664ccb0312a9f0fea79b4\n",
   "aliases": "CVE-2026-98367\nGHSA-whp9-3996-xqg3\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "047e0396-59df-3ae4-bb8c-10c2ada927e1",

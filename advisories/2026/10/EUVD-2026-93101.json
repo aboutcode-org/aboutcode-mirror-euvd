@@ -3,12 +3,14 @@
   "enisaUuid": "fb07f51e-9b9b-3524-8f3f-d1a89b88603c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-after-free of iface in cifs_try_adding_channels()\n\ncifs_try_adding_channels() iterates ses->iface_list with\nlist_for_each_entry_safe_from(), which captures the next entry\n(niface) under iface_lock.  The loop body then drops iface_lock for\nthe whole duration of cifs_ses_add_channel().\n\nA concurrent interface refresh (SMB3_request_interfaces() ->\nparse_server_interfaces()) marks all ifaces inactive and removes and\nfrees any that are not re-advertised via list_del() + kref_put(),\nwhere release_iface() is a bare kfree().  Since niface typically has\nno channel holding a reference, the list reference is its last and it\ncan be freed inside the unlocked window.  On continue, the iterator\nadvance step then dereferences niface->iface_head.next, and the loop\nbody reads iface->rdma_capable/is_active, both on freed memory.\n\nFix this by never keeping an unreferenced list pointer across the\nunlocked window.  Each channel attempt now re-scans the list from the\nhead under iface_lock, takes a kref on the selected candidate, and\npasses only that referenced candidate to cifs_ses_add_channel().\nweight_fulfilled still tracks selection progress, so restarting the\nscan preserves the original weighted distribution and the\nweight_fulfilled-before-kref_put ordering on the failure path.\n\nAdd a per-pass attempts cap so a flapping interface refresh cannot\nkeep the inner loop spinning within a single tries increment.",
   "datePublished": "Oct 6, 2026, 8:44:17 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:17 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:22 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c941f1ebfd26f683de81091473f3596a218abff0\nhttps://git.kernel.org/stable/c/e99040e5e9c60441e6b4725e1a7b88c3106ae903\nhttps://git.kernel.org/stable/c/ec36b38e65596950e6c29bed7dfc90b98707c19c\nhttps://git.kernel.org/stable/c/d034e836eefd7ce75e588f7031cffbeec594f5ac\n",
   "aliases": "CVE-2026-98173\nGHSA-7vf5-5xh7-53fm\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "08b8aae5-172e-34dc-be1b-4b6d69659d80",

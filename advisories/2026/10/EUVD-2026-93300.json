@@ -3,12 +3,14 @@
   "enisaUuid": "d2c9828a-d96f-385a-a58e-51ae8bb6b066",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: protect runlist updates with the runlist lock\n\nntfs_non_resident_attr_shrink() calls runlist helpers that require the\nrunlist write lock, but did not hold it while freeing clusters and\ntruncating the runlist. Serialize those operations and the resident\nconversion with the runlist lock.\n\nntfs_attr_map_cluster() can merge a newly allocated run before updating\nmapping pairs. If the update fails, free the clusters and restore both\nthe in-memory runlist and on-disk mapping pairs from a saved runlist.\nMark the volume in error if either rollback step fails.",
   "datePublished": "Oct 6, 2026, 8:46:10 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:10 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:59 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/742797432e8c9b0dd54ecc523c185e26b09d79a0\nhttps://git.kernel.org/stable/c/91709ba5d6d709b2b663287b7e871e2c6b480502\n",
   "aliases": "CVE-2026-98315\nGHSA-32pv-963j-mqgr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "017a32c2-a924-39f3-8492-2129a414f5b2",

@@ -3,12 +3,14 @@
   "enisaUuid": "2b086e35-598d-38d7-975d-b94d1f4e6c58",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libipw: reject too-short association responses\n\nlibipw_handle_assoc_resp() reads the capability, status and aid fields\nof the 30-byte association response prefix and then computes the\ninformation element length as\n\n\tstats->len - sizeof(*frame)\n\nstats->len is a u16 and sizeof() has type size_t, so the subtraction is\nevaluated as size_t and wraps instead of going negative.  Truncating\nthat to the u16 length parameter of libipw_parse_info_param() turns a\nframe shorter than the fixed fields into a length near 64 KiB, and the\nparser then reads past the receive buffer.\n\nBoth the ipw2100 and ipw2200 management receive paths reach this\nfunction having established only that the frame carries the generic\n24-byte three-address header.\n\nReject the frame before any fixed field is touched.\n\nFound by an AI-assisted review of length arithmetic in management frame\nparsers.  Verified with a KUnit case under Generic KASAN on arm64 under\nQEMU; I do not have the hardware, so it is not tested on a real device.",
   "datePublished": "Oct 6, 2026, 8:46:36 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:36 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:50:10 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/766268b429ae26d8ca599031fa962b0fe4673120\nhttps://git.kernel.org/stable/c/d70bdb84cf1782039384c1ffa7a18b0303c286a7\nhttps://git.kernel.org/stable/c/400b89217058fac672134a0d4092c8493dadb8ad\nhttps://git.kernel.org/stable/c/46aa75291056b6dc5faaf956dffdb3e9662477b0\nhttps://git.kernel.org/stable/c/e3025ecdb2057f866c09e059fc1466e81d6f243e\nhttps://git.kernel.org/stable/c/14cb425ba1f3a5d849e3bbc3d02d84e0ae195dbb\nhttps://git.kernel.org/stable/c/af1b69be19c34e28c0ae54bee954b58cd076969a\nhttps://git.kernel.org/stable/c/adb7118b7d2cfd7e8213c17d7d2829f353017754\n",
   "aliases": "CVE-2026-98348\nGHSA-jch8-34rh-p8cm\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0788f676-aad5-36bd-886b-37e35748a705",

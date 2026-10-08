@@ -3,14 +3,14 @@
   "enisaUuid": "5167aa4c-3184-3dd1-80bf-841d04ace72d",
   "description": "A flaw was found in rubygem-katello. The RegistryProxiesController in Katello contains an authorization bypass vulnerability due to an execution fall-through in the registry_authorize filter. While the application identifies unauthorized requests and triggers an error response via the unauthorized method, it fails to halt the execution of the current code path (missing return statement). This failure in the control flow allows the application to proceed into subsequent business logic and database validation filters. Consequently, the application reveals its internal state through differential responses, allowing an unprivileged attacker to enumerate valid Users, Organizations, and Products across the entire instance.",
   "datePublished": "Oct 1, 2026, 5:14:56 PM",
-  "dateUpdated": "Oct 2, 2026, 5:36:36 PM",
+  "dateUpdated": "Oct 7, 2026, 6:12:11 AM",
   "baseScore": 4.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2026:74503\nhttps://access.redhat.com/errata/RHSA-2026:74504\nhttps://access.redhat.com/errata/RHSA-2026:74505\nhttps://access.redhat.com/errata/RHSA-2026:74506\nhttps://access.redhat.com/security/cve/CVE-2026-56098\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2490542\n",
   "aliases": "CVE-2026-56098\nGHSA-f6cg-x72x-c392\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.31,
   "enisaIdProduct": [
     {
       "id": "11b71f9d-bf32-3b77-b466-4457d5a4c286",

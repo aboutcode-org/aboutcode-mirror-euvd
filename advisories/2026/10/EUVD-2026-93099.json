@@ -3,12 +3,14 @@
   "enisaUuid": "59fe7303-4af7-32d4-9323-df7f36fb2027",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix next_buffer UAF and NextCommand bounds in compound PDUs\n\nFix several related bounds checking and pointer lifecycle issues in\nreceive_encrypted_standard()'s handling of compound encrypted frames:\n\n- Clear next_buffer after assigning it to server->bigbuf. A stale\n  next_buffer pointer can lead to a use-after-free on subsequent\n  error paths.\n- Update pdu_length to the decrypted plaintext size (buf_size). Using\n  the pre-decryption length allows NextCommand to point into stale\n  ciphertext residue.\n- Reject next_cmd values smaller than MID_HEADER_SIZE(server).\n- Fix an integer overflow in the upper bound check by verifying\n  pdu_length - next_cmd < MID_HEADER_SIZE(server), ensuring the\n  trailing slice is large enough for a header.",
   "datePublished": "Oct 6, 2026, 8:44:15 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:15 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:20 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/72eaef1f37a3b6bec11c342736834dc3707be3e4\nhttps://git.kernel.org/stable/c/491e33144dee872cffda207f6fcb09260728f803\nhttps://git.kernel.org/stable/c/8749946579708ea0d339034bb7f423a67dbe89cf\nhttps://git.kernel.org/stable/c/96c436e4b010711452b2872558938f4ef276492a\nhttps://git.kernel.org/stable/c/858d5ac22cb889266993e7670f9f0c4f4aeedd78\nhttps://git.kernel.org/stable/c/05762c5bc1cfdcac36747994fde2c04387a457f1\n",
   "aliases": "GHSA-68gh-wq6f-89rf\nCVE-2026-98171\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0a89584a-f242-3a9f-92da-4e054aeb597c",

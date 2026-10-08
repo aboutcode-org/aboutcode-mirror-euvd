@@ -3,12 +3,14 @@
   "enisaUuid": "c8726883-3be5-3ce4-a24f-80e27327ef87",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: avoid reallocating confirmed conntrack labels\n\novs_ct_get_conn_labels() adds the labels extension when a conntrack\nentry does not have one.  Confirmed conntracks can be read locklessly,\nso adding an extension may reallocate and free the extension block\nwhile another CPU accesses it.\n\nOnly add the extension for unconfirmed conntracks.  A confirmed\nconntrack without labels now fails the caller's label operation instead\nof reallocating its extension storage.",
   "datePublished": "Oct 6, 2026, 8:45:18 AM",
-  "dateUpdated": "Oct 6, 2026, 8:45:18 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:38 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4371d79ea74407fb992c985b1f94391e35bb8289\nhttps://git.kernel.org/stable/c/7ff688aceada1160331a789385ea146f62fbddf7\nhttps://git.kernel.org/stable/c/05eab8dced6bf4d3009a6eeee16ddac99047dc83\nhttps://git.kernel.org/stable/c/579d87ec1e1e85729a6cb2c25961e58beb78640c\nhttps://git.kernel.org/stable/c/2e6dd889c325abf23821e1459c3ffef59b7f0009\nhttps://git.kernel.org/stable/c/d16f089bd700f45d720ce989d5495e1dc3be0cf8\nhttps://git.kernel.org/stable/c/8c9fcc6c33950d3db551af664d1fd3d998bfee56\nhttps://git.kernel.org/stable/c/3f118c8217c109fd13ca61caa301d72c483897ef\n",
   "aliases": "GHSA-6vh8-2x3v-qcxv\nCVE-2026-98251\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "04dd79f4-a61c-31ac-a08d-403254cd82d9",

@@ -3,12 +3,14 @@
   "enisaUuid": "bfff7640-160a-3d0c-8c10-480b55d5de02",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: fix refcount bug in iwpm_get_nlmsg_request()\n\niwpm_get_nlmsg_request() initializes refcount _after_ list_add_tail()\nmaking it accessible to global list where another CPU can kref_get()\non nlmsg_request causing a refcount \"addition on 0\" bug. Fix this\nby initializing kref _before_ list_add_tail() so refcount for\nnlmsg_request can be incremented/decremented normally. In addition,\nalso initialize every field before list_add_tail().",
   "datePublished": "Oct 6, 2026, 8:45:19 AM",
-  "dateUpdated": "Oct 6, 2026, 8:45:19 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:39 AM",
+  "baseScore": 7.0,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/52c13c63bb3662c108244e7447055e30bf40244e\nhttps://git.kernel.org/stable/c/8a91609032d47e77bcb37bc8f6e88d89340d2709\nhttps://git.kernel.org/stable/c/ce8a379598bd4058081416abea4279fd05a95374\nhttps://git.kernel.org/stable/c/2fbac8a56004b6ce54fbfe845d4b25da6e0b55e8\nhttps://git.kernel.org/stable/c/88e429a4e9bac3d2138011c5ca06254331f2587f\nhttps://git.kernel.org/stable/c/e15eb536be4f646ce683d2867572b2200be877f7\nhttps://git.kernel.org/stable/c/117871cdb8927542abd7b65ce5995bf0265a8c05\nhttps://git.kernel.org/stable/c/33fb59da49c4c3f5c2ec9f9d4447a56857a02c02\n",
   "aliases": "GHSA-vh89-8c9p-vvg2\nCVE-2026-98252\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "109a1260-d9a3-3742-8250-8ec7f0939a23",

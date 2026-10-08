@@ -3,12 +3,14 @@
   "enisaUuid": "1e695e53-0e82-33a2-9307-222ba46603ea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: hold reference on ct until flow is released\n\nnf_ct_put() releases the ct->ext area inmediately, the rcu typesafe\nsemantics also allow to refer to the wrong conntrack from the flowtable\ndatapath. Hold reference on ct until flow is released after rcu grace\nperiod.\n\nAdd rcu_barrier() on module exit path, to ensure pending flow entries\nare release before module goes away.",
   "datePublished": "Oct 6, 2026, 8:46:14 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:14 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:50:01 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/93ff1594be1aad4da364462dd8db050ebcfda2de\nhttps://git.kernel.org/stable/c/eed6997e8dc40593a539fcc722e7ed51b18db86c\nhttps://git.kernel.org/stable/c/61c6688be282277c6e91ab286a7acd0ae8681ac6\nhttps://git.kernel.org/stable/c/a43cd2b67b91e943273c913237a7a88c50cdcfbc\nhttps://git.kernel.org/stable/c/8274cdc5f9c57e17ed77fc4ba76212536c840f25\nhttps://git.kernel.org/stable/c/12c1ac230f4ca16e0017b62a963ab75e0b48074f\nhttps://git.kernel.org/stable/c/d9e6175a3ee48209ee65f294fc567b4e16b29b74\nhttps://git.kernel.org/stable/c/e75a9fa1d44bcbd66ea02e8781bcca6ea4076e0d\n",
   "aliases": "GHSA-7rm7-mf5x-673x\nCVE-2026-98320\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "108362c9-90bb-3696-a442-1c023c9e27e1",

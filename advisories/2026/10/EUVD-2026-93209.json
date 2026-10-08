@@ -3,12 +3,14 @@
   "enisaUuid": "ce275313-f51b-3f81-90bd-1e77ce4871ef",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfutex: Also allocate private hash on vfork()\n\nAs Jann demonstrated, it is entirely feasible to access the mm through vfork().\nTherefore we need to allocate a private hash on vfork() as well as any other\nCLONE_VM user.\n\nSpecifically, it must be avoided to have (private) futex waiters before\nallocating the private hash.",
   "datePublished": "Oct 6, 2026, 8:45:40 AM",
-  "dateUpdated": "Oct 6, 2026, 8:45:40 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 7, 2026, 6:49:52 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5468a4855b63b30156a79e5248e01bf1a2c18dd7\nhttps://git.kernel.org/stable/c/eecbafa8cabbc4d1482f6a5e2acc25a8f934681b\nhttps://git.kernel.org/stable/c/b61b6f95d6722ddbbbd09e689fa41b55fd36f9a5\n",
   "aliases": "GHSA-fwjp-32v8-7pp8\nCVE-2026-98281\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "13a9d53a-9c66-3f3c-8d99-7f882db62a43",
