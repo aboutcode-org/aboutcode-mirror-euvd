@@ -3,14 +3,14 @@
   "enisaUuid": "0eed7933-6dff-368d-96cb-2a802f1750ce",
   "description": "Better Auth relies on better-call, which uses the rou3 router library. In affected versions of rou3, paths are normalized by removing empty segments, so /path, //path, and ///path resolve to the same route. In Better Auth versions prior to 1.4.5 (which bundles the fixed rou3), this can allow attackers to bypass disabledPaths configuration and path-based rate limits by submitting requests with extra slashes in the URL path. The issue does not apply in deployments where the proxy or platform normalizes URLs by collapsing multiple slashes.",
   "datePublished": "Aug 2, 2026, 12:15:22 PM",
-  "dateUpdated": "Aug 3, 2026, 3:50:52 PM",
+  "dateUpdated": "Oct 8, 2026, 3:21:31 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/better-auth/better-auth/security/advisories/GHSA-x732-6j76-qmhm\nhttps://github.com/better-auth/better-auth/commit/f60b43fa648399534507c9ac7db36d705b8874c3\nhttps://www.vulncheck.com/advisories/better-auth-before-path-normalization-bypass-via-rou3\n",
   "aliases": "CVE-2025-71399\nGHSA-9fq7-6g6p-g9rm\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.52,
   "enisaIdProduct": [
     {
       "id": "ec11c9f8-0cd1-3845-83ce-0343339951aa",

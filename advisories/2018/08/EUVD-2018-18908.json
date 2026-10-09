@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2018-18908",
+  "enisaUuid": "1f566bfe-1a31-3bd4-b99d-d2b8496abd32",
+  "description": "In all versions of Node.js 10 prior to 10.9.0, an argument processing flaw can cause `Buffer.alloc()` to return uninitialized memory. This method is intended to be safe and only return initialized, or cleared, memory. The third argument specifying `encoding` can be passed as a number, this is misinterpreted by `Buffer's` internal \"fill\" method as the `start` to a fill operation. This flaw may be abused where `Buffer.alloc()` arguments are derived from user input to return uncleared memory blocks that may contain sensitive information.",
+  "datePublished": "Aug 21, 2018, 1:00:00 PM",
+  "dateUpdated": "Oct 8, 2026, 9:14:05 PM",
+  "baseScore": null,
+  "references": "https://access.redhat.com/errata/RHSA-2018:2553\nhttps://nodejs.org/en/blog/vulnerability/august-2018-security-releases/\n",
+  "aliases": "CVE-2018-7166\nGHSA-6v28-c2x2-8p46\n",
+  "assigner": "nodejs",
+  "epss": 2.79,
+  "enisaIdProduct": [
+    {
+      "id": "d11a6b36-b0c7-36d0-abdb-d759ca2bc206",
+      "product": {
+        "name": "Node.js",
+        "vendor": {
+          "name": "Node.js"
+        }
+      },
+      "product_version": "All versions of Node.js 10 prior to 10.9.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4139a7b3-6022-30d1-86ff-46b5216889b6",
+      "vendor": {
+        "name": "The Node.js Project"
+      }
+    }
+  ]
+}

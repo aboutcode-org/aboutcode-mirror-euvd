@@ -3,14 +3,14 @@
   "enisaUuid": "dfef33c0-945c-35a9-a473-1dc35e9ec2c8",
   "description": "A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server (389-ds-base). In sasl_io_start_packet(), the wrapped-record length read from the wire is validated only against an upper bound. A small wire length (0, 1, or 2) produces an encrypted_buffer_count below the already-consumed encrypted_buffer_offset, causing an unsigned subtraction underflow in sasl_io_read_packet(). PR_Recv is then requested to read approximately 4 GiB into a 1024-byte heap buffer, resulting in a heap buffer overflow with attacker-controlled content. After a successful SASL bind with integrity protection (SSF > 0), a remote authenticated attacker can cause a denial of service or potentially achieve remote code execution. This flaw is distinct from CVE-2026-11774, whose fix only guards against upper-bound overflow.",
   "datePublished": "Sep 7, 2026, 2:14:43 PM",
-  "dateUpdated": "Sep 8, 2026, 9:58:57 PM",
+  "dateUpdated": "Oct 8, 2026, 2:14:49 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:64771\nhttps://access.redhat.com/errata/RHSA-2026:64776\nhttps://access.redhat.com/errata/RHSA-2026:64778\nhttps://access.redhat.com/errata/RHSA-2026:64779\nhttps://access.redhat.com/errata/RHSA-2026:64780\nhttps://access.redhat.com/errata/RHSA-2026:64781\nhttps://access.redhat.com/errata/RHSA-2026:64783\nhttps://access.redhat.com/errata/RHSA-2026:64784\nhttps://access.redhat.com/errata/RHSA-2026:64785\nhttps://access.redhat.com/errata/RHSA-2026:64789\nhttps://access.redhat.com/errata/RHSA-2026:64790\nhttps://access.redhat.com/errata/RHSA-2026:64791\nhttps://access.redhat.com/errata/RHSA-2026:64792\nhttps://access.redhat.com/errata/RHSA-2026:64793\nhttps://access.redhat.com/errata/RHSA-2026:64804\nhttps://access.redhat.com/errata/RHSA-2026:65119\nhttps://access.redhat.com/security/cve/CVE-2026-18355\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2509186\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64771\nhttps://access.redhat.com/errata/RHSA-2026:64776\nhttps://access.redhat.com/errata/RHSA-2026:64778\nhttps://access.redhat.com/errata/RHSA-2026:64779\nhttps://access.redhat.com/errata/RHSA-2026:64780\nhttps://access.redhat.com/errata/RHSA-2026:64781\nhttps://access.redhat.com/errata/RHSA-2026:64783\nhttps://access.redhat.com/errata/RHSA-2026:64784\nhttps://access.redhat.com/errata/RHSA-2026:64785\nhttps://access.redhat.com/errata/RHSA-2026:64789\nhttps://access.redhat.com/errata/RHSA-2026:64790\nhttps://access.redhat.com/errata/RHSA-2026:64791\nhttps://access.redhat.com/errata/RHSA-2026:64792\nhttps://access.redhat.com/errata/RHSA-2026:64793\nhttps://access.redhat.com/errata/RHSA-2026:64804\nhttps://access.redhat.com/errata/RHSA-2026:65119\nhttps://access.redhat.com/errata/RHSA-2026:79217\nhttps://access.redhat.com/security/cve/CVE-2026-18355\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2509186\n",
   "aliases": "GHSA-r5vv-79fp-2427\nCVE-2026-18355\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.84,
   "enisaIdProduct": [
     {
       "id": "0d34e2f6-98f2-3f29-bfa5-50a02685d537",
@@ -81,6 +81,16 @@
         }
       },
       "product_version": "patch: 9040020260903102623.1674d574"
+    },
+    {
+      "id": "40482d30-2984-3c9c-8723-54df295488c3",
+      "product": {
+        "name": "Red Hat Directory Server 11.5 E4S for RHEL 8",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 8060020260908152739.0ca98e7e"
     },
     {
       "id": "4c35d0ac-6fa1-3127-b021-b13e2230c8b3",

@@ -3,28 +3,24 @@
   "enisaUuid": "8fb84976-0e8f-3b7f-86c6-5a944c9bf606",
   "description": "Spreecommerce versions prior to 0.60.2 contains a remote command execution vulnerability in its search functionality. The application fails to properly sanitize input passed via the search[send][] parameter, which is dynamically invoked using Ruby\u2019s send method. This allows attackers to execute arbitrary shell commands on the server without authentication.",
   "datePublished": "Aug 13, 2025, 8:53:33 PM",
-  "dateUpdated": "May 15, 2026, 11:13:42 AM",
+  "dateUpdated": "Oct 8, 2026, 3:20:42 PM",
   "baseScore": 10.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
   "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/spree_search_exec.rb\nhttps://www.exploit-db.com/exploits/17941\nhttps://web.archive.org/web/20111009192436/http://spreecommerce.com/blog/2011/10/05/remote-command-product-group/\nhttps://www.vulncheck.com/advisories/spreecommerce-search-parameter-rce\nhttps://github.com/orgs/spree\n",
   "aliases": "GHSA-97vm-c39p-jr86\nCVE-2011-10019\n",
   "assigner": "VulnCheck",
-  "epss": 69.31,
+  "epss": 5.76,
   "enisaIdProduct": [
     {
       "id": "2a394152-62c0-35a0-91d5-497b472fbbe8",
       "product": {
-        "name": "Spreecommerce"
+        "name": "Spreecommerce",
+        "vendor": {
+          "name": "Spreecommerce"
+        }
       },
       "product_version": "0 <0.60.2"
-    },
-    {
-      "id": "ff6b6eed-88ec-36a2-b1b9-2f28674820a7",
-      "product": {
-        "name": "Spreecommerce"
-      },
-      "product_version": "* <0.60.2"
     }
   ],
   "enisaIdVendor": [
