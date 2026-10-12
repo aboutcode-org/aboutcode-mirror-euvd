@@ -3,12 +3,12 @@
   "enisaUuid": "9e0353fb-da87-3f3a-8c7b-6b4278dbdf16",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs,fsverity: remove check for fsverity being enabled in setattr_prepare()\n\nThe check that fs-verity is available in the kernel is not necessary\nhere. Filesystems could have fsverity files even without fs-verity\nenabled. In that case, truncate on fsverity file will succeed, what this\ncheck is trying to prevent.",
   "datePublished": "Aug 22, 2026, 3:31:46 PM",
-  "dateUpdated": "Aug 22, 2026, 3:31:46 PM",
+  "dateUpdated": "Oct 11, 2026, 1:47:10 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2d2b2ed7bdcc6df4942292318c5455b5e94ba525\nhttps://git.kernel.org/stable/c/d2f96bcb89d36d488a10e3bcf819b98536968286\n",
+  "references": "https://git.kernel.org/stable/c/b4c0c41b952c21baed3f822eab508ebbd1d355d9\nhttps://git.kernel.org/stable/c/2d2b2ed7bdcc6df4942292318c5455b5e94ba525\nhttps://git.kernel.org/stable/c/d2f96bcb89d36d488a10e3bcf819b98536968286\n",
   "aliases": "GHSA-f86r-w2jg-m648\nCVE-2026-74596\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "072afb47-cbf6-3884-81c1-ba5d0c7c9c00",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "d9710f48-b5db-32d7-aea3-d1ab3b7c97cc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2efdeec99ca09a9d638e1bcdc1a4afbfe3b4f2ec <b4c0c41b952c21baed3f822eab508ebbd1d355d9"
     },
     {
       "id": "dd2751ba-5113-30cc-b2f7-bb68371a0f0a",

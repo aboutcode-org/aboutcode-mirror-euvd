@@ -3,12 +3,12 @@
   "enisaUuid": "641e2697-3a68-3ab4-84ad-9a507c888fff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read\n\nReject voltage objects whose usSize is smaller than the header or would\nadvance the cursor past the table end, preventing an infinite loop or\nheap OOB read when the VBIOS supplies a malformed VoltageObjectInfo table.",
   "datePublished": "Sep 17, 2026, 4:12:07 PM",
-  "dateUpdated": "Sep 17, 2026, 4:12:07 PM",
+  "dateUpdated": "Oct 11, 2026, 1:47:16 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
+  "references": "https://git.kernel.org/stable/c/0a6c9b3801903b6db91f3cbf148646b501dbded3\nhttps://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
   "aliases": "CVE-2026-93179\nGHSA-636p-hq8h-v2cp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "102cb583-f3dd-3daf-9b39-c043a3a84245",
@@ -31,6 +31,16 @@
       "product_version": "patch: 7.3-rc1"
     },
     {
+      "id": "8b3decd0-69eb-3326-aadf-f4427e7bf1c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.56"
+    },
+    {
       "id": "9ad93426-04b6-36e1-ba3b-cd4df5cc27bc",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "patch: 7.2.6"
+    },
+    {
+      "id": "c047cc11-b4a8-3530-9be6-862cd22dc2e1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c82baa28184356a75c0157129f88af42b2e7b695 <0a6c9b3801903b6db91f3cbf148646b501dbded3"
     },
     {
       "id": "e8fd2172-1a99-3da5-800c-4d067d22c699",
