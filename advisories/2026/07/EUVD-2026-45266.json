@@ -3,11 +3,11 @@
   "enisaUuid": "b14c31d4-519a-3b55-b527-502e7fb7baad",
   "description": "A flaw was found in xdgmime. A heap-based buffer overflow can be triggered in _xdg_mime_magic_parse_magic_line() in the xdgmimemagic.c file on little-endian systems when an attacker-controlled MIME magic file in a user-writable XDG data location (e.g., in the $XDG_DATA_HOME/mime/magic path) is parsed by an application performing MIME type detection (e.g., via g_content_type_guess()). When performing byte-swap, incorrect pointer arithmetic on the write side causes an out-of-bounds write of 2 bytes, resulting in an application crash or memory corruption.",
   "datePublished": "Jul 17, 2026, 7:44:40 PM",
-  "dateUpdated": "Oct 13, 2026, 8:48:08 AM",
+  "dateUpdated": "Oct 14, 2026, 7:24:56 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:64799\nhttps://access.redhat.com/errata/RHSA-2026:64800\nhttps://access.redhat.com/errata/RHSA-2026:66451\nhttps://access.redhat.com/errata/RHSA-2026:67956\nhttps://access.redhat.com/errata/RHSA-2026:70636\nhttps://access.redhat.com/errata/RHSA-2026:71403\nhttps://access.redhat.com/errata/RHSA-2026:71404\nhttps://access.redhat.com/errata/RHSA-2026:71405\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/errata/RHSA-2026:74359\nhttps://access.redhat.com/errata/RHSA-2026:74360\nhttps://access.redhat.com/errata/RHSA-2026:74361\nhttps://access.redhat.com/errata/RHSA-2026:74362\nhttps://access.redhat.com/errata/RHSA-2026:74363\nhttps://access.redhat.com/errata/RHSA-2026:74364\nhttps://access.redhat.com/errata/RHSA-2026:74365\nhttps://access.redhat.com/errata/RHSA-2026:74450\nhttps://access.redhat.com/errata/RHSA-2026:74458\nhttps://access.redhat.com/errata/RHSA-2026:74459\nhttps://access.redhat.com/errata/RHSA-2026:74460\nhttps://access.redhat.com/errata/RHSA-2026:74461\nhttps://access.redhat.com/errata/RHSA-2026:74462\nhttps://access.redhat.com/errata/RHSA-2026:74463\nhttps://access.redhat.com/errata/RHSA-2026:74674\nhttps://access.redhat.com/errata/RHSA-2026:74677\nhttps://access.redhat.com/errata/RHSA-2026:74678\nhttps://access.redhat.com/errata/RHSA-2026:74679\nhttps://access.redhat.com/errata/RHSA-2026:74681\nhttps://access.redhat.com/errata/RHSA-2026:74683\nhttps://access.redhat.com/errata/RHSA-2026:74685\nhttps://access.redhat.com/errata/RHSA-2026:74687\nhttps://access.redhat.com/errata/RHSA-2026:74688\nhttps://access.redhat.com/errata/RHSA-2026:74771\nhttps://access.redhat.com/errata/RHSA-2026:75652\nhttps://access.redhat.com/errata/RHSA-2026:75654\nhttps://access.redhat.com/errata/RHSA-2026:75655\nhttps://access.redhat.com/errata/RHSA-2026:75657\nhttps://access.redhat.com/errata/RHSA-2026:75658\nhttps://access.redhat.com/errata/RHSA-2026:75659\nhttps://access.redhat.com/errata/RHSA-2026:75660\nhttps://access.redhat.com/errata/RHSA-2026:76042\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:80756\nhttps://access.redhat.com/errata/RHSA-2026:81127\nhttps://access.redhat.com/errata/RHSA-2026:82059\nhttps://access.redhat.com/errata/RHSA-2026:82061\nhttps://access.redhat.com/errata/RHSA-2026:82066\nhttps://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64799\nhttps://access.redhat.com/errata/RHSA-2026:64800\nhttps://access.redhat.com/errata/RHSA-2026:66451\nhttps://access.redhat.com/errata/RHSA-2026:67956\nhttps://access.redhat.com/errata/RHSA-2026:70636\nhttps://access.redhat.com/errata/RHSA-2026:71403\nhttps://access.redhat.com/errata/RHSA-2026:71404\nhttps://access.redhat.com/errata/RHSA-2026:71405\nhttps://access.redhat.com/errata/RHSA-2026:72394\nhttps://access.redhat.com/errata/RHSA-2026:72395\nhttps://access.redhat.com/errata/RHSA-2026:72399\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:72502\nhttps://access.redhat.com/errata/RHSA-2026:73859\nhttps://access.redhat.com/errata/RHSA-2026:73909\nhttps://access.redhat.com/errata/RHSA-2026:73929\nhttps://access.redhat.com/errata/RHSA-2026:73930\nhttps://access.redhat.com/errata/RHSA-2026:73959\nhttps://access.redhat.com/errata/RHSA-2026:73960\nhttps://access.redhat.com/errata/RHSA-2026:73961\nhttps://access.redhat.com/errata/RHSA-2026:73962\nhttps://access.redhat.com/errata/RHSA-2026:74359\nhttps://access.redhat.com/errata/RHSA-2026:74360\nhttps://access.redhat.com/errata/RHSA-2026:74361\nhttps://access.redhat.com/errata/RHSA-2026:74362\nhttps://access.redhat.com/errata/RHSA-2026:74363\nhttps://access.redhat.com/errata/RHSA-2026:74364\nhttps://access.redhat.com/errata/RHSA-2026:74365\nhttps://access.redhat.com/errata/RHSA-2026:74450\nhttps://access.redhat.com/errata/RHSA-2026:74458\nhttps://access.redhat.com/errata/RHSA-2026:74459\nhttps://access.redhat.com/errata/RHSA-2026:74460\nhttps://access.redhat.com/errata/RHSA-2026:74461\nhttps://access.redhat.com/errata/RHSA-2026:74462\nhttps://access.redhat.com/errata/RHSA-2026:74463\nhttps://access.redhat.com/errata/RHSA-2026:74674\nhttps://access.redhat.com/errata/RHSA-2026:74677\nhttps://access.redhat.com/errata/RHSA-2026:74678\nhttps://access.redhat.com/errata/RHSA-2026:74679\nhttps://access.redhat.com/errata/RHSA-2026:74681\nhttps://access.redhat.com/errata/RHSA-2026:74683\nhttps://access.redhat.com/errata/RHSA-2026:74685\nhttps://access.redhat.com/errata/RHSA-2026:74687\nhttps://access.redhat.com/errata/RHSA-2026:74688\nhttps://access.redhat.com/errata/RHSA-2026:74771\nhttps://access.redhat.com/errata/RHSA-2026:75652\nhttps://access.redhat.com/errata/RHSA-2026:75654\nhttps://access.redhat.com/errata/RHSA-2026:75655\nhttps://access.redhat.com/errata/RHSA-2026:75657\nhttps://access.redhat.com/errata/RHSA-2026:75658\nhttps://access.redhat.com/errata/RHSA-2026:75659\nhttps://access.redhat.com/errata/RHSA-2026:75660\nhttps://access.redhat.com/errata/RHSA-2026:76042\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:80756\nhttps://access.redhat.com/errata/RHSA-2026:81127\nhttps://access.redhat.com/errata/RHSA-2026:82059\nhttps://access.redhat.com/errata/RHSA-2026:82061\nhttps://access.redhat.com/errata/RHSA-2026:82066\nhttps://access.redhat.com/errata/RHSA-2026:82304\nhttps://access.redhat.com/errata/RHSA-2026:82322\nhttps://access.redhat.com/errata/RHSA-2026:82336\nhttps://access.redhat.com/errata/RHSA-2026:82347\nhttps://access.redhat.com/errata/RHSA-2026:82354\nhttps://access.redhat.com/errata/RHSA-2026:82368\nhttps://access.redhat.com/errata/RHSA-2026:82371\nhttps://access.redhat.com/errata/RHSA-2026:82372\nhttps://access.redhat.com/errata/RHSA-2026:82415\nhttps://access.redhat.com/errata/RHSA-2026:82857\nhttps://access.redhat.com/errata/RHSA-2026:82888\nhttps://access.redhat.com/security/cve/CVE-2026-16118\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2501732\nhttps://gitlab.freedesktop.org/xdg/xdgmime/-/work_items/41\n",
   "aliases": "GHSA-cp7g-r78m-cc2g\nCVE-2026-16118\n",
   "assigner": "redhat",
   "epss": 0.28,
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:2.68.4-14.el9_4.9"
+    },
+    {
+      "id": "09053a58-d426-31e8-8bce-ffa4bd8da317",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789029076"
     },
     {
       "id": "09d07fef-995d-35e1-b231-68ce861537e5",
@@ -123,6 +133,16 @@
       "product_version": "patch: 1790598593"
     },
     {
+      "id": "272680c4-012f-3797-8035-7bd272e8d0d2",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791818357"
+    },
+    {
       "id": "27cd8ff2-2651-3f31-a22f-57089caf8c27",
       "product": {
         "name": "Red Hat OpenShift AI 3.2",
@@ -131,6 +151,36 @@
         }
       },
       "product_version": "patch: 1790703494"
+    },
+    {
+      "id": "28b8fb2f-6a2e-3ebe-8221-419f07c24621",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459707"
+    },
+    {
+      "id": "2e3bd4ca-1aa7-3817-9167-383acbd56c37",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791970484"
+    },
+    {
+      "id": "2fdc1bee-d693-3e79-b89e-c0945f2141a9",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791788287"
     },
     {
       "id": "34486023-17b9-3e7a-a80c-fea551c04937",
@@ -183,6 +233,16 @@
       "product_version": "patch: 1790703631"
     },
     {
+      "id": "37101a00-870c-3fe4-93ec-730c8657d7ea",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791371080"
+    },
+    {
       "id": "388c0233-15b9-35c2-b318-87e11b7b38ba",
       "product": {
         "name": "Red Hat AI Inference Server 3.2",
@@ -211,6 +271,16 @@
         }
       },
       "product_version": "patch: 1790223279"
+    },
+    {
+      "id": "4432fe26-841d-3a3a-a64f-167d217d20b8",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459711"
     },
     {
       "id": "4469ef0d-6430-3f4e-a331-9e725e26f712",
@@ -323,6 +393,16 @@
       "product_version": "patch: 1790703539"
     },
     {
+      "id": "6ceaf231-257a-38b4-a1fd-dbf23f80617f",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791473631"
+    },
+    {
       "id": "6e2feefe-7a66-3ed9-90d0-d41b3ef0c056",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -331,6 +411,26 @@
         }
       },
       "product_version": "patch: 1790703706"
+    },
+    {
+      "id": "6e4462c2-2b60-3aae-b90f-bfebfd9f925a",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791378395"
+    },
+    {
+      "id": "751e5003-b36b-3271-b250-b1e367188aa6",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791473614"
     },
     {
       "id": "7988eadc-5992-3928-a7a3-20682e17ff56",
@@ -533,6 +633,16 @@
       "product_version": "patch: 1790703590"
     },
     {
+      "id": "d4c8b463-bd01-35ce-ae3b-c1ac2bab4419",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791966259"
+    },
+    {
       "id": "d6117a45-fef0-37ba-8bb4-2de3400085bc",
       "product": {
         "name": "Red Hat OpenShift AI 3.3",
@@ -551,6 +661,16 @@
         }
       },
       "product_version": "patch: 1791232257"
+    },
+    {
+      "id": "d98a88c7-a1ea-3860-937f-2504c81f0fed",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459759"
     },
     {
       "id": "dc84d696-19d5-3c50-b79c-dc5abdd37db9",
@@ -611,6 +731,16 @@
         }
       },
       "product_version": "patch: 1790703656"
+    },
+    {
+      "id": "f251cdd4-b9be-3236-bca9-c5f0f05700fa",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791371069"
     },
     {
       "id": "f4a54ab8-f8c0-373c-82ee-66dc2d42a6b2",

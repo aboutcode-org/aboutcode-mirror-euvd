@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2022-42950",
+  "enisaUuid": "a79e6ecb-b8a4-351c-a863-334d92c674f1",
+  "description": "A flaw was found in the Linux kernel\u2019s networking code. A use-after-free was found in the way the sch_sfb enqueue function used the socket buffer (SKB) cb field after the same SKB had been enqueued (and freed) into a child qdisc. This flaw allows a local, unprivileged user to crash the system, causing a denial of service.",
+  "datePublished": "Oct 19, 2022, 12:00:00 AM",
+  "dateUpdated": "Oct 14, 2026, 1:51:39 PM",
+  "baseScore": 5.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+  "references": "https://github.com/torvalds/linux/commit/9efd23297cca\nhttps://www.zerodayinitiative.com/advisories/upcoming/\nhttps://lists.debian.org/debian-lts-announce/2022/11/msg00001.html\n",
+  "aliases": "GHSA-rvvq-r3qv-fpwc\nCVE-2022-3586\n",
+  "assigner": "redhat",
+  "epss": 0.48,
+  "enisaIdProduct": [
+    {
+      "id": "f3534673-5a41-3b33-8e2e-88405431bc65",
+      "product": {
+        "name": "Linux kernel",
+        "vendor": {
+          "name": "n/a"
+        }
+      },
+      "product_version": "Fixed in kernel v6.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "1a72c77c-91d9-3a68-9a9b-5f03a61debec",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

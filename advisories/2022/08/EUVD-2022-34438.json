@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2022-34438",
+  "enisaUuid": "d37dfa03-2f0e-3232-af39-fe4743c2389c",
+  "description": "A flaw was found in the Linux kernel\u2019s KVM when attempting to set a SynIC IRQ. This issue makes it possible for a misbehaving VMM to write to SYNIC/STIMER MSRs, causing a NULL pointer dereference. This flaw allows an unprivileged local attacker on the host to issue specific ioctl calls, causing a kernel oops condition that results in a denial of service.",
+  "datePublished": "Aug 31, 2022, 12:00:00 AM",
+  "dateUpdated": "Oct 14, 2026, 1:07:01 PM",
+  "baseScore": null,
+  "references": "https://bugzilla.redhat.com/show_bug.cgi?id=2069736\nhttps://www.openwall.com/lists/oss-security/2022/06/22/1\nhttps://github.com/torvalds/linux/commit/7ec37d1cbe17d8189d9562178d8b29167fe1c31a\nhttps://github.com/torvalds/linux/commit/00b5f37189d24ac3ed46cb7f11742094778c46ce\nhttps://github.com/torvalds/linux/commit/b1e34d325397a33d97d845e312d7cf2a8b646b44\nhttps://lists.debian.org/debian-lts-announce/2022/10/msg00000.html\nhttps://lists.debian.org/debian-lts-announce/2022/11/msg00001.html\n",
+  "aliases": "CVE-2022-2153\nGHSA-m5gv-cmjh-79r8\n",
+  "assigner": "redhat",
+  "epss": 0.47,
+  "enisaIdProduct": [
+    {
+      "id": "db3ea392-452d-3c73-b4b4-582c245a2025",
+      "product": {
+        "name": "Kernel",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "kernel 5.18"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "cf453fcc-2ff5-3bc6-b600-9ee100fab90d",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

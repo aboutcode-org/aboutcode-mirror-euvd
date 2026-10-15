@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2021-14851",
+  "enisaUuid": "ad79f972-4c1d-3a03-9382-076f93f5aed7",
+  "description": "An issue was discovered in GNOME GLib before 2.66.8. When g_file_replace() is used with G_FILE_CREATE_REPLACE_DESTINATION to replace a path that is a dangling symlink, it incorrectly also creates the target of the symlink as an empty file, which could conceivably have security relevance if the symlink is attacker-controlled. (If the path is a symlink to a file that already exists, then the contents of that file correctly remain unchanged.)",
+  "datePublished": "Mar 11, 2021, 9:04:15 PM",
+  "dateUpdated": "Oct 14, 2026, 11:39:29 AM",
+  "baseScore": null,
+  "references": "https://gitlab.gnome.org/GNOME/glib/-/issues/2325\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6RXTD5HCP2K4AAUSWWZTBKQNHRCTAEOF/\nhttps://security.netapp.com/advisory/ntap-20210416-0003/\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ICUTQPHZNZWX2DZR46QFLQZRHVMHIILJ/\nhttps://security.gentoo.org/glsa/202107-13\nhttps://lists.debian.org/debian-lts-announce/2022/06/msg00006.html\n",
+  "aliases": "GHSA-9hh6-p5c5-mmmf\nCVE-2021-28153\n",
+  "assigner": "mitre",
+  "epss": 2.62,
+  "enisaIdProduct": [
+    {
+      "id": "076cbad8-438a-3c73-b9e9-45b04a7aec90",
+      "product": {
+        "name": "n/a",
+        "vendor": {
+          "name": "n/a"
+        }
+      },
+      "product_version": "n/a"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8dd521c1-0be4-37f1-8034-1e133accd52e",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

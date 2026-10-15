@@ -1,0 +1,32 @@
+{
+  "id": "EUVD-2021-7730",
+  "enisaUuid": "9c34c281-e8fc-36d0-a048-1726d8ac35c8",
+  "description": "A flaw was found in Nettle in versions before 3.7.2, where several Nettle signature verification functions (GOST DSA, EDDSA & ECDSA) result in the Elliptic Curve Cryptography point (ECC) multiply function being called with out-of-range scalers, possibly resulting in incorrect results. This flaw allows an attacker to force an invalid signature, causing an assertion failure or possible validation. The highest threat to this vulnerability is to confidentiality, integrity, as well as system availability.",
+  "datePublished": "Apr 5, 2021, 9:31:06 PM",
+  "dateUpdated": "Oct 14, 2026, 10:04:15 AM",
+  "baseScore": null,
+  "references": "https://bugzilla.redhat.com/show_bug.cgi?id=1942533\nhttps://security.gentoo.org/glsa/202105-31\nhttps://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/MQKWVVMAIDAJ7YAA3VVO32BHLDOH2E63/\nhttps://www.debian.org/security/2021/dsa-4933\nhttps://lists.debian.org/debian-lts-announce/2021/09/msg00008.html\nhttps://security.netapp.com/advisory/ntap-20211022-0002/\n",
+  "aliases": "GHSA-6xrq-2ww3-f6h5\nCVE-2021-20305\n",
+  "assigner": "redhat",
+  "epss": 1.69,
+  "enisaIdProduct": [
+    {
+      "id": "2939241b-d9b1-3282-809f-4b53700bc222",
+      "product": {
+        "name": "nettle",
+        "vendor": {
+          "name": "[UNKNOWN]"
+        }
+      },
+      "product_version": "nettle 3.7.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "8e04dbe4-bb40-3f3b-8577-bcea1fc814f9",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}

@@ -3,14 +3,14 @@
   "enisaUuid": "64d14084-b162-3fd0-947c-ec89acd03204",
   "description": "A flaw was identified in the RAR5 archive decompression logic of the libarchive library, specifically within the archive_read_data() processing path. When a specially crafted RAR5 archive is processed, the decompression routine may enter a state where internal logic prevents forward progress. This condition results in an infinite loop that continuously consumes CPU resources. Because the archive passes checksum validation and appears structurally valid, affected applications cannot detect the issue before processing. This can allow attackers to cause persistent denial-of-service conditions in services that automatically process archives.",
   "datePublished": "Mar 13, 2026, 11:45:20 AM",
-  "dateUpdated": "Sep 1, 2026, 12:04:44 PM",
+  "dateUpdated": "Oct 14, 2026, 7:10:47 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:10065\nhttps://access.redhat.com/errata/RHSA-2026:10081\nhttps://access.redhat.com/errata/RHSA-2026:10097\nhttps://access.redhat.com/errata/RHSA-2026:14773\nhttps://access.redhat.com/errata/RHSA-2026:15087\nhttps://access.redhat.com/errata/RHSA-2026:16008\nhttps://access.redhat.com/errata/RHSA-2026:16009\nhttps://access.redhat.com/errata/RHSA-2026:16174\nhttps://access.redhat.com/errata/RHSA-2026:17596\nhttps://access.redhat.com/errata/RHSA-2026:25096\nhttps://access.redhat.com/errata/RHSA-2026:5063\nhttps://access.redhat.com/errata/RHSA-2026:5080\nhttps://access.redhat.com/errata/RHSA-2026:6647\nhttps://access.redhat.com/errata/RHSA-2026:7093\nhttps://access.redhat.com/errata/RHSA-2026:7105\nhttps://access.redhat.com/errata/RHSA-2026:7106\nhttps://access.redhat.com/errata/RHSA-2026:7239\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7335\nhttps://access.redhat.com/errata/RHSA-2026:8423\nhttps://access.redhat.com/errata/RHSA-2026:8746\nhttps://access.redhat.com/errata/RHSA-2026:8747\nhttps://access.redhat.com/errata/RHSA-2026:8748\nhttps://access.redhat.com/errata/RHSA-2026:8865\nhttps://access.redhat.com/errata/RHSA-2026:8944\nhttps://access.redhat.com/errata/RHSA-2026:9832\nhttps://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:10065\nhttps://access.redhat.com/errata/RHSA-2026:10081\nhttps://access.redhat.com/errata/RHSA-2026:10097\nhttps://access.redhat.com/errata/RHSA-2026:14773\nhttps://access.redhat.com/errata/RHSA-2026:15087\nhttps://access.redhat.com/errata/RHSA-2026:16008\nhttps://access.redhat.com/errata/RHSA-2026:16009\nhttps://access.redhat.com/errata/RHSA-2026:16174\nhttps://access.redhat.com/errata/RHSA-2026:17596\nhttps://access.redhat.com/errata/RHSA-2026:25096\nhttps://access.redhat.com/errata/RHSA-2026:5063\nhttps://access.redhat.com/errata/RHSA-2026:5080\nhttps://access.redhat.com/errata/RHSA-2026:6647\nhttps://access.redhat.com/errata/RHSA-2026:7093\nhttps://access.redhat.com/errata/RHSA-2026:7105\nhttps://access.redhat.com/errata/RHSA-2026:7106\nhttps://access.redhat.com/errata/RHSA-2026:7239\nhttps://access.redhat.com/errata/RHSA-2026:7329\nhttps://access.redhat.com/errata/RHSA-2026:7335\nhttps://access.redhat.com/errata/RHSA-2026:82347\nhttps://access.redhat.com/errata/RHSA-2026:82354\nhttps://access.redhat.com/errata/RHSA-2026:82372\nhttps://access.redhat.com/errata/RHSA-2026:82857\nhttps://access.redhat.com/errata/RHSA-2026:8423\nhttps://access.redhat.com/errata/RHSA-2026:8746\nhttps://access.redhat.com/errata/RHSA-2026:8747\nhttps://access.redhat.com/errata/RHSA-2026:8748\nhttps://access.redhat.com/errata/RHSA-2026:8865\nhttps://access.redhat.com/errata/RHSA-2026:8944\nhttps://access.redhat.com/errata/RHSA-2026:9832\nhttps://access.redhat.com/security/cve/CVE-2026-4111\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2446453\nhttps://github.com/libarchive/libarchive/pull/2877\n",
   "aliases": "CVE-2026-4111\n",
   "assigner": "redhat",
-  "epss": 0.69,
+  "epss": 0.71,
   "enisaIdProduct": [
     {
       "id": "08b478cd-ecb4-3ef4-8349-f69fd5f11ad5",
@@ -113,6 +113,16 @@
       "product_version": "patch: 0:3.5.3-6.el9_6.1"
     },
     {
+      "id": "4f30ea54-bf68-3fb3-bb12-20d5336f9cf9",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459711"
+    },
+    {
       "id": "51809b1b-1608-3a6f-b5f4-640b0bd1298c",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.15",
@@ -141,6 +151,16 @@
         }
       },
       "product_version": "patch: 0:3.5.3-5.el9_2.1"
+    },
+    {
+      "id": "585d2428-1f8c-3fac-8bc3-0c95bb897e0b",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459707"
     },
     {
       "id": "5938d67f-8cc6-30da-b459-00fb13f6c4c2",
@@ -253,6 +273,16 @@
       "product_version": "patch: 1776868842"
     },
     {
+      "id": "bb6f8299-ffc2-3c1b-b54d-b7eea1615bbe",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1789029076"
+    },
+    {
       "id": "c0bf6284-5bcd-34ec-9bda-2d402be71356",
       "product": {
         "name": "Red Hat AI Inference Server 3.3",
@@ -283,6 +313,16 @@
       "product_version": "patch: 1778244559"
     },
     {
+      "id": "d87d200a-bbeb-3e3b-99fb-8da57b237940",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791459759"
+    },
+    {
       "id": "e2ccd141-b1c3-343d-9bf0-124d46adffbf",
       "product": {
         "name": "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions",
@@ -291,6 +331,16 @@
         }
       },
       "product_version": "patch: 0:3.5.3-2.el9_0.3"
+    },
+    {
+      "id": "e950d7b3-9bfa-38fd-9a08-0e669a3621ad",
+      "product": {
+        "name": "Cert Manager support for Red Hat OpenShift release 1.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1791966259"
     },
     {
       "id": "ea526995-1e59-3571-8d52-4e6792dca338",
