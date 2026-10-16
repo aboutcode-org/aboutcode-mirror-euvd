@@ -3,12 +3,12 @@
   "enisaUuid": "5caa9189-dcbd-332b-976a-3fd4ca158e1c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Wrap user-invoked calls to fb_set_var() in helper\n\nHandle fbcon during display updates in fb_set_var_from_user(). Check\nwith fbcon if the mode change is possible, update hardware state and\nfinally update fbcon. Update all callers.\n\nOnly the FBIOPUT_VSCREENINFO ioctl currently does all steps. Other\nmode-changes callers in sysfs and driver code are missing fbcon-related\nsteps.\n\nWith the new helper, ps3fb and sh_mobile_lcdcfb no longer maintain\nfbcon state themselves.",
   "datePublished": "Sep 4, 2026, 3:12:57 PM",
-  "dateUpdated": "Sep 7, 2026, 2:21:11 PM",
+  "dateUpdated": "Oct 15, 2026, 10:09:48 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/07f7e46833f71472e30da54a50dacdf48521bdd3\nhttps://git.kernel.org/stable/c/6f611e5e5f3327cf2e2daabe6ee5acac58cc784e\n",
+  "references": "https://git.kernel.org/stable/c/ed7e9715849abd0816b8487b0d12ebd05d6e938b\nhttps://git.kernel.org/stable/c/07f7e46833f71472e30da54a50dacdf48521bdd3\nhttps://git.kernel.org/stable/c/6f611e5e5f3327cf2e2daabe6ee5acac58cc784e\n",
   "aliases": "CVE-2026-80786\nGHSA-p7rm-gj7v-32rv\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "133d0b82-737e-39a3-8f04-b354dcf8e94d",
@@ -51,6 +51,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6f611e5e5f3327cf2e2daabe6ee5acac58cc784e"
     },
     {
+      "id": "8786dd56-8bf8-33a8-b5c5-dbc8267db102",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
       "id": "bcb2a5dd-4e2b-3225-9b71-f55e1bd93fd9",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.1.11"
+    },
+    {
+      "id": "ee765928-f63e-3124-9a85-dc6850ddcffd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ed7e9715849abd0816b8487b0d12ebd05d6e938b"
     }
   ],
   "enisaIdVendor": [

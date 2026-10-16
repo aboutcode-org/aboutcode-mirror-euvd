@@ -3,12 +3,12 @@
   "enisaUuid": "55dfcc10-be66-3d1d-b5da-5339d5bb46e1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nzram: fix out-of-bounds access in writeback_store()\n\nPatch series \"zram: fix stale scan bounds after reinitialization\".\n\nBoth writeback_store() and read_block_state() derive their table scan\nbounds from zram->disksize before acquiring dev_lock.  If the device is\nreset and reinitialized with a smaller disksize between that read and lock\nacquisition, the bound can describe the old table while the scan operates\non the new one.  This can lead to out-of-bounds slot accesses.\n\nMove both bound calculations under dev_lock so each bound remains\nconsistent with the table throughout its scan.  Keep the fixes separate\nbecause the affected interfaces originate from different commits and can\nbe backported independently.\n\n\nThis patch (of 2):\n\nwriteback_store() calculates the table scan bounds before taking dev_lock.\nA reset followed by reconfiguration with a smaller disksize can therefore\nreplace zram->table while writeback_store() is waiting for the lock.  Once\nit acquires the lock, it sees an initialized device but scans the new\ntable using the old upper bound, resulting in an out-of-bounds access.\n\nCalculate the number of pages while holding dev_lock so the scan bound\nmatches the table protected by the lock.",
   "datePublished": "Sep 11, 2026, 7:46:31 PM",
-  "dateUpdated": "Sep 21, 2026, 1:14:53 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:04 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4d82d60178b02797dbe529e01ac211b26670c49f\nhttps://git.kernel.org/stable/c/07a82a66f8c1894d92e51d97542c32ebf2c51b09\nhttps://git.kernel.org/stable/c/894913e2d35c46ff19a77530907771ae57862b96\n",
+  "references": "https://git.kernel.org/stable/c/4d82d60178b02797dbe529e01ac211b26670c49f\nhttps://git.kernel.org/stable/c/ef073edd7cfd31aeb90eeab23273102c601f4d8e\nhttps://git.kernel.org/stable/c/07a82a66f8c1894d92e51d97542c32ebf2c51b09\nhttps://git.kernel.org/stable/c/894913e2d35c46ff19a77530907771ae57862b96\n",
   "aliases": "GHSA-8g3j-f4r3-9992\nCVE-2026-89718\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "132f7c1f-3761-3c26-99c1-abdf112847d8",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 7.3-rc1"
+    },
+    {
+      "id": "2adb20bc-eceb-3a13-989c-437b86b71f4d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a939888ec38bf1f33e4a903056677e92a4844244 <ef073edd7cfd31aeb90eeab23273102c601f4d8e"
     },
     {
       "id": "3c56989e-bd0f-3bbf-8126-8d405b7af5ae",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "a939888ec38bf1f33e4a903056677e92a4844244 <4d82d60178b02797dbe529e01ac211b26670c49f"
+    },
+    {
+      "id": "bb8a59bd-e385-34d4-a421-557d9ac992f9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "d5b7db19-397f-33d2-8050-0295774692a1",

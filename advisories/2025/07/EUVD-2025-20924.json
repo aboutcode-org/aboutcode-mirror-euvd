@@ -3,12 +3,12 @@
   "enisaUuid": "18549ecf-b80d-3a5e-bda2-e1492145c33c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/x86/intel: Fix crash in icl_update_topdown_event()\n\nThe perf_fuzzer found a hard-lockup crash on a RaptorLake machine:\n\n  Oops: general protection fault, maybe for address 0xffff89aeceab400: 0000\n  CPU: 23 UID: 0 PID: 0 Comm: swapper/23\n  Tainted: [W]=WARN\n  Hardware name: Dell Inc. Precision 9660/0VJ762\n  RIP: 0010:native_read_pmc+0x7/0x40\n  Code: cc e8 8d a9 01 00 48 89 03 5b cd cc cc cc cc 0f 1f ...\n  RSP: 000:fffb03100273de8 EFLAGS: 00010046\n  ....\n  Call Trace:\n    <TASK>\n    icl_update_topdown_event+0x165/0x190\n    ? ktime_get+0x38/0xd0\n    intel_pmu_read_event+0xf9/0x210\n    __perf_event_read+0xf9/0x210\n\nCPUs 16-23 are E-core CPUs that don't support the perf metrics feature.\nThe icl_update_topdown_event() should not be invoked on these CPUs.\n\nIt's a regression of commit:\n\n  f9bdf1f95339 (\"perf/x86/intel: Avoid disable PMU if !cpuc->enabled in sample read\")\n\nThe bug introduced by that commit is that the is_topdown_event() function\nis mistakenly used to replace the is_topdown_count() call to check if the\ntopdown functions for the perf metrics feature should be invoked.\n\nFix it.",
   "datePublished": "Jul 10, 2025, 8:14:57 AM",
-  "dateUpdated": "Sep 8, 2026, 8:41:50 AM",
+  "dateUpdated": "Oct 15, 2026, 1:07:05 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/702ea6028032d6c1fe96c2d4762a3575e3654819\nhttps://git.kernel.org/stable/c/79e2dd573116d3338507c311460da9669095c94d\nhttps://git.kernel.org/stable/c/e97c45c770f5e56c784a46c2a96ab968d26b97d9\nhttps://git.kernel.org/stable/c/a85cc69acdcb05f8cd226b8ea0778b8e2e887e6f\nhttps://git.kernel.org/stable/c/b0823d5fbacb1c551d793cbfe7af24e0d1fa45ed\n",
   "aliases": "CVE-2025-38322\nGHSA-43x8-vph3-w4wc\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "11f557d2-51be-336c-8d67-7dfd88c69e78",

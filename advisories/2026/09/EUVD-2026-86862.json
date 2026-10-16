@@ -3,9 +3,9 @@
   "enisaUuid": "f90cfbc6-53ae-34fd-b81f-5fd129483430",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: avoid using uninitialized SIDs in cifs_posix_to_fattr()\n\ncifs_posix_to_fattr() ignores the return value of posix_info_parse().\nWhen a malformed POSIX directory entry is encountered (e.g. invalid\nSID lengths from an untrusted server), posix_info_parse() returns -1\nwithout populating the 'parsed' struct.  The uninitialized stack\nmemory in parsed.owner and parsed.group is then passed to\nsid_to_id(), which processes the garbage bytes and passes them to\nrequest_key() to construct a SID string, potentially leaking kernel\nstack contents to the userspace idmap daemon.\n\nFix this by checking the return value and skipping the SID-to-id\nmapping when parsing fails.  The remaining fattr fields (timestamps,\nmode, etc.) are populated directly from the 'info' pointer so they\nare unaffected.",
   "datePublished": "Sep 25, 2026, 10:21:45 AM",
-  "dateUpdated": "Sep 28, 2026, 5:31:06 AM",
+  "dateUpdated": "Oct 15, 2026, 10:11:50 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c9a8b60ce140a68d172452f418137fc7ddbae7db\nhttps://git.kernel.org/stable/c/da6e25842431982d5a53cf00d925b98c690f4467\n",
+  "references": "https://git.kernel.org/stable/c/2be31f252ade791b84f7164991f14436aed1d4b9\nhttps://git.kernel.org/stable/c/c9a8b60ce140a68d172452f418137fc7ddbae7db\nhttps://git.kernel.org/stable/c/da6e25842431982d5a53cf00d925b98c690f4467\n",
   "aliases": "CVE-2026-97554\nGHSA-vfwc-r92w-jp29\n",
   "assigner": "Linux",
   "epss": 0.19,
@@ -61,6 +61,16 @@
       "product_version": "patch: 7.2.7"
     },
     {
+      "id": "8ef6e89a-f19a-37dd-825f-c21e02019110",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9934430e2178d5164eb1ac91a9b092f9e7e64745 <2be31f252ade791b84f7164991f14436aed1d4b9"
+    },
+    {
       "id": "9518fc71-b2db-3109-b0f1-8411e3b6ed9d",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ad97b156-5dad-370e-8d35-9886b31b0379",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "b46f35bd-d7d2-39ea-8eb6-2ce9fb7156bd",

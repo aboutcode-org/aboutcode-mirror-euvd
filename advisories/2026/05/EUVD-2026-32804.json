@@ -3,14 +3,14 @@
   "enisaUuid": "dd13daa4-33cd-3330-8504-6cd8bbc3a329",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: Add limits to event and receive message requests\n\nThe driver would just fetch events and receive messages until the\nBMC said it was done.  To avoid issues with BMCs that never say they are\ndone, add a limit of 10 fetches at a time.\n\nIn addition, an si interface has an attn state it can return from the\nhardware which is supposed to cause a flag fetch to see if the driver\nneeds to fetch events or message or a few other things.  If the attn\nbit gets stuck, it's a similar problem.  So allow messages in between\nflag fetches so the driver itself doesn't get stuck.\n\nThis is a more general fix than the previous fix for the specific bad\nBMC, but should fix the more general issue of a BMC that won't stop\nsaying it has data.\n\nThis has been there from the beginning of the driver.  It's not a bug\nper-se, but it is accounting for bugs in BMCs.",
   "datePublished": "May 28, 2026, 9:36:31 AM",
-  "dateUpdated": "Aug 5, 2026, 12:30:15 PM",
+  "dateUpdated": "Oct 15, 2026, 1:21:07 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/112df8e631636cafda64dcee4561daf09ce74a4a\nhttps://git.kernel.org/stable/c/304b56883b7eff73eb606c35d062c8101aaf5471\nhttps://git.kernel.org/stable/c/9059dc94421e1d4f8e5844204608b37ebfddb3da\nhttps://git.kernel.org/stable/c/67c44e0deba936d5edaebea356b4589eb43acb5c\nhttps://git.kernel.org/stable/c/e20212b431bef217d3886b86bbc90cc3ed00de68\nhttps://git.kernel.org/stable/c/3d37d2165df9504ea99d9e6181552dc4d2d1ab37\nhttps://git.kernel.org/stable/c/c024167fb00489baee08c72182ca2e7dc5fb9f20\nhttps://git.kernel.org/stable/c/c4cca236968683eb0d59abfb12d5c7e4d8514227\n",
   "aliases": "GHSA-h4pv-4jh4-mxpf\nCVE-2026-46177\n",
   "assigner": "Linux",
-  "epss": 0.5,
+  "epss": 0.72,
   "enisaIdProduct": [
     {
       "id": "0aeae6e2-f192-37e1-ab12-41b2780d1b15",

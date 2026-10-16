@@ -3,12 +3,12 @@
   "enisaUuid": "e033c143-1421-3091-a114-ce73a5ab3e90",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_unix: Reject SIOCATMARK on non-stream sockets\n\nSIOCATMARK reports whether the receive queue is at the urgent mark for\nMSG_OOB.\n\nIn AF_UNIX, MSG_OOB is supported only for SOCK_STREAM sockets.\nSOCK_DGRAM and SOCK_SEQPACKET reject MSG_OOB in sendmsg() and recvmsg(),\nso they should not support SIOCATMARK either.\n\nReturn -EOPNOTSUPP for non-stream sockets before checking the receive\nqueue.",
   "datePublished": "Jun 24, 2026, 7:14:21 AM",
-  "dateUpdated": "Jul 4, 2026, 11:50:47 AM",
+  "dateUpdated": "Oct 15, 2026, 1:21:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ec123873fdc83e7244c8ed6d17b8f8ea6c416a67\nhttps://git.kernel.org/stable/c/f085971de6d6b8ef946a5e0bcd73ff24509a0f85\nhttps://git.kernel.org/stable/c/b741c9c6ef59f17c1f104ddf1217ef77f79ed29b\nhttps://git.kernel.org/stable/c/645b1ed3259af38b7814242a420bc2081bdd1eb6\nhttps://git.kernel.org/stable/c/c34c41446acf6c0d13b5b06c809be11e0f7f2729\nhttps://git.kernel.org/stable/c/3147ddf5a41c20c45c2eb69e00b62f10f822056a\nhttps://git.kernel.org/stable/c/d119775f2bad827edc28071c061fdd4a91f889a5\n",
   "aliases": "CVE-2026-52928\nGHSA-3jxv-h97q-rq3x\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "117ff117-f393-369c-bae3-b3ec39a3bc7d",

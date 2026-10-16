@@ -3,14 +3,14 @@
   "enisaUuid": "c8476906-ee9e-3266-bd3d-a6450701e001",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Verify event formats that have \"%*p..\"\n\nThe trace event verifier checks the formats of trace events to make sure\nthat they do not point at memory that is not in the trace event itself or\nin data that will never be freed. If an event references data that was\nallocated when the event triggered and that same data is freed before the\nevent is read, then the kernel can crash by reading freed memory.\n\nThe verifier runs at boot up (or module load) and scans the print formats\nof the events and checks their arguments to make sure that dereferenced\npointers are safe. If the format uses \"%*p..\" the verifier will ignore it,\nand that could be dangerous. Cover this case as well.\n\nAlso add to the sample code a use case of \"%*pbl\".",
   "datePublished": "May 20, 2025, 3:34:40 PM",
-  "dateUpdated": "Aug 5, 2026, 11:58:30 AM",
+  "dateUpdated": "Oct 15, 2026, 9:52:04 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/6854c87ac823181c810f8c07489ba543260c0023\nhttps://git.kernel.org/stable/c/4d11fac941d83509be4e6a21038281d6d96da50c\nhttps://git.kernel.org/stable/c/03127354027508d076073b020d3070990fd6a958\nhttps://git.kernel.org/stable/c/04b80d45ecfaf780981d6582899e3ab205e4aa08\nhttps://git.kernel.org/stable/c/c7204fd1758c0caf1938e8a59809a1fdf28a8114\nhttps://git.kernel.org/stable/c/ea8d7647f9ddf1f81e2027ed305299797299aa03\n",
   "aliases": "GHSA-r878-fwjf-3cg7\nCVE-2025-37938\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "21a114ff-0b93-32d9-b21e-d2a30b88e4e0",

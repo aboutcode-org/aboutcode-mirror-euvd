@@ -3,12 +3,12 @@
   "enisaUuid": "aea810a0-3c29-3e9d-8c74-d369aef9edfb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix filename leak in __io_openat_prep()\n\n __io_openat_prep() allocates a struct filename using getname(). However,\nfor the condition of the file being installed in the fixed file table as\nwell as having O_CLOEXEC flag set, the function returns early. At that\npoint, the request doesn't have REQ_F_NEED_CLEANUP flag set. Due to this,\nthe memory for the newly allocated struct filename is not cleaned up,\ncausing a memory leak.\n\nFix this by setting the REQ_F_NEED_CLEANUP for the request just after the\nsuccessful getname() call, so that when the request is torn down, the\nfilename will be cleaned up, along with other resources needing cleanup.",
   "datePublished": "Jan 13, 2026, 3:29:19 PM",
-  "dateUpdated": "Sep 8, 2026, 8:43:34 AM",
+  "dateUpdated": "Oct 15, 2026, 1:10:19 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2420ef01b2e836fbc05a0a8c73a1016504eb0458\nhttps://git.kernel.org/stable/c/8f44c4a550570cd5903625133f938c6b51310c9b\nhttps://git.kernel.org/stable/c/18b99fa603d0df5e1c898699c17d3b92ddc80746\nhttps://git.kernel.org/stable/c/e232269d511566b1f80872256a48593acc1becf4\nhttps://git.kernel.org/stable/c/7fbfb85b05bc960cc50e09d03e5e562131e48d45\nhttps://git.kernel.org/stable/c/b14fad555302a2104948feaff70503b64c80ac01\n",
   "aliases": "CVE-2025-68814\nGHSA-x459-m5f6-mv8q\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "151c10d6-36d5-3c9a-a160-2f7c8d83fdff",

@@ -3,14 +3,14 @@
   "enisaUuid": "384f5c2d-b714-3dd8-8557-a25b353bc0fb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nftrace: Also allocate and copy hash for reading of filter files\n\nCurrently the reader of set_ftrace_filter and set_ftrace_notrace just adds\nthe pointer to the global tracer hash to its iterator. Unlike the writer\nthat allocates a copy of the hash, the reader keeps the pointer to the\nfilter hashes. This is problematic because this pointer is static across\nfunction calls that release the locks that can update the global tracer\nhashes. This can cause UAF and similar bugs.\n\nAllocate and copy the hash for reading the filter files like it is done\nfor the writers. This not only fixes UAF bugs, but also makes the code a\nbit simpler as it doesn't have to differentiate when to free the\niterator's hash between writers and readers.",
   "datePublished": "Sep 5, 2025, 5:20:55 PM",
-  "dateUpdated": "Aug 5, 2026, 12:04:34 PM",
+  "dateUpdated": "Oct 15, 2026, 10:02:30 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/12064e1880fc9202be75ff668205b1703d92f74f\nhttps://git.kernel.org/stable/c/c4cd93811e038d19f961985735ef7bb128078dfb\nhttps://git.kernel.org/stable/c/e0b6b223167e1edde5c82edf38e393c06eda1f13\nhttps://git.kernel.org/stable/c/a40c69f4f1ed96acbcd62e9b5ff3a596f0a91309\nhttps://git.kernel.org/stable/c/3b114a3282ab1a12cb4618a8f45db5d7185e784a\nhttps://git.kernel.org/stable/c/c591ba1acd081d4980713e47869dd1cc3d963d19\nhttps://git.kernel.org/stable/c/64db338140d2bad99a0a8c6a118dd60b3e1fb8cb\nhttps://git.kernel.org/stable/c/bfb336cf97df7b37b2b2edec0f69773e06d11955\n",
   "aliases": "CVE-2025-39689\nGHSA-p8pm-49m7-8863\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "07c5842b-11a7-3089-bc1a-8b99ccb6ca19",

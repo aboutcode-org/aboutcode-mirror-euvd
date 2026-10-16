@@ -3,14 +3,14 @@
   "enisaUuid": "5360e78b-7f0f-3bc8-9ac7-e18ebd709930",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: core: reject skb_copy(_expand) for fraglist GSO skbs\n\nSKB_GSO_FRAGLIST skbs must not be linearized, otherwise they become\ninvalid. Return NULL if such an skb is passed to skb_copy or\nskb_copy_expand, in order to prevent a crash on a potential later\ncall to skb_gso_segment.",
   "datePublished": "May 30, 2024, 3:29:21 PM",
-  "dateUpdated": "Aug 5, 2026, 11:32:08 AM",
+  "dateUpdated": "Oct 15, 2026, 12:42:53 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/faa83a7797f06cefed86731ba4baa3b4dfdc06c1\nhttps://git.kernel.org/stable/c/c7af99cc21923a9650533c9d77265c8dd683a533\nhttps://git.kernel.org/stable/c/989bf6fd1e1d058e73a364dce1a0c53d33373f62\nhttps://git.kernel.org/stable/c/cfe34d86ef9765c388f145039006bb79b6c81ac6\nhttps://git.kernel.org/stable/c/aea5e2669c2863fdd8679c40ee310b3bcaa85aec\nhttps://git.kernel.org/stable/c/d091e579b864fa790dd6a0cd537a22c383126681\n",
   "aliases": "CVE-2024-36929\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.9,
   "enisaIdProduct": [
     {
       "id": "364abf0a-f60f-3b77-849f-235a9073af29",

@@ -3,12 +3,12 @@
   "enisaUuid": "9efe23b1-4642-301f-880a-10625ff5e13f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix scheduling with atomic in timestamp sockopt\n\nUsing lock_sock_fast() (atomic context) around sock_set_timestamp()\nand sock_set_timestamping() is unsafe, as both helpers can sleep.\n\nReplace lock_sock_fast() with sleepable lock_sock()/release_sock()\nto avoid scheduling while atomic panic.",
   "datePublished": "May 28, 2026, 9:36:23 AM",
-  "dateUpdated": "May 28, 2026, 9:36:23 AM",
+  "dateUpdated": "Oct 15, 2026, 1:21:00 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ebeb70e29e37cfce899309cc2665a3bfe960ed94\nhttps://git.kernel.org/stable/c/b157dab93a7af44a84e78cf0cb311dde475cff5b\nhttps://git.kernel.org/stable/c/8a005fe451c73fd2b3d1faa5643c11e6bd07acfc\nhttps://git.kernel.org/stable/c/7eb513b42721bee4b96da69f6188d5a7783f210d\nhttps://git.kernel.org/stable/c/b5c52908d52c6c8eb8933264aa6087a0600fd892\n",
+  "references": "https://git.kernel.org/stable/c/0949d8bbbedbafe0136a1723c41eb823c2f1e09d\nhttps://git.kernel.org/stable/c/e792cfb6aeaf65612cdf8e3ac431d65e66283654\nhttps://git.kernel.org/stable/c/ebeb70e29e37cfce899309cc2665a3bfe960ed94\nhttps://git.kernel.org/stable/c/b157dab93a7af44a84e78cf0cb311dde475cff5b\nhttps://git.kernel.org/stable/c/8a005fe451c73fd2b3d1faa5643c11e6bd07acfc\nhttps://git.kernel.org/stable/c/7eb513b42721bee4b96da69f6188d5a7783f210d\nhttps://git.kernel.org/stable/c/b5c52908d52c6c8eb8933264aa6087a0600fd892\n",
   "aliases": "CVE-2026-46168\nGHSA-78r5-m85f-q5m9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0cacd26f-521e-39b5-a783-506a4e3f26bc",
@@ -51,6 +51,16 @@
       "product_version": "9061f24bf82ec2e92dd1e7c10b98b680db023d31 <b5c52908d52c6c8eb8933264aa6087a0600fd892"
     },
     {
+      "id": "386777ad-9d02-35a8-b648-b097254c8315",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9061f24bf82ec2e92dd1e7c10b98b680db023d31 <e792cfb6aeaf65612cdf8e3ac431d65e66283654"
+    },
+    {
       "id": "46a110e6-b67d-32d5-adce-2de1c15ee833",
       "product": {
         "name": "Linux",
@@ -71,14 +81,14 @@
       "product_version": "patch: 6.18.30"
     },
     {
-      "id": "71778422-e1e1-3f08-af32-6f203fda1e52",
+      "id": "64578e18-5bae-3795-90db-bf04aa802b7b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.1-rc2"
+      "product_version": "patch: 5.15.209"
     },
     {
       "id": "802cb6f8-1b86-3690-933f-7170cb406611",
@@ -91,6 +101,16 @@
       "product_version": "9061f24bf82ec2e92dd1e7c10b98b680db023d31 <8a005fe451c73fd2b3d1faa5643c11e6bd07acfc"
     },
     {
+      "id": "8d727e23-ea2e-34fd-9783-696a5909417b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9061f24bf82ec2e92dd1e7c10b98b680db023d31 <0949d8bbbedbafe0136a1723c41eb823c2f1e09d"
+    },
+    {
       "id": "9139669b-8f10-349b-95cf-1bb78854aab1",
       "product": {
         "name": "Linux",
@@ -99,6 +119,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "b283799f-58eb-3e65-b5fe-7feff8b6a0a3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.1"
     },
     {
       "id": "b47fc854-f86c-33cf-80a6-3cdffa4cfc5e",
@@ -119,6 +149,16 @@
         }
       },
       "product_version": "patch: 6.6.140"
+    },
+    {
+      "id": "c034b1ab-03b2-3828-9f43-d991a67366ee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.175"
     },
     {
       "id": "cf19b673-16e1-3064-89b1-a828e652b4d1",

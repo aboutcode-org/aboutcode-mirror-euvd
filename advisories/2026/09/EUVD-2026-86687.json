@@ -3,12 +3,12 @@
   "enisaUuid": "472e1a99-807c-310a-b913-cc50205d7587",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark NULL kptr stores precise\n\ncheck_map_kptr_access() permits a scalar store into an untrusted kptr\nfield only when the register is known to contain zero. Unlike other\nverifier checks whose outcome depends on a scalar value, it does not mark\nthat register precise.\n\nA state checkpoint reached with an imprecise zero can therefore prune a\nsecond path that reaches the store with an arbitrary nonzero scalar. The\nprogram can write attacker-controlled bits into the kptr field and load\nthem back as a PTR_TO_BTF_ID.\n\nCall mark_chain_precision() before accepting a known-zero register. This\nforces state equivalence to compare its scalar range and makes the verifier\nvisit and reject a path carrying a nonzero value.",
   "datePublished": "Sep 25, 2026, 10:23:49 AM",
-  "dateUpdated": "Sep 25, 2026, 10:23:49 AM",
+  "dateUpdated": "Oct 15, 2026, 10:12:04 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/86168208737bdd267d92d855d453d1d2f840df19\nhttps://git.kernel.org/stable/c/ecdc5043794c9184aa8e6c814603899479c46b35\n",
+  "references": "https://git.kernel.org/stable/c/bb667eb575c906f24c707986541a99424c5b07ea\nhttps://git.kernel.org/stable/c/86168208737bdd267d92d855d453d1d2f840df19\nhttps://git.kernel.org/stable/c/ecdc5043794c9184aa8e6c814603899479c46b35\n",
   "aliases": "GHSA-r89f-4x69-4v8p\nCVE-2026-98034\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "2992cf3d-94ec-3eb0-8d8e-c031bc75d142",
@@ -29,6 +29,26 @@
         }
       },
       "product_version": "patch: 7.3-rc2"
+    },
+    {
+      "id": "4ae9b614-bef1-3609-aaf5-4c0960e810cf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "61df10c7799e27807ad5e459eec9d77cddf8bf45 <bb667eb575c906f24c707986541a99424c5b07ea"
+    },
+    {
+      "id": "7d33c7db-bb47-329a-b13c-7ea23f8fa458",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "94fa3efc-6e55-331d-91a5-11fa9debc2b2",

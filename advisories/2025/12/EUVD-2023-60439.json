@@ -3,14 +3,14 @@
   "enisaUuid": "0f071e67-cde9-3f79-b724-697342351f29",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: fix race condition UAF in i915_perf_add_config_ioctl\n\nUserspace can guess the id value and try to race oa_config object creation\nwith config remove, resulting in a use-after-free if we dereference the\nobject after unlocking the metrics_lock.  For that reason, unlocking the\nmetrics_lock must be done after we are done dereferencing the object.\n\n[tursulin: Manually added stable tag.]\n(cherry picked from commit 49f6f6483b652108bcb73accd0204a464b922395)",
   "datePublished": "Dec 30, 2025, 12:09:06 PM",
-  "dateUpdated": "Aug 5, 2026, 9:18:00 AM",
+  "dateUpdated": "Oct 15, 2026, 9:41:41 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6eeb1cba4c9dc47656ea328afa34953c28783d8c\nhttps://git.kernel.org/stable/c/240b1502708858b5e3f10b6dc5ca3f148a322fef\nhttps://git.kernel.org/stable/c/7eb98f5ac551863efe8be810cea1cd5411d677b1\nhttps://git.kernel.org/stable/c/dc30c011469165d57af9adac5baff7d767d20e5c\n",
   "aliases": "CVE-2023-54202\nGHSA-2x24-vjrm-p9g2\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "354f9e28-5bca-356d-b103-974cb4b9e1bc",

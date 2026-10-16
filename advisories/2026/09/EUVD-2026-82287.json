@@ -3,12 +3,12 @@
   "enisaUuid": "641e2697-3a68-3ab4-84ad-9a507c888fff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read\n\nReject voltage objects whose usSize is smaller than the header or would\nadvance the cursor past the table end, preventing an infinite loop or\nheap OOB read when the VBIOS supplies a malformed VoltageObjectInfo table.",
   "datePublished": "Sep 17, 2026, 4:12:07 PM",
-  "dateUpdated": "Oct 11, 2026, 1:47:16 PM",
+  "dateUpdated": "Oct 15, 2026, 10:11:39 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0a6c9b3801903b6db91f3cbf148646b501dbded3\nhttps://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
+  "references": "https://git.kernel.org/stable/c/203ffe648948ca3c2f55b21118945a7a6d0884aa\nhttps://git.kernel.org/stable/c/0a6c9b3801903b6db91f3cbf148646b501dbded3\nhttps://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
   "aliases": "CVE-2026-93179\nGHSA-636p-hq8h-v2cp\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "102cb583-f3dd-3daf-9b39-c043a3a84245",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "4.5"
+    },
+    {
+      "id": "33c0b774-f48c-3e0e-ba8e-d3058c3afc0c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c82baa28184356a75c0157129f88af42b2e7b695 <203ffe648948ca3c2f55b21118945a7a6d0884aa"
     },
     {
       "id": "58404845-8d36-3fab-b2da-d1228abbdc1b",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "c82baa28184356a75c0157129f88af42b2e7b695 <0a6c9b3801903b6db91f3cbf148646b501dbded3"
+    },
+    {
+      "id": "e16adffa-dce7-3cc0-b30a-61425facfb28",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.113"
     },
     {
       "id": "e8fd2172-1a99-3da5-800c-4d067d22c699",

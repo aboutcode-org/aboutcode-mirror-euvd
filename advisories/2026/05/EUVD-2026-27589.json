@@ -3,12 +3,12 @@
   "enisaUuid": "6f660028-f019-3f62-aa6c-20b373a7ec6d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm_user: fix info leak in build_mapping()\n\nstruct xfrm_usersa_id has a one-byte padding hole after the proto\nfield, which ends up never getting set to zero before copying out to\nuserspace.  Fix that up by zeroing out the whole structure before\nsetting individual variables.",
   "datePublished": "May 6, 2026, 7:40:22 AM",
-  "dateUpdated": "Sep 8, 2026, 8:48:47 AM",
+  "dateUpdated": "Oct 15, 2026, 1:19:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/521385cbd50ca9474396d88462fcdfa6489685d9\nhttps://git.kernel.org/stable/c/c2779ae9a3e5a044e5ccd564681511bbbcc5fc0f\nhttps://git.kernel.org/stable/c/72a8de41c3eb4dcf22bf3b674ea38fb2f75d6f32\nhttps://git.kernel.org/stable/c/d3125c541a96fb3c0fc7210112684baf22b6c24d\nhttps://git.kernel.org/stable/c/5a1a4b049ddde41466ccac0daeec326254b133f2\nhttps://git.kernel.org/stable/c/f779a6b6cdb6e12baa0663063ac59ab2a8f20c0c\nhttps://git.kernel.org/stable/c/700c9622b23c33b5933e6dcea816492c064e4e10\nhttps://git.kernel.org/stable/c/1beb76b2053b68c491b78370794b8ff63c8f8c02\n",
   "aliases": "CVE-2026-43089\nGHSA-8xhw-c2pc-2vqq\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "00ff9ac7-c94c-3592-97e9-5ac567a3f06a",

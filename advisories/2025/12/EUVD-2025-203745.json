@@ -3,14 +3,14 @@
   "enisaUuid": "ad31f5df-3fab-328f-a511-023487c2221b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: ipc: fix use-after-free in ipc_msg_send_request\n\nipc_msg_send_request() waits for a generic netlink reply using an\nipc_msg_table_entry on the stack. The generic netlink handler\n(handle_generic_event()/handle_response()) fills entry->response under\nipc_msg_table_lock, but ipc_msg_send_request() used to validate and free\nentry->response without holding the same lock.\n\nUnder high concurrency this allows a race where handle_response() is\ncopying data into entry->response while ipc_msg_send_request() has just\nfreed it, leading to a slab-use-after-free reported by KASAN in\nhandle_generic_event():\n\n  BUG: KASAN: slab-use-after-free in handle_generic_event+0x3c4/0x5f0 [ksmbd]\n  Write of size 12 at addr ffff888198ee6e20 by task pool/109349\n  ...\n  Freed by task:\n    kvfree\n    ipc_msg_send_request [ksmbd]\n    ksmbd_rpc_open -> ksmbd_session_rpc_open [ksmbd]\n\nFix by:\n- Taking ipc_msg_table_lock in ipc_msg_send_request() while validating\n  entry->response, freeing it when invalid, and removing the entry from\n  ipc_msg_table.\n- Returning the final entry->response pointer to the caller only after\n  the hash entry is removed under the lock.\n- Returning NULL in the error path, preserving the original API\n  semantics.\n\nThis makes all accesses to entry->response consistent with\nhandle_response(), which already updates and fills the response buffer\nunder ipc_msg_table_lock, and closes the race that allowed the UAF.",
   "datePublished": "Dec 16, 2025, 2:45:05 PM",
-  "dateUpdated": "Aug 5, 2026, 12:10:34 PM",
+  "dateUpdated": "Oct 15, 2026, 10:02:48 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/de85fb58f9967ba024bb08e0041613d37b57b4d1\nhttps://git.kernel.org/stable/c/708a620b471a14466f1f52c90bf3f65ebdb31460\nhttps://git.kernel.org/stable/c/5ac763713a1ef8f9a8bda1dbd81f0318d67baa4e\nhttps://git.kernel.org/stable/c/759c8c30cfa8706c518e56f67971b1f0932f4b9b\nhttps://git.kernel.org/stable/c/8229c6ca50cea701e25a7ee25f48441b582ec5fa\nhttps://git.kernel.org/stable/c/1fab1fa091f5aa97265648b53ea031deedd26235\n",
   "aliases": "GHSA-j5fg-gwpm-pjw5\nCVE-2025-68263\n",
   "assigner": "Linux",
-  "epss": 0.39,
+  "epss": 0.44,
   "enisaIdProduct": [
     {
       "id": "01013974-8dee-3575-b48d-4f2772bccbb3",

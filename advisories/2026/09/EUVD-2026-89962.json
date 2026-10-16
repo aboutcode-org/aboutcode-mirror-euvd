@@ -1,26 +1,26 @@
 {
   "id": "EUVD-2026-89962",
   "enisaUuid": "41db59c7-2a41-3812-a3c7-421cda0bcf1c",
-  "description": "A vulnerability was identified in Artifex Ghostscript up to 10.09.0. Affected is the function type1_callsubr of the file devices/vector/gdevpsfx.c of the component Pdfwrite. The manipulation leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. It is suggested to install a patch to address this issue. A solution was implemented: \"I've chosen to fix this slightly differently by using the defined macro in the font parsing loop rather than in the callsubr function, because this better matches the pattern of 'normal' usage.\"",
+  "description": "A vulnerability was identified in Artifex Ghostscript up to 10.07.0. Affected is the function type1_callsubr of the file devices/vector/gdevpsfx.c of the component Pdfwrite. The manipulation leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. Upgrading to version 10.08.0 is able to address this issue. It is suggested to upgrade the affected component. A solution was implemented: \"I've chosen to fix this slightly differently by using the defined macro in the font parsing loop rather than in the callsubr function, because this better matches the pattern of 'normal' usage.\"",
   "datePublished": "Sep 30, 2026, 2:15:06 PM",
-  "dateUpdated": "Sep 30, 2026, 2:24:57 PM",
+  "dateUpdated": "Oct 15, 2026, 4:16:29 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P",
-  "references": "https://vuldb.com/vuln/411906\nhttps://vuldb.com/vuln/411906/cti\nhttps://vuldb.com/cve/CVE-2026-103226\nhttps://vuldb.com/submit/955016\nhttps://bugs.ghostscript.com/show_bug.cgi?id=709672\nhttps://bugs.ghostscript.com/show_bug.cgi?id=709672#c3\nhttps://bugs.ghostscript.com/attachment.cgi?id=28495\nhttps://artifex.com/\n",
+  "references": "https://vuldb.com/vuln/411906\nhttps://vuldb.com/vuln/411906/cti\nhttps://vuldb.com/cve/CVE-2026-103226\nhttps://vuldb.com/submit/955016\nhttps://bugs.ghostscript.com/show_bug.cgi?id=709672\nhttps://bugs.ghostscript.com/show_bug.cgi?id=709672#c3\nhttps://bugs.ghostscript.com/attachment.cgi?id=28495\nhttps://ghostscript.com/releases/gsdnld.html\nhttps://artifex.com/\n",
   "aliases": "CVE-2026-103226\nGHSA-f9vm-qh24-w7rf\n",
   "assigner": "VulDB",
-  "epss": 0.0,
+  "epss": 0.44,
   "enisaIdProduct": [
     {
-      "id": "0e379d23-fd19-371c-81db-e1cb95a5c06e",
+      "id": "7ed99f1f-6911-3045-b7fc-ab3d03b485f0",
       "product": {
         "name": "ghostscript",
         "vendor": {
           "name": "Artifex"
         }
       },
-      "product_version": "10.09"
+      "product_version": "10.07"
     }
   ],
   "enisaIdVendor": [

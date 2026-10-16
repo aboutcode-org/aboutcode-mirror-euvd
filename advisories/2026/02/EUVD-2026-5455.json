@@ -3,12 +3,12 @@
   "enisaUuid": "66c04acd-f745-3d79-9fd0-5ebbf928007f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: xen: scsiback: Fix potential memory leak in scsiback_remove()\n\nMemory allocated for struct vscsiblk_info in scsiback_probe() is not\nfreed in scsiback_remove() leading to potential memory leaks on remove,\nas well as in the scsiback_probe() error paths. Fix that by freeing it\nin scsiback_remove().",
   "datePublished": "Feb 4, 2026, 4:08:10 PM",
-  "dateUpdated": "Sep 8, 2026, 8:44:50 AM",
+  "dateUpdated": "Oct 15, 2026, 1:12:56 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a8bb3ec8d85951a56af0a72d93ccbc2aee42eef9\nhttps://git.kernel.org/stable/c/427b0fb30ddec3bad05dcd73b00718f98c7026d2\nhttps://git.kernel.org/stable/c/4a975c72429b050c234405668b742cdecc11548e\nhttps://git.kernel.org/stable/c/f86264ec0e2b102fcd49bf3e4f32fee669d482fc\nhttps://git.kernel.org/stable/c/32e52b56056daf0f0881fd9254706acf25b4be97\nhttps://git.kernel.org/stable/c/24c441f0e24da175d7912095663f526ac480dc4f\nhttps://git.kernel.org/stable/c/901a5f309daba412e2a30364d7ec1492fa11c32c\n",
   "aliases": "GHSA-pm73-pr98-fpfg\nCVE-2026-23087\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "083070b5-2c9b-379c-a256-2f1c571040cf",

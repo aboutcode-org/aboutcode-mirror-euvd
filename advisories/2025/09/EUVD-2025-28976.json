@@ -3,12 +3,12 @@
   "enisaUuid": "c4317eba-afb4-3121-a9e4-9bfc5f5a1cac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/vmscape: Add conditional IBPB mitigation\n\nVMSCAPE is a vulnerability that exploits insufficient branch predictor\nisolation between a guest and a userspace hypervisor (like QEMU). Existing\nmitigations already protect kernel/KVM from a malicious guest. Userspace\ncan additionally be protected by flushing the branch predictors after a\nVMexit.\n\nSince it is the userspace that consumes the poisoned branch predictors,\nconditionally issue an IBPB after a VMexit and before returning to\nuserspace. Workloads that frequently switch between hypervisor and\nuserspace will incur the most overhead from the new IBPB.\n\nThis new IBPB is not integrated with the existing IBPB sites. For\ninstance, a task can use the existing speculation control prctl() to\nget an IBPB at context switch time. With this implementation, the\nIBPB is doubled up: one at context switch and another before running\nuserspace.\n\nThe intent is to integrate and optimize these cases post-embargo.\n\n[ dhansen: elaborate on suboptimal IBPB solution ]",
   "datePublished": "Sep 11, 2025, 4:49:24 PM",
-  "dateUpdated": "Sep 8, 2026, 8:42:58 AM",
+  "dateUpdated": "Oct 15, 2026, 1:09:08 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ac60717f9a8d21c58617d0b34274babf24135835\nhttps://git.kernel.org/stable/c/c08192b5d6730a914dee6175bc71092ee6a65f14\nhttps://git.kernel.org/stable/c/d5490dfa35427a2967e00a4c7a1b95fdbc8ede34\nhttps://git.kernel.org/stable/c/2f4f2f8f860cb4c3336a7435ebe8dcfded0c9c6e\nhttps://git.kernel.org/stable/c/15006289e5c38b2a830e1fba221977a27598176c\nhttps://git.kernel.org/stable/c/893387c18612bb452336a5881da0d015a7e8f4a2\nhttps://git.kernel.org/stable/c/f866eef8d1c65504d30923c3f14082ad294d0e6d\nhttps://git.kernel.org/stable/c/34e5667041050711a947e260fc9ebebe08bddee5\nhttps://git.kernel.org/stable/c/d7ddc93392e4a7ffcccc86edf6ef3e64c778db52\nhttps://git.kernel.org/stable/c/459274c77b37ac63b78c928b4b4e748d1f9d05c8\nhttps://git.kernel.org/stable/c/510603f504796c3535f67f55fb0b124a303b44c8\nhttps://git.kernel.org/stable/c/9c23a90648e831d611152ac08dbcd1283d405e7f\nhttps://git.kernel.org/stable/c/2f8f173413f1cbf52660d04df92d0069c4306d25\n",
   "aliases": "CVE-2025-40300\nGHSA-x8qw-46ww-c957\n",
   "assigner": "Linux",
-  "epss": 0.34,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "06dd33c0-e109-3755-ab84-e3dbba75bbda",

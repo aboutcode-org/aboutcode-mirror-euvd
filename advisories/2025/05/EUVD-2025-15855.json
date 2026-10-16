@@ -3,7 +3,7 @@
   "enisaUuid": "4704372f-cad4-345b-8542-640210fa3a91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: mtk-pmic-keys - fix possible null pointer dereference\n\nIn mtk_pmic_keys_probe, the regs parameter is only set if the button is\nparsed in the device tree. However, on hardware where the button is left\nfloating, that node will most likely be removed not to enable that\ninput. In that case the code will try to dereference a null pointer.\n\nLet's use the regs struct instead as it is defined for all supported\nplatforms. Note that it is ok setting the key reg even if that latter is\ndisabled as the interrupt won't be enabled anyway.",
   "datePublished": "May 20, 2025, 4:47:18 PM",
-  "dateUpdated": "Sep 8, 2026, 8:41:40 AM",
+  "dateUpdated": "Oct 15, 2026, 1:06:19 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/334d74a798463ceec02a41eb0e2354aaac0d6249\nhttps://git.kernel.org/stable/c/90fa6015ff83ef1c373cc61b7c924ab2bcbe1801\nhttps://git.kernel.org/stable/c/619c05fb176c272ac6cecf723446b39723ee6d97\nhttps://git.kernel.org/stable/c/09429ddb5a91e9e8f72cd18c012ec4171c2f85ec\nhttps://git.kernel.org/stable/c/11cdb506d0fbf5ac05bf55f5afcb3a215c316490\n",
   "aliases": "GHSA-qh3p-3v24-8crj\nCVE-2025-37972\n",

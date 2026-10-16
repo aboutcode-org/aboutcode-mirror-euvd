@@ -3,7 +3,7 @@
   "enisaUuid": "a232ff18-b589-39f4-9694-50c4e4a6563f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: discard packets if the transport changes\n\nIf the socket has been de-assigned or assigned to another transport,\nwe must discard any packets received because they are not expected\nand would cause issues when we access vsk->transport.\n\nA possible scenario is described by Hyunwoo Kim in the attached link,\nwhere after a first connect() interrupted by a signal, and a second\nconnect() failed, we can find `vsk->transport` at NULL, leading to a\nNULL pointer dereference.",
   "datePublished": "Jan 31, 2025, 11:25:33 AM",
-  "dateUpdated": "Aug 5, 2026, 11:53:30 AM",
+  "dateUpdated": "Oct 15, 2026, 1:02:55 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

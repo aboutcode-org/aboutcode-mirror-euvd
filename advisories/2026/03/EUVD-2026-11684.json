@@ -3,14 +3,14 @@
   "enisaUuid": "fcae3433-e53d-3ea8-abc8-e072c2f5d5f0",
   "description": "Vulnerability in the OpenSSH GSSAPI delta included in various Linux distributions. This vulnerability affects the GSSAPI patches added by various Linux distributions and does not affect the OpenSSH upstream project itself. The usage of sshpkt_disconnect() on an error, which does not terminate the process, allows an attacker to send an unexpected GSSAPI message type during the GSSAPI key exchange to the server, which will call the underlying function and continue the execution of the program without setting the related connection variables. As the variables are not initialized to NULL the code later accesses those uninitialized variables, accessing random memory, which could lead to undefined behavior. The recommended workaround is to use ssh_packet_disconnect() instead, which does terminate the process. The impact of the vulnerability depends heavily on the compiler flag hardening configuration.",
   "datePublished": "Mar 12, 2026, 6:27:44 PM",
-  "dateUpdated": "Sep 8, 2026, 8:44:22 AM",
+  "dateUpdated": "Oct 15, 2026, 1:12:02 AM",
   "baseScore": 2.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N",
   "references": "https://ubuntu.com/security/CVE-2026-3497\nhttps://www.openwall.com/lists/oss-security/2026/03/12/3\n",
   "aliases": "CVE-2026-3497\nGHSA-wcpp-3x59-h8vp\n",
   "assigner": "canonical",
-  "epss": 2.18,
+  "epss": 1.3,
   "enisaIdProduct": [
     {
       "id": "2efb820c-a018-3756-adc2-5e426f9e30c8",

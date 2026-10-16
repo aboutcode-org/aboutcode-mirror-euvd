@@ -3,7 +3,7 @@
   "enisaUuid": "0480955d-fbd9-35cb-a374-a7b827510356",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Add down_write(trace_event_sem) when adding trace event\n\nWhen a module is loaded, it adds trace events defined by the module. It\nmay also need to modify the modules trace printk formats to replace enum\nnames with their values.\n\nIf two modules are loaded at the same time, the adding of the event to the\nftrace_events list can corrupt the walking of the list in the code that is\nmodifying the printk format strings and crash the kernel.\n\nThe addition of the event should take the trace_event_sem for write while\nit adds the new event.\n\nAlso add a lockdep_assert_held() on that semaphore in\n__trace_add_event_dirs() as it iterates the list.",
   "datePublished": "Aug 16, 2025, 11:12:31 AM",
-  "dateUpdated": "Aug 5, 2026, 12:02:45 PM",
+  "dateUpdated": "Oct 15, 2026, 9:52:19 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

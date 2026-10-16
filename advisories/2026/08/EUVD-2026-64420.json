@@ -3,11 +3,11 @@
   "enisaUuid": "328556a9-171c-3b31-a344-84aa398cc0fe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: pca953x: fix pca953x_irq_bus_sync_unlock regmap lock\n\nLocking is disabled in the regmap config as this driver uses its own\nlock. This means that all calls to regmap functions (read or write) must\nhold the i2c_lock. The function pca953x_irq_bus_sync_unlock() did not do\nthis, and it was therefore possible that multiple threads could cause an\nincorrect register to be read/written.\n\nA previous patch partly fixed this, but only protected the write to the\ninterrupt mask register, and not the read from the direction register.",
   "datePublished": "Aug 22, 2026, 3:33:21 PM",
-  "dateUpdated": "Aug 25, 2026, 5:42:11 AM",
+  "dateUpdated": "Oct 15, 2026, 10:09:27 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/e6a2f5f845f50b0c4299bace5111f56d3390a090\nhttps://git.kernel.org/stable/c/9dc325327babe7f159e84cbe9380a45342da0585\n",
+  "references": "https://git.kernel.org/stable/c/bf3f37c2d40b51deb79aea910f28999d7c8c6b5a\nhttps://git.kernel.org/stable/c/e6a2f5f845f50b0c4299bace5111f56d3390a090\nhttps://git.kernel.org/stable/c/9dc325327babe7f159e84cbe9380a45342da0585\n",
   "aliases": "GHSA-p6rq-qpqh-5f25\nCVE-2026-74733\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -53,6 +53,16 @@
       "product_version": "6.1.101 <6.2"
     },
     {
+      "id": "531fb5b9-26ec-35b8-9cb6-5f00a93305e5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
       "id": "57f4b7ae-625b-3886-925b-feafb379647a",
       "product": {
         "name": "Linux",
@@ -71,6 +81,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "6c9586b2-48ba-3d19-a05f-326d7ada074f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "bfc6444b57dc7186b6acc964705d7516cbaf3904 <bf3f37c2d40b51deb79aea910f28999d7c8c6b5a"
     },
     {
       "id": "7a8c46a2-60bb-3365-8894-fde1c37687de",

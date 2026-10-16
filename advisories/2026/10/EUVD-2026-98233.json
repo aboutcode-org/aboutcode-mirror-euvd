@@ -3,7 +3,7 @@
   "enisaUuid": "ca67616c-71fa-3842-adc7-4b60121ad28a",
   "description": "OpenS100 through commit 2b1dafc contains an integer overflow vulnerability in the S-102 Bathymetric Surface parser. An attacker can supply a crafted S-102 HDF5 file with malicious grid dimension metadata that causes memory corruption when a user opens it. In the S102_VG_BathymetryCoverage::Read() function, the numPointsLatitudinal and numPointsLongitudinal values are multiplied without validation, and the 32-bit result can wrap around, producing an undersized heap buffer allocation. Subsequent writes past the end of that buffer cause a heap-based buffer overflow, leading to an application crash or potential arbitrary code execution in the context of the user who opened the file.",
   "datePublished": "Oct 13, 2026, 1:39:03 AM",
-  "dateUpdated": "Oct 14, 2026, 4:02:51 PM",
+  "dateUpdated": "Oct 15, 2026, 2:56:56 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:H/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",

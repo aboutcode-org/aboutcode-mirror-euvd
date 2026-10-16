@@ -3,7 +3,7 @@
   "enisaUuid": "43f4968e-2151-3a45-badb-f8528fda304f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nzsmalloc: fix races between asynchronous zspage free and page migration\n\nThe asynchronous zspage free worker tries to lock a zspage's entire page\nlist without defending against page migration.  Since pages which haven't\nyet been locked can concurrently migrate off the zspage page list while\nlock_zspage() churns away, lock_zspage() can suffer from a few different\nlethal races.\n\nIt can lock a page which no longer belongs to the zspage and unsafely\ndereference page_private(), it can unsafely dereference a torn pointer to\nthe next page (since there's a data race), and it can observe a spurious\nNULL pointer to the next page and thus not lock all of the zspage's pages\n(since a single page migration will reconstruct the entire page list, and\ncreate_page_chain() unconditionally zeroes out each list pointer in the\nprocess).\n\nFix the races by using migrate_read_lock() in lock_zspage() to synchronize\nwith page migration.",
   "datePublished": "Feb 26, 2025, 2:14:02 AM",
-  "dateUpdated": "Aug 5, 2026, 8:55:40 AM",
+  "dateUpdated": "Oct 15, 2026, 9:21:07 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

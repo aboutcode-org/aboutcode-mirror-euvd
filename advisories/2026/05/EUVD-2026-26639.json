@@ -3,12 +3,12 @@
   "enisaUuid": "0aaa3a57-be82-3b84-80c3-e239c5feba1a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv6: ndisc: fix ndisc_ra_useropt to initialize nduseropt_padX fields to zero to prevent an info-leak\n\nWhen processing Router Advertisements with user options the kernel\nbuilds an RTM_NEWNDUSEROPT netlink message. The nduseroptmsg struct\nhas three padding fields that are never zeroed and can leak kernel data\n\nThe fix is simple, just zeroes the padding fields.",
   "datePublished": "May 1, 2026, 2:15:37 PM",
-  "dateUpdated": "Sep 8, 2026, 8:48:41 AM",
+  "dateUpdated": "Oct 15, 2026, 1:18:52 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1da9023f6b071a38e5430ffbce4b70b2b1ac4f9c\nhttps://git.kernel.org/stable/c/2fe4d0ba690a69ad6ae9f7ab9bdc96e02610b648\nhttps://git.kernel.org/stable/c/11d7fe97421cfc81549940c20ed5ac9472d6db05\nhttps://git.kernel.org/stable/c/7f56d87e527bb5a13c3e8b0d5840cb6332822f6d\nhttps://git.kernel.org/stable/c/4f810c686fde509d1cdaa706322d9d2531f8f1a4\nhttps://git.kernel.org/stable/c/b485eef3d97b7aae55ce669b6de555ec81f3d21c\nhttps://git.kernel.org/stable/c/ef3645606e4a635d5062a492f22b7f490852ee67\nhttps://git.kernel.org/stable/c/ae05340ccaa9d347fe85415609e075545bec589f\n",
   "aliases": "CVE-2026-43040\nGHSA-59pc-r9mr-h2pv\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "014ea302-aa32-39b1-8eea-be6c7049954b",

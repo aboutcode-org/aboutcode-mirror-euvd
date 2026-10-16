@@ -3,12 +3,12 @@
   "enisaUuid": "e8234716-7044-336d-9bf6-ba2a83d02ea0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix memory leak when a wq is reset\n\nidxd_wq_disable_cleanup() which is called from the reset path for a\nworkqueue, sets the wq type to NONE, which for other parts of the\ndriver mean that the wq is empty (all its resources were released).\n\nOnly set the wq type to NONE after its resources are released.",
   "datePublished": "Apr 22, 2026, 1:53:39 PM",
-  "dateUpdated": "Sep 8, 2026, 8:47:08 AM",
+  "dateUpdated": "Oct 15, 2026, 1:16:14 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a16098a2f0c11ee5e04e23aa7478ca1fcfb0f658\nhttps://git.kernel.org/stable/c/54d77cc0c40ca2f894859dc7b3c52997574f1a2a\nhttps://git.kernel.org/stable/c/39c1504e0e76bcfb93991fd94288a83e05d13b51\nhttps://git.kernel.org/stable/c/a9e7815d38629bcf59d3005001f1f315424a58de\nhttps://git.kernel.org/stable/c/0c3d3ac57e3c52b570b8c695903306bff07e04c8\nhttps://git.kernel.org/stable/c/d9cfb5193a047a92a4d3c0e91ea4cc87c8f7c478\n",
   "aliases": "CVE-2026-31441\nGHSA-46fr-3c87-qq5v\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "3cd6bda4-0cb2-3517-b445-56b4cf015455",

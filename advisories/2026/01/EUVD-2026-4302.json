@@ -3,14 +3,14 @@
   "enisaUuid": "f9e9f744-7517-3877-b40c-1b47853a1ae6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: return the handler error from mon_handle_auth_done()\n\nCurrently any error from ceph_auth_handle_reply_done() is propagated\nvia finish_auth() but isn't returned from mon_handle_auth_done().  This\nresults in higher layers learning that (despite the monitor considering\nus to be successfully authenticated) something went wrong in the\nauthentication phase and reacting accordingly, but msgr2 still trying\nto proceed with establishing the session in the background.  In the\ncase of secure mode this can trigger a WARN in setup_crypto() and later\nlead to a NULL pointer dereference inside of prepare_auth_signature().",
   "datePublished": "Jan 23, 2026, 3:24:12 PM",
-  "dateUpdated": "Sep 8, 2026, 8:44:30 AM",
+  "dateUpdated": "Oct 15, 2026, 1:12:29 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/77229551f2cf72f3e35636db68e6a825b912cf16\nhttps://git.kernel.org/stable/c/33908769248b38a5e77cf9292817bb28e641992d\nhttps://git.kernel.org/stable/c/e097cd858196b1914309e7e3d79b4fa79383754d\nhttps://git.kernel.org/stable/c/d2c4a5f6996683f287f3851ef5412797042de7f1\nhttps://git.kernel.org/stable/c/9e0101e57534ef0e7578dd09608a6106736b82e5\nhttps://git.kernel.org/stable/c/e84b48d31b5008932c0a0902982809fbaa1d3b70\n",
   "aliases": "GHSA-3fqc-v7hh-4m8x\nCVE-2026-22992\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.32,
   "enisaIdProduct": [
     {
       "id": "0f9f69ab-a4d3-32d9-be1b-b665de2e4184",

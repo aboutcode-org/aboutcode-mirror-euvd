@@ -3,14 +3,14 @@
   "enisaUuid": "f61c783f-5fe4-3e09-9264-fcab54339db3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: int3472: Check for adev == NULL\n\nNot all devices have an ACPI companion fwnode, so adev might be NULL. This\ncan e.g. (theoretically) happen when a user manually binds one of\nthe int3472 drivers to another i2c/platform device through sysfs.\n\nAdd a check for adev not being set and return -ENODEV in that case to\navoid a possible NULL pointer deref in skl_int3472_get_acpi_buffer().",
   "datePublished": "Feb 27, 2025, 2:12:05 AM",
-  "dateUpdated": "Sep 8, 2026, 8:39:54 AM",
+  "dateUpdated": "Oct 15, 2026, 1:01:21 AM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/46263a0b687a044e645387a9c7692ccd693f09f1\nhttps://git.kernel.org/stable/c/4f8b210823cc2d1f9d967f089a6c00d025bb237f\nhttps://git.kernel.org/stable/c/f9c7cc44758f4930b41285a6d54afa8cbd9762b4\nhttps://git.kernel.org/stable/c/0a30353beca2693d30bde477024d755ffecea514\nhttps://git.kernel.org/stable/c/a808ecf878ad646ebc9c83d9fc4ce72fd9c49d3d\nhttps://git.kernel.org/stable/c/cd2fd6eab480dfc247b737cf7a3d6b009c4d0f1c\n",
   "aliases": "GHSA-jcx5-2hxr-pwq4\nCVE-2024-58011\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "028d68bd-8f5b-30c2-8e74-a5c4f53ce3ed",

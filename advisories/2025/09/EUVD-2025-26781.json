@@ -3,14 +3,14 @@
   "enisaUuid": "1de00949-462f-342d-891d-c87bf214b7b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Prevent ALIGN() overflow\n\nWhen allocating IOVA the candidate range gets aligned to the target\nalignment. If the range is close to ULONG_MAX then the ALIGN() can\nwrap resulting in a corrupted iova.\n\nOpen code the ALIGN() using get_add_overflow() to prevent this.\nThis simplifies the checks as we don't need to check for length earlier\neither.\n\nConsolidate the two copies of this code under a single helper.\n\nThis bug would allow userspace to create a mapping that overlaps with some\nother mapping or a reserved range.",
   "datePublished": "Sep 4, 2025, 3:32:42 PM",
-  "dateUpdated": "Aug 5, 2026, 12:03:58 PM",
+  "dateUpdated": "Oct 15, 2026, 10:02:28 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d19b817540c0abe84854a64ee9ee34cecc3bbeef\nhttps://git.kernel.org/stable/c/ebb6021560b94649bec6b8faba6fe0dca2218e81\nhttps://git.kernel.org/stable/c/e42a046bb41dcdde4f766a17d8211842007ed537\nhttps://git.kernel.org/stable/c/79fad1917802c28de51a479318a056a6fbe3e2f2\nhttps://git.kernel.org/stable/c/b42497e3c0e74db061eafad41c0cd7243c46436b\n",
   "aliases": "CVE-2025-38688\nGHSA-4fjc-772g-jpj6\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "11592689-7b70-3613-872a-a1ffc1ed5f12",

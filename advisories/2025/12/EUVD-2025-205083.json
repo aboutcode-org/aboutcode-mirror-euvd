@@ -3,7 +3,7 @@
   "enisaUuid": "a7d69fe7-bd2c-36dd-b71e-646f9fafed91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: smartpqi: Fix device resources accessed after device removal\n\nCorrect possible race conditions during device removal.\n\nPreviously, a scheduled work item to reset a LUN could still execute\nafter the device was removed, leading to use-after-free and other\nresource access issues.\n\nThis race condition occurs because the abort handler may schedule a LUN\nreset concurrently with device removal via sdev_destroy(), leading to\nuse-after-free and improper access to freed resources.\n\n  - Check in the device reset handler if the device is still present in\n    the controller's SCSI device list before running; if not, the reset\n    is skipped.\n\n  - Cancel any pending TMF work that has not started in sdev_destroy().\n\n  - Ensure device freeing in sdev_destroy() is done while holding the\n    LUN reset mutex to avoid races with ongoing resets.",
   "datePublished": "Dec 24, 2025, 10:33:01 AM",
-  "dateUpdated": "Sep 8, 2026, 8:43:17 AM",
+  "dateUpdated": "Oct 15, 2026, 1:09:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/7dfa5a5516ec3c6b9b6c22ee18f0eb2df3f38ef2\nhttps://git.kernel.org/stable/c/6d2390653d82cad0e1ba2676e536dd99678f6ef1\nhttps://git.kernel.org/stable/c/eccc02ba1747501d92bb2049e3ce378ba372f641\nhttps://git.kernel.org/stable/c/4e1acf1b6dd6dd0495bda139daafd7a403ae2dc1\nhttps://git.kernel.org/stable/c/1a5c5a2f88e839af5320216a02ffb075b668596a\nhttps://git.kernel.org/stable/c/b518e86d1a70a88f6592a7c396cf1b93493d1aab\n",
   "aliases": "CVE-2025-68371\nGHSA-ch5r-r49p-5xqv\n",

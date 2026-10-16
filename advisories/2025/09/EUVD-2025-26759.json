@@ -3,14 +3,14 @@
   "enisaUuid": "37a6b805-faa1-3958-999f-dda26f3a6702",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Validate i_depth for exhash directories\n\nA fuzzer test introduced corruption that ends up with a depth of 0 in\ndir_e_read(), causing an undefined shift by 32 at:\n\n  index = hash >> (32 - dip->i_depth);\n\nAs calculated in an open-coded way in dir_make_exhash(), the minimum\ndepth for an exhash directory is ilog2(sdp->sd_hash_ptrs) and 0 is\ninvalid as sdp->sd_hash_ptrs is fixed as sdp->bsize / 16 at mount time.\n\nSo we can avoid the undefined behaviour by checking for depth values\nlower than the minimum in gfs2_dinode_in(). Values greater than the\nmaximum are already being checked for there.\n\nAlso switch the calculation in dir_make_exhash() to use ilog2() to\nclarify how the depth is calculated.\n\nTested with the syzkaller repro.c and xfstests '-g quick'.",
   "datePublished": "Sep 4, 2025, 3:33:00 PM",
-  "dateUpdated": "Aug 5, 2026, 12:04:10 PM",
+  "dateUpdated": "Oct 15, 2026, 10:02:28 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/076e992752e4b24178918f748d75597c80a408d2\nhttps://git.kernel.org/stable/c/366183911b153e9b8cf758e1414e1154d7569337\nhttps://git.kernel.org/stable/c/112bb60cd0e254a369e95aa9941a694ffeca089f\nhttps://git.kernel.org/stable/c/cddea0c721106ea480371412d8de21705eb27376\nhttps://git.kernel.org/stable/c/53a0249d68a210c16e961b83adfa82f94ee0a53d\nhttps://git.kernel.org/stable/c/b5f46951e62377b6e406fadc18bc3c5bdf1632a7\nhttps://git.kernel.org/stable/c/9680c58675b82348ab84d387e4fa727f7587e1a0\nhttps://git.kernel.org/stable/c/557c024ca7250bb65ae60f16c02074106c2f197b\n",
   "aliases": "GHSA-c47v-8m9c-7hhr\nCVE-2025-38710\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0778ed4d-5bc2-3498-a280-2aa87decfb70",

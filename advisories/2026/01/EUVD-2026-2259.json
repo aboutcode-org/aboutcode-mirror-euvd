@@ -3,12 +3,12 @@
   "enisaUuid": "b027cf06-4578-39cd-816a-6100344057c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: using the num_tqps in the vf driver to apply for resources\n\nCurrently, hdev->htqp is allocated using hdev->num_tqps, and kinfo->tqp\nis allocated using kinfo->num_tqps. However, kinfo->num_tqps is set to\nmin(new_tqps, hdev->num_tqps);  Therefore, kinfo->num_tqps may be smaller\nthan hdev->num_tqps, which causes some hdev->htqp[i] to remain\nuninitialized in hclgevf_knic_setup().\n\nThus, this patch allocates hdev->htqp and kinfo->tqp using hdev->num_tqps,\nensuring that the lengths of hdev->htqp and kinfo->tqp are consistent\nand that all elements are properly initialized.",
   "datePublished": "Jan 13, 2026, 3:31:20 PM",
-  "dateUpdated": "Sep 8, 2026, 8:43:40 AM",
+  "dateUpdated": "Oct 15, 2026, 1:10:32 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c149decd8c18ae6acdd7a6041d74507835cf26e6\nhttps://git.kernel.org/stable/c/bcefdb288eedac96fd2f583298927e9c6c481489\nhttps://git.kernel.org/stable/c/6cd8a2930df850f4600fe8c57d0662b376520281\nhttps://git.kernel.org/stable/c/1956d47a03eb625951e9e070db39fe2590e27510\nhttps://git.kernel.org/stable/c/429f946a7af3fbf08761d218746cd4afa80a7954\nhttps://git.kernel.org/stable/c/62f28d79a6186a602a9d926a2dbb5b12b6867df7\nhttps://git.kernel.org/stable/c/c2a16269742e176fccdd0ef9c016a233491a49ad\n",
   "aliases": "GHSA-w787-fq27-wmmf\nCVE-2025-71064\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "08e50860-4a79-3a32-962d-4520777d021f",

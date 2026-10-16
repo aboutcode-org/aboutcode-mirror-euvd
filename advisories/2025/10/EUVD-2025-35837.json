@@ -3,12 +3,12 @@
   "enisaUuid": "e4643363-ca6d-3d40-8899-6a75f9827a1c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: af_alg - Fix incorrect boolean values in af_alg_ctx\n\nCommit 1b34cbbf4f01 (\"crypto: af_alg - Disallow concurrent writes in\naf_alg_sendmsg\") changed some fields from bool to 1-bit bitfields of\ntype u32.\n\nHowever, some assignments to these fields, specifically 'more' and\n'merge', assign values greater than 1.  These relied on C's implicit\nconversion to bool, such that zero becomes false and nonzero becomes\ntrue.\n\nWith a 1-bit bitfields of type u32 instead, mod 2 of the value is taken\ninstead, resulting in 0 being assigned in some cases when 1 was intended.\n\nFix this by restoring the bool type.",
   "datePublished": "Oct 24, 2025, 12:24:57 PM",
-  "dateUpdated": "Sep 8, 2026, 8:42:43 AM",
+  "dateUpdated": "Oct 15, 2026, 1:08:50 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3a21698ace915a445bce2d0dcfc84b6d2199baf7\nhttps://git.kernel.org/stable/c/d382d6daf0184490f366562469a5673f65ee2662\nhttps://git.kernel.org/stable/c/54506c6335690f4ef1b9f154e34f5a604c72c1ed\nhttps://git.kernel.org/stable/c/8703940bd30b5ad94408d28d7192db2491cd3592\nhttps://git.kernel.org/stable/c/316b090c2fee964c307a634fecc7df269664b158\nhttps://git.kernel.org/stable/c/fbe96bd25423e61273d8831e995260b429d850b6\nhttps://git.kernel.org/stable/c/d0ca0df179c4b21e2a6c4a4fb637aa8fa14575cb\n",
   "aliases": "GHSA-rjhr-rr92-fh8c\nCVE-2025-40022\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "01a11b10-cfab-3510-a80a-57aee487ba70",

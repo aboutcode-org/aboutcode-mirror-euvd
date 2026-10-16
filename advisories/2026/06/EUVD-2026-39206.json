@@ -3,12 +3,12 @@
   "enisaUuid": "db85dab1-1db6-3d31-bbb9-8d6b4390bc65",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: validate advertising TLV before type checks\n\ntlv_data_is_valid() reads each advertising data field length from\ndata[i], then inspects data[i + 1] for managed EIR types before\nchecking that the current field still fits inside the supplied buffer.\n\nA malformed field whose length byte is the last byte of the buffer can\ntherefore make the parser read one byte past the advertising data.\n\nKASAN reported the following when a malformed MGMT_OP_ADD_ADVERTISING\nrequest reached that path:\n\n  BUG: KASAN: vmalloc-out-of-bounds in tlv_data_is_valid()\n  Read of size 1\n  Call trace:\n    tlv_data_is_valid()\n    add_advertising()\n    hci_mgmt_cmd()\n    hci_sock_sendmsg()\n\nMove the existing element-length check before any type-octet inspection\nso each non-empty element is proven to contain its type byte before the\nparser looks at data[i + 1].",
   "datePublished": "Jun 25, 2026, 8:39:45 AM",
-  "dateUpdated": "Jun 25, 2026, 8:39:45 AM",
+  "dateUpdated": "Oct 15, 2026, 1:23:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/13ad995071a06570668dd8daab3616c247c72080\nhttps://git.kernel.org/stable/c/06fcbd79c3c360a50f9be9d370769bbd738d0976\nhttps://git.kernel.org/stable/c/f7093ac233c1e7f51d125534f46067772a113175\nhttps://git.kernel.org/stable/c/74c08e4db35a476c3462aeb65846f955be732626\nhttps://git.kernel.org/stable/c/18fea1cb0c2599752e908c8217490f73ddd33e00\nhttps://git.kernel.org/stable/c/1a3c8ffbb469859b076445af44bdfa6a711d483e\nhttps://git.kernel.org/stable/c/2a3f3ed9e198ae23c15859ace2f9ca6cfdc35b57\nhttps://git.kernel.org/stable/c/de23fb62259aa01d294f77238ae3b835eb674413\n",
   "aliases": "CVE-2026-53255\nGHSA-hxxh-4jr7-w99w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "16d1636b-d9bf-349d-a6c4-a24638e64605",

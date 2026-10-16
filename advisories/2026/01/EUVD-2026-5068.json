@@ -3,12 +3,12 @@
   "enisaUuid": "33534f20-59c2-3f30-b6f1-68215bd5d2aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: qcom: gpi: Fix memory leak in gpi_peripheral_config()\n\nFix a memory leak in gpi_peripheral_config() where the original memory\npointed to by gchan->config could be lost if krealloc() fails.\n\nThe issue occurs when:\n1. gchan->config points to previously allocated memory\n2. krealloc() fails and returns NULL\n3. The function directly assigns NULL to gchan->config, losing the\n   reference to the original memory\n4. The original memory becomes unreachable and cannot be freed\n\nFix this by using a temporary variable to hold the krealloc() result\nand only updating gchan->config when the allocation succeeds.\n\nFound via static analysis and code review.",
   "datePublished": "Jan 31, 2026, 11:42:05 AM",
-  "dateUpdated": "Sep 8, 2026, 8:44:40 AM",
+  "dateUpdated": "Oct 15, 2026, 1:12:41 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4532f18e4ab36def1f55cd936d0fc002b2ce34c2\nhttps://git.kernel.org/stable/c/694ab1f6f16cb69f7c5ef2452b22ba7b00a3c7c7\nhttps://git.kernel.org/stable/c/6bf4ef078fd11910988889a6c0b3698d2e0c89af\nhttps://git.kernel.org/stable/c/01b1d781394fc9b83015e3a3cd46b17bda842bd8\nhttps://git.kernel.org/stable/c/55a67ba5ac4cebfd54cc8305d4d57a0f1dfe6a85\nhttps://git.kernel.org/stable/c/3f747004bbd641131d9396d87b5d2d3d1e182728\n",
   "aliases": "CVE-2026-23026\nGHSA-r4rx-4jr3-hmp7\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "26814021-081e-37d3-9c0c-c97f8265336a",

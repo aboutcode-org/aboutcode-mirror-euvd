@@ -3,12 +3,12 @@
   "enisaUuid": "899285c3-b502-3807-974a-04ddf5aa60a2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: backtracking shouldn't clear outer frame R1-R5 for callbacks\n\nWhen processing calls to bpf_loop() verifier marks R1 (and R4) as\nprecise. R1 tracks loop iterations number and because of the\n'callback_depth < R1' mechanics in check_helper_call() must be marked\nprecise. However, precision propagation for R1 was broken,\nwhen bpf_loop() call was verified on a second iteration.\n\nConsider the following verification trace:\n- main: bpf_loop(nr_loops, callback ...)\n- callback: BPF_EXIT\n- main: bpf_loop(nr_loops, callback ...)\n- ...\n\nWhile the first visit of the call to bpf_loop() propagated R1\nprecision as expected, the second call to mark_chain_precision() in\nthe check_helper_call() set R1, but it was immediately reset when\nbacktrack_insn() processed preceding BPF_EXIT in the loop deleted in\nthis patch.\n\nBecause of that, the second visit of the call to bpf_loop() injected\ncheckpoint with R1 not marked as precise. Which could trick the\nverifier into accepting unsafe programs. See the next patch for an\nexample of such program.\n\nCommit is structured in a way to minimize conflicts when\n'bpf' would be eventually merged with 'bpf-next'.",
   "datePublished": "Sep 25, 2026, 10:24:19 AM",
-  "dateUpdated": "Sep 25, 2026, 10:24:19 AM",
+  "dateUpdated": "Oct 15, 2026, 10:12:11 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f83890dfed9efc5e19df1dbc1ad707a142936923\nhttps://git.kernel.org/stable/c/e3e4f66cc4b72333d0886ae2673c360248987889\n",
+  "references": "https://git.kernel.org/stable/c/3a39bc9707fbd1bef4df7318a9d02222741dda5b\nhttps://git.kernel.org/stable/c/f83890dfed9efc5e19df1dbc1ad707a142936923\nhttps://git.kernel.org/stable/c/e3e4f66cc4b72333d0886ae2673c360248987889\n",
   "aliases": "CVE-2026-98084\nGHSA-hcwg-2fch-4v4c\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "03646d31-6189-3869-9836-cdd6eecf8eaf",
@@ -89,6 +89,26 @@
         }
       },
       "product_version": "patch: 7.3-rc2"
+    },
+    {
+      "id": "e7c069e9-a2ed-351c-8cea-9b94f5442506",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ab5cfac139ab8576fb54630d4cca23c3e690ee90 <3a39bc9707fbd1bef4df7318a9d02222741dda5b"
+    },
+    {
+      "id": "f508ac0c-22de-33f2-8570-316bf6e82849",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     }
   ],
   "enisaIdVendor": [

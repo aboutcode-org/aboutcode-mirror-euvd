@@ -3,14 +3,14 @@
   "enisaUuid": "ef0d175a-9193-3536-a10a-4e22399033bf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nigb: Do not free q_vector unless new one was allocated\n\nAvoid potential use-after-free condition under memory pressure. If the\nkzalloc() fails, q_vector will be freed but left in the original\nadapter->q_vector[v_idx] array position.",
   "datePublished": "Sep 15, 2025, 2:02:30 PM",
-  "dateUpdated": "Aug 5, 2026, 8:57:56 AM",
+  "dateUpdated": "Oct 15, 2026, 9:31:19 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/64ca1969599857143e91aeec4440640656100803\nhttps://git.kernel.org/stable/c/0200f0fbb11e359cc35af72ab10b2ec224e6f633\nhttps://git.kernel.org/stable/c/68e8adbcaf7a8743e473343b38b9dad66e2ac6f3\nhttps://git.kernel.org/stable/c/f96bd8adc8adde25390965a8c1ee81b73cb62075\nhttps://git.kernel.org/stable/c/3cb18dea11196fb4a06f78294cec5e61985e1aff\nhttps://git.kernel.org/stable/c/314f7092b27749bdde44c14095b5533afa2a3bc8\nhttps://git.kernel.org/stable/c/6e399577bd397a517df4b938601108c63769ce0a\nhttps://git.kernel.org/stable/c/56483aecf6b22eb7dff6315b3a174688c6ad494c\nhttps://git.kernel.org/stable/c/0668716506ca66f90d395f36ccdaebc3e0e84801\n",
   "aliases": "GHSA-cp87-76w4-mfxp\nCVE-2022-50252\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "2555b64d-9776-363c-bbb4-be64526643f8",

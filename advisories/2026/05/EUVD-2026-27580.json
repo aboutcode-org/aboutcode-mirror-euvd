@@ -3,12 +3,12 @@
   "enisaUuid": "a1ddb868-094f-3cf1-a87d-60914013af1f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_log: initialize nfgenmsg in NLMSG_DONE terminator\n\nWhen batching multiple NFLOG messages (inst->qlen > 1), __nfulnl_send()\nappends an NLMSG_DONE terminator with sizeof(struct nfgenmsg) payload via\nnlmsg_put(), but never initializes the nfgenmsg bytes. The nlmsg_put()\nhelper only zeroes alignment padding after the payload, not the payload\nitself, so four bytes of stale kernel heap data are leaked to userspace\nin the NLMSG_DONE message body.\n\nUse nfnl_msg_put() to build the NLMSG_DONE terminator, which initializes\nthe nfgenmsg payload via nfnl_fill_hdr(), consistent with how\n__build_packet_message() already constructs NFULNL_MSG_PACKET headers.",
   "datePublished": "May 6, 2026, 7:40:19 AM",
-  "dateUpdated": "Sep 8, 2026, 8:48:46 AM",
+  "dateUpdated": "Oct 15, 2026, 1:19:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/296f18e1c3a87c915a92ed27832d5040a22d1072\nhttps://git.kernel.org/stable/c/9e2182865de781c41ab16b7985e9d26dcefea867\nhttps://git.kernel.org/stable/c/57cc509d82b46150a11dcecc8b25eaa177eda34d\nhttps://git.kernel.org/stable/c/368c22aea490f6f50df831b4f9e3623787686c5b\nhttps://git.kernel.org/stable/c/d1399632ba255d2e02c757af5d9f5d9279ce168c\nhttps://git.kernel.org/stable/c/d552bcfca323d175664d7444989b04f55666978a\nhttps://git.kernel.org/stable/c/15d209bccf9273b4a8b4e579ba0e92d065b6ec8c\nhttps://git.kernel.org/stable/c/1f3083aec8836213da441270cdb1ab612dd82cf4\n",
   "aliases": "CVE-2026-43085\nGHSA-rp69-c9w2-rv4p\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0c8fbb69-9469-3982-8bf9-40e038878975",

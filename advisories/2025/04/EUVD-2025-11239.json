@@ -3,12 +3,12 @@
   "enisaUuid": "15e481da-77f7-3d8e-998a-261125747e55",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mvpp2: Prevent parser TCAM memory corruption\n\nProtect the parser TCAM/SRAM memory, and the cached (shadow) SRAM\ninformation, from concurrent modifications.\n\nBoth the TCAM and SRAM tables are indirectly accessed by configuring\nan index register that selects the row to read or write to. This means\nthat operations must be atomic in order to, e.g., avoid spreading\nwrites across multiple rows. Since the shadow SRAM array is used to\nfind free rows in the hardware table, it must also be protected in\norder to avoid TOCTOU errors where multiple cores allocate the same\nrow.\n\nThis issue was detected in a situation where `mvpp2_set_rx_mode()` ran\nconcurrently on two CPUs. In this particular case the\nMVPP2_PE_MAC_UC_PROMISCUOUS entry was corrupted, causing the\nclassifier unit to drop all incoming unicast - indicated by the\n`rx_classifier_drops` counter.",
   "datePublished": "Apr 16, 2025, 2:12:16 PM",
-  "dateUpdated": "Sep 8, 2026, 8:41:15 AM",
+  "dateUpdated": "Oct 15, 2026, 1:05:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e3711163d14d02af9005e4cdad30899c565f13fb\nhttps://git.kernel.org/stable/c/b3f48a41a00d6d8d9c6fe09ae47dd21c8c1c8b03\nhttps://git.kernel.org/stable/c/5b0ae1723a7d9574ae1aee7d9cf9757a30069865\nhttps://git.kernel.org/stable/c/fcbfb54a0269875cf3cd6a2bff4f85a2e0a0b552\nhttps://git.kernel.org/stable/c/e64e9b6e86b39db3baa576fd73da73533b54cb2d\nhttps://git.kernel.org/stable/c/46c1e23e34c9d1eaadf37f88216d9d8ce0d0bcee\nhttps://git.kernel.org/stable/c/96844075226b49af25a69a1d084b648ec2d9b08d\n",
   "aliases": "GHSA-f5rg-cp58-cwjr\nCVE-2025-22060\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0b5c65e8-1245-34fb-bc77-013aa1790112",

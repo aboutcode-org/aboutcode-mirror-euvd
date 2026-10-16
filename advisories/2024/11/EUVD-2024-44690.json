@@ -3,14 +3,14 @@
   "enisaUuid": "b661b149-3589-3581-8638-21f29e5d041b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phy: dp83869: fix memory corruption when enabling fiber\n\nWhen configuring the fiber port, the DP83869 PHY driver incorrectly\ncalls linkmode_set_bit() with a bit mask (1 << 10) rather than a bit\nnumber (10). This corrupts some other memory location -- in case of\narm64 the priv pointer in the same structure.\n\nSince the advertising flags are updated from supported at the end of the\nfunction the incorrect line isn't needed at all and can be removed.",
   "datePublished": "Nov 8, 2024, 5:38:29 AM",
-  "dateUpdated": "Aug 5, 2026, 11:42:23 AM",
+  "dateUpdated": "Oct 15, 2026, 12:57:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/21b5af7f0c99b3bf1fd02016e6708b613acbcaf4\nhttps://git.kernel.org/stable/c/ad0d76b8ee5db063791cc2e7a30ffc9852ac37c4\nhttps://git.kernel.org/stable/c/c1944b4253649fc6f2fb53e7d6302eb414d2182c\nhttps://git.kernel.org/stable/c/9ca634676ff66e1d616259e136f96f96b2a1759a\nhttps://git.kernel.org/stable/c/e3f2de32dae35bc7d173377dc97b5bc9fcd9fc84\nhttps://git.kernel.org/stable/c/a842e443ca8184f2dc82ab307b43a8b38defd6a5\n",
   "aliases": "CVE-2024-50188\nGHSA-8hmj-4h9r-668v\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "06f79b60-f159-3ff2-8369-d196322f6b01",

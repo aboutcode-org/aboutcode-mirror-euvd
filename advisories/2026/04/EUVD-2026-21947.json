@@ -3,12 +3,12 @@
   "enisaUuid": "c21edb58-7c90-3513-80ad-bd6300101216",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_hfsc: fix divide-by-zero in rtsc_min()\n\nm2sm() converts a u32 slope to a u64 scaled value.  For large inputs\n(e.g. m1=4000000000), the result can reach 2^32.  rtsc_min() stores\nthe difference of two such u64 values in a u32 variable `dsm` and\nuses it as a divisor.  When the difference is exactly 2^32 the\ntruncation yields zero, causing a divide-by-zero oops in the\nconcave-curve intersection path:\n\n  Oops: divide error: 0000\n  RIP: 0010:rtsc_min (net/sched/sch_hfsc.c:601)\n  Call Trace:\n   init_ed (net/sched/sch_hfsc.c:629)\n   hfsc_enqueue (net/sched/sch_hfsc.c:1569)\n   [...]\n\nWiden `dsm` to u64 and replace do_div() with div64_u64() so the full\ndifference is preserved.",
   "datePublished": "Apr 13, 2026, 1:40:26 PM",
-  "dateUpdated": "Sep 8, 2026, 8:47:00 AM",
+  "dateUpdated": "Oct 15, 2026, 1:16:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ad8e8fec40290a8c8cf145c0deaadf76f80c5163\nhttps://git.kernel.org/stable/c/ab1ff5890c7354afc7be56502fcfbd61f3b7ae4f\nhttps://git.kernel.org/stable/c/25b6821884713a31e2b49fb67b0ebd765b33e0a9\nhttps://git.kernel.org/stable/c/c56f78614e7781aaceca9bd3cb2128bf7d45c3bd\nhttps://git.kernel.org/stable/c/b9e6431cbea8bb1fae8069ed099b4ee100499835\nhttps://git.kernel.org/stable/c/17c1b9807b8a67d676b6dcf749ee932ebaa7f568\nhttps://git.kernel.org/stable/c/d0aefec1b1a1ba2c1d251028dc2c4e5b4ce1fea5\nhttps://git.kernel.org/stable/c/4576100b8cd03118267513cafacde164b498b322\n",
   "aliases": "GHSA-mgjx-cg3q-7vjw\nCVE-2026-31423\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "041c250d-f4aa-3427-92e9-6d5c77d7fd85",

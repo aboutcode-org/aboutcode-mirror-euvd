@@ -3,12 +3,12 @@
   "enisaUuid": "a8f6b1d3-cc05-3c62-959d-6cc4bb86cea7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: arp/nd proxy: fix reading neigh ha\n\nCurrently neigh ha address is read directly, but that can result in\ntorn/partial reads if the neigh is being updated. Use neigh_ha_snapshot\nto take a stable snapshot of the address.",
   "datePublished": "Sep 17, 2026, 4:06:15 PM",
-  "dateUpdated": "Sep 17, 2026, 4:06:15 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:23 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/291c9e137b7c74e8a512cded4845352da4c4adda\nhttps://git.kernel.org/stable/c/57549ab9079122991dfa0f8248ca00e101e8e69b\n",
+  "references": "https://git.kernel.org/stable/c/884cbf15ccd3980bcc9583073045f91798a86d4e\nhttps://git.kernel.org/stable/c/291c9e137b7c74e8a512cded4845352da4c4adda\nhttps://git.kernel.org/stable/c/57549ab9079122991dfa0f8248ca00e101e8e69b\n",
   "aliases": "CVE-2026-90106\nGHSA-gcv9-cqh3-4c3g\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "198c8551-30aa-3b2a-af76-d274ce36cf17",
@@ -69,6 +69,26 @@
         }
       },
       "product_version": "4.15"
+    },
+    {
+      "id": "b7b2d13c-ac50-3860-b700-d56af8f3b572",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "faf79ff9-df4a-3286-a053-f8d035d545a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "057658cb33fbf4d4309f01fe8845903b1cd07fad <884cbf15ccd3980bcc9583073045f91798a86d4e"
     }
   ],
   "enisaIdVendor": [

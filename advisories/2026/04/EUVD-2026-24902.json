@@ -3,12 +3,12 @@
   "enisaUuid": "2c60e8d6-596b-3b55-8dd9-9c8870c2fa8a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nesp: fix skb leak with espintcp and async crypto\n\nWhen the TX queue for espintcp is full, esp_output_tail_tcp will\nreturn an error and not free the skb, because with synchronous crypto,\nthe common xfrm output code will drop the packet for us.\n\nWith async crypto (esp_output_done), we need to drop the skb when\nesp_output_tail_tcp returns an error.",
   "datePublished": "Apr 22, 2026, 1:54:34 PM",
-  "dateUpdated": "Sep 8, 2026, 8:47:37 AM",
+  "dateUpdated": "Oct 15, 2026, 1:16:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/aca3ad0c262f54a5b5c95dda80a48365997d1224\nhttps://git.kernel.org/stable/c/41aafca57de4a4c026701622bd4648f112a9edcd\nhttps://git.kernel.org/stable/c/4820847e036ff1035b01b69ad68dfc17e7028fe9\nhttps://git.kernel.org/stable/c/6a3ec6efbc4f90e0ccb2e71574f07351f19996f4\nhttps://git.kernel.org/stable/c/df6f995358dc1f3c42484f5cfe241d7bd3e1cd15\nhttps://git.kernel.org/stable/c/88d386243ed374ac969dabd3bbc1409a31d81818\nhttps://git.kernel.org/stable/c/6aa9841d917532d0f2d932d1ff2f3a94305aaf47\nhttps://git.kernel.org/stable/c/0c0eef8ccd2413b0a10eb6bbd3442333b1e64dd2\n",
   "aliases": "CVE-2026-31518\nGHSA-f37v-5r8j-33m9\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1212fc82-3826-3e96-a0fb-5dfd410cfe18",

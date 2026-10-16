@@ -3,13 +3,23 @@
   "enisaUuid": "9803d350-f121-33b1-8af6-730743cc7ec1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: fix dma mapping leak in stmmac_tso_xmit()\n\nIn stmmac_tso_xmit(), if the DMA mapping of an skb fragment fails, the\nframe is dropped but the DMA mappings already created for the linear\npart and for the fragments mapped before the failure are never\nunmapped, leaking DMA mappings.\n\nFix the leak by walking back over the descriptors used by the frame and\nreleasing each of them with stmmac_free_tx_buffer(). Moreover, release\nthe descriptors with stmmac_release_tx_desc() unmapping the DMA buffers.",
   "datePublished": "Sep 25, 2026, 10:36:11 AM",
-  "dateUpdated": "Sep 25, 2026, 10:36:11 AM",
+  "dateUpdated": "Oct 15, 2026, 10:12:17 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e85adaac3dc6317cae902372c6849189ec62cf7d\nhttps://git.kernel.org/stable/c/a5d946466a95621fa2769720d59ea336003aa1a5\n",
+  "references": "https://git.kernel.org/stable/c/8a3257f142ae513d0c96d42f97386d4941bcec29\nhttps://git.kernel.org/stable/c/e85adaac3dc6317cae902372c6849189ec62cf7d\nhttps://git.kernel.org/stable/c/a5d946466a95621fa2769720d59ea336003aa1a5\n",
   "aliases": "CVE-2026-98131\nGHSA-m77g-747m-3xxc\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
+    {
+      "id": "0ae7fcd2-fc62-313e-b340-0094f324ba7e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f748be531d7012c456b97f66091d86b3675c5fef <8a3257f142ae513d0c96d42f97386d4941bcec29"
+    },
     {
       "id": "1a84bfd1-a271-3bc5-8e53-1c25069c98aa",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "f748be531d7012c456b97f66091d86b3675c5fef <e85adaac3dc6317cae902372c6849189ec62cf7d"
+    },
+    {
+      "id": "45e84e19-d4ec-3b15-ad86-6b9adc86ea30",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "c1c8a651-d5d9-3a46-b9ed-fa5b72048310",

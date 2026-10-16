@@ -3,14 +3,14 @@
   "enisaUuid": "33c934f9-21c0-3e12-a9e8-78d27de9c4d3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: sysctl: cookie_hmac_alg: avoid using current->nsproxy\n\nAs mentioned in a previous commit of this series, using the 'net'\nstructure via 'current' is not recommended for different reasons:\n\n- Inconsistency: getting info from the reader's/writer's netns vs only\n  from the opener's netns.\n\n- current->nsproxy can be NULL in some cases, resulting in an 'Oops'\n  (null-ptr-deref), e.g. when the current task is exiting, as spotted by\n  syzbot [1] using acct(2).\n\nThe 'net' structure can be obtained from the table->data using\ncontainer_of().\n\nNote that table->data could also be used directly, as this is the only\nmember needed from the 'net' structure, but that would increase the size\nof this fix, to use '*data' everywhere 'net->sctp.sctp_hmac_alg' is\nused.",
   "datePublished": "Jan 19, 2025, 10:17:57 AM",
-  "dateUpdated": "Aug 5, 2026, 11:53:19 AM",
+  "dateUpdated": "Oct 15, 2026, 9:51:51 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5599b212d2f4466e1832a94e9932684aaa364587\nhttps://git.kernel.org/stable/c/03ca51faba2b017bf6c90e139434c4117d0afcdc\nhttps://git.kernel.org/stable/c/86ddf8118123cb58a0fb8724cad6979c4069065b\nhttps://git.kernel.org/stable/c/3cd0659deb9c03535fd61839e91d4d4d3e51ac71\nhttps://git.kernel.org/stable/c/ad673e514b2793b8d5902f6ba6ab7e890dea23d5\nhttps://git.kernel.org/stable/c/f0bb3935470684306e4e04793a20ac4c4b08de0b\nhttps://git.kernel.org/stable/c/ea62dd1383913b5999f3d16ae99d411f41b528d4\n",
   "aliases": "GHSA-2gpq-mc93-wwwp\nCVE-2025-21640\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "07865e9a-410f-3554-a945-a9cc9b562d7d",

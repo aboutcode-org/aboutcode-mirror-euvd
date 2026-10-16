@@ -3,12 +3,12 @@
   "enisaUuid": "c7b80ffa-a0c5-3097-bcc7-995de587591f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: mcast: use rcu_assign_pointer() for __rcu list updates\n\nSeveral places in net/ipv6/mcast.c update RCU-protected lists\n(np->ipv6_mc_list, idev->mc_list, idev->mc_tomb) using direct pointer\nassignments instead of rcu_assign_pointer():\n\n1. In __ipv6_dev_mc_dec(), unlinking a group from idev->mc_list did:\n       *map = ma->next;\n   without rcu_assign_pointer() while concurrent readers traverse\n   idev->mc_list locklessly under rcu_read_lock().\n2. In ipv6_sock_mc_drop() and __ipv6_sock_mc_close(), unlinking a group\n   from np->ipv6_mc_list directly assigned *lnk = mc_lst->next and\n   np->ipv6_mc_list = mc_lst->next without rcu_assign_pointer(), racing\n   with lockless readers in inet6_mc_check().\n3. In __ipv6_sock_mc_join(), mc_lst->next was initialized to\n   np->ipv6_mc_list via raw assignment before publishing mc_lst.\n4. In mld_del_delrec() and __ipv6_dev_mc_inc(), __rcu source pointers\n   passed into rcu_assign_pointer() lacked explicit dereference helpers.\n\nFix these by consistently using rcu_assign_pointer() along with\nmc_dereference() / sock_dereference().",
   "datePublished": "Sep 25, 2026, 10:24:28 AM",
-  "dateUpdated": "Sep 25, 2026, 10:24:28 AM",
+  "dateUpdated": "Oct 15, 2026, 10:12:15 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2e46b0c9fcf7e10b64ce1630b925f47918d1f7f6\nhttps://git.kernel.org/stable/c/0c8f56c583c3250408367880c98e4d6fbc929315\n",
+  "references": "https://git.kernel.org/stable/c/afca229b39acc2590976b3e4f6e0fe76cededc60\nhttps://git.kernel.org/stable/c/2e46b0c9fcf7e10b64ce1630b925f47918d1f7f6\nhttps://git.kernel.org/stable/c/0c8f56c583c3250408367880c98e4d6fbc929315\n",
   "aliases": "CVE-2026-98099\nGHSA-5fxh-xwwm-73v4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "110995ba-20ca-347a-a3c0-8195f1cbc334",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "2.6.38"
+    },
+    {
+      "id": "927ca05c-d459-3ee6-9325-59030b1a85b0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "456b61bca8ee324ab6c18b065e632c9a8c88aa39 <afca229b39acc2590976b3e4f6e0fe76cededc60"
     },
     {
       "id": "aefb6f22-d434-3497-b727-74ee1dd3de8a",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3-rc2"
+    },
+    {
+      "id": "d75ae88c-50a8-31c0-8ec8-1788685a38d7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "e554a7a7-2713-31c2-a74a-4149e000ba15",

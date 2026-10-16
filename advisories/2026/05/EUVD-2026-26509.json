@@ -3,14 +3,14 @@
   "enisaUuid": "4d225320-876c-33d8-90ec-116e2868138e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/packet: fix TOCTOU race on mmap'd vnet_hdr in tpacket_snd()\n\nIn tpacket_snd(), when PACKET_VNET_HDR is enabled, vnet_hdr points\ndirectly into the mmap'd TX ring buffer shared with userspace. The\nkernel validates the header via __packet_snd_vnet_parse() but then\nre-reads all fields later in virtio_net_hdr_to_skb(). A concurrent\nuserspace thread can modify the vnet_hdr fields between validation\nand use, bypassing all safety checks.\n\nThe non-TPACKET path (packet_snd()) already correctly copies vnet_hdr\nto a stack-local variable. All other vnet_hdr consumers in the kernel\n(tun.c, tap.c, virtio_net.c) also use stack copies. The TPACKET TX\npath is the only caller of virtio_net_hdr_to_skb() that reads directly\nfrom user-controlled shared memory.\n\nFix this by copying vnet_hdr from the mmap'd ring buffer to a\nstack-local variable before validation and use, consistent with the\napproach used in packet_snd() and all other callers.",
   "datePublished": "May 1, 2026, 1:56:00 PM",
-  "dateUpdated": "Sep 8, 2026, 8:48:10 AM",
+  "dateUpdated": "Oct 15, 2026, 1:18:00 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0f4c9754956b86de158a4af5278c5cf5bda9439e\nhttps://git.kernel.org/stable/c/714aa973da8163925eda7efd49361ccbee21ee46\nhttps://git.kernel.org/stable/c/1490f82353bdabc09265a74e645b07f05cf4188e\nhttps://git.kernel.org/stable/c/74e2db36fe50e3ad9d5300d7fd0e6e2a15a6d121\nhttps://git.kernel.org/stable/c/3a1bf9116ea31470b89692585c3910dfe830dcdd\nhttps://git.kernel.org/stable/c/28324a3b62d9ce7f9bdd65a8ce63f382041d1b27\nhttps://git.kernel.org/stable/c/48a6ef291a17639e1b6ae0fbe9c8b2bb87d7804b\nhttps://git.kernel.org/stable/c/2c054e17d9d41f1020376806c7f750834ced4dc5\n",
   "aliases": "CVE-2026-31700\nGHSA-hxpw-4fhf-x5hx\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "02072057-3fdd-3551-b254-00129881ac27",

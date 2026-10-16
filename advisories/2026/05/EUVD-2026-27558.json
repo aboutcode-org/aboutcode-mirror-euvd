@@ -3,14 +3,14 @@
   "enisaUuid": "92f5fe84-bb0c-3ba0-83a9-e9f09acd464c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neventpoll: defer struct eventpoll free to RCU grace period\n\nIn certain situations, ep_free() in eventpoll.c will kfree the epi->ep\neventpoll struct while it still being used by another concurrent thread.\nDefer the kfree() to an RCU callback to prevent UAF.",
   "datePublished": "May 6, 2026, 7:21:58 AM",
-  "dateUpdated": "Aug 5, 2026, 12:25:45 PM",
+  "dateUpdated": "Oct 15, 2026, 1:18:59 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/902120be4f44947df6311002addc7faf69bdbff1\nhttps://git.kernel.org/stable/c/a6d57084372161f86660bc4607784420e00efe2c\nhttps://git.kernel.org/stable/c/a6566cd33f6f967a7651ebf2ce0dd31572e319cf\nhttps://git.kernel.org/stable/c/5b1173b165421561db29f30afc7e97d940a398a9\nhttps://git.kernel.org/stable/c/7e8083f5eeedab0f460063b9c2c14c9a4e71a427\nhttps://git.kernel.org/stable/c/ae0bb9c1fb7c2594519aeeb096cf2c3b7837b322\nhttps://git.kernel.org/stable/c/07712db80857d5d09ae08f3df85a708ecfc3b61f\n",
   "aliases": "GHSA-4j6h-qqh4-vpw7\nCVE-2026-43074\n",
   "assigner": "Linux",
-  "epss": 0.48,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1136c3c0-db83-3a02-bed5-c9bdb324267a",

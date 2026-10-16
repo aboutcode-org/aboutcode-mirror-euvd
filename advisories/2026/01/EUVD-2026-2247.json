@@ -3,12 +3,12 @@
   "enisaUuid": "23e93b3c-d862-3ba0-9e85-9e5e63109e8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: rose: fix invalid array index in rose_kill_by_device()\n\nrose_kill_by_device() collects sockets into a local array[] and then\niterates over them to disconnect sockets bound to a device being brought\ndown.\n\nThe loop mistakenly indexes array[cnt] instead of array[i]. For cnt <\nARRAY_SIZE(array), this reads an uninitialized entry; for cnt ==\nARRAY_SIZE(array), it is an out-of-bounds read. Either case can lead to\nan invalid socket pointer dereference and also leaks references taken\nvia sock_hold().\n\nFix the index to use i.",
   "datePublished": "Jan 13, 2026, 3:34:49 PM",
-  "dateUpdated": "Sep 8, 2026, 8:43:46 AM",
+  "dateUpdated": "Oct 15, 2026, 1:10:38 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/819fb41ae54960f66025802400c9d3935eef4042\nhttps://git.kernel.org/stable/c/ed2639414d43ba037f798eaf619e878309310451\nhttps://git.kernel.org/stable/c/1418c12cd3bba79dc56b57b61c99efe40f579981\nhttps://git.kernel.org/stable/c/9f6185a32496834d6980b168cffcccc2d6b17280\nhttps://git.kernel.org/stable/c/b409ba9e1e63ccf3ab4cc061e33c1f804183543e\nhttps://git.kernel.org/stable/c/92d900aac3a5721fb54f3328f1e089b44a861c38\nhttps://git.kernel.org/stable/c/6595beb40fb0ec47223d3f6058ee40354694c8e4\n",
   "aliases": "CVE-2025-71086\nGHSA-mqvv-vjpm-cprh\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "1a2dcfa9-bbb2-32e6-af8d-94737172b7cb",

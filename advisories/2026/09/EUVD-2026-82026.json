@@ -3,12 +3,12 @@
   "enisaUuid": "0fea4de7-3b49-38c7-b86d-7970abf86166",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: cancel reset and rc work on device unregister\n\nBoth drivers cancelled dump_work on unregister but left reset_work and\nrc_work to be flushed only by destroy_workqueue() in mt76_free_device(),\nwhich runs after the hw is unregistered and the hardware stopped. A\nreset_work that fires in that window calls ieee80211_restart_hw() and\nre-arms mac_work on an unregistered hw, and rc_work touches station state\nbeing torn down. Cancel both up front, alongside dump_work.",
   "datePublished": "Sep 17, 2026, 4:09:08 PM",
-  "dateUpdated": "Sep 17, 2026, 4:09:08 PM",
+  "dateUpdated": "Oct 15, 2026, 10:11:06 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c4dc85481d38951ca7f8bc104e711936306cc664\nhttps://git.kernel.org/stable/c/e995d3dccc9d980af13a60ad37409ed1561f9eeb\n",
+  "references": "https://git.kernel.org/stable/c/aca0cd273b486a078f936b3fb409e619673521b1\nhttps://git.kernel.org/stable/c/c4dc85481d38951ca7f8bc104e711936306cc664\nhttps://git.kernel.org/stable/c/e995d3dccc9d980af13a60ad37409ed1561f9eeb\n",
   "aliases": "GHSA-mg5m-xfw2-63jw\nCVE-2026-90365\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "116bb68b-1a24-32cb-b109-1cbb8a9d19d2",
@@ -49,6 +49,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5cdd5bc9-f645-3550-9c49-0e958653b8d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e57b7901469fc0b021930b83a8094baaf3d81b09 <aca0cd273b486a078f936b3fb409e619673521b1"
+    },
+    {
+      "id": "88647c7c-eb13-318d-839a-75823741ad0c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "ac791c82-6641-3df5-bd44-91957aaba8dc",

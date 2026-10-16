@@ -3,12 +3,12 @@
   "enisaUuid": "4b0aa437-551d-3a96-b825-36371e89c8c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: avoid busy looping in tipc_exit_net()\n\nBlamed commit introduced a busy-wait loop in tipc_exit_net()\nto wait for pending UDP bearer cleanup works to complete:\n\n       while (atomic_read(&tn->wq_count))\n               cond_resched();\n\nThis loop can busy-wait for a long time if cond_resched() is a NOP. This\ntypically happens if the netns exit is executed by a high priority task,\nor under kernels configured without preemption (CONFIG_PREEMPT_NONE). In\nsuch cases, it wastes CPU cycles and can lead to soft lockups.\n\nFix this by replacing the busy loop with wait_var_event(), allowing the\nthread to sleep properly until the work queue count reaches zero.\n\nAccordingly, update cleanup_bearer() to use atomic_dec_and_test() and\nwake_up_var() to wake up the waiter when the count drops to zero.\n\nThis uses the global wait queue hash table, avoiding the need to bloat\nstruct tipc_net with a wait_queue_head_t. The atomic_dec_and_test()\nprovides the necessary memory barrier to ensure the wakeup is not missed.",
   "datePublished": "Sep 4, 2026, 4:48:11 PM",
-  "dateUpdated": "Sep 4, 2026, 4:48:11 PM",
+  "dateUpdated": "Oct 15, 2026, 10:09:49 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/522d1d950b9e3b68190a6de7534827c8dccedb73\nhttps://git.kernel.org/stable/c/c1481c94e74c955e0448ddf46b8615a44d840c1e\n",
+  "references": "https://git.kernel.org/stable/c/7672973957e3e20780afe5937a9fec70b72bc060\nhttps://git.kernel.org/stable/c/522d1d950b9e3b68190a6de7534827c8dccedb73\nhttps://git.kernel.org/stable/c/c1481c94e74c955e0448ddf46b8615a44d840c1e\n",
   "aliases": "GHSA-8w3x-69pj-572x\nCVE-2026-80866\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "02772ca2-d0a3-3182-9bbb-77e8d3e6721a",
@@ -51,6 +51,16 @@
       "product_version": "04c26faa51d1e2fe71cf13c45791f5174c37f986 <c1481c94e74c955e0448ddf46b8615a44d840c1e"
     },
     {
+      "id": "82c9a3f2-ba3f-3ce4-8e57-824ca441d751",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "04c26faa51d1e2fe71cf13c45791f5174c37f986 <7672973957e3e20780afe5937a9fec70b72bc060"
+    },
+    {
       "id": "848d6542-48df-3c39-8af8-6a2a5795cc7b",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "d1f76dfadaf8f47ed1753f97dbcbd41c16215ffa"
+    },
+    {
+      "id": "a481d193-701c-3cc9-afb6-7d966496f035",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "a99eb5c6-a6d6-318c-9cf3-1ddd0fd8ddc4",

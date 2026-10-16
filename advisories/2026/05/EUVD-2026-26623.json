@@ -3,12 +3,12 @@
   "enisaUuid": "fb8af525-3733-32f5-90e4-b5a0f94604fa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: reject immediate NF_QUEUE verdict\n\nnft_queue is always used from userspace nftables to deliver the NF_QUEUE\nverdict. Immediately emitting an NF_QUEUE verdict is never used by the\nuserspace nft tools, so reject immediate NF_QUEUE verdicts.\n\nThe arp family does not provide queue support, but such an immediate\nverdict is still reachable. Globally reject NF_QUEUE immediate verdicts\nto address this issue.",
   "datePublished": "May 1, 2026, 2:15:26 PM",
-  "dateUpdated": "Sep 8, 2026, 8:48:23 AM",
+  "dateUpdated": "Oct 15, 2026, 1:18:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2f7f825a548be55420f0f5f716f6c27b9d312d3f\nhttps://git.kernel.org/stable/c/f140593901724cfbd16597c3a4fcb24a58ae44b0\nhttps://git.kernel.org/stable/c/68390437a998c3f2c57212b413abef5e6d657d88\nhttps://git.kernel.org/stable/c/4b12a3cc3f075e750cc3c5e693fd25fb400af4a2\nhttps://git.kernel.org/stable/c/f710691be163ae6b39e4bcab9e5be32d329f035b\nhttps://git.kernel.org/stable/c/42a47f4b1b7695026ab9bc1bb35d4622b0835c95\nhttps://git.kernel.org/stable/c/17dc5d5a935c771338430cbc156a16a51cfd31e8\nhttps://git.kernel.org/stable/c/da107398cbd4bbdb6bffecb2ce86d5c9384f4cec\n",
   "aliases": "CVE-2026-43024\nGHSA-g9qr-gmhx-8q7c\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "061be4f2-810c-3afd-940b-3141ef17ab5e",

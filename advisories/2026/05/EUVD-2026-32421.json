@@ -3,12 +3,12 @@
   "enisaUuid": "539972a4-d750-3754-b9d0-1ae580eff162",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ninotify: fix watch count leak when fsnotify_add_inode_mark_locked() fails\n\nWhen fsnotify_add_inode_mark_locked() fails in inotify_new_watch(),\nthe error path calls inotify_remove_from_idr() but does not call\ndec_inotify_watches() to undo the preceding inc_inotify_watches().\nThis leaks a watch count, and repeated failures can exhaust the\nmax_user_watches limit with -ENOSPC even when no watches are active.\n\nPrior to commit 1cce1eea0aff (\"inotify: Convert to using per-namespace\nlimits\"), the watch count was incremented after fsnotify_add_mark_locked()\nsucceeded, so this path was not affected. The conversion moved\ninc_inotify_watches() before the mark insertion without adding the\ncorresponding rollback.\n\nAdd the missing dec_inotify_watches() call in the error path.",
   "datePublished": "May 27, 2026, 12:56:52 PM",
-  "dateUpdated": "Sep 8, 2026, 8:49:11 AM",
+  "dateUpdated": "Oct 15, 2026, 1:20:09 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3ab58cf42c46bf2366d2f55ae5c59299d5e178b7\nhttps://git.kernel.org/stable/c/10edf7e0ffdc7faa18e2244b17722c1b882b8273\nhttps://git.kernel.org/stable/c/3ad9ccea1b25435f6179b57aa891960beb7ce8f9\nhttps://git.kernel.org/stable/c/8bcc1cd237ab5ccfdd102869fa031c541943cf40\nhttps://git.kernel.org/stable/c/73ddc8518a32baff6bc17afda4ee1ebae5b4ed12\nhttps://git.kernel.org/stable/c/fdaa42ca370d056428e5e171247c8fdce8dff36a\nhttps://git.kernel.org/stable/c/9e48844f708eb48bae4e79cb21edc097c966306d\nhttps://git.kernel.org/stable/c/6a320935fa4293e9e599ec9f85dc9eb3be7029f8\n",
   "aliases": "CVE-2026-46040\nGHSA-38g3-xqxq-2v2p\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "182e1df3-d89b-3044-b78b-0fe4e1383d53",

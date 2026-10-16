@@ -3,7 +3,7 @@
   "enisaUuid": "b4325edd-f9d0-3ac5-af6d-748a69c3dcb2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix integer overflow in BLKSECDISCARD\n\nI independently rediscovered\n\n\tcommit 22d24a544b0d49bbcbd61c8c0eaf77d3c9297155\n\tblock: fix overflow in blk_ioctl_discard()\n\nbut for secure erase.\n\nSame problem:\n\n\tuint64_t r[2] = {512, 18446744073709551104ULL};\n\tioctl(fd, BLKSECDISCARD, r);\n\nwill enter near infinite loop inside blkdev_issue_secure_erase():\n\n\ta.out: attempt to access beyond end of device\n\tloop0: rw=5, sector=3399043073, nr_sectors = 1024 limit=2048\n\tbio_check_eod: 3286214 callbacks suppressed",
   "datePublished": "Oct 21, 2024, 6:02:35 PM",
-  "dateUpdated": "Sep 8, 2026, 8:39:17 AM",
+  "dateUpdated": "Oct 15, 2026, 12:55:32 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8476f8428e8b48fd7a0e4258fa2a96a8f4468239\nhttps://git.kernel.org/stable/c/a99bacb35c1416355eef957560e8fcac3a665549\nhttps://git.kernel.org/stable/c/0842ddd83939eb4db940b9af7d39e79722bc41aa\nhttps://git.kernel.org/stable/c/6c9915fa9410cbb9bd75ee283c03120046c56d3d\nhttps://git.kernel.org/stable/c/697ba0b6ec4ae04afb67d3911799b5e2043b4455\n",
   "aliases": "CVE-2024-49994\nGHSA-qqcr-57gp-2jmq\n",

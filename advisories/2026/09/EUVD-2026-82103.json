@@ -3,13 +3,23 @@
   "enisaUuid": "5af44ba7-2e9d-3779-a9f3-16476bcc0df4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: mediatek: use devm_gpiochip_add_data() for GPIO chip\n\nThe gpio_chip is allocated with device-managed memory but registered with\nthe non-managed gpiochip_add_data(). This was harmless while the drivers\nwere built-in, but once they can be built as modules and unbound/rmmod'd,\ndevm frees the gpio_chip's memory while it is still registered, causing a\nuse-after-free.\n\nRegister it with devm_gpiochip_add_data() so it shares the same\ndevice-managed lifecycle, which also lets the manual gpiochip_remove()\nerror paths go away.",
   "datePublished": "Sep 17, 2026, 4:09:59 PM",
-  "dateUpdated": "Sep 17, 2026, 4:09:59 PM",
+  "dateUpdated": "Oct 15, 2026, 10:11:20 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b8fa1098ee9f627d38bdf7c0ef6c1a6058a4165b\nhttps://git.kernel.org/stable/c/9c650317ba553d297f3fc5f0ae40ec53d86f9dab\n",
+  "references": "https://git.kernel.org/stable/c/01b5fcdc30c0ab35af960b60508eae1f7f7d32fd\nhttps://git.kernel.org/stable/c/b8fa1098ee9f627d38bdf7c0ef6c1a6058a4165b\nhttps://git.kernel.org/stable/c/9c650317ba553d297f3fc5f0ae40ec53d86f9dab\n",
   "aliases": "GHSA-6wqp-4g53-5h3x\nCVE-2026-92482\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "082cd5d5-df21-3132-ad3a-4a08425ef795",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
     {
       "id": "21014cee-a226-3532-bd3e-3df2e1005d5f",
       "product": {
@@ -29,6 +39,16 @@
         }
       },
       "product_version": "4.1"
+    },
+    {
+      "id": "336afadf-546c-379f-ac14-f0c21d399fc8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a6df410d420aa4ff316797d352f69e7ebae5ff98 <01b5fcdc30c0ab35af960b60508eae1f7f7d32fd"
     },
     {
       "id": "a3560560-3e04-323e-99f5-965b972e4ac1",

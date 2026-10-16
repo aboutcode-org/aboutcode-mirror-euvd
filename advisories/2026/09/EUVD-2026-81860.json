@@ -3,13 +3,33 @@
   "enisaUuid": "751a42e3-663f-3c67-9415-8f9566af6e0f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sd: Fix special_vec mempool leak when scsi_alloc_sgtables() fails\n\nsd_set_special_bvec() allocates a special payload page for UNMAP and\nWRITE SAME commands. If scsi_alloc_sgtables() fails afterward in\nsd_setup_unmap_cmnd() or sd_setup_write_same{10,16}_cmnd(), the SCSI\nmidlayer does not call uninit_command() because RQF_DONTPREP is not set\nyet, leaking the page.\n\nCall sd_uninit_command() on error, and clear RQF_SPECIAL_PAYLOAD after\nfreeing the page.",
   "datePublished": "Sep 17, 2026, 4:08:02 PM",
-  "dateUpdated": "Sep 17, 2026, 4:08:02 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:46 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5d7d1b8b525e5eff33a01d07dfcf7bdd3b6d790d\nhttps://git.kernel.org/stable/c/bb31844d88b77138b67aa20c3600203baff40140\n",
+  "references": "https://git.kernel.org/stable/c/e90f746f4ca3896ca560e820b7b6b0a467026938\nhttps://git.kernel.org/stable/c/5d7d1b8b525e5eff33a01d07dfcf7bdd3b6d790d\nhttps://git.kernel.org/stable/c/bb31844d88b77138b67aa20c3600203baff40140\n",
   "aliases": "CVE-2026-90267\nGHSA-pf2c-jgx6-jjwq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "518c82f3-3dae-330b-a073-5f5806bc692f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "a0f2227a-79f3-3334-80ae-946a135b9eb4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "81d926e8b5520e38f1f72dd7bb7cfc81c1a69d87 <e90f746f4ca3896ca560e820b7b6b0a467026938"
+    },
     {
       "id": "a3086f8f-716e-35fe-8777-b0988153317c",
       "product": {

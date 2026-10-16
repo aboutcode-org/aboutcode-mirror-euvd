@@ -3,7 +3,7 @@
   "enisaUuid": "65be1d3a-77bc-3d66-9a88-22c8fd1e9875",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: fix statistics allocation\n\nThe controller per-cpu statistics is not allocated until after the\ncontroller has been registered with driver core, which leaves a window\nwhere accessing the sysfs attributes can trigger a NULL-pointer\ndereference.\n\nFix this by moving the statistics allocation to controller allocation\nwhile tying its lifetime to that of the controller (rather than using\nimplicit devres).",
   "datePublished": "Apr 3, 2026, 3:15:54 PM",
-  "dateUpdated": "Sep 8, 2026, 8:46:35 AM",
+  "dateUpdated": "Oct 15, 2026, 1:15:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/80c5bd0dca1cc5526ae0f4b273ccd163ed4caa4e\nhttps://git.kernel.org/stable/c/f13100b1f5f111989f0750540a795fdef47492af\nhttps://git.kernel.org/stable/c/df30056c78e8bead02d4be020199cabdbec0fef1\nhttps://git.kernel.org/stable/c/378b295f67102eef78cf2c28105f60ae1dab5cc1\nhttps://git.kernel.org/stable/c/118ce777d39f03cac99231196f820e4f998613a8\nhttps://git.kernel.org/stable/c/dee0774bbb2abb172e9069ce5ffef579b12b3ae9\n",
   "aliases": "CVE-2026-23475\nGHSA-p23v-v2wc-73m3\n",

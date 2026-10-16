@@ -3,12 +3,12 @@
   "enisaUuid": "83d502a5-4eee-3fda-8c07-2f52b2e7379c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsafesetid: check size of policy writes\n\nsyzbot attempts to write a buffer with a large size to a sysfs entry\nwith writes handled by handle_policy_update(), triggering a warning\nin kmalloc.\n\nCheck the size specified for write buffers before allocating.\n\n[PM: subject tweak]",
   "datePublished": "Feb 27, 2025, 2:12:08 AM",
-  "dateUpdated": "Sep 8, 2026, 8:39:56 AM",
+  "dateUpdated": "Oct 15, 2026, 1:01:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/976284b94f2021df09829e37a367e19b84d9e5f3\nhttps://git.kernel.org/stable/c/ecf6a4a558097920447a6fb84dfdb279e2ac749a\nhttps://git.kernel.org/stable/c/a0dec65f88c8d9290dfa1d2ca1e897abe54c5881\nhttps://git.kernel.org/stable/c/96fae5bd1589731592d30b3953a90a77ef3928a6\nhttps://git.kernel.org/stable/c/36b385d0f2b4c0bf41d491e19075ecd990d2bf94\nhttps://git.kernel.org/stable/c/c71d35676d46090c891b6419f253fb92a1a9f4eb\nhttps://git.kernel.org/stable/c/f09ff307c7299392f1c88f763299e24bc99811c7\n",
   "aliases": "GHSA-f32m-f53g-3875\nCVE-2024-58016\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "20f22aa7-d538-37c2-b800-f1f5029b777c",

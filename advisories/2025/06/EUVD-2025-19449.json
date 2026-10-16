@@ -3,14 +3,14 @@
   "enisaUuid": "e9e219ec-2c3b-3d71-ba17-0f8c85226c07",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: unshare page tables during VMA split, not before\n\nCurrently, __split_vma() triggers hugetlb page table unsharing through\nvm_ops->may_split().  This happens before the VMA lock and rmap locks are\ntaken - which is too early, it allows racing VMA-locked page faults in our\nprocess and racing rmap walks from other processes to cause page tables to\nbe shared again before we actually perform the split.\n\nFix it by explicitly calling into the hugetlb unshare logic from\n__split_vma() in the same place where THP splitting also happens.  At that\npoint, both the VMA and the rmap(s) are write-locked.\n\nAn annoying detail is that we can now call into the helper\nhugetlb_unshare_pmds() from two different locking contexts:\n\n1. from hugetlb_split(), holding:\n    - mmap lock (exclusively)\n    - VMA lock\n    - file rmap lock (exclusively)\n2. hugetlb_unshare_all_pmds(), which I think is designed to be able to\n   call us with only the mmap lock held (in shared mode), but currently\n   only runs while holding mmap lock (exclusively) and VMA lock\n\nBackporting note:\nThis commit fixes a racy protection that was introduced in commit\nb30c14cd6102 (\"hugetlb: unshare some PMDs when splitting VMAs\"); that\ncommit claimed to fix an issue introduced in 5.13, but it should actually\nalso go all the way back.\n\n[jannh@google.com: v2]",
   "datePublished": "Jun 28, 2025, 7:44:25 AM",
-  "dateUpdated": "Aug 5, 2026, 11:59:22 AM",
+  "dateUpdated": "Oct 15, 2026, 9:52:07 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e8847d18cd9fff1edbb45e963d9141273c3b539c\nhttps://git.kernel.org/stable/c/366298f2b04d2bf1f2f2b7078405bdf9df9bd5d0\nhttps://git.kernel.org/stable/c/2511ac64bc1617ca716d3ba8464e481a647c1902\nhttps://git.kernel.org/stable/c/af6cfcd0efb7f051af221c418ec8b37a10211947\nhttps://git.kernel.org/stable/c/9cf5b2a3b72c23fb7b84736d5d19ee6ea718762b\nhttps://git.kernel.org/stable/c/8a21d5584826f4880f45bbf8f72375f4e6c0ff2a\nhttps://git.kernel.org/stable/c/081056dc00a27bccb55ccc3c6f230a3d5fd3f7e0\nhttps://project-zero.issues.chromium.org/issues/420715744\n",
   "aliases": "GHSA-mfp4-4cfm-v388\nCVE-2025-38084\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "08d645de-348d-3376-a811-c3f44d087907",

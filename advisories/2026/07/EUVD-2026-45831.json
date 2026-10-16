@@ -3,12 +3,12 @@
   "enisaUuid": "59715b51-88b9-39b8-aa60-9bc2caed54f9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix metabuf leak in inode xattr initialization\n\ncommit bb88e8da0025 (\"erofs: use meta buffers for xattr operations\")\nconverted xattr operations to use on-stack erofs_buf instances.\nerofs_init_inode_xattrs() uses such a metabuf while reading the inline\nxattr header and shared xattr id array.\n\nSome error paths after erofs_read_metabuf() leave through out_unlock\nwithout dropping the metabuf, so the folio reference can leak.\n\nConsolidate the cleanup at out_unlock. erofs_put_metabuf() is a\nno-op if no folio has been acquired, and this keeps all paths after\ntaking EROFS_I_BL_XATTR_BIT covered by a single cleanup site.",
   "datePublished": "Jul 19, 2026, 3:40:37 PM",
-  "dateUpdated": "Jul 19, 2026, 3:40:37 PM",
+  "dateUpdated": "Oct 15, 2026, 10:08:04 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/492c73b21fefa36f3869cb2b188ffb7fe37b3a9b\nhttps://git.kernel.org/stable/c/79b09c54c6563df9846ca3094bcfd72082c3e1d7\n",
+  "references": "https://git.kernel.org/stable/c/fcb23bb31508b62e8a1b32adf6217820e90e29b0\nhttps://git.kernel.org/stable/c/492c73b21fefa36f3869cb2b188ffb7fe37b3a9b\nhttps://git.kernel.org/stable/c/79b09c54c6563df9846ca3094bcfd72082c3e1d7\n",
   "aliases": "CVE-2026-64146\nGHSA-556c-3r39-wvfx\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "4262d2ae-6e79-3e0c-9d90-31d0a25680aa",
@@ -69,6 +69,26 @@
         }
       },
       "product_version": "patch: 7.1"
+    },
+    {
+      "id": "deff1d9a-8b84-3545-9b54-31d204d72771",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "f17a73b6-2f8e-3a5e-bcdb-fe5cdd46b5f0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "bb88e8da00253bea0e7f0f4cdfd7910572d7799f <fcb23bb31508b62e8a1b32adf6217820e90e29b0"
     }
   ],
   "enisaIdVendor": [

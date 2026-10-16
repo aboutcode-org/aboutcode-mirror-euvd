@@ -3,12 +3,12 @@
   "enisaUuid": "09ca911a-66a6-30bd-a54b-277ad882bf91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: sched: cls_api: fix tc_chain_fill_node to initialize tcm_info to zero to prevent an info-leak\n\nWhen building netlink messages, tc_chain_fill_node() never initializes\nthe tcm_info field of struct tcmsg. Since the allocation is not zeroed,\nkernel heap memory is leaked to userspace through this 4-byte field.\n\nThe fix simply zeroes tcm_info alongside the other fields that are\nalready initialized.",
   "datePublished": "May 1, 2026, 2:15:33 PM",
-  "dateUpdated": "Sep 8, 2026, 8:48:38 AM",
+  "dateUpdated": "Oct 15, 2026, 1:18:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/903c3405cfcc7700260e456ab66a5867586c9e69\nhttps://git.kernel.org/stable/c/71a3eda7e850ae844cb8993065f4e410c11a46ce\nhttps://git.kernel.org/stable/c/4ae5d23f51fb91d7d1140c6f1ba77ab0756054c3\nhttps://git.kernel.org/stable/c/e35f5195cd44ff4053fbc5d71ea97681728a0099\nhttps://git.kernel.org/stable/c/d6db08484c6cb3d4ad696246f9d288eceba2a078\nhttps://git.kernel.org/stable/c/906997ea3766c24fbbf9cc4bf17c047315bbd138\nhttps://git.kernel.org/stable/c/1091b3c174441a52fdbb92e2fe00338f9371a91c\nhttps://git.kernel.org/stable/c/e6e3eb5ee89ac4c163d46429391c889a1bb5e404\n",
   "aliases": "CVE-2026-43035\nGHSA-w7cv-frw4-84fj\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "10f4d683-b6e5-3d1f-a764-52b904f3b08b",

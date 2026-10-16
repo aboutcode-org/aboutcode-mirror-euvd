@@ -3,7 +3,7 @@
   "enisaUuid": "645b64c0-127b-3482-a49b-73aca0af131d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xdp: Disallow attaching device-bound programs in generic mode\n\nDevice-bound programs are used to support RX metadata kfuncs. These\nkfuncs are driver-specific and rely on the driver context to read the\nmetadata. This means they can't work in generic XDP mode. However, there\nis no check to disallow such programs from being attached in generic\nmode, in which case the metadata kfuncs will be called in an invalid\ncontext, leading to crashes.\n\nFix this by adding a check to disallow attaching device-bound programs\nin generic mode.",
   "datePublished": "Feb 27, 2025, 8:01:00 PM",
-  "dateUpdated": "Aug 5, 2026, 11:54:35 AM",
+  "dateUpdated": "Oct 15, 2026, 9:51:53 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

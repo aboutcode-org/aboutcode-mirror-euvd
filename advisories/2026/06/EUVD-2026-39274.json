@@ -3,7 +3,7 @@
   "enisaUuid": "8f87c281-8c88-310a-b5d1-eaee2883ea9a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: allow subflow rcv wnd to shrink\n\nIn MPTCP connection, the `window` field in the TCP header refers to the\nMPTCP-level rcv_nxt and it's right edge should not move backward. Such\nconstraint is enforced at DSS option generation time.\n\nAt the same time, the TCP stack ensures independently that the TCP-level\nrcv wnd right's edge does not move backward. That in turn causes artificial\ninflating of the MPTCP rcv window when the incoming data is acked at the\nTCP level and is OoO in the MPTCP sequence space (or lands in the backlog).\n\nAs a consequence, the incoming traffic can exceed the receiver rcvbuf size\neven when the sender is not misbehaving.\n\nPrevent such scenario forcibly allowing the TCP subflow to shrink the\nTCP-level rcv wnd regardless of the current netns setting.",
   "datePublished": "Jun 25, 2026, 8:38:57 AM",
-  "dateUpdated": "Aug 5, 2026, 12:33:50 PM",
+  "dateUpdated": "Oct 15, 2026, 1:22:35 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

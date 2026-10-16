@@ -3,7 +3,7 @@
   "enisaUuid": "629dea03-0e24-373a-879b-089e716d879a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nndisc: extend RCU protection in ndisc_send_skb()\n\nndisc_send_skb() can be called without RTNL or RCU held.\n\nAcquire rcu_read_lock() earlier, so that we can use dev_net_rcu()\nand avoid a potential UAF.",
   "datePublished": "Feb 27, 2025, 2:18:13 AM",
-  "dateUpdated": "Sep 8, 2026, 8:40:31 AM",
+  "dateUpdated": "Oct 15, 2026, 1:04:05 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",

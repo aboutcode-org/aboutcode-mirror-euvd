@@ -3,12 +3,12 @@
   "enisaUuid": "67849627-57ba-39dc-a2af-0cfcabd13c3c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_flow: fix NULL pointer dereference on shared blocks\n\nflow_change() calls tcf_block_q() and dereferences q->handle to derive\na default baseclass.  Shared blocks leave block->q NULL, causing a NULL\nderef when a flow filter without a fully qualified baseclass is created\non a shared block.\n\nCheck tcf_block_shared() before accessing block->q and return -EINVAL\nfor shared blocks.  This avoids the null-deref shown below:\n\n=======================================================================\nKASAN: null-ptr-deref in range [0x0000000000000038-0x000000000000003f]\nRIP: 0010:flow_change (net/sched/cls_flow.c:508)\nCall Trace:\n tc_new_tfilter (net/sched/cls_api.c:2432)\n rtnetlink_rcv_msg (net/core/rtnetlink.c:6980)\n [...]\n=======================================================================",
   "datePublished": "Apr 13, 2026, 1:40:25 PM",
-  "dateUpdated": "Sep 8, 2026, 8:46:58 AM",
+  "dateUpdated": "Oct 15, 2026, 1:16:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/57f94ac7e953eece5ed4819605a18f3cdfc63dcc\nhttps://git.kernel.org/stable/c/942813276edeb1741fa5b0a73471beb4e495fa08\nhttps://git.kernel.org/stable/c/cc707a4fd4c3b6ab2722e06bc359aa010e13d408\nhttps://git.kernel.org/stable/c/4a09f72007201c9f667dc47f64517ec23eea65e5\nhttps://git.kernel.org/stable/c/9bf5fc36a43f7b8b5507c96e74fb81f1e8b4957e\nhttps://git.kernel.org/stable/c/a208c3e1232997e9317887294c20008dfcb75449\nhttps://git.kernel.org/stable/c/415ea0c973c754b9f375225807810eb9045f4293\nhttps://git.kernel.org/stable/c/1a280dd4bd1d616a01d6ffe0de284c907b555504\n",
   "aliases": "GHSA-6pmm-j8mh-qwgf\nCVE-2026-31422\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0acabbad-e990-3808-9a87-6c3310ea8477",

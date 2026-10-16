@@ -3,9 +3,9 @@
   "enisaUuid": "2cf2a044-f5e0-3cbb-be85-c115bde2f96a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: honor forceuid/forcegid when mapping SIDs to uid/gid\n\nWhen the administrator mounts with forceuid or forcegid (uid=/gid=\nmount options), they expect all files to appear owned by the specified\nuser/group.  However, several code paths unconditionally called\nsid_to_id() to overwrite cf_uid/cf_gid with server-provided values,\nignoring the administrator's explicit override:\n\n  - smb311_posix_info_to_fattr() (stat via POSIX extensions)\n  - cifs_posix_to_fattr() (readdir via POSIX extensions)\n  - parse_sec_desc() (CIFS ACL ownership mapping)\n\nThis allowed an untrusted server to dictate local file ownership even\nwhen the mount was configured to force specific uid/gid values.\n\nFix all three call sites to check CIFS_MOUNT_OVERR_UID and\nCIFS_MOUNT_OVERR_GID before calling sid_to_id(), following the\nsame pattern already used by cifs_unix_basic_to_fattr() for unix\nextensions.",
   "datePublished": "Sep 25, 2026, 10:21:50 AM",
-  "dateUpdated": "Sep 28, 2026, 5:31:07 AM",
+  "dateUpdated": "Oct 15, 2026, 10:11:52 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e1b74f8f8c1d13190b09fe623b729d36b7ac22a8\nhttps://git.kernel.org/stable/c/18a72975e9f35aadecc75b031f693f2d1f49308f\n",
+  "references": "https://git.kernel.org/stable/c/6ac7a29691558bed18e2df1780636b8aa0fd13d5\nhttps://git.kernel.org/stable/c/e1b74f8f8c1d13190b09fe623b729d36b7ac22a8\nhttps://git.kernel.org/stable/c/18a72975e9f35aadecc75b031f693f2d1f49308f\n",
   "aliases": "GHSA-vg8h-339p-69c7\nCVE-2026-97561\n",
   "assigner": "Linux",
   "epss": 0.19,
@@ -31,6 +31,16 @@
       "product_version": "patch: 7.3-rc3"
     },
     {
+      "id": "7cb2c3a9-ffe9-316d-8697-9a584448444e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9409ae58e0759d010b347e7b19ebc90ab5d4b98f <6ac7a29691558bed18e2df1780636b8aa0fd13d5"
+    },
+    {
       "id": "7e1b3ccd-ed25-3c48-bc12-fbfc644d1398",
       "product": {
         "name": "Linux",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "9409ae58e0759d010b347e7b19ebc90ab5d4b98f <18a72975e9f35aadecc75b031f693f2d1f49308f"
+    },
+    {
+      "id": "7e92a8e6-e2c9-3c47-b314-1063056ec0fc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "a3a00614-f0c3-3ef4-9efa-1f7e00a5a505",

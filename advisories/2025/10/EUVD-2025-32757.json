@@ -3,14 +3,14 @@
   "enisaUuid": "3c23267b-f25c-344b-8ebd-0e4643851f78",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_net: Fix error unwinding of XDP initialization\n\nWhen initializing XDP in virtnet_open(), some rq xdp initialization\nmay hit an error causing net device open failed. However, previous\nrqs have already initialized XDP and enabled NAPI, which is not the\nexpected behavior. Need to roll back the previous rq initialization\nto avoid leaks in error unwinding of init code.\n\nAlso extract helper functions of disable and enable queue pairs.\nUse newly introduced disable helper function in error unwinding and\nvirtnet_close. Use enable helper function in virtnet_open.",
   "datePublished": "Oct 1, 2025, 11:45:50 AM",
-  "dateUpdated": "Aug 5, 2026, 9:14:28 AM",
+  "dateUpdated": "Oct 15, 2026, 9:41:29 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6a7690f2bd178eee80f33411ae32e543ae66379c\nhttps://git.kernel.org/stable/c/73f53bc295727a3cdbd9d6bcdfaa239258970cf4\nhttps://git.kernel.org/stable/c/037768b28e3752c07d63d1c72a651a6775b080bb\nhttps://git.kernel.org/stable/c/5306623a9826aa7d63b32c6a3803c798a765474d\n",
   "aliases": "GHSA-vqh8-wgc6-cwjc\nCVE-2023-53499\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "42fe28cf-9a3f-3133-a30d-ee33082b00dd",

@@ -3,12 +3,12 @@
   "enisaUuid": "678f03ba-c6e2-39b3-a93e-279b453434f8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: xfrm6: release dst on error in xfrm6_rcv_encap()\n\nxfrm6_rcv_encap() performs an IPv6 route lookup when the skb does not\nalready have a dst attached. ip6_route_input_lookup() returns a\nreferenced dst entry even when the lookup resolves to an error route.\n\nIf dst->error is set, xfrm6_rcv_encap() drops the skb without attaching\nthe dst to the skb and without releasing the reference returned by the\nlookup. Repeated packets hitting this path therefore leak dst entries.\n\nRelease the dst before jumping to the drop path.",
   "datePublished": "May 28, 2026, 9:36:26 AM",
-  "dateUpdated": "Sep 8, 2026, 8:49:20 AM",
+  "dateUpdated": "Oct 15, 2026, 1:21:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a0721bcd72641c32b281f227a94505b31cf54117\nhttps://git.kernel.org/stable/c/a20b34f6e854fe6f2aa82528fae7a88759919eb4\nhttps://git.kernel.org/stable/c/870560015ce6e0d8f841c6a8aba33c44be52c727\nhttps://git.kernel.org/stable/c/c2efc4956981066df2fef1cc77391b523db6d8e4\nhttps://git.kernel.org/stable/c/554c9b090c8ac5b1c5c507f4badf8d5d0c9c6e13\nhttps://git.kernel.org/stable/c/9d5047782f9bd2829e529df69209bf3232eb561f\nhttps://git.kernel.org/stable/c/6a5eec0a2a0e99ec9743cf8f1c4082178811d90a\nhttps://git.kernel.org/stable/c/bc0fcb9823cd0894934cf968b525c575833d7078\n",
   "aliases": "GHSA-xg6x-xg63-gmxc\nCVE-2026-46172\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "08f87cbf-3fb5-3d66-9ac0-94deb07a32a9",

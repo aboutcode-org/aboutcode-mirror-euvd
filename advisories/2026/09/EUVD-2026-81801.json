@@ -3,12 +3,12 @@
   "enisaUuid": "2980d693-1989-3555-83d5-301d24fa7ca2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclocksource/drivers/samsung_pwm: Switch to raw_spinlock_t type\n\nSamsung PWM timer might be used as a clock source on some legacy systems.\nWhen PREEMPT_RT is enabled on ARM, regular spinlock is converted to a\nsleeping lock (mutex-based), which must not be used in atomic context\nsuch as hard interrupt handlers. Switch the samsung_pwm_lock to the\nraw_spinlock, which remains a true non-sleeping spinlock even\nunder PREEMPT_RT.",
   "datePublished": "Sep 17, 2026, 4:07:23 PM",
-  "dateUpdated": "Sep 17, 2026, 4:07:23 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:40 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7eb5764d25c4ac7f5d126621660f7219b61fd2fd\nhttps://git.kernel.org/stable/c/3b212f9d70805d91febae01d618868f4860e267c\n",
+  "references": "https://git.kernel.org/stable/c/a25ea67a913f98b8461aff1e9e3a5f6dc2378395\nhttps://git.kernel.org/stable/c/7eb5764d25c4ac7f5d126621660f7219b61fd2fd\nhttps://git.kernel.org/stable/c/3b212f9d70805d91febae01d618868f4860e267c\n",
   "aliases": "CVE-2026-90208\nGHSA-64fq-hj58-5rjq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2de384b3-7f66-3336-a941-c720d81d69cc",
@@ -41,6 +41,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "906bbd58-cc80-353e-a0b3-6cc1830d4777",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f11899894c0a683c754ca71b45f7c9c3d35a3a1c <a25ea67a913f98b8461aff1e9e3a5f6dc2378395"
+    },
+    {
       "id": "c0767fbb-81d3-357a-b1be-a400ecbf3224",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.2.6"
+    },
+    {
+      "id": "d99324e6-6199-377e-bf70-3c56850a59ba",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "f8a0889d-212b-3827-b886-3b5ec2cb6ff6",

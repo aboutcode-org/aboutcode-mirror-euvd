@@ -3,7 +3,7 @@
   "enisaUuid": "8f9c637d-5398-3fd7-b9c4-7e3ad24ac1f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: annotate data-races around sk->sk_{data_ready,write_space}\n\nskmsg (and probably other layers) are changing these pointers\nwhile other cpus might read them concurrently.\n\nAdd corresponding READ_ONCE()/WRITE_ONCE() annotations\nfor UDP, TCP and AF_UNIX.",
   "datePublished": "Mar 25, 2026, 10:26:57 AM",
-  "dateUpdated": "Jul 4, 2026, 11:50:29 AM",
+  "dateUpdated": "Oct 15, 2026, 1:13:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/279f2b67d1c44ee139bd3fdb221850daa9358449\nhttps://git.kernel.org/stable/c/7ad01905831c815520f1b0486336a03bb7420465\nhttps://git.kernel.org/stable/c/c494448bb522bbbb63096540eb2319101a0480ab\nhttps://git.kernel.org/stable/c/f17c1c4acbe2bd702abce73a847a04a196fab2c5\nhttps://git.kernel.org/stable/c/27fccdbcbbfc4651b6f66756e6fa3f52e051ec23\nhttps://git.kernel.org/stable/c/2ef2b20cf4e04ac8a6ba68493f8780776ff84300\n",
   "aliases": "CVE-2026-23302\n",
@@ -89,16 +89,6 @@
         }
       },
       "product_version": "604326b41a6fb9b4a78b6179335decee0365cd8c <2ef2b20cf4e04ac8a6ba68493f8780776ff84300"
-    },
-    {
-      "id": "7b550647-8372-3467-8ca4-05d75ff17125",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.0-rc3"
     },
     {
       "id": "85315b09-0bd9-3ea3-a58d-1300252b656e",

@@ -3,13 +3,23 @@
   "enisaUuid": "af042968-147d-3624-9c50-ef4fe06818ea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix P2P action frame handling without device vif\n\nSome P2P action frame paths assume the P2P device vif is always\navailable. That is not true when userspace sends non-P2P public action\nframes through the primary interface, or when action-frame abort runs\nafter the P2P device vif has not been created.\n\nFall back to the primary vif when aborting an action frame without a P2P\ndevice vif, and guard P2P device saved IE access before using it for\npeer channel search.",
   "datePublished": "Sep 17, 2026, 4:08:54 PM",
-  "dateUpdated": "Sep 17, 2026, 4:08:54 PM",
+  "dateUpdated": "Oct 15, 2026, 10:11:01 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f26e1b16904555e171292e183c3cfc1c38159fc5\nhttps://git.kernel.org/stable/c/1b1edb9ebed49099bdc924cef49a9aea8b552199\n",
+  "references": "https://git.kernel.org/stable/c/f334b26b884dff5d0a558dc464fa55f300868a68\nhttps://git.kernel.org/stable/c/f26e1b16904555e171292e183c3cfc1c38159fc5\nhttps://git.kernel.org/stable/c/1b1edb9ebed49099bdc924cef49a9aea8b552199\n",
   "aliases": "CVE-2026-90345\nGHSA-4cvp-2fxw-jr85\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "104b1b80-cc44-320d-b28b-622f7e55043e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6eda4e2c54255cd26a58d2fcec73ec3bff7a515b <f334b26b884dff5d0a558dc464fa55f300868a68"
+    },
     {
       "id": "28f00548-736c-3e77-8e96-5f74fd1031a9",
       "product": {
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "3.9"
+    },
+    {
+      "id": "d7b445a6-1d0f-39db-9953-45fd71092e09",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     }
   ],
   "enisaIdVendor": [

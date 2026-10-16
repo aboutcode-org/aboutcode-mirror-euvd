@@ -3,14 +3,14 @@
   "enisaUuid": "c05b4b4c-8eca-3c09-a3ae-bc6171a28b36",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: cope racing subflow creation in mptcp_rcv_space_adjust\n\nAdditional active subflows - i.e. created by the in kernel path\nmanager - are included into the subflow list before starting the\n3whs.\n\nA racing recvmsg() spooling data received on an already established\nsubflow would unconditionally call tcp_cleanup_rbuf() on all the\ncurrent subflows, potentially hitting a divide by zero error on\nthe newly created ones.\n\nExplicitly check that the subflow is in a suitable state before\ninvoking tcp_cleanup_rbuf().",
   "datePublished": "Dec 2, 2024, 1:44:52 PM",
-  "dateUpdated": "Aug 5, 2026, 11:43:53 AM",
+  "dateUpdated": "Oct 15, 2026, 9:41:45 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/0a9a182ea5c7bb0374e527130fd85024ace7279b\nhttps://git.kernel.org/stable/c/24995851d58c4a205ad0ffa7b2f21e479a9c8527\nhttps://git.kernel.org/stable/c/ff825ab2f455299c0c7287550915a8878e2a66e0\nhttps://git.kernel.org/stable/c/aad6412c63baa39dd813e81f16a14d976b3de2e8\nhttps://git.kernel.org/stable/c/ce7356ae35943cc6494cc692e62d51a734062b7d\n",
   "aliases": "GHSA-x34g-xjxv-fc48\nCVE-2024-53122\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.53,
   "enisaIdProduct": [
     {
       "id": "2a40dd87-8090-3301-ac6a-d44d4bcb7d32",

@@ -3,12 +3,12 @@
   "enisaUuid": "6a83d514-55fd-3a49-8905-68301043e2a7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Check skb->transport_header is set in bpf_skb_check_mtu\n\nThe bpf_skb_check_mtu helper needs to use skb->transport_header when\nthe BPF_MTU_CHK_SEGS flag is used:\n\n\tbpf_skb_check_mtu(skb, ifindex, &mtu_len, 0, BPF_MTU_CHK_SEGS)\n\nThe transport_header is not always set. There is a WARN_ON_ONCE\nreport when CONFIG_DEBUG_NET is enabled + skb->gso_size is set +\nbpf_prog_test_run is used:\n\nWARNING: CPU: 1 PID: 2216 at ./include/linux/skbuff.h:3071\n skb_gso_validate_network_len\n bpf_skb_check_mtu\n bpf_prog_3920e25740a41171_tc_chk_segs_flag # A test in the next patch\n bpf_test_run\n bpf_prog_test_run_skb\n\nFor a normal ingress skb (not test_run), skb_reset_transport_header\nis performed but there is plan to avoid setting it as described in\ncommit 2170a1f09148 (\"net: no longer reset transport_header in __netif_receive_skb_core()\").\n\nThis patch fixes the bpf helper by checking\nskb_transport_header_was_set(). The check is done just before\nskb->transport_header is used, to avoid breaking the existing bpf prog.\nThe WARN_ON_ONCE is limited to bpf_prog_test_run, so targeting bpf-next.",
   "datePublished": "Dec 24, 2025, 10:32:51 AM",
-  "dateUpdated": "Sep 8, 2026, 8:43:15 AM",
+  "dateUpdated": "Oct 15, 2026, 1:09:55 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b3171a5e4622e915e94599a55f4964078bdec27e\nhttps://git.kernel.org/stable/c/97b876fa88322625228792cf7a5fd77531815a80\nhttps://git.kernel.org/stable/c/30ce906557a21adef4cba5901c8e995dc18263a9\nhttps://git.kernel.org/stable/c/1c30e4afc5507f0069cc09bd561e510e4d97fbf7\nhttps://git.kernel.org/stable/c/942268e2726ac7f16e3ec49dbfbbbe7cf5af9da5\nhttps://git.kernel.org/stable/c/d946f3c98328171fa50ddb908593cf833587f725\n",
   "aliases": "GHSA-xphm-v24c-73f6\nCVE-2025-68363\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "04a0cca6-1c13-3aa0-b06b-ffa0a2db8bb0",

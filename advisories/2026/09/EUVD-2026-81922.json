@@ -3,12 +3,12 @@
   "enisaUuid": "03fd6ea9-c71a-38c4-a8b0-06f2b0d86c1f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: skip double clone set expressions on element insert\n\nBoth the dynset and newsetelem path clone the existing set expressions\nwhen setting set element expressions if no override expressions are\nprovided. This results in a double clone, once to clone the template set\nexpressions then another clone on the new element. Add a flag to\nannotate if userspace provides a override expression (ie. expression of\nthe same type of the set but different configuration), otherwise borrow\nthe existing expression from the set. Add conditionals to release\nexpression iif they represent an override. Use this new override_exprs\nflag to dump the dynset expression override to userspace.\n\nThis simplifies the existing logic and it also fixes a bug with the\nconnlimit expression which results in a module refcount imbalance\nWARNING splat when resorting on the default set expressions.",
   "datePublished": "Sep 17, 2026, 4:05:45 PM",
-  "dateUpdated": "Sep 17, 2026, 4:05:45 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:13 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1e7fb6801d9cc826adcdb7fa0533c397730657f2\nhttps://git.kernel.org/stable/c/43559058d21e0493aa220ac167e0279334dea5f9\n",
+  "references": "https://git.kernel.org/stable/c/c6b56b8d549a043b6c8ff616db8748263eae05ae\nhttps://git.kernel.org/stable/c/1e7fb6801d9cc826adcdb7fa0533c397730657f2\nhttps://git.kernel.org/stable/c/43559058d21e0493aa220ac167e0279334dea5f9\n",
   "aliases": "GHSA-gc4j-f8fc-95gw\nCVE-2026-90061\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "175f18fb-1573-357a-845c-3699652b611c",
@@ -51,6 +51,16 @@
       "product_version": "5.7"
     },
     {
+      "id": "a71c29ae-e123-3a35-9164-92283c9bbeed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
       "id": "c2337c25-7e93-36e5-b161-38cce7e21ac2",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3-rc1"
+    },
+    {
+      "id": "f0a145bd-8e68-3f55-90d1-47c42f6c789d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "65038428b2c6c5be79d3f78a6b79c0cdc3a58a41 <c6b56b8d549a043b6c8ff616db8748263eae05ae"
     },
     {
       "id": "f945a324-a67e-329c-874d-f820720bc763",

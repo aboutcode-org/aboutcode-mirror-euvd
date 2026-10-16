@@ -3,12 +3,12 @@
   "enisaUuid": "5ab0f040-106e-39d1-9e14-716277690a01",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix missing brelse() in ext4_xattr_inode_dec_ref_all()\n\nThe commit c8e008b60492 (\"ext4: ignore xattrs past end\")\nintroduced a refcount leak in when block_csum is false.\n\next4_xattr_inode_dec_ref_all() calls ext4_get_inode_loc() to\nget iloc.bh, but never releases it with brelse().",
   "datePublished": "May 27, 2026, 12:57:02 PM",
-  "dateUpdated": "Sep 8, 2026, 8:49:12 AM",
+  "dateUpdated": "Oct 15, 2026, 1:20:12 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/dd98a5603a212ea9c96c6982ccdbcc748fdb9a56\nhttps://git.kernel.org/stable/c/153ab2c52355fbebcae622db8e7b506492c73a29\nhttps://git.kernel.org/stable/c/b706d00206a9e82362a9633efbd8b5775650169b\nhttps://git.kernel.org/stable/c/1bc1107a3a403a6d440673ed6666f7b07ef868a8\nhttps://git.kernel.org/stable/c/097227f1ffe1a85bc3c359f81c71e3d40e06e920\nhttps://git.kernel.org/stable/c/1e6b0a69bf2c9c819255c7566e4355536d81d9cf\nhttps://git.kernel.org/stable/c/f072906688933bf47fabbaf63560be03357c8298\nhttps://git.kernel.org/stable/c/77d059519382bd66283e6a4e83ee186e87e7708f\n",
   "aliases": "GHSA-m5xh-rjfq-cc6f\nCVE-2026-46046\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "091fb99f-4e44-37d8-ba1b-b844a9ca291c",

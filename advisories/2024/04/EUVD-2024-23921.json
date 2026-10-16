@@ -3,14 +3,14 @@
   "enisaUuid": "e0e6b998-09c1-39b4-94e4-80b7f2866569",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxhci: handle isoc Babble and Buffer Overrun events properly\n\nxHCI 4.9 explicitly forbids assuming that the xHC has released its\nownership of a multi-TRB TD when it reports an error on one of the\nearly TRBs. Yet the driver makes such assumption and releases the TD,\nallowing the remaining TRBs to be freed or overwritten by new TDs.\n\nThe xHC should also report completion of the final TRB due to its IOC\nflag being set by us, regardless of prior errors. This event cannot\nbe recognized if the TD has already been freed earlier, resulting in\n\"Transfer event TRB DMA ptr not part of current TD\" error message.\n\nFix this by reusing the logic for processing isoc Transaction Errors.\nThis also handles hosts which fail to report the final completion.\n\nFix transfer length reporting on Babble errors. They may be caused by\ndevice malfunction, no guarantee that the buffer has been filled.",
   "datePublished": "Apr 2, 2024, 6:22:09 AM",
-  "dateUpdated": "Aug 5, 2026, 11:26:35 AM",
+  "dateUpdated": "Oct 15, 2026, 12:38:24 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/696e4112e5c1ee61996198f0ebb6ca3fab55166e\nhttps://git.kernel.org/stable/c/2aa7bcfdbb46241c701811bbc0d64d7884e3346c\nhttps://git.kernel.org/stable/c/2e3ec80ea7ba58bbb210e83b5a0afefee7c171d3\nhttps://git.kernel.org/stable/c/f5e7ffa9269a448a720e21f1ed1384d118298c97\nhttps://git.kernel.org/stable/c/418456c0ce56209610523f21734c5612ee634134\nhttps://git.kernel.org/stable/c/7c4650ded49e5b88929ecbbb631efb8b0838e811\n",
   "aliases": "CVE-2024-26659\nGHSA-389h-6rjg-wxc9\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "3b4b421d-4aab-35a9-b6b9-86de66fbfb2f",

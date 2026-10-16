@@ -3,14 +3,14 @@
   "enisaUuid": "57ea97ed-832b-32d0-ab0d-8aab0f2b7485",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: sysctl: auth_enable: avoid using current->nsproxy\n\nAs mentioned in a previous commit of this series, using the 'net'\nstructure via 'current' is not recommended for different reasons:\n\n- Inconsistency: getting info from the reader's/writer's netns vs only\n  from the opener's netns.\n\n- current->nsproxy can be NULL in some cases, resulting in an 'Oops'\n  (null-ptr-deref), e.g. when the current task is exiting, as spotted by\n  syzbot [1] using acct(2).\n\nThe 'net' structure can be obtained from the table->data using\ncontainer_of().\n\nNote that table->data could also be used directly, but that would\nincrease the size of this fix, while 'sctp.ctl_sock' still needs to be\nretrieved from 'net' structure.",
   "datePublished": "Jan 19, 2025, 10:17:56 AM",
-  "dateUpdated": "Aug 5, 2026, 11:53:18 AM",
+  "dateUpdated": "Oct 15, 2026, 9:51:51 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cf387cdebfaebae228dfba162f94c567a67610c3\nhttps://git.kernel.org/stable/c/dc583e7e5f8515ca489c0df28e4362a70eade382\nhttps://git.kernel.org/stable/c/bd2a2939423566c654545fa3e96a656662a0af9e\nhttps://git.kernel.org/stable/c/1b67030d39f2b00f94ac1f0af11ba6657589e4d3\nhttps://git.kernel.org/stable/c/7ec30c54f339c640aa7e49d7e9f7bbed6bd42bf6\nhttps://git.kernel.org/stable/c/c184bc621e3cef03ac9ba81a50dda2dae6a21d36\nhttps://git.kernel.org/stable/c/15649fd5415eda664ef35780c2013adeb5d9c695\n",
   "aliases": "GHSA-vrx4-x92w-9vhv\nCVE-2025-21638\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "10cdaeb7-c45f-3b11-8c0c-af2f0bee8cd6",

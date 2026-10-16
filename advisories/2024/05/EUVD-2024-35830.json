@@ -3,14 +3,14 @@
   "enisaUuid": "58c71360-2e4e-368f-a7d6-f623ae29d457",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: fix vf may be used uninitialized in this function warning\n\nTo fix the regression introduced by commit 52424f974bc5, which causes\nservers hang in very hard to reproduce conditions with resets races.\nUsing two sources for the information is the root cause.\nIn this function before the fix bumping v didn't mean bumping vf\npointer. But the code used this variables interchangeably, so stale vf\ncould point to different/not intended vf.\n\nRemove redundant \"v\" variable and iterate via single VF pointer across\nwhole function instead to guarantee VF pointer validity.",
   "datePublished": "May 30, 2024, 2:59:44 PM",
-  "dateUpdated": "Aug 5, 2026, 11:31:40 AM",
+  "dateUpdated": "Oct 15, 2026, 12:42:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cc9cd02dd9e8b7764ea9effb24f4f1dd73d1b23d\nhttps://git.kernel.org/stable/c/9dcf0fcb80f6aeb01469e3c957f8d4c97365450a\nhttps://git.kernel.org/stable/c/b8e82128b44fa40bf99a50b919488ef361e1683c\nhttps://git.kernel.org/stable/c/951d2748a2a8242853abc3d0c153ce4bf8faad31\nhttps://git.kernel.org/stable/c/3e89846283f3cf7c7a8e28b342576fd7c561d2ba\nhttps://git.kernel.org/stable/c/0dcf573f997732702917af1563aa2493dc772fc0\nhttps://git.kernel.org/stable/c/06df7618f591b2dc43c59967e294d7b9fc8675b6\nhttps://git.kernel.org/stable/c/f37c4eac99c258111d414d31b740437e1925b8e8\n",
   "aliases": "CVE-2024-36020\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.26,
   "enisaIdProduct": [
     {
       "id": "06d6b6c1-f02c-37aa-9e37-74b87ded4194",

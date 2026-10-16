@@ -3,14 +3,14 @@
   "enisaUuid": "66e8a236-c88b-3f5b-a678-f0db2b40b7a3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: Do not bother merging very long extents\n\nWhen merging very long extents we try to push as much length as possible\nto the first extent. However this is unnecessarily complicated and not\nreally worth the trouble. Furthermore there was a bug in the logic\nresulting in corrupting extents in the file as syzbot reproducer shows.\nSo just don't bother with the merging of extents that are too long\ntogether.",
   "datePublished": "Oct 1, 2025, 11:45:56 AM",
-  "dateUpdated": "Aug 5, 2026, 9:14:31 AM",
+  "dateUpdated": "Oct 15, 2026, 9:41:29 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d52252a1de4cf96a34f722b0cd8902d8ff78eb57\nhttps://git.kernel.org/stable/c/5d029799d381a9ee06209a222cae75f04c5d5304\nhttps://git.kernel.org/stable/c/3d20e3b768aff32112bdce8d3219d923ae75f9f1\nhttps://git.kernel.org/stable/c/965982feb333aefa9256c0fe188b5f1b958aef63\nhttps://git.kernel.org/stable/c/9a8d602f0723586e668bae7e65c832ceb9bcc8bc\nhttps://git.kernel.org/stable/c/adac9ac6d2e04ea0782b91a00ba10706002f3ec4\nhttps://git.kernel.org/stable/c/7a965da79f2d22601f329cbfce588386b0847544\nhttps://git.kernel.org/stable/c/53cafe1d6d8ef9f93318e5bfccc0d24f27d41ced\n",
   "aliases": "GHSA-wxmx-9x37-q992\nCVE-2023-53506\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0b8022d8-b4b7-3048-83cd-9ba215365b36",

@@ -3,13 +3,23 @@
   "enisaUuid": "8d423d68-dd84-38bb-bc66-59461002d0ff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: core: clear freed pointers on uart_register_driver() failure\n\nuart_register_driver() leaves drv->state pointing to freed memory when\ntty_alloc_driver() fails. If tty_register_driver() fails, drv->tty_driver\nalso retains a pointer after its reference is dropped.\n\nDrivers that use drv->state as an \"already registered\" flag can then skip\nregistration on the next probe and pass the freed state to\nuart_add_one_port().\n\nThis issue was found with failslab on QEMU's raspi1ap board by\nfailing registration and binding the PL011 port again.\n\nClear both pointers on their failure paths, as uart_unregister_driver()\nalready does.",
   "datePublished": "Sep 17, 2026, 4:08:49 PM",
-  "dateUpdated": "Sep 17, 2026, 4:08:49 PM",
+  "dateUpdated": "Oct 15, 2026, 10:10:58 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/06b376432974fe5f25f2843a8e8438c6a1cf3d50\nhttps://git.kernel.org/stable/c/61a2fb25551be0375bc16ef2a70c987dfca26183\n",
+  "references": "https://git.kernel.org/stable/c/ddf51d74ee9f9857c99477329d80408cedebda61\nhttps://git.kernel.org/stable/c/06b376432974fe5f25f2843a8e8438c6a1cf3d50\nhttps://git.kernel.org/stable/c/61a2fb25551be0375bc16ef2a70c987dfca26183\n",
   "aliases": "GHSA-wphw-rfmf-7hpg\nCVE-2026-90336\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "18aeb661-fee3-3a43-a7a3-b304997ee430",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
     {
       "id": "2fa12b59-92c6-3a7b-9cac-c19720bc6f40",
       "product": {
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "a9e5c609-1691-358c-b329-889c70e83bb0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ddf51d74ee9f9857c99477329d80408cedebda61"
     },
     {
       "id": "b32170b6-22a9-3edc-99d6-744b024c3eaf",

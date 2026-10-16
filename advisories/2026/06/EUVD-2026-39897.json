@@ -3,12 +3,12 @@
   "enisaUuid": "23ec550e-7dd0-36ba-a46a-db06a794e89f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phonet: do not BUG_ON() in pn_socket_autobind() on failed bind\n\nsyzbot reported a kernel BUG triggered from pn_socket_sendmsg() via\npn_socket_autobind():\n\n  kernel BUG at net/phonet/socket.c:213!\n  RIP: 0010:pn_socket_autobind net/phonet/socket.c:213 [inline]\n  RIP: 0010:pn_socket_sendmsg+0x240/0x250 net/phonet/socket.c:421\n  Call Trace:\n   sock_sendmsg_nosec+0x112/0x150 net/socket.c:797\n   __sock_sendmsg net/socket.c:812 [inline]\n   __sys_sendto+0x402/0x590 net/socket.c:2280\n   ...\n\npn_socket_autobind() calls pn_socket_bind() with port 0 and, on\n-EINVAL, assumes the socket was already bound and asserts that the\nport is non-zero:\n\n  err = pn_socket_bind(sock, ..., sizeof(struct sockaddr_pn));\n  if (err != -EINVAL)\n          return err;\n  BUG_ON(!pn_port(pn_sk(sock->sk)->sobject));\n  return 0; /* socket was already bound */\n\nHowever pn_socket_bind() also returns -EINVAL when sk->sk_state is not\nTCP_CLOSE, even when the socket has never been bound and pn_port() is\nstill 0.  In that case the BUG_ON() fires and panics the kernel from a\nuser-triggerable path.\n\nTreat the \"bind returned -EINVAL but pn_port() is still 0\" case as a\nregular error and propagate -EINVAL to the caller instead of crashing.\nExisting callers already translate a non-zero return from\npn_socket_autobind() into -ENOBUFS/-EAGAIN, so returning -EINVAL here\nonly changes behaviour from panic to a normal errno.",
   "datePublished": "Jun 26, 2026, 7:40:51 PM",
-  "dateUpdated": "Jun 26, 2026, 7:40:51 PM",
+  "dateUpdated": "Oct 15, 2026, 10:07:46 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6db58ee730bf434d1afca91b91826e26688856ed\nhttps://git.kernel.org/stable/c/5b0c911bcdbd982f7748d11c0b39ec5808eae2de\n",
+  "references": "https://git.kernel.org/stable/c/5459933a799aaf642cbeb35fdf7e78c59bf2fb9b\nhttps://git.kernel.org/stable/c/6db58ee730bf434d1afca91b91826e26688856ed\nhttps://git.kernel.org/stable/c/5b0c911bcdbd982f7748d11c0b39ec5808eae2de\n",
   "aliases": "GHSA-mfj5-8wwq-98rr\nCVE-2026-53292\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "229cc0ea-713c-3623-a5de-9902f04d4b47",
@@ -31,6 +31,16 @@
       "product_version": "patch: 7.1"
     },
     {
+      "id": "49d1ead8-ec6c-3869-a270-11c79f8518c8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ba113a94b7503ee23ffe819e7045134b0c1d31de <5459933a799aaf642cbeb35fdf7e78c59bf2fb9b"
+    },
+    {
       "id": "73afd20e-18a4-30b1-883f-1f7f12a9774f",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "2.6.28"
+    },
+    {
+      "id": "d3ece26e-d9e8-3e99-b31e-4f8577440f4e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "e09a1890-2281-3045-9825-0e5acfd13eca",

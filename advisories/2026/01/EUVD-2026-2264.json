@@ -3,12 +3,12 @@
   "enisaUuid": "19c349e6-33d2-37fa-a0c4-2380759ddff6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: xattr: fix null pointer deref in ext4_raw_inode()\n\nIf ext4_get_inode_loc() fails (e.g. if it returns -EFSCORRUPTED),\niloc.bh will remain set to NULL. Since ext4_xattr_inode_dec_ref_all()\nlacks error checking, this will lead to a null pointer dereference\nin ext4_raw_inode(), called right after ext4_get_inode_loc().\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Jan 13, 2026, 3:29:23 PM",
-  "dateUpdated": "Sep 8, 2026, 8:43:39 AM",
+  "dateUpdated": "Oct 15, 2026, 1:10:24 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b72a3476f0c97d02f63a6e9fff127348d55436f6\nhttps://git.kernel.org/stable/c/3d8d22e75f7edfa0b30ff27330fd6a1285d594c3\nhttps://git.kernel.org/stable/c/190ad0f22ba49f1101182b80e3af50ca2ddfe72f\nhttps://git.kernel.org/stable/c/b5d942922182e82724b7152cb998f540132885ec\nhttps://git.kernel.org/stable/c/5b154e901fda2e98570b8f426a481f5740097dc2\nhttps://git.kernel.org/stable/c/ce5f54c065a4a7cbb92787f4f140917112350142\nhttps://git.kernel.org/stable/c/b97cb7d6a051aa6ebd57906df0e26e9e36c26d14\n",
   "aliases": "GHSA-mp4c-25vm-9w6p\nCVE-2025-68820\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "022f6052-d5dd-31c0-85b6-3f581df9fb4d",

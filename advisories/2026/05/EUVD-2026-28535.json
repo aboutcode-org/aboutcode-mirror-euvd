@@ -3,14 +3,14 @@
   "enisaUuid": "cba0e748-744d-3d2d-a35f-258427ee0d28",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: esp: avoid in-place decrypt on shared skb frags\n\nMSG_SPLICE_PAGES can attach pages from a pipe directly to an skb. TCP\nmarks such skbs with SKBFL_SHARED_FRAG after skb_splice_from_iter(),\nso later paths that may modify packet data can first make a private\ncopy. The IPv4/IPv6 datagram append paths did not set this flag when\nsplicing pages into UDP skbs.\n\nThat leaves an ESP-in-UDP packet made from shared pipe pages looking\nlike an ordinary uncloned nonlinear skb. ESP input then takes the no-COW\nfast path for uncloned skbs without a frag_list and decrypts in place\nover data that is not owned privately by the skb.\n\nMark IPv4/IPv6 datagram splice frags with SKBFL_SHARED_FRAG, matching\nTCP. Also make ESP input fall back to skb_cow_data() when the flag is\npresent, so ESP does not decrypt externally backed frags in place.\nPrivate nonlinear skb frags still use the existing fast path.\n\nThis intentionally does not change ESP output. In esp_output_head(),\nthe path that appends the ESP trailer to existing skb tailroom without\ncalling skb_cow_data() is not reachable for nonlinear skbs:\nskb_tailroom() returns zero when skb->data_len is nonzero, while ESP\ntailen is positive. Thus ESP output will either use the separate\ndestination-frag path or fall back to skb_cow_data().",
   "datePublished": "May 8, 2026, 7:21:47 AM",
-  "dateUpdated": "Sep 8, 2026, 8:48:52 AM",
+  "dateUpdated": "Oct 15, 2026, 1:19:19 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a6cb440f274a22456ef3e86b457344f1678f38f9\nhttps://git.kernel.org/stable/c/ab8b995323e5237041472d07e5055f5f7dcdf15b\nhttps://git.kernel.org/stable/c/fe785bb3a8096dffcc4048a85cd0c83337eeecad\nhttps://git.kernel.org/stable/c/5d55c7336f8032d434adcc5fab987ccc93a44aec\nhttps://git.kernel.org/stable/c/8253aab4659ca16116b522203c2a6b18dccacea7\nhttps://git.kernel.org/stable/c/50ed1e7873100f77abad20fd31c51029bc49cd03\nhttps://git.kernel.org/stable/c/b54edf1e9a3fd3491bdcb82a21f8d21315271e0d\nhttps://git.kernel.org/stable/c/71a1d9d985d26716f74d21f18ee8cac821b06e97\nhttps://git.kernel.org/stable/c/52646cbd00e765a6db9c3afe9535f26218276034\nhttps://git.kernel.org/stable/c/f4c50a4034e62ab75f1d5cdd191dd5f9c77fdff4\n",
   "aliases": "CVE-2026-43284\nGHSA-mmw8-mxmc-8w2r\n",
   "assigner": "Linux",
-  "epss": 93.24,
+  "epss": 2.47,
   "enisaIdProduct": [
     {
       "id": "01d5470d-35f8-3bc7-896d-b2754c0bef8d",

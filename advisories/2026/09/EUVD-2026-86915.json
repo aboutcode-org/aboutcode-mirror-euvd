@@ -3,23 +3,13 @@
   "enisaUuid": "ad224efc-bb46-3910-8257-b7173d46f748",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: backtrack_insn(): Handle ld_{abs,ind} subprog exit edge\n\nNicholas Carlini reported a bug in precision backtracking mechanism\nfor BPF_LD | BPF_{IND,ABS} instructions. These instructions are\nmodelled as two branches:\n- fallthrough;\n- implicit exit from current subprogram.\n\nThe implicit exit case was not handled by the backtrack_insn()\nfunction. When backtracking such a path backtrack_insn() did not\ncall bt_subprog_enter(), which meant that backtracking continued\nmanipulating precision marks in a caller frame, while looking at\ninstructions in a callee frame.\n\nThis lead to segmentation faults during verification (see the\nselftest), or unsound state pruning.",
   "datePublished": "Sep 25, 2026, 10:24:20 AM",
-  "dateUpdated": "Sep 25, 2026, 10:24:20 AM",
+  "dateUpdated": "Oct 15, 2026, 10:12:14 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/671b7b9a660ef15b25faa3df161205b9dc8d1eb2\nhttps://git.kernel.org/stable/c/387b1baefbb776e3f48dc2261e77a49213f470f7\n",
+  "references": "https://git.kernel.org/stable/c/a0cd9e22f8faed30a8da8be357c51bd8b3074ee9\nhttps://git.kernel.org/stable/c/671b7b9a660ef15b25faa3df161205b9dc8d1eb2\nhttps://git.kernel.org/stable/c/387b1baefbb776e3f48dc2261e77a49213f470f7\n",
   "aliases": "CVE-2026-98085\nGHSA-7c78-fpcm-vcqr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
-    {
-      "id": "020de385-0e48-34cb-9c2d-40d9435c616a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "ce01a4e5cfac7adbe0be565f90cd32ecbb2f8337"
-    },
     {
       "id": "0dfb59a3-5847-3d8d-bc92-81fd50476122",
       "product": {
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "37ad2bb11e9de92cb7b94548705eeedd87f7d392"
+    },
+    {
+      "id": "1ece0c37-2bc9-3ed2-bb9a-fc1d1ce1790e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.18.42 <6.18.57"
     },
     {
       "id": "20aa2fee-d9f4-3106-8219-01e109e0f431",
@@ -161,6 +161,16 @@
       "product_version": "5.10.265 <5.11"
     },
     {
+      "id": "a896772c-b15d-32c8-ab8a-69055749f134",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
+    },
+    {
       "id": "aa9a1931-0fb7-346e-b62a-b7b09b617f71",
       "product": {
         "name": "Linux",
@@ -201,14 +211,14 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "d7c8bc3a-7ca1-3046-8207-cbac0194110b",
+      "id": "f3905daf-ee88-36de-b611-315b0ee23e01",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.18.42 <6.19"
+      "product_version": "ce01a4e5cfac7adbe0be565f90cd32ecbb2f8337 <a0cd9e22f8faed30a8da8be357c51bd8b3074ee9"
     }
   ],
   "enisaIdVendor": [

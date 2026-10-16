@@ -3,14 +3,14 @@
   "enisaUuid": "114b7423-8142-3d42-9ec0-f4a3f606e164",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: nci: Fix uninit-value in nci_rx_work\n\nsyzbot reported the following uninit-value access issue [1]\n\nnci_rx_work() parses received packet from ndev->rx_q. It should be\nvalidated header size, payload size and total packet size before\nprocessing the packet. If an invalid packet is detected, it should be\nsilently discarded.",
   "datePublished": "Jun 21, 2024, 10:18:12 AM",
-  "dateUpdated": "Aug 5, 2026, 11:32:33 AM",
+  "dateUpdated": "Oct 15, 2026, 12:43:18 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/406cfac9debd4a6d3dc5d9258ee086372a8c08b6\nhttps://git.kernel.org/stable/c/485ded868ed62ceb2acb3a459d7843fd71472619\nhttps://git.kernel.org/stable/c/f80b786ab0550d0020191a59077b2c7e069db2d1\nhttps://git.kernel.org/stable/c/ad4d196d2008c7f413167f0a693feb4f0439d7fe\nhttps://git.kernel.org/stable/c/e8c8e0d0d214c877fbad555df5b3ed558cd9b0c3\nhttps://git.kernel.org/stable/c/e53a7f8afcbd2886f2a94c5d56757328109730ea\nhttps://git.kernel.org/stable/c/017ff397624930fd7ac7f1761f3c9d6a7100f68c\nhttps://git.kernel.org/stable/c/e4a87abf588536d1cdfb128595e6e680af5cf3ed\n",
   "aliases": "GHSA-238v-q38r-8xqp\nCVE-2024-38381\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.38,
   "enisaIdProduct": [
     {
       "id": "006fa973-c527-32f6-9f60-441ac4f7183b",

@@ -3,12 +3,12 @@
   "enisaUuid": "7abae311-e5b9-38bb-b62a-0b4599a4924d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: aic94xx: fix use-after-free in device removal path\n\nThe asd_pci_remove() function fails to synchronize with pending tasklets\nbefore freeing the asd_ha structure, leading to a potential\nuse-after-free vulnerability.\n\nWhen a device removal is triggered (via hot-unplug or module unload),\nrace condition can occur.\n\nThe fix adds tasklet_kill() before freeing the asd_ha structure,\nensuring all scheduled tasklets complete before cleanup proceeds.",
   "datePublished": "Jan 13, 2026, 3:31:28 PM",
-  "dateUpdated": "Sep 8, 2026, 8:43:41 AM",
+  "dateUpdated": "Oct 15, 2026, 1:10:33 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c8f6f88cd1df35155258285c4f43268b361819df\nhttps://git.kernel.org/stable/c/278455a82245a572aeb218a6212a416a98e418de\nhttps://git.kernel.org/stable/c/b3e655e52b98a1d3df41c8e42035711e083099f8\nhttps://git.kernel.org/stable/c/e354793a7ab9bb0934ea699a9d57bcd1b48fc27b\nhttps://git.kernel.org/stable/c/a41dc180b6e1229ae49ca290ae14d82101c148c3\nhttps://git.kernel.org/stable/c/751c19635c2bfaaf2836a533caa3663633066dcf\nhttps://git.kernel.org/stable/c/f6ab594672d4cba08540919a4e6be2e202b60007\n",
   "aliases": "CVE-2025-71075\nGHSA-22c9-2rqw-7g84\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "11497df3-5de4-341c-a8e0-c6f299ff622b",

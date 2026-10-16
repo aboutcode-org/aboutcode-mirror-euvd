@@ -3,14 +3,14 @@
   "enisaUuid": "e7eff065-a15a-3346-9eec-16c8c1a5ac1a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: Lock external INTx masking ops\n\nMask operations through config space changes to DisINTx may race INTx\nconfiguration changes via ioctl.  Create wrappers that add locking for\npaths outside of the core interrupt code.\n\nIn particular, irq_type is updated holding igate, therefore testing\nis_intx() requires holding igate.  For example clearing DisINTx from\nconfig space can otherwise race changes of the interrupt configuration.\n\nThis aligns interfaces which may trigger the INTx eventfd into two\ncamps, one side serialized by igate and the other only enabled while\nINTx is configured.  A subsequent patch introduces synchronization for\nthe latter flows.",
   "datePublished": "Apr 5, 2024, 8:24:41 AM",
-  "dateUpdated": "Aug 5, 2026, 11:27:29 AM",
+  "dateUpdated": "Oct 15, 2026, 12:38:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1e71b6449d55179170efc8dee8664510bb813b42\nhttps://git.kernel.org/stable/c/3dd9be6cb55e0f47544e7cdda486413f7134e3b3\nhttps://git.kernel.org/stable/c/ec73e079729258a05452356cf6d098bf1504d5a6\nhttps://git.kernel.org/stable/c/3fe0ac10bd117df847c93408a9d428a453cd60e5\nhttps://git.kernel.org/stable/c/04a4a017b9ffd7b0f427b8c376688d14cb614651\nhttps://git.kernel.org/stable/c/6fe478d855b20ac1eb5da724afe16af5a2aaaa40\nhttps://git.kernel.org/stable/c/03505e3344b0576fd619416793a31eae9c5b73bf\nhttps://git.kernel.org/stable/c/810cd4bb53456d0503cc4e7934e063835152c1b7\n",
   "aliases": "GHSA-fpf4-cfch-367m\nCVE-2024-26810\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "17b3088c-cfe9-3cc6-a969-05f1ca00f303",

@@ -3,14 +3,14 @@
   "enisaUuid": "e2e0a8ee-8515-3b45-bdc0-3420c9a7ce25",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: don't read past the mfuart notifcation\n\nIn case the firmware sends a notification that claims it has more data\nthan it has, we will read past that was allocated for the notification.\nRemove the print of the buffer, we won't see it by default. If needed,\nwe can see the content with tracing.\n\nThis was reported by KFENCE.",
   "datePublished": "Jul 12, 2024, 12:25:16 PM",
-  "dateUpdated": "Aug 5, 2026, 11:34:08 AM",
+  "dateUpdated": "Oct 15, 2026, 12:45:29 AM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/15b37c6fab9d5e40ac399fa1c725118588ed649c\nhttps://git.kernel.org/stable/c/6532f18e66b384b8d4b7e5c9caca042faaa9e8de\nhttps://git.kernel.org/stable/c/46c59a25337049a2a230ce7f7c3b9f21d0aaaad7\nhttps://git.kernel.org/stable/c/65686118845d427df27ee83a6ddd4885596b0805\nhttps://git.kernel.org/stable/c/a8bc8276af9aeacabb773f0c267cfcdb847c6f2d\nhttps://git.kernel.org/stable/c/a05018739a5e6b9dc112c95bd4c59904062c8940\nhttps://git.kernel.org/stable/c/acdfa33c3cf5e1cd185cc1e0486bd0ea9f09c154\nhttps://git.kernel.org/stable/c/4bb95f4535489ed830cf9b34b0a891e384d1aee4\n",
   "aliases": "GHSA-637c-w92w-633g\nCVE-2024-40941\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "17409a05-9a41-346c-a5f4-ac7085f76662",

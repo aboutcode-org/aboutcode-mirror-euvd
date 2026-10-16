@@ -3,12 +3,12 @@
   "enisaUuid": "53db36ff-33f9-3245-95df-d884791d60a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atm: fix crash due to unvalidated vcc pointer in sigd_send()\n\nReproducer available at [1].\n\nThe ATM send path (sendmsg -> vcc_sendmsg -> sigd_send) reads the vcc\npointer from msg->vcc and uses it directly without any validation. This\npointer comes from userspace via sendmsg() and can be arbitrarily forged:\n\n    int fd = socket(AF_ATMSVC, SOCK_DGRAM, 0);\n    ioctl(fd, ATMSIGD_CTRL);  // become ATM signaling daemon\n    struct msghdr msg = { .msg_iov = &iov, ... };\n    *(unsigned long *)(buf + 4) = 0xdeadbeef;  // fake vcc pointer\n    sendmsg(fd, &msg, 0);  // kernel dereferences 0xdeadbeef\n\nIn normal operation, the kernel sends the vcc pointer to the signaling\ndaemon via sigd_enq() when processing operations like connect(), bind(),\nor listen(). The daemon is expected to return the same pointer when\nresponding. However, a malicious daemon can send arbitrary pointer values.\n\nFix this by introducing find_get_vcc() which validates the pointer by\nsearching through vcc_hash (similar to how sigd_close() iterates over\nall VCCs), and acquires a reference via sock_hold() if found.\n\nSince struct atm_vcc embeds struct sock as its first member, they share\nthe same lifetime. Therefore using sock_hold/sock_put is sufficient to\nkeep the vcc alive while it is being used.\n\nNote that there may be a race with sigd_close() which could mark the vcc\nwith various flags (e.g., ATM_VF_RELEASED) after find_get_vcc() returns.\nHowever, sock_hold() guarantees the memory remains valid, so this race\nonly affects the logical state, not memory safety.\n\n[1]: https://gist.github.com/mrpre/1ba5949c45529c511152e2f4c755b0f3",
   "datePublished": "Apr 8, 2026, 1:06:17 PM",
-  "dateUpdated": "Sep 8, 2026, 8:46:47 AM",
+  "dateUpdated": "Oct 15, 2026, 1:15:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c96549d07dfdd51aadf0722cfb40711574424840\nhttps://git.kernel.org/stable/c/1c8bda3df028d5e54134077dcd09f46ca8cfceb5\nhttps://git.kernel.org/stable/c/3e1a8b00095246a9a2b46b57f6d471c6d3c00ed2\nhttps://git.kernel.org/stable/c/e3f80666c2739296c3b69a127300455c43aa1067\nhttps://git.kernel.org/stable/c/21c303fec138c002f90ed33bce60e807d53072bb\nhttps://git.kernel.org/stable/c/69d3f9ee5489e6e8b66defcfa226e91d82393297\nhttps://git.kernel.org/stable/c/440c9a5fc477a8ee259d8bf669531250b8398651\nhttps://git.kernel.org/stable/c/ae88a5d2f29b69819dc7b04086734439d074a643\n",
   "aliases": "GHSA-9q92-j4jr-j3jp\nCVE-2026-31411\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1955dc5d-4564-35c8-b2e2-1fca48f792f6",

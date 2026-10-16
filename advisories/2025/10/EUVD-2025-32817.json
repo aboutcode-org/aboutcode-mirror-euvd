@@ -3,14 +3,14 @@
   "enisaUuid": "b66c9798-d465-3b77-89ec-d7d7a57424b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: improve error handling from ext4_dirhash()\n\nThe ext4_dirhash() will *almost* never fail, especially when the hash\ntree feature was first introduced.  However, with the addition of\nsupport of encrypted, casefolded file names, that function can most\ncertainly fail today.\n\nSo make sure the callers of ext4_dirhash() properly check for\nfailures, and reflect the errors back up to their callers.",
   "datePublished": "Oct 1, 2025, 11:42:42 AM",
-  "dateUpdated": "Aug 5, 2026, 9:14:14 AM",
+  "dateUpdated": "Oct 15, 2026, 9:41:28 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b2531936118deb3f479c4fa1bcd787b74b8faa6a\nhttps://git.kernel.org/stable/c/f68876aeef96ef8b708ab10b9cb47ce0a5adb424\nhttps://git.kernel.org/stable/c/70d579aefa652a06af97e013e3fbbabbe5a43553\nhttps://git.kernel.org/stable/c/c1fae027da61fe8e7eb99f7244297e81bc0f1e43\nhttps://git.kernel.org/stable/c/4b3cb1d108bfc2aebb0d7c8a52261a53cf7f5786\n",
   "aliases": "GHSA-96w3-wxxm-9x2q\nCVE-2023-53473\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "007aeedf-04aa-3610-9828-41ac8a5e439b",

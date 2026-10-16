@@ -3,14 +3,14 @@
   "enisaUuid": "13ecbb75-b65a-397d-8b17-dc91c027317c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetem: Update sch->q.qlen before qdisc_tree_reduce_backlog()\n\nqdisc_tree_reduce_backlog() notifies parent qdisc only if child\nqdisc becomes empty, therefore we need to reduce the backlog of the\nchild qdisc before calling it. Otherwise it would miss the opportunity\nto call cops->qlen_notify(), in the case of DRR, it resulted in UAF\nsince DRR uses ->qlen_notify() to maintain its active list.",
   "datePublished": "Feb 18, 2025, 2:37:44 PM",
-  "dateUpdated": "Aug 5, 2026, 11:53:46 AM",
+  "dateUpdated": "Oct 15, 2026, 1:03:25 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e395fec75ac2dbffc99b4bce57b7f1f3c5449f2c\nhttps://git.kernel.org/stable/c/7f31d74fcc556a9166b1bb20515542de7bb939d1\nhttps://git.kernel.org/stable/c/98a2c685293aae122f688cde11d9334dddc5d207\nhttps://git.kernel.org/stable/c/7b79ca9a1de6a428d486ff52fb3d602321c08f55\nhttps://git.kernel.org/stable/c/1f8e3f4a4b8b90ad274dfbc66fc7d55cb582f4d5\nhttps://git.kernel.org/stable/c/6312555249082d6d8cc5321ff725df05482d8b83\nhttps://git.kernel.org/stable/c/839ecc583fa00fab785fde1c85a326743657fd32\nhttps://git.kernel.org/stable/c/638ba5089324796c2ee49af10427459c2de35f71\n",
   "aliases": "CVE-2025-21703\nGHSA-cg86-m5xc-jqrm\n",
   "assigner": "Linux",
-  "epss": 0.29,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "0450b9a2-00ee-35cf-973e-8b1c5df00202",

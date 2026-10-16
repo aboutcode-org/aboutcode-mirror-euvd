@@ -3,12 +3,12 @@
   "enisaUuid": "666bd21e-3933-3c3c-a60c-cfcd38b532f1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_multiport: validate range encoding in checkentry\n\nports_match_v1() treats any non-zero pflags entry as the start of a\nport range and unconditionally consumes the next ports[] element as\nthe range end.\n\nThe checkentry path currently validates protocol, flags and count, but\nit does not validate the range encoding itself. As a result, malformed\nrules can mark the last slot as a range start or place two range starts\nback to back, leaving ports_match_v1() to step past the last valid\nports[] element while interpreting the rule.\n\nReject malformed multiport v1 rules in checkentry by validating that\neach range start has a following element and that the following element\nis not itself marked as another range start.",
   "datePublished": "Apr 25, 2026, 8:46:57 AM",
-  "dateUpdated": "Sep 8, 2026, 8:48:06 AM",
+  "dateUpdated": "Oct 15, 2026, 1:17:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8c5bf8f5b478f569191c4a7982de7cd5f5f73c1a\nhttps://git.kernel.org/stable/c/c9749f6232c845e31c21d4cc72200211df15d8a2\nhttps://git.kernel.org/stable/c/b67d638cbee9975c765feb45c126e96ed11ec802\nhttps://git.kernel.org/stable/c/36bf0d98e180a7c384c8d8a59b0d2d4b80e5eb16\nhttps://git.kernel.org/stable/c/aec14808271f2bf2b656de6ff12dfe73c5fd3b67\nhttps://git.kernel.org/stable/c/8368ce8eb01f0b91111d814703696e780d0ef12f\nhttps://git.kernel.org/stable/c/1e4baa853f1cc4227e04f52d6860524707cfb294\nhttps://git.kernel.org/stable/c/ff64c5bfef12461df8450e0f50bb693b5269c720\n",
   "aliases": "GHSA-f822-mpgr-7cqx\nCVE-2026-31681\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0cac510a-ee0f-3a9d-a5aa-c779de3bfa77",

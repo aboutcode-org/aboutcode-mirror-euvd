@@ -3,14 +3,14 @@
   "enisaUuid": "7352f344-820a-3f64-91c3-e78b75395617",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_IDLETIMER: reject rev0 reuse of ALARM timer labels\n\nIDLETIMER revision 0 rules reuse existing timers by label and always call\nmod_timer() on timer->timer.\n\nIf the label was created first by revision 1 with XT_IDLETIMER_ALARM,\nthe object uses alarm timer semantics and timer->timer is never initialized.\nReusing that object from revision 0 causes mod_timer() on an uninitialized\ntimer_list, triggering debugobjects warnings and possible panic when\npanic_on_warn=1.\n\nFix this by rejecting revision 0 rule insertion when an existing timer with\nthe same label is of ALARM type.",
   "datePublished": "Mar 20, 2026, 8:08:54 AM",
-  "dateUpdated": "Sep 8, 2026, 8:45:17 AM",
+  "dateUpdated": "Oct 15, 2026, 1:13:32 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/32e937dc6e97f5ed3cdfe3fc0b2b19a05e23fa44\nhttps://git.kernel.org/stable/c/144f88054ba0180467356f40895bd660b5dceeec\nhttps://git.kernel.org/stable/c/28c7cfaf0c0ab17cbd7754092116fd1af45271f9\nhttps://git.kernel.org/stable/c/54080355999381fed4a26129579a5765bab87491\nhttps://git.kernel.org/stable/c/5e7ece24c5cb75a60402aad4d803c7898ea40aa9\nhttps://git.kernel.org/stable/c/f5ef97c13165542480a6ffdbe6f09f40bbb7cbf1\nhttps://git.kernel.org/stable/c/f228b9ae2a7e84d1153616d8e71c4236cb1f1309\nhttps://git.kernel.org/stable/c/329f0b9b48ee6ab59d1ab72fef55fe8c6463a6cf\n",
   "aliases": "GHSA-3cwp-73f3-j7w3\nCVE-2026-23274\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "214c5144-f9cd-36b4-a1f3-54f4e24c29d9",

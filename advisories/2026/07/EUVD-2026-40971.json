@@ -3,12 +3,12 @@
   "enisaUuid": "29ebeaf8-1f0a-338b-ab33-506372b9b556",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bonding: fix NULL pointer dereference in bond_do_ioctl()\n\nIn bond_do_ioctl(), slave_dev is obtained via __dev_get_by_name() which\ncan return NULL if the requested interface name does not exist. However,\nthe subsequent slave_dbg() call is placed before the NULL check:\n\n    slave_dev = __dev_get_by_name(net, ifr->ifr_slave);\n    slave_dbg(bond_dev, slave_dev, \"slave_dev=%p:\\n\", slave_dev); //here\n    if (!slave_dev)\n        return -ENODEV;\n\nThe slave_dbg() macro expands to netdev_dbg(bond_dev, \"(slave %s): \" fmt,\n(slave_dev)->name, ...) which unconditionally dereferences slave_dev->name\nbefore the NULL check is performed. This results in a NULL pointer\ndereference kernel oops when a user calls bonding ioctl (e.g.\nSIOCBONDENSLAVE, SIOCBONDRELEASE, etc.) with a non-existent slave\ninterface name.\n\nThis is reachable from userspace via the bonding ioctl interface with\nCAP_NET_ADMIN capability, making it a potential local denial-of-service\nvector.\n\nFix by moving the slave_dbg() call after the NULL check.",
   "datePublished": "Jul 1, 2026, 1:32:19 PM",
-  "dateUpdated": "Jul 1, 2026, 1:32:19 PM",
+  "dateUpdated": "Oct 15, 2026, 1:23:16 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1b7558c85493467b2ea20738866b822db6442034\nhttps://git.kernel.org/stable/c/b02b2e3e876c18733b868a29064abd11cdbf8feb\nhttps://git.kernel.org/stable/c/66693957bacd1c9dae6188a7312d6be69a221f2d\nhttps://git.kernel.org/stable/c/a629418d463fb50d132a1aa063b0105857311e5f\nhttps://git.kernel.org/stable/c/c2cfe290fdb1c32a4f4eb2b8ca3f363b305d21ba\nhttps://git.kernel.org/stable/c/bcb8fad90f27300add583a8371db504b766d95c7\nhttps://git.kernel.org/stable/c/b0878106ddc486375084145848ff255dedfff46a\nhttps://git.kernel.org/stable/c/a764b0e8317a863006e05732e1aefe821b9d8c2d\n",
   "aliases": "GHSA-73rm-r64m-jh58\nCVE-2026-53337\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "05fa46be-f068-3348-891a-bc4ab6fa81d7",

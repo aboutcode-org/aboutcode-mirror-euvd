@@ -3,12 +3,12 @@
   "enisaUuid": "711df40c-ff36-3a89-83f6-565f5ab276ca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mscc: ocelot: Fix crash when adding interface under a lag\n\nCommit 15faa1f67ab4 (\"lan966x: Fix crash when adding interface under a lag\")\nfixed a similar issue in the lan966x driver caused by a NULL pointer dereference.\nThe ocelot_set_aggr_pgids() function in the ocelot driver has similar logic\nand is susceptible to the same crash.\n\nThis issue specifically affects the ocelot_vsc7514.c frontend, which leaves\nunused ports as NULL pointers. The felix_vsc9959.c frontend is unaffected as\nit uses the DSA framework which registers all ports.\n\nFix this by checking if the port pointer is valid before accessing it.",
   "datePublished": "Jan 23, 2026, 3:24:04 PM",
-  "dateUpdated": "Sep 8, 2026, 8:44:29 AM",
+  "dateUpdated": "Oct 15, 2026, 1:12:28 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8767f238b0e6c3d0b295ac6dce9fbe6a99bd1b9d\nhttps://git.kernel.org/stable/c/b17818307446c5a8d925a39a792261dbfa930041\nhttps://git.kernel.org/stable/c/2985712dc76dfa670eb7fd607c09d4d48e5f5c6e\nhttps://git.kernel.org/stable/c/03fb1708b7d1e76aecebf767ad059c319845039f\nhttps://git.kernel.org/stable/c/f490af47bbee02441e356a1e0b86e3b3dd5120ff\nhttps://git.kernel.org/stable/c/34f3ff52cb9fa7dbf04f5c734fcc4cb6ed5d1a95\n",
   "aliases": "CVE-2026-22982\nGHSA-m4w2-2j95-qx2q\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0c747000-e3b2-318b-b81c-4cb5fc1e8d3e",

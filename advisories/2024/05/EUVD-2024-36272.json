@@ -3,14 +3,14 @@
   "enisaUuid": "4b811fb0-3cc5-392b-b887-56a1c2719146",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: read txq->read_ptr under lock\n\nIf we read txq->read_ptr without lock, we can read the same\nvalue twice, then obtain the lock, and reclaim from there\nto two different places, but crucially reclaim the same\nentry twice, resulting in the WARN_ONCE() a little later.\nFix that by reading txq->read_ptr under lock.",
   "datePublished": "May 30, 2024, 3:29:16 PM",
-  "dateUpdated": "Aug 5, 2026, 11:32:06 AM",
+  "dateUpdated": "Oct 15, 2026, 12:42:49 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f30e8af109818c9db08cbcc46eb9713fe4b530ba\nhttps://git.kernel.org/stable/c/aab7b39fcac5f6165f6434bcbb56bb7865d4ad2b\nhttps://git.kernel.org/stable/c/b83db8e756dec68a950ed2f056248b1704b3deaa\nhttps://git.kernel.org/stable/c/43d07103df670484cdd26f9588eabef80f69db89\nhttps://git.kernel.org/stable/c/c2ace6300600c634553657785dfe5ea0ed688ac2\n",
   "aliases": "CVE-2024-36922\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "1f0f99d3-4449-3399-acb4-627925b4c066",

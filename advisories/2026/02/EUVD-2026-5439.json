@@ -3,14 +3,14 @@
   "enisaUuid": "0f29ba41-5208-307c-a4f5-6f4e07561917",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvlan: Make the addrs_lock be per port\n\nMake the addrs_lock be per port, not per ipvlan dev.\n\nInitial code seems to be written in the assumption,\nthat any address change must occur under RTNL.\nBut it is not so for the case of IPv6. So\n\n1) Introduce per-port addrs_lock.\n\n2) It was needed to fix places where it was forgotten\nto take lock (ipvlan_open/ipvlan_close)\n\nThis appears to be a very minor problem though.\nSince it's highly unlikely that ipvlan_add_addr() will\nbe called on 2 CPU simultaneously. But nevertheless,\nthis could cause:\n\n1) False-negative of ipvlan_addr_busy(): one interface\niterated through all port->ipvlans + ipvlan->addrs\nunder some ipvlan spinlock, and another added IP\nunder its own lock. Though this is only possible\nfor IPv6, since looks like only ipvlan_addr6_event() can be\ncalled without rtnl_lock.\n\n2) Race since ipvlan_ht_addr_add(port) is called under\ndifferent ipvlan->addrs_lock locks\n\nThis should not affect performance, since add/remove IP\nis a rare situation and spinlock is not taken on fast\npaths.",
   "datePublished": "Feb 4, 2026, 4:08:24 PM",
-  "dateUpdated": "Sep 8, 2026, 8:44:55 AM",
+  "dateUpdated": "Oct 15, 2026, 1:13:01 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3c149b662cbb202a450e81f938e702ba333864ad\nhttps://git.kernel.org/stable/c/70feb16e3fbfb10b15de1396557c38e99f1ab8df\nhttps://git.kernel.org/stable/c/88f83e6c9cdb46b8c8ddd0ba01393362963cf589\nhttps://git.kernel.org/stable/c/04ba6de6eff61238e5397c14ac26a6578c7735a5\nhttps://git.kernel.org/stable/c/1f300c10d92c547c3a7d978e1212ff52f18256ed\nhttps://git.kernel.org/stable/c/6a81e2db096913d7e43aada1c350c1282e76db39\nhttps://git.kernel.org/stable/c/d3ba32162488283c0a4c5bedd8817aec91748802\n",
   "aliases": "GHSA-ghmm-m363-9645\nCVE-2026-23103\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "1439a024-bc84-399d-ab72-82f58963fbbc",

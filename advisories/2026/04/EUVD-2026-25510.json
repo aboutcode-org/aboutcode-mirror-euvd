@@ -3,14 +3,14 @@
   "enisaUuid": "a89666e5-f024-35e6-b19d-7e464aa50336",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ncm: validate minimum block_len in ncm_unwrap_ntb()\n\nThe block_len read from the host-supplied NTB header is checked against\nntb_max but has no lower bound. When block_len is smaller than\nopts->ndp_size, the bounds check of:\n\tndp_index > (block_len - opts->ndp_size)\nwill underflow producing a huge unsigned value that ndp_index can never\nexceed, defeating the check entirely.\n\nThe same underflow occurs in the datagram index checks against block_len\n- opts->dpe_size.  With those checks neutered, a malicious USB host can\nchoose ndp_index and datagram offsets that point past the actual\ntransfer, and the skb_put_data() copies adjacent kernel memory into the\nnetwork skb.\n\nFix this by rejecting block lengths that cannot hold at least the NTB\nheader plus one NDP.  This will make block_len - opts->ndp_size and\nblock_len - opts->dpe_size both well-defined.\n\nCommit 8d2b1a1ec9f5 (\"CDC-NCM: avoid overflow in sanity checking\") fixed\na related class of issues on the host side of NCM.",
   "datePublished": "Apr 24, 2026, 2:42:36 PM",
-  "dateUpdated": "Aug 6, 2026, 12:08:53 PM",
+  "dateUpdated": "Oct 15, 2026, 1:17:13 AM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/068a7f2749fff6462a0a908ec415b885fe430f50\nhttps://git.kernel.org/stable/c/1425655c2870054c3ab4712e2b6dbdd331597ada\nhttps://git.kernel.org/stable/c/8b3b7bd3c02f98634baaf36c7fc7ac915f6517ca\nhttps://git.kernel.org/stable/c/0f156bb5334e588034ca68ac2ee92b23f66e56e7\nhttps://git.kernel.org/stable/c/8757a2593631443648218244b9788e193ae0fdc1\nhttps://git.kernel.org/stable/c/6762f8a95772265dd0c2ffe7f400493f3115b135\nhttps://git.kernel.org/stable/c/d58ba8f6546232f8414f396c189297dbee03f1a7\nhttps://git.kernel.org/stable/c/74908b0318d1df1188457040b8714ff4d4b68126\nhttps://git.kernel.org/stable/c/8f993d30b95dc9557a8a96ceca11abed674c8acb\n",
   "aliases": "CVE-2026-31617\nGHSA-v24g-wpq8-cwqx\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "065af68a-bd7d-3cc1-98ff-a5f3d59aefd1",

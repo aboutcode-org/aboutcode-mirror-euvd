@@ -3,12 +3,12 @@
   "enisaUuid": "086acb77-ae1b-33e5-b3b3-55d22454b355",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: clean up color-change beacon data on errors\n\nnl80211_color_change() calls nl80211_parse_beacon() for the beacon_next\ntemplate, which can allocate params.beacon_next.mbssid_ies and .rnr_ies.\nA parsing failure returned directly instead of using the out: cleanup,\nleaking any allocations completed before the error.\n\nAllocate the nested attribute table before parsing beacon_next. Its\nallocation failure can then return before beacon data exists, while a\nlater parsing failure uses out: to release the parsed data.",
   "datePublished": "Sep 17, 2026, 4:08:55 PM",
-  "dateUpdated": "Sep 17, 2026, 4:08:55 PM",
+  "dateUpdated": "Oct 15, 2026, 10:11:02 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4e0a67fbe3d9e2e1d6f81dfc607184c6b0abd3dd\nhttps://git.kernel.org/stable/c/927ee844c47ac2aef22c8f7a35f098ff576b398b\n",
+  "references": "https://git.kernel.org/stable/c/0ec1d14cf302ae7c23ec218527b2849a1fced3f4\nhttps://git.kernel.org/stable/c/4e0a67fbe3d9e2e1d6f81dfc607184c6b0abd3dd\nhttps://git.kernel.org/stable/c/927ee844c47ac2aef22c8f7a35f098ff576b398b\n",
   "aliases": "GHSA-w736-9wgf-6j7c\nCVE-2026-90346\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "03fe9d2c-8591-35d4-9d0a-f6fecd6701ea",
@@ -19,6 +19,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "257a6340-78bb-3221-bea7-49d9c0fb0796",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dc1e3cb8da8b414b37208b2fb6755fef8122504b <0ec1d14cf302ae7c23ec218527b2849a1fced3f4"
+    },
+    {
+      "id": "5a85b71c-53fa-3d14-9fa9-57ee9ba2ff95",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.57"
     },
     {
       "id": "787655ca-cc1e-3bfc-8fe5-94e179fbab9b",
