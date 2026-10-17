@@ -3,14 +3,14 @@
   "enisaUuid": "2d659b29-3e08-3fce-a858-d32c807ecb91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix OOB read in smb2_ioctl_query_info QUERY_INFO path\n\nsmb2_ioctl_query_info() has two response-copy branches: PASSTHRU_FSCTL\nand the default QUERY_INFO path.  The QUERY_INFO branch clamps\nqi.input_buffer_length to the server-reported OutputBufferLength and then\ncopies qi.input_buffer_length bytes from qi_rsp->Buffer to userspace, but\nit never verifies that the flexible-array payload actually fits within\nrsp_iov[1].iov_len.\n\nA malicious server can return OutputBufferLength larger than the actual\nQUERY_INFO response, causing copy_to_user() to walk past the response\nbuffer and expose adjacent kernel heap to userspace.\n\nGuard the QUERY_INFO copy with a bounds check on the actual Buffer\npayload.  Use struct_size(qi_rsp, Buffer, qi.input_buffer_length)\nrather than an open-coded addition so the guard cannot overflow on\n32-bit builds.",
   "datePublished": "May 1, 2026, 1:56:05 PM",
-  "dateUpdated": "Oct 15, 2026, 1:18:04 AM",
+  "dateUpdated": "Oct 16, 2026, 3:20:25 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/e66bdc0704977ecee667a81d38255b579c2353d0\nhttps://git.kernel.org/stable/c/9e203dbb5402897c43130fb171a2617008a91f45\nhttps://git.kernel.org/stable/c/1dd757379997b71a328a4b591ffaf481acd0ead1\nhttps://git.kernel.org/stable/c/a34d456934fe42e4da5d2cc07787bf418bee99c6\nhttps://git.kernel.org/stable/c/ac2f14e4705d020f04e806efa0d49ab8dc2b145f\nhttps://git.kernel.org/stable/c/078fae8f50adebb903ccf2252b44391324571e78\nhttps://git.kernel.org/stable/c/85fd46ee26a11841c670449508025965f61ce131\nhttps://git.kernel.org/stable/c/a58c5af19ff0d6f44f6e9fe31e33a2c92223f77e\n",
   "aliases": "GHSA-9grv-w29f-qpm9\nCVE-2026-31708\n",
   "assigner": "Linux",
-  "epss": 0.31,
+  "epss": 0.35,
   "enisaIdProduct": [
     {
       "id": "2c9eab06-8f4c-37f2-8e20-f078f831c2c4",

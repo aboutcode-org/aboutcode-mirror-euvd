@@ -3,14 +3,14 @@
   "enisaUuid": "061a913f-cd13-3354-9a55-e56c21246d79",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: sit: require CAP_NET_ADMIN in the device netns for changelink\n\nipip6_changelink() operates on at most two netns, dev_net(dev) and the\ntunnel link netns t->net. They differ once the device is created in or\nmoved to a netns other than the one the request runs in. The rtnl\nchangelink path checks CAP_NET_ADMIN only against dev_net(dev), so a\ncaller privileged there but not in t->net can rewrite a tunnel that\nlives in t->net.\n\nGate ipip6_changelink() on rtnl_dev_link_net_capable() at its top,\nbefore any attribute is parsed. sit was the one tunnel type not covered\nby the recent series that added this check to the other changelink()\nhandlers.",
   "datePublished": "Aug 15, 2026, 5:52:15 AM",
-  "dateUpdated": "Aug 17, 2026, 5:39:54 AM",
+  "dateUpdated": "Oct 16, 2026, 3:53:18 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cb41b308e9d867725d965b291dd085028e36a480\nhttps://git.kernel.org/stable/c/c5a0ae895432596b2f464172da8218e2d84e2932\nhttps://git.kernel.org/stable/c/7d139dec96691cde96cb40ed293e2d13d994fb4f\nhttps://git.kernel.org/stable/c/388ccffbd2e7e5e4271f291085a7451865705305\nhttps://git.kernel.org/stable/c/c0ea1aedb37bb979e864ed7787975434bbd9db73\nhttps://git.kernel.org/stable/c/3118e97dae533fb45964b87bbed1801afcff7c65\nhttps://git.kernel.org/stable/c/99ae3248b33df94201915d9c32e7470cdf08cfcd\nhttps://git.kernel.org/stable/c/27ccb68e7cccead5d8c611665a45d23032d468b3\n",
   "aliases": "GHSA-56j6-32rp-jfrg\nCVE-2026-72061\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "375ca75d-8a09-3119-8f62-b0360f1bcb23",

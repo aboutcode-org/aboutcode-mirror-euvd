@@ -3,14 +3,14 @@
   "enisaUuid": "974219b5-5075-3721-b7b2-4921f17bad8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_netem: fix out-of-bounds access in packet corruption\n\nIn netem_enqueue(), the packet corruption logic uses\nget_random_u32_below(skb_headlen(skb)) to select an index for\nmodifying skb->data. When an AF_PACKET TX_RING sends fully non-linear\npackets over an IPIP tunnel, skb_headlen(skb) evaluates to 0.\n\nPassing 0 to get_random_u32_below() takes the variable-ceil slow path\nwhich returns an unconstrained 32-bit random integer. Using this\nunconstrained value as an offset into skb->data results in an\nout-of-bounds memory access.\n\nFix this by verifying skb_headlen(skb) is non-zero before attempting\nto corrupt the linear data area. Fully non-linear packets will silently\nbypass the corruption logic.",
   "datePublished": "Apr 25, 2026, 8:46:51 AM",
-  "dateUpdated": "Aug 5, 2026, 12:24:22 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:23 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a14b56863348686dd0387eea8ce66b85cf455908\nhttps://git.kernel.org/stable/c/13a66ca1e235d4bcd53d12d4c68490cad7f8e46f\nhttps://git.kernel.org/stable/c/3a2999704ac36cfb4041fed3652d26a3373e8d12\nhttps://git.kernel.org/stable/c/4fd258e281fa8bc15e9ce2c7691941537e9258ad\nhttps://git.kernel.org/stable/c/d64cb81dcbd54927515a7f65e5e24affdc73c14b\n",
   "aliases": "GHSA-2gh3-wm75-4q8m\nCVE-2026-31675\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "250c7de4-fc38-3090-b56b-d99613af3a87",

@@ -3,14 +3,14 @@
   "enisaUuid": "8d37b10f-2515-3302-9203-7a95aeadc7dd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix a vulnerability of integer overflow in kfd debugger\n\nget_queue_ids() computes array_size = num_queues * sizeof(uint32_t),\nwhich could overflow on 32-bit size_t build. using array_size()\ninstead, it saturates to SIZE_MAX on overflow.\n\n(cherry picked from commit 2d57a0475f085c08b49312dfd8edcb461845f285)",
   "datePublished": "Jul 19, 2026, 2:54:53 PM",
-  "dateUpdated": "Aug 5, 2026, 12:36:51 PM",
+  "dateUpdated": "Oct 16, 2026, 3:42:09 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4e5f808b454167cc58d7084a407a554d8ddc694d\nhttps://git.kernel.org/stable/c/de70a80992396ee306ee3a2810ad28aa1608ba9b\nhttps://git.kernel.org/stable/c/5cf4a41aa0d74e4c83f82d2ce233b5189ed4b43c\nhttps://git.kernel.org/stable/c/4f9eeedc3d3151f8a226fd676c314a813edda5a1\nhttps://git.kernel.org/stable/c/93f5534b35a05ef8a0109c1eefa800062fee810a\n",
   "aliases": "GHSA-pg6j-5v22-gvqf\nCVE-2026-63881\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "0ae6a3cd-33d1-3089-96f6-71e9659f40a3",

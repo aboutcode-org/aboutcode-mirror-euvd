@@ -3,14 +3,14 @@
   "enisaUuid": "02f4b7fd-246c-377d-afca-7096adedeb71",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_sip: validate skb_dst() before accessing it\n\ntc ingress and openvswitch do not guarantee routing information to be\navailable. These subsystems use the conntrack helper infrastructure, and\nthe SIP helper relies on the skb_dst() to be present if\nsip_external_media is set to 1 (which is disabled by default as a module\nparameter).\n\nThis effectively disables the sip_external_media toggle for these\nsubsystems without resulting in a crash.",
   "datePublished": "Aug 15, 2026, 5:54:41 AM",
-  "dateUpdated": "Aug 23, 2026, 12:47:08 PM",
+  "dateUpdated": "Oct 16, 2026, 6:55:13 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/7866116a040b3a23fb094e7d8f7ea3d61b3ac70b\nhttps://git.kernel.org/stable/c/c5ef7228be04518d95591fc5369a9c554b19756d\nhttps://git.kernel.org/stable/c/0aec339694a56e263d4b22475ff7211d40900830\nhttps://git.kernel.org/stable/c/e64a48c50a1ff565a98c6a98d82b5b942868e76e\nhttps://git.kernel.org/stable/c/c199ed687c00841daf60e9d131976958583a8c09\nhttps://git.kernel.org/stable/c/09755dc62b026076b1d47f83489eb0547c8135e0\nhttps://git.kernel.org/stable/c/b843a96252f672332837ea2ecb7c8db0acf68e20\nhttps://git.kernel.org/stable/c/e5e24a365a5e024efef63cc49abb345fbd4852c5\n",
   "aliases": "CVE-2026-72253\nGHSA-7j9w-2xg9-r3v4\n",
   "assigner": "Linux",
-  "epss": 0.6,
+  "epss": 0.7,
   "enisaIdProduct": [
     {
       "id": "125c9466-581a-35f3-87ee-b195b4867b69",

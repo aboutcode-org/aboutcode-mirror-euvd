@@ -3,14 +3,14 @@
   "enisaUuid": "48aa2efd-3dd7-34d1-a1fb-81f1fd5b700a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ibmvfc: Fix OOB access in ibmvfc_discover_targets_done()\n\nA malicious or compromised VIO server can return a num_written value in the\ndiscover targets MAD response that exceeds max_targets. This value is\nstored directly in vhost->num_targets without validation, and is then used\nas the loop bound in ibmvfc_alloc_targets() to index into disc_buf[], which\nis only allocated for max_targets entries. Indices at or beyond max_targets\naccess kernel memory outside the DMA-coherent allocation.  The\nout-of-bounds data is subsequently embedded in Implicit Logout and PLOGI\nMADs that are sent back to the VIO server, leaking kernel memory.\n\nFix by clamping num_written to max_targets before storing it.",
   "datePublished": "Apr 22, 2026, 1:53:54 PM",
-  "dateUpdated": "Aug 5, 2026, 12:22:45 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:11 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/d842348f8a00d5b1d7358f207eb34ffcf5b16df3\nhttps://git.kernel.org/stable/c/a007246cb6c9ebdc93dafbf63cc2d43d98f402cc\nhttps://git.kernel.org/stable/c/394a1cac3c12fdd7d77f19ccfd222ab5ff87ef89\nhttps://git.kernel.org/stable/c/4ed727e35b0ab17d3eeeb1e8023768396e2be161\nhttps://git.kernel.org/stable/c/d1466bf991b2343cf2ba8336e440c8faf3cbb780\nhttps://git.kernel.org/stable/c/786f10b1966e485046839f992e89f2c18cbd1983\nhttps://git.kernel.org/stable/c/bae4df0a643fa7f84663473aa3082a9c2ed139db\nhttps://git.kernel.org/stable/c/61d099ac4a7a8fb11ebdb6e2ec8d77f38e77362f\n",
   "aliases": "CVE-2026-31464\nGHSA-5q5q-53h5-v4v4\n",
   "assigner": "Linux",
-  "epss": 0.27,
+  "epss": 0.42,
   "enisaIdProduct": [
     {
       "id": "0c140a30-4097-3a85-abb4-0a2564b04bfd",

@@ -3,14 +3,14 @@
   "enisaUuid": "188f594c-8076-3466-b5bd-520c2f719b44",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: validate bsscfg indices in IF events\n\nbrcmf_fweh_handle_if_event() validates the firmware-provided interface\nindex before it touches drvr->iflist[], but it still uses the raw\nbsscfgidx field as an array index without a matching range check.\n\nReject IF events whose bsscfg index does not fit in drvr->iflist[]\nbefore indexing the interface array.\n\n[add missing wifi prefix]",
   "datePublished": "May 6, 2026, 7:40:37 AM",
-  "dateUpdated": "Oct 15, 2026, 1:19:08 AM",
+  "dateUpdated": "Oct 16, 2026, 3:20:32 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b329fbcf075949a038045d8e9b86ae3d5bbd8a54\nhttps://git.kernel.org/stable/c/2ae3ccb78c0a9ef5ee3d80d02ab319ac1d5af734\nhttps://git.kernel.org/stable/c/9c81bcc2c695e0082012a2a3d36a0eefaa51579c\nhttps://git.kernel.org/stable/c/3ec7437e9d11374105c2c4e47ae671537729d7e6\nhttps://git.kernel.org/stable/c/9fca68c2512a362cad258e4df12a307bb2ee4b8e\nhttps://git.kernel.org/stable/c/1ae1e1caa428844e481231f6dbe9b4f475f1d52d\nhttps://git.kernel.org/stable/c/b427c2b05222db36d32ee141609de6128e9091bb\nhttps://git.kernel.org/stable/c/304950a467d83678bd0b0f46331882e2ac23b12d\n",
   "aliases": "GHSA-24vc-pxrh-rpjv\nCVE-2026-43110\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "06f37864-2773-335d-9126-ffa4b56a9bb2",

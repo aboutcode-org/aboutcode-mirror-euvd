@@ -3,14 +3,14 @@
   "enisaUuid": "756632b2-abe8-301a-ba16-c298a1068d93",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ip6t_eui64: reject invalid MAC header for all packets\n\n`eui64_mt6()` derives a modified EUI-64 from the Ethernet source address\nand compares it with the low 64 bits of the IPv6 source address.\n\nThe existing guard only rejects an invalid MAC header when\n`par->fragoff != 0`. For packets with `par->fragoff == 0`, `eui64_mt6()`\ncan still reach `eth_hdr(skb)` even when the MAC header is not valid.\n\nFix this by removing the `par->fragoff != 0` condition so that packets\nwith an invalid MAC header are rejected before accessing `eth_hdr(skb)`.",
   "datePublished": "Apr 25, 2026, 8:47:02 AM",
-  "dateUpdated": "Oct 15, 2026, 1:17:52 AM",
+  "dateUpdated": "Oct 16, 2026, 3:20:24 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/4d75bc2cd093bf5803edf512c099bfb220fd6459\nhttps://git.kernel.org/stable/c/7d6a57411caf54df025860c9b1a82cd42d57a562\nhttps://git.kernel.org/stable/c/d5603591373441fecf9951833d6d873e09320f08\nhttps://git.kernel.org/stable/c/288138418bef956f8b295751a4536c60f0e89f4a\nhttps://git.kernel.org/stable/c/9eda5478746ef7dc0e4e537b5a5e4b0ca1027091\nhttps://git.kernel.org/stable/c/807d6ee15804df6f01a35c910f09612e858739a6\nhttps://git.kernel.org/stable/c/309ae3e9a51a69699ca94eac5fac5688fa562d55\nhttps://git.kernel.org/stable/c/fdce0b3590f724540795b874b4c8850c90e6b0a8\n",
   "aliases": "GHSA-hf2p-g3jq-w2mx\nCVE-2026-31685\n",
   "assigner": "Linux",
-  "epss": 0.34,
+  "epss": 0.39,
   "enisaIdProduct": [
     {
       "id": "06cb0565-5bb6-3f19-a954-324dbea373a1",

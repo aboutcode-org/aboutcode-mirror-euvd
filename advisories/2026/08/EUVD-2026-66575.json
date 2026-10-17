@@ -3,7 +3,7 @@
   "enisaUuid": "ff7a7c9f-d23b-33ed-999c-c5fbd399e545",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: bnxt: avoid deadlock when canceling IRQ affinity notifier\n\nUnregistering IRQ affinity notifiers waits for the callback synchronously.\nbnxt takes the netdev instance lock in the notifier (to restart the queue)\nand cancels the work under the same lock. This may obviously deadlock.\n\nMove the restart to the async service task. The queue restart isn't\nsuper time sensitive. Store the new TPH tag, schedule the task.\nSafely canceling the service task is already ironed out.\n\nIn bnxt_request_irq() the order of registering notifier, affinity and\ninitial TPH programming has to be inverted. I think it was racy\npreviously since user may trigger an update as soon as notifier\nis installed.\n\nThere's a small known gap - if pcie_tph_get_cpu_st() fails at init\nand the target tag is 0 we may miss programming the entry.\nThis does not seem worth fixing, the code has skip-on-failure\nall over the place, anyway.",
   "datePublished": "Aug 26, 2026, 2:36:55 PM",
-  "dateUpdated": "Oct 15, 2026, 10:09:29 AM",
+  "dateUpdated": "Oct 16, 2026, 7:26:23 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

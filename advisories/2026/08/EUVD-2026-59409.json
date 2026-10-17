@@ -3,7 +3,7 @@
   "enisaUuid": "c3b44bb7-3c8d-3ca9-ad86-f57af775bf6c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkcm: use WRITE_ONCE() when changing lower socket callbacks\n\nkcm_attach() replaces a live lower TCP socket's sk_data_ready and\nsk_write_space callbacks with KCM handlers, and kcm_unattach() restores\nthem later. Those callback-pointer updates are still plain stores even\nthough the same fields can be read and invoked concurrently on other\nCPUs.\n\nIf another CPU observes an older callback snapshot after the live field\nhas already been restored, callback execution can run with a mismatched\ntarget and sk_user_data state, leading to stale or misdirected wakeups.\n\nUse WRITE_ONCE() for the callback replacement and restore operations so\nthese shared callback fields follow the same visibility contract already\nestablished by the earlier 4022 fixes.",
   "datePublished": "Aug 15, 2026, 5:57:38 AM",
-  "dateUpdated": "Aug 17, 2026, 5:45:10 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:28 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

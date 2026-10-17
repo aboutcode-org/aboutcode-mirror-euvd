@@ -3,14 +3,14 @@
   "enisaUuid": "6acebbd2-ab24-31cc-9c78-3bcb2fd4f0f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio_ccw: Ensure first IDAW remains constant\n\nThe first IDAW in a list does not need to be on a 2K/4K boundary\nlike all others, and so is read separately to accurately calculate\nthe size of the buffer needed to read the full IDAL.\n\nVerify that the address found in the first IDAW is unchanged between\nreads, to ensure a consistent set of IDAWs being worked with.",
   "datePublished": "Aug 26, 2026, 2:37:20 PM",
-  "dateUpdated": "Aug 27, 2026, 12:40:11 PM",
+  "dateUpdated": "Oct 16, 2026, 7:26:26 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/460b977a4e71cc319fdadf91c193ec3beaa57263\nhttps://git.kernel.org/stable/c/0d46c2565f173bcddcdcaf44a4f69789a20535e2\nhttps://git.kernel.org/stable/c/08ef2a82115690d6e229615872ac1731af732497\nhttps://git.kernel.org/stable/c/fc59e9482117ebdccd6dc7fa8082f8b980fd021e\nhttps://git.kernel.org/stable/c/565bef268d75bf7df665bce6923a88cd0eb74592\n",
   "aliases": "GHSA-p29x-7599-2m4p\nCVE-2026-80551\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0696fec7-1d79-3e81-a1cf-846bf6b70afa",

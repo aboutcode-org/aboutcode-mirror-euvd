@@ -3,7 +3,7 @@
   "enisaUuid": "774a1986-b7e0-3dce-9a77-4c3524d9d87a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal: core: Fix thermal zone device registration error path\n\nIf thermal_zone_device_register_with_trips() fails after registering\na thermal zone device, it needs to wait for the tz->removal completion\nlike thermal_zone_device_unregister(), in case user space has managed\nto take a reference to the thermal zone device's kobject, in which case\nthermal_release() may not be called by the error path itself and tz may\nbe freed prematurely.\n\nAdd the missing wait_for_completion() call to the thermal zone device\nregistration error path.",
   "datePublished": "May 8, 2026, 1:31:19 PM",
-  "dateUpdated": "Aug 5, 2026, 12:27:17 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:39 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

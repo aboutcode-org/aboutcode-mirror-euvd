@@ -3,7 +3,7 @@
   "enisaUuid": "7c25cd55-a987-346f-aa0b-e3ca7e8a8cf6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: fix potential unbounded skb queue\n\nvirtio_transport_inc_rx_pkt() checks vvs->rx_bytes + len > vvs->buf_alloc.\n\nvirtio_transport_recv_enqueue() skips coalescing for packets\nwith VIRTIO_VSOCK_SEQ_EOM.\n\nIf fed with packets with len == 0 and VIRTIO_VSOCK_SEQ_EOM,\na very large number of packets can be queued\nbecause vvs->rx_bytes stays at 0.\n\nFix this by estimating the skb metadata size:\n\n\t(Number of skbs in the queue) * SKB_TRUESIZE(0)",
   "datePublished": "Jun 25, 2026, 8:38:21 AM",
-  "dateUpdated": "Aug 5, 2026, 12:33:26 PM",
+  "dateUpdated": "Oct 16, 2026, 3:31:33 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",

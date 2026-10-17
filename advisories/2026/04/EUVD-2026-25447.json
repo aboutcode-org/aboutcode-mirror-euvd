@@ -3,14 +3,14 @@
   "enisaUuid": "b4459be8-c5e5-32ab-bfa7-08935aad7fca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfutex: Require sys_futex_requeue() to have identical flags\n\nNicholas reported that his LLM found it was possible to create a UaF\nwhen sys_futex_requeue() is used with different flags. The initial\nmotivation for allowing different flags was the variable sized futex,\nbut since that hasn't been merged (yet), simply mandate the flags are\nidentical, as is the case for the old style sys_futex() requeue\noperations.",
   "datePublished": "Apr 24, 2026, 2:35:38 PM",
-  "dateUpdated": "Aug 5, 2026, 12:23:28 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:15 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/027145ace09fad4c7cbcd6c61fe9b429c63eb0e5\nhttps://git.kernel.org/stable/c/18b7d09c2b794c71d4252f3ea2cf84ad12b73d6a\nhttps://git.kernel.org/stable/c/e2f78c7ec1655fedd945366151ba54fcb9580508\nhttps://git.kernel.org/stable/c/19f94b39058681dec64a10ebeb6f23fe7fc3f77a\n",
   "aliases": "CVE-2026-31554\nGHSA-fqg3-p6v9-g3wx\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "02ae1115-c33c-36a7-9afd-282c94a36155",

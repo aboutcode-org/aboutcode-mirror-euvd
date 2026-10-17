@@ -3,7 +3,7 @@
   "enisaUuid": "5521979b-e9b8-316c-9dcc-f91ab1e57548",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_core: Fix UAF in hci_unregister_dev()\n\nhci_unregister_dev() does not disable cmd_timer and ncmd_timer\nbefore the hci_dev structure is freed. If a timeout fires\nduring device teardown, the callback dereferences freed memory\n(including the hdev->reset function pointer), leading to a\nuse-after-free.\n\nAdd disable_delayed_work_sync() calls alongside the existing\ndisable_work_sync() calls to ensure both timers are fully\nquiesced before teardown proceeds.",
   "datePublished": "Aug 15, 2026, 5:58:04 AM",
-  "dateUpdated": "Aug 17, 2026, 5:45:38 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:31 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "dc6cdb12-2faf-3de2-aa43-ba935709752d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_event: fix potential UAF in hci_le_remote_conn_param_req_evt\n\nhci_conn lookup and field access must be covered by hdev lock in\nhci_le_remote_conn_param_req_evt, otherwise it's possible it is freed\nconcurrently.\n\nExtend the hci_dev_lock critical section to cover all conn usage.",
   "datePublished": "May 1, 2026, 2:15:22 PM",
-  "dateUpdated": "Aug 5, 2026, 12:25:17 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:28 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/59eecf0ffde15670e6a5e10c47be67f73d843b20\nhttps://git.kernel.org/stable/c/5fb69e1eeea9d6cba80517e9f058b56b34bc3a81\nhttps://git.kernel.org/stable/c/7cadb03be37e761130edb153544fe0770a842b19\nhttps://git.kernel.org/stable/c/1d0bdbfe3e91c11f0a704c52443a9446a10d699c\nhttps://git.kernel.org/stable/c/ea3cd36d7382d5f8309df04c275d20df139ed42c\nhttps://git.kernel.org/stable/c/b255531b27da336571411248c2a72a350662bd09\n",
   "aliases": "CVE-2026-43018\nGHSA-6jmv-jjw5-5rwp\n",
   "assigner": "Linux",
-  "epss": 0.26,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "00a8d2bb-fc96-3ff6-a9f2-66fbdc9e2cf7",

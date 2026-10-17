@@ -3,14 +3,14 @@
   "enisaUuid": "479075d3-f8b2-314f-b379-07d4e4b5c92b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Drop bogus WARN for write to ZCR_EL2\n\nIt is entirely possible for a guest to write to the ZCR_EL2 sysreg alias\nwhile in a nested context, as it is expected if FEAT_NV2 is advertised\nto the L1 hypervisor.\n\nGet rid of the bogus WARN which, since the hyp vectors were installed at\nthis point, has the effect of a hyp_panic...",
   "datePublished": "Aug 15, 2026, 5:55:04 AM",
-  "dateUpdated": "Aug 17, 2026, 5:42:15 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:14 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/6561597dba97e3e8479a9919bda172cf43eb902c\nhttps://git.kernel.org/stable/c/5000bcae71c869cba6674c326fec2d8ad659ae3a\nhttps://git.kernel.org/stable/c/7deadbc5dab5b8e2316364603bc6281129c8461c\nhttps://git.kernel.org/stable/c/9f1667098c6ae7ec81a9a56859cfdacb822aa0d0\n",
   "aliases": "GHSA-pjc6-4q26-frjf\nCVE-2026-72280\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "1f862330-e74e-3332-97ea-c3f69101fd19",

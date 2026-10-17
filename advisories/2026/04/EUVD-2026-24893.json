@@ -3,14 +3,14 @@
   "enisaUuid": "f286158e-7c47-3709-abc7-a985b8117430",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix dangling pointer on mgmt_add_adv_patterns_monitor_complete\n\nThis fixes the condition checking so mgmt_pending_valid is executed\nwhenever status != -ECANCELED otherwise calling mgmt_pending_free(cmd)\nwould kfree(cmd) without unlinking it from the list first, leaving a\ndangling pointer. Any subsequent list traversal (e.g.,\nmgmt_pending_foreach during __mgmt_power_off, or another\nmgmt_pending_valid call) would dereference freed memory.",
   "datePublished": "Apr 22, 2026, 1:54:29 PM",
-  "dateUpdated": "Aug 5, 2026, 12:23:11 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2074dfffad76981ca451cb7fc98703d04ac562fe\nhttps://git.kernel.org/stable/c/340666172cf747de58c283d2eef1f335f050538b\nhttps://git.kernel.org/stable/c/bafec9325d4de26b6c49db75b5d5172de652aae0\nhttps://git.kernel.org/stable/c/3a89c33deffb3cb7877a7ea2e50734cd12b064f2\nhttps://git.kernel.org/stable/c/5f5fa4cd35f707344f65ce9e225b6528691dbbaa\n",
   "aliases": "CVE-2026-31511\nGHSA-q648-4769-6m83\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "007b012e-aa1e-3797-aa50-8d8c42a7264a",

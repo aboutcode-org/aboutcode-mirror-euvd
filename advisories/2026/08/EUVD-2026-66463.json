@@ -3,14 +3,14 @@
   "enisaUuid": "2433ebd3-89b2-3af3-9ab0-ad420b8a7bfd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio_ccw: Selectively expand io_mutex\n\nThe io_mutex was defined to serialize the io_regions, but then has\nalso sort of been associated with the I/O themselves because of\nthe close relationship they share.\n\nWith the handful of races that are possible, the choices are either to:\n A) expand the scope of io_mutex to close these remaining windows, or\n B) reduce the scope of io_mutex to just io_region, and introduce a new\n    lock mechanism for the remaining I/O resources\n\nThis patch implements A, since B brings with it a lot more interactions\nthat would need to be tracked and kept in a correct hierarchy. It also\ntakes advantage of the workqueue element for cp_free() that now gets\ncalled out of fsm_notoper(), which could be invoked out of an interrupt\ncontext and thus cannot acquire a mutex itself.",
   "datePublished": "Aug 26, 2026, 2:37:18 PM",
-  "dateUpdated": "Aug 27, 2026, 12:40:08 PM",
+  "dateUpdated": "Oct 16, 2026, 7:26:25 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/dab6a6627b0b0cce23653e99c7b0bf8c6cfd82e0\nhttps://git.kernel.org/stable/c/56d7488533ceac4e986e96e15c9e487a2245bc01\nhttps://git.kernel.org/stable/c/f72a51810d49411bd8cad0c2df8592320a2fe5cc\nhttps://git.kernel.org/stable/c/2ba9efdf9ebedc4e54df4b56aa3b43a65f7967cd\nhttps://git.kernel.org/stable/c/b6aecea4b2b246f9fbd98a5712daa1193a60818e\nhttps://git.kernel.org/stable/c/2a5ac0c0f1f7da33929211a2e41911bf72ee35d8\nhttps://git.kernel.org/stable/c/34f4feff3e90bd09308fad0974e97113b23b812a\n",
   "aliases": "CVE-2026-80548\nGHSA-ccx7-24wp-j32x\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "00b9a9ea-3963-3b27-8537-f7cc23134aeb",

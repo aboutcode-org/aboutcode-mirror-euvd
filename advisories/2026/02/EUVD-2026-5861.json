@@ -3,14 +3,14 @@
   "enisaUuid": "88b5a2ed-f40a-33b5-978a-fb825f199f87",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: add bounds check for if_id in IRQ handler\n\nThe IRQ handler extracts if_id from the upper 16 bits of the hardware\nstatus register and uses it to index into ethsw->ports[] without\nvalidation. Since if_id can be any 16-bit value (0-65535) but the ports\narray is only allocated with sw_attr.num_ifs elements, this can lead to\nan out-of-bounds read potentially.\n\nAdd a bounds check before accessing the array, consistent with the\nexisting validation in dpaa2_switch_rx().",
   "datePublished": "Feb 14, 2026, 4:27:11 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:30 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:50 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/77611cab5bdfff7a070ae574bbfba20a1de99d1b\nhttps://git.kernel.org/stable/c/34b56c16efd61325d80bf1d780d0e176be662f59\nhttps://git.kernel.org/stable/c/f89e33c9c37f0001b730e23b3b05ab7b1ecface2\nhttps://git.kernel.org/stable/c/2447edc367800ba914acf7ddd5d250416b45fb31\nhttps://git.kernel.org/stable/c/1b381a638e1851d8cfdfe08ed9cdbec5295b18c9\nhttps://git.kernel.org/stable/c/31a7a0bbeb006bac2d9c81a2874825025214b6d8\n",
   "aliases": "GHSA-pmxm-x3p3-w327\nCVE-2026-23180\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "09f89167-e2e4-3c88-86f1-2cbfdbfdf528",

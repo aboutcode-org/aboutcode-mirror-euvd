@@ -3,14 +3,14 @@
   "enisaUuid": "402bde99-ecaf-3fed-a201-f1ff7c984941",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Make sure to use pmu_ctx->pmu for groups\n\nOliver reported that x86_pmu_del() ended up doing an out-of-bound memory access\nwhen group_sched_in() fails and needs to roll back.\n\nThis *should* be handled by the transaction callbacks, but he found that when\nthe group leader is a software event, the transaction handlers of the wrong PMU\nare used. Despite the move_group case in perf_event_open() and group_sched_in()\nusing pmu_ctx->pmu.\n\nTurns out, inherit uses event->pmu to clone the events, effectively undoing the\nmove_group case for all inherited contexts. Fix this by also making inherit use\npmu_ctx->pmu, ensuring all inherited counters end up in the same pmu context.\n\nSimilarly, __perf_event_read() should use equally use pmu_ctx->pmu for the\ngroup case.",
   "datePublished": "Apr 22, 2026, 1:54:41 PM",
-  "dateUpdated": "Aug 5, 2026, 12:23:18 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/656f35b463995bee024d948440128230aacd81e1\nhttps://git.kernel.org/stable/c/3a696e84a8b1fafdd774bb30d62919faf844d9e4\nhttps://git.kernel.org/stable/c/35f7914e54fe7f13654c22ee045b05e4b6d8062b\nhttps://git.kernel.org/stable/c/4c759446046500a1a6785b25725725c3ff087ace\nhttps://git.kernel.org/stable/c/4b9ce671960627b2505b3f64742544ae9801df97\n",
   "aliases": "CVE-2026-31528\nGHSA-37p2-prpf-4qx7\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "094ec5ed-a7d6-3e20-8ed0-0844c29106f1",

@@ -3,14 +3,14 @@
   "enisaUuid": "e5375691-8336-3327-a709-74f557223a73",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: reject oversized IBs with per-ring packet limits\n\nOn GFX rings, amdgpu_cs_p2_ib() passed user-supplied ib_bytes through\nto ib->length_dw without a limit, while ring_emit_ib() encodes length\ninto packet fields. Oversized values can corrupt adjacent control bits\nand destabilize command submission.\n\nAdd a per-ring IB packet size limit helper and reject command\nsubmissions exceeding the corresponding dword limit before IB\nallocation. Use the documented 20-bit limit for GFX/compute/SDMA/VPE,\nand apply the MM fallback limit for other ring types.\n\n(cherry picked from commit 7f48fa2cf62e3fa6c9c3870aa74988f773247e52)",
   "datePublished": "Aug 26, 2026, 2:37:35 PM",
-  "dateUpdated": "Aug 27, 2026, 5:01:58 AM",
+  "dateUpdated": "Oct 16, 2026, 7:26:27 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6e164ba1057175fb8a370d8e05cbff5c57eac0c8\nhttps://git.kernel.org/stable/c/1474f3970d1afd303e12ff14d06808eabb371576\nhttps://git.kernel.org/stable/c/07fe270ec07c138a70afe7a81e115a85c35c545c\nhttps://git.kernel.org/stable/c/fd37f9dd5b5ab70a46fa7bc76623c0528d602b27\n",
   "aliases": "CVE-2026-80576\nGHSA-mv2f-pcc7-qh27\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0aba4a54-82cf-39df-a027-552be1f64d48",

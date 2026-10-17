@@ -3,7 +3,7 @@
   "enisaUuid": "d1646b0e-a8df-3866-b44c-b5598d50dfe5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nppp: require CAP_NET_ADMIN in target netns for unattached ioctls\n\n/dev/ppp open is currently authorized against file->f_cred->user_ns,\nwhile unattached administrative ioctls operate on current->nsproxy->net_ns.\n\nAs a result, a local unprivileged user can create a new user namespace\nwith CLONE_NEWUSER, gain CAP_NET_ADMIN only in that new user namespace,\nand still issue PPPIOCNEWUNIT, PPPIOCATTACH, or PPPIOCATTCHAN against\nan inherited network namespace.\n\nRequire CAP_NET_ADMIN in the user namespace that owns the target network\nnamespace before handling unattached PPP administrative ioctls.\n\nThis preserves normal pppd operation in the network namespace it is\nactually privileged in, while rejecting the userns-only inherited-netns\ncase.",
   "datePublished": "Jun 24, 2026, 4:30:16 PM",
-  "dateUpdated": "Aug 5, 2026, 12:33:07 PM",
+  "dateUpdated": "Oct 16, 2026, 3:31:30 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

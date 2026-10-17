@@ -3,7 +3,7 @@
   "enisaUuid": "8ef44eaa-e864-3f9f-a69d-ff7f1c02fdc6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: add missing netlink policy validations\n\nHyunwoo Kim reports out-of-bounds access in sctp and ctnetlink.\n\nThese attributes are used by the kernel without any validation.\nExtend the netlink policies accordingly.\n\nQuoting the reporter:\n  nlattr_to_sctp() assigns the user-supplied CTA_PROTOINFO_SCTP_STATE\n  value directly to ct->proto.sctp.state without checking that it is\n  within the valid range. [..]\n\n  and: ... with exp->dir = 100, the access at\n  ct->master->tuplehash[100] reads 5600 bytes past the start of a\n  320-byte nf_conn object, causing a slab-out-of-bounds read confirmed by\n  UBSAN.",
   "datePublished": "Apr 6, 2026, 7:38:19 AM",
-  "dateUpdated": "Oct 15, 2026, 1:15:46 AM",
+  "dateUpdated": "Oct 16, 2026, 3:09:58 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

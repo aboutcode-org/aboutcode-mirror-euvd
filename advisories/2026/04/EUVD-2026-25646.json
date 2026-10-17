@@ -3,14 +3,14 @@
   "enisaUuid": "7ac708ad-58ea-39df-8308-b8427fb56fda",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: validate MPLS set/set_masked payload length\n\nvalidate_set() accepted OVS_KEY_ATTR_MPLS as variable-sized payload for\nSET/SET_MASKED actions. In action handling, OVS expects fixed-size\nMPLS key data (struct ovs_key_mpls).\n\nUse the already normalized key_len (masked case included) and reject\nnon-matching MPLS action key sizes.\n\nReject invalid MPLS action payload lengths early.",
   "datePublished": "Apr 25, 2026, 8:46:55 AM",
-  "dateUpdated": "Aug 5, 2026, 12:24:25 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:23 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/68f32ef0683c8d1c05cd2e4f16818fa63ff59c6f\nhttps://git.kernel.org/stable/c/4cae986225f8b8679ad86b924918e7d75a96aa61\nhttps://git.kernel.org/stable/c/8ed7b9930cbc3bc71f868fa79a68700ac88d586a\nhttps://git.kernel.org/stable/c/c1f97152df8dfb17e855ddf0fc409b7bd13e9700\nhttps://git.kernel.org/stable/c/98de18d327ef8cbbb704980e359e4872d8c28997\nhttps://git.kernel.org/stable/c/bd50c7484c3bb34097571c1334174fb8b7408036\nhttps://git.kernel.org/stable/c/2ca33b88a79ca42f017ae0f7011280325655438e\nhttps://git.kernel.org/stable/c/546b68ac893595877ffbd7751e5c55fd1c43ede6\n",
   "aliases": "GHSA-j5m6-467m-h4hw\nCVE-2026-31679\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0860fd1c-6a9d-3b3a-8c74-f471c57fddcd",

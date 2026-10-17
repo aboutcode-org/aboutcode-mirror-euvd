@@ -3,14 +3,14 @@
   "enisaUuid": "39288a93-f891-3369-a57b-7cd111910153",
   "description": "LaunchConfigurationBaseSerializer.scm_branch has no\n              validate_scm_branch() leading-dash check, unlike\n              Project/JobTemplate/JobLaunch serializers. Schedule and\n              WFJT Node accept --upload-pack=/bin/id as scm_branch.\n              Currently blocked at runtime by jobs.py:1502 ValueError\n              check (defense-in-depth), but the API validation gap\n              means sole reliance on a task-layer guard. Refactoring\n              that guard away would promote this to RCE.",
   "datePublished": "Sep 23, 2026, 6:29:02 PM",
-  "dateUpdated": "Sep 24, 2026, 6:14:55 AM",
+  "dateUpdated": "Oct 16, 2026, 12:01:19 PM",
   "baseScore": 3.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2026:71113\nhttps://access.redhat.com/errata/RHSA-2026:71114\nhttps://access.redhat.com/errata/RHSA-2026:71177\nhttps://access.redhat.com/errata/RHSA-2026:71179\nhttps://access.redhat.com/security/cve/CVE-2026-71464\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2512374\n",
   "aliases": "GHSA-p82w-cg44-8jjx\nCVE-2026-71464\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "8d920815-41ba-3a08-a422-9bb61efb7c20",

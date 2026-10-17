@@ -3,14 +3,14 @@
   "enisaUuid": "a7aed513-8fb5-3a6c-820f-686522fcd06d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: split cached_fid bitfields to avoid shared-byte RMW races\n\nis_open, has_lease and on_list are stored in the same bitfield byte in\nstruct cached_fid but are updated in different code paths that may run\nconcurrently. Bitfield assignments generate byte read\u2013modify\u2013write\noperations (e.g. `orb $mask, addr` on x86_64), so updating one flag can\nrestore stale values of the others.\n\nA possible interleaving is:\n    CPU1: load old byte (has_lease=1, on_list=1)\n    CPU2: clear both flags (store 0)\n    CPU1: RMW store (old | IS_OPEN) -> reintroduces cleared bits\n\nTo avoid this class of races, convert these flags to separate bool\nfields.",
   "datePublished": "Feb 18, 2026, 2:53:34 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:46 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:50 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/569fecc56bfe4df66f05734d67daef887746656b\nhttps://git.kernel.org/stable/c/4386f6af8aaedd0c5ad6f659b40cadcc8f423828\nhttps://git.kernel.org/stable/c/3eaa22d688311c708b73f3c68bc6d0c8e3f0f77a\nhttps://git.kernel.org/stable/c/c4b9edd55987384a1f201d3d07ff71e448d79c1b\nhttps://git.kernel.org/stable/c/4cfa4c37dcbcfd70866e856200ed8a2894cac578\nhttps://git.kernel.org/stable/c/ec306600d5ba7148c9dbf8f5a8f1f5c1a044a241\n",
   "aliases": "GHSA-p68h-c56f-p3v6\nCVE-2026-23230\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "000987f8-497d-330e-adcb-d374a2fee7e0",

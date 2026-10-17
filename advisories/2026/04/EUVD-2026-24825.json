@@ -3,14 +3,14 @@
   "enisaUuid": "3005c6ce-57ea-3232-b396-b0857a999e4f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mc, v4l2: serialize REINIT and REQBUFS with req_queue_mutex\n\nMEDIA_REQUEST_IOC_REINIT can run concurrently with VIDIOC_REQBUFS(0)\nqueue teardown paths. This can race request object cleanup against vb2\nqueue cancellation and lead to use-after-free reports.\n\nWe already serialize request queueing against STREAMON/OFF with\nreq_queue_mutex. Extend that serialization to REQBUFS, and also take\nthe same mutex in media_request_ioctl_reinit() so REINIT is in the\nsame exclusion domain.\n\nThis keeps request cleanup and queue cancellation from running in\nparallel for request-capable devices.",
   "datePublished": "Apr 22, 2026, 1:54:00 PM",
-  "dateUpdated": "Aug 5, 2026, 12:22:51 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:12 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/331242998a7ade5c2f65e14988901614629f3db5\nhttps://git.kernel.org/stable/c/2c685e99efb3b3bd2b78699fba6b1cf321975db0\nhttps://git.kernel.org/stable/c/585fd9a2063dacce8b2820f675ef23d5d17434c5\nhttps://git.kernel.org/stable/c/1a0d9083c24fbd5d22f7100f09d11e4d696a5f01\nhttps://git.kernel.org/stable/c/d8549a453d5bdc0a71de66ad47a1106703406a56\nhttps://git.kernel.org/stable/c/72b9e81e0203f03c40f3adb457f55bd4c8eb112d\nhttps://git.kernel.org/stable/c/cf2023e84f0888f96f4b65dc0804e7f3651969c1\nhttps://git.kernel.org/stable/c/bef4f4a88b73e4cc550d25f665b8a9952af22773\n",
   "aliases": "CVE-2026-31473\nGHSA-3535-jv42-vvc3\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0fcd8082-593b-35a1-994d-8ca514e8ce69",

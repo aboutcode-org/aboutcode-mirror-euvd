@@ -3,7 +3,7 @@
   "enisaUuid": "61ccfaf0-f9a9-31d0-9948-5288c997dc80",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: hold event_mutex while checkpointing CRIU events\n\nkfd_criu_checkpoint_events() counts the entries in p->event_idr via\nkfd_get_num_events(), allocates an array sized to that count, and then\nwalks the same IDR to fill it. Neither the count nor the walk holds\np->event_mutex.\n\nThe CRIU checkpoint caller holds only p->mutex. Event create and destroy\n(kfd_event_create()/kfd_event_destroy()) take p->event_mutex and do not\ntake p->mutex, so a second thread in the same process can insert or remove\nevents between the count and the walk. If an event is inserted, the walk\niterates more entries than were counted and writes past the end of the\nev_privs allocation; if an event is removed, the walk dereferences an\nentry that is being freed.\n\nHold p->event_mutex across the count and the walk so both observe a\nconsistent view of p->event_idr. The lock is released before\ncopy_to_user(), which only touches the local buffer. The caller already\nholds p->mutex and the create/destroy paths never take p->mutex, so the\np->mutex -> p->event_mutex order is not inverted and no deadlock is\nintroduced.\n\n(cherry picked from commit ff57e223ab105795b05d3ef3f3c35a5a441bcbaa)",
   "datePublished": "Aug 15, 2026, 12:26:52 PM",
-  "dateUpdated": "Aug 19, 2026, 4:36:41 PM",
+  "dateUpdated": "Oct 16, 2026, 7:05:46 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "718e001f-ce7c-316a-beca-79178ae0fd66",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: reject direct userspace writes to reserved $LX* xattrs\n\nNTFS3 uses $LXUID, $LXGID, $LXMOD and $LXDEV as internal WSL\npermission metadata and reloads them into i_uid, i_gid and i_mode\nfrom ntfs_get_wsl_perm().\n\nBecause the empty-prefix xattr handler also lets file owners call\nsetxattr() on these names directly, an unprivileged writer on a\nwritable ntfs3 mount can plant root ownership and S_ISUID on their own\nfile and gain euid 0 after inode reload.\n\nReject direct userspace writes to the reserved $LX* names. Internal\nntfs3 metadata updates are unchanged because ntfs_save_wsl_perm()\nwrites them via ntfs_set_ea() directly.\n\n[almaz.alexandrovich@paragon-software.com: added an additional check for non privileged users]",
   "datePublished": "Jul 19, 2026, 12:02:25 PM",
-  "dateUpdated": "Aug 17, 2026, 4:51:43 AM",
+  "dateUpdated": "Oct 16, 2026, 3:42:05 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",

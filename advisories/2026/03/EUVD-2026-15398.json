@@ -3,14 +3,14 @@
   "enisaUuid": "4bf218ba-c493-39c8-88ac-188b857b2d70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Fix accepting multiple L2CAP_ECRED_CONN_REQ\n\nCurrently the code attempts to accept requests regardless of the\ncommand identifier which may cause multiple requests to be marked\nas pending (FLAG_DEFER_SETUP) which can cause more than\nL2CAP_ECRED_MAX_CID(5) to be allocated in l2cap_ecred_rsp_defer\ncausing an overflow.\n\nThe spec is quite clear that the same identifier shall not be used on\nsubsequent requests:\n\n'Within each signaling channel a different Identifier shall be used\nfor each successive request or indication.'\nhttps://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-62/out/en/host/logical-link-control-and-adaptation-protocol-specification.html#UUID-32a25a06-4aa4-c6c7-77c5-dcfe3682355d\n\nSo this attempts to check if there are any channels pending with the\nsame identifier and rejects if any are found.",
   "datePublished": "Mar 25, 2026, 10:33:18 AM",
-  "dateUpdated": "Oct 15, 2026, 1:14:45 AM",
+  "dateUpdated": "Oct 16, 2026, 3:09:54 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/10a7a702542240d5edb2b39450ac951c59ccd009\nhttps://git.kernel.org/stable/c/46e5b71666fb7652082e4e214a3365f4b14f1dc3\nhttps://git.kernel.org/stable/c/fb4a3a26483f3ea2cd21c7a2f7c45d5670600465\nhttps://git.kernel.org/stable/c/2124d82fd25e1671bb3ceb37998af5aae5903e06\nhttps://git.kernel.org/stable/c/6b949a6b33cbdf621d9fc6f0c48ac00915dbf514\nhttps://git.kernel.org/stable/c/8d0d94f8ba5b3a0beec3b0da558b9bea48018117\nhttps://git.kernel.org/stable/c/e72ee455297b794b852e5cea8d2d7bb17312172a\nhttps://git.kernel.org/stable/c/5b3e2052334f2ff6d5200e952f4aa66994d09899\n",
   "aliases": "CVE-2026-23395\nGHSA-5r99-pj6c-hg6v\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "0d7790c9-6c78-3c54-b422-ce81da76776d",

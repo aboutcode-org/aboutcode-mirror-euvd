@@ -3,14 +3,14 @@
   "enisaUuid": "2539334f-de18-30ee-b1a8-1a751713442d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Only put the call ref if one was acquired\n\nrxrpc_input_packet_on_conn() can process a to-client packet after the\ncurrent client call on the channel has already been torn down.  In that\ncase chan->call is NULL, rxrpc_try_get_call() returns NULL and there is\nno reference to drop.\n\nThe client-side implicit-end error path does not account for that and\nunconditionally calls rxrpc_put_call().  This turns a protocol error\npath into a kernel crash instead of rejecting the packet.\n\nOnly drop the call reference if one was actually acquired.  Keep the\nexisting protocol error handling unchanged.",
   "datePublished": "Apr 24, 2026, 2:44:52 PM",
-  "dateUpdated": "Aug 5, 2026, 12:24:03 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:18 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/b8f66447448d6c305a51413a67ec8ed26aa7d1dd\nhttps://git.kernel.org/stable/c/0c156aff8a2d4fa0d61db7837641975cf0e5452d\nhttps://git.kernel.org/stable/c/8299ca146489664e3c0c90a3b8900d8335b1ede4\nhttps://git.kernel.org/stable/c/9fb09861e2b8d1abfe2efaf260c9f1d30080ea38\nhttps://git.kernel.org/stable/c/6331f1b24a3e85465f6454e003a3e6c22005a5c5\n",
   "aliases": "CVE-2026-31638\nGHSA-5vqj-w88j-2624\n",
   "assigner": "Linux",
-  "epss": 0.44,
+  "epss": 0.63,
   "enisaIdProduct": [
     {
       "id": "1beef597-48a2-3770-b364-ffc8a4df79a5",

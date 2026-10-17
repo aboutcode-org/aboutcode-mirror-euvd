@@ -3,7 +3,7 @@
   "enisaUuid": "4a2064bc-5f7f-30d9-a73a-3c48b85abb60",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: add some missing log locking\n\nFunction gfs2_logd() calls the log flushing functions gfs2_ail1_start(),\ngfs2_ail1_wait(), and gfs2_ail1_empty() without holding sdp->sd_log_flush_lock,\nbut these functions require exclusion against concurrent transactions.\n\nTo fix that, add a non-locking __gfs2_log_flush() function.  Then, in\ngfs2_logd(), take sdp->sd_log_flush_lock before calling the above mentioned log\nflushing functions and __gfs2_log_flush().",
   "datePublished": "Jun 24, 2026, 4:29:55 PM",
-  "dateUpdated": "Aug 5, 2026, 12:32:55 PM",
+  "dateUpdated": "Oct 16, 2026, 3:31:29 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

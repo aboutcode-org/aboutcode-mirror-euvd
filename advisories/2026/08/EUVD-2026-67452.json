@@ -3,7 +3,7 @@
   "enisaUuid": "a31986ea-66d1-33d5-a5e9-50c78fd8d45c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: validate Adaptation Indication parameter length\n\nThe Adaptation Layer Indication parameter contains a fixed 32-bit\nAdaptation Code Point after its parameter header. However,\nsctp_verify_param() accepts a header-only parameter because the generic\nparameter walker only requires the header to be present.\n\nsctp_process_param() then reads adaptation_ind beyond the declared\nparameter. When the malformed parameter is last in an INIT, the read\nstarts at the receive skb tail, and the value is copied into the state\ncookie returned in the INIT ACK. This may disclose four receive-buffer\ntail bytes.\n\nRequire the declared parameter length to match the fixed structure size\nand abort the association through the existing invalid parameter length\npath otherwise.",
   "datePublished": "Aug 28, 2026, 6:53:14 AM",
-  "dateUpdated": "Aug 29, 2026, 6:22:33 AM",
+  "dateUpdated": "Oct 16, 2026, 7:26:35 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",

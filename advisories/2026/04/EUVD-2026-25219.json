@@ -3,14 +3,14 @@
   "enisaUuid": "7993a09a-1520-3591-8f4f-5a80fa993452",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: raw: fix ro->uniq use-after-free in raw_rcv()\n\nraw_release() unregisters raw CAN receive filters via can_rx_unregister(),\nbut receiver deletion is deferred with call_rcu(). This leaves a window\nwhere raw_rcv() may still be running in an RCU read-side critical section\nafter raw_release() frees ro->uniq, leading to a use-after-free of the\npercpu uniq storage.\n\nMove free_percpu(ro->uniq) out of raw_release() and into a raw-specific\nsocket destructor. can_rx_unregister() takes an extra reference to the\nsocket and only drops it from the RCU callback, so freeing uniq from\nsk_destruct ensures the percpu area is not released until the relevant\ncallbacks have drained.\n\n[mkl: applied manually]",
   "datePublished": "Apr 23, 2026, 11:12:44 AM",
-  "dateUpdated": "Oct 15, 2026, 1:16:54 AM",
+  "dateUpdated": "Oct 16, 2026, 3:20:14 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1de30576a6dfeaaa27ef91fa272e6b9240b6fbd3\nhttps://git.kernel.org/stable/c/64c8553decf5a5f2417bd54761ea0a832c56c4ca\nhttps://git.kernel.org/stable/c/3f43f12fde34737fba091b7e3ab391e14ddbb0be\nhttps://git.kernel.org/stable/c/5e9cfffad898bbeaafd0ea608a6d267362f050fc\nhttps://git.kernel.org/stable/c/572f0bf536ebc14f6e7da3d21a85cf076de8358e\nhttps://git.kernel.org/stable/c/1a0f2de81f7fbdc538fc72d7d74609b79bc83cc0\nhttps://git.kernel.org/stable/c/7201a531b9a5ed892bfda5ded9194ef622de8ffa\nhttps://git.kernel.org/stable/c/34c1741254ff972e8375faf176678a248826fe3a\nhttps://git.kernel.org/stable/c/a535a9217ca3f2fccedaafb2fddb4c48f27d36dc\n",
   "aliases": "GHSA-7w6x-pfmg-76xx\nCVE-2026-31532\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "006076e1-bff0-3503-b3cf-746e04819f9a",

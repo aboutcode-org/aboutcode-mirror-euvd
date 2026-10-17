@@ -3,7 +3,7 @@
   "enisaUuid": "996a7b7a-5258-37d3-b777-826fd33ec53f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: extend conn_hash lookup critical sections\n\nUsing RCU-protected pointers outside the critical sections without\nrefcount is incorrect and may result to UAF.\n\nExtend critical section to cover both hci_conn_hash lookup and use of\nthe returned conn.\n\nAdd surrounding rcu_read_lock() also when return value is not used, in\npreparation for RCU lockdep requirement to hci_lookup_le_connect().\n\nThis avoids concurrent deletion of the conn before we are done\ndereferencing it.\n\nAlso, make sure to hold hdev->lock when accessing hdev->accept_list.",
   "datePublished": "Aug 10, 2026, 12:04:12 PM",
-  "dateUpdated": "Aug 17, 2026, 5:04:41 AM",
+  "dateUpdated": "Oct 16, 2026, 3:53:11 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

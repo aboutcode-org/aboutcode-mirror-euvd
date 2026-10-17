@@ -3,14 +3,14 @@
   "enisaUuid": "ac03aca1-db3b-3ac8-8ce8-08a62d9cfe5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: reset sparse-read state in osd_fault()\n\nWhen a fault occurs, the connection is abandoned, reestablished, and any\npending operations are retried. The OSD client tracks the progress of a\nsparse-read reply using a separate state machine, largely independent of\nthe messenger's state.\n\nIf a connection is lost mid-payload or the sparse-read state machine\nreturns an error, the sparse-read state is not reset. The OSD client\nwill then interpret the beginning of a new reply as the continuation of\nthe old one. If this makes the sparse-read machinery enter a failure\nstate, it may never recover, producing loops like:\n\n  libceph:  [0] got 0 extents\n  libceph: data len 142248331 != extent len 0\n  libceph: osd0 (1)...:6801 socket error on read\n  libceph: data len 142248331 != extent len 0\n  libceph: osd0 (1)...:6801 socket error on read\n\nTherefore, reset the sparse-read state in osd_fault(), ensuring retries\nstart from a clean state.",
   "datePublished": "Feb 14, 2026, 3:22:21 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:20 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:49 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/90a60fe61908afa0eaf7f8fcf1421b9b50e5f7ff\nhttps://git.kernel.org/stable/c/e94075e950a6598e710b9f7dffea5aa388f40313\nhttps://git.kernel.org/stable/c/10b7c72810364226f7b27916ea3e2a4f870bc04b\nhttps://git.kernel.org/stable/c/11194b416ef95012c2cfe5f546d71af07b639e93\n",
   "aliases": "GHSA-v844-6465-jhqh\nCVE-2026-23136\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "0c2c4052-8945-33b7-80d9-104e4ab77740",

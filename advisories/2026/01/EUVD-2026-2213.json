@@ -3,14 +3,14 @@
   "enisaUuid": "13244f28-3360-3f7a-a68f-b4d8c577db28",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/oa: Fix potential UAF in xe_oa_add_config_ioctl()\n\nIn xe_oa_add_config_ioctl(), we accessed oa_config->id after dropping\nmetrics_lock. Since this lock protects the lifetime of oa_config, an\nattacker could guess the id and call xe_oa_remove_config_ioctl() with\nperfect timing, freeing oa_config before we dereference it, leading to\na potential use-after-free.\n\nFix this by caching the id in a local variable while holding the lock.\n\nv2: (Matt A)\n- Dropped mutex_unlock(&oa->metrics_lock) ordering change from\n  xe_oa_remove_config_ioctl()\n\n(cherry picked from commit 28aeaed130e8e587fd1b73b6d66ca41ccc5a1a31)",
   "datePublished": "Jan 13, 2026, 3:34:58 PM",
-  "dateUpdated": "Aug 5, 2026, 12:12:04 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:46 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c6d30b65b7a44dac52ad49513268adbf19eab4a2\nhttps://git.kernel.org/stable/c/7cdb9a9da935c687563cc682155461fef5f9b48d\nhttps://git.kernel.org/stable/c/dcb171931954c51a1a7250d558f02b8f36570783\n",
   "aliases": "GHSA-wx5q-w2fh-f8w8\nCVE-2025-71099\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "291aee77-b241-3efb-825c-31519fc79498",

@@ -3,7 +3,7 @@
   "enisaUuid": "f7425c8b-c152-34d3-84ef-d9a0a320e464",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost/vdpa: validate virtqueue index in mmap and fault paths\n\nvhost_vdpa_mmap() and vhost_vdpa_fault() use vma->vm_pgoff as a\nvirtqueue index for get_vq_notification(), but they do not validate\nthat the index is smaller than v->nvqs.\n\nThe ioctl path already performs both a bounds check and\narray_index_nospec(), but the mmap/fault path only checks that the\nindex fits in u16. This allows an out-of-range queue index to reach\ndriver-specific get_vq_notification() callbacks.\n\nFix this by extracting a unified vhost_vdpa_get_vq_notification()\nhelper that validates the queue index against v->nvqs and applies\narray_index_nospec() before calling the driver callback. Both the\nmmap and fault paths use this helper, and the bounds checking is\nconsolidated into a single location.\n\nFrom source inspection, the most defensible impact is out-of-bounds\naccess in the callback path, potentially leading to invalid PFN\nremaps and crash/DoS.",
   "datePublished": "Aug 15, 2026, 5:58:11 AM",
-  "dateUpdated": "Aug 17, 2026, 5:45:44 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:32 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "c44215ad-9ab0-32cb-8f30-357b0a229ac0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-tcp: add bounds checks in nvmet_tcp_build_pdu_iovec\n\nnvmet_tcp_build_pdu_iovec() could walk past cmd->req.sg when a PDU\nlength or offset exceeds sg_cnt and then use bogus sg->length/offset\nvalues, leading to _copy_to_iter() GPF/KASAN. Guard sg_idx, remaining\nentries, and sg->length/offset before building the bvec.",
   "datePublished": "Feb 13, 2026, 1:29:56 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:19 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:49 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/0b9981751be14b59b4473383c731c833738aebdb\nhttps://git.kernel.org/stable/c/42afe8ed8ad2de9c19457156244ef3e1eca94b5d\nhttps://git.kernel.org/stable/c/1385be357e8acd09b36e026567f3a9d5c61139de\nhttps://git.kernel.org/stable/c/dca1a6ba0da9f472ef040525fab10fd9956db59f\nhttps://git.kernel.org/stable/c/19672ae68d52ff75347ebe2420dde1b07adca09f\nhttps://git.kernel.org/stable/c/ab200d71553bdcf4de554a5985b05b2dd606bc57\nhttps://git.kernel.org/stable/c/52a0a98549344ca20ad81a4176d68d28e3c05a5c\n",
   "aliases": "GHSA-jjrf-jfrm-p64x\nCVE-2026-23112\n",
   "assigner": "Linux",
-  "epss": 0.4,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "031d7ae5-3310-3666-a3dc-7edb987b6c19",

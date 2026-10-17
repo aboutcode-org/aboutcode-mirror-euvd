@@ -3,14 +3,14 @@
   "enisaUuid": "df91d736-3f97-31fa-a38c-cf43e7ee772a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: avoid dereferencing log items after push callbacks\n\nAfter xfsaild_push_item() calls iop_push(), the log item may have been\nfreed if the AIL lock was dropped during the push. Background inode\nreclaim or the dquot shrinker can free the log item while the AIL lock\nis not held, and the tracepoints in the switch statement dereference\nthe log item after iop_push() returns.\n\nFix this by capturing the log item type, flags, and LSN before calling\nxfsaild_push_item(), and introducing a new xfs_ail_push_class trace\nevent class that takes these pre-captured values and the ailp pointer\ninstead of the log item pointer.",
   "datePublished": "Apr 22, 2026, 1:53:47 PM",
-  "dateUpdated": "Aug 5, 2026, 12:22:42 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/c8a2ab339b88d10fc34a3318c92f07d8a467019d\nhttps://git.kernel.org/stable/c/7121b22b0bac89394cc4c6a54b5aebc15347bdf5\nhttps://git.kernel.org/stable/c/c4d603e8e58a3bf35480135ccca2b4f7238abda5\nhttps://git.kernel.org/stable/c/95fb5d643cc70959baa54cd17f52f80ffc3295e7\nhttps://git.kernel.org/stable/c/451c6329d9afa45862c36fe6677eb7750db60617\nhttps://git.kernel.org/stable/c/79ef34ec0554ec04bdbafafbc9836423734e1bd6\n",
   "aliases": "CVE-2026-31453\nGHSA-h88h-485v-q9qv\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "3e45cc2f-1934-3e5b-8a13-23ed52df053d",

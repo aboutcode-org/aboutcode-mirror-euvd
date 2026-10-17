@@ -3,14 +3,14 @@
   "enisaUuid": "40dbbc16-6f3e-3c91-a051-3ff51e7d09d0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_u32: reject invalid shift counts\n\nu32_match_it() executes rule-supplied shift operands on a 32-bit\nvalue. A malformed u32 rule can provide a shift count of 32 or more,\ntriggering an undefined shift out-of-bounds during packet evaluation.\n\nValidate XT_U32_LEFTSH and XT_U32_RIGHTSH operands in\nu32_mt_checkentry() and reject malformed rules before they reach the\npacket path.",
   "datePublished": "Aug 15, 2026, 5:55:53 AM",
-  "dateUpdated": "Aug 17, 2026, 5:43:07 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:19 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ca7c92d9701249e6daf132087756a88cbf2bb2a3\nhttps://git.kernel.org/stable/c/b33b44250d57ab0e5a1e2571b5285fb0d0a7f382\nhttps://git.kernel.org/stable/c/728f479dc0447ae7eaef87926ff49142e415a811\nhttps://git.kernel.org/stable/c/0a8b7a6d763775709c601f584e709ae48bcc000a\nhttps://git.kernel.org/stable/c/cce42014415cecd98aa49b3950e7b02ee7c81268\nhttps://git.kernel.org/stable/c/a597a722fb71a534138c20359b655726622b5f17\nhttps://git.kernel.org/stable/c/00d034fe8230dfc5832fe011ff2d81c1a2cc7a29\nhttps://git.kernel.org/stable/c/64cdf7d30ac18e43df6c48004435febb965809a8\n",
   "aliases": "CVE-2026-72350\nGHSA-3cfm-hj78-94wf\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0f02bdb1-eaed-3c8c-88b3-ae326ca7f8f2",

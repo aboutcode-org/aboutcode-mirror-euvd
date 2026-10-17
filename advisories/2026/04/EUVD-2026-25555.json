@@ -3,7 +3,7 @@
   "enisaUuid": "5ce75f3d-b89a-378d-bef5-ea99890276b8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: fix bc_ackers underflow on duplicate GRP_ACK_MSG\n\nThe GRP_ACK_MSG handler in tipc_group_proto_rcv() currently decrements\nbc_ackers on every inbound group ACK, even when the same member has\nalready acknowledged the current broadcast round.\n\nBecause bc_ackers is a u16, a duplicate ACK received after the last\nlegitimate ACK wraps the counter to 65535. Once wrapped,\ntipc_group_bc_cong() keeps reporting congestion and later group\nbroadcasts on the affected socket stay blocked until the group is\nrecreated.\n\nFix this by ignoring duplicate or stale ACKs before touching bc_acked or\nbc_ackers. This makes repeated GRP_ACK_MSG handling idempotent and\nprevents the underflow path.",
   "datePublished": "Apr 24, 2026, 2:45:12 PM",
-  "dateUpdated": "Aug 5, 2026, 12:24:12 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:20 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

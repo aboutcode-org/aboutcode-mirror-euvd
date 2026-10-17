@@ -3,7 +3,7 @@
   "enisaUuid": "fa34427d-d06e-352d-8f42-ed8438e9bc3f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: validate checksum_start before completing checksum\n\nIf a packet with bad checksum metadata gets into the ipv4 stack,\nskb_checksum_help can corrupt the network header and cause a bunch of\nmischief.\n\nThis was discovered and reported by Paulos, and has been reporoduced\nby others independently since.\n\nWe really shouldn't allow such packets in, but as a defence\nin depth measure, let's also check before we complete the checksum.\n\nA more complete validation at input is forthcoming, but needs more work.",
   "datePublished": "Oct 15, 2026, 12:19:22 PM",
-  "dateUpdated": "Oct 15, 2026, 10:07:24 PM",
+  "dateUpdated": "Oct 16, 2026, 3:49:17 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",

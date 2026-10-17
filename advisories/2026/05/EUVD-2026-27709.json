@@ -3,14 +3,14 @@
   "enisaUuid": "58158d0a-3e53-3d7b-9b89-3c732e11d00d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/arm-cmn: Reject unsupported hardware configurations\n\nSo far we've been fairly lax about accepting both unknown CMN models\n(at least with a warning), and unknown revisions of those which we\ndo know, as although things do frequently change between releases,\ntypically enough remains the same to be somewhat useful for at least\nsome basic bringup checks. However, we also make assumptions of the\nmaximum supported sizes and numbers of things in various places, and\nthere's no guarantee that something new might not be bigger and lead\nto nasty array overflows. Make sure we only try to run on things that\nactually match our assumptions and so will not risk memory corruption.\n\nWe have at least always failed on completely unknown node types, so\nupdate that error message for clarity and consistency too.",
   "datePublished": "May 6, 2026, 11:27:32 AM",
-  "dateUpdated": "Aug 5, 2026, 12:26:12 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:34 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7e2c200010aa93fa78201da959b4ac6b9f8fed0b\nhttps://git.kernel.org/stable/c/d3e837e11ee9ed08df229272319199003ba00379\nhttps://git.kernel.org/stable/c/00d69f21ef2ab00e6156c764d89e2b3539eb2f33\nhttps://git.kernel.org/stable/c/08c7eadd8a934a1968e1aeeee8b61b853b99fb3a\nhttps://git.kernel.org/stable/c/a251d866f50b6a4c95901fa722025065679c2eca\nhttps://git.kernel.org/stable/c/36c0de02575ce59dfd879eb4ef63d53a68bbf9ce\n",
   "aliases": "CVE-2026-43150\nGHSA-wh2v-8c6h-56m5\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1c34098f-aa26-36d2-9bf2-514194100af0",

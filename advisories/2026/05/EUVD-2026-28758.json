@@ -3,14 +3,14 @@
   "enisaUuid": "dbe67e3f-39b6-3901-8970-caef2dc15b1f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: x_tables: guard option walkers against 1-byte tail reads\n\nWhen the last byte of options is a non-single-byte option kind, walkers\nthat advance with i += op[i + 1] ? : 1 can read op[i + 1] past the end\nof the option area.\n\nAdd an explicit i == optlen - 1 check before dereferencing op[i + 1]\nin xt_tcpudp and xt_dccp option walkers.",
   "datePublished": "May 8, 2026, 2:22:17 PM",
-  "dateUpdated": "Aug 5, 2026, 12:28:01 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:41 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c2a445367a496a3c25dbc940c10c8bd1cfd4c14a\nhttps://git.kernel.org/stable/c/ae1e1267650638136b84c23f2b31250f0ccb6823\nhttps://git.kernel.org/stable/c/c39f84e4be1be63fc60ca7141ea7b76edcea5907\nhttps://git.kernel.org/stable/c/9b94f0e42ed248eb31929da84ed9f5310d7ff540\nhttps://git.kernel.org/stable/c/5b18b8b35c7cded2d17b2b2604c9b0694ff48d1c\nhttps://git.kernel.org/stable/c/bc18551c6169eac5ed813778d3e3e484002dbbe5\nhttps://git.kernel.org/stable/c/d04800323336eebf441d153f43234eac9b833d36\nhttps://git.kernel.org/stable/c/cfe770220ac2dbd3e104c6b45094037455da81d4\n",
   "aliases": "CVE-2026-43452\nGHSA-3jfw-v6mf-ccwx\n",
   "assigner": "Linux",
-  "epss": 0.44,
+  "epss": 0.63,
   "enisaIdProduct": [
     {
       "id": "06dd5386-4001-34a9-872a-fa7b0881da2c",

@@ -3,7 +3,7 @@
   "enisaUuid": "5ee6e011-e330-3984-b507-972407bda176",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: ipc4-topology: Correct the allocation size for bytes controls\n\nThe size of the data behind of scontrol->ipc_control_data for bytes\ncontrols is:\n[1] sizeof(struct sof_ipc4_control_data) + // kernel only struct\n[2] sizeof(struct sof_abi_hdr)) + payload\n\nThe max_size specifies the size of [2] and it is coming from topology.\n\nChange the function to take this into account and allocate adequate amount\nof memory behind scontrol->ipc_control_data.\n\nWith the change we will allocate [1] amount more memory to be able to hold\nthe full size of data.",
   "datePublished": "May 6, 2026, 11:32:19 AM",
-  "dateUpdated": "Aug 5, 2026, 12:12:40 PM",
+  "dateUpdated": "Oct 16, 2026, 3:09:48 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,14 +3,14 @@
   "enisaUuid": "9a38bc73-abdb-3b2a-abd7-fd0e6af8448c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: avoid deadlocks in iso_sock_timeout\n\niso_sock_timeout() takes lock_sock, so sync disabling the timer while\nholding that lock may deadlock.\n\niso_sock_timeout() may also run concurrently with iso_conn_del(), which\nleads to UAF\n\n        [Task 1]                      [Task hdev->workqueue]\n        iso_sock_timeout              iso_conn_del\n          iso_conn_hold_unless_zero     iso_chan_del\n                           `------------> iso_conn_put\n                                      caller frees hcon\n          iso_conn_put\n            iso_conn_free\n              conn->hcon->iso_data = NULL; /* UAF */\n\nFix the deadlock by removing the disable from the lock_sock sections.\nMove the timer from iso_conn to iso_pinfo to decouple it from iso_conn\nwhich may need to be freed in lock_sock section. Convert some of the\nclear_timer to disable_timer.",
   "datePublished": "Aug 15, 2026, 12:27:48 PM",
-  "dateUpdated": "Aug 17, 2026, 5:48:24 AM",
+  "dateUpdated": "Oct 16, 2026, 7:05:53 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/16d89a63e08280abeef7218970a3bbd7ca62b021\nhttps://git.kernel.org/stable/c/82e982f54f962f72646868ddbb2c3bd9ea178568\nhttps://git.kernel.org/stable/c/3c3d5f85db80145636bb991a6005e2760012b985\nhttps://git.kernel.org/stable/c/200fa1629c57a3ca2b03d3ca63fd3a9bfd910c43\n",
   "aliases": "GHSA-m6r7-j582-3j5f\nCVE-2026-74535\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "101076d3-9fb4-3343-857b-aa3fd2aa3f2a",

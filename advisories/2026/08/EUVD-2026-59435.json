@@ -3,7 +3,7 @@
   "enisaUuid": "f8ba7b60-a820-320b-96a2-e6f8b7b52c0d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fib_rules: Don't dump dying fib_rule in fib_rules_dump().\n\nrocker_router_fib_event() calls fib_rule_get() during RCU dump.\n\nIf the fib_rule is dying, refcount_inc() will complain about it.\n\nLet's call refcount_inc_not_zero() in fib_rules_dump().",
   "datePublished": "Aug 15, 2026, 5:57:55 AM",
-  "dateUpdated": "Aug 17, 2026, 5:45:27 AM",
+  "dateUpdated": "Oct 16, 2026, 6:55:30 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

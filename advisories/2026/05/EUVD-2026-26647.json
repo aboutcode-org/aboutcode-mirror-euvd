@@ -3,14 +3,14 @@
   "enisaUuid": "5f282c44-917c-3ee8-a78a-307da3638254",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: core: Mitigate potential OOB by removing bogus memset()\n\nThe memset() in hid_report_raw_event() has the good intention of\nclearing out bogus data by zeroing the area from the end of the incoming\ndata string to the assumed end of the buffer.  However, as we have\npreviously seen, doing so can easily result in OOB reads and writes in\nthe subsequent thread of execution.\n\nThe current suggestion from one of the HID maintainers is to remove the\nmemset() and simply return if the incoming event buffer size is not\nlarge enough to fill the associated report.\n\nSuggested-by Benjamin Tissoires <bentiss@kernel.org>\n\n[bentiss: changed the return value]",
   "datePublished": "May 1, 2026, 2:15:43 PM",
-  "dateUpdated": "Aug 5, 2026, 12:25:33 PM",
+  "dateUpdated": "Oct 16, 2026, 3:20:30 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8f71034649738fdeb6859b8d6cddf132024fac06\nhttps://git.kernel.org/stable/c/bd6e1d0230cca9575f5d118148f51e2a56b5373f\nhttps://git.kernel.org/stable/c/0a3fe972a7cb1404f693d6f1711f32bc1d244b1c\n",
   "aliases": "GHSA-7r6r-545m-fqv3\nCVE-2026-43048\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.4,
   "enisaIdProduct": [
     {
       "id": "028a7555-749e-3d18-b781-6ffaa3d6e13d",

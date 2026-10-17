@@ -3,7 +3,7 @@
   "enisaUuid": "318b16a3-0565-3788-afe2-bb34cc50be1b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nip6_tunnel: use skb_cow_head() in ip6_tnl_xmit()\n\nip6_tnl_xmit() may need to expand headroom before it can push the\nouter IPv6 and optional encap headers. It currently does that with\nskb_realloc_headroom(), copies skb->sk ownership, consumes the original\nskb, and then continues processing with the replacement skb kept only in\nits local variable.\n\nThat is safe only if the helper cannot fail afterwards. But this helper\nstill has post-reallocation error exits. collect_md tunnels reject\nnon-NONE encap after the replacement, and ip6_tnl_encap() can also fail\nlater. In those cases the helper returns an error to its callers while\nthe caller still only has the original skb pointer.\n\nBoth ip6_tnl_start_xmit() and the IPv6 GRE paths free the caller skb on\nerror, so they can end up freeing an skb that ip6_tnl_xmit() already\nconsumed.\n\nUse skb_cow_head() instead. It provides the required headroom and\nwritability without privately replacing the caller-owned skb, so later\nerror returns cannot leave callers with a stale pointer.\n\nThe Ethernet users, ip6gretap and ip6erspan, clear IFF_TX_SKB_SHARING\nand already call skb_cow_head() before entering ip6_tnl_xmit(). They do\nnot rely on the removed skb_shared() reallocation. This also makes the\nIPv6 tunnel path consistent with ip_tunnel_xmit().",
   "datePublished": "Sep 11, 2026, 7:44:34 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:03 PM",
+  "dateUpdated": "Oct 16, 2026, 7:26:44 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

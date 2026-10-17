@@ -3,7 +3,7 @@
   "enisaUuid": "61d2cade-43d9-37c3-9df9-74dc28b97f31",
   "description": "Notification template Jinja AST whitelist only inspects\n              static Getattr nodes. Dynamic subscripts (job['job'+'_env'])\n              and {% if job.id > 100 %} conditional gating bypass both\n              the AST check and the test-render (stub has small job.id).\n              At runtime, the gated branch executes and exceptions write\n              full tracebacks into notification body, which is POSTed\n              to attacker-controlled webhook URL. Leaks install paths,\n              Python version, source line numbers.",
   "datePublished": "Sep 23, 2026, 6:28:59 PM",
-  "dateUpdated": "Sep 25, 2026, 6:13:54 PM",
+  "dateUpdated": "Oct 16, 2026, 12:01:18 PM",
   "baseScore": 2.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N",
