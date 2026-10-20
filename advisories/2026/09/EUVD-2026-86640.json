@@ -3,7 +3,7 @@
   "enisaUuid": "422be2b0-9706-3481-a119-b942742c451b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_input: stop callbacks before unregistering input device\n\nvirtinput_remove() unregisters the input device before resetting the\nvirtio device. virtinput_recv_events() drops vi->lock around input_event(),\nso clearing vi->ready does not stop a callback that passed the entry check.\nIt can still use vi->idev, requeue buffers and kick the queue.\n\nReset first, as virtinput_freeze() already does. With the preceding core\nchange, reset waits for callbacks before input_unregister_device() can\nfree vi->idev. Recheck vi->ready after taking the lock again: keep draining\ncompleted events so an input packet is not truncated, but stop requeueing\nbuffers and kicking the queue.\n\nWith evdev attached, input_unregister_handle() currently waits for an RCU\ngrace period, which also waits out IRQ callbacks. This masks the lifetime\nbug on PCI and MMIO, but does not protect sleepable callbacks on other\ntransports.",
   "datePublished": "Sep 25, 2026, 10:23:20 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:16 AM",
+  "dateUpdated": "Oct 19, 2026, 9:11:53 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3ae729b1f8ab81d1244061872db2fb0ebb110d2a\nhttps://git.kernel.org/stable/c/81073bca2062c916c818f2744fbab545a5c4982b\nhttps://git.kernel.org/stable/c/8226aeee9b9a94cd699fbb51cb230feff46cfaf2\nhttps://git.kernel.org/stable/c/a3ba86a270dd87460759214046dc7cbd409ac711\nhttps://git.kernel.org/stable/c/5378f7945856a5ed88e6f9850bc7a68f54090135\nhttps://git.kernel.org/stable/c/d7808b37da0a619cf1fa541c2384e783fecc2480\n",
   "aliases": "GHSA-5v98-rq5r-8rxh\nCVE-2026-97986\n",
@@ -71,16 +71,6 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "7807df7f-d935-36af-9c6a-c06516784069",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "783a6f18-5880-3b87-b9d6-48fe1dcfc50f",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "869f156a-b2e6-3f69-8846-06cf495bdf71",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "a995b945-6f6f-328c-86a6-79038e016f9b",

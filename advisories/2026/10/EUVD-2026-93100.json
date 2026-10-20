@@ -3,12 +3,12 @@
   "enisaUuid": "17c68b43-e495-381a-8970-a30c4ef6b2c6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix smbd_connection leak on cifs_get_tcp_session() error\n\nWhen an RDMA connection is successfully established via\nsmbd_get_connection() but cifs_get_tcp_session() later fails (e.g.\nkthread_create() returns an error), the error path frees tcp_ses\nwithout first destroying the smbd_connection.\n\nFix this by calling smbd_destroy() in the out_err cleanup path before\nkfree(tcp_ses).  smbd_destroy() safely handles the case where\nsmbd_conn is NULL, so it can be called unconditionally.",
   "datePublished": "Oct 6, 2026, 8:44:16 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:16 AM",
+  "dateUpdated": "Oct 19, 2026, 9:15:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3164402c58940ff58a3cecdb026405f07b0253af\nhttps://git.kernel.org/stable/c/e3344bb0ff5ec8a276f42239e140f5442841ef23\nhttps://git.kernel.org/stable/c/5c908e49d349266dff0c86dda6a05df0ff19b824\nhttps://git.kernel.org/stable/c/928edc4bd6a617caabeb575fc13c254d9df623c4\nhttps://git.kernel.org/stable/c/b26a3fcf2f1c2cadba400290b639f01395db8fc8\nhttps://git.kernel.org/stable/c/e75c96157d45e498970158c8f7373d90102e33b9\n",
   "aliases": "GHSA-h5hv-w97x-4565\nCVE-2026-98172\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03ca8dc5-3844-3951-b4be-493abd8dd0f4",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "3ac611a9-74df-33e1-adac-e7e2dd48c3a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4e0ad8f9-b7ee-38d1-afe9-997fc754d961",
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "patch: 6.12.112"
-    },
-    {
-      "id": "b7dd63b5-fa02-3504-a18a-2b587441987d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
     },
     {
       "id": "c3f18a8f-dd54-3510-b1f7-0c3d52a1f2c8",

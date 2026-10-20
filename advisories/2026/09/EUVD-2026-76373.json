@@ -3,7 +3,7 @@
   "enisaUuid": "98d85206-f913-3f40-8fa6-a69da155e399",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: qcom_battmgr: fix use-after-free\n\nqcom_battmgr_pdr_notify() queues enable_work when the PMIC GLINK service\ncomes up, and the worker recovers battmgr through container_of() to issue\nfirmware requests. The PMIC GLINK client stays on the client list until\nits devres release action runs, so a PDR notification can keep queueing\nthe work, and a pending or running worker can access battmgr after devres\nfrees it.\n\nMake enable_work device-managed with devm_work_autocancel(), registered\nbefore the PMIC GLINK client is allocated. The devres cleanup then\nreleases the client first, so no further notification can queue the work,\nand cancels the work before battmgr is freed.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Sep 11, 2026, 7:43:27 PM",
-  "dateUpdated": "Oct 3, 2026, 10:56:30 AM",
+  "dateUpdated": "Oct 19, 2026, 8:47:16 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/77fefca305db44b0edd3fcdb52d781771c1ce366\nhttps://git.kernel.org/stable/c/06618447029c6dddaa02f6e9528efe5dd49fc329\nhttps://git.kernel.org/stable/c/49fbcd3da2958159370d25dafbf736e654a4d59b\nhttps://git.kernel.org/stable/c/4e40befedfc8ed86f44e1f81df92d13c149c9f8d\n",
   "aliases": "GHSA-6hqf-cg9r-x89w\nCVE-2026-89467\n",
@@ -81,6 +81,16 @@
       "product_version": "29e8142b5623b5949587bcc4f591c4e6595c4aca <06618447029c6dddaa02f6e9528efe5dd49fc329"
     },
     {
+      "id": "be64e02e-9d36-34c7-bb83-357a5ad36281",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "d8a8ab83-56a9-3e8d-9917-e008a98debca",
       "product": {
         "name": "Linux",
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "29e8142b5623b5949587bcc4f591c4e6595c4aca <4e40befedfc8ed86f44e1f81df92d13c149c9f8d"
-    },
-    {
-      "id": "e57032fa-fa7a-39c6-bf7c-cea7ca1bf1d7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "fbcf4e2f-71cb-3fb5-af5c-2ce9fd05f9fd",

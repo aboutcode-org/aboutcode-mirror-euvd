@@ -3,7 +3,7 @@
   "enisaUuid": "4debd522-e43a-3dcb-95d3-9006708ffeea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: fix out-of-bounds read in wacom_intuos_bt_irq\n\nThe wacom_intuos_bt_irq() function processes Bluetooth HID reports\nwithout sufficient bounds checking. A maliciously crafted short report\ncan trigger an out-of-bounds read when copying data into the wacom\nstructure.\n\nSpecifically, report 0x03 requires at least 22 bytes to safely read\nthe processed data and battery status, while report 0x04 (which\nfalls through to 0x03) requires 32 bytes.\n\nAdd explicit length checks for these report IDs and log a warning if\na short report is received.",
   "datePublished": "May 1, 2026, 2:15:45 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:30 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:11 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",

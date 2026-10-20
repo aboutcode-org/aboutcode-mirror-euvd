@@ -3,7 +3,7 @@
   "enisaUuid": "ca7c81dc-5571-3fa8-ab4d-d47ee5a51fbb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/cxgb4: Fix dereg_skb leak and double free in write_tpt_entry()\n\nWhen the device is in the fatal error state, write_tpt_entry() returns -EIO\nbefore handing the caller's preallocated skb to the transmit path; its\nallocation-failure returns do the same. c4iw_dereg_mr() ignores the error\nand frees mhp, leaking mhp->dereg_skb. c4iw_get_dma_mr() instead frees the\nskb a second time after dereg_mem() already consumed it, a double free.\n\nMake write_tpt_entry() the sole owner of a non-NULL skb, freeing it on\nevery return preceding handoff to c4iw_ofld_send(): fatal error, tpt and\nstag allocation failure. c4iw_ofld_send() consumes the skb on success and\nerror alike, so drop the redundant kfree_skb() in c4iw_get_dma_mr() after\ndereg_mem().",
   "datePublished": "Sep 17, 2026, 4:09:42 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:15 AM",
+  "dateUpdated": "Oct 19, 2026, 9:03:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2fcd26f4680143e9ec477069530548dbe20fce6f\nhttps://git.kernel.org/stable/c/6b15fc9bc117fb6597fa1c2cc30284aafe71101c\nhttps://git.kernel.org/stable/c/373f3716a2de7adc739269ebb4d87e5bf4dc180c\n",
   "aliases": "GHSA-ccpx-w89w-v2mx\nCVE-2026-90417\n",
@@ -71,16 +71,6 @@
       "product_version": "0f8ab0b6e91b4d5302ceee5ec12ce54d81297635 <6b15fc9bc117fb6597fa1c2cc30284aafe71101c"
     },
     {
-      "id": "aa12b025-60e5-3b6f-9945-704e638cedbe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "bd60fb94-2432-34d9-83b7-0cc34d5c6572",
       "product": {
         "name": "Linux",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "0f8ab0b6e91b4d5302ceee5ec12ce54d81297635 <2fcd26f4680143e9ec477069530548dbe20fce6f"
+    },
+    {
+      "id": "ff36b255-42b6-3d63-9b33-39ac4d1ab64c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

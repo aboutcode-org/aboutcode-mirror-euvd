@@ -3,12 +3,12 @@
   "enisaUuid": "6826c7f5-5469-34dd-9313-9698008d0930",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix FCE trace enable parsing in debugfs\n\nqla2x00_dfs_fce_write() called kstrtoul() with a NULL result pointer,\nso a successful parse would dereference NULL and oops. Worse, the int\nreturn value (0 on success, negative errno on failure) was assigned to\nthe unsigned long enable flag, inverting the intended logic: a valid\nnumber was treated as \"disable\" while a parse failure enabled FCE.\n\nParse the value into enable and propagate parse errors to userspace.",
   "datePublished": "Sep 16, 2026, 10:31:25 AM",
-  "dateUpdated": "Sep 16, 2026, 10:31:25 AM",
+  "dateUpdated": "Oct 19, 2026, 8:53:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b0c08c08a08b6cca0e7e192bcbe0514e41fcc55f\nhttps://git.kernel.org/stable/c/9932cbd0b49d0a5ab8378d32650ffb51604ffa35\nhttps://git.kernel.org/stable/c/f5e245164d187d1ee227140c8b2e83b67f59c1fd\nhttps://git.kernel.org/stable/c/5762d992dddaf301e7fb78f797de407116847121\nhttps://git.kernel.org/stable/c/eff41f50461c238bd2c5cd20672a5b53e68d493a\nhttps://git.kernel.org/stable/c/7203d4aed8f444e7376c2dee8d93577b37cf9989\nhttps://git.kernel.org/stable/c/aac0d3cb9199121d2ce5906e06f94b793fac1052\nhttps://git.kernel.org/stable/c/b7368687e3d11f51392d3c4774ec0263d5fbf31f\n",
   "aliases": "CVE-2026-89851\nGHSA-hwqc-mqvr-m7jg\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0cbf110d-ca7c-38b3-84a9-cfdd2d9e2aff",
@@ -171,6 +171,16 @@
       "product_version": "2cf3c3fe9a11aa168e80c966494c58548b9aed5d <eff41f50461c238bd2c5cd20672a5b53e68d493a"
     },
     {
+      "id": "8ba1fd85-e4b2-3c14-8209-5da9825ab21b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "8d7e69dc-d53d-393d-bcc4-2bd20a92814b",
       "product": {
         "name": "Linux",
@@ -189,16 +199,6 @@
         }
       },
       "product_version": "73d3d3c66f108bc47922490f8500842530139975 <9932cbd0b49d0a5ab8378d32650ffb51604ffa35"
-    },
-    {
-      "id": "bb3d0f66-cb14-3a15-9114-25d8ed1ff43c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "bca66128-1579-3696-9ead-2c8ff31c7334",

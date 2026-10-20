@@ -3,7 +3,7 @@
   "enisaUuid": "fb08198b-e793-3794-95d8-59c9b413d3b5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: hold asoc or transport before mod_timer() in timer handlers\n\nTake the association or transport reference before rearming a timer in the\ntimer handlers.\n\nThe existing code calls mod_timer() before taking the reference needed by\nthe rearmed timer without holding the sock lock. This creates a race with\ntimer cleanup: if the timer is deleted after mod_timer() returns but before\nthe reference is taken, the cleanup path can drop the timer's reference and\ndestroy the transport or association. The timer handler then takes a\nreference on the already freed object and eventually drops it, causing a\nrefcount underflow.\n\nHold the object before mod_timer() and drop the reference if mod_timer()\nreports that the timer was already pending in timer handlers. Apply the\nsame ordering to the proto-unreachable path, which can rearm a transport\ntimer outside the timer handlers without holding the sock lock.",
   "datePublished": "Oct 18, 2026, 3:18:59 PM",
-  "dateUpdated": "Oct 18, 2026, 3:18:59 PM",
+  "dateUpdated": "Oct 19, 2026, 9:22:11 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f7dea7eaea20fe9b80f8f77ba44d02b4a17f8050\nhttps://git.kernel.org/stable/c/f9d929026d487a988bfa12c065f892e823e5b6ab\nhttps://git.kernel.org/stable/c/9d3d39da054476e7aa05cd877b93ca73a9a77434\nhttps://git.kernel.org/stable/c/27c51a9b55b227309161c903f9ecfbf022516bc2\nhttps://git.kernel.org/stable/c/d18cb8fd1b6ba95c85de644203cfe1b071ff0c0f\nhttps://git.kernel.org/stable/c/35bf3b23c9a871f44c1453d85f8332be4e088dda\nhttps://git.kernel.org/stable/c/cae23ae3f7887a1cf8a75da38edcebeef695040f\n",
   "aliases": "GHSA-4473-fgjm-w85x\nCVE-2026-98586\n",
@@ -71,6 +71,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f7dea7eaea20fe9b80f8f77ba44d02b4a17f8050"
     },
     {
+      "id": "68588359-cc65-3405-915f-5180b29ee673",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "6aa9ac83-b9b3-3812-97ef-0eab234ab0a4",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <35bf3b23c9a871f44c1453d85f8332be4e088dda"
-    },
-    {
-      "id": "8b5f4c84-7e31-30cb-88a2-d182b17df693",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "a39fa441-38f4-34db-bdaf-1e7e7018ad61",

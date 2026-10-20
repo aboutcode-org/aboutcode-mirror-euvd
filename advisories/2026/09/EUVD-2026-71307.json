@@ -3,12 +3,12 @@
   "enisaUuid": "4611d127-3baf-38b8-9d41-28ad68f2d0d4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: wait for FR_FINISHED on abort_on_kill to prevent use-after-free\n\nThe abort_on_kill path in request_wait_answer() calls fuse_abort_conn()\nand returns without waiting for FR_FINISHED.  If fuse_dev_do_write() is\nconcurrently processing the same request (FR_LOCKED set), the caller\nfrees req->args while it is still being accessed, causing a\nuse-after-free.\n\nFix this by jumping to the existing wait_event(FR_FINISHED) instead of\nreturning early.  The wait will not hang because fuse_abort_conn()\nensures all requests are ended.",
   "datePublished": "Sep 4, 2026, 3:55:10 PM",
-  "dateUpdated": "Sep 7, 2026, 3:45:14 PM",
+  "dateUpdated": "Oct 19, 2026, 8:44:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a8bbb2a60513bf322170903c21462f0bf4f62be2\nhttps://git.kernel.org/stable/c/715cb86e33cda43f5224cdc3fd5610c0b6a46f7a\nhttps://git.kernel.org/stable/c/64b0b5cacbd2fea88001464cb712c9dfc795b26e\n",
   "aliases": "GHSA-3r92-fq36-p33j\nCVE-2026-80857\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0859dadf-c23b-3461-afec-8080775cefbd",
@@ -71,6 +71,16 @@
       "product_version": "patch: 6.18.50"
     },
     {
+      "id": "b3e01035-d4e9-394e-8e94-3fd8824fe7f8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "ba6502a5-fda9-3491-a8d3-739730a03b57",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "300e812b882a174dca675d8028684001ad5826bc"
-    },
-    {
-      "id": "f4fd8c0a-049f-3ea2-ba65-a62206b53a50",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     }
   ],
   "enisaIdVendor": [

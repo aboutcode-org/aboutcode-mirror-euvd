@@ -3,7 +3,7 @@
   "enisaUuid": "7b7d36a3-5272-3329-b9f3-cac53b7d6110",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\necryptfs: hold msg ctx list lock when cleaning daemon queue\n\necryptfs_exorcise_daemon() drops queued messages from a dying daemon\nwithout holding ecryptfs_msg_ctx_lists_mux, but\necryptfs_msg_ctx_alloc_to_free() requires that lock.\n\nTake the list lock while moving the queued contexts back to the free\nlist to avoid racing with other global msg ctx list users.",
   "datePublished": "Sep 11, 2026, 7:45:11 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:29 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:41 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "f66e883eb6186bc43a79581b67aff7d1a69d0ff1 <779972513c2fa8c7938e54976f686091dafff22f"
-    },
-    {
-      "id": "15e3d23c-5865-3d2c-8d0d-8f4712f18155",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "225522ed-8d3a-3b1b-b30d-11fcf0a66065",
@@ -61,6 +51,16 @@
         }
       },
       "product_version": "patch: 6.18.50"
+    },
+    {
+      "id": "59a5510e-1712-338e-a22d-6b7911378bf6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "59f8e993-78d5-3d09-a8bf-c3f0a2328bab",

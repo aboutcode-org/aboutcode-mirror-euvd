@@ -3,12 +3,12 @@
   "enisaUuid": "8b076f41-2e1e-354f-a890-753dd37e3af5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libipw: reject TKIP frames without a full MIC\n\nlibipw_michael_mic_verify() assumes that an skb contains an eight-byte\nMichael MIC. A short TKIP frame makes the unsigned payload length wrap,\ncausing michael_mic() to read past the skb.\n\nCheck that the MIC is present before verifying it, and use the existing\nMICHAEL_MIC_LEN constant for all MIC lengths in the verifier.",
   "datePublished": "Oct 6, 2026, 8:44:33 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:33 AM",
+  "dateUpdated": "Oct 19, 2026, 9:15:24 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9a7fb67364817710c96785ff86b71a2711ee92cb\nhttps://git.kernel.org/stable/c/ac7c08626f67844336086cf563f417566b76f0d7\nhttps://git.kernel.org/stable/c/bb7ae8910cc886885aea95abb7c2e578a2341646\nhttps://git.kernel.org/stable/c/06f42accaf3c6aecab1dcc57f68dde6c06c8b380\n",
   "aliases": "CVE-2026-98193\nGHSA-8rh9-27vf-9cwr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0ad67dd2-e194-38ea-869e-63730b6babd5",
@@ -51,14 +51,14 @@
       "product_version": "patch: 6.12.112"
     },
     {
-      "id": "7802b663-e843-371b-80bc-0e2cb07b29d2",
+      "id": "7805428b-87f1-3ce1-9a15-9e0294d52325",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc4"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "7aef6f30-7cd8-33c2-a2a3-9a26ec6b339c",

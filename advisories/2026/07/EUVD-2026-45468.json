@@ -3,7 +3,7 @@
   "enisaUuid": "9357ee55-6cb0-36d2-b7e3-53d3fee5d5ee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix UAF in __blkcg_rstat_flush()\n\nWhen multiple blkgs in the same blkcg are released concurrently,\na use-after-free can occur. The race happens when one blkg's\n__blkcg_rstat_flush() removes another blkg's iostat entries via\nllist_del_all(). The second blkg sees an empty list and proceeds\nto free itself while the first is still iterating over its entries.\n\nMove the flush from __blkg_release() (RCU callback) to blkg_release()\n(before call_rcu). This ensures the RCU grace period waits for any\nconcurrent flush's rcu_read_lock() section to complete before freeing.",
   "datePublished": "Jul 19, 2026, 12:02:08 PM",
-  "dateUpdated": "Oct 16, 2026, 3:31:57 PM",
+  "dateUpdated": "Oct 19, 2026, 8:07:47 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

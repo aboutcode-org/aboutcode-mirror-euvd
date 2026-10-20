@@ -3,12 +3,12 @@
   "enisaUuid": "e4fc6c72-8075-398a-8a2a-584d56463ee9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/device_sysfs: Use kstrtouint() for poll_msec to prevent truncation\n\nThe poll_msec sysfs store file uses simple_strtoul() which accepts an unsigned\nlong, but the target field (poll_msec) is unsigned int. On 64-bit systems,\na value > UINT_MAX is silently truncated when stored.\n\nFix the mismatch by using kstrtouint() instead. This rejects values larger\nthan UINT_MAX at parse time, making truncation impossible. Also add a check\nfor value < 1 to reject the 0-delay case, which would cause the poll work to\nspin without delay and consume 100% CPU.",
   "datePublished": "Sep 25, 2026, 10:36:27 AM",
-  "dateUpdated": "Oct 3, 2026, 11:02:42 AM",
+  "dateUpdated": "Oct 19, 2026, 9:14:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a60794ee3f453516ab3ed212ba0295ecf890bc8c\nhttps://git.kernel.org/stable/c/f856511058c8cb470d6c6c7ce908870adcdc7dc6\nhttps://git.kernel.org/stable/c/656e2fe98ac452db4e5b8147d1f33b8c35b4ec4b\nhttps://git.kernel.org/stable/c/541fc6f733b32463cf23277637bb07e2aaa00b53\nhttps://git.kernel.org/stable/c/ea01c061d839b520f385f112908de1c6e3391327\nhttps://git.kernel.org/stable/c/528052af901d6e6bbfa0e52362a70a58a5dd1e43\nhttps://git.kernel.org/stable/c/0e022ee4f8e0dc843ba4c80bb75408a7704279af\nhttps://git.kernel.org/stable/c/66cc9dec919dd63d8e4b3d386f7aed3ae684e645\n",
   "aliases": "GHSA-r5h3-8gfg-g75q\nCVE-2026-98157\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "06498197-f202-3dc6-aa90-87bca9c15ab1",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "e27e3dac651771fe3250f6305dee277bce29fc5d <f856511058c8cb470d6c6c7ce908870adcdc7dc6"
-    },
-    {
-      "id": "25caf309-9bb0-352e-8d76-3ec7b6b2ebcd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "39c539e2-049d-3979-bd14-fd0aca4ab176",
@@ -189,6 +179,16 @@
         }
       },
       "product_version": "e27e3dac651771fe3250f6305dee277bce29fc5d <0e022ee4f8e0dc843ba4c80bb75408a7704279af"
+    },
+    {
+      "id": "fc4b558b-4bb6-3084-a47b-e85b389261be",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

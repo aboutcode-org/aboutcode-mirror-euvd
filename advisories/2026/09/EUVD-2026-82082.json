@@ -3,12 +3,12 @@
   "enisaUuid": "6de6558d-7d2f-3090-bcfd-613f46b44b18",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: Fix UAF when probe runs concurrent to dyn ID removal\n\nDynamic IDs are only guaranteed to be valid when dynids.lock is held,\nas remove_id_store() can free the node. Thus, make a copy in\npci_match_device(). Also, clarify that the id parameter is only valid\nduring probe.",
   "datePublished": "Sep 17, 2026, 4:09:45 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:17 AM",
+  "dateUpdated": "Oct 19, 2026, 9:03:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c36816feff47f676dcc51919777d483f4146c1ee\nhttps://git.kernel.org/stable/c/42a5661ff7e4c7d3c5025d0f8e5079fb5479ea49\nhttps://git.kernel.org/stable/c/3ffc4c9690c33ee28cdb3d0182b12f9c623e3acc\n",
   "aliases": "CVE-2026-90421\nGHSA-286w-pmvg-5rp9\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1c40b939-e97c-3537-bbf9-2fcf95f362da",
@@ -61,16 +61,6 @@
       "product_version": "patch: 7.2.6"
     },
     {
-      "id": "81705b7e-2be0-33af-8600-89d28ab51b1c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "bce94024-8b99-3593-b543-753bb7c116ec",
       "product": {
         "name": "Linux",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "2.6.30"
+    },
+    {
+      "id": "e29e9208-1d2c-3687-8c15-f2896d3b4c6c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "f2361b50-641b-3c30-9798-9b5d41cec688",

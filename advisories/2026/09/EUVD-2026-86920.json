@@ -3,7 +3,7 @@
   "enisaUuid": "355388ff-13d7-3072-b912-cd060f32ecb1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: restore active device pointers after failed sprout\n\nbtrfs_init_new_device() switches latest_dev and possibly s_bdev from the\nseed device to the new sprout device before creating the first writable\nchunks.\n\nIf chunk creation or the subsequent sprout setup fails, the error path\nreleases the new device without switching those pointers back.\nbtrfs_show_devname() can then dereference the freed latest_dev and crash.\n\nRestore the active device pointers to the latest seed device before\nremoving and releasing the failed sprout device.",
   "datePublished": "Sep 25, 2026, 10:24:23 AM",
-  "dateUpdated": "Oct 3, 2026, 11:02:15 AM",
+  "dateUpdated": "Oct 19, 2026, 9:13:42 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/46863a9f93186e620c70584f91c8d5d95da83eff\nhttps://git.kernel.org/stable/c/49179f13c04735c55fd0f43b03696c015b067137\nhttps://git.kernel.org/stable/c/0a0ee38ad6324ac1603079bb785f784191576bd5\nhttps://git.kernel.org/stable/c/2ee5c4bc11007c51f63f0c1be5d3f07f2b404ff7\nhttps://git.kernel.org/stable/c/e127ac29a52134d0f4cba39d38e4b375deb3d1aa\nhttps://git.kernel.org/stable/c/b79b4b29003690acfade8241998fc0104ef9c84c\nhttps://git.kernel.org/stable/c/e0b54613aabeb8e9da597f23b90c6a03d0981986\n",
   "aliases": "CVE-2026-98090\nGHSA-j9r6-v9mw-fjh8\n",
@@ -81,16 +81,6 @@
       "product_version": "patch: 5.15.222"
     },
     {
-      "id": "483fcc23-8cea-3e6d-96b5-f450dcf82117",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
-    },
-    {
       "id": "5a5bcfe5-5682-3fe2-826d-e631aa13c52c",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.1.189"
+    },
+    {
+      "id": "9d812139-4551-3bb2-a604-ddb6981b0f76",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "b6df9db2-e9db-398e-a1b1-d27317be2e4c",

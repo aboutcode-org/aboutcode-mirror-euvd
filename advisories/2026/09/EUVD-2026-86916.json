@@ -3,7 +3,7 @@
   "enisaUuid": "15f18812-5a42-3562-8285-bde1d4ff03ae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: ump: do not touch legacy_rmidi before it exists\n\nsnd_ump_parse_endpoint() sets ump->parsed on every exit, including\nerror, before the caller attaches the legacy rawmidi device.\nump_handle_ep_name_msg() then treats parsed as \"legacy_rmidi is live\"\nand calls ump_legacy_set_rawmidi_name(), which snprintf()s into\nump->legacy_rmidi->name. If a UMP packet arrives in that window\n(IRQ path from snd_ump_receive), legacy_rmidi is still NULL\n(KASAN null-ptr-deref in snprintf).\n\nGuard the legacy helpers. parsed only means endpoint info was\nparsed, not that legacy_rmidi exists.",
   "datePublished": "Sep 25, 2026, 10:24:21 AM",
-  "dateUpdated": "Oct 3, 2026, 11:02:12 AM",
+  "dateUpdated": "Oct 19, 2026, 9:13:38 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d6f9af093dc91dac8848a01e417b8109c651c0b2\nhttps://git.kernel.org/stable/c/1c8e01792adf91879322f1ad752f1814de8b7e7d\nhttps://git.kernel.org/stable/c/228075f31b141395233218712242913125ace4e0\nhttps://git.kernel.org/stable/c/a4cef20cd473e0640fefd38094d4baac0ec76ae3\nhttps://git.kernel.org/stable/c/adeee7187694719890aaffdc14b7e89cfd736f1d\n",
   "aliases": "CVE-2026-98086\nGHSA-54q5-26wc-pgp6\n",
@@ -81,6 +81,16 @@
       "product_version": "patch: 7.2.7"
     },
     {
+      "id": "a42bc1a6-fdfe-329a-a8e9-78c394cbee8e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "abe09288-a075-3c52-8a72-4ae308040924",
       "product": {
         "name": "Linux",
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "patch: 6.6.158"
-    },
-    {
-      "id": "ef454f85-9a12-3364-ae24-44dab37c811e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     }
   ],
   "enisaIdVendor": [

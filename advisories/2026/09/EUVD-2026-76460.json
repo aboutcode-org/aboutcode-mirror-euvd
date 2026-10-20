@@ -3,7 +3,7 @@
   "enisaUuid": "ea01a80f-0e67-31b2-92eb-ba157d3518fd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: route to a populated pool in svc_pool_for_cpu()\n\nsvc_set_num_threads() spreads the requested threads evenly across the\nservice's pools (base = nrservs / sv_nrpools).  When a service runs\nfewer threads than it has pools -- e.g. an nfsd configured with fewer\nthreads than the host has NUMA nodes while running in \"pernode\" or\n\"percpu\" mode -- the trailing pools are left with no threads at all.\n\nsvc_xprt_enqueue() selects a pool from the CPU servicing the transport,\nqueues the transport on that pool's sp_xprts, and only wakes a thread\nfrom the same pool.  Each thread services exclusively its own pool, so a\ntransport that lands on a threadless pool is enqueued on sp_xprts and\nnever picked up: the connection hangs indefinitely.\n\nHave svc_pool_for_cpu() skip pools that currently have no threads,\nfalling back to the next populated pool.  This trades NUMA locality for\na guarantee that the work is actually serviced.  sp_nrthreads is only\nupdated under the service mutex; the lockless read here is a best-effort\nrouting hint, so annotate it with data_race().",
   "datePublished": "Sep 11, 2026, 7:44:23 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:42 PM",
+  "dateUpdated": "Oct 19, 2026, 8:48:42 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -83,16 +83,6 @@
       "product_version": "patch: 5.15.221"
     },
     {
-      "id": "88b23df5-d4c6-35a8-ba22-ebded9c507bd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "9a6ef549-0d13-30dd-aac8-90e928e059ff",
       "product": {
         "name": "Linux",
@@ -111,6 +101,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "9bbfa808-ba33-360b-add5-955cdae5b063",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "beb9993e-6477-3bf5-9ece-411b8fc1adf2",

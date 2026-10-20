@@ -3,7 +3,7 @@
   "enisaUuid": "387a1497-f2d6-3efe-b926-4adb70ff8405",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: core: fix adapter deregistration race\n\nAdapters can be looked up by their id using i2c_get_adapter() which\ntakes a reference to the embedded struct device.\n\nRemove the adapter from the IDR before tearing it down during\nderegistration (and on registration failure) to make sure its resources\nare not accessed after having been freed (e.g. the device name).",
   "datePublished": "Jul 25, 2026, 8:49:23 AM",
-  "dateUpdated": "Oct 16, 2026, 3:42:28 PM",
+  "dateUpdated": "Oct 19, 2026, 8:28:17 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

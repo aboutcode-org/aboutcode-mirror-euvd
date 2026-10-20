@@ -3,7 +3,7 @@
   "enisaUuid": "5a4bf46c-a245-3628-b92a-35fe7e737fda",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: mpfs: fix unchecked devm_clk_get() error pointer in probe()\n\ndevm_clk_get(&pdev->dev, \"rtcref\")'s return value was passed straight\ninto clk_get_rate() without checking it for an error first, unlike the\n\"rtc\" clock a few lines above which is correctly checked with\nIS_ERR(). clk_get_rate() only guards against a NULL clk, not an error\npointer:\n\n\tif (!clk)\n\t\treturn 0;\n\t...\n\trate = clk_core_get_rate_recalc(clk->core);\n\nso if devm_clk_get() ever returns an error pointer here (for example\nERR_PTR(-EPROBE_DEFER), which is the normal, expected outcome if the\nclkcfg clock-provider this RTC depends on has not registered its\nclocks yet by the time this driver probes), clk_get_rate() dereferences\nthat error pointer instead of returning 0, crashing instead of letting\nprobe defer.\n\nCapture the clock in the existing 'clk' local and check it with\nIS_ERR() before calling clk_get_rate(), matching the handling already\nused for the \"rtc\" clock in this same function.",
   "datePublished": "Oct 18, 2026, 3:49:17 PM",
-  "dateUpdated": "Oct 18, 2026, 3:49:17 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:18 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/74dc7c52946e3d47c40edd0875adb7cc15937066\nhttps://git.kernel.org/stable/c/cfd70c9b19846c524f2b6195a7484bdf22071ccf\nhttps://git.kernel.org/stable/c/8a03f8422fa08eed335c51bccb612a3d81739ff2\nhttps://git.kernel.org/stable/c/ac41b05d15db3134e839148290d67415ee0bdb58\n",
   "aliases": "GHSA-44qj-hfjm-pr88\nCVE-2026-98825\n",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "6.0"
-    },
-    {
-      "id": "1edc7a24-e815-374f-ba63-307254441dd8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "2c8df225-3b0d-367c-9b4a-8b721fda4bb9",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "8a9f1b0d-410b-3b40-99e0-80a0b4c0bb40",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8cbdff3e-1ddc-3cfd-b1b9-cb48fbbd611d",

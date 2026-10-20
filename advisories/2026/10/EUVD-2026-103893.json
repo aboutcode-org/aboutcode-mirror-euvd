@@ -3,13 +3,23 @@
   "enisaUuid": "e0e7c5bc-497b-3d61-82e0-e271aa274876",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: systemport: Fix buffer overflow in bcm_sysport_get_stats()\n\nWhen running on SYSTEMPORT Lite, certain statistics are unsupported and\nskipped during bcm_sysport_get_stats(). The variable 'j' tracks the\ncompacted index into the destination data buffer, whereas 'i' iterates\nover all elements in bcm_sysport_gstrings_stats.\n\nBecause the buffer allocated by ethtool is sized only according to\nbcm_sysport_get_sset_count(), storing values at data[i] instead of\ndata[j] writes past the allocated array bounds, leading to memory\ncorruption.\n\nFix this by writing to data[j] instead of data[i].",
   "datePublished": "Oct 18, 2026, 3:48:55 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:55 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:01 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/29d1d35ad5ad379a904263ea1cd4ba1d71cd965f\nhttps://git.kernel.org/stable/c/96d8b26be5bc451188acdcee055948da45adbde0\nhttps://git.kernel.org/stable/c/faba9fdde480356f4a1d3b1a5713b7b354858a1c\nhttps://git.kernel.org/stable/c/eb7b84af0ec5c71b4920e999611b466b3784496c\n",
   "aliases": "CVE-2026-98808\nGHSA-887q-3qpv-x22r\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
+    {
+      "id": "02112003-04ef-30eb-9dfd-3840e0e987fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "049ee293-5268-3cda-b837-e7c1dd978aa1",
       "product": {
@@ -19,16 +29,6 @@
         }
       },
       "product_version": "10377ba7673d19e28d92846955d51f49acd25c35 <96d8b26be5bc451188acdcee055948da45adbde0"
-    },
-    {
-      "id": "18c6eb23-717a-326d-969e-b4aa5498dd3b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "2708e6b3-3b15-3693-ad02-ff5e3bdf387c",

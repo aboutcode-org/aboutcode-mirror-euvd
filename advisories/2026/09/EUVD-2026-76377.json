@@ -3,7 +3,7 @@
   "enisaUuid": "8c16113f-b3ee-31ca-b2e1-6c28f976b859",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: cros_usbpd-charger: bound the EC-reported port count\n\ncros_usbpd_charger_probe() reads two port counts from the EC and uses\none of them, num_charger_ports, as the loop bound when populating a\nfixed-size array:\n\n\tstruct port_data *ports[EC_USB_PD_MAX_PORTS];\t/* 8 entries */\n\t...\n\tfor (i = 0; i < charger->num_charger_ports; i++)\n\t\tcharger->ports[charger->num_registered_psy++] = port;\n\nBoth num_usbpd_ports (from EC_CMD_USB_PD_PORTS) and num_charger_ports\n(from EC_CMD_CHARGE_PORT_COUNT) are u8 values reported by the EC. The\nonly validation is a sanity check that compares the two EC-reported\nvalues against each other:\n\n\tif (num_charger_ports < num_usbpd_ports ||\n\t    num_charger_ports > num_usbpd_ports + 1)\n\t\treturn -EPROTO;\n\nIt never checks either count against EC_USB_PD_MAX_PORTS, the size of\nthe ports[] array. A malfunctioning, malicious or compromised EC that\nreports num_usbpd_ports == num_charger_ports == N for any N > 8 (for\nexample both 255) passes this check, and the loop then writes N pointers\ninto the 8-entry ports[] array embedded in the devm_kzalloc()'d\ncharger_data, overflowing it by up to 255 - 8 = 247 entries (~1976\nbytes): a slab out-of-bounds write.\n\nReject a port count larger than the ports[] array can hold.",
   "datePublished": "Sep 11, 2026, 7:43:29 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:08 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:20 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "28fa028a-73a6-367f-b816-eb80a0151405",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4e145138-62db-384f-9b18-f57fe3956f94",
@@ -81,16 +91,6 @@
         }
       },
       "product_version": "patch: 6.6.157"
-    },
-    {
-      "id": "74028d21-3680-3dd0-af5f-5881fd861428",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "7458eeb2-e7b9-3e0a-ae8a-5b428b9976d5",

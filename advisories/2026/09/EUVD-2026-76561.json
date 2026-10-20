@@ -3,7 +3,7 @@
   "enisaUuid": "e58b9031-3dde-3427-aa47-3e0b5d0eca6b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: bound xattr value length in __build_xattrs()\n\n__build_xattrs() decodes the MDS-supplied xattr blob one attribute at a\ntime. For each attribute it reads a 32-bit name length, advances past the\nname bytes, reads a 32-bit value length, records the value pointer, and\nadvances past the value bytes. The two length fields are read with\nceph_decode_32_safe(), but the value bytes themselves are advanced over\nwith a bare \"p += len\" and no ceph_decode_need() check that \"len\" bytes\nremain in the blob.\n\nFor every attribute except the last, the next iteration's\nceph_decode_32_safe() on the following name length implicitly verifies\nthat the previous value did not run past the blob end. The final\nattribute has no successor, so its decoded value length is never checked\nagainst the blob bounds. A malicious or compromised metadata server can\nset the last attribute's value length larger than the bytes actually\npresent in the blob.\n\nThe blob is a dedicated kvmalloc() allocation sized to the wire length\n(ceph_buffer_new() in ceph_fill_inode()). __set_xattr() records the\noversized length in xattr->val_len verbatim, and a later getxattr(2) runs\nmemcpy(value, xattr->val, xattr->val_len) into a user-supplied buffer,\ncopying bytes past the end of the allocation back to user space.\n\nImpact: a malicious metadata server discloses adjacent kernel heap bytes\nto a local user via getxattr(2) on a CephFS file. Add the missing\nceph_decode_need() so an out-of-bounds value length on the final\nattribute fails the decode and returns -EIO instead of being stored.",
   "datePublished": "Sep 11, 2026, 7:45:40 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:46 PM",
+  "dateUpdated": "Oct 19, 2026, 8:50:20 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
@@ -83,16 +83,6 @@
       "product_version": "2.6.34"
     },
     {
-      "id": "75aad685-ff4b-3e86-a87c-7d14206755f4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "7c0cd680-edd0-30d7-a69a-80b8661eb670",
       "product": {
         "name": "Linux",
@@ -131,6 +121,16 @@
         }
       },
       "product_version": "patch: 5.10.270"
+    },
+    {
+      "id": "9f9ed135-7de0-3e36-8ada-dede01156eed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "a0e4183c-2ffb-38f5-be45-9632e9cb59b9",

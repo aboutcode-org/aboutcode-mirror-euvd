@@ -3,7 +3,7 @@
   "enisaUuid": "1da7c77d-16c9-36fa-9285-b898b8d9b7dc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/vaddr: avoid hw-driven pte updates during damon_hugetlb_mkold()\n\ndamon_hugetlb_mkold() reads the page table entry into a local variable,\nunsets the accessed bit in the variable, and updates the page table entry\nwith the updated variable value.  If hardware updates the same page table\nentry in parallel, the hw updates could be lost.  For example,\nhardware-updated dirty bits might be lost.\n\nAvoid the parallel updates by clearing the page table entry when reading\nit together, using huge_ptep_get_and_clear().  If a parallel write to the\nmemory is made after the clearing, the hw will see the page table entry is\ncleared, trigger page fault and wait until it is handled.  The page fault\nhandling will wait for damon_hugetlb_mkold() due to the page table lock.\n\nBecause hugetlbfs is an in-memory file system and hugetlb pages cannot be\nreclaimed, no critical issue is expected to my best knowledge.  But\ndefinitely this is a nasty bug that should be fixed sooner rather than\nlater.\n\nThe issue was discovered [1] by Sashiko.",
   "datePublished": "Oct 18, 2026, 3:17:06 PM",
-  "dateUpdated": "Oct 18, 2026, 3:17:06 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/00457981327c80bcc56e07d4714fe189337a19fa\nhttps://git.kernel.org/stable/c/e59cb7eda7c06334a0faf5aa44adb6acf2a1287a\nhttps://git.kernel.org/stable/c/6e74ffc9ecf6ec24eee117150da78a1102be74c5\nhttps://git.kernel.org/stable/c/39c0ceedd54557bdc1542de08d22b2ed33e534e4\n",
   "aliases": "GHSA-mr9h-5fpp-c352\nCVE-2026-98505\n",
@@ -71,16 +71,6 @@
       "product_version": "49f4203aae06ba9d67b500c90339b262b0a52637 <00457981327c80bcc56e07d4714fe189337a19fa"
     },
     {
-      "id": "a5867ea5-e1e0-31da-aff8-cc65b475464a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
-    },
-    {
       "id": "b9404720-2516-3a0d-91ec-11e1151c580a",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.18.55"
+    },
+    {
+      "id": "f5caa632-847a-38ee-b233-77bfa2816ae1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "fe3eedfe-329c-317d-b915-36f677fe8ece",

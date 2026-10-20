@@ -3,7 +3,7 @@
   "enisaUuid": "3f21867a-b46b-362a-ae62-75ebeae46299",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\necryptfs: reject too-small tag 70 packets\n\necryptfs_parse_tag_70_packet() subtracts fixed metadata fields from the\nparsed packet body size to derive the encrypted filename size.  A\nmalformed packet with a body smaller than those fixed fields can underflow\nthat size calculation.\n\nReject tag 70 packets before the subtraction unless the body contains the\nsignature, cipher code, and at least one byte of encrypted filename data.",
   "datePublished": "Sep 11, 2026, 7:45:08 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:26 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:37 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 6.12.109"
+    },
+    {
+      "id": "38ee821d-def4-3269-88d7-447df41365c9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "3ed46f39-38a9-3929-958e-63a3c3bdb77e",
@@ -161,16 +171,6 @@
         }
       },
       "product_version": "9c79f34f7ee71cd28272332b424ca64b2be006ab <414a0f04feb06f03523edf7e2a8be1d7f1a9b160"
-    },
-    {
-      "id": "db731e28-e705-31ae-84d7-b55a4368dcf0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "e8a87752-6f0e-365d-8d3f-9349dd6e508f",

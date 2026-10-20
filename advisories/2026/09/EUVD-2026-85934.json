@@ -3,12 +3,12 @@
   "enisaUuid": "a9a56e3f-f47d-357e-9e5f-119c1bfaf73c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/arm-smmu-v3: Manage teardown with devm\n\narm_smmu_device_remove() manually frees the IOPF queue, destroys the\nvmid_map and disables the device, while the IRQs and queues are devm\nmanaged. devm unwinds only after remove() returns, so the cleanup runs\nin the wrong order. The IOPF queue is freed before the event-queue IRQ\nwhose handler uses it.\n\nManage all of it with devm so the unwind order is correct. Free the IOPF\nqueue and vmid_map via devm actions, and disable the device from one\nregistered after arm_smmu_device_reset().\n\nThis is also a prerequisite for fixing a Tegra241 CMDQV CMD_SYNC\nuse-after-free in the subsequent patch.",
   "datePublished": "Sep 24, 2026, 3:10:28 PM",
-  "dateUpdated": "Sep 25, 2026, 12:42:34 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/981686f4137760a16a03c5193f11d85133533f93\nhttps://git.kernel.org/stable/c/2235eafda9b3df9295efd0593cd4a8977440c3f6\nhttps://git.kernel.org/stable/c/78fd5a2d65f3546cb4285f8e52f445baecbd00e0\nhttps://git.kernel.org/stable/c/2bd22a0d40503a65d243b011de146603c8ce1cbc\n",
   "aliases": "GHSA-7g45-qp7m-q8xg\nCVE-2026-93205\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "01c1484f-67ac-35f3-a144-f743b601b51f",
@@ -71,6 +71,16 @@
       "product_version": "patch: 6.18.50"
     },
     {
+      "id": "7a705d11-4fd5-384b-8caf-b20571884739",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "94346625-441d-3aa9-9b54-dee4b10f1f4e",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "b8022bda-fc22-3307-8e6d-82167f53cae9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "e407a7d5-a2be-33c7-819d-5a1963457a43",

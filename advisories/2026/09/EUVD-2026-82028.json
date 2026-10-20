@@ -3,15 +3,25 @@
   "enisaUuid": "a743b987-b164-3870-b751-3d6486b2a926",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: hold dev->mt76.mutex while disabling tx worker in SER\n\nmt7996_mac_reset_work() parked the tx worker and disabled the RX/TX NAPIs\nbefore taking dev->mt76.mutex. mt76_worker_disable()/_enable() are plain\nkthread park/unpark, not refcounted, and __mt76_set_channel() toggles the\nsame worker and the MT76_RESET bit under the mutex. An L1 SER racing a\nchannel switch could therefore have the worker unparked and MT76_RESET\ncleared while the reset path resets the DMA rings, corrupting descriptors\nor tokens. Take the mutex before disabling the worker, as mt7915 does.",
   "datePublished": "Sep 17, 2026, 4:09:09 PM",
-  "dateUpdated": "Sep 18, 2026, 5:54:51 PM",
+  "dateUpdated": "Oct 19, 2026, 9:02:26 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/906ad486ba5c4933d82e1ebe0685656390a48450\nhttps://git.kernel.org/stable/c/594c4b7f89f9ea75dc9c50b5e4c4296db4a3d701\nhttps://git.kernel.org/stable/c/6190db312b8230813f529f014b26247c6d9800d0\n",
   "aliases": "CVE-2026-90367\nGHSA-rjqr-mg4v-422g\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.38,
   "enisaIdProduct": [
+    {
+      "id": "1e03c524-859b-3e62-8fef-ef9adb130079",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "273be179-6ad5-3431-adc3-c67faf1be97f",
       "product": {
@@ -51,16 +61,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "77cf57ed-90d2-3753-8d76-71eb1ffdafc1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "8f8a9a76-5fc5-3100-90bb-1a16584615ed",

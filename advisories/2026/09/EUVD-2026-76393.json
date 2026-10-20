@@ -3,7 +3,7 @@
   "enisaUuid": "5f9453f0-90f4-3e29-9247-962c59adccc7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: only skb_tx_error() a packet we are about to drop\n\nqueue_userspace_packet() borrows the packet skb -- it only copies it into\na private netlink message (user_skb) and does not own it; on return\ndo_execute_actions() keeps forwarding it through the flow's remaining\nactions. Its error path nevertheless calls skb_tx_error(skb), which via\nskb_zcopy_clear() does skb_shinfo(skb)->flags &= ~SKBFL_ALL_ZEROCOPY,\nstripping SKBFL_SHARED_FRAG from that live skb (skb_tx_error()'s kerneldoc\nsays \"skb must be freed afterwards\").\n\nFor a MSG_ZEROCOPY skb carrying page-cache frags, SKBFL_SHARED_FRAG is\nwhat makes esp_input() skb_cow_data() before in-place AEAD; once it is\nstripped a later local ESP-in-UDP delivery decrypts in place over pages\nthe sender does not own -- an unprivileged page-cache write (the\n\"Fragnesia\" primitive).\ndo_execute_actions() ignores output_userspace()'s return value, so any\naction after a failed USERSPACE upcall inherits the stripped skb.\n\nMove the skb_tx_error() to the flow-miss drop path - the \"default\"\nbranch of ovs_dp_process_packet()'s switch(error), before kfree_skb().\n\nThe call has been here since commit 36d5fe6a0007 (\"core, nfqueue,\nopenvswitch: Orphan frags in skb_zerocopy and handle errors\") but was\nharmless until esp_input() began relying on SKBFL_SHARED_FRAG to gate\nin-place decrypt; only then did stripping it on a still-forwarded skb\nbecome a page-cache write primitive.",
   "datePublished": "Sep 11, 2026, 7:43:40 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:40 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:37 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -53,16 +53,6 @@
       "product_version": "36d5fe6a000790f56039afe26834265db0a3ad4c <4d5c460ef8754be1d43b16dbf02695b008b207d6"
     },
     {
-      "id": "364facc3-3c56-3aaa-9406-23f79f336738",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "469175bb-ac83-3472-bfe4-d5af11b74d9d",
       "product": {
         "name": "Linux",
@@ -101,6 +91,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "69a79b18-c6f3-3404-9179-7e3af858b8dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "6dc11af4-f253-3bea-84ce-fe2ce8f9588e",

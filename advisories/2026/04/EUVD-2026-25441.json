@@ -3,7 +3,7 @@
   "enisaUuid": "f1e5305a-e688-32f9-b3ef-a8302c64ecc4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: cancel pmsr_free_wk in cfg80211_pmsr_wdev_down\n\nWhen the nl80211 socket that originated a PMSR request is\nclosed, cfg80211_release_pmsr() sets the request's nl_portid\nto zero and schedules pmsr_free_wk to process the abort\nasynchronously. If the interface is concurrently torn down\nbefore that work runs, cfg80211_pmsr_wdev_down() calls\ncfg80211_pmsr_process_abort() directly. However, the already-\nscheduled pmsr_free_wk work item remains pending and may run\nafter the interface has been removed from the driver. This\ncould cause the driver's abort_pmsr callback to operate on a\ntorn-down interface, leading to undefined behavior and\npotential crashes.\n\nCancel pmsr_free_wk synchronously in cfg80211_pmsr_wdev_down()\nbefore calling cfg80211_pmsr_process_abort(). This ensures any\npending or in-progress work is drained before interface teardown\nproceeds, preventing the work from invoking the driver abort\ncallback after the interface is gone.",
   "datePublished": "Apr 24, 2026, 2:33:16 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:15 PM",
+  "dateUpdated": "Oct 19, 2026, 6:55:58 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

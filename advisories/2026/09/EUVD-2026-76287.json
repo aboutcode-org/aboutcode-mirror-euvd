@@ -3,7 +3,7 @@
   "enisaUuid": "e3b351ad-7c43-38d0-995b-53e5a2590955",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: virmidi: Check card index validity at probe\n\nvirmidi driver blindly trusts that the given devptr->id value is\nwithin the proper card index range at probe.  It's OK for the devices\nthe driver itself creates at the module probe time, but if the device\nis bound manually via sysfs interface, this could be -1 as \"none\", and\nthis leads to OOB access for index[] and other parameters.\n\nAdd a sanity check for the card index and warn/correct it if it's a\nvalue out of the range.",
   "datePublished": "Sep 11, 2026, 7:42:29 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:10 AM",
+  "dateUpdated": "Oct 19, 2026, 8:45:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3ee9cea821730805f232f1e4db0f95e7420477fc\nhttps://git.kernel.org/stable/c/ffefee7daf2362f534097422bb7f8894e798adfd\nhttps://git.kernel.org/stable/c/368c521503e38e9bcfcf04c053eb1f85d22391b2\nhttps://git.kernel.org/stable/c/43f161c53279adac0517cf1c443e531e738b54ce\nhttps://git.kernel.org/stable/c/40ee4224e2fe24c05b92e4d37476adb6e83f10e9\nhttps://git.kernel.org/stable/c/f48c5f3b03afdb795e5f448a1d53d912d5b09f2e\nhttps://git.kernel.org/stable/c/b65d5182ecd6b7a24a83d980a0d06e809ef876c5\n",
   "aliases": "CVE-2026-80964\nGHSA-hvhj-8cmg-w82m\n",
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "3564fbb880f9a62ddbb81b7440c32e0e6619c52d <f48c5f3b03afdb795e5f448a1d53d912d5b09f2e"
+    },
+    {
+      "id": "22ba4f7f-ae5f-3c7b-bf41-d59506812a5b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "3e6f2f32-cb1a-35d2-82f8-cb60f97d19ea",
@@ -139,16 +149,6 @@
         }
       },
       "product_version": "patch: 6.12.109"
-    },
-    {
-      "id": "c444fb32-3659-3aee-9599-dfbca45d1ae9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "c9cb15f8-d7ad-3008-a38f-eb13b1a47560",

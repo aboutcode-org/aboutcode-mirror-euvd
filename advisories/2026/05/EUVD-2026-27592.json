@@ -3,7 +3,7 @@
   "enisaUuid": "8e95fbb8-6d7a-34de-9e06-80c13ac10673",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Wait for RCU readers during policy netns exit\n\nxfrm_policy_fini() frees the policy_bydst hash tables after flushing the\npolicy work items and deleting all policies, but it does not wait for\nconcurrent RCU readers to leave their read-side critical sections first.\n\nThe policy_bydst tables are published via rcu_assign_pointer() and are\nlooked up through rcu_dereference_check(), so netns teardown must also\nwait for an RCU grace period before freeing the table memory.\n\nFix this by adding synchronize_rcu() before freeing the policy hash tables.",
   "datePublished": "May 6, 2026, 7:40:23 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:32 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

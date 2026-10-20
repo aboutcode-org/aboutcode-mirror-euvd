@@ -3,7 +3,7 @@
   "enisaUuid": "de8ad97b-bbaf-3936-b646-0cdabf90a1c5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix locking usage for tcon fields\n\nWe used to use the cifs_tcp_ses_lock to protect a lot of objects\nthat are not just the server, ses or tcon lists. We later introduced\nsrv_lock, ses_lock and tc_lock to protect fields within the\ncorresponding structs. This was done to provide a more granular\nprotection and avoid unnecessary serialization.\n\nThere were still a couple of uses of cifs_tcp_ses_lock to provide\ntcon fields. In this patch, I've replaced them with tc_lock.",
   "datePublished": "May 6, 2026, 11:28:17 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:37 PM",
+  "dateUpdated": "Oct 19, 2026, 7:16:24 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",

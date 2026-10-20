@@ -3,7 +3,7 @@
   "enisaUuid": "5efa6247-5b03-393d-a690-951f5474fda3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix OOB access from firmware ADDBA window size\n\naggr_recv_addba_req_evt() logs a debug message when the firmware-supplied\nwin_sz is outside [AGGR_WIN_SZ_MIN, AGGR_WIN_SZ_MAX] but does not\nreturn. The out-of-range win_sz is then used in TID_WINDOW_SZ() to\ncompute a kzalloc size and stored in rxtid->hold_q_sz, leading to\nzero-size or overflowed allocations and subsequent out-of-bounds access.\n\nClean up any previously active aggregation session for the TID first,\nthen return early when win_sz is out of the valid range, instead of\nproceeding with a broken allocation size.",
   "datePublished": "Aug 10, 2026, 12:00:18 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:03 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:56 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

@@ -3,12 +3,12 @@
   "enisaUuid": "09fd7a37-03e3-3e18-8ad5-91700f3e138a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmemcg: make the v1 soft limit knob inert\n\nThe v1 soft limit has been deprecated since v6.12 and nobody has reported\ndepending on it.  Start the removal by decoupling the interface from the\nimplementation: keep memory.soft_limit_in_bytes, but ignore writes to it\nand always report the maximum value on read similar to what\nmemory.kmem.limit_in_bytes already does.\n\nWrites are still parsed, so malformed input keeps returning -EINVAL.  The\nknob now also behaves the same everywhere: it used to return -EOPNOTSUPP\non PREEMPT_RT, where soft limit reclaim has always been disabled.\n\nThis also fixes the syzbot report linked below.  Soft limit reclaim is the\nonly caller that runs shrink_lruvec() from kswapd against a specific\nmemcg, so it is the only way to reach lru_gen_shrink_lruvec() and in turn\nset_mm_walk(), which warns when called from kswapd.",
   "datePublished": "Sep 24, 2026, 3:34:32 PM",
-  "dateUpdated": "Sep 25, 2026, 12:42:40 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/72fb67f6e0e5d78e4f34cf9929d1afdb0fd54203\nhttps://git.kernel.org/stable/c/0a90e268cce7023f34087bfa4affb42e29ff5f45\nhttps://git.kernel.org/stable/c/5ec8f629a300cc40e746d6178f724bdff7683fa7\nhttps://git.kernel.org/stable/c/a3417097fb107cea3358b19bcbb4eb655fd67f8c\n",
   "aliases": "GHSA-xfgg-2xcm-vrc8\nCVE-2026-93240\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "003a9331-3752-3320-9c85-0c683b4f8a49",
@@ -101,14 +101,14 @@
       "product_version": "patch: 7.2.5"
     },
     {
-      "id": "fac15e13-47fa-372d-8ae5-0dab1d3dfb5b",
+      "id": "ffe865e0-c57c-396f-acab-ec5c29b68ee6",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc2"
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "8d37b10f-2515-3302-9203-7a95aeadc7dd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix a vulnerability of integer overflow in kfd debugger\n\nget_queue_ids() computes array_size = num_queues * sizeof(uint32_t),\nwhich could overflow on 32-bit size_t build. using array_size()\ninstead, it saturates to SIZE_MAX on overflow.\n\n(cherry picked from commit 2d57a0475f085c08b49312dfd8edcb461845f285)",
   "datePublished": "Jul 19, 2026, 2:54:53 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:09 PM",
+  "dateUpdated": "Oct 19, 2026, 8:17:54 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

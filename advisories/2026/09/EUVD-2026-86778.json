@@ -3,7 +3,7 @@
   "enisaUuid": "a9f3d07c-ebfa-3c1f-b2bf-8835319d3d91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/user_events: Don't destroy fields when event removal fails\n\ndestroy_user_event() destroys the event's fields before attempting to\nremove the trace event call. If user_event_set_call_visible() fails,\ne.g. because the event is still enabled and trace_remove_event_call()\nreturns -EBUSY, the event is left registered with an irreversibly\ndestroyed field list. Any subsequent interaction with the event then\noperates on an empty field list while it is still fully visible in\ntracefs.\n\nMove the field destruction after the call removal, and splice the\nfield list back onto the event when the removal fails so the event\nremains in a consistent state.",
   "datePublished": "Sep 25, 2026, 10:22:42 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:37 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:51 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a3d9b8b7c8f3627976fe758c77ffd3da260824d7\nhttps://git.kernel.org/stable/c/9c62b7e92b6086a2a0aeb71f3553dd8cf7fdcd8b\nhttps://git.kernel.org/stable/c/0892da2272ec565858aa1ec5458552d699de9142\nhttps://git.kernel.org/stable/c/62d6544e86506bb0695c9594c713cba859666f2f\nhttps://git.kernel.org/stable/c/2deb753127d7b7035e893955c5e91875e767d1f8\n",
   "aliases": "CVE-2026-97924\nGHSA-jx2m-2c39-9c87\n",
@@ -91,14 +91,14 @@
       "product_version": "5.18"
     },
     {
-      "id": "c50fa578-a6c5-350a-88b7-e44a76451592",
+      "id": "bf068a79-5659-323f-9f58-ffb2cd17be9b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc3"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d7bb83ad-9745-37a1-9a0f-c29422ce493c",

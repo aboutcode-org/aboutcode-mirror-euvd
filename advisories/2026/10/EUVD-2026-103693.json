@@ -3,7 +3,7 @@
   "enisaUuid": "df9f241f-0a96-3f7a-810b-bbc9fca2cdbe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: close handle after create-context parsing failure\n\nSMB2_open() accounts a successful CREATE response as a remote open before\nparsing its create contexts.  If smb2_parse_contexts() rejects malformed\ncontext data, SMB2_open() returns without closing the handle, leaving the\nserver-side handle open and num_remote_opens elevated.\n\nClose the handle after a post-CREATE context parsing failure so the error\npath releases the remote resource and balances the open count.",
   "datePublished": "Oct 18, 2026, 3:15:03 PM",
-  "dateUpdated": "Oct 18, 2026, 3:15:03 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/80c67cc71d32ccafc89a29b669243b40d81b930f\nhttps://git.kernel.org/stable/c/f09875ff901e933e7b22c913daf51d21e9d93a45\nhttps://git.kernel.org/stable/c/cdb36b09fb1f86d638d0afb44d621ed3f7c1d8eb\nhttps://git.kernel.org/stable/c/566820af017e81497fb5e9d3ad6e7ffe2828bc8b\n",
   "aliases": "CVE-2026-98453\nGHSA-8g43-4633-h8mf\n",
@@ -121,16 +121,6 @@
       "product_version": "6.1.79 <6.2"
     },
     {
-      "id": "81692ef4-6042-3d37-ba1f-6c272645d4ce",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
-    },
-    {
       "id": "8bd332d1-8f15-38af-a766-b4947e7d2aeb",
       "product": {
         "name": "Linux",
@@ -169,6 +159,16 @@
         }
       },
       "product_version": "17a0f64cc02d4972e21c733d9f21d1c512963afa"
+    },
+    {
+      "id": "ab376394-d939-3a48-a71a-6aa8eaf6baa3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "bcef1091-ca53-3449-948f-2e78fba96b89",

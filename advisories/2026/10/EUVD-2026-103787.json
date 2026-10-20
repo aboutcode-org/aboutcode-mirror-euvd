@@ -3,7 +3,7 @@
   "enisaUuid": "239bf122-8c22-3b0a-a572-e6b278f2ae83",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: spear: initialize IRQ state before requesting alarm IRQ\n\ndevm_request_irq() enables the interrupt before it returns, so the handler\nmay run while probe is still initializing the device. Initialize the MMIO\naddress and spinlock before requesting the alarm IRQ.",
   "datePublished": "Oct 18, 2026, 3:50:40 PM",
-  "dateUpdated": "Oct 18, 2026, 3:50:40 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:39 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c02aa67ea34a826c2cb1aa65d77cf32fafb7eec3\nhttps://git.kernel.org/stable/c/e0cabda9b6f4dd276c55c40bdbb251e8507ae60e\nhttps://git.kernel.org/stable/c/cb6d6a7fbff0414b9eed505d17687b4b7e38fee8\nhttps://git.kernel.org/stable/c/055ef5ce9f67a6a3a1363fa663007f8196cc0fb8\n",
   "aliases": "GHSA-8gmj-mrfm-vm8g\nCVE-2026-98847\n",
@@ -51,14 +51,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "68279cc9-aa86-3fb1-a491-e675ca89798b",
+      "id": "7dc5566b-998a-369f-9e4a-6f18c4dc463a",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "87701e28-fce2-3abc-84f1-2fe052ed2d51",

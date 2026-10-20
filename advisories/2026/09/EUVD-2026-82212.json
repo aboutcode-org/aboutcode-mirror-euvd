@@ -3,12 +3,12 @@
   "enisaUuid": "2e38dca1-6455-3e96-a57f-7cf026c10752",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rvt: Return NULL after port allocation failure\n\nrvt_alloc_device() deallocates the IB device when its port array cannot\nbe allocated but then returns the pointer to the released allocation.\nCallers treat any non-NULL value as valid and dereference it, resulting\nin a use-after-free.\n\nReturn NULL immediately after deallocation so callers can propagate the\nallocation failure.",
   "datePublished": "Sep 17, 2026, 4:11:15 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:26 AM",
+  "dateUpdated": "Oct 19, 2026, 9:05:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/80968b42d13080bf7bc1f3ee17fef126ce2ad98f\nhttps://git.kernel.org/stable/c/b1e1b25723af44328524c7b54433e4bf0ab9930c\nhttps://git.kernel.org/stable/c/2982eaf3b9d2d953318c74cd6f1b7576ea6d7b1f\n",
   "aliases": "GHSA-wqhx-qpfw-hj6x\nCVE-2026-93104\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0802b0a7-b7e5-33f7-b8d2-06b04709aec2",
@@ -51,16 +51,6 @@
       "product_version": "patch: 7.2.6"
     },
     {
-      "id": "6b3695af-ba93-3cec-8419-11b64916fb5a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "84632f51-ae34-3eae-9186-933f514d7b6e",
       "product": {
         "name": "Linux",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "b91ab5a8-24ad-3397-9db2-d440dd613d49",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

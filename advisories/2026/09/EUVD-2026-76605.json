@@ -3,7 +3,7 @@
   "enisaUuid": "ac0bcba1-e232-30fe-b085-8a49db397aee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: check nfsd4_acl_to_attr() return value in nfsd4_create()\n\nnfsd4_create() stores the return value of nfsd4_acl_to_attr() in\nstatus, but the switch(create->cr_type) block unconditionally\noverwrites it in every branch. ACL translation errors are silently\ndiscarded, and the CREATE proceeds without the requested ACL.\n\nAdd an early exit check after nfsd4_acl_to_attr(), matching the\npattern already used in nfsd4_setattr().\n\n[ cel: prefer NFS4ERR_BADTYPE over NFS4ERR_ATTRNOTSUPP ]",
   "datePublished": "Sep 11, 2026, 7:46:12 PM",
-  "dateUpdated": "Sep 21, 2026, 1:14:48 PM",
+  "dateUpdated": "Oct 19, 2026, 8:51:06 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/26877d3a09afb3838a053867a655ca30c46a1f81\nhttps://git.kernel.org/stable/c/430ed49a16cf9ca249d0fb51490582090bc4848b\nhttps://git.kernel.org/stable/c/80cebb0e8a8d1e758f0d671f5e047279c5c3e528\nhttps://git.kernel.org/stable/c/2c7912732184773dbd371a411da87af1cc080b86\n",
   "aliases": "GHSA-hqc5-5f52-xmgw\nCVE-2026-89693\n",
@@ -41,6 +41,16 @@
       "product_version": "c0cbe70742f4a70893cd6e5f6b10b6e89b6db95b <26877d3a09afb3838a053867a655ca30c46a1f81"
     },
     {
+      "id": "29f55730-42b6-368e-977d-265869c7dcb2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "2f9ebcb2-6bbb-323f-8abe-80b4c07e86ae",
       "product": {
         "name": "Linux",
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "5.15.154 <5.16"
-    },
-    {
-      "id": "54d53cd8-95bf-325b-9590-5a5a118cdaba",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "5b342976-9c6c-363f-9f2c-24aa1f64c2c8",

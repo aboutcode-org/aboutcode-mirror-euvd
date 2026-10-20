@@ -3,12 +3,12 @@
   "enisaUuid": "98d4a695-9c92-39b3-b544-33da56b9b90f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Reject connection when transport allocation fails\n\nhandle_connect_req() returns without action when\nsvc_rdma_create_xprt() fails to allocate the new transport.\nThe CM core returns 0 for CONNECT_REQUEST events, so it does\nnot destroy the new rdma_cm_id. Each allocation failure under\nmemory pressure leaks one rdma_cm_id, and a remote peer driving\nconnection attempts can amplify this.\n\nReject the connection by returning a non-zero status from the\nCM event handler, which tells the CM core to destroy the\norphaned cm_id.",
   "datePublished": "Sep 11, 2026, 7:44:10 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:10 PM",
+  "dateUpdated": "Oct 19, 2026, 8:48:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6e21754bbf75075f3fee1cebc79f3417364235ec\nhttps://git.kernel.org/stable/c/3cf372cec7ab2cd8c6002bf775cc14d90ccb098b\nhttps://git.kernel.org/stable/c/1f6a14c142fee4778c32709d1d54595c2e2b7991\nhttps://git.kernel.org/stable/c/0944462247dcb7de7622cdaaadf5f05c52707dab\n",
   "aliases": "GHSA-vgrv-wfr9-vqh2\nCVE-2026-89531\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1fb0f4e2-b116-36f4-b17d-a967390d8f31",
@@ -21,14 +21,14 @@
       "product_version": "2.6.25"
     },
     {
-      "id": "3fe3659b-7314-3157-9418-56ab683e6b74",
+      "id": "3a167e46-d15d-3e01-8061-409a7887118e",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "41d6fe8b-d112-35f3-a954-ced560f5f94d",

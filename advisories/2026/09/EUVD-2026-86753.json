@@ -3,23 +3,13 @@
   "enisaUuid": "a256349b-e2aa-3a4a-b670-5b9951f0f286",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: Fix memory leak in query_perf_config_list()\n\nWhen krealloc() fails, free the original oa_config_ids before returning\nto avoid a memory leak.\n\n(cherry picked from commit 9977e9d84f46d4f12ad35fbbc0ec4638554bce87)",
   "datePublished": "Sep 25, 2026, 10:22:27 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:20 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d60532306397233fb860860e9694f4e35abc0e80\nhttps://git.kernel.org/stable/c/c0c727809229119598b50aba2776d236fbaa7989\nhttps://git.kernel.org/stable/c/3726824aa1418594a7458721f8b8cafd5393a300\nhttps://git.kernel.org/stable/c/362c42720259f42abbbafa99a12cd14f74254b7c\nhttps://git.kernel.org/stable/c/d004303557924077a327d71c80f5863b1b9ff1d7\nhttps://git.kernel.org/stable/c/9ac6db531abe98adfd395fea25c00fee37de8154\nhttps://git.kernel.org/stable/c/59e0a04d95e160547065ab3704bd809ddf3f0e1e\nhttps://git.kernel.org/stable/c/cbd3dafc2003db679ccd2f6c6a2551db79657049\n",
   "aliases": "GHSA-jqpp-x7c4-x6fg\nCVE-2026-97899\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
-    {
-      "id": "07528997-7f26-3471-8f35-756e9beb5488",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
     {
       "id": "204a0cc4-a1d4-3d45-af49-b75899b6a7c1",
       "product": {
@@ -169,6 +159,16 @@
         }
       },
       "product_version": "5.5"
+    },
+    {
+      "id": "d7965042-0078-357c-9bef-3e3178b8096f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e0260acf-3d7a-3f5b-adfb-084f483b67d9",

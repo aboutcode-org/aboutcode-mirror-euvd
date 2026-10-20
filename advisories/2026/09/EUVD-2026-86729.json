@@ -3,22 +3,22 @@
   "enisaUuid": "fbe55e19-915c-31de-a8ec-1fb092ee907f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: fib: bound automatic table ID allocation\n\nfib_empty_table() probes every table ID from 1 until it finds a\nfree one.  IPv4 tables are stored in a 256-bucket hash table, so a\ndense set of IDs makes each probe walk a growing hash chain while\nRTNL is held.\n\nAutomatic table assignment (\"ip rule ... table 0\") is an IPv4-only\nlegacy path.  Bound the automatically allocated ID to 4096 so the\nRTNL hold stays bounded, without changing lookups of explicitly\nspecified table IDs.\n\nThis changes user-visible behavior.  A table-0 rule previously\nreceived the lowest free ID in 1..RT_TABLE_MAX (0xFFFFFFFF).  After\nthis patch the search stops at 4096 and the rule add fails with\nENOBUFS if that range is fully occupied.  Explicit table IDs above\n4096 remain usable.\n\nThe automatic path is unused in practice: it is IPv4-only, not\ndocumented by ip-rule, uncovered by kernel selftests, and both\nNetworkManager and systemd refuse table 0.",
   "datePublished": "Sep 25, 2026, 10:22:12 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:03 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/999bc00588cb305ab25065e8a8ac31da7465301c\nhttps://git.kernel.org/stable/c/f1f2da33eaab54b4d5cdea6d70befb2e2fb49cb6\nhttps://git.kernel.org/stable/c/125890702ef4417cd0ffac2e448c0cd4fbf0ac45\nhttps://git.kernel.org/stable/c/3080f9e653d8c057d5652db5ced8137f81b3fcbd\nhttps://git.kernel.org/stable/c/bc8d01d856db106f284b19961af6112e10c3e3b4\nhttps://git.kernel.org/stable/c/fe9a906d2bff2d2707bafd6353b5e032a42aeb35\nhttps://git.kernel.org/stable/c/2c29c053a6627dc4f12fcfe6b4860bcd9e5d7503\nhttps://git.kernel.org/stable/c/efdfb1e27a3328085b79540dfe781d537b576ea1\n",
   "aliases": "CVE-2026-97598\nGHSA-9pxv-wwmf-9jpr\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
-      "id": "0a7a14f2-138f-31e0-991f-0d6c10310dba",
+      "id": "06c8ead9-e75c-38bc-8715-6c29c84483ec",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc3"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "0d7275a4-c899-3f48-9df8-1841a46252a8",

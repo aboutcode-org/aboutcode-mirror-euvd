@@ -3,23 +3,13 @@
   "enisaUuid": "db592ae9-6c60-38c5-aa08-28e615e34ce0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: trigger: cancel reenable_work before freeing trigger\n\niio_trigger_notify_done_atomic() defers ->reenable() into\ntrig->reenable_work on the system workqueue, and the worker dereferences\nthe owning trigger through container_of().  Nothing cancels this work\nbefore iio_trig_release() frees the trigger, so a worker armed by the\nlast in-flight IRQ can outlive the free and touch freed memory.\n\nCancel it at the top of iio_trig_release(), which every free path\nreaches through the device core's final put_device().\n\nFound by an in-house static analysis tool.",
   "datePublished": "Oct 18, 2026, 3:44:07 PM",
-  "dateUpdated": "Oct 18, 2026, 3:44:07 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:24 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/cf513df1a2c75566cdc802d9da47f62e8d6cfd18\nhttps://git.kernel.org/stable/c/e64703280ce7a23a43c27efebeb7da457c88bf5c\nhttps://git.kernel.org/stable/c/882d0011c59ff8ac15188ec9ce071399ecfa10ad\nhttps://git.kernel.org/stable/c/2a57b9246cecd5dd797a42eb310d6c8816f26d9e\n",
   "aliases": "GHSA-6556-hh6q-qw3c\nCVE-2026-98656\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
-    {
-      "id": "05956358-b432-3188-9a03-f5f90a3701c4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
     {
       "id": "12b82e1e-538f-391d-82be-97b0d6fa0e06",
       "product": {
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ccc55bd9-0e4e-34c5-9cf8-cf6d256a41e1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ceab788d-027b-3b29-a364-1daa402df6d5",

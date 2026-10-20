@@ -3,7 +3,7 @@
   "enisaUuid": "1f3d6dea-6951-3dad-a709-eefdfbe9d4cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Null out freed pointers in qla2x00_mem_alloc() error path\n\nWhen qla2x00_mem_alloc() fails, qla2x00_probe_one() jumps to\nprobe_hw_failed and calls qla2x00_mem_free(). Several error labels in\nqla2x00_mem_alloc() freed adapter members (elsrej.c, purex_dma_pool,\nflt, sfp_data, loop_id_map, async_pd, sf_init_cb, ex_init_cb, npiv_info)\nbut left the pointers dangling. qla2x00_mem_free() then freed them a\nsecond time. Worse, for the dma_pool members it issued\ndma_pool_free(ha->s_dma_pool, ...) after s_dma_pool had already been\ndestroyed and set to NULL at fail_s_dma_pool, dereferencing a NULL pool.\n\nClear each freed pointer (and its DMA handle) in the error labels so the\nsubsequent qla2x00_mem_free() skips them.",
   "datePublished": "Sep 25, 2026, 10:21:32 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:24 AM",
+  "dateUpdated": "Oct 19, 2026, 9:08:54 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/84f5de696b8c924aeb4bf430a0bdc762fc50e99f\nhttps://git.kernel.org/stable/c/a57570229edb7a0990d5c8067daeb9ac8858a961\nhttps://git.kernel.org/stable/c/286d9594a022dd7e0caa3de9daa63b896bc70d43\nhttps://git.kernel.org/stable/c/6d90f0feb929f6c0f3010f9af4747c7230b75993\n",
   "aliases": "GHSA-r4g5-5hq8-92x8\nCVE-2026-97532\n",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.12.112"
     },
     {
+      "id": "8c149fd3-49b8-3afc-893e-8de49a7406c1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "a796c34e-29aa-367e-9518-58948807c62a",
       "product": {
         "name": "Linux",
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "d64d6c5671db5e693a0caaee79f2571b098749c9 <286d9594a022dd7e0caa3de9daa63b896bc70d43"
-    },
-    {
-      "id": "c51f3b23-5787-3faf-a5fd-a32fff35334c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "c749a35b-39e9-3202-b3b7-138ab9f92185",

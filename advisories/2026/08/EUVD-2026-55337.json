@@ -3,7 +3,7 @@
   "enisaUuid": "41db2e0c-ad30-3924-8cac-890a9469c543",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: set new_stream to NULL after release\n\nIn dm_update_crtc_state(), the skip_modeset path releases new_stream\nvia dc_stream_release() but does not set the pointer to NULL.\n\nIf a later error (e.g., color management failure) triggers the fail\nlabel, the error path calls dc_stream_release() again on the same\ndangling pointer, causing a double release and potential use-after-free.\n\nFix this by setting new_stream to NULL after the initial release.\n\n(cherry picked from commit 99f3af19073b3ddbfd96e789124cce12c4277b28)",
   "datePublished": "Aug 10, 2026, 12:01:01 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:04 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:57 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

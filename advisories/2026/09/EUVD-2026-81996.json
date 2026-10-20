@@ -3,23 +3,13 @@
   "enisaUuid": "21ab82e2-6c71-37eb-80f4-be7f86da9c32",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: skip cdev_del() when no cdev is registered\n\nTTY device registration can fail before a cdev is allocated.\nSerial core keeps the port so setserial can still use it, and later\nremoval passes the NULL cdev slot to cdev_del(), causing a NULL-pointer\ndereference.\n\nOnly delete the cdev when the slot is not NULL.",
   "datePublished": "Sep 17, 2026, 4:08:48 PM",
-  "dateUpdated": "Oct 15, 2026, 10:10:57 AM",
+  "dateUpdated": "Oct 19, 2026, 9:01:52 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2af4c46b429907edc8cb069c78fca1d950120b98\nhttps://git.kernel.org/stable/c/3dbf85ef40b6366ba15e882f7536cdc98bea579a\nhttps://git.kernel.org/stable/c/c3b5623fd97648f2747444aa8932ae604662df93\n",
   "aliases": "CVE-2026-90335\nGHSA-5wc4-c9q8-2q27\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
-    {
-      "id": "280a316a-b874-30a2-935c-08a8a43566ad",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "3bf1bc6e-77fa-330f-90b4-03ac6602ef4f",
       "product": {
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "a3a10ce3429e5dee623ad5c8407ea58e204fcb0a <c3b5623fd97648f2747444aa8932ae604662df93"
+    },
+    {
+      "id": "b6fb30f4-48d2-35fe-98d9-f011976f3586",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "dc7fe198-e458-3da7-a987-81d98b1b4f8d",

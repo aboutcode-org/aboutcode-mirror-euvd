@@ -3,7 +3,7 @@
   "enisaUuid": "fab21567-7cd4-34d7-9517-410a7b8eb916",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject writes through untrusted BTF pointers\n\ncheck_ptr_to_btf_access() lets program-type btf_struct_access callbacks\nvalidate writes before the default BTF access path rejects non-read\naccesses. That bypasses the read-only policy for untrusted BTF pointers\ncreated by helpers such as bpf_rdonly_cast().\n\nReject non-read accesses through PTR_UNTRUSTED BTF pointers at the\ncommon entry point, before the callback branch to handle all cases.",
   "datePublished": "Sep 17, 2026, 4:11:42 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:33 AM",
+  "dateUpdated": "Oct 19, 2026, 9:06:16 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "282de143ead96a5d53331e946f31c977b4610a74 <ac65c710cc643cbc52b899627577357867249530"
+    },
+    {
+      "id": "190bb15c-b354-3705-9a08-df04067132a5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "35e67626-4b58-36da-84af-8ffe357e7bbe",
@@ -71,16 +81,6 @@
         }
       },
       "product_version": "patch: 7.2.6"
-    },
-    {
-      "id": "e3e8477b-8adc-3019-8838-e5f952dcbbcd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "ead12c8e-d273-3346-ac72-0530897d1d08",

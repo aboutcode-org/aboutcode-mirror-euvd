@@ -3,7 +3,7 @@
   "enisaUuid": "1889fe5f-4adb-3f4a-8f12-c882138cac78",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix a bug if the bio is out of limits\n\nIf dm_integrity_check_limits fails, the code would exit with\nDM_MAPIO_KILL. However, the range would be already locked at this point,\nand it wouldn't be unlocked, resulting in a deadlock. Let's move the\nlimit check up, so that when it exits, no resources are leaked.",
   "datePublished": "Aug 15, 2026, 5:52:44 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:20 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:27 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

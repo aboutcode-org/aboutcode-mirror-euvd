@@ -3,13 +3,23 @@
   "enisaUuid": "549cdb24-f427-3e0e-80f9-4f520f250752",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mvpp2: prevent buffer overflow in page_pool allocation\n\nThe per\u2011processor buffering scheme is supported only if the\nnumber of pools (nrxqs\u202f*\u202f2) does not exceed MVPP2_BM_MAX_POOLS (8).\nThis is already checked in mvpp2_probe() during the initial\nactivation of percpu_pools.\n\nHowever, mvpp2_change_mtu() may later call\nmvpp2_bm_switch_buffers(priv, true) without this check, which can\nlead to an out-of-bounds access in the priv->page_pool array in\nmvpp2_bm_init(). The array is sized to hold MVPP2_PORT_MAX_RXQ\nentries, and mvpp2_get_nrxqs() may return exactly that value. The\nper-CPU scheme then doubles it to nrxqs * 2, exceeding the array\nbounds.\n\nCheck that the hardware version is MVPP22 or newer and that the\nnumber of pools (nrxqs * 2) does not exceed MVPP2_BM_MAX_POOLS\nbefore switching to per-CPU mode.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Oct 6, 2026, 8:45:33 AM",
-  "dateUpdated": "Oct 6, 2026, 8:45:33 AM",
+  "dateUpdated": "Oct 19, 2026, 9:16:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5cefdb7acfc646fbded59ae77dfe0aac4c9e4a3c\nhttps://git.kernel.org/stable/c/4ac1d5adc4f4dbafbfd270b55cc6d8bf9849d545\nhttps://git.kernel.org/stable/c/dfd46b5584a5881b131008767950e1ab82713c8c\nhttps://git.kernel.org/stable/c/6569fd85b0ef9a8a6f20b7eb868420b8c7c0c2a0\nhttps://git.kernel.org/stable/c/e7f30dcfa6c64033bf9137362517bd248e5be384\nhttps://git.kernel.org/stable/c/f0e7d62c1eb984dd204095118973c59604144cd8\nhttps://git.kernel.org/stable/c/1734c3fc0066e228ce1c11e434b7c2527f0a949a\nhttps://git.kernel.org/stable/c/14cb1e7702e5cb3c58888f6aed498381a73927d2\n",
   "aliases": "CVE-2026-98272\nGHSA-986m-q5f3-3m78\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "09e82432-65f0-328a-b76d-a8fe2be907d0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "1dc0389f-562d-3c7e-bef3-118752656538",
       "product": {
@@ -139,16 +149,6 @@
         }
       },
       "product_version": "7d04b0b13b1175ce0c4bdc77f1278c1f120f874f <4ac1d5adc4f4dbafbfd270b55cc6d8bf9849d545"
-    },
-    {
-      "id": "d6ea95db-2bd4-347a-ab7d-09d920a3a108",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
     },
     {
       "id": "d756bc4b-c508-3367-852a-72b7a3a5177a",

@@ -3,14 +3,14 @@
   "enisaUuid": "7d259152-253f-3909-b755-34c897f13179",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix NULL pointer dereferences in nvmet_tcp_build_pdu_iovec\n\nCommit efa56305908b (\"nvmet-tcp: Fix a kernel panic when host sends an invalid H2C PDU length\")\nadded ttag bounds checking and data_offset\nvalidation in nvmet_tcp_handle_h2c_data_pdu(), but it did not validate\nwhether the command's data structures (cmd->req.sg and cmd->iov) have\nbeen properly initialized before processing H2C_DATA PDUs.\n\nThe nvmet_tcp_build_pdu_iovec() function dereferences these pointers\nwithout NULL checks. This can be triggered by sending H2C_DATA PDU\nimmediately after the ICREQ/ICRESP handshake, before\nsending a CONNECT command or NVMe write command.\n\nAttack vectors that trigger NULL pointer dereferences:\n1. H2C_DATA PDU sent before CONNECT \u2192 both pointers NULL\n2. H2C_DATA PDU for READ command \u2192 cmd->req.sg allocated, cmd->iov NULL\n3. H2C_DATA PDU for uninitialized command slot \u2192 both pointers NULL\n\nThe fix validates both cmd->req.sg and cmd->iov before calling\nnvmet_tcp_build_pdu_iovec(). Both checks are required because:\n- Uninitialized commands: both NULL\n- READ commands: cmd->req.sg allocated, cmd->iov NULL\n- WRITE commands: both allocated",
   "datePublished": "Jan 25, 2026, 2:36:12 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:02 PM",
+  "dateUpdated": "Oct 19, 2026, 6:25:26 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/baabe43a0edefac8cd7b981ff87f967f6034dafe\nhttps://git.kernel.org/stable/c/76abc83a9d25593c2b7613c549413079c14a4686\nhttps://git.kernel.org/stable/c/7d75570002929d20e40110d6b03e46202c9d1bc7\nhttps://git.kernel.org/stable/c/fdecd3b6aac10d5a18d0dc500fe57f8648b66cd4\nhttps://git.kernel.org/stable/c/3def5243150716be86599c2a1767c29c68838b6d\nhttps://git.kernel.org/stable/c/374b095e265fa27465f34780e0eb162ff1bef913\nhttps://git.kernel.org/stable/c/32b63acd78f577b332d976aa06b56e70d054cbba\n",
   "aliases": "GHSA-xjx5-8v38-q6gh\nCVE-2026-22998\n",
   "assigner": "Linux",
-  "epss": 0.71,
+  "epss": 0.79,
   "enisaIdProduct": [
     {
       "id": "095368d7-354d-32d2-8844-c8263a6148ae",

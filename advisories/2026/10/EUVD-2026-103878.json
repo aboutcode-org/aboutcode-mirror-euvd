@@ -3,7 +3,7 @@
   "enisaUuid": "19932d3f-2e36-33c4-aa8b-7ee69f222149",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: bpf: reject invalid NAT manipulation types\n\nAs bpf_ct_set_nat_info() is not validating the NAT manipulation type a\nwrong value can be passed directly to nf_nat_setup_info(). This triggers\nthe WARN_ON() at nf_nat_setup_info() and if panic_on_warn isn't set,\nthen IPS_SRC_NAT_DONE is set without adding nat_bysource and conntrack\ncleanup tries to unlink an uninitialized hlist node.\n\nFix this by checking that NAT manipulation type is correct before\ncalling nf_nat_setup_info(). In addition, if the WARN_ON is hit, return\nNF_DROP instead of continuing with the processing to avoid similar\nsituations in the future.",
   "datePublished": "Oct 18, 2026, 3:48:33 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:33 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:46 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ea777dc90ab37e64fa4b92f6fcf3b5edcef5e058\nhttps://git.kernel.org/stable/c/f6143ae109df56d51d5536e813deb19eee7a6205\nhttps://git.kernel.org/stable/c/58108f05b0502448f6bb612ee2eccc63bd6449cb\nhttps://git.kernel.org/stable/c/16d464013ec2267b00a83f4bfbb97b3ecc63bfa7\n",
   "aliases": "GHSA-g33v-6845-q9px\nCVE-2026-98793\n",
@@ -61,16 +61,6 @@
       "product_version": "patch: 6.18.56"
     },
     {
-      "id": "9af1103c-5573-3d1b-82dc-174c9410940f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "a7e4932b-90c3-3a31-80c5-b83b348de8f5",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "0fabd2aa199faeb8754aee94658f2c48ccb2c8c3 <f6143ae109df56d51d5536e813deb19eee7a6205"
+    },
+    {
+      "id": "dd39626b-dfb7-35a7-9145-94ce7573ae10",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ef09cc95-74a6-3352-b77f-551e9b1b5206",

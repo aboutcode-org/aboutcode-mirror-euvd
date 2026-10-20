@@ -3,7 +3,7 @@
   "enisaUuid": "a7b9068b-5df9-339d-8f5d-01e2f2c3e018",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: bound get_version reply decode to front len\n\nhandle_get_version_reply() uses msg->front_alloc_len as the decode\nboundary for MON_GET_VERSION_REPLY.  That is the size of the reused\nreply buffer, not the number of bytes actually received.\n\nA truncated reply can therefore pass ceph_decode_need() and decode the\nsecond u64 from stale tail bytes left in the buffer by an earlier\nmessage, causing an uninitialized memory read.\n\nUse msg->front.iov_len as the receive-side decode boundary, matching\nother libceph reply handlers and limiting decoding to the bytes that\nwere actually read from the wire.",
   "datePublished": "Aug 12, 2026, 12:07:20 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:13 PM",
+  "dateUpdated": "Oct 19, 2026, 9:09:10 PM",
   "baseScore": 8.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",

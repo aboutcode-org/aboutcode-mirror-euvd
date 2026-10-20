@@ -3,12 +3,12 @@
   "enisaUuid": "6a5caf66-3551-3fcd-b2fd-d17d1ca9a76d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/erdma: Use IRQ-safe XArray helpers for QP and CQ tables\n\nLocked QP and CQ lookups from EQ interrupts can deadlock with\ncreate-path XArray updates. If an interrupt arrives while the create\npath holds the plain xa_lock, the lookup spins forever trying to\nacquire the same lock.\n\nUse IRQ-safe XArray helpers for all QP and CQ create-path updates,\nincluding the GSI QP store and error paths. Initialize both arrays with\nXA_FLAGS_LOCK_IRQ so sleeping allocations preserve interrupt state.",
   "datePublished": "Oct 6, 2026, 8:46:40 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:40 AM",
+  "dateUpdated": "Oct 19, 2026, 9:18:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/74d4085221a7ec5440996af199ccadfa75b9eb0e\nhttps://git.kernel.org/stable/c/00baeade709fb66da647e8327e8398bb532e30f7\n",
   "aliases": "GHSA-c26j-r98f-9j66\nCVE-2026-98353\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "299d8d6a-ee7b-318f-80e9-14ca48def1c1",
@@ -61,16 +61,6 @@
       "product_version": "6.18.52 <6.19"
     },
     {
-      "id": "7b2219fa-7f09-3755-a801-fbd5a37df8d4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
-    },
-    {
       "id": "7e5840f7-2306-3608-999a-6de1373730dd",
       "product": {
         "name": "Linux",
@@ -109,16 +99,6 @@
         }
       },
       "product_version": "ec987c0654651036dad6a42f7fa2a6d7c16a3687"
-    },
-    {
-      "id": "ab739b0b-4722-3b97-b40f-d6b15b3082d8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 0"
     },
     {
       "id": "b787a90a-bd0e-3d6d-b505-de2c0d09dea3",
@@ -169,26 +149,6 @@
         }
       },
       "product_version": "c0a83f29a24c7e7f8516630848ef6db4c174deed"
-    },
-    {
-      "id": "f39bcd12-3927-373a-aeff-7462e37bf3dd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "7.3-rc1"
-    },
-    {
-      "id": "f641fbbc-52b7-3024-8f31-08cdc34e1bbe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.2.8"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "94bbc125-2ae9-34a9-bf08-0ab892101008",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject MEM_ALLOC BTF accesses past object bounds\n\nBTF struct walks relax the struct-size check for accesses through a\ntrailing flexible array. That is valid for ordinary BTF type walking, but\nPTR_TO_BTF_ID | MEM_ALLOC values point to objects allocated with the static\nBTF type size.\n\nWhen walking a MEM_ALLOC object, reject the access before applying the\nflexible-array relaxation if the access range extends past the struct size.\nApply the same policy to struct ID matching so kfunc and kptr type checks\ndo not walk past the allocated object bounds either.",
   "datePublished": "Sep 17, 2026, 4:11:45 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:34 AM",
+  "dateUpdated": "Oct 19, 2026, 9:06:20 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -43,16 +43,6 @@
       "product_version": "6.2"
     },
     {
-      "id": "92c30f0d-d7ec-3087-aac9-d9de70572846",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "9d5dddda-df88-3849-aa87-258a1f093152",
       "product": {
         "name": "Linux",
@@ -71,6 +61,16 @@
         }
       },
       "product_version": "958cf2e273f0929c66169e0788031310e8118722 <9c9ee0324c774490ae953162aaaf4561d222bd93"
+    },
+    {
+      "id": "c2294e84-b709-31ac-8afa-a84cae754867",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "c80756ba-9763-37d7-98dd-8cc7a26bee3b",

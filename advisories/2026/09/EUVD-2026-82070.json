@@ -3,12 +3,12 @@
   "enisaUuid": "6e706e18-ed27-3ec2-83d7-243e2a46f1b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Add vm_bind region with kbo range overlap check\n\nWhen a VM is created, caller has to specify the range of the address space\ncarve-out set aside for mapping kernel BO's. That means vm_bind mappings of\nUM-exposed BO's should not intersect with that region, but at the moment\nwe're not checking this.\n\nAt first, I thought of giving these values to drm_gpuvm_init() through its\nreserve_{offset, range} arguments, but it turns out that is meant for VM\naddress spans that are not managed through the usual drm_gpuvm split/merge\ncircuit, so storing the end of the user VA range at VM creation time and\ndoing a quick check in the vm_bind ioctl path was the simplest workaround.\n\nThe new check also makes sure vm_bind range doesn't overflow the size of a\n64-bit unsigned integer. That was already being done further down the call\nstack inside drm_gpuvm_sm_map -> drm_gpuvm_range_valid, but it's best to\nfail early in the driver before GPUVM functions are invoked so that we\nwon't waste time allocating vm_bind context resources.",
   "datePublished": "Sep 17, 2026, 4:09:36 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:12 AM",
+  "dateUpdated": "Oct 19, 2026, 9:03:13 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f2be47fa8e225968eb66863657143fe900ec4bca\nhttps://git.kernel.org/stable/c/761cf9c63274a5b711c3dc829601723215710d2d\nhttps://git.kernel.org/stable/c/985f5e12f3cdf43030e13c2bbd154913133b5c3f\n",
   "aliases": "CVE-2026-90409\nGHSA-8w4v-ph57-xf5x\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "090656ac-394d-3420-938e-186512543430",
@@ -41,6 +41,16 @@
       "product_version": "647810ec247641eb5aec8caef818919a4518a0b1 <761cf9c63274a5b711c3dc829601723215710d2d"
     },
     {
+      "id": "28e1b0f3-fcae-3b6a-a942-7bc8e236d07b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "4f415174-41a7-3532-a0df-92b31d402a97",
       "product": {
         "name": "Linux",
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "5d0eaed1-12cb-365d-888b-7653f5aa547b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "980a16ec-d120-33ef-bc55-07c82b9bdee1",

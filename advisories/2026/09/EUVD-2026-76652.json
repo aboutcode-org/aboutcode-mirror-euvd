@@ -3,12 +3,12 @@
   "enisaUuid": "42c79fa3-4310-3b61-a69f-60e4e36744b6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: imx: serialize imx_uart_ports[] lifetime\n\nimx_uart_probe() publishes its devm-allocated port in imx_uart_ports[]\nbefore uart_add_one_port() because console setup uses the table. The entry\nis not cleared when adding the port fails or after removal, leaving a\ndangling pointer.\n\nA sibling probe can register the shared console through that stale entry.\nThis was reproduced under KASAN on QEMU mcimx6ul-evk by unbinding a\nsibling UART, unbinding the console UART and rebinding the sibling.\n\nKeep the entry valid through uart_remove_one_port(), then clear it. Protect\nport addition and removal together with their table updates so sibling\noperations cannot interleave. Reject an occupied slot rather than\nclobbering an active port during a duplicate-line probe.",
   "datePublished": "Sep 11, 2026, 7:46:47 PM",
-  "dateUpdated": "Sep 11, 2026, 7:46:47 PM",
+  "dateUpdated": "Oct 19, 2026, 8:51:54 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/681696ae9e4a28bdf54893c807dfe4a6c08e30a5\nhttps://git.kernel.org/stable/c/28b932202fcdbeb2ef58d89ce4363f480433c234\nhttps://git.kernel.org/stable/c/7429dce56a73bc080a8c072edb167106f73a08ae\nhttps://git.kernel.org/stable/c/8b0b29fdcb47907ae0296b8fe829e918e05e300f\n",
   "aliases": "GHSA-q55c-3wjg-8jjp\nCVE-2026-89740\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "01a53f0d-527b-33ab-8ee3-56c7ced99f8b",
@@ -101,14 +101,14 @@
       "product_version": "patch: 6.18.50"
     },
     {
-      "id": "e3d62ef7-4d2b-31b0-9815-27743375954f",
+      "id": "c924f0ac-b011-3465-82df-2501651a00e8",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "d88a0438-7a93-3c5f-8809-e9aab2851dc2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: visconti: Make sure clk_init_data is fully initialized\n\nThe clk_init_data structure contains several mutually-exclusive members\nfor different methods to specify the possible parents of a clock,\nprompting drivers to initialize only the members they need.  However,\nnot initializing all members may cause subtle issues, which are only\nexposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is\nenabled.\n\nvisconti_clk_register_gate() fills in init.parent_data, and assumes that\ninit.parent_names is NULL.  However, the latter in uninitialized, and\nthus may cause a crash.\n\nMake sure all members are fully initialized, to fix such bugs, and to\navoid future breakage when converting drivers to a different method for\nspecifying the parents.",
   "datePublished": "Sep 17, 2026, 4:06:25 PM",
-  "dateUpdated": "Sep 17, 2026, 4:06:25 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:20 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0e97c22b286e1918c6f48bad7e77fb8240a24b4a\nhttps://git.kernel.org/stable/c/9f756f1965bad65e6066608f33c36988cd10302a\nhttps://git.kernel.org/stable/c/1cc0539e5b0906bace15d3fc7347b344a017cc02\nhttps://git.kernel.org/stable/c/8f7980033e9f7ecaaecd873a0b5bf6b6c87d7e5a\nhttps://git.kernel.org/stable/c/5ecfa72e74c6e2a765fa5bc1da574e5beae588f2\nhttps://git.kernel.org/stable/c/39c0e6c844a14945040cca4ccf6997792ab764c4\n",
   "aliases": "CVE-2026-90122\nGHSA-chc4-v67r-8fwq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "033a3c84-e913-346b-aa44-13a5c28f7fe9",
@@ -71,14 +71,14 @@
       "product_version": "b4cbe606dc3674b25cb661e7cd1a1c6ddaaafaaa <9f756f1965bad65e6066608f33c36988cd10302a"
     },
     {
-      "id": "8b130d6f-2b8b-3cd3-8052-b92fd49f321a",
+      "id": "7fb509c0-5d5e-37ea-9deb-5321709b7222",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "9ea6eb66-1068-354b-91fa-37ff7f6b03f6",

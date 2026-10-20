@@ -3,7 +3,7 @@
   "enisaUuid": "335aaea6-9510-3cf4-83c7-8ac5ca9e8af9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix host memory disclosure on R2T for a read command\n\nnvme_tcp_handle_r2t() does not check the direction of the request the\nR2T refers to. A malicious controller can send an R2T for a READ and\nthe host will answer it: nvme_tcp_setup_h2c_data_pdu() builds the\nH2CData header and nvme_tcp_try_send_data() sends the request's data\nbuffer. That buffer is the READ destination, so its contents go to the\ncontroller.\n\nThe command then completes normally and nothing is logged.\n\nAgainst a test controller that answers every READ with an R2T, a 4096\nbyte buffered read returned all 4096 bytes, split over two R2Ts. The\npages contained stale kernel data, including an array of struct page\npointers.\n\nReject an R2T for a request that is not a write.",
   "datePublished": "Sep 11, 2026, 7:43:36 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:39 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:30 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -93,6 +93,16 @@
       "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <3a0b05145053a5fad1a2ddb4e4d87b07385e63e5"
     },
     {
+      "id": "8f416471-f5ca-3575-aefc-6ed5d6b31d09",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "bad5a966-f1dc-3307-9b80-71a6043dd745",
       "product": {
         "name": "Linux",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "5.0"
-    },
-    {
-      "id": "c4fc766b-3d76-3808-8679-08b6fd4d35f5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "c8584a12-5c2b-3f46-a273-e4a845e60cb9",

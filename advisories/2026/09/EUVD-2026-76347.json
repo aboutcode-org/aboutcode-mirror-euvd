@@ -3,7 +3,7 @@
   "enisaUuid": "1acff023-6741-3de9-ba92-cc2a08241976",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: via-sdmmc: cancel card-detect work on remove\n\nDisabling the device interrupt and freeing the IRQ prevents new card-detect\nwork from being queued, but carddet_work already queued by the handler can\nstill run after via_sd_remove() returns. via_sdc_card_detect() recovers the\nhost through container_of() and dereferences its MMIO base; once remove()\nreturns the host can be freed, so that work would touch freed memory.\n\nCancel carddet_work after freeing the IRQ and before cancelling\nfinish_bh_work, which the card-detect handler can also queue. carddet_work\ncan re-enable the interrupt through via_reset_pcictrl(); mask it again\nafterwards.\n\nThis issue was found by an in-house static analysis tool and confirmed by\nmanual code review.",
   "datePublished": "Sep 11, 2026, 7:43:10 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:38 PM",
+  "dateUpdated": "Oct 19, 2026, 8:46:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -73,6 +73,16 @@
       "product_version": "f0bf7f61b8405224bc52fc9a3ccd167a68126e00 <eaca730c6f5e3609df62a0469fb789235a93d276"
     },
     {
+      "id": "585deb37-c053-3e8c-9fb3-27d9fcb7a915",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "80de92cf-0c0f-34a6-b4f1-25ac69968dae",
       "product": {
         "name": "Linux",
@@ -91,16 +101,6 @@
         }
       },
       "product_version": "patch: 6.18.50"
-    },
-    {
-      "id": "e5f7a07d-05af-3c0f-ba0c-671df4548179",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "f0532a08-fecf-3b92-a478-a60671e9bda8",

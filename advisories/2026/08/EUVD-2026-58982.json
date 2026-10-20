@@ -3,7 +3,7 @@
   "enisaUuid": "90328466-7a8d-30fa-ae87-5a056bc92cce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: remove interfaces with RCU list deletion\n\nQueue wake, stop, and disable paths walk local->interfaces under RCU.\nThe bulk hardware teardown path removes entries with list_del(), so an\nasynchronous transmit completion can follow a poisoned list node in\nieee802154_wake_queue().\n\nUse list_del_rcu() as in the single-interface removal path. The following\nunregister_netdevice() waits for in-flight RCU readers before freeing the\nnetdevice, so no separate grace-period wait is needed.",
   "datePublished": "Aug 15, 2026, 5:51:49 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:16 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:23 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "a61680ba-87d8-3c2b-a7c9-181b7ef7d714",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Propagate TPA buffer allocation failures in bnxt_queue_mem_alloc()\n\nbnxt_alloc_one_tpa_info_data() returns -ENOMEM as soon as one allocation\nfails. This leaves the remaining rxr->rx_tpa[] entries zeroed.\n\nbnxt_queue_mem_alloc() discards that return value, so the partially\ninitialized ring is installed by bnxt_queue_start().\n\nSince the agg_id is picked by the hardware and bnxt_alloc_agg_idx maps\nit to a SW index in rxr->rx_tpa[], it is possible that an uninitialized\nslot can be chosen which would hand a zero DMA address to the device.\n\nFix this by checking the return value of bnxt_alloc_one_tpa_info_data\nand unwinding, freeing the ring buffers.",
   "datePublished": "Sep 25, 2026, 10:21:56 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:45 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:33 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d7db2e4953e4626339fd0075564a3e447650d37b\nhttps://git.kernel.org/stable/c/c8050386a2209b2a474c1eb4bd1574dc19129bfb\nhttps://git.kernel.org/stable/c/37e08dc821a57fe0592c917486b638caa888b46d\nhttps://git.kernel.org/stable/c/b814dfbfeb0a68c9a52073f2caa05a2d5247a329\n",
   "aliases": "GHSA-5rwh-p838-cqxj\nCVE-2026-97571\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "490e6511-8e23-38cf-8d6c-92216ffe150f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4cac3cc6-b60f-302e-b9d6-cac82917e60f",
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "patch: 7.2.7"
-    },
-    {
-      "id": "8b940342-354e-36df-8209-6b92b2310cbb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "967da506-348e-31ba-80f1-4234c2413834",

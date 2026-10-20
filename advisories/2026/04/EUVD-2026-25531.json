@@ -3,7 +3,7 @@
   "enisaUuid": "2539334f-de18-30ee-b1a8-1a751713442d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Only put the call ref if one was acquired\n\nrxrpc_input_packet_on_conn() can process a to-client packet after the\ncurrent client call on the channel has already been torn down.  In that\ncase chan->call is NULL, rxrpc_try_get_call() returns NULL and there is\nno reference to drop.\n\nThe client-side implicit-end error path does not account for that and\nunconditionally calls rxrpc_put_call().  This turns a protocol error\npath into a kernel crash instead of rejecting the packet.\n\nOnly drop the call reference if one was actually acquired.  Keep the\nexisting protocol error handling unchanged.",
   "datePublished": "Apr 24, 2026, 2:44:52 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:18 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:01 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "04f3054e-404e-3b6e-aec4-9b4d773abe84",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: rt1017-sdca-sdw: fix uninitialized stream_config->type\n\nstream_config is not initialized before being passed to\nsdw_stream_add_slave().  The type field may contain garbage and is\nlater copied to stream->type by sdw_config_stream().\n\nZero-initialize stream_config so type defaults to SDW_STREAM_PCM.\n\nWhile at it, use snd_sdw_params_to_config() helper instead of\nopen-coding the same logic.",
   "datePublished": "Oct 18, 2026, 3:47:28 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:28 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:55 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4e337c24c0a97fcdb394f954208971de5d372066\nhttps://git.kernel.org/stable/c/d195c8c763fdd0a7f74a34973f8946215a708f1e\nhttps://git.kernel.org/stable/c/7791ebf56eb4ab6b7a20252757a3029bc8068715\nhttps://git.kernel.org/stable/c/174d160884199cad97413f33fe1b56027dc0d3e1\n",
   "aliases": "CVE-2026-98743\nGHSA-33xw-2m9p-9fgf\n",
@@ -61,16 +61,6 @@
       "product_version": "2b7aecd58528551e6e3da58091ff7ceb4718e6be <d195c8c763fdd0a7f74a34973f8946215a708f1e"
     },
     {
-      "id": "504e1255-df86-318b-a90f-ed77e2169763",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "6e39fc52-6dbc-38b4-9b21-bd21e8a29c8d",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 7.2.10"
+    },
+    {
+      "id": "b1f3a0e2-96dc-3039-946f-ddfa28e284bd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ef98438c-edd4-3602-9c7a-a2953a7ca150",

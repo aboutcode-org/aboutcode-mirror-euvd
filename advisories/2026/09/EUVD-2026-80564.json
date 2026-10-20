@@ -3,22 +3,22 @@
   "enisaUuid": "f023f30a-e526-3b16-9bff-4f10a4b881be",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nparisc: eisa: Fix infinite loop when parsing invalid IRQ value\n\nWhen an invalid value is passed via the \"eisa_irq_edge=\" kernel\ncommand line parameter (e.g. \"eisa_irq_edge=16,5\"), eisa_irq_setup()\nprints an error message and continues without advancing the current\nposition.  As a result the same invalid value is parsed again and\nagain, causing an infinite loop while the kernel boots.\n\nAdvance to the next comma-separated entry, or stop parsing when there\nis no next entry, before continuing so that the remaining entries are\nprocessed normally.",
   "datePublished": "Sep 16, 2026, 10:32:46 AM",
-  "dateUpdated": "Sep 17, 2026, 9:29:20 AM",
+  "dateUpdated": "Oct 19, 2026, 8:55:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/68659b627770f3c8d8f578e8ddee78a07d5f1d0e\nhttps://git.kernel.org/stable/c/8640ade22369e248f77fbdd31a9d71b338499eef\nhttps://git.kernel.org/stable/c/21f063e3c2b11fb9078ccdfd3b23634313ce4f0c\nhttps://git.kernel.org/stable/c/62d88e93ef5e1e04041e347945f7d7510eba1797\nhttps://git.kernel.org/stable/c/bb10d54b74845eb4547baa1b9e908ecd32aa64e1\nhttps://git.kernel.org/stable/c/3e2691eeee83a819125dba3f42c74e1b6730d5cd\nhttps://git.kernel.org/stable/c/16a62a3f2128b3d86fefc082d8f631becd02bff5\nhttps://git.kernel.org/stable/c/8b585431a16cfb9d8f2955a9fa0787ce3dceb3c2\n",
   "aliases": "CVE-2026-89964\nGHSA-w8m9-w285-5x2j\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
-      "id": "15326fd9-acc3-34f1-8489-0b088bc2f774",
+      "id": "125c0163-30da-37dd-8279-d35197a4899d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "2544caba-46d6-3c51-9062-911b9d304945",

@@ -3,7 +3,7 @@
   "enisaUuid": "3e388234-d1ba-3790-8680-5a90651d9322",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: reject oversized Broadcast Announcement prepend\n\nExisting advertising instances can already hold the maximum extended\nadvertising payload. When hci_adv_bcast_annoucement() prepends the\nBroadcast Announcement service data to that payload, the combined data\nmay no longer fit in the temporary buffer used to rebuild the\nadvertising data.\n\nReject that case before copying the existing payload and report the\nfailure through the device log. This keeps the existing advertising\ndata intact and avoids overrunning the temporary buffer.",
   "datePublished": "Jun 25, 2026, 8:39:14 AM",
-  "dateUpdated": "Oct 16, 2026, 3:31:40 PM",
+  "dateUpdated": "Oct 19, 2026, 7:57:28 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

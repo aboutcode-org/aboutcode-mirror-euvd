@@ -3,12 +3,12 @@
   "enisaUuid": "2f4e8037-081c-329d-9184-5617ed005cdc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal: hwmon: Remove hwmon class device along with its parent\n\nThe current code creates one hwmon device per thermal zone type and that\ndevice is registered under the first thermal zone of the given type.\n\nThat turns out to be problematic when the thermal zone holding the\nhwmon device is removed.\n\nFor example, say that there are two ACPI thermal zones on a system\n\n /sys/devices/virtual/thermal/thermal_zone0/\n /sys/devices/virtual/thermal/thermal_zone1/\n\nThe current code registers a hwmon class device for thermal_zone0 only:\n\n /sys/devices/virtual/thermal/thermal_zone0/hwmon0/\n\nbecause the type is \"acpitz\" for both of them, but it adds a sysfs\nattribute that belongs to thermal_zone1 under it:\n\n /sys/devices/virtual/thermal/thermal_zone0/hwmon0/temp2_input\n\nThere is also\n\n /sys/devices/virtual/thermal/thermal_zone0/hwmon0/temp1_input\n\nwhich belongs to thermal_zone0.\n\nWhen thermal_zone0 is removed, say because the ACPI thermal driver is\nunbound from the underlying platform device, thermal_remove_hwmon_sysfs()\nskips the removal of hwmon0 because of the temp2_input attribute\nbelonging to thermal_zone1 which effectively prevents thermal_zone0\nremoval from making progress.\n\nAddress this by making thermal_remove_hwmon_sysfs() remove the entire\nhwmon class device interface for the given thermal zone type when the\nthermal zone device holding it is removed.\n\nTo prevent races with thermal_add_hwmon_sysfs() that may interfere\nwith this, carry out the entire addition and removal of hwmon sysfs\ninterfaces for thermal zones under thermal_hwmon_list_lock.\n\nAlso adjust the layout of the labels in thermal_add_hwmon_sysfs() to\nthe current kernel coding style to align with the new \"unlock\" label.",
   "datePublished": "Sep 17, 2026, 4:08:31 PM",
-  "dateUpdated": "Oct 15, 2026, 10:10:52 AM",
+  "dateUpdated": "Oct 19, 2026, 9:01:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9b405b3e7e131ee85dd78b9cc951b41f0828a333\nhttps://git.kernel.org/stable/c/4fa8915f40f744c6db2a3c25b2ae7d2dd64c77b4\nhttps://git.kernel.org/stable/c/2b57e24d34b2dfc43c81942bb359d6315bf302fb\n",
   "aliases": "CVE-2026-90311\nGHSA-43gv-wm7g-h6q4\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "11ae614c-6157-3f51-afda-7afb2e72f36d",
@@ -31,16 +31,6 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "249b2b07-d708-3afb-93b6-f40be31e8043",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "329fb918-6f13-3716-821d-a16af4a037c2",
       "product": {
         "name": "Linux",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "4.19"
+    },
+    {
+      "id": "42ccec8c-d1ea-3e19-893e-f46d29f91b80",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "7e7260ee-afa0-3739-b2b2-0810556c3b36",

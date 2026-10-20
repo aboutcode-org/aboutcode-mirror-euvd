@@ -3,7 +3,7 @@
   "enisaUuid": "a1d04446-b869-3750-afd4-6c7c47a88a7b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpci_rt1711h: unregister TCPCI port with devres\n\nrt1711h_probe() registers the TCPCI port before requesting the interrupt\nand enabling alert interrupts. If either of those later steps fails, the\nprobe function returns without unregistering the TCPCI port. The explicit\nunregister currently only happens from the remove callback.\n\nRegister a devres action immediately after tcpci_register_port() succeeds,\nso tcpci_unregister_port() runs on later probe failures and on driver\ndetach. Drop the remove callback to avoid unregistering the same port\ntwice.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
   "datePublished": "Jul 25, 2026, 8:51:29 AM",
-  "dateUpdated": "Oct 16, 2026, 3:42:37 PM",
+  "dateUpdated": "Oct 19, 2026, 8:38:30 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

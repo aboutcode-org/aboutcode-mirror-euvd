@@ -3,7 +3,7 @@
   "enisaUuid": "ea96d9bd-0563-3b62-a8cc-d3ffcf9eb35d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: alps: unregister DualPoint Stick input device on remove\n\nalps_input_configured() allocates a second input device (\"DualPoint\nStick\") with input_allocate_device() and registers it, but the\nalps_driver struct has no .remove handler and input2 is not tracked in\nhdev->inputs.  The default remove path (hid_hw_stop -> hidinput_disconnect)\nonly iterates hdev->inputs, so input2 is never unregistered and leaks\non every device removal.\n\nAdd a .remove handler that stops the device first (preventing URB\ncallbacks from touching input2 during teardown) and then unregisters\ninput2.",
   "datePublished": "Oct 18, 2026, 3:16:51 PM",
-  "dateUpdated": "Oct 18, 2026, 3:16:51 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:41 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1170ebfba562b3938ff7749b2e42e4420f19436d\nhttps://git.kernel.org/stable/c/aa4845a710ae9fee6a3831f5c338904cea77c3aa\nhttps://git.kernel.org/stable/c/978e801750c7b0859e87eae619f7d88fcd88333e\nhttps://git.kernel.org/stable/c/aa9dde93e05a837645fdfd577eea71f0733f0694\n",
   "aliases": "GHSA-79qw-7wgp-r9xr\nCVE-2026-98502\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "2562756dde550901c224e3805102bdfc17e7d13a <978e801750c7b0859e87eae619f7d88fcd88333e"
+    },
+    {
+      "id": "210d56cd-aec6-34c8-84c7-a7b02e3b5b62",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "36f95baf-d3a9-3924-a885-a358fc4e7350",
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "patch: 7.2.9"
-    },
-    {
-      "id": "e2b47e04-3b4a-3880-8253-701a10e9077f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "e91ec9cd-67cb-3830-866c-aa0a8006c2d1",

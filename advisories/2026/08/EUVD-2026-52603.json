@@ -3,7 +3,7 @@
   "enisaUuid": "74c09d55-d2dc-3c54-91f8-c6e13d7b5cdb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Hide shadow VMCS right after VMCLEAR\n\nfree_nested() frees the shadow VMCS while vmcs01 still points to it. But\nbecause it is asynchronous with respect to loaded_vmcs_clear(), the vCPU\nmight migrate before the pointer is cleared and __loaded_vmcs_clear()\nmay then execute VMCLEAR.\n\nThe VMCS needs to stay attached until its explicit VMCLEAR completes, but\nthen it can be hidden and the page safely freed.",
   "datePublished": "Aug 4, 2026, 6:23:21 AM",
-  "dateUpdated": "Oct 16, 2026, 3:52:53 PM",
+  "dateUpdated": "Oct 19, 2026, 8:48:41 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

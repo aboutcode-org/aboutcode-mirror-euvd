@@ -3,7 +3,7 @@
   "enisaUuid": "a765dc5b-aa34-3bba-8b59-8fb0a634440a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: verisilicon: rockchip: guard VPU981 AV1 divisor and tile buffer\n\nrockchip_vpu981_av1_dec_set_tile_info() divides context_update_tile_id by\ntile_info->tile_cols and writes one descriptor per tile into the tile_info\nDMA buffer, which holds AV1_MAX_TILES entries; tile_cols and tile_rows\ncome from the bitstream. Guard the division against a zero tile_cols by\ninitialising the context-update values to zero and computing them only\nwhen tile_cols is non-zero, and stop the descriptor writes once the\ntile_info buffer is full. The tile geometry written to the hardware\nregisters is left unmodified; the per-dimension and total tile bounds are\nenforced by the control validation.",
   "datePublished": "Sep 25, 2026, 10:22:00 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:53 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:40 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -53,16 +53,6 @@
       "product_version": "727a400686a2c0d25015c9e44916a59b72882f83 <8659e5fc21a82e00fb2db1557f2e06f0fca06b90"
     },
     {
-      "id": "5e687df4-591e-3c57-91df-3723a754ee91",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "79b57773-fe02-3346-80c4-44887e453c9e",
       "product": {
         "name": "Linux",
@@ -71,6 +61,16 @@
         }
       },
       "product_version": "727a400686a2c0d25015c9e44916a59b72882f83 <b84f6533a8ed2fd7b282fc7ab4b8efadc745a89c"
+    },
+    {
+      "id": "8c18d8a1-970c-3b80-ac30-7e720ceb04ba",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "b542eca5-266f-3682-b222-34843848ecdb",

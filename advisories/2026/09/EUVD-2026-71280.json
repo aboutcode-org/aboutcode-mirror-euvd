@@ -3,7 +3,7 @@
   "enisaUuid": "57392a63-ccb8-3932-aae9-0f1a9a045c4e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: core: Add lock to usb_wakeup_notification()\n\nAdd a spin lock to usb_wakeup notification to prevent a race condition\nwith dereferencing freed memory. This could be hit by the xHCI driver as\nit calls this function from an IRQ and could race with the\nhub_disconnect() function, which properly grabs this lock to protect the\nstate of the device.",
   "datePublished": "Sep 4, 2026, 3:54:35 PM",
-  "dateUpdated": "Sep 7, 2026, 2:21:22 PM",
+  "dateUpdated": "Oct 19, 2026, 8:44:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a7a16167991c88016acef720927400404039d850\nhttps://git.kernel.org/stable/c/975ef630393c07fcbebf94f4d97043161b77a6ce\nhttps://git.kernel.org/stable/c/71cfda2fdf78041a01e9d94143baa79feabbdbf6\nhttps://git.kernel.org/stable/c/04ab260407972e631c86f2bc576cd8e64d65b325\nhttps://git.kernel.org/stable/c/bf2288583b4e072bdff17a233963619e4bc7a8b5\nhttps://git.kernel.org/stable/c/d80b946804674069db7ce6657319a71cf8eeaa5a\nhttps://git.kernel.org/stable/c/960ca456faf61824b178f47967340300b24183db\nhttps://git.kernel.org/stable/c/7c48aa0c1e79116b8af4b988d16ee29b427d6491\nhttps://git.kernel.org/stable/c/e263e18a9e7b1ff3e7301f0801c6ff87c31adfb6\n",
   "aliases": "CVE-2026-80830\nGHSA-6h45-3gcw-mpwf\n",
@@ -131,6 +131,16 @@
       "product_version": "4ee823b83bc9851743fab756c76b27d6a1e2472b <960ca456faf61824b178f47967340300b24183db"
     },
     {
+      "id": "9c81e4d8-587d-3c5e-a420-b60b0eada2d8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "aaa15887-9166-31ad-84d1-f6da1a16353a",
       "product": {
         "name": "Linux",
@@ -189,16 +199,6 @@
         }
       },
       "product_version": "patch: 6.6.156"
-    },
-    {
-      "id": "f435582b-6859-31d3-abdc-14f5036e0141",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "fbaab339-54aa-32e4-9bba-e207a90daaa2",

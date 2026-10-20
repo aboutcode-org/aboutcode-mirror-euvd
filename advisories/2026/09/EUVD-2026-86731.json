@@ -3,13 +3,23 @@
   "enisaUuid": "427acd37-283a-3cba-94b0-22d29b36e8e9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: cc2520: fix FIFOP work use-after-free\n\nThe FIFOP interrupt handler queues cc2520_fifop_irqwork.  On removal,\ncc2520_remove() only flushes the work.  The devm-managed FIFOP IRQ\nremains active until after ->remove() returns and can queue the work\nagain after that flush, allowing it to run after the private data is\nreleased.\n\nDisable the work with disable_work_sync() instead of flushing it, so\nthe handler can no longer queue it once removal begins.  Destroy the\nbuffer mutex last, since the worker and the stop callback invoked\nthrough ieee802154_unregister_hw() both take it.\n\nFound by an in-house static analysis tool.",
   "datePublished": "Sep 25, 2026, 10:22:14 AM",
-  "dateUpdated": "Sep 25, 2026, 10:22:14 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/56a9919d8494fb118eebf167bef0622528fbf2e7\nhttps://git.kernel.org/stable/c/c68fd52c73b676aee67020011e98fea125a978f4\nhttps://git.kernel.org/stable/c/890a80d516a1447db5c21bf92841a82914ea897d\nhttps://git.kernel.org/stable/c/ff5891b266a7fc6a062710836be84f1cc19338b5\n",
   "aliases": "CVE-2026-97600\nGHSA-rq9h-jcg5-92gp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "03a1b44a-8540-3a7c-b329-704f3487e5e4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "055dd3c4-d0a6-3afb-9f28-38584676a926",
       "product": {
@@ -29,16 +39,6 @@
         }
       },
       "product_version": "patch: 6.18.53"
-    },
-    {
-      "id": "512eb5cc-d93c-30fc-bdf7-1cdd0282cd46",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "53c916e4-cb37-335c-93cf-906e34d84717",

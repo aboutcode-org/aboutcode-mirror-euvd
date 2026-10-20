@@ -3,12 +3,12 @@
   "enisaUuid": "c88f0ea7-0b0b-3897-a1ef-b178b46b0bcb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: cortina: Fix budget accounting\n\nThe gmac_rx() function returns the remaining NAPI budget, but its\ncaller treats the return value as the number of packets received. An\nidle poll therefore reports a full budget and remains scheduled.\n\nReturn the number of received packets instead. Preserve the existing\nfree queue refill accounting by adding that count directly; continuing\nto subtract it from the budget would invert the refill behavior.",
   "datePublished": "Sep 25, 2026, 10:23:18 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:13 AM",
+  "dateUpdated": "Oct 19, 2026, 9:11:49 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d3deb54d9507c2d7f05efd896142095eef5b7d85\nhttps://git.kernel.org/stable/c/e6e5732b90d0fc25fd3d9961ff61e660297d7608\nhttps://git.kernel.org/stable/c/aa339ac334d4e51f43af9d2901e6faf11ffd981e\nhttps://git.kernel.org/stable/c/4ca84049c6428c665ef7c903a32a99ed0f1e01e9\nhttps://git.kernel.org/stable/c/631c47e2e1154f2741c555b91df1b8cb99294c6a\nhttps://git.kernel.org/stable/c/0ef8eaef5806c84db2334111d6f299c246a592bc\nhttps://git.kernel.org/stable/c/94e06e12a376710587cfeea481b65e7c49747003\nhttps://git.kernel.org/stable/c/a0de06d0da78a3db53de65dfd7452cc6d111f703\n",
   "aliases": "GHSA-f9c6-x48g-gfm4\nCVE-2026-97982\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0a72df47-a6fa-381e-9407-ea54f37a47a6",
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "4.16"
+    },
+    {
+      "id": "3fcea946-f65b-3cf0-93b2-8f467a0ba115",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "604d0198-b72c-3016-96ca-081e99ac8218",
@@ -179,16 +189,6 @@
         }
       },
       "product_version": "patch: 5.10.271"
-    },
-    {
-      "id": "f1f16cbc-3500-329c-8eb8-227c92e1df04",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     }
   ],
   "enisaIdVendor": [

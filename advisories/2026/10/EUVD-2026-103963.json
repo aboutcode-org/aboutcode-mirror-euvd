@@ -3,7 +3,7 @@
   "enisaUuid": "661c5b2a-af47-3e62-a725-9f213d71dc3e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: count only matching reservations in reserved switch\n\nieee80211_vif_use_reserved_switch() validates a replacement by counting\nassigned links on ctx->replace_ctx and treating reservations too\nbroadly. A link can still be assigned to the old channel context while\nholding a reservation that belongs to a different replacement\noperation.\n\nThat can make the current replacement appear complete too early. If\nanother link finalizes first, the function can free the\nWILL_BE_REPLACED chanctx while the unmatched link and driver still use\nit, leading to a use-after-free in later beacon generation.\n\nRequire an in-place reservation to point at the current replacement\ncontext, and require the reserved and assigned contexts to be the\nmatching replacement pair, before counting or moving the link.",
   "datePublished": "Oct 18, 2026, 3:46:39 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:39 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:20 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d31f655e44631891788ca67018ec5e1ed1c7de86\nhttps://git.kernel.org/stable/c/03525b632908b049f4d04cc8a71cdff2329589cf\nhttps://git.kernel.org/stable/c/5cc54a000960bc88f8c58940164dca0e601ab39c\nhttps://git.kernel.org/stable/c/437f3727b4fd715266c296435c116288f82666fd\n",
   "aliases": "CVE-2026-98709\nGHSA-g34c-vjm7-4vq5\n",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "6eb9972a-9a58-3dbf-af62-5a73be06eedc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "7674e522-ea12-3125-b9bd-6bc4192b0cfd",
@@ -99,16 +109,6 @@
         }
       },
       "product_version": "5bcae31d9cb1ebfad3ad5a3eea04c8cdc329a04f <03525b632908b049f4d04cc8a71cdff2329589cf"
-    },
-    {
-      "id": "f974f51b-c77f-3de5-abff-08c6efe25762",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     }
   ],
   "enisaIdVendor": [

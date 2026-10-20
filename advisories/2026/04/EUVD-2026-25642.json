@@ -3,7 +3,7 @@
   "enisaUuid": "974219b5-5075-3721-b7b2-4921f17bad8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_netem: fix out-of-bounds access in packet corruption\n\nIn netem_enqueue(), the packet corruption logic uses\nget_random_u32_below(skb_headlen(skb)) to select an index for\nmodifying skb->data. When an AF_PACKET TX_RING sends fully non-linear\npackets over an IPIP tunnel, skb_headlen(skb) evaluates to 0.\n\nPassing 0 to get_random_u32_below() takes the variable-ceil slow path\nwhich returns an unconstrained 32-bit random integer. Using this\nunconstrained value as an offset into skb->data results in an\nout-of-bounds memory access.\n\nFix this by verifying skb_headlen(skb) is non-zero before attempting\nto corrupt the linear data area. Fully non-linear packets will silently\nbypass the corruption logic.",
   "datePublished": "Apr 25, 2026, 8:46:51 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:23 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:03 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

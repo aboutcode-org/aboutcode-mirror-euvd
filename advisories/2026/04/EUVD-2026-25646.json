@@ -3,7 +3,7 @@
   "enisaUuid": "7ac708ad-58ea-39df-8308-b8427fb56fda",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: validate MPLS set/set_masked payload length\n\nvalidate_set() accepted OVS_KEY_ATTR_MPLS as variable-sized payload for\nSET/SET_MASKED actions. In action handling, OVS expects fixed-size\nMPLS key data (struct ovs_key_mpls).\n\nUse the already normalized key_len (masked case included) and reject\nnon-matching MPLS action key sizes.\n\nReject invalid MPLS action payload lengths early.",
   "datePublished": "Apr 25, 2026, 8:46:55 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:23 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:04 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

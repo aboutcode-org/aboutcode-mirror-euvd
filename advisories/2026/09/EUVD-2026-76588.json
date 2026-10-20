@@ -3,7 +3,7 @@
   "enisaUuid": "438a62fa-67ca-3b0e-b04b-5af9c9bba8fd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix stale s2s_cp_stateids IDR entry for async COPY\n\nFor an async COPY, nfsd4_copy() called nfs4_init_copy_state() before\ndup_copy_fields(), so the s2s_cp_stateids IDR was pointed at\n&u->copy->cp_stateid -- memory in the per-rqstp COMPOUND buffer that is\nreused by the next request. dup_copy_fields() copies only the value into\nasync_copy, so the IDR slot dangled at the transient buffer for the whole\nbackground copy. Any IDR walker then dereferences reused request memory:\nthe laundromat reads cs_type from it and, if the bytes look like an\nexpired NFS4_COPYNOTIFY_STID, follows into\nrefcount_dec()/idr_remove()/kfree() on garbage; manage_cpntf_state() has\nthe same exposure via idr_find().\n\nDuplicate the fields first, then register the stateid on the stable\nasync_copy. result->cb_stateid is unchanged.",
   "datePublished": "Sep 11, 2026, 7:46:00 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:48 PM",
+  "dateUpdated": "Oct 19, 2026, 8:50:49 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -33,14 +33,14 @@
       "product_version": "4.20"
     },
     {
-      "id": "9e430211-b452-30e9-a9fe-0a499b8a4de3",
+      "id": "7133f6b3-7d86-3b0b-9f82-ffc15e95271a",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "a422346c-7ba1-3ef0-b56a-a70e7d6ebed7",

@@ -3,12 +3,12 @@
   "enisaUuid": "b97a1f2c-1f20-3160-ba6d-688e192bb455",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/virtio: Fix a NULL vs ERR_PTR() bug in virtio_gpu_user_framebuffer_create()\n\nSmatch complains that returning a NULL here will lead to a NULL pointer\ndereference in drm_mode_addfb2().  Return an error pointer instead.",
   "datePublished": "Oct 14, 2026, 1:26:03 PM",
-  "dateUpdated": "Oct 14, 2026, 1:26:03 PM",
+  "dateUpdated": "Oct 19, 2026, 9:18:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/975f3cf302bb7d7336df4c630a7c07e12780ad10\nhttps://git.kernel.org/stable/c/07de0b31dd64094cd7d25729beaf2ecae74daa72\nhttps://git.kernel.org/stable/c/5eda6cda0031ba17559d56882353be39e568ec09\nhttps://git.kernel.org/stable/c/3fe8a33715265ecb24ca0bcd0a575c926da4277c\nhttps://git.kernel.org/stable/c/974845d2535a250b180e62f9ed50284f312c01a3\nhttps://git.kernel.org/stable/c/45dc2788a5b0e1e2824d1f98af521bd3acc340d7\nhttps://git.kernel.org/stable/c/f1050a7d365283678b253828739d3866ae546a72\nhttps://git.kernel.org/stable/c/94579f24e2b526a04eb41050af0ba018c6f528e7\n",
   "aliases": "CVE-2026-98404\nGHSA-rmwq-mp73-r282\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0b7bd07a-2577-33b0-b0e6-902a9e5d15b2",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "dc5698e80cf724770283e10414054662bdf6ccfa <94579f24e2b526a04eb41050af0ba018c6f528e7"
-    },
-    {
-      "id": "2dbefdfe-b490-3f03-a66b-3f252ef535a7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "45e3398f-2865-354f-a71d-242c8e93880a",
@@ -189,6 +179,16 @@
         }
       },
       "product_version": "dc5698e80cf724770283e10414054662bdf6ccfa <07de0b31dd64094cd7d25729beaf2ecae74daa72"
+    },
+    {
+      "id": "f758cf6f-d5b9-3b7d-8bfe-66911d5977eb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

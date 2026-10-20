@@ -3,7 +3,7 @@
   "enisaUuid": "8c9ab26b-e28f-3813-bb70-0283b5c0ea1d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_queue: make hash table per queue\n\nSharing a global hash table among all queues is tempting, but\nit can cause crash:\n\nBUG: KASAN: slab-use-after-free in nfqnl_recv_verdict+0x11ac/0x15e0 [nfnetlink_queue]\n[..]\n nfqnl_recv_verdict+0x11ac/0x15e0 [nfnetlink_queue]\n nfnetlink_rcv_msg+0x46a/0x930\n kmem_cache_alloc_node_noprof+0x11e/0x450\n\nstruct nf_queue_entry is freed via kfree, but parallel cpu can still\nencounter such an nf_queue_entry when walking the list.\n\nAlternative fix is to free the nf_queue_entry via kfree_rcu() instead,\nbut as we have to alloc/free for each skb this will cause more mem\npressure.",
   "datePublished": "May 6, 2026, 7:40:19 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:32 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:13 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

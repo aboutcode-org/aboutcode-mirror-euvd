@@ -3,7 +3,7 @@
   "enisaUuid": "d3ac1f4e-b5da-377b-992a-61fd6e763052",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: macb: fix NULL pointer dereference on unbind with fixed-link\n\nWhen the device tree describes a fixed-link and has no \"mdio\" child\nnode, macb_mii_init() returns early without allocating the MDIO bus,\nleaving bp->mii_bus as NULL.\n\nTwo cleanup paths then dereference this NULL bus:\n\n1. On driver unbind, macb_remove() unconditionally calls\n   mdiobus_unregister(bp->mii_bus), which oopses:\n\n  Unable to handle kernel NULL pointer dereference at virtual address 00000000000004a8\n  pc : mdiobus_unregister+0x14/0xa4\n  lr : macb_remove+0x38/0xa4\n  Call trace:\n   mdiobus_unregister+0x14/0xa4 (P)\n   macb_remove+0x38/0xa4\n   platform_remove+0x20/0x30\n   device_release_driver_internal+0x1c8/0x224\n   unbind_store+0xb4/0xbc\n\n2. On the probe error path in macb_probe(), reached when\n   macb_mii_init() has succeeded but a subsequent step fails, the\n   err_out_unregister_mdio label runs the same unconditional cleanup.\n\nmdiobus_unregister() and mdiobus_free() do not guard against a NULL\nbus, so guard the calls in both macb_remove() and the probe error\npath.",
   "datePublished": "Sep 25, 2026, 10:23:33 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:28 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:13 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/afa224cabc0132ca414b9141b1a919ca2d318cd0\nhttps://git.kernel.org/stable/c/054ad8e66025eb4778d840bef80c270646cebcd2\nhttps://git.kernel.org/stable/c/f737d999fcb8f276d77b01ea4c2016ee01dad19b\nhttps://git.kernel.org/stable/c/5710f6a74f63cbba0e15cd75917234916181c9d4\nhttps://git.kernel.org/stable/c/edb39c7666bb3924da761dfb417db85c1e5d8ad3\nhttps://git.kernel.org/stable/c/38b6be101006d3e7af972999f45d4f1e8250587a\n",
   "aliases": "GHSA-h4xg-972w-f7c3\nCVE-2026-98008\n",
@@ -171,6 +171,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "9a76c97b-dc0d-3b56-9e3e-81577f361f62",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "9af585f9-6636-3945-a4a3-ce6c3c2aab2f",
       "product": {
         "name": "Linux",
@@ -199,16 +209,6 @@
         }
       },
       "product_version": "831e19e565b5210930fa183730071f8290c61263 <afa224cabc0132ca414b9141b1a919ca2d318cd0"
-    },
-    {
-      "id": "dfbeec8a-10bf-3004-a385-8b0f3de6f615",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "e7809edb-7f6d-31bc-bc5a-73b72ed7ae83",

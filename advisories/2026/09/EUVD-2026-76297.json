@@ -3,23 +3,13 @@
   "enisaUuid": "d5101979-e1be-3212-95c0-e0d9a28d1c2c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmfd: sm501: Fix potential memory leaks during remove\n\nThe memory allocated for struct sm501_devdata in sm501_pci_probe() and\nsm501_plat_probe() is not freed by the corresponding remove functions\nsm501_pci_remove() and sm501_plat_remove(). Fix that by adding a call to\nkfree().",
   "datePublished": "Sep 11, 2026, 7:42:36 PM",
-  "dateUpdated": "Sep 11, 2026, 7:42:36 PM",
+  "dateUpdated": "Oct 19, 2026, 8:45:58 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fcc6c3b11d73459e0d55b27c98cc56d59fef4d82\nhttps://git.kernel.org/stable/c/94ca4f040ba489db2d4b66e9d1ee91b4f9a00534\nhttps://git.kernel.org/stable/c/c8be3a076a59ec793fb2e4bdb830a709aaea9cce\nhttps://git.kernel.org/stable/c/83feedd9d83c0c5199f98c72df0a6196b4aefb4d\n",
   "aliases": "GHSA-hjr6-6hh3-pw85\nCVE-2026-80974\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
-    {
-      "id": "397c8a3b-515a-39d8-bd63-4650dc8faa57",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "595f07c0-a5fb-353e-8628-efdb9ee667ea",
       "product": {
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "cb4d82c2-8e95-3cd5-81a8-47c0b233c72f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d1a7cf05-8494-3497-957a-3c24cec0b2b8",

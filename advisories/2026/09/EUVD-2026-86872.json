@@ -3,12 +3,12 @@
   "enisaUuid": "01090d33-3aa4-3406-98bb-0477442d7af1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject userspace cifs.idmap descriptions\n\ncifs.idmap key descriptions carry authority-bearing fields (owner and\ngroup SIDs and uid/gid values in \"os:\"/\"gs:\"/\"oi:\"/\"gi:\" form) that the\ncifs.idmap upcall helper treats as kernel-originating inputs.  Unlike\nits sibling cifs.spnego, the cifs.idmap key type has no vet_description\nhook, so userspace can create keys of this type through\nrequest_key(2)/add_key(2) and supply those fields without CIFS origin.\nA request_key(2) call with a non-NULL callout then drives a root\nusermodehelper upcall (/sbin/request-key -> cifs.idmap) that consumes\nthe unvetted description in root context.\n\nOnly accept cifs.idmap descriptions while CIFS is using its private\nroot_cred to request the key.  id_to_sid()/sid_to_id() already run\nunder override_creds(root_cred), so the kernel-originated path is\nunaffected.\n\nThis mirrors commit 3da1fdf4efbc (\"smb: client: reject userspace\ncifs.spnego descriptions\"), which applied the same restriction to\ncifs.spnego.",
   "datePublished": "Sep 25, 2026, 10:21:51 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:42 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f29c1ec0e7d8c887a91df3f93bb4617c0ac95c6a\nhttps://git.kernel.org/stable/c/17c93bcd17755523c21abb22cbf2a41a6eb0caaf\nhttps://git.kernel.org/stable/c/e5964064e3fbe6325893408faff08ca33de0e2c3\nhttps://git.kernel.org/stable/c/96751028c0d4dec785709ea3eb0ab38a4f2ded96\nhttps://git.kernel.org/stable/c/1d3b24b16a0b013792e8f1e3ed060f0b46f537d1\nhttps://git.kernel.org/stable/c/d9d7eeb0cea5b55b82888f443622fd8d4ee064f3\n",
   "aliases": "GHSA-3fc8-28wq-wq67\nCVE-2026-97564\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0209cfd9-cf41-39df-b24b-78818a12c707",
@@ -101,16 +101,6 @@
       "product_version": "4d79dba0e00749fa40de8ef13a9b85ce57a1603b <f29c1ec0e7d8c887a91df3f93bb4617c0ac95c6a"
     },
     {
-      "id": "adee37ab-4778-31a4-818a-8c474e818667",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "af632744-b36c-382f-8d02-4045b580c549",
       "product": {
         "name": "Linux",
@@ -149,6 +139,16 @@
         }
       },
       "product_version": "4d79dba0e00749fa40de8ef13a9b85ce57a1603b <17c93bcd17755523c21abb22cbf2a41a6eb0caaf"
+    },
+    {
+      "id": "fa369d28-98cb-369d-8d4b-b2c17e092b37",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

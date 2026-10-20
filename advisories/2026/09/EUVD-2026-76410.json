@@ -3,7 +3,7 @@
   "enisaUuid": "ed60b4a0-e34c-3735-b0ba-260732fd4cc3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: as3722_get_regulator_dt_data: fix premature of_node_put leaving dangling of_node pointer\n\nIn as3722_get_regulator_dt_data(), of_get_child_by_name() acquires a\nreference on np, which is then assigned to pdev->dev.of_node. The\nfunction immediately calls of_node_put(np), releasing the reference and\nleaving pdev->dev.of_node as a dangling pointer.\n\nRemove the of_node_put(np) call to let the device hold the reference.",
   "datePublished": "Sep 11, 2026, 7:43:52 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:34 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:55 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -153,16 +153,6 @@
       "product_version": "patch: 7.2.4"
     },
     {
-      "id": "d4971510-0b52-37ef-91a4-b952deb83c6a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "d5f414be-9cf4-3556-bad9-1350ff7b80df",
       "product": {
         "name": "Linux",
@@ -171,6 +161,16 @@
         }
       },
       "product_version": "bc407334e9a6a745de5360395282beb2690adf48 <0bde4f140e90f87ebd49cd9c884c4bb3f19fe931"
+    },
+    {
+      "id": "ed56aa23-e382-36a9-b689-8abdfca3dfff",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ef2f75b6-3d90-30b5-ac8d-62cdc3d84613",

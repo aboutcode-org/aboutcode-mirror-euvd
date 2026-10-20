@@ -3,7 +3,7 @@
   "enisaUuid": "00d32e07-ba33-3e25-855f-e546bb34a693",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: unregister the connection before draining the rx tasklet\n\nsmc_conn_free() calls smc_ism_unset_conn() only while the link group is\nstill on its device list, and never sets conn->killed.\nsmc_lgr_terminate_sched() unlinks the group immediately and defers killing\nits connections to a work item, so a connection freed in that window keeps\nits smcd->conn[] slot with both gates in smcd_handle_irq() open, and the\ndevice can re-arm the receive tasklet after tasklet_kill() has returned. On\nthe DMB-nocopy path the ghost send buffer is freed right after that drain,\nso the re-armed tasklet dereferences it.\n\nUnregister unconditionally and drain before the detach at both teardown\nsites, mirroring rmb_desc, which smc_buf_unuse() releases after the drain.\nClear conn->sndbuf_desc before freeing it as well, so a reader that samples\nthe pointer cannot get one that is already freed.",
   "datePublished": "Sep 11, 2026, 7:42:40 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:24 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:03 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -93,16 +93,6 @@
       "product_version": "patch: 7.2.4"
     },
     {
-      "id": "9bf48157-caaf-3c8a-8927-67d6bfadc6fb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "ad35dca3-a6ea-3591-a05b-85cf73142b7d",
       "product": {
         "name": "Linux",
@@ -121,6 +111,16 @@
         }
       },
       "product_version": "patch: 6.18.50"
+    },
+    {
+      "id": "c4685cde-e0c3-3ad4-9988-9abf32340283",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e5aba205-4437-3594-8fe8-7217bfca6d65",

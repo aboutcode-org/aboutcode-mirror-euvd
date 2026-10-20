@@ -3,7 +3,7 @@
   "enisaUuid": "628c9dc4-f44a-32d4-a659-f1550a13e18d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmpls: reload header after pskb_may_pull()\n\nmpls_select_multipath() calls mpls_multipath_hash() to choose a nexthop\nwhen an MPLS route has multiple nexthops.  While walking the MPLS label\nstack, the hash routine caches hdr for the current label.  After finding\nthe bottom-of-stack label, it calls pskb_may_pull() before reading the\ninner IP header.\n\nIf an skb is constructed with the inner IP header in nonlinear data and\ninsufficient tailroom in the linear head, pskb_may_pull() calls\npskb_expand_head() to replace the skb head and free the old one.  This\nleaves hdr pointing to freed memory.  The IPv6 path can invalidate hdr\nagain when it performs a second pull for the larger header.\n\nThe issue was found through static analysis.  A reproducer sending a legal\nGeneve packet through a bareudp/MPLS multipath setup triggered the same\nKASAN report in 2 of 2 unpatched runs:\n\n  BUG: KASAN: slab-use-after-free in mpls_select_multipath\n  Read of size 1 at addr ffff88800ecc6e20 by task ksoftirqd/1/23\n\n  Call Trace:\n   mpls_select_multipath\n   mpls_forward\n   __netif_receive_skb_list_core\n   netif_receive_skb_list_internal\n   napi_complete_done\n   gro_cell_poll\n   __napi_poll\n   net_rx_action\n\n  Freed by task 23:\n   kfree\n   pskb_expand_head\n   __pskb_pull_tail\n   mpls_select_multipath\n\nReload hdr from the current skb head after each successful pull before\nderiving the inner IPv4 or IPv6 header pointer.",
   "datePublished": "Sep 11, 2026, 7:44:28 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:43 PM",
+  "dateUpdated": "Oct 19, 2026, 8:48:48 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -51,16 +51,6 @@
         }
       },
       "product_version": "9f427a0e474a67b454420c131709600d44850486 <d9640239827d6d0cb84263b590f7a4f1596c17eb"
-    },
-    {
-      "id": "436b2da9-b214-3595-8fc8-e789527a8fec",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "5f1ed6e9-6ed9-31cb-8316-94cf6e50034a",
@@ -161,6 +151,16 @@
         }
       },
       "product_version": "9f427a0e474a67b454420c131709600d44850486 <d82b90a38c2ca8a0694428eab0e9551c23f2447d"
+    },
+    {
+      "id": "cca7dcc7-87fd-389f-8414-5d88af580206",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d5731dbd-2af9-3bde-b7f8-818a66ddef6d",

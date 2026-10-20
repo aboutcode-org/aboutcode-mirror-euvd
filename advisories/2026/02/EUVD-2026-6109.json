@@ -3,14 +3,14 @@
   "enisaUuid": "2bd23fc5-0dcd-3340-8c21-b61cb674ef0b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: aloop: Fix racy access at PCM trigger\n\nThe PCM trigger callback of aloop driver tries to check the PCM state\nand stop the stream of the tied substream in the corresponding cable.\nSince both check and stop operations are performed outside the cable\nlock, this may result in UAF when a program attempts to trigger\nfrequently while opening/closing the tied stream, as spotted by\nfuzzers.\n\nFor addressing the UAF, this patch changes two things:\n- It covers the most of code in loopback_check_format() with\n  cable->lock spinlock, and add the proper NULL checks.  This avoids\n  already some racy accesses.\n- In addition, now we try to check the state of the capture PCM stream\n  that may be stopped in this function, which was the major pain point\n  leading to UAF.",
   "datePublished": "Feb 14, 2026, 4:27:18 PM",
-  "dateUpdated": "Sep 14, 2026, 11:58:11 AM",
+  "dateUpdated": "Oct 19, 2026, 6:25:34 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f57467114f40c5aacebbea96fb4ff9e5cd2b7f18\nhttps://git.kernel.org/stable/c/c99be0d5af02adebe9cb6f9869d20397fa9935a3\nhttps://git.kernel.org/stable/c/f3ce8be893726899e3053cf8059ecc95d8410359\nhttps://git.kernel.org/stable/c/0e6245b2424d126ac90018142d09f0707e12998b\nhttps://git.kernel.org/stable/c/bad15420050db1803767e58756114800cce91ea4\nhttps://git.kernel.org/stable/c/5727ccf9d19ca414cb76d9b647883822e2789c2e\nhttps://git.kernel.org/stable/c/826af7fa62e347464b1b4e0ba2fe19a92438084f\n",
   "aliases": "GHSA-x3gh-q355-f5px\nCVE-2026-23191\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "176eb4d0-b2b6-3ea3-b0d2-550eaa348ba1",

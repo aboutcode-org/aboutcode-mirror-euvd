@@ -3,7 +3,7 @@
   "enisaUuid": "88b5a2ed-f40a-33b5-978a-fb825f199f87",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: add bounds check for if_id in IRQ handler\n\nThe IRQ handler extracts if_id from the upper 16 bits of the hardware\nstatus register and uses it to index into ethsw->ports[] without\nvalidation. Since if_id can be any 16-bit value (0-65535) but the ports\narray is only allocated with sw_attr.num_ifs elements, this can lead to\nan out-of-bounds read potentially.\n\nAdd a bounds check before accessing the array, consistent with the\nexisting validation in dpaa2_switch_rx().",
   "datePublished": "Feb 14, 2026, 4:27:11 PM",
-  "dateUpdated": "Oct 16, 2026, 3:09:50 PM",
+  "dateUpdated": "Oct 19, 2026, 6:25:34 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

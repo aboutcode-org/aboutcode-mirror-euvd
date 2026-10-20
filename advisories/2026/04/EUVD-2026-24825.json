@@ -3,7 +3,7 @@
   "enisaUuid": "3005c6ce-57ea-3232-b396-b0857a999e4f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mc, v4l2: serialize REINIT and REQBUFS with req_queue_mutex\n\nMEDIA_REQUEST_IOC_REINIT can run concurrently with VIDIOC_REQBUFS(0)\nqueue teardown paths. This can race request object cleanup against vb2\nqueue cancellation and lead to use-after-free reports.\n\nWe already serialize request queueing against STREAMON/OFF with\nreq_queue_mutex. Extend that serialization to REQBUFS, and also take\nthe same mutex in media_request_ioctl_reinit() so REINIT is in the\nsame exclusion domain.\n\nThis keeps request cleanup and queue cancellation from running in\nparallel for request-capable devices.",
   "datePublished": "Apr 22, 2026, 1:54:00 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:12 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:50 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

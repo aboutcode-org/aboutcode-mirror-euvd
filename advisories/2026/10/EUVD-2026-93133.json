@@ -3,12 +3,12 @@
   "enisaUuid": "c90d1dc4-6fbf-3a0c-b5d3-88710e58c21d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: evdev - zero absinfo before partial copy in EVIOCSABS\n\nThe EVIOCSABS handler copies at most the user supplied ioctl size into\nan uninitialized on-stack struct input_absinfo:\n\n\tif (copy_from_user(&abs, p, min_t(size_t,\n\t\t\tsize, sizeof(struct input_absinfo))))\n\nThe size comes from _IOC_SIZE() of the ioctl command and is therefore\nfully controlled by userspace. A short size leaves the trailing part of\nthe structure holding whatever was on the kernel stack, and the whole\nstructure is then stored into the device:\n\n\tdev->absinfo[t] = abs;\n\nEVIOCGABS hands that back to userspace, disclosing the stale stack\nbytes. Only the resolution field is currently cleared, which covers the\nlegacy struct layout but not an arbitrarily short size.\n\nZero the structure before the copy so any part not supplied by the\ncaller reads back as zero. The existing resolution fixup is kept, since\nit also handles a size that partially overlaps that field.",
   "datePublished": "Oct 6, 2026, 8:44:42 AM",
-  "dateUpdated": "Oct 6, 2026, 8:44:42 AM",
+  "dateUpdated": "Oct 19, 2026, 9:15:36 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c0aebb57b73c7d06ad21731099afe119b113c403\nhttps://git.kernel.org/stable/c/89b6ffa4bc10c436fa9aecc73be105124cd58a35\nhttps://git.kernel.org/stable/c/e834e134a32b6a5c600fa539bb49146f617743ab\nhttps://git.kernel.org/stable/c/af5f7130cbf39e6e12336d0b7a5f6e76e4e1526b\nhttps://git.kernel.org/stable/c/30b853a3d71f16bd0aa66b604bc37dd1254a19b3\nhttps://git.kernel.org/stable/c/71e5619db11dd6429101bd967230d0321ec5ea26\nhttps://git.kernel.org/stable/c/3dfe48d5307a1ba22c58231d04257737015569ca\nhttps://git.kernel.org/stable/c/8b852965b8eaf910c314dc346967ed82c8d4f235\n",
   "aliases": "CVE-2026-98205\nGHSA-jw64-9g8w-pg6v\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "05649569-a1b1-3ca2-bc0b-6019f960a69d",
@@ -161,16 +161,6 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "b9e93552-9930-36a2-af16-e3b8ebe27d9b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
-    },
-    {
       "id": "bef6df1b-c5b4-3d9d-abdb-7f518cacb3a0",
       "product": {
         "name": "Linux",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "patch: 5.10.271"
+    },
+    {
+      "id": "bf93443b-e107-3503-b211-a7839a57ec10",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e2f797af-bc3d-3e42-99c3-09aba56f1d33",

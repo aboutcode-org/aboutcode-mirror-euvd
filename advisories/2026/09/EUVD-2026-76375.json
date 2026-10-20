@@ -3,7 +3,7 @@
   "enisaUuid": "07458e19-cada-3171-9261-84449b626eb7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: lp8727: fix use-after-free in lp8727_release_irq()\n\nlp8727_isr_func(), the threaded IRQ handler, is the only caller that arms\npchg->work via schedule_delayed_work().  lp8727_release_irq() currently\ncancels the work before freeing the IRQ, so an IRQ delivered in between\ncan re-arm the work through the threaded handler.  After .remove returns\nthe devm layer frees pchg while lp8727_delayed_func() may still run and\ndereference it.\n\nFree the IRQ first so the threaded handler is quiesced and can no longer\nqueue work, then cancel the delayed work to drain the final generation.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Sep 11, 2026, 7:43:28 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:06 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:18 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -12,6 +12,16 @@
   "assigner": "Linux",
   "epss": 0.14,
   "enisaIdProduct": [
+    {
+      "id": "0dbb8992-9423-3461-bf53-1c6396fef466",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "4cfad7c6-ce15-311f-8c27-e4c9ac8ca00c",
       "product": {
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "patch: 6.1.188"
-    },
-    {
-      "id": "ae2d8e67-473f-353b-82d7-7e5367ed9116",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b05f56e6-c114-3710-972d-027937e0ad71",

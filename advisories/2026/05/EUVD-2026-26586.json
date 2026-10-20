@@ -3,14 +3,14 @@
   "enisaUuid": "f37c5ca6-afa9-357a-a8a8-a522782e8bdd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SMP: derive legacy responder STK authentication from MITM state\n\nThe legacy responder path in smp_random() currently labels the stored\nSTK as authenticated whenever pending_sec_level is BT_SECURITY_HIGH.\nThat reflects what the local service requested, not what the pairing\nflow actually achieved.\n\nFor Just Works/Confirm legacy pairing, SMP_FLAG_MITM_AUTH stays clear\nand the resulting STK should remain unauthenticated even if the local\nside requested HIGH security. Use the established MITM state when\nstoring the responder STK so the key metadata matches the pairing result.\n\nThis also keeps the legacy path aligned with the Secure Connections code,\nwhich already treats JUST_WORKS/JUST_CFM as unauthenticated.",
   "datePublished": "May 1, 2026, 2:15:01 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:26 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:08 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/9a38659a3d06080715691bd3139f9c4b61f688e3\nhttps://git.kernel.org/stable/c/667f44f1392df6482483756458c48670e579e9ff\nhttps://git.kernel.org/stable/c/929db734d12db41ca5f95424db4612397f1bd4a7\nhttps://git.kernel.org/stable/c/b1c6a8e554a39b222c0879a288ea98e338fc4d77\nhttps://git.kernel.org/stable/c/0afc846bd80073ffcd2b8040f2b2fafaea3d9f72\nhttps://git.kernel.org/stable/c/061ee71ac6b03c9f8432fe49538c3682bfcf4cf3\nhttps://git.kernel.org/stable/c/9a6d0db176f082685e0b6149700c0baf3ce2aa8b\nhttps://git.kernel.org/stable/c/20756fec2f0108cb88e815941f1ffff88dc286fe\n",
   "aliases": "CVE-2026-31773\nGHSA-vm8r-x97v-544j\n",
   "assigner": "Linux",
-  "epss": 0.46,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "207fac7e-ea66-39e7-9f0d-a237f04d27ca",

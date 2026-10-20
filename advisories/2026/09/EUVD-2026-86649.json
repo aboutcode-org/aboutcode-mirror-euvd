@@ -3,12 +3,12 @@
   "enisaUuid": "d5ad9c47-b21b-372a-b4ac-68d0810e276e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_console: do not free control-out buffers on remove\n\n__send_control_msg() publishes &portdev->cpkt as the control-out\nvirtqueue cookie. remove_vqs() walks every virtqueue and passes leftover\ncookies to free_buf(), which treats them as struct port_buffer and\nreads sgpages.\n\nIf a control message is still on c_ovq when the device is unbound,\nfree_buf() reads past the ports_device object.\n\nKASAN reported slab-out-of-bounds in free_buf():\n\n\tfree_buf\n\tremove_vqs\n\tvirtcons_remove\n\tunbind_store\n\nThe object was the ports_device allocated in virtcons_probe().\n\nDrain c_ovq without freeing. The packet lives in portdev and is released\nwith it.",
   "datePublished": "Sep 25, 2026, 10:23:26 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:22 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b1f39c2a676698cc64c8e105e08b25111a112ec6\nhttps://git.kernel.org/stable/c/e03522a990cd2e0f1a736eaa349a9df9ab8541c3\nhttps://git.kernel.org/stable/c/8f6cfc3eca79b8e108d0823756101e2f4f9d811f\nhttps://git.kernel.org/stable/c/2e40c69b9c3448b9c6609cd02013da593b2e123b\nhttps://git.kernel.org/stable/c/177ee901aa2bab02e7f1f8edbb814fd5e386ed62\nhttps://git.kernel.org/stable/c/a80c33488e0bbe642ed803b13a4ac8078a70b507\nhttps://git.kernel.org/stable/c/f620c40ea6862feed84deb105568b21ec53a7830\nhttps://git.kernel.org/stable/c/894f98e73983f37354214a89a3a7fd35bf9e3072\n",
   "aliases": "CVE-2026-97995\nGHSA-64xh-4w8v-x8v5\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0b79deda-e30a-32bc-88d8-71a87ca58141",
@@ -231,16 +231,6 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "9ef09c70-5365-32b7-89c0-504eea2c2c78",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "ba8c6126-87c1-37a3-bab1-27a6f3bd2294",
       "product": {
         "name": "Linux",
@@ -269,6 +259,16 @@
         }
       },
       "product_version": "4.17"
+    },
+    {
+      "id": "c78baa24-6cae-3c8f-8083-cc4a729e4f52",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "cbd0f8e1-96bd-3f12-a60c-5bb2e3b8fcb0",

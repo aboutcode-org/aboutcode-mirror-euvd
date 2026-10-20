@@ -3,7 +3,7 @@
   "enisaUuid": "4d6fb533-31a9-37bc-bf15-a27f3dec57f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_ct: avoid modifying shared unconfirmed ct entry\n\nIn a case where skb with an unconfirmed ct entry gets cloned, we may\nend up processing both again but with different sets of extensions.\n\nThe series of events:\n\n 1. The first clone wants to commit and runs the helpers wiring up\n    the extension pointer into the expectation list.\n 2. Then it looses the confirmation keeping the entry unconfirmed.\n 3. Second clone now wants to commit labels or run NAT and adds the\n    new extension for that breaking the pointer in the expectation\n    list causing UAF on the destruction path later.\n\nWhile this is possible to trigger, there should be no practical\nnetwork pipeline where we need to process both clones without\nmodifications in the same zone.  So, let's just reset the entry in\ncase for some reason we got an skb with a shared one.  This doesn't\naffect any known use cases, but avoids any potential problems with\nsharing and modification of the unconfirmed ct entry.\n\nUnlike openvswitch module, act_ct allows for NAT without commit.\nChanging that would be a uAPI break.  So, act_ct needs to reset on NAT\nregardless of the commit flag to avoid reallocation of the extension\nspace.  This, however, doesn't really change the picture for sensible\nnetworking cases as there should be no need to run the same packet\ntwice (before and after the clone) through conntrack without packet\nheader or zone changes and without commit.\n\nThe fixes tag points to the introduction of helpers, since that's the\nmain UAF trigger for the sharing.",
   "datePublished": "Oct 18, 2026, 3:14:51 PM",
-  "dateUpdated": "Oct 18, 2026, 3:14:51 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:36 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2b783c562c3238ff50c34fd7a72a735c9cc73d9a\nhttps://git.kernel.org/stable/c/4a04ed91575819fb1859311113e95700b709bec7\nhttps://git.kernel.org/stable/c/b097d9d7a5b09c8ec5c4c1a08e35ac5a66b06b44\nhttps://git.kernel.org/stable/c/f85009dfcd65e5969526b0db7a49b5413746e630\n",
   "aliases": "GHSA-vvgr-4jx9-2c4x\nCVE-2026-98441\n",
@@ -49,16 +49,6 @@
         }
       },
       "product_version": "a21b06e7319129994f339ed47f512bbe57b77f5b <b097d9d7a5b09c8ec5c4c1a08e35ac5a66b06b44"
-    },
-    {
-      "id": "4b94dcb0-3a31-318e-a87b-855d6a39cb54",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "4fe77524-a4b8-390f-bf53-7d09c4a183f8",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.12.112"
+    },
+    {
+      "id": "fedc2900-9553-3f1b-9874-7e984e9111b0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

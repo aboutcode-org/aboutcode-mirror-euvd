@@ -3,7 +3,7 @@
   "enisaUuid": "dbe67e3f-39b6-3901-8970-caef2dc15b1f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: x_tables: guard option walkers against 1-byte tail reads\n\nWhen the last byte of options is a non-single-byte option kind, walkers\nthat advance with i += op[i + 1] ? : 1 can read op[i + 1] past the end\nof the option area.\n\nAdd an explicit i == optlen - 1 check before dereferencing op[i + 1]\nin xt_tcpudp and xt_dccp option walkers.",
   "datePublished": "May 8, 2026, 2:22:17 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:41 PM",
+  "dateUpdated": "Oct 19, 2026, 7:26:36 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",

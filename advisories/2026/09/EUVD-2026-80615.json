@@ -3,14 +3,14 @@
   "enisaUuid": "c59f23cf-0b92-3580-9c39-8cd3c46ea65c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: pm8001: Use rollback index when freeing MSI-X vectors\n\npm8001_request_msix() unwinds previously registered handlers with\nfree_irq() when request_irq() fails. The rollback loop uses the failing\nindex i for every iteration instead of the already registered vector\nindex j.\n\nThat passes the wrong IRQ/dev_id pair to free_irq() and leaves the\nearlier handlers installed. Use j for both pci_irq_vector() and the\nmatching irq_vector entry in the rollback loop.",
   "datePublished": "Sep 16, 2026, 10:33:16 AM",
-  "dateUpdated": "Sep 16, 2026, 2:41:21 PM",
+  "dateUpdated": "Oct 19, 2026, 8:56:21 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f39e3ca1f688d7c08954a0794e9bf1e279c83b15\nhttps://git.kernel.org/stable/c/a980dec7c69990e4f119bcf6a2ea093d1c4975e8\nhttps://git.kernel.org/stable/c/0205db768570f9a46b20912afa581a0c7a63d8b7\nhttps://git.kernel.org/stable/c/2853ce9c88e0e6dd575f95f28b3a8c2b27164115\nhttps://git.kernel.org/stable/c/fb22a8d2f3ac6665cc8bee197096b6675cac1a9f\nhttps://git.kernel.org/stable/c/dd817463c9b42a3a9e23d15b86c6c77a6cfb809d\nhttps://git.kernel.org/stable/c/e20b16aa3b49f9db5510940740255a987e6f2a6f\nhttps://git.kernel.org/stable/c/3f92a64545165bdbb36dee8fa35626b295463313\n",
   "aliases": "GHSA-jq5h-3g7m-2crv\nCVE-2026-90007\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0705ca7f-cc88-3a69-bc6f-4c9e4cb87612",
@@ -23,14 +23,14 @@
       "product_version": "a76037ff3479ad333a2505061915f7a21e7f3fb6 <3f92a64545165bdbb36dee8fa35626b295463313"
     },
     {
-      "id": "14c7ea18-bdc6-38ff-849c-e23038c8fddd",
+      "id": "11fb911e-57f7-301b-9264-94c48f4e435e",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc2"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "22bc2941-e80e-32a1-a8db-8feecd7f9e27",

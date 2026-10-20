@@ -3,23 +3,13 @@
   "enisaUuid": "12c6a432-60d0-318f-b406-6573a0eb106a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: roccat: bound device-supplied profile index\n\nkone_keep_values_up_to_date() and kone_profile_activated() use an\n8-bit, device-supplied profile value as an index into the 5-element\nkone->profiles[] array without a range check. A malicious USB device\nclaiming the Roccat Kone id can send a switch-profile event (or a\nstartup_profile read at probe) with an out-of-range value and make the\ndriver read out of bounds; the result is exposed via the actual_dpi\nsysfs attribute.\n\nReject out-of-range indices in both paths.\n\nThis was found with static analysis and confirmed with the KUnit test\nadded in the following patch (KASAN: slab-out-of-bounds).",
   "datePublished": "Sep 17, 2026, 4:12:13 PM",
-  "dateUpdated": "Sep 17, 2026, 4:12:13 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:00 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/686e5c3bd378933b4e795fcc7d40c5aad358eaaa\nhttps://git.kernel.org/stable/c/0a139188a7ce4baab7acc5d60e0d1c8657f9b4d4\nhttps://git.kernel.org/stable/c/67d7851f113fd0205dd27416d3c47ab32b176097\nhttps://git.kernel.org/stable/c/4b29be4b23bc28f59def1485702887e395256e11\nhttps://git.kernel.org/stable/c/579c78c8c317ecff8b6b820c227c93e6ec4e565d\nhttps://git.kernel.org/stable/c/635914c60da26a9892f27ffb5edcc922a10effab\nhttps://git.kernel.org/stable/c/99330b12376c3373ab555c24bc797630f03b81a2\nhttps://git.kernel.org/stable/c/43fae42628a8c10fa8981773d7ec9f1a367821a7\n",
   "aliases": "CVE-2026-93188\nGHSA-vx3m-3j77-8829\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
-    {
-      "id": "17fa4b07-4bd1-36b0-b529-98617ffef9bf",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "2bf9692f-41d0-3393-a5b8-c87985065ffb",
       "product": {
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "patch: 5.10.270"
+    },
+    {
+      "id": "9124bfbe-e28a-3f00-afca-46a468ff7ff5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ae519bb3-d7fc-338c-867a-0b5ecde87e42",

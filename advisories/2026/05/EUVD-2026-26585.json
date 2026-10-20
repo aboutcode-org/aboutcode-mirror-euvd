@@ -3,14 +3,14 @@
   "enisaUuid": "6a79ec20-0a1a-3049-87c3-f0568461a69e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix stack buffer overflow in hci_le_big_create_sync\n\nhci_le_big_create_sync() uses DEFINE_FLEX to allocate a\nstruct hci_cp_le_big_create_sync on the stack with room for 0x11 (17)\nBIS entries.  However, conn->num_bis can hold up to HCI_MAX_ISO_BIS (31)\nentries \u2014 validated against ISO_MAX_NUM_BIS (0x1f) in the caller\nhci_conn_big_create_sync().  When conn->num_bis is between 18 and 31,\nthe memcpy that copies conn->bis into cp->bis writes up to 14 bytes\npast the stack buffer, corrupting adjacent stack memory.\n\nThis is trivially reproducible: binding an ISO socket with\nbc_num_bis = ISO_MAX_NUM_BIS (31) and calling listen() will\neventually trigger hci_le_big_create_sync() from the HCI command\nsync worker, causing a KASAN-detectable stack-out-of-bounds write:\n\n  BUG: KASAN: stack-out-of-bounds in hci_le_big_create_sync+0x256/0x3b0\n  Write of size 31 at addr ffffc90000487b48 by task kworker/u9:0/71\n\nFix this by changing the DEFINE_FLEX count from the incorrect 0x11 to\nHCI_MAX_ISO_BIS, which matches the maximum number of BIS entries that\nconn->bis can actually carry.",
   "datePublished": "May 1, 2026, 2:15:00 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:26 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f5d446624345d309e7a4a1b27ea9f028d6a8c5d9\nhttps://git.kernel.org/stable/c/aba0aea354015794e8312dd7efe726967e58aefe\nhttps://git.kernel.org/stable/c/eaf32002ca7b1ba51c9f140991fd9febe6de79f0\nhttps://git.kernel.org/stable/c/bc39a094730ce062fa034a529c93147c096cb488\n",
   "aliases": "GHSA-9f4r-27xr-gwq3\nCVE-2026-31772\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "12fe96d0-6281-3d28-b5b4-27eba4c592a9",

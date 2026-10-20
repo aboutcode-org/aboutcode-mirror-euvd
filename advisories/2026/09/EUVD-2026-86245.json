@@ -3,12 +3,12 @@
   "enisaUuid": "e9dda9a7-cef3-395e-bd70-5ccd90690c1e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: mm: Fix the lockless page-table walk in show_pte()\n\nshow_pte() walks page tables locklessly and can run with interrupts\nenabled. A concurrent teardown can free a table page while it is being\nwalked. It can also clear a parent entry after show_pte() checked it; the\nregular pXd_offset() helpers then reread the cleared entry and can derive a\nbogus lower-level pointer and fault again.\n\nUse the lockless offset helpers with the saved parent entries, as\ngup_fast() does, and pass the saved PMD to pte_offset_map().\n\nFor task page tables, arm64 selects MMU_GATHER_RCU_TABLE_FREE. Disable\nlocal interrupts around the walk to hold off RCU-deferred table frees and\nblock the tlb_remove_table_sync_one() IPI until the walk is finished.\n\nPlace the IRQ guard after the header print. This does not make the output a\nconsistent snapshot, but prevents the task page-table walk from\ndereferencing a released table page or deriving a pointer from a different\nparent value.",
   "datePublished": "Sep 24, 2026, 3:34:27 PM",
-  "dateUpdated": "Sep 24, 2026, 3:34:27 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:50 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/08d931a0a850ad16a64f2cd23a19f40795cdbdf7\nhttps://git.kernel.org/stable/c/b28fe65a36b8209b6adcf2722c7ce974cf9ac8d1\nhttps://git.kernel.org/stable/c/68cbd70795dd8c06e7ccdc4eb0b74c5b180076c3\nhttps://git.kernel.org/stable/c/0f05d95b99164a9ccc4cf4a4920e0ff0228138ad\nhttps://git.kernel.org/stable/c/a77644d009dece1104b6fcc6e322b0e4503db0d6\n",
   "aliases": "GHSA-5wwm-gpr7-9rm3\nCVE-2026-93239\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2ae860fd-a771-36ff-92e4-35bac500bc6c",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "patch: 6.12.110"
-    },
-    {
-      "id": "2ed43d52-5244-3e41-94b1-9f9f9d0acd69",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "3092b46b-7f9f-3c93-b8af-0115a93504ce",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "1d18c47c735e8adfe531fc41fae31e98f86b68fe <0f05d95b99164a9ccc4cf4a4920e0ff0228138ad"
+    },
+    {
+      "id": "c3db1181-be1b-3314-9a1c-d94f3252c55f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e44ece30-b2a7-32b2-b88d-eab1d66fd7be",

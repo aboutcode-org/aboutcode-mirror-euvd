@@ -3,23 +3,13 @@
   "enisaUuid": "2221a456-4042-3231-914a-44d255ff3b87",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Require kernel access for text poke events\n\nPerf events with exclude_kernel=1 can be opened without kernel perf\naccess. However, exclude_kernel does not suppress text-poke sideband\nrecords. Every PERF_RECORD_TEXT_POKE is marked PERF_RECORD_MISC_KERNEL\nand contains a raw kernel instruction address.\n\nAn unprivileged task can therefore open and mmap a task-local software\nevent with text_poke=1. Both opening a count-only tracepoint event and\nconfiguring UDP GRO for ESP-in-UDP cause updates to inline static calls;\nthe observer receives the relocated addresses of the modified instructions.\nFor a known kernel image, any such address reveals the runtime kernel\ntext base despite KASLR.\n\nCall perf_allow_kernel() whenever attr.text_poke is set, regardless of\nexclude_kernel. Events that neither monitor kernel execution nor request\ntext-poke records retain their existing permissions.",
   "datePublished": "Oct 18, 2026, 3:44:05 PM",
-  "dateUpdated": "Oct 18, 2026, 3:44:05 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:23 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8473f44db9f710ea6f8cafb22f2e3ba6cb8ca9a7\nhttps://git.kernel.org/stable/c/e506333d1b9f42f1e402acebf1283af3c44a3809\nhttps://git.kernel.org/stable/c/677d0b51ac1a0db55d768c4c6399210b3de0795b\nhttps://git.kernel.org/stable/c/357e8a77a501d96c9517f01f4a211eed5e9c9184\n",
   "aliases": "GHSA-73f2-5qh8-h6cg\nCVE-2026-98655\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
-    {
-      "id": "32abc58b-580c-39fb-9769-2ba1b96313c3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
     {
       "id": "46984e08-f577-3d02-b8a4-f4a83e797033",
       "product": {
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "8132e97c-1aa9-3333-a5ce-b309a920b0d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "a1d23b53-4a25-393f-a384-9e72967c88c4",

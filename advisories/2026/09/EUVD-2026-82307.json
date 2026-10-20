@@ -3,7 +3,7 @@
   "enisaUuid": "aed378e6-4ac8-3c8a-887c-1a4fabf8f2b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni3c: master: Do not treat master device as a duplicate target\n\ni3c_master_search_i3c_dev_duplicate() searches the bus for another I3C\ndevice with the same PID as the reference device.  The search can match\nmaster->this, causing the controller itself to be returned as a\nduplicate.\n\nSince the controller is not a target device, it cannot be a duplicate of\none.  Exclude master->this from matching so that the function only\nreturns real duplicate target devices.",
   "datePublished": "Sep 17, 2026, 4:12:21 PM",
-  "dateUpdated": "Oct 3, 2026, 10:57:04 AM",
+  "dateUpdated": "Oct 19, 2026, 9:07:11 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/533faf3d2e67ded0a62b7ba753c0fe993d1dfc26\nhttps://git.kernel.org/stable/c/d0cc00957292e353ad46039034cd8f82fc4f8057\nhttps://git.kernel.org/stable/c/150e71808d3715a0deefbb189c780d03fdbdc735\nhttps://git.kernel.org/stable/c/4dc1b3eeba7991905a5b5b8129ebea51be7d87b7\n",
   "aliases": "CVE-2026-93199\nGHSA-c82m-2rvg-fqpm\n",
@@ -101,14 +101,14 @@
       "product_version": "patch: 6.12.112"
     },
     {
-      "id": "ee80974d-408f-3b00-af39-b53892d318a8",
+      "id": "f73cff2e-e97f-3539-9afd-64f83c4adf38",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "e60dcb60-717d-3eb5-8720-e938ec4e5e70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix exe mark UAF in kill_rules()\n\nkill_rules() removes mixed AUDIT_DIR and AUDIT_EXE rules when an audit\ntree is pruned. It drops entry->rule.exe before removing the rule from\nthe RCU-visible filter lists.\n\nAfter a rule has been installed with AUDIT_ADD_RULE, which requires\nCAP_AUDIT_CONTROL, removing the watched directory can race with another\ntask that is still evaluating the rule. In that case, fsnotify can free\nthe executable mark before the reader reaches audit_mark_compare(),\ncausing a use-after-free.\n\nKASAN reports:\n\n    BUG: KASAN: slab-use-after-free in audit_mark_compare+0x8d/0xa0\n\nUnlink the published rules from the RCU-visible lists and retain them\non tree->rules for cleanup. If any rule has an executable mark, wait for\na single RCU grace period before removing the marks and scheduling the\nentries for freeing. Otherwise, call_rcu() already provides the required\ndeferred freeing without a synchronous wait.",
   "datePublished": "Oct 18, 2026, 3:51:23 PM",
-  "dateUpdated": "Oct 18, 2026, 3:51:23 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:56 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/304960900991157e6883bdf0b39782b690545ee8\nhttps://git.kernel.org/stable/c/88633025f20ba9c32ccdb3efc86eafdf98cb825c\nhttps://git.kernel.org/stable/c/f2cc5462b78559c7628a9f8ac9a9592e7783183a\nhttps://git.kernel.org/stable/c/aa650d87a498844060eecb1d336f4d46f4d1b0b3\n",
   "aliases": "GHSA-73jm-mgrc-fg99\nCVE-2026-98862\n",
@@ -71,6 +71,16 @@
       "product_version": "34d99af52ad40bd498ba66970579a5bc1fb1a3bc <f2cc5462b78559c7628a9f8ac9a9592e7783183a"
     },
     {
+      "id": "8ace5680-7918-32dc-b511-bff4b6c6bcec",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "cfb2742d-59a1-3699-93e6-9fab43284e6e",
       "product": {
         "name": "Linux",
@@ -79,16 +89,6 @@
         }
       },
       "product_version": "34d99af52ad40bd498ba66970579a5bc1fb1a3bc <304960900991157e6883bdf0b39782b690545ee8"
-    },
-    {
-      "id": "f44e2a06-b0bb-3dc9-ba72-b4cb693f4a85",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "f62510d1-b01a-3c27-b1cb-fa5c7a137438",

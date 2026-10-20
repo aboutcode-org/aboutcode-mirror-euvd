@@ -3,7 +3,7 @@
   "enisaUuid": "2c6f9a91-077f-3fed-82d6-e437a4aa70fd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nip_gre: Reject enabling collect metadata through changelink\n\nipgre_netlink_parms() can enable collect_md on an existing GRE, GRETAP\nor ERSPAN device. Unlike newlink, changelink does not enforce metadata\ntunnel uniqueness. Converting a non-metadata device can therefore\nreplace the metadata receive entry for another device of the same type\nin the same netns. Deleting either device then clears the shared entry,\nbreaking metadata receive lookup for the surviving device.\n\nIf parameter validation fails after collect_md is set, deleting the\nmodified device can also clear an entry it never owned.\n\nReject enabling metadata mode in both changelink callbacks before any\nencapsulation or tunnel parameters are modified. Allow requests that\nrepeat the metadata attribute on an existing metadata device.",
   "datePublished": "Oct 18, 2026, 3:18:35 PM",
-  "dateUpdated": "Oct 18, 2026, 3:18:35 PM",
+  "dateUpdated": "Oct 19, 2026, 9:21:54 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c80315da84998b69b8829785a174b0bf72a81992\nhttps://git.kernel.org/stable/c/cff8b520312e750ad38967c30128e1534cbf9484\nhttps://git.kernel.org/stable/c/1dc759571f3df14891175fc52527f7624ba01322\nhttps://git.kernel.org/stable/c/da2e0cfbb620b199927a1e5b93b7cfde32083c7d\nhttps://git.kernel.org/stable/c/2e54d53b65e296b4b4bdc2cdd3b2b58dfa8d8c5c\nhttps://git.kernel.org/stable/c/bdd41b96e814300c66222cf4e47ecb8aef995656\nhttps://git.kernel.org/stable/c/63c5e48d6f7f5722a48f63e13e961dc5302894ed\nhttps://git.kernel.org/stable/c/a3f315be9d30eeb6938d11fa17fd4b32d52f7c42\n",
   "aliases": "GHSA-hr5p-wrg7-45pp\nCVE-2026-98569\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "2c705aa9-9b39-34c3-a402-962907f8e86f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "33bc35e8-6a9e-3558-ae6d-d1be5e04ac05",
@@ -179,16 +189,6 @@
         }
       },
       "product_version": "2e15ea390e6f4466655066d97e22ec66870a042c <bdd41b96e814300c66222cf4e47ecb8aef995656"
-    },
-    {
-      "id": "ee3f95ed-5d72-3839-93d7-3f49821c5a3f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     }
   ],
   "enisaIdVendor": [

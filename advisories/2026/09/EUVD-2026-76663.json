@@ -3,7 +3,7 @@
   "enisaUuid": "5dc0a2eb-7691-35a6-b457-5f8a2bee5024",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/tdx: Fix off-by-one in port I/O handling\n\nhandle_in() and handle_out() in arch/x86/coco/tdx/tdx.c use:\n\n    u64 mask = GENMASK(BITS_PER_BYTE * size, 0);\n\nGENMASK(h, l) includes bit h. For size=1 (INB), this produces\nGENMASK(8, 0) = 0x1FF (9 bits) instead of GENMASK(7, 0) = 0xFF (8\nbits). The mask is one bit too wide for all I/O sizes.\n\nFix the mask calculation.",
   "datePublished": "Sep 11, 2026, 7:46:55 PM",
-  "dateUpdated": "Sep 14, 2026, 12:02:31 PM",
+  "dateUpdated": "Oct 19, 2026, 8:52:05 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c6875423ad849ac234ab9812eb72f37ff8a490b4\nhttps://git.kernel.org/stable/c/220011fe95fc78b2bc2d7d43893bc73957a5c811\nhttps://git.kernel.org/stable/c/222b7005e4519f633b4cd666226256abbab46a1a\nhttps://git.kernel.org/stable/c/c4a22154870813d10aa0b4c734a574c726f9d4b0\nhttps://git.kernel.org/stable/c/bb45f705c4440dd3c689328319b88dd28770bbb8\nhttps://git.kernel.org/stable/c/0f63e656b1c679d32ac595de29d10c03efca6a25\n",
   "aliases": "GHSA-pv9x-wp8q-3x5j\nCVE-2026-89751\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "1160047d-fde2-3de8-9481-e594053deb3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "1e8cca9c-1549-3e0e-a5b0-5035e9c9889c",
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "03149948832a078f759022ed5b92e722d8d23c26 <0f63e656b1c679d32ac595de29d10c03efca6a25"
-    },
-    {
-      "id": "a2916394-d599-3c34-9ff0-960ae1ac5ebe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "c77e81a6-ca18-3069-9ff2-bc2ca48439bd",

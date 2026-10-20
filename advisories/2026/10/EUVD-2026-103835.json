@@ -3,7 +3,7 @@
   "enisaUuid": "c77164b7-1761-32a3-9a76-c359462070f9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: fix saved termios reset race\n\nResetting saved termios state on device registration is needed where a\nminor number can be reused for an entirely different device and where\nthe old settings may prevent the port from even being opened (e.g. when\nCLOCAL is not set).\n\nNot all TTY drivers guarantee that the minor number is no longer in use\nwhen registering devices however, something which can lead to a\nuse-after-free when closing a TTY (and saving its termios) races with\nre-registration.\n\nAdd a new TTY_DRIVER_RESET_SAVED_TERMIOS flag to request that any saved\ntermios state is reset on registration and only set it for drivers that\nmake sure that the minor number is no longer in use.",
   "datePublished": "Oct 18, 2026, 3:47:35 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:35 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1572d86bcf0bcb848d20fc5e5de7ed6963034c2b\nhttps://git.kernel.org/stable/c/08bf919f041af9de372428bb0c938157ea144164\nhttps://git.kernel.org/stable/c/dcaf0251f847a45861e94c6617024a9455687d2f\nhttps://git.kernel.org/stable/c/8df07fe93573e9e548d6645273e9bcb6eb74059e\n",
   "aliases": "GHSA-447r-jv65-jrgx\nCVE-2026-98750\n",
@@ -91,14 +91,14 @@
       "product_version": "4.12"
     },
     {
-      "id": "d60beddb-d210-37b1-8cb3-75a6745585a9",
+      "id": "e55ddf90-d44c-3da8-ace8-7a210df06be8",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "f33753e9-fe21-380e-9619-3cd91fc8994b",

@@ -3,7 +3,7 @@
   "enisaUuid": "a37ce47f-b8fe-3a36-a324-88add8ccd063",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: defio: Disconnect deferred I/O from the lifetime of struct fb_info\n\nHold state of deferred I/O in struct fb_deferred_io_state. Allocate an\ninstance as part of initializing deferred I/O and remove it only after\nthe final mapping has been closed. If the fb_info and the contained\ndeferred I/O meanwhile goes away, clear struct fb_deferred_io_state.info\nto invalidate the mapping. Any access will then result in a SIGBUS\nsignal.\n\nFixes a long-standing problem, where a device hot-unplug happens while\nuser space still has an active mapping of the graphics memory. The hot-\nunplug frees the instance of struct fb_info. Accessing the memory will\noperate on undefined state.",
   "datePublished": "May 27, 2026, 12:57:32 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:49 PM",
+  "dateUpdated": "Oct 19, 2026, 7:26:42 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "70ce5baf-e765-3e0c-8e17-9e736bc01efa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Check pointer type for all atomic RMW paths\n\nAtomic RMW verification records an instruction pointer type only when the\ncurrent destination is PTR_TO_ARENA. A second path can therefore reach the\nsame instruction with an ordinary pointer without comparing it against the\nsaved arena type.\n\nThe post-verification fixup uses the saved type to rewrite the instruction\nto BPF_PROBE_ATOMIC for every path. Record the actual destination type for\nall atomic RMW paths so the existing mismatch check rejects incompatible\nuses of one instruction.",
   "datePublished": "Sep 17, 2026, 4:07:03 PM",
-  "dateUpdated": "Oct 15, 2026, 10:10:36 AM",
+  "dateUpdated": "Oct 19, 2026, 8:59:14 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "1d9ccf88-7abd-3265-8e05-3ed7ef43d5bf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "5cb1cdac-0984-33e3-a0d5-bf304120d393",
@@ -41,16 +51,6 @@
         }
       },
       "product_version": "d503a04f8bc0c75dc9db9452d8cc79d748afb752 <eb287c6e81dedef92da01eb947f380d0aae513c3"
-    },
-    {
-      "id": "88932a15-bec0-38fa-a80a-e1eec6358736",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b5a4dde9-1663-3652-b3ec-05010ed3e999",

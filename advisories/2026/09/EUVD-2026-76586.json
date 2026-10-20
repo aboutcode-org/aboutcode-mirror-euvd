@@ -3,14 +3,14 @@
   "enisaUuid": "a47da06f-2c94-3523-8c35-4e6aeea9df5f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix XDR length calculation in nfsd4_ff_encode_layoutget\n\nThe XDR buffer size calculation in nfsd4_ff_encode_layoutget() has\nmultiple errors that can result in either an out-of-bounds write or\nleaking uninitialized kernel memory to the client:\n\n - fh_len doesn't account for XDR padding on the file handle data\n - uid and gid lengths use \"8 + len\" but xdr_encode_opaque() actually\n   writes \"4 + xdr_align_size(len)\" bytes\n - ds_len omits the flags and stats_collect_hint fields (8 bytes),\n   while len's header constant overestimates by 8 bytes -- these\n   partially cancel but leave a net mismatch\n\nThe worst case occurs with short strings (e.g. uid=0, gid=0 with an\nodd-sized file handle), where the function writes up to 5 bytes past\nthe reserved XDR buffer. Conversely, when string lengths happen to be\n4-byte aligned, the reservation is too large and stale buffer content\nis sent to the client.\n\nFix this by breaking out every encoded field explicitly in the ds_len\ncalculation, using xdr_align_size() for all variable-length opaque\nfields, and correcting the header constants.",
   "datePublished": "Sep 11, 2026, 7:45:58 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:59 PM",
+  "dateUpdated": "Oct 19, 2026, 8:50:47 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/3a7fd224df0fbb42167eb1b77be45d72fe0b1098\nhttps://git.kernel.org/stable/c/29e4478e2ed5a227e8f0c33cacb91bf227cedd47\nhttps://git.kernel.org/stable/c/65a72b721943618eeb3a41c8b36e915591f3f83f\nhttps://git.kernel.org/stable/c/bee826c00ac900473f91306f1f3e5a5a81fd4a74\nhttps://git.kernel.org/stable/c/e7d9d23ecd9172f05b09bb678ff22db8e361c428\nhttps://git.kernel.org/stable/c/0380129b1373c437eb35401a174671c8888f4b80\nhttps://git.kernel.org/stable/c/c81cef6a805dec266c10fc4f83c93d6fcf1a2b43\nhttps://git.kernel.org/stable/c/f9868174af49d207fbaf0c5e055d088a983684af\n",
   "aliases": "GHSA-qhmp-vm7x-v422\nCVE-2026-89674\n",
   "assigner": "Linux",
-  "epss": 0.46,
+  "epss": 0.51,
   "enisaIdProduct": [
     {
       "id": "02163d87-9410-3508-bc22-4831ba2be670",
@@ -143,6 +143,16 @@
       "product_version": "9b9960a0ca4773e21c4b153ed355583946346b25 <f9868174af49d207fbaf0c5e055d088a983684af"
     },
     {
+      "id": "bcaee038-ec55-3b31-b6c1-e5a8abfb24c8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "d48a98ec-ad60-3dbc-98a6-95ee1fa01bbf",
       "product": {
         "name": "Linux",
@@ -151,16 +161,6 @@
         }
       },
       "product_version": "9b9960a0ca4773e21c4b153ed355583946346b25 <3a7fd224df0fbb42167eb1b77be45d72fe0b1098"
-    },
-    {
-      "id": "db61a1ed-86a2-39ec-b157-933c42afb71f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "e837b703-598c-38ec-804e-ba5ceacc0f6e",

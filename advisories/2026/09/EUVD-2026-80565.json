@@ -3,25 +3,15 @@
   "enisaUuid": "d1dbed12-f2f9-367a-87ff-c5d57cc9c5c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm/btt: reject an arena whose nfree is below the lane count\n\nThe BTT info block's nfree field, the number of reserve free blocks, is\nread from the medium without validation.  btt_freelist_init() and\nbtt_rtt_init() size the per-lane freelist[] and rtt[] arrays by nfree,\nbut the I/O path indexes them by the lane from nd_region_acquire_lane(),\nwhich is bounded by nd_region->num_lanes (ND_MAX_LANES), not by nfree.\nA crafted or foreign arena whose nfree is below the lane count makes\nfreelist[lane]/rtt[lane] run past the allocation: an out-of-bounds write.\n\nbtt.rst documents the nlanes = min(nfree, num_cpus) invariant, which the\ncode does not currently honor: num_lanes is ND_MAX_LANES regardless of\nnfree.  Reject an arena whose nfree is below num_lanes at discovery,\nbefore the per-lane arrays are allocated, enforcing that invariant.",
   "datePublished": "Sep 16, 2026, 10:32:46 AM",
-  "dateUpdated": "Sep 16, 2026, 2:40:43 PM",
+  "dateUpdated": "Oct 19, 2026, 8:55:38 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/eb491343d2d1784121ad9af91c25b338c28913c3\nhttps://git.kernel.org/stable/c/59d5cd1f42b4bab3609512c3cb3d3540d3d21da7\nhttps://git.kernel.org/stable/c/f6c5313aae794ecca8f762c1a3493de5c266f120\nhttps://git.kernel.org/stable/c/f9bf05c63b77d000e9c01f3e47af36973887d350\nhttps://git.kernel.org/stable/c/6f79d1a5f2611a3d36e9312be5425cd9cb397c51\nhttps://git.kernel.org/stable/c/6b1faf1f099f7060b5f1f2f0d024132581f1726e\nhttps://git.kernel.org/stable/c/9dfa11cef4750b67591307f2c62e47a23d60e4b7\nhttps://git.kernel.org/stable/c/6a1f2e5ed9267ca19187038ac635393c165213ac\n",
   "aliases": "GHSA-gj9w-7mfp-hc5m\nCVE-2026-89965\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
-    {
-      "id": "044cdf00-d584-3283-ba0a-3c863f700d15",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "05831f47-040d-313b-a6a3-8d60f531016c",
       "product": {
@@ -71,6 +61,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "541773f1-bf48-386e-a50d-d30a9dec1943",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "5db2a314-994f-3b99-b38f-3f64883e66a8",

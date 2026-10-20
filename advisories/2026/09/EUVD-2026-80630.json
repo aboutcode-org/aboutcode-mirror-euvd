@@ -3,14 +3,14 @@
   "enisaUuid": "76ca1d70-5158-3082-bebd-a942a0e605ec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_midi2: fix use-after-free in string attribute show path\n\nf_midi2_opts_str_show() takes the string lock internally, but its\ncallers dereference the opts->info.<field> pointer before calling it,\noutside the lock. This races with f_midi2_opts_str_store(), which\nfrees the old string under opts->lock when the attribute is written\nconcurrently, the show path can read a pointer that gets freed\nbefore the lock inside str_show() is even taken.\n\nChange f_midi2_opts_str_show() to take a pointer to the string field,\nmatching the existing pattern in f_midi2_opts_str_store(), and\ndereference it only after the lock is held. Update all three callers\n(iface_name, block name, and the EP string option macro) accordingly.",
   "datePublished": "Sep 16, 2026, 10:33:26 AM",
-  "dateUpdated": "Sep 17, 2026, 9:29:26 AM",
+  "dateUpdated": "Oct 19, 2026, 8:56:35 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/f9bdf4c4f6410a1dfafafa383a0e21069372657f\nhttps://git.kernel.org/stable/c/d11f3300b39e2daad2f0d9d66ddcc39a156cb594\nhttps://git.kernel.org/stable/c/e89e30f0b5d3004fe5955250bd8b04f3733e32ce\nhttps://git.kernel.org/stable/c/49fab5e1bdb205c36c965d0e9677bc40d282d3a2\nhttps://git.kernel.org/stable/c/fed0aa7c6eaedc6c0d4e362fc91724aa47be4a7b\n",
   "aliases": "CVE-2026-90022\nGHSA-3v5g-8x87-gm3v\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "10a78879-246c-3b7b-b492-dea3d0de1c96",
@@ -103,14 +103,14 @@
       "product_version": "29ee7a4dddd5caa18d1cef000f20c6af43f762f1 <e89e30f0b5d3004fe5955250bd8b04f3733e32ce"
     },
     {
-      "id": "b19730c0-87e0-3b1f-b12f-acd9f48f3873",
+      "id": "dc5fc341-9f74-3efa-943c-4ef323b4793b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc2"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "dea26d23-ad68-3a08-b848-f2562a0c0ae8",

@@ -3,13 +3,23 @@
   "enisaUuid": "b6952f61-ea7d-3fba-9b7e-9d9d56a66292",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: ets: clamp quantum in parse and fallback paths\n\nets_qdisc_change() falls back to psched_mtu() with no floor for bands\nwithout an explicit quantum. With a crafted size table qdisc_pkt_len\nreaches ~2 GiB, so a zero psched_mtu on a headerless device makes the\ndeficit-refill loop spin under the qdisc lock.\n\nMove the floor into ets_quantum_parse() so explicitly configured quanta\nare also clamped to [256, 1<<20], not just the fallback path.\n\nConditions to recreate the bug:\n  CONFIG_NET_SCH_ETS=y. Requires CAP_NET_ADMIN (namespace-local via\n  unshare -Urn suffices).\n\n  tc qdisc add dev dummy0 root ets bands 3 strict 2 quanta 1 1",
   "datePublished": "Sep 25, 2026, 10:23:34 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:29 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:14 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/440b66cc7b56ea38e9b878ae88da91992efaa4c4\nhttps://git.kernel.org/stable/c/4ef8664eafafc8db68a1d52601f17dc008a223b7\nhttps://git.kernel.org/stable/c/8b8d782c3b96376217087767dcf662cd3d25f226\nhttps://git.kernel.org/stable/c/226d2702e74a570f5bfae6115b4706da4b94e5cf\nhttps://git.kernel.org/stable/c/99ae477b892e203a37985ebc56f0063e072f7f4b\nhttps://git.kernel.org/stable/c/8f80b113dea0bed3c1a31a4224b72775cd9ec52d\nhttps://git.kernel.org/stable/c/de22c30ec5598aca8797f02082d2ee1358dfa3ff\nhttps://git.kernel.org/stable/c/1c38487f46b243bfeefec0c0c86023a3904f2214\n",
   "aliases": "GHSA-jc2x-56vj-85xr\nCVE-2026-98009\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "03ae0b05-d3a5-3b93-a9df-1c5152007189",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "43a4e91a-71e9-3e1d-8a93-ff28e49853f5",
       "product": {
@@ -149,16 +159,6 @@
         }
       },
       "product_version": "dcc68b4d8084e1ac9af0d4022d6b1aff6a139a33 <de22c30ec5598aca8797f02082d2ee1358dfa3ff"
-    },
-    {
-      "id": "ba756a7e-3bbc-3e32-b889-18cff7f6095a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "eabe6305-0789-3ec2-9c20-7f065ea168fc",

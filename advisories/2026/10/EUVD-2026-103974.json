@@ -3,7 +3,7 @@
   "enisaUuid": "b83f4565-75c1-3877-9954-a1fa893ed5a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Force MSR bitmap refresh if runtime eVMCS controls are modified\n\nForce a refresh of the vmcs02 MSR bitmap during nested VM-Enter if the\nruntime eVMCS controls (pin, primary, secondary, etc.) are being updated.\nIf L1 isn't intercepting TPR writes, runs L2 with TPR virtualization, and\nthen runs the same L2 with TPR virtualization disabled, KVM will fail to\nrefresh msr_bitmap02 and leave TPR in passthrough mode even though TPR\nvirtualization is disabled.  I.e. failure to refresh the bitmap lets L2 (or\nL1 by proxy) read and write L0's TPR.",
   "datePublished": "Oct 18, 2026, 3:46:55 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:55 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2db11598b59f16ddb6420693f9a4ac4efc3d4789\nhttps://git.kernel.org/stable/c/f6189e26d0237e47e2f04f9cb1e43fd19a9b2f3a\nhttps://git.kernel.org/stable/c/1e497e3bdab6983deb68a1d26b488027deb4527f\nhttps://git.kernel.org/stable/c/2abb25273c82061dd4670690c81c319c03740bf6\n",
   "aliases": "GHSA-6822-57w6-j97m\nCVE-2026-98720\n",
@@ -21,14 +21,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "2297d27c-edf3-345e-9bb2-d33d3a16d9fb",
+      "id": "46064ecc-7a98-3b6c-a584-20197e336e57",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "495fc939-bb3d-3799-83ed-f9d338896457",

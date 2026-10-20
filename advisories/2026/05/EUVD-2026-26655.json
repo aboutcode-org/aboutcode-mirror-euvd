@@ -3,7 +3,7 @@
   "enisaUuid": "60db7c3b-677b-3159-8608-4cd86b6e9ea5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: fix use-after-free in add_adev() error path\n\nIf auxiliary_device_add() fails, add_adev() jumps to add_fail and calls\nauxiliary_device_uninit(adev).\n\nThe auxiliary device has its release callback set to adev_release(),\nwhich frees the containing struct mana_adev. Since adev is embedded in\nstruct mana_adev, the subsequent fall-through to init_fail and access\nto adev->id may result in a use-after-free.\n\nFix this by saving the allocated auxiliary device id in a local\nvariable before calling auxiliary_device_add(), and use that saved id\nin the cleanup path after auxiliary_device_uninit().",
   "datePublished": "May 1, 2026, 2:15:48 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:30 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

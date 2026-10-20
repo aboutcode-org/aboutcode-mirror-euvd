@@ -3,7 +3,7 @@
   "enisaUuid": "44e230d8-2f3b-35ba-82d4-f955f13ce9e8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: bcm_sf2: bound the CFP rule dump by the caller's buffer size\n\nbcm_sf2_cfp_rule_get_all() walks the whole cfp.unique bitmap into\nrule_locs[] without consulting nfc->rule_cnt, which is how many entries\nthe caller had room for.  ETHTOOL_GRXCLSRLALL requires no CAP_NET_ADMIN\nand the ioctl sizes the buffer from the rule_cnt userspace passes in, so\nonce an admin has installed CFP rules any user can ask for fewer slots\nthan there are rules and run off the end of the allocation.  A rule_cnt\nof 0 leaves the buffer pointer NULL and the walk dereferences it.",
   "datePublished": "Sep 25, 2026, 10:23:46 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:47 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:35 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -81,16 +81,6 @@
         }
       },
       "product_version": "patch: 5.10.271"
-    },
-    {
-      "id": "6530decd-fa7d-38ca-b7c2-bc010fdf514a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "65bd64e2-adf3-3e90-ad76-775c6148c377",
@@ -171,6 +161,16 @@
         }
       },
       "product_version": "4.11"
+    },
+    {
+      "id": "fa8dcc3e-da81-3c18-98f0-b59fac581cc4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ff07dc93-8f1f-3791-bbb2-87cfe93f22c7",

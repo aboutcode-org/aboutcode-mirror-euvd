@@ -3,12 +3,12 @@
   "enisaUuid": "07d76815-8d21-3c9b-a8a5-54e1b49279b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: don't offload TC setup on AP_VLAN interfaces\n\nAP_VLAN interfaces are purely virtual, so don't try to offload\nTC setup to drivers. We can't really use the AP interface either\nsince we may not know it all the time, and it could technically\neven change.\n\nJust reject the TC offload so things get done in software.",
   "datePublished": "Oct 6, 2026, 8:46:27 AM",
-  "dateUpdated": "Oct 6, 2026, 8:46:27 AM",
+  "dateUpdated": "Oct 19, 2026, 9:17:47 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/790221efbfece13a2347563b3785aaca48f192e2\nhttps://git.kernel.org/stable/c/40bc8a268c3b6e21fa3a8dd1b4fd85aa905b9718\nhttps://git.kernel.org/stable/c/9c34f01b8f2177dd4e1ee524ca1f9ca3fcd85a11\nhttps://git.kernel.org/stable/c/ea3ef2165e4751df2ee3bc1c07a192243a08faa5\nhttps://git.kernel.org/stable/c/362bd5bce29ed0f6fd3d39a7065567777d70606e\n",
   "aliases": "CVE-2026-98336\nGHSA-rmwf-m6v4-6j39\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0a5239e8-34a8-37e0-8468-375d7acc38f9",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "6.4"
-    },
-    {
-      "id": "25606bb1-3999-3bfc-948f-e49eff1640b6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
     },
     {
       "id": "3a1fb871-385b-31ac-a3c8-663853f9b6b3",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "patch: 6.6.158"
+    },
+    {
+      "id": "6578d25e-8c8f-3d3e-b6db-ccb6425e5d3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "73c02fc0-8ffc-39c6-994e-3ca44e39bdb2",

@@ -3,7 +3,7 @@
   "enisaUuid": "b12e7b6a-4382-3b58-bc39-38e88f442415",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: defer qdisc freeing after failed creation\n\nAn RTM_NEWQDISC request can make clsact bind a populated shared ingress\nblock during ->init(), publishing an embedded mini_Qdisc to lockless\nreaders.  If the same request has an invalid TCA_RATE, estimator setup\nfails after ->init(); the unwind removes the pointer but synchronously\nfrees its containing qdisc while tc_run() may still hold it.\n\nRetire failed qdiscs through the same RCU helper as normal destruction.\nInline the synchronous free into the callback now that no direct callers\nremain.",
   "datePublished": "Sep 25, 2026, 10:23:39 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:38 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:22 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -113,16 +113,6 @@
       "product_version": "51ab2994c387c80b45caf8b8067b3f3b97771d25 <20bf6fa34b345333971bd4464a322cce87b83f4e"
     },
     {
-      "id": "b215651a-c0cc-3ca5-8e3d-175f88958ec2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "ccd687cc-f0ad-39b0-bd1d-116a93f0fcd7",
       "product": {
         "name": "Linux",
@@ -131,6 +121,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "df3585b0-7422-3b8e-a26f-2505ad982ad3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "fd9dc7bf-307f-3b62-b0a8-8fe11fab704b",

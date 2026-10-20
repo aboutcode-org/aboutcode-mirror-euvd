@@ -3,7 +3,7 @@
   "enisaUuid": "42944c84-3c51-3fa0-bb90-3b81fe00be9b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: avoid force-completing uninitialized UVD rings\n\nuvd_v7_0_sw_init() does not initialize the UVD decode ring for an\nSR-IOV VF. However, amdgpu_uvd_resume() unconditionally force-completes\nthe decode ring when restoring its fence sequence.\n\nSkip fence completion when the fence driver is not initialized.",
   "datePublished": "Sep 16, 2026, 10:30:59 AM",
-  "dateUpdated": "Oct 3, 2026, 10:56:43 AM",
+  "dateUpdated": "Oct 19, 2026, 8:53:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/863f08c485fbb51b6443681893e4044c7cb6cd51\nhttps://git.kernel.org/stable/c/dc136795f9997adc8d3219f40e8e3afa7df7183f\nhttps://git.kernel.org/stable/c/967a179463d3227dfaf9200fd654c1f5a26a11e8\nhttps://git.kernel.org/stable/c/6760f5cb12d2366ddd58a2d8637f7583d73f596b\n",
   "aliases": "GHSA-9r9g-2xp7-pmx6\nCVE-2026-89827\n",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "0a33b11d26c6b7e975b54d469a739ffac29f67ab <dc136795f9997adc8d3219f40e8e3afa7df7183f"
-    },
-    {
-      "id": "0ca0b2de-1357-3481-9668-638c1b724a45",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "1d0020cd-b25c-3f5b-9e9a-0f4c188ebbaf",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "3aac8c4c-29a5-3e51-a296-80f0f525fae1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4c960081-0ae2-3809-a517-fcc849981659",

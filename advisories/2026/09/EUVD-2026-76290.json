@@ -3,7 +3,7 @@
   "enisaUuid": "d96e8fe8-7dbd-315d-b9d4-31f982c1da76",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcxhr: initialize mutexes before requesting threaded IRQ\n\npcxhr_probe() requests pcxhr_threaded_irq() before initializing\nmgr->lock, even though the threaded handler takes that mutex.\n\nInitialize the manager locks before request_threaded_irq() so an\nearly interrupt cannot run against uninitialized mutex state during\nprobe.",
   "datePublished": "Sep 11, 2026, 7:42:31 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:36 PM",
+  "dateUpdated": "Oct 19, 2026, 8:45:52 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -12,16 +12,6 @@
   "assigner": "Linux",
   "epss": 0.19,
   "enisaIdProduct": [
-    {
-      "id": "05fabed2-b037-3a4d-b389-c706d8f4a79d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "1c368cee-7217-3e52-b550-9d44495302a8",
       "product": {
@@ -151,6 +141,16 @@
         }
       },
       "product_version": "9bef72bdb26e291d6dffb04768741a0e49582666 <039602d6ddb1febbb0561b30dab04461f78a1319"
+    },
+    {
+      "id": "d8adb9aa-e394-3066-b8b2-40eb5699a2d1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e3840a2e-8473-3b8d-a86f-b521be659b43",

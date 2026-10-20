@@ -3,7 +3,7 @@
   "enisaUuid": "00dfff07-ec1c-33bb-9aa2-02f4dc451eb7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: shaper: protect late read accesses to the hierarchy\n\nWe look up a netdev during prep of Netlink ops (pre- callbacks)\nand take a ref to it. Then later in the body of the callback\nwe take its lock or RCU which are the actual protections.\n\nThis is not proper, a conversion from a ref to a locked netdev\nmust include a liveness check (a check if the netdev hasn't been\nunregistered already). Fix the read cases (those under RCU).\nWrites needs a separate change to protect from creating the\nhierarchy after flush has already run.",
   "datePublished": "Apr 3, 2026, 3:15:22 PM",
-  "dateUpdated": "Oct 16, 2026, 3:09:56 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:43 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

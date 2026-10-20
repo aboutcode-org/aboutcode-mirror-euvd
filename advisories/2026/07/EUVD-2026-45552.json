@@ -3,7 +3,7 @@
   "enisaUuid": "764069c2-bc61-375e-b05c-b1e744e425dc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: close TOCTOU race while computing rcv_wnd\n\nThe MPTCP output path access locklessly the MPTCP-level ack_seq\nin multiple times, using possibly different values for the data_ack\nin the DSS option and to compute the announced rcv wnd for the same\npacket.\n\nRefactor the cote to avoid inconsistencies which may confuse the\npeer. Also ensure that the MPTCP level rcv wnd is updated only when\nthe egress packet actually contains a DSS ack.",
   "datePublished": "Jul 19, 2026, 2:18:37 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:08 PM",
+  "dateUpdated": "Oct 19, 2026, 8:17:53 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",

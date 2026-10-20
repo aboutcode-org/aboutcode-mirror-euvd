@@ -3,7 +3,7 @@
   "enisaUuid": "f9dc7b78-9d34-338a-8adc-cc480fe878af",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: reject mapping a reserved doorbell to a new queue\n\nWhen creating an user-queue, the user space\nprovides a doorbell BO handle and an offset within\nthe bo to obtain a doorbell.\n\nHowever current implementation using xa_store_irq()\nto store a doorbell, which allows a later queue created\nwith the same BO and offset parameters to overwrite an\nexisting queue and doorbell mapping.\n\nThis can cause problems like misrouting fence IRQ\nprocessing to a wrong queue, and mislead the cleanup\nprocess of one queue erasing the mapping of another queue.\n\nThis commit fixes this issue by replacing xa_store_irq with\nxa_insert_irq, which rejects mapping a reserved\ndoorbell to a newly created queue\n\n(cherry picked from commit 6244eae22966350db52faf9c1369d3b2ffc5de4e)",
   "datePublished": "Aug 10, 2026, 11:58:19 AM",
-  "dateUpdated": "Oct 16, 2026, 3:52:56 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:50 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",

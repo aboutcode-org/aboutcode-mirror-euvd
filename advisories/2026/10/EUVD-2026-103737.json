@@ -3,7 +3,7 @@
   "enisaUuid": "875e47a0-d070-3618-a6b5-267bc4eca203",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: fix swapped IPv6 IPsec policy masks\n\nIPv6 XFRM policies may use different source and destination prefix\nlengths. mlx5e_ipsec_policy_mask() builds the corresponding masks\nindependently, but setup_fte_addr6() installs each mask in the opposite\naddress field.\n\nWhen the prefix lengths differ, this makes the source match use the\ndestination prefix and the destination match use the source prefix. The\nresulting hardware rule can both miss traffic covered by the policy and\nmatch traffic outside it.\n\nInstall each mask in its corresponding match field.",
   "datePublished": "Oct 18, 2026, 3:16:28 PM",
-  "dateUpdated": "Oct 18, 2026, 3:16:28 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3803dc8477f08e0dac4050cafee0de43f32727be\nhttps://git.kernel.org/stable/c/e73f832f0a7b2c6ea45b2124c732d639be97b547\nhttps://git.kernel.org/stable/c/10de7ed8ef4840da9ca21de4c29578657ac367db\n",
   "aliases": "CVE-2026-98497\nGHSA-jq4w-vj6x-gwh6\n",
@@ -31,6 +31,16 @@
       "product_version": "ca7992f52c2cb5ef61fbfa590a2d7c926f290237 <e73f832f0a7b2c6ea45b2124c732d639be97b547"
     },
     {
+      "id": "142502a2-b395-3517-996a-6f79d7fdc739",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "24af62f4-eef3-360d-89e1-0817bcf3c70e",
       "product": {
         "name": "Linux",
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "patch: 7.2.9"
-    },
-    {
-      "id": "645c11eb-2237-3d87-953f-a6d085456bd9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "aec643fa-07f2-34e4-9b12-943e54a3bb73",

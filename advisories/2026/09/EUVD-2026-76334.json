@@ -3,7 +3,7 @@
   "enisaUuid": "52b27d0a-0abf-3f0b-8789-da783578f3ec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: hp-bioscfg: pass validated element count to package parsers\n\nThe per-type package parsers are handed the wrong element count.\n\nhp_init_bios_package_attribute() validates obj->package.count and then\ncalls one of the five hp_populate_*_package_data() wrappers (string,\ninteger, enumeration, ordered list, password). Each wrapper forwards a\ncount to its hp_populate_*_elements_from_package() parser, but instead\nof forwarding the validated obj->package.count it derives the count\nfrom elements[0]. elements[0] is the NAME field and is always an\nACPI_TYPE_STRING, so reading ->package.count from it in fact reads\n->string.length through the union acpi_object. The parsers thus bound\nthemselves against the length of the name string rather than against\nthe real number of elements in the package.\n\nThis is safe today because hp_init_bios_package_attribute() refuses any\npackage that has fewer than the type's element count, so a parser only\never runs on a full package and never reads past it regardless of the\nbogus bound.\n\nAn upcoming change relaxes that check to accept shorter packages. Once\na parser can receive fewer elements than its per-type count, a bound\ntaken from the name length no longer reflects the array size, and the\n\"elem < count\" loop conditions and \"elem + n >= count\" sub-loop guards\nread past the end of elements[] - an out-of-bounds heap read.\n\nForward the validated obj->package.count to every *_package_data()\nwrapper so the parsers bound themselves against the real package size.\nThis does not change behaviour for the packages that enumerate\ncorrectly today and is a prerequisite for accepting shorter packages\nsafely.",
   "datePublished": "Sep 11, 2026, 7:43:01 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:43 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:36 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "patch: 6.18.50"
-    },
-    {
-      "id": "30b8f512-2098-39fd-a8e6-d2438df82763",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "3ec1122c-c7c6-38f0-bf9a-fb05cb27b8e4",
@@ -121,6 +111,16 @@
         }
       },
       "product_version": "6.6"
+    },
+    {
+      "id": "c83c3afc-040a-317d-9c29-01e2bdb021d8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "da99e907-4a93-37f5-be46-cd717d3db588",

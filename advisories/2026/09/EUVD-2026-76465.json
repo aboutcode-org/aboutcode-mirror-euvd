@@ -3,7 +3,7 @@
   "enisaUuid": "e9db1f44-1d1f-3f71-a411-9957a2bf89d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix uninitialized local_id in syncookie MP_JOIN reconstruction\n\nmptcp_token_join_cookie_init_state() restores remote_nonce, local_nonce,\nbackup, join_id, token and msk from the saved cookie entry when rebuilding\nthe request socket for a MP_JOIN 4th-ACK handled under SYN cookies, but it\ndoes not restore local_id, even though the SYN path saved it.\nsubflow_ulp_clone() then reads that uninitialized field and stores it as\nthe joined subflow's address-ID. Because the request-sock slab is\nSLAB_TYPESAFE_BY_RCU and not zeroed on allocation, the value is the stale\nbyte of a previously freed request socket, which an off-path peer can\ninfluence by sending concurrent MP_JOIN SYNs. This corrupts the path\nmanager's id-based subflow bookkeeping for the connection.\n\nRestore subflow_req->local_id from the cookie entry, as done for the other\nfields.",
   "datePublished": "Sep 11, 2026, 7:44:27 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:43 PM",
+  "dateUpdated": "Oct 19, 2026, 8:48:47 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
@@ -12,16 +12,6 @@
   "assigner": "Linux",
   "epss": 0.6,
   "enisaIdProduct": [
-    {
-      "id": "05e8a220-66c0-320d-ae7b-9297ce030175",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "1a0fefe2-02bf-392a-bc5e-b6a4d9f569d8",
       "product": {
@@ -191,6 +181,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "fc237447-8a35-3533-b340-35c5e3de8f7d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

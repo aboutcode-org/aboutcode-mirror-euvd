@@ -3,7 +3,7 @@
   "enisaUuid": "c64f836b-7f1c-3b78-9971-9cb2787fd3c1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate MOVE_RANGE destination size\n\nF2FS_IOC_MOVE_RANGE checks the source range, but not the destination end\nbefore updating i_size. A source hole can expose this: __clone_blkaddrs()\nskips NULL_ADDR entries and returns success, so the caller can still extend\nthe destination inode with unchecked pos_out + len.\n\nReject destination overflow and use inode_newsize_ok() before extending\nthe destination inode.",
   "datePublished": "Sep 16, 2026, 10:31:14 AM",
-  "dateUpdated": "Oct 3, 2026, 10:56:48 AM",
+  "dateUpdated": "Oct 19, 2026, 8:53:33 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
@@ -12,6 +12,16 @@
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "09834f84-0498-382a-a59f-8230c0da2218",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "1ec1533d-8e3c-355c-a2c1-dc1c36744e7d",
       "product": {
@@ -61,16 +71,6 @@
         }
       },
       "product_version": "patch: 6.18.53"
-    },
-    {
-      "id": "a77d5c9e-bce0-3ee2-a980-32050115410c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b84beff6-e2cc-3b91-a00c-495ef047f0de",

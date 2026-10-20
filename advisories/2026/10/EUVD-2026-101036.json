@@ -3,12 +3,12 @@
   "enisaUuid": "e84f8b7f-9eae-3568-b7b0-1cfe39c05d9e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Fix skcipher_walk return code handling in aes_s390\n\nThe return codes from skcipher_walk_virt() were not properly checked\nbefore entering the processing loops in ecb_aes_crypt() and ctr_aes_crypt().\nIf skcipher_walk_virt() fails, the walk structure may be in an undefined\nstate, and attempting to process data could lead to incorrect behavior\nor accessing uninitialized memory.\n\nAdd proper return code checking to ensure correct handling of the walk\ninitialization and walk advance and eventually return to the caller\nwith that return code.",
   "datePublished": "Oct 14, 2026, 1:25:51 PM",
-  "dateUpdated": "Oct 14, 2026, 1:25:51 PM",
+  "dateUpdated": "Oct 19, 2026, 9:18:38 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/89b58645646d1dac34162cc2597f42266bfbf930\nhttps://git.kernel.org/stable/c/35c3f97569306050e818fa18e17fa97c358f0f28\nhttps://git.kernel.org/stable/c/aea3e1588f08e381a7a57b2bf1a60cc2347904cd\nhttps://git.kernel.org/stable/c/15fa028589c3a2545f0bff355eff06d5844196bf\n",
   "aliases": "GHSA-qwcv-vwq2-whqp\nCVE-2026-98387\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "262b2431-25ff-3522-82ad-cea5fa218f66",
@@ -61,16 +61,6 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "82bffd46-568b-3189-8d99-2eb02f8cb3b7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "83140837-84fc-3015-9376-b75d61c03fa4",
       "product": {
         "name": "Linux",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "7988fb2c03c8cf9936f851ab19a6d21b3c3411c0 <89b58645646d1dac34162cc2597f42266bfbf930"
+    },
+    {
+      "id": "c1509754-04c1-3d7d-9542-95b241e9655c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e8049703-1276-392a-a0b5-b61f3e661c2d",

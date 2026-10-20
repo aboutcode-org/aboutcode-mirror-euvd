@@ -3,7 +3,7 @@
   "enisaUuid": "0406343d-934c-3154-bf7a-2f9ffb2b5aae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: max98363: fix uninitialized stream_config->type\n\nstream_config is not initialized before being passed to\nsdw_stream_add_slave().  The type field may contain garbage and is\nlater copied to stream->type by sdw_config_stream().\n\nZero-initialize stream_config so type defaults to SDW_STREAM_PCM.",
   "datePublished": "Oct 18, 2026, 3:47:29 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:29 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:56 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1c251426bb67de5cbfd3b5550bd5983736e8b9c7\nhttps://git.kernel.org/stable/c/7df8c39a50f364c04d68881e61ba1ecad29d4b72\nhttps://git.kernel.org/stable/c/f44ba04c7a32bd13dbdcd814385b8629d0ee95e3\nhttps://git.kernel.org/stable/c/bcd61aa247c28b721ac21dda6e4135f75a2de29f\n",
   "aliases": "GHSA-5h63-gmxc-wv3q\nCVE-2026-98744\n",
@@ -31,14 +31,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "3c95d9ef-6e11-36f0-af65-a2d27063c805",
+      "id": "522f30b5-3159-3c78-9a23-bce60a5ef7f0",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "539736d0-b4e6-3d20-b4ab-bc1bb812ad2e",

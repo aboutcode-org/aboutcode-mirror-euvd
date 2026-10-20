@@ -3,7 +3,7 @@
   "enisaUuid": "0e720a1b-e8ea-3da8-ae28-327f9efc17ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: buffer: serialize buffer teardown with mode claims\n\nBuffer-mode claims hold mlock to guarantee that the device remains in\nbuffer mode until the claim is released. Normal buffer updates take\ninfo_exist_lock followed by mlock in iio_update_buffers().\n\nHowever, iio_device_unregister() disables and deactivates all buffers\nwithout taking mlock. This can invalidate buffer state, including\nactive_scan_mask, while a buffer-mode claim is held.\n\nTake mlock in iio_disable_all_buffers() so that unregister honors the\nmode-claim lifetime guarantee. The info_exist_lock -> mlock ordering\nmatches iio_update_buffers().",
   "datePublished": "Oct 18, 2026, 3:45:05 PM",
-  "dateUpdated": "Oct 18, 2026, 3:45:05 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/89f3852a28fcf7bab599280cb082baa0675536db\nhttps://git.kernel.org/stable/c/b466db9e68b4741af85f6c017e2bb0a2f025053f\nhttps://git.kernel.org/stable/c/e63188d77e10c0951bf67da6c295f768fd1abf4b\nhttps://git.kernel.org/stable/c/84bb0fc46ccf6a545b8fdf57cda83770186ed8dd\n",
   "aliases": "GHSA-h3hh-6rf8-4cq6\nCVE-2026-98669\n",
@@ -81,16 +81,6 @@
       "product_version": "0a8565425afd8ba0e1a0ea73e21da119ee6dacea <b466db9e68b4741af85f6c017e2bb0a2f025053f"
     },
     {
-      "id": "9b8fa120-b706-3ce5-8460-bd9a993eb4b7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "a8c71987-b45e-3c06-8669-f2695d329a03",
       "product": {
         "name": "Linux",
@@ -149,6 +139,16 @@
         }
       },
       "product_version": "0a8565425afd8ba0e1a0ea73e21da119ee6dacea <89f3852a28fcf7bab599280cb082baa0675536db"
+    },
+    {
+      "id": "ec84247a-8e0b-30a3-a11e-b6af99d30468",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

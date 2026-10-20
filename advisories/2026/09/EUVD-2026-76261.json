@@ -3,7 +3,7 @@
   "enisaUuid": "3b50e74c-7bb7-39f7-9a6f-0043aaf4c0cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7615: avoid waiting for mac work under the mt76 mutex\n\nmt7615_suspend() acquired the mt76 mutex and then called\ncancel_delayed_work_sync() on mac_work.  mt7615_mac_work() acquires the\nsame mutex via mt7615_mutex_acquire() at the top of the worker, so if\nmac_work is already running and blocked on the mutex, the suspend path\ndeadlocks waiting for the work it holds the mutex against.\n\nFlush scan_work and mac_work before taking the mutex, matching the\nsuspend paths in mt7921 and mt7925.  scan_work only takes the mt76\nspinlock, but moving it keeps the sequence consistent.  This also keeps\nmac_work from running over an already suspended HIF, which the previous\nsplit (async cancel under the lock, sync cancel after release) would\nhave allowed.",
   "datePublished": "Sep 11, 2026, 7:42:11 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:02 AM",
+  "dateUpdated": "Oct 19, 2026, 8:45:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/36c73b86a09f0e51c0f81a75c8945b6c5557ff27\nhttps://git.kernel.org/stable/c/33d29aeb4c0eede92622a7d04ea492b94c30f089\nhttps://git.kernel.org/stable/c/ef2ec8b537c3a54e241d693bd03016f80d0d4484\nhttps://git.kernel.org/stable/c/3114d479f2a1d31b2e6214c395794c6e5715e579\nhttps://git.kernel.org/stable/c/4506e229b2e468b8c64bcf52c50c41a3bf2e633e\nhttps://git.kernel.org/stable/c/44be85af3e1772ffb3332feafedad2a73b22854c\nhttps://git.kernel.org/stable/c/bda8324270b1ac91bfba1df8928e0570e29759e8\n",
   "aliases": "CVE-2026-80938\nGHSA-pv6c-cxx7-759w\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "c6bf20109a3fae92402cb76ad709ec5256bcd169 <ef2ec8b537c3a54e241d693bd03016f80d0d4484"
+    },
+    {
+      "id": "21b621fc-f3b4-35ec-909d-4dc17b86c66b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "3051e208-20e9-3edb-8569-b3e19ce4b583",
@@ -39,16 +49,6 @@
         }
       },
       "product_version": "5.8"
-    },
-    {
-      "id": "345b49d4-4603-33e1-9e50-6669f0033490",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "3667cbcf-58a4-3c76-b6de-2250a92d5e6f",

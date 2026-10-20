@@ -3,12 +3,12 @@
   "enisaUuid": "7b5fd960-3fad-3ede-8580-85ee01c26ad2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Fix missing scrub of temp buffers with AES ctr and gcm algorithm\n\nIn function ctr_aes_crypt() there is a buffer used to process\nremaining bytes < AES_BLOCK_SIZE. This buffer was not scrubbed and\nthus could lead to expose of unwanted data. When the buffer is used\nexplicitly scrub it at the end of the code block to avoid exposure of\nmaybe sensitive data.\n\nIn a similar way the function gcm_aes_crypt() hat an error path where\nthe CPACF param block was not scrubbed. Instead of return early now\nthese error paths go to end of function where explicit scrubbing is\ndone. Similar with the buffers which are part of the gcm_sg_walk\nstructs from the variables gw_in and gw_out.",
   "datePublished": "Sep 25, 2026, 10:22:09 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:57 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:56 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/538f00558db9a66aeff20c36f43692c178a0e0eb\nhttps://git.kernel.org/stable/c/6ab772d675a885c3119bf0e79ea9e84756d7657a\nhttps://git.kernel.org/stable/c/e17b85eb8cee90a1200fa5e7806db7ffa08a0608\nhttps://git.kernel.org/stable/c/991c875310254a13b3a637bb279379c8c66e842d\nhttps://git.kernel.org/stable/c/11eca05d2062032e1f07d56be58ed0b99f4b1d63\nhttps://git.kernel.org/stable/c/8b90a47c4fba27bb4f2f086611742493629e9696\nhttps://git.kernel.org/stable/c/a83488cecb35f924b7541306ed84893bb9906196\nhttps://git.kernel.org/stable/c/8b7c3b6914f19caf648d05726a86af6326d3c2c6\n",
   "aliases": "CVE-2026-97592\nGHSA-7286-x7mq-vc6j\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0c943938-d3ce-3758-87ed-4925c557c30f",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 5.15.222"
+    },
+    {
+      "id": "461df60a-b3d8-3324-a973-dec6ca5c2686",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4726c463-3f86-39dd-8e56-0b3a2bf8c935",
@@ -99,16 +109,6 @@
         }
       },
       "product_version": "d68ac38895e84446848b7647ab9458d54cacba3e <991c875310254a13b3a637bb279379c8c66e842d"
-    },
-    {
-      "id": "76749051-ad8c-3eee-9abc-4d8cc1a889e0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "8a6366a8-1a42-30cf-b718-61b6f2171178",

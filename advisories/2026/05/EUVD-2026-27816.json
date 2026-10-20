@@ -3,7 +3,7 @@
   "enisaUuid": "51970eb7-149b-3a43-8ce7-57b8f0342a5d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: move wait_on_sem() out of spinlock\n\nWith iommu.strict=1, the existing completion wait path can cause soft\nlockups under stressed environment, as wait_on_sem() busy-waits under the\nspinlock with interrupts disabled.\n\nMove the completion wait in iommu_completion_wait() out of the spinlock.\nwait_on_sem() only polls the hardware-updated cmd_sem and does not require\niommu->lock, so holding the lock during the busy wait unnecessarily\nincreases contention and extends the time with interrupts disabled.",
   "datePublished": "May 6, 2026, 11:28:43 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:37 PM",
+  "dateUpdated": "Oct 19, 2026, 7:16:25 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

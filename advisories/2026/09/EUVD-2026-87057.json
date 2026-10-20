@@ -3,12 +3,12 @@
   "enisaUuid": "ccd4f5d5-3ed8-3036-9f35-02674d6e9cf0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: Recover HW before retire hung submit\n\nDuring recovery, it is not safe to retire the hung submit before we\nrecover the GPU. Retiring the submit triggers BO free and that can\nresult in GPU pagefaults since the GPU may be actively accessing those\nBOs.\n\nTo fix this, retire the submits after gpu recovery is complete in\nrecover_worker().\n\nPatchwork: https://patchwork.freedesktop.org/patch/730655/",
   "datePublished": "Sep 25, 2026, 1:06:48 PM",
-  "dateUpdated": "Sep 25, 2026, 1:06:48 PM",
+  "dateUpdated": "Oct 19, 2026, 8:43:09 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e36284257eeca13768687bf8e52f66f8ea0e8794\nhttps://git.kernel.org/stable/c/dc64cf9d71428234389b635d142cb5fe07d57eab\nhttps://git.kernel.org/stable/c/b303e1d52811de7d1bcf793560754d4df68d4a1c\n",
   "aliases": "CVE-2026-100077\nGHSA-2x44-7964-7g45\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "170fe08c-a339-372e-bbcc-c1c8273b4200",
@@ -51,14 +51,14 @@
       "product_version": "1a370be9ac51129e40b0ed7fa71d2b2b92bc47e5 <e36284257eeca13768687bf8e52f66f8ea0e8794"
     },
     {
-      "id": "bb9d14c0-9478-361f-9736-84849540bf6a",
+      "id": "88b4b04b-3cb5-3f11-8a9e-5d6e0bc6b569",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "bfb96e2e-8a8b-3d29-bc51-567172c5dc16",

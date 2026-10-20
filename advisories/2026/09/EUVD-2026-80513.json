@@ -3,15 +3,25 @@
   "enisaUuid": "7f713e0c-ec18-3b18-860c-410ddce36cf4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic-v3: take an LPI reference in vgic_v3_save_pending_tables\n\nvgic_v3_save_pending_tables() iterates dist->lpi_xa using xa_for_each()\nand dereferences the returned struct vgic_irq in the loop body without\nholding a reference on the LPI.\n\nThe xarray iterator only provides temporary RCU coverage while looking up\nthe current entry. That is not sufficient for this loop body, which reads\nfields from struct vgic_irq and performs guest memory accesses before the\niteration completes.\n\nA concurrent path can trigger this race: the irqfd cached injection path\n(vgic_its_inject_cached_translation) obtains a transient LPI reference\nvia vgic_its_check_cache() without holding kvm->lock, vcpu->mutex,\nconfig_lock, or its_lock. If guest ITS DISCARD then drops the cache and\nITE references under its_lock, the transient inject reference may become\nthe final one. When vgic_put_irq() drops it, the LPI is erased from\nlpi_xa and freed via kfree_rcu(). Meanwhile, vgic_v3_save_pending_tables()\nmay still hold a stale pointer obtained from the xarray iterator and\ndereference it after the RCU grace period completes.\n\nFix this by re-fetching each iterated LPI via vgic_get_irq(), which takes\na stable reference, and dropping it with vgic_put_irq() on all paths.\nThis matches the pattern already used by other lpi_xa iterators in the\nvgic ITS code.",
   "datePublished": "Sep 16, 2026, 10:32:09 AM",
-  "dateUpdated": "Sep 17, 2026, 9:29:16 AM",
+  "dateUpdated": "Oct 19, 2026, 8:54:46 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/7631f95297560157d3a9283cb999e3be00103348\nhttps://git.kernel.org/stable/c/d3a2d20b7248ea67465af1cf79c79f90ff70926c\nhttps://git.kernel.org/stable/c/f5b8f203bfc07a5a257dff859e66d2c500f9f509\n",
   "aliases": "GHSA-x7mw-48gf-2rxm\nCVE-2026-89913\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "371ba235-ba4a-38cb-8814-8838679202c7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "3b6f0a8c-d415-37a0-9e50-f082905a2aaa",
       "product": {
@@ -71,16 +81,6 @@
         }
       },
       "product_version": "patch: 6.18.51"
-    },
-    {
-      "id": "f12e2264-6cc2-381b-bb4b-03618e65672e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "f19fc6c8-0eef-3e9d-9db2-ae38af905112",

@@ -3,7 +3,7 @@
   "enisaUuid": "626be4f9-15ac-30e2-9660-c1c777ee8d8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: verisilicon: rockchip: reject AV1 frames exceeding the tile capacity\n\nrockchip_vpu981_av1_dec_set_tile_info() indexes the tile group entry\narray by tile1 * tile_cols + tile0, reading up to tile_cols * tile_rows\nentries, lays out one descriptor per tile in the AV1_MAX_TILES tile_info\nbuffer, and programs the real tile_cols / tile_rows into the hardware.\n\nThe tile group entry control is a dynamic array sized to the number of\nentries userspace submitted, independent of tile_cols / tile_rows, so a\nframe that claims more tiles than entries reads past the array. A frame\nthat claims more than AV1_MAX_TILES tiles also leaves the hardware\nprogrammed for more tiles than the descriptor buffer holds.\n\nReject both in prepare_run(): tile_cols * tile_rows must not exceed the\nsubmitted entry count or AV1_MAX_TILES. The entry count is read via\nv4l2_ctrl_find() (ctrl->elems). This mirrors the bound the mediatek AV1\ndecoder already enforces.",
   "datePublished": "Sep 25, 2026, 10:21:59 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:52 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:39 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -93,16 +93,6 @@
       "product_version": "727a400686a2c0d25015c9e44916a59b72882f83 <40029f7f35397853f8711d6fce1d90a4c7a01f8c"
     },
     {
-      "id": "b72bcca8-da18-3291-9116-9b562bf3e245",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "ceb06624-314d-3540-b3ef-21d30890fa93",
       "product": {
         "name": "Linux",
@@ -131,6 +121,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "fc2c3eb3-e117-319e-b557-8465c0bc5c9f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

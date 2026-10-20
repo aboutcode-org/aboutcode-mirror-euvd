@@ -3,22 +3,22 @@
   "enisaUuid": "a757009c-0cbf-344f-bba6-66749d7b9b5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: mediatek: pllfh: Fix IO remapping leak in register_pllfhs error path\n\nWhen mtk_clk_register_pllfhs function fails to register a PLL, it\nunregisters all PLLs and cleans up itself in its error path before\nreturning, so the function callers don't need to do it.\n\nBut contrary to mtk_clk_unregister_pllfhs function, that does almost\nthe same sequence, it does not free the IO memory mapped on fhctl node,\nleading to a leak.\n\nFix this leak by factorizing the cleanup sequence in a new private\nfunction and use it both mtk_clk_register_pllfhs and\nmtk_clk_unregister_pllfhs functions.\n\nAlso, change the loop index start value to avoid the -1 operation on\nindex at each loop.",
   "datePublished": "Sep 17, 2026, 4:09:45 PM",
-  "dateUpdated": "Sep 17, 2026, 4:09:45 PM",
+  "dateUpdated": "Oct 19, 2026, 9:03:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d35e45e5bad4fabcf122126402b6c6dcb4379672\nhttps://git.kernel.org/stable/c/fea0b4fd891a2af77b55e05b950e7ea55b5d234e\nhttps://git.kernel.org/stable/c/540d91480bcb1b28a62d7023aa70947ea44c55b9\n",
   "aliases": "GHSA-hw67-72fp-vf5f\nCVE-2026-90422\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
-      "id": "161c1772-ec12-33af-8906-2b3cff7edb83",
+      "id": "17bdade8-43d1-3efe-bf4d-5ef8358a5a68",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "25de1329-579b-3477-8913-4c44e5cdffb4",

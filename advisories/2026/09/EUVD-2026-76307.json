@@ -3,12 +3,12 @@
   "enisaUuid": "ffeddfdc-8075-32b7-a520-cc1e866dcf47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: do not dereference an unset send buffer on the SMC-D teardown path\n\nsmc_close_stream_wait() calls smc_tx_prepared_sends() from inside its\nsk_wait_event() condition, and sk_wait_event() evaluates that condition\nonce with the socket lock released. smcd_buf_detach() clears\nconn->sndbuf_desc from smc_conn_kill() under lock_sock(), so a link group\nterminating while a socket waits there leaves the helper dereferencing\nNULL, faulting out of close(). SIOCOUTQ reads the field by hand, and\nsmc_close_cancel_work() drops the lock across two cancel_*_sync() calls.\n\nSample the pointer once in the helper, report nothing prepared while it is\nunset, and bound the ioctl the same way. The receive tasklet dereferences\nthe field directly in smc_cdc_msg_recv_action(), not through this helper;\n1/2 is what keeps it from running that late.",
   "datePublished": "Sep 11, 2026, 7:42:43 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:27 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:08 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ab26e12dd5d2f43d939fcf456933a816e81d2e51\nhttps://git.kernel.org/stable/c/e3fcff8d22a6c9540748846cd800443a643553a6\nhttps://git.kernel.org/stable/c/f950e1b1f0aad334f9a9ee552c4dd5b794ebdd45\nhttps://git.kernel.org/stable/c/f517cf02033801a28f98d86ca613a3533cf066b3\nhttps://git.kernel.org/stable/c/b395dd319cea422239cb45b998fb38d7e373af87\n",
   "aliases": "GHSA-r783-4vmj-f363\nCVE-2026-80984\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1277b349-47ad-3330-93b7-8a4061e7fe15",
@@ -101,14 +101,14 @@
       "product_version": "ae2be35cbed2c8385e890147ea321a3fcc3ca5fa <e3fcff8d22a6c9540748846cd800443a643553a6"
     },
     {
-      "id": "ac74e481-3ea9-31df-8eeb-b4ceaaf5eda8",
+      "id": "8ca9d3d7-9386-302e-90e5-f865a6afe5be",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "b8f7773c-bf9e-35ea-9d97-812b187a5178",

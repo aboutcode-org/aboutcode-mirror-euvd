@@ -3,12 +3,12 @@
   "enisaUuid": "cfdb8df8-95e4-3c95-9da3-38f7c6bb36a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_route: free emptied bucket on filter move\n\nroute4_change can move an existing filter to a different top-level\nbucket: route4_set_parms recomputes the handle from TCA_ROUTE4_TO/\nFROM/IIF, and the handle-mismatch check is gated on the 'new' flag, so\nfor an existing filter the new handle may differ from the old one and\nland in a different bucket. When this happens, the filter is unlinked\nfrom the old bucket, but the bucket itself is never freed once it goes\nempty. The stale empty bucket remains in head->table[], causing\nroute4_delete to report *last=false even after the last live filter is\ngone. That pins the empty tcf_proto and causes a leak.\n\nFix this by refcounting the filters linked to a bucket and freeing the\nbucket when the count drops to zero. The existing scan in route4_delete\ngoes away with it.\n\nThe count is updated at all sites that link or unlink a filter during add,\nchange and delete, and the bucket is dropped from head->table[] as soon as\nit reaches zero.\n\nConditions to recreate the bug:\n  CONFIG_NET_CLS_ROUTE4=y, CONFIG_NET_SCH_INGRESS=y, CONFIG_NET_CLS_ACT=y.\n\n  tc qdisc replace dev lo clsact\n  tc filter add dev lo ingress protocol ip pref 100 route from 1 to 1\n  tc filter change dev lo ingress protocol ip pref 100 handle 0x10001 \\\n    route from 1 to 2\n  tc filter del dev lo ingress protocol ip pref 100 handle 0x10002 \\\n    route from 1 to 2\n  tc filter show dev lo ingress | grep -c 'pref 100 route chain 0 '",
   "datePublished": "Sep 25, 2026, 10:23:04 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:02 AM",
+  "dateUpdated": "Oct 19, 2026, 9:11:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9e7741b41a25b9d49df4d262fa314342e6f95c50\nhttps://git.kernel.org/stable/c/48d38bf8c22a05fde07ba1f885cde27b851649a2\nhttps://git.kernel.org/stable/c/cc99d26b12431e4e4d0e346ec32764eb42c0aed9\nhttps://git.kernel.org/stable/c/41e94079200aaf0cdbe4594b0af75710b33da124\nhttps://git.kernel.org/stable/c/2e2f130951d34871b0643bf700164d97cff4b427\nhttps://git.kernel.org/stable/c/f8495d67434e1cb7e511297687ca55fdb28e4c20\nhttps://git.kernel.org/stable/c/81dd117c04422c6d0c7974aba9fa6a0ba370959b\nhttps://git.kernel.org/stable/c/1853f30cf5c84971f99788a76207c6f745380896\n",
   "aliases": "GHSA-q5gc-9c5f-rc6r\nCVE-2026-97959\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "18b48193-654b-3a4b-8883-31af977dc970",
@@ -161,16 +161,6 @@
       "product_version": "4.1"
     },
     {
-      "id": "e05bc972-ad36-332d-b2fa-5ce8ad96079c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "eaab6f86-637f-3b63-9a0f-46213ce0baf4",
       "product": {
         "name": "Linux",
@@ -189,6 +179,16 @@
         }
       },
       "product_version": "1e052be69d045c8d0f82ff1116fd3e5a79661745 <1853f30cf5c84971f99788a76207c6f745380896"
+    },
+    {
+      "id": "ef5bc7d1-f2eb-33e5-af47-5cc611805f76",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

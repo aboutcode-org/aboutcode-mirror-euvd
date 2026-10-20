@@ -3,12 +3,12 @@
   "enisaUuid": "0ef0f22b-2c9c-3a02-a378-8dd5d778c268",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\njbd2: bound shrinker scans by examined checkpoint buffers\n\nThe jbd2 shrinker currently accounts only checkpoint buffers that it\nsuccessfully releases against nr_to_scan.  Busy buffers therefore do not\nconsume the scan budget.\n\nIf a checkpoint transaction contains mostly busy buffers, the shrinker\ncan scan its entire checkpoint list while holding journal->j_list_lock.\nLarge checkpoint lists can result in excessive lock hold times and leave\nother CPUs spinning on j_list_lock, causing soft lockups or RCU stalls.\n\nPass nr_to_scan into journal_shrink_one_cp_list() and decrement it for\nevery buffer examined, including busy buffers.  Pass NULL from checkpoint\ncleanup paths so their existing full-list behavior is preserved.\n\nThis restores the scan-budget semantics that existed before\njournal_shrink_one_cp_list() was changed to always scan a complete\ncheckpoint list.",
   "datePublished": "Sep 11, 2026, 7:44:37 PM",
-  "dateUpdated": "Sep 11, 2026, 7:44:37 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:00 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/edf5fcd0469b7467bd5b37a79502c8d9c3257dbb\nhttps://git.kernel.org/stable/c/71c6b872c746465fa4b5def239cb296173ca8216\nhttps://git.kernel.org/stable/c/c2c0fb364685b8996c357d3b050394959b29d6e0\nhttps://git.kernel.org/stable/c/15cb16496446b94e67f7abcb049b8e2c75cd3d02\n",
   "aliases": "GHSA-297x-6x5c-99gq\nCVE-2026-89567\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "14dd96fe-3dea-3710-912e-da3e0eb8f189",
@@ -101,6 +101,16 @@
       "product_version": "5.15.129 <5.16"
     },
     {
+      "id": "7a963982-20cf-3de7-be80-692985013b09",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "94b451d0-0036-3f48-9de4-695b6a9843b4",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "b98dba273a0e47dbfade89c9af73c5b012a4eabb <c2c0fb364685b8996c357d3b050394959b29d6e0"
-    },
-    {
-      "id": "a584ca9e-d218-3b81-b190-7d5a0ffc6d3d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "af76139c-9e6b-3009-8f52-df31a7df792e",

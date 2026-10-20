@@ -3,7 +3,7 @@
   "enisaUuid": "2d8da510-7d57-391c-b911-eca83115dc82",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix ovl adaptor platform device leak\n\nmtk_drm_probe() creates an OVL adaptor platform device with\nplatform_device_register_data() when the display pipeline requires the\nOVL adaptor.\n\nIf a later initialization step fails, the probe error path releases\nthe DRM resources without unregistering the already registered OVL\nadaptor device. The normal remove path likewise leaves the device\nregistered after the DRM driver is unbound.\n\nKeep track of whether the OVL adaptor was successfully registered and\nunregister it on probe failure. Also recover the platform device from\nthe stored DDP component device and unregister it during normal\nremoval.\n\nThe issue was identified by a static analysis tool I developed and\nconfirmed by manual review.",
   "datePublished": "Oct 18, 2026, 3:48:19 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:19 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3d85bd738aba61df14dfaf8fe638e2172d8427bf\nhttps://git.kernel.org/stable/c/629458b7e49559593823e351535294db17331be7\nhttps://git.kernel.org/stable/c/8e3a350075b556f2fed4517705935bfee4529fb6\nhttps://git.kernel.org/stable/c/048739be3e9cacae5301b68245668002fe6f0ce5\n",
   "aliases": "CVE-2026-98782\nGHSA-cpv8-j2cq-v3fc\n",
@@ -41,16 +41,6 @@
       "product_version": "0d9eee9118b77e51eeafc5bf4d008fac97035d56 <3d85bd738aba61df14dfaf8fe638e2172d8427bf"
     },
     {
-      "id": "7f0d19ca-6842-343a-9bc5-a68c87d2aba2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "95fef502-0291-34f7-99aa-ac4b3b1e618d",
       "product": {
         "name": "Linux",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "patch: 7.2.10"
+    },
+    {
+      "id": "abfc0bb9-7785-300b-b9f9-d31d661816d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "dc03112e-9bfe-37c1-ace0-40291d08461e",

@@ -3,7 +3,7 @@
   "enisaUuid": "29ce82e9-0d69-322f-a523-c96cad0fe155",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Fix use-after-free in l2cap_unregister_user\n\nAfter commit ab4eedb790ca (\"Bluetooth: L2CAP: Fix corrupted list in\nhci_chan_del\"), l2cap_conn_del() uses conn->lock to protect access to\nconn->users. However, l2cap_register_user() and l2cap_unregister_user()\ndon't use conn->lock, creating a race condition where these functions can\naccess conn->users and conn->hchan concurrently with l2cap_conn_del().\n\nThis can lead to use-after-free and list corruption bugs, as reported\nby syzbot.\n\nFix this by changing l2cap_register_user() and l2cap_unregister_user()\nto use conn->lock instead of hci_dev_lock(), ensuring consistent locking\nfor the l2cap_conn structure.",
   "datePublished": "Apr 3, 2026, 3:15:41 PM",
-  "dateUpdated": "Oct 16, 2026, 3:09:57 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:45 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

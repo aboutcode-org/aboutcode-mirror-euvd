@@ -3,7 +3,7 @@
   "enisaUuid": "ea65ae4f-1d21-3a03-b195-5d4840a44509",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: cros_usbpd: Limit port counts to EC_USB_PD_MAX_PORTS\n\nCurrently the cros_usbpd-charger driver probe iterates based on raw\ncharger port count returned by the embedded controller. The only check\nis against the number of USB PD ports which the embedded controller\nalso defines. A malicious embedded controller could return an inaccurate\nport count (up to 255) resulting in an out of bounds write and\nsubsequent memory corruption.\n\nUpdate helper functions in cros_usbpd-charger to limit port counts to\nEC_USB_PD_MAX_PORTS.",
   "datePublished": "Sep 11, 2026, 7:43:29 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:07 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:19 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -51,16 +51,6 @@
         }
       },
       "product_version": "3af15cfacd1eef7f223802d49a88cae23c509183 <4b1f2be1e1b74a50386ba718de3d62bfcf5ee701"
-    },
-    {
-      "id": "442ed04e-1d07-3a1a-9db5-56960abf405e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "54c0bfdd-1c04-3fb4-bb67-062ad6823618",
@@ -171,6 +161,16 @@
         }
       },
       "product_version": "patch: 6.6.157"
+    },
+    {
+      "id": "bd9289bc-7575-305b-8735-f8dbc015b2d0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "c76f600d-5ac4-30d4-b2cf-908f04dfac83",

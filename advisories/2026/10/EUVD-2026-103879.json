@@ -3,7 +3,7 @@
   "enisaUuid": "69708449-1121-3e9d-bb1e-d2df1daf4fc5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: filter some flags received in the backup server\n\nWhile the IPVS SYNC protocol is not secure by design\nwe can still protect the backup server from messages that\ncan wreak havoc.\n\nThis commit addresses problems from received connection flags\nor their combinations. We now drop messages as follows:\n\n1. the NO_CPORT+TEMPLATE combination allows lookups for normal\nconnections to hit template which can break in many ways.\nWhile the master does not sync connections with NO_CPORT flag,\ni.e. before they are established, we still accept NO_CPORT\nwithout TEMPLATE.\n\n2. ONE_PACKET: it is not sent by master, so we do not\nexpect it in backup. Before now it was ignored by\nIP_VS_CONN_F_BACKUP_MASK for protocol v1 while protocol\nv0 created connections that are not hashed and dropped\nimmediately. Better to apply the IP_VS_CONN_F_BACKUP_MASK\nalso to the flags from v0 messages for consistency with v1.",
   "datePublished": "Oct 18, 2026, 3:48:37 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:37 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:47 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f4cd1db7d421e82945713a36084bb0c35b75b27e\nhttps://git.kernel.org/stable/c/55d033324f67a15ff56be6d38d6e87f644e0ed62\nhttps://git.kernel.org/stable/c/45a93111835ccfea7d969ec73588e33745fd9834\nhttps://git.kernel.org/stable/c/f96e91748f6304668fe647e686d199d7207d36f1\n",
   "aliases": "GHSA-c8w6-8f9f-2m9q\nCVE-2026-98794\n",
@@ -39,16 +39,6 @@
         }
       },
       "product_version": "patch: 7.2.10"
-    },
-    {
-      "id": "642b90e6-1f04-3c72-ae61-e9fe12a07e1a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "a63840e6-13a3-3fa3-959b-4b91b08e84a9",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "e75be382-9e99-3ba2-9f25-6412bfd67ee1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

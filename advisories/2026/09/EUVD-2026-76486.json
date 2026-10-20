@@ -3,7 +3,7 @@
   "enisaUuid": "c15d488d-5cde-3cb5-b1c2-294fc56e91bc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm array: validate array block headers on read\n\narray_block_check() validates blocknr and csum and nothing else, while\nnode_check(), next to it, has bounded the structural fields since both\nwere written. dm_array_cursor_next() takes its loop bound from the\non-disk nr_entries and element_at() is unguarded pointer arithmetic, so\na count larger than the block holds keeps the cursor in one block while\nthe index grows past it and the read walks off the dm-bufio buffer --\ndm_cache_load_mappings() drives it once per cache block at activation.\n\nCheck the header against itself: reject a zero value_size, require\nmax_entries to equal calc_max_entries() for that value_size and block\nsize, and require nr_entries to fit. Equality rather than an upper bound,\nsince a count below the real capacity trips BUG_ON() in fill_ablock() and\ntrim_ablock(). Metadata dm-array writes satisfies all three.",
   "datePublished": "Sep 11, 2026, 7:44:42 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:44 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "6513c29f44f2cc970c0e9fecfe5a6526c3e73025 <2965787723084835b18dfe993cd450ebf5bd4540"
+    },
+    {
+      "id": "2dfe5c94-85ed-3e26-815c-f7aefd047f30",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "474680ff-3809-30a5-928d-b0b736960144",
@@ -61,16 +71,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "cbe4004b-c35e-30de-b90e-7c358e2625d5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "cd25fb54-f6d7-3d48-af01-a580af0d8d82",

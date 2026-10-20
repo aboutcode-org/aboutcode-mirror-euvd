@@ -3,12 +3,12 @@
   "enisaUuid": "cfc1bd25-3f96-3734-b75b-db3776784ab1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa/mlx5: fix wrong list iterated in add_direct_chain error path\n\nIn add_direct_chain(), newly allocated direct MR entries are added to\nthe local list 'tmp', which is spliced into mr->head only on success.\nOn the error path, the cleanup loop was incorrectly iterating over\nmr->head instead of tmp.\n\nFix by iterating over 'tmp' in the err_alloc cleanup path.",
   "datePublished": "Sep 17, 2026, 4:06:29 PM",
-  "dateUpdated": "Sep 17, 2026, 4:06:29 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c93defccf5eb0a92bdafa43487be6ce0221a2477\nhttps://git.kernel.org/stable/c/ed3462365636df3bc63e34d7468f4faed3f70a4e\nhttps://git.kernel.org/stable/c/22d52af9e26a72bdfe2dcfb1419a091de4862cd9\nhttps://git.kernel.org/stable/c/eeac2ea4ad2654e3f160a9b608d05c9af31433a6\nhttps://git.kernel.org/stable/c/637d867530daea61898e3346975978b7f67fc2ac\nhttps://git.kernel.org/stable/c/6ca752850de3b8162f030793cc15001aec85c4cf\nhttps://git.kernel.org/stable/c/c678d04ac9e5a64c2559c43bce273e845fbd09eb\nhttps://git.kernel.org/stable/c/23ae56d9e74c122f95cae71ae3b9fc259fb88446\n",
   "aliases": "GHSA-578j-pcj4-7hf3\nCVE-2026-90128\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "011fe689-a643-3347-a846-0b2ac0b6b015",
@@ -39,16 +39,6 @@
         }
       },
       "product_version": "94abbccdf2916cb03f9626f2d36c6e9971490c12 <eeac2ea4ad2654e3f160a9b608d05c9af31433a6"
-    },
-    {
-      "id": "3865c42c-3d4f-36e0-8c7c-7493381f0d94",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "397ec599-6829-3289-ae73-f8fbb8c03a76",
@@ -159,6 +149,16 @@
         }
       },
       "product_version": "patch: 5.15.221"
+    },
+    {
+      "id": "b6efa0cb-d0b1-3cd0-a056-c6fa95c6c601",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "c5b08de8-45b8-3606-bd29-62c2d9864e68",

@@ -3,7 +3,7 @@
   "enisaUuid": "1ba05c57-9037-3178-8964-d3271e182b55",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix 32-bit overflow in CWSR total size calculation\n\ntotal_cwsr_size was computed in 32-bit before being used as a BO/SVM\nallocation size.\nWith large ctx_save_restore_area_size and debug_memory_size\nmultiplied by the XCC count, the product can wrap,\nyielding an undersized CWSR save area that firmware later overruns.\n\nPromote total_cwsr_size to u64 and use check_add_overflow()/\ncheck_mul_overflow() in both kfd_queue_acquire_buffers() and\nkfd_queue_release_buffers().\n\n(cherry picked from commit 319f7e13423ae3f486b9aea82f9ad2d6af0ee608)",
   "datePublished": "Aug 10, 2026, 12:01:30 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:04 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:58 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

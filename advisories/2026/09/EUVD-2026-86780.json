@@ -3,7 +3,7 @@
   "enisaUuid": "a2c156a6-a256-34a9-98ef-f511ae383f20",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nufs: validate cylinder group metadata before caching it\n\nufs_read_cylinder() copies the cylinder group index and the rotor\npositions straight from the on-disk group and caches them without any\ncheck:\n\n\tucpi->c_cgx    = fs32_to_cpu(sb, ucg->cg_cgx);\n\tucpi->c_rotor  = fs32_to_cpu(sb, ucg->cg_rotor);\n\tucpi->c_frotor = fs32_to_cpu(sb, ucg->cg_frotor);\n\tucpi->c_irotor = fs32_to_cpu(sb, ucg->cg_irotor);\n\nThey are then used as indices during allocation and free:\n\n  - c_cgx indexes the cylinder summary array as\n    UFS_SB(sb)->fs_cs(ucpi->c_cgx), so a value past s_ncg writes a 32\n    bit count outside the s_csp allocation.\n\n  - c_frotor becomes a bitmap scan start, start = c_frotor >> 3, and\n    then length = ((s_fpg + 7) >> 3) - start. A start beyond the block\n    bitmap wraps the unsigned length to a huge value, so ubh_scanc()\n    walks far past the cylinder group buffers. c_irotor drives the\n    inode bitmap the same way.\n\nA crafted image can set any of these freely, turning an ordinary\nallocation into an out of bounds access.\n\nReject a cylinder group whose recorded index does not match the group\nbeing read, or whose rotors fall outside the group, before the metadata\nis cached. Valid filesystems keep cg_cgx equal to the group number and\nthe rotors within the group, so only malformed images are rejected.",
   "datePublished": "Sep 25, 2026, 10:22:44 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:39 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:53 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -51,16 +51,6 @@
         }
       },
       "product_version": "patch: 6.6.158"
-    },
-    {
-      "id": "3c0174ee-b25f-3c5a-8962-0bec6defb2f1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "3fdafc39-d65e-360e-8095-1f16c30cb61c",
@@ -111,6 +101,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "857fb70b-3bc3-3236-87c7-f333849791a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "a054198e-5cb4-3926-bd0b-e4ec28f7353c",

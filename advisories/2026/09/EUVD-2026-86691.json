@@ -3,12 +3,12 @@
   "enisaUuid": "abdd8818-c3c0-3f32-93ef-4b2fac793139",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Keep refcount_acquire nullable for borrowed RCU kptrs\n\nbpf_refcount_acquire() is fallible for a borrowed reference because the\nobject may have reached a zero refcount. The verifier therefore keeps\nKF_RET_NULL on the return value unless the argument is an owning reference.\n\nAn RCU-protected load of a local kptr is marked MEM_ALLOC, but it only\nreceives NON_OWN_REF when the pointee contains a graph node. A refcounted\nobject without a graph node consequently looks like an owning reference\neven though the loaded register has no acquired reference state. If the\nprogram drops the last real reference while remaining in the RCU critical\nsection, refcount_inc_not_zero() returns NULL while the verifier treats the\nresult as non-NULL.\n\nOnly classify the argument as owning when it is backed by a verifier-tracked\nreference. This retains the non-NULL return for pointers from bpf_obj_new(),\nbpf_kptr_xchg(), or an earlier successful acquisition, while requiring a\nNULL check for borrowed RCU kptrs.\n\n[ kkd: Rewrote commit log ]",
   "datePublished": "Sep 25, 2026, 10:23:51 AM",
-  "dateUpdated": "Oct 15, 2026, 10:12:05 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:43 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8d19e2cdfba9ba8c8eb6a459cd666bec00a1d2c6\nhttps://git.kernel.org/stable/c/85074498228a2500ea8b8039c49cc1ab8ad5328f\nhttps://git.kernel.org/stable/c/dc36739e5cc9f60485418a910b42bc95339218d2\n",
   "aliases": "GHSA-cwcr-7vrq-384j\nCVE-2026-98038\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "2a2afbf8-defa-377a-90cb-b8965b6753cc",
@@ -21,14 +21,14 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "2ea30991-0842-3e29-922e-42c8f571a671",
+      "id": "53c9ac75-99e5-32ee-976f-6e244acfd378",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc2"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "789eb6c6-f188-3881-8158-c1be4eb50728",

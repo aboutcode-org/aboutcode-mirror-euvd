@@ -3,13 +3,23 @@
   "enisaUuid": "7376c99b-ac7d-3803-b450-872fa056560c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Update control fields on #VMEXIT if and only if VMRUN succeeded\n\nLeave control.erap_ctl and control.clean as-is in the VMCS if VMRUN fails,\nbecause as per AMD:\n\n  there's no explicit architectural guarantee about the behavior in the\n  presence of VMRUN failures. So the best thing to do would be to assume\n  that if VMRUN fails, the actions requested in the control fields may not\n  have been performed.",
   "datePublished": "Oct 18, 2026, 3:46:47 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:47 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8676b29d186fcb5c1251d8152fc91d19421e5600\nhttps://git.kernel.org/stable/c/e27fc915c8f575ab5630e27d97465c2077d4b9d1\n",
   "aliases": "CVE-2026-98714\nGHSA-rrqj-3q8v-92j9\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
+    {
+      "id": "5a64e777-07f7-3979-bdbd-a5e0da91a296",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "62ae62c8-b7c4-37fe-aae4-8a977bc315dd",
       "product": {
@@ -39,16 +49,6 @@
         }
       },
       "product_version": "0 <7.2.10"
-    },
-    {
-      "id": "f512e62b-415b-347c-b0d6-27b266c58742",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "fca92e11-912e-387c-907c-a33ad7eb99c5",

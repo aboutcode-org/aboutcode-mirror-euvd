@@ -3,12 +3,12 @@
   "enisaUuid": "0058e887-b164-3a16-8821-d65fa99373ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: syncookies: remember the request backup flag\n\nInstead of using an uninitialised bit when copying the info in\nsubflow_ulp_clone().\n\nTo fix this, no need to extend the join_entry structure: backup is\ncoming from struct mptcp_subflow_request_sock, only one bit. Do the same\nhere by using one bit for both.",
   "datePublished": "Sep 25, 2026, 10:21:54 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:44 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c97fa2c7ada82d4cac1c6c00643238dc4c462f15\nhttps://git.kernel.org/stable/c/1668b34452009d27be3262646de748a3e48ffd51\nhttps://git.kernel.org/stable/c/b138e7dc719f0a3949de8bb6500b8cf1604eea06\nhttps://git.kernel.org/stable/c/360d99258a6402cb8e49771460944f19f04d25b7\nhttps://git.kernel.org/stable/c/61178d0b85b4b1b53e78b06e89d018d22d102f88\nhttps://git.kernel.org/stable/c/00b2bd518911e0daab00f4749cce68c191ccebb4\nhttps://git.kernel.org/stable/c/06d649f9cd03a9f8e768a658b20acf8d2c8022e0\nhttps://git.kernel.org/stable/c/b76c0e28b392620dfbaf92cdeedbf115820b44cb\n",
   "aliases": "CVE-2026-97568\nGHSA-6cg2-hrxf-655w\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0fa050df-b392-30df-a341-b69244f9496f",
@@ -79,16 +79,6 @@
         }
       },
       "product_version": "patch: 6.6.158"
-    },
-    {
-      "id": "34b389d4-0748-30b3-8692-62b8d5cad391",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "3f2a5002-1a66-3f57-b301-6cab3c761ef8",
@@ -209,6 +199,16 @@
         }
       },
       "product_version": "efd340bf3d7779a3a8ec954d8ec0fb8a10f24982 <b76c0e28b392620dfbaf92cdeedbf115820b44cb"
+    },
+    {
+      "id": "c30df1e6-5ad0-3dfb-9ce2-c27df90b2435",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d1089e4b-bb91-3ee2-9547-a108eb9fe21e",

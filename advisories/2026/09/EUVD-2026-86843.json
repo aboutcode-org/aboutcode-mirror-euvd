@@ -3,7 +3,7 @@
   "enisaUuid": "9527c438-b077-386e-8eac-6313acd40bfc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Bound VP index against VP_CTRL IOCB bitmap size\n\nThe VP control IOCB selects its target virtual port by setting one bit\nin vp_idx_map, a fixed 16-byte (128-bit) array in both\nvp_ctrl_entry_24xx and vp_ctrl_entry_24xx_ext. qla25xx_ctrlvp_iocb()\ncomputes map = (vp_index - 1) / 8 and writes vce->vp_idx_map[map]\nwithout checking that map stays within the array.\n\nmax_npiv_vports is taken from firmware and only sanitized to a\nMIN_MULTI_ID_FABRIC-aligned boundary, so it can legitimately be 191 or\n255, and qla24xx_control_vp() only rejects vp_index >= max_npiv_vports.\nA vp_index above 128 therefore yields map >= 16 and an out-of-bounds\nwrite of up to 16 bytes past vp_idx_map, corrupting the trailing IOCB\nfields (or the adjacent request-ring slot on the 64-byte layout).\n\nReject a vp_index that cannot be represented in the IOCB bitmap in\nqla24xx_control_vp(), and add a defensive ARRAY_SIZE() guard in\nqla25xx_ctrlvp_iocb() before the write. Adapters that report the usual\n63 or 127 NPIV vports are unaffected.",
   "datePublished": "Sep 25, 2026, 10:21:34 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:26 AM",
+  "dateUpdated": "Oct 19, 2026, 9:08:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c80a0362a0fe548c15a0324b1f61c04b62bb2174\nhttps://git.kernel.org/stable/c/48a44e19746eaa70320a3c2571dcb345192fca72\nhttps://git.kernel.org/stable/c/13354ad251ab009102597a791bc7c4d2265229e1\nhttps://git.kernel.org/stable/c/878613ecb5a36db26859c4fd83daf9283a334fa2\n",
   "aliases": "GHSA-pfmp-h6h6-98gj\nCVE-2026-97535\n",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "4.16"
-    },
-    {
-      "id": "09189adb-6203-353c-a3cf-535dcfb94b91",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "0db7634a-2974-3050-9da0-9481067a3a46",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.2.7"
+    },
+    {
+      "id": "426c22c1-12c5-32eb-9a75-774df7092efe",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "627355a6-e208-3975-b44e-44c57430405e",

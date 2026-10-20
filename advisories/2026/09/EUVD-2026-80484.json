@@ -3,12 +3,12 @@
   "enisaUuid": "adbe7363-b67a-36ed-b82f-60ad4f2dddd5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: platform: mtk-mdp3: fix NULL deref on failed SCP lookup\n\nAdd the missing sanity check after looking up the SCP to avoid\ndereferencing a NULL-pointer in case its driver has not yet been bound.",
   "datePublished": "Sep 16, 2026, 10:31:49 AM",
-  "dateUpdated": "Sep 16, 2026, 10:31:49 AM",
+  "dateUpdated": "Oct 19, 2026, 8:54:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/28548387d79d14c975e77787ebd1f051265e1396\nhttps://git.kernel.org/stable/c/5026f927ef4150ba12da6f1098cf7952d77b14b6\nhttps://git.kernel.org/stable/c/426ead7eed6d6b3c3f0fe0925c112ef73fc87256\nhttps://git.kernel.org/stable/c/90368323fb244da0504e3da37a182f8e89bcc3b9\n",
   "aliases": "GHSA-c85x-5px9-87ph\nCVE-2026-89884\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0662ad67-06a8-36e4-8f98-8702bec6f047",
@@ -81,16 +81,6 @@
       "product_version": "6.1"
     },
     {
-      "id": "b2f73183-465e-3925-b342-0dec194bc0a7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "b465de20-39c3-3d49-8190-4d90cf205816",
       "product": {
         "name": "Linux",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "e7645254-6d76-3ed9-9991-179474ff24d9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

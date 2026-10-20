@@ -3,12 +3,12 @@
   "enisaUuid": "732fab63-b8fc-3150-b523-eaca082e420d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix old_data leak in guest debug error path\n\n__import_wp_info() allocates a per-watchpoint old_data buffer to back up\nthe original guest memory contents. If a later watchpoint of the same\nKVM_SET_GUEST_DEBUG request fails to import, kvm_s390_import_bp_data()\njumps to the error label, which frees the wp_info array but not the\nold_data buffers of the entries that were imported successfully. Up to\nMAX_BP_COUNT - 1 buffers of up to MAX_WP_SIZE bytes are leaked per failed\nrequest, and the request can be repeated.\n\nCreate error handling for cleaning up all created old_data memory\nareas.",
   "datePublished": "Sep 16, 2026, 10:32:17 AM",
-  "dateUpdated": "Sep 16, 2026, 10:32:17 AM",
+  "dateUpdated": "Oct 19, 2026, 8:54:59 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/124c81ee610e1fbdd93d4399f88d9e28ba97a941\nhttps://git.kernel.org/stable/c/e5ae7816e5ad145618f7fd568a0e8a94dd9f81f4\nhttps://git.kernel.org/stable/c/c85d402553987777cc4742751437ea5dcbf98a7b\nhttps://git.kernel.org/stable/c/5fbf319137735252eefa507193c9a619af5b7457\nhttps://git.kernel.org/stable/c/4048d0a252163084794be3e37995b872c5178913\nhttps://git.kernel.org/stable/c/f55e4d415d95342d5753e528e05a1e8623992c3f\nhttps://git.kernel.org/stable/c/46cb8a273e2f853f89a78b59dbdff8787b6e1c86\nhttps://git.kernel.org/stable/c/aa9c8e8baf1e765fa65b93212522c636f25d846f\n",
   "aliases": "CVE-2026-89924\nGHSA-xq38-q7w3-m3v4\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "057fd264-3cee-3c12-a1d4-b484c220b4db",
@@ -21,16 +21,6 @@
       "product_version": "27291e2165b6de70c476b7b675308113edd69a60 <5fbf319137735252eefa507193c9a619af5b7457"
     },
     {
-      "id": "0b18b32a-7dae-316c-8651-794094bd775b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "16462083-fa9a-32e2-aad6-596ca4c8a0aa",
       "product": {
         "name": "Linux",
@@ -39,6 +29,16 @@
         }
       },
       "product_version": "27291e2165b6de70c476b7b675308113edd69a60 <e5ae7816e5ad145618f7fd568a0e8a94dd9f81f4"
+    },
+    {
+      "id": "42419361-3790-33d8-8d0f-b063fd7922fe",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "5f9b0a57-6587-3266-8d43-a279c4c9efaa",

@@ -3,7 +3,7 @@
   "enisaUuid": "c4a3c025-b2d7-3697-95f5-fa97631a586f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btrtl: validate firmware patch bounds\n\nrtlbt_parse_firmware() copies patch_length - 4 bytes before appending the\nfirmware version. A malformed firmware patch shorter than the version field\ncan make this subtraction underflow and turn the copy into an oversized\nread and write during Bluetooth setup.\n\nThe existing patch_offset + patch_length check can also wrap on 32-bit\narchitectures. Validate the patch length and range without arithmetic\noverflow before allocating or copying the patch.",
   "datePublished": "Aug 15, 2026, 5:51:34 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:15 PM",
+  "dateUpdated": "Oct 19, 2026, 9:09:12 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

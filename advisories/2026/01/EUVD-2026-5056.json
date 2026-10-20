@@ -3,12 +3,12 @@
   "enisaUuid": "a4ffe9ed-b8c5-3427-95a9-b5284d38cb1e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npnfs/flexfiles: Fix memory leak in nfs4_ff_alloc_deviceid_node()\n\nIn nfs4_ff_alloc_deviceid_node(), if the allocation for ds_versions fails,\nthe function jumps to the out_scratch label without freeing the already\nallocated dsaddrs list, leading to a memory leak.\n\nFix this by jumping to the out_err_drain_dsaddrs label, which properly\nfrees the dsaddrs list before cleaning up other resources.",
   "datePublished": "Jan 31, 2026, 11:42:32 AM",
-  "dateUpdated": "Oct 15, 2026, 1:12:43 AM",
+  "dateUpdated": "Oct 19, 2026, 6:25:28 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e2dde5dafb80f1af4028ed10ad255f42af71c784\nhttps://git.kernel.org/stable/c/27c90d8ed81e7a289c9fe41b5e31d8bb609a3385\nhttps://git.kernel.org/stable/c/34b9dd179818ff7af2b36410985fd8166573c62d\nhttps://git.kernel.org/stable/c/869862056e100973e76ce9f5f1b01837771b7722\nhttps://git.kernel.org/stable/c/86da7efd12295a7e2b4abde5e5984c821edd938f\nhttps://git.kernel.org/stable/c/ed5d3f2f6885eb99f729e6ffd946e3aa058bd3eb\nhttps://git.kernel.org/stable/c/0c728083654f0066f5e10a1d2b0bd0907af19a58\n",
   "aliases": "GHSA-96c4-w7rm-2mx2\nCVE-2026-23038\n",
   "assigner": "Linux",
-  "epss": 0.28,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "013167e3-dd14-32d3-a848-f3d67e79a5fa",

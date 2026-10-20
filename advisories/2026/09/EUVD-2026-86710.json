@@ -3,13 +3,23 @@
   "enisaUuid": "2b3d6005-ec3e-3bad-8ce8-033c42c410bc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Add checking nr_subbufs to persistent ring buffer validation\n\nSashiko reported that the code was using meta->nr_subbufs without making\nsure that it matched the nr_pages + 1 on data that was assuming the two\nwere the same.\n\nAdd a check to the persistent ring buffer validation code to make sure\nthat the saved nr_subbufs matches what we expect.",
   "datePublished": "Sep 25, 2026, 10:24:03 AM",
-  "dateUpdated": "Oct 15, 2026, 10:12:09 AM",
+  "dateUpdated": "Oct 19, 2026, 9:13:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f0467190e6a9fc61e343c8064ef16aad513788c3\nhttps://git.kernel.org/stable/c/364a31052aa9ef91db137f82d797366007cd85b7\nhttps://git.kernel.org/stable/c/69d502457e3f76142f7fcf6e2625e80e0ce8a60f\nhttps://git.kernel.org/stable/c/6c001a62c34f13fe1c6a24304c289b387d9e697d\n",
   "aliases": "CVE-2026-98057\nGHSA-rx4w-f847-mv59\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "04f6f4ec-0223-3678-9327-9687fe4aecde",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "2852a413-4aa5-392e-9d9a-e8ba69b4755a",
       "product": {
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "patch: 6.18.57"
-    },
-    {
-      "id": "e8e22d20-38d6-3613-b38c-710df30691f9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "f58f72c8-b77c-31f7-b16f-d89a03a64204",

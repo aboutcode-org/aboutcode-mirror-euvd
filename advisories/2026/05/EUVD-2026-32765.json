@@ -3,7 +3,7 @@
   "enisaUuid": "ed488418-0ed7-3902-809e-08a1b15f92c6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_event: Fix OOB read and infinite loop in hci_le_create_big_complete_evt\n\nhci_le_create_big_complete_evt() iterates over BT_BOUND connections for\na BIG handle using a while loop, accessing ev->bis_handle[i++] on each\niteration.  However, there is no check that i stays within ev->num_bis\nbefore the array access.\n\nWhen a controller sends a LE_Create_BIG_Complete event with fewer\nbis_handle entries than there are BT_BOUND connections for that BIG,\nor with num_bis=0, the loop reads beyond the valid bis_handle[] flex\narray into adjacent heap memory.  Since the out-of-bounds values\ntypically exceed HCI_CONN_HANDLE_MAX (0x0EFF), hci_conn_set_handle()\nrejects them and the connection remains in BT_BOUND state.  The same\nconnection is then found again by hci_conn_hash_lookup_big_state(),\ncreating an infinite loop with hci_dev_lock held.\n\nFix this by terminating the BIG if in case not all BIS could be setup\nproperly.",
   "datePublished": "May 28, 2026, 9:35:54 AM",
-  "dateUpdated": "Oct 16, 2026, 3:31:04 PM",
+  "dateUpdated": "Oct 19, 2026, 7:36:52 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",

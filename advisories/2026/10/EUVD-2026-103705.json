@@ -3,23 +3,13 @@
   "enisaUuid": "9f838226-209e-3198-b3c7-de487289a5e7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRISC-V: KVM: Serialize IMSIC attributes with vCPU migration\n\nKVM device ioctls are not serialized against KVM_RUN. As a result,\nkvm_riscv_aia_imsic_rw_attr() can snapshot the physical CPU and HGEI of\nan IMSIC VS-file before a concurrent vCPU migration releases it.\n\nThe HGEI can then be allocated to another vCPU before imsic_vsfile_rw()\nuses the stale tuple. A GET or SET attribute may consequently access the\nnew owner's interrupt file.\n\nSerialize the entire IMSIC attribute operation with the target vCPU\nmutex. This prevents the VS-file from being migrated and recycled until\nthe attribute access completes. Acquire the mutex killably so that the\ndevice ioctl remains interruptible while waiting for KVM_RUN to finish.",
   "datePublished": "Oct 18, 2026, 3:15:17 PM",
-  "dateUpdated": "Oct 18, 2026, 3:15:17 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a29c5d2dd2ef9a8617a9a6d5585696d5f149cd98\nhttps://git.kernel.org/stable/c/c525772c304c971b0d3a1f2898dedbae653efe90\nhttps://git.kernel.org/stable/c/71acbea44e78665ea90e3c310fca6bbdcc0252db\nhttps://git.kernel.org/stable/c/8ae12ccaec6ec74945d8c1ef39f2c1b8df779abc\n",
   "aliases": "CVE-2026-98465\nGHSA-95qg-qjx7-9h4r\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
-    {
-      "id": "0aa02906-3b39-3c5a-bbbd-649822332974",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
-    },
     {
       "id": "3e66b426-8f00-301a-b30b-331c8caf63f7",
       "product": {
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.12.112"
+    },
+    {
+      "id": "ce2a3203-a1f7-39e6-bf7b-eb30edd3eb9d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e358407c-a8a0-31c3-a7b9-7695e8a1e2f1",

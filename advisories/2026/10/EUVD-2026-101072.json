@@ -3,12 +3,12 @@
   "enisaUuid": "e1ce5857-7c5f-3f31-8283-521f0158d7c6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211_hwsim: don't hand frames to mac80211 while stopping\n\nThe code checks ->started for frames coming from wmediumd, but the\nradio can be stopped after the check and before frame delivery,\ncausing mac80211 to hit the WARN_ON(!local->started).\n\nExpand the mutex for this case and synchronise against it when the\nradio is stopped to avoid being able to hit the warning with hwsim.\n\nDrop the error print that would've complicated the error path, it\nonly triggers for allocation failures (already noisy) and malformed\nframes anyway.",
   "datePublished": "Oct 14, 2026, 1:27:51 PM",
-  "dateUpdated": "Oct 14, 2026, 1:27:51 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:16 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5ce9b2bc9e73213e316a8c72400256a76bf41814\nhttps://git.kernel.org/stable/c/c4e4fe330294e3936e0f4e15d6996468f8a45fb2\nhttps://git.kernel.org/stable/c/2f59be7585dc81baa6f36b0035dd6848ea43d318\nhttps://git.kernel.org/stable/c/5c79ef616aa16af582fb2cb93b0f750975a0004f\nhttps://git.kernel.org/stable/c/d7fa45d8123a7f794b93fc22dbcf19f38dc4d8cb\nhttps://git.kernel.org/stable/c/87840d4a3a21b1c19b867a80e16ba69dff284de2\n",
   "aliases": "CVE-2026-98423\nGHSA-gc6m-v2g5-2jw7\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0841be56-9a7b-396b-b67c-86901413a16b",
@@ -51,16 +51,6 @@
       "product_version": "7882513bacb176ab4aacceefdd035ca9479da4fb <5ce9b2bc9e73213e316a8c72400256a76bf41814"
     },
     {
-      "id": "390fa581-54ee-3969-b473-9956f033748c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
-    },
-    {
       "id": "522b44c5-f86e-304e-92d3-5466023e01a7",
       "product": {
         "name": "Linux",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "7882513bacb176ab4aacceefdd035ca9479da4fb <5c79ef616aa16af582fb2cb93b0f750975a0004f"
+    },
+    {
+      "id": "8933cb8e-b19d-3e25-987b-799aeaf676b8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8d67003e-4fb0-3588-9e14-342585cbccb9",

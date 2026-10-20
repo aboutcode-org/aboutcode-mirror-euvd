@@ -3,12 +3,12 @@
   "enisaUuid": "64498dac-b53c-3552-a4b1-b8975c6751c6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/dasd: Guard sysfs discipline callbacks against unallocated private data\n\nSeveral sysfs show/store handlers call a discipline callback that\ndereferences device->private, either directly or through the\nDASD_DEFINE_ATTR() macro. During dasd_generic_set_online() the discipline\nis assigned before check_device() allocates device->private, so an\nunprivileged read of one of these world-readable attributes in that window\ndereferences a NULL pointer and panics.\n\nGuard the dereference inside each callback that actually touches\ndevice->private.",
   "datePublished": "Sep 11, 2026, 7:43:20 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:57 AM",
+  "dateUpdated": "Oct 19, 2026, 8:47:06 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/644b666c202cce12ccfcf9ded67089b18f4f7659\nhttps://git.kernel.org/stable/c/4a042d8e5f34282577ece50515cea8bb1246914d\nhttps://git.kernel.org/stable/c/bd8b4572528f9604a13bf3c7c2a167f5cf222f72\nhttps://git.kernel.org/stable/c/57db27ccc162afe0726cffec0ae62e410ed2d0e9\nhttps://git.kernel.org/stable/c/536407b272402af679155910d7fdeeb4834eefb9\nhttps://git.kernel.org/stable/c/6452c13646af7c13d7f6668b6690cfb2427e7f7b\nhttps://git.kernel.org/stable/c/449f3bada7a9fad8b8cdf4bb20baf27ee9ca56c5\nhttps://git.kernel.org/stable/c/2a1780f9fc2493bd34c418a0be6fc58943afcecf\n",
   "aliases": "CVE-2026-89457\nGHSA-94gp-p6v7-5m5q\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0aff1cb0-953f-37b9-968e-3178bae5448d",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "c729696bcf8b23450043dd9c9972c15e53419ae4 <449f3bada7a9fad8b8cdf4bb20baf27ee9ca56c5"
+    },
+    {
+      "id": "2b4dbfae-47ba-3609-ac8b-1f0a2cb96f65",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "3288a381-65ee-3610-a280-18bdf9b9c0e0",
@@ -179,16 +189,6 @@
         }
       },
       "product_version": "patch: 5.15.221"
-    },
-    {
-      "id": "f83fbe5b-c882-3baf-9dcf-3eb6c32af907",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "5ef432bf-7983-3fce-ad15-f2ba7aa419e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: always fill AVC decision in avc_has_perm_noaudit()\n\navc_has_perm_noaudit() is documented to return a copy of the access\ndecision in @avd, but its early return for an empty requested permission\nset leaves the buffer untouched.  All callers pass an uninitialized\nstack variable and afterwards feed it to avc_audit(), and the inode hook\neven stores it in the per-task decision cache.\n\nFill in a deny-all, audit-all decision, similar to avd_init(), so every\ncaller receives a defined value at no cost on the hot path.",
   "datePublished": "Oct 14, 2026, 1:27:45 PM",
-  "dateUpdated": "Oct 14, 2026, 1:27:45 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:07 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c781e737aa0de95289b1774d5fd29388895737a9\nhttps://git.kernel.org/stable/c/e308c5acfe283a66627fc407065626df4ab753ec\nhttps://git.kernel.org/stable/c/f9da796fa238f8e4414ee8481e6c979759a3d563\nhttps://git.kernel.org/stable/c/e77461af13eab5c9a953cc52ec8432cc941d61e2\nhttps://git.kernel.org/stable/c/5a6f9a872b4ff68877caf998bee352153b7154bc\nhttps://git.kernel.org/stable/c/24e00850bcff46b984f4c44b92e5499450fcfb5a\nhttps://git.kernel.org/stable/c/835133337c2ce200db56f62d018c79087dee2603\nhttps://git.kernel.org/stable/c/8861db305103107199b1426f25fde1fb6d465583\n",
   "aliases": "CVE-2026-98413\nGHSA-m3f9-pmfc-6c92\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "08157b3d-ab24-3409-884b-512edc65f7fb",
@@ -101,6 +101,16 @@
       "product_version": "patch: 6.18.54"
     },
     {
+      "id": "7643c805-4892-388e-8c01-bcec560f7af3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "a3c9ad1f-d156-3618-97db-7cac0c4956b7",
       "product": {
         "name": "Linux",
@@ -139,16 +149,6 @@
         }
       },
       "product_version": "5.1"
-    },
-    {
-      "id": "ccd8c578-47d1-3686-838f-41d62018a297",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
     },
     {
       "id": "f3f23eec-f2a1-3f6e-bae7-c18dbb974b4b",

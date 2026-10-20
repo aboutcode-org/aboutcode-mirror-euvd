@@ -3,7 +3,7 @@
   "enisaUuid": "d534fd52-4c20-3571-9e7b-364297cff926",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: Fix double free in dma-buf feature\n\nThe error path through vfio_pci_core_feature_dma_buf() ignores its\nown advice to only use dma_buf_put() after dma_buf_export(), instead\nfalling through the entire unwind chain.  In the unlikely event that\nwe encounter file descriptor exhaustion, this can result in an\nunbalanced refcount on the vfio device and double free of allocated\nobjects.\n\nAvoid this by moving the \"put\" directly into the error path and return\nthe errno rather than entering the unwind chain.",
   "datePublished": "Apr 22, 2026, 1:53:57 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:11 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:49 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

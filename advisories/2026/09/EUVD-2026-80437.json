@@ -3,7 +3,7 @@
   "enisaUuid": "b2474bf1-ec0e-351d-a43c-eca52424229c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix dentry folio leak in find_in_level\n\nfind_in_level() gets a dentry folio with f2fs_find_data_folio() before\ncalling find_in_block().  If find_in_block() returns an error, the\nfunction stores the error in res_folio and breaks out of the loop without\ndropping the dentry folio.\n\nThis leaks the folio reference on the find_in_block() error path.  Drop\nthe dentry folio before returning the error to the caller.",
   "datePublished": "Sep 16, 2026, 10:31:11 AM",
-  "dateUpdated": "Oct 3, 2026, 10:56:45 AM",
+  "dateUpdated": "Oct 19, 2026, 8:53:30 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/af9cc316d31371824de8d409260a2ab9759dd51c\nhttps://git.kernel.org/stable/c/aefb4b0f465b6f95fe02b52d1822a3fb4a9ae922\nhttps://git.kernel.org/stable/c/93a3e6a4c9e726a13a935963e8dc43d181db1527\nhttps://git.kernel.org/stable/c/cca7d3e30bf30333314e31bc70b9a739f1342167\n",
   "aliases": "GHSA-cwf6-7jp2-62cf\nCVE-2026-89837\n",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 7.2.5"
+    },
+    {
+      "id": "58d80f7f-7988-39f3-90e8-984a3f968bc8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8bc628aa-bf1d-32db-9796-e32d4348a17d",
@@ -99,16 +109,6 @@
         }
       },
       "product_version": "7ad08a58bf67594057362e45cbddd3e27e53e557 <cca7d3e30bf30333314e31bc70b9a739f1342167"
-    },
-    {
-      "id": "f6afcf63-58c2-3277-8875-a15f11391997",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     }
   ],
   "enisaIdVendor": [

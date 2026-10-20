@@ -3,7 +3,7 @@
   "enisaUuid": "3b9ba7f8-5443-3868-b35b-74c5e9d14a6f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: abort break signalling on hangup\n\nThe break ioctls can race with hangup and end up calling into a tty\ndriver for a device that is already gone or powered down.\n\nDrivers must handle this race, but TCSBRK and TCSBRKP should still be\naborted to avoid calling back into the driver after a user-controlled\ntimeout (possibly even after the tty has been reopened).\n\nNote that drivers should disable any break state on shutdown so just\nreturn on hangup (calling break_ctl() again is racy and will most likely\nfail for drivers handling the race).",
   "datePublished": "Oct 18, 2026, 3:47:36 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:36 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3bc82999fb85cecc7eb6ec1755ee7d698aa1e783\nhttps://git.kernel.org/stable/c/94af6cd832e9b4ce39a8fb59144a8f09ab56fd35\nhttps://git.kernel.org/stable/c/c8ccd3b2013daaf77b98f8a6724fcf4d2c5c52d6\nhttps://git.kernel.org/stable/c/845a2737e0f5ffe5ca8d38de556012b0c9472cdd\n",
   "aliases": "CVE-2026-98751\nGHSA-cg92-2wfv-ppg3\n",
@@ -41,16 +41,6 @@
       "product_version": "f34d7a5b7010b82fe97da95496b9971435530062 <3bc82999fb85cecc7eb6ec1755ee7d698aa1e783"
     },
     {
-      "id": "6df3ecd3-8367-3d28-9982-ad7834c9ddc6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "7cc5c25f-c9bd-3dfa-b4b9-65028567731f",
       "product": {
         "name": "Linux",
@@ -69,6 +59,16 @@
         }
       },
       "product_version": "f34d7a5b7010b82fe97da95496b9971435530062 <845a2737e0f5ffe5ca8d38de556012b0c9472cdd"
+    },
+    {
+      "id": "8556e59e-cddb-34b1-b3fb-8c9df4ac3cf3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "9b34a284-b4b5-3d18-b12b-a6ae081fe5dd",

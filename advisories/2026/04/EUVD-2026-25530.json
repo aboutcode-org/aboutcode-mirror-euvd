@@ -3,7 +3,7 @@
   "enisaUuid": "fbbd1a9f-9514-35db-bcba-afeb75b0dedb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: reject undecryptable rxkad response tickets\n\nrxkad_decrypt_ticket() decrypts the RXKAD response ticket and then\nparses the buffer as plaintext without checking whether\ncrypto_skcipher_decrypt() succeeded.\n\nA malformed RESPONSE can therefore use a non-block-aligned ticket\nlength, make the decrypt operation fail, and still drive the ticket\nparser with attacker-controlled bytes.\n\nCheck the decrypt result and abort the connection with RXKADBADTICKET\nwhen ticket decryption fails.",
   "datePublished": "Apr 24, 2026, 2:44:51 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:17 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:01 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

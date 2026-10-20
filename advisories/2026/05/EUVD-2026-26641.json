@@ -3,7 +3,7 @@
   "enisaUuid": "72fa7d2e-483c-3d5c-ba46-76d1fde0d1bd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmpls: add seqcount to protect the platform_label{,s} pair\n\nThe RCU-protected codepaths (mpls_forward, mpls_dump_routes) can have\nan inconsistent view of platform_labels vs platform_label in case of a\nconcurrent resize (resize_platform_label_table, under\nplatform_mutex). This can lead to OOB accesses.\n\nThis patch adds a seqcount, so that we get a consistent snapshot.\n\nNote that mpls_label_ok is also susceptible to this, so the check\nagainst RTA_DST in rtm_to_route_config, done outside platform_mutex,\nis not sufficient. This value gets passed to mpls_label_ok once more\nin both mpls_route_add and mpls_route_del, so there is no issue, but\nthat additional check must not be removed.",
   "datePublished": "May 1, 2026, 2:15:38 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:29 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:10 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

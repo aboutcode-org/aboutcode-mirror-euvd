@@ -3,7 +3,7 @@
   "enisaUuid": "5dcc1059-6c8d-3081-9f02-440cd0628983",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirt: tdx-guest: Fix handling of host controlled 'quote' buffer length\n\nValidate host controlled value `quote_buf->out_len` that determines how\nmany bytes of the quote are copied out to guest userspace. In TDX\nenvironments with remote attestation, quotes are not considered private,\nand can be forwarded to an attestation server.\n\nCatch scenarios where the host specifies a response length larger than\nthe guest's allocation, or otherwise races modifying the response while\nthe guest consumes it.\n\nThis prevents contents beyond the pages allocated for `quote_buf`\n(up to TSM_REPORT_OUTBLOB_MAX) from being read out to guest userspace,\nand possibly forwarded in attestation requests.\n\nRecall that some deployments want per-container configs-tsm-report\ninterfaces, so the leak may cross container protection boundaries, not\njust local root.",
   "datePublished": "Apr 22, 2026, 1:53:58 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:12 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:50 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

@@ -3,12 +3,12 @@
   "enisaUuid": "b367dd1c-e2a9-3218-88db-0a710537baa2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix memory leak in guest debug handling\n\nbp_data is freed only for the error case by kfree(bp_data).\nEvery successful KVM_SET_GUEST_DEBUG will leak bp_data.",
   "datePublished": "Sep 16, 2026, 10:32:18 AM",
-  "dateUpdated": "Sep 16, 2026, 10:32:18 AM",
+  "dateUpdated": "Oct 19, 2026, 8:55:00 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/39e7cebb889839b5762c9ad22e2d715b5883b288\nhttps://git.kernel.org/stable/c/58b1b729a9f90c80b508fc3e2174cbc0ee50859e\nhttps://git.kernel.org/stable/c/9071f75cbde3bf46119cb28e92cfbef830c4bf97\nhttps://git.kernel.org/stable/c/5940418e4232a2ff1d30ba12e0d213dbf48f0a83\nhttps://git.kernel.org/stable/c/fc2034c431adcbaabf5f8a01912358f07355349e\nhttps://git.kernel.org/stable/c/44bf3792c10f4bb3de507391f1837e020d92eaa2\nhttps://git.kernel.org/stable/c/581be9f6085834188cef1ad2f07babf3b421e409\nhttps://git.kernel.org/stable/c/121ea1de927c8b9bfdf53c31cad27b86d5de0293\n",
   "aliases": "GHSA-xj9r-76p8-pxqw\nCVE-2026-89925\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0df75000-6e7b-3c53-8bde-0a3803c62211",
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5906f595-85b7-3dfc-95db-b838f88729f7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "6bcc0d2c-9140-3757-b280-60703d910310",
@@ -179,16 +189,6 @@
         }
       },
       "product_version": "patch: 6.18.51"
-    },
-    {
-      "id": "edcae295-1898-3e80-a54d-43141cc12dd4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     }
   ],
   "enisaIdVendor": [

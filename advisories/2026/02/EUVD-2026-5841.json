@@ -3,14 +3,14 @@
   "enisaUuid": "24ab152e-16cb-3765-a9e4-a31f1fab0a9a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_u32: use skb_header_pointer_careful()\n\nskb_header_pointer() does not fully validate negative @offset values.\n\nUse skb_header_pointer_careful() instead.\n\nGangMin Kim provided a report and a repro fooling u32_classify():\n\nBUG: KASAN: slab-out-of-bounds in u32_classify+0x1180/0x11b0\nnet/sched/cls_u32.c:221",
   "datePublished": "Feb 14, 2026, 4:27:27 PM",
-  "dateUpdated": "Oct 15, 2026, 1:13:13 AM",
+  "dateUpdated": "Oct 19, 2026, 6:35:38 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/66e4b63d61c15de6ca5332d9ca6db59a404d7136\nhttps://git.kernel.org/stable/c/29681ed51e737be14d18ecd1c304c57002e4b72c\nhttps://git.kernel.org/stable/c/cfa745830e45ecb75c061aa34330ee0cac941cc7\nhttps://git.kernel.org/stable/c/13336a6239b9d7c6e61483017bb8bdfe3ceb10a5\nhttps://git.kernel.org/stable/c/e41a23e61259f5526af875c3b86b3d42a9bae0e5\nhttps://git.kernel.org/stable/c/8a672f177ebe19c93d795fbe967846084fbc7943\nhttps://git.kernel.org/stable/c/cabd1a976375780dabab888784e356f574bbaed8\n",
   "aliases": "GHSA-rf63-9f5h-hhg6\nCVE-2026-23204\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "04c5a95b-a297-365b-9f24-02757a0e01c5",

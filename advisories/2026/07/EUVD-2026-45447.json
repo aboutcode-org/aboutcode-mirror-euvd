@@ -3,7 +3,7 @@
   "enisaUuid": "e2358d6f-0091-3627-8e25-55e5d4257755",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: zero-initialize GART table on allocation\n\nGART TLB is flushed after unmapping but not after mapping. Since\namdgpu_bo_create_kernel() does not zero-initialize the buffer, when a\nsingle PTE is written the TLB may speculatively load other uninitialized\nentries from the same cacheline. Those garbage entries can appear valid,\nand a subsequent write to another PTE in the same cacheline may cause the\nGPU to use a stale garbage PTE from the TLB.\n\nFix this by calling memset_io() to zero-initialize the GART table with\ngart_pte_flags immediately after allocation.\n\nUsing AMDGPU_GEM_CREATE_VRAM_CLEARED, SDMA-based clear will not work\nsince SDMA needs GART to be initialized to work.\n\n(cherry picked from commit d9af8263b82b6eaa60c5718e0c6631c5037e4b24)",
   "datePublished": "Jul 19, 2026, 10:01:58 AM",
-  "dateUpdated": "Oct 16, 2026, 3:31:52 PM",
+  "dateUpdated": "Oct 19, 2026, 8:07:45 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

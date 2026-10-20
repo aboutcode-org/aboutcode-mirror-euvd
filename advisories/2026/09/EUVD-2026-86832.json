@@ -3,14 +3,14 @@
   "enisaUuid": "c39e6d8a-1cac-3d02-80f9-880ba195f6f1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: avoid unneeded actions on subflow reset\n\nOnce in a blue moon, the mptcp receive path can recursively call\nmptcp_data_ready() via state change under unlucky error conditions, and\nthen try to hold the data lock again.\n\nBreak the recursion loop explicitly checking for the exceptional\ncondition.\n\nAdd a new flag instead of using an existing one like 'closing', to exit\nearly in subflow_state_change(), and explicitly flush the RX queue at\nreset time.\n\nThis avoids unneeded processing to check for available data -- calling\nget_mapping_status() and more on a dying subflow -- but also in error\nreporting and worker scheduling.\n\nNote that we must consume the currently peeked skb before invoking\nmptcp_dss_corruption to avoid consuming it again after the eventual\nreset has freed it.",
   "datePublished": "Sep 25, 2026, 10:21:27 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:18 AM",
+  "dateUpdated": "Oct 19, 2026, 9:08:42 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/6d669c740933124eae3df8cfc15995af9bcc6aba\nhttps://git.kernel.org/stable/c/83a7dcdd2b1060484528da70a643125174d47e5a\nhttps://git.kernel.org/stable/c/a370e56024df0b07e3120c45a9773ae123819fd6\nhttps://git.kernel.org/stable/c/1962841387087970d75ba8b8d4c2aa2d45705e50\nhttps://git.kernel.org/stable/c/4b7abdcb5ba832fafab679f0d998af39cbc99307\nhttps://git.kernel.org/stable/c/b2dbcc1ed48b5ac070a41db4a52aade6823c4df0\nhttps://git.kernel.org/stable/c/ce7e4ede01ed3e47a48c0f1ce1d87bf4864bee9f\nhttps://git.kernel.org/stable/c/2b0f561f21b27c40c91ea4975268a06092bd7e9c\n",
   "aliases": "CVE-2026-97524\nGHSA-wphv-p3gw-h29j\n",
   "assigner": "Linux",
-  "epss": 0.6,
+  "epss": 0.69,
   "enisaIdProduct": [
     {
       "id": "010efc09-540f-3506-b5ff-aaa122190748",
@@ -103,6 +103,16 @@
       "product_version": "5.10.228 <5.10.271"
     },
     {
+      "id": "7e9aae3e-517d-3a53-b6c8-c957005f5a14",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "7ede1ddb-d816-38c0-be64-1daa4d15a727",
       "product": {
         "name": "Linux",
@@ -171,16 +181,6 @@
         }
       },
       "product_version": "patch: 6.18.53"
-    },
-    {
-      "id": "c6deec4c-4180-3f19-a743-5191777fe906",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc4"
     },
     {
       "id": "c7532046-624b-3904-a445-8ded4e630f00",

@@ -3,14 +3,14 @@
   "enisaUuid": "9b9e404e-b15a-314e-b116-eb6ac14bbac8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: unconditionally bump set->nelems before insertion\n\nIn case that the set is full, a new element gets published then removed\nwithout waiting for the RCU grace period, while RCU reader can be\nwalking over it already.\n\nTo address this issue, add the element transaction even if set is full,\nbut toggle the set_full flag to report -ENFILE so the abort path safely\nunwinds the set to its previous state.\n\nAs for element updates, decrement set->nelems to restore it.\n\nA simpler fix is to call synchronize_rcu() in the error path.\nHowever, with a large batch adding elements to already maxed-out set,\nthis could cause noticeable slowdown of such batches.",
   "datePublished": "Mar 20, 2026, 8:08:52 AM",
-  "dateUpdated": "Oct 16, 2026, 3:09:51 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:40 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/25fcaef7948912652905e96922f36583a84fffed\nhttps://git.kernel.org/stable/c/e3ccb11fc8249759d23326038c8db987ddaabc77\nhttps://git.kernel.org/stable/c/86bc4b1a0f672d47ac19f9022432cb6a2e01cb33\nhttps://git.kernel.org/stable/c/6826131c7674329335ca25df2550163eb8a1fd0c\nhttps://git.kernel.org/stable/c/ccb8c8f3c1127cf34d18c737309897c68046bf21\nhttps://git.kernel.org/stable/c/def602e498a4f951da95c95b1b8ce8ae68aa733a\n",
   "aliases": "CVE-2026-23272\nGHSA-qhvv-4mw5-pxh3\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "04c5ace5-4c2e-3a7f-a8a2-369cbae794da",

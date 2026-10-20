@@ -3,7 +3,7 @@
   "enisaUuid": "07fb437e-4602-3561-bb22-fa7308c1da61",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Use the active VMCB's MSR bitmap when checking if MSR is intercepted\n\nUse the MSR permission bitmap of the active VMCB instead of assuming that\nKVM is always using vmcb02's bitmap when L2 is active, as KVM uses msrpm02\nif and only if L1 wants to intercept MSR accesses, i.e. if and only if KVM\nneeds to merge msprm01 with msrpm12.\n\nDon't bother tracking the virtual address of the bitmap that's being used,\nas __va() is cheap on x86, and caching the virtual address would introduce\nyet another source of potentially stale information.",
   "datePublished": "Oct 18, 2026, 3:46:49 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:49 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/74836ae4785b9754bb36d0b18fcc1dec4e5e98d2\nhttps://git.kernel.org/stable/c/318ef696fa3c712e46bb62a1a828c3cd62f390c3\nhttps://git.kernel.org/stable/c/55865b3ae03705aa39198783b9cb1f8b96eb44e4\nhttps://git.kernel.org/stable/c/9e06bbb9ade7cdf28d4a3b5b14e5812881c8df85\n",
   "aliases": "CVE-2026-98716\nGHSA-hpgm-5w85-35mm\n",
@@ -81,16 +81,6 @@
       "product_version": "patch: 7.2.10"
     },
     {
-      "id": "98c8ef1c-351d-33d9-bfad-04ad4230b177",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "ad8aff40-824f-3b29-a8d6-510717ccd0a2",
       "product": {
         "name": "Linux",
@@ -139,6 +129,16 @@
         }
       },
       "product_version": "89be8950bab799ddb9cc3777345e3c21bcb32dba"
+    },
+    {
+      "id": "e99f3d94-b2d1-3377-8c3c-b425c62032f0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "fff4ba24-0d62-3d64-9e2a-8ce803fec868",

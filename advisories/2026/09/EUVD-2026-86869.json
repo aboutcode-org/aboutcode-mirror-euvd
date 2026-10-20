@@ -3,12 +3,12 @@
   "enisaUuid": "2cf2a044-f5e0-3cbb-be85-c115bde2f96a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: honor forceuid/forcegid when mapping SIDs to uid/gid\n\nWhen the administrator mounts with forceuid or forcegid (uid=/gid=\nmount options), they expect all files to appear owned by the specified\nuser/group.  However, several code paths unconditionally called\nsid_to_id() to overwrite cf_uid/cf_gid with server-provided values,\nignoring the administrator's explicit override:\n\n  - smb311_posix_info_to_fattr() (stat via POSIX extensions)\n  - cifs_posix_to_fattr() (readdir via POSIX extensions)\n  - parse_sec_desc() (CIFS ACL ownership mapping)\n\nThis allowed an untrusted server to dictate local file ownership even\nwhen the mount was configured to force specific uid/gid values.\n\nFix all three call sites to check CIFS_MOUNT_OVERR_UID and\nCIFS_MOUNT_OVERR_GID before calling sid_to_id(), following the\nsame pattern already used by cifs_unix_basic_to_fattr() for unix\nextensions.",
   "datePublished": "Sep 25, 2026, 10:21:50 AM",
-  "dateUpdated": "Oct 15, 2026, 10:11:52 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:24 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6ac7a29691558bed18e2df1780636b8aa0fd13d5\nhttps://git.kernel.org/stable/c/e1b74f8f8c1d13190b09fe623b729d36b7ac22a8\nhttps://git.kernel.org/stable/c/18a72975e9f35aadecc75b031f693f2d1f49308f\n",
   "aliases": "GHSA-vg8h-339p-69c7\nCVE-2026-97561\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "3bc10c47-ee42-32af-b2be-a51dc18636f3",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "9409ae58e0759d010b347e7b19ebc90ab5d4b98f <e1b74f8f8c1d13190b09fe623b729d36b7ac22a8"
-    },
-    {
-      "id": "6bbe46f3-392b-3763-bece-2bc907b1266c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "7cb2c3a9-ffe9-316d-8697-9a584448444e",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "3.0"
+    },
+    {
+      "id": "feb358f9-fafd-327a-88aa-9007bedd472a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

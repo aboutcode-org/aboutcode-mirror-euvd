@@ -3,7 +3,7 @@
   "enisaUuid": "efd40fbf-2875-3bb8-9f4e-e1f40d10eaff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: tty_port: restore TTY_IO_ERROR on activation failure\n\nMake sure to restore the TTY_IO_ERROR flag if activation fails to\nprevent I/O attempts on a port that is gone or powered down.\n\nThis specifically avoids issues like kernel panic due to unclocked\naccesses or NULL-pointer dereferences when accessing powered down or\nderegistered ports when a TTY ioctl races with hangup and open.\n\nNote that the flag is set again in tty_port_close() but not restoring it\non activation failure leaves a window where drivers fail to handle the\nioctl-hangup race.",
   "datePublished": "Oct 18, 2026, 3:47:37 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:37 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:06 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/34d4f67472ef7a744970b772a8565ddc727788e2\nhttps://git.kernel.org/stable/c/7021acc84c2e0add77a1a33152e3a1e428fdbfdb\nhttps://git.kernel.org/stable/c/6388409b711eb91b14fa075a4d861ccc4df1cfe7\nhttps://git.kernel.org/stable/c/56964f6a31238fb41d5830bb42520c5b10ff7d8f\n",
   "aliases": "GHSA-fxvh-5c26-7p3q\nCVE-2026-98753\n",
@@ -51,16 +51,6 @@
       "product_version": "a9a37ec33a1b3e66b260ac1c29bff0aec8b89ae4 <6388409b711eb91b14fa075a4d861ccc4df1cfe7"
     },
     {
-      "id": "547def27-0e95-394e-a976-ad535d12d5a0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "612e580e-1eba-38b8-8a1e-17f8468fba4f",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "a9a37ec33a1b3e66b260ac1c29bff0aec8b89ae4 <56964f6a31238fb41d5830bb42520c5b10ff7d8f"
+    },
+    {
+      "id": "f4ad41da-7789-3091-a716-10b5c7e885cd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "feca0a12-55d0-3480-ada4-c2779147fdfe",

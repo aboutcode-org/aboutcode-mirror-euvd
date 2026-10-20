@@ -3,12 +3,12 @@
   "enisaUuid": "5f199821-e113-303c-a096-1c771782d001",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: authencesn - reject too-short AAD (assoclen<8) to match ESP/ESN spec\n\nauthencesn assumes an ESP/ESN-formatted AAD. When assoclen is shorter than\nthe minimum expected length, crypto_authenc_esn_decrypt() can advance past\nthe end of the destination scatterlist and trigger a NULL pointer dereference\nin scatterwalk_map_and_copy(), leading to a kernel panic (DoS).\n\nAdd a minimum AAD length check to fail fast on invalid inputs.",
   "datePublished": "Feb 4, 2026, 4:07:42 PM",
-  "dateUpdated": "Oct 15, 2026, 1:12:46 AM",
+  "dateUpdated": "Oct 19, 2026, 6:25:28 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/df22c9a65e9a9daa368a72fed596af9d7d5876bb\nhttps://git.kernel.org/stable/c/fee86edf5803f1d1f19e3b4f2dacac241bddfa48\nhttps://git.kernel.org/stable/c/767e8349f7e929b7dd95c08f0b4cb353459b365e\nhttps://git.kernel.org/stable/c/b0a9609283a5c852addb513dafa655c61eebc1ef\nhttps://git.kernel.org/stable/c/161bdc90fce25bd9890adc67fa1c8563a7acbf40\nhttps://git.kernel.org/stable/c/9532ff0d0e90ff78a214299f594ab9bac81defe4\nhttps://git.kernel.org/stable/c/2397e9264676be7794f8f7f1e9763d90bd3c7335\n",
   "aliases": "GHSA-34wc-9m9j-23pc\nCVE-2026-23060\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "1db7328b-49c7-3bfa-9aef-786ecb62a5f0",

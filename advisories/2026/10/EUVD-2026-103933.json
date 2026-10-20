@@ -3,7 +3,7 @@
   "enisaUuid": "b80c98a3-347d-3a3d-8828-398e887432e8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: accel: kxcjk-1013: reject duplicate event disable\n\nThe IIO core does not filter duplicate writes to the event enable\nattribute. kxcjk1013_write_event_config() already ignores repeated\nenable requests, but a repeated disable request still calls\nkxcjk1013_set_power_state(data, false), dropping a runtime PM reference\nthat was not acquired for this request. This can underflow the runtime\nPM usage count and trigger a \"Runtime PM usage count underflow\" warning.\n\nReturn early when the requested state already matches ev_enable_state.",
   "datePublished": "Oct 18, 2026, 3:45:38 PM",
-  "dateUpdated": "Oct 18, 2026, 3:45:38 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:48 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ad690c0c1b9131725619e352cb7c970488cbf436\nhttps://git.kernel.org/stable/c/3365209e758c845a197211645731f0e393a86012\nhttps://git.kernel.org/stable/c/aa94a37b5a3e560c277dac6f9e5d0d75549a6583\nhttps://git.kernel.org/stable/c/dd30c10ff60d2b30386c23bb7c61cc97f2385c97\n",
   "aliases": "GHSA-jg4r-9rqj-mgw5\nCVE-2026-98679\n",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "b4b491c0832ef90a7a5070e5975bc8427f2049ca <aa94a37b5a3e560c277dac6f9e5d0d75549a6583"
-    },
-    {
-      "id": "213fe3cd-1cc5-3fc3-aedc-0d3c03783c83",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "5b3898f6-695b-37ff-b0ea-b8e59a14d88f",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "b4b491c0832ef90a7a5070e5975bc8427f2049ca <ad690c0c1b9131725619e352cb7c970488cbf436"
+    },
+    {
+      "id": "f488b10b-8519-3ace-95ab-c5918074c9f7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "756632b2-abe8-301a-ba16-c298a1068d93",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ip6t_eui64: reject invalid MAC header for all packets\n\n`eui64_mt6()` derives a modified EUI-64 from the Ethernet source address\nand compares it with the low 64 bits of the IPv6 source address.\n\nThe existing guard only rejects an invalid MAC header when\n`par->fragoff != 0`. For packets with `par->fragoff == 0`, `eui64_mt6()`\ncan still reach `eth_hdr(skb)` even when the MAC header is not valid.\n\nFix this by removing the `par->fragoff != 0` condition so that packets\nwith an invalid MAC header are rejected before accessing `eth_hdr(skb)`.",
   "datePublished": "Apr 25, 2026, 8:47:02 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:24 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:04 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",

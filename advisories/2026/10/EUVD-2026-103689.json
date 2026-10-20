@@ -3,7 +3,7 @@
   "enisaUuid": "164c8a7f-315d-3a16-8749-a76860b77872",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: delete compound mids on send failure before unlock\n\nWhen sending a compound request fails, smb_send_rqst() kicks off a\nreconnect. compound_send_recv() still has those mids on pending_mid_q,\nbut it unlocks the server without removing them first.\n\nDuring reconnect, cifs_abort_connection() walks pending_mid_q and runs\neach mid callback. With no response yet, those callbacks return credits\nand drop in_flight. Then compound_send_recv()'s send-error path returns\nthe same credits again. in_flight ends up decremented twice and\nsmb2_add_credits() WARNs.\n\nsyzbot hits this during SMB2_negotiate when the socket send fails.\n\ncifs_call_async() already calls delete_mid() before unlock on send\nfailure. Do the same for compound chains and set cancelled_mid[] so the\nout: path does not delete them again.",
   "datePublished": "Oct 18, 2026, 3:14:59 PM",
-  "dateUpdated": "Oct 18, 2026, 3:14:59 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:44 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/70783946f3b5d0c06ec7df0f5e7bec2bfad24efb\nhttps://git.kernel.org/stable/c/8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9\n",
   "aliases": "CVE-2026-98449\nGHSA-2758-q84j-4rxj\n",
@@ -51,14 +51,14 @@
       "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9"
     },
     {
-      "id": "897edcfa-1f77-3278-89ca-cde5600d7ac6",
+      "id": "8967a90c-7bc6-3f2d-80be-896590af4067",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc5"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "90b2258c-0268-3c93-935a-84cb2bb204fe",

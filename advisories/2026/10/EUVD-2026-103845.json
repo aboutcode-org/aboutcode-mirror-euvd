@@ -3,7 +3,7 @@
   "enisaUuid": "6b4d689d-6fa7-3adc-8a8f-73b3575c870c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tipd: fix uninitialized typec_partner_desc in tps6598x_connect()\n\ntps6598x_connect() passes a stack-allocated typec_partner_desc to\ntypec_register_partner() after initializing only usb_pd, accessory and\nidentity.\n\ntypec_register_partner() copies attach and deattach from the descriptor\ninto the partner. With those fields left unset, garbage function pointers\nmay be stored and later invoked from typec_partner_link_device() when a USB\ndevice is linked to the port. Uninitialized pd_revision and usb_capability\nsimilarly leak stack data through partner sysfs.\n\nZero-initialize the descriptor so optional callbacks remain NULL and the\nremaining fields are zero.",
   "datePublished": "Oct 18, 2026, 3:47:50 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:50 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:13 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4b6823ce0e548491cb9663303cba28e18d351096\nhttps://git.kernel.org/stable/c/282be6ae8be791762740107c79cecf5121f66063\nhttps://git.kernel.org/stable/c/dac0c073c6ad5f1bbb5e9fea9023fc1b4dab5e14\nhttps://git.kernel.org/stable/c/c4b27b3605788bbf9e4251f3cd4ab94645ab036f\n",
   "aliases": "GHSA-f983-5vc9-m6xh\nCVE-2026-98760\n",
@@ -11,14 +11,14 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "2a8d973a-b427-36ce-aada-40dcc2db6d41",
+      "id": "31acba0f-8c1e-37b6-b82d-caccf03db6d5",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "385a00cd-6239-35db-98ea-9016dae30277",

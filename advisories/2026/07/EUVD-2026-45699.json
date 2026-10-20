@@ -3,7 +3,7 @@
   "enisaUuid": "713a50dc-789b-3232-bb5d-2fc34928160d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: sockmap: fix tail fragment offset in bpf_msg_push_data\n\nWhen bpf_msg_push_data() inserts data in the middle of a scatterlist\nentry, it splits the original entry into a left fragment and a right\nfragment.\n\nThe right fragment offset is page-local, but the code advances it with\n`start`, which is the message-global insertion point. For inserts into a\nnon-first SG entry, this over-advances the offset and leaves the split\nlayout inconsistent.\n\nAdvance the right fragment offset by the fragment-local delta,\n`start - offset`, which matches the length removed from the front of the\noriginal entry.",
   "datePublished": "Jul 19, 2026, 2:55:27 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:12 PM",
+  "dateUpdated": "Oct 19, 2026, 8:17:57 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

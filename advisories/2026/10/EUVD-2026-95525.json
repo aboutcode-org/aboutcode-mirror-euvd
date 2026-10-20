@@ -3,12 +3,12 @@
   "enisaUuid": "a5666612-afff-3711-8463-354a0e5e4e77",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/netfront: drop RX packets with a short Ethernet header\n\nhandle_incoming_queue() pulls pull_to bytes into the head before\ncalling eth_type_trans().  pull_to is the length of the first RX slot,\ncapped at RX_COPY_THRESHOLD, and that length comes from the backend.\nNothing checks it against ETH_HLEN.\n\nIf the first slot is shorter than ETH_HLEN and more slots follow, the\nhead ends up shorter than an Ethernet header while skb->len is longer,\nand eth_type_trans() BUG()s in __skb_pull().  If the whole packet is\nshorter than ETH_HLEN, eth_type_trans() reads the header past the end\nof the data instead.\n\nPull at least ETH_HLEN, and drop the packet if that fails, which also\ndrops packets too short to hold an Ethernet header.  This also checks\nthe return value of the pull, which was ignored.",
   "datePublished": "Oct 9, 2026, 7:10:45 AM",
-  "dateUpdated": "Oct 15, 2026, 10:12:23 AM",
+  "dateUpdated": "Oct 19, 2026, 9:18:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/236a17caebcff31f75bec5ff4136bde2de944e40\nhttps://git.kernel.org/stable/c/72d2f54367895d6e236b9857892e2e6b6036e067\nhttps://git.kernel.org/stable/c/e2b721bc30f40ffa7ccc36a56d4e8990b8c0538e\nhttps://git.kernel.org/stable/c/089e58805c452e52179482b1025a8e309a57f801\n",
   "aliases": "GHSA-6q97-4p5q-xv9v\nCVE-2026-98375\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "16759317-ee81-3ec4-bbbc-d27eda0e8308",
@@ -41,16 +41,6 @@
       "product_version": "2.6.23"
     },
     {
-      "id": "46a36b37-af6c-3595-bd41-c381a57b14ab",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc7"
-    },
-    {
       "id": "ab46be34-4054-30ca-9c41-a22056a9d15c",
       "product": {
         "name": "Linux",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.2.10"
+    },
+    {
+      "id": "d855eaca-1317-382c-803b-65130194caee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "dd6a14a0-f304-3ba2-9ca0-28e2e670547a",

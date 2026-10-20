@@ -3,14 +3,14 @@
   "enisaUuid": "d79b5b15-ff9c-3f1c-831b-8ab3d294c3cf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent out-of-bounds reads in share config responses\n\nValidate IPC share configuration payload sizes before consuming\nvariable-length fields. Bound veto list parsing and account for\nthe separator byte when deriving the path length.",
   "datePublished": "Sep 16, 2026, 8:50:06 AM",
-  "dateUpdated": "Oct 3, 2026, 10:56:37 AM",
+  "dateUpdated": "Oct 19, 2026, 8:52:47 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/df8aa4a09733c4d3974b1db32c1782b3aad3a151\nhttps://git.kernel.org/stable/c/0127f1c119bde40578f4d25f5d17333b4e75de8c\nhttps://git.kernel.org/stable/c/fd636a87161def6e35876ab7943641ce457974c8\nhttps://git.kernel.org/stable/c/ffa507f5f774cb4d45136b106989ebc051361263\nhttps://git.kernel.org/stable/c/cd2bcee450bc94770be56c0b896c1a1dc6838bd8\nhttps://git.kernel.org/stable/c/61a8d06600c8c397f9a7e01940479d4c94a82f5f\nhttps://git.kernel.org/stable/c/f25e93768fcc5d8287e50b1ec52a42e4c276df34\n",
   "aliases": "CVE-2026-89792\nGHSA-5h65-jm98-j8f7\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0256fa2b-a121-329f-bedd-a010d32ae7c0",
@@ -103,6 +103,16 @@
       "product_version": "6.1.85 <6.1.189"
     },
     {
+      "id": "5e764d7c-3d21-300f-9f67-c5ba92d8a3fd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "6dacdcc4-fcca-3e3b-82b1-7e8922e59671",
       "product": {
         "name": "Linux",
@@ -191,16 +201,6 @@
         }
       },
       "product_version": "patch: 6.6.158"
-    },
-    {
-      "id": "ead54f60-8f86-3734-bc0d-72da66023937",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "f7d035bc-a76f-3fbd-b19a-5b7519036fcd",

@@ -3,7 +3,7 @@
   "enisaUuid": "e2ac771c-5696-3556-9f8e-be54ee1092cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-multipath: fix underflow in ANA log bounds checks\n\nThe number of ANA groups advertised through Identify Controller sizes the\nANA log buffer. The ANA log header and group descriptors independently\nsupply the number of groups and namespace IDs to parse.\n\nBoth bounds checks subtract an untrusted object size from ana_log_size\nbefore comparing the current offset. If the object is larger than the\nbuffer, the size_t subtraction underflows and lets the parser read beyond\nana_log_buf.\n\nCheck the current offset before the first subtraction and compare each\nobject size with the remaining buffer instead. This rejects inconsistent\nANA data before dereferencing a truncated group descriptor or walking an\noversized namespace ID array.",
   "datePublished": "Oct 18, 2026, 3:47:03 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:03 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:36 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/03a0c21f0fd7a872953aae5714303d8f38d1e567\nhttps://git.kernel.org/stable/c/49e8a3224c91fd5fbf22f4adcca6c8209cfdd6fe\nhttps://git.kernel.org/stable/c/e5cdb0c0a51e8ff49914ae16ef5360010c40cc85\nhttps://git.kernel.org/stable/c/63fa2d9c9c37020bd2703fe2a6a38027b5abeb15\n",
   "aliases": "CVE-2026-98726\nGHSA-6fg9-pffg-wphf\n",
@@ -91,14 +91,14 @@
       "product_version": "4.19"
     },
     {
-      "id": "ecdbceb9-55f8-3900-a2d0-30fe7f2cc208",
+      "id": "dddfb092-5b53-32bb-aec7-7bd2f5ddd301",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ee49b878-7291-38e3-aab1-b29e3b225ab6",

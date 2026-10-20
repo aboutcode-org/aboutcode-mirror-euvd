@@ -3,14 +3,14 @@
   "enisaUuid": "57d47c19-f96c-3d54-81cf-bcfc1b0734c0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix memory corruption by not reinjecting CK machine checks\n\nChannel-subsystem damage machine checks are for the host channel\nsubsystem. The guest channel subsystem is emulated in the userspace VMM.\nThere is no point in forwarding such machine checks into the guest.\n\nThis also simplifies the machine check reinjection and avoids kfree of a\nstack variable as reported by sashiko.  There might be still machine\nchecks that have the ck bit set with another bit (like instruction\ndamage), mask out the CK bit in s390_backup_mcck_info(), like the CP and\nED bits already are.",
   "datePublished": "Sep 16, 2026, 10:32:14 AM",
-  "dateUpdated": "Sep 16, 2026, 2:40:14 PM",
+  "dateUpdated": "Oct 19, 2026, 8:54:55 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6ee52d3af2a1bf70349cf3f860933c8d221e229a\nhttps://git.kernel.org/stable/c/7077ec953996acc04b49d1dfc43df1c1a2a74395\nhttps://git.kernel.org/stable/c/546dde823a36d7283dcf46127c2f3d093443860f\n",
   "aliases": "CVE-2026-89920\nGHSA-vhrh-h65f-3j9h\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0af44ebe-f989-33e7-bbb3-215460595200",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "patch: 7.2.5"
-    },
-    {
-      "id": "5758cea9-687f-3a81-be31-ff5597d3abe0",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "5cd12ac1-e7ae-39e8-9b93-8b64066e360d",
@@ -51,6 +41,16 @@
         }
       },
       "product_version": "4d62fcc0b692e3b4058d7d138114c27cd8b011f7 <546dde823a36d7283dcf46127c2f3d093443860f"
+    },
+    {
+      "id": "8954eab2-ecae-3cc2-b62c-0bcd59a1a85a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ac7af6c5-4671-311f-b14f-b1fb5a59214a",

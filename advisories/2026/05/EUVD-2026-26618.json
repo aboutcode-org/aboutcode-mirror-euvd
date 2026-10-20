@@ -3,7 +3,7 @@
   "enisaUuid": "da369dfb-bcf7-3648-97c6-35b70faacf6e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_conn: fix potential UAF in set_cig_params_sync\n\nhci_conn lookup and field access must be covered by hdev lock in\nset_cig_params_sync, otherwise it's possible it is freed concurrently.\n\nTake hdev lock to prevent hci_conn from being deleted or modified\nconcurrently.  Just RCU lock is not suitable here, as we also want to\navoid \"tearing\" in the configuration.",
   "datePublished": "May 1, 2026, 2:15:23 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:28 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:09 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

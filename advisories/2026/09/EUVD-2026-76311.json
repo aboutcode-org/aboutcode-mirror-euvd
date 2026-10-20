@@ -3,12 +3,12 @@
   "enisaUuid": "12d0c063-ac0b-3ec4-9d5e-cb738cc6ad64",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: ntb_transport: Fail TX enqueue when the QP link is down\n\nCommit f195a1a6fe41 (\"ntb: Drop packets when qp link is down\") meant to\nmake ntb_transport_tx_enqueue() drop packets submitted while the QP link\nis down, but it only returns 0 without consuming the packet. Zero means\nsuccess by this function's contract, so ntb_netdev reports NETDEV_TX_OK\nand forgets the skb: nothing queued it, nothing frees it, and it leaks,\none skb for every transmit racing a link-down.\n\nReturn -ENOLINK instead, restoring the contract that a non-zero return\nleaves the buffer owned by the caller. With the preceding patch,\nntb_netdev frees the skb on non-retryable enqueue failures and returns\nNETDEV_TX_OK, so a packet racing with link-down is dropped without leaking\nor entering a busy retry loop.",
   "datePublished": "Sep 11, 2026, 7:42:46 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:29 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:12 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/76c9ccc0c6bebfc74c0e727eda67687f5103ab06\nhttps://git.kernel.org/stable/c/96d792c65b9d5f7f9dd86a1004315db59e450c07\nhttps://git.kernel.org/stable/c/45cc11035165918dd1f81796ea98f81ece20d361\nhttps://git.kernel.org/stable/c/e6cc541fab01099fd8efadfa4f13afdf118bf536\nhttps://git.kernel.org/stable/c/5eca0d899a3be661a7e2caaaa7467a6fa15d756c\nhttps://git.kernel.org/stable/c/894e136b432da75c0352c80299807a5c4b04f167\nhttps://git.kernel.org/stable/c/89177732fe1653bbfef10cf5d99bf20cf57762c2\nhttps://git.kernel.org/stable/c/873ce713fef5dde0939220f04f3484ec86a16fba\n",
   "aliases": "CVE-2026-80988\nGHSA-hx33-h33p-95h8\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "019572de-bc45-387d-8769-f23f262f6bcb",
@@ -141,6 +141,16 @@
       "product_version": "f195a1a6fe416882984f8bd6c61afc1383171860 <873ce713fef5dde0939220f04f3484ec86a16fba"
     },
     {
+      "id": "668120cc-2d13-34cb-b398-b8538e4a9241",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "677a2145-4f45-33ad-bf43-177641ce6d46",
       "product": {
         "name": "Linux",
@@ -199,16 +209,6 @@
         }
       },
       "product_version": "aa6d6ed213b62cbdb09ea32abbfa085dd987a0c9"
-    },
-    {
-      "id": "a337c7f0-3542-3ab2-8525-0fe5021b95a9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "a4e838d3-f859-3814-9922-bce8c0d56c72",

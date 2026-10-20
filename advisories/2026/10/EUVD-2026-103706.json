@@ -3,7 +3,7 @@
   "enisaUuid": "4e64bae6-b6ab-38da-b490-b22e32982f6e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Transfer the hyp stack pages out of the host stage-2\n\nfix_host_ownership() walks only the linear-map alias of each memblock\nregion, and the per-CPU hyp stack, mapped in the private VA range for\nits guard page, has none.\n\nWalk each stack's VA range with the same walker.",
   "datePublished": "Oct 18, 2026, 3:15:18 PM",
-  "dateUpdated": "Oct 18, 2026, 3:15:18 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e5dd2a91a7ae3a276e6d79806127e923936e241b\nhttps://git.kernel.org/stable/c/22df195bff84300a3f04813d6148765c77ac565a\nhttps://git.kernel.org/stable/c/3a8c562892b96f35bba1e00d5e455a15963bbb92\n",
   "aliases": "CVE-2026-98466\nGHSA-7374-3pfm-f9q8\n",
@@ -41,6 +41,16 @@
       "product_version": "5.19"
     },
     {
+      "id": "90a3f299-d337-35a8-8c85-bfe08c2ee53d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "944362af-dc02-3124-bf4a-6cdea95dfb11",
       "product": {
         "name": "Linux",
@@ -59,16 +69,6 @@
         }
       },
       "product_version": "1a919b17ef012ca0572bae759c27e5ea02bfb47f <3a8c562892b96f35bba1e00d5e455a15963bbb92"
-    },
-    {
-      "id": "ca8fcf4c-bfac-3e60-83f5-d614b602d2fa",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "e15de61e-e426-3de9-9e97-9e5cea7b6484",

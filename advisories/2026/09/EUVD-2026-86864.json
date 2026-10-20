@@ -3,12 +3,12 @@
   "enisaUuid": "25ee53fa-4890-3e64-b288-a901b59c691c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: avoid leaking refcount when cifs_sb_tlink() fails\n\ncifs_oplock_break() takes over the reference that\ncifs_queue_oplock_break() acquired when it queued the work, and drops it\nwith _cifsFileInfo_put() once the break has been processed.\n\nOnly in setups with \"-o multiuser\", cifs_sb_tlink() may fail, at which\npoint cifs_oplock_break() returns without putting the file reference,\nmirroring the reference leak we already fixed in the companion patch to\ncifs_queue_oplock_break().\n\nThis would trigger a crash due to busy inodes on the next unmount:\n\n  BUG: Dentry ... still in use (1) [unmount of cifs cifs]\n  VFS: Busy inodes after unmount of cifs (cifs)\n\nDrop the reference on that path as well. Doing so before the out label\nmirrors the normal path, which also puts the reference before\ncifs_done_oplock_break().\n\nFound by Sashiko code review. The failure path was not exercised at\nruntime.",
   "datePublished": "Sep 25, 2026, 10:21:47 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:36 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:19 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/55c5f095d4df14271b238f826e1392fda7b6e60e\nhttps://git.kernel.org/stable/c/e9c5bcc88b8337157e480c85a6d2f326bc265012\nhttps://git.kernel.org/stable/c/9ec991e148368e3207e98134c509a625097f7693\nhttps://git.kernel.org/stable/c/dd03fd658ea59821505e0e643b6b7cbdf51c4e1d\nhttps://git.kernel.org/stable/c/1d1b0f1d812a4011a57bc6c70492c34a2e46c6dd\nhttps://git.kernel.org/stable/c/23b26f4408ac3f35a482d2e5cf6fc865d4201b71\n",
   "aliases": "GHSA-v7vw-58j3-xcmw\nCVE-2026-97556\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "06916a74-0f2e-3b2f-b130-4219f53279bf",
@@ -51,16 +51,6 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "21666490-1e43-3215-a31d-edc2738b093c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "585340b3-91e4-39d1-8d89-3cb14ede335a",
       "product": {
         "name": "Linux",
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "62628030-9006-3641-b988-4ca826ceddb3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "68bfbbea-025c-3979-aaa0-274c48c15b44",

@@ -3,7 +3,7 @@
   "enisaUuid": "68676833-e79f-3c03-beb9-5beede30bf2e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: bound the device EEPROM address before the EFUSE copy\n\nmt7996_mcu_get_eeprom() derives the destination of the EFUSE/EXT block\ncopy from the address reported by the MCU response (event->addr, a\ndevice-controlled __le32) and clamps only the copy length, never the\ndestination offset into dev->mt76.eeprom.data. A malicious or\nmalfunctioning device can report an arbitrary address and drive an\nout-of-bounds write of up to MT7996_EXT_EEPROM_BLOCK_SIZE bytes past\neeprom.data.\n\nReject a response whose address would place the copy outside eeprom.data\nbefore deriving the destination pointer. Devices that echo the requested\nin-bounds offset are unaffected.",
   "datePublished": "Sep 11, 2026, 7:42:09 PM",
-  "dateUpdated": "Oct 3, 2026, 10:56:19 AM",
+  "dateUpdated": "Oct 19, 2026, 8:45:19 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -12,6 +12,16 @@
   "assigner": "Linux",
   "epss": 0.38,
   "enisaIdProduct": [
+    {
+      "id": "231f39f9-a12a-3561-a678-bbb3d6c5180a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "411fa529-ec4e-341d-8ba8-e423c78a07c9",
       "product": {
@@ -51,16 +61,6 @@
         }
       },
       "product_version": "98686cd21624c75a043e96812beadddf4f6f48e5 <13b3c29a782033ce4a230be9e5618032813dbcd4"
-    },
-    {
-      "id": "8f0d93c8-6610-3c24-b5b2-3dd0c11422c4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b696832e-bbd3-33e6-ad01-6564cedfbe60",

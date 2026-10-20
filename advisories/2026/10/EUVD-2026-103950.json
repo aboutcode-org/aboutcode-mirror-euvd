@@ -3,7 +3,7 @@
   "enisaUuid": "f72468bb-f0fd-37e7-a30a-c5c795bca8b6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: fix driver deregistration order\n\nUSB serial driver modules register one driver for the USB bus and one or\nmore drivers for the ports on the USB serial bus.\n\nWhen unloading a driver module, the USB driver must be deregistered\nbefore the USB serial bus drivers so that I/O is stopped before\nunbinding the ports to avoid use-after-free in completion handlers\naccessing port data.\n\nNote that the \"new_id\" attributes must first be removed to prevent new\nids from being added and triggering a probe of the USB driver after it\nhas been deregistered.",
   "datePublished": "Oct 18, 2026, 3:46:20 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:20 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:05 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9b085a06a0a411b0bcdf18b61c3ebf1be1c72ffe\nhttps://git.kernel.org/stable/c/a1aa474768f69ea3a70da523f00f74c264cfa10e\nhttps://git.kernel.org/stable/c/428d479a0d31460fbf5969ab262ccd673f1fac01\nhttps://git.kernel.org/stable/c/646e5b28b4fdbc1b828a2398d6ced2c1dd308a46\n",
   "aliases": "CVE-2026-98696\nGHSA-7jf2-f6fj-7mgx\n",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "765e0ba62613fb90f09c1b5926750df0aa56f349 <a1aa474768f69ea3a70da523f00f74c264cfa10e"
+    },
+    {
+      "id": "335a0c24-7c3d-3ac6-a980-04e20b59b4f8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4cea4fe9-465b-34f3-b733-6c85df2b4a3a",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "patch: 6.12.113"
-    },
-    {
-      "id": "7d062cfc-ae4f-3fef-969d-3bfb37233aea",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "96d00fd2-80b0-300b-875f-51c22b7bd14d",

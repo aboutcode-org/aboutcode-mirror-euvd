@@ -3,7 +3,7 @@
   "enisaUuid": "3f3b88f1-f154-36e0-b93b-123c8210f660",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Take the reference before publishing the named histogram trigger\n\nevent_hist_trigger_named_init() puts the trigger on the global\nnamed_triggers list and only then takes the reference on the trigger it\nshares its histogram with:\n\n\tdata->ref++;\n\n\tsave_named_trigger(data->named_data->name, data);\n\n\tret = event_hist_trigger_init(data->named_data);\n\tif (ret < 0) {\n\t\tkfree(data->cmd_ops);\n\t\tdata->cmd_ops = &trigger_hist_cmd;\n\t}\n\n\treturn ret;\n\nevent_hist_trigger_init() fails when alloc_hist_pad() cannot allocate, and\nnothing takes the trigger back off the list on the way out.\nevent_hist_trigger_parse() frees it, and the next lookup by name reads the\nfreed object:\n\n BUG: KASAN: slab-use-after-free in find_named_trigger+0xac/0xc0\n Read of size 8 at addr ffff888009346860 by task init/1\n  find_named_trigger+0xac/0xc0\n  hist_register_trigger+0xc1/0xa00\n  event_hist_trigger_parse+0x3146/0x6af0\n  event_trigger_write+0xce/0x160\n Freed by task 67:\n  kfree+0x154/0x420\n  trigger_kthread_fn+0xfd/0x160\n\nDo the reference first and publish once it has succeeded, so that nothing\nwhich can fail runs after the trigger becomes findable.",
   "datePublished": "Sep 25, 2026, 10:22:39 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:31 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:46 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b6fb2f5370a9a6aec325ab2db1ca3d1a881499b8\nhttps://git.kernel.org/stable/c/2ffaade3611bd9501bc0b9d5d19fc75bfee7a16b\nhttps://git.kernel.org/stable/c/91c15cdda6033e2439f5975b938754152f3d6e38\nhttps://git.kernel.org/stable/c/0fe23b8eaba0d3372c66b7b31204408da0715edc\n",
   "aliases": "CVE-2026-97919\nGHSA-6vf7-pxhp-xpjv\n",
@@ -71,16 +71,6 @@
       "product_version": "6.15.3 <6.16"
     },
     {
-      "id": "5de3c62f-25ac-34d1-b624-5cba0718c2fc",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
-    },
-    {
       "id": "6201dcf5-f98d-34f1-800c-ce5d2ae02b9f",
       "product": {
         "name": "Linux",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "7ab0fc61ce73040f89b12d76a8279995ec283541 <91c15cdda6033e2439f5975b938754152f3d6e38"
+    },
+    {
+      "id": "65dcfbe0-68c7-3a0b-bc9d-650587c619c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "74d2adc0-ed25-3dbc-adce-057a36af5eba",

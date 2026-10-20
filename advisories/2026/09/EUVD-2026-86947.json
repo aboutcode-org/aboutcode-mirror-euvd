@@ -3,7 +3,7 @@
   "enisaUuid": "5a1b66b1-cfad-32e5-9c07-572e761a0b06",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: Serialize PCM mmap with buffer reallocation to fix page UAF\n\nsnd_pcm_hw_params() and snd_pcm_hw_free() guard buffer reallocation\nwith an mmap_count check performed under the PCM stream lock, but the\nlock is released long before the buffer is actually freed:\nsnd_pcm_sync_stop(), constraint refinement and do_free_pages() all\nhappen in between.  snd_pcm_mmap_data(), on the other hand, takes no\nlock at all: it validates against the old buffer's state and\ndma_bytes, remaps its pages into the VMA, and only then increments\nmmap_count.\n\nA concurrent mmap() can therefore slip in between the check and the\nfree.  remap_pfn_range() installs writable PTEs for the old buffer's\npages without taking page references, and the subsequent\ndo_free_pages() returns those pages to the page allocator while the\nVMA still maps them.  This leaves a stale, writable mapping of freed\npages: a page-level use-after-free that can be leveraged for local\nprivilege escalation.\n\nMake snd_pcm_mmap_data() participate in the buffer-access scheme\nintroduced for hw_params/hw_free: acquire runtime->buffer_accessing\nbefore validating and remapping, and release it afterwards.  Buffer\nreallocation already fails with -EBUSY while accessors are active,\nand the mmap side now fails with -EBUSY while a reallocation is in\nprogress, so the validate/remap sequence and the check/free sequence\ncan no longer interleave.\n\nA reproducer that turns this race into a stale writable mapping of\nthe freed DMA buffer pages is available on request.",
   "datePublished": "Sep 25, 2026, 10:36:01 AM",
-  "dateUpdated": "Oct 3, 2026, 11:02:31 AM",
+  "dateUpdated": "Oct 19, 2026, 9:14:08 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -31,16 +31,6 @@
         }
       },
       "product_version": "92ee3c60ec9fe64404dc035e7c41277d74aa26cb <9b110a9dcecc59516c77cb3c0caf1f492f75df2d"
-    },
-    {
-      "id": "15b2a4b0-3502-3b46-bc73-4b4773b47b6f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "1f29217c-630a-394e-8c09-081a43d5bb54",
@@ -101,6 +91,16 @@
         }
       },
       "product_version": "fbeb492694ce0441053de57699e1e2b7bc148a69"
+    },
+    {
+      "id": "69fb9253-1969-3273-bc32-7a4e9b210f5b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8007a708-fc51-3402-aa51-49fd6beaa40b",

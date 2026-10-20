@@ -3,12 +3,12 @@
   "enisaUuid": "c69b4f8a-0c13-3c47-92de-dcddf8376c4e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix crash passing ERR_PTR to kthread_stop()\n\nevent_test_stuff() calls kthread_run() and unconditionally passes the\nreturned task_struct pointer to kthread_stop(). kthread_run() returns an\nerror pointer such as ERR_PTR(-ENOMEM) when kthread creation fails, for\nexample under memory pressure during the boot-time event self-test.\nkthread_stop() then dereferences the invalid pointer, crashing the kernel.\n\nCheck the result of kthread_run() before passing it to kthread_stop(). Use\nWARN_ON() so that a failure to create the self-test thread does not go\nunnoticed, matching the ring-buffer self-test fix in commit\n91542863abad (\"ring-buffer: Fix crash passing ERR_PTR to kthread_stop()\").",
   "datePublished": "Sep 11, 2026, 7:46:53 PM",
-  "dateUpdated": "Sep 14, 2026, 12:02:28 PM",
+  "dateUpdated": "Oct 19, 2026, 8:52:03 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c1a4fb7aa290f158d50654d640292e49d9055fd1\nhttps://git.kernel.org/stable/c/42ccb215ef0a552acbbd32f81009bfe4b278ba77\nhttps://git.kernel.org/stable/c/98d06fb9865a490e12ebe32d65b9ffac6108614d\nhttps://git.kernel.org/stable/c/ceb1707aef5824cf024eb82d10787b7621e2ff35\nhttps://git.kernel.org/stable/c/12a499f741fc5be3731c8b0a0d909406575cc2eb\nhttps://git.kernel.org/stable/c/adadf4192f700bca82abfda9fa6d58c0bf37cc04\nhttps://git.kernel.org/stable/c/c40e0b4fa365969e67011529eabdfb66d1022256\nhttps://git.kernel.org/stable/c/649bc7df3e5d7be6f7996a95084037dbf3cad1e5\n",
   "aliases": "CVE-2026-89749\nGHSA-hwhc-m4xq-f4r2\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "1cde1e47-a724-3703-9709-84b106e40827",
@@ -71,16 +71,6 @@
       "product_version": "e6187007d6c365b551c69ea3df46f06fd1c8bd19 <c1a4fb7aa290f158d50654d640292e49d9055fd1"
     },
     {
-      "id": "5f84ce11-afea-316b-95ab-5ff6eb32f25a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "62aacb13-758e-3071-9847-cdf0517a1122",
       "product": {
         "name": "Linux",
@@ -129,6 +119,16 @@
         }
       },
       "product_version": "e6187007d6c365b551c69ea3df46f06fd1c8bd19 <ceb1707aef5824cf024eb82d10787b7621e2ff35"
+    },
+    {
+      "id": "9e28e7b2-95b7-39c4-a86b-77668756a146",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "c4a42da5-351b-3433-837e-a0e5a0e9d755",

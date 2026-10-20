@@ -3,12 +3,12 @@
   "enisaUuid": "b9fadf6c-4271-3305-bc10-5f4e41e518ad",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Do not reallocate GA log buffers on resume\n\nCommit c5e1a1eb9279 (\"iommu/amd: Simplify and Consolidate Virtual APIC\n(AVIC) Enablement\") moved the GA log allocation from iommu_init_pci()\nto enable_iommus_vapic(), which is called on every resume.\n\niommu_init_ga_log() assigns iommu->ga_log and iommu->ga_log_tail\nunconditionally. Each resume therefore replaces the boot-time pointers\nand leaks both old allocations. The function also uses GFP_KERNEL from a\nsyscore resume callback, where interrupts are disabled and the non-boot\nCPUs are offline.\n\nReturn early if both buffers are already allocated. Clear the pointers\nin free_ga_log() so a partial allocation failure cannot leave ga_log\ndangling.",
   "datePublished": "Sep 25, 2026, 10:23:30 AM",
-  "dateUpdated": "Sep 25, 2026, 10:23:30 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:08 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/94458b80d3b203c1c9e2c98aa7319b7713e006c0\nhttps://git.kernel.org/stable/c/b6be275d19cee01f8f1f08a2ff18337103d05d40\nhttps://git.kernel.org/stable/c/00a7dd64888d6dd72110b40e2824a088cf7b7386\n",
   "aliases": "CVE-2026-98003\nGHSA-mvmg-3rw6-rj84\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03e7cb5e-1954-37d3-92ac-66e59b476eb7",
@@ -31,14 +31,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "7bc0cd59-d92f-3347-97d1-688cd6d7ec9c",
+      "id": "a9b7217d-9814-3fd5-957a-54750a073202",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc3"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "b0200c71-4ee9-392f-8542-1506cdc8046f",

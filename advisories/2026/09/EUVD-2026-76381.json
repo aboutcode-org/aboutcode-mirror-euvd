@@ -3,12 +3,12 @@
   "enisaUuid": "ba979c34-4805-3684-b7be-25a70006c619",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: bq24257: fix use-after-free on remove\n\nThe STAT-pin interrupt is devm-managed, so it stays armed until the devm\ncleanup that runs after remove() returns. remove() cancels\nbq->iilimit_setup_work while the threaded handler can still fire; that\nhandler reschedules the work and dereferences bq, so the work runs\nagainst freed memory once devm frees bq.\n\nMake the delayed work device-managed with devm_delayed_work_autocancel(),\nregistered before the interrupt request. The devm cleanup then releases\nthe interrupt first, so the handler can no longer reschedule the work,\nand cancels the work before bq is freed. The explicit\ncancel_delayed_work_sync() in remove() is no longer needed and is dropped.\n\nFound by static analysis.",
   "datePublished": "Sep 11, 2026, 7:43:32 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:11 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:24 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9d77fd7dd9a3ad57f7655c5264b503b85adbb7b8\nhttps://git.kernel.org/stable/c/a279e64c907f5638bb34cb8e2c9285798cf5f690\nhttps://git.kernel.org/stable/c/6d2eb93975c07b0169a3287efc1ae3b60cf52d8e\nhttps://git.kernel.org/stable/c/861ec73ce86e2ca18082cc7be4f140a5bbdf1428\nhttps://git.kernel.org/stable/c/f495808cdd6d9576965787cf6d9737d0b0e86b73\nhttps://git.kernel.org/stable/c/47ccbad210f48721c30d69d65b83dc9fff919ca9\nhttps://git.kernel.org/stable/c/9d34c9d660c3d0931d2cc749c46c47cf31f96e48\n",
   "aliases": "GHSA-pg63-6v2p-p54j\nCVE-2026-89475\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "22a1be28-e8b2-3fc6-b1d7-f684eae0f8d8",
@@ -51,6 +51,16 @@
       "product_version": "2219a935963e5eeb19e5abfb99475fcc06bbb804 <47ccbad210f48721c30d69d65b83dc9fff919ca9"
     },
     {
+      "id": "31798ad8-5156-3f84-8812-d542904256e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "4dde72ba-2b04-30ea-a513-e31224929746",
       "product": {
         "name": "Linux",
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "patch: 6.1.188"
-    },
-    {
-      "id": "7874ed8a-a9f7-3298-867f-1dacb3eb1d9d",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "99a6761b-ae58-30c5-9f6d-9b898d91498c",

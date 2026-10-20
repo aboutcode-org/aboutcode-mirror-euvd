@@ -3,7 +3,7 @@
   "enisaUuid": "9151ade4-c119-3a82-9332-5a58cbb5c35e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check bounds on CRIU restore queue type and mqd size\n\nWe weren't checking whether the values provided in the private\ndata in kfd CRIU restore were within bounds.\n\nFor queue type, add a KFD_QUEUE_TYPE_MAX and ensure the provided\ntype is less than it.\n\nFor mqd_size, add new function mqd_size_from_queue_type and confirm\nthat the provided mqd_size matches expectations.\n\n(cherry picked from commit f19d8086f6644083c913d70bfdeee20e1b6f46a5)",
   "datePublished": "Aug 10, 2026, 12:01:32 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:05 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:58 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",

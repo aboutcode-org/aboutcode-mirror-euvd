@@ -3,13 +3,23 @@
   "enisaUuid": "4ccf07c6-2df0-3dbc-be72-9470d1bf0df5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sfq: clamp quantum in change path\n\nsfq_change() accepts any non-negative quantum (only rejects\n(int)ctl->quantum < 0). With a crafted size table qdisc_pkt_len reaches\n~2 GiB, so quantum=1 makes the deficit-refill loop spin ~2^31 times\nunder the qdisc lock (a soft lockup / denial of service).\n\nAdd max(256U, ...) matching fq_codel_change(). Reject quantum > 1<<20\nwith -EINVAL, matching fq_codel_change() and the init clamp.\n\nConditions to recreate the bug:\n  CONFIG_NET_SCH_SFQ=y. Requires CAP_NET_ADMIN (namespace-local via\n  unshare -Urn suffices).\n\n  tc qdisc add dev dummy0 root sfq\n  tc qdisc change dev dummy0 root sfq quantum 1 stab data 32768 size_log 15 cell_log 0",
   "datePublished": "Sep 25, 2026, 10:23:35 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:32 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:17 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4117c528b2de5fdc3e4a7e3626815b616a635cdc\nhttps://git.kernel.org/stable/c/f82fa6f10d4a69322cad0f7a4aa523ce6292a5a0\nhttps://git.kernel.org/stable/c/0692ce5a528df450d64e9f819054177e9d91076f\nhttps://git.kernel.org/stable/c/e4192bcf83aaab02129644ddf4656fd86e93751f\nhttps://git.kernel.org/stable/c/f3820dce042a673fcb28cc31c87ee14257e21a17\nhttps://git.kernel.org/stable/c/534cd7ecbbc6e8a974f4003a5c1557439c6e0a72\nhttps://git.kernel.org/stable/c/e6c1cb728e389354203a72bc77464c222a247aeb\nhttps://git.kernel.org/stable/c/fb9f88a33c516ea5c0bcd9a22ca288b246b34567\n",
   "aliases": "CVE-2026-98012\nGHSA-wq2r-f96j-67j9\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "08a8fd19-2de2-36c2-8a27-a8441c94a8c0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "1fa2d7f6-8144-3c5f-b357-134ab30beb4a",
       "product": {
@@ -39,16 +49,6 @@
         }
       },
       "product_version": "58ae7465f0e7113d45aa88a66bf2d203c71c195e <e4192bcf83aaab02129644ddf4656fd86e93751f"
-    },
-    {
-      "id": "43e20ccd-b223-3e46-8c32-1c87635184cb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "476ba56c-3c51-3835-9b51-8a721dc1933a",

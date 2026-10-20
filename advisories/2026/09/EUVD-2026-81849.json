@@ -3,14 +3,14 @@
   "enisaUuid": "2108c838-d616-3978-b695-66bd99b333ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: use proto_lock for l2cap_data to fix l2cap_disconn_ind\n\nhci_conn::l2cap_data is accessed without locks in l2cap_disconn_ind via\nhci_conn_timeout (disc_work) -> hci_proto_disconn_ind ->\nl2cap_disconn_ind.  This is UAF if the l2cap_conn is deleted\nconcurrently.\n\ndisc_work is disabled sync in hci_conn_del(), so we cannot take\nhci_dev_lock in disc_work.\n\nFix by using proto_lock to guard l2cap_data, in addition to hdev->lock\nwhich is held in other access paths.",
   "datePublished": "Sep 17, 2026, 4:07:55 PM",
-  "dateUpdated": "Sep 18, 2026, 5:54:12 PM",
+  "dateUpdated": "Oct 19, 2026, 9:00:32 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b495a3a9b33bc4e4613e685bf5c96c136caa22d8\nhttps://git.kernel.org/stable/c/2b66c83ff1751d6bd3201b3017206262ab46dc05\n",
   "aliases": "CVE-2026-90256\nGHSA-323m-rj3w-9jqp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "09ad65e8-02ea-389a-82bc-544a3dbcfdea",
@@ -93,16 +93,6 @@
       "product_version": "ab4eedb790cae44313759b50fe47da285e2519d5 <2b66c83ff1751d6bd3201b3017206262ab46dc05"
     },
     {
-      "id": "d2c2c910-b439-31de-a15b-065e2a667ffd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "d89473ce-61aa-3007-aa72-45ca6dd76412",
       "product": {
         "name": "Linux",
@@ -121,6 +111,16 @@
         }
       },
       "product_version": "6.14"
+    },
+    {
+      "id": "eec7cd7b-7bf2-3c13-87d3-038ef3f1aa66",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "f813f17f-c04d-37c6-94b4-b3114c46867b",

@@ -3,7 +3,7 @@
   "enisaUuid": "ddddd903-1438-3230-a297-9d6a31bfbef2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinder: fix is_failure flag for superseded transaction cleanup\n\nWhen a TF_UPDATE_TXN transaction supersedes a pending async transaction,\nbinder_release_entire_buffer() is called with is_failure=false. Since the\nsuperseded transaction was never delivered, binder_apply_fd_fixups() was\nnever called and no fds were installed in the target process.\n\nWith is_failure=false, the BINDER_TYPE_FDA cleanup handler interprets\nstale buffer contents as installed fd numbers and passes them to\nbinder_deferred_fd_close(), closing unrelated file descriptors.\n\nPass is_failure=true since the transaction was never delivered to the\ntarget, matching the semantics of all other undelivered-transaction\ncleanup paths.",
   "datePublished": "Oct 18, 2026, 3:48:15 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:15 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/60a9f7323ae7318a7cce0d387c318da24f1e8726\nhttps://git.kernel.org/stable/c/86cdcc87d4ba60aebf94ba3346b3c900c5cd79ff\nhttps://git.kernel.org/stable/c/1ab671b50714ad8e359cf37eb041d8044319ccdc\nhttps://git.kernel.org/stable/c/22c135635fdd9816c0ef140d6de7b2e4fdf73e89\n",
   "aliases": "CVE-2026-98778\nGHSA-v997-cq9r-p9v8\n",
@@ -51,14 +51,14 @@
       "product_version": "9864bb4801331daa48514face9d0f4861e4d485b <22c135635fdd9816c0ef140d6de7b2e4fdf73e89"
     },
     {
-      "id": "6de080b3-a14c-3080-8a77-b055e21f2f8f",
+      "id": "7c62a4e7-589a-3201-8941-e3248cbfe344",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "920a04f4-7786-3e48-9335-b9190564c023",

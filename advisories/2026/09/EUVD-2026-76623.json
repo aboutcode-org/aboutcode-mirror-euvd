@@ -3,7 +3,7 @@
   "enisaUuid": "355ce665-b435-395a-8aa8-79eb3eba0fee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: remove flawed WARN_ON_ONCE from nfsd_mode_check\n\nThe header for commit e75b23f9e323 (\"nfsd: check d_can_lookup in\nfh_verify of directories\") details the assumption that justified\nadding the WARN_ON_ONCE to nfsd_mode_check(), that assumption is\ninvalid (in the case of NFS reexport).\n\nWhen NFSD exports an NFS filesystem it is very possible for\nnfsd_mode_check() to encounter a @dentry that doesn't have\ni_op->lookup (see nfs_fhget()'s NFS_ATTR_FATTR_MOUNTPOINT and\nNFS_ATTR_FATTR_V4_REFERRAL handling, and d_flags_for_inode()).\n\nSo remove nfsd_mode_check()'s WARN_ON_ONCE(). The nfserr_notdir\nreturn on that branch must stay. It guards the subsequent\nlookup_one_unlocked() -> __lookup_slow() path, which calls\ninode->i_op->lookup() with no NULL check, so returning nfserr_notdir\nis what keeps a client LOOKUP into such a @dentry from dereferencing\na NULL method pointer.",
   "datePublished": "Sep 11, 2026, 7:46:26 PM",
-  "dateUpdated": "Oct 16, 2026, 7:36:59 PM",
+  "dateUpdated": "Oct 19, 2026, 8:51:24 AM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
@@ -113,16 +113,6 @@
       "product_version": "e75b23f9e323b1e0759619c39d5a9f7a3a5d9d2c <ae251937c6f0237e5b555a5e4ba4595b8206e865"
     },
     {
-      "id": "82ba54c4-3697-3238-883e-aa18fbc66022",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "84783793-b43e-3073-8fd6-16e2eb069e53",
       "product": {
         "name": "Linux",
@@ -131,6 +121,16 @@
         }
       },
       "product_version": "patch: 5.10.270"
+    },
+    {
+      "id": "898e709b-f6da-35dd-ba7a-8b2e3e42d19a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8d63919f-768e-3dc3-822f-4020370cb18c",

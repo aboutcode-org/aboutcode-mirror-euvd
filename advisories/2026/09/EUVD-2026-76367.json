@@ -3,12 +3,12 @@
   "enisaUuid": "61b6406e-dea5-3716-934d-89907f6ab1b7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max17040: synchronize work cancellation on suspend\n\nmax17040_work() requeues itself after every poll. cancel_delayed_work()\nonly cancels a pending instance and does not wait for a callback that is\nalready running.\n\nIf system suspend races with the polling callback, the callback can\ncontinue accessing the fuel gauge and requeue itself after the suspend\ncallback returns.\n\nUse cancel_delayed_work_sync() to ensure polling is quiesced before\nsuspend completes.",
   "datePublished": "Sep 11, 2026, 7:43:23 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:01 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:10 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6bd453e328a0325f838c3bf64d4609c6c1866ed7\nhttps://git.kernel.org/stable/c/7a9ec6707b545b2a0b35942c8b68d975cb901f77\nhttps://git.kernel.org/stable/c/dc946222e4b5bdb4e92bc3a5a5e8fc4ddac34ec0\nhttps://git.kernel.org/stable/c/23783db5642a714f0547c5b5b0c9cdbb1be7b084\nhttps://git.kernel.org/stable/c/5a863417fb9a1034ab1cfe4fa0de46ce1f95f3ec\nhttps://git.kernel.org/stable/c/aad7247bd35ad44af90a5e8974cdff614235b497\nhttps://git.kernel.org/stable/c/36e6ce0f402f965328b27fd31ac793110e8a0c39\nhttps://git.kernel.org/stable/c/86a3a8a926aa5969c329d1df2d3259f189961bbc\n",
   "aliases": "GHSA-5fpq-2c4w-2f7x\nCVE-2026-89461\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "03ecad96-2fc6-3311-83ba-549d606871d1",
@@ -111,16 +111,6 @@
       "product_version": "patch: 7.2.4"
     },
     {
-      "id": "a6ddb57b-95fb-33fc-a4d6-975527e5f5f7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "ab3b8836-c39e-3e66-ba6b-c4cd241542a2",
       "product": {
         "name": "Linux",
@@ -149,6 +139,16 @@
         }
       },
       "product_version": "c6f4a42de60b981dd210de01cd3e575835e3158e <7a9ec6707b545b2a0b35942c8b68d975cb901f77"
+    },
+    {
+      "id": "ca91a471-97a5-3799-8849-10da5e477784",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d9281caf-a3ed-3998-b622-7cd0d152dce6",

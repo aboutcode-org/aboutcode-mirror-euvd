@@ -3,7 +3,7 @@
   "enisaUuid": "2171df76-8ec9-3346-9dd9-e711faedebec",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/ras: Fix cxl_rch_get_aer_info() out-of-bounds AER register read\n\ncxl_rch_get_aer_info() copies the RCH Downstream Port AER capability from\nthe RCRB MMIO block using a readl() loop bounded by sizeof(struct\naer_capability_regs). This struct is a software layout and its embedded\nstruct pcie_tlp_log is larger than the on-wire AER capability. As a\nresult the loop reads past the mapped AER register block.\n\nThe over-read also populates the software-only tail fields including\nheader_log.header_len. An out-of-range header_len passed to\npcie_print_tlp_log() can then loop past the header log buffer and cause\na second out-of-bounds read.\n\nThe read was correct when introduced, but struct pcie_tlp_log has since\ngrown (Header Log and TLP Prefix Log sizes, header_len and flit fields),\nso sizeof(struct aer_capability_regs) no longer matches the physical AER\ncapability.\n\nBound the read to the physical AER registers, header through the 16 byte\nHeader Log. Zero the destination first so the software-only fields are\ndeterministic.",
   "datePublished": "Sep 11, 2026, 7:46:41 PM",
-  "dateUpdated": "Sep 21, 2026, 1:14:55 PM",
+  "dateUpdated": "Oct 19, 2026, 8:51:44 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
@@ -43,16 +43,6 @@
       "product_version": "patch: 7.2.4"
     },
     {
-      "id": "2f11ce79-929d-31dc-a102-4a50d4c4c63b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "4335cbde-7aaa-3592-ab0c-a35709ecd6d9",
       "product": {
         "name": "Linux",
@@ -81,6 +71,16 @@
         }
       },
       "product_version": "6ac07883dbb5f60f7bc56a13b7a84a382aa9c1ab <29458e62d0829cbc99435f3e44fd560f9bbf1da7"
+    },
+    {
+      "id": "684905c8-3f8c-357c-9793-7892a1fbf94d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "f36915ba-0f86-31be-aadd-2f722b18c36d",

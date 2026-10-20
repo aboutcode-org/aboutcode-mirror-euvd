@@ -3,7 +3,7 @@
   "enisaUuid": "0fdd3f27-21b0-342b-ab9d-922bc7b76647",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndevice property: initialize the remaining fields of fwnode_handle in fwnode_init()\n\nIf a firmware node is allocated on the stack (for instance: temporary\nsoftware node whose life-time we control) or on the heap - but using a\nnon-zeroing allocation function - and initialized using fwnode_init(),\nits secondary pointer will contain uninitialized memory which likely\nwill be neither NULL nor IS_ERR() and so may end up being dereferenced\n(for example: in dev_to_swnode()). Set fwnode->secondary to NULL on\ninitialization. While at it: initialize the remaining fields of struct\nfwnode_handle too just to be sure.\n\n[ Fix typo in commit message. - Danilo ]",
   "datePublished": "Aug 15, 2026, 5:51:21 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:14 PM",
+  "dateUpdated": "Oct 19, 2026, 9:09:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

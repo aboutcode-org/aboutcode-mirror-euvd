@@ -3,7 +3,7 @@
   "enisaUuid": "f286158e-7c47-3709-abc7-a985b8117430",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix dangling pointer on mgmt_add_adv_patterns_monitor_complete\n\nThis fixes the condition checking so mgmt_pending_valid is executed\nwhenever status != -ECANCELED otherwise calling mgmt_pending_free(cmd)\nwould kfree(cmd) without unlinking it from the list first, leaving a\ndangling pointer. Any subsequent list traversal (e.g.,\nmgmt_pending_foreach during __mgmt_power_off, or another\nmgmt_pending_valid call) would dereference freed memory.",
   "datePublished": "Apr 22, 2026, 1:54:29 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:14 PM",
+  "dateUpdated": "Oct 19, 2026, 6:45:54 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

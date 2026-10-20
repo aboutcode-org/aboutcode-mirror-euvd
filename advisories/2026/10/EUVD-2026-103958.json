@@ -3,23 +3,13 @@
   "enisaUuid": "9774972b-4856-3f22-9a5d-dc175989ddaa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: keep fallback association elements alive\n\nAssociating to a non-transmitted MBSSID profile reads freed memory while\ndetermining the operating channel and applying HT capabilities.\n\nWhen an association response omits WMM, HT, or VHT information,\nieee80211_assoc_config_link() parses the cached BSS IEs and copies the\nmissing element pointers out of that fallback parse. For a\nnon-transmitted MBSSID profile those pointers refer to merged-profile\nstorage owned by the parse object, and the fallback block frees that\nobject at its end. The copied pointers are used afterwards to determine\nthe operating channel, configure bandwidth, and apply HT capabilities.\n\nKeep the fallback parse result alive until association setup finishes.\n\n[reorder variable declaration]",
   "datePublished": "Oct 18, 2026, 3:46:34 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:34 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:14 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/1d9644753d46c86b4e5c05bd6d9d35339ea27331\nhttps://git.kernel.org/stable/c/d0183cd1f6a2dba9e63be20af2f65093c9c8d121\nhttps://git.kernel.org/stable/c/0878594c5806dd29fa5e16cc026ce19158afdad2\nhttps://git.kernel.org/stable/c/a10a2f80476d166fd81c361ec0319493671b694e\n",
   "aliases": "CVE-2026-98704\nGHSA-vrf9-cxgg-qw6c\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
-    {
-      "id": "01852d00-b854-3ffc-9b84-abc2cf06e9fa",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
     {
       "id": "0da55728-eed5-3ef2-b33a-0c85e9228822",
       "product": {
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "fa8427b5-ad41-365e-baf1-5bf1c30bca92",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

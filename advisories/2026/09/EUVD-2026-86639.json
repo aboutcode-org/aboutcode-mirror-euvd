@@ -3,12 +3,12 @@
   "enisaUuid": "eee98fbd-3518-31e6-85ac-27fa02802c6b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_unix: Update last skb marker in manage_oob().\n\nFahad Alharbi reported that blocking recv(MSG_PEEK) could hog CPU\ndue to OOB skb.\n\nIn the following cases, manage_oob() skips OOB skb(s) and returns\nNULL for the last recv(MSG_PEEK):\n\n  socketpair(AF_UNIX, SOCK_STREAM, 0, sk);\n\n  1) skb -> OOB skb -> NULL\n     send(sk[0], \"ab\", 2, MSG_OOB);\n     recv(sk[1], buf, 0, MSG_PEEK);\n\n  2) skb -> consumed OOB skb -> NULL\n     send(sk[0], \"ab\", 2, MSG_OOB);\n     recv(sk[1], buf, 1, MSG_OOB);\n     recv(sk[1], buf, 0, MSG_PEEK);\n\n  3) consumed OOB skb -> OOB skb -> NULL\n     send(sk[0], \"a\", 1, MSG_OOB);\n     recv(sk[1], buf, 0, MSG_OOB);\n     send(sk[0], \"b\", 1, MSG_OOB);\n     recv(sk[1], buf, 1, MSG_PEEK);\n\nThen, @copied is 0 in unix_stream_read_generic() (zero-length buffer,\nor non-OOB skb is not yet consumed), and unix_stream_data_wait() is\ncalled.\n\nHowever, it returns immediately because @last is not updated in\nunix_stream_read_generic(), and the thread busy-waits for a new skb.\n\nLet's update @last in manage_oob().\n\nFor MSG_PEEK, @last is updated with the skipped OOB, and for the\nnon-peek case, @last matches the returned value (when !copied)\nbecause OOB is unlinked.\n\nNote that manage_oob() is inlined and no stack canary is added.",
   "datePublished": "Sep 25, 2026, 10:23:20 AM",
-  "dateUpdated": "Sep 25, 2026, 10:23:20 AM",
+  "dateUpdated": "Oct 19, 2026, 9:11:52 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0630bfc773d85ac44da05b2c5a037dbbd39301ab\nhttps://git.kernel.org/stable/c/f1816b3d7ce80dcf086bb68ff5ae6e09520ca1fa\nhttps://git.kernel.org/stable/c/fc62a26493a98a0424d9dae2eb92a1daa1321f65\nhttps://git.kernel.org/stable/c/94fd4debd2e3a69cf93e766c8b328a810c228119\n",
   "aliases": "CVE-2026-97985\nGHSA-cq66-2f6w-rhg5\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "073ad071-4502-3cd1-b2a7-b906a0020b16",
@@ -111,6 +111,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "a3a58cd2-f140-33cf-b5bc-9179a598f768",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "b2ae6dd3-17e7-3c21-83b8-9ed6365816f7",
       "product": {
         "name": "Linux",
@@ -129,16 +139,6 @@
         }
       },
       "product_version": "6.9"
-    },
-    {
-      "id": "c8ecd885-64d7-38c0-b930-8ad14388d014",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "d7765863-a6c7-36c7-8db8-819c2b07c731",

@@ -3,7 +3,7 @@
   "enisaUuid": "b4c77b8b-7260-3701-9b6f-cc56d3255023",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntap: free page on error paths in tap_get_user_xdp()\n\ntap_get_user_xdp() rejects a frame shorter than ETH_HLEN with -EINVAL,\nand returns -ENOMEM when build_skb() fails. Both paths jump to the err\nlabel without freeing the page that vhost_net_build_xdp() allocated for\nthe frame. tap_sendmsg() discards the per-buffer return value and always\nreturns 0, so vhost_tx_batch() takes the success path and never frees\nthe page; each rejected frame in a batch leaks one page-frag chunk.\n\nFree the page on both error paths, before the skb is built. This is the\ntap counterpart of the same leak in tun_xdp_one().",
   "datePublished": "Jun 9, 2026, 12:11:12 PM",
-  "dateUpdated": "Oct 16, 2026, 3:31:16 PM",
+  "dateUpdated": "Oct 19, 2026, 7:36:58 PM",
   "baseScore": 7.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",

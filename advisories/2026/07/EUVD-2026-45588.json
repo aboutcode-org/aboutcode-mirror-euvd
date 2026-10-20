@@ -3,7 +3,7 @@
   "enisaUuid": "c4d37d87-f47d-31d7-81b0-4319632fdc8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsecurity/keys: fix missed RCU read section on lookup\n\nNicholas Carlini reports that the keyring code calls assoc_array_find()\nin find_key_to_update() without holding the RCU read lock, while the\nassoc_array_gc() code really is designed around removing the node from\nthe tree and then freeing it after an RCU grace-period.\n\nThe regular key handling doesn't see this because holding the keyring\nsemaphore hides any lifetime issues, but the persistent key handling\nuses a different model.\n\nInstead of extending the keyring locking, just do the simple RCU locking\nthat the assoc_array was designed for.",
   "datePublished": "Jul 19, 2026, 3:39:10 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:18 PM",
+  "dateUpdated": "Oct 19, 2026, 8:28:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

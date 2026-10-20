@@ -3,7 +3,7 @@
   "enisaUuid": "5f31cadc-b5e8-331d-a3b4-74f1cdd16c94",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: caiaq: unregister the input device when probe fails\n\nsetup_card() registers the input device, whose name and phys point into\nstruct snd_usb_caiaqdev, and then goes on to snd_card_register() and\nsnd_usb_caiaq_control_init(). If either fails, snd_probe() calls\nsnd_card_free(), which frees the device state but leaves the input\ndevice registered: card_free() only clears the pointer, and the input\ndevice is unregistered from snd_disconnect() alone. Reading its \"uevent\"\nattribute afterwards dereferences freed memory:\n\n  BUG: KASAN: slab-use-after-free in string+0x4a9/0x4f0\n  Read of size 1 at addr ffff8880208f5043 by task caiaq/4967\n   add_uevent_var+0x183/0x3a0\n   input_dev_uevent+0x162/0x900\n   dev_uevent+0x2f1/0x870\n   uevent_show+0x1ca/0x3a0\n   ...\n\nUnregister the input device on the probe error path, as\nsnd_disconnect() does. snd_usb_caiaq_input_disconnect() is a no-op when\nno input device was registered.\n\nReproduced with a raw-gadget Audio Kontrol 1 and a temporary hack that\nmakes snd_usb_caiaq_control_init() fail.",
   "datePublished": "Oct 18, 2026, 3:50:05 PM",
-  "dateUpdated": "Oct 18, 2026, 3:50:05 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:29 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/850810c12686f80cdf7530f4f21e0157d904f739\nhttps://git.kernel.org/stable/c/84727facd8506140cd04f2b0a8b1c4ddeac41cea\nhttps://git.kernel.org/stable/c/2e5a413cc2a489c9427ecd3d73ad764bfb0c7103\nhttps://git.kernel.org/stable/c/0b7bd20f6379bc5e431fd74d866390f5b5b63f3c\n",
   "aliases": "CVE-2026-98837\nGHSA-gvp5-mg7r-w29g\n",
@@ -41,6 +41,16 @@
       "product_version": "e59ecd4ee3a450db6cb4e4ecaa3efdd593f80056 <84727facd8506140cd04f2b0a8b1c4ddeac41cea"
     },
     {
+      "id": "302aa6ca-95ba-3658-ab3a-08b1037812a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "45068ba4-3a99-3bda-9673-8dd8da5b8bba",
       "product": {
         "name": "Linux",
@@ -59,16 +69,6 @@
         }
       },
       "product_version": "28abd224db4a49560b452115bca3672a20e45b2f <2e5a413cc2a489c9427ecd3d73ad764bfb0c7103"
-    },
-    {
-      "id": "590dea9b-fe5f-3744-82a4-38a20e24cd12",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "5e2c4bf2-e53a-30a1-a6ab-7815e7af47cf",

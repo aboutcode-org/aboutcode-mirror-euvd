@@ -3,23 +3,13 @@
   "enisaUuid": "6aa99329-a121-3dd6-839f-588d12bdc199",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: dell-wmi-sysman: Don't hex dump attribute security buffer\n\nset_attribute() populates the security area of the BIOS attribute request\nbuffer with the current admin password via populate_security_buffer(), then\ndumps the whole request buffer with print_hex_dump_bytes(). This can expose\nthe plaintext admin password in the kernel log.\n\nThe same issue was fixed for the password attribute path by\ncommit d1a196e0a6dc (\"platform/x86: dell-wmi-sysman: Don't hex dump\nplaintext password data\"). Remove the remaining dump from the BIOS\nattribute path.",
   "datePublished": "Sep 11, 2026, 7:43:12 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:54 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:53 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/23ba9a18896e198f837ae54be99c8852c41890f7\nhttps://git.kernel.org/stable/c/26f554f9f0fb603f76291c10b1cf979241bd2273\nhttps://git.kernel.org/stable/c/44ec7f1113309a93d0f250bcd49285d21dd1470e\nhttps://git.kernel.org/stable/c/ceeee18c927958b74a04b92cf084fc496fa21e8b\nhttps://git.kernel.org/stable/c/22222f92b0a5116eb4aac4be81e7b770adfa32ee\nhttps://git.kernel.org/stable/c/eb73b9d51490bec4f73ac6efdba5ac535fcfee74\nhttps://git.kernel.org/stable/c/83c80495e45eddf64c6525fb582d8db68f256b71\n",
   "aliases": "CVE-2026-89444\nGHSA-r3m2-c533-3mcx\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
-    {
-      "id": "19e496f2-99fe-395a-9e6a-6ef5c37f4a5f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "1c9ab831-38ac-3954-be0d-c3847e8b951c",
       "product": {
@@ -39,6 +29,16 @@
         }
       },
       "product_version": "e8a60aa7404bfef37705da5607c97737073ac38d <23ba9a18896e198f837ae54be99c8852c41890f7"
+    },
+    {
+      "id": "2dd129a8-e209-3a8d-8cf2-6e4bfd62a7d5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "7641c9c9-6104-3248-951f-9762cd500ce2",

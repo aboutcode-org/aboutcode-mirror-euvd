@@ -3,7 +3,7 @@
   "enisaUuid": "aab08fef-28ed-3b13-9d61-9a7cfc590d64",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/huge_memory: update file PMD counter before folio_put()\n\n__split_huge_pmd_locked() updates the file/shmem RSS counter after\ndropping the PMD mapping's folio reference.  If folio_put() drops the last\nreference, mm_counter_file() can later read freed folio state via\nfolio_test_swapbacked().\n\nMove the counter update before folio_put().",
   "datePublished": "Jun 25, 2026, 8:39:01 AM",
-  "dateUpdated": "Oct 16, 2026, 3:31:36 PM",
+  "dateUpdated": "Oct 19, 2026, 7:57:27 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

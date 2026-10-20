@@ -3,7 +3,7 @@
   "enisaUuid": "2b9f4598-1475-3cad-a91c-ea1cd02190a8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: u_audio: Fix use-after-free on sound card disconnect\n\ng_audio_cleanup() invokes snd_card_free_when_closed() to initiate sound\ncard teardown and immediately frees the underlying struct snd_uac_chip\ncontext. However, snd_card_free_when_closed() returns asynchronously\nwhile ALSA control elements (kctls) remain open in userspace.\n\nWhen userspace control applications access or close these open file\ndescriptors, kctl callbacks attempt to dereference kctl->private_data\npointing to &uac->c_prm or &uac->p_prm within the freed uac structure,\nresulting in a use-after-free (UAF) memory corruption.\n\nFix this issue by deferring the destruction of struct snd_uac_chip until\nall references to the ALSA sound card are released. Register a custom\ncard->private_free callback (u_audio_card_free) during g_audio_setup()\nthat frees uac and its associated playback/capture request and ring\nbuffers only when the sound card reference count drops to zero.",
   "datePublished": "Sep 11, 2026, 7:46:44 PM",
-  "dateUpdated": "Sep 14, 2026, 12:02:23 PM",
+  "dateUpdated": "Oct 19, 2026, 8:51:50 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "3e016ef2e72da93a2ea7afbb45de1b481b44d761"
+    },
+    {
+      "id": "16ee5535-01d6-3e26-80c7-e0f1d89a9a6e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "1f335954-1d6a-3d6d-8d9e-48c6f881eb5b",
@@ -171,16 +181,6 @@
         }
       },
       "product_version": "5.15.105 <5.15.221"
-    },
-    {
-      "id": "b261874c-04ea-3ed7-a947-a64345cd6604",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b858dc99-4c14-324f-a609-1e87314a41ce",

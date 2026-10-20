@@ -3,12 +3,12 @@
   "enisaUuid": "71b78070-ca53-3981-8a68-2379528d9038",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nefivarfs: Rate limit statfs() handler\n\nRavi reports that statfs() may be called by unprivileged users on the\nefivarfs mount point, which may result in a flood of calls to the\nQueryVariableInfo() runtime service. These calls are disproportionately\ncostly on x86 systems where the variable store is backed by SMM, as each\nSMM entry requires a rendez-vous of all the CPUs.\n\nSo rate limit the calls to QueryVariableInfo() at twice per second, and\nreturn the most recently obtained value for calls that are elided.",
   "datePublished": "Sep 11, 2026, 7:45:07 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:24 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:35 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/97d71ebee48cd1b29091762b3e5cca4f815dd84c\nhttps://git.kernel.org/stable/c/3cd611c9f1dbcc116c8af5112e3c1783c8cde2ae\nhttps://git.kernel.org/stable/c/8953bdd1b9c0e748d5408d3d0b8e7aeee5c9cd41\nhttps://git.kernel.org/stable/c/92895a14329cc9533e2a74a265214f690ba3851a\nhttps://git.kernel.org/stable/c/0dbc2e94b81df5a1264068b6ed3605c654b8afcb\nhttps://git.kernel.org/stable/c/b2326338dc683e8c1067c0cbf7a47986c4190902\n",
   "aliases": "CVE-2026-89604\nGHSA-pmmg-3c8m-93q3\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "24a24191-d04d-34ec-b342-b4b39846296f",
@@ -39,16 +39,6 @@
         }
       },
       "product_version": "patch: 6.1.188"
-    },
-    {
-      "id": "4868ee8b-446d-3c3e-bc82-484551db3601",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "62685609-bef9-3726-8e33-ae1154e7af18",
@@ -99,6 +89,16 @@
         }
       },
       "product_version": "6.1.178 <6.1.188"
+    },
+    {
+      "id": "bcf7c5c3-b9e6-3385-8e5d-137fa61629e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "bd1e4365-87b8-3a29-b8f4-d97a4a99805f",

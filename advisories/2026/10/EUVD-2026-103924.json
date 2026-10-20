@@ -3,7 +3,7 @@
   "enisaUuid": "4cf822ea-cc76-3248-9117-c68dec7b8d2b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: xilinx-xadc: free IRQ before cancelling the unmask worker on unbind\n\nThe ZYNQ XADC alarm IRQ handler queues zynq_unmask_work via\nschedule_delayed_work(); that work is cleared by a devm callback.\nRegister the devm callback before devm_request_irq() so the devres LIFO\nteardown frees the IRQ first, ensuring the handler can no longer queue\nwork by the time the workqueue is cleared. Otherwise the handler could\nre-arm the work and run it after the xadc structure has been freed.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Oct 18, 2026, 3:45:14 PM",
-  "dateUpdated": "Oct 18, 2026, 3:45:14 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:38 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a29d385ad7b340c952a3935af2b33488db1eb3a6\nhttps://git.kernel.org/stable/c/a5fe2d1b55faba6d00fd87ad491b6cb603046304\nhttps://git.kernel.org/stable/c/49ea8a359e362bfbb32a647c8eb7962fbb37234e\nhttps://git.kernel.org/stable/c/0f3f427076240e75ff265e61645627a71ca4918c\n",
   "aliases": "CVE-2026-98670\nGHSA-pfxr-v75f-fxq3\n",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "33288ff1-f322-3eb6-87e5-bc2b47a96a92",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "55b754fe-a8d8-3ed1-886b-1f2864b6594d",
@@ -69,16 +79,6 @@
         }
       },
       "product_version": "5.12"
-    },
-    {
-      "id": "86628645-4d71-328a-939d-d145c3a60a77",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "a2cf2a6a-62e7-33c2-bd99-3fa9266680b6",

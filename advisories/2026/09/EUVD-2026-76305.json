@@ -3,7 +3,7 @@
   "enisaUuid": "3477e6f2-50fe-3f39-8260-f5c6039da453",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: fix use-after-free in smc_rx_pipe_buf_release()\n\nsmc_rx_splice() hands RMB pages to a pipe and takes a socket reference\nper entry so the smc_sock stays alive until the reader finishes. The\nconnection does not: a concurrent close runs smc_conn_free(), which\nreleases the receive buffer back to the link group pool.\n\nsmc_rx_pipe_buf_release() tests sk_state before taking the socket lock.\nThe state can change between the test and the lock, and\nsmc_rx_update_cons() then dereferences conn->rmb_desc and walks\nconn->lgr, which smc_conn_free() has already released. On the\nis_reg_err path smcr_buf_unuse() frees the descriptor outright, so\nthis is a use-after-free.\n\nTake the socket lock first and test conn->freed instead.\nsmc_conn_free() sets that flag before releasing anything, and every\ncaller holds the socket lock. The two paths exclude each other: either\nthe pipe release runs first with everything valid, or it sees the flag\nand skips the update.",
   "datePublished": "Sep 11, 2026, 7:42:42 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:37 PM",
+  "dateUpdated": "Oct 19, 2026, 8:46:06 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "9014db202cb764b8e14c53e7bacc81f9a1a2ba7f <df441f3efbb50eb0f120b8de4bf441c31fb0551d"
+    },
+    {
+      "id": "499f6a97-49fc-3d78-b186-9dba32f660e9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4ad52beb-03dd-342d-9f99-89439da387b2",
@@ -101,16 +111,6 @@
         }
       },
       "product_version": "9014db202cb764b8e14c53e7bacc81f9a1a2ba7f <c924884743e948e25625b7fbf3ee2a9325a204a7"
-    },
-    {
-      "id": "c0e106a8-14d9-3d8c-99e2-05ab9ffd91db",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "d180a2a2-8bc6-3e6f-ba6e-e2fafc84c7c9",

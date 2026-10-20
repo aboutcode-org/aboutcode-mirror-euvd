@@ -3,12 +3,12 @@
   "enisaUuid": "44423226-f71f-30b6-a8bf-bfd672b25a70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: Fix memory leak in brcmf_sdio_read_control()\n\nThe memory allocated for buf is not freed in some of the error paths in\nbrcmf_sdio_read_control(). Fix that by adding vfree() calls.\n\n[arend: rework as suggested by Johannes]",
   "datePublished": "Sep 11, 2026, 7:42:19 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:06 AM",
+  "dateUpdated": "Oct 19, 2026, 8:45:33 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b1d0a90a844abccdfed9fe141b5d0d654a821485\nhttps://git.kernel.org/stable/c/86b57fa3172e287bc083113507a965e6d9a46a45\nhttps://git.kernel.org/stable/c/a732c4f36a4cd79f3702391f88ebb56f2e43b0ee\nhttps://git.kernel.org/stable/c/7704f6ba2a8c492b07a3eaa1e311b4b30d389246\nhttps://git.kernel.org/stable/c/fdb880a7d575efe8b5c7b5b819b96d9251a3937f\nhttps://git.kernel.org/stable/c/261d7c7610b4b2f476382c88a2d1ae0cc5e07add\nhttps://git.kernel.org/stable/c/ba04715ee672c336272be3ceb43bda9ffc33eb75\nhttps://git.kernel.org/stable/c/0d10db8e94fcb23a799789aaa696b4d8f937e207\n",
   "aliases": "GHSA-5hvg-pfp7-3397\nCVE-2026-80949\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1201fc8f-ddd6-36d6-97a4-ac865d2e0260",
@@ -49,16 +49,6 @@
         }
       },
       "product_version": "patch: 5.10.270"
-    },
-    {
-      "id": "51a657b9-49ab-3d44-adce-8392794af6fb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "5c2382be-2ad6-3119-9113-4a327bfe9ca4",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "patch: 7.2.4"
+    },
+    {
+      "id": "fcd4b60c-c22b-38a1-a09a-c34a00c617b4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "fddbc879-2db0-3efd-a5a9-13314b5aa19c",

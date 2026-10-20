@@ -3,7 +3,7 @@
   "enisaUuid": "f069ef51-0ccb-3878-865a-cf3bc4d33ac7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx6: fix firmware leak on teardown\n\nThe firmware requested in gfx_v6_0_init_microcode() is not released\nwhen the GFX block is torn down, leaking the firmware resources.\n\nAdd gfx_v6_0_free_microcode() and call it from gfx_v6_0_sw_fini()\nto release the PFP, ME, CE and RLC firmware.\n\n(cherry picked from commit 386e81346f95ab0be5a82c5535de932e7a456924)",
   "datePublished": "Oct 18, 2026, 3:48:21 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:21 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:37 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3a86ebf6aa8b0a845e6188daaa6f530fe67ff00e\nhttps://git.kernel.org/stable/c/652f631e2e3a8d3b11ad72dd0b8e59b5183de0d9\nhttps://git.kernel.org/stable/c/4b70c6b34912ca0b4066f56fd627d785dfbfe1fa\nhttps://git.kernel.org/stable/c/cc172e177795c5f87bc2d71768d077e1c10633e8\n",
   "aliases": "GHSA-2ff4-rcmq-jgcc\nCVE-2026-98784\n",
@@ -71,16 +71,6 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4b70c6b34912ca0b4066f56fd627d785dfbfe1fa"
     },
     {
-      "id": "84ff7aa9-dbd7-3c77-b1aa-d6c1a52a8cad",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "8ed4bc48-be2f-396b-83e8-0c34bb50d586",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 7.2.10"
+    },
+    {
+      "id": "ebefaef4-b445-3180-b96c-7858a50c4f50",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

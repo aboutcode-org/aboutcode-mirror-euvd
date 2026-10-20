@@ -3,7 +3,7 @@
   "enisaUuid": "40e9406c-cf29-32c8-9dc8-9237828490cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ninterconnect: Fix use after free in icc_get() and of_icc_get_by_index()\n\nIn of_icc_get_by_index() and icc_get(), if the dynamic allocation for\npath->name fails via kasprintf(), the error handling path directly\ncalls kfree(path) to free the path object and returns an error.\n\nHowever, prior to this point, path_find() calls path_init(), which\nalready links the path's requests into the req_list of the respective\ninterconnect nodes via hlist_add_head(). Directly invoking kfree(path)\nleaves dangling pointers in the hlist. A subsequent call to icc_get()\nor icc_set_bw() will traverse or modify these corrupted lists, triggering\na slab use afterfree.\n\nKASAN report showing the vulnerability when reproducing via debugfs:\n\n  BUG: KASAN: slab-use-after-free in path_find+0x6f8/0xcfc\n  Write of size 8 at addr fff000000d43f748 by task sh/1\n  ...\n  Call trace:\n   kasan_report+0xac/0xfc\n   path_find+0x6f8/0xcfc\n   icc_get+0x148/0x380\n   icc_get_set+0xf8/0x2d0\n  ...\n  Freed by task 1:\n   kfree+0x1a0/0x4a4\n   icc_get+0x2cc/0x380\n   icc_get_set+0xf8/0x2d0\n\nFix this by replacing kfree(path) with the proper teardown function,\nicc_put(path), which safely removes the requests from the req_list using\nhlist_del() and drops the provider usage references before freeing the\nmemory.\n\nAdditionally, in icc_get(), ensure that the icc_lock mutex is released\nprior to calling icc_put(path) to avoid a deadlock, as icc_put()\ninternally acquires the same lock.",
   "datePublished": "Sep 11, 2026, 7:42:59 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:41 AM",
+  "dateUpdated": "Oct 19, 2026, 8:46:33 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -41,16 +41,6 @@
         }
       },
       "product_version": "3791163602f7140011a8dc1691cfe6ec0cb1ef07 <a4e9aa7907ade87d1d96853d14e05dcf682f8363"
-    },
-    {
-      "id": "225863e4-27a2-3178-b6b1-7762361594cb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "365ffbe7-fa21-3f66-9672-b1e49d081a89",
@@ -111,6 +101,16 @@
         }
       },
       "product_version": "patch: 6.12.109"
+    },
+    {
+      "id": "7b6b37eb-14a8-3dac-89de-240df5d6b120",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "881e1c48-9945-3a86-9b41-87ccdcd3b167",

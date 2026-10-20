@@ -3,7 +3,7 @@
   "enisaUuid": "af944c4a-4d73-3995-9f32-05274763f563",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Reject oversized XDomain properties responses\n\ntb_xdp_properties_request() allocates room for 45 data dwords in its\n252-byte response buffer.  The XDomain length field is six bits wide,\nhowever, and a malicious peer can set it to 63.  After the fixed response\nfields are subtracted, the driver treats this as 48 data dwords.\n\nCommit 322e93448d90 (\"thunderbolt: Clamp XDomain response data copy to\nallocation size\") only bounds the copy against data_len.  If data_len is\nat least 48, memcpy() reads 192 bytes from the 180-byte res->data array,\ncausing a 12-byte heap out-of-bounds read.  Commit 4db2bd2ed478\n(\"thunderbolt: Limit XDomain response copy to actual frame size\") limits\nthe earlier copy but does not constrain this header-derived length.\n\nReject response data lengths that exceed the allocated source buffer\nbefore copying them into the assembled property block.",
   "datePublished": "Oct 18, 2026, 3:45:58 PM",
-  "dateUpdated": "Oct 18, 2026, 3:45:58 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a766a86ff48acee76aeb8e2575771040749e509d\nhttps://git.kernel.org/stable/c/2f97f929dad9eb3e1f63b721d2dd49bf9bc68efa\nhttps://git.kernel.org/stable/c/737a1d2e9642d5f718bd29aa4a98b9eef3832f0a\nhttps://git.kernel.org/stable/c/80756e263846ab694984e749e8c626897331438f\n",
   "aliases": "CVE-2026-98687\nGHSA-rq3j-rw4p-w59w\n",
@@ -41,14 +41,14 @@
       "product_version": "d1ff70241a275133e1a0258b7c23588b122276c8 <737a1d2e9642d5f718bd29aa4a98b9eef3832f0a"
     },
     {
-      "id": "63b998e3-d713-3aba-9d7f-cf1f39bc7a86",
+      "id": "726dbf30-7a43-39ff-8aff-05003436d415",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "85c6cd08-c14c-398c-bce8-dbce0dfb949e",

@@ -3,7 +3,7 @@
   "enisaUuid": "d81e3c8d-4181-3f67-b67f-ef35a9945c2e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_ct: preserve tc_skb_cb across defragmentation\n\ntcf_ct_handle_fragments() calls nf_ct_handle_fragments() without saving\nand restoring skb->cb. The defrag helper clears IPCB/IP6CB, which aliases\nthe tc_skb_cb/qdisc_skb_cb control buffer. Fragmented traffic through\nact_ct therefore loses qdisc metadata such as pkt_segs and can trigger\nWARN_ON_ONCE() in qdisc_pkt_segs() when panic_on_warn is enabled.\n\nSave and restore the full tc_skb_cb around nf_ct_handle_fragments(),\nmatching the pattern used by ovs_ct_handle_fragments().",
   "datePublished": "Aug 15, 2026, 5:52:12 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:18 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:25 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",

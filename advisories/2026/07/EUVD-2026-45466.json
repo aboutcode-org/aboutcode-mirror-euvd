@@ -3,7 +3,7 @@
   "enisaUuid": "2eab5380-925b-39fc-8264-9fb848be943e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npNFS: Fix use-after-free in pnfs_update_layout()\n\nWhen hitting the NFS_LAYOUT_RETURN branch in pnfs_update_layout(),\nthe code calls pnfs_prepare_to_retry_layoutget(lo). If it succeeds,\npnfs_put_layout_hdr(lo) is called before trace_pnfs_update_layout(),\nwhich still references 'lo'. This results in a use-after-free when the\ntracepoint accesses lo's fields.\n\nFix this by moving the tracepoint call before pnfs_put_layout_hdr(lo).",
   "datePublished": "Jul 19, 2026, 12:02:06 PM",
-  "dateUpdated": "Oct 16, 2026, 3:31:57 PM",
+  "dateUpdated": "Oct 19, 2026, 8:07:47 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

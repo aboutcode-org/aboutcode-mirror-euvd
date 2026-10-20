@@ -3,7 +3,7 @@
   "enisaUuid": "616bd051-cbe6-3a0c-9743-a94ee6236f69",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbonding: alb: fix uninitialized transport header access in alb_determine_nd()\n\nalb_determine_nd() uses icmp6_hdr(skb) to inspect ICMPv6 headers.\nHowever, in xmit paths (e.g. packets sent via AF_PACKET / raw sockets\nor forwarded packets), skb->transport_header is not guaranteed to be\ninitialized. While pskb_network_may_pull() ensures the packet data is\nlinear starting from the network header, it does not set or adjust the\ntransport header offset.\n\nDereferencing icmp6_hdr(skb) can therefore access out-of-bounds memory.\n\nFetch the icmp6hdr directly after ipv6hdr following pskb_network_may_pull(),\nand reload ipv6hdr in case pskb_may_pull() reallocated skb->head.\nAlso remove the unused bond argument from alb_determine_nd().",
   "datePublished": "Sep 25, 2026, 10:24:22 AM",
-  "dateUpdated": "Oct 3, 2026, 11:02:14 AM",
+  "dateUpdated": "Oct 19, 2026, 9:13:41 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/862c8eb6947689c44fe11353755576a3672563a5\nhttps://git.kernel.org/stable/c/7adb1bf25b0c5cedfb49b6e82844394d4f3c0d99\nhttps://git.kernel.org/stable/c/e39cf90bd856443542b97933289749fca07476bf\nhttps://git.kernel.org/stable/c/27314f96d29b54e815e7a9b84c3273f1895e68e2\nhttps://git.kernel.org/stable/c/3b178894931a268c09126a5b53630f343e10e296\nhttps://git.kernel.org/stable/c/70f3995830d3f1e79faa14eb0605914f778feca9\n",
   "aliases": "CVE-2026-98089\nGHSA-3x47-v429-xjvw\n",
@@ -81,6 +81,16 @@
       "product_version": "0da8aa00bfcfeb3f4e6537dd8e2001e0727ba549 <e39cf90bd856443542b97933289749fca07476bf"
     },
     {
+      "id": "9e9ea641-3cdc-38a9-a682-41dd662d1da5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "a6abec57-5c20-360e-881b-b6086d9a2059",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "0da8aa00bfcfeb3f4e6537dd8e2001e0727ba549 <7adb1bf25b0c5cedfb49b6e82844394d4f3c0d99"
-    },
-    {
-      "id": "b51418fc-04b3-3855-812b-c54a3e779bbe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc2"
     },
     {
       "id": "b6468074-af9b-3b27-9cc4-9c68c2a8c120",

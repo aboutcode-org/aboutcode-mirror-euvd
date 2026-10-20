@@ -3,23 +3,13 @@
   "enisaUuid": "d5a1f100-c68c-36dd-bb4d-c69264fef14d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix tree connection leak in smb2_tree_connect()\n\nSee the procedure below:\n\n  smb2_tree_connect\n    ksmbd_tree_conn_connect\n      xa_store(&sess->tree_conns, tree_conn->id, tree_conn)\n      ksmbd_counter_inc(KSMBD_COUNTER_TREE_CONNS)\n      ksmbd_share_tree_conn_inc(sc)\n    ksmbd_iov_pin_rsp // fail\n    status.ret = KSMBD_TREE_CONN_STATUS_NOMEM\n    // do not disconnect tree_conn\n\nDisconnect the new tree connection if ksmbd_iov_pin_rsp() fails.",
   "datePublished": "Sep 25, 2026, 1:06:51 PM",
-  "dateUpdated": "Oct 15, 2026, 10:12:21 AM",
+  "dateUpdated": "Oct 19, 2026, 9:14:55 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fea9c705bbc618ba6426424c9f8330555820c9ec\nhttps://git.kernel.org/stable/c/a6c88e5e3a75f1e4a98ad4bc4037465ccd7925bc\nhttps://git.kernel.org/stable/c/39f2032096715daae5f6fd0f587ca7a474b019df\n",
   "aliases": "GHSA-x6qh-h8p9-5c4q\nCVE-2026-98162\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.11,
   "enisaIdProduct": [
-    {
-      "id": "16be5e5b-0cee-3ac9-a7ad-5f550eed85ed",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "1bec168e-7f27-3f4b-9a71-5fda60148560",
       "product": {
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "e2b76ab8b5c9327ab2dae6da05d0752eb2f4771d <a6c88e5e3a75f1e4a98ad4bc4037465ccd7925bc"
+    },
+    {
+      "id": "2afa89c7-ea44-3748-9553-870ca792b6e0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "39aa5c64-07e1-3afd-af9d-cb067d25dc8b",

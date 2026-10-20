@@ -3,23 +3,13 @@
   "enisaUuid": "851253aa-9268-36ca-a2cc-efebbb15d628",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Wait for RCU callbacks before unloading ib_core\n\nput_gid_ndev() is queued with call_rcu() and implemented in ib_core.\nStopping the workqueues does not drain callbacks already queued, so RCU\ncould invoke it after the module code has been unloaded.\n\nsynchronize_rcu() does not wait for callbacks. Wait for them after all\nproducers have stopped.",
   "datePublished": "Sep 17, 2026, 4:11:19 PM",
-  "dateUpdated": "Sep 17, 2026, 4:11:19 PM",
+  "dateUpdated": "Oct 19, 2026, 9:05:43 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/82dfd1df456227279b1c8c648983a530f2612098\nhttps://git.kernel.org/stable/c/1646e123e56c3ad679fbfb571e8eef6386efb729\nhttps://git.kernel.org/stable/c/8e4f1677c09d75d738099f42afcf65d8587b664a\nhttps://git.kernel.org/stable/c/7853af5f15738dc00aebaa1fc9f1f0df40f6f603\nhttps://git.kernel.org/stable/c/0d5817fa4819abdc445fa77b5be4f0d49334a864\nhttps://git.kernel.org/stable/c/9d998297fdaf47492f6679287f6552879d1a7e3a\nhttps://git.kernel.org/stable/c/48b72fa0d209a92fb51b834a6080171cfa207b2c\nhttps://git.kernel.org/stable/c/7d75592114d1664623c8cf191a12b38052c04483\n",
   "aliases": "CVE-2026-93110\nGHSA-7xfw-24xh-pg25\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
-    {
-      "id": "137c8452-96b3-3c91-8708-18b80e530189",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "277e8494-fc9b-3e16-a4db-df7b9e012d3f",
       "product": {
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.6.157"
+    },
+    {
+      "id": "5746e1c6-6bb8-3435-bb9e-90d47ad100e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "5b81ac14-5d2a-37bb-b846-ce2a6a05aaa4",

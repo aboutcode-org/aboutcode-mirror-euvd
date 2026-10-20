@@ -3,7 +3,7 @@
   "enisaUuid": "e2368f0e-2417-3072-8bd2-ee8924348932",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Fix stack-out-of-bounds read in l2cap_ecred_conn_req\n\nSyzbot reported a KASAN stack-out-of-bounds read in l2cap_build_cmd()\nthat is triggered by a malformed Enhanced Credit Based Connection Request.\n\nThe vulnerability stems from l2cap_ecred_conn_req(). The function allocates\na local stack buffer (`pdu`) designed to hold a maximum of 5 Source Channel\nIDs (SCIDs), totaling 18 bytes. When an attacker sends a request with more\nthan 5 SCIDs, the function calculates `rsp_len` based on this unvalidated\n`cmd_len` before checking if the number of SCIDs exceeds\nL2CAP_ECRED_MAX_CID.\n\nIf the SCID count is too high, the function correctly jumps to the\n`response` label to reject the packet, but `rsp_len` retains the\nattacker's oversized value. Consequently, l2cap_send_cmd() is instructed\nto read past the end of the 18-byte `pdu` buffer, triggering a\nKASAN panic.\n\nFix this by moving the assignment of `rsp_len` to after the `num_scid`\nboundary check. If the packet is rejected, `rsp_len` will safely\nremain 0, and the error response will only read the 8-byte base header\nfrom the stack.",
   "datePublished": "Apr 22, 2026, 1:54:30 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:14 PM",
+  "dateUpdated": "Oct 19, 2026, 6:45:54 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",

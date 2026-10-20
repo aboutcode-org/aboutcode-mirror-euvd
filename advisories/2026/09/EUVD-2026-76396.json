@@ -3,12 +3,12 @@
   "enisaUuid": "83da8ed3-ac1f-3276-a62d-185a099ea773",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: fix readdir position truncation on 32-bit kernels\n\nIn ocfs2_dir_foreach_blk_el(), the directory cookie position is\nrebuilt with\n\n\tctx->pos = (ctx->pos & ~(sb->s_blocksize - 1)) | offset;\n\n`ctx->pos` is loff_t (signed 64-bit), while `sb->s_blocksize` is\nunsigned long.  On 32-bit kernels unsigned long is 32-bit, so the mask\n\n\t~(sb->s_blocksize - 1)\n\nis computed as a 32-bit unsigned value (e.g. 0xfffff000 for a 4 KiB\nblock size).  In the AND expression with the 64-bit `ctx->pos`, that\nunsigned operand is zero-extended to 64 bits per the usual arithmetic\nconversions, yielding 0x00000000fffff000.  The high 32 bits of\n`ctx->pos` are silently cleared, even though directory size is\nallowed to exceed 4 GiB.\n\nWhen readdir() crosses the 4 GiB boundary on a 32-bit kernel the\nposition is reset back into the first 4 GiB block, making the\nre-validation path re-enumerate already-returned dirents indefinitely.\n\nThis is ocfs2_dir_foreach_blk_el(), the extent-list readdir path taken\nfor all non-inline directories, so a directory large enough to cross\n4 GiB reaches it.\n\nThis is the same class of bug that commit 3dce5bb82c97 (\"exfat: Fix\nbitwise operation having different size\") fixed in exfat, and the\nfix mirrors the equivalent ext4 fix in this series.  Cast the operand\nto loff_t so the mask is 64-bit before the AND:\n\n\tctx->pos = (ctx->pos & ~((loff_t)sb->s_blocksize - 1)) | offset;\n\n64-bit kernels are unaffected.",
   "datePublished": "Sep 11, 2026, 7:43:42 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:25 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:41 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c28dc3407937aa8f225942538cd585c9b28ea65a\nhttps://git.kernel.org/stable/c/94569154ba49f5f85645d2019c8e206213d8404e\nhttps://git.kernel.org/stable/c/1ae7029823ae4c91664cb32eec7fb8dd5e1a337a\nhttps://git.kernel.org/stable/c/f9dd5cad8d09110ddff2db1fe756aae93c7552ff\nhttps://git.kernel.org/stable/c/1001fb3b69a11eaa0dc7c7428f6edfa48b88997a\nhttps://git.kernel.org/stable/c/c0c165487a2ea5a37ddcdab4259157b7a527129c\nhttps://git.kernel.org/stable/c/b53e2b271eeb6040c2a4a78230c570dc41cdcfa4\nhttps://git.kernel.org/stable/c/a63308ab426f3a3c7e33b02c150ea59054620261\n",
   "aliases": "CVE-2026-89490\nGHSA-3jg7-r7pg-8654\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "024ba963-2a9a-35b9-a3c3-963fd68fb8d6",
@@ -121,16 +121,6 @@
       "product_version": "patch: 5.10.270"
     },
     {
-      "id": "97c9c87d-5e44-371a-8d96-112058f14dfd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "9da7bcfc-a729-33ef-a4b8-81bc5fe3550c",
       "product": {
         "name": "Linux",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "patch: 6.1.188"
+    },
+    {
+      "id": "db3c30f6-45b7-3df3-be94-df1f7801f0ee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e2bbc226-5233-38a6-9fa5-d4df1fd1d420",

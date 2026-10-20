@@ -3,12 +3,12 @@
   "enisaUuid": "6f45357a-3f75-38c0-87eb-341e73119db3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: 6lowpan: fix NULL dereference in lowpan_newlink\n\nTUNSETLINK allows a TUN device to change its link-layer type to\nARPHRD_IEEE802154 without initializing ieee802154_ptr. lowpan_newlink()\nchecks only the device type before dereferencing the pointer, so an\nRTM_NEWLINK request can trigger a NULL pointer dereference.\n\nReject devices without ieee802154_ptr along with devices of the wrong type.",
   "datePublished": "Sep 25, 2026, 10:22:14 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:05 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:04 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a1760f21c32adce41af5ed5687200865d8feaaeb\nhttps://git.kernel.org/stable/c/5063b9354e6e285dae61e530b30458498444a914\nhttps://git.kernel.org/stable/c/16d8e0b560d50cd1a9e6d77a9a154a94c4d6021e\nhttps://git.kernel.org/stable/c/543994fa03c36a91d967a12c5c99cae74899504c\nhttps://git.kernel.org/stable/c/1c7710af7ad9532b534f1c134c11b04dbe4e0e0f\nhttps://git.kernel.org/stable/c/98ce5a42cde780ee0e40378607d4428c8fc12ec1\nhttps://git.kernel.org/stable/c/8528da2333ce05cf627f93425f9d05efb08b3146\nhttps://git.kernel.org/stable/c/bf79662bc85e820ac3b846e2f347da29fbf6ac95\n",
   "aliases": "CVE-2026-97601\nGHSA-mh2g-wr94-hfmw\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "09e57439-fd73-30a1-890a-d9b40f12b248",
@@ -61,14 +61,14 @@
       "product_version": "51e0e5d8124ece158927a4c2288c0929d3b53aa3 <1c7710af7ad9532b534f1c134c11b04dbe4e0e0f"
     },
     {
-      "id": "42212a47-2836-3bd1-b771-197fc7beb859",
+      "id": "2f13fd4d-a12b-3ff5-b01b-01092552b16a",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc3"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4c1dbf0a-e91b-3a7e-bcf8-b2321326dde4",

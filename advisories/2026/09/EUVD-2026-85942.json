@@ -3,12 +3,12 @@
   "enisaUuid": "b683c5c9-1cbb-3aa8-818f-11c2e874f431",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof: fix out-of-bounds read in of_alias_scan() stem parser\n\nThe stem parser tests isdigit(*(end - 1)) before checking end > start\nand so reads one byte before the property name when the name is empty\nor all digits. Check the bound first.",
   "datePublished": "Sep 24, 2026, 3:10:36 PM",
-  "dateUpdated": "Sep 24, 2026, 3:10:36 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:25 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/fd0c7bbda81c0e0c1cb7b68d267b87371584f560\nhttps://git.kernel.org/stable/c/958d7ee9fcf008ef9d2072c6410ee1bf6abf3b64\nhttps://git.kernel.org/stable/c/f7f6c3e32a31f2e1ed12075e8cd22b370a84e67a\nhttps://git.kernel.org/stable/c/da7a80ddc610a19b0378016a4d816b9355f013a7\nhttps://git.kernel.org/stable/c/96a9c984dd7c3589a2707a32b62802f98311dbfd\nhttps://git.kernel.org/stable/c/9253cfc5a85be1494ce56b4fc6f2d2b509440910\nhttps://git.kernel.org/stable/c/acd1b49043366f43e932308b4db7d3ce568eeadb\nhttps://git.kernel.org/stable/c/5bb01c657ff9fc807c2c592ca18af34c4fc3bc6f\n",
   "aliases": "GHSA-cjjg-5mgv-fpg3\nCVE-2026-93213\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "038a4529-9501-359e-9c56-25913a537a94",
@@ -101,16 +101,6 @@
       "product_version": "patch: 6.6.157"
     },
     {
-      "id": "5ea1807a-5f58-337f-b9b2-9bd175eaee8c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "7582d30c-7668-3cfa-af4e-e18f805dc1ac",
       "product": {
         "name": "Linux",
@@ -179,6 +169,16 @@
         }
       },
       "product_version": "3.2"
+    },
+    {
+      "id": "b1587d26-3178-3145-b148-6ca937976624",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "cb4c3474-edcc-3ae1-9ca0-8af7e50a030d",

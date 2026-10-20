@@ -3,12 +3,12 @@
   "enisaUuid": "39173dc4-0071-3242-b5c5-5658fb947138",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usbusx2y: fix in04_last array size mismatch with in04_buf\n\nThe in04_last array in struct usx2ydev is declared as char[24], but\nin04_buf is allocated as sizeof(struct us428_ctls) which is 21 bytes.\nIn i_usx2y_in04_int(), when ctl_snapshot_last == -2 (initialization\npath):\n\n    memcpy(usx2y->in04_last, usx2y->in04_buf, sizeof(usx2y->in04_last));\n\nThis copies 24 bytes from a 21-byte slab allocation, reading 3 bytes\npast the end of the source object.\n\nIntroduce a USX2Y_IN04_SIZE constant defined as sizeof(struct\nus428_ctls) and use it consistently for the in04_last array, the\nin04_buf allocation, the URB transfer length, and the comparison loop,\nreplacing the bare 24 and 21 literals throughout.",
   "datePublished": "Sep 25, 2026, 10:22:46 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:41 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:57 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e75e4b0e647137f4c9f6dee4a7ef5b7b09e16f57\nhttps://git.kernel.org/stable/c/869fb83c072e884b80d93eab498e6040ffb010ba\nhttps://git.kernel.org/stable/c/d170cfbe38c8817ac787f605655546a6d343017d\nhttps://git.kernel.org/stable/c/229cab526580f82839ae8e4e379753c8cf16952e\nhttps://git.kernel.org/stable/c/381495b5b3da12d714e53d9d12d955b13fe26eac\nhttps://git.kernel.org/stable/c/b5753bdfd909f7f095fb464d67802b5e52cbadbf\nhttps://git.kernel.org/stable/c/861111a14740e12c36d363e9830f8daa734279c9\n",
   "aliases": "GHSA-2x7p-4659-c97x\nCVE-2026-97930\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "08622762-223b-3048-b8ef-d75801d14c4e",
@@ -31,14 +31,14 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <229cab526580f82839ae8e4e379753c8cf16952e"
     },
     {
-      "id": "35e4ed97-683c-3552-84c2-265c37cd8983",
+      "id": "28cdae99-bf97-3628-b926-3a728e68613d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc3"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "53642959-66fd-3c9f-a886-dafee31f0d86",

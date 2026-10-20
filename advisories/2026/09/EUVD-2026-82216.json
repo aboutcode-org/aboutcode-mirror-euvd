@@ -3,12 +3,12 @@
   "enisaUuid": "a2c3c9ce-f876-32df-8a69-b20cc4294a90",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/ipoib: Drain RCU callbacks during module teardown\n\nIPoIB reclamation completions can be signaled from inside an RCU callback.\nTeardown can wake before the callback returns and unload ib_ipoib while its\ncode is still executing.\n\nClient registration failure can also remove already-added devices and queue\ncallbacks. Wait after client and workqueue teardown.",
   "datePublished": "Sep 17, 2026, 4:11:18 PM",
-  "dateUpdated": "Sep 17, 2026, 4:11:18 PM",
+  "dateUpdated": "Oct 19, 2026, 9:05:40 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/bb9c23733a0c50e136bd40c27cb60023cc58e22c\nhttps://git.kernel.org/stable/c/4a6dc313f9661f80e4ed43461d7ed5615c2450ca\nhttps://git.kernel.org/stable/c/d8917353966d1d5a486437dd0dd68a2cf8ecb136\nhttps://git.kernel.org/stable/c/7bc08d7f9338c9f9c09965e5d020591c793a80cb\nhttps://git.kernel.org/stable/c/2b3330cfc097db2d31f47ad09261967630270d66\nhttps://git.kernel.org/stable/c/8dc5ffcb8efcc01e44dd1ebc490eaae72de3fadf\nhttps://git.kernel.org/stable/c/24ce944721dcd92ae62e7a448d770e2a3e79f5fd\nhttps://git.kernel.org/stable/c/31b7c700670830a0e8a4cdcd451c88a13cc5dc48\n",
   "aliases": "CVE-2026-93108\nGHSA-v32w-6gxx-mfwq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "11694968-8364-3b74-990c-237a304fef57",
@@ -71,6 +71,16 @@
       "product_version": "b63b70d8774175b6f8393c495fe455f0fba55ce1 <24ce944721dcd92ae62e7a448d770e2a3e79f5fd"
     },
     {
+      "id": "6f87395b-3947-327d-b4f0-f35a11714134",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "703190cf-9ab4-3e2f-a471-fa13d37cb96c",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "b63b70d8774175b6f8393c495fe455f0fba55ce1 <8dc5ffcb8efcc01e44dd1ebc490eaae72de3fadf"
-    },
-    {
-      "id": "aef6d4e0-b528-3fdf-85eb-d34251ada1df",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b5d1a55e-7fd6-39fe-8e14-e43d19eec491",

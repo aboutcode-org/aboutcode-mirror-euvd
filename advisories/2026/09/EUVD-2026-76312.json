@@ -3,7 +3,7 @@
   "enisaUuid": "183aeda2-2315-3c88-9797-f5f3be06e7b9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderbolt: Mark the connection down when bringing it up fails\n\nEvery failure path in tbnet_connected_work() undoes its own work and\nreturns without clearing login_sent, so the connection still looks\nestablished. The next tbnet_tear_down() therefore takes its main branch\nand repeats a teardown that already happened: it stops rings that are\nalready stopped, which is a dev_WARN() and fatal under panic_on_warn,\nand it releases net->remote_transmit_path even on the HopID mismatch\npath, where this connection never owned that id, silently freeing one\nthat someone else is still using.\n\nClear login_sent on those paths. That is enough for tbnet_tear_down() to\nleave the unwound state alone, and login_received has to stay set: it\nrecords that the peer has logged in and carries the transmit path it gave\nus, which nothing on this side can make the peer send again. Two things\nchange beyond keeping the teardown out of the way: the logout request in\nthat block is no longer sent, and the peer's next login request now\nre-queues our login work rather than connected_work, giving the\nconnection a fresh login instead of a retry on stale state.",
   "datePublished": "Sep 11, 2026, 7:42:46 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:37 PM",
+  "dateUpdated": "Oct 19, 2026, 8:46:13 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -73,16 +73,6 @@
       "product_version": "4.15"
     },
     {
-      "id": "66add7ed-8c55-3954-8e86-cb45d82292cb",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "7a615dbb-5fe6-38e6-af2b-37b16143b63e",
       "product": {
         "name": "Linux",
@@ -91,6 +81,16 @@
         }
       },
       "product_version": "e69b6c02b4c3b8d03be7136f90dd9551ad5a5a5e <d6c0af293129345a17dc31c9b4179dc7f3d6af7a"
+    },
+    {
+      "id": "816fd743-ea08-37fe-a541-2f1dd7e9292d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "81e488d1-bb39-341d-8d22-7dea300c59d6",

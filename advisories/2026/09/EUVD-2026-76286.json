@@ -3,13 +3,23 @@
   "enisaUuid": "6144ef31-f45d-37aa-8827-f5e7bbebbcfb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-stats: fix a crash if allocation of per-cpu data fails\n\nIf \"dm_kvzalloc(percpu_alloc_size, cpu_to_node(cpu))\" fails, the code\njumps to the \"out\" label and calls dm_stat_free. dm_stat_free does\n\"for_each_possible_cpu(cpu) { dm_kvfree(s->stat_percpu[cpu][0].histogram,\ns->histogram_alloc_size);\", which crashes with NULL pointer dereference\nif s->stat_percpu[cpu] is NULL.\n\nThis commit fixes the bug by testing s->stat_percpu[cpu] for NULL before\nusing it.",
   "datePublished": "Sep 11, 2026, 7:42:29 PM",
-  "dateUpdated": "Sep 14, 2026, 11:59:09 AM",
+  "dateUpdated": "Oct 19, 2026, 8:45:47 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e45f0b0c41139810ff395ba2f3cfca1460a5b8a6\nhttps://git.kernel.org/stable/c/9805d87d0e26c68ee69da3928e665214d2e2851a\nhttps://git.kernel.org/stable/c/564d17573ef643c13cf6e9015124a205fa65e704\nhttps://git.kernel.org/stable/c/389a50d094e13724f5f45e6d9d6ef734c98ba291\nhttps://git.kernel.org/stable/c/c3f211b7a277dd404b4e7d23095be964b5b46a27\nhttps://git.kernel.org/stable/c/74210fa072960a18bb0eead487585452af722e4f\nhttps://git.kernel.org/stable/c/0c8f7870ed3ebd512f090d7714cc2c556b9e5c75\nhttps://git.kernel.org/stable/c/cc87e26d9cce22061dc21e51e11afef29dbbc36a\n",
   "aliases": "CVE-2026-80963\nGHSA-vfhr-8gq2-gpcv\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "1970e5ab-cee2-3aee-a89f-0fdb7e8ec229",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "25d74b5c-683a-3e17-93d0-6af557a6bc2c",
       "product": {
@@ -89,16 +99,6 @@
         }
       },
       "product_version": "fd2ed4d252701d3bbed4cd3e3d267ad469bb832a <e45f0b0c41139810ff395ba2f3cfca1460a5b8a6"
-    },
-    {
-      "id": "747e7cd3-db20-3c61-ac28-674135eb9d16",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "8ba4a9e4-12eb-3d02-b13c-11944a56916a",

@@ -3,7 +3,7 @@
   "enisaUuid": "e3761002-7662-3796-b7e5-3eed4e8e7bce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ip_vti: require CAP_NET_ADMIN in the device netns for changelink\n\nvti_changelink() operates on at most two netns, dev_net(dev) and the\ntunnel link netns t->net. They differ once the device is created in or\nmoved to a netns other than the one the request runs in. The rtnl\nchangelink path checks CAP_NET_ADMIN only against dev_net(dev), so a\ncaller privileged there but not in t->net can rewrite a tunnel that\nlives in t->net.\n\nGate vti_changelink() on rtnl_dev_link_net_capable() at its top,\nbefore any attribute is parsed.",
   "datePublished": "Aug 15, 2026, 5:52:10 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:18 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:25 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",

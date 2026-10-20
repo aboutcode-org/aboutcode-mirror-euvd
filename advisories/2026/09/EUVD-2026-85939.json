@@ -3,12 +3,12 @@
   "enisaUuid": "cbe912c9-7706-345a-8326-c75d13439f53",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: harden DFS cache against invalid target hints\n\nCurrently, get_tgt_name() returns ERR_PTR(-ENOENT) when ce->tgthint is\nNULL, and dfs_cache_noreq_update_tgthint() assumes ce->tgthint is always\nvalid.\n\nIn preparation for clearing ce->tgthint in free_tgts(), harden callers\nof get_tgt_name() against ERR_PTR results and harden\ndfs_cache_noreq_update_tgthint() against NULL pointer dereferences.",
   "datePublished": "Sep 24, 2026, 3:10:33 PM",
-  "dateUpdated": "Sep 25, 2026, 12:42:37 PM",
+  "dateUpdated": "Oct 19, 2026, 9:07:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a48328afbc3f63e3b9de8827e2e16c15b17976f7\nhttps://git.kernel.org/stable/c/6cb7f9fed8f40f28fbd464ca99c946951afc0952\nhttps://git.kernel.org/stable/c/66dbcdbb0cadffd12eb8f2b115fd57d384c5109d\nhttps://git.kernel.org/stable/c/846f0709559b9e27024e126a80bc7afb76516912\nhttps://git.kernel.org/stable/c/7e32da6047d9afdae8dd17b87b4c8d97363c4ee2\nhttps://git.kernel.org/stable/c/bf86c08123c6ab8c61cc0be1dad7540db93738ff\n",
   "aliases": "GHSA-whr7-9fmh-x37r\nCVE-2026-93210\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "13b86c65-380b-3ce7-a70c-a3536c402714",
@@ -51,6 +51,16 @@
       "product_version": "patch: 6.18.50"
     },
     {
+      "id": "82eaae66-4661-3564-a8cf-227309469cdc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "931f63b2-8335-31c7-9536-f1bd91422f51",
       "product": {
         "name": "Linux",
@@ -59,16 +69,6 @@
         }
       },
       "product_version": "patch: 6.1.188"
-    },
-    {
-      "id": "97ff7a79-e5b9-3f9b-b0f5-bc3d809ad2db",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "9e335ef8-59e1-3197-9e51-9b8ec4162ee5",

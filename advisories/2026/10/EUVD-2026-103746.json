@@ -3,7 +3,7 @@
   "enisaUuid": "53a67409-357b-3b19-88a0-bae347c18ec4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: do not dissolve gigantic pages without runtime support\n\ndissolve_free_hugetlb_folio() doesn't check\nhstate_is_gigantic_no_runtime(h) though remove_hugetlb_folio()/\nupdate_and_free_hugetlb_folio() silently bail for such folios, so it frees\na still-listed folio and, on vmemmap restore failure, the\nadd_hugetlb_folio() rollback corrupts the free list.",
   "datePublished": "Oct 18, 2026, 3:17:12 PM",
-  "dateUpdated": "Oct 18, 2026, 3:17:12 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:45 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ddc1055b557506a6ea8930dfbd8d1555d6a3f01e\nhttps://git.kernel.org/stable/c/ccf96a4b8626a001c13c5836d8357f31c57bbd8e\nhttps://git.kernel.org/stable/c/443628f755b35bf45044f68b970b65cd531c42fd\nhttps://git.kernel.org/stable/c/a363c62a653cc8b3e21da9545fa4e028ef50f9c3\n",
   "aliases": "CVE-2026-98506\nGHSA-rgpg-w634-4pfv\n",
@@ -41,14 +41,14 @@
       "product_version": "patch: 6.18.55"
     },
     {
-      "id": "912a35de-4665-350d-bf56-136664ff2137",
+      "id": "9ea45414-3c05-394e-9736-f2c5d2b09461",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc5"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ba121dd8-ac0e-390a-9430-e7fa912ff022",

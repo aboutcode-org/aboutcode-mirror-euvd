@@ -3,7 +3,7 @@
   "enisaUuid": "1b96e413-bcb5-3384-80bb-e182015687c5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix pdev reference leak in mtk_drm_bind()\n\nWhen the device is not the mmsys master, mtk_drm_bind() returns early\nafter taking a reference on the disp-mutex device via\nof_find_device_by_node(), without ever dropping it: mtk_drm_unbind()\nonly puts mutex_dev for the master. Drop the reference before returning\nfrom the non-master path.",
   "datePublished": "Oct 18, 2026, 3:48:18 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:18 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:34 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4a8f9cad0fced77b36b297c67c42730c9cb32ec6\nhttps://git.kernel.org/stable/c/b84f1386d84b3a73f73ebb416a3f97c5d64a8ab3\nhttps://git.kernel.org/stable/c/cb3e0244514d13507c6048777e1d0277e611cf6c\nhttps://git.kernel.org/stable/c/3753e34b73fcbe2a2edbe984614a008a261697ef\n",
   "aliases": "GHSA-3r3h-q9jp-47gf\nCVE-2026-98781\n",
@@ -21,14 +21,14 @@
       "product_version": "1ef7ed48356cd5f9af2b7671956991b658d8c2ba <4a8f9cad0fced77b36b297c67c42730c9cb32ec6"
     },
     {
-      "id": "272c3c6a-a1e0-3380-8974-dcde4be67e00",
+      "id": "39b891d4-b463-324b-b036-fe0296d51634",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "4c8f3686-38d2-3b59-b99e-10da7ee13d48",

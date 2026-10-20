@@ -3,7 +3,7 @@
   "enisaUuid": "76d9c277-91a6-3385-aa16-ff5c2f6057ed",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: file: Use kzalloc_flex for aio_cmd\n\nThe target_core_file doesn't initialize the aio_cmd->iocb for the\nki_write_stream. When a write command fd_execute_rw_aio() is executed,\nwe may get a bogus ki_write_stream value, causing unintended write\nfailure status when checking iocb->ki_write_stream > max_write_streams\nin the block device.\n\nLet's just use kzalloc_flex when allocating the aio_cmd and let\nki_write_stream=0 to fix this issue.",
   "datePublished": "May 1, 2026, 2:15:48 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:30 PM",
+  "dateUpdated": "Oct 19, 2026, 7:06:11 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

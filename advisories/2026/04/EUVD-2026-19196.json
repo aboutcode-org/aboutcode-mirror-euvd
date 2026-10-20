@@ -3,7 +3,7 @@
   "enisaUuid": "1d23e24e-b297-36dc-b4b7-d0b8d71606f0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: Fix use-after-free in sco_recv_frame() due to missing sock_hold\n\nsco_recv_frame() reads conn->sk under sco_conn_lock() but immediately\nreleases the lock without holding a reference to the socket. A concurrent\nclose() can free the socket between the lock release and the subsequent\nsk->sk_state access, resulting in a use-after-free.\n\nOther functions in the same file (sco_sock_timeout(), sco_conn_del())\ncorrectly use sco_sock_hold() to safely hold a reference under the lock.\n\nFix by using sco_sock_hold() to take a reference before releasing the\nlock, and adding sock_put() on all exit paths.",
   "datePublished": "Apr 6, 2026, 7:38:20 AM",
-  "dateUpdated": "Oct 16, 2026, 3:09:59 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:47 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

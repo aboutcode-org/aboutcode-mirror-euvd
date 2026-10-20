@@ -3,7 +3,7 @@
   "enisaUuid": "3fa995c7-8634-3125-bc1f-21cad05dca09",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Resize MST HDCP per-connector arrays to 32\n\nAMDGPU_DM_MAX_DISPLAY_INDEX is 31. It suggest a maximum number of\n32 connectors. But the way it's used is like MAX_DISPLAY_COUNT.\nHence we're off by one with DRM core, which supports a max of 32\nconnectors.\n\nRename AMDGPU_DM_MAX_DISPLAY_INDEX to AMDGPU_DM_MAX_DISPLAY_COUNT\nto match its actual use, and increase the size to 32 to match the\noriginally intended size.",
   "datePublished": "Sep 17, 2026, 4:08:17 PM",
-  "dateUpdated": "Oct 15, 2026, 10:10:48 AM",
+  "dateUpdated": "Oct 19, 2026, 9:01:07 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "5.15.128 <5.16"
-    },
-    {
-      "id": "7b054edf-58f3-3f4b-9bba-fe5730f5260f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "88b0f281-4f84-3295-a7a1-e3e73d0ad2f3",
@@ -131,6 +121,16 @@
         }
       },
       "product_version": "6.3"
+    },
+    {
+      "id": "f210a6fb-a6d3-31f5-94d0-e51086d6b9e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "5bcaa8fd-23f0-3fe6-b1db-e5b6537caab9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Prefer NLA_NUL_STRING\n\nThese attributes are evaluated as c-string (passed to strcmp), but\nNLA_STRING doesn't check for the presence of a \\0 terminator.\n\nEither this needs to switch to nla_strcmp() and needs to adjust printf fmt\nspecifier to not use plain %s, or this needs to use NLA_NUL_STRING.\n\nAs the code has been this way for long time, it seems to me that userspace\ndoes include the terminating nul, even tough its not enforced so far, and\nthus NLA_NUL_STRING use is the simpler solution.",
   "datePublished": "Jul 19, 2026, 2:04:48 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:08 PM",
+  "dateUpdated": "Oct 19, 2026, 8:07:52 PM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

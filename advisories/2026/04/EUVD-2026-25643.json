@@ -3,7 +3,7 @@
   "enisaUuid": "f4b0ef64-04b0-3878-873d-0d64eddca2e6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: only handle RESPONSE during service challenge\n\nOnly process RESPONSE packets while the service connection is still in\nRXRPC_CONN_SERVICE_CHALLENGING. Check that state under state_lock before\nrunning response verification and security initialization, then use a local\nsecured flag to decide whether to queue the secured-connection work after\nthe state transition. This keeps duplicate or late RESPONSE packets from\nre-running the setup path and removes the unlocked post-transition state\ntest.",
   "datePublished": "Apr 25, 2026, 8:46:52 AM",
-  "dateUpdated": "Oct 16, 2026, 3:20:23 PM",
+  "dateUpdated": "Oct 19, 2026, 6:56:04 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

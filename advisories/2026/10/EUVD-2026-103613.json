@@ -3,7 +3,7 @@
   "enisaUuid": "284affdf-cbb2-3a7c-a209-c07661056f47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use one headroom snapshot for neighbour replies\n\nvxlan_na_create() samples LL_RESERVED_SPACE() to size the reply skb and then\nsamples it again to reserve headroom. A concurrent vxlan_changelink() can\nupdate needed_headroom between the two reads, creating a TOCTOU race. The\nsecond value can exceed the allocation and make the Ethernet header write out\nof bounds.\n\nThe race is reproducible on the unpatched kernel. It occurred when\nvxlan_na_create() generated a neighbour reply while vxlan_changelink() changed\nthe link headroom. KASAN caught a four-byte write two bytes beyond a 704-byte\nskbuff_small_head allocation.\n\nSnapshot the headroom once and use that value for both allocation and\nreservation.",
   "datePublished": "Oct 18, 2026, 3:18:34 PM",
-  "dateUpdated": "Oct 18, 2026, 3:18:34 PM",
+  "dateUpdated": "Oct 19, 2026, 9:21:53 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/45a67662bf8ce3aa5643accf98d328dfbb47eaf6\nhttps://git.kernel.org/stable/c/315d42ca39f69846662961c25dcf2bb07c350d14\nhttps://git.kernel.org/stable/c/a3c5eb6e382dd426a5e7eb08608897ed57167ff7\nhttps://git.kernel.org/stable/c/ff022fd9d0f0282c575e11778b96bd1b637503eb\nhttps://git.kernel.org/stable/c/481506a756dcd828ef42391cb08f38d8d96d38fc\n",
   "aliases": "CVE-2026-98568\nGHSA-489c-q3cc-mm5r\n",
@@ -49,16 +49,6 @@
         }
       },
       "product_version": "4b29dba9c085a4fb79058fb1c45a2f6257ca3dfa <315d42ca39f69846662961c25dcf2bb07c350d14"
-    },
-    {
-      "id": "649c6551-9d27-317d-92f5-0c61286e073c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "67b905c3-d5f3-3ee5-9d9d-b358b3f08798",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "patch: 7.2.9"
+    },
+    {
+      "id": "cafb82f0-3606-30bc-8410-0cda3abc3047",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d4f1616d-9a0a-31b0-839b-690273ea72b5",

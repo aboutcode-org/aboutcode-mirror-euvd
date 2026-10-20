@@ -3,7 +3,7 @@
   "enisaUuid": "278b0f98-ba8b-3005-b809-f7e72653f6f9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: save ailp before dropping the AIL lock in push callbacks\n\nIn xfs_inode_item_push() and xfs_qm_dquot_logitem_push(), the AIL lock\nis dropped to perform buffer IO. Once the cluster buffer no longer\nprotects the log item from reclaim, the log item may be freed by\nbackground reclaim or the dquot shrinker. The subsequent spin_lock()\ncall dereferences lip->li_ailp, which is a use-after-free.\n\nFix this by saving the ailp pointer in a local variable while the AIL\nlock is held and the log item is guaranteed to be valid.",
   "datePublished": "Apr 22, 2026, 1:53:48 PM",
-  "dateUpdated": "Oct 16, 2026, 3:20:11 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:49 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

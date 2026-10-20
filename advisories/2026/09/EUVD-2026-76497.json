@@ -3,14 +3,14 @@
   "enisaUuid": "dbbc6b8b-62e7-3daf-a714-403ba4f6b7b2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nauxdisplay: charlcd: cancel backlight work on registration failure\n\nWith CONFIG_CHARLCD_BL_FLASH, charlcd_init() schedules bl_work before\ncharlcd_register() calls misc_register(). If registration fails, the\ncaller frees the charlcd object while delayed work still contains its\naddress.\n\nAdd charlcd_deinit() to cancel the delayed work and turn the backlight\noff. Use it for both registration rollback and normal unregistration.",
   "datePublished": "Sep 11, 2026, 7:44:50 PM",
-  "dateUpdated": "Sep 14, 2026, 12:01:12 PM",
+  "dateUpdated": "Oct 19, 2026, 8:49:17 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cd97b3c68fe3c06c8067cc59d7dff976c5b7ea04\nhttps://git.kernel.org/stable/c/22586432c1aba89d9bd33f3173408dac830f220b\nhttps://git.kernel.org/stable/c/6eaed64a32e550daf0dc9549742b3ab9e41d984f\nhttps://git.kernel.org/stable/c/fe7ba73dde94c5f413b1588cd444b49105015dda\nhttps://git.kernel.org/stable/c/84858671842ae5857b9ed1202b62f9045373dcd1\nhttps://git.kernel.org/stable/c/ff2fb3c1e60cb247ea3e28c0ea0bea81c18f7755\nhttps://git.kernel.org/stable/c/e3e3bf40916c1e810df03958cfa7ba6883cdce79\n",
   "aliases": "GHSA-72rp-5pw2-wrgc\nCVE-2026-89585\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0363fb63-3ed0-3945-9783-717ef65433ce",
@@ -103,6 +103,16 @@
       "product_version": "patch: 6.6.157"
     },
     {
+      "id": "6727a55c-820c-3d43-8d0c-239216982e70",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "711aa2eb-6fc5-326f-8baf-cb3585d2c2ee",
       "product": {
         "name": "Linux",
@@ -111,16 +121,6 @@
         }
       },
       "product_version": "patch: 5.15.221"
-    },
-    {
-      "id": "8a91c556-ec40-3d0a-82ac-9b228f1e1ec1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "b43ac229-5fc1-3bbe-b4b8-c71829fc93e2",

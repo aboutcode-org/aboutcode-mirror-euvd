@@ -3,12 +3,12 @@
   "enisaUuid": "66b435ef-7e41-3a96-9b7e-2c7c0376868a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: force complete the KIQ ring fences on reset\n\nLike the MES scheduler ring, the KIQ ring sets no_scheduler = true and uses a\npolling fence, so it is skipped by the force-completion loop in\namdgpu_device_pre_asic_reset(). Its hw fence value lives in wb (GTT) memory and\nsurvives a MODE1 reset while fence_drv.sync_seq keeps advancing, so after a\nreset the first KIQ submission can poll forever on a seq that is never written\nback.\n\nForce complete the KIQ ring fences too so their hw fence is realigned to\nsync_seq.",
   "datePublished": "Sep 16, 2026, 10:30:46 AM",
-  "dateUpdated": "Oct 15, 2026, 10:10:06 AM",
+  "dateUpdated": "Oct 19, 2026, 8:53:07 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c26cbd5c33cd72daa03079235de60688a3c97c52\nhttps://git.kernel.org/stable/c/bdd6a58743e00ebc6d52b9cdf9aafb4e535e0b71\nhttps://git.kernel.org/stable/c/fd65d1742992361fc2201ecb4e43411e6e417fcb\n",
   "aliases": "CVE-2026-89813\nGHSA-r5wm-5xw8-prj5\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "23cb780c-08dd-3f40-a958-2d4180ef80c9",
@@ -51,14 +51,14 @@
       "product_version": "patch: 7.2.5"
     },
     {
-      "id": "4ee2fb23-0fe3-3b16-96ae-724ff99db7e0",
+      "id": "5035542d-625f-3cc8-8e37-3cfaf6e267d2",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "995afae7-b17a-35fa-a32f-d3014bacebef",

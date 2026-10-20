@@ -3,7 +3,7 @@
   "enisaUuid": "e2b65a02-4c60-3292-a59b-a87839837e24",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Validate GPIO pin LUT table size before iterating\n\n[Why&How]\nThe GPIO pin table parsers in get_gpio_i2c_info() and\nbios_parser_get_gpio_pin_info() derive an element count from the VBIOS\ntable_header.structuresize field, then iterate over gpio_pin[] entries.\nHowever, GET_IMAGE() only validates that the table header itself fits\nwithin the BIOS image. If the VBIOS reports a structuresize larger than\nthe actual mapped data, the loop reads past the end of the BIOS image,\ncausing an out-of-bounds read.\n\nFix this by calling bios_get_image() to validate that the full claimed\nstructuresize is accessible within the BIOS image before entering the\nloop in both functions.\n\n(cherry picked from commit ba5e95b43b773ae1bf1f66ee6b31eb774e65afe3)",
   "datePublished": "Jul 19, 2026, 3:40:03 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:21 PM",
+  "dateUpdated": "Oct 19, 2026, 8:28:11 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

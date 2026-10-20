@@ -3,7 +3,7 @@
   "enisaUuid": "7cf4e888-6e96-3cd4-bddc-f54d24ecf2e7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: bq256xx: drain usb_work before freeing the charger\n\nThe USB-PHY notifier queues usb_work, whose handler calls\npower_supply_changed(bq->charger). The reset devm action only unregisters\nthe notifier and was registered before the power supplies, so devm frees\nbq->charger on unwind before the action runs; a usb_work still queued can\nthen dereference it.\n\nRegister the reset action after the power supplies, so it unregisters\nthe notifiers and drains usb_work before the supplies are released.\nInitialize usb_work and obtain the PHY references before registering\nthe notifiers, so the worker cannot run before the supplies exist.\n\nFound by static analysis.",
   "datePublished": "Sep 11, 2026, 7:43:31 PM",
-  "dateUpdated": "Sep 14, 2026, 12:00:10 PM",
+  "dateUpdated": "Oct 19, 2026, 8:47:23 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9dcfdf6c598301b278f0b3490eb2bf4f600524e2\nhttps://git.kernel.org/stable/c/fd08d4dbbec07a44f01b0ddb041912be0dc88f8c\nhttps://git.kernel.org/stable/c/2cfb59dc9df8b5ebdd95e3d874a7f4690cee2bc8\nhttps://git.kernel.org/stable/c/9a467bd1e6811011026ad4c8de701b940d88a00c\nhttps://git.kernel.org/stable/c/9e1aba34df9a87d53460888e05718717c0f69343\nhttps://git.kernel.org/stable/c/c8addb842ae8dcf69c15fc976e33e3bd538a41d7\nhttps://git.kernel.org/stable/c/2dd6cd823777bea6d9a880a12a92a73ec76aee0b\n",
   "aliases": "CVE-2026-89474\nGHSA-542v-8xr4-x59m\n",
@@ -51,14 +51,14 @@
       "product_version": "5.12"
     },
     {
-      "id": "5174911d-05fd-3269-bfa4-4f8981b2dc25",
+      "id": "4e8dd890-ba65-3fcf-aa92-9fe59c6ea85e",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "6658e982-48a7-37b3-bb1a-59c6cdb00ac3",

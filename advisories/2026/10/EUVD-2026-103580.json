@@ -3,13 +3,23 @@
   "enisaUuid": "9bbb9e8f-036c-39ae-b2ca-0d18780058b3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfsl/fman: Fix clk reference leak in read_dts_node()\n\nof_clk_get() returns a clock with its reference count incremented, but\nread_dts_node() only uses it to read the rate and never calls clk_put().\nThe clock is not stored anywhere, so the reference cannot be released\nlater either.\n\nRelease the clock once its rate has been read, which also covers the\nerror path taken when the rate is zero.",
   "datePublished": "Oct 18, 2026, 3:17:58 PM",
-  "dateUpdated": "Oct 18, 2026, 3:17:58 PM",
+  "dateUpdated": "Oct 19, 2026, 9:21:18 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/874fd58b321a9238e47c2a46345444287f2a5781\nhttps://git.kernel.org/stable/c/c2edf376d7804279878b207d93ffe6009c8d3d29\nhttps://git.kernel.org/stable/c/5c90f99ba74b55ddd8e919224921033cc4077f01\nhttps://git.kernel.org/stable/c/e560bdf62b11dcaa2a018345f76869d89ed43a9e\nhttps://git.kernel.org/stable/c/9fd6d0861ae2fd44c771d6bc93b29bbc1202fe8e\nhttps://git.kernel.org/stable/c/c2a5e591858629b6c0e284010d2ccdbc22fd0a43\nhttps://git.kernel.org/stable/c/cb52f9f188c3174761ad3b37db9de751e002b52c\nhttps://git.kernel.org/stable/c/a644f09b2090ad22a13fbcf9d141084f573108ef\n",
   "aliases": "CVE-2026-98535\nGHSA-qmfm-wg2c-j3hg\n",
   "assigner": "Linux",
   "epss": 0.0,
   "enisaIdProduct": [
+    {
+      "id": "19ddaa1f-5814-3e36-a096-e917ae4614c4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
     {
       "id": "1a2b3c6f-22bd-3c60-bf97-b527a2adc4d9",
       "product": {
@@ -19,16 +29,6 @@
         }
       },
       "product_version": "patch: 7.2.9"
-    },
-    {
-      "id": "2b2a30f8-7a43-3cf7-b3ff-2d098ede4748",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "2d62df05-7091-313f-9e27-5c9bbce41f75",

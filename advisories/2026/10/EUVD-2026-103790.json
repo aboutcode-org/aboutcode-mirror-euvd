@@ -3,7 +3,7 @@
   "enisaUuid": "7eda2ab0-2db7-3a75-9199-73ab7e709bf2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/packet: prevent TX_RING byte count overflow\n\ntpacket_snd() drains every SEND_REQUEST frame in a TX ring and adds\neach valid packet length to the signed int len_sum. Userspace can\nrecycle completed frames concurrently, so a single blocking send call\nis not bounded by the ring size.\n\nAfter enough successful transmissions len_sum wraps into the negative\nrange. In particular, 65536 65535-byte frames followed by a 65007-byte\nframe produce 0xfffffdef, or -EIOCBQUEUED. sock_sendmsg_nosec() treats\nthat as an impossible return and triggers a BUG. On systems configured\nto panic on oops, a CAP_NET_RAW holder can panic the host kernel.\n\nStop before the next frame would make the byte count exceed INT_MAX.\nThe positive short count leaves that frame pending for a later send\ncall.\n\nA two-thread TPACKET_V2 reproducer triggered the BUG on an arm64 build\nof Linux 7.3-rc4. With this change, the same reproducer returned the\nexpected positive short count without an oops.",
   "datePublished": "Oct 18, 2026, 3:50:50 PM",
-  "dateUpdated": "Oct 18, 2026, 3:50:50 PM",
+  "dateUpdated": "Oct 19, 2026, 9:26:45 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/be12b221c0301111eeb023be04add3c6ad7c21fe\nhttps://git.kernel.org/stable/c/69ca64bbb528898916f309552053c32a04a36ebc\nhttps://git.kernel.org/stable/c/9fd63d284e251332f4874ef9023cde472f315f86\nhttps://git.kernel.org/stable/c/2cf81fc9505b148b1b70068303ea6ea4b1212403\n",
   "aliases": "CVE-2026-98850\nGHSA-prpm-w567-3rvc\n",
@@ -71,16 +71,6 @@
       "product_version": "patch: 7.2.10"
     },
     {
-      "id": "d8e4ed26-c8d4-3306-a6fb-e9127babc022",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "e5f4be29-ac9e-3932-b710-8ade120746f8",
       "product": {
         "name": "Linux",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "ffe5c88c-8c97-3a14-b234-8fc5ab9fc0e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

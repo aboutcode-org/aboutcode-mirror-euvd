@@ -3,7 +3,7 @@
   "enisaUuid": "3d23b13b-0a23-3506-b668-ef47314d44cc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: fix use-after-free of the flow table mask array\n\ntbl_mask_array_realloc() retires the old mask_array before it stops being\nreachable:\n\n\told = ovsl_dereference(tbl->mask_array);\n\tif (old) {\n\t\t...\n\t\tcall_rcu(&old->rcu, mask_array_rcu_cb);\n\t}\n\n\trcu_assign_pointer(tbl->mask_array, new);\n\ncall_rcu() only waits for read-side critical sections already in flight.\ntbl->mask_array still points at old between the call_rcu() and the\nrcu_assign_pointer(), so a reader entering ovs_flow_tbl_lookup_stats() in\nthat window picks up old in a fresh critical section that the pending\ngrace period does not cover.\n\ntbl_mask_array_realloc() runs in process context under ovs_mutex, so the\nwindow is preemptible and can outlast the grace period. Then\nmask_array_rcu_cb() frees old before the swap runs:\n\n  BUG: KASAN: slab-use-after-free in flow_lookup.constprop.0+0x2bf/0x2f0\n  Read of size 8 at addr ffff888020b3e018 by task poc/741\n   flow_lookup.constprop.0+0x2bf/0x2f0\n   ovs_flow_tbl_lookup_stats+0x4a3/0x5c0\n   ovs_dp_process_packet+0x19c/0x710\n   ovs_vport_receive+0x243/0x390\n   internal_dev_xmit+0x81/0x170\n  Freed by task 728:\n   kfree+0x16a/0x4e0\n   rcu_core+0x853/0x1030\n\nPublish the new array before retiring the old one. The kfree_rcu() that\ncall_rcu() replaced ran after the swap.",
   "datePublished": "Sep 25, 2026, 10:22:20 AM",
-  "dateUpdated": "Oct 3, 2026, 11:00:13 AM",
+  "dateUpdated": "Oct 19, 2026, 9:10:15 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 5.15.222"
+    },
+    {
+      "id": "1b803fe8-a9db-3df4-b1e4-81feb09430c9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "1cb65408-2883-3c62-a7a6-defeba8dfff9",
@@ -171,16 +181,6 @@
         }
       },
       "product_version": "eac87c413bf9794c14d488998a5265ea5b32f04e <4016ead17acd75312c066ecd47c4b7f0a81ceaa2"
-    },
-    {
-      "id": "c8237b28-cf59-3a15-b17c-cd696eafc945",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "d4b80aac-8558-376c-aaf4-2a585efb1ce2",

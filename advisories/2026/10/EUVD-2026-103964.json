@@ -3,7 +3,7 @@
   "enisaUuid": "25fd88ba-13d5-32b1-bdea-83fdad91d628",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlegacy: 3945: free EEPROM data on remove\n\nil3945_pci_probe() calls il_eeprom_init(), which allocates memory for\nthe EEPROM data. The probe failure paths release this allocation with\nil_eeprom_free(), but the remove path does not free it after a\nsuccessful probe.\n\nAs a result, the EEPROM data is leaked when the PCI device is removed.\n\nFree the EEPROM data in il3945_pci_remove() before releasing the\nmac80211 hardware structure.\n\nThis issue was found by manual code inspection.",
   "datePublished": "Oct 18, 2026, 3:46:40 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:40 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ab7bee2cd55f665cb29fa0ace2ec14020e0a452e\nhttps://git.kernel.org/stable/c/cd8f8f45d81aac384311701d7ffe26567af2e783\nhttps://git.kernel.org/stable/c/89f9d6186dc7429f38132635526e28549c913c0b\nhttps://git.kernel.org/stable/c/f8ebe286394c0bbb4a6dbacb182a34ab6376922d\n",
   "aliases": "GHSA-8m9r-p559-452q\nCVE-2026-98710\n",
@@ -71,14 +71,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "8d79f564-1d87-3b71-bdfb-f15a13df72d9",
+      "id": "7c8889c5-eb90-3cb1-8f9b-8853f5e96771",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc6"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "c599e413-b14c-328f-b8b8-fd00f6de7f75",

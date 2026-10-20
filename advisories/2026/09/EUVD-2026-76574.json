@@ -3,7 +3,7 @@
   "enisaUuid": "1d9f0fb7-1df2-3719-8567-f73b753a65df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Prevent lock owner use-after-free during client teardown\n\n__destroy_client() releases a client's open owners, but a lock owner\nwhose only reference is a blocked lock (nbl) stays on\ncl_ownerstr_hashtbl.  client_has_state() does not count a bare owner,\nso DESTROY_CLIENTID can reach __destroy_client() with such owners\npresent.\n\n__destroy_client() then walks the table, calling remove_blocked_locks()\non each owner without a reference.  Freeing a blocked lock drops the\nowner reference held via flc_owner.  The per-net laundromat reaps\nblocked locks from nn->blocked_locks_lru independently of client state.\nThe two paths share blocked_locks_lock only for the list splice, not\nthe owner's lifetime.  The laundromat therefore frees the owner as\n__destroy_client() dereferences it, a NULL dereference in\nremove_blocked_locks().\n\nnfsd4_release_lockowner() holds a reference across the same call;\n__destroy_client() does not.  Hold cl_lock across the walk, taking a\nreference and unhashing each owner, then drop it before\nremove_blocked_locks() and nfs4_put_stateowner(), which take\nblocked_locks_lock and cl_lock.",
   "datePublished": "Sep 11, 2026, 7:45:49 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:47 PM",
+  "dateUpdated": "Oct 19, 2026, 8:50:33 AM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -83,6 +83,16 @@
       "product_version": "68ef3bc3166468678d5e1fdd216628c35bd1186f <1ce74d1b7770e69735e8f8e509807af4ff9c8ee7"
     },
     {
+      "id": "37b4c672-41af-37e3-954d-5fe2dca040b0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "39cc5a49-0c49-3cb2-9f6d-dfb0f38469d4",
       "product": {
         "name": "Linux",
@@ -151,16 +161,6 @@
         }
       },
       "product_version": "68ef3bc3166468678d5e1fdd216628c35bd1186f <a6ead6fff3a7d03e49845f048f7000a2e0d34431"
-    },
-    {
-      "id": "7b301ef0-3707-3d4e-8f12-0b3982a36e6b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "7d1facb1-4500-34a2-a89f-f897010c72df",

@@ -3,7 +3,7 @@
   "enisaUuid": "9acbacc7-25c7-33d1-ad67-d99d899d3e04",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: skip expired catchall elements on insert and delete\n\nnft_setelem_catchall_insert() looks up duplicates with\nnft_set_elem_active() only, while nft_set_catchall_lookup() and the\ndump path additionally skip expired elements.\n\nOnce a catchall element with a timeout expires, this predicate drift\nmakes it invisible to userspace dumps, yet it still blocks\nre-insertion: with NLM_F_EXCL the request fails with -EEXIST, and\nwithout it the request reports success but silently inserts nothing.\nThe stale entry only goes away when the (user-tunable) gc interval\nelapses, so the catchall rule may silently stop matching for an\narbitrarily long time after its first expiration.\n\nThe delete path shows the same drift: nft_setelem_catchall_deactivate()\npicks the first active-next entry in the catchall list, so with an\nexpired entry still pending GC it retires the stale entry instead of\nthe fresh one, and it deactivates an element that userspace no longer\nsees instead of failing with -ENOENT.\n\nAlign both walks with the lookup and dump predicates: only an element\nthat is active and not expired counts as a duplicate or delete\ncandidate, using the per-netns timestamp taken at transaction start,\nin line with the set backend .insert/.deactivate and catchall GC sync\npaths.",
   "datePublished": "Oct 18, 2026, 3:15:58 PM",
-  "dateUpdated": "Oct 18, 2026, 3:15:58 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:21 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/2f07da3881525f7cbfed1ced2796c71a201505b9\nhttps://git.kernel.org/stable/c/12cf803edfffef96f6415f0b5dbc7ec88842ea0f\nhttps://git.kernel.org/stable/c/4fb8b1ccc475651e480e509de126bb9ce7f3cff9\nhttps://git.kernel.org/stable/c/70194dc37670bd08e44b471389861cc01bd3a3c9\n",
   "aliases": "GHSA-j4h7-w628-h5g3\nCVE-2026-98484\n",
@@ -91,14 +91,14 @@
       "product_version": "patch: 6.12.112"
     },
     {
-      "id": "c7deec5d-3413-3c08-a39c-c5da1a318507",
+      "id": "9809056f-8de1-341d-b1b0-f87237077bba",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc5"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "d3af9060-29b5-3aa0-bac0-471e582f2d81",

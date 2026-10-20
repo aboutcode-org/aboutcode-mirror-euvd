@@ -3,7 +3,7 @@
   "enisaUuid": "ead232b2-a1a5-346a-87a2-11e33a8463a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix heap overflow in DACL owner/group rewrite\n\nWhen id_mode_to_cifs_acl rewrites an existing DACL, it allocates a\nbuffer sized according to the on-disk DACL length reported by\ndacl_ptr->size. However, replace_sids_and_copy_aces may rewrite each\nACE with a new owner/group SID obtained from the cifs.idmap upcall.\nThose SIDs can have up to SID_MAX_SUB_AUTHORITIES (15) sub-authorities,\nmaking each ACE up to 76 bytes (sizeof(struct smb_ace)).\n\nIf the original DACL contains short SIDs (e.g., 1 sub-authority) while\nthe replacement SIDs are long, the rewritten ACEs overflow the\nallocation.\n\nFix this by always budgeting for worst-case SID expansion: allocate\nsizeof(struct smb_acl) plus num_aces * sizeof(struct smb_ace), which\ncovers the smb_acl header and room for every ACE at maximum SID size.\nThis replaces the previous split logic that used dacl_ptr->size for\ncifsacl mounts but num_aces * sizeof(struct smb_ace) for mode_from_sid\nmounts: both paths can trigger the same rewrite and need the same\nheadroom.\n\nKASAN reports this as:\n  BUG: KASAN: slab-out-of-bounds in build_sec_desc+0x1e8a/0x2680 [cifs]\n  Write of size 4 at addr ffff8881a5e25374 by task chown/5298\n  ...\n  The buggy address is located 0 bytes to the right of\n   allocated 884-byte region [ffff8881a5e25000, ffff8881a5e25374)",
   "datePublished": "Sep 25, 2026, 10:21:46 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:35 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:18 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "bc3e9dd9d104ca1b75644eab87b38ce8a924aef4 <0ee150794c75bcd0be0e24ff3394f433cbae18cc"
+    },
+    {
+      "id": "14b42f9d-8edd-3202-8fc1-d71d19bed614",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "14d6e5a7-e5ea-3be9-ab8f-09a387e9572e",
@@ -91,16 +101,6 @@
         }
       },
       "product_version": "5.12"
-    },
-    {
-      "id": "a03e9176-91bb-37de-a423-097ae0d8a5ab",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "b34a6b7d-58da-3c4a-965f-66f7a0d3d796",

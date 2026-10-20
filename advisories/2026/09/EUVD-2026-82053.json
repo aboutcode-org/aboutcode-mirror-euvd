@@ -3,14 +3,14 @@
   "enisaUuid": "3eec8331-54b0-32a3-961c-9d9fab89b246",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix potential UAF when reading bpf link info\n\nIn bpf_link_show_fdinfo and bpf_link_get_info_by_fd, link->prog is\naccessed without holding any locks. If the prog is concurrently replaced\nvia bpf_link_update, the old prog can be freed, leading to a potential\nUAF issue.\n\nFix this by accessing link->prog under RCU protection to safely fetch\nthe pointer and guarantee its lifetime while reading its fields.",
   "datePublished": "Sep 17, 2026, 4:09:25 PM",
-  "dateUpdated": "Sep 18, 2026, 5:55:04 PM",
+  "dateUpdated": "Oct 19, 2026, 9:02:56 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a5c936ac904767fc1d943d40b0308bcb2ae2509b\nhttps://git.kernel.org/stable/c/d7d7208e2603b45724b684f4df73904fb347741e\nhttps://git.kernel.org/stable/c/85cf991c881e7198be32be05a9daa2625390c8b3\nhttps://git.kernel.org/stable/c/79347e42cfbc9e78872922e8f08a70609c9af82f\nhttps://git.kernel.org/stable/c/863f3ddd0b8ac65abfb50d3be0869268ac0e277b\n",
   "aliases": "CVE-2026-90392\nGHSA-crrx-xc5g-xqgw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "05b3bf29-a8dd-3a40-ad90-b9caae8b5bbd",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 7.2.6"
+    },
+    {
+      "id": "09dfb657-d872-3d24-a164-9dc8d1b7b850",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "594a00c2-3a22-3c46-a568-602cc9d610da",
@@ -111,16 +121,6 @@
         }
       },
       "product_version": "0c991ebc8c69d29b7fc44db17075c5aa5253e2ab <79347e42cfbc9e78872922e8f08a70609c9af82f"
-    },
-    {
-      "id": "ddee7a3c-11f1-386e-89db-f43fad1a0bb9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "fbc34b27-a566-33e7-8369-3d12606a339f",

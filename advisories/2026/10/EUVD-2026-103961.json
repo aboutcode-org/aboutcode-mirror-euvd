@@ -3,7 +3,7 @@
   "enisaUuid": "8b11acc5-69ae-385a-8909-0162390774e4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: shut down RX BA session timer on teardown\n\nTearing down an RX BA session can leave the session timer queued on a\nfreed tid_rx. Later timer-wheel processing and the timer callback itself\nthen run against freed memory.\n\nAn RX BAR handler can dereference tid_rx under RCU before teardown\nunpublishes it and stay in its read-side critical section while teardown\ndeletes the session timer. The stale handler can then rearm the timer\nafter timer_delete_sync() returns and before the RCU callback frees\ntid_rx.\n\nUse timer_shutdown_sync() so rearm attempts become ineffective once\nteardown starts. Keep reorder_timer unchanged: teardown marks the session\nremoved under reorder_lock and its release path checks that state before\nrearming. session_timer has no equivalent guard because\nieee80211_rx_h_ctrl() rearms it before taking reorder_lock.",
   "datePublished": "Oct 18, 2026, 3:46:37 PM",
-  "dateUpdated": "Oct 18, 2026, 3:46:37 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:18 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/7bb2a5bd4f07192fca35644fab7d49a17bfbc861\nhttps://git.kernel.org/stable/c/481f9230284c27052b59c587069f232c5d84779e\nhttps://git.kernel.org/stable/c/09b7d5e4f88504e62ddf4ff31ebeebb3b87578ba\nhttps://git.kernel.org/stable/c/e588e83e5c7a0f6d7a77dbbb58927c8c8cfd598e\n",
   "aliases": "GHSA-8mvq-3rmc-c8vm\nCVE-2026-98707\n",
@@ -31,16 +31,6 @@
       "product_version": "a87f736d942c86255e3088c606f0e3eab6bbf784 <09b7d5e4f88504e62ddf4ff31ebeebb3b87578ba"
     },
     {
-      "id": "20857ebe-a105-3a9b-97b1-cc23b632ba72",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "547afd57-645e-35cf-b162-c9bb837acf7f",
       "product": {
         "name": "Linux",
@@ -49,6 +39,16 @@
         }
       },
       "product_version": "a87f736d942c86255e3088c606f0e3eab6bbf784 <e588e83e5c7a0f6d7a77dbbb58927c8c8cfd598e"
+    },
+    {
+      "id": "68ca91d4-b083-37b7-b74a-7a44f57dab04",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "74b7ab11-3def-39af-9149-da2916bea75e",

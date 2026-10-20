@@ -3,14 +3,14 @@
   "enisaUuid": "8c51cfae-5ff5-31b2-b4fb-f16167e71325",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmacvlan: fix possible UAF in macvlan_forward_source()\n\nAdd RCU protection on (struct macvlan_source_entry)->vlan.\n\nWhenever macvlan_hash_del_source() is called, we must clear\nentry->vlan pointer before RCU grace period starts.\n\nThis allows macvlan_forward_source() to skip over\nentries queued for freeing.\n\nNote that macvlan_dev are already RCU protected, as they\nare embedded in a standard netdev (netdev_priv(ndev)).\n\nhttps: //lore.kernel.org/netdev/695fb1e8.050a0220.1c677c.039f.GAE@google.com/T/#u",
   "datePublished": "Jan 25, 2026, 2:36:15 PM",
-  "dateUpdated": "Aug 5, 2026, 12:20:04 PM",
+  "dateUpdated": "Oct 19, 2026, 6:25:27 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/8133e85b8a3ec9f10d861e0002ec6037256e987e\nhttps://git.kernel.org/stable/c/484919832e2db6ce1e8add92c469e5d459a516b5\nhttps://git.kernel.org/stable/c/232afc74a6dde0fe1830988e5827921f5ec9bb3f\nhttps://git.kernel.org/stable/c/15f6faf36e162532bec5cc05eb3fc622108bf2ed\nhttps://git.kernel.org/stable/c/8518712a2ca952d6da2238c6f0a16b4ae5ea3f13\nhttps://git.kernel.org/stable/c/6dbead9c7677186f22b7981dd085a0feec1f038e\nhttps://git.kernel.org/stable/c/7470a7a63dc162f07c26dbf960e41ee1e248d80e\n",
   "aliases": "GHSA-vgc7-m4r9-xw45\nCVE-2026-23001\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "07f98221-6140-3cae-9c40-3458e2033ffd",

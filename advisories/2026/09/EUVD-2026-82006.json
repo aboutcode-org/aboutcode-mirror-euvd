@@ -3,12 +3,12 @@
   "enisaUuid": "af042968-147d-3624-9c50-ef4fe06818ea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix P2P action frame handling without device vif\n\nSome P2P action frame paths assume the P2P device vif is always\navailable. That is not true when userspace sends non-P2P public action\nframes through the primary interface, or when action-frame abort runs\nafter the P2P device vif has not been created.\n\nFall back to the primary vif when aborting an action frame without a P2P\ndevice vif, and guard P2P device saved IE access before using it for\npeer channel search.",
   "datePublished": "Sep 17, 2026, 4:08:54 PM",
-  "dateUpdated": "Oct 15, 2026, 10:11:01 AM",
+  "dateUpdated": "Oct 19, 2026, 9:02:02 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f334b26b884dff5d0a558dc464fa55f300868a68\nhttps://git.kernel.org/stable/c/f26e1b16904555e171292e183c3cfc1c38159fc5\nhttps://git.kernel.org/stable/c/1b1edb9ebed49099bdc924cef49a9aea8b552199\n",
   "aliases": "CVE-2026-90345\nGHSA-4cvp-2fxw-jr85\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "104b1b80-cc44-320d-b28b-622f7e55043e",
@@ -41,6 +41,16 @@
       "product_version": "6eda4e2c54255cd26a58d2fcec73ec3bff7a515b <1b1edb9ebed49099bdc924cef49a9aea8b552199"
     },
     {
+      "id": "431a53cc-cba2-32d6-8bd0-55367a6e5aa8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "4a27f649-ab24-3280-874f-da4739368ee4",
       "product": {
         "name": "Linux",
@@ -59,16 +69,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "8c4d8d5e-5893-3abb-b838-9b5f07b791e9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "afc5ad44-22f5-3a59-9a8d-b60713d40a67",

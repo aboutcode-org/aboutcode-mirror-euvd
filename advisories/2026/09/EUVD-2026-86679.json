@@ -3,7 +3,7 @@
   "enisaUuid": "55cb885a-5427-3834-bcaa-c738c7617c05",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: mcast: properly convert mglist to rcu\n\nSashiko reported a bug [1] that br_multicast_del_port_group unlists the\nport group not using proper rcu helper that preserves the next pointer and\nafter that immediately frees the port group without waiting for rcu grace\nperiod. The only rcu walker of mglist is br_multicast_list_adjacent() and\nit turns out that function has always been buggy because mglist was never\nproperly converted to RCU. Fix it by converting it to rcu and moving its\ninitialization after eth_addr's. Initializing p->next can use\nRCU_INIT_POINTER because we have a barrier from the hlist_add_head_rcu call\nlater, besides we're initializing an unpublished structure anyway.\n\n[1] https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260826014200.362304-1-littleddfu%40gmail.com",
   "datePublished": "Sep 25, 2026, 10:23:44 AM",
-  "dateUpdated": "Oct 3, 2026, 11:01:45 AM",
+  "dateUpdated": "Oct 19, 2026, 9:12:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/37cb9a81600da8250f24e25edc07253b62353cbe\nhttps://git.kernel.org/stable/c/98247c8264d2076f81fa114bdfa2c2271953ac7c\nhttps://git.kernel.org/stable/c/38ab2a435001a3c4dbeb70a52f5921e1ccd66f55\nhttps://git.kernel.org/stable/c/f7bf57e94a5d6214b87be08486cb33836fbfa573\nhttps://git.kernel.org/stable/c/4b772869a1e5f9da5cef5b9c722ec0aa424ee0a0\n",
   "aliases": "CVE-2026-98026\nGHSA-r366-wr25-m9fj\n",
@@ -91,6 +91,16 @@
       "product_version": "3.16"
     },
     {
+      "id": "a8ee9ff1-c062-3031-bf34-bd051cef1081",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "b34259f0-501f-3e47-8ad9-b3c06c5c988e",
       "product": {
         "name": "Linux",
@@ -119,16 +129,6 @@
         }
       },
       "product_version": "07f8ac4a1e26e8283542cdaf658a6e2a12fd6980 <38ab2a435001a3c4dbeb70a52f5921e1ccd66f55"
-    },
-    {
-      "id": "ed4b02b5-402f-31d3-a3d8-fb2a5f1f3ac3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "2afa3596-d03c-3da9-ba21-a11db8b1b340",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phy: clean the sfp upstream if phy probing fails\n\nSashiko reported that we don't call sfp_bus_del_upstream() in the probe\nfailure path, so let's add it, otherwise the sfp-bus is left with a\ndangling 'upstream' field, that may be used later on during SFP events.\n\nThis issue existed before the generic phylib sfp support, back when\ndrivers were calling phy_sfp_probe themselves.",
   "datePublished": "Jun 25, 2026, 8:39:30 AM",
-  "dateUpdated": "Oct 16, 2026, 3:31:42 PM",
+  "dateUpdated": "Oct 19, 2026, 7:57:30 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",

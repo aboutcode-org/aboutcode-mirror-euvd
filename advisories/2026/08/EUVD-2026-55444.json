@@ -3,7 +3,7 @@
   "enisaUuid": "db4d9fb0-cf47-3e34-9bd1-0946644ad692",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate DFS referral PathConsumed\n\nparse_dfs_referrals() validates that the response contains the fixed\nreferral entry array and, on for-next, the per-referral string offsets.\nHowever, the response also contains a PathConsumed value that is later\nused for DFS path parsing.\n\nIf a malformed response provides a PathConsumed value larger than the\nsearch name, later DFS parsing can advance beyond the end of the path.\n\nValidate PathConsumed against the search name length before storing it in\nthe parsed referral.",
   "datePublished": "Aug 10, 2026, 12:03:19 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:08 PM",
+  "dateUpdated": "Oct 19, 2026, 9:09:05 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",

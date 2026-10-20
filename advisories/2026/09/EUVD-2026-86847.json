@@ -3,12 +3,12 @@
   "enisaUuid": "8bd4ca3e-fe72-3e3e-9ad8-97cd91100d78",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: xusbatm: don't rely on id table pointer arithmetic\n\nThe current code is broken when dynamic ID is involved; in such cases\nusb_device_id parameter of probe lives on the heap and the pointer\narithmetic will get an index that is wildly out of bound. xusbatm\ninitialize the USB device IDs dynamically so it can just use driver_info\ntoo.\n\nEven with conversion, xusbatm still cannot support dynamic IDs, so also set\nno_dynamic_id.",
   "datePublished": "Sep 25, 2026, 10:21:36 AM",
-  "dateUpdated": "Oct 3, 2026, 10:59:30 AM",
+  "dateUpdated": "Oct 19, 2026, 9:09:01 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/ee4006c2175e8b50ff5d47a54bff52eb29bb1f0d\nhttps://git.kernel.org/stable/c/5086f5639197f321b766cec0dce383492eaf2305\nhttps://git.kernel.org/stable/c/fad6cab36474758abf55c6419dd79a06a27fcefc\nhttps://git.kernel.org/stable/c/8944ef1bfda537aaf329c82e7a5f9faf61340aa9\nhttps://git.kernel.org/stable/c/f7db611d98b68d15661561d2cefa774208774ccc\nhttps://git.kernel.org/stable/c/eb6cd6d3d8abeac5d7e8251b898067184afdad8a\n",
   "aliases": "CVE-2026-97539\nGHSA-xvgf-wgq5-q9ph\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1f06818a-8eaa-3fbd-a76a-75bede6d5d46",
@@ -91,16 +91,6 @@
       "product_version": "733260ff9c45bd4db60f45d17e8560a4a68dff4d <ee4006c2175e8b50ff5d47a54bff52eb29bb1f0d"
     },
     {
-      "id": "c812de6d-7517-3ead-b265-00e3981bc28b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "ca620832-3662-3a68-a2c2-c991d525c388",
       "product": {
         "name": "Linux",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "733260ff9c45bd4db60f45d17e8560a4a68dff4d <8944ef1bfda537aaf329c82e7a5f9faf61340aa9"
+    },
+    {
+      "id": "dcd4811d-2692-3f35-ba87-271968d7d386",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e2fe5069-8a69-3d64-8888-85a9cded8766",

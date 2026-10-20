@@ -3,7 +3,7 @@
   "enisaUuid": "b350f6a1-4ce0-32a3-9677-7d5b137563cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ip6t_rt: fix zero-address non-strict match out-of-bounds read\n\nrt_mt6_check() permits rules to be configured with rtinfo->addrnr == 0\neven when address matching (IP6T_RT_FST_MASK) is requested.\n\nIn the IP6T_RT_FST_NSTRICT path, rt_mt6() evaluates packet routing\naddresses against rtinfo->addrs[i] and terminates backwards at the bottom\nof the loop:\n\n    if (ipv6_addr_equal(ap, &rtinfo->addrs[i])) {\n        i++;\n    }\n    if (i == rtinfo->addrnr)\n        break;\n\nWhen addrnr is 0, if the first packet address matches rtinfo->addrs[0],\ni is incremented to 1. Because i is now strictly greater than addrnr (0),\nthe loop termination condition (i == rtinfo->addrnr) is bypassed and will\nnever be satisfied.\n\nIf a crafted IPv6 packet contains matching routing addresses, i will\nadvance past IP6T_RT_HOPS (16). The subsequent call to ipv6_addr_equal()\nreads beyond struct ip6t_rt, triggering UBSAN/KASAN out-of-bounds warnings\nor kernel panics.\n\nFix this by:\n1. Rejecting rules in rt_mt6_check() where IP6T_RT_FST_MASK is set but\n   rtinfo->addrnr is zero.\n2. In rt_mt6(), moving the termination condition (i < rtinfo->addrnr)\n   into the for-loop header condition and removing the backwards break\n   at the end of the loop body.",
   "datePublished": "Oct 18, 2026, 3:16:00 PM",
-  "dateUpdated": "Oct 18, 2026, 3:16:00 PM",
+  "dateUpdated": "Oct 19, 2026, 9:20:22 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/959d1829d1ce8b91b435b24a923b51bcc8897090\nhttps://git.kernel.org/stable/c/fe336bab13834394320997de8b16ca4a913b4f13\nhttps://git.kernel.org/stable/c/5a54f8b7f7fe207a5c14713015a5820588faf1ad\nhttps://git.kernel.org/stable/c/b89249819a7d6698bed152feafd3bc6c08489d15\nhttps://git.kernel.org/stable/c/dd55c0ea87bf70e4e4b3b683acd29ef981335b26\nhttps://git.kernel.org/stable/c/191239b0939692e92459d8d32cad14247fa93f89\nhttps://git.kernel.org/stable/c/d9cf4ac6f326330e1fe4d95671d36a6ff3593f64\nhttps://git.kernel.org/stable/c/82313c169eddc02b1bf5ba6b427803e272d3ec42\n",
   "aliases": "CVE-2026-98485\nGHSA-mhfj-849g-frgh\n",
@@ -131,6 +131,16 @@
       "product_version": "patch: 6.18.55"
     },
     {
+      "id": "cd25d3c3-405c-33a8-8101-b8cece623bd8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "da1c7414-082e-3e9b-9eb6-09c423b5447c",
       "product": {
         "name": "Linux",
@@ -159,16 +169,6 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <959d1829d1ce8b91b435b24a923b51bcc8897090"
-    },
-    {
-      "id": "fb4d1c2c-264d-3cfd-be25-158324b4795b",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
     },
     {
       "id": "fbd80cf6-b249-31d3-b195-674b5e724c44",

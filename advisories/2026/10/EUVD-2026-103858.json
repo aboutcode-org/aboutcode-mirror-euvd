@@ -3,7 +3,7 @@
   "enisaUuid": "cedd3e00-b93f-35de-90b5-bf22f2a1b7ea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: cdc-acm: skip URB restart in port_shutdown if disconnected\n\nacm_port_shutdown() is called from the tty-port machinery whenever the\nlast user closes the port.  acm_disconnect() sets acm->disconnected and\ncalls tty_port_tty_vhangup(), which eventually triggers port_shutdown().\nAt that point acm_disconnect() has already called acm_poison_urbs() and\nis about to free the control and read URBs.\n\nHowever, acm_port_shutdown() unconditionally calls acm_unpoison_urbs()\nand, when the ALWAYS_POLL_CTRL quirk is set, immediately re-submits the\nctrlurb and all read URBs.  If the concurrent acm_disconnect() then\nfrees those URBs and their DMA buffers while they are in-flight, the\nresult is a use-after-free in acm_ctrl_irq() or acm_read_bulk_callback()\naccessing the freed DMA memory.\n\nFix by checking acm->disconnected after draining the delayed anchor and\nreturning early: if we are in a disconnect path the URBs must remain\npoisoned and must not be resubmitted.\n\nThe early return is placed after the delayed-anchor drain loop because\nthat loop only cancels write-side accounting (wb->use = false and\nautopm counter) and does not touch the hardware path.",
   "datePublished": "Oct 18, 2026, 3:48:09 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:09 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:26 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9742905d9ed5bf23ebe4c100dec80b6bc50fb522\nhttps://git.kernel.org/stable/c/a0ed07b5bbb2d8fcef86810453216070691816e7\nhttps://git.kernel.org/stable/c/420ca35af891d33522cc08504768ccd60a4c450a\nhttps://git.kernel.org/stable/c/dc614d6bc991740d41d5a99ac7765c4b675dda88\n",
   "aliases": "GHSA-fp39-rj9v-7xc4\nCVE-2026-98773\n",
@@ -19,16 +19,6 @@
         }
       },
       "product_version": "6.1.175 <6.2"
-    },
-    {
-      "id": "0ca16d35-e367-3c57-a0a7-d67f5dfd88f4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "173cf42e-d012-37f8-b71d-a01b7dcd0c29",
@@ -89,6 +79,16 @@
         }
       },
       "product_version": "6.18.24 <6.18.56"
+    },
+    {
+      "id": "580f1ce3-d41d-35be-88bf-2ec3b82d3f8d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "64cefdf4-50e4-3ba6-bc1d-bdcb69efbb1d",

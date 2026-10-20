@@ -3,12 +3,12 @@
   "enisaUuid": "b7b7e691-b1ca-3bb3-a0e1-5a4a4119012a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: lg-laptop: Fix LED resource handling\n\nThe event notification callback might access kbd_backlight even\nwhen it was not successfully registered with the LED subsystem.\nThe same happens inside acpi_remove(), where the LED devices are\nunregistered unconditionally.\n\nFix this by tracking the availability of the kbd_backlight LED\ndevice and use devm_led_classdev_register() to let devres take\ncare of unregistering the LED devices during removal. For this\nthe parent device of the LED devices is changed to the native\nplatform device.",
   "datePublished": "Sep 17, 2026, 4:11:31 PM",
-  "dateUpdated": "Sep 17, 2026, 4:11:31 PM",
+  "dateUpdated": "Oct 19, 2026, 9:06:01 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4fbfe3714f645b6c64c9ba8faa83b27e4c9f2edd\nhttps://git.kernel.org/stable/c/9a85e2d35e54248aca39bad4f4152ed34de1995f\nhttps://git.kernel.org/stable/c/acc190322250562d5f28860f4ae1ebaf3e304fc2\nhttps://git.kernel.org/stable/c/3e91964aa74ab261aa15d9d96318eded2fd9d22a\n",
   "aliases": "CVE-2026-93128\nGHSA-9hr7-r765-xm77\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1b9949d8-4b36-387b-ade9-2c4df2373034",
@@ -39,16 +39,6 @@
         }
       },
       "product_version": "patch: 6.12.110"
-    },
-    {
-      "id": "856f0881-349d-3633-8c73-106b030030e8",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "bf951368-1bb9-3a11-a04c-ce30431adf46",
@@ -109,6 +99,16 @@
         }
       },
       "product_version": "5.15"
+    },
+    {
+      "id": "fe40e7ff-482e-37bb-a4c7-c6ff5339fb15",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     }
   ],
   "enisaIdVendor": [

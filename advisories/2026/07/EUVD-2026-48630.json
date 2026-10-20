@@ -3,7 +3,7 @@
   "enisaUuid": "cabe71a4-858a-3ef7-a097-fd2a85cf57cb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: avoid double free of pool->stack on AQ init failure\n\notx2_pool_aq_init() frees pool->stack when mailbox sync or retry\nallocation fails, but leaves the pointer unchanged. Later,\notx2_sq_aura_pool_init() unwinds the partial setup through\notx2_aura_pool_free(), which frees pool->stack again. The CN20K-specific\ncn20k_pool_aq_init() implementation has the same bug in\nits corresponding error path.\n\nSet pool->stack to NULL immediately after the local free so the shared\ncleanup path does not free the same stack again while cleaning up\npartially initialized pool state.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still present in\nv7.1-rc3.\n\nRuntime validation was not performed because reproducing this path\nrequires OcteonTX2/CN20K hardware.",
   "datePublished": "Jul 24, 2026, 3:23:08 PM",
-  "dateUpdated": "Oct 16, 2026, 3:42:26 PM",
+  "dateUpdated": "Oct 19, 2026, 8:28:15 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

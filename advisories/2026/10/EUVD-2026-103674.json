@@ -3,7 +3,7 @@
   "enisaUuid": "77f97978-41cd-3009-be60-1001d025f234",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/altera: Use parent device for devres in altr_portb_setup()\n\nAnchor the devres group and the devm-managed IRQ requests in altr_portb_setup()\nto the actual parent device (device->edac->dev) instead of the embedded struct\ndevice inside the copied per-port altr_edac_device_dev.\n\nThis keeps devres_open_group(), devm_request_irq(), devres_remove_group() and\ndevres_release_group() all referring to the same long-lived device so the\ngroup and the resources allocated inside it are torn down together.",
   "datePublished": "Oct 18, 2026, 2:45:24 PM",
-  "dateUpdated": "Oct 18, 2026, 2:45:24 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:31 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8325ecf3f16d764a0e0ba42c95b63f08e38710a8\nhttps://git.kernel.org/stable/c/2cf03ada03532bfb42f06fbf01d9e2a99e6011d7\nhttps://git.kernel.org/stable/c/dc4797c909b6cacb1bb24449e6c57d50a14d73bf\nhttps://git.kernel.org/stable/c/9868f5c077dfe0b606331f2e782484f91a5789a5\n",
   "aliases": "GHSA-jhg6-q2rv-x659\nCVE-2026-98435\n",
@@ -31,6 +31,16 @@
       "product_version": "911049845d7096c27304930ff478cbf3f2623ba3 <9868f5c077dfe0b606331f2e782484f91a5789a5"
     },
     {
+      "id": "1995a594-55d9-3c21-b6c8-69acd7f62b8f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "1aac6563-da8a-3b08-b637-8bdf73530c8e",
       "product": {
         "name": "Linux",
@@ -49,16 +59,6 @@
         }
       },
       "product_version": "911049845d7096c27304930ff478cbf3f2623ba3 <dc4797c909b6cacb1bb24449e6c57d50a14d73bf"
-    },
-    {
-      "id": "1fe91deb-0c3b-3701-a005-19652bd7f41c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc3"
     },
     {
       "id": "21a2263d-142f-32a1-93b8-8f9f1ae4a2cd",

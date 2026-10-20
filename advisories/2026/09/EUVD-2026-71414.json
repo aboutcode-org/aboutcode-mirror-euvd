@@ -3,12 +3,12 @@
   "enisaUuid": "473f096a-643a-3667-ba05-967f009abfd2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: register input device after capabilities are set\n\ninput_register_device() exposes the device to userspace immediately.\nIn joycon_input_create() it was called before joycon_config_rumble()\nconfigures the FF_RUMBLE capability and the memless force-feedback\ndevice, so a concurrent EVIOCSFF could dereference a NULL dev->ff.\n\nRegistering early also means the initial udev event lacks button and\naxis information, which can make input managers ignore the device.\n\nMove input_register_device() to the end of joycon_input_create(), after\nall capabilities, the IMU input device and the force-feedback callbacks\nhave been configured.",
   "datePublished": "Sep 4, 2026, 3:12:43 PM",
-  "dateUpdated": "Sep 4, 2026, 3:12:43 PM",
+  "dateUpdated": "Oct 19, 2026, 8:43:27 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3288bec1a21d582b504344380139cdc0e88ebe4d\nhttps://git.kernel.org/stable/c/268679f501386ad46405d42c2bcf89384cb5e256\nhttps://git.kernel.org/stable/c/a9fc7547f911ada09da33c5e204e5acda38e765a\nhttps://git.kernel.org/stable/c/27dc4b8eadac73b3c3cc526c8547d8b4ae8528be\nhttps://git.kernel.org/stable/c/d723bc1fe2e72b9252234e94c11af644ec477bf7\n",
   "aliases": "GHSA-x6pf-56pg-q32p\nCVE-2026-80771\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "20fe08ab-ae3e-3d7b-ac6d-a2791a20a8d0",
@@ -81,6 +81,16 @@
       "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <27dc4b8eadac73b3c3cc526c8547d8b4ae8528be"
     },
     {
+      "id": "7b4ca776-5ff4-3a25-aae1-cf0403b27b60",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "89a2c396-5a73-30d6-9566-83852e795019",
       "product": {
         "name": "Linux",
@@ -109,16 +119,6 @@
         }
       },
       "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <268679f501386ad46405d42c2bcf89384cb5e256"
-    },
-    {
-      "id": "ea3722b4-e848-39f2-bc1c-b86bb50c3ac1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     },
     {
       "id": "f4e50396-e66a-3d79-ac40-dbaba78b2648",

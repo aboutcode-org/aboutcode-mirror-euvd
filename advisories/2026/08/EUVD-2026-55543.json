@@ -3,7 +3,7 @@
   "enisaUuid": "e68e75b6-e61d-3a79-a606-f202c7c217aa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: guard missing CRUSH type name lookup\n\nLocalized read selection can walk a parent bucket whose name exists in\nthe CRUSH map while its type has no matching entry in type_names.\nget_immediate_parent() then dereferences a NULL type_cn and passes an\ninvalid pointer into strcmp(), causing a null-ptr-deref.\n\nSkip such malformed parent buckets unless both the bucket name and type\nname metadata are present. This keeps malformed hierarchy data from\ncrashing locality lookup and safely falls back to \"not local\".\n\n[ idryomov: add WARN_ON_ONCE ]",
   "datePublished": "Aug 10, 2026, 11:59:23 AM",
-  "dateUpdated": "Oct 16, 2026, 3:53:01 PM",
+  "dateUpdated": "Oct 19, 2026, 8:58:54 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",

@@ -3,7 +3,7 @@
   "enisaUuid": "800a57be-49e6-3192-80c2-0bebfa2873e6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: don't let memory failures leak blocks and kill repairs\n\nLOLLM complains that a memory allocation failure in\nxrep_newbt_add_blocks results in online repair leaking blocks that were\npreviously allocated to write a new btree, but the problem is worse than\nthat -- a limitation of the codebase is that the callers cannot undo the\ntransaction /and/ return the error -- either you undo all changes and\ncommit the transaction, or you error out and the filesystem goes down.\n\nHowever, the new btree space reservation object isn't that big (~48\nbytes).  Let's just do a NOFAIL allocation and the problem goes away.",
   "datePublished": "Oct 18, 2026, 3:14:55 PM",
-  "dateUpdated": "Oct 18, 2026, 3:14:55 PM",
+  "dateUpdated": "Oct 19, 2026, 9:19:40 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3380151cf0ce8ad0c1d356fed51e4b69e1d28e50\nhttps://git.kernel.org/stable/c/b15c79fca28060fd9c7e77f2c3ebc4ba023974e8\nhttps://git.kernel.org/stable/c/0e0d3372a84029da1768c7a4c4601484af5b58a2\nhttps://git.kernel.org/stable/c/ab1c416d2377cdc16123ef521aac4da1c468c3d4\n",
   "aliases": "GHSA-vx8f-phpg-5qwp\nCVE-2026-98445\n",
@@ -11,14 +11,14 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "2d1f4333-f986-3de7-8096-1cc6c1cb4888",
+      "id": "2dddfb6d-0ad6-3b9a-815a-116848d691b6",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc5"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "2e9bf0a6-120d-3262-b32f-089facf20873",

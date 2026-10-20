@@ -3,7 +3,7 @@
   "enisaUuid": "7efb80a6-6237-3b43-9747-c80c869e9a4b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix OOB read from firmware IE lengths in connect event\n\nThe firmware-controlled beacon_ie_len, assoc_req_len, and assoc_resp_len\nfields in ath6kl_wmi_connect_event_rx() are not validated against the\nbuffer length. Their sum (up to 765) can exceed the actual WMI event\ndata, causing out-of-bounds reads during IE parsing and state corruption\nof wmi->is_wmm_enabled.\n\nAdd a check that the total IE length fits within the buffer.",
   "datePublished": "Aug 10, 2026, 12:03:29 PM",
-  "dateUpdated": "Oct 16, 2026, 3:53:09 PM",
+  "dateUpdated": "Oct 19, 2026, 9:09:05 PM",
   "baseScore": 8.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",

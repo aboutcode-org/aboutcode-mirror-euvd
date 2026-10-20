@@ -3,7 +3,7 @@
   "enisaUuid": "f7eb19c6-0dba-3fb1-9288-f469f36ce76d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Add missing IS_ERR check for ovl_adaptor platform device\n\nplatform_device_register_data() can fail and return an ERR_PTR, but the\nreturn value is used without checking, leading to an invalid pointer\nbeing stored in ddp_comp[].dev and passed to component_match_add() and\nmtk_ddp_comp_init(), which could result in a kernel crash.\n\nAdd an IS_ERR() check to jump to the error handling path on failure.",
   "datePublished": "Oct 18, 2026, 3:48:20 PM",
-  "dateUpdated": "Oct 18, 2026, 3:48:20 PM",
+  "dateUpdated": "Oct 19, 2026, 9:25:36 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4acac370aad2d4895a82f40b2f03e9ef70eecaa6\nhttps://git.kernel.org/stable/c/88f8a92dcb0cb154774595dee7226458de4cbd38\nhttps://git.kernel.org/stable/c/aeef8a8537bcfb26689edb36ed905b8b2873001c\nhttps://git.kernel.org/stable/c/bce7698e2e6565bb765bd0522337f29f5f312624\n",
   "aliases": "CVE-2026-98783\nGHSA-gxv2-4p27-m9pp\n",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "62a7390b-ef11-3276-b268-a035c682f1cf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "78610a8d-3859-3f34-ac8b-40d5b508ded4",
@@ -99,16 +109,6 @@
         }
       },
       "product_version": "0d9eee9118b77e51eeafc5bf4d008fac97035d56 <4acac370aad2d4895a82f40b2f03e9ef70eecaa6"
-    },
-    {
-      "id": "ffc1efd4-9b57-382a-b12f-b04915cfa56c",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "c32e53b0-227b-365a-8b07-f9af91e2833e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfou: Don't allow 0 for FOU_ATTR_IPPROTO.\n\nfou_udp_recv() has the same problem mentioned in the previous\npatch.\n\nIf FOU_ATTR_IPPROTO is set to 0, skb is not freed by\nfou_udp_recv() nor \"resubmit\"-ted in ip_protocol_deliver_rcu().\n\nLet's forbid 0 for FOU_ATTR_IPPROTO.",
   "datePublished": "Feb 4, 2026, 4:08:07 PM",
-  "dateUpdated": "Oct 15, 2026, 1:12:49 AM",
+  "dateUpdated": "Oct 19, 2026, 6:25:29 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c7498f9bc390479ccfad7c7f2332237ff4945b03\nhttps://git.kernel.org/stable/c/611ef4bd9c73d9e6d87bed57a635ff1fdd8c91ea\nhttps://git.kernel.org/stable/c/6e983789b7588ee59cbf303583546c043bad8e19\nhttps://git.kernel.org/stable/c/1cc98b8887cabb1808d2f4a37cd10a7be7574771\nhttps://git.kernel.org/stable/c/b7db31a52c3862a1a32202a273a4c32e7f5f4823\nhttps://git.kernel.org/stable/c/9b75dff8446ec871030d8daf5a69e74f5fe8b956\nhttps://git.kernel.org/stable/c/7a9bc9e3f42391e4c187e099263cf7a1c4b69ff5\n",
   "aliases": "CVE-2026-23083\nGHSA-v7qx-38vp-6jx8\n",

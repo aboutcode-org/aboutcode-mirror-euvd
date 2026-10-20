@@ -3,7 +3,7 @@
   "enisaUuid": "352397af-8d57-36ad-86ad-6df8edcc5aed",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: discard post-EOF pagecache when extending a file via clone range\n\ncifs_remap_file_range() discarded the pagecache only for the folios\noverlapping the destination region, so when a clone extends the file the\nfolio straddling the old EOF - which may hold data dirtied past EOF\nthrough an mmap - was never dropped and became visible as file content\nonce the file was extended.\n\nStart the discard at the smaller of fstart and the old EOF.  i_size is\nstill old here, so nothing past the old EOF is flushed to the server.",
   "datePublished": "Oct 18, 2026, 3:45:53 PM",
-  "dateUpdated": "Oct 18, 2026, 3:45:53 PM",
+  "dateUpdated": "Oct 19, 2026, 9:23:55 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/15bb9f1d3e967e328649e92a1451e60a0dc66118\nhttps://git.kernel.org/stable/c/4721587f96cb8de8164f3fd203093a0875560999\n",
   "aliases": "GHSA-r85p-j355-crhr\nCVE-2026-98685\n",
@@ -41,16 +41,6 @@
       "product_version": "6.1.68 <6.2"
     },
     {
-      "id": "6c13b5b3-00ce-3dc0-b4ae-e2942a45e56e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
-    },
-    {
       "id": "6d17ab27-c380-3c28-88d8-324012034a4a",
       "product": {
         "name": "Linux",
@@ -59,6 +49,16 @@
         }
       },
       "product_version": "358bd5f436d820bb758833050aae065b35d6986c"
+    },
+    {
+      "id": "91e9543f-292b-3cca-8e86-96d18accba4e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "ac284a16-5ce1-316a-b599-9123cdc042c7",

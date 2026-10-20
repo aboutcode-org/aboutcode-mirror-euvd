@@ -3,7 +3,7 @@
   "enisaUuid": "b2ccb679-3e8c-3d34-a361-8257333e3b18",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nespintcp: Fix race condition in espintcp_close()\n\nThis issue was discovered during a code audit.\n\nAfter cancel_work_sync() is called from espintcp_close(),\nespintcp_tx_work() can still be scheduled from paths such as\nthe Delayed ACK handler or ksoftirqd.\nAs a result, the espintcp_tx_work() worker may dereference a\nfreed espintcp ctx or sk.\n\nThe following is a simple race scenario:\n\n           cpu0                             cpu1\n\n  espintcp_close()\n    cancel_work_sync(&ctx->work);\n                                     espintcp_write_space()\n                                       schedule_work(&ctx->work);\n\nTo prevent this race condition, cancel_work_sync() is\nreplaced with disable_work_sync().",
   "datePublished": "Mar 10, 2026, 5:28:26 PM",
-  "dateUpdated": "Oct 16, 2026, 3:09:50 PM",
+  "dateUpdated": "Oct 19, 2026, 6:35:39 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",

@@ -3,23 +3,13 @@
   "enisaUuid": "9278d1bf-2dc2-3b68-ae1d-47c500112ad7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: clamp route advmss to TCP_MIN_MSS\n\ntcp_select_initial_window() assumes that callers never pass an MSS\nsmaller than 1, but route-derived advmss values can violate that\nassumption.\n\nA too-small explicit RTAX_ADVMSS is one way to get there, but it is not\nthe only one. The same divide-by-zero can also be reached through the\n\"default advmss\" path when RTAX_ADVMSS is left at 0 and the effective\nadvmss is later driven down by route MTU and min_adv_mss.\n\nIntroduce a tcp_dst_advmss() helper that clamps route advmss to\nTCP_MIN_MSS before TCP consumes it, and use it in the TCP paths that\nderive advmss from dst metrics. This keeps the effective MSS from\ndropping to zero before tcp_select_initial_window() rounds the receive\nwindow.",
   "datePublished": "Sep 4, 2026, 3:54:57 PM",
-  "dateUpdated": "Sep 21, 2026, 1:14:14 PM",
+  "dateUpdated": "Oct 19, 2026, 8:44:41 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/eaf4af9bd6975c2eff8d48820937c83032d968dc\nhttps://git.kernel.org/stable/c/cfb44c6028e6f979720315e0772bbd0d4d33ed61\nhttps://git.kernel.org/stable/c/6b8c20bf61924dfc38fefb145c9f7406d73fae53\nhttps://git.kernel.org/stable/c/31cf2349361902769dc323e4dbf4b449795ec288\nhttps://git.kernel.org/stable/c/870a9e42ecc6fe1b8c25d87af043cb0d9c178fe1\n",
   "aliases": "GHSA-m3f3-9j4q-c4f2\nCVE-2026-80847\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
-    {
-      "id": "26d76e31-1a6a-3c59-b016-a00afcfdeb0f",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
     {
       "id": "35d79d7e-3c71-34a6-9334-c447095ede42",
       "product": {
@@ -79,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.1.13"
+    },
+    {
+      "id": "7dea9781-b6d0-3467-868d-1f5e26cf9335",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "81c6d793-a42b-32e3-ae6e-ccb03b08b64f",

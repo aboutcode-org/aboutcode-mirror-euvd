@@ -3,7 +3,7 @@
   "enisaUuid": "e63205fd-9b6d-37c9-99d0-330cb397bac9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: Serialize compat port-info ioctls\n\nThe native sequencer ioctl path serializes handler calls with\nclient->ioctl_mutex, but the translated port-info compat path invokes the\nsame handlers through snd_seq_kernel_client_ctl() without taking that\nmutex.\n\nThis lets concurrent compat CREATE_PORT requests pass the port-count\ncheck before any request reaches the serialized insertion. The computed\ninteger port index can then exceed the address field range and wrap to an\nexisting index. Subsequent subscriber teardown can resolve the duplicate\naddress to the wrong port and access a freed subscriber.\n\nTake ioctl_mutex while dispatching converted port-info requests, matching\nthe native ioctl path. All translated port-info commands share this\nhelper, so their accesses to the client port state are serialized as\nwell.",
   "datePublished": "Oct 18, 2026, 3:47:27 PM",
-  "dateUpdated": "Oct 18, 2026, 3:47:27 PM",
+  "dateUpdated": "Oct 19, 2026, 9:24:54 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/413211dd31cb2ef2fc99fb0aa1a037a97509502c\nhttps://git.kernel.org/stable/c/fc5c52848e405b6efb073db5035bb9ebaed11ec4\nhttps://git.kernel.org/stable/c/702d92f361f65d9698c473c7599d471395dc4341\nhttps://git.kernel.org/stable/c/95b2e0361c88753afa030c10698be0a1a5b67650\n",
   "aliases": "CVE-2026-98742\nGHSA-qq2g-8h6m-jjjf\n",
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "3.2.99 <3.3"
+    },
+    {
+      "id": "29c35820-0045-3d0e-a7a4-29145b40ba3e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "37025afe-db87-371f-9dc5-bf921862ff47",
@@ -209,16 +219,6 @@
         }
       },
       "product_version": "b3defb791b26ea0683a93a4f49c77ec45ec96f10 <702d92f361f65d9698c473c7599d471395dc4341"
-    },
-    {
-      "id": "e4b2bfc0-a445-304b-819c-9d87f3bb1776",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc6"
     },
     {
       "id": "f1e174b6-f29d-320e-a0f3-76e1b37608c8",

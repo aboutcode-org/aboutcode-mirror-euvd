@@ -3,7 +3,7 @@
   "enisaUuid": "b4bfd751-337c-3767-bf15-1a9ec0a1c0a3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/debug: Fix NULL pointer dereference in debug_info_copy()\n\nWhen debug_register_static() fails, it clears areas, active_pages and\nactive_entries but leaves the area bounds unchanged. Copying such an\narea, either by opening its view file or via debug_dump(), makes\ndebug_info_copy() dereference the NULL pointers.\n\nSkip the copy loop when the source has no areas.",
   "datePublished": "Oct 18, 2026, 3:19:05 PM",
-  "dateUpdated": "Oct 18, 2026, 3:19:05 PM",
+  "dateUpdated": "Oct 19, 2026, 9:22:18 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/13decd3b3b3a4d8a2e603fb8c9ffde0c6be3c225\nhttps://git.kernel.org/stable/c/a19bede30f0da5ae56782edac62b5998a7434cba\nhttps://git.kernel.org/stable/c/33f706884821da9cb55b650b7b1d4f2bdf800137\nhttps://git.kernel.org/stable/c/2de9c458cc49d8db6408a7c5fbf0c7c94fe4d52b\nhttps://git.kernel.org/stable/c/9c6af88fbefbe77608b77409df23a1617e28398c\nhttps://git.kernel.org/stable/c/c593f38e1cdb92f87d01be4c4e5ac12417b1454b\nhttps://git.kernel.org/stable/c/012bfcd5a51082d5a65f096dfb9ca652b5267965\n",
   "aliases": "CVE-2026-98593\nGHSA-v4qr-c46c-6qg3\n",
@@ -71,16 +71,6 @@
       "product_version": "patch: 7.2.9"
     },
     {
-      "id": "39c266f6-f9f0-3857-8e52-3330c7534a38",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc5"
-    },
-    {
       "id": "3ab2938e-a7f1-3d34-9a77-7521fae602b3",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "5.15"
+    },
+    {
+      "id": "7b090941-9f49-30f3-94a4-a7bc9f780969",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "8cec7141-c653-3994-9bfc-0ccbcc239a43",

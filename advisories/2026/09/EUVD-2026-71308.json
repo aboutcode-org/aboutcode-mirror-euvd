@@ -3,12 +3,12 @@
   "enisaUuid": "4c9142a5-bddb-368c-8a9a-09ee04011d6f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: publish io-uring queues with release semantics\n\nfuse_uring_create_queue() initializes a fuse_ring_queue and then\npublishes the pointer into ring->queues[qid] with WRITE_ONCE() under the\nfch->lock. There are several readers that may concurrently be fetching\nthat pointer locklessly and then deferencing it.\n\nWRITE_ONCE() doesn't ensure ordering of the queue's field\ninitialization before the ring->queues[qid] pointer assignment. The\nqueue must be published with smp_store_release() so the field\ninitialization is guaranteed to happen before.\n\nReaders in paths where the read may happen concurrently with the store\nneed to use READ_ONCE() because any race involving a plain access is\nundefined.",
   "datePublished": "Sep 4, 2026, 3:55:12 PM",
-  "dateUpdated": "Sep 11, 2026, 9:57:11 AM",
+  "dateUpdated": "Oct 19, 2026, 8:44:52 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a5bb215dbc34b4c6a5e144ea1416bf66450d519f\nhttps://git.kernel.org/stable/c/a1bb359c443d048fe5dfd6ca9caf4e3897f3e9aa\nhttps://git.kernel.org/stable/c/42df916e5a5f8fb4b60c8cefb54318d1ec02c580\n",
   "aliases": "GHSA-4ch4-gxg4-33mh\nCVE-2026-80858\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "06ce700d-8ca5-3324-922d-8c8834abf7ac",
@@ -71,14 +71,14 @@
       "product_version": "24fe962c86f55347385933a1b06ca71b60854690 <a5bb215dbc34b4c6a5e144ea1416bf66450d519f"
     },
     {
-      "id": "cad12806-c119-3507-9215-ca08a497f2db",
+      "id": "c92cac28-4f35-337c-b767-93217873916d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 7.3-rc1"
+      "product_version": "patch: 7.3"
     },
     {
       "id": "de58f662-98fa-34fd-9962-92f0338d3e0d",

@@ -3,12 +3,12 @@
   "enisaUuid": "d1b7c81a-d070-308c-aba9-9cc2db479174",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: pn533: purge fragmented skbs during cleanup\n\npn53x_common_clean() purges resp_q before freeing the common PN533 state,\nbut it leaves fragment_skb untouched.  The fragmentation helpers queue\ntransmit fragments there while sending large initiator or target-mode\nframes, and those skbs remain owned by the driver until they are sent or\ndiscarded.\n\nIf the device is removed while fragments are still queued, the common\ncleanup path frees the PN533 state without releasing the queued fragment\nskbs, leaking them.\n\nPurge fragment_skb during cleanup alongside resp_q.",
   "datePublished": "Sep 4, 2026, 3:13:10 PM",
-  "dateUpdated": "Sep 4, 2026, 3:13:10 PM",
+  "dateUpdated": "Oct 19, 2026, 8:43:50 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/130b5ad4492f8e53d0398ee3af2b0e2388504d11\nhttps://git.kernel.org/stable/c/9319c3c4962efc8697246b563ea31c6d47f085aa\nhttps://git.kernel.org/stable/c/d63e85c5d5555fe6aa65155d3a09452597e163c3\nhttps://git.kernel.org/stable/c/4a52ec2457ff8c26206fcc20fa1972cc35a678c4\nhttps://git.kernel.org/stable/c/e169277281373818ae1cedf976aa1e99118fb77d\nhttps://git.kernel.org/stable/c/2f5d093194ec24d7c29b91bf7df014924e0f4ea1\nhttps://git.kernel.org/stable/c/e7ed2ea5590fbe2d3be39ee4fb0c758a12e31d0c\nhttps://git.kernel.org/stable/c/e95beff58b38c871c557bf84e528408283c2c0ad\nhttps://git.kernel.org/stable/c/5718fc62198c38c2de5316020a90506f9e75e0bb\n",
   "aliases": "CVE-2026-80797\nGHSA-4h9c-xj6x-wv3f\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "09f9f908-c0a2-3546-b2f6-3c2790f8b827",
@@ -171,16 +171,6 @@
       "product_version": "patch: 6.12.106"
     },
     {
-      "id": "c27e1440-bb36-30c7-888e-39452f7848ad",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
-    },
-    {
       "id": "c534ed0d-f1ec-310f-8e95-128250c001cd",
       "product": {
         "name": "Linux",
@@ -189,6 +179,16 @@
         }
       },
       "product_version": "patch: 5.10.267"
+    },
+    {
+      "id": "dec2f6a3-6219-3d10-ab8d-7f2a617a597c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
     },
     {
       "id": "e65ff9dd-182b-358b-a394-6b5a200f033c",

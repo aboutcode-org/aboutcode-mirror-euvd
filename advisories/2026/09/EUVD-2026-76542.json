@@ -3,7 +3,7 @@
   "enisaUuid": "aaf9452c-b583-3ef7-864e-09fd4cbbc4b2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: restore the data_offset bound in is_valid_oplock_break()\n\nCommit 83bfbd0bb902 (\"cifs: Remove the RFC1002 header from smb_hdr\")\nchanged the quantity this bound is measured against.  It used to be\nsrv->total_read minus the 4-byte RFC1002 preamble that total_read then\nincluded, so it was the SMB message length.  The same commit stopped\ncounting the preamble, and the mechanical substitution to\nsrv->total_read - srv->pdu_size left an expression that is identically\nzero: standard_receive3() reads MID_HEADER_SIZE() bytes and then exactly\npdu_length - MID_HEADER_SIZE() more, adding both to total_read.\n\nlen is therefore 0, the subtraction below it wraps, and no __u32\nDataOffset can exceed the result, so the check from commit 097f5863b1a0\n(\"cifs: read overflow in is_valid_oplock_break()\") no longer rejects\nanything.  Use total_read, which is now the message length on its own.",
   "datePublished": "Sep 11, 2026, 7:45:25 PM",
-  "dateUpdated": "Oct 11, 2026, 1:47:14 PM",
+  "dateUpdated": "Oct 19, 2026, 8:50:02 AM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
@@ -53,6 +53,16 @@
       "product_version": "patch: 7.2.4"
     },
     {
+      "id": "5f28a369-85c8-3708-b19c-ddcb247b001e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.3"
+    },
+    {
       "id": "9a21d31f-2a1b-34c2-8e94-25a9fbe9f373",
       "product": {
         "name": "Linux",
@@ -81,16 +91,6 @@
         }
       },
       "product_version": "6.18.56 <6.19"
-    },
-    {
-      "id": "ef465c31-8494-396c-8fa2-3379dc706bfe",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "patch: 7.3-rc1"
     }
   ],
   "enisaIdVendor": [
