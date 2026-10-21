@@ -3,14 +3,14 @@
   "enisaUuid": "b006a739-5ab1-3e3b-980d-fd86a2432b8a",
   "description": "libzvbi through 0.2.45 contains an out-of-bounds write vulnerability in the Teletext decoder that allows attackers to corrupt memory by supplying unvalidated DRCS pixel-mode values in X/28/3 packets. Attackers can send a crafted Teletext stream decoded via vbi_decode with every slot set to DRCS_MODE_6_5_4, causing convert_drcs to overflow chars[48][60] and crash the application.",
   "datePublished": "Oct 14, 2026, 3:01:21 PM",
-  "dateUpdated": "Oct 14, 2026, 3:01:21 PM",
+  "dateUpdated": "Oct 20, 2026, 1:26:18 AM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://hackmd.io/@haind-pwn/zvbi-teletext-drcs-mode-oob-write\nhttps://github.com/zapping-vbi/zvbi/blob/d3a5ee9f2b047bf16cd1ee5ccf6ec05ee75409d0/src/packet.c#L447\nhttps://github.com/zapping-vbi/zvbi\nhttps://www.vulncheck.com/advisories/libzvbi-through-0.2.45-out-of-bounds-write-via-teletext-drcs-convert-drcs\n",
   "aliases": "CVE-2026-110654\nGHSA-pw98-3fpx-6f7v\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "55b11d23-71fd-3d3b-acbe-9aa3fccc9e90",

@@ -3,14 +3,14 @@
   "enisaUuid": "4458d696-f5d8-3e6e-bdd4-f9322182ee61",
   "description": "A flaw was found in the ChunkReader component of the Undertow HTTP server, which is used by WildFly and JBoss EAP to handle chunked transfer encoding. The issue occurs because the parser uses a single internal variable to store both the remaining chunk size and state flags. By sending a specially crafted request with an extremely large chunk size, an attacker can cause these values to overlap, tricking the parser into thinking a request has finished prematurely. This can allow a second, \"smuggled\" request to be processed out of sync, potentially bypassing security controls.",
   "datePublished": "Aug 11, 2026, 3:32:00 PM",
-  "dateUpdated": "Sep 22, 2026, 3:41:51 PM",
+  "dateUpdated": "Oct 20, 2026, 2:18:45 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2026:70228\nhttps://access.redhat.com/errata/RHSA-2026:70229\nhttps://access.redhat.com/errata/RHSA-2026:70230\nhttps://access.redhat.com/errata/RHSA-2026:70277\nhttps://access.redhat.com/security/cve/CVE-2026-14180\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494771\n",
   "aliases": "GHSA-x562-68w7-4xvf\nCVE-2026-14180\n",
   "assigner": "redhat",
-  "epss": 0.41,
+  "epss": 1.03,
   "enisaIdProduct": [
     {
       "id": "01e6bc0d-e771-3d45-b3f7-cf1e2d68f852",
@@ -841,6 +841,16 @@
         }
       },
       "product_version": "patch: 0:6.6.54-1.Final_redhat_00001.1.el8eap"
+    },
+    {
+      "id": "e987781f-a6db-35d4-809a-926c9ebfdc37",
+      "product": {
+        "name": "Red Hat JBoss Enterprise Application Platform 8.1.8.GA",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2.3.26.SP3-redhat-00001"
     },
     {
       "id": "ea9dbbd8-47a0-3599-b500-e4513c1f4b48",
