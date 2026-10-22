@@ -3,12 +3,12 @@
   "enisaUuid": "4a11d27b-404f-3c04-ab44-5b7361626544",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof: unittest: Fix memory leak in unittest_data_add()\n\nIn unittest_data_add(), if of_resolve_phandles() fails, the allocated\nunittest_data is not freed, leading to a memory leak.\n\nFix this by using scope-based cleanup helper __free(kfree) for automatic\nresource cleanup. This ensures unittest_data is automatically freed when\nit goes out of scope in error paths.\n\nFor the success path, use retain_and_null_ptr() to transfer ownership\nof the memory to the device tree and prevent double freeing.",
   "datePublished": "Feb 14, 2026, 3:22:22 PM",
-  "dateUpdated": "Sep 14, 2026, 11:58:10 AM",
+  "dateUpdated": "Oct 21, 2026, 12:38:53 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/58baf98d1bdab897fd796f39a16061bade229d71\nhttps://git.kernel.org/stable/c/f09b0f705bd7197863b90256ef533a6414d1db2c\nhttps://git.kernel.org/stable/c/235a1eb8d2dcc49a6cf0a5ee1aa85544a5d0054b\n",
+  "references": "https://git.kernel.org/stable/c/4c7ad40c285ab85e3614433e063f14aac2e2fe17\nhttps://git.kernel.org/stable/c/58baf98d1bdab897fd796f39a16061bade229d71\nhttps://git.kernel.org/stable/c/f09b0f705bd7197863b90256ef533a6414d1db2c\nhttps://git.kernel.org/stable/c/235a1eb8d2dcc49a6cf0a5ee1aa85544a5d0054b\n",
   "aliases": "CVE-2026-23137\nGHSA-rwc9-h9mh-xfwq\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "0f456517-97be-3b67-b940-fea25ac48566",
@@ -69,6 +69,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "aad14aaa-b978-3482-8af1-0da86ffbab3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "b3effed7-0483-3761-856c-044982376d7b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2eb46da2a760e5764c48b752a5ef320e02b96b21 <4c7ad40c285ab85e3614433e063f14aac2e2fe17"
     },
     {
       "id": "cf6d2c1f-766c-3461-b95a-22d86b3925ad",

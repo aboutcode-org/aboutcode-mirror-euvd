@@ -3,13 +3,23 @@
   "enisaUuid": "f41e2fc6-97f8-3167-99e7-d16d538a81c7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: handle empty FILS association request payload\n\nfils_encrypt_assoc_req() accepts a (Re)Association Request frame whose\nlast element is the FILS Session element.  crypt_len is then zero and\naes_siv_encrypt() is called with an empty plaintext.\n\nkmemdup() returns ZERO_SIZE_PTR for a zero-length allocation, so the\nunconditional sg_init_one() puts an invalid page into the scatterlist.\nWith CONFIG_DEBUG_SG this triggers a kernel BUG in sg_set_buf();\nwithout the debug check the bogus page is handed to the crypto backend.\n\nAES-SIV is defined for empty plaintext and the S2V result is then the\ncomplete output, so handle this case before the CTR step, which has\nnothing to encrypt.",
   "datePublished": "Oct 18, 2026, 3:46:23 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:07 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:47 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2f5b62f6534d336a62fdb9e88b186dd70b4323ef\nhttps://git.kernel.org/stable/c/452f1c9b76f7a122bbc4630b9691bda4809677c4\nhttps://git.kernel.org/stable/c/20f939b0c151d1d28e6b62a76b2454fa6fe877f2\nhttps://git.kernel.org/stable/c/5bfd4b0b40b79781d900cb2f7da0685070f53c67\n",
+  "references": "https://git.kernel.org/stable/c/0b1e4a7eeb6a301ee33bd318982927cbdbae9f36\nhttps://git.kernel.org/stable/c/2f5b62f6534d336a62fdb9e88b186dd70b4323ef\nhttps://git.kernel.org/stable/c/452f1c9b76f7a122bbc4630b9691bda4809677c4\nhttps://git.kernel.org/stable/c/20f939b0c151d1d28e6b62a76b2454fa6fe877f2\nhttps://git.kernel.org/stable/c/5bfd4b0b40b79781d900cb2f7da0685070f53c67\n",
   "aliases": "CVE-2026-98698\nGHSA-873v-4wm2-m9cr\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "0cd818dd-2de0-3332-ab5c-a8a9b2cfb9e2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
     {
       "id": "26ae2524-0fea-34b5-bd9d-0917057ff94a",
       "product": {
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "4.10"
+    },
+    {
+      "id": "90a4a09a-50e8-3f53-ac66-c7249eb91605",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "39404feee691a2dc524a629ed6eb5cfe5d8898d1 <0b1e4a7eeb6a301ee33bd318982927cbdbae9f36"
     },
     {
       "id": "acf485c1-c0da-35ce-a2e0-3d1ecea1ed8d",

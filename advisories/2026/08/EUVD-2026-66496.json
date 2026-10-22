@@ -3,12 +3,12 @@
   "enisaUuid": "6b43fb64-8777-3955-a1af-98f4a05e0270",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: ipc4-pcm: Continue the pipeline trigger in case of IPC timeout\n\nIgnore IPC errors for pipeline state change if the firmware state is\ncrashed or the IPC has timed out.\n\nIf the firmware has crashed the kernel still needs to go through the state\nchanges to reset its internal to be able to correctly work the next time\nthe DSP is booted up.\n\nThe case with IPC timeout is a bit more problematic, but it has been\nrootcaused to be the result of system scheduling blockage and the firmware\ndid actually received and handled the message, but the reply handling got\nblocked by issues outside of the SOF stack.\nSo far the best way to handle this is to continue with setting the state.",
   "datePublished": "Aug 26, 2026, 2:37:38 PM",
-  "dateUpdated": "Aug 27, 2026, 12:40:20 PM",
+  "dateUpdated": "Oct 21, 2026, 12:46:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4931c09d83877dc350106bae745321c3f295129b\nhttps://git.kernel.org/stable/c/f2435a46dfa1a5693cf2664afd022db66ee58121\nhttps://git.kernel.org/stable/c/6b512a5330ef1a41db7aff4b80c4e952b8d52f17\nhttps://git.kernel.org/stable/c/17661c67b206612cb3ba65d5ae726cd2015d0a53\n",
+  "references": "https://git.kernel.org/stable/c/4931c09d83877dc350106bae745321c3f295129b\nhttps://git.kernel.org/stable/c/96d51b8c5a909937d41f9c03495188d4190f877d\nhttps://git.kernel.org/stable/c/f2435a46dfa1a5693cf2664afd022db66ee58121\nhttps://git.kernel.org/stable/c/6b512a5330ef1a41db7aff4b80c4e952b8d52f17\nhttps://git.kernel.org/stable/c/17661c67b206612cb3ba65d5ae726cd2015d0a53\n",
   "aliases": "CVE-2026-80581\nGHSA-5rgw-cxhj-rmhq\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "08709702-e989-37d5-8f47-c2924cf4d023",
@@ -131,6 +131,16 @@
       "product_version": "patch: 7.1.10"
     },
     {
+      "id": "e78095a3-2146-3ed9-b592-460045efe860",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c40aad7c81e5fba34b70123ed7ce3397fa62a4d2 <96d51b8c5a909937d41f9c03495188d4190f877d"
+    },
+    {
       "id": "f446de56-db81-32ec-bb8e-2c90774c6dc8",
       "product": {
         "name": "Linux",
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "f59b2c57-fef7-31bf-be47-96e6845b23b2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     }
   ],
   "enisaIdVendor": [

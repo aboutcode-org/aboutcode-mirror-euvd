@@ -3,13 +3,23 @@
   "enisaUuid": "28adb718-b4b3-3c09-b27a-c86d23386bde",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: gyro: adis16136: fix unprotected debugfs reads\n\nThe serial_number file operations are open coded and never call\ndebugfs_file_get(), which debugfs_create_file_unsafe() requires.\ndebugfs_remove_recursive() therefore does not wait for a read in\nprogress, and unbind frees the iio_dev underneath it.\n\nUse debugfs_create_file() instead.",
   "datePublished": "Oct 18, 2026, 3:44:43 PM",
-  "dateUpdated": "Oct 19, 2026, 9:23:34 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d5b0b62e26d7d30e0e16e2d695f2161f7e92a5a5\nhttps://git.kernel.org/stable/c/b53dc6e15aead039bc6a5e08060c96786240c81d\nhttps://git.kernel.org/stable/c/b05e768420352d9051f86c1a1f20f44fa046ba45\nhttps://git.kernel.org/stable/c/2b498df75d6c29aa3e760127ae0f0003df598b53\n",
+  "references": "https://git.kernel.org/stable/c/b62c3944c006cff85dad881ba2948b2f3ef5a626\nhttps://git.kernel.org/stable/c/d5b0b62e26d7d30e0e16e2d695f2161f7e92a5a5\nhttps://git.kernel.org/stable/c/b53dc6e15aead039bc6a5e08060c96786240c81d\nhttps://git.kernel.org/stable/c/b05e768420352d9051f86c1a1f20f44fa046ba45\nhttps://git.kernel.org/stable/c/2b498df75d6c29aa3e760127ae0f0003df598b53\n",
   "aliases": "GHSA-fw25-7hvg-9627\nCVE-2026-98666\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "006258d3-0db2-30a9-912f-6bbf9f7422d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
     {
       "id": "0282772f-ae1b-3ca4-9ee7-970d25f2e0cf",
       "product": {
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "9aaea09b4cbdbe1a80ab3fa1a5d32c3ec61fa6e2 <b53dc6e15aead039bc6a5e08060c96786240c81d"
+    },
+    {
+      "id": "92b6271c-738f-3752-b3f5-058aedb39351",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9aaea09b4cbdbe1a80ab3fa1a5d32c3ec61fa6e2 <b62c3944c006cff85dad881ba2948b2f3ef5a626"
     },
     {
       "id": "c0201c20-02f3-3a2d-96e4-68ffffbc525f",

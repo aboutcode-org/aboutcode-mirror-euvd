@@ -3,14 +3,14 @@
   "enisaUuid": "f2ec791b-8113-36f0-9649-1b3163a04b4c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: zero-initialize stack-allocated cifs_open_info_data\n\nStack-allocated cifs_open_info_data may contain random data.\nThis can make some fields have wrong value if they are not set later.",
   "datePublished": "Sep 24, 2026, 4:02:35 PM",
-  "dateUpdated": "Sep 25, 2026, 12:43:08 PM",
+  "dateUpdated": "Oct 21, 2026, 12:52:38 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/74ff47e6c4213fcfeba2de448d9cbda200507d22\nhttps://git.kernel.org/stable/c/22532dd88694ed20bdd47523ffa709f166ce776b\nhttps://git.kernel.org/stable/c/8fce4cf4369c766a3293a05419500cbfde72e60d\n",
+  "references": "https://git.kernel.org/stable/c/2c5db82778f560121efda9e052e2f19c2d807c1b\nhttps://git.kernel.org/stable/c/74ff47e6c4213fcfeba2de448d9cbda200507d22\nhttps://git.kernel.org/stable/c/22532dd88694ed20bdd47523ffa709f166ce776b\nhttps://git.kernel.org/stable/c/8fce4cf4369c766a3293a05419500cbfde72e60d\n",
   "aliases": "GHSA-r8gf-cwvf-97c5\nCVE-2026-93801\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0236a191-d389-3ce2-b20b-eebe2e1d563a",
@@ -21,6 +21,26 @@
         }
       },
       "product_version": "6.12.54 <6.12.111"
+    },
+    {
+      "id": "02925bb6-d0fe-372e-bc77-43dce94cb8f3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "436cfdbc57d98808fce427d9a8d97691374989b3 <2c5db82778f560121efda9e052e2f19c2d807c1b"
+    },
+    {
+      "id": "19e123ba-5880-3b4e-a218-6470272435ef",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "20b35058-6a9a-3c47-adf6-cc0e2e24c7e0",
@@ -43,14 +63,14 @@
       "product_version": "patch: 6.12.111"
     },
     {
-      "id": "b237c216-6db4-34f1-890d-1c0184c321a0",
+      "id": "aba272e9-aedb-3853-8f9f-f6bda6d026df",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.6.113 <6.7"
+      "product_version": "6.6.113 <6.6.160"
     },
     {
       "id": "ca1323e4-54a6-34ea-bb83-33595a0a244d",
@@ -121,16 +141,6 @@
         }
       },
       "product_version": "patch: 7.2"
-    },
-    {
-      "id": "ffbceaac-9990-3e83-b8f8-dc6f32fc9c85",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "436cfdbc57d98808fce427d9a8d97691374989b3"
     },
     {
       "id": "ffc26e23-1b14-3640-b256-06013ccd02b7",

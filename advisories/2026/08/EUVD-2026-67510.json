@@ -3,15 +3,35 @@
   "enisaUuid": "c3e9217a-3586-383a-9e4d-e3ad0173a351",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: avoid num_encaps underflow on bridge VLAN untag\n\nThe DEV_PATH_BR_VLAN_UNTAG case post-decrements info->num_encaps\ninside WARN_ON_ONCE(). num_encaps is u8, so if it's already 0 the\ndecrement still happens and wraps it to 255. The break only leaves\nthe inner switch -- a later path entry can set info->indev back to\na real device, and we end up returning with num_encaps == 255.\n\nnft_dev_forward_path() then walks info.encap[] (size 2) up to\nnum_encaps, which means an OOB stack read and a bogus count copied\ninto the route descriptor.\n\nShould only happen on a malformed bridge path stack, hence the WARN,\nbut worth handling sanely. Move the decrement out of the WARN.\n\n[ While at this, remove the WARN_ON_ONCE since this can only happen\n  with a buggy bridge path stack --pablo ].",
   "datePublished": "Aug 28, 2026, 6:48:49 AM",
-  "dateUpdated": "Oct 16, 2026, 7:26:31 PM",
+  "dateUpdated": "Oct 21, 2026, 12:46:41 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/547ea9f567498e4accc89e7816264f15a1a0629f\nhttps://git.kernel.org/stable/c/2f55fa28011c97d6495d5787808db10a8c2d690d\nhttps://git.kernel.org/stable/c/e052f920773b73be49eb4d8702a9f85de7464363\n",
+  "references": "https://git.kernel.org/stable/c/1b52aeb40c9f04bf50eeb4ea09142139d163e239\nhttps://git.kernel.org/stable/c/ee8440bb000fff4ef8acbfc99652851e9ca0a35b\nhttps://git.kernel.org/stable/c/547ea9f567498e4accc89e7816264f15a1a0629f\nhttps://git.kernel.org/stable/c/2f55fa28011c97d6495d5787808db10a8c2d690d\nhttps://git.kernel.org/stable/c/e052f920773b73be49eb4d8702a9f85de7464363\n",
   "aliases": "CVE-2026-80634\nGHSA-jm3q-xwgv-hgh8\n",
   "assigner": "Linux",
-  "epss": 0.55,
+  "epss": 0.65,
   "enisaIdProduct": [
+    {
+      "id": "189be55d-102e-3b28-b06a-d9d1752f46ae",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e990cef6516daa4e1e236433579e333f74fd38cb <1b52aeb40c9f04bf50eeb4ea09142139d163e239"
+    },
+    {
+      "id": "1d9c0d6a-195d-39a4-90d6-2b1773b8ef41",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e990cef6516daa4e1e236433579e333f74fd38cb <ee8440bb000fff4ef8acbfc99652851e9ca0a35b"
+    },
     {
       "id": "26efdd18-4334-3919-9f65-b87adc48162d",
       "product": {
@@ -73,6 +93,16 @@
       "product_version": "e990cef6516daa4e1e236433579e333f74fd38cb <2f55fa28011c97d6495d5787808db10a8c2d690d"
     },
     {
+      "id": "9b04b8d9-852d-3533-8612-d37a9fe167c4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
       "id": "bfeb0974-ad39-3892-9eb6-d927f4070c29",
       "product": {
         "name": "Linux",
@@ -91,6 +121,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "f8f89b1b-7e88-3a54-b265-3574c408c7ab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

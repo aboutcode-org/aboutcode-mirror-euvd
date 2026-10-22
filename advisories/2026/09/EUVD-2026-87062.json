@@ -3,9 +3,9 @@
   "enisaUuid": "d5a1f100-c68c-36dd-bb4d-c69264fef14d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix tree connection leak in smb2_tree_connect()\n\nSee the procedure below:\n\n  smb2_tree_connect\n    ksmbd_tree_conn_connect\n      xa_store(&sess->tree_conns, tree_conn->id, tree_conn)\n      ksmbd_counter_inc(KSMBD_COUNTER_TREE_CONNS)\n      ksmbd_share_tree_conn_inc(sc)\n    ksmbd_iov_pin_rsp // fail\n    status.ret = KSMBD_TREE_CONN_STATUS_NOMEM\n    // do not disconnect tree_conn\n\nDisconnect the new tree connection if ksmbd_iov_pin_rsp() fails.",
   "datePublished": "Sep 25, 2026, 1:06:51 PM",
-  "dateUpdated": "Oct 19, 2026, 9:14:55 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:46 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/fea9c705bbc618ba6426424c9f8330555820c9ec\nhttps://git.kernel.org/stable/c/a6c88e5e3a75f1e4a98ad4bc4037465ccd7925bc\nhttps://git.kernel.org/stable/c/39f2032096715daae5f6fd0f587ca7a474b019df\n",
+  "references": "https://git.kernel.org/stable/c/fa0c45986fc60b3edfb35879f2fb0eacc0e49e98\nhttps://git.kernel.org/stable/c/fea9c705bbc618ba6426424c9f8330555820c9ec\nhttps://git.kernel.org/stable/c/a6c88e5e3a75f1e4a98ad4bc4037465ccd7925bc\nhttps://git.kernel.org/stable/c/39f2032096715daae5f6fd0f587ca7a474b019df\n",
   "aliases": "GHSA-x6qh-h8p9-5c4q\nCVE-2026-98162\n",
   "assigner": "Linux",
   "epss": 0.11,
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "e2b76ab8b5c9327ab2dae6da05d0752eb2f4771d <a6c88e5e3a75f1e4a98ad4bc4037465ccd7925bc"
+    },
+    {
+      "id": "271452aa-73cf-3afd-a5aa-e1282bc9ff0e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "2afa89c7-ea44-3748-9553-870ca792b6e0",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "a9c95e92-7cef-360c-944e-4fb570299509",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e2b76ab8b5c9327ab2dae6da05d0752eb2f4771d <fa0c45986fc60b3edfb35879f2fb0eacc0e49e98"
     },
     {
       "id": "d2afee44-9dee-3846-abaa-f125fd862da8",

@@ -3,12 +3,12 @@
   "enisaUuid": "e60dcb60-717d-3eb5-8720-e938ec4e5e70",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix exe mark UAF in kill_rules()\n\nkill_rules() removes mixed AUDIT_DIR and AUDIT_EXE rules when an audit\ntree is pruned. It drops entry->rule.exe before removing the rule from\nthe RCU-visible filter lists.\n\nAfter a rule has been installed with AUDIT_ADD_RULE, which requires\nCAP_AUDIT_CONTROL, removing the watched directory can race with another\ntask that is still evaluating the rule. In that case, fsnotify can free\nthe executable mark before the reader reaches audit_mark_compare(),\ncausing a use-after-free.\n\nKASAN reports:\n\n    BUG: KASAN: slab-use-after-free in audit_mark_compare+0x8d/0xa0\n\nUnlink the published rules from the RCU-visible lists and retain them\non tree->rules for cleanup. If any rule has an executable mark, wait for\na single RCU grace period before removing the marks and scheduling the\nentries for freeing. Otherwise, call_rcu() already provides the required\ndeferred freeing without a synchronous wait.",
   "datePublished": "Oct 18, 2026, 3:51:23 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:56 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:38 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/304960900991157e6883bdf0b39782b690545ee8\nhttps://git.kernel.org/stable/c/88633025f20ba9c32ccdb3efc86eafdf98cb825c\nhttps://git.kernel.org/stable/c/f2cc5462b78559c7628a9f8ac9a9592e7783183a\nhttps://git.kernel.org/stable/c/aa650d87a498844060eecb1d336f4d46f4d1b0b3\n",
+  "references": "https://git.kernel.org/stable/c/9aee3caeff4dd4126d84f67607b95cec8719b867\nhttps://git.kernel.org/stable/c/304960900991157e6883bdf0b39782b690545ee8\nhttps://git.kernel.org/stable/c/88633025f20ba9c32ccdb3efc86eafdf98cb825c\nhttps://git.kernel.org/stable/c/f2cc5462b78559c7628a9f8ac9a9592e7783183a\nhttps://git.kernel.org/stable/c/aa650d87a498844060eecb1d336f4d46f4d1b0b3\n",
   "aliases": "GHSA-73jm-mgrc-fg99\nCVE-2026-98862\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "019fe723-4510-337c-9ce9-fe050052ee99",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.12.113"
     },
     {
+      "id": "5a69a0cf-3894-37cc-b8d7-b2639b7de1f4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "34d99af52ad40bd498ba66970579a5bc1fb1a3bc <9aee3caeff4dd4126d84f67607b95cec8719b867"
+    },
+    {
       "id": "75f8b22d-fa85-3f3b-bc53-d3d9808220bb",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "a662847c-5821-3772-99a3-a51a352411f9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "cfb2742d-59a1-3699-93e6-9fab43284e6e",

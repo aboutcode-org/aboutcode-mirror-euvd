@@ -3,12 +3,12 @@
   "enisaUuid": "1010f167-c67f-3b55-bb1c-f95072af54df",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_flow_offload: drop flowtable reference on init error path\n\nnft_flow_offload_init() bumps the flowtable use count with\nnft_use_inc() before calling nf_ct_netns_get().  When the latter\nfails, the error is returned as-is and the reference is leaked.\n\nThe upper layers do not balance it either: nf_tables_newexpr()\nclears expr->ops when the expression init callback fails, so the\nnft_expr_more() iteration in nft_rule_expr_deactivate() and\nnf_tables_rule_destroy() stops right before the failed expression\nand its ->destroy callback, which would drop the reference, never\nruns.\n\nEach failed rule addition therefore leaks one flowtable reference\nand the flowtable can no longer be removed: NFT_MSG_DELFLOWTABLE\nkeeps reporting -EBUSY even though no rule references it.\n\nSave the nf_ct_netns_get() return value and undo the nft_use_inc()\nwhen it fails, restoring the inc/dec pairing within\nnft_flow_offload_init() itself.",
   "datePublished": "Oct 18, 2026, 3:50:50 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:46 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:30 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/64ac0cb574c740bf723affb79b646eeba920db6b\nhttps://git.kernel.org/stable/c/c5f91098edee98c015f78488460a0609e62582a5\nhttps://git.kernel.org/stable/c/4cd378423a33194a773c267fc58606d28fce95cf\nhttps://git.kernel.org/stable/c/747928b5d4ff8c8de55138a54c13980e4bb88578\n",
+  "references": "https://git.kernel.org/stable/c/1d27214fd9a4d2c0c6d998fc9d4fb61448a3438e\nhttps://git.kernel.org/stable/c/64ac0cb574c740bf723affb79b646eeba920db6b\nhttps://git.kernel.org/stable/c/c5f91098edee98c015f78488460a0609e62582a5\nhttps://git.kernel.org/stable/c/4cd378423a33194a773c267fc58606d28fce95cf\nhttps://git.kernel.org/stable/c/747928b5d4ff8c8de55138a54c13980e4bb88578\n",
   "aliases": "GHSA-95vh-jxqc-h2w9\nCVE-2026-98851\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1bace249-4779-35eb-90a7-884995bd2c83",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "4a714cb2-85ae-364d-8834-9cf2a14946d4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "5348b866-c0f6-3b02-b30a-928ff1b61ed0",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "4.16"
+    },
+    {
+      "id": "f845c9de-3c67-3d78-80bc-507c32fc3c86",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a3c90f7a2323b331ae816d5b0633e68148e25d04 <1d27214fd9a4d2c0c6d998fc9d4fb61448a3438e"
     }
   ],
   "enisaIdVendor": [

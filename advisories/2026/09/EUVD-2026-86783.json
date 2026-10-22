@@ -3,9 +3,9 @@
   "enisaUuid": "a02b5b54-4cdb-3923-9366-90bbb79cae10",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usbusx2y: validate URB actual_length in interrupt callback\n\ni_usx2y_in04_int() processes the interrupt URB data without checking\nurb->actual_length.  A short transfer from a malfunctioning device\nwould cause the handler to process uninitialized heap data from the\nkmalloc-allocated in04_buf, which is then copied to the mmap-accessible\nctl_snapshot[] array.\n\nFix by using kzalloc() for in04_buf to zero-initialize the buffer,\nand adding an actual_length check to skip processing on short\ntransfers while still resubmitting the URB.",
   "datePublished": "Sep 25, 2026, 10:22:46 AM",
-  "dateUpdated": "Oct 19, 2026, 9:10:56 AM",
+  "dateUpdated": "Oct 21, 2026, 12:53:41 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c156584999bf15118f523ef6c6fedc5b21f46bd9\nhttps://git.kernel.org/stable/c/b0c30fe6c0d5902bd8a7d1d5720bead5bbe46f7d\nhttps://git.kernel.org/stable/c/2770321b358658e0a39fe39ccf6a91ee97a81931\nhttps://git.kernel.org/stable/c/8f5ef203abda9dd36b2af473c7b737d544f807bd\n",
+  "references": "https://git.kernel.org/stable/c/c3576cb77b527f223cf2b9fc2b2e9af5e7adee25\nhttps://git.kernel.org/stable/c/c156584999bf15118f523ef6c6fedc5b21f46bd9\nhttps://git.kernel.org/stable/c/b0c30fe6c0d5902bd8a7d1d5720bead5bbe46f7d\nhttps://git.kernel.org/stable/c/2770321b358658e0a39fe39ccf6a91ee97a81931\nhttps://git.kernel.org/stable/c/8f5ef203abda9dd36b2af473c7b737d544f807bd\n",
   "aliases": "CVE-2026-97929\nGHSA-7jc2-x3x6-f88w\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -91,6 +91,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c156584999bf15118f523ef6c6fedc5b21f46bd9"
     },
     {
+      "id": "d5fcb92a-db51-3e96-bbc5-10708472b444",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "e07c5b1d-00eb-33f9-ac8e-c5e310f765ae",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <2770321b358658e0a39fe39ccf6a91ee97a81931"
+    },
+    {
+      "id": "e6dece4d-c967-3e64-89f4-158a974fdfed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <c3576cb77b527f223cf2b9fc2b2e9af5e7adee25"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "03ba1521-04e9-3de8-86a3-03bae85b2f0a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: zero-initialize control packet in vcc_send_ctl()\n\nThe stack-allocated struct vio_vcc pkt was partially initialized,\nleaving the tag.stype_env field uninitialized before being sent via\nldc_write(), potentially leaking kernel stack data to the LDC peer.",
   "datePublished": "Oct 18, 2026, 3:47:41 PM",
-  "dateUpdated": "Oct 19, 2026, 9:25:08 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15\nhttps://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936\nhttps://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca\nhttps://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185\n",
+  "references": "https://git.kernel.org/stable/c/4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed\nhttps://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15\nhttps://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936\nhttps://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca\nhttps://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185\n",
   "aliases": "GHSA-g66w-7p4m-7w28\nCVE-2026-98755\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "077b618b-5a75-36c8-a0df-69c6af295fbb",
@@ -61,6 +61,26 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6f1a08ef02825b440126c406ea63ef6128888e15"
     },
     {
+      "id": "46b5df19-da02-38be-8393-27b3702bbba7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed"
+    },
+    {
+      "id": "5812d759-207f-36a7-a2b6-e65143f3b058",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "6ec3c64b-52b8-36de-a5b4-7273c3ec9a4f",
       "product": {
         "name": "Linux",
@@ -99,6 +119,16 @@
         }
       },
       "product_version": "0 <7.2.10"
+    },
+    {
+      "id": "eb40c2d1-5642-3f4d-98d0-f899cda7a261",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <6.6.160"
     },
     {
       "id": "f43d908d-b1de-3449-bf65-e9429dbc2466",

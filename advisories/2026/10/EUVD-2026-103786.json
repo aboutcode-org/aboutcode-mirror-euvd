@@ -3,12 +3,12 @@
   "enisaUuid": "31e5dca7-e505-35f0-a4cf-25a7c757bf61",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: check RCV_SHUTDOWN after the sendmsg connect wait\n\nsctp_wait_for_connect() drops the socket lock while it sleeps. An\nout-of-the-blue ABORT can then be processed from the socket backlog and\nunlink the association. If a concurrent shutdown(fd, SHUT_RD) sets\nRCV_SHUTDOWN, the waiter breaks with err == 0 before checking\nasoc->base.dead. Its final sctp_association_put() can then free the\nassociation, leaving sctp_sendmsg_to_asoc() to continue with a dangling\npointer.\n\nCheck RCV_SHUTDOWN along with the wait error in sctp_sendmsg_to_asoc()\nbefore using the association again. The check only accesses the socket,\nso it needs no additional association reference. Return the existing\n-ESRCH so that sctp_sendmsg() skips freeing a new association that may\nalready have been destroyed.\n\nKeep sctp_wait_for_connect() unchanged to preserve its behavior for the\nconnect() caller.",
   "datePublished": "Oct 18, 2026, 3:50:34 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:38 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:26 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e8f972b1759d26bbefe4c524caae1ed7c8a593bd\nhttps://git.kernel.org/stable/c/e701345d886e831fb593a0870d69c8c5de6fc938\nhttps://git.kernel.org/stable/c/222c41e0f50f1d5028be9baf0e1dcfc0bfa7f669\nhttps://git.kernel.org/stable/c/4f1da630d13de0370e2f6361f961f1c8b384af1c\n",
+  "references": "https://git.kernel.org/stable/c/1bef1944ef15a40797305bf916827b04df6307ca\nhttps://git.kernel.org/stable/c/e8f972b1759d26bbefe4c524caae1ed7c8a593bd\nhttps://git.kernel.org/stable/c/e701345d886e831fb593a0870d69c8c5de6fc938\nhttps://git.kernel.org/stable/c/222c41e0f50f1d5028be9baf0e1dcfc0bfa7f669\nhttps://git.kernel.org/stable/c/4f1da630d13de0370e2f6361f961f1c8b384af1c\n",
   "aliases": "GHSA-gghw-9hqp-85hc\nCVE-2026-98846\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "20fd99a8-dd9a-3181-9906-d267a9b37495",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "37c46e01-e5ea-3e7a-a180-050996b1eab3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "668c9beb9020d5834ee9e43c208190a07d2b1928 <1bef1944ef15a40797305bf916827b04df6307ca"
     },
     {
       "id": "397157f3-abb3-38ce-b16c-b313b128a823",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "4.16"
+    },
+    {
+      "id": "c1cf493f-c56a-33a7-9a03-8d14158df3f2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "e478abeb-4bc0-3f38-b955-30765d2595e5",

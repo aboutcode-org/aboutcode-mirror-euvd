@@ -3,12 +3,12 @@
   "enisaUuid": "d29e89c2-8490-3da4-a6e9-54ce393e6581",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: libata-core: Add NOLPM quirk for PNY CS900 1TB SSD\n\nThe PNY CS900 1TB SSD (Phison PS3111-S11, DRAM-less) drops off the bus\nafter entering Device-Initiated Slumber during idle. With the default\nmed_power_with_dipm policy the link goes down (SStatus 1 SControl 300)\nand does not recover, forcing the filesystem read-only. Forcing\nmax_performance keeps the link stable across prolonged idle.\n\nAdd a NOLPM quirk so link power management is disabled for this drive\nspecifically, leaving it intact for other devices on the host.",
   "datePublished": "Aug 15, 2026, 5:51:53 AM",
-  "dateUpdated": "Oct 15, 2026, 10:08:30 AM",
+  "dateUpdated": "Oct 21, 2026, 12:44:19 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0a2c89d538fd4fca07c6ebe4fe03cc932f962441\nhttps://git.kernel.org/stable/c/299739909c486bcea7445f5c3b066fdbc0d2df96\nhttps://git.kernel.org/stable/c/462775c620197adaabc983ce847e5b9878ff4cb0\n",
+  "references": "https://git.kernel.org/stable/c/eb94157a86cef9a151ccd4bc52faae1853d0fa0c\nhttps://git.kernel.org/stable/c/0a2c89d538fd4fca07c6ebe4fe03cc932f962441\nhttps://git.kernel.org/stable/c/299739909c486bcea7445f5c3b066fdbc0d2df96\nhttps://git.kernel.org/stable/c/462775c620197adaabc983ce847e5b9878ff4cb0\n",
   "aliases": "CVE-2026-72031\nGHSA-hr25-grq7-6pp2\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1245afba-8f6b-3d50-b79e-60d005215353",
@@ -51,6 +51,16 @@
       "product_version": "7627a0edef548c4c4dea62df51cc26bfe5bbcab8 <0a2c89d538fd4fca07c6ebe4fe03cc932f962441"
     },
     {
+      "id": "62d2a5a0-3929-362e-b483-c24760ab0fe3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
       "id": "7384405d-4012-3bd2-8f9e-1bf9c7fbfe92",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "6.9"
+    },
+    {
+      "id": "dcc34d6c-eda2-38be-a2e2-b733ddb14b0e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7627a0edef548c4c4dea62df51cc26bfe5bbcab8 <eb94157a86cef9a151ccd4bc52faae1853d0fa0c"
     },
     {
       "id": "e9350d95-3032-3d54-806d-bffd45171cc3",

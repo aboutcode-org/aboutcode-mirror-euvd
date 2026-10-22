@@ -3,9 +3,9 @@
   "enisaUuid": "085786ee-792d-3f87-a6c2-967a1c0e23ca",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: scope session state changes to bound connections\n\nksmbd_all_conn_set_status() treats every connection whose transient\nbinding flag is set as belonging to the target SessionId.  A logoff or\nsession replacement can consequently move an unrelated connection to\nNEED_RECONNECT or NEED_SETUP.\n\nPass the target session itself and select connections using either the\nconnection-local session xarray or the session's permanent channel list.\nUse the same association test while waiting for requests to drain.\n\nSerialize session-wide status changes under request_lock and do not\noverwrite EXITING or RELEASING. Protect the shutdown transition with the\nsame lock so a concurrent session update cannot revive a closing\nconnection.",
   "datePublished": "Sep 17, 2026, 4:06:47 PM",
-  "dateUpdated": "Oct 19, 2026, 8:58:53 AM",
+  "dateUpdated": "Oct 21, 2026, 12:50:09 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1ff0e41afbe73240a7d7b96d4e8e86d0aaf0fe0b\nhttps://git.kernel.org/stable/c/0875872718b98e8530fbc634e5aa7dbd3253b80d\nhttps://git.kernel.org/stable/c/c50e628122aed077695669e25b842e778511a43d\n",
+  "references": "https://git.kernel.org/stable/c/3deefd5fb1368e2577144b0961b1a5df26b587d1\nhttps://git.kernel.org/stable/c/3d66f3ec3c69fa242939a9f9e6815df33390b1bb\nhttps://git.kernel.org/stable/c/1ff0e41afbe73240a7d7b96d4e8e86d0aaf0fe0b\nhttps://git.kernel.org/stable/c/0875872718b98e8530fbc634e5aa7dbd3253b80d\nhttps://git.kernel.org/stable/c/c50e628122aed077695669e25b842e778511a43d\n",
   "aliases": "CVE-2026-90154\nGHSA-c8qh-mfc7-v6c7\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "5.15"
+    },
+    {
+      "id": "07eb1758-54c9-3bb3-9049-4b212e6eb995",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f5a544e3bab78142207e0242d22442db85ba1eff <3deefd5fb1368e2577144b0961b1a5df26b587d1"
     },
     {
       "id": "29840d4c-d1ee-3a10-9e5f-c3908822615f",
@@ -51,6 +61,26 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "9d0fa5cc-946d-3fa5-9659-9a41513f63ee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f5a544e3bab78142207e0242d22442db85ba1eff <3d66f3ec3c69fa242939a9f9e6815df33390b1bb"
+    },
+    {
+      "id": "c3452f42-ae59-3745-acfc-12d2dedc240a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
       "id": "c8166b7d-d083-3745-90f2-51defc572f3d",
       "product": {
         "name": "Linux",
@@ -69,6 +99,16 @@
         }
       },
       "product_version": "f5a544e3bab78142207e0242d22442db85ba1eff <1ff0e41afbe73240a7d7b96d4e8e86d0aaf0fe0b"
+    },
+    {
+      "id": "db45967c-9433-37b5-9edd-0489b149f6f4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "f657f0e3-891a-3c4d-b3f5-67b0cb012ffc",

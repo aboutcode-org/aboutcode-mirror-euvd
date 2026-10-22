@@ -3,13 +3,33 @@
   "enisaUuid": "5caa9189-dcbd-332b-976a-3fd4ca158e1c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Wrap user-invoked calls to fb_set_var() in helper\n\nHandle fbcon during display updates in fb_set_var_from_user(). Check\nwith fbcon if the mode change is possible, update hardware state and\nfinally update fbcon. Update all callers.\n\nOnly the FBIOPUT_VSCREENINFO ioctl currently does all steps. Other\nmode-changes callers in sysfs and driver code are missing fbcon-related\nsteps.\n\nWith the new helper, ps3fb and sh_mobile_lcdcfb no longer maintain\nfbcon state themselves.",
   "datePublished": "Sep 4, 2026, 3:12:57 PM",
-  "dateUpdated": "Oct 15, 2026, 10:09:48 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:06 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ed7e9715849abd0816b8487b0d12ebd05d6e938b\nhttps://git.kernel.org/stable/c/07f7e46833f71472e30da54a50dacdf48521bdd3\nhttps://git.kernel.org/stable/c/6f611e5e5f3327cf2e2daabe6ee5acac58cc784e\n",
+  "references": "https://git.kernel.org/stable/c/3130e7bf43ecfe3a15bcf90b9698e0764a2d8d08\nhttps://git.kernel.org/stable/c/d33589eff3d40439b3c83e8da0d07d20df797d50\nhttps://git.kernel.org/stable/c/ed7e9715849abd0816b8487b0d12ebd05d6e938b\nhttps://git.kernel.org/stable/c/07f7e46833f71472e30da54a50dacdf48521bdd3\nhttps://git.kernel.org/stable/c/6f611e5e5f3327cf2e2daabe6ee5acac58cc784e\n",
   "aliases": "CVE-2026-80786\nGHSA-p7rm-gj7v-32rv\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "03430153-e0e6-3723-a30f-071a762dc1db",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <3130e7bf43ecfe3a15bcf90b9698e0764a2d8d08"
+    },
+    {
+      "id": "0f02815f-ecb6-33c1-9801-10e1970a167c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
     {
       "id": "133d0b82-737e-39a3-8f04-b354dcf8e94d",
       "product": {
@@ -19,6 +39,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "2864368b-73ae-3629-a2b8-cd0ca131aeab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d33589eff3d40439b3c83e8da0d07d20df797d50"
     },
     {
       "id": "43e4636c-391e-36be-99a7-93a7fff91b83",
@@ -59,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "b7044da1-4a00-3654-8573-6e5d2e584216",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "bcb2a5dd-4e2b-3225-9b71-f55e1bd93fd9",

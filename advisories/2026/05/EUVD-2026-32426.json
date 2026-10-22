@@ -3,12 +3,12 @@
   "enisaUuid": "0e8ae154-15bd-3a0e-b972-269501659ec1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi:ssif: Clean up kthread on errors\n\nIf an error occurs after the ssif kthread is created, but before the\nmain IPMI code starts the ssif interface, the ssif kthread will not\nbe stopped.\n\nSo make sure the kthread is stopped on an error condition if it is\nrunning.",
   "datePublished": "May 27, 2026, 12:56:59 PM",
-  "dateUpdated": "Oct 15, 2026, 1:20:10 AM",
+  "dateUpdated": "Oct 21, 2026, 12:41:13 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/549607af66a0efdb41307ba6343eed31de8b133e\nhttps://git.kernel.org/stable/c/f2d0a3ede5ebf404d4c334a1f04ef439e0086857\nhttps://git.kernel.org/stable/c/e662be2d0d05253d0fd7deda9771aa036c23393e\nhttps://git.kernel.org/stable/c/858bc8b9edb6eaf0522900128bb9053e2df6b0f6\nhttps://git.kernel.org/stable/c/800febc637d1c1974b1e899dea8a07e115d60766\nhttps://git.kernel.org/stable/c/75c486cb1bcaa1a3ec3a6438498176a3a4998ae4\n",
+  "references": "https://git.kernel.org/stable/c/549607af66a0efdb41307ba6343eed31de8b133e\nhttps://git.kernel.org/stable/c/f2d0a3ede5ebf404d4c334a1f04ef439e0086857\nhttps://git.kernel.org/stable/c/e662be2d0d05253d0fd7deda9771aa036c23393e\nhttps://git.kernel.org/stable/c/d6855a3b15851061c817506492b6aa0b605cff1e\nhttps://git.kernel.org/stable/c/858bc8b9edb6eaf0522900128bb9053e2df6b0f6\nhttps://git.kernel.org/stable/c/800febc637d1c1974b1e899dea8a07e115d60766\nhttps://git.kernel.org/stable/c/75c486cb1bcaa1a3ec3a6438498176a3a4998ae4\n",
   "aliases": "CVE-2026-46044\nGHSA-9g3m-jq99-wvqp\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "11db50b2-8f38-35cd-a4b9-037d6b06cb93",
@@ -101,6 +101,16 @@
       "product_version": "259307074bfcf1ff88016e12c68f057aee6cb694 <800febc637d1c1974b1e899dea8a07e115d60766"
     },
     {
+      "id": "d0a48da4-2bc0-3b9a-b1d9-583777065fc8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "259307074bfcf1ff88016e12c68f057aee6cb694 <d6855a3b15851061c817506492b6aa0b605cff1e"
+    },
+    {
       "id": "d548f004-b6a6-3d6b-98f5-dc9d159165e3",
       "product": {
         "name": "Linux",
@@ -149,6 +159,16 @@
         }
       },
       "product_version": "patch: 5.15.209"
+    },
+    {
+      "id": "f486b596-1362-3e0d-bda0-3fd17088f319",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     }
   ],
   "enisaIdVendor": [

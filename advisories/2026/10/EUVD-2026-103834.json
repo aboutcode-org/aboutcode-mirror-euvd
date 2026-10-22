@@ -3,12 +3,12 @@
   "enisaUuid": "4012b6fa-641f-360c-be6b-082e3667ffa8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: serial: max3100: shut down timer before freeing port\n\nmax3100_shutdown() stops the polling timer but returns early during\nsystem suspend. If the SPI device is unbound before resume, the serial\ncore does not call max3100_shutdown() again, so max3100_remove() frees\nthe port while the timer remains armed. max3100_timeout() may then\naccess the freed port and re-arm the timer.\n\nAdd final timer teardown to max3100_remove() and use\ntimer_shutdown_sync() to prevent a racing callback from re-arming it.\nAlso free the IRQ and destroy the workqueue there before freeing the\nport. Keep timer_delete_sync() in max3100_shutdown() so that a\nsubsequent open() can re-arm the timer.\n\nThe workqueue is created before request_irq() and destroyed on both\nrequest_irq() failure and normal shutdown. Its presence at remove thus\nidentifies the IRQ left registered when suspend bypasses shutdown.\n\nFree the IRQ before destroying the workqueue, in both\nmax3100_shutdown() and max3100_remove(), and cancel the pending work\nin between. free_irq() waits for a running interrupt handler to\nfinish and no new handler can start afterwards, so a racing handler\ncannot queue work on a workqueue that is being destroyed; the\nforce_end_work check in max3100_dowork() only narrows that window, as\na handler delayed between the check and queue_work() could still run\nafter the teardown has cleared the workqueue pointer. Cancelling the\nwork also keeps destroy_workqueue() from waiting on a queued work item\nin case remove() ever runs while the freezable workqueue is still\nfrozen, e.g. device removal during the resume window, before\nworkqueues are thawed.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Oct 18, 2026, 3:47:34 PM",
-  "dateUpdated": "Oct 19, 2026, 9:25:01 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:24 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/fb668620e3b163962dabe1a674725a07aa44ff4a\nhttps://git.kernel.org/stable/c/2c8614981d3e6e000427de0ab2426ab68274d850\nhttps://git.kernel.org/stable/c/247b8f680876313586aed4d267bfcceddc2b4901\nhttps://git.kernel.org/stable/c/db0949bbd06db0a75b4b1076f1e25194be7d956a\n",
+  "references": "https://git.kernel.org/stable/c/158a07da2da720f2f98b4bea129212c6805d8ee0\nhttps://git.kernel.org/stable/c/fb668620e3b163962dabe1a674725a07aa44ff4a\nhttps://git.kernel.org/stable/c/2c8614981d3e6e000427de0ab2426ab68274d850\nhttps://git.kernel.org/stable/c/247b8f680876313586aed4d267bfcceddc2b4901\nhttps://git.kernel.org/stable/c/db0949bbd06db0a75b4b1076f1e25194be7d956a\n",
   "aliases": "GHSA-ghhr-fv6h-x88w\nCVE-2026-98749\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "04377bad-d080-36e3-ad73-7f8f13802e15",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "7831d56b0a3544cbb6f82f76c34ca95e24d5b676 <2c8614981d3e6e000427de0ab2426ab68274d850"
+    },
+    {
+      "id": "0f1d057a-050b-35b3-a06d-41297cceda57",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7831d56b0a3544cbb6f82f76c34ca95e24d5b676 <158a07da2da720f2f98b4bea129212c6805d8ee0"
     },
     {
       "id": "33c3cb21-4c44-3313-9057-1223a7527b9f",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "cd3e4424-f721-3a2c-bc92-30c1f4c44589",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "fcf45d45-6d8a-3ece-9bae-c8dca5fed361",

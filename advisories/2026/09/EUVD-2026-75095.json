@@ -3,9 +3,9 @@
   "enisaUuid": "c764de07-c845-3892-ba3f-a84bbeed4008",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: defer eventfd signaling when queued from a wakeup handler\n\nio_req_local_work_add() signals the CQ ring eventfd inline when it is the\none to push the first entry onto ->work_list. For DEFER_TASKRUN rings that\nadd is frequently done from a waitqueue wakeup handler, where an\narbitrary waitqueue lock is held.\n\neventfd_signal_mask() only refuses to recurse when current->in_eventfd\nis set, but that bit is set by eventfd_signal_mask() itself. If the wake\nchain starts somewhere else, signal goes out inline and can feed back\ninto epoll.\n\nAdd IOU_F_TWQ_IN_WAKE, set it on the task_work add done from the three\nwaitqueue callbacks, and use it to force io_eventfd_signal() down the\nexisting call_rcu_hurry() deferral instead of signaling inline.",
   "datePublished": "Sep 9, 2026, 4:13:17 PM",
-  "dateUpdated": "Oct 19, 2026, 8:45:03 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:14 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e22f4494cc9487d326e5e3067f33dea7c1e442b2\nhttps://git.kernel.org/stable/c/b6bb334b0e9348887e3e55e1f494b0c3b8fbf59f\nhttps://git.kernel.org/stable/c/40b6ccf68731809ceb85c6e9f0f8f2ed61c7aa5a\nhttps://git.kernel.org/stable/c/cd305ee3633a45fcf5f3a5d83f99f3cb77d87b6e\n",
+  "references": "https://git.kernel.org/stable/c/d0c240f25e654442a72af5ca021a02165ccce638\nhttps://git.kernel.org/stable/c/9d984451baf768ecd9e1fdad4637b729fcb2c9d5\nhttps://git.kernel.org/stable/c/e22f4494cc9487d326e5e3067f33dea7c1e442b2\nhttps://git.kernel.org/stable/c/b6bb334b0e9348887e3e55e1f494b0c3b8fbf59f\nhttps://git.kernel.org/stable/c/40b6ccf68731809ceb85c6e9f0f8f2ed61c7aa5a\nhttps://git.kernel.org/stable/c/cd305ee3633a45fcf5f3a5d83f99f3cb77d87b6e\n",
   "aliases": "GHSA-xg24-c6qm-h882\nCVE-2026-80920\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -21,6 +21,16 @@
       "product_version": "6.1"
     },
     {
+      "id": "19cda3bf-e92e-3ccd-801c-2e3efd5c5943",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "21a091b970cdbcf3e8ff829234b51be6f9192766 <9d984451baf768ecd9e1fdad4637b729fcb2c9d5"
+    },
+    {
       "id": "53978768-34aa-3207-ae22-32c5c4b7a98d",
       "product": {
         "name": "Linux",
@@ -29,6 +39,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "7be26205-25b4-3e71-9e45-e9592a44c487",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "81c225fb-b05a-3d3b-8f86-c14dd1d6626f",
@@ -101,6 +121,16 @@
       "product_version": "patch: 7.2.1"
     },
     {
+      "id": "cf62a586-566a-3a40-bf8b-466c87e4fd21",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "21a091b970cdbcf3e8ff829234b51be6f9192766 <d0c240f25e654442a72af5ca021a02165ccce638"
+    },
+    {
       "id": "ef11ee0d-62ec-3395-9bc9-16bcc0852bb3",
       "product": {
         "name": "Linux",
@@ -109,6 +139,16 @@
         }
       },
       "product_version": "21a091b970cdbcf3e8ff829234b51be6f9192766 <40b6ccf68731809ceb85c6e9f0f8f2ed61c7aa5a"
+    },
+    {
+      "id": "f6be209d-dfa0-36d0-bfcf-e696cd1efad2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

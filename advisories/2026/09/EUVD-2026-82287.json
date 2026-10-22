@@ -3,13 +3,23 @@
   "enisaUuid": "641e2697-3a68-3ab4-84ad-9a507c888fff",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read\n\nReject voltage objects whose usSize is smaller than the header or would\nadvance the cursor past the table end, preventing an infinite loop or\nheap OOB read when the VBIOS supplies a malformed VoltageObjectInfo table.",
   "datePublished": "Sep 17, 2026, 4:12:07 PM",
-  "dateUpdated": "Oct 19, 2026, 9:06:51 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:11 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/203ffe648948ca3c2f55b21118945a7a6d0884aa\nhttps://git.kernel.org/stable/c/0a6c9b3801903b6db91f3cbf148646b501dbded3\nhttps://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
+  "references": "https://git.kernel.org/stable/c/574af7c61f2bed37baa3b60669e428d24d2c9ae8\nhttps://git.kernel.org/stable/c/203ffe648948ca3c2f55b21118945a7a6d0884aa\nhttps://git.kernel.org/stable/c/0a6c9b3801903b6db91f3cbf148646b501dbded3\nhttps://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2\nhttps://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082\n",
   "aliases": "CVE-2026-93179\nGHSA-636p-hq8h-v2cp\n",
   "assigner": "Linux",
   "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "003451d2-b8b0-35c1-8956-fc42faf213fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
     {
       "id": "102cb583-f3dd-3daf-9b39-c043a3a84245",
       "product": {
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "82ca3366-7697-30ff-9cb8-1a03dbdcd0b8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c82baa28184356a75c0157129f88af42b2e7b695 <574af7c61f2bed37baa3b60669e428d24d2c9ae8"
     },
     {
       "id": "8b3decd0-69eb-3326-aadf-f4427e7bf1c5",

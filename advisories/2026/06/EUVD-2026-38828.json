@@ -3,7 +3,7 @@
   "enisaUuid": "63ba9bf4-8e27-31b4-9b00-ba68109bee37",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: put folios not suitable for writeback\n\nThe batch holds references to the folios (see `filemap_get_folios`,\n`folio_batch_release`), so we need to `folio_put` the folios we remove.\n\nTested on v6.18.",
   "datePublished": "Jun 24, 2026, 4:28:41 PM",
-  "dateUpdated": "Oct 19, 2026, 7:47:10 PM",
+  "dateUpdated": "Oct 21, 2026, 12:41:41 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -23,6 +23,16 @@
       "product_version": "ce80b76dd32764cc914975777e058d4fae4f0ea0 <86921e890fe1dea9791fb70bec552516fd47716a"
     },
     {
+      "id": "1685e868-5195-3dc3-9959-3d930276d3e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0f2b2b7cacf888229cec19126e6791b11fb35f32"
+    },
+    {
       "id": "174b8b91-ac0d-34e1-976c-9093cbf386a5",
       "product": {
         "name": "Linux",
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "411744c2-5cbb-3168-a342-333fd40b3ecc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.12.114 <6.13"
     },
     {
       "id": "7a1d3cd1-fc0d-387f-a4d1-0fb8cd88b23d",

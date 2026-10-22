@@ -3,9 +3,9 @@
   "enisaUuid": "899a52e7-2094-3f04-8b80-c5139182a5be",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: int1092: Fix potential memory leak in sar_probe()\n\nThe memory allocated for device_mode_info in parse_package() called by\nsar_get_data() is not freed in some of the error paths in sar_probe().\nFix that by converting to use device managed allocations.",
   "datePublished": "Sep 11, 2026, 7:43:07 PM",
-  "dateUpdated": "Oct 19, 2026, 8:46:45 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:25 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4bdbb7f1045820aa8fd87d84db6b26c01049a005\nhttps://git.kernel.org/stable/c/08dab7065f9369dd0a0aa740071bcd884c4848b0\nhttps://git.kernel.org/stable/c/582b82e573a059be9319bb16b84c45d0ef66f471\nhttps://git.kernel.org/stable/c/30c906cff490c3601ee9ff110fe8115fabe75fd4\n",
+  "references": "https://git.kernel.org/stable/c/d680ce2b39f9a635365746d0ada3d6a6d861789b\nhttps://git.kernel.org/stable/c/4bdbb7f1045820aa8fd87d84db6b26c01049a005\nhttps://git.kernel.org/stable/c/08dab7065f9369dd0a0aa740071bcd884c4848b0\nhttps://git.kernel.org/stable/c/582b82e573a059be9319bb16b84c45d0ef66f471\nhttps://git.kernel.org/stable/c/30c906cff490c3601ee9ff110fe8115fabe75fd4\n",
   "aliases": "CVE-2026-89437\nGHSA-8554-6hg6-mf5q\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -51,6 +51,16 @@
       "product_version": "patch: 7.3"
     },
     {
+      "id": "75ee0e4e-e163-3375-9e89-6fedb7d685a2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "790976da-f880-3119-b263-070f5c8d3171",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "8055745c-f006-3064-92ee-aa1ae6b0bc58",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dcfbd31ef4bcf6ceb373911faa4a5299e0547702 <d680ce2b39f9a635365746d0ada3d6a6d861789b"
     },
     {
       "id": "98df2343-7c92-3b89-98d7-1112b0bbc8ad",

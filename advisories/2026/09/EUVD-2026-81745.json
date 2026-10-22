@@ -3,9 +3,9 @@
   "enisaUuid": "b3ccddb3-90d8-3027-a12e-f1a865878133",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix session leak in ksmbd_session_register()\n\nSee the procedure below:\n\n  smb2_sess_setup\n    ksmbd_smb2_session_create\n      __session_create\n        atomic_set(&sess->refcnt, 2)\n        hash_add(sessions_table, &sess->hlist, sess->id)\n    ksmbd_session_register\n      xa_store(&conn->sessions, sess->id, sess) // fail\n    ksmbd_user_session_put\n      atomic_dec(&sess->refcnt) // refcnt is 1, session is not freed\n\nRemove the session from sessions_table and drop its table reference if\nxa_store() fails.",
   "datePublished": "Sep 17, 2026, 4:06:45 PM",
-  "dateUpdated": "Oct 19, 2026, 8:58:51 AM",
+  "dateUpdated": "Oct 21, 2026, 12:50:08 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/03a22a003f41b182245e6c71fe565e277cff7094\nhttps://git.kernel.org/stable/c/b967a595fb735d313a8676b2ca6a4cba38506482\nhttps://git.kernel.org/stable/c/55c677619084f9c9fa4146d933cc8ccafc924c87\nhttps://git.kernel.org/stable/c/99b25b046e47e4904373cfeb445c5483f1633d88\n",
+  "references": "https://git.kernel.org/stable/c/988f99bfddda4e2d1da5f6e98b237dd85e123cee\nhttps://git.kernel.org/stable/c/03a22a003f41b182245e6c71fe565e277cff7094\nhttps://git.kernel.org/stable/c/b967a595fb735d313a8676b2ca6a4cba38506482\nhttps://git.kernel.org/stable/c/55c677619084f9c9fa4146d933cc8ccafc924c87\nhttps://git.kernel.org/stable/c/99b25b046e47e4904373cfeb445c5483f1633d88\n",
   "aliases": "GHSA-c2gf-579m-pqr2\nCVE-2026-90152\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -109,6 +109,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "8c2e4a60-35cd-3035-8c10-3126ca09aaa9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "b466d966-3608-346b-ba1e-4aa072065c3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f5c779b7ddbda30866cf2a27c63e34158f858c73 <988f99bfddda4e2d1da5f6e98b237dd85e123cee"
     },
     {
       "id": "b4d65b2c-2de1-3228-b8ed-265b5a8423e8",

@@ -3,9 +3,9 @@
   "enisaUuid": "45f0c4e6-d41b-385f-99a8-7c6e7e46b7b1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: prevent race between disconnect() and rtx\n\nSashiko noted that the two event can race, leading to inconsistent\nstatus. Prevent the race using the synchronous timer stop operation.",
   "datePublished": "Sep 25, 2026, 10:21:53 AM",
-  "dateUpdated": "Oct 19, 2026, 9:09:30 AM",
+  "dateUpdated": "Oct 21, 2026, 12:53:20 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2261f857ef4e0d21eb1a8b47b06640cf7ab16d3e\nhttps://git.kernel.org/stable/c/374da2b9be1280695ce41f108334a8f16e3e54be\nhttps://git.kernel.org/stable/c/69a7b2a912672159dda7dcf325d27752d448dfdf\nhttps://git.kernel.org/stable/c/85c580b0d8590520ae00a15c29e9fb9c99427a3e\n",
+  "references": "https://git.kernel.org/stable/c/75b3b30ae4ee6aa0572595f6b48544ed4f479eb6\nhttps://git.kernel.org/stable/c/2261f857ef4e0d21eb1a8b47b06640cf7ab16d3e\nhttps://git.kernel.org/stable/c/374da2b9be1280695ce41f108334a8f16e3e54be\nhttps://git.kernel.org/stable/c/69a7b2a912672159dda7dcf325d27752d448dfdf\nhttps://git.kernel.org/stable/c/85c580b0d8590520ae00a15c29e9fb9c99427a3e\n",
   "aliases": "GHSA-qqvj-8jm5-2jc9\nCVE-2026-97567\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -19,6 +19,26 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "1ea7dfdc-6c36-38d7-9fe8-85ce51a3d602",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "1fb0b38d-986a-3069-af9a-5d4574ec7a8e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b29fcfb54cd70caca5b11c80d8d238854938884a <75b3b30ae4ee6aa0572595f6b48544ed4f479eb6"
     },
     {
       "id": "23952626-2fc9-3f1b-b1f2-f7b2af6231a6",

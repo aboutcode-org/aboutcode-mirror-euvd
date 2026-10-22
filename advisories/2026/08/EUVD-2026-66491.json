@@ -3,11 +3,11 @@
   "enisaUuid": "e5375691-8336-3327-a709-74f557223a73",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: reject oversized IBs with per-ring packet limits\n\nOn GFX rings, amdgpu_cs_p2_ib() passed user-supplied ib_bytes through\nto ib->length_dw without a limit, while ring_emit_ib() encodes length\ninto packet fields. Oversized values can corrupt adjacent control bits\nand destabilize command submission.\n\nAdd a per-ring IB packet size limit helper and reject command\nsubmissions exceeding the corresponding dword limit before IB\nallocation. Use the documented 20-bit limit for GFX/compute/SDMA/VPE,\nand apply the MM fallback limit for other ring types.\n\n(cherry picked from commit 7f48fa2cf62e3fa6c9c3870aa74988f773247e52)",
   "datePublished": "Aug 26, 2026, 2:37:35 PM",
-  "dateUpdated": "Oct 16, 2026, 7:26:27 PM",
+  "dateUpdated": "Oct 21, 2026, 12:46:30 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/6e164ba1057175fb8a370d8e05cbff5c57eac0c8\nhttps://git.kernel.org/stable/c/1474f3970d1afd303e12ff14d06808eabb371576\nhttps://git.kernel.org/stable/c/07fe270ec07c138a70afe7a81e115a85c35c545c\nhttps://git.kernel.org/stable/c/fd37f9dd5b5ab70a46fa7bc76623c0528d602b27\n",
+  "references": "https://git.kernel.org/stable/c/67a5d905c17a5066b0f6f950da11da93d56d122b\nhttps://git.kernel.org/stable/c/6e164ba1057175fb8a370d8e05cbff5c57eac0c8\nhttps://git.kernel.org/stable/c/1474f3970d1afd303e12ff14d06808eabb371576\nhttps://git.kernel.org/stable/c/07fe270ec07c138a70afe7a81e115a85c35c545c\nhttps://git.kernel.org/stable/c/fd37f9dd5b5ab70a46fa7bc76623c0528d602b27\n",
   "aliases": "CVE-2026-80576\nGHSA-mv2f-pcc7-qh27\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -63,6 +63,16 @@
       "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <6e164ba1057175fb8a370d8e05cbff5c57eac0c8"
     },
     {
+      "id": "a7189ef4-4bc9-3581-96b3-94fe68abc5b9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "cf28eb97-c84d-3345-bd22-0b854ea9f3c4",
       "product": {
         "name": "Linux",
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "patch: 6.18.46"
+    },
+    {
+      "id": "e5800c57-f278-3671-a561-2bea1de5bd82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <67a5d905c17a5066b0f6f950da11da93d56d122b"
     },
     {
       "id": "ed4d5e23-1483-3e1a-bfc3-a26a865a61a9",

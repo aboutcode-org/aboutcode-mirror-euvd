@@ -3,9 +3,9 @@
   "enisaUuid": "d0c46ecd-0f4b-3094-aa84-878aeec71f9e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Use svc_xprt_put to free listener on create failure\n\nsvc_rdma_create() calls kfree(cma_xprt) when\nsvc_rdma_create_listen_id() fails. svc_xprt_init() has already\nacquired a net namespace reference via get_net_track(); kfree\nbypasses svc_xprt_free() which releases it.\n\nReplace the kfree() with svc_xprt_put() so the kref_init birth\nreference drops to zero and svc_xprt_free() dispatches\nsvc_rdma_free() to clean up properly. sc_cm_id is still NULL\nat that point; the preceding patch added the necessary NULL\nguard in svc_rdma_free().\n\nsvc_xprt_free() also drops the module reference via\nmodule_put(), but the caller _svc_xprt_create() does the same\non xpo_create failure, double-putting the single\ntry_module_get() it acquired. Take a compensating\n__module_get() before the svc_xprt_put() to keep the count\nbalanced, matching the convention in svc_rdma_accept()'s error\npath.",
   "datePublished": "Sep 11, 2026, 7:44:07 PM",
-  "dateUpdated": "Oct 19, 2026, 8:48:19 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:40 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ee70d690b5544b736706a9a5796aafb634013f54\nhttps://git.kernel.org/stable/c/e68380710fc970e07610b2f42594575ad35fdb1c\nhttps://git.kernel.org/stable/c/ac1dd6002f758ab7dd3e737757e5a1bb1c0b38d6\nhttps://git.kernel.org/stable/c/e346ef7bcb137f50c49f969330ab7dcf64ea1654\n",
+  "references": "https://git.kernel.org/stable/c/2e35ec558b8cece9399a50141ecaeadbdb8768dc\nhttps://git.kernel.org/stable/c/ee70d690b5544b736706a9a5796aafb634013f54\nhttps://git.kernel.org/stable/c/e68380710fc970e07610b2f42594575ad35fdb1c\nhttps://git.kernel.org/stable/c/ac1dd6002f758ab7dd3e737757e5a1bb1c0b38d6\nhttps://git.kernel.org/stable/c/e346ef7bcb137f50c49f969330ab7dcf64ea1654\n",
   "aliases": "CVE-2026-89527\nGHSA-h2xv-x4xq-mhh8\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -101,6 +101,16 @@
       "product_version": "patch: 6.12.113"
     },
     {
+      "id": "9fde110f-7ea2-3212-a661-524849b2b96a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "cbd09444-b311-3232-8edd-d86eed528403",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "e7241eea-3fdc-34ef-b3af-0a4ec498e7c9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4fb8518bdac8e85f6580ea3f586adf396cd472bc <2e35ec558b8cece9399a50141ecaeadbdb8768dc"
     }
   ],
   "enisaIdVendor": [

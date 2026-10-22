@@ -3,14 +3,14 @@
   "enisaUuid": "b6585927-0dc5-3a50-89ff-168b98e09424",
   "description": "libregf through 20260526 contains a heap out-of-bounds read in libregf_value_item_read_value_data() because it bounds value data size without subtracting the 4-byte old-format cell offset. Attackers can supply a crafted version 1.0/1.1 REGF hive with a value data cell ending its hive bin to leak adjacent heap bytes or crash parsers like regfexport and plaso.",
   "datePublished": "Oct 15, 2026, 6:57:32 PM",
-  "dateUpdated": "Oct 15, 2026, 6:57:32 PM",
+  "dateUpdated": "Oct 21, 2026, 1:19:40 AM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N",
   "references": "https://hackmd.io/@haind-pwn/libregf-value-data-offset-oob-read\nhttps://github.com/libyal/libregf/blob/1a4bd856484263caa4a5e0d6ba377c3dc69150c7/libregf/libregf_value_item.c#L789-L935\nhttps://github.com/libyal/libregf\nhttps://www.vulncheck.com/advisories/libregf-through-20260526-heap-out-of-bounds-read-via-libregf-value-item-read-value-data\n",
-  "aliases": "CVE-2026-111140\n",
+  "aliases": "CVE-2026-111140\nGHSA-4g68-6f29-pjf8\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "c0f3c63f-44b2-342b-9254-7a67ff75097e",

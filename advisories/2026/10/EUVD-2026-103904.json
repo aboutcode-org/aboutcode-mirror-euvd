@@ -3,12 +3,12 @@
   "enisaUuid": "696b6b2f-5ed8-308f-a80e-e15511b4de8e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel: validate DDC record lengths\n\nParse DDC record lengths in unsigned storage so 0xFF does not wrap.\nReject records smaller than the mandatory three-byte header, records\nexceeding U8_MAX, and records exceeding remaining firmware bytes before\nissuing Intel_Write_DDC.\n\nThis issue was reported by Claude Mythos.",
   "datePublished": "Oct 18, 2026, 3:49:11 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:12 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:12 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/069031f569f1681f17e863f48c221a6091b47850\nhttps://git.kernel.org/stable/c/b0fce76873a5e6a6820354409b26693ac5f8b251\nhttps://git.kernel.org/stable/c/f3617369fbb30a4d2e54841ab8e92ca4fa211e56\nhttps://git.kernel.org/stable/c/c9c15d4d8956df8c564f7c210e4dc5b9b820d97a\n",
+  "references": "https://git.kernel.org/stable/c/7df748aa9f9ecab514e5989ed89c9ba35b6e5574\nhttps://git.kernel.org/stable/c/069031f569f1681f17e863f48c221a6091b47850\nhttps://git.kernel.org/stable/c/b0fce76873a5e6a6820354409b26693ac5f8b251\nhttps://git.kernel.org/stable/c/f3617369fbb30a4d2e54841ab8e92ca4fa211e56\nhttps://git.kernel.org/stable/c/c9c15d4d8956df8c564f7c210e4dc5b9b820d97a\n",
   "aliases": "GHSA-h69r-276q-7c65\nCVE-2026-98819\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "296a5135-4c24-3fd9-909a-15922c8f76ab",
@@ -31,6 +31,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "31944782-ef42-30fc-9808-38e72e61bd0b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "4d9c837e-e6b4-3ccd-80cd-cfbbbe6dcb04",
       "product": {
         "name": "Linux",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "6937d96f-c9b1-3737-bd8c-56eb5b152779",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "145f2368c5fd7962e37315ccc092670743019d08 <7df748aa9f9ecab514e5989ed89c9ba35b6e5574"
     },
     {
       "id": "783613bf-e2ff-3e15-ba4f-c77e9bb91a0a",

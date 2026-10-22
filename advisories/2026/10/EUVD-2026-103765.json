@@ -3,12 +3,12 @@
   "enisaUuid": "5a4bf46c-a245-3628-b92a-35fe7e737fda",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: mpfs: fix unchecked devm_clk_get() error pointer in probe()\n\ndevm_clk_get(&pdev->dev, \"rtcref\")'s return value was passed straight\ninto clk_get_rate() without checking it for an error first, unlike the\n\"rtc\" clock a few lines above which is correctly checked with\nIS_ERR(). clk_get_rate() only guards against a NULL clk, not an error\npointer:\n\n\tif (!clk)\n\t\treturn 0;\n\t...\n\trate = clk_core_get_rate_recalc(clk->core);\n\nso if devm_clk_get() ever returns an error pointer here (for example\nERR_PTR(-EPROBE_DEFER), which is the normal, expected outcome if the\nclkcfg clock-provider this RTC depends on has not registered its\nclocks yet by the time this driver probes), clk_get_rate() dereferences\nthat error pointer instead of returning 0, crashing instead of letting\nprobe defer.\n\nCapture the clock in the existing 'clk' local and check it with\nIS_ERR() before calling clk_get_rate(), matching the handling already\nused for the \"rtc\" clock in this same function.",
   "datePublished": "Oct 18, 2026, 3:49:17 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:18 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/74dc7c52946e3d47c40edd0875adb7cc15937066\nhttps://git.kernel.org/stable/c/cfd70c9b19846c524f2b6195a7484bdf22071ccf\nhttps://git.kernel.org/stable/c/8a03f8422fa08eed335c51bccb612a3d81739ff2\nhttps://git.kernel.org/stable/c/ac41b05d15db3134e839148290d67415ee0bdb58\n",
+  "references": "https://git.kernel.org/stable/c/ab741d1b714b4acc605f3d14cdc4120f87341ed1\nhttps://git.kernel.org/stable/c/74dc7c52946e3d47c40edd0875adb7cc15937066\nhttps://git.kernel.org/stable/c/cfd70c9b19846c524f2b6195a7484bdf22071ccf\nhttps://git.kernel.org/stable/c/8a03f8422fa08eed335c51bccb612a3d81739ff2\nhttps://git.kernel.org/stable/c/ac41b05d15db3134e839148290d67415ee0bdb58\n",
   "aliases": "GHSA-44qj-hfjm-pr88\nCVE-2026-98825\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0db491f9-086d-384b-a7b1-17ca088b8f3e",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "0b31d703598dc1993867597bbd45e87d824fc427 <74dc7c52946e3d47c40edd0875adb7cc15937066"
+    },
+    {
+      "id": "509cab97-9c7f-38bb-9d49-ed40372e0f23",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0b31d703598dc1993867597bbd45e87d824fc427 <ab741d1b714b4acc605f3d14cdc4120f87341ed1"
     },
     {
       "id": "6a552049-44fa-34e4-bc09-68a85cafff64",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "db2b1720-a65b-376b-9540-612a6d993c76",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "f1acf989-3bca-3b56-b2a7-039503c789ef",

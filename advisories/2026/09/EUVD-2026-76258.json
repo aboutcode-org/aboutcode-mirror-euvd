@@ -3,15 +3,25 @@
   "enisaUuid": "68676833-e79f-3c03-beb9-5beede30bf2e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: bound the device EEPROM address before the EFUSE copy\n\nmt7996_mcu_get_eeprom() derives the destination of the EFUSE/EXT block\ncopy from the address reported by the MCU response (event->addr, a\ndevice-controlled __le32) and clamps only the copy length, never the\ndestination offset into dev->mt76.eeprom.data. A malicious or\nmalfunctioning device can report an arbitrary address and drive an\nout-of-bounds write of up to MT7996_EXT_EEPROM_BLOCK_SIZE bytes past\neeprom.data.\n\nReject a response whose address would place the copy outside eeprom.data\nbefore deriving the destination pointer. Devices that echo the requested\nin-bounds offset are unaffected.",
   "datePublished": "Sep 11, 2026, 7:42:09 PM",
-  "dateUpdated": "Oct 19, 2026, 8:45:19 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:15 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/388f471ca4758f644394b681ce97677a4d0e772c\nhttps://git.kernel.org/stable/c/9e5abb5e2ade0b6fd0e47209711115d47a255176\nhttps://git.kernel.org/stable/c/6be59da2063d5b3522bfde8aae0487ec095eb384\nhttps://git.kernel.org/stable/c/13b3c29a782033ce4a230be9e5618032813dbcd4\n",
+  "references": "https://git.kernel.org/stable/c/4892be1ef0bbe6db6b13bf46cb79b6706bb5b214\nhttps://git.kernel.org/stable/c/388f471ca4758f644394b681ce97677a4d0e772c\nhttps://git.kernel.org/stable/c/9e5abb5e2ade0b6fd0e47209711115d47a255176\nhttps://git.kernel.org/stable/c/6be59da2063d5b3522bfde8aae0487ec095eb384\nhttps://git.kernel.org/stable/c/13b3c29a782033ce4a230be9e5618032813dbcd4\n",
   "aliases": "CVE-2026-80935\nGHSA-gmwf-mx64-6gvq\n",
   "assigner": "Linux",
   "epss": 0.38,
   "enisaIdProduct": [
+    {
+      "id": "226853a4-007c-332c-b1e7-6a71eed3b47d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "98686cd21624c75a043e96812beadddf4f6f48e5 <4892be1ef0bbe6db6b13bf46cb79b6706bb5b214"
+    },
     {
       "id": "231f39f9-a12a-3561-a678-bbb3d6c5180a",
       "product": {
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "98686cd21624c75a043e96812beadddf4f6f48e5 <6be59da2063d5b3522bfde8aae0487ec095eb384"
+    },
+    {
+      "id": "5bbc0e99-1c32-3b8c-9100-9e3781f60437",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "5e08b2d0-fd71-3bb8-a607-0329ae88ae0e",

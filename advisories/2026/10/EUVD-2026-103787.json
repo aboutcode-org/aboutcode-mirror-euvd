@@ -3,12 +3,12 @@
   "enisaUuid": "239bf122-8c22-3b0a-a572-e6b278f2ae83",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: spear: initialize IRQ state before requesting alarm IRQ\n\ndevm_request_irq() enables the interrupt before it returns, so the handler\nmay run while probe is still initializing the device. Initialize the MMIO\naddress and spinlock before requesting the alarm IRQ.",
   "datePublished": "Oct 18, 2026, 3:50:40 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:39 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:27 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c02aa67ea34a826c2cb1aa65d77cf32fafb7eec3\nhttps://git.kernel.org/stable/c/e0cabda9b6f4dd276c55c40bdbb251e8507ae60e\nhttps://git.kernel.org/stable/c/cb6d6a7fbff0414b9eed505d17687b4b7e38fee8\nhttps://git.kernel.org/stable/c/055ef5ce9f67a6a3a1363fa663007f8196cc0fb8\n",
+  "references": "https://git.kernel.org/stable/c/aeda50d645bbb55241be840602e338b3a16c24ca\nhttps://git.kernel.org/stable/c/c02aa67ea34a826c2cb1aa65d77cf32fafb7eec3\nhttps://git.kernel.org/stable/c/e0cabda9b6f4dd276c55c40bdbb251e8507ae60e\nhttps://git.kernel.org/stable/c/cb6d6a7fbff0414b9eed505d17687b4b7e38fee8\nhttps://git.kernel.org/stable/c/055ef5ce9f67a6a3a1363fa663007f8196cc0fb8\n",
   "aliases": "GHSA-8gmj-mrfm-vm8g\nCVE-2026-98847\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "05c1a949-d52e-362e-844b-0de63e52963f",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "0942a71e435f5198921e8f072540f208f0176542 <c02aa67ea34a826c2cb1aa65d77cf32fafb7eec3"
+    },
+    {
+      "id": "1f3fef6a-5872-3aac-af48-57cad49e7e26",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0942a71e435f5198921e8f072540f208f0176542 <aeda50d645bbb55241be840602e338b3a16c24ca"
     },
     {
       "id": "3d972447-2b66-3d64-99d4-d4a8afbf3a9a",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "0942a71e435f5198921e8f072540f208f0176542 <055ef5ce9f67a6a3a1363fa663007f8196cc0fb8"
+    },
+    {
+      "id": "da2f8e41-f6ca-3193-b700-759a3c13324e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "f2fea99e-10cb-3323-a798-44b5be1d79ad",

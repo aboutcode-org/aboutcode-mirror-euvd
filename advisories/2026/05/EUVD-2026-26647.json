@@ -3,11 +3,11 @@
   "enisaUuid": "5f282c44-917c-3ee8-a78a-307da3638254",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: core: Mitigate potential OOB by removing bogus memset()\n\nThe memset() in hid_report_raw_event() has the good intention of\nclearing out bogus data by zeroing the area from the end of the incoming\ndata string to the assumed end of the buffer.  However, as we have\npreviously seen, doing so can easily result in OOB reads and writes in\nthe subsequent thread of execution.\n\nThe current suggestion from one of the HID maintainers is to remove the\nmemset() and simply return if the incoming event buffer size is not\nlarge enough to fill the associated report.\n\nSuggested-by Benjamin Tissoires <bentiss@kernel.org>\n\n[bentiss: changed the return value]",
   "datePublished": "May 1, 2026, 2:15:43 PM",
-  "dateUpdated": "Oct 19, 2026, 7:06:11 PM",
+  "dateUpdated": "Oct 21, 2026, 12:39:56 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/8f71034649738fdeb6859b8d6cddf132024fac06\nhttps://git.kernel.org/stable/c/bd6e1d0230cca9575f5d118148f51e2a56b5373f\nhttps://git.kernel.org/stable/c/0a3fe972a7cb1404f693d6f1711f32bc1d244b1c\n",
+  "references": "https://git.kernel.org/stable/c/218b93b7e284de1aa40a53f8f130f84f7da38858\nhttps://git.kernel.org/stable/c/b37e6019fe420335d884e30535549a25f084e00d\nhttps://git.kernel.org/stable/c/8f71034649738fdeb6859b8d6cddf132024fac06\nhttps://git.kernel.org/stable/c/bd6e1d0230cca9575f5d118148f51e2a56b5373f\nhttps://git.kernel.org/stable/c/0a3fe972a7cb1404f693d6f1711f32bc1d244b1c\n",
   "aliases": "GHSA-7r6r-545m-fqv3\nCVE-2026-43048\n",
   "assigner": "Linux",
   "epss": 0.4,
@@ -71,6 +71,46 @@
         }
       },
       "product_version": "patch: 6.18.22"
+    },
+    {
+      "id": "79a4864e-4613-3cb0-bcd1-4804a551c59e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cd6104572bca9e4afe0dcdb8ecd65ef90b01297b <218b93b7e284de1aa40a53f8f130f84f7da38858"
+    },
+    {
+      "id": "7d87bccf-908c-333b-9c4c-bb01997e1f81",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cd6104572bca9e4afe0dcdb8ecd65ef90b01297b <b37e6019fe420335d884e30535549a25f084e00d"
+    },
+    {
+      "id": "86949c7b-57ed-3020-b5a7-bc00b65337c1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "bb5630d2-8f2e-3921-b196-f380356022a7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "cce18d53-7ebe-38d1-95e0-5f52e563b75b",

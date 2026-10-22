@@ -3,12 +3,12 @@
   "enisaUuid": "54ac54fa-815e-383f-8002-43a2d8b6cc07",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: ibss: wait for in-flight TX on disconnect\n\nWhile leaving an IBSS in ieee80211_ibss_disconnect() mac80211 flushes\nstations, turns the carrier off and immediately tells the driver to\nleave as well. While there may be synchronize_net() in station flush\nand in this code later, packets can still be transmitted due to\ncross-CPU race conditions after carrier off is set.\nTherefore, it's possible for a race to happen where a TX to the\ndriver occurs while or after telling it to leave the IBSS. This can\nbe confusing to drivers, and in the case of iwlwifi leads to an\nattempt to use invalid queues.\n\nMove netif_carrier_off() to occur before sta_info_flush() during\nIBSS disconnect, and add synchronize_net() if flushing didn't,\nso that the synchronize_net() always happens between turning the\ncarrier off and telling the driver, avoiding this race.",
   "datePublished": "Sep 24, 2026, 4:02:38 PM",
-  "dateUpdated": "Sep 25, 2026, 12:43:11 PM",
+  "dateUpdated": "Oct 21, 2026, 12:52:39 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/20a3fb5e1a95caa34896853ca17a50d21c754969\nhttps://git.kernel.org/stable/c/b3451e6971248250312ad32dd7f63cc9f0a925f5\nhttps://git.kernel.org/stable/c/d0e69d9afa59b93c30294eba89b1f15f69e91105\n",
+  "references": "https://git.kernel.org/stable/c/8e4a07ed82bae5d13525770880dc6dfd27f9bccd\nhttps://git.kernel.org/stable/c/20a3fb5e1a95caa34896853ca17a50d21c754969\nhttps://git.kernel.org/stable/c/b3451e6971248250312ad32dd7f63cc9f0a925f5\nhttps://git.kernel.org/stable/c/d0e69d9afa59b93c30294eba89b1f15f69e91105\n",
   "aliases": "CVE-2026-93804\nGHSA-f3pr-77p4-f6r5\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "321cf602-c1bc-36f0-ab4f-18221daebc9f",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "48fe759d-5ccd-38aa-b71c-cfd6674bc1e0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "4e3bb1e5-4c97-3a7e-87cd-37c143d848de",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "d8205ed0-dde9-348a-b89f-6cba05161bf0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "86a2ea4134b48f6371103cfceb521bf2d2bf76cd <8e4a07ed82bae5d13525770880dc6dfd27f9bccd"
     },
     {
       "id": "d8758446-4806-3da3-a2e2-17318b6ddb57",

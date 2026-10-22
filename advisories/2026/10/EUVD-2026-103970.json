@@ -3,12 +3,12 @@
   "enisaUuid": "07fb437e-4602-3561-bb22-fa7308c1da61",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Use the active VMCB's MSR bitmap when checking if MSR is intercepted\n\nUse the MSR permission bitmap of the active VMCB instead of assuming that\nKVM is always using vmcb02's bitmap when L2 is active, as KVM uses msrpm02\nif and only if L1 wants to intercept MSR accesses, i.e. if and only if KVM\nneeds to merge msprm01 with msrpm12.\n\nDon't bother tracking the virtual address of the bitmap that's being used,\nas __va() is cheap on x86, and caching the virtual address would introduce\nyet another source of potentially stale information.",
   "datePublished": "Oct 18, 2026, 3:46:49 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:27 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:01 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/74836ae4785b9754bb36d0b18fcc1dec4e5e98d2\nhttps://git.kernel.org/stable/c/318ef696fa3c712e46bb62a1a828c3cd62f390c3\nhttps://git.kernel.org/stable/c/55865b3ae03705aa39198783b9cb1f8b96eb44e4\nhttps://git.kernel.org/stable/c/9e06bbb9ade7cdf28d4a3b5b14e5812881c8df85\n",
+  "references": "https://git.kernel.org/stable/c/84da7a0e92207444d9cbfe69965e17db29008f27\nhttps://git.kernel.org/stable/c/74836ae4785b9754bb36d0b18fcc1dec4e5e98d2\nhttps://git.kernel.org/stable/c/318ef696fa3c712e46bb62a1a828c3cd62f390c3\nhttps://git.kernel.org/stable/c/55865b3ae03705aa39198783b9cb1f8b96eb44e4\nhttps://git.kernel.org/stable/c/9e06bbb9ade7cdf28d4a3b5b14e5812881c8df85\n",
   "aliases": "CVE-2026-98716\nGHSA-hpgm-5w85-35mm\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "00849496-018e-3a63-9d5f-5c699610fc8f",
@@ -81,6 +81,16 @@
       "product_version": "patch: 7.2.10"
     },
     {
+      "id": "932cd7ff-2886-361b-9a46-3ab63f56b543",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b2ac58f90540e39324e7a29a7ad471407ae0bf48 <84da7a0e92207444d9cbfe69965e17db29008f27"
+    },
+    {
       "id": "ad8aff40-824f-3b29-a8d6-510717ccd0a2",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "b2ac58f90540e39324e7a29a7ad471407ae0bf48 <74836ae4785b9754bb36d0b18fcc1dec4e5e98d2"
+    },
+    {
+      "id": "e119f9fe-d2d4-3697-83f1-41de57b77b63",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "e21f4526-7f84-3e38-b730-3518dfac64e7",

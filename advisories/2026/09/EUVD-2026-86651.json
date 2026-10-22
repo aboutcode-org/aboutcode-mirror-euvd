@@ -3,9 +3,9 @@
   "enisaUuid": "abe1674e-4996-3770-860f-91b0bdd79d06",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_ring: fix stale descriptor flags after a failed packed add\n\nIn a packed ring the AVAIL and USED bits sit in the descriptor itself,\nso writing them makes that descriptor available. Those bit combinations\nflip meaning on every round of the ring, tracked by a wrap counter, so\ninvalidating or validating a descriptor means inverting both bits.\n\nCommit 1ce9e6055fa0 (\"virtio_ring: introduce packed ring support\") has\nvirtqueue_add_packed() make every descriptor of a chain available as it\nmaps the chain, and write the head last. The device consumes the ring in\norder and stops at a head that is not available yet, so it never reaches\nthe rest.\n\nWhen vring_map_one_sg() fails partway, unmap_release unmaps the segments\nand restores avail_used_flags, but the descriptors it wrote to in the\nring stay marked with AVAIL and USED bits. The head is now the only\nentry that keeps the device from consuming these stale entries.\n\nFor example, the ring would look like this now.\n\n  Z - pre-previous command\n  A - previous command\n  B - aborted command\n  C - current command\n\n  [A1 DONE] [A2 DONE] <C1 EMPTY> [B2] [B3] [Z1 DONE]\n\nWhen the driver now attempts to issue the C command, the next add starts\nat the same head as B. If C spans less descriptors than B, there is no\nend marker because AVAIL and USED bits were still in place. And that\nmeans the device will start interpreting these stale entries (B2/B3) as\nanother command entry, which then blocks the queue.\n\nThis effect typically happens in swiotlb configurations under memory\npressure, because vring_map_one_sg() can then fail with larger I/O\nrequests which then leads to command abortions.\n\nThere are broadly 2 ways to avoid leaving those flags behind:\n\n  1) Defer those flags too until the chain is complete.\n  2) Rewrite those flags for the previous wrap counter.\n\nImplement the second option in both packed add paths. The first option\ntraverses the chain a second time on every successful add. The second\noption invalidates all added descriptors when any add fails.\n\nWith this patch applied, a packed virtqueue keeps completing requests\nafter a failed add.",
   "datePublished": "Sep 25, 2026, 10:23:27 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:04 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:01 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/3e6400e3b8b858cdf0f8d70b20d8b55d703af368\nhttps://git.kernel.org/stable/c/d595358276b60e5df4d3930bc94033249b1d5adc\nhttps://git.kernel.org/stable/c/75d276e5bb68778b2916f98a2bc30f142ebadc64\n",
+  "references": "https://git.kernel.org/stable/c/5ad081761a1f0b0d95ab08b61a6008309fba95f9\nhttps://git.kernel.org/stable/c/cfe8128ceb78374b0f9cebb608bb48e3928d784a\nhttps://git.kernel.org/stable/c/3e6400e3b8b858cdf0f8d70b20d8b55d703af368\nhttps://git.kernel.org/stable/c/d595358276b60e5df4d3930bc94033249b1d5adc\nhttps://git.kernel.org/stable/c/75d276e5bb68778b2916f98a2bc30f142ebadc64\n",
   "aliases": "CVE-2026-97997\nGHSA-88cm-3h7q-4v2q\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "1ce9e6055fa0a9043405c5604cf19169ec5379ff <d595358276b60e5df4d3930bc94033249b1d5adc"
+    },
+    {
+      "id": "2b574695-9851-3b23-8a5c-5fdba581504e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "2e38acaa-896d-370c-b0fe-002460e60900",
@@ -61,6 +71,26 @@
       "product_version": "1ce9e6055fa0a9043405c5604cf19169ec5379ff <75d276e5bb68778b2916f98a2bc30f142ebadc64"
     },
     {
+      "id": "79149ea6-e80d-38cf-89aa-ae21d99629c6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "8c6645c0-2043-3cfd-afb4-24ce9c2a8210",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1ce9e6055fa0a9043405c5604cf19169ec5379ff <5ad081761a1f0b0d95ab08b61a6008309fba95f9"
+    },
+    {
       "id": "921fa17b-57b0-302b-98ca-b0355485e097",
       "product": {
         "name": "Linux",
@@ -69,6 +99,16 @@
         }
       },
       "product_version": "5.0"
+    },
+    {
+      "id": "a8eb37f5-76bd-31f3-a4e1-f7efbea17f46",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1ce9e6055fa0a9043405c5604cf19169ec5379ff <cfe8128ceb78374b0f9cebb608bb48e3928d784a"
     },
     {
       "id": "f1c3b15a-2290-368a-a742-797872693199",

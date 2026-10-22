@@ -3,11 +3,11 @@
   "enisaUuid": "df633f87-1363-3c39-9910-c02b25cc8005",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: check truncate permission under inode lock\n\nnfsd_setattr() checks whether a size update needs NFSD_MAY_TRUNC\nbefore it takes inode_lock(). The comparison uses the file size sampled\nby that unlocked read, but the actual ATTR_SIZE update is applied later\nunder inode_lock() by notify_change().\n\nThis leaves a TOCTOU window for append-only files. If a client sends a\nSETATTR that does not shrink the file at the time of the unlocked\nsample, a concurrent append can extend the file before nfsd_setattr()\ntakes inode_lock(). notify_change() then applies a real truncation\nwithout the NFSD_MAY_TRUNC check that rejects IS_APPEND(inode). The VFS\ntruncate syscall paths perform their own append-only checks before\ncalling notify_change(), so NFSD must make this decision against the\nlocked size it is about to change.\n\nSplit the write-count acquisition from the truncation permission check.\nKeep get_write_access() before the locked setattr work, then recheck\nwhether the requested size is below i_size_read(inode) after inode_lock()\nhas been acquired and before notify_change(ATTR_SIZE). This also avoids\nthe plain unlocked inode->i_size load.",
   "datePublished": "Sep 11, 2026, 7:46:27 PM",
-  "dateUpdated": "Oct 19, 2026, 8:51:26 AM",
+  "dateUpdated": "Oct 21, 2026, 12:48:27 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/3afa17d93ba8c925f49370c816c6dae5112d8c24\nhttps://git.kernel.org/stable/c/d8352da196349182e1afd5a93308256cddc0a97d\nhttps://git.kernel.org/stable/c/44086254479035de42ca3d286ecf25521d4e6325\nhttps://git.kernel.org/stable/c/b778e0e0a16759f22a70579c3cf8d254a40d4a7f\n",
+  "references": "https://git.kernel.org/stable/c/52d0c5bdfe232c9974d4b11f97078b9c7814f05d\nhttps://git.kernel.org/stable/c/3afa17d93ba8c925f49370c816c6dae5112d8c24\nhttps://git.kernel.org/stable/c/d8352da196349182e1afd5a93308256cddc0a97d\nhttps://git.kernel.org/stable/c/44086254479035de42ca3d286ecf25521d4e6325\nhttps://git.kernel.org/stable/c/b778e0e0a16759f22a70579c3cf8d254a40d4a7f\n",
   "aliases": "CVE-2026-89713\nGHSA-v99p-5h33-35p9\n",
   "assigner": "Linux",
   "epss": 0.61,
@@ -143,6 +143,16 @@
       "product_version": "patch: 7.2.4"
     },
     {
+      "id": "9d54194c-eedf-3e4b-82b9-b255dc8e5050",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "9df70db0-943c-3976-a82d-036c309026f8",
       "product": {
         "name": "Linux",
@@ -171,6 +181,16 @@
         }
       },
       "product_version": "4.11"
+    },
+    {
+      "id": "c4d78d01-f125-378e-9b37-93b67da0d374",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "783112f7401ff449d979530209b3f6c2594fdb4e <52d0c5bdfe232c9974d4b11f97078b9c7814f05d"
     },
     {
       "id": "ce850c21-a0a8-3555-9e70-c5d59c15908c",

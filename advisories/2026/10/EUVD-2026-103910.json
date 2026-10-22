@@ -3,12 +3,12 @@
   "enisaUuid": "db592ae9-6c60-38c5-aa08-28e615e34ce0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: trigger: cancel reenable_work before freeing trigger\n\niio_trigger_notify_done_atomic() defers ->reenable() into\ntrig->reenable_work on the system workqueue, and the worker dereferences\nthe owning trigger through container_of().  Nothing cancels this work\nbefore iio_trig_release() frees the trigger, so a worker armed by the\nlast in-flight IRQ can outlive the free and touch freed memory.\n\nCancel it at the top of iio_trig_release(), which every free path\nreaches through the device core's final put_device().\n\nFound by an in-house static analysis tool.",
   "datePublished": "Oct 18, 2026, 3:44:07 PM",
-  "dateUpdated": "Oct 19, 2026, 9:23:24 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:23 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/cf513df1a2c75566cdc802d9da47f62e8d6cfd18\nhttps://git.kernel.org/stable/c/e64703280ce7a23a43c27efebeb7da457c88bf5c\nhttps://git.kernel.org/stable/c/882d0011c59ff8ac15188ec9ce071399ecfa10ad\nhttps://git.kernel.org/stable/c/2a57b9246cecd5dd797a42eb310d6c8816f26d9e\n",
+  "references": "https://git.kernel.org/stable/c/ac5d26a46c90ff61fd574eff4e8f0d71c905828a\nhttps://git.kernel.org/stable/c/cf513df1a2c75566cdc802d9da47f62e8d6cfd18\nhttps://git.kernel.org/stable/c/e64703280ce7a23a43c27efebeb7da457c88bf5c\nhttps://git.kernel.org/stable/c/882d0011c59ff8ac15188ec9ce071399ecfa10ad\nhttps://git.kernel.org/stable/c/2a57b9246cecd5dd797a42eb310d6c8816f26d9e\n",
   "aliases": "GHSA-6556-hh6q-qw3c\nCVE-2026-98656\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "12b82e1e-538f-391d-82be-97b0d6fa0e06",
@@ -91,6 +91,16 @@
       "product_version": "9020ef659885f2622cfb386cc229b6d618362895 <cf513df1a2c75566cdc802d9da47f62e8d6cfd18"
     },
     {
+      "id": "93e26e86-0cd1-34b2-8665-55b8606f74a4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9020ef659885f2622cfb386cc229b6d618362895 <ac5d26a46c90ff61fd574eff4e8f0d71c905828a"
+    },
+    {
       "id": "9a46a4ee-4255-3e7e-a7a2-b97946e52257",
       "product": {
         "name": "Linux",
@@ -149,6 +159,16 @@
         }
       },
       "product_version": "9020ef659885f2622cfb386cc229b6d618362895 <882d0011c59ff8ac15188ec9ce071399ecfa10ad"
+    },
+    {
+      "id": "f94aca0c-8785-3882-9de9-fde5c9eb4297",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

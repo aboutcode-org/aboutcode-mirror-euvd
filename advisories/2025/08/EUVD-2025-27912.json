@@ -3,15 +3,25 @@
   "enisaUuid": "bf970b92-867c-3819-85d7-f37320bc2500",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/hns: Fix double destruction of rsv_qp\n\nrsv_qp may be double destroyed in error flow, first in free_mr_init(),\nand then in hns_roce_exit(). Fix it by moving the free_mr_init() call\ninto hns_roce_v2_init().\n\nlist_del corruption, ffff589732eb9b50->next is LIST_POISON1 (dead000000000100)\nWARNING: CPU: 8 PID: 1047115 at lib/list_debug.c:53 __list_del_entry_valid+0x148/0x240\n...\nCall trace:\n __list_del_entry_valid+0x148/0x240\n hns_roce_qp_remove+0x4c/0x3f0 [hns_roce_hw_v2]\n hns_roce_v2_destroy_qp_common+0x1dc/0x5f4 [hns_roce_hw_v2]\n hns_roce_v2_destroy_qp+0x22c/0x46c [hns_roce_hw_v2]\n free_mr_exit+0x6c/0x120 [hns_roce_hw_v2]\n hns_roce_v2_exit+0x170/0x200 [hns_roce_hw_v2]\n hns_roce_exit+0x118/0x350 [hns_roce_hw_v2]\n __hns_roce_hw_v2_init_instance+0x1c8/0x304 [hns_roce_hw_v2]\n hns_roce_hw_v2_reset_notify_init+0x170/0x21c [hns_roce_hw_v2]\n hns_roce_hw_v2_reset_notify+0x6c/0x190 [hns_roce_hw_v2]\n hclge_notify_roce_client+0x6c/0x160 [hclge]\n hclge_reset_rebuild+0x150/0x5c0 [hclge]\n hclge_reset+0x10c/0x140 [hclge]\n hclge_reset_subtask+0x80/0x104 [hclge]\n hclge_reset_service_task+0x168/0x3ac [hclge]\n hclge_service_task+0x50/0x100 [hclge]\n process_one_work+0x250/0x9a0\n worker_thread+0x324/0x990\n kthread+0x190/0x210\n ret_from_fork+0x10/0x18",
   "datePublished": "Aug 19, 2025, 5:03:04 PM",
-  "dateUpdated": "Aug 5, 2026, 12:03:09 PM",
+  "dateUpdated": "Oct 21, 2026, 12:37:06 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/dab173bae3303f074f063750a8dead2550d8c782\nhttps://git.kernel.org/stable/c/fc8b0f5b16bab2e032b4cfcd6218d5df3b80b2ea\nhttps://git.kernel.org/stable/c/10b083dbba22be19baa848432b6f25aa68ab2db5\nhttps://git.kernel.org/stable/c/c6957b95ecc5b63c5a4bb4ecc28af326cf8f6dc8\n",
+  "references": "https://git.kernel.org/stable/c/067ca15be8b8342931536b66206c496e76864ecf\nhttps://git.kernel.org/stable/c/dab173bae3303f074f063750a8dead2550d8c782\nhttps://git.kernel.org/stable/c/fc8b0f5b16bab2e032b4cfcd6218d5df3b80b2ea\nhttps://git.kernel.org/stable/c/10b083dbba22be19baa848432b6f25aa68ab2db5\nhttps://git.kernel.org/stable/c/c6957b95ecc5b63c5a4bb4ecc28af326cf8f6dc8\n",
   "aliases": "GHSA-5569-859r-969g\nCVE-2025-38582\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "04072b40-27b2-3766-a1a8-f3d2deb5fdd0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
     {
       "id": "1c4e6c7b-1780-3652-a8ee-1c590ed25d2f",
       "product": {
@@ -73,14 +83,14 @@
       "product_version": "6.12"
     },
     {
-      "id": "5f27a958-462e-3ef0-a539-f3e41c3e8016",
+      "id": "6e21f4f2-5d75-3dd5-95dd-52b42a0e4629",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "d2d9c5127122745da6e887f451dd248cfeffca33"
+      "product_version": "6.6.54 <6.6.160"
     },
     {
       "id": "71c5dedf-b538-34e3-8ce7-369bf07d47fe",
@@ -133,16 +143,6 @@
       "product_version": "patch: 6.12.42"
     },
     {
-      "id": "d27e1b01-a214-3f16-9bd8-9978bf5f886a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.6.54 <6.7"
-    },
-    {
       "id": "d4de3d0f-cdcc-3cf3-ab5b-b780c0650246",
       "product": {
         "name": "Linux",
@@ -171,6 +171,16 @@
         }
       },
       "product_version": "60595923371c2ebe7faf82536c47eb0c967e3425"
+    },
+    {
+      "id": "ee32b39d-f831-3e68-9375-8cab8714c9ed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d2d9c5127122745da6e887f451dd248cfeffca33 <067ca15be8b8342931536b66206c496e76864ecf"
     },
     {
       "id": "fa4cdc41-c305-383c-b1e0-8b7c44351645",

@@ -3,9 +3,9 @@
   "enisaUuid": "f3009832-de56-3518-8e0e-cf3ea4bfe10a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix subbuf resize races with trace_pipe_raw readers\n\nConcurrent subbuffer resizes may crash trace_pipe_raw readers or leak\nuninitialized memory to userspace due to stale size values.\n\nModify ring_buffer_alloc_read_page() to handle the resizing of an\nexisting buffer_data_read_page if necessary and add a new\nring_buffer_read_page_size(). This new function enables ring-buffer\nbuffer_data_read_page users to not call the racy\nring_buffer_subbuf_size_get(). This makes the spare_size member of\nftrace_buffer_info redundant.\n\nFinally, handle buffer_data_read_page/reader_page order discrepancy in\nring_buffer_read_page(). On a mismatch simply copy manually the data to\nthe buffer_data_read_page.",
   "datePublished": "Sep 25, 2026, 10:23:48 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:37 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:06 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/3f30b2cd4eba45c05f822f03f1b0f4077d6d4dc3\nhttps://git.kernel.org/stable/c/75b37b8369778b69ce9738d1c97685a1615cb252\nhttps://git.kernel.org/stable/c/dae8dda341d2d9034a90d59e8a7d502e1263813f\n",
+  "references": "https://git.kernel.org/stable/c/574efd988d116bd56ac688ab2d64e06ba0da982a\nhttps://git.kernel.org/stable/c/3f30b2cd4eba45c05f822f03f1b0f4077d6d4dc3\nhttps://git.kernel.org/stable/c/75b37b8369778b69ce9738d1c97685a1615cb252\nhttps://git.kernel.org/stable/c/dae8dda341d2d9034a90d59e8a7d502e1263813f\n",
   "aliases": "GHSA-wpxh-73rr-fxf7\nCVE-2026-98032\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -31,6 +31,16 @@
       "product_version": "patch: 6.18.57"
     },
     {
+      "id": "41856ae7-5a14-39d1-8b51-1e4ea0dcd167",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "bce761d757452ba5eb77e11fecc37a04b67494e7 <574efd988d116bd56ac688ab2d64e06ba0da982a"
+    },
+    {
       "id": "4a0bdebe-4172-36f4-ab9d-cbb8e70cb800",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "patch: 7.2.7"
+    },
+    {
+      "id": "9f73c75d-38c7-3903-ab12-c2effcf73c12",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "cc794b41-bd83-3471-99c1-d9c77675bd76",

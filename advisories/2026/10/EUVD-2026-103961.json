@@ -3,12 +3,12 @@
   "enisaUuid": "8b11acc5-69ae-385a-8909-0162390774e4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: shut down RX BA session timer on teardown\n\nTearing down an RX BA session can leave the session timer queued on a\nfreed tid_rx. Later timer-wheel processing and the timer callback itself\nthen run against freed memory.\n\nAn RX BAR handler can dereference tid_rx under RCU before teardown\nunpublishes it and stay in its read-side critical section while teardown\ndeletes the session timer. The stale handler can then rearm the timer\nafter timer_delete_sync() returns and before the RCU callback frees\ntid_rx.\n\nUse timer_shutdown_sync() so rearm attempts become ineffective once\nteardown starts. Keep reorder_timer unchanged: teardown marks the session\nremoved under reorder_lock and its release path checks that state before\nrearming. session_timer has no equivalent guard because\nieee80211_rx_h_ctrl() rearms it before taking reorder_lock.",
   "datePublished": "Oct 18, 2026, 3:46:37 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:18 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:56 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7bb2a5bd4f07192fca35644fab7d49a17bfbc861\nhttps://git.kernel.org/stable/c/481f9230284c27052b59c587069f232c5d84779e\nhttps://git.kernel.org/stable/c/09b7d5e4f88504e62ddf4ff31ebeebb3b87578ba\nhttps://git.kernel.org/stable/c/e588e83e5c7a0f6d7a77dbbb58927c8c8cfd598e\n",
+  "references": "https://git.kernel.org/stable/c/d0da6ab1fc53a68025929baf0947519c6c1684dc\nhttps://git.kernel.org/stable/c/7bb2a5bd4f07192fca35644fab7d49a17bfbc861\nhttps://git.kernel.org/stable/c/481f9230284c27052b59c587069f232c5d84779e\nhttps://git.kernel.org/stable/c/09b7d5e4f88504e62ddf4ff31ebeebb3b87578ba\nhttps://git.kernel.org/stable/c/e588e83e5c7a0f6d7a77dbbb58927c8c8cfd598e\n",
   "aliases": "GHSA-8mvq-3rmc-c8vm\nCVE-2026-98707\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0c0d48a6-bea9-377d-a326-de4dedc88404",
@@ -39,6 +39,26 @@
         }
       },
       "product_version": "a87f736d942c86255e3088c606f0e3eab6bbf784 <e588e83e5c7a0f6d7a77dbbb58927c8c8cfd598e"
+    },
+    {
+      "id": "55a19ec2-5307-364e-8028-7051c17a2d35",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a87f736d942c86255e3088c606f0e3eab6bbf784 <d0da6ab1fc53a68025929baf0947519c6c1684dc"
+    },
+    {
+      "id": "55fc6587-b851-3220-bd7f-721576eac780",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "68ca91d4-b083-37b7-b74a-7a44f57dab04",

@@ -3,12 +3,12 @@
   "enisaUuid": "536fc5fc-1c53-3738-9c67-f8fb25b813e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: set info->band for 802.3 encap offload frames\n\nUnlike the 802.11 TX paths, ieee80211_8023_xmit() does not set\ninfo->band from the channel context on non-MLD interfaces. It stays at\n0, so ieee80211_get_tx_rates() uses the wrong band for these frames.\n\nSet it the same way as ieee80211_build_hdr(): drop the frame if there is\nno channel context, and leave the band at 0 on MLD interfaces.",
   "datePublished": "Oct 18, 2026, 3:46:30 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:09 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:49 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/93c1b247224a32f546b616a8fe87b9bab20f0a7f\nhttps://git.kernel.org/stable/c/9cedbfde1450028f530e9af950f53491fcaebfeb\nhttps://git.kernel.org/stable/c/2d9c5525bbc1a548cdc9c4def3cd7fbfc7c66b5b\nhttps://git.kernel.org/stable/c/4febc02cd02f021f2b6d0768332be643ef14a12d\n",
+  "references": "https://git.kernel.org/stable/c/6535f7084d95873785a7a93cdca05e8ee83b5601\nhttps://git.kernel.org/stable/c/93c1b247224a32f546b616a8fe87b9bab20f0a7f\nhttps://git.kernel.org/stable/c/9cedbfde1450028f530e9af950f53491fcaebfeb\nhttps://git.kernel.org/stable/c/2d9c5525bbc1a548cdc9c4def3cd7fbfc7c66b5b\nhttps://git.kernel.org/stable/c/4febc02cd02f021f2b6d0768332be643ef14a12d\n",
   "aliases": "GHSA-5cc8-qw42-jp7f\nCVE-2026-98700\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1a35fc79-059d-38cd-bb3c-43f17be3f08b",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <9cedbfde1450028f530e9af950f53491fcaebfeb"
+    },
+    {
+      "id": "1a67842e-af21-3782-ad33-075cbeb53d00",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "30882c0d-1fe5-3f87-9d73-84ae2300d53f",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "fb4f4d5c-76c9-3f57-8813-c83455cba7da",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <6535f7084d95873785a7a93cdca05e8ee83b5601"
     }
   ],
   "enisaIdVendor": [

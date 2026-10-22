@@ -3,9 +3,9 @@
   "enisaUuid": "42944c84-3c51-3fa0-bb90-3b81fe00be9b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: avoid force-completing uninitialized UVD rings\n\nuvd_v7_0_sw_init() does not initialize the UVD decode ring for an\nSR-IOV VF. However, amdgpu_uvd_resume() unconditionally force-completes\nthe decode ring when restoring its fence sequence.\n\nSkip fence completion when the fence driver is not initialized.",
   "datePublished": "Sep 16, 2026, 10:30:59 AM",
-  "dateUpdated": "Oct 19, 2026, 8:53:21 AM",
+  "dateUpdated": "Oct 21, 2026, 12:48:54 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/863f08c485fbb51b6443681893e4044c7cb6cd51\nhttps://git.kernel.org/stable/c/dc136795f9997adc8d3219f40e8e3afa7df7183f\nhttps://git.kernel.org/stable/c/967a179463d3227dfaf9200fd654c1f5a26a11e8\nhttps://git.kernel.org/stable/c/6760f5cb12d2366ddd58a2d8637f7583d73f596b\n",
+  "references": "https://git.kernel.org/stable/c/668cfb8ab3e22c10fe74307aac86b3cf456d6923\nhttps://git.kernel.org/stable/c/863f08c485fbb51b6443681893e4044c7cb6cd51\nhttps://git.kernel.org/stable/c/dc136795f9997adc8d3219f40e8e3afa7df7183f\nhttps://git.kernel.org/stable/c/967a179463d3227dfaf9200fd654c1f5a26a11e8\nhttps://git.kernel.org/stable/c/6760f5cb12d2366ddd58a2d8637f7583d73f596b\n",
   "aliases": "GHSA-9r9g-2xp7-pmx6\nCVE-2026-89827\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "0a33b11d26c6b7e975b54d469a739ffac29f67ab <dc136795f9997adc8d3219f40e8e3afa7df7183f"
+    },
+    {
+      "id": "1bfb4f7e-ab66-3882-9daf-6c53fe825235",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "1d0020cd-b25c-3f5b-9e9a-0f4c188ebbaf",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "0a33b11d26c6b7e975b54d469a739ffac29f67ab <967a179463d3227dfaf9200fd654c1f5a26a11e8"
+    },
+    {
+      "id": "55a160db-95da-3381-94f1-f0321ea52f67",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0a33b11d26c6b7e975b54d469a739ffac29f67ab <668cfb8ab3e22c10fe74307aac86b3cf456d6923"
     },
     {
       "id": "61bb9544-1b0a-3763-83b3-d646ee4dea12",

@@ -3,9 +3,9 @@
   "enisaUuid": "09fd7a37-03e3-3e18-8ad5-91700f3e138a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmemcg: make the v1 soft limit knob inert\n\nThe v1 soft limit has been deprecated since v6.12 and nobody has reported\ndepending on it.  Start the removal by decoupling the interface from the\nimplementation: keep memory.soft_limit_in_bytes, but ignore writes to it\nand always report the maximum value on read similar to what\nmemory.kmem.limit_in_bytes already does.\n\nWrites are still parsed, so malformed input keeps returning -EINVAL.  The\nknob now also behaves the same everywhere: it used to return -EOPNOTSUPP\non PREEMPT_RT, where soft limit reclaim has always been disabled.\n\nThis also fixes the syzbot report linked below.  Soft limit reclaim is the\nonly caller that runs shrink_lruvec() from kswapd against a specific\nmemcg, so it is the only way to reach lru_gen_shrink_lruvec() and in turn\nset_mm_walk(), which warns when called from kswapd.",
   "datePublished": "Sep 24, 2026, 3:34:32 PM",
-  "dateUpdated": "Oct 19, 2026, 9:07:51 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:27 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/72fb67f6e0e5d78e4f34cf9929d1afdb0fd54203\nhttps://git.kernel.org/stable/c/0a90e268cce7023f34087bfa4affb42e29ff5f45\nhttps://git.kernel.org/stable/c/5ec8f629a300cc40e746d6178f724bdff7683fa7\nhttps://git.kernel.org/stable/c/a3417097fb107cea3358b19bcbb4eb655fd67f8c\n",
+  "references": "https://git.kernel.org/stable/c/bf75f14d755f9cfbb246e6cc011b53cdd5142de3\nhttps://git.kernel.org/stable/c/72fb67f6e0e5d78e4f34cf9929d1afdb0fd54203\nhttps://git.kernel.org/stable/c/0a90e268cce7023f34087bfa4affb42e29ff5f45\nhttps://git.kernel.org/stable/c/5ec8f629a300cc40e746d6178f724bdff7683fa7\nhttps://git.kernel.org/stable/c/a3417097fb107cea3358b19bcbb4eb655fd67f8c\n",
   "aliases": "GHSA-xfgg-2xcm-vrc8\nCVE-2026-93240\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "e9d4e1ee788097484606c32122f146d802a9c5fb <5ec8f629a300cc40e746d6178f724bdff7683fa7"
+    },
+    {
+      "id": "246286b5-bed8-3120-b9b1-6741e459e0df",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e9d4e1ee788097484606c32122f146d802a9c5fb <bf75f14d755f9cfbb246e6cc011b53cdd5142de3"
     },
     {
       "id": "250cb050-b716-371d-a101-349f56cc3490",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "a135f7a8-a958-3e4c-bfb0-e503ee226d5a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "e4eb7aeb-cd3f-33cd-b7c3-44090b4d0940",

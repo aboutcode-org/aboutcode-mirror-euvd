@@ -3,13 +3,23 @@
   "enisaUuid": "661c5b2a-af47-3e62-a725-9f213d71dc3e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: count only matching reservations in reserved switch\n\nieee80211_vif_use_reserved_switch() validates a replacement by counting\nassigned links on ctx->replace_ctx and treating reservations too\nbroadly. A link can still be assigned to the old channel context while\nholding a reservation that belongs to a different replacement\noperation.\n\nThat can make the current replacement appear complete too early. If\nanother link finalizes first, the function can free the\nWILL_BE_REPLACED chanctx while the unmatched link and driver still use\nit, leading to a use-after-free in later beacon generation.\n\nRequire an in-place reservation to point at the current replacement\ncontext, and require the reserved and assigned contexts to be the\nmatching replacement pair, before counting or moving the link.",
   "datePublished": "Oct 18, 2026, 3:46:39 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:20 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:58 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d31f655e44631891788ca67018ec5e1ed1c7de86\nhttps://git.kernel.org/stable/c/03525b632908b049f4d04cc8a71cdff2329589cf\nhttps://git.kernel.org/stable/c/5cc54a000960bc88f8c58940164dca0e601ab39c\nhttps://git.kernel.org/stable/c/437f3727b4fd715266c296435c116288f82666fd\n",
+  "references": "https://git.kernel.org/stable/c/4ae6ed5b6074df5f3da05fd74c40bb24c5c9b41d\nhttps://git.kernel.org/stable/c/d31f655e44631891788ca67018ec5e1ed1c7de86\nhttps://git.kernel.org/stable/c/03525b632908b049f4d04cc8a71cdff2329589cf\nhttps://git.kernel.org/stable/c/5cc54a000960bc88f8c58940164dca0e601ab39c\nhttps://git.kernel.org/stable/c/437f3727b4fd715266c296435c116288f82666fd\n",
   "aliases": "CVE-2026-98709\nGHSA-g34c-vjm7-4vq5\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "38473e73-3f0a-35dc-af7b-3a2fea27dc2a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
     {
       "id": "442e3609-66aa-34f8-8adf-4c746c8014a1",
       "product": {
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "5bcae31d9cb1ebfad3ad5a3eea04c8cdc329a04f <437f3727b4fd715266c296435c116288f82666fd"
+    },
+    {
+      "id": "8da3abe4-f5da-37fd-a776-89d8e55580e0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5bcae31d9cb1ebfad3ad5a3eea04c8cdc329a04f <4ae6ed5b6074df5f3da05fd74c40bb24c5c9b41d"
     },
     {
       "id": "95772867-d1d5-38d7-97a8-eed9552927b7",

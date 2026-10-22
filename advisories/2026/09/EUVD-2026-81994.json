@@ -3,9 +3,9 @@
   "enisaUuid": "f6c3567c-31a4-301e-84a9-83b86bf11e3e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: replace forgeable discard filler with a keyed sector marker\n\nThe discard-block check in dm_integrity_rw_tag() treats a stored tag\nof all 0xf6 bytes (DISCARD_FILLER) as proof a block was discarded and\nskips HMAC verification. allow_discards is only accepted in\ndm-integrity's standalone mode. An attacker with raw write access to\nthe backing device, but without the integrity key, can stamp any block\nwith an all-0xf6 tag and have it served as authentic.\n\nAdd a new \"allow_discards_keyed\" target argument that marks discarded\nblocks with a keyed checksum of (salt || sector) instead, computed by\nintegrity_discard_checksum().",
   "datePublished": "Sep 17, 2026, 4:08:46 PM",
-  "dateUpdated": "Oct 19, 2026, 9:01:50 AM",
+  "dateUpdated": "Oct 21, 2026, 12:51:03 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5c58ea19a909ef6bed4f0f824e9cd7e30d7e4775\nhttps://git.kernel.org/stable/c/6228722c27304e4682cddc1fede03898f87e4414\nhttps://git.kernel.org/stable/c/68c5c42567bc462139128968ebbfadd0aefff519\n",
+  "references": "https://git.kernel.org/stable/c/388c3f6496bb8083576d989e6d249ba9807c6b0b\nhttps://git.kernel.org/stable/c/5c58ea19a909ef6bed4f0f824e9cd7e30d7e4775\nhttps://git.kernel.org/stable/c/6228722c27304e4682cddc1fede03898f87e4414\nhttps://git.kernel.org/stable/c/68c5c42567bc462139128968ebbfadd0aefff519\n",
   "aliases": "GHSA-62c9-4g59-6rj6\nCVE-2026-90333\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "84597a44a9d86ac949900441cea7da0af0f2f473 <68c5c42567bc462139128968ebbfadd0aefff519"
+    },
+    {
+      "id": "177445f6-8b35-30ab-80f9-e98e3ef2c30a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "84597a44a9d86ac949900441cea7da0af0f2f473 <388c3f6496bb8083576d989e6d249ba9807c6b0b"
     },
     {
       "id": "1af9867d-86cc-383c-a44d-dfc6bd768c07",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "40b0d97f-ee07-3085-9bdc-0c151e75919f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "8c206f1b-d409-325e-adba-3b19a0da4ee4",

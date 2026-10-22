@@ -3,9 +3,9 @@
   "enisaUuid": "3e468f29-4cf4-31df-a856-9a73431ba2b5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: zoned: finish active block group cleanup if call_zone_finish() fails\n\ndo_zone_finish() clears BLOCK_GROUP_FLAG_ZONE_IS_ACTIVE before finishing\nthe zones. If call_zone_finish() then fails it returned early, leaving the\nnow inactive block group on fs_info->zone_active_bgs, leaking its\nreference, the BTRFS_FS_NEED_ZONE_FINISH waiters are never woken, and as\nits alloc_offset equals the zone capacity btrfs_zone_finish_one_bg() keeps\nselecting it, spinning btrfs_zoned_activate_one_bg().\n\nFall through to the cleanup on failure too and return the error, but keep\nthe block group read-only as its zones are left inconsistent.",
   "datePublished": "Sep 25, 2026, 10:24:18 AM",
-  "dateUpdated": "Oct 19, 2026, 9:13:31 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:24 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/36b9cdab44848f25879ca625275c92b007f84653\nhttps://git.kernel.org/stable/c/40370f02a1ca3760f8925ffcbe76eb4d91ea758d\nhttps://git.kernel.org/stable/c/e1b168a53174b385e3548bfbd079513b22ac240c\nhttps://git.kernel.org/stable/c/a18a6b93a2843b9d103d3456bbd4b3f90282a379\n",
+  "references": "https://git.kernel.org/stable/c/433d52b196a689b18dcfadc7cf6c784f0e5cc7c9\nhttps://git.kernel.org/stable/c/36b9cdab44848f25879ca625275c92b007f84653\nhttps://git.kernel.org/stable/c/40370f02a1ca3760f8925ffcbe76eb4d91ea758d\nhttps://git.kernel.org/stable/c/e1b168a53174b385e3548bfbd079513b22ac240c\nhttps://git.kernel.org/stable/c/a18a6b93a2843b9d103d3456bbd4b3f90282a379\n",
   "aliases": "GHSA-vxgx-5rhh-g7hj\nCVE-2026-98081\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "d70cbdda75da3f258118a558c087157e073229fb <e1b168a53174b385e3548bfbd079513b22ac240c"
+    },
+    {
+      "id": "2c542682-ad2c-35e7-a14b-05171939d9c4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "2f78c496-990c-383c-8b7a-6bc45f70509a",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "5.19"
+    },
+    {
+      "id": "c684d158-eeb9-3a26-9fe3-f2a3d89f9a4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d70cbdda75da3f258118a558c087157e073229fb <433d52b196a689b18dcfadc7cf6c784f0e5cc7c9"
     },
     {
       "id": "e2103be9-2d3f-39ee-943c-fdb9e9641e80",

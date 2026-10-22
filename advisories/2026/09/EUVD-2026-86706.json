@@ -3,9 +3,9 @@
   "enisaUuid": "f397fcbe-b368-3adf-a121-a7e4d6c2736a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: avs: Refactor and fix init_config access\n\nExisting code accesses enties found in ->init_configs array through\nindexes that are part of ->config_ids array.  Those two are limited by:\n->num_init_configs and ->num_config_ids respectively.  Using ID larger\nor equal to ->num_init_configs leads to out-of-bounds access:\n\navs_path_module_send_init_configs()\nloop:\n\t(...) &acomp->tplg->init_configs[ids[i]]\n\t\t\t\t\t^ out-of-bounds candidate\n\nRather than adding another if-statement, refactor the code.  There is no\nneed to store the IDs, have a list of pointers to actual config-entries\ninstead.  As the verification of ->init_config entries does not differ from\nverification of other types that are part of the topology.c file, simply\nreuse the code.",
   "datePublished": "Sep 25, 2026, 10:24:01 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:59 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:17 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/75bd5ea9c858d89fb8862f23afb00783bf02cd7a\nhttps://git.kernel.org/stable/c/8f20a0f4f7d638e83ae86db1719a24c7049762f5\nhttps://git.kernel.org/stable/c/681e91035dc794896a904852040837190e5041f5\n",
+  "references": "https://git.kernel.org/stable/c/70ffcaf86a053be99daaf3b103beac0ad7136ca3\nhttps://git.kernel.org/stable/c/75bd5ea9c858d89fb8862f23afb00783bf02cd7a\nhttps://git.kernel.org/stable/c/8f20a0f4f7d638e83ae86db1719a24c7049762f5\nhttps://git.kernel.org/stable/c/681e91035dc794896a904852040837190e5041f5\n",
   "aliases": "CVE-2026-98053\nGHSA-xpmc-f98f-h67j\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "8a49ef789b1be68242624d460df2ada8087308a7 <681e91035dc794896a904852040837190e5041f5"
+    },
+    {
+      "id": "336bed66-b9fe-3783-a697-ce48a22e2a22",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8a49ef789b1be68242624d460df2ada8087308a7 <70ffcaf86a053be99daaf3b103beac0ad7136ca3"
     },
     {
       "id": "34944ca8-784f-323f-88ba-9960bd98a62d",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "8a49ef789b1be68242624d460df2ada8087308a7 <75bd5ea9c858d89fb8862f23afb00783bf02cd7a"
+    },
+    {
+      "id": "8950f2ac-1770-3d83-9de4-69839214de9d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "9d1253b5-43b2-3ef4-a188-34258a7c4d9f",

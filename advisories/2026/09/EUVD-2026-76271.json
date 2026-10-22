@@ -3,9 +3,9 @@
   "enisaUuid": "93beed70-a79b-39b7-a6c9-5bc56fc0ddc6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: dvm: fix memory leak in iwl_op_mode_dvm_start()\n\nIn iwl_op_mode_dvm_start(), jumping to out_free_eeprom currently bypasses\nthe out_free_eeprom_blob label. Consequently, error paths triggered after\nsuccessfully parsing the EEPROM free priv->nvm_data but leak\npriv->eeprom_blob.\n\nFix this memory leak by reordering the error handling labels so\nthat out_free_eeprom falls through to out_free_eeprom_blob.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still\npresent in v7.1-rc6.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have\nsupported Intel DVM wireless hardware and firmware to test with, no\nruntime testing was able to be performed.",
   "datePublished": "Sep 11, 2026, 7:42:19 PM",
-  "dateUpdated": "Oct 19, 2026, 8:45:32 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:18 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/84ba017a1e1ea7896ed1e3258c947bdbfc5299c5\nhttps://git.kernel.org/stable/c/ad2a9fdca4a7100472be82ee6048c616fc589720\nhttps://git.kernel.org/stable/c/67105abd6195a685a84dcb8a5daf54a1f4bfdb60\n",
+  "references": "https://git.kernel.org/stable/c/7be73911d979bb0f54485c2292043a5703fdc953\nhttps://git.kernel.org/stable/c/2d593f32efa9ff1c91c508f45eb709c03dfb4945\nhttps://git.kernel.org/stable/c/84ba017a1e1ea7896ed1e3258c947bdbfc5299c5\nhttps://git.kernel.org/stable/c/ad2a9fdca4a7100472be82ee6048c616fc589720\nhttps://git.kernel.org/stable/c/67105abd6195a685a84dcb8a5daf54a1f4bfdb60\n",
   "aliases": "GHSA-mrmg-jqr4-hg37\nCVE-2026-80948\n",
   "assigner": "Linux",
   "epss": 0.22,
@@ -39,6 +39,26 @@
         }
       },
       "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <67105abd6195a685a84dcb8a5daf54a1f4bfdb60"
+    },
+    {
+      "id": "56342340-2b34-3881-bb2f-32b71e357212",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <7be73911d979bb0f54485c2292043a5703fdc953"
+    },
+    {
+      "id": "99990df5-a2ab-3569-8399-e0b2ae104393",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "a2385559-3f52-398d-9cb9-2d7d81160525",
@@ -79,6 +99,26 @@
         }
       },
       "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <84ba017a1e1ea7896ed1e3258c947bdbfc5299c5"
+    },
+    {
+      "id": "e4f16695-098c-38c2-a860-ccb72bd9f673",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <2d593f32efa9ff1c91c508f45eb709c03dfb4945"
+    },
+    {
+      "id": "ea6fea44-0997-329c-8648-6c2c2ebcdc11",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "ebfb3dcc-1ca5-3300-95dd-4121843e9340",

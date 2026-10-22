@@ -3,11 +3,11 @@
   "enisaUuid": "d27f89db-c411-3b48-846e-3be91b75db4b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-before-check of ReparseDataLength in reparse_buf_ptr()\n\nreparse_buf_ptr() reads buf->ReparseDataLength before checking that\ncount covers the full fixed header:\n\n    buf = (struct reparse_data_buffer *)((u8 *)io + off);\n    len = sizeof(*buf);                          /* 8 bytes */\n    rdlen = le16_to_cpu(buf->ReparseDataLength); /* offset 4, 2 bytes */\n\n    if (count < len || count < rdlen + len)      /* check comes after */\n\nstruct reparse_data_buffer has ReparseDataLength at offset 4.  If a\nserver returns OutputCount < 6, the read at offset 4-5 reaches past\nthe end of the received data.  The off+count bounds against iov_len\nwere already validated, but that does not protect against count being\nsmaller than sizeof(*buf).\n\nSplit the check: verify count >= sizeof(*buf) before reading\nReparseDataLength, then verify count covers the data region.",
   "datePublished": "Sep 11, 2026, 7:45:27 PM",
-  "dateUpdated": "Oct 19, 2026, 1:42:19 PM",
+  "dateUpdated": "Oct 21, 2026, 12:48:04 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/711cf71300d7992f450600df8864917d3538679f\nhttps://git.kernel.org/stable/c/05f78e6cf34ea3a285053bd5999e08e8ac298bd5\n",
+  "references": "https://git.kernel.org/stable/c/b70bc592afd19732e2e4563300ebe8f974280365\nhttps://git.kernel.org/stable/c/711cf71300d7992f450600df8864917d3538679f\nhttps://git.kernel.org/stable/c/05f78e6cf34ea3a285053bd5999e08e8ac298bd5\n",
   "aliases": "GHSA-j6wx-7c3w-595c\nCVE-2026-89632\n",
   "assigner": "Linux",
   "epss": 0.45,
@@ -23,14 +23,14 @@
       "product_version": "67ec9949b0dfe78c99e110dd975eb7dc5645630c <05f78e6cf34ea3a285053bd5999e08e8ac298bd5"
     },
     {
-      "id": "45844abe-0797-353f-8c05-8e138ebf2e6d",
+      "id": "4553118e-7f6b-32b2-afad-e6c624bec00f",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "a158bb66b1373866d9fd5997565a58a573085539"
+      "product_version": "a158bb66b1373866d9fd5997565a58a573085539 <b70bc592afd19732e2e4563300ebe8f974280365"
     },
     {
       "id": "63a9d74b-3230-33aa-82b0-2386218a28bd",
@@ -53,14 +53,14 @@
       "product_version": "patch: 0"
     },
     {
-      "id": "b93abd1d-7226-3898-b7e2-468bdbd4e252",
+      "id": "bb91a274-c8cb-3895-909f-ba0f6cb56b36",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.6.32 <6.7"
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "da279c26-f70b-3ab1-aee8-6b1b0e7dcdc3",
@@ -91,6 +91,16 @@
         }
       },
       "product_version": "6.8"
+    },
+    {
+      "id": "f92b58a9-6198-39cc-a216-06335b5fe58e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.32 <6.6.160"
     }
   ],
   "enisaIdVendor": [

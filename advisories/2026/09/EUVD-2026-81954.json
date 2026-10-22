@@ -3,11 +3,11 @@
   "enisaUuid": "8c0490f0-60e0-3637-a861-fd4ff46b64db",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: access chan->conn safely in get/setsockopt\n\nSince commit b66774b48dd9 (\"Bluetooth: L2CAP: Fix UAF in channel timeout by holding conn ref\")\nl2cap_chan::conn has held reference and remains non-NULL also after the\ncorresponding hci_conn is deleted.  In this state accessing various\nfields eg. hci_conn::hdev is invalid, which leads to KASAN crash in\nl2cap_sock_setsockopt() access of conn->hcon->hdev.\n\nCheck l2cap_chan::conn.hcon corresponds to an alive hci_conn before\ntrying to use it in l2cap_sock.c.  Hold l2cap_chan_lock() in\ngetsockopt/setsockopt to ensure it stays alive, and to avoid data races\nin l2cap_chan fields.",
   "datePublished": "Sep 17, 2026, 4:06:06 PM",
-  "dateUpdated": "Oct 19, 2026, 8:57:51 AM",
+  "dateUpdated": "Oct 21, 2026, 12:49:48 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/8460dc49c9756a1e9288218060b4d41e1b704905\nhttps://git.kernel.org/stable/c/f49321c85785178214fd67f2e9b4b73d6363783b\nhttps://git.kernel.org/stable/c/ca2c4c26498643f421d35ffe258fafbd3ed461c3\n",
+  "references": "https://git.kernel.org/stable/c/19e154d794eb4d33d99ca4a087b1cea9d5e65786\nhttps://git.kernel.org/stable/c/3af72bf8f73c519ee562e6963d5ff8e678924f93\nhttps://git.kernel.org/stable/c/8460dc49c9756a1e9288218060b4d41e1b704905\nhttps://git.kernel.org/stable/c/f49321c85785178214fd67f2e9b4b73d6363783b\nhttps://git.kernel.org/stable/c/ca2c4c26498643f421d35ffe258fafbd3ed461c3\n",
   "aliases": "CVE-2026-90093\nGHSA-vcch-q6jx-pg5j\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -23,6 +23,16 @@
       "product_version": "7.1.4 <7.2"
     },
     {
+      "id": "03991481-252a-3267-a9cd-6d5a6b04e601",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0b0e2bf39cf99e458d991b9df253727e036a7d7d <3af72bf8f73c519ee562e6963d5ff8e678924f93"
+    },
+    {
       "id": "053d61e0-2b7f-399c-84d1-3d5542fafed6",
       "product": {
         "name": "Linux",
@@ -31,16 +41,6 @@
         }
       },
       "product_version": "7.2"
-    },
-    {
-      "id": "158de5c9-b71b-3ef7-8b8f-42f9ee578633",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "91047a4396a8b1857a6f712a90cf33ec0012b189"
     },
     {
       "id": "15fce0a3-72cc-3790-92b2-80c6880d3dac",
@@ -73,24 +73,24 @@
       "product_version": "patch: 6.18.57"
     },
     {
-      "id": "3e4fdd62-3bee-3fe2-bf4d-d50285406612",
+      "id": "4b5fec93-5d8b-3791-85d4-7b9e1a6ef474",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0b0e2bf39cf99e458d991b9df253727e036a7d7d"
+      "product_version": "patch: 6.6.160"
     },
     {
-      "id": "425fb70c-8cf2-3fc4-af87-881c8cc7898d",
+      "id": "580691a8-9311-3bbb-ae2a-ef70ed1a60b5",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.12.97 <6.13"
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "6af9c510-0420-3798-893b-ea57ac8130e7",
@@ -113,6 +113,26 @@
       "product_version": "50c38d9f42a529691e4e67ea9cedf4f0bfc8d277"
     },
     {
+      "id": "83492b30-3107-3739-9abf-e6f5e81b5308",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "91047a4396a8b1857a6f712a90cf33ec0012b189 <19e154d794eb4d33d99ca4a087b1cea9d5e65786"
+    },
+    {
+      "id": "84400efd-0924-3db2-80c8-52f7c994b79b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.145 <6.6.160"
+    },
+    {
       "id": "8c0a718f-1dc8-3504-ada7-d48a90173cd8",
       "product": {
         "name": "Linux",
@@ -123,14 +143,14 @@
       "product_version": "6.1.183 <6.2"
     },
     {
-      "id": "954f44bd-7ad9-3243-ba85-f49f94b77d5f",
+      "id": "9752eab3-795d-3a32-b348-b72fe76e645b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.6.145 <6.7"
+      "product_version": "6.12.97 <6.12.114"
     },
     {
       "id": "9856db8a-27c3-3e2e-b4c0-11d3005c087f",

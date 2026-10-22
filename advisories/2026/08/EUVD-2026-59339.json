@@ -3,14 +3,14 @@
   "enisaUuid": "523e25ae-a9a5-35e9-9df1-905c3475b188",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid1: fix writes_pending and barrier reference leaks on write failures\n\nraid1_make_request() acquires a writes_pending reference with\nmd_write_start() before calling raid1_write_request(). Several failure\npaths in raid1_write_request() complete the bio and return without\nreaching the normal write completion path, causing the corresponding\nmd_write_end() to be skipped.\n\nMake raid1_write_request() return a status indicating whether the write\nrequest was successfully queued. This allows raid1_make_request() to\ncall md_write_end() when raid1_write_request() fails.\n\nAdditionally, if wait_blocked_rdev() fails after wait_barrier()\nsucceeds, the associated barrier reference is not released.\n\nCall allow_barrier() before returning from that path to keep the barrier\naccounting balanced.",
   "datePublished": "Aug 15, 2026, 5:56:52 AM",
-  "dateUpdated": "Oct 16, 2026, 6:55:24 PM",
+  "dateUpdated": "Oct 21, 2026, 12:44:57 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
-  "references": "https://git.kernel.org/stable/c/7a450460687919e79b5f8503bdeb13ecf4cca311\nhttps://git.kernel.org/stable/c/bffbbfcbd9393e315a7a4286dcd70e875265db9a\nhttps://git.kernel.org/stable/c/8e065a1602511282fc0da2dc89445e0eb71a681c\n",
+  "references": "https://git.kernel.org/stable/c/921e2baa626d1504bf30295816aaeb90ac8c82f4\nhttps://git.kernel.org/stable/c/a846affa813013204d0cce0cfdaeb99e8fcce188\nhttps://git.kernel.org/stable/c/7a450460687919e79b5f8503bdeb13ecf4cca311\nhttps://git.kernel.org/stable/c/bffbbfcbd9393e315a7a4286dcd70e875265db9a\nhttps://git.kernel.org/stable/c/8e065a1602511282fc0da2dc89445e0eb71a681c\n",
   "aliases": "GHSA-jh9h-wfxq-pfm4\nCVE-2026-72440\n",
   "assigner": "Linux",
-  "epss": 0.38,
+  "epss": 0.46,
   "enisaIdProduct": [
     {
       "id": "10bf8726-6d79-3130-afd7-1feaa49702fd",
@@ -63,6 +63,36 @@
       "product_version": "patch: 6.18.57"
     },
     {
+      "id": "8e5172ac-76e1-3b83-93f5-8dd027274114",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "9fcdbd6c-0b33-3cd9-94ae-9f8eb45bf71f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5aa705039c4fca84575539bfa2b8a28454a3d2ca <a846affa813013204d0cce0cfdaeb99e8fcce188"
+    },
+    {
+      "id": "c616365e-5371-3326-b021-e2268930bd20",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5aa705039c4fca84575539bfa2b8a28454a3d2ca <921e2baa626d1504bf30295816aaeb90ac8c82f4"
+    },
+    {
       "id": "d1cf9dba-7e8b-3550-ab36-e43dad9434f2",
       "product": {
         "name": "Linux",
@@ -91,6 +121,16 @@
         }
       },
       "product_version": "5aa705039c4fca84575539bfa2b8a28454a3d2ca <7a450460687919e79b5f8503bdeb13ecf4cca311"
+    },
+    {
+      "id": "e0dc332b-7aea-3bae-a7f1-a12c2a655cc8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

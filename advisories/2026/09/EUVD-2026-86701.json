@@ -3,9 +3,9 @@
   "enisaUuid": "a21d017d-6788-3a9b-a9ee-052d49b252bc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: don't rewrite bpf_fastcall patterns entered by a jump\n\nmark_fastcall_pattern_for_call() must ensure that matched\n\"spill; call; fill\" instruction series is not interrupted by a jump.\nOtherwise the rewrite applied by bpf_remove_fastcall_spills_fills()\nis not sound.\n\nRecord the instructions targeted by jumps in\ninsn_aux_data[*].jump_target when the CFG is built and use this flag\nto stop growing a pattern at such an instruction. Jumps to the first\nspill are fine.\n\nNote that existing insn_aux_data[*].jmp_point field can't be reused,\nas it marks subprogram return instructions.",
   "datePublished": "Sep 25, 2026, 10:23:57 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:54 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c4d3bdb3ab211dcfad734b02e06fcb12adb4757f\nhttps://git.kernel.org/stable/c/24adbc2c3bbe3385ce922587e1f8e837a68b3e25\nhttps://git.kernel.org/stable/c/0b1c83dc3c4401cd7e846548f62e3caf3d06742e\n",
+  "references": "https://git.kernel.org/stable/c/a0cd1c3ac63504ba3c50c01a00c11812919b619f\nhttps://git.kernel.org/stable/c/c4d3bdb3ab211dcfad734b02e06fcb12adb4757f\nhttps://git.kernel.org/stable/c/24adbc2c3bbe3385ce922587e1f8e837a68b3e25\nhttps://git.kernel.org/stable/c/0b1c83dc3c4401cd7e846548f62e3caf3d06742e\n",
   "aliases": "GHSA-6g34-ggc8-pv58\nCVE-2026-98048\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -51,6 +51,16 @@
       "product_version": "6.12"
     },
     {
+      "id": "6fb42382-0ed9-37c8-bd3b-e99e1a11ab7f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
       "id": "9bd12779-f764-3908-b2e6-eab92f1c58b2",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "5b5f51bff1b66cedb62b5ba74a1878341204e057 <24adbc2c3bbe3385ce922587e1f8e837a68b3e25"
+    },
+    {
+      "id": "d3f90e65-f174-3030-a91f-cb21bdf650fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5b5f51bff1b66cedb62b5ba74a1878341204e057 <a0cd1c3ac63504ba3c50c01a00c11812919b619f"
     },
     {
       "id": "f5322815-d5ef-378e-88ea-7f4fdd1aa9a9",

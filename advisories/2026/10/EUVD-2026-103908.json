@@ -3,12 +3,12 @@
   "enisaUuid": "ba2c9c95-049a-3e0b-a108-6158a30a6d0b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: preserve hidden-group beacon IE ownership\n\nA hidden-group probe-response entry borrows its beacon IEs from the\ngroup's beacon entry. cfg80211_update_assoc_bss_entry() can pass such\nan entry to cfg80211_update_known_bss() when merging scan entries\nafter a channel switch.\n\nCopying the borrowed beacon_ies into the associated entry gives the\nsame allocation two owners. Releasing the group's beacon entry can\nthen leave the associated entry pointing to freed IEs, which are\nfreed again when that entry is released.\n\nSkip beacon IE replacement when the source entry belongs to a hidden\ngroup. Preserve probe-response processing, the subsequent metadata\nupdates, and the existing rejection path for conflicting hidden\nbeacon updates.",
   "datePublished": "Oct 18, 2026, 3:49:15 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:16 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:14 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/49b66110a08e4f926f6393e938f226de2750a08b\nhttps://git.kernel.org/stable/c/dd7973a4130b0862be38d7e08cc0e874b3d99967\nhttps://git.kernel.org/stable/c/5f27581c176f84b52ec0ab9be7b500c10667ef60\nhttps://git.kernel.org/stable/c/cc45f313d85533d647ce619326302aad6f797c14\n",
+  "references": "https://git.kernel.org/stable/c/5617d5328839003c91007ce906b4f100b43926e9\nhttps://git.kernel.org/stable/c/49b66110a08e4f926f6393e938f226de2750a08b\nhttps://git.kernel.org/stable/c/dd7973a4130b0862be38d7e08cc0e874b3d99967\nhttps://git.kernel.org/stable/c/5f27581c176f84b52ec0ab9be7b500c10667ef60\nhttps://git.kernel.org/stable/c/cc45f313d85533d647ce619326302aad6f797c14\n",
   "aliases": "CVE-2026-98823\nGHSA-xw2r-79g3-4r47\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "296ae50d-6696-391e-801f-2c748258f07e",
@@ -51,6 +51,16 @@
       "product_version": "0afd425b1b64251f19b5d8d8b49bf56fefbc643f <cc45f313d85533d647ce619326302aad6f797c14"
     },
     {
+      "id": "7593798c-f5a5-33c8-99a2-ddb77a1a6665",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0afd425b1b64251f19b5d8d8b49bf56fefbc643f <5617d5328839003c91007ce906b4f100b43926e9"
+    },
+    {
       "id": "8cad2010-405f-3054-8683-dae15b4a0b41",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "a0f97698-d8c5-36ff-b3db-eac14908f951",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "c24d1507-182a-3a10-8918-465b30e29387",

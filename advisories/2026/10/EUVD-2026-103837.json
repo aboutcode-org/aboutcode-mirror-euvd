@@ -3,12 +3,12 @@
   "enisaUuid": "5a6a338b-1650-35d1-8d59-0edd157a5296",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: port: fix tty_port_tty_vhangup() race\n\nDrivers rely on tty_port_tty_vhangup() to synchronously hang up their\nports before tearing down resources as part of deregistration (e.g. on\nphysical disconnect).\n\nIf tty_port_tty_vhangup() races with another hangup it may however\nreturn before the port has been shut down. This is in turn can lead to\nuse-after-free and NULL-pointer dereferences in racing ioctls (including\na synchronous hangup) and in processing of racing asynchronous hangups\n(carrier loss).\n\nAdd the missing serialisation to tty_port_tty_vhangup() and\ntty_port_hangup() so that the former does not return until the port has\nbeen shut down also when there is a racing hangup.\n\nNote that serial core does not use tty_port_hangup(), but it already\nholds the port mutex when clearing port->tty and shutting down the port\nin uart_hangup().",
   "datePublished": "Oct 18, 2026, 3:47:36 PM",
-  "dateUpdated": "Oct 19, 2026, 9:25:05 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:27 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6d1a984afc3ca477dab3e51ec806671d443ad524\nhttps://git.kernel.org/stable/c/6b7be3b9b857947e9c1338d4919d4ebd3b75e907\nhttps://git.kernel.org/stable/c/017b18addbe8dcace1a569a00d40ed1ba1e03f4c\nhttps://git.kernel.org/stable/c/b48820de8c1a596c5b99775524dfce73c6576c5d\n",
+  "references": "https://git.kernel.org/stable/c/ce220b4cdf62f73db0c1940f968eb33b9899fdd0\nhttps://git.kernel.org/stable/c/6d1a984afc3ca477dab3e51ec806671d443ad524\nhttps://git.kernel.org/stable/c/6b7be3b9b857947e9c1338d4919d4ebd3b75e907\nhttps://git.kernel.org/stable/c/017b18addbe8dcace1a569a00d40ed1ba1e03f4c\nhttps://git.kernel.org/stable/c/b48820de8c1a596c5b99775524dfce73c6576c5d\n",
   "aliases": "CVE-2026-98752\nGHSA-2697-8gj7-2gh6\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0ee19de5-a6c3-36b5-b330-a3518f53baa7",
@@ -71,6 +71,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "ac6cf60c-cffe-338d-8723-b33d75f2b190",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "ae911cfe-33ed-32e5-8010-05e889e7e339",
       "product": {
         "name": "Linux",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "2.6.31.2 <2.6.32"
+    },
+    {
+      "id": "d4a931a4-fff3-386a-b989-0432504dc0dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7ca0ff9ab3218ec443a7a9ad247e4650373ed41e <ce220b4cdf62f73db0c1940f968eb33b9899fdd0"
     },
     {
       "id": "ed0f33ad-d260-3f78-95f2-1e0f3069ff6b",

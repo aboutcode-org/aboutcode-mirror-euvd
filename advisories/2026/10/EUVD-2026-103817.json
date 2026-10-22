@@ -3,13 +3,23 @@
   "enisaUuid": "da177cb6-5c06-37f3-9529-cb399688a41b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel: fix buffer over-read in btintel_hw_error()\n\nThe \"Exception info %s\" print uses skb->data + 1, but the 12-byte\npayload is not guaranteed to be NUL-terminated and can be read past\nits end.\n\nBound the print with \"%.*s\" and skb->len - 1.",
   "datePublished": "Oct 18, 2026, 3:47:10 PM",
-  "dateUpdated": "Oct 19, 2026, 9:24:42 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:07 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bbc7de352f3f3864369c904aac944c7de84c6e7b\nhttps://git.kernel.org/stable/c/c42ce5373405ca93946311652c51ccfeb1c2d913\nhttps://git.kernel.org/stable/c/673f707518e8ef03306f84c512cb160971f175fe\nhttps://git.kernel.org/stable/c/40eb4b18ad167b63644c27fa67a7400ba050379a\n",
+  "references": "https://git.kernel.org/stable/c/be58b239d2be5da7a7fac11d3eb8bf75dce6511b\nhttps://git.kernel.org/stable/c/bbc7de352f3f3864369c904aac944c7de84c6e7b\nhttps://git.kernel.org/stable/c/c42ce5373405ca93946311652c51ccfeb1c2d913\nhttps://git.kernel.org/stable/c/673f707518e8ef03306f84c512cb160971f175fe\nhttps://git.kernel.org/stable/c/40eb4b18ad167b63644c27fa67a7400ba050379a\n",
   "aliases": "CVE-2026-98732\nGHSA-ww29-ppp3-6wfc\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "147c4000-7c75-388e-b2a6-60d22410faf3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <be58b239d2be5da7a7fac11d3eb8bf75dce6511b"
+    },
     {
       "id": "1fc4c974-8d8f-3c3f-94a6-020824cf2835",
       "product": {
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "4f6a5a82-02fa-3cc6-a53d-4b9238b8442f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "6d2c7319-3a4f-309a-8637-f2be51b48c81",

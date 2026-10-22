@@ -3,9 +3,9 @@
   "enisaUuid": "0dd151a8-3b4a-372d-a0ab-940a4aa47e64",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntime/namespace: Validate nanosecond field in proc_timens_set_offset()\n\nThe function validates tv_sec to be within [-KTIME_SEC_MAX, KTIME_SEC_MAX]\nbut never validates that tv_nsec is within the valid range of\n[0, NSEC_PER_SEC-1] before using it in timespec64_add().\n\ntimespec64_add() expects both timespec64 structures to have normalized\nvalues with tv_nsec in the range [0, 999999999]. If off->val.tv_nsec\ncontains invalid values (negative or >= NSEC_PER_SEC), it could lead to\nincorrect calculations or unexpected behavior.\n\nAdd validation to ensure tv_nsec is within the valid range before\nperforming the addition.",
   "datePublished": "Sep 17, 2026, 4:11:44 PM",
-  "dateUpdated": "Oct 19, 2026, 9:06:18 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:03 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/db667d2970c756cc7b483f45f272440f845a665b\nhttps://git.kernel.org/stable/c/1f0c3c0c36c7aedf55a60d9c71c4bd258b8937ce\nhttps://git.kernel.org/stable/c/06aba58e58492d2b8eae059274caed29025ea96e\n",
+  "references": "https://git.kernel.org/stable/c/5b8a40de738b7c4896c2edbc6262bd1b3462ded0\nhttps://git.kernel.org/stable/c/b20d7085ab314672447322c10cc5d1ba443e3b8e\nhttps://git.kernel.org/stable/c/db667d2970c756cc7b483f45f272440f845a665b\nhttps://git.kernel.org/stable/c/1f0c3c0c36c7aedf55a60d9c71c4bd258b8937ce\nhttps://git.kernel.org/stable/c/06aba58e58492d2b8eae059274caed29025ea96e\n",
   "aliases": "CVE-2026-93146\nGHSA-477f-qmj2-58hm\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -31,6 +31,26 @@
       "product_version": "04a8682a71becdb639ec9c0d82b315a2baef7a5d <db667d2970c756cc7b483f45f272440f845a665b"
     },
     {
+      "id": "1e44dc05-21d8-3945-8970-900cd5878e07",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "04a8682a71becdb639ec9c0d82b315a2baef7a5d <5b8a40de738b7c4896c2edbc6262bd1b3462ded0"
+    },
+    {
+      "id": "23ee0f46-73f9-30a0-9503-abfc8bfd8842",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "31f9909d-a28d-332a-8425-a171cdf47774",
       "product": {
         "name": "Linux",
@@ -49,6 +69,16 @@
         }
       },
       "product_version": "04a8682a71becdb639ec9c0d82b315a2baef7a5d <1f0c3c0c36c7aedf55a60d9c71c4bd258b8937ce"
+    },
+    {
+      "id": "66b20a66-888d-3dbd-8c76-e5922fb0c415",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "04a8682a71becdb639ec9c0d82b315a2baef7a5d <b20d7085ab314672447322c10cc5d1ba443e3b8e"
     },
     {
       "id": "73f556fe-d503-379e-b758-0f290bdd5e61",
@@ -89,6 +119,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "fd1da60e-73dd-39f1-a9b3-fede3b5d7dde",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     }
   ],
   "enisaIdVendor": [

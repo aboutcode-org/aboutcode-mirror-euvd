@@ -3,12 +3,12 @@
   "enisaUuid": "980bd362-b4ef-3cce-ac17-470225c5a811",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: adis16480: fix unprotected debugfs reads\n\nThe firmware_revision and firmware_date file operations are open coded\nand never call debugfs_file_get(), which debugfs_create_file_unsafe()\nrequires. debugfs_remove_recursive() therefore does not wait for a read\nin progress, and unbind frees the iio_dev underneath it.\n\nUse debugfs_create_file() instead.",
   "datePublished": "Oct 18, 2026, 3:44:31 PM",
-  "dateUpdated": "Oct 19, 2026, 9:23:31 AM",
+  "dateUpdated": "Oct 21, 2026, 12:55:28 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b7e507c6da8875da93b4130c8185e82a9dfd565c\nhttps://git.kernel.org/stable/c/ce308ce18dedc18e9eeff8473892975e6fdd7aef\nhttps://git.kernel.org/stable/c/396b83106f5e7d16467049f0caabd10533c01a0e\nhttps://git.kernel.org/stable/c/e1dea54496f90a62318cf4eeaa1e9ef8316e92b6\n",
+  "references": "https://git.kernel.org/stable/c/8a782244972715c76bdaf8b662e9b22e260c5296\nhttps://git.kernel.org/stable/c/b7e507c6da8875da93b4130c8185e82a9dfd565c\nhttps://git.kernel.org/stable/c/ce308ce18dedc18e9eeff8473892975e6fdd7aef\nhttps://git.kernel.org/stable/c/396b83106f5e7d16467049f0caabd10533c01a0e\nhttps://git.kernel.org/stable/c/e1dea54496f90a62318cf4eeaa1e9ef8316e92b6\n",
   "aliases": "GHSA-cjjc-mjvc-265x\nCVE-2026-98663\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0cf50e66-d394-341e-96d9-05f8a150f25e",
@@ -61,6 +61,16 @@
       "product_version": "9bf94f836e32ea168ec7448a523c11480317ad79 <ce308ce18dedc18e9eeff8473892975e6fdd7aef"
     },
     {
+      "id": "8149a557-34a2-36c1-8f17-a20d7b4b260a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9bf94f836e32ea168ec7448a523c11480317ad79 <8a782244972715c76bdaf8b662e9b22e260c5296"
+    },
+    {
       "id": "8bf1daa8-c322-3d44-9c9c-4654dd689bc6",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "9bf94f836e32ea168ec7448a523c11480317ad79 <396b83106f5e7d16467049f0caabd10533c01a0e"
+    },
+    {
+      "id": "faecf40e-58c4-3dda-94f7-5d2e0b55dc37",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

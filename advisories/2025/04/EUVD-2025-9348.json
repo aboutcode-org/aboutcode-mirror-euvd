@@ -3,14 +3,14 @@
   "enisaUuid": "78d893b7-2135-358e-a885-df7a7f440ec8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp: unshare packets when reassembling\n\nEnsure that the frag_list used for reassembly isn't shared with other\npackets. This avoids incorrect reassembly when packets are cloned, and\nprevents a memory leak due to circular references between fragments and\ntheir skb_shared_info.\n\nThe upcoming MCTP-over-USB driver uses skb_clone which can trigger the\nproblem - other MCTP drivers don't share SKBs.\n\nA kunit test is added to reproduce the issue.",
   "datePublished": "Apr 1, 2025, 3:47:04 PM",
-  "dateUpdated": "Aug 5, 2026, 11:55:47 AM",
+  "dateUpdated": "Oct 21, 2026, 12:36:11 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/5c47d5bfa7b096cf8890afac32141c578583f8e0\nhttps://git.kernel.org/stable/c/f44fff3d3c6cd67b6f348b821d73c4d6888c7a6e\nhttps://git.kernel.org/stable/c/f5d83cf0eeb90fade4d5c4d17d24b8bee9ceeecc\n",
+  "references": "https://git.kernel.org/stable/c/3d0281d0713952e8dd14d6d47e3a9c345c28a3b7\nhttps://git.kernel.org/stable/c/5c47d5bfa7b096cf8890afac32141c578583f8e0\nhttps://git.kernel.org/stable/c/f44fff3d3c6cd67b6f348b821d73c4d6888c7a6e\nhttps://git.kernel.org/stable/c/f5d83cf0eeb90fade4d5c4d17d24b8bee9ceeecc\n",
   "aliases": "CVE-2025-21972\nGHSA-w7xc-x24c-mg52\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "0470ef84-e5d4-3310-a739-e3e7eb881f76",
@@ -63,6 +63,16 @@
       "product_version": "patch: 6.12.20"
     },
     {
+      "id": "736e2da7-b080-3a49-a630-3665b68d4ab9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "7a12d1ff-3804-3367-a864-9ce4a2e78614",
       "product": {
         "name": "Linux",
@@ -81,6 +91,16 @@
         }
       },
       "product_version": "4a992bbd365094730a31bae1e12a6ca695336d57 <5c47d5bfa7b096cf8890afac32141c578583f8e0"
+    },
+    {
+      "id": "d2f074fc-4020-3a53-9248-a919d18640fe",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4a992bbd365094730a31bae1e12a6ca695336d57 <3d0281d0713952e8dd14d6d47e3a9c345c28a3b7"
     },
     {
       "id": "ff182037-7fce-3c61-8714-55036a7d903a",

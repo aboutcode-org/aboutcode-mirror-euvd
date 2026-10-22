@@ -3,9 +3,9 @@
   "enisaUuid": "6a5caf66-3551-3fcd-b2fd-d17d1ca9a76d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/erdma: Use IRQ-safe XArray helpers for QP and CQ tables\n\nLocked QP and CQ lookups from EQ interrupts can deadlock with\ncreate-path XArray updates. If an interrupt arrives while the create\npath holds the plain xa_lock, the lookup spins forever trying to\nacquire the same lock.\n\nUse IRQ-safe XArray helpers for all QP and CQ create-path updates,\nincluding the GSI QP store and error paths. Initialize both arrays with\nXA_FLAGS_LOCK_IRQ so sleeping allocations preserve interrupt state.",
   "datePublished": "Oct 6, 2026, 8:46:40 AM",
-  "dateUpdated": "Oct 19, 2026, 9:18:04 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:57 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/74d4085221a7ec5440996af199ccadfa75b9eb0e\nhttps://git.kernel.org/stable/c/00baeade709fb66da647e8327e8398bb532e30f7\n",
+  "references": "https://git.kernel.org/stable/c/e32aa1d85126e6d5ef6efd594ced3f75178886ce\nhttps://git.kernel.org/stable/c/74d4085221a7ec5440996af199ccadfa75b9eb0e\nhttps://git.kernel.org/stable/c/00baeade709fb66da647e8327e8398bb532e30f7\n",
   "aliases": "GHSA-c26j-r98f-9j66\nCVE-2026-98353\n",
   "assigner": "Linux",
   "epss": 0.15,
@@ -31,6 +31,16 @@
       "product_version": "6.12.110 <6.13"
     },
     {
+      "id": "3ff42156-ac71-368e-a525-bd6e4b2b08ff",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.160 <6.7"
+    },
+    {
       "id": "473a5761-4eb8-3f47-9efd-f50325375e6e",
       "product": {
         "name": "Linux",
@@ -41,24 +51,14 @@
       "product_version": "6e32f84b63c054e09392153125d7202abab2d14b"
     },
     {
-      "id": "4f01599b-ecc4-3008-b564-4fbfa4123065",
+      "id": "671d2ec7-9c8c-3bbf-a4ab-6f9d130faa6d",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1fc9c1933959d2776a1ce7bf424251b8b5b586cd"
-    },
-    {
-      "id": "52247d62-9b73-31a6-b378-23eaa3824899",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.18.52 <6.19"
+      "product_version": "1fc9c1933959d2776a1ce7bf424251b8b5b586cd <e32aa1d85126e6d5ef6efd594ced3f75178886ce"
     },
     {
       "id": "7e5840f7-2306-3608-999a-6de1373730dd",
@@ -69,6 +69,16 @@
         }
       },
       "product_version": "6.1.188 <6.2"
+    },
+    {
+      "id": "80742aa3-83c0-3d1d-ad27-99b00d142e23",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.18.52 <6.18.58"
     },
     {
       "id": "878d7308-e721-3658-b144-918d1c0d645c",
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "6.6.157 <6.7"
+    },
+    {
+      "id": "edc643ea-e9be-3bbc-8742-7247b74f586f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "233f1b7fe2980e4e238fe03dd3ceddfd082cb4c8"
     },
     {
       "id": "ee123726-049f-3582-9ac8-a74ed5467a8f",

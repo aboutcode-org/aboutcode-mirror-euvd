@@ -3,12 +3,12 @@
   "enisaUuid": "d3ef56ba-3716-3664-9db0-8006aa82ceeb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: xilinx: Shutdown and free rx mailbox channel\n\nA mbox rx channel is requested using mbox_request_channel_byname() in\nprobe. In remove callback, the rx mailbox channel is cleaned up when the\nrx_chan is NULL due to incorrect condition check. The mailbox channel is\nnot shutdown and it can receive messages even after the device removal.\nThis leads to use after free. Also the channel resources are not freed.\nFix this by checking the rx_chan correctly.",
   "datePublished": "Aug 28, 2026, 6:49:01 AM",
-  "dateUpdated": "Aug 28, 2026, 6:49:01 AM",
+  "dateUpdated": "Oct 21, 2026, 12:46:47 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b0f748c563921a7918c78e6a599cefd54de7d688\nhttps://git.kernel.org/stable/c/a83e77d1e52c01c50096e6e97c57d34e0590d628\nhttps://git.kernel.org/stable/c/b5d2240c2c7bc8370e7ba54a2e1fe3919f55aee5\nhttps://git.kernel.org/stable/c/fdee7c66c0d7b6869c36b9f9a915abf29ab5b550\n",
+  "references": "https://git.kernel.org/stable/c/75ed49f973d790ca3111fcabd516c0b5fd0170b4\nhttps://git.kernel.org/stable/c/b0f748c563921a7918c78e6a599cefd54de7d688\nhttps://git.kernel.org/stable/c/a83e77d1e52c01c50096e6e97c57d34e0590d628\nhttps://git.kernel.org/stable/c/b5d2240c2c7bc8370e7ba54a2e1fe3919f55aee5\nhttps://git.kernel.org/stable/c/fdee7c66c0d7b6869c36b9f9a915abf29ab5b550\n",
   "aliases": "CVE-2026-80654\nGHSA-79cq-96j4-g3x2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "05c49cd3-b323-39e2-b964-f00e3e4283d5",
@@ -51,6 +51,16 @@
       "product_version": "patch: 7.2"
     },
     {
+      "id": "4a6e359a-2f5b-3899-bd46-4ccbc93a24d7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ffdbae28d9d1af70b7d63ffd7827e9795cd8d0df <75ed49f973d790ca3111fcabd516c0b5fd0170b4"
+    },
+    {
       "id": "4ef8fc6f-83cc-3917-8a6f-b2a5d1a6a046",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "ffdbae28d9d1af70b7d63ffd7827e9795cd8d0df <b0f748c563921a7918c78e6a599cefd54de7d688"
+    },
+    {
+      "id": "8d33a52b-3b28-3d83-9552-d3b57a95bab5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "99908e26-29ec-35d7-841f-465516f0fd05",

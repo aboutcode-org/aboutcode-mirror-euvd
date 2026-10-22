@@ -3,12 +3,12 @@
   "enisaUuid": "339638d3-3e9d-3563-b9c3-86d3de9da882",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: midi2: Fix the jack descriptor array sizes\n\nThe jack in/out descriptor arrays in struct f_midi2_usb_config have\nthe size of MAX_CABLES, which look reasonable -- but it turned out to\nbe incorrect.  Namely, the entries for those arrays are added from\nboth inputs and outputs, hence for each loop cycle, it adds two, ended\nup with as twice as the expected size.  This inconsistency may result\nin potential OOB when a large number of jacks are set up via configfs,\nalthough the max number of cables (the loop count) is limited to\nMAX_CABLES.\n\nFor addressing it, correct the jack_ins & jack_outs array sizes to\ntwice, MAX_CABLES * 2.",
   "datePublished": "Oct 18, 2026, 3:48:06 PM",
-  "dateUpdated": "Oct 19, 2026, 9:25:23 AM",
+  "dateUpdated": "Oct 21, 2026, 12:56:45 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8294ff75a9de23f7cc641e5e5ca31fa6ea72a574\nhttps://git.kernel.org/stable/c/87f2185423e01f113811301878f2f67eccec960d\nhttps://git.kernel.org/stable/c/223c3bd02a582776d8ee47dae7b69d3258420694\nhttps://git.kernel.org/stable/c/310c2d4608d8c1a2baa57db1dfd319c5c40cf4a1\n",
+  "references": "https://git.kernel.org/stable/c/18138d9f19cf6944ff09f5c8c0930545036fe3d0\nhttps://git.kernel.org/stable/c/8294ff75a9de23f7cc641e5e5ca31fa6ea72a574\nhttps://git.kernel.org/stable/c/87f2185423e01f113811301878f2f67eccec960d\nhttps://git.kernel.org/stable/c/223c3bd02a582776d8ee47dae7b69d3258420694\nhttps://git.kernel.org/stable/c/310c2d4608d8c1a2baa57db1dfd319c5c40cf4a1\n",
   "aliases": "CVE-2026-98770\nGHSA-2cr9-h7x6-p393\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "18c00ed8-acbe-3e19-8400-789dedce9b7d",
@@ -41,6 +41,16 @@
       "product_version": "patch: 6.18.56"
     },
     {
+      "id": "576e2f8a-2003-3310-90b3-12b4c5fc7b54",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "59cb3a32-c6d7-32a4-90e4-4a48e243eedf",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "6.6"
+    },
+    {
+      "id": "81fee5a1-214a-3eae-ac4b-01312cd99b5e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "856fa444b0982746f95e801bab0e586533eb29a3 <18138d9f19cf6944ff09f5c8c0930545036fe3d0"
     },
     {
       "id": "a081c9b0-0640-3b52-b6d5-94f40b6e5e86",

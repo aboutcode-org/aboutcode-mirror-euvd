@@ -3,11 +3,11 @@
   "enisaUuid": "32fc0cfc-5eda-3961-b481-605ab618c020",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Fix out-of-bound writes in ffa_setup_and_transmit()\n\nSashiko (locally) reports multiple out-of-bound issues in\nffa_setup_and_transmit:\n1) Writing ep_mem_access->reserved can write out of bounds for FFA\n   versions < 1.2 as ffa_emad_size_get() returns 16 bytes in that case\n   while reserved has an offset of 24.\n   Instead of zeroing fields, memset the struct to zero first based on\n   the FFA version.\n\n2) Make sure there is enough size to write constituents.\n\nWhile at it, convert the only sizeof() in the driver that uses a\ntype instead of variable.",
   "datePublished": "Aug 10, 2026, 12:04:21 PM",
-  "dateUpdated": "Aug 17, 2026, 5:04:50 AM",
+  "dateUpdated": "Oct 21, 2026, 12:43:59 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/cf5708c9d78c98214c62b1e5d049cd527a543b8e\nhttps://git.kernel.org/stable/c/27abdaf0c5c89b06694e4c3d8318e8d6a60c1d1b\nhttps://git.kernel.org/stable/c/3383ffb7ef937317361713ffcc21921a7848511a\n",
+  "references": "https://git.kernel.org/stable/c/d312a71b19bb83803c8d1372bc042bd36db657f7\nhttps://git.kernel.org/stable/c/00bef9d0f9e787f56ff4699d3b577983ff8b7f24\nhttps://git.kernel.org/stable/c/cf5708c9d78c98214c62b1e5d049cd527a543b8e\nhttps://git.kernel.org/stable/c/27abdaf0c5c89b06694e4c3d8318e8d6a60c1d1b\nhttps://git.kernel.org/stable/c/3383ffb7ef937317361713ffcc21921a7848511a\n",
   "aliases": "GHSA-hvgp-9g43-gqqw\nCVE-2026-68401\n",
   "assigner": "Linux",
   "epss": 0.14,
@@ -43,6 +43,26 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "36774b21-8574-34f2-a3a0-39188dd83c62",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "3a778976-c42f-366f-8a1b-431428273b78",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "111a833dc5cbef3d05b2a796a7e23cb7f6ff2192 <00bef9d0f9e787f56ff4699d3b577983ff8b7f24"
+    },
+    {
       "id": "4093cdc7-c822-32df-b574-c1e254b836cb",
       "product": {
         "name": "Linux",
@@ -71,6 +91,16 @@
         }
       },
       "product_version": "111a833dc5cbef3d05b2a796a7e23cb7f6ff2192 <cf5708c9d78c98214c62b1e5d049cd527a543b8e"
+    },
+    {
+      "id": "7c0e228c-db6a-333a-b352-f2ea3a1191b5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "8bce60b8-6648-3d72-a9c5-ba602a89cd48",
@@ -131,6 +161,16 @@
         }
       },
       "product_version": "6.3.5 <6.4"
+    },
+    {
+      "id": "e64a6756-ce96-35d7-9f31-dfa689d78984",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "111a833dc5cbef3d05b2a796a7e23cb7f6ff2192 <d312a71b19bb83803c8d1372bc042bd36db657f7"
     },
     {
       "id": "f11f545a-24ec-3937-a153-de1c1b32dd1b",

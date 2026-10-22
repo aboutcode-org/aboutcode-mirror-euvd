@@ -3,12 +3,12 @@
   "enisaUuid": "516432ec-6f50-34eb-a3ec-031bb7d8a2c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof/overlay: don't leak fragment references when changeset init fails\n\ninit_overlay_changeset() stores the number of initialized fragments\nin ovcs->count only on full success. When find_target() or the\n__symbols__ lookup fails partway through, the target and overlay\nreferences taken for the fragments initialized so far are never\ndropped: free_overlay_changeset() bounds its cleanup loop by\novcs->count, which is still 0.\n\nStore the running count on the error path so free_overlay_changeset()\nputs whatever was set up. The store is guarded by ovcs->fragments\nbecause on the allocation-failure path cnt still holds the counting\npass total while there is no fragments array; everywhere else cnt\nonly counts fully-initialized fragments.",
   "datePublished": "Oct 18, 2026, 3:49:32 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:23 AM",
+  "dateUpdated": "Oct 21, 2026, 12:57:18 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/894573e2fdaeb1b15030b7eebc22615edf28a6cd\nhttps://git.kernel.org/stable/c/7a46f1917b320cc8762183b802301da02a191b6a\nhttps://git.kernel.org/stable/c/3a23fb158ba517b77a2e5258263bdfdaa480f758\nhttps://git.kernel.org/stable/c/1d62f0f2bc7edb12ed09f71203df0e47fa4efca4\n",
+  "references": "https://git.kernel.org/stable/c/702b5db6e7b3865be70675d57d6fd7dde80d02b6\nhttps://git.kernel.org/stable/c/894573e2fdaeb1b15030b7eebc22615edf28a6cd\nhttps://git.kernel.org/stable/c/7a46f1917b320cc8762183b802301da02a191b6a\nhttps://git.kernel.org/stable/c/3a23fb158ba517b77a2e5258263bdfdaa480f758\nhttps://git.kernel.org/stable/c/1d62f0f2bc7edb12ed09f71203df0e47fa4efca4\n",
   "aliases": "CVE-2026-98831\nGHSA-vvrp-cfq6-9c5c\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "50e82bd4-2ad2-3118-8029-2ed8d24876e0",
@@ -81,6 +81,16 @@
       "product_version": "61b4de4e0b384f4a22c55c3bada604da49cec4e1 <1d62f0f2bc7edb12ed09f71203df0e47fa4efca4"
     },
     {
+      "id": "bb785855-dfba-325b-9ae1-d92dc629071b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "61b4de4e0b384f4a22c55c3bada604da49cec4e1 <702b5db6e7b3865be70675d57d6fd7dde80d02b6"
+    },
+    {
       "id": "cd89ce38-2111-3819-86ad-8ca9b9e481bb",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "61b4de4e0b384f4a22c55c3bada604da49cec4e1 <894573e2fdaeb1b15030b7eebc22615edf28a6cd"
+    },
+    {
+      "id": "fa0a0ff0-b92d-3cd4-903b-5be1e18aefd3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

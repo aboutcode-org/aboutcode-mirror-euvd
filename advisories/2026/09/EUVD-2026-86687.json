@@ -3,13 +3,23 @@
   "enisaUuid": "472e1a99-807c-310a-b913-cc50205d7587",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark NULL kptr stores precise\n\ncheck_map_kptr_access() permits a scalar store into an untrusted kptr\nfield only when the register is known to contain zero. Unlike other\nverifier checks whose outcome depends on a scalar value, it does not mark\nthat register precise.\n\nA state checkpoint reached with an imprecise zero can therefore prune a\nsecond path that reaches the store with an arbitrary nonzero scalar. The\nprogram can write attacker-controlled bits into the kptr field and load\nthem back as a PTR_TO_BTF_ID.\n\nCall mark_chain_precision() before accepting a known-zero register. This\nforces state equivalence to compare its scalar range and makes the verifier\nvisit and reject a path carrying a nonzero value.",
   "datePublished": "Sep 25, 2026, 10:23:49 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:39 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:08 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bb667eb575c906f24c707986541a99424c5b07ea\nhttps://git.kernel.org/stable/c/86168208737bdd267d92d855d453d1d2f840df19\nhttps://git.kernel.org/stable/c/ecdc5043794c9184aa8e6c814603899479c46b35\n",
+  "references": "https://git.kernel.org/stable/c/86a3171c90bfc35a54e9d83cd197ca0d72d2f4e4\nhttps://git.kernel.org/stable/c/b8b98d3d37908402ff63515fa4d7574235436ea8\nhttps://git.kernel.org/stable/c/bb667eb575c906f24c707986541a99424c5b07ea\nhttps://git.kernel.org/stable/c/86168208737bdd267d92d855d453d1d2f840df19\nhttps://git.kernel.org/stable/c/ecdc5043794c9184aa8e6c814603899479c46b35\n",
   "aliases": "GHSA-r89f-4x69-4v8p\nCVE-2026-98034\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "06d4e1be-a659-30b6-9366-71394bdd054b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "61df10c7799e27807ad5e459eec9d77cddf8bf45 <86a3171c90bfc35a54e9d83cd197ca0d72d2f4e4"
+    },
     {
       "id": "2992cf3d-94ec-3eb0-8d8e-c031bc75d142",
       "product": {
@@ -51,6 +61,16 @@
       "product_version": "b5a8069835e5236824a84281592d29f859b33153"
     },
     {
+      "id": "9562ade9-d779-3ffe-843b-9cc34725fb5f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "61df10c7799e27807ad5e459eec9d77cddf8bf45 <b8b98d3d37908402ff63515fa4d7574235436ea8"
+    },
+    {
       "id": "affeeb46-49ac-375e-b5a4-8e544045270f",
       "product": {
         "name": "Linux",
@@ -81,6 +101,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "dd628680-803f-3480-8036-6a9fb9f63ee2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
       "id": "e2ef0c1c-5408-317d-b8dc-0d8bc5d6b4fb",
       "product": {
         "name": "Linux",
@@ -109,6 +139,16 @@
         }
       },
       "product_version": "5.19"
+    },
+    {
+      "id": "fc0c934c-d90d-3a28-b8c0-de8fd4d48969",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

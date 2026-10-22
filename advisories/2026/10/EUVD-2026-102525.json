@@ -3,14 +3,14 @@
   "enisaUuid": "d1a679d3-38f6-324e-807b-acb818c0955a",
   "description": "libmodplug through 0.8.9.1 contains a heap-based out-of-bounds write in CSoundFile::ReadDSM() in src/load_dsm.cpp because nPat is never checked against MAX_PATTERNS. Attackers can supply a crafted DSM file with over 240 PATT chunks or a wrapping patt_len value to corrupt heap memory and crash the consuming process.",
   "datePublished": "Oct 15, 2026, 9:43:17 PM",
-  "dateUpdated": "Oct 15, 2026, 9:43:17 PM",
+  "dateUpdated": "Oct 21, 2026, 1:33:42 AM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://hackmd.io/@haind-pwn/libmodplug-dsm-pattern-oob-write\nhttps://github.com/Konstanty/libmodplug/blob/d1b97ed0020bc620a059d3675d1854b40bd2608d/src/load_dsm.cpp#L130-L139\nhttps://github.com/Konstanty/libmodplug\nhttps://www.vulncheck.com/advisories/libmodplug-through-0.8.9.1-heap-out-of-bounds-write-via-csoundfile-readdsm\n",
-  "aliases": "CVE-2026-111270\n",
+  "aliases": "GHSA-rxvf-jg5h-5fv5\nCVE-2026-111270\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "04ebe460-060c-3791-b160-5b614e63bac4",

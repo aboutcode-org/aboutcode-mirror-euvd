@@ -3,9 +3,9 @@
   "enisaUuid": "6af5e3a7-31f2-329d-a3f1-372a0bc3b267",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-vf: fix workqueue and netdev race in probe/remove\n\nInitialize the VF workqueue before register_netdev() so ndo_set_rx_mode\ndoes not queue work on a NULL workqueue. Unregister the netdev before\ndestroying the workqueue, and add proper probe error cleanup.",
   "datePublished": "Sep 17, 2026, 4:06:00 PM",
-  "dateUpdated": "Oct 19, 2026, 8:57:40 AM",
+  "dateUpdated": "Oct 21, 2026, 12:49:43 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/42a139332ce81a907dac987f1494d30e0a8ab149\nhttps://git.kernel.org/stable/c/ef42c9e922dfa806576d9d82867da2f3cd76b3ca\nhttps://git.kernel.org/stable/c/3ba97ff4f873481d370bee7f7dfb87f8296af9be\n",
+  "references": "https://git.kernel.org/stable/c/bdc530baf079eee104f9ea5d83815e798ea155df\nhttps://git.kernel.org/stable/c/00dda563f4963f28fab46d09b912d68268b8e7a5\nhttps://git.kernel.org/stable/c/42a139332ce81a907dac987f1494d30e0a8ab149\nhttps://git.kernel.org/stable/c/ef42c9e922dfa806576d9d82867da2f3cd76b3ca\nhttps://git.kernel.org/stable/c/3ba97ff4f873481d370bee7f7dfb87f8296af9be\n",
   "aliases": "GHSA-8f7f-fc8g-59c2\nCVE-2026-90084\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -51,6 +51,26 @@
       "product_version": "patch: 7.2.6"
     },
     {
+      "id": "468df0cc-ff6a-3e99-80f9-6949ccc15fc6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cbc100aa220556d056272f07dc735c9758089da9 <00dda563f4963f28fab46d09b912d68268b8e7a5"
+    },
+    {
+      "id": "4e9f5db1-4421-301e-8041-6e2a03aabbf9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cbc100aa220556d056272f07dc735c9758089da9 <bdc530baf079eee104f9ea5d83815e798ea155df"
+    },
+    {
       "id": "5162f7b4-e9af-3f7d-b174-725e6c4937f4",
       "product": {
         "name": "Linux",
@@ -69,6 +89,26 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "acd47b90-dcbf-3148-86b6-af318c727a27",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "ba1e7f4e-0749-3977-a311-c737c9d1b949",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "d693c0dd-8ae2-3a00-be42-a13182c319f0",

@@ -3,9 +3,9 @@
   "enisaUuid": "0615a7f3-25d0-3474-b5ab-3599f9f8035f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: validate and share PSP fw_pri_buf copies via psp_copy_fw\n\nChange psp_copy_fw from void to int: return -ENODEV when drm_dev_enter\nfails, and -EINVAL when the image size is zero or larger than the\n1 MiB PSP private buffer.\n\nReplace open-coded memset/memcpy into fw_pri_buf with psp_copy_fw.",
   "datePublished": "Sep 24, 2026, 4:04:41 PM",
-  "dateUpdated": "Sep 28, 2026, 5:30:26 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:55 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/25bec2425c3d50ba9a92ad87bbf8628be29e5c32\nhttps://git.kernel.org/stable/c/1aa55af304a2decaacca1d1fabe4257c277ca54a\nhttps://git.kernel.org/stable/c/d1f9f5839bd785a3a06335a01d53282e80f8e5fa\n",
+  "references": "https://git.kernel.org/stable/c/8ddda06ae356fda0418b7017e658d976dad6214e\nhttps://git.kernel.org/stable/c/25bec2425c3d50ba9a92ad87bbf8628be29e5c32\nhttps://git.kernel.org/stable/c/1aa55af304a2decaacca1d1fabe4257c277ca54a\nhttps://git.kernel.org/stable/c/d1f9f5839bd785a3a06335a01d53282e80f8e5fa\n",
   "aliases": "CVE-2026-97494\nGHSA-gjv4-hxx3-7w8g\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "2b0c3aee2172451e9f982b25f3fdf59a1b687dc3 <1aa55af304a2decaacca1d1fabe4257c277ca54a"
+    },
+    {
+      "id": "62f6adee-0933-3b38-a023-394d9d02b1e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "69dd78b3-295e-3673-a204-31d884df635c",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.12.111"
+    },
+    {
+      "id": "ce919206-1dc2-3242-903a-0d021c28041d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2b0c3aee2172451e9f982b25f3fdf59a1b687dc3 <8ddda06ae356fda0418b7017e658d976dad6214e"
     },
     {
       "id": "fe610599-bc65-3a8e-9d14-4436e5e75d6b",

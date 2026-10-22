@@ -3,15 +3,25 @@
   "enisaUuid": "88e1826b-e6b7-3185-8670-76223df440ae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndlm: validate length in dlm_search_rsb_tree\n\nThe len parameter in dlm_dump_rsb_name() is not validated and comes\nfrom network messages. When it exceeds DLM_RESNAME_MAXLEN, it can\ncause out-of-bounds write in dlm_search_rsb_tree().\n\nAdd length validation to prevent potential buffer overflow.",
   "datePublished": "May 6, 2026, 11:27:10 AM",
-  "dateUpdated": "Oct 19, 2026, 7:06:14 PM",
+  "dateUpdated": "Oct 21, 2026, 12:40:07 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/67288113c5e6cf9e659b4065c0ed6f16100e0c71\nhttps://git.kernel.org/stable/c/082083c9fbd99422a0370fe2102144a231c9f5d6\nhttps://git.kernel.org/stable/c/5f053a2e7209d326cbbc07738fa6d6893d307438\nhttps://git.kernel.org/stable/c/080e5563f878c64e697b89e7439d730d0daad882\n",
+  "references": "https://git.kernel.org/stable/c/2deafd015ea9a0e75ee5764e20eb1e16bd73efd8\nhttps://git.kernel.org/stable/c/67288113c5e6cf9e659b4065c0ed6f16100e0c71\nhttps://git.kernel.org/stable/c/082083c9fbd99422a0370fe2102144a231c9f5d6\nhttps://git.kernel.org/stable/c/5f053a2e7209d326cbbc07738fa6d6893d307438\nhttps://git.kernel.org/stable/c/080e5563f878c64e697b89e7439d730d0daad882\n",
   "aliases": "GHSA-fr2c-799q-pg3x\nCVE-2026-43125\n",
   "assigner": "Linux",
   "epss": 0.43,
   "enisaIdProduct": [
+    {
+      "id": "02134734-5b05-3645-919b-a8cf5fe2ef48",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7210cb7a72a22303cdb225bd1aea28697a17bbae <2deafd015ea9a0e75ee5764e20eb1e16bd73efd8"
+    },
     {
       "id": "13dbc33d-3c4f-3df1-b95d-a069ad4c0dc1",
       "product": {
@@ -71,6 +81,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "81647360-2811-36ad-bcd6-24cff99be6f1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "8fec21c3-5980-3e8a-844c-03c652adc7a2",

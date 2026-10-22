@@ -3,9 +3,9 @@
   "enisaUuid": "32436288-fb71-3f9f-8d57-9f0bada1c3cd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: propagate DACL parsing errors\n\nparse_dacl() silently accepts truncated ACEs and allocation failures,\nallowing set_info_sec() to continue with an incomplete ACL conversion.\n\nReturn parsing and allocation errors to parse_sec_desc() so malformed\nsecurity descriptors are rejected before inode attributes or ACL xattrs\nare updated.",
   "datePublished": "Sep 25, 2026, 10:36:00 AM",
-  "dateUpdated": "Oct 19, 2026, 9:14:06 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:34 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/461f10a5297e85b7c1cd21838922f2e57b934d2d\nhttps://git.kernel.org/stable/c/37952f03d5171eb3a33b2abc2cf6e456d69ff4a1\nhttps://git.kernel.org/stable/c/a04dac1f2cffe9533f4260f0659297d805e69194\nhttps://git.kernel.org/stable/c/c61dc7b1b4a3234b4aa3965502908a292238805c\n",
+  "references": "https://git.kernel.org/stable/c/99ae165acf633b13df34105815110fec332a2cdc\nhttps://git.kernel.org/stable/c/461f10a5297e85b7c1cd21838922f2e57b934d2d\nhttps://git.kernel.org/stable/c/37952f03d5171eb3a33b2abc2cf6e456d69ff4a1\nhttps://git.kernel.org/stable/c/a04dac1f2cffe9533f4260f0659297d805e69194\nhttps://git.kernel.org/stable/c/c61dc7b1b4a3234b4aa3965502908a292238805c\n",
   "aliases": "CVE-2026-98114\nGHSA-fpg3-37rc-jhfw\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -101,6 +101,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "c81aa027-1c08-3d47-bd65-911b95766f62",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <99ae165acf633b13df34105815110fec332a2cdc"
+    },
+    {
       "id": "db7dada3-b4e9-3185-839f-47731e8b9c95",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "5.15"
+    },
+    {
+      "id": "f41f9d59-05e8-36e9-952b-4fa29aeab965",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

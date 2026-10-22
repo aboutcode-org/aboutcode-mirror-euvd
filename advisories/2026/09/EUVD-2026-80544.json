@@ -3,9 +3,9 @@
   "enisaUuid": "8137f9c0-8778-35c8-bee3-a5cae227fde0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: hdac_hda: Fix hlink refcount leak on component registration failure\n\nhdac_hda_dev_probe() gets the HDA link with snd_hdac_ext_bus_link_get()\nbefore registering the ASoC component. If component registration fails,\nthe function returns without dropping the link reference.\n\nAlways call snd_hdac_ext_bus_link_put() after the registration attempt so\nthe reference taken during probe is balanced on both success and failure.",
   "datePublished": "Sep 16, 2026, 10:32:31 AM",
-  "dateUpdated": "Oct 19, 2026, 8:55:18 AM",
+  "dateUpdated": "Oct 21, 2026, 12:49:13 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7eef9ae3b4ef782557526dd8ba0c206f028d8c2f\nhttps://git.kernel.org/stable/c/e8ea01a0457080b0cc7c69c430c0ab65d84dc377\nhttps://git.kernel.org/stable/c/cb6b0b1a9d5a61ef841739d42c6211094e9c8e2c\nhttps://git.kernel.org/stable/c/6ad4892c4f5cb437a928a02f5b7d37d496aa9268\n",
+  "references": "https://git.kernel.org/stable/c/60b5824ae259ad15f7878e4e763ec31ba4db55f2\nhttps://git.kernel.org/stable/c/7eef9ae3b4ef782557526dd8ba0c206f028d8c2f\nhttps://git.kernel.org/stable/c/e8ea01a0457080b0cc7c69c430c0ab65d84dc377\nhttps://git.kernel.org/stable/c/cb6b0b1a9d5a61ef841739d42c6211094e9c8e2c\nhttps://git.kernel.org/stable/c/6ad4892c4f5cb437a928a02f5b7d37d496aa9268\n",
   "aliases": "CVE-2026-89944\nGHSA-4wgj-g6wx-2p76\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -101,6 +101,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "9f2eac71-627e-301e-aa8b-2e71f858f6f1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "c3c5cf10-ca33-3531-b255-d9e436f2f9e0",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "6bae5ea9498926440ffc883f3dbceb0adc65e492 <e8ea01a0457080b0cc7c69c430c0ab65d84dc377"
+    },
+    {
+      "id": "c8de5941-0d5e-32dc-9782-fce692efc43c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6bae5ea9498926440ffc883f3dbceb0adc65e492 <60b5824ae259ad15f7878e4e763ec31ba4db55f2"
     }
   ],
   "enisaIdVendor": [

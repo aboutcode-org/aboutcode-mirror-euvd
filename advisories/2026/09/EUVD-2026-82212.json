@@ -3,9 +3,9 @@
   "enisaUuid": "2e38dca1-6455-3e96-a57f-7cf026c10752",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rvt: Return NULL after port allocation failure\n\nrvt_alloc_device() deallocates the IB device when its port array cannot\nbe allocated but then returns the pointer to the released allocation.\nCallers treat any non-NULL value as valid and dereference it, resulting\nin a use-after-free.\n\nReturn NULL immediately after deallocation so callers can propagate the\nallocation failure.",
   "datePublished": "Sep 17, 2026, 4:11:15 PM",
-  "dateUpdated": "Oct 19, 2026, 9:05:37 AM",
+  "dateUpdated": "Oct 21, 2026, 12:51:54 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/80968b42d13080bf7bc1f3ee17fef126ce2ad98f\nhttps://git.kernel.org/stable/c/b1e1b25723af44328524c7b54433e4bf0ab9930c\nhttps://git.kernel.org/stable/c/2982eaf3b9d2d953318c74cd6f1b7576ea6d7b1f\n",
+  "references": "https://git.kernel.org/stable/c/b7129930d1ec46c03a0de07fdce6c29f75795006\nhttps://git.kernel.org/stable/c/5a1a7a5e2fe1a15824fa9ae5edd8f008259471d1\nhttps://git.kernel.org/stable/c/80968b42d13080bf7bc1f3ee17fef126ce2ad98f\nhttps://git.kernel.org/stable/c/b1e1b25723af44328524c7b54433e4bf0ab9930c\nhttps://git.kernel.org/stable/c/2982eaf3b9d2d953318c74cd6f1b7576ea6d7b1f\n",
   "aliases": "GHSA-wqhx-qpfw-hj6x\nCVE-2026-93104\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "446d58db-0736-39f4-aefe-698679f4992b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ff6acd69518e0a84bd9c9b7f1bd4313f7076db97 <b7129930d1ec46c03a0de07fdce6c29f75795006"
     },
     {
       "id": "4a8041ff-7edd-32d2-9ae1-cd51376a9bb0",
@@ -89,6 +99,36 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "bedbf4e6-4049-3002-a497-9bed9cb6ece5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ff6acd69518e0a84bd9c9b7f1bd4313f7076db97 <5a1a7a5e2fe1a15824fa9ae5edd8f008259471d1"
+    },
+    {
+      "id": "d370c520-5266-3dd2-9c3c-274a5f37b38b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "fcb4edab-9943-38ff-8a81-21bdf9f3ffd3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     }
   ],
   "enisaIdVendor": [

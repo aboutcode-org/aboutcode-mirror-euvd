@@ -3,11 +3,11 @@
   "enisaUuid": "ced9df80-6af2-32ae-8829-777b0088d13e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix dangling pointer in plane reset function\n\namdgpu_dm_plane_drm_plane_reset() frees the old state before allocating\na new one. If kzalloc() fails, the function returns without updating\nthe state pointer, leaving a dangling pointer to already freed memory.\n\nFix this by allocating the new state first. On allocation failure, the\nold state remains untouched and the function safely returns.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.\n\n[adjust for movement around current amd-staging-drm-next]",
   "datePublished": "Sep 17, 2026, 4:12:05 PM",
-  "dateUpdated": "Oct 19, 2026, 9:06:48 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:10 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/3d8391d3149a1aeb93505a4f9fb9ed8364882c42\nhttps://git.kernel.org/stable/c/80c0f51aced43d6eaf72f95a2833b0a77cf7880d\nhttps://git.kernel.org/stable/c/98cad4bd1443975d972f4c7f705980da03722a22\n",
+  "references": "https://git.kernel.org/stable/c/cda8af27b787d79eadc4eb8109d9f2e856dadac2\nhttps://git.kernel.org/stable/c/0999a267bdc13648b6b0db893e7eabe30bc13e7c\nhttps://git.kernel.org/stable/c/3d8391d3149a1aeb93505a4f9fb9ed8364882c42\nhttps://git.kernel.org/stable/c/80c0f51aced43d6eaf72f95a2833b0a77cf7880d\nhttps://git.kernel.org/stable/c/98cad4bd1443975d972f4c7f705980da03722a22\n",
   "aliases": "GHSA-9vc7-6mj4-86xj\nCVE-2026-93176\n",
   "assigner": "Linux",
   "epss": 0.15,
@@ -23,6 +23,16 @@
       "product_version": "5d945cbcd4b16a29d6470a80dfb19738f9a4319f <80c0f51aced43d6eaf72f95a2833b0a77cf7880d"
     },
     {
+      "id": "365e3fd4-107b-31cc-a6a7-307b73db080e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5d945cbcd4b16a29d6470a80dfb19738f9a4319f <0999a267bdc13648b6b0db893e7eabe30bc13e7c"
+    },
+    {
       "id": "36fe0f26-588e-38d8-a4ad-d9e531e5d565",
       "product": {
         "name": "Linux",
@@ -31,6 +41,26 @@
         }
       },
       "product_version": "5d945cbcd4b16a29d6470a80dfb19738f9a4319f <98cad4bd1443975d972f4c7f705980da03722a22"
+    },
+    {
+      "id": "47e819ff-c637-3bef-9fc0-fd2fe4e3f3eb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "52253d70-9229-39da-b986-d0274fa5d944",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "556e8903-327c-3b32-906f-a680265aefcb",
@@ -71,6 +101,16 @@
         }
       },
       "product_version": "5d945cbcd4b16a29d6470a80dfb19738f9a4319f <3d8391d3149a1aeb93505a4f9fb9ed8364882c42"
+    },
+    {
+      "id": "c057d5c2-009c-38c9-9f9b-356d09c91a90",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5d945cbcd4b16a29d6470a80dfb19738f9a4319f <cda8af27b787d79eadc4eb8109d9f2e856dadac2"
     },
     {
       "id": "eeb93609-2562-38a6-9ce4-440a4a76d5ee",

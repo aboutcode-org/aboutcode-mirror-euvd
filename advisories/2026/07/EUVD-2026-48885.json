@@ -3,12 +3,12 @@
   "enisaUuid": "b61d9903-7e39-3883-964e-ca7b0e910c9f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: iowarrior: fix use-after-free on disconnect race\n\nmutex_unlock() may access the mutex structure after releasing the lock\nand therefore cannot be used to manage lifetime of objects directly\n(unlike spinlocks and refcounts). [1][2]\n\nUse a kref to release the driver data to avoid use-after-free in\nmutex_unlock() when release() races with disconnect().\n\n[1] a51749ab34d9 (\"locking/mutex: Document that mutex_unlock() is non-atomic\")\n[2] 2b9d9e0a9ba0 (\"locking/mutex: Clarify that mutex_unlock(), and most\n                   other sleeping locks, can still use the lock object\n                   after it's unlocked\")",
   "datePublished": "Jul 25, 2026, 8:50:04 AM",
-  "dateUpdated": "Aug 17, 2026, 4:53:44 AM",
+  "dateUpdated": "Oct 21, 2026, 12:43:16 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/3c0a7b29ebb391d5f50b115e86f842b709195b08\nhttps://git.kernel.org/stable/c/71590982700fdeb39a37a500c877228b0140978e\nhttps://git.kernel.org/stable/c/c602254ba4c10f60a73cd99d147874f86a3f485c\n",
+  "references": "https://git.kernel.org/stable/c/4e7d3c98fed73d3be84d3e146d8d9be0309e725b\nhttps://git.kernel.org/stable/c/3c0a7b29ebb391d5f50b115e86f842b709195b08\nhttps://git.kernel.org/stable/c/30ec3025b771511625375fb3fb959aea3b45fb0d\nhttps://git.kernel.org/stable/c/71590982700fdeb39a37a500c877228b0140978e\nhttps://git.kernel.org/stable/c/c602254ba4c10f60a73cd99d147874f86a3f485c\n",
   "aliases": "GHSA-jfg4-c35c-vjq6\nCVE-2026-64341\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0fa023b1-4a8e-31b3-a2cb-05232ad69f7c",
@@ -21,6 +21,26 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "1deea153-0a9b-3f4b-ba3a-3b1ba5252125",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "946b960d13c15f050a3b848987aaca79f6a459b7 <30ec3025b771511625375fb3fb959aea3b45fb0d"
+    },
+    {
+      "id": "5993b211-8538-3c8e-a451-7ac7b11486aa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.58"
+    },
+    {
       "id": "71a98294-4119-343e-89ca-e06653fd7501",
       "product": {
         "name": "Linux",
@@ -29,6 +49,16 @@
         }
       },
       "product_version": "946b960d13c15f050a3b848987aaca79f6a459b7 <c602254ba4c10f60a73cd99d147874f86a3f485c"
+    },
+    {
+      "id": "83c01018-50cc-348b-a0ac-8379653d8685",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "946b960d13c15f050a3b848987aaca79f6a459b7 <4e7d3c98fed73d3be84d3e146d8d9be0309e725b"
     },
     {
       "id": "942c04d3-3529-3007-91b8-9c6f67c37c1b",
@@ -49,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.1.4"
+    },
+    {
+      "id": "b25ccf41-81d5-350b-b871-5f8548189fc9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "bcf937f7-6e41-34d1-a583-c1d4ee23b3ef",

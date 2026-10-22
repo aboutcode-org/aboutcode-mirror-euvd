@@ -3,12 +3,12 @@
   "enisaUuid": "702f03f4-354d-3882-a90b-67a2eba05358",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Resolve region deletion races\n\nSungwoo noticed that the sysfs trigger to delete a region may try to delete\na region multiple times. It also has no exclusion relative to the kernel\nreleasing the region via CXL root device teardown.\n\nInstead of installing new cxl root devres actions per region, use the\nexisting root decoder unregistration event to remove all remaining regions.\nAn xarray of regions replaces a devres list of regions.\n\nThis handles 3 separate issues with the old approach:\n\n1/ sysfs users racing to delete the same region: no longer possible now\n   that the regions_lock is held over the lookup and deletion.\n\n2/ multiple actions triggering deletion of the same region: solved by\n   erasing regions while holding @regions_lock, and only proceeding on\n   successful erasure.\n\n3/ userspace racing devres_release_all() to trigger the devres not found\n   warning: solved by sysfs unregistration not requiring a release action",
   "datePublished": "Aug 15, 2026, 5:57:45 AM",
-  "dateUpdated": "Aug 17, 2026, 5:16:16 AM",
+  "dateUpdated": "Oct 21, 2026, 12:45:14 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/be44c1c04f85d7b7ac1c597a30b443bbd346acbd\nhttps://git.kernel.org/stable/c/4dd86ca99ffcc413cbf79063fd9956ef54e0ca91\n",
+  "references": "https://git.kernel.org/stable/c/441250eea84608c6c2dbd7f00c61df32836ac97d\nhttps://git.kernel.org/stable/c/c478810c4ce7216261fc1b6ca5180adcda26b1a1\nhttps://git.kernel.org/stable/c/be44c1c04f85d7b7ac1c597a30b443bbd346acbd\nhttps://git.kernel.org/stable/c/4dd86ca99ffcc413cbf79063fd9956ef54e0ca91\n",
   "aliases": "GHSA-vpp7-5xfq-j7c3\nCVE-2026-74272\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0e389ee7-2431-3524-9d74-b846bebacfc6",
@@ -29,6 +29,36 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "43cc23c0-31e5-3d4f-8c64-ee7862ee5e9f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "779dd20cfb56c510f89877cca45529fa9f8bc450 <441250eea84608c6c2dbd7f00c61df32836ac97d"
+    },
+    {
+      "id": "6a5aba6c-3276-359d-84e6-93df3387fd59",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "ab2d2faa-769c-3080-bf4a-50febcdc0902",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "b428bd13-1ffb-3729-9e41-e76c67c8aae5",
@@ -69,6 +99,16 @@
         }
       },
       "product_version": "779dd20cfb56c510f89877cca45529fa9f8bc450 <be44c1c04f85d7b7ac1c597a30b443bbd346acbd"
+    },
+    {
+      "id": "ef416d9d-7f02-30a2-acc5-c42999985522",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "779dd20cfb56c510f89877cca45529fa9f8bc450 <c478810c4ce7216261fc1b6ca5180adcda26b1a1"
     }
   ],
   "enisaIdVendor": [

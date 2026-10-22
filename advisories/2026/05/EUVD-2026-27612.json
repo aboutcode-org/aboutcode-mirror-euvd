@@ -3,15 +3,25 @@
   "enisaUuid": "b91c5133-42a5-3a70-9481-a59ecae47a0d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: ioam: fix potential NULL dereferences in __ioam6_fill_trace_data()\n\nWe need to check __in6_dev_get() for possible NULL value, as\nsuggested by Yiming Qian.\n\nAlso add skb_dst_dev_rcu() instead of skb_dst_dev(),\nand two missing READ_ONCE().\n\nNote that @dev can't be NULL.",
   "datePublished": "May 6, 2026, 7:40:30 AM",
-  "dateUpdated": "Aug 5, 2026, 12:25:55 PM",
+  "dateUpdated": "Oct 21, 2026, 12:40:03 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/4198aab6f000b4febb18ea820fea20634dd789c7\nhttps://git.kernel.org/stable/c/3719c234fa94c37c955b1ecd3742ef280ec135e6\nhttps://git.kernel.org/stable/c/4e65a8b8daa18d63255ec58964dd192c7fdd9f8b\n",
+  "references": "https://git.kernel.org/stable/c/34b8390ac0ba57004b90ea568ac06f50bf896a80\nhttps://git.kernel.org/stable/c/f87aa5d1a7f56727a768757613a303b4245444a1\nhttps://git.kernel.org/stable/c/4198aab6f000b4febb18ea820fea20634dd789c7\nhttps://git.kernel.org/stable/c/3719c234fa94c37c955b1ecd3742ef280ec135e6\nhttps://git.kernel.org/stable/c/4e65a8b8daa18d63255ec58964dd192c7fdd9f8b\n",
   "aliases": "GHSA-r529-g827-7gf5\nCVE-2026-43101\n",
   "assigner": "Linux",
-  "epss": 0.43,
+  "epss": 0.61,
   "enisaIdProduct": [
+    {
+      "id": "237652bb-ece1-35dc-a848-ef21dee943ef",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9ee11f0fff205b4b3df9750bff5e94f97c71b6a0 <f87aa5d1a7f56727a768757613a303b4245444a1"
+    },
     {
       "id": "2419260c-27f2-36bf-9cda-250529e74eba",
       "product": {
@@ -21,6 +31,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "2f85a9a3-f28f-311b-98e8-1ee778283e9f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "424fa96f-be15-3cd4-90d2-d982d3042a36",
@@ -41,6 +61,26 @@
         }
       },
       "product_version": "9ee11f0fff205b4b3df9750bff5e94f97c71b6a0 <3719c234fa94c37c955b1ecd3742ef280ec135e6"
+    },
+    {
+      "id": "7268cdc1-c580-3d1c-a7e7-c59c180d439a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "861b70b2-2c2e-3981-80b2-e6ea03f123ac",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9ee11f0fff205b4b3df9750bff5e94f97c71b6a0 <34b8390ac0ba57004b90ea568ac06f50bf896a80"
     },
     {
       "id": "8f46b9d5-37c7-3147-936b-69c8bd154b53",

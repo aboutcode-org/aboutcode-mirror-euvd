@@ -3,9 +3,9 @@
   "enisaUuid": "0f1175c0-87fd-387b-bc3a-c5e49332c8cc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngenirq/proc: Size interrupt directory names for 10-digit interrupt numbers\n\n/proc/irq/<n>/ directory names are built in `char name[10]` buffers\nwith `sprintf(name, \"%u\", irq)`.\n\nTen-digit IRQ numbers already need 11 bytes including the trailing NUL, and\ncurrent sparse-IRQ configurations allow interrupt numbers in that range.\n\nSize the temporary name buffer for the current decimal form and switch\nto bounded formatting when creating or removing the proc entry.",
   "datePublished": "Sep 24, 2026, 4:04:50 PM",
-  "dateUpdated": "Sep 28, 2026, 5:30:37 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:57 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d4b22fbae70037299e96539c330e4a1054b28a91\nhttps://git.kernel.org/stable/c/c2c7983c93f5d86962318be7e7298f1bc3feb1a6\n",
+  "references": "https://git.kernel.org/stable/c/a8adf64fe7fd5d7c476769a043ee56eda7b775ce\nhttps://git.kernel.org/stable/c/488bcd7fd3e9a2ad647b71b505a269fdb28753c4\nhttps://git.kernel.org/stable/c/d4b22fbae70037299e96539c330e4a1054b28a91\nhttps://git.kernel.org/stable/c/c2c7983c93f5d86962318be7e7298f1bc3feb1a6\n",
   "aliases": "GHSA-7j5w-cr4g-jjc9\nCVE-2026-97503\n",
   "assigner": "Linux",
   "epss": 0.15,
@@ -31,6 +31,26 @@
       "product_version": "6.5"
     },
     {
+      "id": "4dc6f1c8-bb2d-31e0-af7b-e8fefea025b2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "7a725ac3-9e06-3a6e-ab9a-b72da2dc4317",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "721255b9826bd11c7a38b585905fc2dd0fb94e52 <a8adf64fe7fd5d7c476769a043ee56eda7b775ce"
+    },
+    {
       "id": "ac87d876-2876-36ba-bc7c-416cf1dfc4de",
       "product": {
         "name": "Linux",
@@ -39,6 +59,16 @@
         }
       },
       "product_version": "721255b9826bd11c7a38b585905fc2dd0fb94e52 <c2c7983c93f5d86962318be7e7298f1bc3feb1a6"
+    },
+    {
+      "id": "bf87e0a0-7141-397e-8452-d5719abdb6aa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "d358b0c6-b158-33ad-bebb-1a249f2d1368",
@@ -59,6 +89,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "e56cebfe-d5ba-39de-959d-900ec9482067",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "721255b9826bd11c7a38b585905fc2dd0fb94e52 <488bcd7fd3e9a2ad647b71b505a269fdb28753c4"
     },
     {
       "id": "f6167abc-2687-37f6-875f-7f5d8a2496af",

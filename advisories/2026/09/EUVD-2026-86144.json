@@ -3,13 +3,23 @@
   "enisaUuid": "12cfe48e-d951-3a46-9c43-522e3eb968a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom_wcnss: Fix handling the lack of PD regulators in v3\n\nThe changes introduced to handle single power domain platforms have\nswapped the info pointer increment from num_pd_vregs to num_pds, which\nwould shift the info pointer past the end of the array for pronto-v3,\nwhich does not list power domain regulators in vregs.\n\nThis showed up as a difference between GCC- and LLVM-compiled kernels\non SDM632 devices, where only with LLVM one would get the\n\"regulator request with no identifier\" error, because the out-of-bounds\nmemory ended up being zeroed. Fix by skipping the increment when there\nare more power domains than regulators.",
   "datePublished": "Sep 24, 2026, 3:52:14 PM",
-  "dateUpdated": "Oct 19, 2026, 9:08:26 AM",
+  "dateUpdated": "Oct 21, 2026, 12:52:33 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2e7e39bb81913feaac463b7add46bafdca06fbde\nhttps://git.kernel.org/stable/c/bce6b48af3abf7468d12ef4933f21bd8c1d822e9\nhttps://git.kernel.org/stable/c/3dbc90b9c22ea96e37bf55f6011e63b5123ec668\n",
+  "references": "https://git.kernel.org/stable/c/7abab59d6c99ba2b8101d6f44ad25159b1510724\nhttps://git.kernel.org/stable/c/e572cbb513cde53d90fb4729cad75056cd647ce3\nhttps://git.kernel.org/stable/c/2e7e39bb81913feaac463b7add46bafdca06fbde\nhttps://git.kernel.org/stable/c/bce6b48af3abf7468d12ef4933f21bd8c1d822e9\nhttps://git.kernel.org/stable/c/3dbc90b9c22ea96e37bf55f6011e63b5123ec668\n",
   "aliases": "CVE-2026-93272\nGHSA-4gpg-4875-c7gx\n",
   "assigner": "Linux",
   "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "20c0c4a2-7077-31f2-830f-14cbacd6a40c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.93 <6.6.160"
+    },
     {
       "id": "2dade28b-2efd-3252-aece-10c829db11d2",
       "product": {
@@ -41,34 +51,14 @@
       "product_version": "patch: 7.3"
     },
     {
-      "id": "35dfe30a-0d43-3faa-ad37-132420b4fc48",
+      "id": "597ef1f7-d974-372e-ab08-251b6b379c25",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.12.31 <6.13"
-    },
-    {
-      "id": "43e13d73-20b8-32f3-9fd7-0a8ac9b46ba3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "fef1e1487dea81c2b4560e393ba4b0be57e28d01"
-    },
-    {
-      "id": "56f77fd6-c65f-3d95-adca-fc2da5a96460",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "69bb5b3ae348040e385113efba5bdc76396644d0"
+      "product_version": "fef1e1487dea81c2b4560e393ba4b0be57e28d01 <7abab59d6c99ba2b8101d6f44ad25159b1510724"
     },
     {
       "id": "69df07c8-342d-3ae2-88ca-683b35f5e45f",
@@ -91,16 +81,6 @@
       "product_version": "patch: 7.2.6"
     },
     {
-      "id": "744e0525-ee3d-3312-917d-e1cc16092905",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.6.93 <6.7"
-    },
-    {
       "id": "7ac6cf81-859a-3b31-aa2c-40f3b19685d2",
       "product": {
         "name": "Linux",
@@ -109,6 +89,16 @@
         }
       },
       "product_version": "65991ea8a6d1e68effdc01d95ebe39f1653f7b71 <bce6b48af3abf7468d12ef4933f21bd8c1d822e9"
+    },
+    {
+      "id": "8827218f-a5b5-39d7-90dc-d1c8db243588",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "69bb5b3ae348040e385113efba5bdc76396644d0 <e572cbb513cde53d90fb4729cad75056cd647ce3"
     },
     {
       "id": "a854d650-a7c4-37d9-8d15-15fd08b2cbd4",
@@ -131,6 +121,16 @@
       "product_version": "04a89c98810d2dba8187120c07fdb732aa40ca14"
     },
     {
+      "id": "aa218447-dd9e-38d2-b3d9-48266a1dd401",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "abf22b74-0fcb-3e9e-9581-dc19d27f6476",
       "product": {
         "name": "Linux",
@@ -149,6 +149,26 @@
         }
       },
       "product_version": "6.14.9 <6.15"
+    },
+    {
+      "id": "c759af90-63fb-35a9-bf76-624a770f92cf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.12.31 <6.12.114"
+    },
+    {
+      "id": "c7fd87bd-6157-304e-af69-0d2b92e89b5a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "e4c6f123-af22-3efa-bc18-04075befa350",

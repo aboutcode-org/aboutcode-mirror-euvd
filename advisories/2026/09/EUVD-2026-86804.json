@@ -3,9 +3,9 @@
   "enisaUuid": "b60a70fb-606d-32f1-8690-fd78481b540c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nconfigfs: pin the symlink target's dirent instead of chasing ->ci_dentry\n\ncreate_link() reads the target's configfs_dirent from\nitem->ci_dentry->d_fsdata, relying on the item reference taken by\nget_target().  That reference pins the item, not its dentry: the dentry is\npinned by DCACHE_PERSISTENT, which configfs_remove_dir() releases via\nsimple_rmdir() while the item is still alive.  A symlink racing with rmdir\nof its target can therefore find ->ci_dentry freed and its dirent\nreleased, triggering WARN_ON(!atomic_read(&sd->s_count)) in configfs_get().\n\nTake the dirent in get_target() as well, under ->d_lock and atomically\nwith the item reference, and pass it down to create_link().  A hashed\ndentry has not been killed yet, so its ->d_fsdata reference keeps the\ndirent alive there.",
   "datePublished": "Sep 25, 2026, 10:22:58 AM",
-  "dateUpdated": "Oct 19, 2026, 9:11:16 AM",
+  "dateUpdated": "Oct 21, 2026, 12:53:48 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/846ff40fd57a47e59a41f4e331ec3b34efaddc23\nhttps://git.kernel.org/stable/c/4f54beb2e7f6d399396466682fba3539bcdcb414\nhttps://git.kernel.org/stable/c/d47c5de1cd6bfbe1067fc310bf90e4e00205e839\nhttps://git.kernel.org/stable/c/a7c1290eef60711c10289c056ad32ed1f2b47b12\n",
+  "references": "https://git.kernel.org/stable/c/a44744454eafbc158e8c8e3ef8d207076410b195\nhttps://git.kernel.org/stable/c/846ff40fd57a47e59a41f4e331ec3b34efaddc23\nhttps://git.kernel.org/stable/c/4f54beb2e7f6d399396466682fba3539bcdcb414\nhttps://git.kernel.org/stable/c/d47c5de1cd6bfbe1067fc310bf90e4e00205e839\nhttps://git.kernel.org/stable/c/a7c1290eef60711c10289c056ad32ed1f2b47b12\n",
   "aliases": "CVE-2026-97950\nGHSA-6xvc-m8wh-p8q8\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "7063fbf2261194f72ee75afca67b3b38b554b5fa <846ff40fd57a47e59a41f4e331ec3b34efaddc23"
+    },
+    {
+      "id": "56a9335a-cd13-36ad-b368-2fc43bf5b606",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "6815dce7-47f4-359d-8baa-44c838f029f1",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "7063fbf2261194f72ee75afca67b3b38b554b5fa <4f54beb2e7f6d399396466682fba3539bcdcb414"
+    },
+    {
+      "id": "a846ee16-94df-39e4-aa12-4c8d28e9888b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7063fbf2261194f72ee75afca67b3b38b554b5fa <a44744454eafbc158e8c8e3ef8d207076410b195"
     },
     {
       "id": "d0032b6a-2ced-349f-8099-9af3845c9051",

@@ -3,14 +3,14 @@
   "enisaUuid": "0886750a-194e-3362-b791-851992c30245",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: use list_del_rcu for netlink hooks\n\nnft_netdev_unregister_hooks and __nft_unregister_flowtable_net_hooks need\nto use list_del_rcu(), this list can be walked by concurrent dumpers.\n\nAdd a new helper and use it consistently.",
   "datePublished": "Jun 9, 2026, 12:11:16 PM",
-  "dateUpdated": "Oct 19, 2026, 7:36:58 PM",
+  "dateUpdated": "Oct 21, 2026, 12:41:36 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/0bd93ce4f3c35e845532184331d7917d7e562c80\nhttps://git.kernel.org/stable/c/0f33e8ad6ac563ae2233dd7f75884e0ee010521d\nhttps://git.kernel.org/stable/c/f3224ee463f8f6f6ced7dcdf6081add4f8128527\n",
+  "references": "https://git.kernel.org/stable/c/2405730fde96f7fa483a5862e323b681e0e09f54\nhttps://git.kernel.org/stable/c/fe45e203527af8a2c0dc4c8a7b56c09c74b796c8\nhttps://git.kernel.org/stable/c/0bd93ce4f3c35e845532184331d7917d7e562c80\nhttps://git.kernel.org/stable/c/0f33e8ad6ac563ae2233dd7f75884e0ee010521d\nhttps://git.kernel.org/stable/c/f3224ee463f8f6f6ced7dcdf6081add4f8128527\n",
   "aliases": "GHSA-42p7-8g8p-r7fh\nCVE-2026-46324\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "26bfbefd-2bf4-375a-9699-daf0b0e4a43e",
@@ -31,6 +31,26 @@
         }
       },
       "product_version": "patch: 6.18.33"
+    },
+    {
+      "id": "2fa5d115-aff7-378b-b8a7-d89a4ee8ae75",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f9a43007d3f7ba76d5e7f9421094f00f2ef202f8 <2405730fde96f7fa483a5862e323b681e0e09f54"
+    },
+    {
+      "id": "31d23f49-18af-3df7-aa09-050500dab911",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f9a43007d3f7ba76d5e7f9421094f00f2ef202f8 <fe45e203527af8a2c0dc4c8a7b56c09c74b796c8"
     },
     {
       "id": "38f3eaea-ffba-3c6d-8ba9-d2c5db197962",
@@ -143,6 +163,16 @@
       "product_version": "5.18.2 <5.19"
     },
     {
+      "id": "adcfa955-4866-3907-a288-ab0483818e92",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "af29eb36-3be4-3141-a680-4c9ecf7ca830",
       "product": {
         "name": "Linux",
@@ -181,6 +211,16 @@
         }
       },
       "product_version": "patch: 7.1"
+    },
+    {
+      "id": "d181d576-e315-3451-80ff-d86a5f71becc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "e0c15a63-e4d9-3d7e-883c-f3cea81419a5",

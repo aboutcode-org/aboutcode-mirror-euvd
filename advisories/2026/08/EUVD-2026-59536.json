@@ -3,9 +3,9 @@
   "enisaUuid": "324bca6c-7365-35be-9e63-ca5a69363aa5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/hns: Fix log flood after cmd_mbox failure\n\nhns_roce_cmd_mbox() is the command interface between driver and\nhardware. When hardware is abnormal, the unlimited error printings\nafter hns_roce_cmd_mbox() failure will cause log flood and even\nsystem crash.\n\nReplace ibdev_err() and ibdev_warn() with their ratelimited versions\nin the error handling path after hns_roce_cmd_mbox() (and its wrappers\nhns_roce_create_hw_ctx/hns_roce_destroy_hw_ctx) fails.",
   "datePublished": "Aug 15, 2026, 5:59:03 AM",
-  "dateUpdated": "Aug 17, 2026, 5:18:27 AM",
+  "dateUpdated": "Oct 21, 2026, 12:45:37 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7d9fbee252f84de3e6947a40eec01481c9d8afbb\nhttps://git.kernel.org/stable/c/66f44ec974ab372e4e1ee9eac4245237c94e8f68\nhttps://git.kernel.org/stable/c/f3c9e84268e9fa613d40d6c138fb6969c35879b5\nhttps://git.kernel.org/stable/c/bbd97d71e53e551890e4115ad9de46b5f2ac0858\n",
+  "references": "https://git.kernel.org/stable/c/a6c5f5d98719e69228512390d5db3bf4b6468064\nhttps://git.kernel.org/stable/c/7d9fbee252f84de3e6947a40eec01481c9d8afbb\nhttps://git.kernel.org/stable/c/66f44ec974ab372e4e1ee9eac4245237c94e8f68\nhttps://git.kernel.org/stable/c/f3c9e84268e9fa613d40d6c138fb6969c35879b5\nhttps://git.kernel.org/stable/c/bbd97d71e53e551890e4115ad9de46b5f2ac0858\n",
   "aliases": "CVE-2026-74389\nGHSA-r243-5f6v-4cpg\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "9a4435375cd151e07c0c38fa601b00115986091b <f3c9e84268e9fa613d40d6c138fb6969c35879b5"
+    },
+    {
+      "id": "168234b3-bffa-38a8-831d-498c0488d911",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "1ff341d8-95dc-334e-92eb-9b4288b298eb",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "4.9"
+    },
+    {
+      "id": "ac95e414-8e76-3f34-8519-44827a80404a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9a4435375cd151e07c0c38fa601b00115986091b <a6c5f5d98719e69228512390d5db3bf4b6468064"
     },
     {
       "id": "e00c691a-57dd-3d2f-a727-da25dc899c6d",

@@ -3,14 +3,14 @@
   "enisaUuid": "5c573921-e34e-3820-b7a6-bc2d77a88db3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Take return from set_memory_ro() into account with bpf_prog_lock_ro()\n\nset_memory_ro() can fail, leaving memory unprotected.\n\nCheck its return and take it into account as an error.",
   "datePublished": "Jul 29, 2024, 3:52:32 PM",
-  "dateUpdated": "Aug 5, 2026, 11:35:27 AM",
+  "dateUpdated": "Oct 21, 2026, 12:34:58 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/a359696856ca9409fb97655c5a8ef0f549cb6e03\nhttps://git.kernel.org/stable/c/e4f602e3ff749ba770bf8ff10196e18358de6720\nhttps://git.kernel.org/stable/c/05412471beba313ecded95aa17b25fe84bb2551a\nhttps://git.kernel.org/stable/c/7d2cc63eca0c993c99d18893214abf8f85d566d8\n",
+  "references": "https://git.kernel.org/stable/c/a359696856ca9409fb97655c5a8ef0f549cb6e03\nhttps://git.kernel.org/stable/c/e4f602e3ff749ba770bf8ff10196e18358de6720\nhttps://git.kernel.org/stable/c/2bbfffa802adc30b772d0e0f881a13c3804a965c\nhttps://git.kernel.org/stable/c/05412471beba313ecded95aa17b25fe84bb2551a\nhttps://git.kernel.org/stable/c/7d2cc63eca0c993c99d18893214abf8f85d566d8\n",
   "aliases": "GHSA-9qp4-rw2q-rx7r\nCVE-2024-42068\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "1e999eec-38d3-3b35-a0bf-cc7c42eb5cc4",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "60a3b2253c413cf601783b070507d7dd6620c954 <7d2cc63eca0c993c99d18893214abf8f85d566d8"
+    },
+    {
+      "id": "36c44c94-6c86-37a9-80d4-5be40cb81cab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "60a3b2253c413cf601783b070507d7dd6620c954 <2bbfffa802adc30b772d0e0f881a13c3804a965c"
     },
     {
       "id": "3762a4f0-8b6e-3e72-9c2a-28517e845e55",
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "patch: 6.10"
+    },
+    {
+      "id": "b042054c-923c-30c3-94a4-6fdb5cd18593",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "d2db38fe-4fd9-375a-8217-6293b49dcb25",

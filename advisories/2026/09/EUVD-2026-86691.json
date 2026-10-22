@@ -3,9 +3,9 @@
   "enisaUuid": "abdd8818-c3c0-3f32-93ef-4b2fac793139",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Keep refcount_acquire nullable for borrowed RCU kptrs\n\nbpf_refcount_acquire() is fallible for a borrowed reference because the\nobject may have reached a zero refcount. The verifier therefore keeps\nKF_RET_NULL on the return value unless the argument is an owning reference.\n\nAn RCU-protected load of a local kptr is marked MEM_ALLOC, but it only\nreceives NON_OWN_REF when the pointee contains a graph node. A refcounted\nobject without a graph node consequently looks like an owning reference\neven though the loaded register has no acquired reference state. If the\nprogram drops the last real reference while remaining in the RCU critical\nsection, refcount_inc_not_zero() returns NULL while the verifier treats the\nresult as non-NULL.\n\nOnly classify the argument as owning when it is backed by a verifier-tracked\nreference. This retains the non-NULL return for pointers from bpf_obj_new(),\nbpf_kptr_xchg(), or an earlier successful acquisition, while requiring a\nNULL check for borrowed RCU kptrs.\n\n[ kkd: Rewrote commit log ]",
   "datePublished": "Sep 25, 2026, 10:23:51 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:43 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:09 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8d19e2cdfba9ba8c8eb6a459cd666bec00a1d2c6\nhttps://git.kernel.org/stable/c/85074498228a2500ea8b8039c49cc1ab8ad5328f\nhttps://git.kernel.org/stable/c/dc36739e5cc9f60485418a910b42bc95339218d2\n",
+  "references": "https://git.kernel.org/stable/c/85bfc8b6db43502444c428eaa2de20bdd2fb9064\nhttps://git.kernel.org/stable/c/8d19e2cdfba9ba8c8eb6a459cd666bec00a1d2c6\nhttps://git.kernel.org/stable/c/85074498228a2500ea8b8039c49cc1ab8ad5328f\nhttps://git.kernel.org/stable/c/dc36739e5cc9f60485418a910b42bc95339218d2\n",
   "aliases": "GHSA-cwcr-7vrq-384j\nCVE-2026-98038\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 7.2.7"
+    },
+    {
+      "id": "3a71126b-bd7a-311f-9f71-3fa39c693800",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "53c9ac75-99e5-32ee-976f-6e244acfd378",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "1b12171533a9bb23cf6fba7262b479028b65e1e8 <85074498228a2500ea8b8039c49cc1ab8ad5328f"
+    },
+    {
+      "id": "e7290363-34e3-3cde-bce4-82f014e2e166",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1b12171533a9bb23cf6fba7262b479028b65e1e8 <85bfc8b6db43502444c428eaa2de20bdd2fb9064"
     },
     {
       "id": "ee8ada39-bcea-3f05-b39c-5005bfb7dedf",

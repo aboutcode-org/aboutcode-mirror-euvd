@@ -3,25 +3,15 @@
   "enisaUuid": "3e4bc510-fad9-3a0c-a3d0-05179eedbbd5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hold conn in hci_connect_pa_sync() callback\n\nThere is theoretical UAF if the conn is freed while the hci_sync task is\nrunning.\n\nHold refcount to avoid that.",
   "datePublished": "Aug 15, 2026, 12:27:44 PM",
-  "dateUpdated": "Oct 16, 2026, 7:05:53 PM",
+  "dateUpdated": "Oct 21, 2026, 12:45:47 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/68ffe4265775ed9e09e18e9a3b388740e25257bf\nhttps://git.kernel.org/stable/c/c53c70ec289ee12f20c4f1b2fbfd151762c01f67\nhttps://git.kernel.org/stable/c/44fc74069d8988f2825246f9401218e29de2c0ab\n",
+  "references": "https://git.kernel.org/stable/c/40ef39f1d755ff8d54423345c73d187e77854d0b\nhttps://git.kernel.org/stable/c/68ffe4265775ed9e09e18e9a3b388740e25257bf\nhttps://git.kernel.org/stable/c/c53c70ec289ee12f20c4f1b2fbfd151762c01f67\nhttps://git.kernel.org/stable/c/44fc74069d8988f2825246f9401218e29de2c0ab\n",
   "aliases": "GHSA-7xff-628x-fqq8\nCVE-2026-74529\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
-    {
-      "id": "06711b8e-0824-3579-8676-df56d4cb12f1",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "eb8b860e87b296bd1874c79a668081efd00f9754"
-    },
     {
       "id": "19ca3448-0cb2-31d2-beb2-b7d81eab81e8",
       "product": {
@@ -43,14 +33,14 @@
       "product_version": "6d0417e4e1cf66fd917f06f0454958362714ef7d <44fc74069d8988f2825246f9401218e29de2c0ab"
     },
     {
-      "id": "25e26cac-2ec7-3ac7-bf78-1676d7f1c999",
+      "id": "26a1de62-a4e4-30ad-9a91-95c8bb234f00",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.12.28 <6.13"
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "2b2f0ef3-5a54-3238-aa0e-63eb2e83d588",
@@ -81,6 +71,16 @@
         }
       },
       "product_version": "6d0417e4e1cf66fd917f06f0454958362714ef7d <68ffe4265775ed9e09e18e9a3b388740e25257bf"
+    },
+    {
+      "id": "54ca1219-a68e-3343-8672-5468d2ed6827",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.12.28 <6.12.114"
     },
     {
       "id": "5b0ffea1-ea0c-3ebe-a0ba-6f4f0f13547a",
@@ -121,6 +121,16 @@
         }
       },
       "product_version": "6.15"
+    },
+    {
+      "id": "b7b857d6-a860-36d9-aaaf-3600a87f61e5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "eb8b860e87b296bd1874c79a668081efd00f9754 <40ef39f1d755ff8d54423345c73d187e77854d0b"
     },
     {
       "id": "bf04acba-82e9-39c1-be3c-e4cbd327ec6b",

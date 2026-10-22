@@ -3,9 +3,9 @@
   "enisaUuid": "6ea46792-5c78-383c-87e1-2acdf05b3790",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: mark a NULL call argument precise\n\ncheck_func_arg() allows bpf_register_is_null() for nullable arguments\nw/o marking the underlying scalar register precise. Hence a checkpoint\ncreated on such a path would prune against arbitrary scalar value.\n\ncheck_helper_call() enforces second parameter of the\nbpf_get_local_storage() to be zero, w/o marking the underlying scalar\nregister precise. Hence a checkpoint created on such a path would\nprune against arbitrary scalar value.\n\nGrouping these two into one patch, as they share the same fixes tag.",
   "datePublished": "Sep 25, 2026, 10:23:40 AM",
-  "dateUpdated": "Oct 19, 2026, 9:12:24 AM",
+  "dateUpdated": "Oct 21, 2026, 12:54:04 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b1fe6379e401b8ce0f561cb4d84af2b70b4343c3\nhttps://git.kernel.org/stable/c/69a9ad004ccf5d45e534c7d503f47f643abe64b7\nhttps://git.kernel.org/stable/c/1a3a10b030c96ea88868ccc060a16827c01eaa5a\n",
+  "references": "https://git.kernel.org/stable/c/febbb66e682d8328f7c5bcbdd5e4291abab2e858\nhttps://git.kernel.org/stable/c/627089c278df58749f25686c6a3caf7e181b5951\nhttps://git.kernel.org/stable/c/b1fe6379e401b8ce0f561cb4d84af2b70b4343c3\nhttps://git.kernel.org/stable/c/69a9ad004ccf5d45e534c7d503f47f643abe64b7\nhttps://git.kernel.org/stable/c/1a3a10b030c96ea88868ccc060a16827c01eaa5a\n",
   "aliases": "GHSA-cgv7-rwvp-jx5m\nCVE-2026-98019\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -41,6 +41,26 @@
       "product_version": "b5dc0163d8fd78e64a7e21f309cf932fda34353e <1a3a10b030c96ea88868ccc060a16827c01eaa5a"
     },
     {
+      "id": "4b625538-3c89-3c2d-9c08-8052a82311d7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b5dc0163d8fd78e64a7e21f309cf932fda34353e <627089c278df58749f25686c6a3caf7e181b5951"
+    },
+    {
+      "id": "4f2f8a8a-bd7a-3de3-9a26-6a8853f72dfa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b5dc0163d8fd78e64a7e21f309cf932fda34353e <febbb66e682d8328f7c5bcbdd5e4291abab2e858"
+    },
+    {
       "id": "61be1772-fed2-3849-b9fc-8d7f6a5b2cda",
       "product": {
         "name": "Linux",
@@ -49,6 +69,26 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "7f63ff51-dd41-36b5-b460-df21a2c21f2f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "857ff633-8d4f-3664-bb9a-6608b84bfb60",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
     },
     {
       "id": "c42f4689-9c5c-3bb8-9462-a194b1df53a3",

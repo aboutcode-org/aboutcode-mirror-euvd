@@ -3,9 +3,9 @@
   "enisaUuid": "15b8086a-fd21-3ee3-b9c7-b80171969dce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix soft lockup polling continuation IOCB signature\n\nqla27xx_copy_multiple_pkt() and qla27xx_copy_fpin_pkt() poll\nrsp_q->ring_ptr->signature for RESPONSE_PROCESSED (0xDEADDEAD) to decide\nwhether the next continuation IOCB has arrived, spinning on cpu_relax()\nwithout advancing the ring or decrementing the entry count while it has\nnot. response_t::signature lives at byte offset 60, but a continuation\nIOCB (sts_cont_entry_t / struct sts_cont_entry_ext) carries raw FC frame\npayload at that offset (data[56..59]). A received frame whose payload\nbytes happen to equal 0xDEADDEAD is therefore misread as \"not yet\narrived\", and the loop spins forever in interrupt/DPC context, causing a\nCPU soft lockup.\n\nThe poll is also unnecessary: callers of qla27xx_copy_multiple_pkt()\n(PT_LS4_UNSOL and the NVMe purls path) already gate on\nqla_chk_cont_iocb_avail(), which guarantees all entry_count IOCBs are\npresent before copying begins. The sibling helper\n__qla_copy_purex_to_buffer() already drops the signature poll and relies\non the entry_type == STATUS_CONT_TYPE guard instead.\n\nRemove the signature busy-wait from both helpers, keeping the entry_type\nguard, and gate the FPIN path with qla_chk_cont_iocb_avail() so it defers\nand re-processes on the next interrupt once all continuation IOCBs have\narrived, mirroring the ELS_AUTH_ELS and PT_LS4_UNSOL arms. With this the\nsignature field is never read on a continuation IOCB, eliminating the\npayload-aliasing lockup.",
   "datePublished": "Sep 25, 2026, 10:21:31 AM",
-  "dateUpdated": "Oct 19, 2026, 9:08:52 AM",
+  "dateUpdated": "Oct 21, 2026, 12:53:06 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/3e58eb888ebf265af937f636d05997c60d2f197c\nhttps://git.kernel.org/stable/c/6e6c2ba9022eb8f9b062c81bdc6fd24c7b4c4c16\nhttps://git.kernel.org/stable/c/6aa722fca9d2aa1f64094101587f8f4a2f83f6aa\nhttps://git.kernel.org/stable/c/d7e3fa7d06bf7fcaac186d3c4d635caac166d36c\n",
+  "references": "https://git.kernel.org/stable/c/428e244dd4066abd40ca1ec525b7aab9a9db8296\nhttps://git.kernel.org/stable/c/3e58eb888ebf265af937f636d05997c60d2f197c\nhttps://git.kernel.org/stable/c/6e6c2ba9022eb8f9b062c81bdc6fd24c7b4c4c16\nhttps://git.kernel.org/stable/c/6aa722fca9d2aa1f64094101587f8f4a2f83f6aa\nhttps://git.kernel.org/stable/c/d7e3fa7d06bf7fcaac186d3c4d635caac166d36c\n",
   "aliases": "CVE-2026-97530\nGHSA-m367-5qfc-ghvx\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -91,6 +91,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "af638888-f694-348b-9881-9a26cc6ea2a0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "cd2d01db-dab7-3492-824a-b278c026deba",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <3e58eb888ebf265af937f636d05997c60d2f197c"
+    },
+    {
+      "id": "e6c78531-8c8c-3b25-bfcc-9cf8965d487b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <428e244dd4066abd40ca1ec525b7aab9a9db8296"
     }
   ],
   "enisaIdVendor": [

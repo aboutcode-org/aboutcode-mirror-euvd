@@ -3,9 +3,9 @@
   "enisaUuid": "9278d1bf-2dc2-3b68-ae1d-47c500112ad7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: clamp route advmss to TCP_MIN_MSS\n\ntcp_select_initial_window() assumes that callers never pass an MSS\nsmaller than 1, but route-derived advmss values can violate that\nassumption.\n\nA too-small explicit RTAX_ADVMSS is one way to get there, but it is not\nthe only one. The same divide-by-zero can also be reached through the\n\"default advmss\" path when RTAX_ADVMSS is left at 0 and the effective\nadvmss is later driven down by route MTU and min_adv_mss.\n\nIntroduce a tcp_dst_advmss() helper that clamps route advmss to\nTCP_MIN_MSS before TCP consumes it, and use it in the TCP paths that\nderive advmss from dst metrics. This keeps the effective MSS from\ndropping to zero before tcp_select_initial_window() rounds the receive\nwindow.",
   "datePublished": "Sep 4, 2026, 3:54:57 PM",
-  "dateUpdated": "Oct 19, 2026, 8:44:41 AM",
+  "dateUpdated": "Oct 21, 2026, 12:47:07 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/eaf4af9bd6975c2eff8d48820937c83032d968dc\nhttps://git.kernel.org/stable/c/cfb44c6028e6f979720315e0772bbd0d4d33ed61\nhttps://git.kernel.org/stable/c/6b8c20bf61924dfc38fefb145c9f7406d73fae53\nhttps://git.kernel.org/stable/c/31cf2349361902769dc323e4dbf4b449795ec288\nhttps://git.kernel.org/stable/c/870a9e42ecc6fe1b8c25d87af043cb0d9c178fe1\n",
+  "references": "https://git.kernel.org/stable/c/788fbbf7d61f9742298417c207c91b6db159fbbc\nhttps://git.kernel.org/stable/c/eaf4af9bd6975c2eff8d48820937c83032d968dc\nhttps://git.kernel.org/stable/c/cfb44c6028e6f979720315e0772bbd0d4d33ed61\nhttps://git.kernel.org/stable/c/6b8c20bf61924dfc38fefb145c9f7406d73fae53\nhttps://git.kernel.org/stable/c/31cf2349361902769dc323e4dbf4b449795ec288\nhttps://git.kernel.org/stable/c/870a9e42ecc6fe1b8c25d87af043cb0d9c178fe1\n",
   "aliases": "GHSA-m3f3-9j4q-c4f2\nCVE-2026-80847\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -81,6 +81,16 @@
       "product_version": "patch: 7.3"
     },
     {
+      "id": "7ec8bd9c-6b84-3971-a264-10fa30bd79b2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
       "id": "81c6d793-a42b-32e3-ae6e-ccb03b08b64f",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "a59d099e-caf4-30b8-8321-93c244f9de7e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <788fbbf7d61f9742298417c207c91b6db159fbbc"
     },
     {
       "id": "b5d5c470-b480-3861-9ab6-b5682f220fb9",

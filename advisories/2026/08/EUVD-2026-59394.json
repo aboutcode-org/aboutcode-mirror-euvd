@@ -3,15 +3,25 @@
   "enisaUuid": "1f11b6a5-4ea5-3eef-affa-1724affdc8e4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Avoid repeated requests to allocate WC pages\n\nApplications can request multiple WC pages for the same ucontext.\nAs of now, only 1 WC page per ucontext is supported. Add a lock to\navoid concurrent access and a check to fail repeated requests.\nAlso, if the mmap entry insert fails for the WC, free the Doorbell\npage index mapped for the WC page.",
   "datePublished": "Aug 15, 2026, 5:57:28 AM",
-  "dateUpdated": "Oct 16, 2026, 6:55:26 PM",
+  "dateUpdated": "Oct 21, 2026, 12:45:04 PM",
   "baseScore": 9.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/478c4d24193fe3e6aa2accd4874ae43000e4a217\nhttps://git.kernel.org/stable/c/da406b8b49c1dfe661a497483940d7ee781430db\nhttps://git.kernel.org/stable/c/441baa79043431807115fd030d7d0bb14ed441a0\n",
+  "references": "https://git.kernel.org/stable/c/8e59bd37d6d63a06ed452eaffe6c9d4ad903af7b\nhttps://git.kernel.org/stable/c/00c71846874fea4917961236e49287a1850dcf98\nhttps://git.kernel.org/stable/c/478c4d24193fe3e6aa2accd4874ae43000e4a217\nhttps://git.kernel.org/stable/c/da406b8b49c1dfe661a497483940d7ee781430db\nhttps://git.kernel.org/stable/c/441baa79043431807115fd030d7d0bb14ed441a0\n",
   "aliases": "GHSA-3cmq-754m-66f5\nCVE-2026-72495\n",
   "assigner": "Linux",
   "epss": 0.19,
   "enisaIdProduct": [
+    {
+      "id": "08e40868-1023-34a9-98f4-41b01d391db4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "360da60d6c6edb9740de7a8e6d8969d62ceff956 <8e59bd37d6d63a06ed452eaffe6c9d4ad903af7b"
+    },
     {
       "id": "24833a5d-9ef1-3d00-811a-26ebb4a30192",
       "product": {
@@ -31,6 +41,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "31dd50af-6bfe-3344-ac45-4f4e865a4980",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "3aa746e7-a396-3e53-a233-e17bba3fc536",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.114"
     },
     {
       "id": "6b55db92-f43c-3066-8bc0-e1ec0be916bb",
@@ -91,6 +121,16 @@
         }
       },
       "product_version": "patch: 7.1.5"
+    },
+    {
+      "id": "f9c42ea5-c7ff-3c45-aac3-525e1ba11c12",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "360da60d6c6edb9740de7a8e6d8969d62ceff956 <00c71846874fea4917961236e49287a1850dcf98"
     }
   ],
   "enisaIdVendor": [
