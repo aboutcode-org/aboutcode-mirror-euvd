@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-108126",
+  "enisaUuid": "5f9a9cd5-9024-32f8-8978-bb116f406faf",
+  "description": "mem0 0.1.117 before 1.0.8 contains an sql injection vulnerability in mem0/vector_stores/databricks.py that allows attackers to inject SQL by influencing stored memory content. Attackers can supply crafted memory text, metadata, or message names that reach unescaped insert() and update() string interpolation to execute injected SQL on the configured Databricks SQL warehouse.",
+  "datePublished": "Oct 22, 2026, 10:57:43 AM",
+  "dateUpdated": "Oct 22, 2026, 10:57:43 AM",
+  "baseScore": 9.2,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://github.com/mem0ai/mem0/issues/4073\nhttps://github.com/mem0ai/mem0/pull/4558\nhttps://github.com/mem0ai/mem0/commit/a2ffca32660537b7b304305f36774ae2a13452cb\nhttps://github.com/mem0ai/mem0/releases/tag/v1.0.8\nhttps://github.com/mem0ai/mem0/blob/v1.0.7/mem0/vector_stores/databricks.py\nhttps://github.com/mem0ai/mem0\nhttps://www.vulncheck.com/advisories/mem0-0.1.117-before-1.0.8-sql-injection-via-databricks-vector-store\n",
+  "aliases": "GHSA-7587-9684-52r6\nCVE-2026-115324\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "027fdf38-d089-3262-ab06-b18885ed638d",
+      "product": {
+        "name": "mem0",
+        "vendor": {
+          "name": "mem0ai"
+        }
+      },
+      "product_version": "0.1.117 <1.0.8"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "35b16619-bca3-3ca9-b46a-fb8df436ada1",
+      "vendor": {
+        "name": "mem0ai"
+      }
+    }
+  ]
+}
