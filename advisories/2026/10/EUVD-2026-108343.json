@@ -3,7 +3,7 @@
   "enisaUuid": "f85ba98d-1979-3fdb-9125-f0ea02d70a9a",
   "description": "Motor.NET before 0.19.0 contains a denial-of-service vulnerability that allows a remote attacker who can produce records to a consumed topic to crash the service permanently by sending a single crafted record. By setting the content-type header to application/cloudevents+json and omitting required CloudEvent attributes (id, source, type), the attacker triggers an ArgumentException in KafkaMessageConsumer.SingleMessageHandlingAsync that is treated as fatal, causing the host to stop and re-process the same poison record on every restart, resulting in a permanent crash-loop.",
   "datePublished": "Oct 22, 2026, 7:41:15 PM",
-  "dateUpdated": "Oct 22, 2026, 7:50:43 PM",
+  "dateUpdated": "Oct 23, 2026, 1:28:32 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",

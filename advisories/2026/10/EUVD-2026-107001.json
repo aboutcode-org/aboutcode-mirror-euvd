@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-107001",
   "enisaUuid": "975b77c9-65f9-36eb-914f-41a192c4cc8b",
-  "description": "vLLM before 0.31.0 uses a client-supplied multimodal uuid verbatim as cache identity with no consistency check on cache hits, allowing engine crashes. Unauthenticated attackers can desynchronize the P0/P1 processor caches to trigger a fatal token-placeholder mismatch, killing the entire serving instance until restarted.",
-  "datePublished": "Oct 21, 2026, 12:36:27 AM",
-  "dateUpdated": "Oct 21, 2026, 3:50:53 PM",
+  "description": "vLLM: Forged multimodal UUID + P0/P1 processor-cache eviction drift: unauthenticated remote crash of the whole vLLM engine",
+  "datePublished": "Oct 23, 2026, 8:43:44 PM",
+  "dateUpdated": "Oct 23, 2026, 8:43:45 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/vllm-project/vllm/security/advisories/GHSA-p92p-rxj5-7p2x\nhttps://www.vulncheck.com/advisories/vllm-before-0.31.0-remote-engine-crash-via-forged-multimodal-uuid\n",
-  "aliases": "GHSA-hfwf-hgvp-4rr8\nCVE-2026-114050\n",
+  "references": "https://github.com/vllm-project/vllm/security/advisories/GHSA-p92p-rxj5-7p2x\nhttps://www.vulncheck.com/advisories/vllm-before-0.31.0-remote-engine-crash-via-forged-multimodal-uuid\nhttps://github.com/vllm-project/vllm/pull/57833\nhttps://github.com/vllm-project/vllm/commit/7268f6e38ebbb3d61700f16c638c6eba0c88bb0c\nhttps://github.com/vllm-project/vllm/releases/tag/v0.31.0\nhttps://nvd.nist.gov/vuln/detail/cve-2026-114050\n",
+  "aliases": "GHSA-hfwf-hgvp-4rr8\nCVE-2026-114050\nGHSA-p92p-rxj5-7p2x\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "7d171aab-8fb9-3da8-a18c-bcf33ec4d5a2",

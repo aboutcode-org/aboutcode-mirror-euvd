@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-107006",
   "enisaUuid": "57f554fc-421f-3e0e-a317-1efa0d94ca96",
-  "description": "vLLM from 0.7.3 before 0.31.0 contains an uncontrolled resource consumption vulnerability that allows remote clients to control multimodal processor parameters by supplying per-request mm_processor_kwargs. Attackers can set large image size, patch count, crop count, or frame count values in Isaac, InternVL, H2OVL, and other processors to exhaust memory and terminate the shared server.",
-  "datePublished": "Oct 21, 2026, 12:36:31 AM",
-  "dateUpdated": "Oct 21, 2026, 3:50:46 PM",
+  "description": "vLLM : DoS via unvalidated mm_processor_kwargs in multimodal image processors (Isaac, InternVL, H2OVL, etc.)",
+  "datePublished": "Oct 23, 2026, 8:58:36 PM",
+  "dateUpdated": "Oct 23, 2026, 8:58:36 PM",
   "baseScore": 8.7,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/vllm-project/vllm/security/advisories/GHSA-gx7p-2j49-hfq4\nhttps://www.vulncheck.com/advisories/vllm-0.7.3-before-0.31.0-dos-via-unvalidated-mm-processor-kwargs\n",
-  "aliases": "GHSA-3cgq-c484-rx5j\nCVE-2026-114055\n",
+  "references": "https://github.com/vllm-project/vllm/security/advisories/GHSA-gx7p-2j49-hfq4\nhttps://www.vulncheck.com/advisories/vllm-0.7.3-before-0.31.0-dos-via-unvalidated-mm-processor-kwargs\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-114055\nhttps://github.com/vllm-project/vllm/pull/58830\nhttps://github.com/vllm-project/vllm/commit/31f2e70cd3e403aaa471fb7fe3d33a7207aaf3cc\nhttps://github.com/vllm-project/vllm/releases/tag/v0.31.0\n",
+  "aliases": "GHSA-3cgq-c484-rx5j\nGHSA-gx7p-2j49-hfq4\nCVE-2026-114055\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "19422ce5-714f-3808-9a13-25439388fec3",

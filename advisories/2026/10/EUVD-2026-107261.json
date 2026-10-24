@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-107261",
   "enisaUuid": "d830b238-348d-3865-a6f9-2c2f559acc9a",
-  "description": "In the Golang Chi web framework, the ClientIPFromXFF middleware skips any X-Forwarded-For entry in a configured trusted CIDR but never verifies that the direct TCP peer in http.Request.RemoteAddr belongs to that CIDR. A client that can reach the Go server directly can therefore append a trusted-looking proxy address and choose the client IP returned by middleware.GetClientIP.\n\nThis issue affects chi before 5.4.0.",
-  "datePublished": "Oct 21, 2026, 1:52:25 PM",
-  "dateUpdated": "Oct 21, 2026, 5:19:13 PM",
+  "description": "chi: Client IP spoofing in ClientIPFromXFF via X-Forwarded-For",
+  "datePublished": "Oct 23, 2026, 8:56:46 PM",
+  "dateUpdated": "Oct 23, 2026, 8:56:46 PM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://www.tenable.com/security/research/tra-2026-66\nhttps://github.com/go-chi/chi/security/advisories/GHSA-j6qf-3m9c-vwj3\n",
-  "aliases": "GHSA-7cgw-qmxx-7fc2\nCVE-2026-114437\n",
+  "references": "https://www.tenable.com/security/research/tra-2026-66\nhttps://github.com/go-chi/chi/security/advisories/GHSA-j6qf-3m9c-vwj3\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-114437\nhttps://github.com/go-chi/chi/pull/1214\nhttps://github.com/go-chi/chi/commit/7f9b7448f51d28804fac98c0a17bc2a7cec1079f\nhttps://github.com/go-chi/chi/releases/tag/v5.4.0\n",
+  "aliases": "GHSA-j6qf-3m9c-vwj3\nGHSA-7cgw-qmxx-7fc2\nCVE-2026-114437\n",
   "assigner": "tenable",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "637bf16e-657f-3b67-9204-c043b5b88e3c",
