@@ -3,12 +3,14 @@
   "enisaUuid": "0204a1da-827c-3994-be0b-06f83951a095",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: alps: fix use-after-free on input2 registration failure\n\nalps_input_configured() stores data->input2 before calling\ninput_register_device().  If registration fails, input_free_device()\nfrees the input device but data->input2 still points to the freed memory.\nalps_input_configured() calls hid_hw_open() before allocating input2, so\nURBs are already active and raw_event can fire during the failure window.\nA U1_SP_ABSOLUTE_REPORT_ID report arriving then causes u1_raw_event()\nto dereference the freed data->input2 -> use-after-free.\n\nFix by only storing input2 into drvdata after successful registration\nand adding a NULL guard in the raw_event path.",
   "datePublished": "Oct 18, 2026, 3:16:46 PM",
-  "dateUpdated": "Oct 19, 2026, 9:20:40 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Oct 24, 2026, 2:09:09 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/64f824dccfd316fd3db8ea1cc4e8a76ad6a02740\nhttps://git.kernel.org/stable/c/2e55d76e6e8a756f6d87c241de975599f82b02fa\nhttps://git.kernel.org/stable/c/ef8ca5bb4c8b9696f38b1bebce1c851baa02b77b\nhttps://git.kernel.org/stable/c/5a8ad63158165bacd6a1d7420e0fe5364c913b06\nhttps://git.kernel.org/stable/c/47e5e177e9e4e10da6f2759d5ce8d049e33efdc4\nhttps://git.kernel.org/stable/c/925da1d2a24787f24872de13a4680437c54de179\nhttps://git.kernel.org/stable/c/443f6b93442b10b972a16f57ceaaea75b77892b6\nhttps://git.kernel.org/stable/c/d3aba3442798ce4a4c8ce3104d7b286d61e605f9\n",
   "aliases": "CVE-2026-98501\nGHSA-56g2-px47-cfcj\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "00ecba31-5afa-3ffd-9c4c-61fe58091272",
