@@ -3,14 +3,14 @@
   "enisaUuid": "041475e3-b98d-3f0e-a991-33f65af3ab27",
   "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
   "datePublished": "Oct 21, 2026, 8:56:26 PM",
-  "dateUpdated": "Oct 24, 2026, 11:16:38 AM",
+  "dateUpdated": "Oct 25, 2026, 6:49:22 AM",
   "baseScore": 6.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
   "aliases": "GHSA-jrx5-4fv3-4mcq\nCVE-2026-114406\n",
   "assigner": "redhat",
-  "epss": 0.27,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "0b87ee3f-93e2-3c24-83ef-0c8db7a088b8",
@@ -23,6 +23,16 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_8"
     },
     {
+      "id": "10bc17c5-9267-3db8-a1c0-29da36928e03",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792851895"
+    },
+    {
       "id": "12bbc000-64e1-3f54-aa07-8f43f211ba03",
       "product": {
         "name": "Red Hat Hardened Images",
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 2026.2.92_v9.0.319-1.hum1"
+    },
+    {
+      "id": "1f93fc05-56ca-3514-af75-630785156646",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792837466"
     },
     {
       "id": "30ff4d1a-8061-31a6-86b2-1f78bf4f52db",
@@ -43,6 +63,56 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-70.3.el7_9"
     },
     {
+      "id": "4f7b821d-8404-32b4-9f32-bb016ebb85f6",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792838794"
+    },
+    {
+      "id": "526b4e7d-3a97-37a9-b5a4-c879d5aa6c36",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792844269"
+    },
+    {
+      "id": "5f5b1019-ad12-38be-9d52-1bc1853eb7c6",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792835571"
+    },
+    {
+      "id": "6cd69c50-b952-39a9-a6ec-eb2ba1c7572a",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792839475"
+    },
+    {
+      "id": "78496d04-1953-3d62-a677-908873d3f800",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792837398"
+    },
+    {
       "id": "7d074209-d4c1-327f-b36c-06c12f171d3c",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -53,6 +123,26 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-100.3.el10_2"
     },
     {
+      "id": "8f60913f-f690-3282-bef7-cee04876cd6e",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792837567"
+    },
+    {
+      "id": "97a9144e-b6a7-36a6-a77a-d9385bd9d0b6",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792837598"
+    },
+    {
       "id": "9d6353ea-c823-3c5a-957f-2de0d93540b0",
       "product": {
         "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
@@ -61,6 +151,36 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-100.3.el10_0"
+    },
+    {
+      "id": "a71c2dcf-53bc-3509-9bea-ae92bce3d900",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792840655"
+    },
+    {
+      "id": "a79479e1-e3cd-35c9-98d8-ca288370e668",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792859629"
+    },
+    {
+      "id": "a7ba77c3-5442-31c1-b374-6c6f975fd463",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792835365"
     },
     {
       "id": "a81846c7-55a0-3f06-b87f-fd2b40e62bd8",
@@ -81,6 +201,16 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-90.3.el9_4"
+    },
+    {
+      "id": "b360f8a6-e133-3683-afca-ceeb6f92e0a3",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792835298"
     },
     {
       "id": "be17731e-8a51-32c7-811e-285e0e0073c8",
@@ -123,6 +253,36 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_6"
     },
     {
+      "id": "ed99e2f3-1537-3562-a924-9fd697302ac1",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792857112"
+    },
+    {
+      "id": "f70d3290-b5ac-342e-a4b7-1d3b75a6bb88",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792838765"
+    },
+    {
+      "id": "f7739553-3806-3f21-984c-01cc0d5e8324",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.9.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792835879"
+    },
+    {
       "id": "fbeea17b-0ec2-31cd-9740-225c191303a4",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
@@ -131,6 +291,16 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_6"
+    },
+    {
+      "id": "fe53d7e2-6a2d-38c0-b48d-f20f2334916a",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792836805"
     },
     {
       "id": "ff0ce53c-8956-3a97-a9d8-8369f713a6b0",
@@ -151,6 +321,16 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_8"
+    },
+    {
+      "id": "ff713916-6afa-304d-8129-826a4aae17a1",
+      "product": {
+        "name": "Red Hat OpenShift Builds 1.8.3",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1792840135"
     }
   ],
   "enisaIdVendor": [
