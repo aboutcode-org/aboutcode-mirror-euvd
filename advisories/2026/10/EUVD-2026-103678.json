@@ -3,12 +3,12 @@
   "enisaUuid": "c0b85980-a928-3102-856b-b0f84fc1a3ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: cancel async requests when closing connection\n\nAn async request may still be waiting when a connection is closed.\nThis can stop the connection from closing.\n\nCancel active async requests before waiting for them to finish.",
   "datePublished": "Oct 18, 2026, 2:45:28 PM",
-  "dateUpdated": "Oct 19, 2026, 9:19:35 AM",
+  "dateUpdated": "Oct 26, 2026, 6:55:46 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0947087678f465b64eba2acebe808d5c6cfea036\nhttps://git.kernel.org/stable/c/4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851\n",
   "aliases": "CVE-2026-98439\nGHSA-xm6x-r8m7-4r79\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "05613c71-fb10-3142-92ed-f576645fb8b1",
@@ -21,24 +21,34 @@
       "product_version": "patch: 7.2.7"
     },
     {
-      "id": "294cbefd-bd70-35dc-9acc-0e8acd580340",
+      "id": "3821fce5-9dea-334a-933a-e67b5c1101b0",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0947087678f465b64eba2acebe808d5c6cfea036"
+      "product_version": "patch: 0"
     },
     {
-      "id": "2d6750a4-3dc0-3661-ba01-29caf594de81",
+      "id": "3fcedbc7-4d4b-3c68-8b57-d0ac9e7f03bf",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <7.2.7"
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <0947087678f465b64eba2acebe808d5c6cfea036"
+    },
+    {
+      "id": "85b5abf4-4ce8-3c9b-ba2e-60711fb3a60a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.15"
     },
     {
       "id": "b9fe0700-caf9-3c01-90cd-4c814abb6e5a",
@@ -51,14 +61,14 @@
       "product_version": "patch: 7.3"
     },
     {
-      "id": "d634c396-ad4e-30d9-aab2-22f49a02ae70",
+      "id": "f501af74-bf5e-39d1-b983-59763fd10b2b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851"
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851"
     }
   ],
   "enisaIdVendor": [
