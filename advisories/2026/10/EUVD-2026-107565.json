@@ -3,11 +3,11 @@
   "enisaUuid": "041475e3-b98d-3f0e-a991-33f65af3ab27",
   "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
   "datePublished": "Oct 21, 2026, 8:56:26 PM",
-  "dateUpdated": "Oct 26, 2026, 11:03:04 AM",
+  "dateUpdated": "Oct 27, 2026, 9:54:13 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
   "aliases": "GHSA-jrx5-4fv3-4mcq\nCVE-2026-114406\n",
   "assigner": "redhat",
   "epss": 0.31,
@@ -41,6 +41,26 @@
         }
       },
       "product_version": "patch: 2026.2.92_v9.0.319-1.hum1"
+    },
+    {
+      "id": "138fbdcb-07a8-37e1-95eb-8cf165e0edcf",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.14",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 414.92.202610242240-0"
+    },
+    {
+      "id": "14ce5906-3243-3285-b008-0f0d99f027ec",
+      "product": {
+        "name": "Red Hat Enterprise Linux 6 Extended Lifecycle Support  - EXTENSION",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2026.2.92_v9.0.319-60.3.el6_10"
     },
     {
       "id": "1f93fc05-56ca-3514-af75-630785156646",
@@ -91,6 +111,16 @@
         }
       },
       "product_version": "patch: 1792835571"
+    },
+    {
+      "id": "650cfd6f-68b7-3ffc-a5f4-77a551787c2c",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.12",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 412.86.202610250235-0"
     },
     {
       "id": "6cd69c50-b952-39a9-a6ec-eb2ba1c7572a",
@@ -151,6 +181,16 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-100.3.el10_0"
+    },
+    {
+      "id": "a18e6726-4255-324a-8d79-d0ca9b0288cb",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.18",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 418.94.202610242013-0"
     },
     {
       "id": "a71c2dcf-53bc-3509-9bea-ae92bce3d900",
@@ -221,6 +261,26 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-90.3.el9_6"
+    },
+    {
+      "id": "c2967f31-656d-39d4-8481-57fefcdc37ca",
+      "product": {
+        "name": "Red Hat Enterprise Linux 6 Extended Lifecycle Support  - EXTENSION",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:3.44.0-15.el6_10"
+    },
+    {
+      "id": "c3bb7f98-be25-3ab1-a621-8093a151c053",
+      "product": {
+        "name": "Red Hat OpenShift Container Platform 4.16",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 416.94.202610242150-0"
     },
     {
       "id": "c847e5db-aae3-37dd-8c0e-f73955e28745",

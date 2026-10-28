@@ -3,14 +3,14 @@
   "enisaUuid": "9bd2c512-cd0e-351d-9cb7-f995831f99a8",
   "description": "MLflow 3.17.1 and earlier contains a path traversal vulnerability in the FileStore tracking backend that allows unauthenticated attackers to control filesystem paths by submitting a crafted trace ID containing traversal sequences to the POST /api/3.0/mlflow/traces endpoint. Attackers can exploit FileStore.start_trace() to write trace_info.yaml, request_metadata, and tag files with attacker-controlled metadata outside the intended experiment trace directory, subject to the server process's filesystem permissions. FileStore is the default tracking backend before MLflow 3.7.0 and opt-in thereafter (the default changed to a SQLite database), so deployments in the earlier part of the affected range are vulnerable without special configuration while later ones are affected only when FileStore is explicitly selected.",
   "datePublished": "Oct 19, 2026, 9:05:16 PM",
-  "dateUpdated": "Oct 20, 2026, 5:34:23 PM",
+  "dateUpdated": "Oct 27, 2026, 10:14:10 AM",
   "baseScore": 8.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N",
   "references": "https://github.com/SaiTeja-Erukude/CVE-2026-53995-mlflow-path-traversal\nhttps://github.com/mlflow/mlflow/pull/26842\nhttps://www.vulncheck.com/advisories/mlflow-path-traversal-via-trace-id-api\n",
   "aliases": "CVE-2026-53995\nGHSA-wqmh-qccw-pqwf\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.6,
   "enisaIdProduct": [
     {
       "id": "f3fdfd1a-7ff1-3efa-84a3-d5ed4484bcd8",

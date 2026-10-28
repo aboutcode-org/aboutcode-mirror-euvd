@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-108265",
   "enisaUuid": "0cdcff98-21fe-3654-88fc-b5539d69129b",
-  "description": "PhpSpreadsheet is a pure PHP library for reading and writing spreadsheet files. Prior to 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0, XmlScanner::scan in src/PhpSpreadsheet/Reader/Security/XmlScanner.php uses a DOCTYPE detection pattern that accounts for NUL-byte interleaving but not ISO-2022 escape sequences in XLSX XML parts. The escape sequences prevent the scanner from matching the declaration, and XML charset normalization then removes the escape bytes before parsing, exposing a valid DOCTYPE and entity definitions. Processing an attacker-controlled XLSX can therefore cause entity-expansion denial of service on supported PHP versions and can permit local file access or SSRF on PHP before 8.0 or when LIBXML_NOENT is enabled. This issue is fixed in versions 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0.",
-  "datePublished": "Oct 22, 2026, 5:29:56 PM",
-  "dateUpdated": "Oct 23, 2026, 9:08:28 PM",
+  "description": "PhpSpreadsheet: XmlScanner Bypass via ISO-2022 Escape Sequences Allows XXE and Denial of Service",
+  "datePublished": "Oct 27, 2026, 3:38:28 PM",
+  "dateUpdated": "Oct 27, 2026, 3:38:28 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:H/SC:L/SI:N/SA:N",
-  "references": "https://github.com/PHPOffice/PhpSpreadsheet/security/advisories/GHSA-3x94-m842-937c\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/299993894dce37aa3b64aa23e9a3f4bb77ab0e66\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/89f455c133e1a7e2d4abfadc43ce29eb7450d781\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/980b5c294493856f1a25754f1e8a1d2185b93738\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/9a0b48622ebfe93fa48cb9bc09ce57303bb07af9\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/da13f40e8760d599b0e8a296017d4b028b20e86c\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/1.30.7\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/2.1.19\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/2.4.8\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/3.10.8\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/5.10.0\n",
-  "aliases": "CVE-2026-108358\n",
+  "references": "https://github.com/PHPOffice/PhpSpreadsheet/security/advisories/GHSA-3x94-m842-937c\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/299993894dce37aa3b64aa23e9a3f4bb77ab0e66\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/89f455c133e1a7e2d4abfadc43ce29eb7450d781\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/980b5c294493856f1a25754f1e8a1d2185b93738\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/9a0b48622ebfe93fa48cb9bc09ce57303bb07af9\nhttps://github.com/PHPOffice/PhpSpreadsheet/commit/da13f40e8760d599b0e8a296017d4b028b20e86c\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/1.30.7\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/2.1.19\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/2.4.8\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/3.10.8\nhttps://github.com/PHPOffice/PhpSpreadsheet/releases/tag/5.10.0\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-108358\n",
+  "aliases": "GHSA-3x94-m842-937c\nCVE-2026-108358\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.48,
   "enisaIdProduct": [
     {
       "id": "27c8b8c1-4a3c-34ff-a90c-93ee878b6b56",

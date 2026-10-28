@@ -3,14 +3,14 @@
   "enisaUuid": "0248f3af-ec4d-3552-8b61-5ee684c710dd",
   "description": "Tandoor Recipes before 2.7.0 contains an improper cache-key design in cookbook/helper/permission_helper.py that allows authenticated users to retain stale group-based permissions across different spaces by exploiting a cache key keyed only on user id while omitting the active space, with the cached entry's TTL refreshed on every request. Attackers can create their own space to obtain an admin group designation, then switch their active space to a victim space where they hold lesser privileges, causing the stale cached admin decision to authorize elevated access and bypass group revocations or demotions across multiple permission classes and views.",
   "datePublished": "Oct 23, 2026, 6:15:16 PM",
-  "dateUpdated": "Oct 23, 2026, 8:55:58 PM",
+  "dateUpdated": "Oct 27, 2026, 10:14:04 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/TandoorRecipes/recipes/security/advisories/GHSA-69q3-5q6x-7hmx\nhttps://github.com/TandoorRecipes/recipes/releases/tag/2.7.0\nhttps://github.com/TandoorRecipes/recipes/commit/1285f5009aa166c0d6f8658849eed5686294d5e9\nhttps://www.vulncheck.com/advisories/tandoor-recipes-cross-space-permission-cache-poisoning\n",
   "aliases": "CVE-2026-112342\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "66efd4e3-9ee0-3a6b-82a7-6a64294f8503",

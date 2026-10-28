@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-105299",
   "enisaUuid": "138e1323-a0df-35da-bbd4-dfb777ab4b5d",
-  "description": "virtualenv: Xonsh activation literals depend on the script decoding codec",
-  "datePublished": "Oct 23, 2026, 10:24:43 PM",
-  "dateUpdated": "Oct 23, 2026, 10:24:43 PM",
+  "description": "virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, POSIX xonsh activation quote() uses repr() to write printable non-ASCII prompt or destination data into UTF-8 activate.xsh, while xonsh can read that script using $XONSH_ENCODING. Under a legacy multibyte codec such as GBK or Big5, a UTF-8 trail byte can consume the backslash before an adjacent quote, allowing the literal to close and attacker-influenced statements to execute when the user sources the generated script. This issue is fixed in version 21.14.9.",
+  "datePublished": "Oct 20, 2026, 7:39:52 PM",
+  "dateUpdated": "Oct 27, 2026, 1:33:36 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/pypa/virtualenv/security/advisories/GHSA-394h-qwmc-48pf\nhttps://github.com/pypa/virtualenv/pull/3432\nhttps://github.com/pypa/virtualenv/commit/e5fc2e6e189a877ff559af288919e3525d13e5e0\nhttps://github.com/pypa/virtualenv/releases/tag/21.14.9\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-113718\n",
+  "references": "https://github.com/pypa/virtualenv/security/advisories/GHSA-394h-qwmc-48pf\nhttps://github.com/pypa/virtualenv/pull/3432\nhttps://github.com/pypa/virtualenv/commit/e5fc2e6e189a877ff559af288919e3525d13e5e0\nhttps://github.com/pypa/virtualenv/releases/tag/21.14.9\n",
   "aliases": "CVE-2026-113718\nGHSA-394h-qwmc-48pf\n",
   "assigner": "GitHub_M",
-  "epss": 0.14,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "4fcb3daf-1219-392f-b027-74442152dd41",

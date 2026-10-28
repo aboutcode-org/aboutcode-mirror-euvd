@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-102321",
   "enisaUuid": "26c0e506-f891-34b1-a77b-c323d069ab64",
-  "description": "undici is an HTTP client library for Node.js. In versions 5.15.0 through 6.29.0, 7.0.0 through 7.30.0, and 8.0.0 through 8.12.1, its WebSocket client, including the bundled WebSocket exposed by Node.js, can be driven to exhaust process memory by a malicious or compromised WebSocket server. For every PING frame received, the client automatically writes a PONG response and ignores the backpressure signal from the socket write, so a server that streams small PING frames while never reading the client's PONGs makes the outbound write queue and heap grow without bound until the Node.js process runs out of memory and terminates. The attack is remote and unauthenticated, needs only a normal WebSocket connection, and is asymmetric, since small inbound PINGs produce a much larger retained outbound queue, with availability the only impact. The issue is fixed in undici 6.29.1, 7.30.1, and 8.12.2, which pause WebSocket frame parsing when the automatic PONG response hits socket backpressure and resume on drain, bounding the outbound queue, and users should upgrade to one of those versions or later. There is no workaround.",
-  "datePublished": "Oct 15, 2026, 6:44:22 PM",
-  "dateUpdated": "Oct 16, 2026, 8:00:38 PM",
+  "description": "undici WebSocket client vulnerable to Denial of Service via unbounded automatic PONG buffering",
+  "datePublished": "Oct 27, 2026, 7:02:15 PM",
+  "dateUpdated": "Oct 27, 2026, 7:02:16 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-9fm3-97px-rjf6\nhttps://cna.openjsf.org/security-advisories.html\n",
-  "aliases": "CVE-2026-109932\n",
+  "references": "https://github.com/nodejs/undici/security/advisories/GHSA-9fm3-97px-rjf6\nhttps://cna.openjsf.org/security-advisories.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-109932\nhttps://github.com/nodejs/undici/commit/39f93e142df03e559fe7c3d1fc7fba9beee2c185\nhttps://github.com/nodejs/undici/commit/53944624462b6797560288c55dbd8c66857bb495\nhttps://github.com/nodejs/undici/commit/b217373bb024cd93f85eb5b3ffd25684855f60f8\nhttps://github.com/nodejs/undici/releases/tag/v6.29.1\nhttps://github.com/nodejs/undici/releases/tag/v7.30.1\nhttps://github.com/nodejs/undici/releases/tag/v8.12.2\n",
+  "aliases": "GHSA-9fm3-97px-rjf6\nCVE-2026-109932\n",
   "assigner": "openjs",
-  "epss": 0.0,
+  "epss": 0.32,
   "enisaIdProduct": [
     {
       "id": "1fbc87c4-8a94-3f9f-8bc2-472d1c34561b",
