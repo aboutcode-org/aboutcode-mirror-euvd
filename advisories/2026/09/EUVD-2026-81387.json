@@ -3,15 +3,25 @@
   "enisaUuid": "05e3c4b1-827f-38ca-b0f9-405f1308513f",
   "description": "A flaw was found in flatpak-builder where Git hooks are not disabled when applying patch sources with use-git-am: true. An attacker who can provide a malicious source containing a Git post-applypatch hook can cause the hook to execute on the host during the build process, resulting in arbitrary code execution with the privileges of the user running flatpak-builder.",
   "datePublished": "Sep 17, 2026, 7:27:33 AM",
-  "dateUpdated": "Oct 21, 2026, 11:21:31 AM",
+  "dateUpdated": "Oct 28, 2026, 6:49:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:80495\nhttps://access.redhat.com/errata/RHSA-2026:80496\nhttps://access.redhat.com/errata/RHSA-2026:80973\nhttps://access.redhat.com/errata/RHSA-2026:84832\nhttps://access.redhat.com/errata/RHSA-2026:84833\nhttps://access.redhat.com/errata/RHSA-2026:84834\nhttps://access.redhat.com/errata/RHSA-2026:84842\nhttps://access.redhat.com/errata/RHSA-2026:86714\nhttps://access.redhat.com/security/cve/CVE-2026-86320\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2471023\nhttps://github.com/flatpak/flatpak-builder/security/advisories/GHSA-j5p8-jgjc-f3xv\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:80495\nhttps://access.redhat.com/errata/RHSA-2026:80496\nhttps://access.redhat.com/errata/RHSA-2026:80973\nhttps://access.redhat.com/errata/RHSA-2026:84832\nhttps://access.redhat.com/errata/RHSA-2026:84833\nhttps://access.redhat.com/errata/RHSA-2026:84834\nhttps://access.redhat.com/errata/RHSA-2026:84842\nhttps://access.redhat.com/errata/RHSA-2026:86714\nhttps://access.redhat.com/errata/RHSA-2026:90896\nhttps://access.redhat.com/security/cve/CVE-2026-86320\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2471023\nhttps://github.com/flatpak/flatpak-builder/security/advisories/GHSA-j5p8-jgjc-f3xv\n",
   "aliases": "CVE-2026-86320\nGHSA-rvpr-5p35-6vf8\n",
   "assigner": "redhat",
-  "epss": 0.24,
+  "epss": 0.29,
   "enisaIdProduct": [
+    {
+      "id": "0a506083-9efe-3efe-8ba4-e058ef4e037b",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.0.9-4.el8_6"
+    },
     {
       "id": "147e501a-8554-3f2e-9dd5-fe97f9cd33e3",
       "product": {
@@ -101,6 +111,16 @@
         }
       },
       "product_version": "patch: 0:1.2.3-2.el8_10"
+    },
+    {
+      "id": "fdba9ab6-30cb-3dd8-91e9-8bea64d6c0f7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.0.9-4.el8_6"
     }
   ],
   "enisaIdVendor": [

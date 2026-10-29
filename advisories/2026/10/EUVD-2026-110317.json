@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-110317",
   "enisaUuid": "013ccf16-9bee-3e53-b31f-12f212be2c65",
-  "description": "systeminformation is a System and OS information library for node.js. Prior to 5.33.16, services() in lib/processes.js inserts a caller-supplied service name into a PowerShell Get-CimInstance filter after processing it with sanitizeShellString() in lib/util.js. On Windows, the sanitizer removes ASCII quotes but permits Unicode quotation marks that PowerShell accepts as string delimiters, allowing crafted input to terminate the filter and place a PowerShell expression in the command executed by util.powerShell(). The expression runs with the Node.js process account's permissions and may read or change accessible files, alter application data, or disrupt the service. The package does not expose a network service itself, so remote reachability depends on a consuming application forwarding attacker-controlled input to services() or getDynamicData(). This issue is fixed in version 5.33.16.",
-  "datePublished": "Oct 26, 2026, 8:18:33 PM",
-  "dateUpdated": "Oct 26, 2026, 8:18:33 PM",
+  "description": "systeminformation vulnerable to Windows command injection in services() through Unicode quotation marks",
+  "datePublished": "Oct 28, 2026, 10:42:49 PM",
+  "dateUpdated": "Oct 28, 2026, 10:42:49 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://github.com/sebhildebrandt/systeminformation/security/advisories/GHSA-3f7j-7jwc-fxfj\nhttps://github.com/sebhildebrandt/systeminformation/commit/5014c6d25cfce7363b937977327baa853cdba0bf\nhttps://github.com/sebhildebrandt/systeminformation/releases/tag/v5.33.16\n",
-  "aliases": "CVE-2026-116576\n",
+  "references": "https://github.com/sebhildebrandt/systeminformation/security/advisories/GHSA-3f7j-7jwc-fxfj\nhttps://github.com/sebhildebrandt/systeminformation/commit/5014c6d25cfce7363b937977327baa853cdba0bf\nhttps://github.com/sebhildebrandt/systeminformation/releases/tag/v5.33.16\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-116576\n",
+  "aliases": "GHSA-3f7j-7jwc-fxfj\nCVE-2026-116576\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "9b45f8e7-4c44-3720-807c-e26146b71fdf",
