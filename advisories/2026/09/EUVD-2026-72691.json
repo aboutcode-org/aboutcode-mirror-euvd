@@ -3,14 +3,14 @@
   "enisaUuid": "a6e7768a-35b0-386f-b26d-9a5225b6bb48",
   "description": "A flaw was found in libxml2 with Python bindings enabled. A remote attacker could exploit this vulnerability by providing a specially crafted XML document containing a Document Type Definition (DTD) with enumerated attribute values. This triggers a double-free error in the SAX attributeDecl callback handler, where a string is freed twice. This flaw can lead to a denial of service (DoS) due to a reproducible crash in Python applications using the libxml2 SAX bindings.",
   "datePublished": "Sep 8, 2026, 11:27:45 AM",
-  "dateUpdated": "Oct 26, 2026, 4:16:12 PM",
+  "dateUpdated": "Oct 29, 2026, 7:53:12 PM",
   "baseScore": 8.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:64463\nhttps://access.redhat.com/errata/RHSA-2026:71585\nhttps://access.redhat.com/errata/RHSA-2026:71586\nhttps://access.redhat.com/errata/RHSA-2026:71641\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:82939\nhttps://access.redhat.com/errata/RHSA-2026:89750\nhttps://access.redhat.com/errata/RHSA-2026:89759\nhttps://access.redhat.com/errata/RHSA-2026:90309\nhttps://access.redhat.com/security/cve/CVE-2026-74860\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2529697\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:64463\nhttps://access.redhat.com/errata/RHSA-2026:71585\nhttps://access.redhat.com/errata/RHSA-2026:71586\nhttps://access.redhat.com/errata/RHSA-2026:71641\nhttps://access.redhat.com/errata/RHSA-2026:72470\nhttps://access.redhat.com/errata/RHSA-2026:72475\nhttps://access.redhat.com/errata/RHSA-2026:72476\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:82939\nhttps://access.redhat.com/errata/RHSA-2026:89750\nhttps://access.redhat.com/errata/RHSA-2026:89759\nhttps://access.redhat.com/errata/RHSA-2026:90309\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:92352\nhttps://access.redhat.com/security/cve/CVE-2026-74860\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2529697\n",
   "aliases": "GHSA-8626-cqqj-mfff\nCVE-2026-74860\n",
   "assigner": "redhat",
-  "epss": 0.45,
+  "epss": 0.66,
   "enisaIdProduct": [
     {
       "id": "0440a6f2-3f82-3f2f-9a39-99ac60e45f78",
@@ -23,6 +23,16 @@
       "product_version": "patch: 1790589912"
     },
     {
+      "id": "07f50843-c865-3537-8f4a-b94c60a44fbe",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042072"
+    },
+    {
       "id": "0a7979a2-e877-38d1-a210-f950b8f734c7",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -33,6 +43,16 @@
       "product_version": "patch: 1791978693"
     },
     {
+      "id": "13b3a552-c81d-33cd-9be2-fea04ac78a94",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042004"
+    },
+    {
       "id": "21f6db69-4497-334f-9c29-e5f3792b66b3",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -41,6 +61,36 @@
         }
       },
       "product_version": "patch: 1791978528"
+    },
+    {
+      "id": "279dd081-4d20-3e8e-a1ac-d9af50e4ea8c",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793041981"
+    },
+    {
+      "id": "29dbc72f-4f3d-3394-b2b0-ad8e3e4ae809",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793041995"
+    },
+    {
+      "id": "33a93fb2-67bb-326d-8390-d9360eba09bb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042008"
     },
     {
       "id": "3413db11-3e17-36bf-bb68-c07e3c69535a",
@@ -63,6 +113,16 @@
       "product_version": "patch: 1791978534"
     },
     {
+      "id": "459e94b9-c54c-33af-aceb-813ea4b55dae",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042088"
+    },
+    {
       "id": "4fa65fdb-d253-3583-a1c2-03ab925299ab",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -83,6 +143,26 @@
       "product_version": "patch: 0:2.9.13-14.el9_8.5"
     },
     {
+      "id": "6005fedb-c0e6-36e0-b516-6447f814ba4c",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042067"
+    },
+    {
+      "id": "629925a3-d59b-33f1-9b7c-cdc9768fe4f5",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042114"
+    },
+    {
       "id": "68768458-afa6-31c8-ac90-7defd10bacbc",
       "product": {
         "name": "Red Hat Hardened Images",
@@ -91,6 +171,46 @@
         }
       },
       "product_version": "patch: 2.15.4-0.1.hum1"
+    },
+    {
+      "id": "6db2d2ec-ac06-38ec-bee6-53f9d2bf6b1b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042092"
+    },
+    {
+      "id": "6f3fb589-24ca-32d2-a6b2-ae82e3425f0a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042074"
+    },
+    {
+      "id": "7b5b8719-7e57-359a-94ab-94adc949bab0",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793041986"
+    },
+    {
+      "id": "858b09e8-20f1-3fcd-ae00-dc9d70b8cd88",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042117"
     },
     {
       "id": "922689bb-c16e-3cc1-a8f9-a2bc0c532cf1",
@@ -113,6 +233,26 @@
       "product_version": "patch: 0:2.9.7-21.el8_10.9"
     },
     {
+      "id": "a9a68f2a-7aaf-3d93-a223-d45a73387626",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042086"
+    },
+    {
+      "id": "b04dc3cf-3b13-31ed-a588-47c06fa8c53e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042008"
+    },
+    {
       "id": "b076056f-1d88-37e9-8f11-b1b5031da2f9",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -123,6 +263,16 @@
       "product_version": "patch: 0:2.12.5-10.el10_2.4"
     },
     {
+      "id": "b255614d-44c0-3737-81f9-5050e6a7392c",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042145"
+    },
+    {
       "id": "bd9a55e7-9764-3db1-97df-7c7bb982132e",
       "product": {
         "name": "Cert Manager support for Red Hat OpenShift release 1.20",
@@ -131,6 +281,56 @@
         }
       },
       "product_version": "patch: 1790589855"
+    },
+    {
+      "id": "c4722a88-43a4-35f7-8b5b-0c3f64da7516",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042024"
+    },
+    {
+      "id": "c67f75b0-d133-301c-83c7-ea2f9711148a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.9.13-3.el9_2.20"
+    },
+    {
+      "id": "c8f72017-d76a-305d-ae95-f15d12d84f1a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042011"
+    },
+    {
+      "id": "cca987e8-4ae7-33f2-9f88-e5f95e1071f9",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042093"
+    },
+    {
+      "id": "d232e060-7d77-3adf-9e18-ea8c834b8ecb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042162"
     },
     {
       "id": "d58e2d3c-edc2-3d66-86f8-5f60d1991a95",
@@ -153,6 +353,16 @@
       "product_version": "patch: 0:2.9.13-13.el9_4.10"
     },
     {
+      "id": "d999c506-a84a-3c1c-bb93-8ada041489d0",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793041987"
+    },
+    {
       "id": "def7c16a-cca1-3df8-84df-749f1728ba76",
       "product": {
         "name": "Red Hat Cost Management On-Premise 1",
@@ -161,6 +371,26 @@
         }
       },
       "product_version": "patch: 1791460851"
+    },
+    {
+      "id": "e5492e11-1b02-3ab2-88dd-9c60a685705f",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042010"
+    },
+    {
+      "id": "ed1ccfe9-c289-32ec-beff-bbd2026a133a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793042006"
     }
   ],
   "enisaIdVendor": [

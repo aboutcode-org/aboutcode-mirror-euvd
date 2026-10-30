@@ -3,14 +3,14 @@
   "enisaUuid": "3896b11d-617f-3457-8976-02ac209cd4e8",
   "description": "A flaw was found in librsvg. When processing an SVG document containing nested XML inclusions (Xincludes) with duplicate entity declarations, a use-after-free error can occur. This vulnerability arises because the library incorrectly frees an XML entity that is still in use by the parser. An attacker could potentially exploit this to cause a denial of service or execute arbitrary code.",
   "datePublished": "Sep 23, 2026, 7:40:14 PM",
-  "dateUpdated": "Oct 21, 2026, 4:48:41 PM",
+  "dateUpdated": "Oct 29, 2026, 7:38:07 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86331\nhttps://access.redhat.com/errata/RHSA-2026:86841\nhttps://access.redhat.com/errata/RHSA-2026:86842\nhttps://access.redhat.com/errata/RHSA-2026:86921\nhttps://access.redhat.com/security/cve/CVE-2026-96889\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2539279\nhttps://crates.io/crates/librsvg\nhttps://gitlab.gnome.org/GNOME/librsvg/-/work_items/1241\nhttps://rustsec.org/advisories/RUSTSEC-2026-0305.html\n",
-  "aliases": "CVE-2026-96889\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:86331\nhttps://access.redhat.com/errata/RHSA-2026:86841\nhttps://access.redhat.com/errata/RHSA-2026:86842\nhttps://access.redhat.com/errata/RHSA-2026:86921\nhttps://access.redhat.com/errata/RHSA-2026:92212\nhttps://access.redhat.com/errata/RHSA-2026:92213\nhttps://access.redhat.com/errata/RHSA-2026:92214\nhttps://access.redhat.com/errata/RHSA-2026:92218\nhttps://access.redhat.com/errata/RHSA-2026:92336\nhttps://access.redhat.com/errata/RHSA-2026:92353\nhttps://access.redhat.com/errata/RHSA-2026:92382\nhttps://access.redhat.com/errata/RHSA-2026:92579\nhttps://access.redhat.com/security/cve/CVE-2026-96889\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2539279\nhttps://crates.io/crates/librsvg\nhttps://gitlab.gnome.org/GNOME/librsvg/-/work_items/1241\nhttps://rustsec.org/advisories/RUSTSEC-2026-0305.html\n",
+  "aliases": "GHSA-cpvr-w4j5-2mpg\nCVE-2026-96889\n",
   "assigner": "redhat",
-  "epss": 0.15,
+  "epss": 0.53,
   "enisaIdProduct": [
     {
       "id": "1933fa59-e537-3aae-af89-a360e8a74e7f",
@@ -23,6 +23,46 @@
       "product_version": "patch: 0:1.0.1-1.el10_2.2"
     },
     {
+      "id": "1ebfcb79-ad79-31d1-afb4-73aca3f32de3",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_4.1"
+    },
+    {
+      "id": "2a7d85ec-d312-3ca9-8b70-69997a1a5ac3",
+      "product": {
+        "name": "Red Hat Enterprise Linux 7 Extended Lifecycle Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.40.20-1.el7_9.1"
+    },
+    {
+      "id": "34dbd4e2-da4d-329c-8ce9-c4cc39496e86",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_4.1"
+    },
+    {
+      "id": "449fef43-38fd-3a17-8e7a-9bea37d0368e",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_6.1"
+    },
+    {
       "id": "838af168-7573-3e8c-b868-1077079777a0",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -33,6 +73,66 @@
       "product_version": "patch: 0:2.57.1-9.el10_2.10"
     },
     {
+      "id": "9e2cbc43-44d6-38ef-ae1c-9fecd6d180c9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_8.1"
+    },
+    {
+      "id": "a48d6897-e480-342b-b9b3-0b4ab699eb88",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.6 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.50.7-3.el9_6.1"
+    },
+    {
+      "id": "a4cd1011-4e29-3055-985e-2ecd2f2c1308",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_8.1"
+    },
+    {
+      "id": "aac0b408-c50c-3142-a20f-7c062f7979b7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.42.7-4.el8_6.1"
+    },
+    {
+      "id": "c73796fa-0dea-3671-b1e0-9b514a9c35e3",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.50.7-1.el9_2.2"
+    },
+    {
+      "id": "cdfae145-85cc-352b-9a71-c36ca014ac2d",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10.0 Extended Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.57.1-9.el10_0.1"
+    },
+    {
       "id": "d5dd5024-619d-3261-bac9-53abed72c1c2",
       "product": {
         "name": "Red Hat Enterprise Linux 8",
@@ -41,6 +141,16 @@
         }
       },
       "product_version": "patch: 0:2.42.7-6.el8_10"
+    },
+    {
+      "id": "e5c9ed5c-7434-3c49-97d4-f77d7ea6dfae",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:2.50.7-3.el9_4.1"
     },
     {
       "id": "fd39d81b-88b4-309d-add9-340af60a0abb",

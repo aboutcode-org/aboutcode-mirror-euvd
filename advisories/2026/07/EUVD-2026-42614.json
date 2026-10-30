@@ -3,19 +3,19 @@
   "enisaUuid": "59bd5132-3422-3fc4-9231-3d91bfca250a",
   "description": "The Tag plugin for GLPI 11 before 2.14.4 stores the tag name without HTML sanitization and renders it into the Kanban badge markup via PluginTagTag::preKanbanContent() without output escaping, resulting in stored cross-site scripting. An authenticated user with TAG MANAGEMENT create or update rights can set a tag name containing HTML, which then executes in the browser of any user who opens the Kanban view of a ticket, problem, change, or project the tag is attached to.",
   "datePublished": "Jul 9, 2026, 3:44:04 PM",
-  "dateUpdated": "Jul 9, 2026, 5:49:14 PM",
+  "dateUpdated": "Oct 29, 2026, 9:15:42 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/pluginsGLPI/tag/security/advisories/GHSA-6rpj-89c7-x2mh\nhttps://github.com/pluginsGLPI/tag/releases/tag/2.14.4\nhttps://github.com/pluginsGLPI/tag\nhttps://github.com/pluginsGLPI/tag/commit/49e6b6eb5f83bcd84139a5e5ec54c0ddd14acc90\n",
+  "references": "https://github.com/pluginsGLPI/tag/security/advisories/GHSA-6rpj-89c7-x2mh\nhttps://github.com/pluginsGLPI/tag/releases/tag/2.14.4\nhttps://github.com/pluginsGLPI/tag\nhttps://github.com/pluginsGLPI/tag/commit/49e6b6eb5f83bcd84139a5e5ec54c0ddd14acc90\nhttps://www.vulncheck.com/advisories/glpi-tag-plugin-stored-cross-site-scripting-in-kanban-badge-rendering\n",
   "aliases": "GHSA-qc6r-wrm6-23pm\nCVE-2026-53987\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
-      "id": "e5773387-f2ea-38de-bd5d-2c2e260f8341",
+      "id": "a05987c0-dabf-386a-b260-726ba1269669",
       "product": {
-        "name": "GLPI 11",
+        "name": "tag",
         "vendor": {
           "name": "pluginsGLPI"
         }
