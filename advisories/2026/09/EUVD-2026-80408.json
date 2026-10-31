@@ -3,14 +3,14 @@
   "enisaUuid": "52993c2b-0703-37d6-be62-cc24e719e46c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix the case that vm range is hole at svm_migrate_copy_to_vram\n\nWhen migration vm range is hole at cpu side(MIGRATE_PFN_MIGRATE set +\nMIGRATE_PFN_VALID unset) driver still allocates device pages. There is no\ndma map of src pages and migration. j is 0 and svm_migrate_copy_memory_gart()\nwill return an uninitialized r. That can trigger out_free_vram_pages to drop\nall VRAM just set up.\n\nInitialize r and only call the last svm_migrate_copy_memory_gart if j > 0.\n\nCurrent code postponed the last page to the final copy. This patch flushes on\nthe last page when reach to the end of current drm_buddy_block; avoids another\nsvm_migrate_copy_memory_gart.",
   "datePublished": "Sep 16, 2026, 10:30:41 AM",
-  "dateUpdated": "Oct 21, 2026, 12:48:49 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:06 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/6e1a6f3ddb87d7f89a775c55fb399680c02bdcc2\nhttps://git.kernel.org/stable/c/bd1adb2e5101db649121b59e601c92773a302a70\nhttps://git.kernel.org/stable/c/ae806a95b28fcecb913430cfa45a252e91a945d6\nhttps://git.kernel.org/stable/c/0a9a0e8a97da70a0336c9115178aaf1be29bcfb1\nhttps://git.kernel.org/stable/c/520e345ffe05aabef1db82beda4288afb1757ff2\n",
+  "references": "https://git.kernel.org/stable/c/d5872c81c70163a3ba9eb4da9a94c92b03067576\nhttps://git.kernel.org/stable/c/6e1a6f3ddb87d7f89a775c55fb399680c02bdcc2\nhttps://git.kernel.org/stable/c/bd1adb2e5101db649121b59e601c92773a302a70\nhttps://git.kernel.org/stable/c/ae806a95b28fcecb913430cfa45a252e91a945d6\nhttps://git.kernel.org/stable/c/0a9a0e8a97da70a0336c9115178aaf1be29bcfb1\nhttps://git.kernel.org/stable/c/520e345ffe05aabef1db82beda4288afb1757ff2\n",
   "aliases": "GHSA-r66w-v4mr-3pxg\nCVE-2026-89808\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "3587a628-cbf9-3672-9846-c627a3ea7585",
@@ -51,6 +51,16 @@
         }
       },
       "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "7b7ceacb-e077-3679-899b-7c98147b41c8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50ea50cf6f6d31d3235ad1853c5dbea766a3ed11 <d5872c81c70163a3ba9eb4da9a94c92b03067576"
     },
     {
       "id": "819efa6f-e09a-3c1e-8793-968fc5c7a66f",
@@ -121,6 +131,16 @@
         }
       },
       "product_version": "50ea50cf6f6d31d3235ad1853c5dbea766a3ed11 <0a9a0e8a97da70a0336c9115178aaf1be29bcfb1"
+    },
+    {
+      "id": "f2b24ddf-8dbd-3ca1-81ad-953490d220fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f3014c05-e73f-38ae-969c-a2083b9ba188",

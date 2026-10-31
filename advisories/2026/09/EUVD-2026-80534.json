@@ -3,9 +3,9 @@
   "enisaUuid": "c4024054-2199-3fb5-a53b-2fa69cbfd384",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: light: ltrf216a: fix runtime PM reference leak in error path\n\nltrf216a_get_lux() acquires a runtime PM reference by calling\nltrf216a_set_power_state(data, true). However, if\nltrf216a_read_data() fails, the function returns immediately without\ndropping the reference.\n\nThis leaves the runtime PM usage count unbalanced, preventing the device\nfrom autosuspending after a failed read.\n\nFix this by releasing the runtime PM reference before returning from the\nerror path.",
   "datePublished": "Sep 16, 2026, 10:32:24 AM",
-  "dateUpdated": "Oct 21, 2026, 12:49:12 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4bf5525c6ff4a9f8df35bcc227a918b6396b2cb5\nhttps://git.kernel.org/stable/c/c4f003d8578f5718fe1ec332bc89f9ff69fd205b\nhttps://git.kernel.org/stable/c/0614928a3eda35bddd8c2f02311e286b59bbe746\nhttps://git.kernel.org/stable/c/80e7381e8cccb543397572af153865f34aaf4353\nhttps://git.kernel.org/stable/c/c132aef0e757a39036b1d40faf0569f2e343b13e\n",
+  "references": "https://git.kernel.org/stable/c/a065b8b596d23de4b2e108d78ba34d17e723c865\nhttps://git.kernel.org/stable/c/4bf5525c6ff4a9f8df35bcc227a918b6396b2cb5\nhttps://git.kernel.org/stable/c/c4f003d8578f5718fe1ec332bc89f9ff69fd205b\nhttps://git.kernel.org/stable/c/0614928a3eda35bddd8c2f02311e286b59bbe746\nhttps://git.kernel.org/stable/c/80e7381e8cccb543397572af153865f34aaf4353\nhttps://git.kernel.org/stable/c/c132aef0e757a39036b1d40faf0569f2e343b13e\n",
   "aliases": "GHSA-jq92-qr7r-j3m3\nCVE-2026-89934\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -71,6 +71,16 @@
       "product_version": "patch: 6.6.160"
     },
     {
+      "id": "2c9acad3-8415-3572-981c-4334ca1c0f48",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "83f0bcd40d5cf88870d2f2bb8b97c772b92a3d1f <a065b8b596d23de4b2e108d78ba34d17e723c865"
+    },
+    {
       "id": "2fbc0dc5-7362-337e-ba93-a3a54c25ff76",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "83f0bcd40d5cf88870d2f2bb8b97c772b92a3d1f <c132aef0e757a39036b1d40faf0569f2e343b13e"
+    },
+    {
+      "id": "bbf4c0df-301e-3d96-8533-3e298fb423a3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "ea7b8627-66e0-3bed-8c21-449b1717fee9",

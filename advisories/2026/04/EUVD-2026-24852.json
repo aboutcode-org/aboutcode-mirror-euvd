@@ -3,15 +3,35 @@
   "enisaUuid": "c846f83b-0bb5-3d0c-9050-04d0cd5fd343",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (pmbus/core) Protect regulator operations with mutex\n\nThe regulator operations pmbus_regulator_get_voltage(),\npmbus_regulator_set_voltage(), and pmbus_regulator_list_voltage()\naccess PMBus registers and shared data but were not protected by\nthe update_lock mutex. This could lead to race conditions.\n\nHowever, adding mutex protection directly to these functions causes\na deadlock because pmbus_regulator_notify() (which calls\nregulator_notifier_call_chain()) is often called with the mutex\nalready held (e.g., from pmbus_fault_handler()). If a regulator\ncallback then calls one of the now-protected voltage functions,\nit will attempt to acquire the same mutex.\n\nRework pmbus_regulator_notify() to utilize a worker function to\nsend notifications outside of the mutex protection. Events are\nstored as atomics in a per-page bitmask and processed by the worker.\n\nInitialize the worker and its associated data during regulator\nregistration, and ensure it is cancelled on device removal using\ndevm_add_action_or_reset().\n\nWhile at it, remove the unnecessary include of linux/of.h.",
   "datePublished": "Apr 22, 2026, 1:54:11 PM",
-  "dateUpdated": "Oct 19, 2026, 6:45:53 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:16 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/b26849cffaa7c43355b82e9bef3725e786973a1a\nhttps://git.kernel.org/stable/c/acf04e2863132f6d9222f71f3a76fb9782cbe061\nhttps://git.kernel.org/stable/c/4e9d723d9f198b86f6882a84c501ba1f39e8d055\nhttps://git.kernel.org/stable/c/2c77ae315f3ce9d2c8e1609be74c9358c1fe4e07\nhttps://git.kernel.org/stable/c/754bd2b4a084b90b5e7b630e1f423061a9b9b761\n",
+  "references": "https://git.kernel.org/stable/c/f0c9ea9c3a208e79c812e10e2bcef87b46564f01\nhttps://git.kernel.org/stable/c/b26849cffaa7c43355b82e9bef3725e786973a1a\nhttps://git.kernel.org/stable/c/acf04e2863132f6d9222f71f3a76fb9782cbe061\nhttps://git.kernel.org/stable/c/4e9d723d9f198b86f6882a84c501ba1f39e8d055\nhttps://git.kernel.org/stable/c/2c77ae315f3ce9d2c8e1609be74c9358c1fe4e07\nhttps://git.kernel.org/stable/c/754bd2b4a084b90b5e7b630e1f423061a9b9b761\n",
   "aliases": "CVE-2026-31486\nGHSA-rgx6-c7rp-8r4x\n",
   "assigner": "Linux",
   "epss": 0.1,
   "enisaIdProduct": [
+    {
+      "id": "0f22371c-f6d0-31df-a760-6b5bf69b7d59",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ddbb4db4ced1ba784fcd3500179a7291b6c5d7b7 <f0c9ea9c3a208e79c812e10e2bcef87b46564f01"
+    },
+    {
+      "id": "138b5c9f-c185-3d35-bbb9-17c0fa7c0739",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "1e575320-6ca7-3e7d-b041-01775ac7564f",
       "product": {

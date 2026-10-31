@@ -3,14 +3,14 @@
   "enisaUuid": "974219b5-5075-3721-b7b2-4921f17bad8b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_netem: fix out-of-bounds access in packet corruption\n\nIn netem_enqueue(), the packet corruption logic uses\nget_random_u32_below(skb_headlen(skb)) to select an index for\nmodifying skb->data. When an AF_PACKET TX_RING sends fully non-linear\npackets over an IPIP tunnel, skb_headlen(skb) evaluates to 0.\n\nPassing 0 to get_random_u32_below() takes the variable-ceil slow path\nwhich returns an unconstrained 32-bit random integer. Using this\nunconstrained value as an offset into skb->data results in an\nout-of-bounds memory access.\n\nFix this by verifying skb_headlen(skb) is non-zero before attempting\nto corrupt the linear data area. Fully non-linear packets will silently\nbypass the corruption logic.",
   "datePublished": "Apr 25, 2026, 8:46:51 AM",
-  "dateUpdated": "Oct 19, 2026, 6:56:03 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:30 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/a14b56863348686dd0387eea8ce66b85cf455908\nhttps://git.kernel.org/stable/c/13a66ca1e235d4bcd53d12d4c68490cad7f8e46f\nhttps://git.kernel.org/stable/c/3a2999704ac36cfb4041fed3652d26a3373e8d12\nhttps://git.kernel.org/stable/c/4fd258e281fa8bc15e9ce2c7691941537e9258ad\nhttps://git.kernel.org/stable/c/d64cb81dcbd54927515a7f65e5e24affdc73c14b\n",
+  "references": "https://git.kernel.org/stable/c/8d3de49c22ec0ec8f7199cc7e2b0559de7306f87\nhttps://git.kernel.org/stable/c/a14b56863348686dd0387eea8ce66b85cf455908\nhttps://git.kernel.org/stable/c/13a66ca1e235d4bcd53d12d4c68490cad7f8e46f\nhttps://git.kernel.org/stable/c/3a2999704ac36cfb4041fed3652d26a3373e8d12\nhttps://git.kernel.org/stable/c/4fd258e281fa8bc15e9ce2c7691941537e9258ad\nhttps://git.kernel.org/stable/c/d64cb81dcbd54927515a7f65e5e24affdc73c14b\n",
   "aliases": "GHSA-2gh3-wm75-4q8m\nCVE-2026-31675\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "250c7de4-fc38-3090-b56b-d99613af3a87",
@@ -41,6 +41,26 @@
         }
       },
       "product_version": "patch: 7.0"
+    },
+    {
+      "id": "3d553937-702f-33e5-b007-d737f686a05f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "41e57bc7-2f97-379a-936b-b3a4a1ae9b52",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c865e5d99e25a171e8262fc0f7ba608568633c64 <8d3de49c22ec0ec8f7199cc7e2b0559de7306f87"
     },
     {
       "id": "57627e47-9033-301f-b828-4bc7d26f3fe4",

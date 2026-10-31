@@ -3,13 +3,33 @@
   "enisaUuid": "a554085d-0d53-39bd-817e-09f314233a81",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: af_alg - limit RX SG extraction by receive buffer budget\n\nMake af_alg_get_rsgl() limit each RX scatterlist extraction to the\nremaining receive buffer budget.\n\naf_alg_get_rsgl() currently uses af_alg_readable() only as a gate\nbefore extracting data into the RX scatterlist. Limit each extraction\nto the remaining af_alg_rcvbuf(sk) budget so that receive-side\naccounting matches the amount of data attached to the request.\n\nIf skcipher cannot obtain enough RX space for at least one chunk while\nmore data remains to be processed, reject the recvmsg call instead of\nrounding the request length down to zero.",
   "datePublished": "Apr 25, 2026, 8:46:53 AM",
-  "dateUpdated": "Oct 21, 2026, 12:39:40 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:31 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7e345de2e69475430af85e09210795d8eb8e719c\nhttps://git.kernel.org/stable/c/9bf3e6ccfdcfe56ae3190d1ae987dacf1cfef4f9\nhttps://git.kernel.org/stable/c/07c6f6ffe29009426f0bd4d3cfbb6308b8ea8453\nhttps://git.kernel.org/stable/c/4a264b2614c73c96666e196bbabe0cead52bdba7\nhttps://git.kernel.org/stable/c/8eceab19eba9dcbfd2a0daec72e1bf48aa100170\n",
+  "references": "https://git.kernel.org/stable/c/960c56743988d8ce9ff9b5d770dbeb5f64823a23\nhttps://git.kernel.org/stable/c/7e345de2e69475430af85e09210795d8eb8e719c\nhttps://git.kernel.org/stable/c/9bf3e6ccfdcfe56ae3190d1ae987dacf1cfef4f9\nhttps://git.kernel.org/stable/c/07c6f6ffe29009426f0bd4d3cfbb6308b8ea8453\nhttps://git.kernel.org/stable/c/4a264b2614c73c96666e196bbabe0cead52bdba7\nhttps://git.kernel.org/stable/c/8eceab19eba9dcbfd2a0daec72e1bf48aa100170\n",
   "aliases": "CVE-2026-31677\nGHSA-25g2-2jj3-xvxx\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.16,
   "enisaIdProduct": [
+    {
+      "id": "03616e59-0ea5-3d76-bc94-ce3c87441dba",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "05d3d759-0f44-3400-9a0e-2cbd10f5d99d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e870456d8e7c8d57c059ea479b5aadbb55ff4c3a <960c56743988d8ce9ff9b5d770dbeb5f64823a23"
+    },
     {
       "id": "071150c0-e7fb-3d69-9a09-953da888073c",
       "product": {

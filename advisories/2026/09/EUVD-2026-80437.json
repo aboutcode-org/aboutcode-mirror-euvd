@@ -3,13 +3,23 @@
   "enisaUuid": "b2474bf1-ec0e-351d-a43c-eca52424229c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix dentry folio leak in find_in_level\n\nfind_in_level() gets a dentry folio with f2fs_find_data_folio() before\ncalling find_in_block().  If find_in_block() returns an error, the\nfunction stores the error in res_folio and breaks out of the loop without\ndropping the dentry folio.\n\nThis leaks the folio reference on the find_in_block() error path.  Drop\nthe dentry folio before returning the error to the caller.",
   "datePublished": "Sep 16, 2026, 10:31:11 AM",
-  "dateUpdated": "Oct 21, 2026, 12:49:00 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b6c0e77d950bf80ab357e2b4b9667f4389ed417c\nhttps://git.kernel.org/stable/c/af9cc316d31371824de8d409260a2ab9759dd51c\nhttps://git.kernel.org/stable/c/aefb4b0f465b6f95fe02b52d1822a3fb4a9ae922\nhttps://git.kernel.org/stable/c/93a3e6a4c9e726a13a935963e8dc43d181db1527\nhttps://git.kernel.org/stable/c/cca7d3e30bf30333314e31bc70b9a739f1342167\n",
+  "references": "https://git.kernel.org/stable/c/d2011b371fcb9247b2ef4ea2d852401a6c82ab88\nhttps://git.kernel.org/stable/c/3b8593f7965fcb22672d98b55ae2e9410ea3d9f7\nhttps://git.kernel.org/stable/c/b6c0e77d950bf80ab357e2b4b9667f4389ed417c\nhttps://git.kernel.org/stable/c/af9cc316d31371824de8d409260a2ab9759dd51c\nhttps://git.kernel.org/stable/c/aefb4b0f465b6f95fe02b52d1822a3fb4a9ae922\nhttps://git.kernel.org/stable/c/93a3e6a4c9e726a13a935963e8dc43d181db1527\nhttps://git.kernel.org/stable/c/cca7d3e30bf30333314e31bc70b9a739f1342167\n",
   "aliases": "GHSA-cwf6-7jp2-62cf\nCVE-2026-89837\n",
   "assigner": "Linux",
   "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "2d78bb44-169e-3974-a230-fb600bb93bde",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "315fce6f-7fec-3fbc-a40a-1ebd496bee68",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "427f33a8-4fa0-37ae-9947-f341f532c27c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7ad08a58bf67594057362e45cbddd3e27e53e557 <d2011b371fcb9247b2ef4ea2d852401a6c82ab88"
     },
     {
       "id": "490770ed-a2b9-3ea8-87e7-080d6d74718c",
@@ -39,6 +59,16 @@
         }
       },
       "product_version": "7ad08a58bf67594057362e45cbddd3e27e53e557 <aefb4b0f465b6f95fe02b52d1822a3fb4a9ae922"
+    },
+    {
+      "id": "530d3513-f48b-3ad9-a7ce-f4ee416aa56f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7ad08a58bf67594057362e45cbddd3e27e53e557 <3b8593f7965fcb22672d98b55ae2e9410ea3d9f7"
     },
     {
       "id": "5868dcbc-3348-3294-b297-8db6a0e8c339",
@@ -99,6 +129,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "c433bdcb-43b9-39b5-a819-5453e5fe7236",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "d30bb4b9-61a1-3c41-b971-723f203b4232",

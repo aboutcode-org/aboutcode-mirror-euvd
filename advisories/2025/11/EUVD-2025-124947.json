@@ -3,12 +3,12 @@
   "enisaUuid": "b8db3030-89ab-3e7a-bb18-e14e01eb0740",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: hisilicon/qm - request reserved interrupt for virtual function\n\nThe device interrupt vector 3 is an error interrupt for\nphysical function and a reserved interrupt for virtual function.\nHowever, the driver has not registered the reserved interrupt for\nvirtual function. When allocating interrupts, the number of interrupts\nis allocated based on powers of two, which includes this interrupt.\nWhen the system enables GICv4 and the virtual function passthrough\nto the virtual machine, releasing the interrupt in the driver\ntriggers a warning.\n\nThe WARNING report is:\nWARNING: CPU: 62 PID: 14889 at arch/arm64/kvm/vgic/vgic-its.c:852 its_free_ite+0x94/0xb4\n\nTherefore, register a reserved interrupt for VF and set the\nIRQF_NO_AUTOEN flag to avoid that warning.",
   "datePublished": "Nov 12, 2025, 10:23:23 AM",
-  "dateUpdated": "Oct 21, 2026, 12:37:49 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:51 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5f75857ed634d04266301d7a4f695a7deeb9bfdc\nhttps://git.kernel.org/stable/c/24315474ca913c0693939ab74b389ee04c7d3020\nhttps://git.kernel.org/stable/c/854da2b0df1654d63963d587b12fec6068d89643\nhttps://git.kernel.org/stable/c/9228facb308157ac0bdd264b873187896f7a9c7a\n",
+  "references": "https://git.kernel.org/stable/c/e0a82361cef20380b1c0f342c7e92f8ddabeefc2\nhttps://git.kernel.org/stable/c/5f75857ed634d04266301d7a4f695a7deeb9bfdc\nhttps://git.kernel.org/stable/c/24315474ca913c0693939ab74b389ee04c7d3020\nhttps://git.kernel.org/stable/c/854da2b0df1654d63963d587b12fec6068d89643\nhttps://git.kernel.org/stable/c/9228facb308157ac0bdd264b873187896f7a9c7a\n",
   "aliases": "GHSA-p5f2-4xpv-wwqj\nCVE-2025-40136\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "04afb521-628d-3b9b-a4c2-1d9448be7dbb",
@@ -81,6 +81,16 @@
       "product_version": "patch: 6.18"
     },
     {
+      "id": "c34cfaad-b996-34bc-9be8-c2beb55f3f9a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "cc041588-4c84-3652-97b8-1c51d256481d",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.17.3"
+    },
+    {
+      "id": "f13fe021-326a-3fbf-8544-571cbee8ae2b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3536cc55cadaf2a03241915f9cfdaf6cd073e4fe <e0a82361cef20380b1c0f342c7e92f8ddabeefc2"
     }
   ],
   "enisaIdVendor": [

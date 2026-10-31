@@ -3,13 +3,33 @@
   "enisaUuid": "b1ee1569-9ebb-3688-9b95-c862028aed50",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvlan: require the MAC header to be present in __vlan_insert_inner_tag()\n\n__vlan_insert_inner_tag() only guarantees head room via skb_cow_head(),\nnever that mac_len bytes of MAC header are present.  Its ETH_HLEN\nwrappers - __vlan_insert_tag() under skb_vlan_push(), and\nvlan_insert_tag() under validate_xmit_vlan() on the generic transmit\npath - therefore rewrite the first 16 bytes at skb->data: a 12-byte\nmemmove plus two 2-byte stores at +12 and +14.  No caller supplies the\nbound, while the pop helpers use skb_ensure_writable()/pskb_may_pull().\n\nAn IFF_TUN device has hard_header_len == 0, so packet_snd() accepts a\none-byte AF_PACKET/SOCK_RAW frame.  The first vlan push only sets a\nhwaccel tag; the next - clsact \"action vlan push\" or\nbpf_skb_vlan_push() - enters the helper with skb->len still 1.  The\nhead comes from skbuff_small_head without __GFP_ZERO, so each push\ndrags bytes from beyond skb->tail into the frame.  After three the\none-byte send leaves as 13 bytes carrying 11 bytes of uninitialised\nslab:\n\n  0000: 5a b3 62 12 80 88 ff ff 00 b3 62 12 81\n           `------------------------------'\n  only 0x5a was sent; the rest is slab, here the top 56 bits of a\n  linear-map address\n\nRequire the MAC header the helper rewrites to be present, so such a\nframe is dropped rather than transmitted.",
   "datePublished": "Oct 9, 2026, 7:34:17 AM",
-  "dateUpdated": "Oct 21, 2026, 12:55:00 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:05 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/3d531429524df2c7116579306640283fea68bcf0\nhttps://git.kernel.org/stable/c/40a5cc4b7251c74f3341332a226d02200e96bccf\nhttps://git.kernel.org/stable/c/f42562dd027dc4ed103fae17b2206e73ea1963c4\nhttps://git.kernel.org/stable/c/59af43ccece4d2d8b62e9e3ccc96b6e2e793bcdc\nhttps://git.kernel.org/stable/c/ab888242fce4f16f6c4d4c6ec53939ad36aa3b3a\n",
+  "references": "https://git.kernel.org/stable/c/12295e0728488105b152b57fe8bc5e86f1d21a73\nhttps://git.kernel.org/stable/c/aecace4ef31bd4e8ca1f224280ab52a457b0dc9a\nhttps://git.kernel.org/stable/c/50a958f865173e8752ff07bf0eff7b55cdeb5d74\nhttps://git.kernel.org/stable/c/3d531429524df2c7116579306640283fea68bcf0\nhttps://git.kernel.org/stable/c/40a5cc4b7251c74f3341332a226d02200e96bccf\nhttps://git.kernel.org/stable/c/f42562dd027dc4ed103fae17b2206e73ea1963c4\nhttps://git.kernel.org/stable/c/59af43ccece4d2d8b62e9e3ccc96b6e2e793bcdc\nhttps://git.kernel.org/stable/c/ab888242fce4f16f6c4d4c6ec53939ad36aa3b3a\n",
   "aliases": "GHSA-jjqx-7ghh-p62x\nCVE-2026-98377\n",
   "assigner": "Linux",
   "epss": 0.16,
   "enisaIdProduct": [
+    {
+      "id": "0b6c59b5-443f-33b6-93f7-41536b645c4f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <12295e0728488105b152b57fe8bc5e86f1d21a73"
+    },
+    {
+      "id": "0b77462d-803f-3c61-8f39-97879d8cd1cf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
+    },
     {
       "id": "0d183d67-c504-3650-b86b-9a4c7159759b",
       "product": {
@@ -51,6 +71,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <40a5cc4b7251c74f3341332a226d02200e96bccf"
     },
     {
+      "id": "2b0e0668-130d-33df-ba12-3ebe5e23857f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <aecace4ef31bd4e8ca1f224280ab52a457b0dc9a"
+    },
+    {
       "id": "3c6d1624-9c3c-3011-9e17-89c92aa90fbc",
       "product": {
         "name": "Linux",
@@ -69,6 +99,26 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <ab888242fce4f16f6c4d4c6ec53939ad36aa3b3a"
+    },
+    {
+      "id": "4d4378cd-f405-3260-8cda-660c0b5a7ee4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <50a958f865173e8752ff07bf0eff7b55cdeb5d74"
+    },
+    {
+      "id": "5c346c84-bbd9-32d4-942a-e90e08b3a774",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "990f10d9-d48e-31d9-b8d6-6718dd1ed28c",
@@ -129,6 +179,16 @@
         }
       },
       "product_version": "patch: 6.12.112"
+    },
+    {
+      "id": "fa16b8a9-e16b-3b11-ba51-f4622edbf2a1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "c1341ba1-93e3-36eb-b1f0-5f1ab11ef0e9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: prevent immediate PASID reuse case\n\nPASID resue could cause interrupt issue when process\nimmediately runs into hw state left by previous\nprocess exited with the same PASID, it's possible that\npage faults are still pending in the IH ring buffer when\nthe process exits and frees up its PASID. To prevent the\ncase, it uses idr cyclic allocator same as kernel pid's.\n\n(cherry picked from commit 8f1de51f49be692de137c8525106e0fce2d1912d)",
   "datePublished": "Apr 22, 2026, 1:53:53 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:17 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f69491478e3de0e3c6aac2ee89b3cda3f2471301\nhttps://git.kernel.org/stable/c/c0b3882836de8ac991b626823966f385555bbcff\nhttps://git.kernel.org/stable/c/51ccaf0e30c303149244c34820def83d74c86288\nhttps://git.kernel.org/stable/c/9e5ebfe99b223bb0eb9c50a125c9c02f4ef4c71b\nhttps://git.kernel.org/stable/c/14b81abe7bdc25f8097906fc2f91276ffedb2d26\n",
+  "references": "https://git.kernel.org/stable/c/185a5e779c259869b8d5c20bd90e7a780c56576b\nhttps://git.kernel.org/stable/c/f69491478e3de0e3c6aac2ee89b3cda3f2471301\nhttps://git.kernel.org/stable/c/c0b3882836de8ac991b626823966f385555bbcff\nhttps://git.kernel.org/stable/c/51ccaf0e30c303149244c34820def83d74c86288\nhttps://git.kernel.org/stable/c/9e5ebfe99b223bb0eb9c50a125c9c02f4ef4c71b\nhttps://git.kernel.org/stable/c/14b81abe7bdc25f8097906fc2f91276ffedb2d26\n",
   "aliases": "CVE-2026-31462\nGHSA-f9h6-fphq-w3rh\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1b5c155a-5a7b-390d-bcd7-2c7e341dc8d6",
@@ -31,6 +31,16 @@
       "product_version": "patch: 7.0"
     },
     {
+      "id": "4e6a79a9-f381-3df9-832e-29913b1c6cca",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "50025564-f4dc-36fe-9f16-5225f531b031",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "02208441cc3a5110191996bb129db39ff10e7395 <9e5ebfe99b223bb0eb9c50a125c9c02f4ef4c71b"
+    },
+    {
+      "id": "9bcebe60-9a35-3945-81a6-66295ea9ca04",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "02208441cc3a5110191996bb129db39ff10e7395 <185a5e779c259869b8d5c20bd90e7a780c56576b"
     },
     {
       "id": "9d5ee094-8b28-3d3d-827a-978b2bd84692",

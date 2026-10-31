@@ -3,14 +3,14 @@
   "enisaUuid": "d1a03813-7dec-3119-89ea-446be43c6946",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: defer tunnel netdev_put to RCU release\n\novs_netdev_tunnel_destroy() may run after NETDEV_UNREGISTER already\ndetached the device. Dropping the netdev reference in destroy can race\nwith concurrent readers that still observe vport->dev.\n\nDo not release vport->dev in ovs_netdev_tunnel_destroy(). Instead, let\nvport_netdev_free() drop the reference from the RCU callback, matching\nthe non-tunnel destroy path and avoiding additional synchronization\nunder RTNL.",
   "datePublished": "Apr 25, 2026, 8:46:54 AM",
-  "dateUpdated": "Oct 19, 2026, 6:56:04 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:33 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/9d56aced21fb9c104e8a3f3be9b21fbafe448ffc\nhttps://git.kernel.org/stable/c/42f0d3d81209654c08ffdde5a34b9b92d2645896\nhttps://git.kernel.org/stable/c/bbe7bd722bfaea36aab3da6cc60fb4a05c644643\nhttps://git.kernel.org/stable/c/98b726ab5e2a4811e27c28e4d041f75bba147eab\nhttps://git.kernel.org/stable/c/b8c56a3fc5d879c0928f207a756b0f067f06c6a8\nhttps://git.kernel.org/stable/c/6931d21f87bc6d657f145798fad0bf077b82486c\n",
+  "references": "https://git.kernel.org/stable/c/f0ec49d3a39c1f5a4f3270ea27ca0854fad2a2a2\nhttps://git.kernel.org/stable/c/9d56aced21fb9c104e8a3f3be9b21fbafe448ffc\nhttps://git.kernel.org/stable/c/42f0d3d81209654c08ffdde5a34b9b92d2645896\nhttps://git.kernel.org/stable/c/bbe7bd722bfaea36aab3da6cc60fb4a05c644643\nhttps://git.kernel.org/stable/c/98b726ab5e2a4811e27c28e4d041f75bba147eab\nhttps://git.kernel.org/stable/c/b8c56a3fc5d879c0928f207a756b0f067f06c6a8\nhttps://git.kernel.org/stable/c/6931d21f87bc6d657f145798fad0bf077b82486c\n",
   "aliases": "CVE-2026-31678\nGHSA-x9m6-8j85-qvqg\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "0a04168f-f5c4-3aea-9d8f-0444d5bcdae5",
@@ -73,6 +73,16 @@
       "product_version": "a9020fde67a6eb77f8130feff633189f99264db1 <42f0d3d81209654c08ffdde5a34b9b92d2645896"
     },
     {
+      "id": "5ee6a7b5-5491-3b81-8075-744cae501ef2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "7e557d97-08f2-3337-9504-036eeff4b284",
       "product": {
         "name": "Linux",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "patch: 7.0"
+    },
+    {
+      "id": "b8d2122d-c07a-380d-8425-2f099aadb252",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a9020fde67a6eb77f8130feff633189f99264db1 <f0ec49d3a39c1f5a4f3270ea27ca0854fad2a2a2"
     },
     {
       "id": "c0173aeb-5e09-3f86-82e1-d4630f85b336",

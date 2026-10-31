@@ -3,13 +3,23 @@
   "enisaUuid": "ca47bf94-685c-3e54-b884-57eca49ef979",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Fix leak of released call in recvmsg(MSG_PEEK)\n\nFix rxrpc_recvmsg() to also drop the ref it holds on an already-released\ncall if MSG_PEEK is in force (the function holds a ref on the call\nirrespective of whether MSG_PEEK is specified or not).",
   "datePublished": "Aug 15, 2026, 5:59:32 AM",
-  "dateUpdated": "Aug 23, 2026, 12:47:15 PM",
+  "dateUpdated": "Oct 30, 2026, 12:30:02 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/86eff3140c9d4b52bba13d1cba266da933403e51\nhttps://git.kernel.org/stable/c/e473cd3046a1aaec1e39af5df2042ce7c04d5e74\nhttps://git.kernel.org/stable/c/2b69b61057eb0b3db9ad754ef0f1436b7af3a9f5\nhttps://git.kernel.org/stable/c/04c7103dc0923cc6ac95b97aa66bab70da7ace84\nhttps://git.kernel.org/stable/c/4bdb9e471f5b1ac9cbe4add5de7ff085a0ec303c\n",
   "aliases": "GHSA-mhvf-j96m-638q\nCVE-2026-74432\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "2b2c0b7c-d3ca-3eaf-9c15-92aca41cec31",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
+    },
     {
       "id": "4f99f11a-8f60-3076-a9ee-ef54ce494686",
       "product": {
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "patch: 7.2"
+    },
+    {
+      "id": "c285fde0-2ceb-35c9-8541-796befd64454",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cb720b068b18fb39c96980eb3c13f09427512be7"
     },
     {
       "id": "c84e00ea-c380-326e-9d4e-13d3968f605c",

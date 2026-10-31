@@ -3,14 +3,14 @@
   "enisaUuid": "7e02c518-0306-31f7-b1ed-ac899042d92c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhv_netvsc: Don't free decrypted memory\n\nIn CoCo VMs it is possible for the untrusted host to cause\nset_memory_encrypted() or set_memory_decrypted() to fail such that an\nerror is returned and the resulting memory is shared. Callers need to\ntake care to handle these errors to avoid returning decrypted (shared)\nmemory to the page allocator, which could lead to functional or security\nissues.\n\nThe netvsc driver could free decrypted/shared pages if\nset_memory_decrypted() fails. Check the decrypted field in the gpadl\nto decide whether to free the memory.",
   "datePublished": "May 30, 2024, 3:29:09 PM",
-  "dateUpdated": "Aug 5, 2026, 11:31:58 AM",
+  "dateUpdated": "Oct 30, 2026, 12:18:27 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/a56fe611326332bf6b7126e5559590c57dcebad4\nhttps://git.kernel.org/stable/c/4aaed9dbe8acd2b6114458f0498a617283d6275b\nhttps://git.kernel.org/stable/c/bbf9ac34677b57506a13682b31a2a718934c0e31\n",
+  "references": "https://git.kernel.org/stable/c/fb671512ffb26570c05ba3fbe20752e645809192\nhttps://git.kernel.org/stable/c/a56fe611326332bf6b7126e5559590c57dcebad4\nhttps://git.kernel.org/stable/c/4aaed9dbe8acd2b6114458f0498a617283d6275b\nhttps://git.kernel.org/stable/c/bbf9ac34677b57506a13682b31a2a718934c0e31\n",
   "aliases": "CVE-2024-36911\n",
   "assigner": "Linux",
-  "epss": 0.23,
+  "epss": 0.62,
   "enisaIdProduct": [
     {
       "id": "2d6ddcff-98c8-3ecb-b3b9-ec846b00ee83",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "d4dccf353db80e209f262e3973c834e6e48ba9a9 <4aaed9dbe8acd2b6114458f0498a617283d6275b"
+    },
+    {
+      "id": "6b95ab62-0e5b-33ae-bc34-470d5adea827",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d4dccf353db80e209f262e3973c834e6e48ba9a9 <fb671512ffb26570c05ba3fbe20752e645809192"
     },
     {
       "id": "7d3b2449-f18b-30fc-91c6-17e73bb11046",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "patch: 6.9"
+    },
+    {
+      "id": "a9aae3e5-7535-3b31-bcce-6633c1b462d8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "cf2bf39a-6c61-38de-8520-b89d78ba8d1d",

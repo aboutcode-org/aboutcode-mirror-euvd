@@ -3,9 +3,9 @@
   "enisaUuid": "815f8441-058a-3ffb-b3ce-6ed6087c6af0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: gadget: fix IRQ storm on invalid event buffer count\n\nWhen dwc3_check_event_buf() reads a GEVNTCOUNT value exceeding the\nevent buffer length, commit 63ccd26cd1f6 (\"usb: dwc3: gadget: check\nthat event count does not exceed event buffer length\") returns IRQ_NONE\nwithout writing back GEVNTCOUNT. Since the DWC3 interrupt is\nlevel-triggered, the uncleared IRQ source keeps the line asserted,\ncausing a tight IRQ storm that accumulates 99,900 unhandled interrupts\nand triggers spurious.c:184 BUG -> kernel panic.\n\nThe resulting call stack:\n  __report_bad_irq+0xac/0xc8\n  note_interrupt+0x340/0x468\n  handle_irq_event+0xac/0xc0\n  handle_fasteoi_irq+0x120/0x228\n  gic_handle_irq+0x68/0x108\n  ...\n  kernel BUG at kernel/irq/spurious.c:184\n\nTo reproduce, write a bogus value exceeding the event buffer length\ndirectly to the GEVNTCOUNT register:\n\n  devmem <DWC3_BASE + 0xc40c> 4 0x1004\n\nWrite the bogus count back to GEVNTCOUNT to clear the IRQ source,\nconsistent with the stale event clearing pattern in\ndwc3_event_buffers_setup(), and schedule error recovery to\nreinitialize the controller.",
   "datePublished": "Oct 18, 2026, 3:48:02 PM",
-  "dateUpdated": "Oct 21, 2026, 12:56:41 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:36 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6cd82563bb270e03fe2f91324660ea14e3ce5d1a\nhttps://git.kernel.org/stable/c/96918ca25ff467c25675478fc79393df4ae9d74c\nhttps://git.kernel.org/stable/c/ba927133b301894e7d24099afbb701887c8cd2f1\nhttps://git.kernel.org/stable/c/f51cadb02b439850ab411df0a2cf4288a66d42e2\nhttps://git.kernel.org/stable/c/1ff77cbefe5a653ea12874c213ea4bd0d72c1067\n",
+  "references": "https://git.kernel.org/stable/c/2c41e442ff6304532bf369aa618b23c8a474feb4\nhttps://git.kernel.org/stable/c/86b9c867fb061a147df05ff0d9bb69dd3d79f49a\nhttps://git.kernel.org/stable/c/6cd82563bb270e03fe2f91324660ea14e3ce5d1a\nhttps://git.kernel.org/stable/c/96918ca25ff467c25675478fc79393df4ae9d74c\nhttps://git.kernel.org/stable/c/ba927133b301894e7d24099afbb701887c8cd2f1\nhttps://git.kernel.org/stable/c/f51cadb02b439850ab411df0a2cf4288a66d42e2\nhttps://git.kernel.org/stable/c/1ff77cbefe5a653ea12874c213ea4bd0d72c1067\n",
   "aliases": "CVE-2026-98767\nGHSA-7v54-4578-623x\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "6.14.5 <6.15"
+    },
+    {
+      "id": "0ac091d8-fd63-333b-a6e5-be8fe99463e5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.136 <6.1.191"
     },
     {
       "id": "0c0a016e-e586-34b1-b30f-06271764e2c3",
@@ -71,24 +81,24 @@
       "product_version": "52a7c9d930b95aa8b1620edaba4818040c32631f <96918ca25ff467c25675478fc79393df4ae9d74c"
     },
     {
-      "id": "42a6ef2d-bef0-3f16-83c4-4f6fc3d6245c",
+      "id": "5fd7dbe5-bd17-3273-9e4f-82eada9d13d2",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "a44547015287a19001384fe94dbff84c92ce4ee1"
+      "product_version": "5.15.181 <5.15.224"
     },
     {
-      "id": "71e07448-3a9c-37b7-b4f4-03da3a115a1b",
+      "id": "62db5ea5-0ba6-35f5-9803-29d0fd3387e9",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.1.136 <6.2"
+      "product_version": "c0079630f268843a25ed75226169cba40e0d8880 <2c41e442ff6304532bf369aa618b23c8a474feb4"
     },
     {
       "id": "7565e606-f59c-34ab-b9a1-d67bd3cda55b",
@@ -131,6 +141,16 @@
       "product_version": "5.4.293 <5.5"
     },
     {
+      "id": "8f7ee8a0-b667-3330-994f-f06a63c2d693",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "94bb1c0c-cbe5-30ef-8218-2a88be8d2cda",
       "product": {
         "name": "Linux",
@@ -139,16 +159,6 @@
         }
       },
       "product_version": "patch: 6.18.56"
-    },
-    {
-      "id": "a0452dae-0fab-3f53-9a61-ba0c1be422df",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "5.15.181 <5.16"
     },
     {
       "id": "a2b3ad79-2310-39a5-bd45-329ea3585537",
@@ -191,6 +201,16 @@
       "product_version": "63ccd26cd1f6600421795f6ca3e625076be06c9f <f51cadb02b439850ab411df0a2cf4288a66d42e2"
     },
     {
+      "id": "b6ade06f-05a6-3dac-81a1-983c123d9b41",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "c525e809-754e-3f08-acce-c16a07cbf3af",
       "product": {
         "name": "Linux",
@@ -231,6 +251,16 @@
       "product_version": "patch: 7.3"
     },
     {
+      "id": "daddce44-236a-3472-b98f-16703db6aa91",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a44547015287a19001384fe94dbff84c92ce4ee1 <86b9c867fb061a147df05ff0d9bb69dd3d79f49a"
+    },
+    {
       "id": "e77759d1-17a6-37fd-9726-2f2b908805df",
       "product": {
         "name": "Linux",
@@ -239,16 +269,6 @@
         }
       },
       "product_version": "patch: 7.2.10"
-    },
-    {
-      "id": "ef349f7e-b603-3941-a3bc-24c3c7fb0534",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "c0079630f268843a25ed75226169cba40e0d8880"
     }
   ],
   "enisaIdVendor": [

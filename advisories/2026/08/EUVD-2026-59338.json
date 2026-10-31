@@ -3,12 +3,12 @@
   "enisaUuid": "d85a8a05-e4f3-30e5-8d16-d7b6d2acee5f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: fix writes_pending leak on write request failures\n\nraid10_make_request() acquires a writes_pending reference with\nmd_write_start() before dispatching write requests. Several failure\npaths in raid10_write_request() complete the bio and return without\nreaching the normal write completion path, causing the corresponding\nmd_write_end() to be skipped.\n\nMake raid10_write_request() return a status indicating whether the write\nrequest was successfully queued. This allows raid10_make_request() to\nrelease the writes_pending reference with md_write_end() when a write\nrequest fails.",
   "datePublished": "Aug 15, 2026, 5:56:52 AM",
-  "dateUpdated": "Oct 21, 2026, 12:44:56 PM",
+  "dateUpdated": "Oct 30, 2026, 12:29:24 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f076460c5205c9687059e5a3afeed37d2f2ceb6b\nhttps://git.kernel.org/stable/c/b6667d925c274910423385042edf18f6788dbceb\nhttps://git.kernel.org/stable/c/c642583adc136d4c70ce3c65c3f43e847d26c776\nhttps://git.kernel.org/stable/c/f94031c94eaebe14a7c9e91720064de0c5a54a6c\nhttps://git.kernel.org/stable/c/e045d6ed33f8faa3e3dd6dc33c62ec01e3ad275d\n",
+  "references": "https://git.kernel.org/stable/c/55dc3d1d6a9983867273d3531e3ddd743428db8d\nhttps://git.kernel.org/stable/c/f076460c5205c9687059e5a3afeed37d2f2ceb6b\nhttps://git.kernel.org/stable/c/b6667d925c274910423385042edf18f6788dbceb\nhttps://git.kernel.org/stable/c/c642583adc136d4c70ce3c65c3f43e847d26c776\nhttps://git.kernel.org/stable/c/f94031c94eaebe14a7c9e91720064de0c5a54a6c\nhttps://git.kernel.org/stable/c/e045d6ed33f8faa3e3dd6dc33c62ec01e3ad275d\n",
   "aliases": "CVE-2026-72439\nGHSA-xqj6-523w-5f3g\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0e716b40-6ee3-3bd0-8f89-a56f4af4a86a",
@@ -101,6 +101,16 @@
       "product_version": "c9aa889b035fca4598ae985a0f0c76ebbb547ad2 <f94031c94eaebe14a7c9e91720064de0c5a54a6c"
     },
     {
+      "id": "a998bd1c-0aa7-3c1f-b15a-55417cf3b2ce",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "b6b13742-b598-39b7-8af4-0f1b5f042842",
       "product": {
         "name": "Linux",
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "5.15.111 <5.16"
+    },
+    {
+      "id": "e80c87dd-ea8a-3746-af21-5dcc17d0c033",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c9aa889b035fca4598ae985a0f0c76ebbb547ad2 <55dc3d1d6a9983867273d3531e3ddd743428db8d"
     },
     {
       "id": "ea5d275c-edfb-388c-bfa6-a7fd6b8c4e86",

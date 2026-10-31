@@ -3,9 +3,9 @@
   "enisaUuid": "98d4a695-9c92-39b3-b544-33da56b9b90f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Reject connection when transport allocation fails\n\nhandle_connect_req() returns without action when\nsvc_rdma_create_xprt() fails to allocate the new transport.\nThe CM core returns 0 for CONNECT_REQUEST events, so it does\nnot destroy the new rdma_cm_id. Each allocation failure under\nmemory pressure leaks one rdma_cm_id, and a remote peer driving\nconnection attempts can amplify this.\n\nReject the connection by returning a non-zero status from the\nCM event handler, which tells the CM core to destroy the\norphaned cm_id.",
   "datePublished": "Sep 11, 2026, 7:44:10 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:32:02 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5bf47bbea3c22c0af2293b6c393ab04d5420f7ab\nhttps://git.kernel.org/stable/c/6e21754bbf75075f3fee1cebc79f3417364235ec\nhttps://git.kernel.org/stable/c/3cf372cec7ab2cd8c6002bf775cc14d90ccb098b\nhttps://git.kernel.org/stable/c/1f6a14c142fee4778c32709d1d54595c2e2b7991\nhttps://git.kernel.org/stable/c/0944462247dcb7de7622cdaaadf5f05c52707dab\n",
+  "references": "https://git.kernel.org/stable/c/387401ebe7f4897acd18321dc94817ad6a33f580\nhttps://git.kernel.org/stable/c/5bf47bbea3c22c0af2293b6c393ab04d5420f7ab\nhttps://git.kernel.org/stable/c/6e21754bbf75075f3fee1cebc79f3417364235ec\nhttps://git.kernel.org/stable/c/3cf372cec7ab2cd8c6002bf775cc14d90ccb098b\nhttps://git.kernel.org/stable/c/1f6a14c142fee4778c32709d1d54595c2e2b7991\nhttps://git.kernel.org/stable/c/0944462247dcb7de7622cdaaadf5f05c52707dab\n",
   "aliases": "GHSA-vgrv-wfr9-vqh2\nCVE-2026-89531\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -61,6 +61,16 @@
       "product_version": "377f9b2f4529e0ac702fd7b91e216afd0adc959e <6e21754bbf75075f3fee1cebc79f3417364235ec"
     },
     {
+      "id": "5b67e5dc-ef2a-34e1-8529-6e56243ff0b9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "377f9b2f4529e0ac702fd7b91e216afd0adc959e <387401ebe7f4897acd18321dc94817ad6a33f580"
+    },
+    {
       "id": "643e2be7-2a42-3a3c-88d0-d23f7160e7bf",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "84997d8b-6560-319e-8953-3f3814840b22",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "dee9b4d2-d4a9-3b4d-808a-356cc9dd714a",

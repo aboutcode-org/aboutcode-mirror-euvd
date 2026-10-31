@@ -3,9 +3,9 @@
   "enisaUuid": "4a5d5e60-1c29-32fa-a048-8652cc42cfbe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/mm: Add missing secure storage access fixups for donated memory\n\nThere are special cases where secure storage access exceptions happen\nin a kernel context for pages that don't have the PG_arch_1 bit\nset. That bit is set for non-exported guest secure storage (memory)\nbut is absent on storage donated to the Ultravisor since the kernel\nisn't allowed to export donated pages.\n\nPrior to this patch we would try to export the page by calling\narch_make_folio_accessible() which would instantly return since the\narch bit is absent signifying that the page was already exported and\nno further action is necessary. This leads to secure storage access\nexception loops which can never be resolved.\n\nWith this patch we unconditionally try to export and if that fails we\nfixup.",
   "datePublished": "Apr 24, 2026, 2:35:48 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:30 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:22 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1eb35c54cd81cf874ce7d69e3dbfb162f211b8bd\nhttps://git.kernel.org/stable/c/74ccc099f1baa9236b8fb600406457a0870c83a9\nhttps://git.kernel.org/stable/c/b36b0e804aee5f20c6798dbeaeaa7cfdb7c6cf88\nhttps://git.kernel.org/stable/c/43ac2d18db1131df0a89993f709131ebfc29f3bd\nhttps://git.kernel.org/stable/c/b00be77302d7ec4ad0367bb236494fce7172b730\n",
+  "references": "https://git.kernel.org/stable/c/48eda93e50f8361dee8e261fe55d0b31714e1e56\nhttps://git.kernel.org/stable/c/1eb35c54cd81cf874ce7d69e3dbfb162f211b8bd\nhttps://git.kernel.org/stable/c/b36b0e804aee5f20c6798dbeaeaa7cfdb7c6cf88\nhttps://git.kernel.org/stable/c/43ac2d18db1131df0a89993f709131ebfc29f3bd\nhttps://git.kernel.org/stable/c/b00be77302d7ec4ad0367bb236494fce7172b730\n",
   "aliases": "GHSA-g33j-4pfw-cr34\nCVE-2026-31568\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "084ea4d611a3d00ee3930400b262240e10895900 <43ac2d18db1131df0a89993f709131ebfc29f3bd"
+    },
+    {
+      "id": "326ad1d4-d53c-38d5-89f1-88d63fedc53e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "084ea4d611a3d00ee3930400b262240e10895900 <48eda93e50f8361dee8e261fe55d0b31714e1e56"
     },
     {
       "id": "350faebc-0489-3d3c-ab53-9f3bf5383a96",
@@ -39,16 +49,6 @@
         }
       },
       "product_version": "patch: 7.0"
-    },
-    {
-      "id": "4136de88-f315-320e-802c-c8ab99d7dcd4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "084ea4d611a3d00ee3930400b262240e10895900 <74ccc099f1baa9236b8fb600406457a0870c83a9"
     },
     {
       "id": "75606596-af56-3acf-a637-14eca8994a6a",
@@ -121,14 +121,14 @@
       "product_version": "084ea4d611a3d00ee3930400b262240e10895900 <b00be77302d7ec4ad0367bb236494fce7172b730"
     },
     {
-      "id": "e08d6acb-d24b-33d0-ae9a-e100bcce3706",
+      "id": "e14decda-8838-3b10-b528-3a771179dde1",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "patch: 6.12.114"
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

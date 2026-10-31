@@ -3,15 +3,25 @@
   "enisaUuid": "a0c29332-806e-3fd0-8d51-5ee1a6d3629d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: check for overflows in io_pin_pages\n\nWARNING: CPU: 0 PID: 5834 at io_uring/memmap.c:144 io_pin_pages+0x149/0x180 io_uring/memmap.c:144\nCPU: 0 UID: 0 PID: 5834 Comm: syz-executor825 Not tainted 6.12.0-next-20241118-syzkaller #0\nCall Trace:\n <TASK>\n __io_uaddr_map+0xfb/0x2d0 io_uring/memmap.c:183\n io_rings_map io_uring/io_uring.c:2611 [inline]\n io_allocate_scq_urings+0x1c0/0x650 io_uring/io_uring.c:3470\n io_uring_create+0x5b5/0xc00 io_uring/io_uring.c:3692\n io_uring_setup io_uring/io_uring.c:3781 [inline]\n ...\n </TASK>\n\nio_pin_pages()'s uaddr parameter came directly from the user and can be\ngarbage. Don't just add size to it as it can overflow.",
   "datePublished": "Dec 27, 2024, 1:49:30 PM",
-  "dateUpdated": "Oct 21, 2026, 12:35:34 PM",
+  "dateUpdated": "Oct 30, 2026, 12:20:10 PM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/1a0aecabff72a95d240e6d7645949bfe0620dcd7\nhttps://git.kernel.org/stable/c/29eac3eca72d4c2a71122050c37cd7d8f73ac4f3\nhttps://git.kernel.org/stable/c/aaa90844afd499c9142d0199dfda74439314c013\nhttps://git.kernel.org/stable/c/0c0a4eae26ac78379d0c1db053de168a8febc6c9\n",
+  "references": "https://git.kernel.org/stable/c/f1938217aee05be1c1dc53f581a3c353d033b508\nhttps://git.kernel.org/stable/c/1a0aecabff72a95d240e6d7645949bfe0620dcd7\nhttps://git.kernel.org/stable/c/29eac3eca72d4c2a71122050c37cd7d8f73ac4f3\nhttps://git.kernel.org/stable/c/aaa90844afd499c9142d0199dfda74439314c013\nhttps://git.kernel.org/stable/c/0c0a4eae26ac78379d0c1db053de168a8febc6c9\n",
   "aliases": "CVE-2024-53187\nGHSA-cpf2-vjq3-4h5q\n",
   "assigner": "Linux",
-  "epss": 0.24,
+  "epss": 0.28,
   "enisaIdProduct": [
+    {
+      "id": "11964fa6-e2b4-39c9-8a96-821025cec6ab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "16f9cb08-ef34-3dcb-86aa-2b4a498ca125",
       "product": {
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "5.1"
+    },
+    {
+      "id": "a8dca2dc-9af3-3382-aacb-9ef1134be499",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2b188cc1bb857a9d4701ae59aa7768b5124e262e <f1938217aee05be1c1dc53f581a3c353d033b508"
     },
     {
       "id": "ce10e512-8e29-362b-89a3-97cefa8c43c6",

@@ -3,12 +3,12 @@
   "enisaUuid": "9b219a43-19a2-3929-a40a-dd042d8656b3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: amd: acp-mach-common: Add missing error check for clock acquisition\n\nThe acp_card_rt5682_init() and acp_card_rt5682s_init() functions did not\ncheck the return values of clk_get(). This could lead to a kernel crash\nwhen the invalid pointers are later dereferenced by clock core\nfunctions.\n\nFix this by:\n1. Changing clk_get() to the device-managed devm_clk_get().\n2. Adding IS_ERR() checks immediately after each clock acquisition.",
   "datePublished": "May 8, 2026, 2:22:11 PM",
-  "dateUpdated": "Oct 21, 2026, 12:40:47 PM",
+  "dateUpdated": "Oct 30, 2026, 12:25:33 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a71ce398347fed9422dbd5c6458f7f8348012c64\nhttps://git.kernel.org/stable/c/53682a55cac6f159311c63d04f3d7ba64a8a455a\nhttps://git.kernel.org/stable/c/e0e31a7ed1191c12a28763bb70c4c7f5adadc79d\nhttps://git.kernel.org/stable/c/0cee68fb7f4cf1562e067c5a82d25062a973b0d0\nhttps://git.kernel.org/stable/c/30c64fb9839949f085c8eb55b979cbd8a4c51f00\n",
+  "references": "https://git.kernel.org/stable/c/f9cdfe3f94e93b606ff5d6e8e6dc405e07acce84\nhttps://git.kernel.org/stable/c/a71ce398347fed9422dbd5c6458f7f8348012c64\nhttps://git.kernel.org/stable/c/53682a55cac6f159311c63d04f3d7ba64a8a455a\nhttps://git.kernel.org/stable/c/e0e31a7ed1191c12a28763bb70c4c7f5adadc79d\nhttps://git.kernel.org/stable/c/0cee68fb7f4cf1562e067c5a82d25062a973b0d0\nhttps://git.kernel.org/stable/c/30c64fb9839949f085c8eb55b979cbd8a4c51f00\n",
   "aliases": "CVE-2026-43443\nGHSA-xx4x-7c38-rpq3\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "10cb78d2-6322-3bd8-bc6f-de01057de6df",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 6.18.57"
+    },
+    {
+      "id": "603b8b1a-57d6-306d-8d7e-6d3d8b3d7146",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d4c750f2c7d44b5b39e197308bc3f510205bba4b <f9cdfe3f94e93b606ff5d6e8e6dc405e07acce84"
     },
     {
       "id": "849a129a-7ff2-3fad-92a5-35a15fb48218",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "e1eb91dc-368b-3e93-80df-c033ba0373b1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "e5dd91b6-080d-3d22-b818-c19ee286745c",

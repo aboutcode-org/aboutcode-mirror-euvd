@@ -3,9 +3,9 @@
   "enisaUuid": "33da961a-8d7b-3edb-99fe-d8b417ecce65",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max17040: propagate register read errors\n\nmax17040_get_vcell() and max17040_get_soc() ignore errors returned by\nregmap_read().  When an I2C transfer fails, the uninitialized register\nvalue is converted and reported to userspace as a valid voltage or state\nof charge.  The polling worker can also replace the cached state of charge\nwith the bogus value and emit a spurious change event.\n\nPropagate read errors through the power supply get_property callback and\nkeep the last valid cached state of charge when polling fails.",
   "datePublished": "Sep 11, 2026, 7:43:23 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:31 PM",
+  "dateUpdated": "Oct 30, 2026, 12:31:45 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bcdcbef9c5e69a1e79c6b9f6a3434da2f68724ed\nhttps://git.kernel.org/stable/c/2943a0edd4865ed744702ada647921c3981207f6\nhttps://git.kernel.org/stable/c/13fb0477da9b400071b9d518b24d6434c4965263\nhttps://git.kernel.org/stable/c/c7aa4c3708cc0d8487336f8281665eaea87130f6\nhttps://git.kernel.org/stable/c/659cc3d8d5ef246263873fce72c8cadeeed073cc\n",
+  "references": "https://git.kernel.org/stable/c/abf348c40cd409db72758377f1eb6ed400c981c6\nhttps://git.kernel.org/stable/c/bcdcbef9c5e69a1e79c6b9f6a3434da2f68724ed\nhttps://git.kernel.org/stable/c/2943a0edd4865ed744702ada647921c3981207f6\nhttps://git.kernel.org/stable/c/13fb0477da9b400071b9d518b24d6434c4965263\nhttps://git.kernel.org/stable/c/c7aa4c3708cc0d8487336f8281665eaea87130f6\nhttps://git.kernel.org/stable/c/659cc3d8d5ef246263873fce72c8cadeeed073cc\n",
   "aliases": "GHSA-2jg4-h8v3-7354\nCVE-2026-89462\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -101,6 +101,16 @@
       "product_version": "patch: 6.18.50"
     },
     {
+      "id": "9b01c70a-c97d-3718-8483-19e0dbeaa396",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "9b85b40c-8b24-386a-be5a-a0c30d7761b9",
       "product": {
         "name": "Linux",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "patch: 7.2.4"
+    },
+    {
+      "id": "d00cfc75-e0a4-3d1f-bbfc-e6274a1526f2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c6f4a42de60b981dd210de01cd3e575835e3158e <abf348c40cd409db72758377f1eb6ed400c981c6"
     }
   ],
   "enisaIdVendor": [

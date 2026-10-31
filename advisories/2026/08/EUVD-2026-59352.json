@@ -3,12 +3,12 @@
   "enisaUuid": "b0254653-23a6-3273-bede-151090ba4daa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregcache: Do not overwrite error code when finalizing cache after error\n\nDuring regcache initialization, if an error occurs in the\ncache_ops->populate callback, and if cache operations include an exit\ncallback, the error code from populate() is overwritten with the return\nvalue from exit(). This hides the error condition from the caller of\nregcache_init(), and can cause NULL pointer dereferences when the regcache\nis later accessed.",
   "datePublished": "Aug 15, 2026, 5:57:00 AM",
-  "dateUpdated": "Oct 26, 2026, 3:12:58 PM",
+  "dateUpdated": "Oct 30, 2026, 12:29:26 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bae057687f61580dd897411cd749da22a7740647\nhttps://git.kernel.org/stable/c/9f171aa115ec76be02c76c5765cd2c865279e34a\nhttps://git.kernel.org/stable/c/9108f7fa493b4c88cbc09503e0c164244456bad5\n",
+  "references": "https://git.kernel.org/stable/c/b454870bbdb3b34ffeaebf0d8e1726cc0aaa2de4\nhttps://git.kernel.org/stable/c/bae057687f61580dd897411cd749da22a7740647\nhttps://git.kernel.org/stable/c/9f171aa115ec76be02c76c5765cd2c865279e34a\nhttps://git.kernel.org/stable/c/9108f7fa493b4c88cbc09503e0c164244456bad5\n",
   "aliases": "CVE-2026-72453\nGHSA-cv9g-v92m-34rj\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "204b2b4b-c12d-32d9-b083-9b21cde1e583",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "6.19"
+    },
+    {
+      "id": "4ee3c393-f2b9-302c-b2d7-96cd2065c011",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5e43756123197e7bca4920a47d20d9eff0e203c3 <b454870bbdb3b34ffeaebf0d8e1726cc0aaa2de4"
     },
     {
       "id": "8e36f5f8-7207-366e-805d-b7b044c360c3",

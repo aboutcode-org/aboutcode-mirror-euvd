@@ -3,9 +3,9 @@
   "enisaUuid": "99dbea60-141a-3f77-b405-3942504d3c0b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Clear buf on error in __bpf_get_task_stack\n\nBoth bpf_get_task_stack and bpf_get_task_stack_sleepable helpers that\nuse __bpf_get_task_stack have buf defined as ARG_PTR_TO_UNINIT_MEM\nargument and we should initialize the buf on every return path.\n\nAdding missing buf memset for __bpf_get_task_stack fail paths. This\nprovides deterministic buffer contents, which is useful when the buffer\nis used directly as a map key.",
   "datePublished": "Sep 17, 2026, 4:08:24 PM",
-  "dateUpdated": "Oct 21, 2026, 12:50:51 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:04 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4acc761b4e3feca1eb648d21fc4d665b23c5372d\nhttps://git.kernel.org/stable/c/6f5a7bcc049709af12e403111d5e73e80910dafc\nhttps://git.kernel.org/stable/c/1f0f61573ba4cb899105b5cef65be3ca02205f93\nhttps://git.kernel.org/stable/c/f523359c4789bb0396d2d642464a6e2fd4f2299d\nhttps://git.kernel.org/stable/c/f5d242825ca417bb6afe35fde6e8880f97ca43fb\n",
+  "references": "https://git.kernel.org/stable/c/5c4c57a277a87ed235183d03b671d346f5101f62\nhttps://git.kernel.org/stable/c/4acc761b4e3feca1eb648d21fc4d665b23c5372d\nhttps://git.kernel.org/stable/c/6f5a7bcc049709af12e403111d5e73e80910dafc\nhttps://git.kernel.org/stable/c/1f0f61573ba4cb899105b5cef65be3ca02205f93\nhttps://git.kernel.org/stable/c/f523359c4789bb0396d2d642464a6e2fd4f2299d\nhttps://git.kernel.org/stable/c/f5d242825ca417bb6afe35fde6e8880f97ca43fb\n",
   "aliases": "CVE-2026-90300\nGHSA-ghq7-v2f8-82jr\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "1ed833d4-7fcb-35bf-a2b9-bc3093d5460a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "2aba7dc4-aae0-306e-b0c3-ae4f24f54700",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "82db8a06-f2ad-3527-9c91-e8d6e08cfb98",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "06ab134ce8ecfa5a69e850f88f81c8a4c3fa91df <5c4c57a277a87ed235183d03b671d346f5101f62"
     },
     {
       "id": "8d365f7d-a9b7-38a0-945f-9b5a0e213e04",

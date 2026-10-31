@@ -3,12 +3,12 @@
   "enisaUuid": "44d70658-2ad4-3c78-91e6-c984c39bf4b0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: Use devm_kmemdup() in rtw_set_supported_band()\n\nSimplify the code by using device managed memory allocations.\n\nThis also fixes a memory leak in rtw_register_hw(). The supported bands\nwere not freed in the error path.\n\nCopied from commit 145df52a8671 (\"wifi: rtw89: Convert\nrtw89_core_set_supported_band to use devm_*\").",
   "datePublished": "May 6, 2026, 11:27:06 AM",
-  "dateUpdated": "Oct 21, 2026, 12:38:40 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:34 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d57e31c8df7b8bb684c6b56854676972a8b7c8ed\nhttps://git.kernel.org/stable/c/9b5418070ee8468fac9e8bf641c83d46b85bff30\nhttps://git.kernel.org/stable/c/ad9b80ee310ed734482a2e5da874b67f88ac0ef8\nhttps://git.kernel.org/stable/c/1bd90e0a99fdc8dc5deb3c92bf865e4496b4b311\nhttps://git.kernel.org/stable/c/2ba12401cc1f2d970fa2e7d5b15abde3f5abd40d\n",
+  "references": "https://git.kernel.org/stable/c/537723ada6d6655f0a2f48ab000fd9b0358bb442\nhttps://git.kernel.org/stable/c/d57e31c8df7b8bb684c6b56854676972a8b7c8ed\nhttps://git.kernel.org/stable/c/9b5418070ee8468fac9e8bf641c83d46b85bff30\nhttps://git.kernel.org/stable/c/ad9b80ee310ed734482a2e5da874b67f88ac0ef8\nhttps://git.kernel.org/stable/c/1bd90e0a99fdc8dc5deb3c92bf865e4496b4b311\nhttps://git.kernel.org/stable/c/2ba12401cc1f2d970fa2e7d5b15abde3f5abd40d\n",
   "aliases": "GHSA-gx72-jpcx-hm2h\nCVE-2025-71273\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "2ecb6a15-3131-316b-b875-47f1aa3b9733",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 6.19.6"
+    },
+    {
+      "id": "3e96351f-8ba8-3303-b7a3-115c3947c9a7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e3037485c68ec1a299ff41160d8fedbd4abc29b9 <537723ada6d6655f0a2f48ab000fd9b0358bb442"
     },
     {
       "id": "4d2f156f-635d-3dfd-9b4f-71783219231a",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "e3037485c68ec1a299ff41160d8fedbd4abc29b9 <d57e31c8df7b8bb684c6b56854676972a8b7c8ed"
+    },
+    {
+      "id": "f2279ec4-4d86-3877-8007-e02ace821668",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f48ea8d7-7dae-336c-ba6e-a71b99b7bbe8",

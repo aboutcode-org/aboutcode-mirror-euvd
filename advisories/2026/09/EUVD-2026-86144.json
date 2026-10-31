@@ -3,12 +3,12 @@
   "enisaUuid": "12cfe48e-d951-3a46-9c43-522e3eb968a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom_wcnss: Fix handling the lack of PD regulators in v3\n\nThe changes introduced to handle single power domain platforms have\nswapped the info pointer increment from num_pd_vregs to num_pds, which\nwould shift the info pointer past the end of the array for pronto-v3,\nwhich does not list power domain regulators in vregs.\n\nThis showed up as a difference between GCC- and LLVM-compiled kernels\non SDM632 devices, where only with LLVM one would get the\n\"regulator request with no identifier\" error, because the out-of-bounds\nmemory ended up being zeroed. Fix by skipping the increment when there\nare more power domains than regulators.",
   "datePublished": "Sep 24, 2026, 3:52:14 PM",
-  "dateUpdated": "Oct 21, 2026, 12:52:33 PM",
+  "dateUpdated": "Oct 30, 2026, 12:36:37 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7abab59d6c99ba2b8101d6f44ad25159b1510724\nhttps://git.kernel.org/stable/c/e572cbb513cde53d90fb4729cad75056cd647ce3\nhttps://git.kernel.org/stable/c/2e7e39bb81913feaac463b7add46bafdca06fbde\nhttps://git.kernel.org/stable/c/bce6b48af3abf7468d12ef4933f21bd8c1d822e9\nhttps://git.kernel.org/stable/c/3dbc90b9c22ea96e37bf55f6011e63b5123ec668\n",
+  "references": "https://git.kernel.org/stable/c/d5deaa0b6d91b1063055415fc53f75c40c2a077d\nhttps://git.kernel.org/stable/c/7abab59d6c99ba2b8101d6f44ad25159b1510724\nhttps://git.kernel.org/stable/c/e572cbb513cde53d90fb4729cad75056cd647ce3\nhttps://git.kernel.org/stable/c/2e7e39bb81913feaac463b7add46bafdca06fbde\nhttps://git.kernel.org/stable/c/bce6b48af3abf7468d12ef4933f21bd8c1d822e9\nhttps://git.kernel.org/stable/c/3dbc90b9c22ea96e37bf55f6011e63b5123ec668\n",
   "aliases": "CVE-2026-93272\nGHSA-4gpg-4875-c7gx\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "20c0c4a2-7077-31f2-830f-14cbacd6a40c",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "2f169d7b-9054-34f6-80a9-4f95372cac34",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "8d0d4c11cace475f1b07f98ee3d2bd334590e17b"
     },
     {
       "id": "3071f5c8-b7fa-3b06-acbb-a859f2088436",
@@ -71,6 +61,16 @@
       "product_version": "65991ea8a6d1e68effdc01d95ebe39f1653f7b71 <3dbc90b9c22ea96e37bf55f6011e63b5123ec668"
     },
     {
+      "id": "6b6eeea6-8c1a-3300-a76b-0740314ab6ac",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "6e27f072-0ccf-31c7-ace6-53e8aa648df4",
       "product": {
         "name": "Linux",
@@ -79,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.2.6"
+    },
+    {
+      "id": "76608db7-58ed-3e13-82c6-31c857bb116f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8d0d4c11cace475f1b07f98ee3d2bd334590e17b <d5deaa0b6d91b1063055415fc53f75c40c2a077d"
     },
     {
       "id": "7ac6cf81-859a-3b31-aa2c-40f3b19685d2",
@@ -141,6 +151,16 @@
       "product_version": "patch: 6.18.57"
     },
     {
+      "id": "ac23a5f7-9504-3977-a673-bbd2d7bac291",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.141 <6.1.191"
+    },
+    {
       "id": "bc270387-f5c0-3ab9-a569-7aa5e2b78114",
       "product": {
         "name": "Linux",
@@ -179,16 +199,6 @@
         }
       },
       "product_version": "65991ea8a6d1e68effdc01d95ebe39f1653f7b71 <2e7e39bb81913feaac463b7add46bafdca06fbde"
-    },
-    {
-      "id": "ea82c678-f7af-3a9c-ab24-b0b9675e09ef",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.141 <6.2"
     },
     {
       "id": "fba34fa8-f2a6-3bf8-904d-7d4611c35290",

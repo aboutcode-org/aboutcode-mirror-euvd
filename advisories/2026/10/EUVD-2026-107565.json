@@ -3,11 +3,11 @@
   "enisaUuid": "041475e3-b98d-3f0e-a991-33f65af3ab27",
   "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
   "datePublished": "Oct 21, 2026, 8:56:26 PM",
-  "dateUpdated": "Oct 29, 2026, 7:53:39 PM",
+  "dateUpdated": "Oct 30, 2026, 6:25:50 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/errata/RHSA-2026:93043\nhttps://access.redhat.com/errata/RHSA-2026:93044\nhttps://access.redhat.com/errata/RHSA-2026:93045\nhttps://access.redhat.com/errata/RHSA-2026:93046\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
   "aliases": "GHSA-jrx5-4fv3-4mcq\nCVE-2026-114406\n",
   "assigner": "redhat",
   "epss": 0.31,
@@ -113,6 +113,16 @@
       "product_version": "patch: 1792837466"
     },
     {
+      "id": "253daac6-7aa1-3c91-bdbe-072615a55260",
+      "product": {
+        "name": "Red Hat OpenStack Platform 13.0 - ELS",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.8.33-2.el7ost"
+    },
+    {
       "id": "260deffe-51f8-380c-a811-73146d37659d",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -121,6 +131,16 @@
         }
       },
       "product_version": "patch: 1793042024"
+    },
+    {
+      "id": "27192af3-2ee2-30b1-aae8-81b6699f2883",
+      "product": {
+        "name": "Red Hat OpenStack Services on OpenShift 18.0",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.27.89-3.el9ost"
     },
     {
       "id": "2cb35a89-785d-360b-8e8c-e7bfa913e4cb",
@@ -401,6 +421,16 @@
         }
       },
       "product_version": "patch: 1792837567"
+    },
+    {
+      "id": "8fcf0a4b-b0c2-3313-8375-6e61f4bfcf70",
+      "product": {
+        "name": "Red Hat OpenStack Platform 17.1 for RHEL 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.20.68-2.el9ost"
     },
     {
       "id": "93ee2eeb-1384-3d8c-a480-a34d9fe8528f",
@@ -811,6 +841,16 @@
         }
       },
       "product_version": "patch: 1792835879"
+    },
+    {
+      "id": "f7f977da-6723-3de8-bd85-0b9522bb7d40",
+      "product": {
+        "name": "Red Hat OpenStack Platform 16.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.12.119-4.el8ost"
     },
     {
       "id": "fbeea17b-0ec2-31cd-9740-225c191303a4",

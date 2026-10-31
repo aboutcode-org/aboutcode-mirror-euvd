@@ -3,9 +3,9 @@
   "enisaUuid": "c91ccb54-8ac7-36e0-b59a-b329151c96e8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderbolt: Release the Rx HopID that was handed out on mismatch\n\ntb_xdomain_alloc_in_hopid() passes the wanted HopID to ida_alloc_range()\nas the lower bound, so a taken id is not an error there: the allocator\nreturns the next free one above it. tbnet_connected_work() asks for the\npeer's transmit path, treats any other id as a failure and returns\nwithout releasing what it got, so that allocation stays live for the rest\nof the XDomain connection with nothing left holding a reference to it.\n\nRelease the id when it is not the one we asked for, the same way the\nerror unwind at the end of the function releases the expected one.",
   "datePublished": "Sep 11, 2026, 7:42:47 PM",
-  "dateUpdated": "Oct 19, 2026, 8:46:14 AM",
+  "dateUpdated": "Oct 30, 2026, 12:31:36 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/47981eb66461ba4e74bbaea0f139adaaeb3991e9\nhttps://git.kernel.org/stable/c/9eac1817bfc5fa76e3a2d1b8fd824cc6ef5a9ab0\nhttps://git.kernel.org/stable/c/61ff3c353e5d2ff4eb9d0b6d8d9e47805b136eea\nhttps://git.kernel.org/stable/c/1c361f6cf39be7cc0ce37c0b67bd1cdf74b0a0c1\nhttps://git.kernel.org/stable/c/2f1463554d0561a2fead81e3888604e5c1125e29\n",
+  "references": "https://git.kernel.org/stable/c/b098f01638a142afbb1e00b323e2fc40f237907a\nhttps://git.kernel.org/stable/c/47981eb66461ba4e74bbaea0f139adaaeb3991e9\nhttps://git.kernel.org/stable/c/9eac1817bfc5fa76e3a2d1b8fd824cc6ef5a9ab0\nhttps://git.kernel.org/stable/c/61ff3c353e5d2ff4eb9d0b6d8d9e47805b136eea\nhttps://git.kernel.org/stable/c/1c361f6cf39be7cc0ce37c0b67bd1cdf74b0a0c1\nhttps://git.kernel.org/stable/c/2f1463554d0561a2fead81e3888604e5c1125e29\n",
   "aliases": "GHSA-33rp-ch35-2jf6\nCVE-2026-80990\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -89,6 +89,26 @@
         }
       },
       "product_version": "180b0689425c6fb2b35e69a3316ee38371a782df <2f1463554d0561a2fead81e3888604e5c1125e29"
+    },
+    {
+      "id": "c5d1c654-c27f-3891-b47d-6dbdcfe7fcb6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "180b0689425c6fb2b35e69a3316ee38371a782df <b098f01638a142afbb1e00b323e2fc40f237907a"
+    },
+    {
+      "id": "cbdac676-d1ec-36d8-a86a-c782861e1719",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "cff512b7-6e01-3c06-af9c-6e0e223c75c4",

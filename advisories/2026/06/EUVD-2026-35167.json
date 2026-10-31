@@ -3,13 +3,23 @@
   "enisaUuid": "ac271d6c-5683-317c-ab81-8c3c816ed908",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: allow multiple opens of /sys/fs/selinux/policy\n\nCurrently there can only be a single open of /sys/fs/selinux/policy at\nany time. This allows any process to block any other process from\nreading the kernel policy. The original motivation seems to have been\na mix of preventing an inconsistent view of the policy size and\npreventing userspace from allocating kernel memory without bound, but\nthis is arguably equally bad. Eliminate the policy_opened flag and\nshrink the critical section that the policy mutex is held. While we\nare making changes here, drop a couple of extraneous BUG_ONs.",
   "datePublished": "Jun 8, 2026, 3:46:29 PM",
-  "dateUpdated": "Oct 21, 2026, 12:41:35 PM",
+  "dateUpdated": "Oct 30, 2026, 12:26:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d8cafd0226d5df682d1f4ea978a4318fe3a11210\nhttps://git.kernel.org/stable/c/0ed712134a3db0075bfe9a0f8536c48728ec745e\nhttps://git.kernel.org/stable/c/c24d2e190b955baf3a95e05d34b192f61bd201b3\nhttps://git.kernel.org/stable/c/714362f3779dfa453a78ced32396a72726962a41\nhttps://git.kernel.org/stable/c/a02cd6805562305f936e807da83e253b719dd965\n",
+  "references": "https://git.kernel.org/stable/c/9795810d116bc9071485929ba6471dc8d5bd158b\nhttps://git.kernel.org/stable/c/d8cafd0226d5df682d1f4ea978a4318fe3a11210\nhttps://git.kernel.org/stable/c/0ed712134a3db0075bfe9a0f8536c48728ec745e\nhttps://git.kernel.org/stable/c/c24d2e190b955baf3a95e05d34b192f61bd201b3\nhttps://git.kernel.org/stable/c/714362f3779dfa453a78ced32396a72726962a41\nhttps://git.kernel.org/stable/c/a02cd6805562305f936e807da83e253b719dd965\n",
   "aliases": "GHSA-m47f-j4g8-cj3f\nCVE-2026-46302\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.11,
   "enisaIdProduct": [
+    {
+      "id": "123a9a9e-c274-31c3-b6ce-9b9b5d25dada",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "1d048dc3-e0fa-3ee7-a84a-668e06776317",
       "product": {
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "2.6.37"
+    },
+    {
+      "id": "3ef51598-47f7-3a8d-9e21-cc8d6de167f6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cee74f47a6baba0ac457e87687fdcf0abd599f0a <9795810d116bc9071485929ba6471dc8d5bd158b"
     },
     {
       "id": "4506e18e-0c0a-3531-ada5-e2c77ebd7373",

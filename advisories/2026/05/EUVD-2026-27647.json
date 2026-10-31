@@ -3,9 +3,9 @@
   "enisaUuid": "54505920-70bc-324e-931e-aea6c01a2fb8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: annotate data-races around hdev->req_status\n\n__hci_cmd_sync_sk() sets hdev->req_status under hdev->req_lock:\n\n    hdev->req_status = HCI_REQ_PEND;\n\nHowever, several other functions read or write hdev->req_status without\nholding any lock:\n\n  - hci_send_cmd_sync() reads req_status in hci_cmd_work (workqueue)\n  - hci_cmd_sync_complete() reads/writes from HCI event completion\n  - hci_cmd_sync_cancel() / hci_cmd_sync_cancel_sync() read/write\n  - hci_abort_conn() reads in connection abort path\n\nSince __hci_cmd_sync_sk() runs on hdev->req_workqueue while\nhci_send_cmd_sync() runs on hdev->workqueue, these are different\nworkqueues that can execute concurrently on different CPUs. The plain\nC accesses constitute a data race.\n\nAdd READ_ONCE()/WRITE_ONCE() annotations on all concurrent accesses\nto hdev->req_status to prevent potential compiler optimizations that\ncould affect correctness (e.g., load fusing in the wait_event\ncondition or store reordering).",
   "datePublished": "May 6, 2026, 7:40:43 AM",
-  "dateUpdated": "Jul 24, 2026, 2:33:34 PM",
+  "dateUpdated": "Oct 30, 2026, 12:25:00 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e51042ddc0b20d9bda5eb6dcf85a2668f9c5dae4\nhttps://git.kernel.org/stable/c/6e539907c0d11f514c5e0b049b27b04dff48a5b1\nhttps://git.kernel.org/stable/c/a7a1cdb4a64ca74eb95cc46648fccb8cd3f9af27\nhttps://git.kernel.org/stable/c/40734ce8efc34c4a0d0222855798c0dc14b65f2e\nhttps://git.kernel.org/stable/c/b6807cfc195ef99e1ac37b2e1e60df40295daa8c\n",
+  "references": "https://git.kernel.org/stable/c/ff5855e8891e1e2490741366d087fd2fbcaabc4a\nhttps://git.kernel.org/stable/c/e51042ddc0b20d9bda5eb6dcf85a2668f9c5dae4\nhttps://git.kernel.org/stable/c/6e539907c0d11f514c5e0b049b27b04dff48a5b1\nhttps://git.kernel.org/stable/c/a7a1cdb4a64ca74eb95cc46648fccb8cd3f9af27\nhttps://git.kernel.org/stable/c/40734ce8efc34c4a0d0222855798c0dc14b65f2e\nhttps://git.kernel.org/stable/c/b6807cfc195ef99e1ac37b2e1e60df40295daa8c\n",
   "aliases": "GHSA-pp2p-vfwh-22hm\nCVE-2026-43119\n",
   "assigner": "Linux",
   "epss": 0.11,
@@ -51,6 +51,16 @@
       "product_version": "patch: 7.0"
     },
     {
+      "id": "4ff82b2e-8534-3793-ac2e-84ade898f270",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "53875199-c69e-3926-8fc3-1704f953f9c0",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "0e061885bfcd65ef5d09f154f3c3c3491cc7544a"
+    },
+    {
+      "id": "84695719-82c3-3109-8b1b-cccfd3932af0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f80c5dad7b6467b884c445ffea45985793b4b2d0 <ff5855e8891e1e2490741366d087fd2fbcaabc4a"
     },
     {
       "id": "8eacb23d-c0de-34e5-a2c9-871e70b074b7",

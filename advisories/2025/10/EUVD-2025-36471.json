@@ -3,12 +3,12 @@
   "enisaUuid": "2b72a7e6-318a-3201-8dc1-1ffff478ce95",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: Add a upper bound on max_vclocks\n\nsyzbot reported WARNING in max_vclocks_store.\n\nThis occurs when the argument max is too large for kcalloc to handle.\n\nExtend the guard to guard against values that are too large for\nkcalloc",
   "datePublished": "Oct 28, 2025, 11:48:30 AM",
-  "dateUpdated": "Oct 21, 2026, 12:37:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:43 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/da513f2ad1b1b1cf1880ccc2603ce1f1f818eb2e\nhttps://git.kernel.org/stable/c/8dd446056336faa2283d62cefc2f576536845edc\nhttps://git.kernel.org/stable/c/35ce5f163889dbce88eda1df661b357a09bbed87\nhttps://git.kernel.org/stable/c/e9f35294e18da82162004a2f35976e7031aaf7f9\n",
+  "references": "https://git.kernel.org/stable/c/5ba2f8fd3db1c695f74f7f5df72eb87d52668a66\nhttps://git.kernel.org/stable/c/da513f2ad1b1b1cf1880ccc2603ce1f1f818eb2e\nhttps://git.kernel.org/stable/c/8dd446056336faa2283d62cefc2f576536845edc\nhttps://git.kernel.org/stable/c/35ce5f163889dbce88eda1df661b357a09bbed87\nhttps://git.kernel.org/stable/c/e9f35294e18da82162004a2f35976e7031aaf7f9\n",
   "aliases": "GHSA-29fx-85hc-pfpw\nCVE-2025-40057\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "01e5a8e0-e540-3225-9e96-41dc879b1f83",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "5.14"
+    },
+    {
+      "id": "0d177284-4093-399e-bbce-382d341c1762",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "172b45bb-6bf8-320e-8089-336ca68f0db4",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.12.53"
+    },
+    {
+      "id": "2f36650b-b78d-34ad-bf70-4edd6b876268",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "73f37068d540eba5f93ba3a0019bf479d35ebd76 <5ba2f8fd3db1c695f74f7f5df72eb87d52668a66"
     },
     {
       "id": "3047cc0c-8ff0-37e7-a63e-943fe631cb12",

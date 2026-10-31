@@ -3,9 +3,9 @@
   "enisaUuid": "7aed9ae8-a7fc-36b6-9ee6-5df492741bc8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject sleepable kprobe_multi programs at attach time\n\nkprobe.multi programs run in atomic/RCU context and cannot sleep.\nHowever, bpf_kprobe_multi_link_attach() did not validate whether the\nprogram being attached had the sleepable flag set, allowing sleepable\nhelpers such as bpf_copy_from_user() to be invoked from a non-sleepable\ncontext.\n\nThis causes a \"sleeping function called from invalid context\" splat:\n\n  BUG: sleeping function called from invalid context at ./include/linux/uaccess.h:169\n  in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 1787, name: sudo\n  preempt_count: 1, expected: 0\n  RCU nest depth: 2, expected: 0\n\nFix this by rejecting sleepable programs early in\nbpf_kprobe_multi_link_attach(), before any further processing.",
   "datePublished": "May 1, 2026, 2:15:16 PM",
-  "dateUpdated": "Jul 4, 2026, 11:50:34 AM",
+  "dateUpdated": "Oct 30, 2026, 12:24:44 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/89327ed787746a7aa4db3c97f91d2e294228932b\nhttps://git.kernel.org/stable/c/d97b19fe5265f7901b2c862f88a4eb1b129a0b61\nhttps://git.kernel.org/stable/c/dc9a060d76c12b23c5f378ee115d5e5d03d8bbf3\nhttps://git.kernel.org/stable/c/f952157e695fd434bdc05af63a703bb082a78717\nhttps://git.kernel.org/stable/c/eb7024bfcc5f68ed11ed9dd4891a3073c15f04a8\n",
+  "references": "https://git.kernel.org/stable/c/c2b5e13dee9cc83e664daf4c13077dcc618a44e9\nhttps://git.kernel.org/stable/c/89327ed787746a7aa4db3c97f91d2e294228932b\nhttps://git.kernel.org/stable/c/d97b19fe5265f7901b2c862f88a4eb1b129a0b61\nhttps://git.kernel.org/stable/c/dc9a060d76c12b23c5f378ee115d5e5d03d8bbf3\nhttps://git.kernel.org/stable/c/f952157e695fd434bdc05af63a703bb082a78717\nhttps://git.kernel.org/stable/c/eb7024bfcc5f68ed11ed9dd4891a3073c15f04a8\n",
   "aliases": "GHSA-vmmg-rqjm-j9p9\nCVE-2026-43010\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.19.12"
+    },
+    {
+      "id": "517fbd9c-a651-3385-8819-887e7d488846",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "55decc16-b5d0-3c4b-a5a3-dd8f4c185ebe",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.12.95"
+    },
+    {
+      "id": "9452517e-143e-3725-b48f-bd2b3fce42c4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0dcac272540613d41c05e89679e4ddb978b612f1 <c2b5e13dee9cc83e664daf4c13077dcc618a44e9"
     },
     {
       "id": "c0c2defb-2257-36a9-959e-c1f7d8e62296",

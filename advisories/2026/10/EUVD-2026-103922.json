@@ -3,9 +3,9 @@
   "enisaUuid": "55af6d9a-f831-36cd-909d-b30c93ed51ae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: buffer: Ensure bounce buffer used for unaligned case is zeroed.\n\niio_push_to_buffers_with_ts_unaligned() leaks uninitialized heap memory\nto userspace if the data passed in is not a multiple of 8 bytes and the\ntimestamp is enabled. Specify __GFP_ZERO for the devm_krealloc()\nto ensure any extra space is cleared.",
   "datePublished": "Oct 18, 2026, 3:44:55 PM",
-  "dateUpdated": "Oct 21, 2026, 12:55:32 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:35 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b4f53cec8cc94b37601ce0bb2b272b6753beed98\nhttps://git.kernel.org/stable/c/b5c2f21f645e40c70fda2a4283e6f2a81e5cb9f2\nhttps://git.kernel.org/stable/c/b134ef820610bd873c9d59999d9824710964ce82\nhttps://git.kernel.org/stable/c/3a87212b1a09a1fdd730ce5520f7b1fc0b488511\nhttps://git.kernel.org/stable/c/5330036bc68d23672bfcc16c60c54701ae123083\n",
+  "references": "https://git.kernel.org/stable/c/b953b8d5e6f2d53e81faa0f3b42856cdf16fe563\nhttps://git.kernel.org/stable/c/b4f53cec8cc94b37601ce0bb2b272b6753beed98\nhttps://git.kernel.org/stable/c/b5c2f21f645e40c70fda2a4283e6f2a81e5cb9f2\nhttps://git.kernel.org/stable/c/b134ef820610bd873c9d59999d9824710964ce82\nhttps://git.kernel.org/stable/c/3a87212b1a09a1fdd730ce5520f7b1fc0b488511\nhttps://git.kernel.org/stable/c/5330036bc68d23672bfcc16c60c54701ae123083\n",
   "aliases": "CVE-2026-98668\nGHSA-f4c5-jpx2-jvrg\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -91,6 +91,16 @@
       "product_version": "patch: 6.6.160"
     },
     {
+      "id": "a36b04e2-b71c-33ed-94de-e3700ad458d8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "95ec3fdf2b79eaff79e78688bbc2f7dbb98d68b6 <b953b8d5e6f2d53e81faa0f3b42856cdf16fe563"
+    },
+    {
       "id": "c75b70e8-a10c-3f1c-b43c-76fc0c0cc08d",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "95ec3fdf2b79eaff79e78688bbc2f7dbb98d68b6 <b4f53cec8cc94b37601ce0bb2b272b6753beed98"
+    },
+    {
+      "id": "d8447b7f-071a-33b1-ae5f-3ec856b533ee",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f812972f-a8b5-3c93-83db-882a60493322",

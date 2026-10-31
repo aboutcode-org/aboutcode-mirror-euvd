@@ -3,12 +3,12 @@
   "enisaUuid": "9ffec6d4-357d-3965-a248-11347e518c13",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched/deadline: Fix missing ENQUEUE_REPLENISH during PI de-boosting\n\nRunning stress-ng --schedpolicy 0 on an RT kernel on a big machine\nmight lead to the following WARNINGs (edited).\n\n sched: DL de-boosted task PID 22725: REPLENISH flag missing\n\n WARNING: CPU: 93 PID: 0 at kernel/sched/deadline.c:239 dequeue_task_dl+0x15c/0x1f8\n ... (running_bw underflow)\n Call trace:\n  dequeue_task_dl+0x15c/0x1f8 (P)\n  dequeue_task+0x80/0x168\n  deactivate_task+0x24/0x50\n  push_dl_task+0x264/0x2e0\n  dl_task_timer+0x1b0/0x228\n  __hrtimer_run_queues+0x188/0x378\n  hrtimer_interrupt+0xfc/0x260\n  ...\n\nThe problem is that when a SCHED_DEADLINE task (lock holder) is\nchanged to a lower priority class via sched_setscheduler(), it may\nfail to properly inherit the parameters of potential DEADLINE donors\nif it didn't already inherit them in the past (shorter deadline than\ndonor's at that time). This might lead to bandwidth accounting\ncorruption, as enqueue_task_dl() won't recognize the lock holder as\nboosted.\n\nThe scenario occurs when:\n1. A DEADLINE task (donor) blocks on a PI mutex held by another\n   DEADLINE task (holder), but the holder doesn't inherit parameters\n   (e.g., it already has a shorter deadline)\n2. sched_setscheduler() changes the holder from DEADLINE to a lower\n   class while still holding the mutex\n3. The holder should now inherit DEADLINE parameters from the donor\n   and be enqueued with ENQUEUE_REPLENISH, but this doesn't happen\n\nFix the issue by introducing __setscheduler_dl_pi(), which detects when\na DEADLINE (proper or boosted) task gets setscheduled to a lower\npriority class. In case, the function makes the task inherit DEADLINE\nparameters of the donoer (pi_se) and sets ENQUEUE_REPLENISH flag to\nensure proper bandwidth accounting during the next enqueue operation.",
   "datePublished": "Mar 25, 2026, 10:27:52 AM",
-  "dateUpdated": "Oct 21, 2026, 12:39:09 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:00 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ce6253fe718811cceb3a0ae0dbf0a5941dea3eb6\nhttps://git.kernel.org/stable/c/65af3633caf195d397ec4c39f51ae7615bd5a627\nhttps://git.kernel.org/stable/c/0638bf16b7a73a2fe63624bd0d16d9fd904805c3\nhttps://git.kernel.org/stable/c/ba1c22924ddcc280672a2a06a9ca99ee3a1b92c3\nhttps://git.kernel.org/stable/c/d658686a1331db3bb108ca079d76deb3208ed949\n",
+  "references": "https://git.kernel.org/stable/c/e0e20852d44261a9d69188bc483872930e7ba727\nhttps://git.kernel.org/stable/c/ce6253fe718811cceb3a0ae0dbf0a5941dea3eb6\nhttps://git.kernel.org/stable/c/65af3633caf195d397ec4c39f51ae7615bd5a627\nhttps://git.kernel.org/stable/c/0638bf16b7a73a2fe63624bd0d16d9fd904805c3\nhttps://git.kernel.org/stable/c/ba1c22924ddcc280672a2a06a9ca99ee3a1b92c3\nhttps://git.kernel.org/stable/c/d658686a1331db3bb108ca079d76deb3208ed949\n",
   "aliases": "GHSA-55fv-ccjv-2hr3\nCVE-2026-23371\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0121d6a4-f817-3cbc-9dc9-806f275d8061",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "2279f540ea7d05f22d2f0c4224319330228586bc <65af3633caf195d397ec4c39f51ae7615bd5a627"
+    },
+    {
+      "id": "0d6a53d4-0e32-36fa-98f3-c220daa24840",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2279f540ea7d05f22d2f0c4224319330228586bc <e0e20852d44261a9d69188bc483872930e7ba727"
     },
     {
       "id": "200edd6f-540a-3d0d-9757-71bf3a112e60",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "d2b65976bf1ae9d0d9dd5770cd01695559438309"
+    },
+    {
+      "id": "b088646a-be41-3285-8048-d26d93430882",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "b9c3e87d-25d3-3504-a12a-306d2c76866c",

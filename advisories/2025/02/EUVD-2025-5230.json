@@ -3,14 +3,14 @@
   "enisaUuid": "ada12689-3500-3730-9593-fc9d9891f1ce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/gem: prevent integer overflow in msm_ioctl_gem_submit()\n\nThe \"submit->cmd[i].size\" and \"submit->cmd[i].offset\" variables are u32\nvalues that come from the user via the submit_lookup_cmds() function.\nThis addition could lead to an integer wrapping bug so use size_add()\nto prevent that.\n\nPatchwork: https://patchwork.freedesktop.org/patch/624696/",
   "datePublished": "Feb 27, 2025, 2:18:07 AM",
-  "dateUpdated": "Aug 5, 2026, 11:43:17 AM",
+  "dateUpdated": "Oct 30, 2026, 12:19:53 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/2b99b2c4621d13bd4374ef384e8f1fc188d0a5df\nhttps://git.kernel.org/stable/c/2f1845e46c41ed500789d53dc45b383b7745c96c\nhttps://git.kernel.org/stable/c/e43a0f1327a1ee70754f8a0de6e0262cfa3e0b87\nhttps://git.kernel.org/stable/c/3a47f4b439beb98e955d501c609dfd12b7836d61\n",
+  "references": "https://git.kernel.org/stable/c/e6a1565f5edacc37a82f12810566b8f6d73c33e5\nhttps://git.kernel.org/stable/c/2b99b2c4621d13bd4374ef384e8f1fc188d0a5df\nhttps://git.kernel.org/stable/c/2f1845e46c41ed500789d53dc45b383b7745c96c\nhttps://git.kernel.org/stable/c/e43a0f1327a1ee70754f8a0de6e0262cfa3e0b87\nhttps://git.kernel.org/stable/c/3a47f4b439beb98e955d501c609dfd12b7836d61\n",
   "aliases": "CVE-2024-52559\nGHSA-86f7-x66f-vfwc\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "1de471d9-a44d-35cc-b9e3-62f2a564b496",
@@ -101,6 +101,26 @@
         }
       },
       "product_version": "198725337ef1f73b73e7dc953c6ffb0799f26ffe <2b99b2c4621d13bd4374ef384e8f1fc188d0a5df"
+    },
+    {
+      "id": "c0ba08ff-97c3-3a24-924e-eb8490c7fa5c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "198725337ef1f73b73e7dc953c6ffb0799f26ffe <e6a1565f5edacc37a82f12810566b8f6d73c33e5"
+    },
+    {
+      "id": "ca14cfc3-b13b-3c07-a1d6-fbeab8667fb5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f9624935-c263-375f-8e1a-f67704aeda1f",

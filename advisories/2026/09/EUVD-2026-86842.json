@@ -3,13 +3,33 @@
   "enisaUuid": "4dac0b12-2d85-32a5-9cc8-876038ea1c7a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: accurately adjust free_sections during free_segment_range\n\nIn free_segment_range(), MAIN_SECS(sbi) is temporarily reduced by `secs`\nto restrict block allocation to the safe remaining main area while valid\nblocks in the truncated range are evacuated by GC.\n\nHowever, FREE_I(sbi)->free_sections tracks the total number of free\nsections across the whole filesystem. If any sections within the\ntruncated range were already free upon entering free_segment_range(),\nfailing to deduct them from free_sections causes the filesystem to\noverestimate available free sections in the active, reduced main area.\nThis leads to inconsistent free section accounting during GC data\nmigration and can trigger unexpected allocation failures or assertion\nerrors when space is tight.\n\nFix this by calculating the number of already-free sections in the\ntruncated range, deducting them from free_sections upon entering\nfree_segment_range(), and restoring them on exit.",
   "datePublished": "Sep 25, 2026, 10:21:33 AM",
-  "dateUpdated": "Oct 21, 2026, 12:53:09 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:14 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/64a7ed42e9766886dd7300597d90366dfb7a1e53\nhttps://git.kernel.org/stable/c/faeb0a20bdd113311519b598dcc075af3b6fb366\nhttps://git.kernel.org/stable/c/ca31116fad0954c61a0d38163cc51c48e4981b75\nhttps://git.kernel.org/stable/c/8a123a10770d2132d046748f20f02baa8d5539a1\nhttps://git.kernel.org/stable/c/8c963d1738fdca400082ff5f9d99e083de4f4e70\n",
+  "references": "https://git.kernel.org/stable/c/9e7a744c9db8c2d33ed6ac2ff9bca9323a38b038\nhttps://git.kernel.org/stable/c/64a7ed42e9766886dd7300597d90366dfb7a1e53\nhttps://git.kernel.org/stable/c/faeb0a20bdd113311519b598dcc075af3b6fb366\nhttps://git.kernel.org/stable/c/ca31116fad0954c61a0d38163cc51c48e4981b75\nhttps://git.kernel.org/stable/c/8a123a10770d2132d046748f20f02baa8d5539a1\nhttps://git.kernel.org/stable/c/8c963d1738fdca400082ff5f9d99e083de4f4e70\n",
   "aliases": "GHSA-9m8h-hg7g-4xp7\nCVE-2026-97534\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "0cdd2c61-c5e1-36b6-876c-69a09428ccb8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b4b10061ef98c583bcf82a4200703fbaa98c18dc <9e7a744c9db8c2d33ed6ac2ff9bca9323a38b038"
+    },
+    {
+      "id": "1b79ba71-3b17-3a22-9e89-e7d4637599d4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "1c8f1ebb-8734-3366-a726-8899a56455c3",
       "product": {

@@ -3,9 +3,9 @@
   "enisaUuid": "ecbe0bf9-5f0a-3c79-be2c-2c5f243a79a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbna: prevent IOC timer rearm during teardown\n\nbna: prevent IOC timer rearm during teardown\n\nbnad_pci_remove() and the probe disable_ioceth path call\ntimer_delete_sync() for ioc_timer, sem_timer and hb_timer, but not for\niocpf_timer.  bnad_iocpf_timeout() then takes bnad->bna_lock after\nfree_netdev() has freed the struct bnad.\n\nDeleting iocpf_timer last does not fix this.  sem_timer and\niocpf_timer rearm each other: bnad_iocpf_sem_timeout() can arm\niocpf_timer, and bnad_iocpf_timeout() arms sem_timer from\nbfa_ioc_hw_sem_get() when the semaphore is busy.\ntimer_delete_sync() only waits out its own callback.\nbnad_ioceth_disable() can time out and leave that callback live.\n\nShut all four IOC timers down with timer_shutdown_sync() on both\npaths, so a later mod_timer() is ignored.\n\nThis issue was identified during our ongoing static-analysis research\nwhile reviewing kernel code.",
   "datePublished": "Oct 18, 2026, 3:18:12 PM",
-  "dateUpdated": "Oct 21, 2026, 12:55:20 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:23 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f04cbdfac9b8284146995ab7ba0d054ad1d20ec6\nhttps://git.kernel.org/stable/c/28e32ace754b57534ef0ca0fb99bcbea5b13ba2a\nhttps://git.kernel.org/stable/c/4d97a141e85a034566c33c7ed854c8a3e8a268f1\nhttps://git.kernel.org/stable/c/e09d1c6729ee4a7812128902d9274ff565f958b8\nhttps://git.kernel.org/stable/c/77b1718e39e5c9f6956fb60807326af20baf889d\n",
+  "references": "https://git.kernel.org/stable/c/8160cd1ec527caedd36c36f948234e834cd086e6\nhttps://git.kernel.org/stable/c/3614582375fc4407e09ff42ff178a045e2fe6e8f\nhttps://git.kernel.org/stable/c/f04cbdfac9b8284146995ab7ba0d054ad1d20ec6\nhttps://git.kernel.org/stable/c/28e32ace754b57534ef0ca0fb99bcbea5b13ba2a\nhttps://git.kernel.org/stable/c/4d97a141e85a034566c33c7ed854c8a3e8a268f1\nhttps://git.kernel.org/stable/c/e09d1c6729ee4a7812128902d9274ff565f958b8\nhttps://git.kernel.org/stable/c/77b1718e39e5c9f6956fb60807326af20baf889d\n",
   "aliases": "GHSA-crgf-pp48-gvh7\nCVE-2026-98544\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -49,6 +49,26 @@
         }
       },
       "product_version": "1d32f7696286eef9e5644eb57e79a36756274357 <28e32ace754b57534ef0ca0fb99bcbea5b13ba2a"
+    },
+    {
+      "id": "67608e19-861b-3fc1-95fd-5e4e6a53bf39",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1d32f7696286eef9e5644eb57e79a36756274357 <3614582375fc4407e09ff42ff178a045e2fe6e8f"
+    },
+    {
+      "id": "6a61e9d0-fcd8-3c18-b32d-ff64442153a8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "73e69885-a896-3583-abbe-49a9578710a9",
@@ -101,6 +121,16 @@
       "product_version": "1d32f7696286eef9e5644eb57e79a36756274357 <77b1718e39e5c9f6956fb60807326af20baf889d"
     },
     {
+      "id": "b91f2a8a-2431-3cfa-a80b-e1c3e929c274",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1d32f7696286eef9e5644eb57e79a36756274357 <8160cd1ec527caedd36c36f948234e834cd086e6"
+    },
+    {
       "id": "f126cd09-6ec9-3e6d-a2c7-7ca7e4344a92",
       "product": {
         "name": "Linux",
@@ -109,6 +139,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "f64ea03c-04bd-34f8-877b-fe3ce1c1139b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "ffaac979-1e36-363e-8781-46b761b63f57",

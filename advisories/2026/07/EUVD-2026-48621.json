@@ -3,9 +3,9 @@
   "enisaUuid": "fe6eef02-53d9-3f9d-8712-4f8795dcd535",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (lm90) Add lock protection to lm90_alert\n\nSashiko reports:\n\nlm90_alert() executes in the smbus alert context and calls\nlm90_update_confreg() to disable the hardware alert line, without\nacquiring hwmon_lock.\n\nConcurrently, sysfs write operations (such as lm90_write_convrate) hold\nthe hwmon_lock, temporarily modify data->config, and then restore it.\n\nIf an alert interrupt occurs concurrently with a sysfs write, the sysfs\npath will overwrite the alert handler's modifications to data->config\nand the hardware register.\n\nThis unintentionally re-enables the hardware alert line while the alarm is\nstill active, causing an interrupt storm.\n\nAdd the missing lock to lm90_alert() to solve the problem.",
   "datePublished": "Jul 24, 2026, 3:23:02 PM",
-  "dateUpdated": "Oct 21, 2026, 12:43:11 PM",
+  "dateUpdated": "Oct 30, 2026, 12:27:41 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/02b88fa993582b4fe228b4143b330b0bb9f28353\nhttps://git.kernel.org/stable/c/165ef777ec6f634a5e4b8d9b0dadca8ef91fa90e\nhttps://git.kernel.org/stable/c/bed1fc32e0eb653806fa98afcf55f9a311fc4ce2\nhttps://git.kernel.org/stable/c/b0b66aae8a94c3663d47e4000b0e81b89ce32186\nhttps://git.kernel.org/stable/c/873e919e3101063a7a75989510ccfc125a4391cf\n",
+  "references": "https://git.kernel.org/stable/c/1dc6a3469b5427e3bfd19010d7755ebc6019abc1\nhttps://git.kernel.org/stable/c/02b88fa993582b4fe228b4143b330b0bb9f28353\nhttps://git.kernel.org/stable/c/165ef777ec6f634a5e4b8d9b0dadca8ef91fa90e\nhttps://git.kernel.org/stable/c/bed1fc32e0eb653806fa98afcf55f9a311fc4ce2\nhttps://git.kernel.org/stable/c/b0b66aae8a94c3663d47e4000b0e81b89ce32186\nhttps://git.kernel.org/stable/c/873e919e3101063a7a75989510ccfc125a4391cf\n",
   "aliases": "CVE-2026-64213\nGHSA-mf77-wwf7-m2ff\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "5.3"
+    },
+    {
+      "id": "15b29f1f-b2ad-3712-971d-e2a2b519334f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "255028aa-516c-349a-8c48-807b1e1e88d0",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "81983f67-0f1e-37ed-8852-98dfb315cb95",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7a1d220ccb0cc2b808eb176fb05bf55a38179f3f <1dc6a3469b5427e3bfd19010d7755ebc6019abc1"
     },
     {
       "id": "9ab17cbf-6954-3bca-92d0-e48c35fb78d3",

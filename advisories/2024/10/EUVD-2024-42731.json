@@ -3,14 +3,14 @@
   "enisaUuid": "7d437044-5c92-369b-96fc-8e2027d56c5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: stm32/cryp - call finalize with bh disabled\n\nThe finalize operation in interrupt mode produce a produces a spinlock\nrecursion warning. The reason is the fact that BH must be disabled\nduring this process.",
   "datePublished": "Oct 9, 2024, 2:02:53 PM",
-  "dateUpdated": "Aug 5, 2026, 11:39:14 AM",
+  "dateUpdated": "Oct 30, 2026, 12:19:26 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/d93a2f86b0a998aa1f0870c85a2a60a0771ef89a\nhttps://git.kernel.org/stable/c/5d734665cd5d93270731e0ff1dd673fec677f447\nhttps://git.kernel.org/stable/c/56ddb9aa3b324c2d9645b5a7343e46010cf3f6ce\n",
+  "references": "https://git.kernel.org/stable/c/d16983c48f922ef46fb154b52a5b7eed2e689eae\nhttps://git.kernel.org/stable/c/d93a2f86b0a998aa1f0870c85a2a60a0771ef89a\nhttps://git.kernel.org/stable/c/5d734665cd5d93270731e0ff1dd673fec677f447\nhttps://git.kernel.org/stable/c/56ddb9aa3b324c2d9645b5a7343e46010cf3f6ce\n",
   "aliases": "CVE-2024-47658\nGHSA-q97h-2fjm-733c\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.47,
   "enisaIdProduct": [
     {
       "id": "1ffe4def-6586-34dd-a8d5-b4d47d58017e",
@@ -53,6 +53,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "8dc27405-52e9-3658-979b-ee43797878a5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "9b96decd-f275-300f-ab9e-2d26e1d0e2d8",
       "product": {
         "name": "Linux",
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "4.16"
+    },
+    {
+      "id": "d7f63b47-1b01-337d-a012-37660e65f66d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9e054ec21ef8344345b28603fb272fe999f735db <d16983c48f922ef46fb154b52a5b7eed2e689eae"
     }
   ],
   "enisaIdVendor": [

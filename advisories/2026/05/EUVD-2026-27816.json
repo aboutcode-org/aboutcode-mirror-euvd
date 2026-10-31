@@ -3,14 +3,14 @@
   "enisaUuid": "51970eb7-149b-3a43-8ce7-57b8f0342a5d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: move wait_on_sem() out of spinlock\n\nWith iommu.strict=1, the existing completion wait path can cause soft\nlockups under stressed environment, as wait_on_sem() busy-waits under the\nspinlock with interrupts disabled.\n\nMove the completion wait in iommu_completion_wait() out of the spinlock.\nwait_on_sem() only polls the hardware-updated cmd_sem and does not require\niommu->lock, so holding the lock during the busy wait unnecessarily\nincreases contention and extends the time with interrupts disabled.",
   "datePublished": "May 6, 2026, 11:28:43 AM",
-  "dateUpdated": "Oct 19, 2026, 7:16:25 PM",
+  "dateUpdated": "Oct 30, 2026, 12:25:19 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/f2f65b28d802a667119147444ec2ae33eebf9a58\nhttps://git.kernel.org/stable/c/715c263119fd1b918a9fcbd8a36ea5b604a46324\nhttps://git.kernel.org/stable/c/e15768e68820142077bbca402d8e902f64ade1b0\nhttps://git.kernel.org/stable/c/496269d12072ecb219826485bdbec70c92a8eef5\nhttps://git.kernel.org/stable/c/d2a0cac10597068567d336e85fa3cbdbe8ca62bf\n",
+  "references": "https://git.kernel.org/stable/c/69d9339c02eddfc2a345be7220651068a3684383\nhttps://git.kernel.org/stable/c/f2f65b28d802a667119147444ec2ae33eebf9a58\nhttps://git.kernel.org/stable/c/715c263119fd1b918a9fcbd8a36ea5b604a46324\nhttps://git.kernel.org/stable/c/e15768e68820142077bbca402d8e902f64ade1b0\nhttps://git.kernel.org/stable/c/496269d12072ecb219826485bdbec70c92a8eef5\nhttps://git.kernel.org/stable/c/d2a0cac10597068567d336e85fa3cbdbe8ca62bf\n",
   "aliases": "CVE-2026-43253\nGHSA-jqx2-5f2v-644h\n",
   "assigner": "Linux",
-  "epss": 0.49,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "06d6f620-26ba-3786-8d4b-4eaf51d1eb18",
@@ -83,6 +83,16 @@
       "product_version": "4bf5beef578e46393f11eb69dda7d17a065e05ff <715c263119fd1b918a9fcbd8a36ea5b604a46324"
     },
     {
+      "id": "5caa3cf7-da62-3e4d-97a1-a114ebae8761",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4bf5beef578e46393f11eb69dda7d17a065e05ff <69d9339c02eddfc2a345be7220651068a3684383"
+    },
+    {
       "id": "70385d6c-7b93-3b96-a02a-58196ea73a0d",
       "product": {
         "name": "Linux",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "c947dbe9-4e7d-3ca5-93ad-1764cc2d7ce5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "dc17d917-a551-3006-92cc-06c5c98e4307",

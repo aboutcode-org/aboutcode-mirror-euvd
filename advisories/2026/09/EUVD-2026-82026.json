@@ -3,13 +3,23 @@
   "enisaUuid": "0fea4de7-3b49-38c7-b86d-7970abf86166",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: cancel reset and rc work on device unregister\n\nBoth drivers cancelled dump_work on unregister but left reset_work and\nrc_work to be flushed only by destroy_workqueue() in mt76_free_device(),\nwhich runs after the hw is unregistered and the hardware stopped. A\nreset_work that fires in that window calls ieee80211_restart_hw() and\nre-arms mac_work on an unregistered hw, and rc_work touches station state\nbeing torn down. Cancel both up front, alongside dump_work.",
   "datePublished": "Sep 17, 2026, 4:09:08 PM",
-  "dateUpdated": "Oct 21, 2026, 12:51:19 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:21 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5dd845c6388c6c9a4085ecdf59c7fe7bf3398e2e\nhttps://git.kernel.org/stable/c/7b3b1b3c7d434b5c5bc8d7de0b9c335242eeefba\nhttps://git.kernel.org/stable/c/aca0cd273b486a078f936b3fb409e619673521b1\nhttps://git.kernel.org/stable/c/c4dc85481d38951ca7f8bc104e711936306cc664\nhttps://git.kernel.org/stable/c/e995d3dccc9d980af13a60ad37409ed1561f9eeb\n",
+  "references": "https://git.kernel.org/stable/c/13f230b8e3335ed761986fcd6b04049ff06471eb\nhttps://git.kernel.org/stable/c/5dd845c6388c6c9a4085ecdf59c7fe7bf3398e2e\nhttps://git.kernel.org/stable/c/7b3b1b3c7d434b5c5bc8d7de0b9c335242eeefba\nhttps://git.kernel.org/stable/c/aca0cd273b486a078f936b3fb409e619673521b1\nhttps://git.kernel.org/stable/c/c4dc85481d38951ca7f8bc104e711936306cc664\nhttps://git.kernel.org/stable/c/e995d3dccc9d980af13a60ad37409ed1561f9eeb\n",
   "aliases": "GHSA-mg5m-xfw2-63jw\nCVE-2026-90365\n",
   "assigner": "Linux",
   "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "039bd2dd-569b-3a2a-98c9-cbc1612c51fc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e57b7901469fc0b021930b83a8094baaf3d81b09 <13f230b8e3335ed761986fcd6b04049ff06471eb"
+    },
     {
       "id": "116bb68b-1a24-32cb-b109-1cbb8a9d19d2",
       "product": {
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "a7289142-ff5b-3d71-b743-d6d3a8ddf7e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "ac791c82-6641-3df5-bd44-91957aaba8dc",

@@ -3,13 +3,23 @@
   "enisaUuid": "2cf2a044-f5e0-3cbb-be85-c115bde2f96a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: honor forceuid/forcegid when mapping SIDs to uid/gid\n\nWhen the administrator mounts with forceuid or forcegid (uid=/gid=\nmount options), they expect all files to appear owned by the specified\nuser/group.  However, several code paths unconditionally called\nsid_to_id() to overwrite cf_uid/cf_gid with server-provided values,\nignoring the administrator's explicit override:\n\n  - smb311_posix_info_to_fattr() (stat via POSIX extensions)\n  - cifs_posix_to_fattr() (readdir via POSIX extensions)\n  - parse_sec_desc() (CIFS ACL ownership mapping)\n\nThis allowed an untrusted server to dictate local file ownership even\nwhen the mount was configured to force specific uid/gid values.\n\nFix all three call sites to check CIFS_MOUNT_OVERR_UID and\nCIFS_MOUNT_OVERR_GID before calling sid_to_id(), following the\nsame pattern already used by cifs_unix_basic_to_fattr() for unix\nextensions.",
   "datePublished": "Sep 25, 2026, 10:21:50 AM",
-  "dateUpdated": "Oct 21, 2026, 12:53:18 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:25 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/be6eccccec867c22d7c65fab4ea4e91ec3d5b8c6\nhttps://git.kernel.org/stable/c/bc35de451c128d399ad185d6269f8847e97cd1c9\nhttps://git.kernel.org/stable/c/6ac7a29691558bed18e2df1780636b8aa0fd13d5\nhttps://git.kernel.org/stable/c/e1b74f8f8c1d13190b09fe623b729d36b7ac22a8\nhttps://git.kernel.org/stable/c/18a72975e9f35aadecc75b031f693f2d1f49308f\n",
+  "references": "https://git.kernel.org/stable/c/89a3b4704af2208e381c55037ff2d1e2365b83e4\nhttps://git.kernel.org/stable/c/be6eccccec867c22d7c65fab4ea4e91ec3d5b8c6\nhttps://git.kernel.org/stable/c/bc35de451c128d399ad185d6269f8847e97cd1c9\nhttps://git.kernel.org/stable/c/6ac7a29691558bed18e2df1780636b8aa0fd13d5\nhttps://git.kernel.org/stable/c/e1b74f8f8c1d13190b09fe623b729d36b7ac22a8\nhttps://git.kernel.org/stable/c/18a72975e9f35aadecc75b031f693f2d1f49308f\n",
   "aliases": "GHSA-vg8h-339p-69c7\nCVE-2026-97561\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "2e2c6ac8-6a75-31c3-a46a-58ff51c4e45a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "3bc10c47-ee42-32af-b2be-a51dc18636f3",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "9409ae58e0759d010b347e7b19ebc90ab5d4b98f <e1b74f8f8c1d13190b09fe623b729d36b7ac22a8"
+    },
+    {
+      "id": "79656126-8984-3469-9ae7-463ab6610226",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9409ae58e0759d010b347e7b19ebc90ab5d4b98f <89a3b4704af2208e381c55037ff2d1e2365b83e4"
     },
     {
       "id": "7cb2c3a9-ffe9-316d-8697-9a584448444e",

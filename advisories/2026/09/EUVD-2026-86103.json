@@ -3,9 +3,9 @@
   "enisaUuid": "49a10995-5182-3f6b-88b9-5c84e9211158",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI/sysfs: Add CAP_SYS_ADMIN check to __resource_resize_store()\n\nCurrently, the __resource_resize_store() allows writing to the\nresourceN_resize sysfs attribute to change a BAR's size without checking\nfor capabilities, currently relying only on the file access check.\n\nResizing a BAR modifies PCI device configuration and can disrupt active\ndrivers.  After the upcoming conversion to static attributes, it will also\ntrigger resource file updates via sysfs_update_groups().\n\nAdd a CAP_SYS_ADMIN check to prevent unprivileged users from performing BAR\nresize operations.",
   "datePublished": "Sep 24, 2026, 4:04:54 PM",
-  "dateUpdated": "Oct 21, 2026, 12:52:58 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:07 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d02dd7ce8e52b66b7d3b6eca2a7d81e7f5b10a62\nhttps://git.kernel.org/stable/c/b722a607f858b9cd036075ea0efad553fb98e982\nhttps://git.kernel.org/stable/c/cbf0628c0b7db86c5ce36451f088101546acbf1d\nhttps://git.kernel.org/stable/c/25ec7f57deceec633f27bc93b615f951e2ade814\n",
+  "references": "https://git.kernel.org/stable/c/0be4e21287e1e4865b9de498e1acc65b873f52f5\nhttps://git.kernel.org/stable/c/d02dd7ce8e52b66b7d3b6eca2a7d81e7f5b10a62\nhttps://git.kernel.org/stable/c/b722a607f858b9cd036075ea0efad553fb98e982\nhttps://git.kernel.org/stable/c/cbf0628c0b7db86c5ce36451f088101546acbf1d\nhttps://git.kernel.org/stable/c/25ec7f57deceec633f27bc93b615f951e2ade814\n",
   "aliases": "CVE-2026-97505\nGHSA-6xm8-36mh-mxj7\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "91fa127794ac1c48069479b9d45eb4c7378c0e30 <25ec7f57deceec633f27bc93b615f951e2ade814"
+    },
+    {
+      "id": "a2713adf-0352-3313-b1f2-304515f71b08",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "91fa127794ac1c48069479b9d45eb4c7378c0e30 <0be4e21287e1e4865b9de498e1acc65b873f52f5"
     },
     {
       "id": "ab0812e2-4bde-362d-99c5-db9b3ba096bb",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "cd557a87-fca4-3f58-bd93-8bcd7a0d25c8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "33dd2398-22a9-392e-a9b9-98a777c93deb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: endpoint: pci-epf-test: Fix double free that causes kernel to oops\n\nFix a kernel oops found while testing the stm32_pcie Endpoint driver\nwith handling of PERST# deassertion:\n\nDuring EP initialization, pci_epf_test_alloc_space() allocates all BARs,\nwhich are further freed if epc_set_bar() fails (for instance, due to no\nfree inbound window).\n\nHowever, when pci_epc_set_bar() fails, the error path:\n\n  pci_epc_set_bar() ->\n    pci_epf_free_space()\n\ndoes not clear the previous assignment to epf_test->reg[bar].\n\nThen, if the host reboots, the PERST# deassertion restarts the BAR\nallocation sequence with the same allocation failure (no free inbound\nwindow), creating a double free situation since epf_test->reg[bar] was\ndeallocated and is still non-NULL.\n\nThus, make sure that pci_epf_alloc_space() and pci_epf_free_space()\ninvocations are symmetric, and as such, set epf_test->reg[bar] to NULL\nwhen memory is freed.\n\n[kwilczynski: commit log]",
   "datePublished": "Jun 18, 2025, 9:33:46 AM",
-  "dateUpdated": "Oct 21, 2026, 12:36:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:21:39 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/761db4ca3a469f2070757acd4e104dff5125ca99\nhttps://git.kernel.org/stable/c/fe2329eff5bee461ebcafadb6ca1df0cbf5945fd\nhttps://git.kernel.org/stable/c/8b83893d1f6c6061a7d58169ecdf9d5ee9f306ee\nhttps://git.kernel.org/stable/c/934e9d137d937706004c325fa1474f9e3f1ba10a\n",
+  "references": "https://git.kernel.org/stable/c/e2e43854ab72a9d4908ac2bf6087f80aa138a8b5\nhttps://git.kernel.org/stable/c/761db4ca3a469f2070757acd4e104dff5125ca99\nhttps://git.kernel.org/stable/c/fe2329eff5bee461ebcafadb6ca1df0cbf5945fd\nhttps://git.kernel.org/stable/c/8b83893d1f6c6061a7d58169ecdf9d5ee9f306ee\nhttps://git.kernel.org/stable/c/934e9d137d937706004c325fa1474f9e3f1ba10a\n",
   "aliases": "GHSA-4xrx-36pv-43r3\nCVE-2025-38069\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
       "id": "01e87f52-0d65-3c33-ab91-e5327905d1bb",
@@ -41,6 +41,16 @@
       "product_version": "patch: 6.6.160"
     },
     {
+      "id": "14fe1c38-82bd-3467-86da-8d823fca3fbb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "2d9f76d8-5a2e-31d2-b3e5-47abc0d63b1d",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 6.15"
+    },
+    {
+      "id": "5cea7511-01e1-3f72-88f0-fe4cae6dc03a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "349e7a85b25fa6ee82902d9be2cc5f3bec815120 <e2e43854ab72a9d4908ac2bf6087f80aa138a8b5"
     },
     {
       "id": "5dc63bb5-81cc-30fb-8d02-3d737cb2e0c9",

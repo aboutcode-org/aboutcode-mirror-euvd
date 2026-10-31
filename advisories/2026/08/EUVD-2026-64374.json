@@ -3,15 +3,25 @@
   "enisaUuid": "4d54a266-d397-353e-8f5c-8cc6df3e064e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwatchdog: at91sam9_wdt: prevent timer rearm during teardown\n\nat91_ping() rearms the watchdog timer from its callback. timer_delete()\nneither waits for a running callback nor prevents it from rearming the\ntimer, so probe failure or driver removal can leave the timer accessing the\ndevm-allocated at91wdt after it has been freed.\n\nUse timer_shutdown_sync() on both teardown paths. It waits for a running\ncallback and rejects any attempt by the callback to rearm the timer.",
   "datePublished": "Aug 22, 2026, 3:32:52 PM",
-  "dateUpdated": "Oct 21, 2026, 12:46:08 PM",
+  "dateUpdated": "Oct 30, 2026, 12:30:17 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/a9e0efcb1125e6b452c648671f15920c4955b681\nhttps://git.kernel.org/stable/c/1beb4dd6a30dea699e98990dd61f892ed1c0985e\nhttps://git.kernel.org/stable/c/29fe74c9aa69d78c1c6a3930f1d9fc5db71a6eed\nhttps://git.kernel.org/stable/c/b7949b0a7d998013b7ec8617a0ef5b07cca80be4\nhttps://git.kernel.org/stable/c/8444d66aa6b6e7fe0a26fa1a00a11cb4d0523783\n",
+  "references": "https://git.kernel.org/stable/c/f96c18a766477e5f33d51697963a5c8aed260dae\nhttps://git.kernel.org/stable/c/a9e0efcb1125e6b452c648671f15920c4955b681\nhttps://git.kernel.org/stable/c/1beb4dd6a30dea699e98990dd61f892ed1c0985e\nhttps://git.kernel.org/stable/c/29fe74c9aa69d78c1c6a3930f1d9fc5db71a6eed\nhttps://git.kernel.org/stable/c/b7949b0a7d998013b7ec8617a0ef5b07cca80be4\nhttps://git.kernel.org/stable/c/8444d66aa6b6e7fe0a26fa1a00a11cb4d0523783\n",
   "aliases": "CVE-2026-74687\nGHSA-x3hg-mqqh-m29v\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "184651ab-84e5-324d-a64b-b5c422b0fab3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5161b31dc39a6d6dadc95f298de48a725b73ada8 <f96c18a766477e5f33d51697963a5c8aed260dae"
+    },
     {
       "id": "4264c65b-8f89-3be7-bb6b-b1e01529e15c",
       "product": {
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "patch: 7.1.9"
+    },
+    {
+      "id": "5bf3fc17-6f63-309e-bbf1-2f9af7492730",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "8d0945d6-22a3-398d-b941-ee11257f7048",

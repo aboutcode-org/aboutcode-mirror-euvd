@@ -3,7 +3,7 @@
   "enisaUuid": "4c8bfd98-a076-3856-9ab7-8c03159fc324",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: xfrm_alloc_spi shouldn't use 0 as SPI\n\nx->id.spi == 0 means \"no SPI assigned\", but since commit\n94f39804d891 (\"xfrm: Duplicate SPI Handling\"), we now create states\nand add them to the byspi list with this value.\n\n__xfrm_state_delete doesn't remove those states from the byspi list,\nsince they shouldn't be there, and this shows up as a UAF the next\ntime we go through the byspi list.",
   "datePublished": "Oct 13, 2025, 1:48:31 PM",
-  "dateUpdated": "Oct 15, 2026, 10:02:34 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:40 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -93,6 +93,16 @@
       "product_version": "94f39804d891cffe4ce17737d295f3b195bc7299 <cd8ae32e4e4652db55bce6b9c79267d8946765a9"
     },
     {
+      "id": "c8c7d272-dda0-3b85-af7f-1202949302c7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
+    },
+    {
       "id": "e96f1b11-44d1-3150-8e56-91f832fcb749",
       "product": {
         "name": "Linux",
@@ -101,6 +111,16 @@
         }
       },
       "product_version": "2fc5b54368a1bf1d2d74b4d3b8eea5309a653e38 <9fcedabaae0096f712bbb4ccca6a8538af1cd1c8"
+    },
+    {
+      "id": "fc4df934-bb8a-3dba-95db-a15d334b4f06",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fb58962aa3b9359988c7b5b15a971fd9ad5b0ecd"
     }
   ],
   "enisaIdVendor": [

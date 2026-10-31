@@ -3,9 +3,9 @@
   "enisaUuid": "b282942c-a8c8-3e85-b9ca-a4b738e4a79b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_midi: initialize work in f_midi_alloc()\n\nf_midi_alloc initializes free_ref to 1 and it can only be incremented\nwhen a sound card is registered via f_midi_register_card().\nf_midi_register_card() is only called in f_midi_bind() which actually\nperforms INIT_WORK. If f_midi_bind() is never run, work is not\ninitialized and the if condition in f_midi_free becomes true,\nthis results in a warning later in __flush_work as work->func = 0.\nFix this by moving INIT_WORK from f_midi_bind() to f_midi_alloc().",
   "datePublished": "Sep 16, 2026, 10:33:25 AM",
-  "dateUpdated": "Oct 21, 2026, 12:49:27 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:50 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/13e9f5a91360952b9b5bbc2367fc29d4a4ff2824\nhttps://git.kernel.org/stable/c/3d8b11255e632170f32f1925bfcaf96331f36317\nhttps://git.kernel.org/stable/c/02ac76f27db23ef652358458c272d9d2d6f51167\nhttps://git.kernel.org/stable/c/858576de6b2f5166b08dae803f0fd0766dcb3002\nhttps://git.kernel.org/stable/c/7e07d3e4c389217d7d7171d80edf2e23ac70f1ea\n",
+  "references": "https://git.kernel.org/stable/c/c76e82b026a28c348e5d841922aa73db36eca1d3\nhttps://git.kernel.org/stable/c/13e9f5a91360952b9b5bbc2367fc29d4a4ff2824\nhttps://git.kernel.org/stable/c/3d8b11255e632170f32f1925bfcaf96331f36317\nhttps://git.kernel.org/stable/c/02ac76f27db23ef652358458c272d9d2d6f51167\nhttps://git.kernel.org/stable/c/858576de6b2f5166b08dae803f0fd0766dcb3002\nhttps://git.kernel.org/stable/c/7e07d3e4c389217d7d7171d80edf2e23ac70f1ea\n",
   "aliases": "CVE-2026-90021\nGHSA-9v89-j77v-qgfm\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "89019ab7a64fcdf98a2ba7799e5c6aff58d4a05d"
+    },
+    {
+      "id": "2f2f6457-c618-3e1b-b9fd-ee6c3ff690d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8653d71ce3763aedcf3d2331f59beda3fecd79e4 <c76e82b026a28c348e5d841922aa73db36eca1d3"
     },
     {
       "id": "3944fb7c-31d1-3cee-a9cd-fa4278b9012d",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "8653d71ce3763aedcf3d2331f59beda3fecd79e4 <13e9f5a91360952b9b5bbc2367fc29d4a4ff2824"
+    },
+    {
+      "id": "afd54d83-d683-31aa-b6e7-b16458c0e616",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "b01687eb-bf5e-31df-b174-7dea7ebb512d",

@@ -3,12 +3,12 @@
   "enisaUuid": "c83517db-750f-3440-9726-05ef014e0239",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRISC-V: KVM: Write hgatp register with valid mode bits\n\nAccording to the RISC-V Privileged Architecture Spec, when MODE=Bare\nis selected,software must write zero to the remaining fields of hgatp.\n\nWe have detected the valid mode supported by the HW before, So using a\nvalid mode to detect how many vmid bits are supported.",
   "datePublished": "Oct 28, 2025, 11:48:35 AM",
-  "dateUpdated": "Oct 21, 2026, 12:37:44 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:44 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8b6e327736db013b9e385c3f6f9f0b04ddf26e43\nhttps://git.kernel.org/stable/c/5cba8ae00279296a586d0596443109d601b1d116\nhttps://git.kernel.org/stable/c/d00b61cd37f4c183ce0edbc9f8ccf6d5430ea357\nhttps://git.kernel.org/stable/c/2b351e3d04be9e1533f26c3464f1e44a5beace30\n",
+  "references": "https://git.kernel.org/stable/c/feb64ca53d97b3ac8ba9ecbeae5f9426f1513650\nhttps://git.kernel.org/stable/c/8b6e327736db013b9e385c3f6f9f0b04ddf26e43\nhttps://git.kernel.org/stable/c/5cba8ae00279296a586d0596443109d601b1d116\nhttps://git.kernel.org/stable/c/d00b61cd37f4c183ce0edbc9f8ccf6d5430ea357\nhttps://git.kernel.org/stable/c/2b351e3d04be9e1533f26c3464f1e44a5beace30\n",
   "aliases": "GHSA-m7w6-fmw8-2v8x\nCVE-2025-40065\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "02340c2f-c61c-3fb3-a88a-80e5c02279dd",
@@ -91,6 +91,16 @@
       "product_version": "patch: 6.18"
     },
     {
+      "id": "9c6ce18b-6614-3ef9-9e52-5683eecfe99a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "bfb5a579-b032-3e8e-9e79-bd47cbc64881",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "fd7bb4a251dfc1da3496bf59a4793937c13e8c1f <8b6e327736db013b9e385c3f6f9f0b04ddf26e43"
+    },
+    {
+      "id": "fd11072d-a45d-30cb-9460-341a111fad82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fd7bb4a251dfc1da3496bf59a4793937c13e8c1f <feb64ca53d97b3ac8ba9ecbeae5f9426f1513650"
     }
   ],
   "enisaIdVendor": [

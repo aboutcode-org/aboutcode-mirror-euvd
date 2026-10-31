@@ -3,9 +3,9 @@
   "enisaUuid": "536fc5fc-1c53-3738-9c67-f8fb25b813e5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: set info->band for 802.3 encap offload frames\n\nUnlike the 802.11 TX paths, ieee80211_8023_xmit() does not set\ninfo->band from the channel context on non-MLD interfaces. It stays at\n0, so ieee80211_get_tx_rates() uses the wrong band for these frames.\n\nSet it the same way as ieee80211_build_hdr(): drop the frame if there is\nno channel context, and leave the band at 0 on MLD interfaces.",
   "datePublished": "Oct 18, 2026, 3:46:30 PM",
-  "dateUpdated": "Oct 21, 2026, 12:55:49 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:51 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6535f7084d95873785a7a93cdca05e8ee83b5601\nhttps://git.kernel.org/stable/c/93c1b247224a32f546b616a8fe87b9bab20f0a7f\nhttps://git.kernel.org/stable/c/9cedbfde1450028f530e9af950f53491fcaebfeb\nhttps://git.kernel.org/stable/c/2d9c5525bbc1a548cdc9c4def3cd7fbfc7c66b5b\nhttps://git.kernel.org/stable/c/4febc02cd02f021f2b6d0768332be643ef14a12d\n",
+  "references": "https://git.kernel.org/stable/c/a182c0bbb3c0332189f04b241a71455539f58433\nhttps://git.kernel.org/stable/c/3ce62fa18975316547c971cf60c4533077a60c48\nhttps://git.kernel.org/stable/c/c85c0d897b91c74c0a2c0d0ad29f1ae970dc1e0d\nhttps://git.kernel.org/stable/c/6535f7084d95873785a7a93cdca05e8ee83b5601\nhttps://git.kernel.org/stable/c/93c1b247224a32f546b616a8fe87b9bab20f0a7f\nhttps://git.kernel.org/stable/c/9cedbfde1450028f530e9af950f53491fcaebfeb\nhttps://git.kernel.org/stable/c/2d9c5525bbc1a548cdc9c4def3cd7fbfc7c66b5b\nhttps://git.kernel.org/stable/c/4febc02cd02f021f2b6d0768332be643ef14a12d\n",
   "aliases": "GHSA-5cc8-qw42-jp7f\nCVE-2026-98700\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -51,6 +51,26 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "41251eb8-d19e-348a-9418-a29ab10ccf35",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
+    },
+    {
+      "id": "5abe48e4-e194-311b-a1ed-a0bcf04ce99f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "732cdeac-0c9c-3609-91c8-9b49c32ea280",
       "product": {
         "name": "Linux",
@@ -81,6 +101,16 @@
       "product_version": "patch: 6.18.56"
     },
     {
+      "id": "a238da82-8585-35c1-a689-d0feb6de84fb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <3ce62fa18975316547c971cf60c4533077a60c48"
+    },
+    {
       "id": "b645311c-17c7-3d2a-9c0d-0e04a7292953",
       "product": {
         "name": "Linux",
@@ -101,6 +131,16 @@
       "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <2d9c5525bbc1a548cdc9c4def3cd7fbfc7c66b5b"
     },
     {
+      "id": "c577e634-fbf1-3550-8218-bcd3fe94a984",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <c85c0d897b91c74c0a2c0d0ad29f1ae970dc1e0d"
+    },
+    {
       "id": "d29ef737-d235-3c26-8cbf-9e72824ea31a",
       "product": {
         "name": "Linux",
@@ -109,6 +149,26 @@
         }
       },
       "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <93c1b247224a32f546b616a8fe87b9bab20f0a7f"
+    },
+    {
+      "id": "d7c0e7a0-1b97-321b-acc7-4fbd4e3c7ed0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "50ff477a8639fa1fbbeecb5a6f2f8b6c5557ecec <a182c0bbb3c0332189f04b241a71455539f58433"
+    },
+    {
+      "id": "e1f18891-e560-3d4f-ba46-f56250531ac0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "eff72ea0-9cd1-3422-8323-9d080df251d1",

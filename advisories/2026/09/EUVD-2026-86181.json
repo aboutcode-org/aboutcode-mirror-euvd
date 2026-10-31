@@ -3,9 +3,9 @@
   "enisaUuid": "fff11b6d-a4db-3089-af4d-2eac0490329b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: flush dirty data before punching a hole\n\nPunching a hole after a large buffered write may leave the range\nreported as data. Reproduce it with:\n\n  xfs_io -f \\\n    -c \"pwrite -b 3m -S 0x61 0 3m\" \\\n    -c \"fpunch 1m 1m\" \\\n    -c \"seek -h 0\" \\\n    -c \"seek -d 1m\" \\\n    /mnt/test/repro\n\nPunching 1 MiB at offset 1 MiB should produce:\n\n  0          1 MiB       2 MiB       3 MiB\n  |  DATA    |   HOLE    |   DATA    | EOF\n\nInstead, the entire file is reported as data. SEEK_HOLE(0) returns EOF,\nand SEEK_DATA(1M) returns 1M.\n\nThis happens because a dirty folio spanning the punched range can be\nwritten back after the punch and refill the hole.\n\nFix this by flushing and waiting for dirty data in the punched range\nbefore invalidating the page cache and issuing FSCTL_SET_ZERO_DATA.\n\nThe xfstests generic/539 pass against Samba/ksmbd with this change.",
   "datePublished": "Sep 24, 2026, 4:02:27 PM",
-  "dateUpdated": "Oct 3, 2026, 10:57:29 AM",
+  "dateUpdated": "Oct 30, 2026, 12:36:46 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/216e469586057c29409e4ef8311d282388c6e251\nhttps://git.kernel.org/stable/c/6c265aca08155e519a8f6f6071c59dff4f535f70\nhttps://git.kernel.org/stable/c/39562a56cdb515f6635c3e7bfe6629439b18a169\nhttps://git.kernel.org/stable/c/d7d2adcd022baade5cab65ca492ce63421ce3a6e\n",
+  "references": "https://git.kernel.org/stable/c/0c9fcab9bf1ef3516983f3de05a19c5658c7a01e\nhttps://git.kernel.org/stable/c/216e469586057c29409e4ef8311d282388c6e251\nhttps://git.kernel.org/stable/c/6c265aca08155e519a8f6f6071c59dff4f535f70\nhttps://git.kernel.org/stable/c/39562a56cdb515f6635c3e7bfe6629439b18a169\nhttps://git.kernel.org/stable/c/d7d2adcd022baade5cab65ca492ce63421ce3a6e\n",
   "aliases": "GHSA-5fcw-5g57-rhgg\nCVE-2026-93794\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -59,6 +59,26 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "5fe27c34-8c69-38da-881b-668d03ec35c7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "31742c5a331766bc7df6b0d525df00c6cd20d5a6 <0c9fcab9bf1ef3516983f3de05a19c5658c7a01e"
+    },
+    {
+      "id": "76b85ae7-9c54-3687-83c1-65467800e2c6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "824df4de-f8e3-39e9-92ae-a6969db59b2f",

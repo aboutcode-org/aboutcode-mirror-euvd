@@ -3,11 +3,11 @@
   "enisaUuid": "39943964-3f34-39a3-a63a-7eed8ff33db5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Refactor registration\n\nThis refactors and simplifies the registration/unregistration flow. Since\nwe now only perform registration when the client isn't opened anymore, the\nlogic for handling that can be removed, and the rest of the function\nstreamlined.\n\nWe also remove the previous assumption that we have a serial number to show\nwe're registered, replacing it with a single purpose boolean.\n\nIn a previous refactor the code for unregistering a battery if later\nregistration steps failed was accidentally left out. As a result, a\nlingering power_supply object could get left over after the steam object\nwas torn down. This is also fixed here.",
   "datePublished": "Oct 23, 2026, 12:19:02 PM",
-  "dateUpdated": "Oct 26, 2026, 6:56:53 AM",
+  "dateUpdated": "Oct 30, 2026, 12:40:28 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/3c2f97343d4df2a75747f4c79effa0587509888f\nhttps://git.kernel.org/stable/c/2b15e10aff95c78dbacc4fa32fa90c9098213e03\nhttps://git.kernel.org/stable/c/cf71a6ee1d4e36b8e65b81c064e2797a10247280\nhttps://git.kernel.org/stable/c/c06cf54fe99b8c6bcf2017bb076c0e3918608cea\nhttps://git.kernel.org/stable/c/6f9b740c31ba7e061b2ebb330d9a3d63f1358f29\n",
+  "references": "https://git.kernel.org/stable/c/6e44418d3a06f023877959cc6dd7386ec7f64d59\nhttps://git.kernel.org/stable/c/bdfad7759fef1a5d8be9bacee3c72ce40f148b63\nhttps://git.kernel.org/stable/c/39568571aee4f5499a6d254812fe4b75dc3d4ace\nhttps://git.kernel.org/stable/c/3c2f97343d4df2a75747f4c79effa0587509888f\nhttps://git.kernel.org/stable/c/2b15e10aff95c78dbacc4fa32fa90c9098213e03\nhttps://git.kernel.org/stable/c/cf71a6ee1d4e36b8e65b81c064e2797a10247280\nhttps://git.kernel.org/stable/c/c06cf54fe99b8c6bcf2017bb076c0e3918608cea\nhttps://git.kernel.org/stable/c/6f9b740c31ba7e061b2ebb330d9a3d63f1358f29\n",
   "aliases": "CVE-2026-98944\nGHSA-x6f5-jpm5-3jpm\n",
   "assigner": "Linux",
   "epss": 0.18,
@@ -63,6 +63,16 @@
       "product_version": "385a4886778f6d6e61eff1d4d295af332d7130e1 <c06cf54fe99b8c6bcf2017bb076c0e3918608cea"
     },
     {
+      "id": "5755c2f5-0c0c-373c-8bee-472c98ddd5d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "385a4886778f6d6e61eff1d4d295af332d7130e1 <39568571aee4f5499a6d254812fe4b75dc3d4ace"
+    },
+    {
       "id": "59ec13a5-9249-3ef6-9870-d99735316a7f",
       "product": {
         "name": "Linux",
@@ -81,6 +91,16 @@
         }
       },
       "product_version": "fb87a92b43961c89bf4a115d8a700885d8959cb1"
+    },
+    {
+      "id": "72efbc78-20f4-34e7-83ee-6d372fc2b144",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "767312ac-a64a-3c9a-b7d8-8c9bde413c23",
@@ -113,6 +133,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "a0dfa801-740d-3666-8717-2d9a5e64a942",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "385a4886778f6d6e61eff1d4d295af332d7130e1 <6e44418d3a06f023877959cc6dd7386ec7f64d59"
+    },
+    {
       "id": "a57d1729-76c9-3b2e-bfe7-d0b609ddb17e",
       "product": {
         "name": "Linux",
@@ -133,6 +163,26 @@
       "product_version": "4.20"
     },
     {
+      "id": "bde31eb1-5cc3-3165-8369-7a1bb91c51a3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "c3f13389-58a0-3089-bd6e-cce3b287622a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
+    },
+    {
       "id": "e5f79072-cc2b-344f-8203-1e4157e31898",
       "product": {
         "name": "Linux",
@@ -141,6 +191,16 @@
         }
       },
       "product_version": "385a4886778f6d6e61eff1d4d295af332d7130e1 <6f9b740c31ba7e061b2ebb330d9a3d63f1358f29"
+    },
+    {
+      "id": "f7935a3c-d497-3188-ae5a-b1a21ffff6a9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "385a4886778f6d6e61eff1d4d295af332d7130e1 <bdfad7759fef1a5d8be9bacee3c72ce40f148b63"
     },
     {
       "id": "fc07558e-17a7-374d-9f69-3536aba77292",

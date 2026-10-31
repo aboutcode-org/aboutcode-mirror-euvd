@@ -3,9 +3,9 @@
   "enisaUuid": "4cf822ea-cc76-3248-9117-c68dec7b8d2b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: xilinx-xadc: free IRQ before cancelling the unmask worker on unbind\n\nThe ZYNQ XADC alarm IRQ handler queues zynq_unmask_work via\nschedule_delayed_work(); that work is cleared by a devm callback.\nRegister the devm callback before devm_request_irq() so the devres LIFO\nteardown frees the IRQ first, ensuring the handler can no longer queue\nwork by the time the workqueue is cleared. Otherwise the handler could\nre-arm the work and run it after the xadc structure has been freed.\n\nThis issue was found by an in-house static analysis tool.",
   "datePublished": "Oct 18, 2026, 3:45:14 PM",
-  "dateUpdated": "Oct 21, 2026, 12:55:34 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:37 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/012451d72c12293918617ff98cc737bedad21910\nhttps://git.kernel.org/stable/c/a29d385ad7b340c952a3935af2b33488db1eb3a6\nhttps://git.kernel.org/stable/c/a5fe2d1b55faba6d00fd87ad491b6cb603046304\nhttps://git.kernel.org/stable/c/49ea8a359e362bfbb32a647c8eb7962fbb37234e\nhttps://git.kernel.org/stable/c/0f3f427076240e75ff265e61645627a71ca4918c\n",
+  "references": "https://git.kernel.org/stable/c/7958959ab2a906c04f783a3ffb979c45472ad647\nhttps://git.kernel.org/stable/c/012451d72c12293918617ff98cc737bedad21910\nhttps://git.kernel.org/stable/c/a29d385ad7b340c952a3935af2b33488db1eb3a6\nhttps://git.kernel.org/stable/c/a5fe2d1b55faba6d00fd87ad491b6cb603046304\nhttps://git.kernel.org/stable/c/49ea8a359e362bfbb32a647c8eb7962fbb37234e\nhttps://git.kernel.org/stable/c/0f3f427076240e75ff265e61645627a71ca4918c\n",
   "aliases": "CVE-2026-98670\nGHSA-pfxr-v75f-fxq3\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -119,6 +119,26 @@
         }
       },
       "product_version": "2a9685d1a3b7644ca08d8355fc238b43faef7c3e <a5fe2d1b55faba6d00fd87ad491b6cb603046304"
+    },
+    {
+      "id": "acad9a64-057b-3981-a6e7-a1222ed6b753",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "d01a0dbe-e185-30bd-9adf-64976e78eb3f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2a9685d1a3b7644ca08d8355fc238b43faef7c3e <7958959ab2a906c04f783a3ffb979c45472ad647"
     },
     {
       "id": "ea36221b-07b7-30e5-b505-7bfccd90de99",

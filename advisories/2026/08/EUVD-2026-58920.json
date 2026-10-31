@@ -3,11 +3,11 @@
   "enisaUuid": "ec48f878-a424-3497-8ed6-242d3bf4c10d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: fix UBSAN array-index-out-of-bounds in ocfs2_sum_rightmost_rec\n\n[BUG]\nOn-disk corruption setting l_next_free_rec to 0 in an inode's embedded\nextent list triggers a UBSAN panic on the next write to that file.\n\n[CAUSE]\nocfs2_sum_rightmost_rec() computes\ni = le16_to_cpu(el->l_next_free_rec) - 1\nand accesses el->l_recs[i] without validating i. When l_next_free_rec\nis 0, i becomes -1; when l_next_free_rec exceeds l_count, i falls\npast the end of the array. Either case violates the\n__counted_by_le(l_count) annotation on l_recs[] and triggers UBSAN.\n\n[FIX]\nValidate the inode's embedded extent list when the inode is read, in\nocfs2_validate_inode_block(): l_count must be non-zero and no larger\nthan the inode block can hold, and l_next_free_rec must not exceed\nl_count. A corrupt list is rejected at read time, before the b-tree\ncode can index l_recs[] out of bounds.",
   "datePublished": "Aug 15, 2026, 5:53:30 AM",
-  "dateUpdated": "Oct 21, 2026, 12:44:24 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:52 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/c286319746cef02bcce7384fda3a3f08989070d2\nhttps://git.kernel.org/stable/c/720fb324cf0f5116318cae7f75cb393d118ffb67\nhttps://git.kernel.org/stable/c/671889c553ea55e2da6a4f3b15f4c0fa40f2f0d1\nhttps://git.kernel.org/stable/c/858aa4965ffa8c0d4bb5dd835ac4f1c9a1dcab85\nhttps://git.kernel.org/stable/c/452a8467be8143747292218212671deeb186d2ae\n",
+  "references": "https://git.kernel.org/stable/c/c88226315aec298894ec57e532f5e95f3b09e874\nhttps://git.kernel.org/stable/c/c286319746cef02bcce7384fda3a3f08989070d2\nhttps://git.kernel.org/stable/c/720fb324cf0f5116318cae7f75cb393d118ffb67\nhttps://git.kernel.org/stable/c/671889c553ea55e2da6a4f3b15f4c0fa40f2f0d1\nhttps://git.kernel.org/stable/c/858aa4965ffa8c0d4bb5dd835ac4f1c9a1dcab85\nhttps://git.kernel.org/stable/c/452a8467be8143747292218212671deeb186d2ae\n",
   "aliases": "CVE-2026-72162\nGHSA-w4g7-33m6-26g5\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "patch: 6.18.40"
+    },
+    {
+      "id": "621e4e06-431b-303f-a409-4314a6ffba6c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dcd0538ff4e854fa9d7f4630b359ca8fdb5cb5a8 <c88226315aec298894ec57e532f5e95f3b09e874"
     },
     {
       "id": "83a9e1b6-445b-30ac-b1b4-63f05f0e5a8f",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "dcd0538ff4e854fa9d7f4630b359ca8fdb5cb5a8 <c286319746cef02bcce7384fda3a3f08989070d2"
+    },
+    {
+      "id": "f4cb758b-30d8-3232-b4c7-087a9de3ca60",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f86202d1-115d-36dc-80c7-9cb010792911",

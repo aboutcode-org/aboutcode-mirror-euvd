@@ -3,9 +3,9 @@
   "enisaUuid": "4b0aa437-551d-3a96-b825-36371e89c8c8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: avoid busy looping in tipc_exit_net()\n\nBlamed commit introduced a busy-wait loop in tipc_exit_net()\nto wait for pending UDP bearer cleanup works to complete:\n\n       while (atomic_read(&tn->wq_count))\n               cond_resched();\n\nThis loop can busy-wait for a long time if cond_resched() is a NOP. This\ntypically happens if the netns exit is executed by a high priority task,\nor under kernels configured without preemption (CONFIG_PREEMPT_NONE). In\nsuch cases, it wastes CPU cycles and can lead to soft lockups.\n\nFix this by replacing the busy loop with wait_var_event(), allowing the\nthread to sleep properly until the work queue count reaches zero.\n\nAccordingly, update cleanup_bearer() to use atomic_dec_and_test() and\nwake_up_var() to wake up the waiter when the count drops to zero.\n\nThis uses the global wait queue hash table, avoiding the need to bloat\nstruct tipc_net with a wait_queue_head_t. The atomic_dec_and_test()\nprovides the necessary memory barrier to ensure the wakeup is not missed.",
   "datePublished": "Sep 4, 2026, 4:48:11 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:10 PM",
+  "dateUpdated": "Oct 30, 2026, 12:31:21 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/99b82c8452887408ea908fdfa5df33c4a5dfa88f\nhttps://git.kernel.org/stable/c/110bb16d37bdba03213156c0df37e7119c190936\nhttps://git.kernel.org/stable/c/7672973957e3e20780afe5937a9fec70b72bc060\nhttps://git.kernel.org/stable/c/522d1d950b9e3b68190a6de7534827c8dccedb73\nhttps://git.kernel.org/stable/c/c1481c94e74c955e0448ddf46b8615a44d840c1e\n",
+  "references": "https://git.kernel.org/stable/c/772769859226a5b004442403510acb58a1c32e72\nhttps://git.kernel.org/stable/c/99b82c8452887408ea908fdfa5df33c4a5dfa88f\nhttps://git.kernel.org/stable/c/110bb16d37bdba03213156c0df37e7119c190936\nhttps://git.kernel.org/stable/c/7672973957e3e20780afe5937a9fec70b72bc060\nhttps://git.kernel.org/stable/c/522d1d950b9e3b68190a6de7534827c8dccedb73\nhttps://git.kernel.org/stable/c/c1481c94e74c955e0448ddf46b8615a44d840c1e\n",
   "aliases": "GHSA-8w3x-69pj-572x\nCVE-2026-80866\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -189,6 +189,26 @@
         }
       },
       "product_version": "5.12.9 <5.13"
+    },
+    {
+      "id": "fa32120d-3048-3704-b6f7-b9258656b271",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "fd7d26e5-227a-32f4-82e8-48cee7a72ca8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "04c26faa51d1e2fe71cf13c45791f5174c37f986 <772769859226a5b004442403510acb58a1c32e72"
     }
   ],
   "enisaIdVendor": [

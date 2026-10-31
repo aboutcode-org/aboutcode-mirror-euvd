@@ -3,12 +3,12 @@
   "enisaUuid": "497f5505-ba7f-30c3-9ec6-4afdaf44fce1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Prevent excessive number of frames\n\nIn this case, the user constructed the parameters with maxpacksize 40\nfor rate 22050 / pps 1000, and packsize[0] 22 packsize[1] 23. The buffer\nsize for each data URB is maxpacksize * packets, which in this example\nis 40 * 6 = 240; When the user performs a write operation to send audio\ndata into the ALSA PCM playback stream, the calculated number of frames\nis packsize[0] * packets = 264, which exceeds the allocated URB buffer\nsize, triggering the out-of-bounds (OOB) issue reported by syzbot [1].\n\nAdded a check for the number of single data URB frames when calculating\nthe number of frames to prevent [1].\n\n[1]\nBUG: KASAN: slab-out-of-bounds in copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487\nWrite of size 264 at addr ffff88804337e800 by task syz.0.17/5506\nCall Trace:\n copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487\n prepare_playback_urb+0x953/0x13d0 sound/usb/pcm.c:1611\n prepare_outbound_urb+0x377/0xc50 sound/usb/endpoint.c:333",
   "datePublished": "Feb 14, 2026, 4:27:30 PM",
-  "dateUpdated": "Oct 21, 2026, 12:38:57 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:48 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/480a1490c595a242f27493a4544b3efb21b29f6a\nhttps://git.kernel.org/stable/c/ab0b5e92fc36ee82c1bd01fe896d0f775ed5de41\nhttps://git.kernel.org/stable/c/282aba56713bbc58155716b55ca7222b2d9cf3c8\nhttps://git.kernel.org/stable/c/c4dc012b027c9eb101583011089dea14d744e314\nhttps://git.kernel.org/stable/c/e0ed5a36fb3ab9e7b9ee45cd17f09f6d5f594360\nhttps://git.kernel.org/stable/c/d67dde02049e632ba58d3c44a164a74b6a737154\nhttps://git.kernel.org/stable/c/152fc4f7b4a8af1c0418d2722f3b2729799cc837\nhttps://git.kernel.org/stable/c/81e4b0009f2acc841d77a24fd796528b0bf62c4e\nhttps://git.kernel.org/stable/c/62932d9ed639a9fa71b4ac1a56766a4b43abb7e4\nhttps://git.kernel.org/stable/c/ef5749ef8b307bf8717945701b1b79d036af0a15\n",
+  "references": "https://git.kernel.org/stable/c/480a1490c595a242f27493a4544b3efb21b29f6a\nhttps://git.kernel.org/stable/c/ab0b5e92fc36ee82c1bd01fe896d0f775ed5de41\nhttps://git.kernel.org/stable/c/282aba56713bbc58155716b55ca7222b2d9cf3c8\nhttps://git.kernel.org/stable/c/c4dc012b027c9eb101583011089dea14d744e314\nhttps://git.kernel.org/stable/c/e0ed5a36fb3ab9e7b9ee45cd17f09f6d5f594360\nhttps://git.kernel.org/stable/c/d67dde02049e632ba58d3c44a164a74b6a737154\nhttps://git.kernel.org/stable/c/581821f4b2ecbf411027b0af82b561ee208f4ba4\nhttps://git.kernel.org/stable/c/152fc4f7b4a8af1c0418d2722f3b2729799cc837\nhttps://git.kernel.org/stable/c/81e4b0009f2acc841d77a24fd796528b0bf62c4e\nhttps://git.kernel.org/stable/c/62932d9ed639a9fa71b4ac1a56766a4b43abb7e4\nhttps://git.kernel.org/stable/c/ef5749ef8b307bf8717945701b1b79d036af0a15\n",
   "aliases": "CVE-2026-23208\nGHSA-gmr7-w89v-rr2q\n",
   "assigner": "Linux",
-  "epss": 0.14,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "0d0d7d5e-8099-3b48-ad8f-71b8acf9eefb",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "5ef30e443e6d3654cccecec99cf481a69a0a6d3b <ab0b5e92fc36ee82c1bd01fe896d0f775ed5de41"
+    },
+    {
+      "id": "26b04db9-d910-3fda-a3c9-c137793e5531",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f0bd62b64016508938df9babe47f65c2c727d25c <581821f4b2ecbf411027b0af82b561ee208f4ba4"
     },
     {
       "id": "2d236a3b-40c8-38d2-8770-7dd09fab3008",
@@ -229,6 +239,16 @@
         }
       },
       "product_version": "f0bd62b64016508938df9babe47f65c2c727d25c <81e4b0009f2acc841d77a24fd796528b0bf62c4e"
+    },
+    {
+      "id": "cbfdd698-45c9-3ef1-bc41-c0d23e609605",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "d6ce46e1-4e0e-30ef-bcac-2f7099b663d2",

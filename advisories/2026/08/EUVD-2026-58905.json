@@ -3,13 +3,23 @@
   "enisaUuid": "348c470d-983e-3d6d-8dee-579e74459b2a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: dw-edma-pcie: Reject devices without driver data\n\ndw_edma_pcie_probe() treats the PCI device ID driver_data as the\ntemplate for the controller layout and copies it unconditionally. A\ndevice bound dynamically via sysfs can match the driver without that\ndata, which leads to a NULL pointer dereference.\n\nReject such matches before enabling the device.",
   "datePublished": "Aug 15, 2026, 5:53:19 AM",
-  "dateUpdated": "Aug 17, 2026, 5:09:06 AM",
+  "dateUpdated": "Oct 30, 2026, 12:28:51 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/2733b5dcb5a4ba4446f7bac954b97e4501dcaa64\nhttps://git.kernel.org/stable/c/a1042599fa8f9e313be176eb1ea1ae199f983419\nhttps://git.kernel.org/stable/c/043acb00e4edd4b9ffb9dd0e357482dcd9086486\nhttps://git.kernel.org/stable/c/044f7b3252d4fb2143d4999eec2800c08f1001ed\nhttps://git.kernel.org/stable/c/11d7cfe0c119691b2dafbb699bbca90258c678aa\n",
+  "references": "https://git.kernel.org/stable/c/69bf416b31e2dc44aa8a10e7a215ad388994c7c6\nhttps://git.kernel.org/stable/c/2733b5dcb5a4ba4446f7bac954b97e4501dcaa64\nhttps://git.kernel.org/stable/c/a1042599fa8f9e313be176eb1ea1ae199f983419\nhttps://git.kernel.org/stable/c/043acb00e4edd4b9ffb9dd0e357482dcd9086486\nhttps://git.kernel.org/stable/c/044f7b3252d4fb2143d4999eec2800c08f1001ed\nhttps://git.kernel.org/stable/c/11d7cfe0c119691b2dafbb699bbca90258c678aa\n",
   "aliases": "GHSA-47f2-6xxj-8w97\nCVE-2026-72147\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "07204c70-b155-34db-93bf-aeaceaf32bad",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "41aaff2a2ac01c5f5415f9de9cd7015ac2b8d569 <69bf416b31e2dc44aa8a10e7a215ad388994c7c6"
+    },
     {
       "id": "28d3bd8e-2f28-3e35-a137-a33350086bc7",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "41aaff2a2ac01c5f5415f9de9cd7015ac2b8d569 <044f7b3252d4fb2143d4999eec2800c08f1001ed"
+    },
+    {
+      "id": "3de5a1e6-a71b-35ea-aef8-d64cdf18a579",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "4fcd9420-d9cf-319c-9ffc-afb725b063be",

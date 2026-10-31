@@ -3,14 +3,14 @@
   "enisaUuid": "b75b24dd-858c-3495-9c9f-88d7ad6cd880",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Clear sc_cm_id when ADDR_CHANGE replacement fails\n\nWhen svc_rdma_listen_handler() handles RDMA_CM_EVENT_ADDR_CHANGE,\nit creates a replacement listener cm_id and returns 1, telling\nthe CM core to destroy the old one. If the replacement allocation\nfails, sc_cm_id still points at the old cm_id that the CM core is\nabout to destroy. Any subsequent dereference of sc_cm_id --\nsuch as svc_rdma_detach()'s rdma_disconnect() call -- is a\nuse-after-free.\n\nNULL sc_cm_id on the failure path and guard svc_rdma_detach()'s\nrdma_disconnect() call against NULL so that the listener can\nbe torn down safely when the server shuts down.",
   "datePublished": "Sep 11, 2026, 7:44:12 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:44 PM",
+  "dateUpdated": "Oct 30, 2026, 12:32:03 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2a68aeb2de8ad0fef9c50e73a50622a35c6af1a8\nhttps://git.kernel.org/stable/c/65f0f82f20334e76acaf29087a59af7b3b9699ed\nhttps://git.kernel.org/stable/c/673e358ab7c11f8cec223c6a36a793056a67facd\nhttps://git.kernel.org/stable/c/01500306e1d50de7ca7a2cdcdfa28ac0523eb747\n",
   "aliases": "GHSA-9cv8-xv6f-2jmx\nCVE-2026-89534\n",
   "assigner": "Linux",
-  "epss": 0.37,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "0d6b2ede-aa4a-3439-b9df-9df878d4606e",
@@ -31,6 +31,16 @@
         }
       },
       "product_version": "d1b586e75ec619dde1af47e21a41a6b1b51874c2 <01500306e1d50de7ca7a2cdcdfa28ac0523eb747"
+    },
+    {
+      "id": "3960a8f8-9637-31fc-85af-8f0355cdb8d3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
     },
     {
       "id": "42bd1bbc-2f4e-35eb-803a-969ef149b79b",
@@ -121,6 +131,16 @@
         }
       },
       "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "b2df8993-67b0-3f86-8172-b5eabef01fdc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2f84d6e8b0a7093758d8da19cec111140e7b6d41"
     },
     {
       "id": "fe24de5b-6c41-354e-ae4b-9645a83a7ea1",

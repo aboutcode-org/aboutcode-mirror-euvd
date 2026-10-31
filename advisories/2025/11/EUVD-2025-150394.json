@@ -3,13 +3,23 @@
   "enisaUuid": "4aa359ff-2933-3d57-a224-4f462493fa50",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: zynqmp-ipi: Fix out-of-bounds access in mailbox cleanup loop\n\nThe cleanup loop was starting at the wrong array index, causing\nout-of-bounds access.\nStart the loop at the correct index for zero-indexed arrays to prevent\naccessing memory beyond the allocated array bounds.",
   "datePublished": "Nov 12, 2025, 9:56:25 PM",
-  "dateUpdated": "Oct 21, 2026, 12:37:52 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:56 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/47a92030422d09c2de0633d23f660a65b717f008\nhttps://git.kernel.org/stable/c/cd0cbf2713f6e027ebba867cb7409ae345a31312\nhttps://git.kernel.org/stable/c/ab96f08ecedd263ecaab9df8455bfb23b07fdcc2\nhttps://git.kernel.org/stable/c/0aead8197fc1a85b0a89646e418feb49a564b029\n",
+  "references": "https://git.kernel.org/stable/c/b91951f76be14a393439c7063974b4d26f3cb64f\nhttps://git.kernel.org/stable/c/47a92030422d09c2de0633d23f660a65b717f008\nhttps://git.kernel.org/stable/c/cd0cbf2713f6e027ebba867cb7409ae345a31312\nhttps://git.kernel.org/stable/c/ab96f08ecedd263ecaab9df8455bfb23b07fdcc2\nhttps://git.kernel.org/stable/c/0aead8197fc1a85b0a89646e418feb49a564b029\n",
   "aliases": "GHSA-78x4-5hh5-f94g\nCVE-2025-40180\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.25,
   "enisaIdProduct": [
+    {
+      "id": "0ed2dcab-dd66-3720-9147-e52aa8ead0de",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4981b82ba2ff87df6a711fcd7a233c615df5fc79 <b91951f76be14a393439c7063974b4d26f3cb64f"
+    },
     {
       "id": "135f728f-9ebe-3a3d-a339-492b4d203764",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "patch: 6.18"
+    },
+    {
+      "id": "30d7daa3-c032-3f6f-830b-5a99ac12c47f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "35d3c7d3-e3ea-3418-90a8-67a8532f4175",

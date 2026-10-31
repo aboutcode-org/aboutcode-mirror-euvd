@@ -3,9 +3,9 @@
   "enisaUuid": "49f68759-f8b4-3cc8-89e7-2f0690fe55c0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntap: fix stack info leak in tap_ioctl() SIOCGIFHWADDR\n\nIn the SIOCGIFHWADDR path, tap_ioctl() copies 16 bytes of an\nuninitialised on-stack struct sockaddr_storage to userspace via\nifr_hwaddr, but netif_get_mac_address() only writes sa_family and\ndev->addr_len (6 for Ethernet) bytes, leaving sa_data[6..13] uninitialised.\n\nThose 8 trailing bytes leak kernel stack contents; SIOCGIFHWADDR on a\nmacvtap chardev returns kernel .text and direct-map pointers, defeating\nKASLR.\n\nInitialise ss at declaration.",
   "datePublished": "Jun 24, 2026, 7:14:27 AM",
-  "dateUpdated": "Oct 21, 2026, 12:41:39 PM",
+  "dateUpdated": "Oct 30, 2026, 12:26:20 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/37d028a473b0826ad5970b52b791db4a29a23627\nhttps://git.kernel.org/stable/c/8197905d97099d8b1e3883112bbb497abd20f9f0\nhttps://git.kernel.org/stable/c/719007c3492f0f1f9e9cdbed8ac45ba45bb13eeb\nhttps://git.kernel.org/stable/c/05305e832be7b9d65b2b72caacf7d850b3942b2a\nhttps://git.kernel.org/stable/c/bddc09212c24934643bd44fc794748d2bbb3b6cd\n",
+  "references": "https://git.kernel.org/stable/c/4b6dcfe0e3dfffd8057a4fc99b3f096c45709905\nhttps://git.kernel.org/stable/c/37d028a473b0826ad5970b52b791db4a29a23627\nhttps://git.kernel.org/stable/c/8197905d97099d8b1e3883112bbb497abd20f9f0\nhttps://git.kernel.org/stable/c/719007c3492f0f1f9e9cdbed8ac45ba45bb13eeb\nhttps://git.kernel.org/stable/c/05305e832be7b9d65b2b72caacf7d850b3942b2a\nhttps://git.kernel.org/stable/c/bddc09212c24934643bd44fc794748d2bbb3b6cd\n",
   "aliases": "GHSA-2xmc-f6qc-h4h9\nCVE-2026-52937\n",
   "assigner": "Linux",
   "epss": 0.11,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "176188cff67ec1aa55103647b61d02315cc38e98"
+    },
+    {
+      "id": "5014ce37-9935-322c-b075-2e9c2a79ce2f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "5d9a7ea1-7537-3782-9cde-aa19e314eb9c",
@@ -139,6 +149,16 @@
         }
       },
       "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "a30a772b-01b4-3688-aec4-eb497f8b8aa4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3b23a32a63219f51a5298bc55a65ecee866e79d0 <4b6dcfe0e3dfffd8057a4fc99b3f096c45709905"
     },
     {
       "id": "ab278ebf-54ea-3ef0-b64e-e6002129ec88",

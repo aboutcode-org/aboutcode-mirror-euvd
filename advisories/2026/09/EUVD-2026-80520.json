@@ -3,14 +3,14 @@
   "enisaUuid": "57d47c19-f96c-3d54-81cf-bcfc1b0734c0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix memory corruption by not reinjecting CK machine checks\n\nChannel-subsystem damage machine checks are for the host channel\nsubsystem. The guest channel subsystem is emulated in the userspace VMM.\nThere is no point in forwarding such machine checks into the guest.\n\nThis also simplifies the machine check reinjection and avoids kfree of a\nstack variable as reported by sashiko.  There might be still machine\nchecks that have the ck bit set with another bit (like instruction\ndamage), mask out the CK bit in s390_backup_mcck_info(), like the CP and\nED bits already are.",
   "datePublished": "Sep 16, 2026, 10:32:14 AM",
-  "dateUpdated": "Oct 21, 2026, 12:49:09 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:25 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/5c63e2ed840c85e27172ab78e7db3ac77fba281b\nhttps://git.kernel.org/stable/c/b7631982fb65dd355acd18e62b384bc8125e9c44\nhttps://git.kernel.org/stable/c/6ee52d3af2a1bf70349cf3f860933c8d221e229a\nhttps://git.kernel.org/stable/c/7077ec953996acc04b49d1dfc43df1c1a2a74395\nhttps://git.kernel.org/stable/c/546dde823a36d7283dcf46127c2f3d093443860f\n",
+  "references": "https://git.kernel.org/stable/c/045f3e95a0deccb277c29bd003e1d43c0ad40c90\nhttps://git.kernel.org/stable/c/5c63e2ed840c85e27172ab78e7db3ac77fba281b\nhttps://git.kernel.org/stable/c/b7631982fb65dd355acd18e62b384bc8125e9c44\nhttps://git.kernel.org/stable/c/6ee52d3af2a1bf70349cf3f860933c8d221e229a\nhttps://git.kernel.org/stable/c/7077ec953996acc04b49d1dfc43df1c1a2a74395\nhttps://git.kernel.org/stable/c/546dde823a36d7283dcf46127c2f3d093443860f\n",
   "aliases": "CVE-2026-89920\nGHSA-vhrh-h65f-3j9h\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0af44ebe-f989-33e7-bbb3-215460595200",
@@ -31,6 +31,26 @@
         }
       },
       "product_version": "4d62fcc0b692e3b4058d7d138114c27cd8b011f7 <b7631982fb65dd355acd18e62b384bc8125e9c44"
+    },
+    {
+      "id": "2a4140ba-0483-343e-bbbc-43782e1c9cdc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4d62fcc0b692e3b4058d7d138114c27cd8b011f7 <045f3e95a0deccb277c29bd003e1d43c0ad40c90"
+    },
+    {
+      "id": "39919c07-2250-3bbd-8c99-30b133548375",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "47f7e061-6081-3c21-a73e-f19097f0e370",

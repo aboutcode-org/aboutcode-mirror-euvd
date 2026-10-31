@@ -3,15 +3,25 @@
   "enisaUuid": "da22d565-9488-3127-9bce-576ce31c2c37",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nudmabuf: fix memory leak on last export_udmabuf() error path\n\nIn export_udmabuf(), if dma_buf_fd() fails because the FD table is full, a\ndma_buf owning the udmabuf has already been created; but the error handling\nin udmabuf_create() will tear down the udmabuf without doing anything about\nthe containing dma_buf.\n\nThis leaves a dma_buf in memory that contains a dangling pointer; though\nthat doesn't seem to lead to anything bad except a memory leak.\n\nFix it by moving the dma_buf_fd() call out of export_udmabuf() so that we\ncan give it different error handling.\n\nNote that the shape of this code changed a lot in commit 5e72b2b41a21\n(\"udmabuf: convert udmabuf driver to use folios\"); but the memory leak\nseems to have existed since the introduction of udmabuf.",
   "datePublished": "Dec 29, 2024, 8:48:46 AM",
-  "dateUpdated": "Oct 21, 2026, 12:35:39 PM",
+  "dateUpdated": "Oct 30, 2026, 12:20:26 PM",
   "baseScore": 3.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://git.kernel.org/stable/c/e469922fbdf6ad729e5dc8d49289b5036a0ecdf8\nhttps://git.kernel.org/stable/c/c9fc8428d4255c2128da9c4d5cd92e554d0150cf\nhttps://git.kernel.org/stable/c/f49856f525acd5bef52ae28b7da2e001bbe7439e\n",
+  "references": "https://git.kernel.org/stable/c/00ebdef47994206f60546929a0f6f63285497272\nhttps://git.kernel.org/stable/c/e469922fbdf6ad729e5dc8d49289b5036a0ecdf8\nhttps://git.kernel.org/stable/c/c9fc8428d4255c2128da9c4d5cd92e554d0150cf\nhttps://git.kernel.org/stable/c/f49856f525acd5bef52ae28b7da2e001bbe7439e\n",
   "aliases": "GHSA-5546-cr76-j66r\nCVE-2024-56712\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.25,
   "enisaIdProduct": [
+    {
+      "id": "078d9e3b-8878-32cc-a10e-3f653120ac18",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "22cc047d-a499-3201-bac9-5bca97998130",
       "product": {
@@ -51,6 +61,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "54ec3bf1-7b81-346b-84e2-4b847fdd0f5c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fbb0de795078190a9834b3409e4b009cfb18a6d4 <00ebdef47994206f60546929a0f6f63285497272"
     },
     {
       "id": "717a45c8-71da-327b-8888-b62966b18b61",

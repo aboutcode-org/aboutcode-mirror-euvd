@@ -3,11 +3,11 @@
   "enisaUuid": "af05cb7c-1207-3528-831b-0f465c8d62c4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx93-blk-ctrl: Extract PHY as shared domain for DSI/CSI\n\nThe MIPI DSI and CSI domains share control bits for clock and reset, which\ncan lead to incorrect behavior if one domain disables the shared resource\nwhile the other is still active.\n\nTo fix the issue, introduce a shared MIPI PHY power domain to own the\ncommon resources and make DSI and CSI its subdomains. This ensures the\nshared bits are properly managed and not disabled while still in use.",
   "datePublished": "Aug 15, 2026, 5:51:39 AM",
-  "dateUpdated": "Oct 21, 2026, 12:44:18 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:44 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/94b8a47f45f19c537964355fa539670631882b20\nhttps://git.kernel.org/stable/c/4fd5b33faf092ef2d09f730a7d9e49f9e976ac67\nhttps://git.kernel.org/stable/c/4ba6d7166750d0b810c6cfc0b1df7585f513b48c\nhttps://git.kernel.org/stable/c/99611233f8cda833169fa6487d5dacdf189e5cb0\n",
+  "references": "https://git.kernel.org/stable/c/73c0d6957811d7c138124107e1d31e8fb0133156\nhttps://git.kernel.org/stable/c/94b8a47f45f19c537964355fa539670631882b20\nhttps://git.kernel.org/stable/c/4fd5b33faf092ef2d09f730a7d9e49f9e976ac67\nhttps://git.kernel.org/stable/c/4ba6d7166750d0b810c6cfc0b1df7585f513b48c\nhttps://git.kernel.org/stable/c/99611233f8cda833169fa6487d5dacdf189e5cb0\n",
   "aliases": "CVE-2026-72009\nGHSA-7wvh-6fjm-x43j\n",
   "assigner": "Linux",
   "epss": 0.13,
@@ -83,6 +83,16 @@
       "product_version": "e9aa77d413c903ba4cf7da3fe0b419cae5b97a81 <4fd5b33faf092ef2d09f730a7d9e49f9e976ac67"
     },
     {
+      "id": "9ae354bd-aa9f-36a1-89b7-f7e6266a144d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e9aa77d413c903ba4cf7da3fe0b419cae5b97a81 <73c0d6957811d7c138124107e1d31e8fb0133156"
+    },
+    {
       "id": "a0110ede-459d-3445-ac5a-64c6ef805388",
       "product": {
         "name": "Linux",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "ece8c6ce-5df4-3748-ad81-54d024d863b5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

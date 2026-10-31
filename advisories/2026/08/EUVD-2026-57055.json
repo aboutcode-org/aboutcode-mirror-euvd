@@ -3,9 +3,9 @@
   "enisaUuid": "44830bcf-b86e-3928-80a6-9aea9cc3393d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: sata_dwc_460ex: fix infinite loop in NCQ tag completion bit-scanning\n\nThe hand-rolled bit-scanning loop in the NCQ completion path has an\ninfinite loop bug.  When tag_mask has only high bits set (e.g.\n0x80000000), the inner while loop left-shifts tag_mask until it\noverflows to 0.  At that point !(0 & 1) is always true and 0 <<= 1\nstays 0, causing an infinite loop in hardirq context with a spinlock\nheld.\n\nReplace the open-coded bit-scanning with __ffs() which correctly\nfinds the least significant set bit and is bounded by the width of\nthe argument.",
   "datePublished": "Aug 12, 2026, 12:51:47 AM",
-  "dateUpdated": "Aug 19, 2026, 4:35:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:40 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ea9fa4dabe476f85fe73df30a6ab61a23c22fda4\nhttps://git.kernel.org/stable/c/d72e8089dc332ac48293512ef0de77cbe0e04d25\nhttps://git.kernel.org/stable/c/4c6e64cae2b2dab32ad9099faa339f6a72c0ce16\nhttps://git.kernel.org/stable/c/8c5de0d8ab6824cfdadcbbe1be4c6c9d9f4c1f80\nhttps://git.kernel.org/stable/c/1842d45f461a78988254631893329bdf4596e954\nhttps://git.kernel.org/stable/c/29b916d3556bd12a95be7c56ca391b8cd572f8be\nhttps://git.kernel.org/stable/c/c2130f6553f4a5cbdc259de069600117a995f197\n",
+  "references": "https://git.kernel.org/stable/c/ea9fa4dabe476f85fe73df30a6ab61a23c22fda4\nhttps://git.kernel.org/stable/c/d72e8089dc332ac48293512ef0de77cbe0e04d25\nhttps://git.kernel.org/stable/c/90e8cf489b593814b9398aa187ddbb790e33ec6f\nhttps://git.kernel.org/stable/c/4c6e64cae2b2dab32ad9099faa339f6a72c0ce16\nhttps://git.kernel.org/stable/c/8c5de0d8ab6824cfdadcbbe1be4c6c9d9f4c1f80\nhttps://git.kernel.org/stable/c/1842d45f461a78988254631893329bdf4596e954\nhttps://git.kernel.org/stable/c/29b916d3556bd12a95be7c56ca391b8cd572f8be\nhttps://git.kernel.org/stable/c/c2130f6553f4a5cbdc259de069600117a995f197\n",
   "aliases": "CVE-2026-68449\nGHSA-vjpx-hgc2-722c\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "62936009f35a6659cc3ebe0d90c754182d60da73 <8c5de0d8ab6824cfdadcbbe1be4c6c9d9f4c1f80"
+    },
+    {
+      "id": "2e11180b-ebf4-3550-937b-9df6edf9c3b2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "62936009f35a6659cc3ebe0d90c754182d60da73 <90e8cf489b593814b9398aa187ddbb790e33ec6f"
     },
     {
       "id": "3f2fff0d-39c1-3205-9c61-af318be10763",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.6.148"
+    },
+    {
+      "id": "9887772b-0374-30aa-b3c4-0164db005e9f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "af1b536c-1ff8-39df-a0fd-f3a14d7af039",

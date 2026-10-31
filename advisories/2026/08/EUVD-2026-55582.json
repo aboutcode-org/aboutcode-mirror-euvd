@@ -3,9 +3,9 @@
   "enisaUuid": "b62fe7b1-8df5-3684-9457-1210f5706b46",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: core: wake eh reliably when using scsi_schedule_eh\n\nDrivers which use the scsi_schedule_eh function to run the error handler\ncurrently risk the error handler thread never waking once all commands are\ntimed out or inactive. There is no enforced memory order between setting\nthe host into error recovery state and counting busy commands. This can\nresult in a race with scsi_dec_host_busy where neither CPU sees both\nconditions of all commands inactive and the host error state to request\nwaking the error handler.\n\nTo fix this, run the scsi_schedule_eh's scsi_eh_wakeup from a new work item\nwhich will use rcu to ensure scsi_schedule_eh's call to scsi_host_busy will\noccur after the error state is globally visible and will be seen by any\ncurrent scsi_dec_host_busy callers.",
   "datePublished": "Aug 10, 2026, 12:04:15 PM",
-  "dateUpdated": "Oct 21, 2026, 12:43:56 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:26 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4827c824a203eea2c0aa5bfdb13d5c5038cc84da\nhttps://git.kernel.org/stable/c/866efe8ae8b8b4d095501001b026e1022734be28\nhttps://git.kernel.org/stable/c/c7a15091237205770bd9bd4d14eb1f3029d97a34\nhttps://git.kernel.org/stable/c/24d7abda6a2a19e113334accc10029f6a4b57257\nhttps://git.kernel.org/stable/c/dccf3b1798b70f94e958b3d00b83010399e6fb05\n",
+  "references": "https://git.kernel.org/stable/c/d1280822db11c423ad47b43c9d69a5e56199161e\nhttps://git.kernel.org/stable/c/4827c824a203eea2c0aa5bfdb13d5c5038cc84da\nhttps://git.kernel.org/stable/c/866efe8ae8b8b4d095501001b026e1022734be28\nhttps://git.kernel.org/stable/c/c7a15091237205770bd9bd4d14eb1f3029d97a34\nhttps://git.kernel.org/stable/c/24d7abda6a2a19e113334accc10029f6a4b57257\nhttps://git.kernel.org/stable/c/dccf3b1798b70f94e958b3d00b83010399e6fb05\n",
   "aliases": "CVE-2026-68396\nGHSA-g3vc-2pr6-9v45\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -61,6 +61,16 @@
       "product_version": "6eb045e092efefafc6687409a6fa6d1dabf0fb69 <24d7abda6a2a19e113334accc10029f6a4b57257"
     },
     {
+      "id": "65aebbb2-bfb1-3c45-9f0c-fcee6338f7bf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "779df549-6053-3bb3-b24f-49f4c50f22f0",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "cb080c1d-c68a-39b0-8ad0-cdb9869ff5c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6eb045e092efefafc6687409a6fa6d1dabf0fb69 <d1280822db11c423ad47b43c9d69a5e56199161e"
     },
     {
       "id": "cb583bb0-f4cd-31e8-82ec-8187f76a5d3f",

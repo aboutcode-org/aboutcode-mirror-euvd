@@ -3,12 +3,12 @@
   "enisaUuid": "27fec611-bbed-3856-b0b6-a7d1f87e7ec7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix stackmap overflow check in __bpf_get_stackid()\n\nSyzkaller reported a KASAN slab-out-of-bounds write in __bpf_get_stackid()\nwhen copying stack trace data. The issue occurs when the perf trace\n contains more stack entries than the stack map bucket can hold,\n leading to an out-of-bounds write in the bucket's data array.",
   "datePublished": "Dec 24, 2025, 10:33:06 AM",
-  "dateUpdated": "Oct 21, 2026, 12:38:22 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:15 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d6028caa0ee39dccd005468adfa3223b92bd3ad3\nhttps://git.kernel.org/stable/c/d1f424a77b6bd27b361737ed73df49a0158f1590\nhttps://git.kernel.org/stable/c/2a008f6de163279deffd488c1deab081bce5667c\nhttps://git.kernel.org/stable/c/4669a8db976c8cbd5427fe9945f12c5fa5168ff3\nhttps://git.kernel.org/stable/c/23f852daa4bab4d579110e034e4d513f7d490846\n",
+  "references": "https://git.kernel.org/stable/c/03fe4c886667b3a09b9d6afc03bbc68afb35c82b\nhttps://git.kernel.org/stable/c/d6028caa0ee39dccd005468adfa3223b92bd3ad3\nhttps://git.kernel.org/stable/c/d1f424a77b6bd27b361737ed73df49a0158f1590\nhttps://git.kernel.org/stable/c/2a008f6de163279deffd488c1deab081bce5667c\nhttps://git.kernel.org/stable/c/4669a8db976c8cbd5427fe9945f12c5fa5168ff3\nhttps://git.kernel.org/stable/c/23f852daa4bab4d579110e034e4d513f7d490846\n",
   "aliases": "CVE-2025-68378\nGHSA-v87c-3vwm-rvcr\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "06994fac-b5c7-38d8-adfa-b67775198def",
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "ee2a098851bfbe8bcdd964c0121f4246f00ff41e <d1f424a77b6bd27b361737ed73df49a0158f1590"
+    },
+    {
+      "id": "51708298-467a-32c0-9856-5e1f5c88c537",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "57890e50-4874-3b65-8503-323f28361389",
@@ -189,6 +199,16 @@
         }
       },
       "product_version": "ee2a098851bfbe8bcdd964c0121f4246f00ff41e <2a008f6de163279deffd488c1deab081bce5667c"
+    },
+    {
+      "id": "efc39489-4712-3182-8a85-8257c93fa479",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ee2a098851bfbe8bcdd964c0121f4246f00ff41e <03fe4c886667b3a09b9d6afc03bbc68afb35c82b"
     },
     {
       "id": "fc678746-f8ef-3a06-b077-717bb70c8ff8",

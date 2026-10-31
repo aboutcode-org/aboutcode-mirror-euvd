@@ -3,9 +3,9 @@
   "enisaUuid": "afab4612-861f-310e-ae1c-1297962958ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: virtio: reset device before deleting virtqueues\n\nvirtsnd_remove() and virtsnd_freeze() delete the virtqueues before\nresetting the device. del_vqs() frees the vring backing, but does not\nprovide a generic device quiesce operation. In particular, modern\nvirtio-pci keeps enabled queues active until the device is reset.\n\nReset the device before deleting the virtqueues so it can no longer\naccess the vring memory when that memory is released. This also covers\nprobe failures after DRIVER_OK, which unwind through virtsnd_remove().",
   "datePublished": "Oct 6, 2026, 8:45:27 AM",
-  "dateUpdated": "Oct 19, 2026, 9:16:35 AM",
+  "dateUpdated": "Oct 30, 2026, 12:37:59 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8edc3669e3e22f0123a1114c3a03df9abc4cd465\nhttps://git.kernel.org/stable/c/830012feadc228a938514a6487862dcf56af7e66\nhttps://git.kernel.org/stable/c/500a8401415ab085555785c3c339747e378abd36\nhttps://git.kernel.org/stable/c/3e24b4a6acfd3bedb2200334595facd767c9a897\nhttps://git.kernel.org/stable/c/f070cce7cb361d5389b18f3ff6bd3d25a7596369\nhttps://git.kernel.org/stable/c/6c05d00af307560e6a9f1631d6270d3df5aa2272\n",
+  "references": "https://git.kernel.org/stable/c/c0156a60adfb351b15ff25fbd76a0c639e96246c\nhttps://git.kernel.org/stable/c/8edc3669e3e22f0123a1114c3a03df9abc4cd465\nhttps://git.kernel.org/stable/c/830012feadc228a938514a6487862dcf56af7e66\nhttps://git.kernel.org/stable/c/500a8401415ab085555785c3c339747e378abd36\nhttps://git.kernel.org/stable/c/3e24b4a6acfd3bedb2200334595facd767c9a897\nhttps://git.kernel.org/stable/c/f070cce7cb361d5389b18f3ff6bd3d25a7596369\nhttps://git.kernel.org/stable/c/6c05d00af307560e6a9f1631d6270d3df5aa2272\n",
   "aliases": "GHSA-4px9-x8r2-v4gj\nCVE-2026-98264\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.18.54"
+    },
+    {
+      "id": "0b5d2abe-78ae-3ffb-a692-ba1921c6eb0a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "12488775-5afd-3af9-9280-917ea6290f09",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "de3a9980d8c34b2479173e809afa820473db676a <500a8401415ab085555785c3c339747e378abd36"
+    },
+    {
+      "id": "43f0848f-db91-32c9-906f-e0f2383c47cd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "de3a9980d8c34b2479173e809afa820473db676a <c0156a60adfb351b15ff25fbd76a0c639e96246c"
     },
     {
       "id": "57641a31-765a-344d-8fbd-b2c9c98c7084",

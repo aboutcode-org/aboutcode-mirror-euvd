@@ -3,13 +3,23 @@
   "enisaUuid": "6a5caf66-3551-3fcd-b2fd-d17d1ca9a76d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/erdma: Use IRQ-safe XArray helpers for QP and CQ tables\n\nLocked QP and CQ lookups from EQ interrupts can deadlock with\ncreate-path XArray updates. If an interrupt arrives while the create\npath holds the plain xa_lock, the lookup spins forever trying to\nacquire the same lock.\n\nUse IRQ-safe XArray helpers for all QP and CQ create-path updates,\nincluding the GSI QP store and error paths. Initialize both arrays with\nXA_FLAGS_LOCK_IRQ so sleeping allocations preserve interrupt state.",
   "datePublished": "Oct 6, 2026, 8:46:40 AM",
-  "dateUpdated": "Oct 21, 2026, 12:54:57 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:02 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e32aa1d85126e6d5ef6efd594ced3f75178886ce\nhttps://git.kernel.org/stable/c/74d4085221a7ec5440996af199ccadfa75b9eb0e\nhttps://git.kernel.org/stable/c/00baeade709fb66da647e8327e8398bb532e30f7\n",
   "aliases": "GHSA-c26j-r98f-9j66\nCVE-2026-98353\n",
   "assigner": "Linux",
   "epss": 0.15,
   "enisaIdProduct": [
+    {
+      "id": "0c5f6d39-2252-3e2d-abb1-06431bedd07a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
+    },
     {
       "id": "299d8d6a-ee7b-318f-80e9-14ca48def1c1",
       "product": {
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "c92686867638cda954fdb2bdbac8a75e3aa6eaae"
+    },
+    {
+      "id": "c95b4823-378a-3686-b87f-a2e1256434f8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "92101d7bd67cf313d65baede27118614a283f6bf"
     },
     {
       "id": "cf45f572-0c6c-3d2e-9490-9044963e8df4",

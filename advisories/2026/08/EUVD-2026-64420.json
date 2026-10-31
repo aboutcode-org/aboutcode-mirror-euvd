@@ -3,14 +3,14 @@
   "enisaUuid": "328556a9-171c-3b31-a344-84aa398cc0fe",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: pca953x: fix pca953x_irq_bus_sync_unlock regmap lock\n\nLocking is disabled in the regmap config as this driver uses its own\nlock. This means that all calls to regmap functions (read or write) must\nhold the i2c_lock. The function pca953x_irq_bus_sync_unlock() did not do\nthis, and it was therefore possible that multiple threads could cause an\nincorrect register to be read/written.\n\nA previous patch partly fixed this, but only protected the write to the\ninterrupt mask register, and not the read from the direction register.",
   "datePublished": "Aug 22, 2026, 3:33:21 PM",
-  "dateUpdated": "Oct 21, 2026, 12:46:19 PM",
+  "dateUpdated": "Oct 30, 2026, 12:30:25 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/5d05c4252c09ce10624be2197853c80bf87424e4\nhttps://git.kernel.org/stable/c/41255e64eb9dd87b0b8675f4e47a9c67bcef6e39\nhttps://git.kernel.org/stable/c/bf3f37c2d40b51deb79aea910f28999d7c8c6b5a\nhttps://git.kernel.org/stable/c/e6a2f5f845f50b0c4299bace5111f56d3390a090\nhttps://git.kernel.org/stable/c/9dc325327babe7f159e84cbe9380a45342da0585\n",
+  "references": "https://git.kernel.org/stable/c/58ed56c093a857c19f04cf3db1f02d2e793aec88\nhttps://git.kernel.org/stable/c/5d05c4252c09ce10624be2197853c80bf87424e4\nhttps://git.kernel.org/stable/c/41255e64eb9dd87b0b8675f4e47a9c67bcef6e39\nhttps://git.kernel.org/stable/c/bf3f37c2d40b51deb79aea910f28999d7c8c6b5a\nhttps://git.kernel.org/stable/c/e6a2f5f845f50b0c4299bace5111f56d3390a090\nhttps://git.kernel.org/stable/c/9dc325327babe7f159e84cbe9380a45342da0585\n",
   "aliases": "GHSA-p6rq-qpqh-5f25\nCVE-2026-74733\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "066031f3-2792-3abf-a20b-1d5c95dcc39e",
@@ -43,16 +43,6 @@
       "product_version": "de7cffa53149c7b48bd1bb29b02390c9f05b7f41"
     },
     {
-      "id": "50ec7ab3-d938-32a0-aa79-d74436066fe7",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.101 <6.2"
-    },
-    {
       "id": "531fb5b9-26ec-35b8-9cb6-5f00a93305e5",
       "product": {
         "name": "Linux",
@@ -61,16 +51,6 @@
         }
       },
       "product_version": "patch: 6.18.57"
-    },
-    {
-      "id": "57f4b7ae-625b-3886-925b-feafb379647a",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "58a5c93bd1a6e949267400080f07e57ffe05ec34"
     },
     {
       "id": "5ccbe528-7d99-35ea-98a7-7ce338221261",
@@ -123,6 +103,16 @@
       "product_version": "bfc6444b57dc7186b6acc964705d7516cbaf3904 <9dc325327babe7f159e84cbe9380a45342da0585"
     },
     {
+      "id": "960c12a1-633b-3653-9e38-f4a2684aa59a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.101 <6.1.191"
+    },
+    {
       "id": "a7049c51-c707-30d5-89ca-5a064ef4787c",
       "product": {
         "name": "Linux",
@@ -143,6 +133,16 @@
       "product_version": "bfc6444b57dc7186b6acc964705d7516cbaf3904 <41255e64eb9dd87b0b8675f4e47a9c67bcef6e39"
     },
     {
+      "id": "bc01e1e0-c499-3b24-b5f5-f84baf95c710",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "d541e399-e99d-3635-9f64-5e1800381a91",
       "product": {
         "name": "Linux",
@@ -151,6 +151,16 @@
         }
       },
       "product_version": "patch: 6.12.114"
+    },
+    {
+      "id": "d98ba292-4cda-3a9e-8852-48c7bb509796",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "58a5c93bd1a6e949267400080f07e57ffe05ec34 <58ed56c093a857c19f04cf3db1f02d2e793aec88"
     },
     {
       "id": "e080dfa4-3fd2-325d-b775-276d96f834bc",

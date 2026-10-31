@@ -3,7 +3,7 @@
   "enisaUuid": "1f3e40b6-8c40-33c1-87ad-39480f78d8f1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbonding: prevent potential infinite loop in bond_header_parse()\n\nbond_header_parse() can loop if a stack of two bonding devices is setup,\nbecause skb->dev always points to the hierarchy top.\n\nAdd new \"const struct net_device *dev\" parameter to\n(struct header_ops)->parse() method to make sure the recursion\nis bounded, and that the final leaf parse method is called.",
   "datePublished": "Apr 3, 2026, 3:15:33 PM",
-  "dateUpdated": "Aug 5, 2026, 12:21:51 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:07 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -53,6 +53,16 @@
       "product_version": "6.19.9 <6.19.10"
     },
     {
+      "id": "6c25fa8c-15b8-39a0-b031-2a054add0737",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
+    },
+    {
       "id": "72b8be65-5bbd-3643-a4f7-0a57cc306246",
       "product": {
         "name": "Linux",
@@ -81,6 +91,16 @@
         }
       },
       "product_version": "6.18.19 <6.18.20"
+    },
+    {
+      "id": "cdddffcc-a88f-324f-98f5-b3578e083ea5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b1f22a658a7b20bcb7d34d40cb2ef3e52847e2fb"
     }
   ],
   "enisaIdVendor": [

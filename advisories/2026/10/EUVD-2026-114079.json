@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-114079",
+  "enisaUuid": "fdb130d9-4257-33f5-9207-cb09855253be",
+  "description": "Tamery (formerly Conar) 0.32.0 before 0.99.0 contains a broken authorization vulnerability in the cloud sync API connectionsResources.create handler that allows authenticated users to attach resources to other users' connections. Attackers owning one connection can include a victim's connectionId in a batch request to insert attacker-named resource rows listed by the victim's client.",
+  "datePublished": "Oct 30, 2026, 2:16:23 PM",
+  "dateUpdated": "Oct 30, 2026, 2:16:23 PM",
+  "baseScore": 5.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/wannabespace/tamery/issues/601\nhttps://github.com/wannabespace/tamery/commit/400a9001a661e5ab2f87c51de25da1c4afa7ceed\nhttps://github.com/wannabespace/tamery/blob/v0.32.0/apps/api/orpc/routers/connections-resources/create.ts#L14-L32\nhttps://hackmd.io/@hieuPenguinnn/conar-broken-ownership-cross-user-write\nhttps://github.com/wannabespace/tamery\nhttps://www.vulncheck.com/advisories/tamery-conar-0.32.0-before-0.99.0-broken-authorization-via-connectionsresources-create\n",
+  "aliases": "CVE-2026-119663\nGHSA-mf38-vc74-jfg4\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "969600bb-9cac-3625-90f4-29f75a25f130",
+      "product": {
+        "name": "tamery",
+        "vendor": {
+          "name": "wannabespace"
+        }
+      },
+      "product_version": "0.32.0 <0.99.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "4853dbb6-5fcb-36ff-8273-2ad17c13e314",
+      "vendor": {
+        "name": "wannabespace"
+      }
+    }
+  ]
+}

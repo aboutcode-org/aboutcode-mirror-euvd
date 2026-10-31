@@ -3,9 +3,9 @@
   "enisaUuid": "026f2eae-238f-3737-824b-0dd6090f4bc5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: fix use-after-free in __rpc_clnt_handle_event and __rpc_clnt_remove_pipedir\n\nNormal client creation goes through rpc_setup_pipedir(), which records\nclnt->pipefs_sb, but the mount-event path in __rpc_clnt_handle_event()\ncalls rpc_setup_pipedir_sb() directly and never refreshes that field.\nThe umount path also removes the directory without clearing\nclnt->pipefs_sb.\n\nAfter a late pipefs mount or any remount, rpc_clnt_remove_pipedir()\ncompares the current superblock against a stale pipefs_sb pointer and\nskips cleanup, leaving pipefs dentries whose inode private data still\npoints at a freed rpc_clnt, leading to a potential use-after-free during\nsubsequent rpc_info_open() or rpc_show_info() calls.\n\nFix this by properly updating clnt->pipefs_sb upon mount events and\nclearing it during unmount or failure paths.",
   "datePublished": "Sep 11, 2026, 7:44:19 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:48 PM",
+  "dateUpdated": "Oct 30, 2026, 12:32:06 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f99fedfd1dbffe8d20b421c9a7d4655a135d4fcd\nhttps://git.kernel.org/stable/c/59527bbfb1eabdb28e95e7c725886cc2c2899cb3\nhttps://git.kernel.org/stable/c/e769fcde3cc73e847b1eb3acd40c04a291cb0c0c\nhttps://git.kernel.org/stable/c/cdf7a233cb94774b0e7df42d9157077983f5022c\nhttps://git.kernel.org/stable/c/932a8cf6abb2b2f8677b79153a823108d8861fe2\n",
+  "references": "https://git.kernel.org/stable/c/1a713814e0580f946196bca5e340b37991c6e8bf\nhttps://git.kernel.org/stable/c/f99fedfd1dbffe8d20b421c9a7d4655a135d4fcd\nhttps://git.kernel.org/stable/c/59527bbfb1eabdb28e95e7c725886cc2c2899cb3\nhttps://git.kernel.org/stable/c/e769fcde3cc73e847b1eb3acd40c04a291cb0c0c\nhttps://git.kernel.org/stable/c/cdf7a233cb94774b0e7df42d9157077983f5022c\nhttps://git.kernel.org/stable/c/932a8cf6abb2b2f8677b79153a823108d8861fe2\n",
   "aliases": "CVE-2026-89543\nGHSA-892h-jc8g-4jrg\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -51,14 +51,14 @@
       "product_version": "bfca5fb4e97c46503ddfc582335917b0cc228264 <e769fcde3cc73e847b1eb3acd40c04a291cb0c0c"
     },
     {
-      "id": "15551d76-f1eb-31e0-a9df-abd79d5689b9",
+      "id": "2c790fb7-0177-3ddd-a2bd-d7f8b34f2919",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "6.1.64 <6.2"
+      "product_version": "7749fd2dbef72a52b5c9ffdbf877691950ed4680 <1a713814e0580f946196bca5e340b37991c6e8bf"
     },
     {
       "id": "376aefb3-7aa1-36ba-9ee9-a48e7598412c",
@@ -69,6 +69,16 @@
         }
       },
       "product_version": "7d61d1da2ed1f682c41cae0c8d4719cdaccee5c5"
+    },
+    {
+      "id": "389497dc-8b5f-3151-9d74-7d538ccb57fd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.64 <6.1.191"
     },
     {
       "id": "504156d6-a337-3836-b99f-cc57c5a2a887",
@@ -121,14 +131,14 @@
       "product_version": "dedf2a0eb9448ae73b270743e6ea9b108189df46"
     },
     {
-      "id": "7034d271-4e01-31dc-b8f5-93e396f63605",
+      "id": "6caa8246-e9b8-311f-8aad-539a63d43d47",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "7749fd2dbef72a52b5c9ffdbf877691950ed4680"
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "71f2e5f1-9065-356e-9f7c-9f3c509abe9b",

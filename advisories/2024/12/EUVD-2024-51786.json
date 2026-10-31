@@ -3,14 +3,14 @@
   "enisaUuid": "95e244bb-0511-377a-9c5b-b1bf49bddc0c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Clear virtualized VMLOAD/VMSAVE on Zen4 client\n\nA number of Zen4 client SoCs advertise the ability to use virtualized\nVMLOAD/VMSAVE, but using these instructions is reported to be a cause\nof a random host reboot.\n\nThese instructions aren't intended to be advertised on Zen4 client\nso clear the capability.",
   "datePublished": "Dec 2, 2024, 1:44:46 PM",
-  "dateUpdated": "Oct 21, 2026, 12:35:32 PM",
+  "dateUpdated": "Oct 30, 2026, 12:20:03 PM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/cf79df17706605032461f1ebde730b4391d1ca9c\nhttps://git.kernel.org/stable/c/00c713f84f477a85e524f34aad8fbd11a1c051f0\nhttps://git.kernel.org/stable/c/a5ca1dc46a6b610dd4627d8b633d6c84f9724ef0\n",
+  "references": "https://git.kernel.org/stable/c/e7c81a79fe1fa28c1825fb786bd3c749af471b0b\nhttps://git.kernel.org/stable/c/cf79df17706605032461f1ebde730b4391d1ca9c\nhttps://git.kernel.org/stable/c/00c713f84f477a85e524f34aad8fbd11a1c051f0\nhttps://git.kernel.org/stable/c/a5ca1dc46a6b610dd4627d8b633d6c84f9724ef0\n",
   "aliases": "GHSA-rgw8-cw3p-qv66\nCVE-2024-53114\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "2594ddf3-83f7-390e-a224-6b4a60a3ee3d",
@@ -41,6 +41,26 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5fe201a0-41a2-396b-9fb7-ce94fa05a8fa",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "89c8a4984fc98e625517bfe5083342d77ee35811 <e7c81a79fe1fa28c1825fb786bd3c749af471b0b"
+    },
+    {
+      "id": "79f08cf5-ac93-3670-8ed2-e29ab97a8973",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "82d9c867-0ae6-3653-9902-531c6a38c2e7",

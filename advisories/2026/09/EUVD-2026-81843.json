@@ -3,9 +3,9 @@
   "enisaUuid": "63a555c7-b70c-3859-8db1-2e875f48b4ac",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, cgroup: Fix storage null-ptr-deref after replacing prog\n\nSyzkaller reported a storage null-ptr-deref issue after replacing prog.\nThis occurs in the following scenario:\n1. prog A, an empty prog, is attached to a cgrp.\n2. prog B uses BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE and calls the\n   bpf_get_local_storage helper.\n3. link_update is called to replace prog A with prog B.\n\nThe reason is that __cgroup_bpf_replace fails to alloc and assign the\nrequired cgrp storage for the incoming replacement prog. Consequently,\nthe new prog inherits an uninit storage, leading to null-ptr-deref panic\nwhen kick the new prog.\n\nFix this by rejecting a link update if new_prog's cgroup storage is\nincompatible with link->prog.",
   "datePublished": "Sep 17, 2026, 4:07:51 PM",
-  "dateUpdated": "Oct 21, 2026, 12:50:38 PM",
+  "dateUpdated": "Oct 30, 2026, 12:34:56 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/16c8321ee40c420f8e02e09515a5126682ddf4ea\nhttps://git.kernel.org/stable/c/a033c950f6731be88a7da98604ed78f302f15b80\nhttps://git.kernel.org/stable/c/1ab3da12061d7ccb099f7e925fa2d865967a316a\nhttps://git.kernel.org/stable/c/12feca126831556dc7fabe5a3ba28fbd328768b6\nhttps://git.kernel.org/stable/c/3f562c537e9ecf4bc5e206cfffc2cc047f1b7e94\n",
+  "references": "https://git.kernel.org/stable/c/85785e7e2ebddcaa5c3b31bd3bcd83ae648985d4\nhttps://git.kernel.org/stable/c/16c8321ee40c420f8e02e09515a5126682ddf4ea\nhttps://git.kernel.org/stable/c/a033c950f6731be88a7da98604ed78f302f15b80\nhttps://git.kernel.org/stable/c/1ab3da12061d7ccb099f7e925fa2d865967a316a\nhttps://git.kernel.org/stable/c/12feca126831556dc7fabe5a3ba28fbd328768b6\nhttps://git.kernel.org/stable/c/3f562c537e9ecf4bc5e206cfffc2cc047f1b7e94\n",
   "aliases": "CVE-2026-90250\nGHSA-364x-ffh5-8mmx\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "patch: 6.12.110"
+    },
+    {
+      "id": "62e55641-8da4-32a1-9b57-e54a4e8251e3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "7bfa2c30-fe75-3ede-be3e-75a561579f93",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "0c991ebc8c69d29b7fc44db17075c5aa5253e2ab <12feca126831556dc7fabe5a3ba28fbd328768b6"
+    },
+    {
+      "id": "f6d6cf4b-7913-39ef-b4bd-a566b195bc29",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0c991ebc8c69d29b7fc44db17075c5aa5253e2ab <85785e7e2ebddcaa5c3b31bd3bcd83ae648985d4"
     }
   ],
   "enisaIdVendor": [

@@ -3,12 +3,12 @@
   "enisaUuid": "8a9723c5-8dbb-33ae-8865-e384bd3d5241",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/smaps: fix race between smaps_hugetlb_range and migration\n\nsmaps_hugetlb_range() handles the pte without holdling ptl, and may be\nconcurrenct with migration, leaing to BUG_ON in pfn_swap_entry_to_page(). \nThe race is as follows.\n\nsmaps_hugetlb_range              migrate_pages\n  huge_ptep_get\n                                   remove_migration_ptes\n\t\t\t\t   folio_unlock\n  pfn_swap_entry_folio\n    BUG_ON\n\nTo fix it, hold ptl lock in smaps_hugetlb_range().",
   "datePublished": "Sep 11, 2025, 4:52:24 PM",
-  "dateUpdated": "Oct 21, 2026, 12:37:19 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:25 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f76089018b34dbe0c2e9b67c5b7d8860668748bb\nhttps://git.kernel.org/stable/c/2a1f3663974162b8f1e098196f557cfc1d160138\nhttps://git.kernel.org/stable/c/09fc018f48871123ad5dbd7b03c956580232ed76\nhttps://git.kernel.org/stable/c/b625883ccbcc2b57808db51d1375b1d7b9bcb3e5\nhttps://git.kernel.org/stable/c/45d19b4b6c2d422771c29b83462d84afcbb33f01\n",
+  "references": "https://git.kernel.org/stable/c/37ee0d97298b0547cb26b6957ccfea2d356bd0e7\nhttps://git.kernel.org/stable/c/f76089018b34dbe0c2e9b67c5b7d8860668748bb\nhttps://git.kernel.org/stable/c/2a1f3663974162b8f1e098196f557cfc1d160138\nhttps://git.kernel.org/stable/c/09fc018f48871123ad5dbd7b03c956580232ed76\nhttps://git.kernel.org/stable/c/b625883ccbcc2b57808db51d1375b1d7b9bcb3e5\nhttps://git.kernel.org/stable/c/45d19b4b6c2d422771c29b83462d84afcbb33f01\n",
   "aliases": "CVE-2025-39754\nGHSA-fppf-vq4v-6j7g\n",
   "assigner": "Linux",
-  "epss": 0.11,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "049973fb-f287-3570-a42c-debd25c52ffa",
@@ -81,6 +81,16 @@
       "product_version": "25ee01a2fca02dfb5a3ce316e77910c468108199 <09fc018f48871123ad5dbd7b03c956580232ed76"
     },
     {
+      "id": "900e5026-2ab4-3166-a868-127ff07f2dfb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "25ee01a2fca02dfb5a3ce316e77910c468108199 <37ee0d97298b0547cb26b6957ccfea2d356bd0e7"
+    },
+    {
       "id": "95379a3a-5943-3941-ae8f-82fea97657cd",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "25ee01a2fca02dfb5a3ce316e77910c468108199 <f76089018b34dbe0c2e9b67c5b7d8860668748bb"
+    },
+    {
+      "id": "e1f2cb45-582f-3158-be4b-e6989e7b491c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f13fec72-5183-3b05-969f-382ad08ecde3",

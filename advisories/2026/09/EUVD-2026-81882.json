@@ -3,11 +3,11 @@
   "enisaUuid": "3fa995c7-8634-3125-bc1f-21cad05dca09",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Resize MST HDCP per-connector arrays to 32\n\nAMDGPU_DM_MAX_DISPLAY_INDEX is 31. It suggest a maximum number of\n32 connectors. But the way it's used is like MAX_DISPLAY_COUNT.\nHence we're off by one with DRM core, which supports a max of 32\nconnectors.\n\nRename AMDGPU_DM_MAX_DISPLAY_INDEX to AMDGPU_DM_MAX_DISPLAY_COUNT\nto match its actual use, and increase the size to 32 to match the\noriginally intended size.",
   "datePublished": "Sep 17, 2026, 4:08:17 PM",
-  "dateUpdated": "Oct 21, 2026, 12:50:48 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:03 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/decea8279bec5a35413b2cb8e36951cca308fac0\nhttps://git.kernel.org/stable/c/ac490fea9fe74f9d9975c5d8250c8719750589cd\nhttps://git.kernel.org/stable/c/562d24ac214ba9530d88841088eb6adce5c537b5\nhttps://git.kernel.org/stable/c/0fa116a17b69a28712cdf209318e345b676d7f6c\nhttps://git.kernel.org/stable/c/261e0fe4e2c99f687114b64b10b98db964b475f4\n",
+  "references": "https://git.kernel.org/stable/c/1c22294c7d9b3b1c26a18ca4eca8c863a5a0d907\nhttps://git.kernel.org/stable/c/decea8279bec5a35413b2cb8e36951cca308fac0\nhttps://git.kernel.org/stable/c/ac490fea9fe74f9d9975c5d8250c8719750589cd\nhttps://git.kernel.org/stable/c/562d24ac214ba9530d88841088eb6adce5c537b5\nhttps://git.kernel.org/stable/c/0fa116a17b69a28712cdf209318e345b676d7f6c\nhttps://git.kernel.org/stable/c/261e0fe4e2c99f687114b64b10b98db964b475f4\n",
   "aliases": "CVE-2026-90289\nGHSA-jm7v-p326-mf66\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -63,16 +63,6 @@
       "product_version": "82986fd631fa04bcedaefe11a6b3767601cbe84f <261e0fe4e2c99f687114b64b10b98db964b475f4"
     },
     {
-      "id": "897ff943-41a6-31bc-bff6-cdcfd3ffffd9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "d90f97cb3821c47bdf773dcf6cade143773ec764"
-    },
-    {
       "id": "8b346daa-c77a-3987-869b-6daa760dd73a",
       "product": {
         "name": "Linux",
@@ -81,16 +71,6 @@
         }
       },
       "product_version": "patch: 7.2.6"
-    },
-    {
-      "id": "926b4a37-e5ee-3fe3-baa2-0f4af822982e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.47 <6.2"
     },
     {
       "id": "97e414ab-62af-3622-94ad-056c5b5b7705",
@@ -113,6 +93,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "9e023484-fefa-30c6-9292-41e9c71e7fbf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d90f97cb3821c47bdf773dcf6cade143773ec764 <1c22294c7d9b3b1c26a18ca4eca8c863a5a0d907"
+    },
+    {
       "id": "ada89596-5d8a-3947-95dd-525ea2e6dffb",
       "product": {
         "name": "Linux",
@@ -121,6 +111,16 @@
         }
       },
       "product_version": "82986fd631fa04bcedaefe11a6b3767601cbe84f <ac490fea9fe74f9d9975c5d8250c8719750589cd"
+    },
+    {
+      "id": "af79953a-b5fc-345c-81b0-09dc427fd20d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.47 <6.1.191"
     },
     {
       "id": "b9c43996-bd98-3f62-800a-af90ae5fa48f",
@@ -161,6 +161,16 @@
         }
       },
       "product_version": "6.3"
+    },
+    {
+      "id": "edc1617f-05ce-3330-9962-72893e013fe8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f210a6fb-a6d3-31f5-94d0-e51086d6b9e3",

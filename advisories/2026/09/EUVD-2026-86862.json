@@ -3,12 +3,12 @@
   "enisaUuid": "f90cfbc6-53ae-34fd-b81f-5fd129483430",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: avoid using uninitialized SIDs in cifs_posix_to_fattr()\n\ncifs_posix_to_fattr() ignores the return value of posix_info_parse().\nWhen a malformed POSIX directory entry is encountered (e.g. invalid\nSID lengths from an untrusted server), posix_info_parse() returns -1\nwithout populating the 'parsed' struct.  The uninitialized stack\nmemory in parsed.owner and parsed.group is then passed to\nsid_to_id(), which processes the garbage bytes and passes them to\nrequest_key() to construct a SID string, potentially leaking kernel\nstack contents to the userspace idmap daemon.\n\nFix this by checking the return value and skipping the SID-to-id\nmapping when parsing fails.  The remaining fattr fields (timestamps,\nmode, etc.) are populated directly from the 'info' pointer so they\nare unaffected.",
   "datePublished": "Sep 25, 2026, 10:21:45 AM",
-  "dateUpdated": "Oct 21, 2026, 12:53:14 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:18 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/604feb3e8141bf11f5afd48d36d401fee5af9536\nhttps://git.kernel.org/stable/c/33106019c3be57b5fc6411cfaad6d98214a51265\nhttps://git.kernel.org/stable/c/2be31f252ade791b84f7164991f14436aed1d4b9\nhttps://git.kernel.org/stable/c/c9a8b60ce140a68d172452f418137fc7ddbae7db\nhttps://git.kernel.org/stable/c/da6e25842431982d5a53cf00d925b98c690f4467\n",
+  "references": "https://git.kernel.org/stable/c/1915b69e36906968e2b698699d0f219875ae846e\nhttps://git.kernel.org/stable/c/604feb3e8141bf11f5afd48d36d401fee5af9536\nhttps://git.kernel.org/stable/c/33106019c3be57b5fc6411cfaad6d98214a51265\nhttps://git.kernel.org/stable/c/2be31f252ade791b84f7164991f14436aed1d4b9\nhttps://git.kernel.org/stable/c/c9a8b60ce140a68d172452f418137fc7ddbae7db\nhttps://git.kernel.org/stable/c/da6e25842431982d5a53cf00d925b98c690f4467\n",
   "aliases": "CVE-2026-97554\nGHSA-vfwc-r92w-jp29\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0fec8179-09c7-332f-915a-cd5303e97074",
@@ -59,6 +59,26 @@
         }
       },
       "product_version": "patch: 7.2.7"
+    },
+    {
+      "id": "775ab2d5-5a12-37cf-acf3-255d33c49f4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "84d9eca6-ba29-34e8-88eb-8d441af889e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9934430e2178d5164eb1ac91a9b092f9e7e64745 <1915b69e36906968e2b698699d0f219875ae846e"
     },
     {
       "id": "8ef6e89a-f19a-37dd-825f-c21e02019110",

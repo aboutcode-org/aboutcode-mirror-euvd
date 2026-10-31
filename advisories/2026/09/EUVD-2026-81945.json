@@ -3,9 +3,9 @@
   "enisaUuid": "6af5e3a7-31f2-329d-a3f1-372a0bc3b267",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-vf: fix workqueue and netdev race in probe/remove\n\nInitialize the VF workqueue before register_netdev() so ndo_set_rx_mode\ndoes not queue work on a NULL workqueue. Unregister the netdev before\ndestroying the workqueue, and add proper probe error cleanup.",
   "datePublished": "Sep 17, 2026, 4:06:00 PM",
-  "dateUpdated": "Oct 21, 2026, 12:49:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:34:03 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bdc530baf079eee104f9ea5d83815e798ea155df\nhttps://git.kernel.org/stable/c/00dda563f4963f28fab46d09b912d68268b8e7a5\nhttps://git.kernel.org/stable/c/42a139332ce81a907dac987f1494d30e0a8ab149\nhttps://git.kernel.org/stable/c/ef42c9e922dfa806576d9d82867da2f3cd76b3ca\nhttps://git.kernel.org/stable/c/3ba97ff4f873481d370bee7f7dfb87f8296af9be\n",
+  "references": "https://git.kernel.org/stable/c/4a4b53231b77986ce55b38122174222c86416de7\nhttps://git.kernel.org/stable/c/bdc530baf079eee104f9ea5d83815e798ea155df\nhttps://git.kernel.org/stable/c/00dda563f4963f28fab46d09b912d68268b8e7a5\nhttps://git.kernel.org/stable/c/42a139332ce81a907dac987f1494d30e0a8ab149\nhttps://git.kernel.org/stable/c/ef42c9e922dfa806576d9d82867da2f3cd76b3ca\nhttps://git.kernel.org/stable/c/3ba97ff4f873481d370bee7f7dfb87f8296af9be\n",
   "aliases": "GHSA-8f7f-fc8g-59c2\nCVE-2026-90084\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -81,6 +81,16 @@
       "product_version": "5.14"
     },
     {
+      "id": "532b3bfa-b6dc-3629-a41d-07dedb9ccc51",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "85408898-e1b0-3ad7-ab1d-8fc867650a00",
       "product": {
         "name": "Linux",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "patch: 6.18.52"
+    },
+    {
+      "id": "d6c0a07e-8f64-3f14-9447-bf0ca0580360",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cbc100aa220556d056272f07dc735c9758089da9 <4a4b53231b77986ce55b38122174222c86416de7"
     },
     {
       "id": "e99cc6be-db08-34b2-881b-c628be8ef42c",

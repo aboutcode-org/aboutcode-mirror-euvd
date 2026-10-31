@@ -3,12 +3,12 @@
   "enisaUuid": "0a6ad376-53c7-3081-891d-ab57e61cb710",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: use skb_header_pointer() for TCPv4 GSO frag_off check\n\nSyzbot reported a KMSAN uninit-value warning in gso_features_check()\ncalled from netif_skb_features() [1].\n\ngso_features_check() reads iph->frag_off to decide whether to clear\nmangleid_features. Accessing the IPv4 header via ip_hdr()/inner_ip_hdr()\ncan rely on skb header offsets that are not always safe for direct\ndereference on packets injected from PF_PACKET paths.\n\nUse skb_header_pointer() for the TCPv4 frag_off check so the header read\nis robust whether data is already linear or needs copying.\n\n[1] https://syzkaller.appspot.com/bug?extid=1543a7d954d9c6d00407",
   "datePublished": "May 1, 2026, 2:15:34 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:54 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:49 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5057502630fbc8ce468ff617ff59af275960b537\nhttps://git.kernel.org/stable/c/f7a6cd508e9e825a2c69fa9e13d41ee156852f25\nhttps://git.kernel.org/stable/c/cc91202fc20a44aab4c206f12a2bfe05da936051\nhttps://git.kernel.org/stable/c/d970341cfa5594614c7a6634886c7688b4f5cafd\nhttps://git.kernel.org/stable/c/ddc748a391dd8642ba6b2e4fe22e7f2ddf84b7f0\n",
+  "references": "https://git.kernel.org/stable/c/362bacb37d88a178bfaefc4484623eae44425a70\nhttps://git.kernel.org/stable/c/5057502630fbc8ce468ff617ff59af275960b537\nhttps://git.kernel.org/stable/c/f7a6cd508e9e825a2c69fa9e13d41ee156852f25\nhttps://git.kernel.org/stable/c/cc91202fc20a44aab4c206f12a2bfe05da936051\nhttps://git.kernel.org/stable/c/d970341cfa5594614c7a6634886c7688b4f5cafd\nhttps://git.kernel.org/stable/c/ddc748a391dd8642ba6b2e4fe22e7f2ddf84b7f0\n",
   "aliases": "CVE-2026-43036\nGHSA-wjhp-5p5w-qmhh\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0fcd0c0f-62cf-390f-89be-715f2b55c61f",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.18.22"
     },
     {
+      "id": "332e368d-35aa-35c1-8df0-9e28d8603f45",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "cbc53e08a793b073e79f42ca33f1f3568703540d <362bacb37d88a178bfaefc4484623eae44425a70"
+    },
+    {
       "id": "45d92720-42af-3449-a909-5e3ba088b23e",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "4.7"
+    },
+    {
+      "id": "697ac4d6-5b00-3fe3-b3be-27e8f531953d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "7f8e366e-892f-354d-a34b-f06b6757cffc",

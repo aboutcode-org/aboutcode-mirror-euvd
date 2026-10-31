@@ -3,9 +3,9 @@
   "enisaUuid": "18c3cf5c-d9e4-3873-8bd4-60def8edb288",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nexfat: fix handling of damaged volume in exfat_create_upcase_table()\n\nWhen the size of the upcase table is set to zero in the dentry for any\nreason(e.g. corrupted media or misbehaving device), an integer overflow\ncauses the module to loop indefinitely.\n\nIf the size of the upcase table is read zero, do not attempt to load the\ntable. Instead, fallback to loading the default upcase table. If the\nsize of the upcase table is zero or no upcase table is found, raise\nexfat_fs_error() to mark the volume read-only.",
   "datePublished": "Sep 24, 2026, 4:03:08 PM",
-  "dateUpdated": "Oct 21, 2026, 12:52:41 PM",
+  "dateUpdated": "Oct 30, 2026, 12:36:52 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/29723256fccf46e55c2a44bd6b8345bef7ba079b\nhttps://git.kernel.org/stable/c/60ace93811609e4dd883e9de5fb4462ed834160a\nhttps://git.kernel.org/stable/c/2cc0b612343638057ef321ce735201a7c2f52f25\nhttps://git.kernel.org/stable/c/20dd3185d13865214ff25b0bf7b931e8d73be1ac\n",
+  "references": "https://git.kernel.org/stable/c/091ca992218105a050af0b863337e02a2d518b2f\nhttps://git.kernel.org/stable/c/29723256fccf46e55c2a44bd6b8345bef7ba079b\nhttps://git.kernel.org/stable/c/60ace93811609e4dd883e9de5fb4462ed834160a\nhttps://git.kernel.org/stable/c/2cc0b612343638057ef321ce735201a7c2f52f25\nhttps://git.kernel.org/stable/c/20dd3185d13865214ff25b0bf7b931e8d73be1ac\n",
   "aliases": "CVE-2026-93828\nGHSA-crx7-9vj2-jqgc\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.18.53"
+    },
+    {
+      "id": "07afe8a0-b8d9-303e-a35b-a900a088b3ad",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "19a67e3d-b125-366e-8642-fa011330b65b",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5439154f-a333-330f-8a5f-f2d234bfe254",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "370e812b3ec190fa492c9fd5a80c38b086d105c0 <091ca992218105a050af0b863337e02a2d518b2f"
     },
     {
       "id": "86c7e38e-c401-3bf1-9007-67c7e81b8d3f",

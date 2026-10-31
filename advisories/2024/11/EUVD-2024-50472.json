@@ -3,14 +3,14 @@
   "enisaUuid": "313eaef8-d1cd-3df4-adb1-937ec234b75f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()\n\nIn mtk_crtc_create(), if the call to mbox_request_channel() fails then we\nset the \"mtk_crtc->cmdq_client.chan\" pointer to NULL.  In that situation,\nwe do not call cmdq_pkt_create().\n\nDuring the cleanup, we need to check if the \"mtk_crtc->cmdq_client.chan\"\nis NULL first before calling cmdq_pkt_destroy().  Calling\ncmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and\nit will result in a NULL pointer dereference.",
   "datePublished": "Nov 19, 2024, 5:19:39 PM",
-  "dateUpdated": "Oct 3, 2026, 10:55:21 AM",
+  "dateUpdated": "Oct 30, 2026, 12:19:56 PM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/fb05e973698f4af008c7fb6e0cfa6a2fa1d98409\nhttps://git.kernel.org/stable/c/c60583a87cb4a85b69d1f448f0be5eb6ec62cbb2\nhttps://git.kernel.org/stable/c/4018651ba5c409034149f297d3dd3328b91561fd\n",
+  "references": "https://git.kernel.org/stable/c/32ac6dccf561af97f20a3831430577d8a978e672\nhttps://git.kernel.org/stable/c/fb05e973698f4af008c7fb6e0cfa6a2fa1d98409\nhttps://git.kernel.org/stable/c/c60583a87cb4a85b69d1f448f0be5eb6ec62cbb2\nhttps://git.kernel.org/stable/c/4018651ba5c409034149f297d3dd3328b91561fd\n",
   "aliases": "GHSA-5ggj-xwvc-9x57\nCVE-2024-53056\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.24,
   "enisaIdProduct": [
     {
       "id": "1ed193b4-3f37-3ab2-96be-8eafff4df87d",
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "2c4396693698e876e559768d3d3a150c672ec384"
+    },
+    {
+      "id": "581e7bbf-5896-3b83-9230-f86ca85c79cd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7627122fd1c06800a1fe624e9fb3c269796115e8 <32ac6dccf561af97f20a3831430577d8a978e672"
     },
     {
       "id": "5d114fee-10b5-330a-94fb-48f212ce0cbe",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "7627122fd1c06800a1fe624e9fb3c269796115e8 <fb05e973698f4af008c7fb6e0cfa6a2fa1d98409"
+    },
+    {
+      "id": "ec0523e0-afc1-32ed-ac70-6c6fb879eb55",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

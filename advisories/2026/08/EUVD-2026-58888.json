@@ -3,15 +3,25 @@
   "enisaUuid": "04a46b49-6626-3db9-88aa-8d8da3c8b84e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-auth: reject short AUTH_RECEIVE buffers\n\nnvmet_execute_auth_receive() trusts the AUTH_RECEIVE allocation length\nafter checking only that it is nonzero and matches the transfer length.\nIn the SUCCESS1 and FAILURE1/default states, that lets a remote NVMe-oF\ninitiator reach the fixed-size DH-HMAC-CHAP response builders with a\nkmalloc() buffer shorter than the response, so nvmet_auth_success1() and\nnvmet_auth_failure1() write past the allocation; both only WARN_ON the\nshort length and then format the message anyway.\n\nImpact: A remote NVMe-oF initiator with access to an auth-enabled target\ncan trigger a 16-byte heap out-of-bounds write via a one-byte\nAUTH_RECEIVE allocation length.\n\nCompute the minimum response length for the current DH-HMAC-CHAP step in\nnvmet_auth_receive_data_len() and report a zero data length when the\nhost-supplied allocation length is shorter, so the existing zero-length\ncheck in nvmet_execute_auth_receive() rejects the command before any\nbuilder runs. The SUCCESS1 minimum is sizeof(struct\nnvmf_auth_dhchap_success1_data) plus the HMAC hash length, because the\nresponse hash is written into the rval[] flexible-array tail, so the\nminimum is state dependent rather than a flat sizeof. CHALLENGE keeps its\nexisting variable-length guard in nvmet_auth_challenge().\n\nThis is reachable only when in-band DH-HMAC-CHAP authentication is\nconfigured on the target.",
   "datePublished": "Aug 15, 2026, 5:53:06 AM",
-  "dateUpdated": "Oct 21, 2026, 12:44:23 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:49 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/584d7d14d9b40b080b1195cec83de86ade63343e\nhttps://git.kernel.org/stable/c/80bf7b7f676e3987bbe06af3c359bd56ac91a5a9\nhttps://git.kernel.org/stable/c/2eaa3ad450141cfcf187bb43cb8335eb336b5f87\nhttps://git.kernel.org/stable/c/bc111698b46e43eddd8664cceaa621cd559e99a0\nhttps://git.kernel.org/stable/c/779575bc35c687697ba69e904f2cd22e60112534\n",
+  "references": "https://git.kernel.org/stable/c/ecdb6332fe59ddf18aad758a4926e3d483f4860a\nhttps://git.kernel.org/stable/c/584d7d14d9b40b080b1195cec83de86ade63343e\nhttps://git.kernel.org/stable/c/80bf7b7f676e3987bbe06af3c359bd56ac91a5a9\nhttps://git.kernel.org/stable/c/2eaa3ad450141cfcf187bb43cb8335eb336b5f87\nhttps://git.kernel.org/stable/c/bc111698b46e43eddd8664cceaa621cd559e99a0\nhttps://git.kernel.org/stable/c/779575bc35c687697ba69e904f2cd22e60112534\n",
   "aliases": "CVE-2026-72130\nGHSA-m9xx-q2g4-96mr\n",
   "assigner": "Linux",
   "epss": 0.75,
   "enisaIdProduct": [
+    {
+      "id": "172f1727-383b-369b-8061-377aa69dbcf3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "db1312dd95488b5e6ff362ff66fcf953a46b1821 <ecdb6332fe59ddf18aad758a4926e3d483f4860a"
+    },
     {
       "id": "2595a7c1-1cce-388f-8763-0719437c81ef",
       "product": {
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "4bb3dad8-d759-3a20-929c-302ceb506dab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "4dbc7d26-4004-3336-ab64-0f0120600b57",

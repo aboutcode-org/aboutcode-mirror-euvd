@@ -3,9 +3,9 @@
   "enisaUuid": "9a8720fc-ed33-3151-8170-37b91df4cee1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Publish channel state before callbacks\n\nTransport setup can enable callbacks before the setup routine returns.\nmailbox_chan_setup() registers the mailbox client with\nmbox_request_channel(), and the mailbox controller startup path can enable\ninterrupt delivery before SCMI mailbox channel state has been published.\nSimilarly, smc_chan_setup() requests the optional A2P completion IRQ before\nthe SMC transport has made its cinfo pointer visible.\n\nIf a pending or spurious callback fires in those windows, the transport RX\ncallback can dereference a NULL transport cinfo pointer. Publishing only\nthe transport-private pointer is not sufficient either: an early callback\ncan enter the SCMI core before scmi_chan_setup() has assigned\ncinfo->handle.\nThe core derives scmi_info from cinfo->handle in the RX path, so a NULL\nhandle can still fault even when the transport-private cinfo is valid.\n\nAssign cinfo->handle before invoking the transport setup callback. Publish\nthe mailbox and SMC transport-private channel state before requesting the\nmailbox channels or IRQ, and clear the early-published pointers again on\nsetup failure. Also unwind mailbox setup devres resources on failure so an\noptional RX setup error that is ignored by the core does not leave stale\ntransport state behind.",
   "datePublished": "Sep 17, 2026, 4:11:08 PM",
-  "dateUpdated": "Oct 21, 2026, 12:51:52 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:57 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/50e38091a657ad81385e2aea7e2575e17ac23d79\nhttps://git.kernel.org/stable/c/6f3f532531e4a27d28a2240719d1b05ac11766c6\nhttps://git.kernel.org/stable/c/1bea027f7ef6fb889628b16c568a5f7c07a51b30\nhttps://git.kernel.org/stable/c/a1bc587568a4e373db76261dc9561dfc3653917f\nhttps://git.kernel.org/stable/c/0314900dcdde044af0208fed212035dbfaa55843\n",
+  "references": "https://git.kernel.org/stable/c/9d349c7b2392b1196e10421421ea9a09fcc5d3cc\nhttps://git.kernel.org/stable/c/50e38091a657ad81385e2aea7e2575e17ac23d79\nhttps://git.kernel.org/stable/c/6f3f532531e4a27d28a2240719d1b05ac11766c6\nhttps://git.kernel.org/stable/c/1bea027f7ef6fb889628b16c568a5f7c07a51b30\nhttps://git.kernel.org/stable/c/a1bc587568a4e373db76261dc9561dfc3653917f\nhttps://git.kernel.org/stable/c/0314900dcdde044af0208fed212035dbfaa55843\n",
   "aliases": "CVE-2026-93093\nGHSA-wj2w-288c-r9m4\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "5c8a47a5a91d4d6e185f758d61997613d9c5d6ac <0314900dcdde044af0208fed212035dbfaa55843"
+    },
+    {
+      "id": "14b22f90-c360-3469-a7c1-2eabb716e3fb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5c8a47a5a91d4d6e185f758d61997613d9c5d6ac <9d349c7b2392b1196e10421421ea9a09fcc5d3cc"
     },
     {
       "id": "1635b8dd-384c-3e6b-89bc-6a1f1d4bdff8",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "da18785f-9fd6-3869-a8e1-51518186e0af",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "f90a88c4-d2b6-32af-b2f6-d45c6cc9af56",

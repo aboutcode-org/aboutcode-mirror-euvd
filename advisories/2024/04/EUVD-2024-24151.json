@@ -3,11 +3,11 @@
   "enisaUuid": "b45b89b4-d260-334b-a73d-55f32fedc62c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_core: Fix possible buffer overflow\n\nstruct hci_dev_info has a fixed size name[8] field so in the event that\nhdev->name is bigger than that strcpy would attempt to write past its\nsize, so this fixes this problem by switching to use strscpy.",
   "datePublished": "Apr 17, 2024, 10:27:42 AM",
-  "dateUpdated": "Oct 15, 2026, 12:39:09 AM",
+  "dateUpdated": "Oct 30, 2026, 12:18:00 PM",
   "baseScore": 5.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/6d5a9d4a7bcbb7534ce45a18a52e7bd23e69d8ac\nhttps://git.kernel.org/stable/c/54a03e4ac1a41edf8a5087bd59f8241b0de96d3d\nhttps://git.kernel.org/stable/c/d47e6c1932cee02954ea588c9f09fd5ecefeadfc\nhttps://git.kernel.org/stable/c/2e845867b4e279eff0a19ade253390470e07e8a1\nhttps://git.kernel.org/stable/c/a41c8efe659caed0e21422876bbb6b73c15b5244\nhttps://git.kernel.org/stable/c/8c28598a2c29201d2ba7fc37539a7d41c264fb10\nhttps://git.kernel.org/stable/c/2edce8e9a99dd5e4404259d52e754fdc97fb42c2\nhttps://git.kernel.org/stable/c/81137162bfaa7278785b24c1fd2e9e74f082e8e4\n",
+  "references": "https://git.kernel.org/stable/c/6d5a9d4a7bcbb7534ce45a18a52e7bd23e69d8ac\nhttps://git.kernel.org/stable/c/54a03e4ac1a41edf8a5087bd59f8241b0de96d3d\nhttps://git.kernel.org/stable/c/d47e6c1932cee02954ea588c9f09fd5ecefeadfc\nhttps://git.kernel.org/stable/c/2e845867b4e279eff0a19ade253390470e07e8a1\nhttps://git.kernel.org/stable/c/0477ac14251d0ba813f311bb5db79eb07d99bfcc\nhttps://git.kernel.org/stable/c/a41c8efe659caed0e21422876bbb6b73c15b5244\nhttps://git.kernel.org/stable/c/8c28598a2c29201d2ba7fc37539a7d41c264fb10\nhttps://git.kernel.org/stable/c/2edce8e9a99dd5e4404259d52e754fdc97fb42c2\nhttps://git.kernel.org/stable/c/81137162bfaa7278785b24c1fd2e9e74f082e8e4\n",
   "aliases": "CVE-2024-26889\nGHSA-3x8x-qmm7-6f56\n",
   "assigner": "Linux",
   "epss": 0.27,
@@ -143,16 +143,6 @@
       "product_version": "6.6"
     },
     {
-      "id": "76e96590-347a-3756-9fb3-b40a965c5e2e",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.60 <6.2"
-    },
-    {
       "id": "810a5418-9e45-38df-b9ad-29b26e2e7049",
       "product": {
         "name": "Linux",
@@ -161,6 +151,16 @@
         }
       },
       "product_version": "b48595f5b1c6e81e06e164e7d2b7a30b1776161e <54a03e4ac1a41edf8a5087bd59f8241b0de96d3d"
+    },
+    {
+      "id": "89f9c892-0dd2-3cc3-b094-bae737794390",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.60 <6.1.191"
     },
     {
       "id": "8b6ee727-2abf-3c55-a219-0ebbbeaeab68",
@@ -233,14 +233,24 @@
       "product_version": "5.10.199 <5.10.214"
     },
     {
-      "id": "bee3dcf8-cb51-3cf2-b622-fd1637ea2e6b",
+      "id": "af59d656-928d-3008-bf25-0b7c8b83619b",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "a55d53ad5c86aee3f6da50ee73626008997673fa"
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "b131e035-696d-3ee2-a314-422e59a4508b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a55d53ad5c86aee3f6da50ee73626008997673fa <0477ac14251d0ba813f311bb5db79eb07d99bfcc"
     },
     {
       "id": "c0d20d48-e8c1-3ea3-bb7f-84ab68a2e5c9",

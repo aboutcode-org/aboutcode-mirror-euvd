@@ -3,9 +3,9 @@
   "enisaUuid": "a8f6b1d3-cc05-3c62-959d-6cc4bb86cea7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: arp/nd proxy: fix reading neigh ha\n\nCurrently neigh ha address is read directly, but that can result in\ntorn/partial reads if the neigh is being updated. Use neigh_ha_snapshot\nto take a stable snapshot of the address.",
   "datePublished": "Sep 17, 2026, 4:06:15 PM",
-  "dateUpdated": "Oct 21, 2026, 12:49:53 PM",
+  "dateUpdated": "Oct 30, 2026, 12:34:10 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/490c72868443ff90f47f4ccbaaff1eaf8fed46ab\nhttps://git.kernel.org/stable/c/a178bcb01051688fb085ffb72cc4b13b5df0fc0f\nhttps://git.kernel.org/stable/c/884cbf15ccd3980bcc9583073045f91798a86d4e\nhttps://git.kernel.org/stable/c/291c9e137b7c74e8a512cded4845352da4c4adda\nhttps://git.kernel.org/stable/c/57549ab9079122991dfa0f8248ca00e101e8e69b\n",
+  "references": "https://git.kernel.org/stable/c/2365b25b4add42bb5f652920b45bc9ad0e35cbc7\nhttps://git.kernel.org/stable/c/490c72868443ff90f47f4ccbaaff1eaf8fed46ab\nhttps://git.kernel.org/stable/c/a178bcb01051688fb085ffb72cc4b13b5df0fc0f\nhttps://git.kernel.org/stable/c/884cbf15ccd3980bcc9583073045f91798a86d4e\nhttps://git.kernel.org/stable/c/291c9e137b7c74e8a512cded4845352da4c4adda\nhttps://git.kernel.org/stable/c/57549ab9079122991dfa0f8248ca00e101e8e69b\n",
   "aliases": "CVE-2026-90106\nGHSA-gcv9-cqh3-4c3g\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -31,6 +31,16 @@
       "product_version": "patch: 6.12.114"
     },
     {
+      "id": "0d1d1af6-75ef-32ac-a68b-65aa05fb481a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "198c8551-30aa-3b2a-af76-d274ce36cf17",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "057658cb33fbf4d4309f01fe8845903b1cd07fad <490c72868443ff90f47f4ccbaaff1eaf8fed46ab"
+    },
+    {
+      "id": "558f3d50-c7f9-36e1-b180-0f48898bf167",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "057658cb33fbf4d4309f01fe8845903b1cd07fad <2365b25b4add42bb5f652920b45bc9ad0e35cbc7"
     },
     {
       "id": "5a6abcf6-6f74-3f42-bf78-12390e8d551e",

@@ -3,12 +3,12 @@
   "enisaUuid": "6fc48e03-3a2f-3895-a9c5-3bb0579cc6a3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: avoid bluetooth suspend/resume stalls\n\nEnsure we don't stall or panic the kernel when using bluetooth-connected\ncontrollers. This was reported as an issue on android devices using\nkernel 6.6 due to the resume hook which had been added for usb joycons.\n\nFirst, set a new state value to JOYCON_CTLR_STATE_SUSPENDED in a\nnewly-added nintendo_hid_suspend. This makes sure we will not stall out\nthe kernel waiting for input reports during led classdev suspend. The\nstalls could happen if connectivity is unreliable or lost to the\ncontroller prior to suspend.\n\nSecond, since we lose connectivity during suspend, do not try\njoycon_init() for bluetooth controllers in the nintendo_hid_resume path.\n\nTested via multiple suspend/resume flows when using the controller both\nin USB and bluetooth modes.",
   "datePublished": "Aug 16, 2025, 10:54:44 AM",
-  "dateUpdated": "Oct 21, 2026, 12:37:05 PM",
+  "dateUpdated": "Oct 30, 2026, 12:21:59 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d3c8519f85b786dcae2498b3496f32e3925e4601\nhttps://git.kernel.org/stable/c/7b4a026313529a487821ef6ab494a61f12c1db08\nhttps://git.kernel.org/stable/c/72cb7eef06a5cde42b324dea85fa11fd5bb6a08a\nhttps://git.kernel.org/stable/c/4a0381080397e77792a5168069f174d3e56175ff\n",
+  "references": "https://git.kernel.org/stable/c/167c610b45b4c23a954aac70df9760a4bf358b20\nhttps://git.kernel.org/stable/c/d3c8519f85b786dcae2498b3496f32e3925e4601\nhttps://git.kernel.org/stable/c/7b4a026313529a487821ef6ab494a61f12c1db08\nhttps://git.kernel.org/stable/c/72cb7eef06a5cde42b324dea85fa11fd5bb6a08a\nhttps://git.kernel.org/stable/c/4a0381080397e77792a5168069f174d3e56175ff\n",
   "aliases": "CVE-2025-38507\nGHSA-7gjj-mw46-368m\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "013a3406-fb8c-3a6f-8e51-fd57a1f971ed",
@@ -51,6 +51,16 @@
       "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <7b4a026313529a487821ef6ab494a61f12c1db08"
     },
     {
+      "id": "4d09d096-aec3-3f41-9476-f76b8b4142e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "53db14f8-33bb-348b-9adb-a3cf31c227c7",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.15.7"
+    },
+    {
+      "id": "60f8b79c-42e1-34b7-b1bd-d7ae425c89b0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <167c610b45b4c23a954aac70df9760a4bf358b20"
     },
     {
       "id": "7c06d071-e2e8-3858-b0a3-0d3bb79a62a0",

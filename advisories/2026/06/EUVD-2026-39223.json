@@ -3,9 +3,9 @@
   "enisaUuid": "38a0a203-d19f-3f67-86ed-8e285cec70b5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix use-after-free on sbi->sync_decompress\n\nz_erofs_decompress_kickoff() can race with filesystem unmount, causing\na use-after-free on sbi->sync_decompress.\n\nWhen I/O completes, z_erofs_endio() calls z_erofs_decompress_kickoff()\nto queue z_erofs_decompressqueue_work() asynchronously. Then, after all\nfolios are unlocked, unmount workflow can proceed and sbi will be freed\nbefore accessing to sbi->sync_decompress.\n\nThread (unmount)        I/O completion        kworker\n                        queue_work\n                                              z_erofs_decompressqueue_work\n                                               (all folios are unlocked)\ncleanup_mnt\n ..\n erofs_kill_sb\n  erofs_sb_free\n   kfree(sbi)\n                        access sbi->sync_decompress  // UAF!!",
   "datePublished": "Jun 25, 2026, 8:39:57 AM",
-  "dateUpdated": "Oct 21, 2026, 12:42:21 PM",
+  "dateUpdated": "Oct 30, 2026, 12:26:53 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/59db5d8bcc65e04d8598afd81ec3a18edb407470\nhttps://git.kernel.org/stable/c/86ab00cf81d44b675bb23db62b88fd76c8ac8cea\nhttps://git.kernel.org/stable/c/00bf6868df65fa95b3854996246d15759fdc7070\nhttps://git.kernel.org/stable/c/95caf60da33d87ed26c28993620f0d92487b0296\nhttps://git.kernel.org/stable/c/1aee05e814d292064bf5fa15733741040cdc48ba\n",
+  "references": "https://git.kernel.org/stable/c/5627e57f1da68ff0146896eb3d2eed25e62adc44\nhttps://git.kernel.org/stable/c/59db5d8bcc65e04d8598afd81ec3a18edb407470\nhttps://git.kernel.org/stable/c/86ab00cf81d44b675bb23db62b88fd76c8ac8cea\nhttps://git.kernel.org/stable/c/00bf6868df65fa95b3854996246d15759fdc7070\nhttps://git.kernel.org/stable/c/95caf60da33d87ed26c28993620f0d92487b0296\nhttps://git.kernel.org/stable/c/1aee05e814d292064bf5fa15733741040cdc48ba\n",
   "aliases": "GHSA-pc3h-m9mc-v77g\nCVE-2026-53272\n",
   "assigner": "Linux",
   "epss": 0.12,
@@ -51,6 +51,16 @@
       "product_version": "40452ffca3c1a0f2994e826f9fa213b107f1a2d4 <95caf60da33d87ed26c28993620f0d92487b0296"
     },
     {
+      "id": "44645363-bdd9-3323-976a-32a67a0adabc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "40452ffca3c1a0f2994e826f9fa213b107f1a2d4 <5627e57f1da68ff0146896eb3d2eed25e62adc44"
+    },
+    {
       "id": "4c66b266-be5e-35c0-97ac-edfa0e1b52f6",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "40452ffca3c1a0f2994e826f9fa213b107f1a2d4 <00bf6868df65fa95b3854996246d15759fdc7070"
+    },
+    {
+      "id": "b211204a-3eb8-371e-aabf-72a84a76b0ac",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "c35f64ef-5373-3a17-94ca-7a019c0f26de",

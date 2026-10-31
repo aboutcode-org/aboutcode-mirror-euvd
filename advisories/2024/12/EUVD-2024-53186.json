@@ -3,11 +3,11 @@
   "enisaUuid": "1fccb424-b6d6-305d-a7b8-f4423f369d27",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm: zynqmp_kms: Unplug DRM device before removal\n\nPrevent userspace accesses to the DRM device from causing\nuse-after-frees by unplugging the device before we remove it. This\ncauses any further userspace accesses to result in an error without\nfurther calls into this driver's internals.",
   "datePublished": "Dec 27, 2024, 2:11:20 PM",
-  "dateUpdated": "Aug 5, 2026, 11:44:55 AM",
+  "dateUpdated": "Oct 30, 2026, 12:20:17 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/a17b9afe58c474657449cf87e238b1788200576b\nhttps://git.kernel.org/stable/c/4fb97432e28a7e136b2d76135d50e988ada8e1af\nhttps://git.kernel.org/stable/c/692f52aedccbf79b212a1e14e3735192b4c24a7d\nhttps://git.kernel.org/stable/c/2e07c88914fc5289c21820b1aa94f058feb38197\n",
+  "references": "https://git.kernel.org/stable/c/0c8ca1da81e5a9787284eb84c0c6ae927f063c15\nhttps://git.kernel.org/stable/c/a17b9afe58c474657449cf87e238b1788200576b\nhttps://git.kernel.org/stable/c/4fb97432e28a7e136b2d76135d50e988ada8e1af\nhttps://git.kernel.org/stable/c/692f52aedccbf79b212a1e14e3735192b4c24a7d\nhttps://git.kernel.org/stable/c/2e07c88914fc5289c21820b1aa94f058feb38197\n",
   "aliases": "CVE-2024-56538\nGHSA-qf3g-cg7v-c4x9\n",
   "assigner": "Linux",
   "epss": 0.27,
@@ -103,6 +103,16 @@
       "product_version": "patch: 6.12.2"
     },
     {
+      "id": "da24eb35-f3bd-3d7e-804c-65b7d42daa09",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d76271d22694e874ed70791702db9252ffe96a4c <0c8ca1da81e5a9787284eb84c0c6ae927f063c15"
+    },
+    {
       "id": "e55abef6-376c-33ab-806e-46e3daa0d0b1",
       "product": {
         "name": "Linux",
@@ -111,6 +121,16 @@
         }
       },
       "product_version": "5.9"
+    },
+    {
+      "id": "ebaccbf2-8f35-38eb-a33f-33a883f72e40",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

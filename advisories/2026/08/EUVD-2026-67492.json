@@ -3,13 +3,23 @@
   "enisaUuid": "29279208-e85f-3c54-90fa-695c9f5e431d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: Avoid calling WARN_ON() on -ENOMEM in cfg802154_switch_netns()\n\nIt's pointless to call WARN_ON() in case of an allocation failure in\ndev_change_net_namespace() and device_rename(), since it only leads to\nuseless splats caused by deliberate fault injections, so avoid it.\n\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
   "datePublished": "Aug 28, 2026, 6:48:36 AM",
-  "dateUpdated": "Oct 21, 2026, 12:46:36 PM",
+  "dateUpdated": "Oct 30, 2026, 12:30:43 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/c67e70202cfd602f86d3e59fe6fffecaf4110f40\nhttps://git.kernel.org/stable/c/f300e68014cf10af9aa0c0ad958750a8509c8e44\nhttps://git.kernel.org/stable/c/f4860dd988b1041d70595f2ed84de80f90cb7ebc\nhttps://git.kernel.org/stable/c/6fcba77571c53f656a2f109259601a7570d4c74a\nhttps://git.kernel.org/stable/c/0569f67ed6a7af838e2141da93c68e6b6013f483\n",
+  "references": "https://git.kernel.org/stable/c/6ff703da843d665ce7fc3fe5c202cf8121cc2a1f\nhttps://git.kernel.org/stable/c/c67e70202cfd602f86d3e59fe6fffecaf4110f40\nhttps://git.kernel.org/stable/c/f300e68014cf10af9aa0c0ad958750a8509c8e44\nhttps://git.kernel.org/stable/c/f4860dd988b1041d70595f2ed84de80f90cb7ebc\nhttps://git.kernel.org/stable/c/6fcba77571c53f656a2f109259601a7570d4c74a\nhttps://git.kernel.org/stable/c/0569f67ed6a7af838e2141da93c68e6b6013f483\n",
   "aliases": "GHSA-hccx-rj7h-28cw\nCVE-2026-80616\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.23,
   "enisaIdProduct": [
+    {
+      "id": "01e83856-6de0-3621-8c86-cc37c773b07f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "0545181e-a70b-370d-992c-fcd95091243e",
       "product": {
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "4.8"
+    },
+    {
+      "id": "fc6c4b58-022d-391b-bb89-52532fd3a71f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "66e5c2672cd11b9310008099faf6a4ffb9dfb6d0 <6ff703da843d665ce7fc3fe5c202cf8121cc2a1f"
     }
   ],
   "enisaIdVendor": [

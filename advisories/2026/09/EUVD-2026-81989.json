@@ -3,9 +3,9 @@
   "enisaUuid": "8355eb19-ca26-3d31-b9b3-90ca6c75cddd",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Reject short reads\n\nSteam Controller FEATURE reports encode the size of the message in the\nmessage itself. Previously we were trusting that the size reported matched\nthe size we actually read, leading to a potential issue with short reads.\nInstead, we should actually verify the length of the read.",
   "datePublished": "Sep 17, 2026, 4:08:42 PM",
-  "dateUpdated": "Oct 21, 2026, 12:51:01 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:11 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/37cb84b992718924dc334ce584c703333a6a4217\nhttps://git.kernel.org/stable/c/cbcc9b0ccbbd33125ffc9479fb8f69ac969fe55c\nhttps://git.kernel.org/stable/c/f694ea0ead544080949e409a7c6885ee1fc77a98\nhttps://git.kernel.org/stable/c/93c5cc35bcd9f62db589a21945b49691dccdd99d\nhttps://git.kernel.org/stable/c/33ff7b49c38b39b1f3d27db508ac0720fb25c08a\n",
+  "references": "https://git.kernel.org/stable/c/304b24432c7ab40d63cd698729a7305c3b8eada2\nhttps://git.kernel.org/stable/c/37cb84b992718924dc334ce584c703333a6a4217\nhttps://git.kernel.org/stable/c/cbcc9b0ccbbd33125ffc9479fb8f69ac969fe55c\nhttps://git.kernel.org/stable/c/f694ea0ead544080949e409a7c6885ee1fc77a98\nhttps://git.kernel.org/stable/c/93c5cc35bcd9f62db589a21945b49691dccdd99d\nhttps://git.kernel.org/stable/c/33ff7b49c38b39b1f3d27db508ac0720fb25c08a\n",
   "aliases": "CVE-2026-90328\nGHSA-px28-m9f6-9x2m\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -111,6 +111,16 @@
       "product_version": "c164d6abf3841ffacfdb757c10616f9cb1f67276 <cbcc9b0ccbbd33125ffc9479fb8f69ac969fe55c"
     },
     {
+      "id": "a0255e55-6670-3b6c-add3-6eb88c897345",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "a5d43eb1-db0c-36b1-b624-57c877d37fd7",
       "product": {
         "name": "Linux",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "4.18"
+    },
+    {
+      "id": "eb0fa5ec-ed79-3fa9-be80-aa14d27571d9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c164d6abf3841ffacfdb757c10616f9cb1f67276 <304b24432c7ab40d63cd698729a7305c3b8eada2"
     }
   ],
   "enisaIdVendor": [

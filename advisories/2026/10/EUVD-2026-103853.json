@@ -3,9 +3,9 @@
   "enisaUuid": "aaf4b19f-540e-34bb-8597-847fb24ba84d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: anx7411 - stop the IRQ before destroying the workqueue\n\nThe IRQ is devm-managed, so it can still queue plat->work while\nremove() is tearing the queue down. Disable it first.",
   "datePublished": "Oct 18, 2026, 3:48:03 PM",
-  "dateUpdated": "Oct 21, 2026, 12:56:43 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:37 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a789838675afa3aa174e744f3cef508cd27e7bb1\nhttps://git.kernel.org/stable/c/675056e0edb49c0002ebfbc289e6c777bbf315a2\nhttps://git.kernel.org/stable/c/50a92c02551c10e308caa55f7045f31abcef511f\nhttps://git.kernel.org/stable/c/cb6bf2c707805211f606fb1e06fe28d9affe5ea7\nhttps://git.kernel.org/stable/c/469600d5d292b1482c90dd6853555821d11b8c5f\n",
+  "references": "https://git.kernel.org/stable/c/3deed12f7b54a52879eb7b3f94d9f132c0144401\nhttps://git.kernel.org/stable/c/a789838675afa3aa174e744f3cef508cd27e7bb1\nhttps://git.kernel.org/stable/c/675056e0edb49c0002ebfbc289e6c777bbf315a2\nhttps://git.kernel.org/stable/c/50a92c02551c10e308caa55f7045f31abcef511f\nhttps://git.kernel.org/stable/c/cb6bf2c707805211f606fb1e06fe28d9affe5ea7\nhttps://git.kernel.org/stable/c/469600d5d292b1482c90dd6853555821d11b8c5f\n",
   "aliases": "CVE-2026-98768\nGHSA-rv6x-xpp2-9x4w\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -71,6 +71,16 @@
       "product_version": "fe6d8a9c8e6456f8e7ba6b4ee528460beaf65a71 <469600d5d292b1482c90dd6853555821d11b8c5f"
     },
     {
+      "id": "5f0b434d-adda-38ed-9340-0084f1cd615d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "762bf42a-577d-38ea-b3c4-910358adcef4",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "a185f69c-2fc5-34c3-b476-833aef074aea",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe6d8a9c8e6456f8e7ba6b4ee528460beaf65a71 <3deed12f7b54a52879eb7b3f94d9f132c0144401"
     },
     {
       "id": "b03c4210-9698-3b11-b703-e2acca4f6bc4",

@@ -3,12 +3,12 @@
   "enisaUuid": "64cd2f1d-6125-3ee5-8bb4-1dd8ad75cdcf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: microchip-core-qspi: control built-in cs manually\n\nThe coreQSPI IP supports only a single chip select, which is\nautomagically operated by the hardware - set low when the transmit\nbuffer first gets written to and set high when the number of bytes\nwritten to the TOTALBYTES field of the FRAMES register have been sent on\nthe bus. Additional devices must use GPIOs for their chip selects.\nIt was reported to me that if there are two devices attached to this\nQSPI controller that the in-built chip select is set low while linux\ntries to access the device attached to the GPIO.\n\nThis went undetected as the boards that connected multiple devices to\nthe SPI controller all exclusively used GPIOs for chip selects, not\nrelying on the built-in chip select at all. It turns out that this was\nbecause the built-in chip select, when controlled automagically, is set\nlow when active and high when inactive, thereby ruling out its use for\nactive-high devices or devices that need to transmit with the chip\nselect disabled.\n\nModify the driver so that it controls chip select directly, retaining\nthe behaviour for mem_ops of setting the chip select active for the\nentire duration of the transfer in the exec_op callback. For regular\ntransfers, implement the set_cs callback for the core to use.\n\nAs part of this, the existing setup callback, mchp_coreqspi_setup_op(),\nis removed. Modifying the CLKIDLE field is not safe to do during\noperation when there are multiple devices, so this code is removed\nentirely. Setting the MASTER and ENABLE fields is something that can be\ndone once at probe, it doesn't need to be re-run for each device.\nInstead the new setup callback sets the built-in chip select to its\ninactive state for active-low devices, as the reset value of the chip\nselect in software controlled mode is low.",
   "datePublished": "May 28, 2026, 9:36:04 AM",
-  "dateUpdated": "Oct 21, 2026, 12:41:20 PM",
+  "dateUpdated": "Oct 30, 2026, 12:26:00 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/783dc000b8be6d18713bde4d2705e168f2a61782\nhttps://git.kernel.org/stable/c/244fc8942123afe753ae8962407fb312a1d96a07\nhttps://git.kernel.org/stable/c/998f43196d732f20f9b71eb6ebd973736c9fa911\nhttps://git.kernel.org/stable/c/ee3c99aa102212ad59dc2c19595515c4a6729307\nhttps://git.kernel.org/stable/c/7672749e1496215e8683ce57cf323119033954cf\n",
+  "references": "https://git.kernel.org/stable/c/06b14dd2393933e8cd574157369e551bd615b52a\nhttps://git.kernel.org/stable/c/783dc000b8be6d18713bde4d2705e168f2a61782\nhttps://git.kernel.org/stable/c/244fc8942123afe753ae8962407fb312a1d96a07\nhttps://git.kernel.org/stable/c/998f43196d732f20f9b71eb6ebd973736c9fa911\nhttps://git.kernel.org/stable/c/ee3c99aa102212ad59dc2c19595515c4a6729307\nhttps://git.kernel.org/stable/c/7672749e1496215e8683ce57cf323119033954cf\n",
   "aliases": "GHSA-v9m3-f9j3-xrv6\nCVE-2026-46148\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0fe664b3-e1cd-3870-9ef1-e42639a2daa1",
@@ -81,6 +81,16 @@
       "product_version": "8596124c4c1bc7561454cee0463c16eca70b5d25 <783dc000b8be6d18713bde4d2705e168f2a61782"
     },
     {
+      "id": "a6c1cec1-b911-312a-9997-ce67e74ea45a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8596124c4c1bc7561454cee0463c16eca70b5d25 <06b14dd2393933e8cd574157369e551bd615b52a"
+    },
+    {
       "id": "a9732961-e406-31ca-b90a-70ba4c69cd94",
       "product": {
         "name": "Linux",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "e99d7a23-4dbc-3ddf-8a4a-c19fc63d277f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

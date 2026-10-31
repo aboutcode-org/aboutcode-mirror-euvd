@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-114322",
+  "enisaUuid": "f3bfb28b-a0f5-3a3c-b7db-27996e5fc924",
+  "description": "Crass is a Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification. Prior to 1.0.7, Crass recursively parses `CSS simple blocks and functions` without a depth guard. An attacker-controlled CSS value containing deeply nested blocks or functions can recurse until Ruby raises `SystemStackError`: stack level too deep, or cause excessive memory usage. Version 1.0.7 adds a configurable depth limit with a conservative default. This issue is fixed in version 1.0.7.",
+  "datePublished": "Oct 30, 2026, 6:43:25 PM",
+  "dateUpdated": "Oct 30, 2026, 6:43:25 PM",
+  "baseScore": 6.3,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L",
+  "references": "https://github.com/rgrove/crass/security/advisories/GHSA-6jxj-px6v-747w\nhttps://github.com/rgrove/crass/commit/cf68287356ec6e20d51cfc4a2d0c3912b7334e99\nhttps://github.com/rgrove/crass/releases/tag/v1.0.7\n",
+  "aliases": "CVE-2026-61846\nGHSA-6jxj-px6v-747w\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "45999622-d2c3-31df-98f1-4de36f94cb15",
+      "product": {
+        "name": "crass",
+        "vendor": {
+          "name": "rgrove"
+        }
+      },
+      "product_version": "< 1.0.7"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b6547996-e45a-3d21-9f07-55ca849e9c22",
+      "vendor": {
+        "name": "rgrove"
+      }
+    }
+  ]
+}

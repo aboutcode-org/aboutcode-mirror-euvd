@@ -3,12 +3,12 @@
   "enisaUuid": "eea8f799-4973-3f61-bb5c-154b6223cfb5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check null pointers before multiple uses\n\n[WHAT & HOW]\nPoniters, such as stream_enc and dc->bw_vbios, are null checked previously\nin the same function, so Coverity warns \"implies that stream_enc and\ndc->bw_vbios might be null\". They are used multiple times in the\nsubsequent code and need to be checked.\n\nThis fixes 10 FORWARD_NULL issues reported by Coverity.",
   "datePublished": "Oct 21, 2024, 6:01:46 PM",
-  "dateUpdated": "Oct 21, 2026, 12:35:22 PM",
+  "dateUpdated": "Oct 30, 2026, 12:19:38 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4f51f6d23c5856f105110531f81d84e78e462005\nhttps://git.kernel.org/stable/c/26787fb6c2b2ee0d1a7e1574b36f4711ae40fe27\nhttps://git.kernel.org/stable/c/fdd5ecbbff751c3b9061d8ebb08e5c96119915b4\n",
+  "references": "https://git.kernel.org/stable/c/7dc67992b35bc11895149b4261c4ad745312a18d\nhttps://git.kernel.org/stable/c/4f51f6d23c5856f105110531f81d84e78e462005\nhttps://git.kernel.org/stable/c/26787fb6c2b2ee0d1a7e1574b36f4711ae40fe27\nhttps://git.kernel.org/stable/c/fdd5ecbbff751c3b9061d8ebb08e5c96119915b4\n",
   "aliases": "CVE-2024-49920\nGHSA-858g-q943-3jmm\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "07414cec-7f3b-30f5-b260-265f0ca5ea37",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.12"
+    },
+    {
+      "id": "1a5b3ba0-fbd9-3990-8d83-5b6fdee1e29c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <7dc67992b35bc11895149b4261c4ad745312a18d"
     },
     {
       "id": "476c67db-6ea6-3009-b3a4-a6de508d07f7",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "4.15"
+    },
+    {
+      "id": "b2f0d719-66e4-3388-8b10-976995cfe961",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

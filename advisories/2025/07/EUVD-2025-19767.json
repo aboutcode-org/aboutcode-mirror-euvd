@@ -3,12 +3,12 @@
   "enisaUuid": "d417cb4b-a218-3ad4-9607-b358b6ece51b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: don't warn when if there is a FW error\n\niwl_trans_reclaim is warning if it is called when the FW is not alive.\nBut if it is called when there is a pending restart, i.e. after a FW\nerror, there is no need to warn, instead - return silently.",
   "datePublished": "Jul 3, 2025, 8:13:57 AM",
-  "dateUpdated": "Oct 21, 2026, 12:36:44 PM",
+  "dateUpdated": "Oct 30, 2026, 12:21:41 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/20d00e9b5309107b30d882a67639d6fbbfaba36a\nhttps://git.kernel.org/stable/c/0446d34a853d9576e2a7628c803d2abd2f8cf3a8\nhttps://git.kernel.org/stable/c/d07a08f42dc7230c902e1af2a899a72b0a03aa69\nhttps://git.kernel.org/stable/c/c7f50d0433a016d43681592836a3d484817bfb34\n",
+  "references": "https://git.kernel.org/stable/c/0709bdf1faa6136c13808289b01db426cfd03ed7\nhttps://git.kernel.org/stable/c/20d00e9b5309107b30d882a67639d6fbbfaba36a\nhttps://git.kernel.org/stable/c/0446d34a853d9576e2a7628c803d2abd2f8cf3a8\nhttps://git.kernel.org/stable/c/d07a08f42dc7230c902e1af2a899a72b0a03aa69\nhttps://git.kernel.org/stable/c/c7f50d0433a016d43681592836a3d484817bfb34\n",
   "aliases": "GHSA-h6c2-23rv-4mwc\nCVE-2025-38096\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "096356a6-aaac-3ae5-9dce-6fd143ced4ae",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.6.160"
     },
     {
+      "id": "616b98b5-bb58-3628-a6f1-8cdeae12efa5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e5d15cb530082cc13a6c9457eddd6f75b0f4de65 <0709bdf1faa6136c13808289b01db426cfd03ed7"
+    },
+    {
       "id": "692f8a25-d58a-3923-946c-cc073026825b",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "e5d15cb530082cc13a6c9457eddd6f75b0f4de65 <0446d34a853d9576e2a7628c803d2abd2f8cf3a8"
+    },
+    {
+      "id": "98079b69-0b66-32c3-90e5-fa7b65630f30",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "b919c643-91a0-3194-a9a2-bcc40aa8059b",

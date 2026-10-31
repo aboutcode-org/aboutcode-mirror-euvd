@@ -3,14 +3,14 @@
   "enisaUuid": "de8ad97b-bbaf-3936-b646-0cdabf90a1c5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix locking usage for tcon fields\n\nWe used to use the cifs_tcp_ses_lock to protect a lot of objects\nthat are not just the server, ses or tcon lists. We later introduced\nsrv_lock, ses_lock and tc_lock to protect fields within the\ncorresponding structs. This was done to provide a more granular\nprotection and avoid unnecessary serialization.\n\nThere were still a couple of uses of cifs_tcp_ses_lock to provide\ntcon fields. In this patch, I've replaced them with tc_lock.",
   "datePublished": "May 6, 2026, 11:28:17 AM",
-  "dateUpdated": "Oct 19, 2026, 7:16:24 PM",
+  "dateUpdated": "Oct 30, 2026, 12:25:11 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/953953abb66e52c224057ab91e404284fefeab62\nhttps://git.kernel.org/stable/c/601dd3b79769b38d30b693c40afdb2a4b7edf9d0\nhttps://git.kernel.org/stable/c/3969db6b22e3d90d8c5f22ac1a7fe0350a94c136\nhttps://git.kernel.org/stable/c/8c59eeeeffa1524ef57e173a89a1a3ff539888d5\nhttps://git.kernel.org/stable/c/96c4af418586ee9a6aab61738644366426e05316\n",
+  "references": "https://git.kernel.org/stable/c/92d197ef7e9bb4994dae2bb17c2f19fa09d219a2\nhttps://git.kernel.org/stable/c/953953abb66e52c224057ab91e404284fefeab62\nhttps://git.kernel.org/stable/c/601dd3b79769b38d30b693c40afdb2a4b7edf9d0\nhttps://git.kernel.org/stable/c/3969db6b22e3d90d8c5f22ac1a7fe0350a94c136\nhttps://git.kernel.org/stable/c/8c59eeeeffa1524ef57e173a89a1a3ff539888d5\nhttps://git.kernel.org/stable/c/96c4af418586ee9a6aab61738644366426e05316\n",
   "aliases": "CVE-2026-43215\nGHSA-qhpw-2qgq-68px\n",
   "assigner": "Linux",
-  "epss": 0.41,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "1d3fefd0-f810-304d-958b-867dc02a41b3",
@@ -23,6 +23,16 @@
       "product_version": "d7d7a66aacd6fd8ca57baf08a7bac5421282f6f8 <96c4af418586ee9a6aab61738644366426e05316"
     },
     {
+      "id": "3807502a-4afe-38dc-b124-6eacb258cd4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "43966163-0ce4-3c66-8855-7c2749cc57c5",
       "product": {
         "name": "Linux",
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "d7d7a66aacd6fd8ca57baf08a7bac5421282f6f8 <8c59eeeeffa1524ef57e173a89a1a3ff539888d5"
+    },
+    {
+      "id": "4bb33595-e238-3c9a-8522-cb382362a695",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d7d7a66aacd6fd8ca57baf08a7bac5421282f6f8 <92d197ef7e9bb4994dae2bb17c2f19fa09d219a2"
     },
     {
       "id": "5c5c7ce9-91cb-3368-907c-38a658ba6ce4",

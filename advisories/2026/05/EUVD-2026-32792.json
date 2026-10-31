@@ -3,12 +3,12 @@
   "enisaUuid": "dc23add3-7533-3d45-b1fa-dabc52a134d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: vport: fix self-deadlock on release of tunnel ports\n\nvports are used concurrently and protected by RCU, so netdev_put()\nmust happen after the RCU grace period.  So, either in an RCU call or\nafter the synchronize_net().  The rtnl_delete_link() must happen under\nRTNL and so can't be executed in RCU context.  Calling synchronize_net()\nwhile holding RTNL is not a good idea for performance and system\nstability under load in general, so calling netdev_put() in RCU call\nis the right solution here.\n\nHowever,\nwhen the device is deleted, rtnl_unlock() will call netdev_run_todo()\nand block until all the references are gone.  In the current code this\nmeans that we never reach the call_rcu() and the vport is never freed\nand the reference is never released, causing a self-deadlock on device\nremoval.\n\nFix that by moving the rcu_call() before the rtnl_unlock(), so the\nscheduled RCU callback will be executed when synchronize_net() is\ncalled from the rtnl_unlock()->netdev_run_todo() while the RTNL itself\nis already released.",
   "datePublished": "May 28, 2026, 9:36:20 AM",
-  "dateUpdated": "Oct 15, 2026, 1:20:57 AM",
+  "dateUpdated": "Oct 30, 2026, 12:26:02 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/8ae6c15fc473c9ad03b0173330cce9a092c76154\nhttps://git.kernel.org/stable/c/c741433f6c8dcdecd1d9549d89053761fd1ea413\nhttps://git.kernel.org/stable/c/6522d59fb7de55ce0f0f285d962243ddffebb01f\nhttps://git.kernel.org/stable/c/3df75fff46b1517eb479d8e6b8e3500763715dd0\nhttps://git.kernel.org/stable/c/366c482965c673565ecb8bcfb15d5548f13a6a10\nhttps://git.kernel.org/stable/c/aa69918bd418e700309fdd08509dba324fb24296\n",
+  "references": "https://git.kernel.org/stable/c/3600033f31b1afa16d73a24905eec9ee1d222b97\nhttps://git.kernel.org/stable/c/8ae6c15fc473c9ad03b0173330cce9a092c76154\nhttps://git.kernel.org/stable/c/c741433f6c8dcdecd1d9549d89053761fd1ea413\nhttps://git.kernel.org/stable/c/6522d59fb7de55ce0f0f285d962243ddffebb01f\nhttps://git.kernel.org/stable/c/3df75fff46b1517eb479d8e6b8e3500763715dd0\nhttps://git.kernel.org/stable/c/366c482965c673565ecb8bcfb15d5548f13a6a10\nhttps://git.kernel.org/stable/c/aa69918bd418e700309fdd08509dba324fb24296\n",
   "aliases": "GHSA-gwmf-r7m2-pphm\nCVE-2026-46165\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.1,
   "enisaIdProduct": [
     {
       "id": "07b38bb7-aea4-3fc1-a3e4-03795c7f162f",
@@ -119,6 +119,16 @@
         }
       },
       "product_version": "6.6.131 <6.6.140"
+    },
+    {
+      "id": "a540c4c5-aa5b-3214-89b5-bf0d95a1e07d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f0ec49d3a39c1f5a4f3270ea27ca0854fad2a2a2 <3600033f31b1afa16d73a24905eec9ee1d222b97"
     },
     {
       "id": "b184961e-e389-3897-9cd9-6c47b202d628",

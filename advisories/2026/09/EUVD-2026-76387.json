@@ -3,15 +3,25 @@
   "enisaUuid": "335aaea6-9510-3cf4-83c7-8ac5ca9e8af9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix host memory disclosure on R2T for a read command\n\nnvme_tcp_handle_r2t() does not check the direction of the request the\nR2T refers to. A malicious controller can send an R2T for a READ and\nthe host will answer it: nvme_tcp_setup_h2c_data_pdu() builds the\nH2CData header and nvme_tcp_try_send_data() sends the request's data\nbuffer. That buffer is the READ destination, so its contents go to the\ncontroller.\n\nThe command then completes normally and nothing is logged.\n\nAgainst a test controller that answers every READ with an R2T, a 4096\nbyte buffered read returned all 4096 bytes, split over two R2Ts. The\npages contained stale kernel data, including an array of struct page\npointers.\n\nReject an R2T for a request that is not a write.",
   "datePublished": "Sep 11, 2026, 7:43:36 PM",
-  "dateUpdated": "Oct 19, 2026, 8:47:30 AM",
+  "dateUpdated": "Oct 30, 2026, 12:31:53 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-  "references": "https://git.kernel.org/stable/c/49a4dcf57608ebf6432dbcb203ed25e7ed581445\nhttps://git.kernel.org/stable/c/bc4013c7cce58d46f792c8c87bc8c8318a70190e\nhttps://git.kernel.org/stable/c/a4c3c7310156493797c920b10d8648c07aa05403\nhttps://git.kernel.org/stable/c/3b3d27670c0c890ba7cf1bc3614cab61bde6d25c\nhttps://git.kernel.org/stable/c/3a0b05145053a5fad1a2ddb4e4d87b07385e63e5\nhttps://git.kernel.org/stable/c/6efbc52237facda35d2d874fe1765bb4839275d8\n",
+  "references": "https://git.kernel.org/stable/c/effe898669c5f69ed519d6339be01ee9cd91d1a4\nhttps://git.kernel.org/stable/c/377aa04d7b3e73ffef6364818def188da8d6f025\nhttps://git.kernel.org/stable/c/49a4dcf57608ebf6432dbcb203ed25e7ed581445\nhttps://git.kernel.org/stable/c/bc4013c7cce58d46f792c8c87bc8c8318a70190e\nhttps://git.kernel.org/stable/c/a4c3c7310156493797c920b10d8648c07aa05403\nhttps://git.kernel.org/stable/c/3b3d27670c0c890ba7cf1bc3614cab61bde6d25c\nhttps://git.kernel.org/stable/c/3a0b05145053a5fad1a2ddb4e4d87b07385e63e5\nhttps://git.kernel.org/stable/c/6efbc52237facda35d2d874fe1765bb4839275d8\n",
   "aliases": "CVE-2026-89481\nGHSA-fmg2-x8fr-fw62\n",
   "assigner": "Linux",
   "epss": 0.41,
   "enisaIdProduct": [
+    {
+      "id": "0a9d0e7a-a78e-36a3-b65d-9a3d5d0e69e8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
     {
       "id": "0ed7bcaa-eba8-3da4-a5a8-1cd8a03c6272",
       "product": {
@@ -21,6 +31,16 @@
         }
       },
       "product_version": "patch: 6.1.188"
+    },
+    {
+      "id": "1c402392-9f9a-3141-8620-564d885f480d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <377aa04d7b3e73ffef6364818def188da8d6f025"
     },
     {
       "id": "28412acb-c1f1-3cc3-b167-c56ecefae9de",
@@ -113,6 +133,16 @@
       "product_version": "5.0"
     },
     {
+      "id": "bba69321-ce8d-3b8d-b70d-7bab1995fa7e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <effe898669c5f69ed519d6339be01ee9cd91d1a4"
+    },
+    {
       "id": "c8584a12-5c2b-3f46-a273-e4a845e60cb9",
       "product": {
         "name": "Linux",
@@ -131,6 +161,16 @@
         }
       },
       "product_version": "3f2304f8c6d6ed97849057bd16fee99e434ca796 <3b3d27670c0c890ba7cf1bc3614cab61bde6d25c"
+    },
+    {
+      "id": "e405ef37-0060-3692-aa7a-c54462c6aa76",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
     },
     {
       "id": "f5d93e12-37fb-30b8-a4cc-9348221156be",

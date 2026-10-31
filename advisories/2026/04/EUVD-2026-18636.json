@@ -3,15 +3,25 @@
   "enisaUuid": "4752df98-0dd3-3dfd-89cd-78c4f9b51e07",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: Fix circular locking dependency in rds_tcp_tune\n\nsyzbot reported a circular locking dependency in rds_tcp_tune() where\nsk_net_refcnt_upgrade() is called while holding the socket lock:\n\n======================================================\nWARNING: possible circular locking dependency detected\n======================================================\nkworker/u10:8/15040 is trying to acquire lock:\nffffffff8e9aaf80 (fs_reclaim){+.+.}-{0:0},\nat: __kmalloc_cache_noprof+0x4b/0x6f0\n\nbut task is already holding lock:\nffff88805a3c1ce0 (k-sk_lock-AF_INET6){+.+.}-{0:0},\nat: rds_tcp_tune+0xd7/0x930\n\nThe issue occurs because sk_net_refcnt_upgrade() performs memory\nallocation (via get_net_track() -> ref_tracker_alloc()) while the\nsocket lock is held, creating a circular dependency with fs_reclaim.\n\nFix this by moving sk_net_refcnt_upgrade() outside the socket lock\ncritical section. This is safe because the fields modified by the\nsk_net_refcnt_upgrade() call (sk_net_refcnt, ns_tracker) are not\naccessed by any concurrent code path at this point.\n\nv2:\n  - Corrected fixes tag\n  - check patch line wrap nits\n  - ai commentary nits",
   "datePublished": "Apr 3, 2026, 1:24:23 PM",
-  "dateUpdated": "Aug 5, 2026, 12:21:36 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:06 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://git.kernel.org/stable/c/8babb271403378ba6836f6c8599c5313d0e2355d\nhttps://git.kernel.org/stable/c/8519e6883a942e510f33a0e634e27bcc3a844a40\nhttps://git.kernel.org/stable/c/6ce948fa54599f369ff7fe8b793a6aae4b0762b2\nhttps://git.kernel.org/stable/c/026bbaeeab9e04534ee58882b6447300629b42f6\nhttps://git.kernel.org/stable/c/6a877ececd6daa002a9a0002cd0fbca6592a9244\n",
+  "references": "https://git.kernel.org/stable/c/ce5be6703afd2ac2ff7dabd397137d71d22d4bc3\nhttps://git.kernel.org/stable/c/8babb271403378ba6836f6c8599c5313d0e2355d\nhttps://git.kernel.org/stable/c/8519e6883a942e510f33a0e634e27bcc3a844a40\nhttps://git.kernel.org/stable/c/6ce948fa54599f369ff7fe8b793a6aae4b0762b2\nhttps://git.kernel.org/stable/c/026bbaeeab9e04534ee58882b6447300629b42f6\nhttps://git.kernel.org/stable/c/6a877ececd6daa002a9a0002cd0fbca6592a9244\n",
   "aliases": "GHSA-x244-gjj6-jc73\nCVE-2026-23419\n",
   "assigner": "Linux",
   "epss": 0.18,
   "enisaIdProduct": [
+    {
+      "id": "0d5997f4-52ea-32e7-a5ac-1fab0458efa5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "0fcc74dd-4ae3-3005-ab9f-b3ec1a96eec2",
       "product": {
@@ -101,6 +111,16 @@
         }
       },
       "product_version": "patch: 6.18.17"
+    },
+    {
+      "id": "3dbf4bdc-d84c-309b-b9a9-568a7e26ad5b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3a58f13a881ed351198ffab4cf9953cf19d2ab3a <ce5be6703afd2ac2ff7dabd397137d71d22d4bc3"
     },
     {
       "id": "50445ee4-752d-39e5-98a6-46f53e678d48",

@@ -3,9 +3,9 @@
   "enisaUuid": "19932d3f-2e36-33c4-aa8b-7ee69f222149",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: bpf: reject invalid NAT manipulation types\n\nAs bpf_ct_set_nat_info() is not validating the NAT manipulation type a\nwrong value can be passed directly to nf_nat_setup_info(). This triggers\nthe WARN_ON() at nf_nat_setup_info() and if panic_on_warn isn't set,\nthen IPS_SRC_NAT_DONE is set without adding nat_bysource and conntrack\ncleanup tries to unlink an uninitialized hlist node.\n\nFix this by checking that NAT manipulation type is correct before\ncalling nf_nat_setup_info(). In addition, if the WARN_ON is hit, return\nNF_DROP instead of continuing with the processing to avoid similar\nsituations in the future.",
   "datePublished": "Oct 18, 2026, 3:48:33 PM",
-  "dateUpdated": "Oct 21, 2026, 12:57:02 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:51 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/752492947be3123ea6c689e2f93ae04ecd675d42\nhttps://git.kernel.org/stable/c/ea777dc90ab37e64fa4b92f6fcf3b5edcef5e058\nhttps://git.kernel.org/stable/c/f6143ae109df56d51d5536e813deb19eee7a6205\nhttps://git.kernel.org/stable/c/58108f05b0502448f6bb612ee2eccc63bd6449cb\nhttps://git.kernel.org/stable/c/16d464013ec2267b00a83f4bfbb97b3ecc63bfa7\n",
+  "references": "https://git.kernel.org/stable/c/ce7b41f0e4b5db0580d0a2059a0c9e672b461b5e\nhttps://git.kernel.org/stable/c/752492947be3123ea6c689e2f93ae04ecd675d42\nhttps://git.kernel.org/stable/c/ea777dc90ab37e64fa4b92f6fcf3b5edcef5e058\nhttps://git.kernel.org/stable/c/f6143ae109df56d51d5536e813deb19eee7a6205\nhttps://git.kernel.org/stable/c/58108f05b0502448f6bb612ee2eccc63bd6449cb\nhttps://git.kernel.org/stable/c/16d464013ec2267b00a83f4bfbb97b3ecc63bfa7\n",
   "aliases": "GHSA-g33v-6845-q9px\nCVE-2026-98793\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -29,6 +29,26 @@
         }
       },
       "product_version": "0fabd2aa199faeb8754aee94658f2c48ccb2c8c3 <16d464013ec2267b00a83f4bfbb97b3ecc63bfa7"
+    },
+    {
+      "id": "378a2eaf-fa77-34e0-b278-0e298835ab02",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "3d3af90a-b3c8-3931-8db7-6daccdba3cae",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0fabd2aa199faeb8754aee94658f2c48ccb2c8c3 <ce7b41f0e4b5db0580d0a2059a0c9e672b461b5e"
     },
     {
       "id": "601fb886-5204-397c-922e-2de6a2575d3c",

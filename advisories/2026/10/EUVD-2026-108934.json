@@ -3,25 +3,15 @@
   "enisaUuid": "75b8d9de-0e41-3efd-a711-7bf57e42e38c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix heap out-of-bounds write in krb5_authenticate()\n\nIn krb5_authenticate(), out_len is calculated to determine available\nheadroom in response_buf for the incoming Kerberos AP-REP token. However,\nwhen SMB2_SESSION_SETUP is processed as a non-first element of a compounded\nSMB2 request, the calculation omits work->next_smb2_rsp_hdr_off.\n\nThis causes out_len to overstate remaining buffer headroom by\nthe cumulative size of prior responses in the compound chain. Consequently,\nthe length check in ksmbd_krb5_authenticate()\n(*out_len <= resp->spnego_blob_len) passes erroneously, allowing memcpy()\nto write the AP-REP blob past the end of response_buf into adjacent kernel\nheap memory.\n\nFix this by subtracting work->next_smb2_rsp_hdr_off when computing out_len,\nensuring it accurately reflects physical remaining buffer space.",
   "datePublished": "Oct 23, 2026, 12:45:01 PM",
-  "dateUpdated": "Oct 26, 2026, 6:56:58 AM",
+  "dateUpdated": "Oct 30, 2026, 12:41:38 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/59c6dcc5dd9dafe764ca0d40525933b2be69b059\nhttps://git.kernel.org/stable/c/80af1bde97d5a85ad6f2c40ca894ccc8fa75a27a\nhttps://git.kernel.org/stable/c/517404e157395d0f8da125ca956c566895dfcd06\nhttps://git.kernel.org/stable/c/4722d06b2907585074252061b1024a696c1cfc23\nhttps://git.kernel.org/stable/c/23a0be6a84a38ac169eeab49017934e8e27c65f0\n",
+  "references": "https://git.kernel.org/stable/c/a07dfb33112a42437f9d2d0bfd35c68575257381\nhttps://git.kernel.org/stable/c/1f73a6d40f4d1bae4f3491c0ec1ea8ee6ce035ff\nhttps://git.kernel.org/stable/c/59c6dcc5dd9dafe764ca0d40525933b2be69b059\nhttps://git.kernel.org/stable/c/80af1bde97d5a85ad6f2c40ca894ccc8fa75a27a\nhttps://git.kernel.org/stable/c/517404e157395d0f8da125ca956c566895dfcd06\nhttps://git.kernel.org/stable/c/4722d06b2907585074252061b1024a696c1cfc23\nhttps://git.kernel.org/stable/c/23a0be6a84a38ac169eeab49017934e8e27c65f0\n",
   "aliases": "GHSA-2j87-48p3-j5xw\nCVE-2026-99083\n",
   "assigner": "Linux",
   "epss": 0.41,
   "enisaIdProduct": [
-    {
-      "id": "0c4d8198-1ca7-35c6-b788-149f8f2a3316",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "5.15.145 <5.16"
-    },
     {
       "id": "100dc17e-8bd3-3790-8f56-0bd8c9f7b82c",
       "product": {
@@ -33,6 +23,26 @@
       "product_version": "patch: 7.2.12"
     },
     {
+      "id": "359647d2-924a-3152-bc51-1492d3d98138",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "676392184785ace61e939831e7ca44a03d438c3b <a07dfb33112a42437f9d2d0bfd35c68575257381"
+    },
+    {
+      "id": "4a473482-5549-3595-ab29-e35a7882e3bb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "563fad0a-dd04-3ab3-b7c8-df2070056088",
       "product": {
         "name": "Linux",
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "63333086-576a-3c84-ae10-11384e068d44",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "670dece5-39d3-3ae0-9d4a-a4f3fa2d034d",
@@ -63,6 +83,16 @@
       "product_version": "patch: 6.12.114"
     },
     {
+      "id": "8de612e4-c107-38c2-a46a-f7215c40b872",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ef572ffa8eb44111eed2925fbb2adca78bdcbf61 <1f73a6d40f4d1bae4f3491c0ec1ea8ee6ce035ff"
+    },
+    {
       "id": "92d7d3a2-c37a-3d12-8a79-d7753dfbb4f7",
       "product": {
         "name": "Linux",
@@ -71,16 +101,6 @@
         }
       },
       "product_version": "2ba03cecb12ac7ac9e0170e251543c56832d9959"
-    },
-    {
-      "id": "9df45bbb-e83d-3745-83d0-de02511420f4",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.40 <6.2"
     },
     {
       "id": "a59fcb02-b183-34e2-bc77-f8b66c65a992",
@@ -103,16 +123,6 @@
       "product_version": "98422bdd4cb3ca4d08844046f6507d7ec2c2b8d8 <23a0be6a84a38ac169eeab49017934e8e27c65f0"
     },
     {
-      "id": "af0fbc13-1445-3693-b1f5-3fd6f15120d6",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "676392184785ace61e939831e7ca44a03d438c3b"
-    },
-    {
       "id": "c1d2109d-6f67-3d4b-b297-000ef6db191f",
       "product": {
         "name": "Linux",
@@ -131,6 +141,26 @@
         }
       },
       "product_version": "6.5"
+    },
+    {
+      "id": "ced577c2-4321-3719-ab2d-b6d4072fa00b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.15.145 <5.15.224"
+    },
+    {
+      "id": "d0370d18-df79-32ca-a590-9c58f6d85ebc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.40 <6.1.191"
     },
     {
       "id": "d2cccc6d-a5d0-3504-8973-ac4cc0ea83a6",
@@ -171,16 +201,6 @@
         }
       },
       "product_version": "patch: 0"
-    },
-    {
-      "id": "f59ce1e7-855f-33f1-b40d-c0c148004392",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "ef572ffa8eb44111eed2925fbb2adca78bdcbf61"
     },
     {
       "id": "feceb4cc-187e-365f-b819-da33c4096fc9",

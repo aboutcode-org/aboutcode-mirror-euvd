@@ -3,7 +3,7 @@
   "enisaUuid": "6f10d7d3-3a70-3734-ad58-9fae1f1ae658",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: clear wcid mask under mutex after RCU pointer clear\n\nmt7915_remove_interface() cleared the wcid mask bit with no lock held and\nbefore clearing the RCU wcid pointer. The mask is a non-atomic RMW shared\nwith the allocators, which all run under dev->mt76.mutex; on DBDC the two\nwiphys share one mt76_dev, so this raced add_interface/sta_add on the\nother band and could leak or double-hand-out a wcid. Clearing the bit\nbefore the RCU pointer also let a concurrent allocation reuse the index\nand publish its wcid, which the subsequent NULL assignment then wiped.\nMove the clear into the existing mutex section, after the RCU pointer is\ncleared.",
   "datePublished": "Sep 17, 2026, 4:09:13 PM",
-  "dateUpdated": "Oct 21, 2026, 12:51:22 PM",
+  "dateUpdated": "Oct 30, 2026, 12:35:23 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5dce25f1d609ba991a9c22c27be586c92f03ed77\nhttps://git.kernel.org/stable/c/b4a41a47a67c788e6b0625fa517ec8872e99bb6c\nhttps://git.kernel.org/stable/c/a97b2b942d2f8f12fbd6a7caafc735d1ad115e6b\nhttps://git.kernel.org/stable/c/6486e11a6e2f679597af2d5bb48c3b07a2b2a7ba\n",
   "aliases": "CVE-2026-90373\nGHSA-4c4x-fg8c-5526\n",
@@ -99,6 +99,26 @@
         }
       },
       "product_version": "6.12"
+    },
+    {
+      "id": "9e72478a-74ea-3274-a5b9-25c610778c88",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.191 <6.2"
+    },
+    {
+      "id": "b238c111-79bd-3ecd-b000-3476265d0b65",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b7c8e22dfddacc1b08dbf44f5be2c66305d757bc"
     },
     {
       "id": "b71b01bc-63c9-36d6-a504-3ab26dbabe72",

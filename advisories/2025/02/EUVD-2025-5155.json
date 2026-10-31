@@ -3,12 +3,12 @@
   "enisaUuid": "184f1d39-fd4a-310d-b52f-a1ab6960cfce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv6: fix dst ref loops in rpl, seg6 and ioam6 lwtunnels\n\nSome lwtunnels have a dst cache for post-transformation dst.\nIf the packet destination did not change we may end up recording\na reference to the lwtunnel in its own cache, and the lwtunnel\nstate will never be freed.\n\nDiscovered by the ioam6.sh test, kmemleak was recently fixed\nto catch per-cpu memory leaks. I'm not sure if rpl and seg6\ncan actually hit this, but in principle I don't see why not.",
   "datePublished": "Feb 27, 2025, 2:18:17 AM",
-  "dateUpdated": "Oct 21, 2026, 12:35:59 PM",
+  "dateUpdated": "Oct 30, 2026, 12:20:50 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e2ef3fa31353b30bda94358fe5205c141289746d\nhttps://git.kernel.org/stable/c/5ab11a4e219e93b8b31a27f8ec98d42afadd8b7a\nhttps://git.kernel.org/stable/c/4c0f200c7d06fedddde82209c099014d63f4a6c0\nhttps://git.kernel.org/stable/c/92191dd1073088753821b862b791dcc83e558e07\n",
+  "references": "https://git.kernel.org/stable/c/26f0b472ae2a82920e38c7cf41583951046d586a\nhttps://git.kernel.org/stable/c/e2ef3fa31353b30bda94358fe5205c141289746d\nhttps://git.kernel.org/stable/c/5ab11a4e219e93b8b31a27f8ec98d42afadd8b7a\nhttps://git.kernel.org/stable/c/4c0f200c7d06fedddde82209c099014d63f4a6c0\nhttps://git.kernel.org/stable/c/92191dd1073088753821b862b791dcc83e558e07\n",
   "aliases": "GHSA-r5gw-qwwg-wx9p\nCVE-2025-21768\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "0925b630-d2aa-3914-9767-9dee252da34e",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 6.13.4"
+    },
+    {
+      "id": "1715e863-2b17-3091-92bd-52bf07339100",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6c8702c60b88651072460f3f4026c7dfe2521d12 <26f0b472ae2a82920e38c7cf41583951046d586a"
     },
     {
       "id": "30ad7048-25ab-311c-ba3c-ee929d2554cf",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "6c8702c60b88651072460f3f4026c7dfe2521d12 <e2ef3fa31353b30bda94358fe5205c141289746d"
+    },
+    {
+      "id": "8da4d98a-793d-3de8-8e70-4dd6b3e7e44f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "a5b7b84b-c69e-3707-9572-d97da7349711",

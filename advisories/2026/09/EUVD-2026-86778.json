@@ -3,9 +3,9 @@
   "enisaUuid": "a9f3d07c-ebfa-3c1f-b2bf-8835319d3d91",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/user_events: Don't destroy fields when event removal fails\n\ndestroy_user_event() destroys the event's fields before attempting to\nremove the trace event call. If user_event_set_call_visible() fails,\ne.g. because the event is still enabled and trace_remove_event_call()\nreturns -EBUSY, the event is left registered with an irreversibly\ndestroyed field list. Any subsequent interaction with the event then\noperates on an empty field list while it is still fully visible in\ntracefs.\n\nMove the field destruction after the call removal, and splice the\nfield list back onto the event when the removal fails so the event\nremains in a consistent state.",
   "datePublished": "Sep 25, 2026, 10:22:42 AM",
-  "dateUpdated": "Oct 19, 2026, 9:10:51 AM",
+  "dateUpdated": "Oct 30, 2026, 12:37:43 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a3d9b8b7c8f3627976fe758c77ffd3da260824d7\nhttps://git.kernel.org/stable/c/9c62b7e92b6086a2a0aeb71f3553dd8cf7fdcd8b\nhttps://git.kernel.org/stable/c/0892da2272ec565858aa1ec5458552d699de9142\nhttps://git.kernel.org/stable/c/62d6544e86506bb0695c9594c713cba859666f2f\nhttps://git.kernel.org/stable/c/2deb753127d7b7035e893955c5e91875e767d1f8\n",
+  "references": "https://git.kernel.org/stable/c/c8efcb80f0b4d253482f9117db29bb92b4197d52\nhttps://git.kernel.org/stable/c/a3d9b8b7c8f3627976fe758c77ffd3da260824d7\nhttps://git.kernel.org/stable/c/9c62b7e92b6086a2a0aeb71f3553dd8cf7fdcd8b\nhttps://git.kernel.org/stable/c/0892da2272ec565858aa1ec5458552d699de9142\nhttps://git.kernel.org/stable/c/62d6544e86506bb0695c9594c713cba859666f2f\nhttps://git.kernel.org/stable/c/2deb753127d7b7035e893955c5e91875e767d1f8\n",
   "aliases": "CVE-2026-97924\nGHSA-jx2m-2c39-9c87\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -71,6 +71,16 @@
       "product_version": "7f5a08c79df35e68f1a43033450c5050f12bc155 <62d6544e86506bb0695c9594c713cba859666f2f"
     },
     {
+      "id": "8476871d-b28e-3860-8a85-dbc4e7d5fb27",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "93967ecd-8100-30ea-acd1-196f5e16772f",
       "product": {
         "name": "Linux",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "7f5a08c79df35e68f1a43033450c5050f12bc155 <9c62b7e92b6086a2a0aeb71f3553dd8cf7fdcd8b"
+    },
+    {
+      "id": "995a5e63-2a6d-361e-af41-0753c42283e7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "7f5a08c79df35e68f1a43033450c5050f12bc155 <c8efcb80f0b4d253482f9117db29bb92b4197d52"
     },
     {
       "id": "9a003a79-53db-34f5-9b3d-72ed93c0a921",

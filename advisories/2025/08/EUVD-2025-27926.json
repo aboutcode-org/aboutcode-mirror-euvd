@@ -3,12 +3,12 @@
   "enisaUuid": "e6cae59a-2709-3f24-b2ca-1747bc7c925d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: vop2: fail cleanly if missing a primary plane for a video-port\n\nEach window of a vop2 is usable by a specific set of video ports, so while\nbinding the vop2, we look through the list of available windows trying to\nfind one designated as primary-plane and usable by that specific port.\n\nThe code later wants to use drm_crtc_init_with_planes with that found\nprimary plane, but nothing has checked so far if a primary plane was\nactually found.\n\nFor whatever reason, the rk3576 vp2 does not have a usable primary window\n(if vp0 is also in use) which brought the issue to light and ended in a\nnull-pointer dereference further down.\n\nAs we expect a primary-plane to exist for a video-port, add a check at\nthe end of the window-iteration and fail probing if none was found.",
   "datePublished": "Aug 19, 2025, 5:03:32 PM",
-  "dateUpdated": "Oct 21, 2026, 12:37:09 PM",
+  "dateUpdated": "Oct 30, 2026, 12:22:07 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/45be183b9944f765b77623daffb024cb38d192bf\nhttps://git.kernel.org/stable/c/8fc974776c668fef1fc73fefbf573a076bb073e8\nhttps://git.kernel.org/stable/c/e1eef239399927b368f70a716044fb10085627c8\nhttps://git.kernel.org/stable/c/38682edbbad272b5f8c7bf55128b42cd10626f73\nhttps://git.kernel.org/stable/c/f9f68bf1d0efeadb6c427c9dbb30f307a7def19b\n",
+  "references": "https://git.kernel.org/stable/c/93857359a07e425b643178ce3c6e60a9e4605cac\nhttps://git.kernel.org/stable/c/45be183b9944f765b77623daffb024cb38d192bf\nhttps://git.kernel.org/stable/c/8fc974776c668fef1fc73fefbf573a076bb073e8\nhttps://git.kernel.org/stable/c/e1eef239399927b368f70a716044fb10085627c8\nhttps://git.kernel.org/stable/c/38682edbbad272b5f8c7bf55128b42cd10626f73\nhttps://git.kernel.org/stable/c/f9f68bf1d0efeadb6c427c9dbb30f307a7def19b\n",
   "aliases": "CVE-2025-38597\nGHSA-crhg-x4f2-mvmv\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1605b162-33a1-3dfe-8115-324303cf481a",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "604be85547ce4d61b89292d2f9a78c721b778c16 <f9f68bf1d0efeadb6c427c9dbb30f307a7def19b"
+    },
+    {
+      "id": "2da28c3c-58a7-3733-8e72-7f4ec5d02ae2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "604be85547ce4d61b89292d2f9a78c721b778c16 <93857359a07e425b643178ce3c6e60a9e4605cac"
     },
     {
       "id": "3a8b6798-abc0-3462-8771-0acd688de0d6",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "604be85547ce4d61b89292d2f9a78c721b778c16 <45be183b9944f765b77623daffb024cb38d192bf"
+    },
+    {
+      "id": "ed5e2e14-114d-38f6-a47c-7cf684a94b39",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

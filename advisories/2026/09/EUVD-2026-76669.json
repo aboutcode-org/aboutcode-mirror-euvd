@@ -3,9 +3,9 @@
   "enisaUuid": "ceb2b849-438c-3ab9-b907-b91e1034c704",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/mglru: fix and remove redundant unevictable folio handling\n\nsort_folio() has a shortcut for moving folios that are no longer evictable\nbut are still sitting on a generation list.  However, this shortcut is\nbuggy.  It does not follow the PG_lru usage convention, and it has a more\nserious issue.\n\nUnevictable folios are not threaded on lists[LRU_UNEVICTABLE], so that\nfolio->lru can be reused to hold folio->mlock_count (see the comment in\nlruvec_init()).  Hence lruvec_add_folio() skips the list_add() for them,\nand every other place that turns a folio unevictable initialises\nmlock_count explicitly: lru_add() sets it to 0, __mlock_folio() and\n__mlock_new_folio() set it to !!folio_test_mlocked(folio).  sort_folio()\nsets nothing, and the lru_gen_del_folio() right above it may have already\npoisoned folio->lru via list_del(), so mlock_count ends up aliasing\nLIST_POISON2, which reads as 0x122, i.e.  290.  The result is user\nvisible.  On munlock, __munlock_folio() decrements that bogus count, finds\nit still non-zero and bails out before clearing PG_mlocked, so the folio\nremains unevictable and the Mlocked accounting stays inflated until the\nfolio is freed.\n\nThe shortcut also touches the LRU flags in the wrong order.  It calls\nlru_gen_del_folio() while PG_lru is still set, so a concurrent\nfolio_test_clear_lru() (e.g.  compaction, folio_isolate_lru()) can succeed\non a folio that has already been taken off the generation list, which may\nlead to unexpected behavior.\n\nSo fix it by isolating them as common folios and letting the generic\nshrink path cull them.  This matches the classical LRU behavior, and there\nshould be no visible effect on the generic eviction or isolation behavior.\n\nThere is no performance concern either, such a folio goes through this\nonce, and then it is off the generation lists for good.",
   "datePublished": "Sep 11, 2026, 7:46:59 PM",
-  "dateUpdated": "Oct 21, 2026, 12:48:35 PM",
+  "dateUpdated": "Oct 30, 2026, 12:32:56 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b1d7c69e6c7d3ec47513b911ce7529e56d183dad\nhttps://git.kernel.org/stable/c/49193dac48d30eee2a21da88a7262d52a7feefae\nhttps://git.kernel.org/stable/c/54a58d6656dd403b686b247f0bad8507cbfb45df\nhttps://git.kernel.org/stable/c/15d3a2a71c8bf7333d019d249ee33669e69e4275\nhttps://git.kernel.org/stable/c/f7e698e326b239a91ea15844817551921209e826\n",
+  "references": "https://git.kernel.org/stable/c/e9f2160081a1e3ebb285bd71be3382abaeb8390a\nhttps://git.kernel.org/stable/c/b1d7c69e6c7d3ec47513b911ce7529e56d183dad\nhttps://git.kernel.org/stable/c/49193dac48d30eee2a21da88a7262d52a7feefae\nhttps://git.kernel.org/stable/c/54a58d6656dd403b686b247f0bad8507cbfb45df\nhttps://git.kernel.org/stable/c/15d3a2a71c8bf7333d019d249ee33669e69e4275\nhttps://git.kernel.org/stable/c/f7e698e326b239a91ea15844817551921209e826\n",
   "aliases": "CVE-2026-89757\nGHSA-rf75-rpf7-p84g\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.18.51"
+    },
+    {
+      "id": "28af6426-4183-3779-b7c2-bcccde119a27",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ac35a490237446b71e3b4b782b1596967edd0aa8 <e9f2160081a1e3ebb285bd71be3382abaeb8390a"
     },
     {
       "id": "37688134-cb81-363e-b03e-87ff8fc11ded",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "ac35a490237446b71e3b4b782b1596967edd0aa8 <54a58d6656dd403b686b247f0bad8507cbfb45df"
+    },
+    {
+      "id": "d05f7cc9-2393-3bbc-8cce-e64556b8b038",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "d2d3fbbd-78bf-32c5-adce-6661b22dfc2d",

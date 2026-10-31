@@ -3,12 +3,12 @@
   "enisaUuid": "5c57bb4b-6a62-3093-b32c-1dfdb4beb2e6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: b53: do not enable EEE on bcm63xx\n\nBCM63xx internal switches do not support EEE, but provide multiple RGMII\nports where external PHYs may be connected. If one of these PHYs are EEE\ncapable, we may try to enable EEE for the MACs, which then hangs the\nsystem on access of the (non-existent) EEE registers.\n\nFix this by checking if the switch actually supports EEE before\nattempting to configure it.",
   "datePublished": "Jul 10, 2025, 7:41:53 AM",
-  "dateUpdated": "Oct 21, 2026, 12:36:55 PM",
+  "dateUpdated": "Oct 30, 2026, 12:21:53 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/155bc8f94d52c01c0952acee8156f05f26d81ef6\nhttps://git.kernel.org/stable/c/3fbe3f4c57fda09f32e13fa05f53a0cc6f500619\nhttps://git.kernel.org/stable/c/2dbccf1eb8c04b84ee3afdb1d6b787db02e7befc\nhttps://git.kernel.org/stable/c/1237c2d4a8db79dfd4369bff6930b0e385ed7d5c\n",
+  "references": "https://git.kernel.org/stable/c/3f87fe8ceaa775a5b0ed02802146c1f4743998fb\nhttps://git.kernel.org/stable/c/155bc8f94d52c01c0952acee8156f05f26d81ef6\nhttps://git.kernel.org/stable/c/3fbe3f4c57fda09f32e13fa05f53a0cc6f500619\nhttps://git.kernel.org/stable/c/2dbccf1eb8c04b84ee3afdb1d6b787db02e7befc\nhttps://git.kernel.org/stable/c/1237c2d4a8db79dfd4369bff6930b0e385ed7d5c\n",
   "aliases": "CVE-2025-38272\nGHSA-5gh2-95vw-62h6\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "02313b0c-5439-3c46-8b21-50e4f7411900",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "22256b0afb12333571ad11799fa68fd27e4f4e80 <2dbccf1eb8c04b84ee3afdb1d6b787db02e7befc"
+    },
+    {
+      "id": "2f21bc48-f18a-35d9-9193-cd6bee02c175",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "39d99dbd-96c3-3378-bff0-4f7803aec15e",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "22256b0afb12333571ad11799fa68fd27e4f4e80 <3fbe3f4c57fda09f32e13fa05f53a0cc6f500619"
+    },
+    {
+      "id": "9a32c51e-f690-3888-8176-1efbf5e471d1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "22256b0afb12333571ad11799fa68fd27e4f4e80 <3f87fe8ceaa775a5b0ed02802146c1f4743998fb"
     },
     {
       "id": "b572f76d-b59d-3081-8dda-345fe895414e",

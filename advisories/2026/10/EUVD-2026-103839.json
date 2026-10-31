@@ -3,9 +3,9 @@
   "enisaUuid": "3f3a689e-8045-37ca-a450-a0d31f3636fa",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: hold port lock when clearing tty pointer in vcc_cleanup\n\nvcc_cleanup() sets port->tty to NULL without holding port->lock, racing\nwith vcc_event() LDC callbacks that read port->tty under port->lock and\nthen use tty->port. This can cause a use-after-free when the callback\ndereferences tty->port after cleanup has already destroyed and freed it.",
   "datePublished": "Oct 18, 2026, 3:47:40 PM",
-  "dateUpdated": "Oct 26, 2026, 6:55:48 AM",
+  "dateUpdated": "Oct 30, 2026, 12:39:24 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/57753441ef84bee3bf0e9ee1e3778d119c44aa32\nhttps://git.kernel.org/stable/c/88f6ecb058801e9ce7b9aabc966530118d7cd53c\nhttps://git.kernel.org/stable/c/821050631750e982007c0856c119346edba51cae\nhttps://git.kernel.org/stable/c/1a9fb9eaeb69b1f6c00bed09289a33d9fe1e7ae4\nhttps://git.kernel.org/stable/c/03b49c991abb8d021ca6fe51cd173447236b0552\n",
+  "references": "https://git.kernel.org/stable/c/b0ad9d025c3229a628a82fbaa7578891075a950d\nhttps://git.kernel.org/stable/c/b193617080b7036d143674089bcfb7d2ba3db588\nhttps://git.kernel.org/stable/c/afcbb821c571f39b273127a7c7d26cb2cef27d2f\nhttps://git.kernel.org/stable/c/57753441ef84bee3bf0e9ee1e3778d119c44aa32\nhttps://git.kernel.org/stable/c/88f6ecb058801e9ce7b9aabc966530118d7cd53c\nhttps://git.kernel.org/stable/c/821050631750e982007c0856c119346edba51cae\nhttps://git.kernel.org/stable/c/1a9fb9eaeb69b1f6c00bed09289a33d9fe1e7ae4\nhttps://git.kernel.org/stable/c/03b49c991abb8d021ca6fe51cd173447236b0552\n",
   "aliases": "CVE-2026-98754\nGHSA-phxc-9rqx-x894\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -71,6 +71,16 @@
       "product_version": "patch: 7.3"
     },
     {
+      "id": "503d38dc-c8ff-3a97-8c3d-8479cebc1050",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8f03f948ba356b7cb254b45a4e78b5b3d86fd3bb <afcbb821c571f39b273127a7c7d26cb2cef27d2f"
+    },
+    {
       "id": "7b9ade1a-b660-35a1-b17a-f78e16e85a0f",
       "product": {
         "name": "Linux",
@@ -111,6 +121,26 @@
       "product_version": "patch: 6.12.113"
     },
     {
+      "id": "8d903e3d-e34f-345b-ac4a-7ccd3ddf4960",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "92abd6ae-25dd-3653-89af-6526a03a1fc4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8f03f948ba356b7cb254b45a4e78b5b3d86fd3bb <b193617080b7036d143674089bcfb7d2ba3db588"
+    },
+    {
       "id": "a06a22a0-e25d-352c-a070-0c19dc481b4e",
       "product": {
         "name": "Linux",
@@ -121,6 +151,16 @@
       "product_version": "8f03f948ba356b7cb254b45a4e78b5b3d86fd3bb <1a9fb9eaeb69b1f6c00bed09289a33d9fe1e7ae4"
     },
     {
+      "id": "a4d6e799-e90e-3b28-8235-256a2008c6c4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8f03f948ba356b7cb254b45a4e78b5b3d86fd3bb <b0ad9d025c3229a628a82fbaa7578891075a950d"
+    },
+    {
       "id": "b3977c9b-d5f8-333f-be9b-cc53ff65a95c",
       "product": {
         "name": "Linux",
@@ -129,6 +169,26 @@
         }
       },
       "product_version": "8f03f948ba356b7cb254b45a4e78b5b3d86fd3bb <57753441ef84bee3bf0e9ee1e3778d119c44aa32"
+    },
+    {
+      "id": "cf1c5bc1-818b-3f29-8fa4-d489309d7fed",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
+      "id": "f21ec910-9d73-3a99-b7f8-389e6c003339",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
     }
   ],
   "enisaIdVendor": [

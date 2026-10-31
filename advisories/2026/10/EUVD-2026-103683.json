@@ -3,14 +3,14 @@
   "enisaUuid": "f38e5f6f-714e-3060-9dfe-47a1d724b7f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: fix cursor and pointer handling when recovering iunlink buckets\n\nLOLLM pointed out a bug in xlog_recover_iunlink_bucket:\n\n1. We don't null out prev_ip after releasing it, which can lead to UAF\n   problems if the inodegc flush call in the loop fails.\n\nat which point I noticed even more bugs:\n\n2. If the inodegc flush inside the loop fails, we also leak @ip.\n\n3. We set prev_agino to agino having already advanced agino, which\n   results in inodes with i_prev_unlinked set to itself.\n\n4. If we exit the bottom of the loop with prev_ip set, then prev_ip\n   aliases ip and we also set its i_prev_unlinked to itself.\n\nBugs 3 and 4 introduce loops into the unlinked list, though these loops\ndon't surface because we immediately flush each unlinked inode after\nloading it.\n\nFix all of these issues.",
   "datePublished": "Oct 18, 2026, 3:14:53 PM",
-  "dateUpdated": "Oct 24, 2026, 2:08:51 PM",
+  "dateUpdated": "Oct 30, 2026, 12:38:08 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/47a948ba653a463d429e02fda2f06a3d6b78666d\nhttps://git.kernel.org/stable/c/8c9d5b8a96d6b93eb24e07b4163c89341ba29bd1\nhttps://git.kernel.org/stable/c/66a2179d02668f8df44b1a249899006f3ba38ea0\nhttps://git.kernel.org/stable/c/961c717e6bf0e53c2c2b1fe4aef1add9390fedab\nhttps://git.kernel.org/stable/c/65f39d09d73718611cee40399179323b5d4ead00\n",
+  "references": "https://git.kernel.org/stable/c/8cfde7b2fb7288f4f6b90293e8702ff897c682fe\nhttps://git.kernel.org/stable/c/47a948ba653a463d429e02fda2f06a3d6b78666d\nhttps://git.kernel.org/stable/c/8c9d5b8a96d6b93eb24e07b4163c89341ba29bd1\nhttps://git.kernel.org/stable/c/66a2179d02668f8df44b1a249899006f3ba38ea0\nhttps://git.kernel.org/stable/c/961c717e6bf0e53c2c2b1fe4aef1add9390fedab\nhttps://git.kernel.org/stable/c/65f39d09d73718611cee40399179323b5d4ead00\n",
   "aliases": "GHSA-27hr-pwp4-53ph\nCVE-2026-98443\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "353a6162-a0ba-33b4-b919-acb60f1d0f7c",
@@ -93,6 +93,16 @@
       "product_version": "patch: 6.12.113"
     },
     {
+      "id": "97edd10e-4a4f-3492-b92d-378ef438fd21",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "04755d2e5821b3afbaadd09fe5df58d04de36484 <8cfde7b2fb7288f4f6b90293e8702ff897c682fe"
+    },
+    {
       "id": "aa0dea76-e150-3a29-bbe0-561e6d4c4fce",
       "product": {
         "name": "Linux",
@@ -121,6 +131,16 @@
         }
       },
       "product_version": "04755d2e5821b3afbaadd09fe5df58d04de36484 <47a948ba653a463d429e02fda2f06a3d6b78666d"
+    },
+    {
+      "id": "cc78d7e4-c388-3ef2-9da7-766f3d7484d6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "e4c47d17-c137-3c09-8907-03bddaee46fa",

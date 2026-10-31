@@ -3,12 +3,12 @@
   "enisaUuid": "607da32a-0e6a-3261-98fd-5bf1d97ca633",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix hang while freeing sigtrap event\n\nPerf can hang while freeing a sigtrap event if a related deferred\nsignal hadn't managed to be sent before the file got closed:\n\nperf_event_overflow()\n   task_work_add(perf_pending_task)\n\nfput()\n   task_work_add(____fput())\n\ntask_work_run()\n    ____fput()\n        perf_release()\n            perf_event_release_kernel()\n                _free_event()\n                    perf_pending_task_sync()\n                        task_work_cancel() -> FAILED\n                        rcuwait_wait_event()\n\nOnce task_work_run() is running, the list of pending callbacks is\nremoved from the task_struct and from this point on task_work_cancel()\ncan't remove any pending and not yet started work items, hence the\ntask_work_cancel() failure and the hang on rcuwait_wait_event().\n\nTask work could be changed to remove one work at a time, so a work\nrunning on the current task can always cancel a pending one, however\nthe wait / wake design is still subject to inverted dependencies when\nremote targets are involved, as pictured by Oleg:\n\nT1                                                      T2\n\nfd = perf_event_open(pid => T2->pid);                  fd = perf_event_open(pid => T1->pid);\nclose(fd)                                              close(fd)\n    <IRQ>                                                  <IRQ>\n    perf_event_overflow()                                  perf_event_overflow()\n       task_work_add(perf_pending_task)                        task_work_add(perf_pending_task)\n    </IRQ>                                                 </IRQ>\n    fput()                                                 fput()\n        task_work_add(____fput())                              task_work_add(____fput())\n\n    task_work_run()                                        task_work_run()\n        ____fput()                                             ____fput()\n            perf_release()                                         perf_release()\n                perf_event_release_kernel()                            perf_event_release_kernel()\n                    _free_event()                                          _free_event()\n                        perf_pending_task_sync()                               perf_pending_task_sync()\n                            rcuwait_wait_event()                                   rcuwait_wait_event()\n\nTherefore the only option left is to acquire the event reference count\nupon queueing the perf task work and release it from the task work, just\nlike it was done before 3a5465418f5f (\"perf: Fix event leak upon exec and file release\")\nbut without the leaks it fixed.\n\nSome adjustments are necessary to make it work:\n\n* A child event might dereference its parent upon freeing. Care must be\n  taken to release the parent last.\n\n* Some places assuming the event doesn't have any reference held and\n  therefore can be freed right away must instead put the reference and\n  let the reference counting to its job.",
   "datePublished": "May 1, 2025, 12:55:54 PM",
-  "dateUpdated": "Oct 21, 2026, 12:36:24 PM",
+  "dateUpdated": "Oct 30, 2026, 12:21:17 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/aae58a39ac4c63c3fa53536fb2504c9f1d0e1719\nhttps://git.kernel.org/stable/c/fa1827fa968c0674e9b6fca223fa9fb4da4493eb\nhttps://git.kernel.org/stable/c/665b87b8f8b3aeb49083ef3b65c4953e7753fc12\nhttps://git.kernel.org/stable/c/1267bd38f161c1a27d9b722de017027167a225a0\nhttps://git.kernel.org/stable/c/56799bc035658738f362acec3e7647bb84e68933\n",
+  "references": "https://git.kernel.org/stable/c/20ab73bb467d900662dca043452aadecb2db8338\nhttps://git.kernel.org/stable/c/aae58a39ac4c63c3fa53536fb2504c9f1d0e1719\nhttps://git.kernel.org/stable/c/fa1827fa968c0674e9b6fca223fa9fb4da4493eb\nhttps://git.kernel.org/stable/c/665b87b8f8b3aeb49083ef3b65c4953e7753fc12\nhttps://git.kernel.org/stable/c/1267bd38f161c1a27d9b722de017027167a225a0\nhttps://git.kernel.org/stable/c/56799bc035658738f362acec3e7647bb84e68933\n",
   "aliases": "CVE-2025-37747\nGHSA-g7p4-4259-746x\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "03d1919f-f07b-3b8a-a5f6-17095f3e5eb7",
@@ -29,16 +29,6 @@
         }
       },
       "product_version": "patch: 6.6.160"
-    },
-    {
-      "id": "065e49db-27f5-3190-80d0-7d0378c0a9a9",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.103 <6.2"
     },
     {
       "id": "1d7bf2c9-d02c-32b7-b937-41d101f8b2dd",
@@ -71,16 +61,6 @@
       "product_version": "6.6.44 <6.6.160"
     },
     {
-      "id": "42b10faa-ed57-3098-93c6-967158866f23",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "ed2c202dac55423a52d7e2290f2888bf08b8ee99"
-    },
-    {
       "id": "4bec268f-c2c3-3db8-9d25-8c70b7638aff",
       "product": {
         "name": "Linux",
@@ -101,6 +81,16 @@
       "product_version": "6.10.3 <6.11"
     },
     {
+      "id": "5986b125-8119-33ff-a4a2-6c0b1057c110",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ed2c202dac55423a52d7e2290f2888bf08b8ee99 <20ab73bb467d900662dca043452aadecb2db8338"
+    },
+    {
       "id": "67c49a9c-0d2f-3a49-a5e9-1ef8b3bcdc76",
       "product": {
         "name": "Linux",
@@ -119,6 +109,16 @@
         }
       },
       "product_version": "3a5465418f5fd970e86a86c7f4075be262682840 <1267bd38f161c1a27d9b722de017027167a225a0"
+    },
+    {
+      "id": "7b8c0b98-17dc-3227-91d0-aea9c8c7f012",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.103 <6.1.191"
     },
     {
       "id": "7bf0a15b-ff37-3f80-9c84-e6d1e1d78e3c",
@@ -189,6 +189,16 @@
         }
       },
       "product_version": "5.15.165 <5.16"
+    },
+    {
+      "id": "cd2f97da-5177-373b-bdc1-7129b162a599",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "fd299709-d665-31ea-997c-87d708e19302",

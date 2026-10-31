@@ -3,12 +3,12 @@
   "enisaUuid": "15b8086a-fd21-3ee3-b9c7-b80171969dce",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix soft lockup polling continuation IOCB signature\n\nqla27xx_copy_multiple_pkt() and qla27xx_copy_fpin_pkt() poll\nrsp_q->ring_ptr->signature for RESPONSE_PROCESSED (0xDEADDEAD) to decide\nwhether the next continuation IOCB has arrived, spinning on cpu_relax()\nwithout advancing the ring or decrementing the entry count while it has\nnot. response_t::signature lives at byte offset 60, but a continuation\nIOCB (sts_cont_entry_t / struct sts_cont_entry_ext) carries raw FC frame\npayload at that offset (data[56..59]). A received frame whose payload\nbytes happen to equal 0xDEADDEAD is therefore misread as \"not yet\narrived\", and the loop spins forever in interrupt/DPC context, causing a\nCPU soft lockup.\n\nThe poll is also unnecessary: callers of qla27xx_copy_multiple_pkt()\n(PT_LS4_UNSOL and the NVMe purls path) already gate on\nqla_chk_cont_iocb_avail(), which guarantees all entry_count IOCBs are\npresent before copying begins. The sibling helper\n__qla_copy_purex_to_buffer() already drops the signature poll and relies\non the entry_type == STATUS_CONT_TYPE guard instead.\n\nRemove the signature busy-wait from both helpers, keeping the entry_type\nguard, and gate the FPIN path with qla_chk_cont_iocb_avail() so it defers\nand re-processes on the next interrupt once all continuation IOCBs have\narrived, mirroring the ELS_AUTH_ELS and PT_LS4_UNSOL arms. With this the\nsignature field is never read on a continuation IOCB, eliminating the\npayload-aliasing lockup.",
   "datePublished": "Sep 25, 2026, 10:21:31 AM",
-  "dateUpdated": "Oct 21, 2026, 12:53:06 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:11 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/428e244dd4066abd40ca1ec525b7aab9a9db8296\nhttps://git.kernel.org/stable/c/3e58eb888ebf265af937f636d05997c60d2f197c\nhttps://git.kernel.org/stable/c/6e6c2ba9022eb8f9b062c81bdc6fd24c7b4c4c16\nhttps://git.kernel.org/stable/c/6aa722fca9d2aa1f64094101587f8f4a2f83f6aa\nhttps://git.kernel.org/stable/c/d7e3fa7d06bf7fcaac186d3c4d635caac166d36c\n",
+  "references": "https://git.kernel.org/stable/c/bded2de273c5b0e50e3e23de937260436cd67df2\nhttps://git.kernel.org/stable/c/70df7f03499046da0d28a58ec8b237ed5dfbd0a7\nhttps://git.kernel.org/stable/c/428e244dd4066abd40ca1ec525b7aab9a9db8296\nhttps://git.kernel.org/stable/c/3e58eb888ebf265af937f636d05997c60d2f197c\nhttps://git.kernel.org/stable/c/6e6c2ba9022eb8f9b062c81bdc6fd24c7b4c4c16\nhttps://git.kernel.org/stable/c/6aa722fca9d2aa1f64094101587f8f4a2f83f6aa\nhttps://git.kernel.org/stable/c/d7e3fa7d06bf7fcaac186d3c4d635caac166d36c\n",
   "aliases": "CVE-2026-97530\nGHSA-m367-5qfc-ghvx\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "1751151f-dbd4-3ceb-82ea-828bbee1ce48",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <6aa722fca9d2aa1f64094101587f8f4a2f83f6aa"
+    },
+    {
+      "id": "369dfae9-6351-3efc-8c41-461e2c3be64e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "38046253-f55d-374b-964b-45188502f5fd",
@@ -121,6 +131,16 @@
       "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <3e58eb888ebf265af937f636d05997c60d2f197c"
     },
     {
+      "id": "e31c3612-b762-3796-87b5-3d707343f502",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "e6c78531-8c8c-3b25-bfcc-9cf8965d487b",
       "product": {
         "name": "Linux",
@@ -129,6 +149,26 @@
         }
       },
       "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <428e244dd4066abd40ca1ec525b7aab9a9db8296"
+    },
+    {
+      "id": "f0da16cc-39f2-366d-a2eb-ff58908c2e3b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <70df7f03499046da0d28a58ec8b237ed5dfbd0a7"
+    },
+    {
+      "id": "fa652ce5-00f8-3daf-9f66-0e77e80aab23",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9f2475fe7406b8ef5f97099c4980021344872d9f <bded2de273c5b0e50e3e23de937260436cd67df2"
     }
   ],
   "enisaIdVendor": [

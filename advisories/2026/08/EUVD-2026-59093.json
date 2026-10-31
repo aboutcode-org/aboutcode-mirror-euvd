@@ -3,14 +3,14 @@
   "enisaUuid": "73239805-b4ef-3c1d-aa4f-f266db1a4070",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ieee80211: validate MLE common info length\n\nieee80211_mle_common_size() uses the first common-info octet as the\ncommon information length for all known MLE types. However,\nieee80211_mle_size_ok() only validates that octet for Basic, Probe\nRequest, and TDLS MLEs.\n\nReconfiguration MLEs also skipped the length octet when calculating the\nminimum common size, and Priority Access MLEs skipped validation of the\nadvertised common information length.\n\nAccount for the Reconfiguration common-info length octet and validate\nthe advertised common information length for all known MLE types. Keep\nunknown-type handling unchanged.\n\n[remove now misleading comment]",
   "datePublished": "Aug 15, 2026, 5:51:29 AM",
-  "dateUpdated": "Oct 21, 2026, 12:44:16 PM",
+  "dateUpdated": "Oct 30, 2026, 12:28:42 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/181b46e76a218e9345ed7c4cf59dfa69278e4a06\nhttps://git.kernel.org/stable/c/22941b5c5c46e61a7053e5f32f260f2bc39da617\nhttps://git.kernel.org/stable/c/90576bd6921a91eb038bffbb4b9467c2dc26aa1d\nhttps://git.kernel.org/stable/c/2b1589fd9a076727a73bfb39e96622a76415ad32\nhttps://git.kernel.org/stable/c/293baeae9b2434a3e432629d7720b5603db2d77e\n",
+  "references": "https://git.kernel.org/stable/c/bba41664af19b8a07d3d728855088ae80e47a4b3\nhttps://git.kernel.org/stable/c/181b46e76a218e9345ed7c4cf59dfa69278e4a06\nhttps://git.kernel.org/stable/c/22941b5c5c46e61a7053e5f32f260f2bc39da617\nhttps://git.kernel.org/stable/c/90576bd6921a91eb038bffbb4b9467c2dc26aa1d\nhttps://git.kernel.org/stable/c/2b1589fd9a076727a73bfb39e96622a76415ad32\nhttps://git.kernel.org/stable/c/293baeae9b2434a3e432629d7720b5603db2d77e\n",
   "aliases": "CVE-2026-68471\nGHSA-q4hh-8fm2-f5vw\n",
   "assigner": "Linux",
-  "epss": 0.31,
+  "epss": 0.34,
   "enisaIdProduct": [
     {
       "id": "126321c8-d266-391f-bdf7-ae4d579f66eb",
@@ -93,6 +93,16 @@
       "product_version": "6.0"
     },
     {
+      "id": "9822994f-8ace-3b3c-811a-47d28f25be39",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0f48b8b88aa9ed7b65d7cb55dbc57ec914ddada1 <bba41664af19b8a07d3d728855088ae80e47a4b3"
+    },
+    {
       "id": "9ed8086a-cf4b-3abc-b464-f98246347a47",
       "product": {
         "name": "Linux",
@@ -131,6 +141,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "f6e10a3b-733e-37e6-b418-67b1dc7e0e07",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

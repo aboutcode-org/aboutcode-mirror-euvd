@@ -3,9 +3,9 @@
   "enisaUuid": "d5e2ae33-9e13-396c-b1fb-2693ac9d82ee",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmgenet: fix NULL dereference in set_coalesce before first open\n\nThe Rx ring priv and index are only set in bcmgenet_init_rx_ring(),\nwhich runs at open. Setting the Rx coalescing parameters on an interface\nthat was never opened, e.g. \"ethtool -C eth0 rx-usecs 50\", dereferences\na NULL ring->priv. The oops happens with RTNL held, so networking\nstays stuck until a reboot:\n\n  Unable to handle kernel paging request at virtual address 0000000000002788\n  pc : bcmgenet_set_rx_coalesce.isra.0+0x10/0x88\n  lr : bcmgenet_set_coalesce+0xe8/0x180\n  Call trace:\n   bcmgenet_set_rx_coalesce.isra.0+0x10/0x88 (P)\n   __ethnl_set_coalesce.isra.0+0x490/0x570\n   ethnl_set_coalesce+0x48/0xc0\n   ethnl_default_set_doit+0xf4/0x230\n   genl_family_rcv_msg_doit+0xe8/0x160\n   genl_rcv_msg+0x220/0x2a0\n   netlink_rcv_skb+0x68/0x140\n   genl_rcv+0x40/0x60\n   netlink_unicast+0x338/0x3c0\n   netlink_sendmsg+0x19c/0x3f8\n   __sock_sendmsg+0x64/0xc0\n   __sys_sendto+0x124/0x198\n   __arm64_sys_sendto+0x30/0x48\n\nSet priv and index at probe. Writing the registers while the interface\nis down is harmless because open resets the MAC and\nbcmgenet_init_rx_coalesce() reapplies the stored values.\n\nIt was observed on a Raspberry Pi CM4, but should apply to all other\ngenet devices.",
   "datePublished": "Oct 18, 2026, 3:48:43 PM",
-  "dateUpdated": "Oct 21, 2026, 12:57:06 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:53 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/213ff02ab26a4543ef02b4db393bbdd5fa5679a7\nhttps://git.kernel.org/stable/c/0d867b91598b6ed2f75998c34f4e2869631da31e\nhttps://git.kernel.org/stable/c/2294b62eaec6fd3c76a261d287f66641eeafd5f0\nhttps://git.kernel.org/stable/c/d870102b5425390cab42eebbf3d19ec6a43c6734\nhttps://git.kernel.org/stable/c/19419faf58dfe5bcc8a9e60e622976c5f8e3ddc1\n",
+  "references": "https://git.kernel.org/stable/c/51e76b4113e5147329ed8dd232375bf11fd34044\nhttps://git.kernel.org/stable/c/213ff02ab26a4543ef02b4db393bbdd5fa5679a7\nhttps://git.kernel.org/stable/c/0d867b91598b6ed2f75998c34f4e2869631da31e\nhttps://git.kernel.org/stable/c/2294b62eaec6fd3c76a261d287f66641eeafd5f0\nhttps://git.kernel.org/stable/c/d870102b5425390cab42eebbf3d19ec6a43c6734\nhttps://git.kernel.org/stable/c/19419faf58dfe5bcc8a9e60e622976c5f8e3ddc1\n",
   "aliases": "CVE-2026-98798\nGHSA-c3qj-mc3f-4r7r\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -39,6 +39,26 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "4db78c95-2d04-33e7-b0b7-59dae13d6c53",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "52096185-d50a-34b1-a408-4917fb10eeab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "9f4ca05827a27ec73bf63a42732f1978b8a779af <51e76b4113e5147329ed8dd232375bf11fd34044"
     },
     {
       "id": "80448ced-11dc-3963-9713-52733004724a",

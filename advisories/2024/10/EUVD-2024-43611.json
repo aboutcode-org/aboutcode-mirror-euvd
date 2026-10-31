@@ -3,12 +3,12 @@
   "enisaUuid": "ebd5a204-ba45-3f43-ac5f-39d72d5c4582",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check null pointers before used\n\n[WHAT & HOW]\nPoniters, such as dc->clk_mgr, are null checked previously in the same\nfunction, so Coverity warns \"implies that \"dc->clk_mgr\" might be null\".\nAs a result, these pointers need to be checked when used again.\n\nThis fixes 10 FORWARD_NULL issues reported by Coverity.",
   "datePublished": "Oct 21, 2024, 6:01:47 PM",
-  "dateUpdated": "Oct 21, 2026, 12:35:23 PM",
+  "dateUpdated": "Oct 30, 2026, 12:19:39 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/692e9a20018da7aa225d8dced44803f9852aca81\nhttps://git.kernel.org/stable/c/5b35bf1a82eb29841b67ff5643ba83762250fc24\nhttps://git.kernel.org/stable/c/be1fb44389ca3038ad2430dac4234669bc177ee3\n",
+  "references": "https://git.kernel.org/stable/c/348f8668dfa77294a277946cb0231c29b5474e1d\nhttps://git.kernel.org/stable/c/692e9a20018da7aa225d8dced44803f9852aca81\nhttps://git.kernel.org/stable/c/5b35bf1a82eb29841b67ff5643ba83762250fc24\nhttps://git.kernel.org/stable/c/be1fb44389ca3038ad2430dac4234669bc177ee3\n",
   "aliases": "GHSA-vw3v-9427-r3gf\nCVE-2024-49921\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "11a9da97-9c5c-3eb8-a424-d1074218ed35",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.11.3"
+    },
+    {
+      "id": "1fa095f4-2f2a-3889-86ae-621f5c3bd060",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "581dd922-35f8-31ee-8fff-b57eaaa15acb",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "4.15"
+    },
+    {
+      "id": "b7d4a8a8-050e-310b-9ae6-ab2e446a5b55",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <348f8668dfa77294a277946cb0231c29b5474e1d"
     },
     {
       "id": "f0595b8b-a33b-3d9e-84c8-41b08eba8046",

@@ -3,9 +3,9 @@
   "enisaUuid": "c5a42af6-3955-3ef4-94b1-e94130335f68",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wfx: validate MIB read length before copying to caller\n\nwfx_hif_read_mib() copies reply->length bytes from the firmware\nresponse into the caller-provided buffer without checking that\nreply->length does not exceed val_len. A firmware response with\na length field larger than expected overruns the caller buffer and\nreads past the end of the reply allocation.\n\nReplace the dead -ENOMEM check with an active validation that\nreply->length fits within val_len before the memcpy.",
   "datePublished": "Oct 18, 2026, 3:49:31 PM",
-  "dateUpdated": "Oct 21, 2026, 12:57:17 PM",
+  "dateUpdated": "Oct 30, 2026, 12:40:02 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/819d4c1323e2a9b7329021d5367aa01add22b5dc\nhttps://git.kernel.org/stable/c/02886c18a340da59df57365f29009e1258bfe333\nhttps://git.kernel.org/stable/c/71d140099165de03128c00dd129f1eab21c6a3c4\nhttps://git.kernel.org/stable/c/7acb36fd60a3e7b858f12e69a919c3609b281408\nhttps://git.kernel.org/stable/c/ce67ebe9d8629776ce38e6995ae72fb903c828db\n",
+  "references": "https://git.kernel.org/stable/c/b8310b55e53622a393d14af4939f620c1828778b\nhttps://git.kernel.org/stable/c/819d4c1323e2a9b7329021d5367aa01add22b5dc\nhttps://git.kernel.org/stable/c/02886c18a340da59df57365f29009e1258bfe333\nhttps://git.kernel.org/stable/c/71d140099165de03128c00dd129f1eab21c6a3c4\nhttps://git.kernel.org/stable/c/7acb36fd60a3e7b858f12e69a919c3609b281408\nhttps://git.kernel.org/stable/c/ce67ebe9d8629776ce38e6995ae72fb903c828db\n",
   "aliases": "CVE-2026-98830\nGHSA-m222-4jcj-v2hx\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -59,6 +59,16 @@
         }
       },
       "product_version": "patch: 6.18.56"
+    },
+    {
+      "id": "319019dc-e608-38b9-bc98-332d46c05225",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f95a29d40782f4f0052a692a822de3ba044b19ff <b8310b55e53622a393d14af4939f620c1828778b"
     },
     {
       "id": "47ba7152-51d4-38f9-817f-d5953325c230",
@@ -119,6 +129,16 @@
         }
       },
       "product_version": "f95a29d40782f4f0052a692a822de3ba044b19ff <ce67ebe9d8629776ce38e6995ae72fb903c828db"
+    },
+    {
+      "id": "df9be7fc-5d80-3631-85d8-c9a1454b0f82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "eee5df7f-49fb-3dbe-80a5-2664410d24a7",

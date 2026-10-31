@@ -3,9 +3,9 @@
   "enisaUuid": "d4d4cc95-8d75-3f4e-805e-7c9b3b19e119",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix to migrate all curseg types during free_segment_range\n\nIn free_segment_range(), the curseg evacuation loop only iterates up to\nNR_CURSEG_PERSIST_TYPE (0..5), missing non-persistent in-memory curseg\ntypes such as CURSEG_COLD_DATA_PINNED and CURSEG_ALL_DATA_ATGC.\n\nEven though these in-memory curseg types are not saved in the on-disk\ncheckpoint header, they still occupy active physical segments at runtime.\nIf an active in-memory curseg happens to be allocated within the segment\nrange being truncated during filesystem shrink, failing to evacuate it\nwill cause subsequent writes to the curseg attempting out-of-bounds I/O\non the truncated storage range.\n\nFix this by expanding the curseg evacuation loop upper bound to\nNR_CURSEG_TYPE to ensure all active curseg types are safely migrated\nout of the target range.",
   "datePublished": "Sep 16, 2026, 10:31:07 AM",
-  "dateUpdated": "Oct 21, 2026, 12:48:57 PM",
+  "dateUpdated": "Oct 30, 2026, 12:33:13 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d358d2fc6be11eefde5eb1286f1c43a6d0330db6\nhttps://git.kernel.org/stable/c/3b85edf3391f3e1f624f409a7d2d239885f567b7\nhttps://git.kernel.org/stable/c/b8ae1228c153622afa71a179c9d4dc268117e0f0\nhttps://git.kernel.org/stable/c/b9776094aa7118e8e5dfdcd791ffc8330c5ca408\nhttps://git.kernel.org/stable/c/8ec06f50ddd8d201bd7e55b896ae28ed9d4cb7d1\n",
+  "references": "https://git.kernel.org/stable/c/7ffac0deea2d84cf79051f16fed8e215c4bcf0e6\nhttps://git.kernel.org/stable/c/d358d2fc6be11eefde5eb1286f1c43a6d0330db6\nhttps://git.kernel.org/stable/c/3b85edf3391f3e1f624f409a7d2d239885f567b7\nhttps://git.kernel.org/stable/c/b8ae1228c153622afa71a179c9d4dc268117e0f0\nhttps://git.kernel.org/stable/c/b9776094aa7118e8e5dfdcd791ffc8330c5ca408\nhttps://git.kernel.org/stable/c/8ec06f50ddd8d201bd7e55b896ae28ed9d4cb7d1\n",
   "aliases": "CVE-2026-89834\nGHSA-92fw-gww6-96g8\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -49,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.6.160"
+    },
+    {
+      "id": "7f8d44c7-6b85-303c-85b5-5c2d984cb8a6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d0b9e42ab6155dc05fc83f00af9f45d4dd02264d <7ffac0deea2d84cf79051f16fed8e215c4bcf0e6"
     },
     {
       "id": "80e8c43d-c417-3c54-a8c7-24cdb71f7108",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "d0b9e42ab6155dc05fc83f00af9f45d4dd02264d <8ec06f50ddd8d201bd7e55b896ae28ed9d4cb7d1"
+    },
+    {
+      "id": "fc84cd47-9606-35af-ad9f-61221068e5c9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

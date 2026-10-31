@@ -3,9 +3,9 @@
   "enisaUuid": "1b7c5353-2ca9-3fae-9a46-bcf10a14b89d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: check dc_state_create_copy() for NULL in dm_suspend\n\ndc_state_create_copy() can return NULL on allocation failure.\ndm_suspend() only conditionally skips dm_gpureset_toggle_interrupts()\nand continues execution, returning success.  dm_resume() then\ndereferences the NULL cached_dc_state in link_enc_cfg_copy() and the\nfollowing dc_state->stream_count loop, crashing during GPU reset\nrecovery.\n\nReturn -ENOMEM immediately if the copy fails, so the caller aborts\nsuspend instead of leaving a NULL cached state for resume.\n\n(cherry picked from commit 84b6d7932fdd2857795a257f9f258562a3cddcab)",
   "datePublished": "Oct 18, 2026, 3:48:22 PM",
-  "dateUpdated": "Oct 21, 2026, 12:56:59 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:49 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/29302964ef583f3a57efc3c990bc0a71337bd3a4\nhttps://git.kernel.org/stable/c/686baa1f4ec43b33e39e3d4b4a4539a91d17e883\nhttps://git.kernel.org/stable/c/197946faa1b7968046ba475ae2f266847c6f51ed\nhttps://git.kernel.org/stable/c/7283b78ca07ce491984a63f6288f3f8de5bdcb22\nhttps://git.kernel.org/stable/c/015e72cde567d2450e282c2790773463156b2d0a\n",
+  "references": "https://git.kernel.org/stable/c/ed65678bb23a5f5040932960851ac39bdeafb765\nhttps://git.kernel.org/stable/c/0b24f9d4e6e8ab64da8f2ae85bd1790d0f6a596f\nhttps://git.kernel.org/stable/c/29302964ef583f3a57efc3c990bc0a71337bd3a4\nhttps://git.kernel.org/stable/c/686baa1f4ec43b33e39e3d4b4a4539a91d17e883\nhttps://git.kernel.org/stable/c/197946faa1b7968046ba475ae2f266847c6f51ed\nhttps://git.kernel.org/stable/c/7283b78ca07ce491984a63f6288f3f8de5bdcb22\nhttps://git.kernel.org/stable/c/015e72cde567d2450e282c2790773463156b2d0a\n",
   "aliases": "GHSA-m7hp-r32v-xxxr\nCVE-2026-98785\n",
   "assigner": "Linux",
   "epss": 0.18,
@@ -31,6 +31,26 @@
       "product_version": "patch: 6.18.56"
     },
     {
+      "id": "2517ea54-6906-376c-a51d-4af0b843325d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d0b8b23b9c2ebec693a36fea518d8f13493ad655 <ed65678bb23a5f5040932960851ac39bdeafb765"
+    },
+    {
+      "id": "27e57d47-e53f-386e-a1e1-58948210055d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "83c7f509ef087041604e9572938f82e18b724c9d <0b24f9d4e6e8ab64da8f2ae85bd1790d0f6a596f"
+    },
+    {
       "id": "3da37cf6-62f4-304c-9e50-5fa5e26c4eb8",
       "product": {
         "name": "Linux",
@@ -39,6 +59,16 @@
         }
       },
       "product_version": "1686675405d07f35eae7ff3d13a530034b899df2"
+    },
+    {
+      "id": "3f6d88d1-7003-3deb-92a0-8a105857b0b1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5.15.165 <5.15.224"
     },
     {
       "id": "5e6b1180-3417-342c-80a9-6e2dc51ed8f4",
@@ -59,16 +89,6 @@
         }
       },
       "product_version": "patch: 7.3"
-    },
-    {
-      "id": "6a94f3e5-830e-3e30-966f-565789e61083",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.1.105 <6.2"
     },
     {
       "id": "73caaedc-803c-34cc-8491-04db71de0ac2",
@@ -101,6 +121,16 @@
       "product_version": "5.10.258 <5.11"
     },
     {
+      "id": "80360ff7-f42e-329f-8a80-2cad95b56524",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "823f127b-e3df-3330-94c4-21809f6b3776",
       "product": {
         "name": "Linux",
@@ -111,16 +141,6 @@
       "product_version": "6.6.46 <6.6.160"
     },
     {
-      "id": "96efb38a-65dd-3359-ae5c-4d20c7edfbdd",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "5.15.165 <5.16"
-    },
-    {
       "id": "9b490bba-f334-3cab-b093-a8da2f1276cc",
       "product": {
         "name": "Linux",
@@ -129,6 +149,16 @@
         }
       },
       "product_version": "8092aa3ab8f7b737a34b71f91492c676a843043a <197946faa1b7968046ba475ae2f266847c6f51ed"
+    },
+    {
+      "id": "a69a96d3-02d0-3675-b491-e72e4e693257",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.1.105 <6.1.191"
     },
     {
       "id": "ae38fcfe-0fb2-341b-8b0c-cac3f9071c4a",
@@ -161,16 +191,6 @@
       "product_version": "8092aa3ab8f7b737a34b71f91492c676a843043a <015e72cde567d2450e282c2790773463156b2d0a"
     },
     {
-      "id": "c1c430e6-cdbb-3570-aa0d-2a7cee2c6404",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "83c7f509ef087041604e9572938f82e18b724c9d"
-    },
-    {
       "id": "cd8cbd14-f76a-3e1b-a0a7-3ddaac64de39",
       "product": {
         "name": "Linux",
@@ -191,14 +211,14 @@
       "product_version": "8092aa3ab8f7b737a34b71f91492c676a843043a <686baa1f4ec43b33e39e3d4b4a4539a91d17e883"
     },
     {
-      "id": "ed32f0af-7b4b-3100-b01a-26adefffc39c",
+      "id": "d516de26-2b48-3407-9186-a3a69a77eddb",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "d0b8b23b9c2ebec693a36fea518d8f13493ad655"
+      "product_version": "patch: 5.15.224"
     },
     {
       "id": "ed65d831-040c-302c-853b-b61b8fc4543d",

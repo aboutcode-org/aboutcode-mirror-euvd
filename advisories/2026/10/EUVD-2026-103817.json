@@ -3,13 +3,23 @@
   "enisaUuid": "da177cb6-5c06-37f3-9529-cb399688a41b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel: fix buffer over-read in btintel_hw_error()\n\nThe \"Exception info %s\" print uses skb->data + 1, but the 12-byte\npayload is not guaranteed to be NUL-terminated and can be read past\nits end.\n\nBound the print with \"%.*s\" and skb->len - 1.",
   "datePublished": "Oct 18, 2026, 3:47:10 PM",
-  "dateUpdated": "Oct 21, 2026, 12:56:07 PM",
+  "dateUpdated": "Oct 30, 2026, 12:39:08 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/be58b239d2be5da7a7fac11d3eb8bf75dce6511b\nhttps://git.kernel.org/stable/c/bbc7de352f3f3864369c904aac944c7de84c6e7b\nhttps://git.kernel.org/stable/c/c42ce5373405ca93946311652c51ccfeb1c2d913\nhttps://git.kernel.org/stable/c/673f707518e8ef03306f84c512cb160971f175fe\nhttps://git.kernel.org/stable/c/40eb4b18ad167b63644c27fa67a7400ba050379a\n",
+  "references": "https://git.kernel.org/stable/c/162bb126d5c07a0150a171f8f3f1996e445922b3\nhttps://git.kernel.org/stable/c/d850e34c73175f5d7860b17f4810fcb6e5ab8727\nhttps://git.kernel.org/stable/c/0fa8630506f36374911772647bc5bcfeb47c5195\nhttps://git.kernel.org/stable/c/be58b239d2be5da7a7fac11d3eb8bf75dce6511b\nhttps://git.kernel.org/stable/c/bbc7de352f3f3864369c904aac944c7de84c6e7b\nhttps://git.kernel.org/stable/c/c42ce5373405ca93946311652c51ccfeb1c2d913\nhttps://git.kernel.org/stable/c/673f707518e8ef03306f84c512cb160971f175fe\nhttps://git.kernel.org/stable/c/40eb4b18ad167b63644c27fa67a7400ba050379a\n",
   "aliases": "CVE-2026-98732\nGHSA-ww29-ppp3-6wfc\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "07d4a99c-7d8c-30e0-8111-d4482a9ef36c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "147c4000-7c75-388e-b2a6-60d22410faf3",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <be58b239d2be5da7a7fac11d3eb8bf75dce6511b"
+    },
+    {
+      "id": "16f61db1-c6fc-398b-b30c-fa39d31c7f2a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
     },
     {
       "id": "1fc4c974-8d8f-3c3f-94a6-020824cf2835",
@@ -61,6 +81,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "2e36b567-4497-3937-a140-7d215d65862e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "4f6a5a82-02fa-3cc6-a53d-4b9238b8442f",
       "product": {
         "name": "Linux",
@@ -101,6 +131,26 @@
       "product_version": "patch: 6.18.56"
     },
     {
+      "id": "8015daa4-dd6e-393d-848d-c839fa097570",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <d850e34c73175f5d7860b17f4810fcb6e5ab8727"
+    },
+    {
+      "id": "844be09c-a1f3-31d5-b542-d22d16d34b0b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <162bb126d5c07a0150a171f8f3f1996e445922b3"
+    },
+    {
       "id": "9dcfe021-158a-3ec0-8093-fd7121dcd9c9",
       "product": {
         "name": "Linux",
@@ -119,6 +169,16 @@
         }
       },
       "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <bbc7de352f3f3864369c904aac944c7de84c6e7b"
+    },
+    {
+      "id": "f729412f-91e1-3182-94be-b84f95512d64",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "973bb97e5aee56edddaae3d5c96877101ad509c0 <0fa8630506f36374911772647bc5bcfeb47c5195"
     },
     {
       "id": "fcee5051-96b2-3e4a-91eb-256ed272232d",

@@ -3,12 +3,12 @@
   "enisaUuid": "45d4d14a-b2a5-3438-9f2c-96b06557c023",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ufs: ufs-qcom: Fix UFS OCP issue during UFS power down (PC=3)\n\nAccording to UFS specifications, the power-off sequence for a UFS device\nincludes:\n\n - Sending an SSU command with Power_Condition=3 and await a response.\n\n - Asserting RST_N low.\n\n - Turning off REF_CLK.\n\n - Turning off VCC.\n\n - Turning off VCCQ/VCCQ2.\n\nAs part of ufs shutdown, after the SSU command completion, asserting\nhardware reset (HWRST) triggers the device firmware to wake up and\nexecute its reset routine. This routine initializes hardware blocks and\ntakes a few milliseconds to complete. During this time, the ICCQ draws a\nlarge current.\n\nThis large ICCQ current may cause issues for the regulator which is\nsupplying power to UFS, because the turn off request from UFS driver to\nthe regulator framework will be immediately followed by low power\nmode(LPM) request by regulator framework. This is done by framework\nbecause UFS which is the only client is requesting for disable. So if\nthe rail is still in the process of shutting down while ICCQ exceeds LPM\ncurrent thresholds, and LPM mode is activated in hardware during this\nstate, it may trigger an overcurrent protection (OCP) fault in the\nregulator.\n\nTo prevent this, a 10ms delay is added after asserting HWRST. This\nallows the reset operation to complete while power rails remain active\nand in high-power mode.\n\nCurrently there is no way for Host to query whether the reset is\ncompleted or not and hence this the delay is based on experiments with\nQualcomm UFS controllers across multiple UFS vendors.",
   "datePublished": "Dec 16, 2025, 2:08:30 PM",
-  "dateUpdated": "Oct 21, 2026, 12:38:06 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:10 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1c963811b0824d0f51aabd394986589a2126f341\nhttps://git.kernel.org/stable/c/0c2619d1da8bd3d18524d69f12571a8cd7362833\nhttps://git.kernel.org/stable/c/b712f234a74c1f5ce70b5d7aec3fc2499c258141\nhttps://git.kernel.org/stable/c/5127be409c6c3815c4a7d8f6d88043e44f9b9543\n",
+  "references": "https://git.kernel.org/stable/c/dd52d72f2bd727ca60c1bc9820a307b70e2154ec\nhttps://git.kernel.org/stable/c/1c963811b0824d0f51aabd394986589a2126f341\nhttps://git.kernel.org/stable/c/0c2619d1da8bd3d18524d69f12571a8cd7362833\nhttps://git.kernel.org/stable/c/b712f234a74c1f5ce70b5d7aec3fc2499c258141\nhttps://git.kernel.org/stable/c/5127be409c6c3815c4a7d8f6d88043e44f9b9543\n",
   "aliases": "CVE-2025-68236\nGHSA-rmcq-qm8v-8r2p\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0b33d92e-d2e6-3bb6-8960-aa279793be3d",
@@ -51,6 +51,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "3b5f01f6-59c9-3aac-8b79-06bc9d05e133",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "4cf5253e-621b-363f-839a-8bbd0ce27d1c",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "5.12"
+    },
+    {
+      "id": "7f9de186-5d1d-36d8-90a0-f13038d0d4c1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "b61d0414136853fc38898829cde837ce5d691a9a <dd52d72f2bd727ca60c1bc9820a307b70e2154ec"
     },
     {
       "id": "8e083414-a985-35e4-8186-c1c039cc124e",

@@ -3,13 +3,63 @@
   "enisaUuid": "2485cb27-57e5-3577-b1db-d9872ab0b7ad",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: p54: validate firmware record lengths\n\nThe p54 firmware parser accesses component ID and component version\nrecords without checking that their lengths cover the fields being read.\nA malformed record can therefore make the parser read past the record.\n\nValidate the component ID and component version record lengths before\naccessing their data. The descriptor record is also checked against the\nshortest descriptor length found in the supported firmware images.\n\nReject descriptor values that underflow the RX offset or produce an empty\nRX range before updating the driver state.",
   "datePublished": "Oct 28, 2026, 3:55:38 AM",
-  "dateUpdated": "Oct 28, 2026, 3:55:38 AM",
+  "dateUpdated": "Oct 30, 2026, 12:41:43 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f641066b0ddcd1b0cf007c0d04f9c966f6e888ae\nhttps://git.kernel.org/stable/c/8c4f962f368d5e17481f3c2c5a43028953e137a5\nhttps://git.kernel.org/stable/c/db7b86bd97b380ece8fa39cfdd7502a9fd35e56f\n",
+  "references": "https://git.kernel.org/stable/c/87a9aba92485889d510052e474999a6ec00b888c\nhttps://git.kernel.org/stable/c/d5c28994b2c1440480fccd0b6c2ce72c23bb9fff\nhttps://git.kernel.org/stable/c/9af312d3607c8f9b5166a19cbf40cee351cc3a1d\nhttps://git.kernel.org/stable/c/dda5245afc3470d70406764e3d9f5508e534920a\nhttps://git.kernel.org/stable/c/f4c6fcc2ad462ffd76d6e6f909bcd6ae0391f5b7\nhttps://git.kernel.org/stable/c/f641066b0ddcd1b0cf007c0d04f9c966f6e888ae\nhttps://git.kernel.org/stable/c/8c4f962f368d5e17481f3c2c5a43028953e137a5\nhttps://git.kernel.org/stable/c/db7b86bd97b380ece8fa39cfdd7502a9fd35e56f\n",
   "aliases": "CVE-2026-99100\nGHSA-m5mp-q9hj-5q22\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
+    {
+      "id": "0273eecb-7905-36ae-8ccf-908c0c450706",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
+    },
+    {
+      "id": "1053cb87-5619-3c41-92c8-f9b8f6fb4d82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <6.12.115"
+    },
+    {
+      "id": "1c62ea4e-885b-39bc-948b-a480751dab17",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <5.15.224"
+    },
+    {
+      "id": "30e14ad9-a0d2-34a1-a75f-f715061c33f9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <87a9aba92485889d510052e474999a6ec00b888c"
+    },
+    {
+      "id": "3ccf43b4-676e-32a3-801c-eebad4f3c930",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <dda5245afc3470d70406764e3d9f5508e534920a"
+    },
     {
       "id": "3e848a4b-3c4e-36d9-be24-7e0c7bd05002",
       "product": {
@@ -19,6 +69,16 @@
         }
       },
       "product_version": "0 <6.18.59"
+    },
+    {
+      "id": "565fbfdf-32a2-3a3d-a2a1-36f830b5f6c6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <9af312d3607c8f9b5166a19cbf40cee351cc3a1d"
     },
     {
       "id": "603a969d-c845-3a54-b2fc-daed72687bc1",
@@ -31,6 +91,16 @@
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <8c4f962f368d5e17481f3c2c5a43028953e137a5"
     },
     {
+      "id": "612afdf8-52a8-3e2b-af13-5b423e7de7dd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f4c6fcc2ad462ffd76d6e6f909bcd6ae0391f5b7"
+    },
+    {
       "id": "639a354c-bd89-3755-a715-e31ffc6a25a1",
       "product": {
         "name": "Linux",
@@ -41,6 +111,46 @@
       "product_version": "0 <7.2.13"
     },
     {
+      "id": "6c35a68e-f776-3fdf-8450-7f5920102262",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <6.6.161"
+    },
+    {
+      "id": "807e2329-d2a8-37fa-b9f6-1d3f7416a015",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
+      "id": "85f07712-b023-391f-b7a4-b2519b6a08c0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "a10e7f00-d626-35ce-963d-48bc15b49edb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.115"
+    },
+    {
       "id": "ab8a7af4-81dd-3ef3-8f91-abcb1cc80b2c",
       "product": {
         "name": "Linux",
@@ -49,6 +159,26 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <f641066b0ddcd1b0cf007c0d04f9c966f6e888ae"
+    },
+    {
+      "id": "b5d3185e-48dc-3a2c-b1cd-0323a66555dc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <5.10.273"
+    },
+    {
+      "id": "c6541b7e-6aeb-3397-af37-84d088c3a686",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <6.1.191"
     },
     {
       "id": "caed0fb3-a626-35ac-ae81-52ff3f337785",
@@ -79,6 +209,26 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <db7b86bd97b380ece8fa39cfdd7502a9fd35e56f"
+    },
+    {
+      "id": "d99abff7-bbc8-3f55-81e9-0f14db7419f6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.161"
+    },
+    {
+      "id": "e517d3c7-ce80-3a42-89d1-3807c499f1de",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <d5c28994b2c1440480fccd0b6c2ce72c23bb9fff"
     },
     {
       "id": "f8cfb999-658d-3b80-9dfd-4541dcfe0f57",

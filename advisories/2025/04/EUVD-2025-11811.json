@@ -3,12 +3,12 @@
   "enisaUuid": "5318f23f-267b-336f-b406-06284fb2cd99",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: wait barrier before returning discard request with REQ_NOWAIT\n\nraid10_handle_discard should wait barrier before returning a discard bio\nwhich has REQ_NOWAIT. And there is no need to print warning calltrace\nif a discard bio has REQ_NOWAIT flag. Quality engineer usually checks\ndmesg and reports error if dmesg has warning/error calltrace.",
   "datePublished": "Apr 18, 2025, 7:01:41 AM",
-  "dateUpdated": "Oct 21, 2026, 12:37:56 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:01 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/29c742ff222dd39335b927a6909c23b8752a053c\nhttps://git.kernel.org/stable/c/31ff67982c5fa39c0093b9d9f429fef91c2494b7\nhttps://git.kernel.org/stable/c/31d3156efe909b53ba174861a3da880c688f5edc\nhttps://git.kernel.org/stable/c/3db4404435397a345431b45f57876a3df133f3b4\n",
+  "references": "https://git.kernel.org/stable/c/9fd04328b37b6b911c2556f6dd2625a58c3c30db\nhttps://git.kernel.org/stable/c/29c742ff222dd39335b927a6909c23b8752a053c\nhttps://git.kernel.org/stable/c/31ff67982c5fa39c0093b9d9f429fef91c2494b7\nhttps://git.kernel.org/stable/c/31d3156efe909b53ba174861a3da880c688f5edc\nhttps://git.kernel.org/stable/c/3db4404435397a345431b45f57876a3df133f3b4\n",
   "aliases": "CVE-2025-40325\nGHSA-vf7h-45fw-j88p\n",
   "assigner": "Linux",
-  "epss": 0.25,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "03b7fd22-c434-3597-a517-bbc1de036cc3",
@@ -61,6 +61,16 @@
       "product_version": "c9aa889b035fca4598ae985a0f0c76ebbb547ad2 <29c742ff222dd39335b927a6909c23b8752a053c"
     },
     {
+      "id": "29b2452a-1ceb-3959-8a02-e2744773c045",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "4d3ddf4a-9594-3655-a317-30294a6b3e26",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "5.15.111 <5.16"
+    },
+    {
+      "id": "95c87257-fc2e-3ace-ba6d-cbacc133e281",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c9aa889b035fca4598ae985a0f0c76ebbb547ad2 <9fd04328b37b6b911c2556f6dd2625a58c3c30db"
     },
     {
       "id": "ad0acf37-d1d4-3486-b9fb-ea1a694091f0",

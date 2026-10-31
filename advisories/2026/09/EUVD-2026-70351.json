@@ -3,11 +3,11 @@
   "enisaUuid": "624d69bc-907a-327c-a353-3091fd45ff09",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Add bounds check for CRAT subtype length\n\nThe CRAT parser validates that the subtype header fits within the image,\nbut does not verify that the advertised subtype length fits. A malformed\nCRAT table with an oversized length field causes out-of-bounds reads when\nkfd_parse_subtype() casts the header to specific subtype structures.\n\nAdd validation that sub_type_hdr + length does not exceed the image\nboundary before parsing the subtype contents.\n\n(cherry picked from commit 48e1d1e6e8798aef0312e68d8e586021b5b3cf4d)",
   "datePublished": "Sep 3, 2026, 8:26:28 AM",
-  "dateUpdated": "Oct 21, 2026, 12:47:02 PM",
+  "dateUpdated": "Oct 30, 2026, 12:31:04 PM",
   "baseScore": 8.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
-  "references": "https://git.kernel.org/stable/c/fef8c8afcb85dce5ff115f82a148cdf87a9617b9\nhttps://git.kernel.org/stable/c/77b659fb104eb069ea7a61960699e4d1eea6567a\nhttps://git.kernel.org/stable/c/69164d6bdad5d6657e51436a3f602822f620a46a\nhttps://git.kernel.org/stable/c/ca91e0cc8087568e4b791648a7c01e804f48cb73\nhttps://git.kernel.org/stable/c/6e7566ba4739dd573c331adde1c96690f7a567bd\n",
+  "references": "https://git.kernel.org/stable/c/1f9cc5375916b57acb1ad4443af7b4dbf347638a\nhttps://git.kernel.org/stable/c/fef8c8afcb85dce5ff115f82a148cdf87a9617b9\nhttps://git.kernel.org/stable/c/77b659fb104eb069ea7a61960699e4d1eea6567a\nhttps://git.kernel.org/stable/c/69164d6bdad5d6657e51436a3f602822f620a46a\nhttps://git.kernel.org/stable/c/ca91e0cc8087568e4b791648a7c01e804f48cb73\nhttps://git.kernel.org/stable/c/6e7566ba4739dd573c331adde1c96690f7a567bd\n",
   "aliases": "GHSA-9jrx-pr9x-qp88\nCVE-2026-80747\n",
   "assigner": "Linux",
   "epss": 0.13,
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "5b5c4e40a37e858e2bff8cd91be8e972256392c4 <fef8c8afcb85dce5ff115f82a148cdf87a9617b9"
+    },
+    {
+      "id": "38ba74a4-a90d-3d5d-951d-59379b6670cc",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "419b1791-12a4-34a9-ae6b-20df2e574a6d",
@@ -41,6 +51,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "72084b27-5fc5-30c0-b06b-a52890d6c3ce",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5b5c4e40a37e858e2bff8cd91be8e972256392c4 <1f9cc5375916b57acb1ad4443af7b4dbf347638a"
     },
     {
       "id": "7ff30067-03c3-3818-8d3c-adb68ebf85a7",

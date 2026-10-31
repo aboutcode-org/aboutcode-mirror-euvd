@@ -3,12 +3,12 @@
   "enisaUuid": "02f69530-b8c3-3cea-8eb2-79b7440262f6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: secure_seq: add back ports to TS offset\n\nThis reverts 28ee1b746f49 (\"secure_seq: downgrade to per-host timestamp offsets\")\n\ntcp_tw_recycle went away in 2017.\n\nZhouyan Deng reported off-path TCP source port leakage via\nSYN cookie side-channel that can be fixed in multiple ways.\n\nOne of them is to bring back TCP ports in TS offset randomization.\n\nAs a bonus, we perform a single siphash() computation\nto provide both an ISN and a TS offset.",
   "datePublished": "Mar 18, 2026, 10:05:09 AM",
-  "dateUpdated": "Oct 21, 2026, 12:39:02 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:52 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e873e8c16b2fb743a381a9e59c108e63512301ec\nhttps://git.kernel.org/stable/c/5da5662181ef8a251e3ba564903002c2e87de452\nhttps://git.kernel.org/stable/c/eae2f14ab2efccdb7480fae7d42c4b0116ef8805\nhttps://git.kernel.org/stable/c/46e5b0d7cf55821527adea471ffe52a5afbd9caf\nhttps://git.kernel.org/stable/c/165573e41f2f66ef98940cf65f838b2cb575d9d1\n",
+  "references": "https://git.kernel.org/stable/c/025f532d8c5cfac77845e50daab7f478b360f2ac\nhttps://git.kernel.org/stable/c/e873e8c16b2fb743a381a9e59c108e63512301ec\nhttps://git.kernel.org/stable/c/5da5662181ef8a251e3ba564903002c2e87de452\nhttps://git.kernel.org/stable/c/eae2f14ab2efccdb7480fae7d42c4b0116ef8805\nhttps://git.kernel.org/stable/c/46e5b0d7cf55821527adea471ffe52a5afbd9caf\nhttps://git.kernel.org/stable/c/165573e41f2f66ef98940cf65f838b2cb575d9d1\n",
   "aliases": "GHSA-4hcm-qg7j-cc3v\nCVE-2026-23247\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0a358544-168b-3304-bcef-d54441913efe",
@@ -61,6 +61,16 @@
       "product_version": "patch: 6.18.17"
     },
     {
+      "id": "69b9fb81-94e6-371e-85a3-79d25921114e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "6f6c619d-c3c5-35af-94c5-7c502c77ea46",
       "product": {
         "name": "Linux",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "28ee1b746f493b7c62347d714f58fbf4f70df4f0 <46e5b0d7cf55821527adea471ffe52a5afbd9caf"
+    },
+    {
+      "id": "9d99275c-0d80-367e-a477-442e69baefb2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "28ee1b746f493b7c62347d714f58fbf4f70df4f0 <025f532d8c5cfac77845e50daab7f478b360f2ac"
     },
     {
       "id": "c156fa7d-9693-327d-a5d0-37c3e195cf60",

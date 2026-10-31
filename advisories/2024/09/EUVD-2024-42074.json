@@ -3,15 +3,25 @@
   "enisaUuid": "f07c2d4d-c27a-39c2-9827-f50ce70af860",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check link_index before accessing dc->links[]\n\n[WHY & HOW]\ndc->links[] has max size of MAX_LINKS and NULL is return when trying to\naccess with out-of-bound index.\n\nThis fixes 3 OVERRUN and 1 RESOURCE_LEAK issues reported by Coverity.",
   "datePublished": "Sep 27, 2024, 12:35:55 PM",
-  "dateUpdated": "Aug 5, 2026, 11:38:44 AM",
+  "dateUpdated": "Oct 30, 2026, 12:19:22 PM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/032c5407a608ac3b2a98bf4fbda27d12c20c5887\nhttps://git.kernel.org/stable/c/ac04759b4a002969cf0f1384f1b8bb2001cfa782\nhttps://git.kernel.org/stable/c/8aa2864044b9d13e95fe224f32e808afbf79ecdf\n",
+  "references": "https://git.kernel.org/stable/c/8ad4c2cf6c1af18f556e5c591fb313b2982ddf60\nhttps://git.kernel.org/stable/c/032c5407a608ac3b2a98bf4fbda27d12c20c5887\nhttps://git.kernel.org/stable/c/ac04759b4a002969cf0f1384f1b8bb2001cfa782\nhttps://git.kernel.org/stable/c/8aa2864044b9d13e95fe224f32e808afbf79ecdf\n",
   "aliases": "GHSA-2vgc-pr6w-4gq9\nCVE-2024-46813\n",
   "assigner": "Linux",
   "epss": 0.26,
   "enisaIdProduct": [
+    {
+      "id": "37b86a52-e8f5-3505-81f9-40cfd91a5a70",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "43c92ad4-1c2f-385f-96dc-1a1d5ebcf0fd",
       "product": {
@@ -71,6 +81,16 @@
         }
       },
       "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <8aa2864044b9d13e95fe224f32e808afbf79ecdf"
+    },
+    {
+      "id": "db96ff11-7af7-3e0c-b971-f4fff762c19d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4562236b3bc0a28aeb6ee93b2d8a849a4c4e1c7c <8ad4c2cf6c1af18f556e5c591fb313b2982ddf60"
     },
     {
       "id": "e592ff7d-5e82-3fd0-8c79-2e1e54ce5eff",

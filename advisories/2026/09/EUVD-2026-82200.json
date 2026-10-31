@@ -3,9 +3,9 @@
   "enisaUuid": "3323b5ac-fe0d-30bc-90b2-c1a1bed1ec96",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Unregister device notifier before IDR teardown\n\nThe requested-devices notifier looks up protocol fwnodes from the\nactive_protocols IDR. During remove, unregister the notifier before\nreleasing and destroying active_protocols so no notifier callback can race\nwith the IDR teardown.\n\nKeep the bus notifier registered until after the protocol state is torn\ndown, matching the existing remove ordering for SCMI bus users.",
   "datePublished": "Sep 17, 2026, 4:11:07 PM",
-  "dateUpdated": "Oct 19, 2026, 9:05:25 AM",
+  "dateUpdated": "Oct 30, 2026, 12:35:56 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/70a26b37389846f1f29a09f7983aa3f45feff529\nhttps://git.kernel.org/stable/c/492fb49eac24beecd6d3c5e4744a513e626f8dcf\nhttps://git.kernel.org/stable/c/f5e528f631425416f9b39e9d8b385c9f1ceb40d6\nhttps://git.kernel.org/stable/c/74fcaa0a3f7ad3edfde2e8c6cb8ae457a00e0b7a\nhttps://git.kernel.org/stable/c/66a0bbf30cc14140fe13f63cd594a7c1ee352b75\n",
+  "references": "https://git.kernel.org/stable/c/3ec1f79e912fa0e1c119753c819eb3c2591e71b7\nhttps://git.kernel.org/stable/c/70a26b37389846f1f29a09f7983aa3f45feff529\nhttps://git.kernel.org/stable/c/492fb49eac24beecd6d3c5e4744a513e626f8dcf\nhttps://git.kernel.org/stable/c/f5e528f631425416f9b39e9d8b385c9f1ceb40d6\nhttps://git.kernel.org/stable/c/74fcaa0a3f7ad3edfde2e8c6cb8ae457a00e0b7a\nhttps://git.kernel.org/stable/c/66a0bbf30cc14140fe13f63cd594a7c1ee352b75\n",
   "aliases": "CVE-2026-93092\nGHSA-8fvf-9m5c-mjwr\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -99,6 +99,16 @@
         }
       },
       "product_version": "53b8c25df7082edd78a3fc63e359abee0f28fa70 <70a26b37389846f1f29a09f7983aa3f45feff529"
+    },
+    {
+      "id": "c3967b8e-dc8f-3e26-b845-353de009fb02",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0c0e28e587198b5b4fd742b761cbf7ef9a7fef1c <3ec1f79e912fa0e1c119753c819eb3c2591e71b7"
     },
     {
       "id": "cc40bda9-dfed-32bd-a0b3-a7293124fdad",

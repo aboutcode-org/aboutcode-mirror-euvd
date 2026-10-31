@@ -3,13 +3,23 @@
   "enisaUuid": "93beed70-a79b-39b7-a6c9-5bc56fc0ddc6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: dvm: fix memory leak in iwl_op_mode_dvm_start()\n\nIn iwl_op_mode_dvm_start(), jumping to out_free_eeprom currently bypasses\nthe out_free_eeprom_blob label. Consequently, error paths triggered after\nsuccessfully parsing the EEPROM free priv->nvm_data but leak\npriv->eeprom_blob.\n\nFix this memory leak by reordering the error handling labels so\nthat out_free_eeprom falls through to out_free_eeprom_blob.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still\npresent in v7.1-rc6.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have\nsupported Intel DVM wireless hardware and firmware to test with, no\nruntime testing was able to be performed.",
   "datePublished": "Sep 11, 2026, 7:42:19 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:18 PM",
+  "dateUpdated": "Oct 30, 2026, 12:31:29 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7be73911d979bb0f54485c2292043a5703fdc953\nhttps://git.kernel.org/stable/c/2d593f32efa9ff1c91c508f45eb709c03dfb4945\nhttps://git.kernel.org/stable/c/84ba017a1e1ea7896ed1e3258c947bdbfc5299c5\nhttps://git.kernel.org/stable/c/ad2a9fdca4a7100472be82ee6048c616fc589720\nhttps://git.kernel.org/stable/c/67105abd6195a685a84dcb8a5daf54a1f4bfdb60\n",
+  "references": "https://git.kernel.org/stable/c/0540361ac82095b25e6eebd70b1df37d2faf45bd\nhttps://git.kernel.org/stable/c/7be73911d979bb0f54485c2292043a5703fdc953\nhttps://git.kernel.org/stable/c/2d593f32efa9ff1c91c508f45eb709c03dfb4945\nhttps://git.kernel.org/stable/c/84ba017a1e1ea7896ed1e3258c947bdbfc5299c5\nhttps://git.kernel.org/stable/c/ad2a9fdca4a7100472be82ee6048c616fc589720\nhttps://git.kernel.org/stable/c/67105abd6195a685a84dcb8a5daf54a1f4bfdb60\n",
   "aliases": "GHSA-mrmg-jqr4-hg37\nCVE-2026-80948\n",
   "assigner": "Linux",
   "epss": 0.22,
   "enisaIdProduct": [
+    {
+      "id": "47b6a962-9a18-3a59-a4ec-2733f8ab406b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "49fbb800-32eb-32fe-a160-2fd6f5ee51d4",
       "product": {
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <7be73911d979bb0f54485c2292043a5703fdc953"
+    },
+    {
+      "id": "63fb7311-ed76-38e1-88b5-4a3bdb6a17b7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "26a7ca9a71a3f7e1826de96b1a1e907123e11b07 <0540361ac82095b25e6eebd70b1df37d2faf45bd"
     },
     {
       "id": "99990df5-a2ab-3569-8399-e0b2ae104393",

@@ -3,12 +3,12 @@
   "enisaUuid": "d037f7f3-71ca-308c-91c9-22128f2cbe99",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm: Disable MMIO access during SMU Mode 1 reset\n\nDuring Mode 1 reset, the ASIC undergoes a reset cycle and becomes\ntemporarily inaccessible via PCIe. Any attempt to access MMIO registers\nduring this window (e.g., from interrupt handlers or other driver threads)\ncan result in uncompleted PCIe transactions, leading to NMI panics or\nsystem hangs.\n\nTo prevent this, set the `no_hw_access` flag to true immediately after\ntriggering the reset. This signals other driver components to skip\nregister accesses while the device is offline.\n\nA memory barrier `smp_mb()` is added to ensure the flag update is\nglobally visible to all cores before the driver enters the sleep/wait\nstate.\n\n(cherry picked from commit 7edb503fe4b6d67f47d8bb0dfafb8e699bb0f8a4)",
   "datePublished": "Feb 18, 2026, 2:21:50 PM",
-  "dateUpdated": "Oct 21, 2026, 12:38:58 PM",
+  "dateUpdated": "Oct 30, 2026, 12:23:49 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/b2b9ac2bb2c5b5b0a39f7f422bbe12d3ea4ccf34\nhttps://git.kernel.org/stable/c/c1853ebbec980d5c05d431bfd6ded73b1363fd00\nhttps://git.kernel.org/stable/c/cd7ff7fd3e4b77f0b5a292e0926532eaa07c5162\nhttps://git.kernel.org/stable/c/0de604d0357d0d22cbf03af1077d174b641707b6\n",
+  "references": "https://git.kernel.org/stable/c/4027796f024dabb2766afde4f7e772c92bc4d056\nhttps://git.kernel.org/stable/c/b2b9ac2bb2c5b5b0a39f7f422bbe12d3ea4ccf34\nhttps://git.kernel.org/stable/c/c1853ebbec980d5c05d431bfd6ded73b1363fd00\nhttps://git.kernel.org/stable/c/cd7ff7fd3e4b77f0b5a292e0926532eaa07c5162\nhttps://git.kernel.org/stable/c/0de604d0357d0d22cbf03af1077d174b641707b6\n",
   "aliases": "CVE-2026-23213\nGHSA-h85r-3jrw-9546\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "1900fbca-8be2-33a8-8e3f-02f731f51baa",
@@ -31,6 +31,16 @@
       "product_version": "ea8139d8d59bd6f014b317e7423345169a56fe49 <b2b9ac2bb2c5b5b0a39f7f422bbe12d3ea4ccf34"
     },
     {
+      "id": "4f5bb8f0-cf2e-3325-8f62-d6804695c947",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
+    {
       "id": "6c068740-5d22-3707-931f-58168db57f2c",
       "product": {
         "name": "Linux",
@@ -49,6 +59,16 @@
         }
       },
       "product_version": "5.9"
+    },
+    {
+      "id": "888ae787-11e3-37f6-aecb-b3575fa92eb3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ea8139d8d59bd6f014b317e7423345169a56fe49 <4027796f024dabb2766afde4f7e772c92bc4d056"
     },
     {
       "id": "92be0a66-f8db-3a37-8d62-13d68c37e122",

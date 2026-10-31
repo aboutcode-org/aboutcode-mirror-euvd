@@ -3,9 +3,9 @@
   "enisaUuid": "01090d33-3aa4-3406-98bb-0477442d7af1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject userspace cifs.idmap descriptions\n\ncifs.idmap key descriptions carry authority-bearing fields (owner and\ngroup SIDs and uid/gid values in \"os:\"/\"gs:\"/\"oi:\"/\"gi:\" form) that the\ncifs.idmap upcall helper treats as kernel-originating inputs.  Unlike\nits sibling cifs.spnego, the cifs.idmap key type has no vet_description\nhook, so userspace can create keys of this type through\nrequest_key(2)/add_key(2) and supply those fields without CIFS origin.\nA request_key(2) call with a non-NULL callout then drives a root\nusermodehelper upcall (/sbin/request-key -> cifs.idmap) that consumes\nthe unvetted description in root context.\n\nOnly accept cifs.idmap descriptions while CIFS is using its private\nroot_cred to request the key.  id_to_sid()/sid_to_id() already run\nunder override_creds(root_cred), so the kernel-originated path is\nunaffected.\n\nThis mirrors commit 3da1fdf4efbc (\"smb: client: reject userspace\ncifs.spnego descriptions\"), which applied the same restriction to\ncifs.spnego.",
   "datePublished": "Sep 25, 2026, 10:21:51 AM",
-  "dateUpdated": "Oct 19, 2026, 9:09:27 AM",
+  "dateUpdated": "Oct 30, 2026, 12:37:26 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f29c1ec0e7d8c887a91df3f93bb4617c0ac95c6a\nhttps://git.kernel.org/stable/c/17c93bcd17755523c21abb22cbf2a41a6eb0caaf\nhttps://git.kernel.org/stable/c/e5964064e3fbe6325893408faff08ca33de0e2c3\nhttps://git.kernel.org/stable/c/96751028c0d4dec785709ea3eb0ab38a4f2ded96\nhttps://git.kernel.org/stable/c/1d3b24b16a0b013792e8f1e3ed060f0b46f537d1\nhttps://git.kernel.org/stable/c/d9d7eeb0cea5b55b82888f443622fd8d4ee064f3\n",
+  "references": "https://git.kernel.org/stable/c/91da70a2e5c6f54e1316d51e0e6911e78ef5e09a\nhttps://git.kernel.org/stable/c/856cb3f05b49d23dc1542f78696e20c4ea6dd7de\nhttps://git.kernel.org/stable/c/f29c1ec0e7d8c887a91df3f93bb4617c0ac95c6a\nhttps://git.kernel.org/stable/c/17c93bcd17755523c21abb22cbf2a41a6eb0caaf\nhttps://git.kernel.org/stable/c/e5964064e3fbe6325893408faff08ca33de0e2c3\nhttps://git.kernel.org/stable/c/96751028c0d4dec785709ea3eb0ab38a4f2ded96\nhttps://git.kernel.org/stable/c/1d3b24b16a0b013792e8f1e3ed060f0b46f537d1\nhttps://git.kernel.org/stable/c/d9d7eeb0cea5b55b82888f443622fd8d4ee064f3\n",
   "aliases": "GHSA-3fc8-28wq-wq67\nCVE-2026-97564\n",
   "assigner": "Linux",
   "epss": 0.21,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "27b2833c-6c4a-304d-9868-c6deb6aeb5be",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
     },
     {
       "id": "28597c0e-bc15-3b37-a643-7d5903c61555",
@@ -101,6 +111,16 @@
       "product_version": "4d79dba0e00749fa40de8ef13a9b85ce57a1603b <f29c1ec0e7d8c887a91df3f93bb4617c0ac95c6a"
     },
     {
+      "id": "a2b66df0-952b-305e-b1e6-3cd5163a26f0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
       "id": "af632744-b36c-382f-8d02-4045b580c549",
       "product": {
         "name": "Linux",
@@ -121,6 +141,16 @@
       "product_version": "patch: 6.6.158"
     },
     {
+      "id": "c17c0071-da34-329b-8ae3-969a2cb480d4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4d79dba0e00749fa40de8ef13a9b85ce57a1603b <91da70a2e5c6f54e1316d51e0e6911e78ef5e09a"
+    },
+    {
       "id": "c720290a-67d6-3dba-b184-02144e08f205",
       "product": {
         "name": "Linux",
@@ -129,6 +159,16 @@
         }
       },
       "product_version": "3.0"
+    },
+    {
+      "id": "deca3a55-464c-35e6-95d6-03f4f9f3693a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4d79dba0e00749fa40de8ef13a9b85ce57a1603b <856cb3f05b49d23dc1542f78696e20c4ea6dd7de"
     },
     {
       "id": "e918230f-af8f-3408-8d48-023752b82916",

@@ -3,12 +3,12 @@
   "enisaUuid": "a0c7d329-420c-35bc-a0f8-bb24604a930f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: spi-dw-dma: fix print error log when wait finish transaction\n\nIf an error occurs, the device may not have a current message. In this\ncase, the system will crash.\n\nIn this case, it's better to use dev from the struct ctlr (struct spi_controller*).",
   "datePublished": "Apr 24, 2026, 2:35:42 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:28 PM",
+  "dateUpdated": "Oct 30, 2026, 12:24:21 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/bac13309339b6f1ac02e6e53ebc75cf61483c396\nhttps://git.kernel.org/stable/c/b8188ff3cfaa5621212b08473488cdbe41f86531\nhttps://git.kernel.org/stable/c/aae4a47073b12c23eb1d2c5401bda442fbe27bd1\nhttps://git.kernel.org/stable/c/184f5aaf72f1f1c73e66bae0b8d28e81c2f2a72f\nhttps://git.kernel.org/stable/c/3b46d61890632c8f8b117147b6923bff4b42ccb7\n",
+  "references": "https://git.kernel.org/stable/c/3709357c1a7b7a422b0cbc2748f187acf612cd94\nhttps://git.kernel.org/stable/c/bac13309339b6f1ac02e6e53ebc75cf61483c396\nhttps://git.kernel.org/stable/c/b8188ff3cfaa5621212b08473488cdbe41f86531\nhttps://git.kernel.org/stable/c/aae4a47073b12c23eb1d2c5401bda442fbe27bd1\nhttps://git.kernel.org/stable/c/184f5aaf72f1f1c73e66bae0b8d28e81c2f2a72f\nhttps://git.kernel.org/stable/c/3b46d61890632c8f8b117147b6923bff4b42ccb7\n",
   "aliases": "GHSA-x9pc-8g9f-68mf\nCVE-2026-31560\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "0be09851-2bca-3569-b24a-f774c7a57f9f",
@@ -101,6 +101,16 @@
       "product_version": "5.8"
     },
     {
+      "id": "a55e483a-342c-3e5d-a84f-b972e55f7af9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "bdbdf0f06337d3661b64c0288c291cb06624065e <3709357c1a7b7a422b0cbc2748f187acf612cd94"
+    },
+    {
       "id": "a94d393f-c8ca-3622-b5b6-347554ba39cf",
       "product": {
         "name": "Linux",
@@ -129,6 +139,16 @@
         }
       },
       "product_version": "patch: 6.18.34"
+    },
+    {
+      "id": "da9f2880-30d2-387f-bc3b-f6749333dc85",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     }
   ],
   "enisaIdVendor": [

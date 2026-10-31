@@ -3,12 +3,12 @@
   "enisaUuid": "899a52e7-2094-3f04-8b80-c5139182a5be",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: int1092: Fix potential memory leak in sar_probe()\n\nThe memory allocated for device_mode_info in parse_package() called by\nsar_get_data() is not freed in some of the error paths in sar_probe().\nFix that by converting to use device managed allocations.",
   "datePublished": "Sep 11, 2026, 7:43:07 PM",
-  "dateUpdated": "Oct 21, 2026, 12:47:25 PM",
+  "dateUpdated": "Oct 30, 2026, 12:31:40 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/d680ce2b39f9a635365746d0ada3d6a6d861789b\nhttps://git.kernel.org/stable/c/4bdbb7f1045820aa8fd87d84db6b26c01049a005\nhttps://git.kernel.org/stable/c/08dab7065f9369dd0a0aa740071bcd884c4848b0\nhttps://git.kernel.org/stable/c/582b82e573a059be9319bb16b84c45d0ef66f471\nhttps://git.kernel.org/stable/c/30c906cff490c3601ee9ff110fe8115fabe75fd4\n",
+  "references": "https://git.kernel.org/stable/c/ef8eb7613db672def645f19387d7daead5c29a0e\nhttps://git.kernel.org/stable/c/d680ce2b39f9a635365746d0ada3d6a6d861789b\nhttps://git.kernel.org/stable/c/4bdbb7f1045820aa8fd87d84db6b26c01049a005\nhttps://git.kernel.org/stable/c/08dab7065f9369dd0a0aa740071bcd884c4848b0\nhttps://git.kernel.org/stable/c/582b82e573a059be9319bb16b84c45d0ef66f471\nhttps://git.kernel.org/stable/c/30c906cff490c3601ee9ff110fe8115fabe75fd4\n",
   "aliases": "CVE-2026-89437\nGHSA-8554-6hg6-mf5q\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0db1150c-a169-3d47-9575-e1fdcfb26f63",
@@ -31,6 +31,16 @@
       "product_version": "dcfbd31ef4bcf6ceb373911faa4a5299e0547702 <4bdbb7f1045820aa8fd87d84db6b26c01049a005"
     },
     {
+      "id": "178f6a2f-f81a-311d-b92e-4faf371be5f1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "dcfbd31ef4bcf6ceb373911faa4a5299e0547702 <ef8eb7613db672def645f19387d7daead5c29a0e"
+    },
+    {
       "id": "1a4f03d8-edca-3131-9f29-7b25054e888a",
       "product": {
         "name": "Linux",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "dcfbd31ef4bcf6ceb373911faa4a5299e0547702 <30c906cff490c3601ee9ff110fe8115fabe75fd4"
+    },
+    {
+      "id": "50d0f187-9603-316a-8156-c725b6b82466",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "5a60e508-d8d1-3686-b0e9-d98b8bf8d44a",

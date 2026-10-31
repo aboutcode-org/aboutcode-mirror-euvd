@@ -3,9 +3,9 @@
   "enisaUuid": "313cde94-cbe1-3ba5-b2a1-ad8bcf2f892f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: RISC-V: store available counter mask as bitmap\n\nThe available-counter mask was a single unsigned long, but iteration\nuses RISCV_MAX_COUNTERS, which is 64. On RV32 that reads past the object.\nFilling with an unsigned-long bit at index 32 and above is also wrong.\n\nUse DECLARE_BITMAP and set_bit/bitmap helpers. Walk each bitmap word\ninto CFG_MATCH when checking events, when allocating an index, and when\nstopping all counters. Set the counter base to i times BITS_PER_LONG.\nShare the CFG_MATCH ecall through a small helper so the 32-bit argument\nsplit is not duplicated. On qemu-system-riscv32 the probe bitmap has bits\nabove XLEN set, so the first word alone is not enough.\n\n[pjw@kernel.org: updated to apply; fixed checkpatch.pl issues]",
   "datePublished": "Sep 25, 2026, 10:22:06 AM",
-  "dateUpdated": "Oct 21, 2026, 12:53:21 PM",
+  "dateUpdated": "Oct 30, 2026, 12:37:30 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5a1b6379eed5b13eac0228b605b0bed988e547e9\nhttps://git.kernel.org/stable/c/143668c424772979a45118dc9cc9c2c13a35f41d\nhttps://git.kernel.org/stable/c/9bec7beaed074bcae4181fde9ff9dfbe4e7b0957\nhttps://git.kernel.org/stable/c/e5481db31f4654e9a1254d5d467d9b1ff2f8b1cb\nhttps://git.kernel.org/stable/c/6809da6e9c08ccc9a09cb0a48c61471679274aaa\n",
+  "references": "https://git.kernel.org/stable/c/433249a4de52ecda40ffa9c466cec1312e62826f\nhttps://git.kernel.org/stable/c/5a1b6379eed5b13eac0228b605b0bed988e547e9\nhttps://git.kernel.org/stable/c/143668c424772979a45118dc9cc9c2c13a35f41d\nhttps://git.kernel.org/stable/c/9bec7beaed074bcae4181fde9ff9dfbe4e7b0957\nhttps://git.kernel.org/stable/c/e5481db31f4654e9a1254d5d467d9b1ff2f8b1cb\nhttps://git.kernel.org/stable/c/6809da6e9c08ccc9a09cb0a48c61471679274aaa\n",
   "aliases": "GHSA-5mgm-fggv-mx2j\nCVE-2026-97587\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 7.2.7"
+    },
+    {
+      "id": "1531a32d-5e53-389c-9572-71b7cf82265b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e9991434596f5373dfd75857b445eb92a9253c56 <433249a4de52ecda40ffa9c466cec1312e62826f"
     },
     {
       "id": "50d863c2-5156-3994-95a1-5726af44f77d",
@@ -99,6 +109,16 @@
         }
       },
       "product_version": "e9991434596f5373dfd75857b445eb92a9253c56 <6809da6e9c08ccc9a09cb0a48c61471679274aaa"
+    },
+    {
+      "id": "833744c8-e351-3ddb-bf09-0c9b33e987ec",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "90d135c6-7337-31c3-87b0-e7ea4b193af5",

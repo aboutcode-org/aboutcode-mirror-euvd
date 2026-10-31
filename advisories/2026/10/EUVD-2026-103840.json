@@ -3,13 +3,23 @@
   "enisaUuid": "03ba1521-04e9-3de8-86a3-03bae85b2f0a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: zero-initialize control packet in vcc_send_ctl()\n\nThe stack-allocated struct vio_vcc pkt was partially initialized,\nleaving the tag.stype_env field uninitialized before being sent via\nldc_write(), potentially leaking kernel stack data to the LDC peer.",
   "datePublished": "Oct 18, 2026, 3:47:41 PM",
-  "dateUpdated": "Oct 26, 2026, 6:55:50 AM",
+  "dateUpdated": "Oct 30, 2026, 12:39:25 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed\nhttps://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15\nhttps://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936\nhttps://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca\nhttps://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185\n",
+  "references": "https://git.kernel.org/stable/c/9e2eedb3611c1a3a377105cb26af52731e826fa5\nhttps://git.kernel.org/stable/c/360111628a968ebc8e6da400b28f23ae317d4e04\nhttps://git.kernel.org/stable/c/639178bc8e77aad307a9ee5e62471c5dcc8dda67\nhttps://git.kernel.org/stable/c/4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed\nhttps://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15\nhttps://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936\nhttps://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca\nhttps://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185\n",
   "aliases": "GHSA-g66w-7p4m-7w28\nCVE-2026-98755\n",
   "assigner": "Linux",
   "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "02e98fc6-0153-351c-9206-e6580926e9df",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
+    },
     {
       "id": "11e5ac73-9db7-3691-94cb-81673768a233",
       "product": {
@@ -71,6 +81,16 @@
       "product_version": "4.14"
     },
     {
+      "id": "89e19b1b-4305-35df-9585-f4957bc7bb67",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8868e44a56160328cd4003d95f4083f64b136e33 <639178bc8e77aad307a9ee5e62471c5dcc8dda67"
+    },
+    {
       "id": "a5d59d85-f8cd-3c34-a2a5-56aa1fb4e011",
       "product": {
         "name": "Linux",
@@ -91,6 +111,16 @@
       "product_version": "8868e44a56160328cd4003d95f4083f64b136e33 <4335278d0e75395cbfaf71c84b521df56d69e936"
     },
     {
+      "id": "ac1795f4-3e45-3ebf-b4ac-acfbada58c30",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8868e44a56160328cd4003d95f4083f64b136e33 <9e2eedb3611c1a3a377105cb26af52731e826fa5"
+    },
+    {
       "id": "b8ac46e1-4d1a-3336-bb32-0f8698cde4aa",
       "product": {
         "name": "Linux",
@@ -109,6 +139,36 @@
         }
       },
       "product_version": "8868e44a56160328cd4003d95f4083f64b136e33 <1f71f565e3585da1098ff19ca3c24687dab59185"
+    },
+    {
+      "id": "d46c98f0-f234-32b4-a47d-3f4d3665a5c5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8868e44a56160328cd4003d95f4083f64b136e33 <360111628a968ebc8e6da400b28f23ae317d4e04"
+    },
+    {
+      "id": "daf0c7a2-bd7f-3c3d-b9cd-0119bff8ef92",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.224"
+    },
+    {
+      "id": "e93a359e-9b6e-3ccd-acc2-2c02b454f735",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.273"
     },
     {
       "id": "ed961b89-333e-357f-a197-b1662f43332b",

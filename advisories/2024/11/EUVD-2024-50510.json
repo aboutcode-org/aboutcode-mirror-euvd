@@ -3,14 +3,14 @@
   "enisaUuid": "d8a42250-141d-3f8b-a041-c96b128d8365",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: Add sendpage_ok() check to disable MSG_SPLICE_PAGES\n\nWhile running ISER over SIW, the initiator machine encounters a warning\nfrom skb_splice_from_iter() indicating that a slab page is being used in\nsend_page. To address this, it is better to add a sendpage_ok() check\nwithin the driver itself, and if it returns 0, then MSG_SPLICE_PAGES flag\nshould be disabled before entering the network stack.\n\nA similar issue has been discussed for NVMe in this thread:\nhttps://lore.kernel.org/all/20240530142417.146696-1-ofir.gal@volumez.com/\n\n  WARNING: CPU: 0 PID: 5342 at net/core/skbuff.c:7140 skb_splice_from_iter+0x173/0x320\n  Call Trace:\n   tcp_sendmsg_locked+0x368/0xe40\n   siw_tx_hdt+0x695/0xa40 [siw]\n   siw_qp_sq_process+0x102/0xb00 [siw]\n   siw_sq_resume+0x39/0x110 [siw]\n   siw_run_sq+0x74/0x160 [siw]\n   kthread+0xd2/0x100\n   ret_from_fork+0x34/0x40\n   ret_from_fork_asm+0x1a/0x30",
   "datePublished": "Nov 21, 2024, 6:17:10 PM",
-  "dateUpdated": "Aug 5, 2026, 11:43:37 AM",
+  "dateUpdated": "Oct 30, 2026, 12:20:01 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/3406bfc813a9bbd9c3055795e985f527b7852e8c\nhttps://git.kernel.org/stable/c/bb5738957d92c8603a90c9664d34236641c221b2\nhttps://git.kernel.org/stable/c/4e1e3dd88a4cedd5ccc1a3fc3d71e03b70a7a791\n",
+  "references": "https://git.kernel.org/stable/c/d5a019e819a0f0457570416bb2eb5f3321f5be81\nhttps://git.kernel.org/stable/c/3406bfc813a9bbd9c3055795e985f527b7852e8c\nhttps://git.kernel.org/stable/c/bb5738957d92c8603a90c9664d34236641c221b2\nhttps://git.kernel.org/stable/c/4e1e3dd88a4cedd5ccc1a3fc3d71e03b70a7a791\n",
   "aliases": "CVE-2024-53094\nGHSA-w7c6-4vwf-466q\n",
   "assigner": "Linux",
-  "epss": 0.22,
+  "epss": 0.59,
   "enisaIdProduct": [
     {
       "id": "0be512b3-b97d-38b7-9fe9-33f868e2a853",
@@ -43,6 +43,16 @@
       "product_version": "patch: 6.11.9"
     },
     {
+      "id": "8a7241bd-9c2e-3dcb-939a-b93eea8663f8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0e935ae6afcdbe6f0c0aa457ae57feccc63bb9be <d5a019e819a0f0457570416bb2eb5f3321f5be81"
+    },
+    {
       "id": "a1ad561f-4c1b-3b8b-b7ff-2d099dcb3726",
       "product": {
         "name": "Linux",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "5.3"
+    },
+    {
+      "id": "bb52b920-e709-3f70-b5bc-a528e3a2d072",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.191"
     },
     {
       "id": "e8045149-1536-3dd1-a0d9-d8cde2e64dc3",
