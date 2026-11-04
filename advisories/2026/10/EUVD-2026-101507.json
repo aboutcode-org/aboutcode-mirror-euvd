@@ -3,14 +3,42 @@
   "enisaUuid": "183bb71b-b9e6-302d-8b56-967be8433078",
   "description": "A flaw was found in DPDK lib/vhost vhost-crypto. The indirect-descriptor snapshot double-fetches a guest descriptor next index, allowing a malicious guest to cause an out-of-bounds access in the host backend.",
   "datePublished": "Oct 14, 2026, 5:50:08 PM",
-  "dateUpdated": "Oct 14, 2026, 7:34:22 PM",
+  "dateUpdated": "Nov 3, 2026, 6:14:02 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-86848\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2529853\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:94629\nhttps://access.redhat.com/errata/RHSA-2026:94630\nhttps://access.redhat.com/security/cve/CVE-2026-86848\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2529853\n",
   "aliases": "GHSA-rr86-5jrg-p5m3\nCVE-2026-86848\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.1,
+  "enisaIdProduct": [
+    {
+      "id": "20fc2be0-9549-341a-a522-fb5a7e0f6df5",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2:25.11-2.el9_8"
+    },
+    {
+      "id": "314aa618-9132-3dd8-951b-f354c2d341f5",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 2:25.11-2.el10_2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "c7fe393d-0a39-3703-9563-3f970726668b",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

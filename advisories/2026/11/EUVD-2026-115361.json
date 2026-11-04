@@ -1,9 +1,9 @@
 {
   "id": "EUVD-2026-115361",
   "enisaUuid": "5fc10d1c-0973-3b0a-a17d-ca0a3aa6f532",
-  "description": "OpenKruise kruise-manager exposes an unauthenticated ppof endpoint when enabled, opening it on 0.0.0.0:8090, which can enable a DoS attack triggerable by any RBAC pod.",
+  "description": "OpenKruise kruise-manager exposes an unauthenticated pprof endpoint, enabled by default, opening it on 0.0.0.0:8090, which can enable a DoS attack triggerable by any pod on the cluster network.",
   "datePublished": "Nov 2, 2026, 6:44:34 PM",
-  "dateUpdated": "Nov 2, 2026, 6:44:34 PM",
+  "dateUpdated": "Nov 3, 2026, 3:59:41 PM",
   "baseScore": 0.0,
   "references": "https://github.com/openkruise/kruise/pull/2613\nhttps://github.com/openkruise/kruise/releases/tag/v1.9.2\nhttps://github.com/tommitelman-orca/advisories/blob/main/openkruise-pprof-2026.md\n",
   "aliases": "GHSA-hfc3-r2m8-qf97\nCVE-2026-120656\n",
@@ -11,14 +11,14 @@
   "epss": 0.0,
   "enisaIdProduct": [
     {
-      "id": "afd7166e-287f-3e6c-939b-23d2e6b85c19",
+      "id": "e1459da9-63b9-33fa-8fc6-61addc0aeb6f",
       "product": {
         "name": "kruise-manager",
         "vendor": {
           "name": "openkruise"
         }
       },
-      "product_version": "0 \u22641.9.2"
+      "product_version": "0 <1.9.2"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "4458d696-f5d8-3e6e-bdd4-f9322182ee61",
   "description": "A flaw was found in the ChunkReader component of the Undertow HTTP server, which is used by WildFly and JBoss EAP to handle chunked transfer encoding. The issue occurs because the parser uses a single internal variable to store both the remaining chunk size and state flags. By sending a specially crafted request with an extremely large chunk size, an attacker can cause these values to overlap, tricking the parser into thinking a request has finished prematurely. This can allow a second, \"smuggled\" request to be processed out of sync, potentially bypassing security controls.",
   "datePublished": "Aug 11, 2026, 3:32:00 PM",
-  "dateUpdated": "Oct 20, 2026, 2:18:45 PM",
+  "dateUpdated": "Nov 3, 2026, 5:27:00 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",

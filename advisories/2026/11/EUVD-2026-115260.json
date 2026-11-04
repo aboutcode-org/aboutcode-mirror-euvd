@@ -3,11 +3,11 @@
   "enisaUuid": "f2e66f3a-8b23-34d4-a17b-f6c168ac529d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoredump: hold RCU while releasing parked threads\n\ncoredump_finish() releases the parked threads by clearing ->task in\ntheir core_thread entry and calling wake_up_process() on each of them.\nIt does that without holding a reference on the task and without being\ninside rcu.\n\nBut calling wake_up_process(task) without rcu here isn't safe. A parked\nthread doesn't need that wakeup to leave. A spurious wakeup or a\npreemption after the store is enough for the task to go away.\n\nSo if the coredump client is preempted between the store and\nwake_up_process() the thread can exit and be freed in the meantime and\ntry_to_wake_up() takes pi_lock in freed memory.\n\nHold rcu across the loop.",
   "datePublished": "Nov 2, 2026, 4:06:31 PM",
-  "dateUpdated": "Nov 2, 2026, 4:06:31 PM",
+  "dateUpdated": "Nov 3, 2026, 7:12:53 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/fd0fbe84312fda2fc187428c92c50b7d03a9d24c\nhttps://git.kernel.org/stable/c/71146c437bae59e5280f657965dc6d006ee3989b\nhttps://git.kernel.org/stable/c/0fce73efee40c65ce26641c5d93942462f9e8307\nhttps://git.kernel.org/stable/c/16e94ed90b1b02398e044d41fd1db34828daa08e\nhttps://git.kernel.org/stable/c/a0f09ff4c6b93312e565cfe75d76c3a551a3ec4c\nhttps://git.kernel.org/stable/c/b0eca0edddf4c1dbaf6d1f6a8636b4235f5bc573\n",
+  "references": "https://git.kernel.org/stable/c/fd0fbe84312fda2fc187428c92c50b7d03a9d24c\nhttps://git.kernel.org/stable/c/71146c437bae59e5280f657965dc6d006ee3989b\nhttps://git.kernel.org/stable/c/0fce73efee40c65ce26641c5d93942462f9e8307\nhttps://git.kernel.org/stable/c/16e94ed90b1b02398e044d41fd1db34828daa08e\nhttps://git.kernel.org/stable/c/a0f09ff4c6b93312e565cfe75d76c3a551a3ec4c\nhttps://git.kernel.org/stable/c/b0eca0edddf4c1dbaf6d1f6a8636b4235f5bc573\nhttps://git.kernel.org/stable/c/61d58591aa0188bf2463e263962256316ff8b576\n",
   "aliases": "CVE-2026-99218\nGHSA-2cpv-4f6v-pr9h\n",
   "assigner": "Linux",
   "epss": 0.0,
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 6.6.161"
+    },
+    {
+      "id": "0d121c9d-28fd-3087-8a67-1e0e1f615bba",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.4-rc1"
     },
     {
       "id": "14669349-64b6-3a66-9dce-65e8e209d16e",
@@ -91,6 +101,16 @@
         }
       },
       "product_version": "a94e2d408eaedbd85aae259621d46fafc10479a2 <a0f09ff4c6b93312e565cfe75d76c3a551a3ec4c"
+    },
+    {
+      "id": "896122af-c36c-3523-ae92-783816f4f36e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "a94e2d408eaedbd85aae259621d46fafc10479a2 <61d58591aa0188bf2463e263962256316ff8b576"
     },
     {
       "id": "a67bc5da-0960-35c1-a8fb-67d100d285a2",
