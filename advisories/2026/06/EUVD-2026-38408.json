@@ -3,7 +3,7 @@
   "enisaUuid": "370b075b-6254-3a82-87ce-0155b2c67299",
   "description": "The Zephyr ext2 filesystem driver (subsys/fs/ext2) trusted the on-disk directory entry fields de_rec_len and de_name_len when walking a directory block. ext2_fetch_direntry() guarded only with de_name_len > EXT2_MAX_FILE_NAME, but de_name_len is a uint8_t and EXT2_MAX_FILE_NAME is 255, so the check is always false; the function then memcpy'd up to 255 name bytes and the lookup/readdir paths advanced traversal by an unvalidated de_rec_len. Each directory block is read into a block_size-sized slab buffer, and block_off can be driven near the block end by preceding entries' rec_len, so the 8-byte header read and the subsequent name memcpy can read up to ~263 bytes past the end of the block buffer into adjacent heap/slab memory. On the readdir path those bytes are returned to the caller in fs_dirent.name, leaking adjacent kernel heap memory; a de_rec_len of 0 also causes a zero-progress infinite loop (denial of service), and the unlink path's memmove(de, next, next_reclen) over unvalidated records is an additional OOB read/write source. The defect is reached by any path-based operation (open, stat, unlink, rename, mkdir) or directory listing on a mounted ext2 volume, so a crafted or corrupted ext2 image on attacker-supplied storage (SD card, USB mass storage, or otherwise mounted image) triggers it. Affected: Zephyr ext2 from its introduction in v3.5.0 through v4.4.0. The fix validates rec_len and name_len in the parser and rejects entries whose header does not fit the remaining block or whose rec_len crosses the block boundary in every traversal caller.",
   "datePublished": "Jun 22, 2026, 11:48:11 PM",
-  "dateUpdated": "Oct 15, 2026, 10:10:04 PM",
+  "dateUpdated": "Nov 4, 2026, 4:58:18 AM",
   "baseScore": 4.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
@@ -13,24 +13,14 @@
   "epss": 0.16,
   "enisaIdProduct": [
     {
-      "id": "49aaa7a5-1b4b-3265-b089-de25d7b77a0b",
+      "id": "51b20e92-11c3-383a-8e5f-2bc061bdff17",
       "product": {
         "name": "Zephyr",
         "vendor": {
           "name": "zephyrproject-rtos"
         }
       },
-      "product_version": "4.4.0 <4.4.1"
-    },
-    {
-      "id": "9c9b63a2-8f7e-3f2f-995b-435621c80354",
-      "product": {
-        "name": "Zephyr",
-        "vendor": {
-          "name": "zephyrproject-rtos"
-        }
-      },
-      "product_version": "3.5.0 <4.3.1"
+      "product_version": "3.5.0 <4.6.0"
     }
   ],
   "enisaIdVendor": [

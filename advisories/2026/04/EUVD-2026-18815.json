@@ -1,17 +1,38 @@
 {
   "id": "EUVD-2026-18815",
   "enisaUuid": "ec9c431a-c0cd-3e1f-8a17-d8878c0054a9",
-  "description": "Rejected reason: Not used",
-  "datePublished": "Apr 3, 2026, 9:31:42 PM",
-  "dateUpdated": "Apr 3, 2026, 9:31:42 PM",
+  "description": "A flaw was found in rust-rpm-sequoia. An attacker can exploit this vulnerability by providing a specially crafted Red Hat Package Manager (RPM) file. During the RPM signature verification process, this crafted file can trigger an error in the OpenPGP signature parsing code, leading to an unconditional termination of the rpm process. This issue results in an application level denial of service, making the system unable to process RPM files for signature verification.",
+  "datePublished": "Apr 3, 2026, 6:38:09 PM",
+  "dateUpdated": "Nov 4, 2026, 5:49:43 AM",
   "baseScore": 4.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-2625\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2440357\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26257\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26256\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26254\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26250\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26252\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26251\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26255\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-26253\n",
-  "aliases": "GHSA-8h65-hm9c-rm83\nGHSA-6q5j-vm4q-pg2w\nCVE-2026-2625\nGHSA-hj36-wjv6-r2jg\nGHSA-4pr8-8cvj-qg4h\nGHSA-5mvg-hq8x-4fhj\nGHSA-63pv-7q5h-42xq\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:12682\nhttps://access.redhat.com/errata/RHSA-2026:94791\nhttps://access.redhat.com/security/cve/CVE-2026-2625\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2440357\n",
+  "aliases": "CVE-2026-2625\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
+  "epss": 0.09,
+  "enisaIdProduct": [
+    {
+      "id": "496f4c21-d6fc-3645-868c-eeaa686c4ab5",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1.10.3-0.3.hum1"
+    },
+    {
+      "id": "7901cfd0-f649-37e3-babc-90b07a38673b",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1.10.1.1-1.2.hum1"
+    }
+  ],
   "enisaIdVendor": [
     {
       "id": "aad40572-8a63-3b53-9ab1-1369f8ea71ca",
