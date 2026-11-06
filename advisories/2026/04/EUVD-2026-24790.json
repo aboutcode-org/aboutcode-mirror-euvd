@@ -3,12 +3,12 @@
   "enisaUuid": "1632ccc8-e054-389c-ac79-2f2beea3580f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: replace BUG_ON with proper error handling in ext4_read_inline_folio\n\nReplace BUG_ON() with proper error handling when inline data size\nexceeds PAGE_SIZE. This prevents kernel panic and allows the system to\ncontinue running while properly reporting the filesystem corruption.\n\nThe error is logged via ext4_error_inode(), the buffer head is released\nto prevent memory leak, and -EFSCORRUPTED is returned to indicate\nfilesystem corruption.",
   "datePublished": "Apr 22, 2026, 1:53:46 PM",
-  "dateUpdated": "Oct 15, 2026, 1:16:25 AM",
+  "dateUpdated": "Nov 5, 2026, 9:44:59 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3462a3f0716d27af51896dc8688bcf0628fb17ee\nhttps://git.kernel.org/stable/c/636e8d85a36ab6c31aafd04ee66a69b18eebee7b\nhttps://git.kernel.org/stable/c/af25a6affeac4919e8d8c5cccc01a9d53478447e\nhttps://git.kernel.org/stable/c/65c6c30ce6362c1c684568744ea510c921a756cd\nhttps://git.kernel.org/stable/c/d4b3f370c3d8f7ce565d4a718572c9f7c12f77ed\nhttps://git.kernel.org/stable/c/823849a26af089ffc5dfdd2ae4b9d446b46a0cda\nhttps://git.kernel.org/stable/c/a7d600e04732a7d29b107c91fe3aec64cf6ce7f2\nhttps://git.kernel.org/stable/c/356227096eb66e41b23caf7045e6304877322edf\n",
   "aliases": "CVE-2026-31451\nGHSA-4jw8-cp5g-24j2\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "1c396bd4-5bdd-3b00-883b-f4a36ebc44e9",

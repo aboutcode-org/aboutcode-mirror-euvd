@@ -3,7 +3,7 @@
   "enisaUuid": "5ebe0dcb-2e49-32d3-b48a-72a5ce7e4f67",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix NULL dereference on root when tracing inode eviction\n\nWhen evicting an inode the first thing we do is to setup tracing for it,\nwhich implies fetching the root's id. But in btrfs_evict_inode() the\nroot might be NULL, as implied in the next check that we do in\nbtrfs_evict_inode().\n\nHence, we either should set the ->root_objectid to 0 in case the root is\nNULL, or we move tracing setup after checking that the root is not\nNULL. Setting the rootid to 0 at least gives us the possibility to trace\nthis call even in the case when the root is NULL, so that's the solution\ntaken here.",
   "datePublished": "Jan 31, 2026, 11:38:57 AM",
-  "dateUpdated": "Oct 30, 2026, 12:23:30 PM",
+  "dateUpdated": "Nov 5, 2026, 9:23:10 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/99181ddb124cfe2b09f5e924c308222d2339e82a\nhttps://git.kernel.org/stable/c/64d8abd8c5305795a2b35fc96039d99d34f5e762\nhttps://git.kernel.org/stable/c/582ba48e4a4c06fef6bdcf4e57b7b9af660bbd0c\nhttps://git.kernel.org/stable/c/99e057f3d3ef24b99a7b1d84e01dd1bd890098da\nhttps://git.kernel.org/stable/c/f157dd661339fc6f5f2b574fe2429c43bd309534\n",
   "aliases": "CVE-2025-71184\nGHSA-p93h-vc42-6hf8\n",

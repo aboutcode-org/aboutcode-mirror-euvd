@@ -3,7 +3,7 @@
   "enisaUuid": "75acf67f-6543-30f3-86c7-71ff009de65e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: cdc_ncm: add ndpoffset to NDP32 nframes bounds check\n\nThe same bounds-check bug fixed for NDP16 in the previous patch also\nexists in cdc_ncm_rx_verify_ndp32(). The DPE array size is validated\nagainst the total skb length without accounting for ndpoffset, allowing\nout-of-bounds reads when the NDP32 is placed near the end of the NTB.\n\nAdd ndpoffset to the nframes bounds check and use struct_size_t() to\nexpress the NDP-plus-DPE-array size more clearly.\n\nCompile-tested only.",
   "datePublished": "Apr 3, 2026, 3:15:30 PM",
-  "dateUpdated": "Sep 14, 2026, 11:58:13 AM",
+  "dateUpdated": "Nov 5, 2026, 9:33:47 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/baf246d6680befde2086b1df9eb3aaba3fb6853f\nhttps://git.kernel.org/stable/c/125f932a76a97904ef8a555f1dd53e5d0e288c54\nhttps://git.kernel.org/stable/c/af0d1613d6751489dbf9f69aac1123f0b1e566e5\nhttps://git.kernel.org/stable/c/a5bd5a2710310c965ea4153cba4210988a3454e2\nhttps://git.kernel.org/stable/c/de70da1fb1d152e981ecb3157f7ec2b633005c16\nhttps://git.kernel.org/stable/c/77914255155e68a20aa41175edeecf8121dac391\n",
   "aliases": "GHSA-vf6v-fqr8-5xhj\nCVE-2026-23447\n",

@@ -3,12 +3,12 @@
   "enisaUuid": "9e48525f-ca3c-3247-a4c7-226c77a88863",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/rw: free potentially allocated iovec on cache put failure\n\nIf a read/write request goes through io_req_rw_cleanup() and has an\nallocated iovec attached and fails to put to the rw_cache, then it may\nend up with an unaccounted iovec pointer. Have io_rw_recycle() return\nwhether it recycled the request or not, and use that to gauge whether to\nfree a potential iovec or not.",
   "datePublished": "Mar 18, 2026, 5:41:05 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:03 PM",
+  "dateUpdated": "Nov 5, 2026, 9:33:34 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/41cda4c66846c3bfcdeaf28444ccabbb55e64cf1\nhttps://git.kernel.org/stable/c/1d5f2329ab4df65c2ee011b986d8a6e05ad0f67c\nhttps://git.kernel.org/stable/c/4b9748055457ac3a0710bf210c229d01ea1b01b9\n",
   "aliases": "CVE-2026-23259\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "05e2e9c7-50c6-39f4-a8cc-4697581aac1b",

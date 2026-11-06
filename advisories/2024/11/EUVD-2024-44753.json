@@ -3,7 +3,7 @@
   "enisaUuid": "72f94255-2238-3283-b5f0-f59585fc286a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_payload: sanitize offset and length before calling skb_checksum()\n\nIf access to offset + length is larger than the skbuff length, then\nskb_checksum() triggers BUG_ON().\n\nskb_checksum() internally subtracts the length parameter while iterating\nover skbuff, BUG_ON(len) at the end of it checks that the expected\nlength to be included in the checksum calculation is fully consumed.",
   "datePublished": "Nov 9, 2024, 10:14:59 AM",
-  "dateUpdated": "Oct 15, 2026, 12:57:36 AM",
+  "dateUpdated": "Nov 5, 2026, 8:31:22 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a661ed364ae6ae88c2fafa9ddc27df1af2a73701\nhttps://git.kernel.org/stable/c/ac7df3fc80fc82bcc3b1e8f6ebc0d2c435d0c534\nhttps://git.kernel.org/stable/c/e3e608cbad376674d19a71ccd0d41804d9393f02\nhttps://git.kernel.org/stable/c/b1d2de8a669fa14c499a385e056944d5352b3b40\nhttps://git.kernel.org/stable/c/d3217323525f7596427124359e76ea0d8fcc9874\nhttps://git.kernel.org/stable/c/0ab3be58b45b996764aba0187b46de19b3e58a72\nhttps://git.kernel.org/stable/c/c43e0ea848e7b9bef7a682cbc5608022d6d29d7b\nhttps://git.kernel.org/stable/c/d5953d680f7e96208c29ce4139a0e38de87a57fe\n",
   "aliases": "CVE-2024-50251\nGHSA-gmgf-ff9x-r369\n",

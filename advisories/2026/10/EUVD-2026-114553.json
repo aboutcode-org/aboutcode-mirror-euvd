@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-114553",
+  "enisaUuid": "82f9d8d3-7c90-3005-b2d8-147976dd8060",
+  "description": "Shopify App is a Rails engine for building Shopify applications. From 22.1.0 until 23.0.3, `token-exchange` authenticated controllers can expose a request-derived `shop` context instead of the identity from a verified Shopify ID token or active Shopify session. `current_shopify_domain` can resolve to the sanitized `shop` query parameter, so a request authenticated for one `shop` can cause application code to treat a different requested `shop` as current. Affected applications use `shopify_app` `token-exchange` authentication, accept authenticated requests with a `shop` query parameter, and rely on `current_shopify_domain` or `params[:shop]` for authorization, tenant lookup, stored access-token selection or `shop`-scoped data access. An attacker with a valid Shopify session token for one `shop` can supply another `shop` in that parameter and potentially obtain unauthorized application data or perform `shop`-scoped actions, depending on the application's authorization model. This issue is fixed in version 23.0.3.",
+  "datePublished": "Oct 30, 2026, 10:49:47 PM",
+  "dateUpdated": "Nov 5, 2026, 3:01:40 AM",
+  "baseScore": 7.6,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+  "references": "https://github.com/Shopify/shopify_app/security/advisories/GHSA-6j52-38f8-qhxr\nhttps://github.com/Shopify/shopify_app/pull/2081\nhttps://github.com/Shopify/shopify_app/commit/a09ccc04b9556cbb31c6d56ed81aeb6b9b6c0756\nhttps://github.com/Shopify/shopify_app/releases/tag/v23.0.3\n",
+  "aliases": "CVE-2026-63414\nGHSA-6j52-38f8-qhxr\n",
+  "assigner": "GitHub_M",
+  "epss": 0.55,
+  "enisaIdProduct": [
+    {
+      "id": "36c6373f-1c98-3a1c-a6dd-7ea0f0caae0d",
+      "product": {
+        "name": "shopify_app",
+        "vendor": {
+          "name": "Shopify"
+        }
+      },
+      "product_version": "22.1.0, < 23.0.3"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "68974ddc-b7ed-3a31-aea8-f40f6f6ba01b",
+      "vendor": {
+        "name": "Shopify"
+      }
+    }
+  ]
+}

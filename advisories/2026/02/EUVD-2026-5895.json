@@ -3,7 +3,7 @@
   "enisaUuid": "92631bb0-645d-3e41-bc99-70185dc0e4c1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: send: check for inline extents in range_is_hole_in_parent()\n\nBefore accessing the disk_bytenr field of a file extent item we need\nto check if we are dealing with an inline extent.\nThis is because for inline extents their data starts at the offset of\nthe disk_bytenr field. So accessing the disk_bytenr\nmeans we are accessing inline data or in case the inline data is less\nthan 8 bytes we can actually cause an invalid\nmemory access if this inline extent item is the first item in the leaf\nor access metadata from other items.",
   "datePublished": "Feb 14, 2026, 3:36:07 PM",
-  "dateUpdated": "Oct 15, 2026, 1:13:08 AM",
+  "dateUpdated": "Nov 5, 2026, 9:23:19 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/901e581bfc44d181f7d9c3f11880dac3e89deb2e\nhttps://git.kernel.org/stable/c/d948055bd46a9c14d1d4217aed65c5c258c32903\nhttps://git.kernel.org/stable/c/f2dc6ab3a14c2d2eb0b14783427eb9b03bf631c9\nhttps://git.kernel.org/stable/c/db00636643e66898d79f2530ac9c56ebd5eca369\nhttps://git.kernel.org/stable/c/39f83f10772310ba4a77f2b5256aaf36994ef7e8\nhttps://git.kernel.org/stable/c/08b096c1372cd69627f4f559fb47c9fb67a52b39\n",
   "aliases": "GHSA-8xwj-jmfw-cfc3\nCVE-2026-23141\n",

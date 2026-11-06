@@ -3,12 +3,12 @@
   "enisaUuid": "8f3b7d03-71d0-3e13-9607-e11f3647f247",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: Grab intel_display from the encoder to avoid potential oopsies\n\nGrab the intel_display from 'encoder' rather than 'state'\nin the encoder hooks to avoid the massive footgun that is\nintel_sanitize_encoder(), which passes NULL as the 'state'\nargument to encoder .disable() and .post_disable().\n\nTODO: figure out how to actually fix intel_sanitize_encoder()...",
   "datePublished": "Mar 6, 2025, 4:04:30 PM",
-  "dateUpdated": "Oct 21, 2026, 12:35:51 PM",
+  "dateUpdated": "Nov 5, 2026, 8:41:39 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3a03ef592ef9b900698b46703015f9134721479c\nhttps://git.kernel.org/stable/c/1885401569f24eb35c631bcc4e6543360dbe9292\nhttps://git.kernel.org/stable/c/dc3806d9eb66d0105f8d55d462d4ef681d9eac59\n",
   "aliases": "GHSA-7q55-6rxj-7wf7\nCVE-2024-58074\n",
   "assigner": "Linux",
-  "epss": 0.15,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "428dd562-9438-3064-99c4-b6e38a8e5b0d",

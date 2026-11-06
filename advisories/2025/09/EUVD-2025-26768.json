@@ -3,12 +3,12 @@
   "enisaUuid": "74484741-de40-35ff-acbd-4e988b5cde0d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: do not BUG when INLINE_DATA_FL lacks system.data xattr\n\nA syzbot fuzzed image triggered a BUG_ON in ext4_update_inline_data()\nwhen an inode had the INLINE_DATA_FL flag set but was missing the\nsystem.data extended attribute.\n\nSince this can happen due to a maiciouly fuzzed file system, we\nshouldn't BUG, but rather, report it as a corrupted file system.\n\nAdd similar replacements of BUG_ON with EXT4_ERROR_INODE() ii\next4_create_inline_data() and ext4_inline_data_truncate().",
   "datePublished": "Sep 4, 2025, 3:32:53 PM",
-  "dateUpdated": "Oct 15, 2026, 1:07:39 AM",
+  "dateUpdated": "Nov 5, 2026, 9:12:53 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8085a7324d8ec448c4a764af7853e19bbd64e17a\nhttps://git.kernel.org/stable/c/1199a6399895f4767f0b9a68a6ff47c3f799b7c7\nhttps://git.kernel.org/stable/c/7f322c12df7aeed1755acd3c6fab48c7807795fb\nhttps://git.kernel.org/stable/c/2817ac83cb4732597bf36853fe13ca616f4ee4e2\nhttps://git.kernel.org/stable/c/d960f4b793912f35e9d72bd9d1e90553063fcbf1\nhttps://git.kernel.org/stable/c/81e7e2e7ba07e7c8cdce43ccad2f91adbc5a919c\nhttps://git.kernel.org/stable/c/279c87ef7b9da34f65c2e4db586e730b667a6fb9\nhttps://git.kernel.org/stable/c/8a6f89d42e61788605722dd9faf98797c958a7e5\nhttps://git.kernel.org/stable/c/099b847ccc6c1ad2f805d13cfbcc83f5b6d4bc42\n",
   "aliases": "GHSA-x687-v76r-f9gw\nCVE-2025-38701\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "05d542d2-b934-3527-a12b-e45b288dad35",

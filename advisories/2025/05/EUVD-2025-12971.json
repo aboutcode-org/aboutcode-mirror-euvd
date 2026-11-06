@@ -3,12 +3,12 @@
   "enisaUuid": "82629718-9417-32da-89fb-eb042d6d9fd0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetdevsim: Fix memory leak of nsim_dev->fa_cookie\n\nkmemleak reports this issue:\n\nunreferenced object 0xffff8881bac872d0 (size 8):\n  comm \"sh\", pid 58603, jiffies 4481524462 (age 68.065s)\n  hex dump (first 8 bytes):\n    04 00 00 00 de ad be ef                          ........\n  backtrace:\n    [<00000000c80b8577>] __kmalloc+0x49/0x150\n    [<000000005292b8c6>] nsim_dev_trap_fa_cookie_write+0xc1/0x210 [netdevsim]\n    [<0000000093d78e77>] full_proxy_write+0xf3/0x180\n    [<000000005a662c16>] vfs_write+0x1c5/0xaf0\n    [<000000007aabf84a>] ksys_write+0xed/0x1c0\n    [<000000005f1d2e47>] do_syscall_64+0x3b/0x90\n    [<000000006001c6ec>] entry_SYSCALL_64_after_hwframe+0x63/0xcd\n\nThe issue occurs in the following scenarios:\n\nnsim_dev_trap_fa_cookie_write()\n  kmalloc() fa_cookie\n  nsim_dev->fa_cookie = fa_cookie\n..\nnsim_drv_remove()\n\nThe fa_cookie allocked in nsim_dev_trap_fa_cookie_write() is not freed. To\nfix, add kfree(nsim_dev->fa_cookie) to nsim_drv_remove().",
   "datePublished": "May 1, 2025, 2:09:30 PM",
-  "dateUpdated": "Jul 4, 2026, 11:50:21 AM",
+  "dateUpdated": "Nov 5, 2026, 7:49:50 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/7d79725a7073d86b9185f87718e22f3d65115801\nhttps://git.kernel.org/stable/c/6d463ddd0107d4188229d996dcdd45c99bad8af7\nhttps://git.kernel.org/stable/c/207edad5717e0a5709ce8467f0eff41c607835c9\nhttps://git.kernel.org/stable/c/064bc7312bd09a48798418663090be0c776183db\n",
   "aliases": "CVE-2022-49803\nGHSA-whrx-8qvw-6p89\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "04833884-4aa7-34bc-951a-b853f872c94f",

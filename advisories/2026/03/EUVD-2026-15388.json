@@ -3,7 +3,7 @@
   "enisaUuid": "21fc21e9-eaa7-3bd1-92a9-f65679fe916e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSquashfs: check metadata block offset is within range\n\nSyzkaller reports a \"general protection fault in squashfs_copy_data\"\n\nThis is ultimately caused by a corrupted index look-up table, which\nproduces a negative metadata block offset.\n\nThis is subsequently passed to squashfs_copy_data (via\nsquashfs_read_metadata) where the negative offset causes an out of bounds\naccess.\n\nThe fix is to check that the offset is within range in\nsquashfs_read_metadata.  This will trap this and other cases.",
   "datePublished": "Mar 25, 2026, 10:28:06 AM",
-  "dateUpdated": "Oct 15, 2026, 1:14:38 AM",
+  "dateUpdated": "Nov 5, 2026, 9:33:45 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/60f679f643f3f36a8571ea585e4ce5d93ef952b5\nhttps://git.kernel.org/stable/c/3f68a9457a6190814377577374da75f872e0a013\nhttps://git.kernel.org/stable/c/0c8ab092aec3ac4294940054772d30b511b16713\nhttps://git.kernel.org/stable/c/6b847d65f5b0065e02080c61fad93d57d6686383\nhttps://git.kernel.org/stable/c/9e9fa5ad37c9cbad73c165c7ff1e76e650825e7c\nhttps://git.kernel.org/stable/c/01ee0bcc29864b78249308e8b35042b09bbf5fe3\nhttps://git.kernel.org/stable/c/3b9499e7d677dd4366239a292238489a804936b2\nhttps://git.kernel.org/stable/c/fdb24a820a5832ec4532273282cbd4f22c291a0d\n",
   "aliases": "GHSA-3667-r4r3-59jh\nCVE-2026-23388\n",

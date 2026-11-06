@@ -3,12 +3,12 @@
   "enisaUuid": "97a977ba-edc3-3cd0-b214-a001b25c844f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device lock\nheld is intentional. [1]\n\nAlso note that we do not enable the driver_override feature of struct\nbus_type, as SPI - in contrast to most other buses - passes \"\" to\nsysfs_emit() when the driver_override pointer is NULL. Thus, printing\n\"\\n\" instead of \"(null)\\n\".",
   "datePublished": "Apr 22, 2026, 1:54:12 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:19 PM",
+  "dateUpdated": "Nov 5, 2026, 9:45:01 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/6e8eb467bed6aa1a563dba8f366c9fd76ba0004e\nhttps://git.kernel.org/stable/c/eedf220442d13b6d97294e5b0ac8a2c38ee1a1a0\nhttps://git.kernel.org/stable/c/c73a58661a760373d08a6883af4f0bb5cc991a67\nhttps://git.kernel.org/stable/c/e0ae367a2de06c49aa1de6ec9b1ab6860bbb2cf0\nhttps://git.kernel.org/stable/c/cc34d77dd48708d810c12bfd6f5bf03304f6c824\n",
   "aliases": "GHSA-vq56-9rjp-57fc\nCVE-2026-31487\n",
   "assigner": "Linux",
-  "epss": 0.13,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0ffc82c7-b93c-3484-b7f6-e1e8868d676b",

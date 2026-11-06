@@ -3,7 +3,7 @@
   "enisaUuid": "5318f23f-267b-336f-b406-06284fb2cd99",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: wait barrier before returning discard request with REQ_NOWAIT\n\nraid10_handle_discard should wait barrier before returning a discard bio\nwhich has REQ_NOWAIT. And there is no need to print warning calltrace\nif a discard bio has REQ_NOWAIT flag. Quality engineer usually checks\ndmesg and reports error if dmesg has warning/error calltrace.",
   "datePublished": "Apr 18, 2025, 7:01:41 AM",
-  "dateUpdated": "Oct 30, 2026, 12:23:01 PM",
+  "dateUpdated": "Nov 5, 2026, 9:23:07 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9fd04328b37b6b911c2556f6dd2625a58c3c30db\nhttps://git.kernel.org/stable/c/29c742ff222dd39335b927a6909c23b8752a053c\nhttps://git.kernel.org/stable/c/31ff67982c5fa39c0093b9d9f429fef91c2494b7\nhttps://git.kernel.org/stable/c/31d3156efe909b53ba174861a3da880c688f5edc\nhttps://git.kernel.org/stable/c/3db4404435397a345431b45f57876a3df133f3b4\n",
   "aliases": "CVE-2025-40325\nGHSA-vf7h-45fw-j88p\n",

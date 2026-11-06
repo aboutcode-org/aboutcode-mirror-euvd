@@ -3,12 +3,12 @@
   "enisaUuid": "3affd854-00f1-3f89-bf3b-d0506e1fb812",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: mark GFP_NOIO around sysfs ->store()\n\nsysfs ->store is called with queue freezed, meantime we have several\n->store() callbacks(update_nr_requests, wbt, scheduler) to allocate\nmemory with GFP_KERNEL which may run into direct reclaim code path,\nthen potential deadlock can be caused.\n\nFix the issue by marking NOIO around sysfs ->store()",
   "datePublished": "Feb 27, 2025, 8:04:15 PM",
-  "dateUpdated": "Sep 7, 2026, 3:44:41 PM",
+  "dateUpdated": "Nov 5, 2026, 8:41:45 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a09280c39ea54080daf19cfaf4a3121a8d17d5cd\nhttps://git.kernel.org/stable/c/2566ce907e5d5db8a039647208e029ce559baa31\nhttps://git.kernel.org/stable/c/7c0be4ead1f8f5f8be0803f347de0de81e3b8e1c\n",
   "aliases": "GHSA-3f4p-8qj7-5fxp\nCVE-2025-21817\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "11cd9acc-1500-3688-921b-0eba4fd93f50",

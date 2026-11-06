@@ -3,12 +3,12 @@
   "enisaUuid": "f2fe81ec-eb7b-326f-9535-18b72d2be58b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/efa: Fix use of completion ctx after free\n\nOn admin queue completion handling, if the admin command completed with\nerror we print data from the completion context. The issue is that we\nalready freed the completion context in polling/interrupts handler which\nmeans we print data from context in an unknown state (it might be\nalready used again).\nChange the admin submission flow so alloc/dealloc of the context will be\nsymmetric and dealloc will be called after any potential use of the\ncontext.",
   "datePublished": "Apr 22, 2026, 1:54:16 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:20 PM",
+  "dateUpdated": "Nov 5, 2026, 9:45:02 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/8c24b5179af260a5f36571c992d29aab1f448544\nhttps://git.kernel.org/stable/c/7ba09d85f177e9f5f64b881f33dbcb57b2cf23d5\nhttps://git.kernel.org/stable/c/0dd98aea1c0c45987fa2dd92f988b0eb1a72c125\nhttps://git.kernel.org/stable/c/1cf95fe5dc5471efea947b4c6f8913da6bc7976e\nhttps://git.kernel.org/stable/c/ef3b06742c8a201d0e83edc9a33a89a4fe3009f8\n",
   "aliases": "CVE-2026-31493\nGHSA-fx4x-f93f-2jqv\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1dee9a68-d7c9-34d0-ad35-9c9e0b8322dd",
