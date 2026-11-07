@@ -3,12 +3,12 @@
   "enisaUuid": "0c4fb258-7869-327a-bed2-11d710afa509",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Bound VBIOS record-chain walk loops\n\n[Why & How]\nAll record-chain walk loops in bios_parser.c and bios_parser2.c use\nfor(;;) and only terminate on a 0xFF record_type sentinel or zero\nrecord_size. A malformed VBIOS image missing the terminator record\ncauses unbounded iteration at probe time, potentially hundreds of\nthousands of iterations with record_size=1. In the final iterations\nnear the BIOS image boundary, struct casts beyond the 2-byte header\nvalidated by GET_IMAGE can also read out of bounds.\n\nCap all 14 record-chain walk loops to BIOS_MAX_NUM_RECORD (256)\niterations. The atombios.h defines up to 22 distinct record types\nand atomfirmware.h has 13. Assuming an average of less than 10\nrecords per type (which is reasonable since most are connector-\nbased) 256 is a generous upper bound.\n\n(cherry picked from commit 95700a3d660287ed657d6892f7be9ffc0e294a93)",
   "datePublished": "Jun 25, 2026, 8:38:26 AM",
-  "dateUpdated": "Jul 4, 2026, 11:50:51 AM",
+  "dateUpdated": "Nov 6, 2026, 4:24:04 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e94f5323c41f32a74160378c3b19850d1f203ad5\nhttps://git.kernel.org/stable/c/04e271a952b8863bbafc99bd51aca4c32bff0e0d\nhttps://git.kernel.org/stable/c/6723188c42ca3b34a9fce634d7a0ecc9ccd5cd56\nhttps://git.kernel.org/stable/c/499c6b43a79dd684bddbd18fe8b2235aa2764db4\nhttps://git.kernel.org/stable/c/6173cfea2f916e01c4f98e29cd654384a05e32a3\nhttps://git.kernel.org/stable/c/0e56f460bddb397fa9a8e6faf7ae7eaa86953eb1\nhttps://git.kernel.org/stable/c/2645e3caf7e013189da9c6ff621d006cca5a538b\nhttps://git.kernel.org/stable/c/ff287df16a1a58aca78b08d1f3ee09fc44da0351\n",
   "aliases": "GHSA-qc6f-vg59-3945\nCVE-2026-53138\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "215b7b23-c96a-3768-9f5e-040a98d7d985",

@@ -3,12 +3,12 @@
   "enisaUuid": "80604681-f31d-3cad-bb6c-0fe4c5b61364",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: revert commit_mutex usage in reset path\n\nIt causes circular lock dependency between commit_mutex, nfnl_subsys_ipset\nand nlk_cb_mutex when nft reset, ipset list, and iptables-nft with '-m set'\nrule run at the same time.\n\nPrevious patches made it safe to run individual reset handlers concurrently\nso commit_mutex is no longer required to prevent this.",
   "datePublished": "May 27, 2026, 12:17:09 PM",
-  "dateUpdated": "Oct 21, 2026, 12:40:57 PM",
+  "dateUpdated": "Nov 6, 2026, 3:53:11 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b0dd8637fbaae8405eb9e8de741f9ce7c9667b6f\nhttps://git.kernel.org/stable/c/d66bedfe97a2bc321fa8118e669aae988038f729\nhttps://git.kernel.org/stable/c/f6410d18c1e2da325df02be989d5bca5ed38b086\nhttps://git.kernel.org/stable/c/ee3978b6a0dcd4215cb7cedcba705a12174786a7\nhttps://git.kernel.org/stable/c/7f261bb906bf527c4a6e2a646e2d5f3679f2a8bc\n",
   "aliases": "CVE-2026-45901\nGHSA-jhvq-4r2h-7c2q\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "01013d8a-b410-3594-921e-1c7041d7658b",

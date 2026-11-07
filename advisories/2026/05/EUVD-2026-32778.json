@@ -3,12 +3,12 @@
   "enisaUuid": "2f40de69-b8ea-3e7f-a260-6feff61539d1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: usblp: fix heap leak in IEEE 1284 device ID via short response\n\nusblp_ctrl_msg() collapses the usb_control_msg() return value to\n0/-errno, discarding the actual number of bytes transferred.  A broken\nprinter can complete the GET_DEVICE_ID control transfer short and the\ndriver has no way to know.\n\nusblp_cache_device_id_string() reads the 2-byte big-endian length prefix\nfrom the response and trusts it (clamped only to the buffer bounds).\nThe buffer is kmalloc(1024) at probe time. A device that sends exactly\ntwo bytes (e.g. 0x03 0xFF, claiming a 1023-byte ID) leaves\ndevice_id_string[2..1022] holding stale kmalloc heap.\n\nThat stale data is then exposed:\n  - via the ieee1284_id sysfs attribute (sprintf(\"%s\", buf+2), truncated\n    at the first NUL in the stale heap), and\n  - via the IOCNR_GET_DEVICE_ID ioctl, which copy_to_user()s the full\n    claimed length regardless of NULs, up to 1021 bytes of uninitialized\n    heap, with the leak size chosen by the device.\n\nFix this up by just zapping the buffer with zeros before each request\nsent to the device.",
   "datePublished": "May 28, 2026, 9:36:07 AM",
-  "dateUpdated": "Oct 15, 2026, 1:20:51 AM",
+  "dateUpdated": "Nov 6, 2026, 4:13:41 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4650cce898fcd0bb8c33e529984687a8caed10c3\nhttps://git.kernel.org/stable/c/612640abbd9e0947fe8f37aaf0cf324265d7caa4\nhttps://git.kernel.org/stable/c/4220d4dd062ea3d3eb056a6cbe0b568e740d20b1\nhttps://git.kernel.org/stable/c/6e29c32a27218f2dcd4a4e9b0b3c5e7728640698\nhttps://git.kernel.org/stable/c/6d8142141c942c0d8e79343cffda9c44bb1f3f4f\nhttps://git.kernel.org/stable/c/8247f52d822180e94ccbfdab91613af386a4e34d\nhttps://git.kernel.org/stable/c/522d17e93a85575256894212d10e5a1fa6f36529\nhttps://git.kernel.org/stable/c/7a400c6fe3617e31e690e3f7ca37bb335e0498f3\n",
   "aliases": "CVE-2026-46151\nGHSA-589q-vfc2-j9cg\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "066faf68-0e17-32c0-8186-4455758999c7",

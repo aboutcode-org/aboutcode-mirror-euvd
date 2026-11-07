@@ -3,9 +3,9 @@
   "enisaUuid": "c0b85980-a928-3102-856b-b0f84fc1a3ab",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: cancel async requests when closing connection\n\nAn async request may still be waiting when a connection is closed.\nThis can stop the connection from closing.\n\nCancel active async requests before waiting for them to finish.",
   "datePublished": "Oct 18, 2026, 2:45:28 PM",
-  "dateUpdated": "Oct 26, 2026, 6:55:46 AM",
+  "dateUpdated": "Nov 6, 2026, 5:15:00 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0947087678f465b64eba2acebe808d5c6cfea036\nhttps://git.kernel.org/stable/c/4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851\n",
+  "references": "https://git.kernel.org/stable/c/bbcfc51648fbf32f8c899163b0851fa812628080\nhttps://git.kernel.org/stable/c/0947087678f465b64eba2acebe808d5c6cfea036\nhttps://git.kernel.org/stable/c/4fd5bad647bfa45eb86bfd2f03ba1bef3fcd5851\n",
   "aliases": "CVE-2026-98439\nGHSA-xm6x-r8m7-4r79\n",
   "assigner": "Linux",
   "epss": 0.15,
@@ -41,6 +41,16 @@
       "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <0947087678f465b64eba2acebe808d5c6cfea036"
     },
     {
+      "id": "757b9426-df2a-372f-b939-15f97a730805",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0626e6641f6b467447c81dd7678a69c66f7746cf <bbcfc51648fbf32f8c899163b0851fa812628080"
+    },
+    {
       "id": "85b5abf4-4ce8-3c9b-ba2e-60711fb3a60a",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "c22df6c7-f89f-3a0b-a782-eea62335ff49",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.61"
     },
     {
       "id": "f501af74-bf5e-39d1-b983-59763fd10b2b",

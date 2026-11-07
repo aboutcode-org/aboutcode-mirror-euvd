@@ -3,12 +3,12 @@
   "enisaUuid": "54feecaf-b90c-37fd-a0c3-1e1ff562c539",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nIB/mlx5: Properly support implicit ODP rereg_mr\n\nDue to all the child mkeys in the implicit ODP configuration we cannot\nchange anything in place for the parent mkey. Instead the whole thing\nneeds to be rebuilt if any change is requested. If the user does not\nspecify a translation then force the implicit values which will then fall\nthrough the logic into mlx5_ib_reg_user_mr() to allocate a completely new\nMR.\n\nSince implicit children were also touching the mr->pd, this removes\nanother case where the access was racy.",
   "datePublished": "Sep 4, 2026, 4:49:05 PM",
-  "dateUpdated": "Sep 4, 2026, 4:49:05 PM",
+  "dateUpdated": "Nov 6, 2026, 5:05:55 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/cbc9982c8573fb9e35040063aa78c8ebe768a1ff\nhttps://git.kernel.org/stable/c/ee914ef54a7e707453ecb43eb30fb0a5c6dd0d69\nhttps://git.kernel.org/stable/c/94f7e50eb6b2ce7fbd9aeac1db22460d2013a3fb\nhttps://git.kernel.org/stable/c/eb7cb798e563b3f3b3baeb9cc6f7455764267e50\nhttps://git.kernel.org/stable/c/d4f84bfa089fe71f775d25beb29303e844494c25\nhttps://git.kernel.org/stable/c/5d02b9a2efd11d28d2a8feac7769686b1b871d9c\nhttps://git.kernel.org/stable/c/ee7a8335069150c3f1893a697ab30bbeca00d796\n",
   "aliases": "CVE-2026-80880\nGHSA-v3r8-hwvc-wv26\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "05ce4cb2-2bf6-3aa6-b4e3-4a146e72c571",

@@ -3,12 +3,12 @@
   "enisaUuid": "9085b6aa-38a8-3021-94a5-e65f701b71b8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix root leak if its reloc root is unexpected in merge_reloc_roots()\n\nIf we have an unexpected reloc_root for our root, we jump to the out label\nbut never drop the reference we obtained for root, resulting in a leak.\nAdd a missing btrfs_put_root() call.",
   "datePublished": "Aug 10, 2026, 12:04:42 PM",
-  "dateUpdated": "Aug 19, 2026, 4:35:17 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:16 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f89df93e8aefa4c1c813f835559f2ac727f79766\nhttps://git.kernel.org/stable/c/3f586b4c92e4272fcd01bf0db0590b63acf3e85b\nhttps://git.kernel.org/stable/c/b3d39b03799600c76c33486e2d29b73a771023db\nhttps://git.kernel.org/stable/c/72f673d1c1deb819554d3e7e154f6d84301eb735\nhttps://git.kernel.org/stable/c/60a23d4ea169e27403f3bb023bb98036797c0206\nhttps://git.kernel.org/stable/c/7591d1727067d6063247901ad25c4bdc4e5695c4\nhttps://git.kernel.org/stable/c/ce6050bafb4e33377dc17fcc357736bfc351180c\n",
   "aliases": "GHSA-v7mh-g6gq-fvrq\nCVE-2026-68422\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0319670e-40db-3faf-8746-00af40c6d738",

@@ -3,12 +3,12 @@
   "enisaUuid": "7776907b-b24c-3b1e-8e78-78d4b812e276",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ncm: Use unsigned int for ndp_index\n\nThe variable ndp_index is declared as a signed integer, but it stores\nthe return value of get_ncm(), which is unsigned.\n\nA malicious host can supply a large offset that overflows the signed\nndp_index, making it negative. Because ndp_index is compared against\nunsigned bounds, this negative value bypasses sanity checks and leads\nto an out-of-bounds read when calculating the address of the NDP\nblock (ntb_ptr + ndp_index).\n\nFix this by changing ndp_index to unsigned int to ensure consistent\nunsigned comparisons throughout the function.",
   "datePublished": "Aug 22, 2026, 3:32:47 PM",
-  "dateUpdated": "Aug 22, 2026, 3:32:47 PM",
+  "dateUpdated": "Nov 6, 2026, 5:05:51 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/9c8c6825a750fcd3efbe922847ca70ccd5a66857\nhttps://git.kernel.org/stable/c/a1c0deeba4a46481543d6b09c665f758c54c3a1a\nhttps://git.kernel.org/stable/c/d13f650a3485b58c124b3cda45597e8002c9c833\nhttps://git.kernel.org/stable/c/11413d7ed42174b8f5d8d0b6a25d10dc88239b21\nhttps://git.kernel.org/stable/c/5b2b3a3229a3f4c493ffdee53aee2f173b6f13b3\nhttps://git.kernel.org/stable/c/d328fdc607fa1bb668ad512e1c918a120f78f337\nhttps://git.kernel.org/stable/c/fc9e54e22845c4da29588ca0986cb7c795b5a262\nhttps://git.kernel.org/stable/c/6b1c8a9403a26cb0fed7a648916c74dc236da591\n",
   "aliases": "GHSA-6qhg-x625-34c5\nCVE-2026-74679\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "1fca063f-fb13-3e46-a10d-c58d0642aa61",

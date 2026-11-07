@@ -3,12 +3,12 @@
   "enisaUuid": "30334a7c-f856-3b18-8c35-4ec199655d52",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: mms114 - fix touch indexing for MMS134S and MMS136\n\nThe MMS134S and MMS136 touch controllers have an event size of 6 bytes\nrather than 8 bytes. When __mms114_read_reg() reads the touch data\npacket from the device into the touch buffer, the events are packed\ntightly at 6-byte intervals. However, the driver iterates through the\nevents using standard C array indexing (touch[index]), where each\nelement is sizeof(struct mms114_touch) (8 bytes) apart. As a result, any\ntouch events beyond the first one are read from incorrect offsets and\nparsed improperly.\n\nFix this by explicitly calculating the byte offset for each touch event\nbased on the device's specific event size.",
   "datePublished": "Jul 25, 2026, 8:49:18 AM",
-  "dateUpdated": "Aug 23, 2026, 12:45:38 PM",
+  "dateUpdated": "Nov 6, 2026, 4:34:32 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/062bbe55a1f6d77b89d07135ba3b09f97bfac1cb\nhttps://git.kernel.org/stable/c/38de2979d90d8cd94f18e0567be4c8342d0e0410\nhttps://git.kernel.org/stable/c/112666835071d935fef764aab590339e97216d4a\nhttps://git.kernel.org/stable/c/7c00a0787af7164438bdbc97fcae9733cfc58d21\nhttps://git.kernel.org/stable/c/75b12874b4172533b9efc349db328cb1a59c3981\nhttps://git.kernel.org/stable/c/a747c4eb02656afdbd92eea83b88e92715a23977\nhttps://git.kernel.org/stable/c/a6ac4e24c1a8a533bb61035184fdcc7eede4cc8d\n",
   "aliases": "GHSA-prw5-9985-9rc7\nCVE-2026-64272\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "010f9412-a7e8-383a-96dd-ba481a008c77",

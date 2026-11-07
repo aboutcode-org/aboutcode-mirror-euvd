@@ -3,12 +3,12 @@
   "enisaUuid": "b8c9e109-5f47-39df-aefd-5624ce77cff9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: driver: Check ACPI_COMPANION() against NULL during probe\n\nSince every platform driver can be forced to match a device that doesn't\nmatch its list of device IDs because of device_match_driver_override(),\nplatform drivers that rely on the existence of a device's ACPI companion\nobject should verify its presence.\n\nAccordingly, add requisite ACPI_COMPANION() or ACPI_HANDLE() checks\nagainst NULL to 13 platform drivers handling core ACPI devices.\n\nAlso change the value returned by the ACPI thermal zone driver when\nthe device's ACPI companion is not present to -ENODEV for consistency\nwith the other drivers.",
   "datePublished": "Jul 24, 2026, 3:23:10 PM",
-  "dateUpdated": "Jul 27, 2026, 4:37:25 AM",
+  "dateUpdated": "Nov 6, 2026, 4:34:30 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/a9451bf561232314755baf69a5916e0ac77f33fc\nhttps://git.kernel.org/stable/c/34f4d0e4e5065237d15651df759a99e81b7f9f51\nhttps://git.kernel.org/stable/c/612ddab8fce04394bd7aebe8e0f2599642e30859\nhttps://git.kernel.org/stable/c/e4865a56d013e86e46ea6acea15bb6eae01898ff\n",
   "aliases": "CVE-2026-64227\nGHSA-pr66-3h83-6g86\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "22628a45-88cf-3018-b8d7-27006b20f688",

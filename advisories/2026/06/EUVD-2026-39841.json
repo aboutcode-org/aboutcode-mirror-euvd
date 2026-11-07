@@ -3,12 +3,12 @@
   "enisaUuid": "cc4e0f32-d4fc-3d38-b454-a8386bd885fc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: hvc_iucv: fix off-by-one in number of supported devices\n\nMAX_HVC_IUCV_LINES == HVC_ALLOC_TTY_ADAPTERS == 8.\nThis is the number of entries in:\n  static struct hvc_iucv_private *hvc_iucv_table[MAX_HVC_IUCV_LINES];\n\nSometimes hvc_iucv_table[] is limited by:\n(a)\tif (num > hvc_iucv_devices) // for error detection\nor\n(b)\tfor (i = 0; i < hvc_iucv_devices; i++) // in 2 places\n(so these 2 don't agree; second one appears to be correct to me.)\n\nhvc_iucv_devices can be 0..8. This is a counter.\n(c)\tif (hvc_iucv_devices > MAX_HVC_IUCV_LINES)\n\nIf hvc_iucv_devices == 8, (a) allows the code to access hvc_iucv_table[8].\nOops.",
   "datePublished": "Jun 26, 2026, 7:41:01 PM",
-  "dateUpdated": "Jun 26, 2026, 7:41:01 PM",
+  "dateUpdated": "Nov 6, 2026, 4:34:19 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3d3b89e6ab93bdd0efd45828bda6b0e61cc46dff\nhttps://git.kernel.org/stable/c/484357dff256c816d9466bda35eb765685e4dc86\nhttps://git.kernel.org/stable/c/11207e42a332eb8bbcb9fe74df9edd2a807c5607\nhttps://git.kernel.org/stable/c/fed8b8f33a46db0ee2efdb000f4f630c86ed8ca4\nhttps://git.kernel.org/stable/c/a76511bc654819425d3b15e77b523d7f9d81f064\nhttps://git.kernel.org/stable/c/3104a3f40feb107f77d7116ad9bf6c210ab7babf\nhttps://git.kernel.org/stable/c/f1dc8e72de9aabe5d96767a4e97219ac26b79fe5\nhttps://git.kernel.org/stable/c/f2a880e802ad12d1e38039d1334fb1475d0f5241\n",
   "aliases": "GHSA-v222-hvcr-rghc\nCVE-2026-53306\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "21ede931-10ec-327f-86af-ba5b29f1979a",

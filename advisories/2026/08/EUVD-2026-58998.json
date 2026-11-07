@@ -3,12 +3,12 @@
   "enisaUuid": "e42fb6d6-13b5-3d3d-906a-9eefb29d36bb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: fix refcount leak in i_ipmi_request()\n\nWhen a caller provides a `supplied_recv` message to i_ipmi_request(),\nthe function increments the user's `nr_msgs` reference count. If an\nerror occurs later, the out_err cleanup path only frees the recv_msg\nif the function allocated it itself (i.e., !supplied_recv). In the\nsupplied_recv case the cleanup is skipped, leaving the reference count\nelevated. The caller ipmi_request_supply_msgs() does not release the\nsupplied_recv on error, so the reference is permanently leaked.\n\nFix this by explicitly reverting the reference count operations when a\nsupplied recv_msg with a valid user pointer is present in the error\npath: decrement nr_msgs and drop the user's kref.",
   "datePublished": "Aug 15, 2026, 5:51:59 AM",
-  "dateUpdated": "Aug 23, 2026, 12:46:30 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:18 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/122ca6b2af714e114c9b872a48372ace31a9ab1f\nhttps://git.kernel.org/stable/c/9409e18ffe7378d202efe1cf69989df9f67b0369\nhttps://git.kernel.org/stable/c/e2a3b77df6aef031455dd83ea8ed4344b7dca1f9\nhttps://git.kernel.org/stable/c/f5c5065963024390ddad51bd455d1adc710de575\nhttps://git.kernel.org/stable/c/0fd23994ec8c5436d9f0b50848deb87ed933e6b3\nhttps://git.kernel.org/stable/c/a3f3859cecacb64f18fd446271ece9a3b3f2d4de\n",
   "aliases": "GHSA-j63g-h4gq-q67f\nCVE-2026-72040\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "15c70fac-e6e7-3fc2-b201-9e1025413237",

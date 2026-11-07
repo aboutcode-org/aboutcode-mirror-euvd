@@ -3,12 +3,12 @@
   "enisaUuid": "28c12a9e-586a-3e64-ab46-f535d3902377",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: remove WARN_ON_ONCE() from sk_mc_loop()\n\nsk_mc_loop() can be called for sockets that are neither AF_INET\nnor AF_INET6 (e.g. AF_PACKET sockets when sending packets via raw/packet\nsocket over virtual devices such as VRF or ipvlan).\n\nIn such cases, sk_family is not AF_INET/AF_INET6 and sk_mc_loop() falls\nthrough the switch statement and triggers WARN_ON_ONCE(1).\n\nNon-INET sockets do not support IP_MULTICAST_LOOP or IPV6_MULTICAST_LOOP\noptions, so loopback should default to true without generating a warning.",
   "datePublished": "Sep 3, 2026, 8:21:50 AM",
-  "dateUpdated": "Sep 3, 2026, 8:21:50 AM",
+  "dateUpdated": "Nov 6, 2026, 5:05:53 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/97133c4d42654578fab95abe47359ebe784dde18\nhttps://git.kernel.org/stable/c/f625c742b33dc137c209dd13d1c5f12b1c18d71c\nhttps://git.kernel.org/stable/c/ad7fa2f411cb30f63d6725f111be134064cdb718\nhttps://git.kernel.org/stable/c/d2adc4e80b29e58b5162ae09f0f657a215806c8c\nhttps://git.kernel.org/stable/c/ad7dbb1d14b1b4406eca8ef9478e8de312ba0cfe\nhttps://git.kernel.org/stable/c/c8f256dc849205ccb2bd78bd99a3497b972b44e0\nhttps://git.kernel.org/stable/c/0d75f2c1d0764efa756ad9c1e078d8c09ea8fc1f\nhttps://git.kernel.org/stable/c/b8a39a09ae4eaae04309e1e38ed6a1101d967496\n",
   "aliases": "GHSA-mf9r-r7x5-32qq\nCVE-2026-80733\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "05debcc3-82e6-3be8-8f14-9c8c37440567",

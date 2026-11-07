@@ -3,12 +3,12 @@
   "enisaUuid": "90d2a23f-b3ef-37b3-a3ac-df63d2811017",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc, afs: Fix missing error pointer check after rxrpc_kernel_lookup_peer()\n\nrxrpc_kernel_lookup_peer() can also return error pointers in addition to\nNULL, so just checking for NULL is not sufficient.\n\nFix this by:\n\n (1) Changing rxrpc_kernel_lookup_peer() to return -ENOMEM rather than NULL\n     on allocation failure.\n\n (2) Making the callers in afs use IS_ERR() and PTR_ERR() to pass on the\n     error code returned.",
   "datePublished": "May 8, 2026, 2:22:25 PM",
-  "dateUpdated": "Oct 21, 2026, 12:40:48 PM",
+  "dateUpdated": "Nov 6, 2026, 3:42:55 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d854c93b12f2076c564f595b41b93b02fd42a0f9\nhttps://git.kernel.org/stable/c/d55fa7cd4b19ba91b34b307d769c149e56ad0a75\nhttps://git.kernel.org/stable/c/54331c5dcc6d97683d7ca2788e7ef9c9505e1477\nhttps://git.kernel.org/stable/c/4245a79003adf30e67f8e9060915bd05cb31d142\n",
   "aliases": "GHSA-qc73-3qqx-fc2q\nCVE-2026-43463\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "0597cc82-6cc4-3f31-a580-ad56614ec3c0",

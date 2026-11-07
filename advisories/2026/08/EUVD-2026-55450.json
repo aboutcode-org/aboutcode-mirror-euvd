@@ -3,12 +3,12 @@
   "enisaUuid": "97aa2a51-868d-304c-80ef-94334bbcd849",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: carl9170: fix buffer overflow in rx_stream failover path\n\nThe failover continuation in carl9170_rx_stream() copies the full tlen\nfrom the second USB transfer instead of capping at rx_failover_missing\nbytes. When both transfers are near maximum size, the total exceeds the\n65535-byte failover SKB, triggering skb_over_panic.\n\nLimit the copy size to the missing byte count.\n\n[Fix checkpatch CHECK:PARENTHESIS_ALIGNMENT]",
   "datePublished": "Aug 10, 2026, 12:03:26 PM",
-  "dateUpdated": "Aug 19, 2026, 4:33:47 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:13 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5fb00a09e9b0375e1ad9d4fefc4a62a67e7ea658\nhttps://git.kernel.org/stable/c/48c81fb523ecdc6a4b8654944ff32e499f21e6d0\nhttps://git.kernel.org/stable/c/a1ce01764a812c22a47d30aea78e347aebd3eea1\nhttps://git.kernel.org/stable/c/5acfa18de66b6089b81c1c0bf1a3ae3c940ec39e\nhttps://git.kernel.org/stable/c/b9dfee5e63ee9b5c47be9e344ebc5bd3f43fca78\nhttps://git.kernel.org/stable/c/4503829843353dbb18b879c35be1cdfc9af677b7\nhttps://git.kernel.org/stable/c/21f59906ea75618fdd46a7e32754d54fbee083ea\nhttps://git.kernel.org/stable/c/a1a21995c2e1cc2ca6b2226cfe4f5f018370182a\n",
   "aliases": "CVE-2026-68349\nGHSA-fpjh-9gv6-cr6g\n",
   "assigner": "Linux",
-  "epss": 0.19,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "10a51a3f-be71-35d4-b527-b51b95b42a22",

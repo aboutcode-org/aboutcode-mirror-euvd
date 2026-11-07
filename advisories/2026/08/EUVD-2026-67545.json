@@ -3,12 +3,12 @@
   "enisaUuid": "4c581bee-defd-306b-92b0-34f39784d30e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Disable xfrm_decode_session hook attachment\n\nBPF LSM programs can currently attach to xfrm_decode_session(). That\nhook may return an error, but security_skb_classify_flow() calls it\nfrom a void path and triggers BUG_ON() if an error is returned.\n\nDisable BPF attachment to the hook to prevent a BPF LSM program from\nturning packet classification into a full panic.",
   "datePublished": "Aug 28, 2026, 6:49:10 AM",
-  "dateUpdated": "Aug 28, 2026, 6:49:10 AM",
+  "dateUpdated": "Nov 6, 2026, 5:05:52 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/aa265d47308775c5501073b08133623bcb5421f9\nhttps://git.kernel.org/stable/c/6b44c6660aa1c9b843e450a623ac4a8484919dce\nhttps://git.kernel.org/stable/c/4ae780d173ef40d4f7cb76935dc2d55fbf380009\nhttps://git.kernel.org/stable/c/49fa1be621dde8f526d36e5791aded8fafda1e9c\nhttps://git.kernel.org/stable/c/1bb3b6a5c3c5cc814eae4ff0212fdced36f8bce9\nhttps://git.kernel.org/stable/c/12091470c6b4c1c14b2de12dcbae2ada6cb6d20b\n",
   "aliases": "CVE-2026-80669\nGHSA-qx3x-jwr3-p8vv\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "1cc72ad5-f243-3814-88bc-5e284981c4d3",

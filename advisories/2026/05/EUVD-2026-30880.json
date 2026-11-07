@@ -3,7 +3,7 @@
   "enisaUuid": "888e2f60-34f2-31f7-8e83-c1d41a6c2577",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: ns: Limit the maximum server registration per node\n\nCurrent code does no bound checking on the number of servers added per\nnode. A malicious client can flood NEW_SERVER messages and exhaust memory.\n\nFix this issue by limiting the maximum number of server registrations to\n256 per node. If the NEW_SERVER message is received for an old port, then\ndon't restrict it as it will get replaced. While at it, also rate limit\nthe error messages in the failure path of qrtr_ns_worker().\n\nNote that the limit of 256 is chosen based on the current platform\nrequirements. If requirement changes in the future, this limit can be\nincreased.",
   "datePublished": "May 19, 2026, 10:44:23 AM",
-  "dateUpdated": "Aug 19, 2026, 4:27:59 PM",
+  "dateUpdated": "Nov 6, 2026, 3:42:57 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b48fc702b20233b809f01053232c3cd5083c97b4\nhttps://git.kernel.org/stable/c/991c431077b19176d3fe3bb54054c063776a8cdc\nhttps://git.kernel.org/stable/c/94914731ca0b99899dceadd80d2df00584a688ca\nhttps://git.kernel.org/stable/c/e6f6cd501fb54060940a6eb3f4103eeb5e426ae7\nhttps://git.kernel.org/stable/c/3efaad55cad1ded429e3a873bfece389058a526b\nhttps://git.kernel.org/stable/c/35fb4a0c077c5d1049c2628b769e0a1b1e65df0d\nhttps://git.kernel.org/stable/c/868202aa2adae427060a42d5bd663b4d782ec02c\nhttps://git.kernel.org/stable/c/d5ee2ff98322337951c56398e79d51815acbf955\n",
   "aliases": "CVE-2026-43491\nGHSA-vfqf-4c37-r857\n",

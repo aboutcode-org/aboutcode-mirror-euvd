@@ -3,12 +3,12 @@
   "enisaUuid": "59f5ef75-9331-32c7-9f6c-754cbc640819",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsysfs: don't remove existing directory on update failure\n\nWhen sysfs_update_group() is called for a named group and create_files()\nfails (e.g. -ENOMEM), internal_create_group() calls kernfs_remove(kn) on\nthe group directory.  In the update path, kn was obtained via\nkernfs_find_and_get() and refers to a directory that already existed\nbefore this call.  Removing it silently destroys a sysfs group that the\ncaller did not create.\n\nOnly remove the directory if we created it ourselves.  On update failure\nthe directory remains as it is left empty by remove_files() inside\ncreate_files(), but can be repopulated by a retry.",
   "datePublished": "Jul 19, 2026, 3:41:07 PM",
-  "dateUpdated": "Jul 19, 2026, 3:41:07 PM",
+  "dateUpdated": "Nov 6, 2026, 4:34:28 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c5e125c828b701afaf7493b42a14aa89362ff36d\nhttps://git.kernel.org/stable/c/ccadd32cc1263802a5969c9efe0e96225450428c\nhttps://git.kernel.org/stable/c/14f2c14ae86c4af17a0a9f8ab46dacf2d5fd1d8a\nhttps://git.kernel.org/stable/c/31527d80234caf83dc96ad478645e57df9de4472\nhttps://git.kernel.org/stable/c/57b285e0368290aa55f79ba11419b96d0ebdb418\nhttps://git.kernel.org/stable/c/48fa96538bd2868034d33429e4565fda384d0736\nhttps://git.kernel.org/stable/c/708f6926f61f71e09b5e9fd668b9882ccd46e69f\nhttps://git.kernel.org/stable/c/237557b8a81ab948e8332f7c0058e758f081c0a3\n",
   "aliases": "GHSA-v9gp-g328-r6m8\nCVE-2026-64185\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0664bf32-d289-32ce-b5f4-2f2f6297bff3",

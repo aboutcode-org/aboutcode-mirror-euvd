@@ -3,12 +3,12 @@
   "enisaUuid": "7e1d5084-4cac-3876-93c5-646928a1cf6b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: modedb: fix a possible UAF in fb_find_mode()\n\nIf mode_option is NULL, it is assigned from mode_option_buf:\n\n  if (!mode_option) {\n    fb_get_options(NULL, &mode_option_buf);\n    mode_option = mode_option_buf;\n  }\n\nLater, name is assigned from mode_option:\n\n  const char *name = mode_option;\n\nHowever, mode_option_buf is freed before name is no longer used:\n\n  kfree(mode_option_buf);\n\nwhile name is still accessed by:\n\n  if ((name_matches(db[i], name, namelen) ||\n\nSince name aliases mode_option_buf, this may result in a\nuse-after-free.\n\nFix this by extending the lifetime of mode_option_buf until the end of the\nfunction by using scope-based resource management for cleanup.",
   "datePublished": "Jul 24, 2026, 3:31:14 PM",
-  "dateUpdated": "Aug 17, 2026, 4:51:56 AM",
+  "dateUpdated": "Nov 6, 2026, 4:34:31 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c7dc382439f7b019e207055b52e9cec051d42fa9\nhttps://git.kernel.org/stable/c/f906347d75c7fc377041c6d3c535d0f08846aada\nhttps://git.kernel.org/stable/c/4d418cf8daf57e454b4d855bf9b2419fd8e6a540\nhttps://git.kernel.org/stable/c/13b6f0cdd5cd5e60f682ec43134ab0e2024bd356\nhttps://git.kernel.org/stable/c/85b6256469cebdac395e7447147e06b2e151014f\n",
   "aliases": "CVE-2026-64245\nGHSA-5hjc-xc74-xxjg\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "055324e0-fdb1-36ab-b5b7-0abd8ad17db0",

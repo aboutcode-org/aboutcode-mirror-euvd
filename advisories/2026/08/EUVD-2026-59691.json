@@ -3,12 +3,12 @@
   "enisaUuid": "657233e1-6816-3f3a-97c9-c9715c1cf037",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Fix DMA buffer out-of-bounds write when fill_max is set\n\nWhen a USB audio endpoint requests full packet transfers via the fill_max\ndescriptor flag, data_ep_set_params() promotes ep->curpacksize to\nep->maxpacksize. However, maxsize is left at the original sample-rate\nderived value.\n\nSince u->buffer_size is allocated as maxsize * packets, the resulting\nDMA buffer is far too small for the requested transfer length. When the\nUSB host controller streams up to curpacksize bytes per packet, it writes\npast the end of the buffer via DMA, corrupting kernel heap memory.\n\nUpdate maxsize to curpacksize when fill_max is set so that the allocated\nDMA buffer size matches the actual transfer request size.\n\n[ changed to reassign maxsize only when ep->fill_max is set -- tiwai ]",
   "datePublished": "Aug 15, 2026, 12:27:25 PM",
-  "dateUpdated": "Aug 19, 2026, 4:37:57 PM",
+  "dateUpdated": "Nov 6, 2026, 5:05:47 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/10c24e6fddf4bdff0b6b05a47a4347b38e6960e8\nhttps://git.kernel.org/stable/c/b1770f9ac35c0ffc34914d52347c65dcd5ac049b\nhttps://git.kernel.org/stable/c/6cbdd11f9b05b92f4aa29f09a66e19ed0e25e66c\nhttps://git.kernel.org/stable/c/3852974608f53e530e27c21d0c6c7d79c17b3f5a\nhttps://git.kernel.org/stable/c/f9b6c9576568169139ac151f7881474f384659fd\nhttps://git.kernel.org/stable/c/04595233e5606d452f9f47e6989fc7ae7440fd40\nhttps://git.kernel.org/stable/c/bd65b7191683bebd9923904f0558b9211b9129da\nhttps://git.kernel.org/stable/c/d0199ae1666ff9ae2d1d568d64c3430d4c47f0e5\n",
   "aliases": "GHSA-ppm8-hvcv-5jfx\nCVE-2026-74498\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "0273e53f-7c82-32de-ab48-da03a5e25043",

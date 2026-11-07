@@ -3,7 +3,7 @@
   "enisaUuid": "cf4b0646-d5b0-3a9d-a04a-6d700c5ee1f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: target: rdma: fix ndev refcount leak on queue connect\n\nnvmet_rdma_queue_connect() calls nvmet_rdma_find_get_device() which\nacquires a reference on the returned ndev via kref_get(). On the path\nwhere the host queue backlog is exceeded and the function returns\nNVME_SC_CONNECT_CTRL_BUSY, reference of ndev is not released, leaking\nthe kref.\n\nFix this by adding a goto to the existing put_device label before the\nearly return.",
   "datePublished": "Jul 25, 2026, 8:49:49 AM",
-  "dateUpdated": "Sep 14, 2026, 11:58:38 AM",
+  "dateUpdated": "Nov 6, 2026, 4:44:44 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/204b9645536bb4a77a2cb35e6519dbf9f4ea1665\nhttps://git.kernel.org/stable/c/00eaa58988d35fd47ca8811f7f72871591f61ffb\nhttps://git.kernel.org/stable/c/712f3268a62d0df98a7ee991cba963ced2e58007\nhttps://git.kernel.org/stable/c/d65fe42820b890a6a4644de0a95a812471f79ad3\nhttps://git.kernel.org/stable/c/a8803c4f0ac3fa7df5551bbb5a8800c434a94357\nhttps://git.kernel.org/stable/c/5828517d17eda27f21d29ea14800c9e0a57bad11\nhttps://git.kernel.org/stable/c/badc53620fe813b3a9f727ef9526f98567c2c898\n",
   "aliases": "CVE-2026-64321\nGHSA-727c-mjrq-h39g\n",

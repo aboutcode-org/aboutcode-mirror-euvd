@@ -3,12 +3,12 @@
   "enisaUuid": "70dbc278-7130-37bb-9972-fb11e462f8e4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: qup: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to the clear the DMA channel pointers on setup failure to\navoid dereferencing an error pointer (or attempting to release a channel\na second time) on later probe errors or driver unbind.\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
   "datePublished": "Jul 19, 2026, 3:40:54 PM",
-  "dateUpdated": "Jul 19, 2026, 3:40:54 PM",
+  "dateUpdated": "Nov 6, 2026, 4:34:27 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0bb3bd442f0bdad3932739a61dd6c580c9c1955e\nhttps://git.kernel.org/stable/c/d577c55d189e7ae150973058d13e299b6855633f\nhttps://git.kernel.org/stable/c/9e673affb92c29d9ba879bf4ea81c5e840166b56\nhttps://git.kernel.org/stable/c/45760b72e84c1a1498f1a8a9047184c85299da20\nhttps://git.kernel.org/stable/c/8f9b61d255b1e989b8913b06c8ebe0aba5e1b238\nhttps://git.kernel.org/stable/c/4bb4764f2c51f03f657a28029eb0595d8223aab5\nhttps://git.kernel.org/stable/c/4f4051e9d644c371c50de4a042b85bba6727d5c3\nhttps://git.kernel.org/stable/c/a7e8f3efd50a165ba0189f6dc57f7e51a7d149db\n",
   "aliases": "CVE-2026-64170\nGHSA-m682-4gwr-mr4j\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "0b0d0822-cc44-37cc-903c-79312330fc46",

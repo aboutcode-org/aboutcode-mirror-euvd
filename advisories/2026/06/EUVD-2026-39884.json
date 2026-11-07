@@ -3,12 +3,12 @@
   "enisaUuid": "b12d407b-c3fb-3695-9d44-edaf8a69e248",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gma500/oaktrail_lvds: fix hang on init failure\n\nThe LVDS init code looks up an I2C adapter using i2c_get_adapter() and\ntries to read the EDID before falling back to allocating and registering\nits own adapter.\n\nThe error handling does not separate these cases so on a late init\nfailure it will try to deregister and free also an adapter that had\npreviously been registered. Since i2c_get_adapter() takes another\nreference to the adapter, deregistration hangs indefinitely while\nwaiting for the reference to be released.\n\nFix this by only destroying adapters allocated during LVDS init on\nerrors.",
   "datePublished": "Jun 26, 2026, 7:40:41 PM",
-  "dateUpdated": "Jun 26, 2026, 7:40:41 PM",
+  "dateUpdated": "Nov 6, 2026, 4:34:17 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/5fe9f505d8578852c30668567bc3ce52e776e8c7\nhttps://git.kernel.org/stable/c/4e04b564c005c9900643c56656d751ad677889be\nhttps://git.kernel.org/stable/c/7877f7e231a8bd5c817af1491276550a5e195cd7\nhttps://git.kernel.org/stable/c/ab9256936b58eb178caddcf5b5b1638f079909d2\nhttps://git.kernel.org/stable/c/f6fc44af3bbd5ab0fb6bdec6f47decca11b38425\nhttps://git.kernel.org/stable/c/657a091ab6d01d0091b77660c75cfed573c9a53e\n",
   "aliases": "CVE-2026-53279\nGHSA-jqmf-8mg5-g38p\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "395a621b-02b0-3c4d-ad17-206fea266bd9",

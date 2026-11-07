@@ -3,14 +3,14 @@
   "enisaUuid": "199acc70-a1d9-3a4d-b496-89975cea6751",
   "description": "A vulnerability was found in the netavark package, a network stack for containers used with Podman. Due to dns.podman search domain being removed, netavark may return external servers if a valid A/AAAA record is sent as a response. When creating a container with a given name, this name will be used as the hostname for the container itself, as the podman's search domain is not added anymore the container is using the host's resolv.conf, and the DNS resolver will try to look into the search domains contained on it. If one of the domains contain a name with the same hostname as the running container, the connection will forward to unexpected external servers.",
   "datePublished": "Jul 28, 2025, 6:16:07 PM",
-  "dateUpdated": "Sep 1, 2026, 12:08:32 PM",
+  "dateUpdated": "Nov 6, 2026, 5:46:48 PM",
   "baseScore": 3.7,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
   "references": "https://access.redhat.com/security/cve/CVE-2025-8283\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2383941\nhttps://github.com/advisories/GHSA-rpcf-rmh6-42xr\nhttps://github.com/containers/netavark/releases/tag/v1.15.1\nhttps://github.com/containers/podman/issues/2619\n",
   "aliases": "GHSA-rpcf-rmh6-42xr\nCVE-2025-8283\n",
   "assigner": "redhat",
-  "epss": 0.29,
+  "epss": 0.37,
   "enisaIdProduct": [],
   "enisaIdVendor": []
 }

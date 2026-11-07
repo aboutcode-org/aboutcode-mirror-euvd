@@ -3,12 +3,12 @@
   "enisaUuid": "4964a470-e547-3599-b8f3-e66900a4a7f8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: em28xx: fix use-after-free in em28xx_v4l2_open()\n\nem28xx_v4l2_open() reads dev->v4l2 without holding dev->lock,\ncreating a race with em28xx_v4l2_init()'s error path and\nem28xx_v4l2_fini(), both of which free the em28xx_v4l2 struct\nand set dev->v4l2 to NULL under dev->lock.\n\nThis race leads to two issues:\n - use-after-free in v4l2_fh_init() when accessing vdev->ctrl_handler,\n   since the video_device is embedded in the freed em28xx_v4l2 struct.\n - NULL pointer dereference in em28xx_resolution_set() when accessing\n   v4l2->norm, since dev->v4l2 has been set to NULL.\n\nFix this by moving the mutex_lock() before the dev->v4l2 read and\nadding a NULL check for dev->v4l2 under the lock.",
   "datePublished": "Apr 24, 2026, 2:42:12 PM",
-  "dateUpdated": "Oct 15, 2026, 1:17:07 AM",
+  "dateUpdated": "Nov 6, 2026, 3:22:13 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3c0283a59e36e3707c4a81f4952e362d31f876b8\nhttps://git.kernel.org/stable/c/2cbf81f76842e46bdf25823c70e1db4044a65678\nhttps://git.kernel.org/stable/c/38a327221f7f765e7d853b7bafe47e342441ec85\nhttps://git.kernel.org/stable/c/b5d141ea15f173f15b9f0a72965902f3428c0d92\nhttps://git.kernel.org/stable/c/5fb2940327722b4684d2f964b54c1c90aa277324\nhttps://git.kernel.org/stable/c/871b8ea8ef39a6c253594649f4339378fad3d0dd\nhttps://git.kernel.org/stable/c/6b9e66437cc6123ddedac141e1b8b6fcf57d2972\nhttps://git.kernel.org/stable/c/dd2b888e08d3b3d6aacd65d76cd44fac11da750f\nhttps://git.kernel.org/stable/c/a66485a934c7187ae8e36517d40615fa2e961cff\n",
   "aliases": "CVE-2026-31583\nGHSA-2hvg-8mmr-f5mc\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "16c9b852-26ac-3ae0-b43a-0126fa4afbea",

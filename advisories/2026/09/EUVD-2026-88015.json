@@ -3,14 +3,14 @@
   "enisaUuid": "d99079cc-a24c-36e4-98c5-33dc7da1879b",
   "description": "The OCI delta stream parser read sizes as guint64 but passed them to GLib I/O and allocation functions expecting gsize (32 bits on 32-bit systems), causing undersized allocations while subsequent operations use the original 64-bit size, leading to heap buffer overflows. An attacker controlling an OCI registry can craft a delta stream that triggers this during flatpak install/update, potentially achieving code execution on 32-bit systems.",
   "datePublished": "Sep 27, 2026, 8:19:12 PM",
-  "dateUpdated": "Nov 2, 2026, 12:33:48 PM",
+  "dateUpdated": "Nov 6, 2026, 2:14:18 AM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:80497\nhttps://access.redhat.com/errata/RHSA-2026:80498\nhttps://access.redhat.com/errata/RHSA-2026:80687\nhttps://access.redhat.com/errata/RHSA-2026:89733\nhttps://access.redhat.com/errata/RHSA-2026:90364\nhttps://access.redhat.com/errata/RHSA-2026:92221\nhttps://access.redhat.com/errata/RHSA-2026:92369\nhttps://access.redhat.com/security/cve/CVE-2026-96280\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2539419\nhttps://github.com/flatpak/flatpak/security/advisories/GHSA-jr92-2v97-wgvc\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:80497\nhttps://access.redhat.com/errata/RHSA-2026:80498\nhttps://access.redhat.com/errata/RHSA-2026:80687\nhttps://access.redhat.com/errata/RHSA-2026:89733\nhttps://access.redhat.com/errata/RHSA-2026:90364\nhttps://access.redhat.com/errata/RHSA-2026:92221\nhttps://access.redhat.com/errata/RHSA-2026:92369\nhttps://access.redhat.com/errata/RHSA-2026:95493\nhttps://access.redhat.com/security/cve/CVE-2026-96280\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2539419\nhttps://github.com/flatpak/flatpak/security/advisories/GHSA-jr92-2v97-wgvc\n",
   "aliases": "CVE-2026-96280\n",
   "assigner": "redhat",
-  "epss": 0.57,
+  "epss": 0.59,
   "enisaIdProduct": [
     {
       "id": "130bdabc-c12d-3c03-9782-b614ac906d1c",
@@ -21,6 +21,16 @@
         }
       },
       "product_version": "patch: 0:1.12.9-4.el9_8.4"
+    },
+    {
+      "id": "52799eb2-3e6e-34b0-8c15-4d7fa114c22a",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.12.9-1.el8_6.1"
     },
     {
       "id": "9506d30d-405d-3138-ae5c-ebd4e9b89163",
@@ -61,6 +71,16 @@
         }
       },
       "product_version": "patch: 0:1.16.0-5.el10_0.6"
+    },
+    {
+      "id": "d185aa41-4ca1-3398-b650-4c2deffc7ee9",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.12.9-1.el8_6.1"
     },
     {
       "id": "eb144509-167c-3a00-8a17-466a4c6f8a75",

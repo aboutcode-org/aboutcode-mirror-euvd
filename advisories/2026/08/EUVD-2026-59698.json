@@ -3,12 +3,12 @@
   "enisaUuid": "e00b1988-2752-3b6d-91e0-a74a0f0b799d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: 6fire: Fix UAF at error handling during probe\n\nAlthough 6fire driver had a few fixes for dealing with the early error\nhandling during the probe phase, it forgot a pending URB before\nfreeing the resources, which may lead to a UAF.\n\nThis patch addresses it by doing the almost same cleanup procedure\nlike the normal disconnect phase at the error path.",
   "datePublished": "Aug 15, 2026, 12:27:29 PM",
-  "dateUpdated": "Aug 19, 2026, 4:38:02 PM",
+  "dateUpdated": "Nov 6, 2026, 5:05:47 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d41bfea14ee6e063a953f6e72046088737c4e66c\nhttps://git.kernel.org/stable/c/8b7ecb2446845fa8d1f1ce9aac6307caac50cfd5\nhttps://git.kernel.org/stable/c/a0bb5b9d39e54888385dc399c899223299201fe6\nhttps://git.kernel.org/stable/c/49bc7741cd2761c703a292dc69245041ae8a67bd\nhttps://git.kernel.org/stable/c/2de734dcbb210bd59983e13d36988acbcc122194\nhttps://git.kernel.org/stable/c/11e2953d9f4c7c3d2af94a889c2d805c537d633f\nhttps://git.kernel.org/stable/c/630c8d6a93cbd9b2a207f1a67ef1fd21af098b0c\nhttps://git.kernel.org/stable/c/a54bf16965f896415c3337bc4fbb40fb11941d99\n",
   "aliases": "CVE-2026-74505\nGHSA-3wq3-vrpr-9c55\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "05cc11ac-4555-31f5-b424-3421f5aa9f36",

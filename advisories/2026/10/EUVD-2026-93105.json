@@ -3,9 +3,9 @@
   "enisaUuid": "fe347c40-b2e0-3cc3-8c8d-8c72f1afb872",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Avoid integer underflow in EOP ring size calculation.\n\nThe low 6 bits of cp_hqd_eop_control store the base-2 logarithm\nof the EOP ring size. This was calculated as\n\norder_base_2(q->eop_ring_buffer_size / 4) - 1\n\nBut order_base_2 can in theory return 0, so this could underflow\n(although in practice the ring buffer size cannot be less than 4096).\n\nChange this to\n\norder_base_2(q->eop_ring_buffer_size / 8)\n\nusing properties of logarithms.\n\nAlso add to the above comment to make the mathematics more clear.\n\n(cherry picked from commit f0f43fcf8b2b3a924cad9444340921c96ed5f634)",
   "datePublished": "Oct 6, 2026, 8:44:20 AM",
-  "dateUpdated": "Oct 19, 2026, 9:15:08 AM",
+  "dateUpdated": "Nov 6, 2026, 5:14:59 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/287a34c4d712e0bdb67751e21316d9c8d75a528a\nhttps://git.kernel.org/stable/c/8ee521b8b189799e361d4233c5180ba56656d4d4\n",
+  "references": "https://git.kernel.org/stable/c/3c97f7cb6c48826663648b6081b614c2befc8ac7\nhttps://git.kernel.org/stable/c/287a34c4d712e0bdb67751e21316d9c8d75a528a\nhttps://git.kernel.org/stable/c/8ee521b8b189799e361d4233c5180ba56656d4d4\n",
   "aliases": "CVE-2026-98177\nGHSA-w77g-jh5m-m588\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -51,6 +51,16 @@
       "product_version": "patch: 7.2.8"
     },
     {
+      "id": "6e5cf67f-1200-3d32-8311-bb7b1b971ac2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d696d536f0a97ac779d6176107ac4e96d0a2f8b9 <3c97f7cb6c48826663648b6081b614c2befc8ac7"
+    },
+    {
       "id": "777bb953-34bf-332d-99ee-6ce715c681bb",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "da867bda-5dee-3b64-9127-9d1997c02e20",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.61"
     }
   ],
   "enisaIdVendor": [

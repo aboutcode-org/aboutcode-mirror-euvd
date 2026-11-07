@@ -3,12 +3,12 @@
   "enisaUuid": "9edf2d95-66ae-3a5d-b60f-a27ef20d66c3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npseries/papr-hvpipe: Fix race with interrupt handler\n\nWhile executing ->ioctl handler or ->release handler, if an interrupt\nfires on the same cpu, then we can enter into a deadlock.\n\nThis patch fixes both these handlers to take spin_lock_irq{save|restore}\nversions of the lock to prevent this deadlock.",
   "datePublished": "Jun 8, 2026, 3:46:25 PM",
-  "dateUpdated": "Oct 15, 2026, 10:07:28 AM",
+  "dateUpdated": "Nov 6, 2026, 4:23:48 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b33d6f5da16e0eec95b933342812c689cdfcec03\nhttps://git.kernel.org/stable/c/342c966f81cfc3cb6c297e80b37a9f3a5d637d2c\nhttps://git.kernel.org/stable/c/7a4f0846ee6cc8cf44ae0046ed42e3259d1dd45b\n",
   "aliases": "GHSA-qppg-32m7-mvgc\nCVE-2026-46298\n",
   "assigner": "Linux",
-  "epss": 0.1,
+  "epss": 0.09,
   "enisaIdProduct": [
     {
       "id": "101c5d0f-7e2c-3965-ad8a-196d77cf9fd5",

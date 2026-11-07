@@ -3,12 +3,12 @@
   "enisaUuid": "dc13e9ad-2266-3325-9a37-a6e4a08d62e0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nintel_th: fix MSC output device reference leak\n\nintel_th_output_open() looks up the output device with\nbus_find_device_by_devt(), which returns the device with a reference that\nmust be dropped after use.\n\ncommit 95fc36a234da (\"intel_th: fix device leak on output open()\")\nattempted to drop the reference from intel_th_output_release(). However,\na successful open replaces file->f_op with the output driver file\noperations before returning, so close runs the output driver release\ncallback instead.\n\nFor MSC outputs, close runs intel_th_msc_release(), which only removes\nthe per-file iterator and does not drop the device reference taken by\nintel_th_output_open(). Consequently, every successful MSC output open\nleaks one device reference.\n\nDrop the device reference from intel_th_msc_release(), which is the\nrelease path actually used for MSC output files. Remove the now-unused\nintel_th_output_release() callback from intel_th_output_fops.",
   "datePublished": "Aug 10, 2026, 11:59:51 AM",
-  "dateUpdated": "Aug 19, 2026, 4:30:44 PM",
+  "dateUpdated": "Nov 6, 2026, 4:45:00 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/12ad4fad748e6e563ff4480f03b89134a41b5c37\nhttps://git.kernel.org/stable/c/df55842fddbcdb80e6dd16680439c0f780ed592e\nhttps://git.kernel.org/stable/c/141641a70ed337e54487f766ede745fc2ce44c42\nhttps://git.kernel.org/stable/c/ddcf2064d7ec5a8c9afa7cb74442320e443502bc\nhttps://git.kernel.org/stable/c/26e27b8dcef1e4df6f30d8f25b3304a506d482b3\nhttps://git.kernel.org/stable/c/caba30eb8bd321c465ecfc7d850ee85f5b353496\nhttps://git.kernel.org/stable/c/c3a28f9cb82425fe0835048ed3677f321e780691\nhttps://git.kernel.org/stable/c/761b785a0cfbce43761227bc42a7f984f31f8921\n",
   "aliases": "GHSA-qq33-46pr-rg4r\nCVE-2026-68180\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "019c84ee-efb7-37be-95b2-98af20e0f1d6",

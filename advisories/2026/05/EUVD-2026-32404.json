@@ -3,12 +3,12 @@
   "enisaUuid": "0c185f57-a47a-3dd8-a5af-68484ac5d39a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm mirror: fix integer overflow in create_dirty_log()\n\nThe argument count calculation in create_dirty_log() performs\n`*args_used = 2 + param_count` before validating against argc. When a\nuser provides a param_count close to UINT_MAX via the device mapper\ntable string, this unsigned addition wraps around to a small value,\ncausing the subsequent `argc < *args_used` check to be bypassed.\n\nThe overflowed param_count is then passed as argc to dm_dirty_log_create(),\nwhere it can cause out-of-bounds reads on the argv array.\n\nFix by comparing param_count against argc - 2 before performing the\naddition, following the same pattern used by parse_features() in the\nsame file. Since argc >= 2 is already guaranteed, the subtraction is\nsafe.",
   "datePublished": "May 27, 2026, 12:56:28 PM",
-  "dateUpdated": "Oct 15, 2026, 1:20:01 AM",
+  "dateUpdated": "Nov 6, 2026, 4:13:32 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/e5e0ae3237584ebef510366c4cb3d5cc7c22b610\nhttps://git.kernel.org/stable/c/249c831183fb806c8e3b14c7c4c1d2fb68cf37fb\nhttps://git.kernel.org/stable/c/ae59b3025609d5a0a39cf5b2b94e2467f6231573\nhttps://git.kernel.org/stable/c/35f6b3281efd44d19110574663bc17a610bc73b9\nhttps://git.kernel.org/stable/c/47dad9eea75d33212d3d2cea10e7ed6a1bfc0713\nhttps://git.kernel.org/stable/c/87c99a50e0fdc68a5b9b52a94d49452cd3ff02ca\nhttps://git.kernel.org/stable/c/17a08791d428885d00e510864283a7b839792368\nhttps://git.kernel.org/stable/c/4c788c6f921b22f9b6c3f316c4a071c05683e7de\n",
   "aliases": "CVE-2026-46023\nGHSA-f54w-pgr9-9wv8\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "090480ce-4813-321d-8c58-35baa8191e3a",

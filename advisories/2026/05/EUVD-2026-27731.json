@@ -3,7 +3,7 @@
   "enisaUuid": "33497990-d21b-350d-af72-d5dc49f7578c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: gadget: Move vbus draw to workqueue context\n\nCurrently dwc3_gadget_vbus_draw() can be called from atomic\ncontext, which in turn invokes power-supply-core APIs. And\nsome these PMIC APIs have operations that may sleep, leading\nto kernel panic.\n\nFix this by moving the vbus_draw into a workqueue context.",
   "datePublished": "May 6, 2026, 11:27:46 AM",
-  "dateUpdated": "Oct 30, 2026, 12:25:07 PM",
+  "dateUpdated": "Nov 6, 2026, 3:32:35 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/b214f0b11a0f1186f83c284f6a545110f76066b6\nhttps://git.kernel.org/stable/c/76c1123ffccfaba95cf4ecc2a50f95504a522424\nhttps://git.kernel.org/stable/c/a7a80c25b65112768eeba58a7af129d3c52a6d90\nhttps://git.kernel.org/stable/c/2333653ef854c2cc124077f71a8526f03bf6e06a\nhttps://git.kernel.org/stable/c/74a231e3d99d310497ab0ccb359539a6063b316a\nhttps://git.kernel.org/stable/c/54aaa3b387c2f580a99dc86a9cc2eb6dfaf599a7\n",
   "aliases": "GHSA-x976-429q-rjpm\nCVE-2026-43170\n",

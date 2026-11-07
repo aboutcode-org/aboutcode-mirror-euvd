@@ -3,12 +3,12 @@
   "enisaUuid": "48b9a0df-e95c-3505-8f80-acc02ea19973",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: fix divide-by-zero in setup_geo() with zero far_copies\n\nsetup_geo() extracts near_copies (nc) and far_copies (fc) from the\nuser-provided layout parameter without checking for zero. When fc=0\nwith the \"improved\" far set layout selected, 'geo->far_set_size =\ndisks / fc' triggers a divide-by-zero.\n\nValidate nc and fc immediately after extraction, returning -1 if\neither is zero.",
   "datePublished": "May 28, 2026, 9:36:16 AM",
-  "dateUpdated": "Oct 15, 2026, 1:20:53 AM",
+  "dateUpdated": "Nov 6, 2026, 4:13:42 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0b43a70394ce492274e67463326be03e0a9897c5\nhttps://git.kernel.org/stable/c/c716ab3034f84f8a6c226814247b8c5ac9f95da1\nhttps://git.kernel.org/stable/c/553e32adfa1a96b217651139a3f8c3b92b9984ac\nhttps://git.kernel.org/stable/c/4af2e558e6fdfb972c61350653fd55d1f62b60a5\nhttps://git.kernel.org/stable/c/9d8e03b9a2b1e8ce5c198bf3a409a629f4d02cda\nhttps://git.kernel.org/stable/c/913d556e4bd1b56ed822815655b82c7bb54edc51\nhttps://git.kernel.org/stable/c/f9ddb621b2325eb69c95692958daf2bab4dea2c4\nhttps://git.kernel.org/stable/c/9aa6d860b0930e2f72795665c42c44252a558a0c\n",
   "aliases": "GHSA-fx5x-q37w-xxvr\nCVE-2026-46161\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "07d3a8d9-e0de-3a58-a10b-562eea07b325",

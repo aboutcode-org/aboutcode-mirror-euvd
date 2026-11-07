@@ -3,7 +3,7 @@
   "enisaUuid": "324f0ae6-863b-3252-ba8c-031ec1392b05",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Clamp XDomain response data copy to allocation size\n\ntb_xdp_properties_request() derives the per-packet copy length from\nthe response header without checking that it fits in the previously\nallocated data buffer.  A malicious peer can set its length field\nlarger than the declared data_length, causing memcpy to write past\nthe kcalloc allocation.\n\nClamp the per-packet copy length so that the cumulative offset\nnever exceeds data_len.",
   "datePublished": "Jun 25, 2026, 8:38:34 AM",
-  "dateUpdated": "Oct 15, 2026, 1:22:27 AM",
+  "dateUpdated": "Nov 6, 2026, 4:24:04 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",

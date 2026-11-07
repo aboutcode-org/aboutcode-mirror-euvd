@@ -3,7 +3,7 @@
   "enisaUuid": "5a286c61-0f2a-3660-bc84-5dcf8c4b51b1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Fix memory leaks in rxkad_verify_response()\n\nFix rxkad_verify_response() to free the ticket and the server key under all\ncircumstances by initialising the ticket pointer to NULL and then making\nall paths through the function after the first allocation has been done go\nthrough a single common epilogue that just releases everything - where all\nthe releases skip on a NULL pointer.",
   "datePublished": "May 27, 2026, 12:56:14 PM",
-  "dateUpdated": "Oct 30, 2026, 12:25:56 PM",
+  "dateUpdated": "Nov 6, 2026, 4:13:31 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c14433e967cff95bebc77c9c4a2a0ed4e0e22783\nhttps://git.kernel.org/stable/c/c4b8f32e73eafd4a5076be890c7c8506ec04567c\nhttps://git.kernel.org/stable/c/852b9d64cea421336579b2de3d1338dfa677e2dd\nhttps://git.kernel.org/stable/c/861b9a0a1823bf064a7b810d29502a9ef043f40f\nhttps://git.kernel.org/stable/c/c91f33fb8356dedc82bc56ce210f1a5dbee62a52\nhttps://git.kernel.org/stable/c/34f61a07e0cdefaecd3ec03bb5fb22215643678f\n",
   "aliases": "GHSA-29h5-9g4g-x624\nCVE-2026-46012\n",

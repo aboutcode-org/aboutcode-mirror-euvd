@@ -3,7 +3,7 @@
   "enisaUuid": "3f55a5fe-2f83-3454-87ee-030ed0b6326d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: fix potential buffer underflow in ath11k_hal_rx_msdu_list_get()\n\nWhen the first entry in msdu_details has a zero buffer address,\nthe code accesses msdu_details[i - 1] with i == 0, causing a\nbuffer underflow.\n\nFix similarly to ath12k_wifi7_hal_rx_msdu_list_get() by adding\na separate check for i == 0 before the main condition to prevent\nthe out-of-bounds access.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
   "datePublished": "Aug 10, 2026, 12:03:32 PM",
-  "dateUpdated": "Aug 19, 2026, 4:34:03 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:14 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/085a5fde5bac29c01059e69399b417e91c0a6c18\nhttps://git.kernel.org/stable/c/31ea4b175bc3ab430be15834d9ee8a1ce65bee15\nhttps://git.kernel.org/stable/c/20d18a5ec6ec364fcaf0d03af6fc43dcc42c6591\nhttps://git.kernel.org/stable/c/69a6a4f60b2da92c0bdfd9264b8ffe053f51f52a\nhttps://git.kernel.org/stable/c/904367381a922aa2dc3e8bd2488e6c9180516c7a\nhttps://git.kernel.org/stable/c/a154ca3c441a67d36b3a9ea63a4f11b06abe6223\nhttps://git.kernel.org/stable/c/725c1c3a8c5d920a7d3f5887412f2ad8e95a74f5\nhttps://git.kernel.org/stable/c/7f11e70629650ff6ea140984e5ce188b775b2683\n",
   "aliases": "GHSA-hxmx-3v2p-jphh\nCVE-2026-68355\n",

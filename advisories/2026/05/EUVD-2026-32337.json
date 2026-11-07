@@ -2,13 +2,13 @@
   "id": "EUVD-2026-32337",
   "enisaUuid": "fb90bc1c-ce7e-382c-b12c-79fed1764d80",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: st33zp24: Fix missing cleanup on get_burstcount() error\n\nget_burstcount() can return -EBUSY on timeout. When this happens,\nst33zp24_send() returns directly without releasing the locality\nacquired earlier.\n\nUse goto out_err to ensure proper cleanup when get_burstcount() fails.",
-  "datePublished": "May 27, 2026, 3:33:14 PM",
-  "dateUpdated": "May 27, 2026, 3:33:14 PM",
+  "datePublished": "May 27, 2026, 12:15:51 PM",
+  "dateUpdated": "Nov 6, 2026, 3:53:09 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/e0ce3da82341fcd6194175f1837946b2a894c625\nhttps://git.kernel.org/stable/c/7687133509cf66ced120b667fefd21f80bf17993\nhttps://git.kernel.org/stable/c/1256c6dc96d1e687e6e9b63088156ed07411b00c\nhttps://git.kernel.org/stable/c/a51cff9be046e13e1c1b2fe45d5c48b582ec9b8c\nhttps://git.kernel.org/stable/c/cc09d55f519e15355de343264a22ac6682b8305e\nhttps://git.kernel.org/stable/c/ec15eb67fe9df87981b4829b901ec254273ca483\nhttps://git.kernel.org/stable/c/4fffb77d35d038f146e6192da583dbe4971d869e\nhttps://git.kernel.org/stable/c/3e91b44c93ad2871f89fc2a98c5e4fe6ca5db3d9\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-45871\n",
+  "references": "https://git.kernel.org/stable/c/e0ce3da82341fcd6194175f1837946b2a894c625\nhttps://git.kernel.org/stable/c/7687133509cf66ced120b667fefd21f80bf17993\nhttps://git.kernel.org/stable/c/1256c6dc96d1e687e6e9b63088156ed07411b00c\nhttps://git.kernel.org/stable/c/a51cff9be046e13e1c1b2fe45d5c48b582ec9b8c\nhttps://git.kernel.org/stable/c/cc09d55f519e15355de343264a22ac6682b8305e\nhttps://git.kernel.org/stable/c/ec15eb67fe9df87981b4829b901ec254273ca483\nhttps://git.kernel.org/stable/c/4fffb77d35d038f146e6192da583dbe4971d869e\nhttps://git.kernel.org/stable/c/3e91b44c93ad2871f89fc2a98c5e4fe6ca5db3d9\n",
   "aliases": "CVE-2026-45871\nGHSA-x542-jg8f-r599\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "01a04e3e-ab32-345f-9a9c-3558cf173d1e",

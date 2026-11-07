@@ -2,13 +2,13 @@
   "id": "EUVD-2026-38900",
   "enisaUuid": "f8e7ba84-8974-3f56-8150-5243d778999d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix NULL deref in map_kptr_match_type for scalar regs\n\nCommit ab6c637ad027 (\"bpf: Fix a bpf_kptr_xchg() issue with local\nkptr\") refactored map_kptr_match_type() to branch on btf_is_kernel()\nbefore checking base_type(). A scalar register stored into a kptr\nslot has no btf, so the btf_is_kernel(reg->btf) call dereferences\nNULL.\n\nMove the base_type() != PTR_TO_BTF_ID guard before any reg->btf\naccess.",
-  "datePublished": "Jun 24, 2026, 6:32:44 PM",
-  "dateUpdated": "Jun 24, 2026, 6:32:44 PM",
+  "datePublished": "Jun 24, 2026, 4:29:39 PM",
+  "dateUpdated": "Nov 6, 2026, 4:23:55 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/520454e839710c327808c2fcc98e28cee77355fc\nhttps://git.kernel.org/stable/c/0a36c1f72888bca0237295a4da19cd91821a90be\nhttps://git.kernel.org/stable/c/6982653ce5f119982aa58f1af58e7bfbebf39252\nhttps://git.kernel.org/stable/c/da1d615ce49a47986a8864e2371a26e97861085c\nhttps://git.kernel.org/stable/c/4d0a375887ab4d49e4da1ff10f9606cab8f7c3ad\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-53032\n",
+  "references": "https://git.kernel.org/stable/c/520454e839710c327808c2fcc98e28cee77355fc\nhttps://git.kernel.org/stable/c/0a36c1f72888bca0237295a4da19cd91821a90be\nhttps://git.kernel.org/stable/c/6982653ce5f119982aa58f1af58e7bfbebf39252\nhttps://git.kernel.org/stable/c/da1d615ce49a47986a8864e2371a26e97861085c\nhttps://git.kernel.org/stable/c/4d0a375887ab4d49e4da1ff10f9606cab8f7c3ad\n",
   "aliases": "CVE-2026-53032\nGHSA-vwfw-86r9-43wp\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "1af94700-96ed-31db-9b5e-3246d2b11920",

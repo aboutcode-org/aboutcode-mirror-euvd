@@ -3,12 +3,12 @@
   "enisaUuid": "8bda1604-994e-396e-9075-e9b28fcddc47",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: alps: fix NULL pointer dereference in alps_raw_event()\n\nCommit ecfa6f34492c (\"HID: Add HID_CLAIMED_INPUT guards in raw_event\ncallbacks missing them\") attempted to fix up the HID drivers that had\nmissed the previous fix that was done in 2ff5baa9b527 (\"HID: appleir:\nFix potential NULL dereference at raw event handle\"), but the alps\ndriver was missed.\n\nFix this up by properly checking in the hid-alps driver that it had been\nclaimed correctly before attempting to process the raw event.",
   "datePublished": "Apr 24, 2026, 2:42:42 PM",
-  "dateUpdated": "Oct 15, 2026, 1:17:17 AM",
+  "dateUpdated": "Nov 6, 2026, 3:32:20 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/56850666bb5dcf7a13d76c5d02864813e17ee537\nhttps://git.kernel.org/stable/c/72516a8d7fe247fd895424bab87952f105a0c255\nhttps://git.kernel.org/stable/c/cc411e4823d8bfa23327d9989a0fa4e0ce76aebe\nhttps://git.kernel.org/stable/c/c8cc765253ad89ccc106a7bdeb5aeac6cf963078\nhttps://git.kernel.org/stable/c/8eed7bce7a4c41ab28ee4891103623a12fd41611\nhttps://git.kernel.org/stable/c/0091dfa542a362c178a7e9393097138a57d327d1\nhttps://git.kernel.org/stable/c/4b618248d2307a219d9431a730cfe1156c8e3386\nhttps://git.kernel.org/stable/c/ee2cb3ddfdca949dbc0c3f796ed5a439f0efc9f6\nhttps://git.kernel.org/stable/c/1badfc4319224820d5d890f8eab6aa52e4e83339\n",
   "aliases": "GHSA-9m92-4vqv-mrj9\nCVE-2026-31625\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "00903304-0fa5-3920-9f35-ded8feb29929",

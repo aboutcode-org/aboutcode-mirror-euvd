@@ -3,12 +3,12 @@
   "enisaUuid": "d6d79f62-4b61-329a-a812-d13ca3b8f1a9",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix list corruption and UAF in command complete handlers\n\nCommit 302a1f674c00 (\"Bluetooth: MGMT: Fix possible UAFs\") introduced\nmgmt_pending_valid(), which not only validates the pending command but\nalso unlinks it from the pending list if it is valid. This change in\nsemantics requires updates to several completion handlers to avoid list\ncorruption and memory safety issues.\n\nThis patch addresses two left-over issues from the aforementioned rework:\n\n1. In mgmt_add_adv_patterns_monitor_complete(), mgmt_pending_remove()\nis replaced with mgmt_pending_free() in the success path. Since\nmgmt_pending_valid() already unlinks the command at the beginning of\nthe function, calling mgmt_pending_remove() leads to a double list_del()\nand subsequent list corruption/kernel panic.\n\n2. In set_mesh_complete(), the use of mgmt_pending_foreach() in the error\npath is removed. Since the current command is already unlinked by\nmgmt_pending_valid(), this foreach loop would incorrectly target other\npending mesh commands, potentially freeing them while they are still being\nprocessed concurrently (leading to UAFs). The redundant mgmt_cmd_status()\nis also simplified to use cmd->opcode directly.",
   "datePublished": "May 5, 2026, 3:17:25 PM",
-  "dateUpdated": "Oct 21, 2026, 12:39:59 PM",
+  "dateUpdated": "Nov 6, 2026, 3:32:29 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3d6de8467236cd763ddc7d06127689bdfbfbd8ff\nhttps://git.kernel.org/stable/c/695b45b2262fcb5e71bed1175aad59c72f92aa78\nhttps://git.kernel.org/stable/c/b5c5e96f3b0a5003c3ff98ebb33e59afec51dd77\nhttps://git.kernel.org/stable/c/02023ff760cc104a5d86a82ef5b8dd89098ad78d\nhttps://git.kernel.org/stable/c/17f89341cb4281d1da0e2fb0de5406ab7c4e25ef\n",
   "aliases": "GHSA-9xxq-2x8g-75gf\nCVE-2026-43059\n",
   "assigner": "Linux",
-  "epss": 0.18,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1b64ec24-1efa-3d52-89d8-42634404d414",

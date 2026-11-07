@@ -3,12 +3,12 @@
   "enisaUuid": "b78e602a-9d4c-3b8f-8d69-e91cae02a25f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ncm: validate datagram bounds in ncm_unwrap_ntb()\n\nWhen unpacking host-supplied NTBs, ncm_unwrap_ntb() checks datagram length\nagainst frame_max but does not verify that the datagram fits within the\ndeclared block length. Additionally, when decoding multiple NTBs from a\nsingle socket buffer, subsequent block lengths are not checked against the\nactual remaining buffer data.\n\nWith these checks missing, a malicious USB host can specify datagram\noffsets and lengths that point beyond the block, or supply secondary NTB\nheaders declaring lengths larger than the buffer. skb_put_data() then\ncopies adjacent kernel memory from skb_shared_info into the network skb.\n\nFix this by verifying that sufficient buffer space remains for the NTB\nheader before parsing, handling zero-length block declarations, ensuring\nthat block lengths never exceed the remaining buffer space, and verifying\nthat each datagram payload stays strictly within the block boundary.",
   "datePublished": "Aug 10, 2026, 12:03:45 PM",
-  "dateUpdated": "Aug 19, 2026, 4:34:26 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:14 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/35d15bbaec0557330e774ec31412ef508de6e0e0\nhttps://git.kernel.org/stable/c/6b2be489eaa6293e60549005d91f15ceb150510f\nhttps://git.kernel.org/stable/c/f87ed889f0f7417b8938c98d8833f559b755373c\nhttps://git.kernel.org/stable/c/e07751d0527ccc2a1c32eb0b0b7da3b4b9b5381f\nhttps://git.kernel.org/stable/c/fff1059d139ef798bab917990524faaf25854ca8\nhttps://git.kernel.org/stable/c/40c706a0224bde194667e3378c689b542fec4b44\nhttps://git.kernel.org/stable/c/41fd5f2fb0027d3773ae949e3247c2e0a2a7fe5c\nhttps://git.kernel.org/stable/c/1febec7e47cdcd01f43fb0211094e3010474666e\n",
   "aliases": "GHSA-jmw8-f562-3f2g\nCVE-2026-68368\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "00f46b41-d8a6-352f-8a4d-5f1a90acfd3d",

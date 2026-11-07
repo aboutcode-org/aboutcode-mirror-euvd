@@ -3,9 +3,9 @@
   "enisaUuid": "27396837-7924-3432-9930-b7763ce1b4f7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Avoid integer underflow with ffs in EOP ring size calc\n\nThe low 6 bits of cp_hqd_eop_control store the base-2 logarithm\nof the EOP ring size. This was calculated as\n\nffs(q->eop_ring_buffer_size / sizeof(unsigned int)) - 1 - 1\n\nBut ffs can in theory return 1 or 0, so this could underflow\n(although in practice the ring buffer size cannot be less than 4096).\n\nChange this to\n\nffs(q->eop_ring_buffer_size / sizeof(unsigned int) / 4)\n\nusing properties of logarithms.\n\n(cherry picked from commit 4f18c56630383c14bfc6b2d65f88f2f895d2121a)",
   "datePublished": "Oct 6, 2026, 8:44:20 AM",
-  "dateUpdated": "Oct 19, 2026, 9:15:07 AM",
+  "dateUpdated": "Nov 6, 2026, 5:14:59 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/82e1b8299c6da02ce02185c208d2fdf7572b5ea1\nhttps://git.kernel.org/stable/c/c883d0a132d430ef7ebb23fd94323be94d0fbdb8\n",
+  "references": "https://git.kernel.org/stable/c/9e8f43579f849fba0dd1059160f50bd44a767366\nhttps://git.kernel.org/stable/c/82e1b8299c6da02ce02185c208d2fdf7572b5ea1\nhttps://git.kernel.org/stable/c/c883d0a132d430ef7ebb23fd94323be94d0fbdb8\n",
   "aliases": "GHSA-mv47-6r4w-p28q\nCVE-2026-98176\n",
   "assigner": "Linux",
   "epss": 0.16,
@@ -39,6 +39,26 @@
         }
       },
       "product_version": "14328aa58ce523a59996c5a82681c43ec048cc33 <82e1b8299c6da02ce02185c208d2fdf7572b5ea1"
+    },
+    {
+      "id": "23c0c01c-b4fe-3b2b-8a1f-583a86709f8c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "14328aa58ce523a59996c5a82681c43ec048cc33 <9e8f43579f849fba0dd1059160f50bd44a767366"
+    },
+    {
+      "id": "32ba51b7-ab5f-396b-93f5-422064e7fef0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.18.61"
     },
     {
       "id": "574c9c59-f061-3ceb-a061-6c2f2a902347",

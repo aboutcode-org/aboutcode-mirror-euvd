@@ -3,12 +3,12 @@
   "enisaUuid": "854f2c83-b5e9-33c6-bde1-49e3be2820d8",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cx23885: add ioremap return check and cleanup\n\nAdd a check for the return value of pci_ioremap_bar()\nin cx23885_dev_setup().\nIf ioremap for BAR0 fails, release the already allocated\nPCI memory region,\ndecrement the device count, and return -ENODEV.\n\nThis prevents a potential null pointer dereference and\nensures proper cleanup\non memory mapping failure.",
   "datePublished": "Aug 10, 2026, 12:00:48 PM",
-  "dateUpdated": "Aug 19, 2026, 4:31:56 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:09 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/f58f4b571bd75c78bbf15441086ba0c2830c1aa5\nhttps://git.kernel.org/stable/c/9052fec0bb84eace81ac7bad071266052870cdf3\nhttps://git.kernel.org/stable/c/6a7636e3d5204fb18fdf1c3f909a3d9d9e24064c\nhttps://git.kernel.org/stable/c/8fbdca4c99f68734e9b6c030973fb61a11bede15\nhttps://git.kernel.org/stable/c/83540d86d717735b52a43e4ba1b784da5cc2310a\nhttps://git.kernel.org/stable/c/c68c4ce72feb6fcccc843eb3baa7af60189ed567\nhttps://git.kernel.org/stable/c/ff3c670a1de3a714f5644e37b9446fe7c3299fd3\nhttps://git.kernel.org/stable/c/a0701e387b46e2481c05b47f1235b954bfc2af3e\n",
   "aliases": "GHSA-qv7m-p22w-x3r6\nCVE-2026-68226\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "15e3efd3-7cbd-3af9-ba9c-5cd53d408842",

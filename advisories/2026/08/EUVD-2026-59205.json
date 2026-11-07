@@ -3,7 +3,7 @@
   "enisaUuid": "60d9a5ee-ff42-33d5-9583-bf423566d4b6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvduse: Fix race in vduse_dev_msg_sync and vduse_dev_read_iter\n\nThere is one race case in vduse_dev_msg_sync and vduse_dev_read_iter:\n\nvduse_dev_read_iter():\n    lock(msg_lock);\n    dequeue_msg(send_list);\n    unlock(msg_lock);\nvduse_dev_msg_sync():\n    wait_timeout() finish\n    lock(msg_lock);\n    check msg->complete is false\n        list_del(msg);   <- double list_del() crash!\n\nTo fix this case, we shall ensure vduse_msg is on send_list or recv_list\noutside the msg_lock critical section.",
   "datePublished": "Aug 15, 2026, 5:55:23 AM",
-  "dateUpdated": "Aug 17, 2026, 5:12:10 AM",
+  "dateUpdated": "Nov 6, 2026, 4:55:25 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/c83ad3dfa6d9953d5ce6839416bf5a1bfc50285a\nhttps://git.kernel.org/stable/c/09723f26ed801c083e914cec4cc0e1af4b933dc7\nhttps://git.kernel.org/stable/c/d7e7c813834c6c05c26033456ab7169e2f9c99eb\nhttps://git.kernel.org/stable/c/3755965adbb617f4283ac6ccd351ed0676843cba\nhttps://git.kernel.org/stable/c/d8715b5a8fdb23fef576700e71d0c253dbeddad4\nhttps://git.kernel.org/stable/c/8062ff9d366c4bc4ae775e14eac9a769f20c60dd\nhttps://git.kernel.org/stable/c/ae9c13b6fd79087cc5a216ee1649b6f012c2a238\n",
   "aliases": "CVE-2026-72306\nGHSA-p7f7-389q-3p34\n",

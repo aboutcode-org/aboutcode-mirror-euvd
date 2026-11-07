@@ -3,7 +3,7 @@
   "enisaUuid": "5b8e3ef6-e376-3a62-afd5-60899d3017f4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_flow: Dont expose folded kernel pointers\n\nThe flow classifier falls back to addr_fold() for fields that are missing\nfrom packet headers. In map mode, userspace controls mask, xor, rshift,\naddend and divisor, and can observe the resulting classid through class\nstatistics. This allows a tc classifier in a user/network namespace to\nrecover the 32-bit folded value of skb->sk, skb_dst() or skb_nfct().\n\nAlign with standard kernel practices for pointer hashing and replace the\nXOR folding with a keyed siphash (which is cryptographically secure)",
   "datePublished": "Aug 15, 2026, 5:57:57 AM",
-  "dateUpdated": "Aug 17, 2026, 5:16:36 AM",
+  "dateUpdated": "Nov 6, 2026, 5:05:43 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/19f2ecf8ea564562c7e7a919cf38068dd9aa1c96\nhttps://git.kernel.org/stable/c/3d054001860270748405a3f9270c5fa0bf7ffc19\nhttps://git.kernel.org/stable/c/fb31fbe51c233f3bf47021121f63d2e42cac2d08\nhttps://git.kernel.org/stable/c/0a8b5b74f0e6b6b9ce453bcfa4baa502c4c7577a\nhttps://git.kernel.org/stable/c/6151159618198675e01c391676e579738286c135\nhttps://git.kernel.org/stable/c/f294fc71c4a0fa4964f6428a1b4e7929c1d83125\n",
   "aliases": "GHSA-wfqw-582v-82vh\nCVE-2026-74290\n",

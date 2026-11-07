@@ -3,7 +3,7 @@
   "enisaUuid": "6e33cf2a-7293-3384-ad5d-bd53fb59f056",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: io_edgeport: cap received transmit credits\n\nThe interrupt-status packet reports transmit credits returned by the\ndevice. edge_interrupt_callback() adds the 16-bit value to txCredits\nwithout checking maxTxCredits.\n\nedge_write() uses txCredits minus the software FIFO count as the amount\nof data that fits. Since the FIFO is allocated with maxTxCredits bytes,\ntxCredits exceeding maxTxCredits can cause OOB write in ring buffer.\n\nCap accumulated credits at maxTxCredits. Conforming devices should never\nhit the cap.",
   "datePublished": "Aug 10, 2026, 12:03:42 PM",
-  "dateUpdated": "Aug 19, 2026, 4:34:21 PM",
+  "dateUpdated": "Nov 6, 2026, 4:55:14 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/d9dd87bc1d7e8476d29d68883542ec6198d385c6\nhttps://git.kernel.org/stable/c/5b39d3da15344b87ef54a0a04f65b52622747e99\nhttps://git.kernel.org/stable/c/63c4e55d0741cfaf00515e807cad9293445cd348\nhttps://git.kernel.org/stable/c/ee57992c053a6d395e98ced2d4c9cc3b42d8c27a\nhttps://git.kernel.org/stable/c/64b687f9694777754285d489abbefa3784bc78da\nhttps://git.kernel.org/stable/c/cbe00048b69d67c8a78293cb7681b4c9963b26c7\nhttps://git.kernel.org/stable/c/1e47d8228b8767c8ac722aedb388f70adeeda43d\nhttps://git.kernel.org/stable/c/faaddd811c5099f11a5f52e68a6b31a5898cda4f\n",
   "aliases": "GHSA-xfrx-g64h-2x84\nCVE-2026-68365\n",

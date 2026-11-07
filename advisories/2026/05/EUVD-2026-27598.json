@@ -3,12 +3,12 @@
   "enisaUuid": "4387d546-6aa0-3bd9-b923-feec4822f043",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nixgbevf: add missing negotiate_features op to Hyper-V ops table\n\nCommit a7075f501bd3 (\"ixgbevf: fix mailbox API compatibility by\nnegotiating supported features\") added the .negotiate_features callback\nto ixgbe_mac_operations and populated it in ixgbevf_mac_ops, but forgot\nto add it to ixgbevf_hv_mac_ops. This leaves the function pointer NULL\non Hyper-V VMs.\n\nDuring probe, ixgbevf_negotiate_api() calls ixgbevf_set_features(),\nwhich unconditionally dereferences hw->mac.ops.negotiate_features().\nOn Hyper-V this results in a NULL pointer dereference:\n\n  BUG: kernel NULL pointer dereference, address: 0000000000000000\n  [...]\n  Hardware name: Microsoft Corporation Virtual Machine/Virtual Machine [...]\n  Workqueue: events work_for_cpu_fn\n  RIP: 0010:0x0\n  [...]\n  Call Trace:\n   ixgbevf_negotiate_api+0x66/0x160 [ixgbevf]\n   ixgbevf_sw_init+0xe4/0x1f0 [ixgbevf]\n   ixgbevf_probe+0x20f/0x4a0 [ixgbevf]\n   local_pci_probe+0x50/0xa0\n   work_for_cpu_fn+0x1a/0x30\n   [...]\n\nAdd ixgbevf_hv_negotiate_features_vf() that returns -EOPNOTSUPP and\nwire it into ixgbevf_hv_mac_ops. The caller already handles -EOPNOTSUPP\ngracefully.",
   "datePublished": "May 6, 2026, 7:40:25 AM",
-  "dateUpdated": "Oct 15, 2026, 1:19:06 AM",
+  "dateUpdated": "Nov 6, 2026, 3:32:31 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/376d74ea03589914fbe2dedcbebf418396c04fd0\nhttps://git.kernel.org/stable/c/d8a747057a17ffc79e31df1abb11d05e1669d8e5\nhttps://git.kernel.org/stable/c/2270ebab53128fb73c4a70a292be09094074737f\nhttps://git.kernel.org/stable/c/4db7b61ec1d1b2b67c0881b62fc4f9583bc21484\nhttps://git.kernel.org/stable/c/1455ff8809843e6e83f1f5b5c0bcc2224c99a3cb\nhttps://git.kernel.org/stable/c/4821d563cd7f251ae728be1a6d04af82a294a5b9\n",
   "aliases": "CVE-2026-43094\nGHSA-8c3v-5v6w-588p\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "0f8326b0-6546-3c86-bf5d-7d605afb8c21",

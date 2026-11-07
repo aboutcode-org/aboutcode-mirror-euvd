@@ -3,12 +3,12 @@
   "enisaUuid": "76cbd247-0260-30b8-b6ad-e61a4f1e9f2d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: Fix GISC refcount leak on AIF enable failure\n\nkvm_s390_gisc_register() registers the guest ISC before pinning\nthe guest interrupt forwarding pages and allocating the AISB bit.\nIf any of the later setup steps fails, the function unwinds the\npinned pages and other local state, but does not unregister the\nGISC reference. Add the missing kvm_s390_gisc_unregister() to the\nerror unwind path.",
   "datePublished": "Aug 15, 2026, 5:55:11 AM",
-  "dateUpdated": "Aug 17, 2026, 5:11:52 AM",
+  "dateUpdated": "Nov 6, 2026, 4:55:25 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/3882224b0e714f34de91e5f28307c5d3fccfe8f8\nhttps://git.kernel.org/stable/c/6e69317cd44a2f21f8f7a9d93eb3220e868adfa8\nhttps://git.kernel.org/stable/c/6cd6e1c978784eec9032e2fe94a53e62b674fe3e\nhttps://git.kernel.org/stable/c/5fb75c5272950b3ebe8bdee7abfdafd44f38313b\nhttps://git.kernel.org/stable/c/adce12bb0e0dc82d1d6f0821c9faee3145e62a6f\nhttps://git.kernel.org/stable/c/7b69729046a4c58f4cb457184e5ac4aaa179bff4\n",
   "aliases": "CVE-2026-72290\nGHSA-w6f2-9h8p-7g45\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "22d4bc39-7dcd-3fe4-8dfe-cc8af8f81d5c",

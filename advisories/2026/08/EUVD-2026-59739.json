@@ -3,7 +3,7 @@
   "enisaUuid": "caea5f84-ead2-3e9a-b9a4-5763eff0b6f1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (adt7470) Fix divide-by-zero TOCTOU crash in fan speed read\n\nIf the fan data becomes 0 between the FAN_DATA_VALID() check and the\nFAN_PERIOD_TO_RPM() conversion, it will result in a divide-by-zero crash\ndue to a race with a concurrent update of the cached fan value.\n\nFix a TOCTOU issue by reading fan data once.",
   "datePublished": "Aug 15, 2026, 12:27:55 PM",
-  "dateUpdated": "Aug 19, 2026, 4:38:34 PM",
+  "dateUpdated": "Nov 6, 2026, 5:05:48 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/689a2ea75434131d0af58aeb7d51fde40e858b4d\nhttps://git.kernel.org/stable/c/009240d057e26831cc925feaba4c490209c1d0ba\nhttps://git.kernel.org/stable/c/d328175045176f85c15c369bd21dc551351e7935\nhttps://git.kernel.org/stable/c/832069bec79cf6f903441c5769d3cdba95d0af33\nhttps://git.kernel.org/stable/c/96ad57d31763559d376416cdf3bf5ae79bbbebec\nhttps://git.kernel.org/stable/c/76963b04b2d1c648d69949d8dd521e1ff7f40b51\nhttps://git.kernel.org/stable/c/1b46fe9dc8f8de59310f37e6c5e5c0e05ded46c3\n",
   "aliases": "GHSA-x8wx-2r8m-399g\nCVE-2026-74546\n",

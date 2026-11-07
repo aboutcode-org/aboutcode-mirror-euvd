@@ -3,12 +3,12 @@
   "enisaUuid": "042ab339-6685-318e-b417-57da270a1dea",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix disk reference leak in blkcg_maybe_throttle_current()\n\nAdd the missing put_disk() on the error path in\nblkcg_maybe_throttle_current(). When blkcg lookup, blkg lookup, or\nblkg_tryget() fails, the function jumps to the out label which only\ncalls rcu_read_unlock() but does not release the disk reference acquired\nby blkcg_schedule_throttle() via get_device(). Since current->throttle_disk\nis already set to NULL before the lookup, blkcg_exit() cannot release\nthis reference either, causing the disk to never be freed.\n\nRestore the reference release that was present as blk_put_queue() in the\noriginal code but was inadvertently dropped during the conversion from\nrequest_queue to gendisk.",
   "datePublished": "Jun 24, 2026, 4:30:54 PM",
-  "dateUpdated": "Jun 24, 2026, 4:30:54 PM",
+  "dateUpdated": "Nov 6, 2026, 4:24:03 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/4048ed98860d3785645ebbd34f69566a6c7320c3\nhttps://git.kernel.org/stable/c/73a5af059905d171b398c8b2381632ee499948b5\nhttps://git.kernel.org/stable/c/b3e005f16cd98f815429a87aef4c61e9c140779f\nhttps://git.kernel.org/stable/c/000e8454692cab9d1f1b80130e2870e355301d06\nhttps://git.kernel.org/stable/c/23308af722fefed00af5f238024c11710938fba3\n",
   "aliases": "GHSA-2mp2-fxxh-hv2j\nCVE-2026-53126\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.11,
   "enisaIdProduct": [
     {
       "id": "0a1716d0-ea1d-3c7d-a9dc-52d0b44c35cd",

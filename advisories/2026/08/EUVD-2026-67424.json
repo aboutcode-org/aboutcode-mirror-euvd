@@ -3,12 +3,12 @@
   "enisaUuid": "c01d177f-3348-3e7f-b2d3-e7712d6df089",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/mmiotrace: Add NULL check for mmio_trace_array in logging functions\n\nmmio_trace_rw() and mmio_trace_mapping() retrieve mmio_trace_array into\ntr and pass it to __trace_mmiotrace_rw() and __trace_mmiotrace_map().\nIf these functions are invoked while mmio_trace_array is NULL (e.g. before\ninitialization or after disabled), accessing tr->array_buffer.buffer will\nresult in a NULL pointer dereference crash.\n\nFix this by adding an explicit NULL check for tr at the beginning of\n__trace_mmiotrace_rw() and __trace_mmiotrace_map().",
   "datePublished": "Aug 28, 2026, 6:52:53 AM",
-  "dateUpdated": "Sep 14, 2026, 11:58:50 AM",
+  "dateUpdated": "Nov 6, 2026, 5:05:53 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/dc1b1a057b3bb901f83433700e604fe0ae67c5f2\nhttps://git.kernel.org/stable/c/6aee2d478545c089dd5d055d3c9f0c7ea034fb80\nhttps://git.kernel.org/stable/c/4e4ab09db7899d7f2d2293a18adf0fa200a27e73\nhttps://git.kernel.org/stable/c/2df964d141270c40f07547b0c2e0a51e2573d46d\nhttps://git.kernel.org/stable/c/876014b4eeb927146430e7591cf959a7ceb8d64a\nhttps://git.kernel.org/stable/c/a20a0010eb6485f60cd64e15ebc85a4bd388642e\nhttps://git.kernel.org/stable/c/60234845142fddb27db89ebc00a65178421fb3a4\nhttps://git.kernel.org/stable/c/12b80cdbc54cf615b4717a4e8180063408091ea2\n",
   "aliases": "CVE-2026-80689\nGHSA-6q77-h2mr-vrm4\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.18,
   "enisaIdProduct": [
     {
       "id": "238a56bd-d9f8-3625-b272-57ca1ca1dd92",

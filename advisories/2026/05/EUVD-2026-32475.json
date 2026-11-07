@@ -3,7 +3,7 @@
   "enisaUuid": "bba92fed-9b7c-3f0a-8e95-d8b679552227",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: check for PCI upstream bridge existence\n\npci_upstream_bridge() returns NULL if the device is on a root bus.  If\n8821CE is installed in the system with such a PCI topology, the probing\nroutine will crash.  This has probably been unnoticed as 8821CE is mostly\nsupplied in laptops where there is a PCI-to-PCI bridge located upstream\nfrom the device.  However the card might be installed on a system with\ndifferent configuration.\n\nCheck if the bridge does exist for the specific workaround to be applied.\n\nFound by Linux Verification Center (linuxtesting.org) with Svace static\nanalysis tool.",
   "datePublished": "May 27, 2026, 12:58:37 PM",
-  "dateUpdated": "Oct 15, 2026, 1:20:27 AM",
+  "dateUpdated": "Nov 6, 2026, 4:13:37 PM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/959c13da6c36167ce1016d400a6104d2367f686e\nhttps://git.kernel.org/stable/c/3b89b4c095804c478d50376285e66700cf3c045f\nhttps://git.kernel.org/stable/c/cc9b6303e7ea91bc360b42c7edc1fe9ceb2f47fe\nhttps://git.kernel.org/stable/c/6c53d68e3bcfc8faccdd76c3383a9232b05c9ae6\nhttps://git.kernel.org/stable/c/000134a20bbf89b1152520a2eef71f91fdb83a5b\nhttps://git.kernel.org/stable/c/3bbbb56204f7359ce2139a9341b43b52a186261c\nhttps://git.kernel.org/stable/c/eb101d2abdcccb514ca4fccd3b278dd8267374f6\n",
   "aliases": "GHSA-wxwq-c95x-686r\nCVE-2026-46092\n",
