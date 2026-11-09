@@ -3,7 +3,7 @@
   "enisaUuid": "258db3ee-ff3b-38a1-ae99-eaba2eed6ede",
   "description": "barebox version prior to 2026.04.0 contains multiple memory-safety vulnerabilities in the EFI PE loader in efi/loader/pe.c where integer overflow in virtual image size computation using 32-bit arithmetic on section VirtualAddress and size values allows undersized heap allocation, and PE section loading logic fails to validate that PointerToRawData plus copied size remains within the PE file buffer. An attacker can supply a malicious EFI PE binary via TFTP, USB, SD card, or network boot to trigger heap buffer overflow or out-of-bounds read from heap memory, potentially achieving code execution in bootloader context.",
   "datePublished": "May 11, 2026, 10:17:19 PM",
-  "dateUpdated": "Jul 18, 2026, 3:03:13 AM",
+  "dateUpdated": "Nov 8, 2026, 2:02:14 PM",
   "baseScore": 8.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
@@ -21,16 +21,6 @@
         }
       },
       "product_version": "0 <2026.04.0"
-    },
-    {
-      "id": "570e9bfe-7dde-31f6-8f56-6485b1d743a6",
-      "product": {
-        "name": "barebox",
-        "vendor": {
-          "name": "barebox"
-        }
-      },
-      "product_version": "0 \u22642026.04.0"
     }
   ],
   "enisaIdVendor": [

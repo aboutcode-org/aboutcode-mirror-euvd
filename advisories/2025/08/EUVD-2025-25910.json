@@ -3,33 +3,22 @@
   "enisaUuid": "fb61cb67-8937-3854-b5d2-b1f914324a3d",
   "description": "Coolify versions prior to v4.0.0-beta.420.6 are vulnerable to a stored cross-site scripting (XSS) attack in the project creation workflow. An authenticated user with low privileges can create a project with a maliciously crafted name containing embedded JavaScript. When an administrator attempts to delete the project or its associated resource, the payload executes in the admin\u2019s browser context. This results in full compromise of the Coolify instance, including theft of API tokens, session cookies, and access to WebSocket-based terminal sessions on managed servers.",
   "datePublished": "Aug 27, 2025, 4:48:03 PM",
-  "dateUpdated": "May 15, 2026, 11:14:56 AM",
+  "dateUpdated": "Nov 8, 2026, 2:00:15 PM",
   "baseScore": 9.4,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
   "references": "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.420.7\nhttps://coolify.io/\nhttps://github.com/Eyodav/CVE-2025-34157\n",
   "aliases": "GHSA-6p37-qg9q-mprw\nCVE-2025-34157\n",
   "assigner": "VulnCheck",
-  "epss": 0.07,
+  "epss": 0.48,
   "enisaIdProduct": [
-    {
-      "id": "86888392-ca07-31ae-afee-69f1329b4700",
-      "product": {
-        "name": "coolify"
-      },
-      "product_version": "* <4.0.0.-beta.420.7"
-    },
-    {
-      "id": "a77c35ec-5c2f-30a8-87cd-179c3e1fdf5d",
-      "product": {
-        "name": "coolify"
-      },
-      "product_version": "* <4.0.0.-beta.420.7"
-    },
     {
       "id": "eacb931f-679a-32c3-8e44-084ea2163014",
       "product": {
-        "name": "coolify"
+        "name": "coolify",
+        "vendor": {
+          "name": "coollabsio"
+        }
       },
       "product_version": "0 <4.0.0.-beta.420.7"
     }

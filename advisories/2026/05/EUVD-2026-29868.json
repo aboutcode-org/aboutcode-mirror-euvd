@@ -3,26 +3,32 @@
   "enisaUuid": "ea092667-490a-3996-a7b3-37d1202d592d",
   "description": "Heym before 0.0.21 contains an authorization bypass vulnerability in workflow execution that allows authenticated users to execute arbitrary workflows by referencing victim workflow UUIDs without proper access validation. Attackers can create workflows with execute nodes or agent subWorkflowIds pointing to victim workflow UUIDs to load and execute those workflows under attacker-controlled execution paths, exposing victim workflow outputs and triggering workflow nodes with unintended side effects.",
   "datePublished": "May 12, 2026, 9:17:10 PM",
-  "dateUpdated": "May 12, 2026, 9:17:10 PM",
+  "dateUpdated": "Nov 8, 2026, 2:03:41 PM",
   "baseScore": 7.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N",
   "references": "https://github.com/heymrun/heym/releases/tag/v0.0.21\nhttps://github.com/heymrun/heym/pull/93\nhttps://github.com/heymrun/heym/commit/3ae3ef6a7d3609da0e910f9ed6b81e99a1661ac8\nhttps://www.vulncheck.com/advisories/heym-authorization-bypass-in-workflow-execution\n",
-  "aliases": "CVE-2026-45226\n",
+  "aliases": "GHSA-p953-2g5p-33c5\nCVE-2026-45226\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.29,
   "enisaIdProduct": [
     {
       "id": "3d372f69-952e-39f8-a49a-8744fac0327e",
       "product": {
-        "name": "heym"
+        "name": "heym",
+        "vendor": {
+          "name": "heymrun"
+        }
       },
       "product_version": "0 <0.0.21"
     },
     {
       "id": "4067d570-b1f6-34f5-b8d8-aa732efea054",
       "product": {
-        "name": "heym"
+        "name": "heym",
+        "vendor": {
+          "name": "heymrun"
+        }
       },
       "product_version": "patch: 3ae3ef6a7d3609da0e910f9ed6b81e99a1661ac8"
     }

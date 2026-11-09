@@ -3,28 +3,24 @@
   "enisaUuid": "f7845485-beaa-362a-bd98-b5d6785e9feb",
   "description": "An authenticated command injection vulnerability exists in Pi-hole versions up to 3.3. When adding a domain to the allowlist via the web interface, the domain parameter is not properly sanitized, allowing an attacker to append OS commands to the domain string. These commands are executed on the underlying operating system with the privileges of the Pi-hole service user.\n\n\n\n\nThis behavior was present in the legacy AdminLTE interface and has since been patched in later versions.",
   "datePublished": "Jul 3, 2025, 7:46:49 PM",
-  "dateUpdated": "May 15, 2026, 11:14:37 AM",
+  "dateUpdated": "Nov 8, 2026, 2:00:15 PM",
   "baseScore": 9.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
   "references": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/unix/http/pihole_whitelist_exec.rb\nhttps://pi-hole.net/\nhttps://github.com/pi-hole/web/releases/tag/v4.0\nhttps://pulsesecurity.co.nz/advisories/pihole-v3.3-vulns\nhttps://vulncheck.com/advisories/pihole-adminlte-whitelist-rce\n",
   "aliases": "GHSA-j569-xm4x-j2qh\nCVE-2025-34087\n",
   "assigner": "VulnCheck",
-  "epss": 72.18,
+  "epss": 7.04,
   "enisaIdProduct": [
     {
       "id": "007f9a24-c416-3863-8ce4-8225b386ab08",
       "product": {
-        "name": "Web"
+        "name": "Web",
+        "vendor": {
+          "name": "com.ritense.valtimo"
+        }
       },
       "product_version": "0 \u22643.3"
-    },
-    {
-      "id": "792a2608-fa68-3fbc-97be-d60fb64bfb75",
-      "product": {
-        "name": "Web"
-      },
-      "product_version": "* \u22643.3"
     }
   ],
   "enisaIdVendor": [

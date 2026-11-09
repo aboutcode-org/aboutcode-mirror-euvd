@@ -3,14 +3,14 @@
   "enisaUuid": "dd1ef5e1-84d6-32dc-a136-13608cb5d33a",
   "description": "XX-Net V5.16.6 contains a WebSocket frame parsing vulnerability in the WebSocket_receive_worker routine of simple_http_server.py that allows attackers to cause corrupted application data by sending unmasked WebSocket frames. The server unconditionally reads 4 bytes as a masking key regardless of whether the MASK bit is set in the frame header, causing the first 4 bytes of payload to be consumed as a mask key and the remaining payload to be incorrectly XOR-decoded, resulting in data corruption alongside missing RSV bit, opcode, and FIN fragmentation validations.",
   "datePublished": "May 29, 2026, 3:58:24 PM",
-  "dateUpdated": "May 29, 2026, 3:58:24 PM",
+  "dateUpdated": "Nov 8, 2026, 2:00:37 PM",
   "baseScore": 5.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/XX-net/XX-Net/issues/14169\nhttps://github.com/XX-net/XX-Net/pull/14170\nhttps://github.com/XX-net/XX-Net/commit/a68b972a84ed6e52df9f30237cf47493b9231b53\nhttps://www.vulncheck.com/advisories/xx-net-websocket-frame-parsing-data-corruption-via-simple-http-server-py\n",
   "aliases": "CVE-2026-10099\nGHSA-cwjv-w927-x7gr\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.13,
   "enisaIdProduct": [
     {
       "id": "74a4a531-cd64-328f-9f8b-d33f61635ac3",
