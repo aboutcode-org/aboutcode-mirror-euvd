@@ -3,14 +3,14 @@
   "enisaUuid": "20d098a7-6fc8-3a8d-8f27-627b1994c1a6",
   "description": "filelock is a platform-independent file lock for Python. From 3.10.0 until 4.2.1, filelock on Windows ignores the mode argument for WindowsFileLock files and the ReadWriteLock SQLite database. A lock created with mode=0o600 receives the parent directory's inheritable ACL because _open_non_reparse_fd and _nt_open do not create an owner-only security descriptor. Another local account with inherited access can read holder metadata or the lock database, modify those files where the ACL permits writes, or take the byte-range lock after release and delay later acquisitions. UnixFileLock is not affected, and mutual exclusion between cooperating processes continues to hold. This issue is fixed in version 4.2.1.",
   "datePublished": "Nov 5, 2026, 9:47:35 PM",
-  "dateUpdated": "Nov 5, 2026, 9:47:35 PM",
+  "dateUpdated": "Nov 9, 2026, 6:50:04 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
   "references": "https://github.com/tox-dev/filelock/security/advisories/GHSA-8mx5-7m5m-r77g\nhttps://github.com/tox-dev/filelock/pull/835\nhttps://github.com/tox-dev/filelock/commit/72786d41aa25159ad28c1bcf4291738b135b2c6c\nhttps://github.com/tox-dev/filelock/commit/e1e825b1992f69fb6b346dc395d5ae4893536c0a\nhttps://github.com/tox-dev/filelock/releases/tag/4.2.1\n",
   "aliases": "GHSA-8mx5-7m5m-r77g\nCVE-2026-112910\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "dd4aadfe-4955-3076-bd26-8798011ffef1",

@@ -1,0 +1,42 @@
+{
+  "id": "EUVD-2026-119888",
+  "enisaUuid": "7d01707d-7bbe-3c4d-ac90-a49e2e0078bc",
+  "description": "Apache Airflow's secrets masker matched sensitive key names only in their snake_case form, so values stored under camelCase keys such as `privateKey`, `connectionString`, `webhookUrl` or `accessKey` \u2014 for example in a Connection's extra or a Variable \u2014 were not redacted in task logs, rendered template fields or API responses. A user who can read task logs or rendered templates, but is not meant to see those credentials, could read them in cleartext. Users are advised to upgrade to apache-airflow 3.4.0 or later. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+  "datePublished": "Nov 9, 2026, 9:12:05 AM",
+  "dateUpdated": "Nov 9, 2026, 1:04:43 PM",
+  "baseScore": 0.0,
+  "references": "https://github.com/apache/airflow/pull/74840\nhttps://lists.apache.org/thread.html/n0qggmo6o10hxojqr26gp4b2fqjpzzk2\n",
+  "aliases": "GHSA-qv7j-fgv4-c4rc\nCVE-2026-111452\n",
+  "assigner": "apache",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "35a0007a-9f00-3659-b31b-e371e5445d49",
+      "product": {
+        "name": "Apache Airflow",
+        "vendor": {
+          "name": "Apache Software Foundation"
+        }
+      },
+      "product_version": "2.1.0 <3.0.0"
+    },
+    {
+      "id": "6d0a02f0-1639-3d0b-9dfc-01114a57cf97",
+      "product": {
+        "name": "Apache Airflow",
+        "vendor": {
+          "name": "Apache Software Foundation"
+        }
+      },
+      "product_version": "0 <3.4.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9fccf4b5-e70d-3682-aac5-ea3a5fecb59b",
+      "vendor": {
+        "name": "Apache Software Foundation"
+      }
+    }
+  ]
+}

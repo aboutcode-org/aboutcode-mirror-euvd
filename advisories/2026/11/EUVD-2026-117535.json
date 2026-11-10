@@ -3,14 +3,14 @@
   "enisaUuid": "c0f8f05d-999a-321f-872d-ae1327029fbf",
   "description": "Meelo through 3.13.1 contains a missing authorization vulnerability that allows authenticated non-admin users to modify shared catalog data because RolesGuard does not require Admin on song, track and video write routes. Attackers can send PUT requests to /songs/:idOrSlug, /tracks/:idOrSlug or /videos/:idOrSlug, or POST to /songs/:idOrSlug/merge, to alter genres, reassign tracks and merge songs.",
   "datePublished": "Nov 5, 2026, 3:11:45 PM",
-  "dateUpdated": "Nov 5, 2026, 3:11:45 PM",
+  "dateUpdated": "Nov 9, 2026, 10:07:29 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
   "references": "https://github.com/Arthi-chaud/Meelo/issues/2185\nhttps://github.com/Arthi-chaud/Meelo/blob/v3.13.1/server/src/authentication/roles/roles.guard.ts#L48-L117\nhttps://github.com/Arthi-chaud/Meelo/blob/v3.13.1/server/src/song/song.controller.ts#L275-L309\nhttps://github.com/Arthi-chaud/Meelo/blob/v3.13.1/server/src/track/track.controller.ts#L145-L160\nhttps://github.com/Arthi-chaud/Meelo/blob/v3.13.1/server/src/video/video.controller.ts#L131-L149\nhttps://hackmd.io/@hieund/meelo-catalog-metadata-write-missing-admin-authz\nhttps://github.com/Arthi-chaud/Meelo\nhttps://www.vulncheck.com/advisories/meelo-through-3.13.1-missing-authorization-on-song-track-and-video-endpoints\n",
   "aliases": "CVE-2026-122327\nGHSA-xxcj-wcr3-qvg7\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "ce59e50c-def3-38eb-917f-e86187b94f9a",

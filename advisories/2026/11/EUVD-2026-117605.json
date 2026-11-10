@@ -3,14 +3,14 @@
   "enisaUuid": "5af5a147-a1cb-3094-8da7-1b7e76942d49",
   "description": "PyMoDAQ before 4.4.13, and pymodaq_data, pymodaq_gui, and pymodaq_utils before 5.1.15, 5.2.x before 5.2.14, and 5.3.x before 5.3.10, contain deserialization of untrusted data and eval injection vulnerabilities that allow attackers to execute arbitrary code by supplying crafted files that a user opens. Attackers can store pickled objects in HDF5 string nodes that StringARRAY.array_to_string() passes to pickle.loads() when the node is browsed or read, place Python expressions in HDF5 attributes that JsonConverter.json2object() evaluates, supply a .dock file that load_layout_state() unpickles from the Dashboard Load layout action, or embed Python expressions in XML settings files that elt_to_dict() and set_txt_from_elt() evaluate.",
   "datePublished": "Nov 5, 2026, 5:14:58 PM",
-  "dateUpdated": "Nov 5, 2026, 5:14:58 PM",
+  "dateUpdated": "Nov 9, 2026, 10:24:15 PM",
   "baseScore": 8.5,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/PyMoDAQ/PyMoDAQ/security/advisories/GHSA-jw9g-5c9x-cf84\nhttps://github.com/PyMoDAQ/PyMoDAQ/commit/6c7fff74d82624c640bd79513f5b4675ea6d88da\nhttps://github.com/PyMoDAQ/PyMoDAQ/commit/3bf9042a58f5d4870a2b45fe2c9423aafe6b9203\nhttps://github.com/PyMoDAQ/PyMoDAQ/commit/ae0042513eb979c84da690825902658c625718d1\nhttps://github.com/PyMoDAQ/PyMoDAQ/commit/041e8a22b3dbe3c986ec0ea3c6b46a22f5efe374\nhttps://github.com/PyMoDAQ/PyMoDAQ/releases/tag/5.3.10\nhttps://github.com/PyMoDAQ/PyMoDAQ/releases/tag/5.2.14\nhttps://github.com/PyMoDAQ/PyMoDAQ/releases/tag/5.1.15\nhttps://github.com/PyMoDAQ/PyMoDAQ/releases/tag/4.4.13\nhttps://github.com/PyMoDAQ/PyMoDAQ/blob/5.3.9/packages/pymodaq_data/src/pymodaq_data/h5modules/backends.py#L477-L478\nhttps://www.vulncheck.com/advisories/pymodaq-before-5.3.10-arbitrary-code-execution-via-crafted-hdf5-dock-layout-and-xml-settings-files\n",
   "aliases": "CVE-2026-120859\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "162b6590-8568-36c7-8116-1323cdf58fb6",

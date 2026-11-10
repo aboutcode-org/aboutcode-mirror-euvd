@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-120289",
+  "enisaUuid": "a9dcbfe4-2bad-3a68-8952-a3440dc21326",
+  "description": "FFmpeg through 9.0.2 contains a memory leak vulnerability in libavcodec/libx265.c because libx265_encode_frame() never frees the rpu.payload allocated by ff_dovi_rpu_generate(). Attackers can supply crafted Dolby Vision HEVC or AV1 files that leak one RPU allocation per encoded frame during libx265 transcoding, causing unbounded memory growth and denial of service.",
+  "datePublished": "Nov 9, 2026, 7:11:20 PM",
+  "dateUpdated": "Nov 9, 2026, 9:06:56 PM",
+  "baseScore": 6.8,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+  "references": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25416\nhttps://github.com/FFmpeg/FFmpeg/commit/8dc4af2bbbd0d650e299a3d327bd48c775120e11\nhttps://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/libx265.c#L880\nhttps://github.com/FFmpeg/FFmpeg\nhttps://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-memory-leak-via-libx265-dolby-vision-rpu-payloads\n",
+  "aliases": "GHSA-9mj7-c5fq-6cm5\nCVE-2026-125200\n",
+  "assigner": "VulnCheck",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "8771b74a-ea1d-3963-9627-606307f67164",
+      "product": {
+        "name": "FFmpeg",
+        "vendor": {
+          "name": "FFMPEG"
+        }
+      },
+      "product_version": "7.1 \u22649.0.2"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "9059d135-a34a-3343-b081-9af13e849e27",
+      "vendor": {
+        "name": "FFMPEG"
+      }
+    }
+  ]
+}

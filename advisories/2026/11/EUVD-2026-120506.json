@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-120506",
+  "enisaUuid": "4860d69e-f787-3520-92e5-ad5f763d6a33",
+  "description": "zizmor is a static analysis tool for CI/CD systems. In version 1.27.0, debug logging serializes the parsed application configuration with a derived Debug implementation for GitHubToken, causing credentials supplied through GH_TOKEN, GITHUB_TOKEN, ZIZMOR_GITHUB_TOKEN, --gh-token, --github-token, or --zizmor-github-token to be written to stderr in cleartext. A single -v or --verbose option or an applicable RUST_LOG directive enables the affected logging during normal online operation and --no-online-audits, while explicit --offline clears the token first. If another party can read a CI log, support artifact, terminal capture, or public bug report containing the output, the party can use the credential according to its scopes, repository access, and lifetime. This vulnerability is fixed in 1.28.0.",
+  "datePublished": "Nov 9, 2026, 9:37:32 PM",
+  "dateUpdated": "Nov 9, 2026, 9:37:32 PM",
+  "baseScore": 7.0,
+  "baseScoreVersion": "4.0",
+  "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H",
+  "references": "https://github.com/zizmorcore/zizmor/security/advisories/GHSA-f42p-wjw5-97qh\nhttps://github.com/zizmorcore/zizmor/pull/2213\nhttps://github.com/zizmorcore/zizmor/pull/2215\nhttps://github.com/zizmorcore/zizmor/commit/0731e01706af273be860d3d221e4d122e6741b6f\nhttps://github.com/zizmorcore/zizmor/commit/724d0e86f4c073c3dc64507fb6c39bc20e46a48f\nhttps://github.com/zizmorcore/zizmor/releases/tag/v1.28.0\n",
+  "aliases": "GHSA-f42p-wjw5-97qh\nCVE-2026-102289\n",
+  "assigner": "GitHub_M",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "03d2d1e0-236f-3afa-afc2-51312272c75f",
+      "product": {
+        "name": "zizmor",
+        "vendor": {
+          "name": "zizmorcore"
+        }
+      },
+      "product_version": "= 1.27.0"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "552eb2b7-d6ca-3a9f-886d-38fa8347b90a",
+      "vendor": {
+        "name": "zizmorcore"
+      }
+    }
+  ]
+}

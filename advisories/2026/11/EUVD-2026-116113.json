@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-116113",
   "enisaUuid": "745d326e-d180-3098-b479-c244ca3135dc",
-  "description": "zt-zip is a Java library that provides convenience methods for ZIP archive manipulation. Prior to 1.18.1, ZipUtil.unpack(...) can apply stored ZIP-entry permissions to the extraction output directory when an entry name such as / or ./ resolves to that directory itself. Because the path traversal checks permit self-referencing entries that do not escape the destination, the unpacker's permission-handling path can replace restrictive output-directory permissions with attacker-supplied permissions. This affects applications that unpack untrusted ZIP files, and POSIX systems demonstrate the issue directly, while ZTFilePermissionsUtil.fetchDefaultStrategy provides fallback permission handling on other supported systems. This issue is fixed in version 1.18.1.",
-  "datePublished": "Nov 3, 2026, 6:04:46 PM",
-  "dateUpdated": "Nov 3, 2026, 7:38:28 PM",
+  "description": "zt-zip: ZipUtil.unpack can change file permissions of output directory",
+  "datePublished": "Nov 9, 2026, 9:03:31 PM",
+  "dateUpdated": "Nov 9, 2026, 9:03:31 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N",
-  "references": "https://github.com/zeroturnaround/zt-zip/security/advisories/GHSA-v2g6-7r9j-v6px\nhttps://github.com/zeroturnaround/zt-zip/pull/191\nhttps://github.com/zeroturnaround/zt-zip/commit/1b625467b4c3cd3a9bee9efc35bdef2f8d9c8dad\nhttps://github.com/zeroturnaround/zt-zip/releases/tag/v1.18.1\n",
-  "aliases": "CVE-2026-63499\n",
+  "references": "https://github.com/zeroturnaround/zt-zip/security/advisories/GHSA-v2g6-7r9j-v6px\nhttps://github.com/zeroturnaround/zt-zip/pull/191\nhttps://github.com/zeroturnaround/zt-zip/commit/1b625467b4c3cd3a9bee9efc35bdef2f8d9c8dad\nhttps://github.com/zeroturnaround/zt-zip/releases/tag/v1.18.1\nhttps://nvd.nist.gov/vuln/detail/CVE-2026-63499\n",
+  "aliases": "GHSA-v2g6-7r9j-v6px\nCVE-2026-63499\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.28,
   "enisaIdProduct": [
     {
       "id": "17dbb935-1349-3da1-b779-44952322311c",
