@@ -3,14 +3,14 @@
   "enisaUuid": "87938f1f-6222-3f89-a49e-a3c5628e3a37",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix potential UAF in reqsk_timer_handler().\n\nWhen TCP socket migration fails at inet_ehash_insert() in\nreqsk_timer_handler(), we jump to the no_ownership: label\nand free the new reqsk immediately with __reqsk_free().\n\nThus, we must stop the new reqsk's timer before jumping to the\nlabel, but the timer might be missed since the cited commit,\nresulting in UAF.\n\nAs we are in the original reqsk's timer context, we can safely\ncall timer_delete_sync() for the new reqsk.\n\nLet's pass false to __inet_csk_reqsk_queue_drop() to stop\nthe new reqsk's timer.",
   "datePublished": "Nov 3, 2026, 12:32:09 PM",
-  "dateUpdated": "Nov 6, 2026, 5:15:14 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:26 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/b3b56e95f6fad7fa7281450b443e861d82616fdb\nhttps://git.kernel.org/stable/c/97c8a3c1f73d828de43a5a88e8a9a143efb2b661\n",
+  "references": "https://git.kernel.org/stable/c/f7fba81b00699360f96ed7d9a47b8c801e74c6f9\nhttps://git.kernel.org/stable/c/b3b56e95f6fad7fa7281450b443e861d82616fdb\nhttps://git.kernel.org/stable/c/97c8a3c1f73d828de43a5a88e8a9a143efb2b661\n",
   "aliases": "CVE-2026-99270\nGHSA-7686-ccqp-qmhx\n",
   "assigner": "Linux",
-  "epss": 0.31,
+  "epss": 0.33,
   "enisaIdProduct": [
     {
       "id": "28eb20cf-1019-31b0-b63f-3ccf61414e57",
@@ -63,6 +63,16 @@
       "product_version": "d3a1196bfc462943694623412d8e03aaf172bdc1"
     },
     {
+      "id": "98800dae-5972-3ce2-8858-bca964b9d44d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "83fccfc3940c4a2db90fd7e7079f5b465cd8c6af <f7fba81b00699360f96ed7d9a47b8c801e74c6f9"
+    },
+    {
       "id": "c365e70a-c722-3b74-9730-02a4da3936f4",
       "product": {
         "name": "Linux",
@@ -81,6 +91,16 @@
         }
       },
       "product_version": "patch: 7.1"
+    },
+    {
+      "id": "e81a1c8b-1a8d-3519-9bc4-dfd3703a3286",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "f7d4b3fb-92e2-3c91-894e-c21a3827136d",

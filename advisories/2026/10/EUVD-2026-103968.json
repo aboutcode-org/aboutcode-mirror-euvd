@@ -3,12 +3,12 @@
   "enisaUuid": "7376c99b-ac7d-3803-b450-872fa056560c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Update control fields on #VMEXIT if and only if VMRUN succeeded\n\nLeave control.erap_ctl and control.clean as-is in the VMCS if VMRUN fails,\nbecause as per AMD:\n\n  there's no explicit architectural guarantee about the behavior in the\n  presence of VMRUN failures. So the best thing to do would be to assume\n  that if VMRUN fails, the actions requested in the control fields may not\n  have been performed.",
   "datePublished": "Oct 18, 2026, 3:46:47 PM",
-  "dateUpdated": "Nov 6, 2026, 5:15:04 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:18 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5d06e2f861d61a03481348378fdf9cc3e68bff47\nhttps://git.kernel.org/stable/c/8676b29d186fcb5c1251d8152fc91d19421e5600\nhttps://git.kernel.org/stable/c/e27fc915c8f575ab5630e27d97465c2077d4b9d1\n",
+  "references": "https://git.kernel.org/stable/c/2e9b8c79ae6c1dcf650ea288cf8fc69ee5241dd9\nhttps://git.kernel.org/stable/c/5d06e2f861d61a03481348378fdf9cc3e68bff47\nhttps://git.kernel.org/stable/c/8676b29d186fcb5c1251d8152fc91d19421e5600\nhttps://git.kernel.org/stable/c/e27fc915c8f575ab5630e27d97465c2077d4b9d1\n",
   "aliases": "CVE-2026-98714\nGHSA-rrqj-3q8v-92j9\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "318337cc-9f83-3be9-b97f-697e2f10ae5a",
@@ -29,6 +29,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "8f39e514-e760-3cbb-8861-2da8efd65256",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "a144da1d-0430-338e-98cc-5aafc4e46551",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.18.61"
+    },
+    {
+      "id": "b86d24d4-058c-3822-8f9b-59ca426475ab",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8d28fec406e4d5ce6c109fe12699976e72e9748e <2e9b8c79ae6c1dcf650ea288cf8fc69ee5241dd9"
     },
     {
       "id": "c3cc2374-0977-3cb6-ba4f-81d25aebf084",

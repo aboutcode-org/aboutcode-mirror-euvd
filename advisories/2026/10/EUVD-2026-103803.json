@@ -3,12 +3,12 @@
   "enisaUuid": "ab91731f-a3f9-34e3-a540-87773c9d0814",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: Re-pend GET_NESTED_STATE_PAGES if getting said pages fails\n\nRe-pend GET_NESTED_STATE_PAGES before exiting to userspace if getting the\nnested pages fails in the KVM_RUN path.  If userspace re-runs the vCPU, and\nvmcs02 holds valid PFNs from the *previous* run of L2, then KVM could\nre-enter L2 with stale, unpinned PFNs mapped into e.g. the vAPIC page.\n\nNote, both SVM and VMX (as of commit 11722439fb20 (\"KVM: nVMX: Ensure\nKVM_REQ_GET_NESTED_STATE_PAGES is cleared on VM-Exit\") ensure the request\nis cleared on VM-Exit (including the \"forced\" case), i.e. there is no risk\nof double-mapping due to emulated VMLAUNCH/VMRESUME/VMRUN *and* the request\ntrying to map the nested pages.",
   "datePublished": "Oct 18, 2026, 3:51:24 PM",
-  "dateUpdated": "Oct 19, 2026, 9:26:57 AM",
+  "dateUpdated": "Nov 10, 2026, 6:15:20 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/525694a6021ec6c8f7ce1f38acdf2dd77698fec1\nhttps://git.kernel.org/stable/c/942192dbcd3a06695ef6b31cf10a41a21cf014d8\nhttps://git.kernel.org/stable/c/10180a277549339020b08000206092c07e0bff5a\n",
+  "references": "https://git.kernel.org/stable/c/1e231eedb0c5aafdc8d96a816ec75554aa69004d\nhttps://git.kernel.org/stable/c/525694a6021ec6c8f7ce1f38acdf2dd77698fec1\nhttps://git.kernel.org/stable/c/942192dbcd3a06695ef6b31cf10a41a21cf014d8\nhttps://git.kernel.org/stable/c/10180a277549339020b08000206092c07e0bff5a\n",
   "aliases": "CVE-2026-98863\nGHSA-8v5w-2f74-jcch\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "12fc75c5-d638-30fc-b2c7-db396c713633",
@@ -59,6 +59,26 @@
         }
       },
       "product_version": "5.4"
+    },
+    {
+      "id": "8a28e87d-2157-34cd-80a3-6f20ad62ff4c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "671ddc700fd08b94967b1e2a937020e30c838609 <1e231eedb0c5aafdc8d96a816ec75554aa69004d"
+    },
+    {
+      "id": "9f2d5d28-eccd-3d93-9b62-fbde992ca28f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "a875835c-c525-3cd1-b1cb-75fe685d515f",

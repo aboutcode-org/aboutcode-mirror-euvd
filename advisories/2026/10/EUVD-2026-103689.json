@@ -3,12 +3,12 @@
   "enisaUuid": "164c8a7f-315d-3a16-8749-a76860b77872",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: delete compound mids on send failure before unlock\n\nWhen sending a compound request fails, smb_send_rqst() kicks off a\nreconnect. compound_send_recv() still has those mids on pending_mid_q,\nbut it unlocks the server without removing them first.\n\nDuring reconnect, cifs_abort_connection() walks pending_mid_q and runs\neach mid callback. With no response yet, those callbacks return credits\nand drop in_flight. Then compound_send_recv()'s send-error path returns\nthe same credits again. in_flight ends up decremented twice and\nsmb2_add_credits() WARNs.\n\nsyzbot hits this during SMB2_negotiate when the socket send fails.\n\ncifs_call_async() already calls delete_mid() before unlock on send\nfailure. Do the same for compound chains and set cancelled_mid[] so the\nout: path does not delete them again.",
   "datePublished": "Oct 18, 2026, 3:14:59 PM",
-  "dateUpdated": "Nov 6, 2026, 5:15:00 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:14 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/59d30bdc3dd6fd3a8990f59bc7a137b1cbb3ed4e\nhttps://git.kernel.org/stable/c/70783946f3b5d0c06ec7df0f5e7bec2bfad24efb\nhttps://git.kernel.org/stable/c/8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9\n",
+  "references": "https://git.kernel.org/stable/c/36a2ba21d38a86bae84441e4c8d5b10653ef341a\nhttps://git.kernel.org/stable/c/59d30bdc3dd6fd3a8990f59bc7a137b1cbb3ed4e\nhttps://git.kernel.org/stable/c/70783946f3b5d0c06ec7df0f5e7bec2bfad24efb\nhttps://git.kernel.org/stable/c/8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9\n",
   "aliases": "CVE-2026-98449\nGHSA-2758-q84j-4rxj\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0b55a55e-fd8f-3424-8f18-0a09242bbc52",
@@ -91,6 +91,16 @@
       "product_version": "patch: 0"
     },
     {
+      "id": "9903c099-de03-3653-8fb7-aba20d8b0855",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
+    },
+    {
       "id": "9a8a8ecd-3340-386f-a638-2bd966ce1adb",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <70783946f3b5d0c06ec7df0f5e7bec2bfad24efb"
+    },
+    {
+      "id": "f4e4aa83-bc94-3b0d-a37c-38a14637ef1f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <36a2ba21d38a86bae84441e4c8d5b10653ef341a"
     }
   ],
   "enisaIdVendor": [

@@ -3,7 +3,7 @@
   "enisaUuid": "58787f8b-3810-3b79-adce-f8f05bd3743f",
   "description": "Apache Airflow's Task SDK secret cache built its keys from the team name and secret id with unescaped `_` delimiters, so different (team, secret id) pairs could collide. In multi-team deployments a Dag author could read another team's Variable or Connection value by crafting a colliding secret id. Only deployments with both `core.multi_team = True` and `secrets.use_cache = True` are affected.\n\nUsers are advised to upgrade to apache-airflow 3.4.0 or later. Deployments that cannot upgrade can set `secrets.use_cache = False`.",
   "datePublished": "Nov 9, 2026, 9:53:57 AM",
-  "dateUpdated": "Nov 9, 2026, 1:05:16 PM",
+  "dateUpdated": "Nov 10, 2026, 5:22:57 PM",
   "baseScore": 0.0,
   "references": "https://github.com/apache/airflow/pull/72201\nhttps://lists.apache.org/thread.html/6rqgrbqyvry6gn7g3rtrfk35gbrq6d50\n",
   "aliases": "CVE-2026-76185\nGHSA-mvjw-vxf4-7g94\n",

@@ -3,13 +3,33 @@
   "enisaUuid": "3f4fe5e4-39ec-356e-a11a-c8371b1e3065",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: team: free skb when broadcast has no txable port\n\nbc_transmit() sends the original skb through the last txable port.\nWhen no port is txable, it returns false without consuming the skb, but\nteam_xmit() still returns NETDEV_TX_OK. AF_PACKET sends then retain the\nskb and its socket write-memory charge.\n\nA TX-enabled, link-down port keeps the broadcast transmit op installed.\nCarrier can stay up through a second link-up, TX-disabled port or be\nforced on by userspace. Free the original skb on the no-port path while\nleaving the existing drop accounting intact.\n\nDiscovered by Sashiko during review of previous commit.",
   "datePublished": "Oct 23, 2026, 12:21:13 PM",
-  "dateUpdated": "Oct 23, 2026, 12:21:13 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:22 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/961563117626f4681623077ec0cfd86f86da0d49\nhttps://git.kernel.org/stable/c/f34b1bcac4581a5bd3daf9eff90f175e736b54aa\nhttps://git.kernel.org/stable/c/489114c9ecae44e523361a4b3e610ee5ebd9189c\n",
+  "references": "https://git.kernel.org/stable/c/aec1d35d76ad883bae83c24707010115f38d02ac\nhttps://git.kernel.org/stable/c/961563117626f4681623077ec0cfd86f86da0d49\nhttps://git.kernel.org/stable/c/f34b1bcac4581a5bd3daf9eff90f175e736b54aa\nhttps://git.kernel.org/stable/c/489114c9ecae44e523361a4b3e610ee5ebd9189c\n",
   "aliases": "GHSA-c6m3-gh7v-93hm\nCVE-2026-99026\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
+    {
+      "id": "09194a5a-cad5-3f9d-b2ba-8f5a4c6dc15e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
+    },
+    {
+      "id": "287ece3e-cdef-3a7c-8738-e7d70c0e011f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "5fc889911a99043a97da1daa0d010ad72cbc3042 <aec1d35d76ad883bae83c24707010115f38d02ac"
+    },
     {
       "id": "2d624996-2b0b-3c6a-a337-50cae9e24ade",
       "product": {

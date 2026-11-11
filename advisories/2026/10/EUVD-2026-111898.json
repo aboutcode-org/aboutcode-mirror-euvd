@@ -3,12 +3,12 @@
   "enisaUuid": "85d54465-0bae-344b-a8b8-843f608fc18d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/dmc: Add sanity check for DMC load address\n\nFor DMC firmware header version 3, the firmware load address is stored\nin dmc_info->start_mmioaddr and later used by dmc_load_program().\n\nUnlike the MMIO address table, the firmware load address is not\nvalidated. Add a sanity check to ensure it is within the valid range.\n\nBSpec: 69671, 68378\n(cherry picked from commit 5e47ee5c76ca9becde8df4ad5202845b7ffcbc4c)",
   "datePublished": "Oct 28, 2026, 10:35:02 AM",
-  "dateUpdated": "Oct 28, 2026, 10:35:02 AM",
+  "dateUpdated": "Nov 10, 2026, 6:15:25 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/ef82b4d5cb4a3fe77c7f99008d78b8c64709e258\nhttps://git.kernel.org/stable/c/2fbd099b4e7c8c4ff70033c5bb950cdbb20838e2\nhttps://git.kernel.org/stable/c/7dedc5bb11f95e96fe80757c924d8d9aa7327759\n",
+  "references": "https://git.kernel.org/stable/c/fe48b4c48d4131192a10bc6ea526a8a36b345501\nhttps://git.kernel.org/stable/c/ef82b4d5cb4a3fe77c7f99008d78b8c64709e258\nhttps://git.kernel.org/stable/c/2fbd099b4e7c8c4ff70033c5bb950cdbb20838e2\nhttps://git.kernel.org/stable/c/7dedc5bb11f95e96fe80757c924d8d9aa7327759\n",
   "aliases": "CVE-2026-99146\nGHSA-p734-mrrw-8qv9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "02deffaa-0207-3914-9dac-162ea7d588e5",
@@ -41,6 +41,16 @@
       "product_version": "3d5928a168a9546b23c6b3439c6158d7a028326c <ef82b4d5cb4a3fe77c7f99008d78b8c64709e258"
     },
     {
+      "id": "22c2ec50-fd90-32a1-94b6-1de87d5aec7e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3d5928a168a9546b23c6b3439c6158d7a028326c <fe48b4c48d4131192a10bc6ea526a8a36b345501"
+    },
+    {
       "id": "4e1ab129-6cff-3144-9448-c59902aeacb4",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "c015af6b-670e-315a-b9a1-c2dbd3b3045f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "f7d76412-e597-35a0-a270-2029182cef42",

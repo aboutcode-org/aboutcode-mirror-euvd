@@ -3,14 +3,14 @@
   "enisaUuid": "4b05349f-7508-3695-b2a8-e1e2062c8c38",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_h323: fix OOB read in decode_int() CONS case\n\nIn decode_int(), the CONS case calls get_bits(bs, 2) to read a length\nvalue, then calls get_uint(bs, len) without checking that len bytes\nremain in the buffer. The existing boundary check only validates the\n2 bits for get_bits(), not the subsequent 1-4 bytes that get_uint()\nreads. This allows a malformed H.323/RAS packet to cause a 1-4 byte\nslab-out-of-bounds read.\n\nAdd a boundary check for len bytes after get_bits() and before\nget_uint().",
   "datePublished": "Apr 3, 2026, 3:15:37 PM",
-  "dateUpdated": "Oct 19, 2026, 6:35:44 PM",
+  "dateUpdated": "Nov 10, 2026, 12:43:28 PM",
   "baseScore": 8.2,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/a2cd54b9348e485d338b3c132338a4410c99afaf\nhttps://git.kernel.org/stable/c/c95dc674ebf01ecfb40388b6facfc89b81fed3b7\nhttps://git.kernel.org/stable/c/41b417ff73a24b2c68134992cc44c88db27f482d\nhttps://git.kernel.org/stable/c/52235bf88159a1ef16434ab49e47e99c8a09ab20\nhttps://git.kernel.org/stable/c/774a434f8c9c8602a976b2536f65d0172a07f4d2\nhttps://git.kernel.org/stable/c/6bce72daeccca9aa1746e92d6c3d4784e71f2ebb\nhttps://git.kernel.org/stable/c/fb6c3596823ec5dd09c2123340330d7448f51a59\nhttps://git.kernel.org/stable/c/1e3a3593162c96e8a8de48b1e14f60c3b57fca8a\n",
   "aliases": "CVE-2026-23456\n",
   "assigner": "Linux",
-  "epss": 0.52,
+  "epss": 0.54,
   "enisaIdProduct": [
     {
       "id": "002f981c-1074-337b-99ca-1276e99aa679",

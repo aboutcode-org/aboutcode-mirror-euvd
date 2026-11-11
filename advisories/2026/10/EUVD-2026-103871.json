@@ -3,12 +3,12 @@
   "enisaUuid": "5dffbfe0-043a-3119-afa6-b9b8b7696e19",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: guard dc_sink dereferences in MST mode validation\n\ndm_dp_mst_is_port_support_mode() reads\naconnector->dc_sink->dsc_caps... for the DSC branch-throughput check,\nand get_conv_frl_bw()'s HDMI-PCON FRL-bandwidth path reads\naconnector->dc_sink->edid_caps.max_frl_rate, both without a NULL\ncheck. dc_sink is cleared asynchronously on MST unplug, and both\nfunctions run from paths that the driver's own comments document as\nracing that teardown: the connector probe worker's ->mode_valid\ncallback and a compositor's atomic check, neither of which holds the\nMST manager lock that the teardown path uses. The former does have an\nexisting dsc_aux NULL check, but dsc_aux isn't reliably cleared in\nevery path that clears dc_sink, so it doesn't cover this.\n\nFail the port-support check and skip the FRL conversion path when the\nsink is already gone.\n\n(cherry picked from commit 7c3db8da4e039698ae198c870712428644e965c7)",
   "datePublished": "Oct 18, 2026, 3:48:22 PM",
-  "dateUpdated": "Nov 6, 2026, 5:15:05 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:19 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/5684a6c24c0d7c40ef2c4ccb3e4a64cffe76a791\nhttps://git.kernel.org/stable/c/daa0437fe5e451856aaf8fda602a9fc2105bbd54\nhttps://git.kernel.org/stable/c/217f64f348c90cba62164e7ff38e0ccf78a5ca09\n",
+  "references": "https://git.kernel.org/stable/c/0189f725242087679bc9f1bbf77ad086f56a72c8\nhttps://git.kernel.org/stable/c/5684a6c24c0d7c40ef2c4ccb3e4a64cffe76a791\nhttps://git.kernel.org/stable/c/daa0437fe5e451856aaf8fda602a9fc2105bbd54\nhttps://git.kernel.org/stable/c/217f64f348c90cba62164e7ff38e0ccf78a5ca09\n",
   "aliases": "CVE-2026-98786\nGHSA-7r8j-xcf8-cxq6\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "12ccbd39-9c7c-35f1-b5ff-68f03998a903",
@@ -51,6 +51,16 @@
       "product_version": "6.0"
     },
     {
+      "id": "7b42646e-a2c0-30e2-b88f-e9800227d264",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
+    },
+    {
       "id": "a444cccd-ff15-370b-a42a-dbdf42706a3f",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "c3a60dcb-563d-3082-a7ff-e9c5917da63e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f04d275d94e164d24516c32437c988a323018f63 <0189f725242087679bc9f1bbf77ad086f56a72c8"
     },
     {
       "id": "caa8f3eb-1757-3082-ba7d-afacfd57d7e8",

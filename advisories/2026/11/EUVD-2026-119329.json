@@ -3,13 +3,23 @@
   "enisaUuid": "40c9cb78-de1f-39f8-a5da-1ac571d1074a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: propagate shared-frag marker in skb_zerocopy()\n\nskb_zerocopy() moves frag descriptors from @from into @to and takes a\nreference on each frag, but it does not copy skb_shinfo(from)->flags into\nskb_shinfo(to)->flags.  A destination skb holding the same page-cache\nbacked frags as the source therefore reports skb_has_shared_frag() as\nfalse.\n\nThat breaks the invariant relied on by later in-place writers.  ESP input\nchecks skb_has_shared_frag() before deciding whether an uncloned\nnonlinear skb can skip skb_cow_data(); with the marker lost, an skb that\nskb_zerocopy() built for nfnetlink_queue or for an openvswitch upcall is\ndecrypted in place, letting an unprivileged user write into the page\ncache of a root-owned read-only file.\n\nPropagate SKBFL_SHARED_FRAG when frag descriptors are copied, as done for\nthe other frag-transfer helpers.",
   "datePublished": "Nov 7, 2026, 8:40:33 PM",
-  "dateUpdated": "Nov 7, 2026, 8:40:33 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:30 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1c623e3cbf43f12dd4a72712079bfa247a9b8ba3\nhttps://git.kernel.org/stable/c/d7d6ff98d5d1b400f02211f962ac32cc0020aeab\nhttps://git.kernel.org/stable/c/1a9c180cd8435917b7516edfb1c9148032c28773\nhttps://git.kernel.org/stable/c/79dc34beb1fdb3da79753e51e15c68591a2561fe\n",
+  "references": "https://git.kernel.org/stable/c/fe8477e23dd2ee6bce231d65f2586a333b211dc0\nhttps://git.kernel.org/stable/c/1c623e3cbf43f12dd4a72712079bfa247a9b8ba3\nhttps://git.kernel.org/stable/c/d7d6ff98d5d1b400f02211f962ac32cc0020aeab\nhttps://git.kernel.org/stable/c/1a9c180cd8435917b7516edfb1c9148032c28773\nhttps://git.kernel.org/stable/c/79dc34beb1fdb3da79753e51e15c68591a2561fe\n",
   "aliases": "CVE-2026-99284\nGHSA-j3jv-p835-c5gh\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
+    {
+      "id": "19a3d306-32e2-35ef-bf10-5ae9871ef285",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
+    },
     {
       "id": "40b35825-5a5c-369d-9229-7416cafeba0a",
       "product": {
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "patch: 7.3.2"
+    },
+    {
+      "id": "d632b15a-21e8-3bad-bebd-16388f4d076f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "af2806f8f90a150160be898cd85332459c83c5cb <fe8477e23dd2ee6bce231d65f2586a333b211dc0"
     },
     {
       "id": "f02866a1-c0de-39c8-be13-c842bd05cc3c",

@@ -3,13 +3,23 @@
   "enisaUuid": "f6af3c73-634f-3029-a4d2-22cd155deee1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: tcp: use UNACK timeout for non-closing RST packets\n\nCommit be0502a3f2e9 (\"netfilter: conntrack: tcp: only close if RST\nmatches exact sequence\") keeps an established conntrack entry in\nESTABLISHED when an in-window RST does not match the expected sequence\nnumber exactly, so the endpoint can validate the RST with a challenge\nACK.\n\nThe timeout selection nevertheless uses the CLOSE timeout for every RST\npacket.  The bug is that timeout selection is based on the packet type,\nnot on the state transition result: even when RST validation keeps\nnew_state in ESTABLISHED, the timeout is still forced to\nTCP_CONNTRACK_CLOSE.\n\nLinux TCP independently rate limits challenge ACKs per socket.  A second\nnon-exact RST can therefore arrive after the first challenge ACK has\nrestored the timeout but before the rate limit expires.  The second RST\nlowers the timeout to 10 seconds again while the endpoint suppresses the\nsecond challenge ACK, allowing the conntrack entry to expire while both\nTCP endpoints remain established.\n\nUsing the ESTABLISHED timeout for such RSTs would avoid this short\nexpiration window, but it could also retain stale entries for the\nfive-day default because conntrack cannot reliably match the endpoint's\nexact TCP state.\n\nUse the UNACK timeout for RST packets that leave the conntrack entry in\nTCP_CONNTRACK_ESTABLISHED.  Exact-match RSTs and accepted RST packet\ntrains still fall through to timeouts[new_state], which preserves the\nCLOSE timeout when conntrack accepts the RST as closing the flow.\n\nThis avoids the aggressive 10-second expiration window for non-exact\nRSTs while preserving the short timeout for RSTs that conntrack accepts\nas closing the flow.",
   "datePublished": "Nov 7, 2026, 8:14:11 PM",
-  "dateUpdated": "Nov 7, 2026, 8:14:11 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:30 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/0c6d33329960b2d884a399196c8403643d8a9de6\nhttps://git.kernel.org/stable/c/bf80e6802273a900311b44e47c9b1a59c6d2473c\n",
+  "references": "https://git.kernel.org/stable/c/4d39a039d0b7737f8475c2431f18572b3b186a3b\nhttps://git.kernel.org/stable/c/0c6d33329960b2d884a399196c8403643d8a9de6\nhttps://git.kernel.org/stable/c/bf80e6802273a900311b44e47c9b1a59c6d2473c\n",
   "aliases": "GHSA-cr3v-f62w-cwx5\nCVE-2026-99283\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
+    {
+      "id": "02609f6a-82ec-318f-b9f0-03b9d66d363b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "0 <6.12.117"
+    },
     {
       "id": "0450e64a-3a53-3108-84eb-98083abc9765",
       "product": {
@@ -19,6 +29,16 @@
         }
       },
       "product_version": "0 <6.18.61"
+    },
+    {
+      "id": "38ec1eaa-c1d9-3298-8096-d5ab323960b7",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "483cc7e7-8ecc-37f4-8f8f-191b1edd495a",
@@ -49,6 +69,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "75cf5cd0-0d4b-311f-9c30-e771d819d1e1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <4d39a039d0b7737f8475c2431f18572b3b186a3b"
     },
     {
       "id": "d41ad646-96be-34cf-b54b-198c4c53d5de",

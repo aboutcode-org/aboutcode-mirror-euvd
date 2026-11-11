@@ -3,12 +3,12 @@
   "enisaUuid": "398b5f0e-02fe-3a41-bae6-f5cc37d5d708",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: of: fill in supply names in of_regulator_bulk_get_all()\n\nof_regulator_bulk_get_all() returns an array it allocated itself, and\nfills in only the consumer of each entry. Every other way of getting a\nbulk array has the supply name set, because the caller provides it, and\nthe core expects it to be there: regulator_bulk_enable() prints it when\na supply fails to enable, so a caller that hands such an array to it\ndereferences uninitialised memory on that path.\n\nCopy each name into the array's own allocation, right behind the\nentries, so that it shares the array's lifetime and callers still have\nnothing extra to free. That also retires the fixed 64 byte stack buffer\nthe names were assembled in, which is_supply_name() never bounded the\ncopy against.",
   "datePublished": "Oct 23, 2026, 12:21:00 PM",
-  "dateUpdated": "Oct 23, 2026, 12:21:00 PM",
+  "dateUpdated": "Nov 10, 2026, 6:15:22 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/82ac8c4939bdbd064b4f54a580fbe4baf0d60e41\nhttps://git.kernel.org/stable/c/a3384ec2516a7cc567bd7c09029282494469b247\nhttps://git.kernel.org/stable/c/e2151c29cec73f6cc70abf1c7cbc7b9b202489f5\n",
+  "references": "https://git.kernel.org/stable/c/a5f43540e14589b53f80306d25c043c0abdcbca0\nhttps://git.kernel.org/stable/c/82ac8c4939bdbd064b4f54a580fbe4baf0d60e41\nhttps://git.kernel.org/stable/c/a3384ec2516a7cc567bd7c09029282494469b247\nhttps://git.kernel.org/stable/c/e2151c29cec73f6cc70abf1c7cbc7b9b202489f5\n",
   "aliases": "GHSA-pp3v-c45m-5x73\nCVE-2026-99021\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0a30a008-0938-39f5-b480-8949f712c178",
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "1d414306-1650-3b9f-b98d-4e44924948c9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "27b9ecc7a9ba1d0014779bfe5a6dbf630899c6e7 <a5f43540e14589b53f80306d25c043c0abdcbca0"
     },
     {
       "id": "1e067e7a-5bad-3c03-a849-1c57eed7feb2",
@@ -79,6 +89,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "5d25150b-1586-3533-a8ee-2a73fdca086f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     },
     {
       "id": "b2fa6123-5b39-3d46-bed4-09991786c2d6",

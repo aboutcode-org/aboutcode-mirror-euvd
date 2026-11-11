@@ -3,9 +3,9 @@
   "enisaUuid": "6be2a200-e208-3fc0-ab0b-9aebe90c6a22",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmodule: validate string table section types\n\nIn elf_validity_cache_sechdrs, section sizes and offsets are validated,\nunless the section type is SHT_NULL or SHT_NOBITS.\n\nLater, elf_validity_cache_secstrings and elf_validity_cache_index_str\naccess the section name table (.shstrtab) and symbol string table\n(.strtab) headers without first ensuring that their types are\nSHT_STRTAB. If a section type is SHT_NULL or SHT_NOBITS, sh_offset has\nnot been validated and may reference out-of-bounds memory when\ndereferenced in elf_validity_cache_secstrings or\nelf_validity_cache_strtab.\n\nValidate that both string section headers are of type SHT_STRTAB before\ncaching them.",
   "datePublished": "Sep 11, 2026, 7:44:29 PM",
-  "dateUpdated": "Oct 19, 2026, 8:48:49 AM",
+  "dateUpdated": "Nov 10, 2026, 6:15:09 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/50d0aa7d25ba4bc3606f150cd69755068e79f97f\nhttps://git.kernel.org/stable/c/e4496dda2c6d0acf7ba5fbce14a2723a8935ceee\nhttps://git.kernel.org/stable/c/9a5ff45689329835f874cefe5174e577d141d423\n",
+  "references": "https://git.kernel.org/stable/c/db07e9b0320e480f05f5c12e8e4d6699f0d3acb7\nhttps://git.kernel.org/stable/c/50d0aa7d25ba4bc3606f150cd69755068e79f97f\nhttps://git.kernel.org/stable/c/e4496dda2c6d0acf7ba5fbce14a2723a8935ceee\nhttps://git.kernel.org/stable/c/9a5ff45689329835f874cefe5174e577d141d423\n",
   "aliases": "CVE-2026-89556\nGHSA-whm7-hr5x-2m9w\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -39,6 +39,16 @@
         }
       },
       "product_version": "c92aab819d56d51631f0484ed7af11d9d8ff4cb0 <50d0aa7d25ba4bc3606f150cd69755068e79f97f"
+    },
+    {
+      "id": "5f797c3b-6aab-3450-976d-378d6cee2b10",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "f19f1a1c5fe56274e95b342e8138f4b774febf97 <db07e9b0320e480f05f5c12e8e4d6699f0d3acb7"
     },
     {
       "id": "7fa96786-7a68-3b31-9262-009de8d76c44",

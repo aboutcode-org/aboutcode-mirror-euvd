@@ -3,12 +3,12 @@
   "enisaUuid": "b8910c53-70c2-321a-be24-327f6a33801a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: flush and commit data before querying allocated ranges\n\nThe mode 0 / FALLOC_FL_KEEP_SIZE fallocate emulation for small interior\nranges in smb3_simple_fallocate_range() issues\nFSCTL_QUERY_ALLOCATED_RANGES and zero-fills any sub-range the server\nreports as an unallocated hole, to force block allocation without\nchanging file contents.\n\nThis is unsafe against Windows servers.  Per the Win32 documentation,\nFSCTL_QUERY_ALLOCATED_RANGES only reports ranges that *may* contain\nnonzero data and is explicitly not coherent with recently written data:\n\n  \"a call to FSCTL_QUERY_ALLOCATED_RANGES [after writing to a network\n   file] would not necessarily return a correct list of allocated\n   regions.  To ensure coherency [...] flush the data to the file\"\n\nfsx (generic/363) reproduces the resulting corruption against Windows\nServer 2022: a range is written, an uncached read returns the data, yet\nthe next FSCTL_QUERY_ALLOCATED_RANGES on that range reports it as a whole\nhole, so the emulation overwrites live data with zeroes.  A network trace\nconfirmed the WRITE, the READ returning data and the query returning an\nempty range list within microseconds.  Samba does not exhibit this; its\nquery is coherent with the written data.\n\nWrite back the dirty pages, drain any outstanding I/O and issue an SMB2\nFLUSH to force the server to commit the data before querying the\nallocated ranges, so the query reflects the data actually present.\n\nWith this, generic/363 passes against both Windows Server 2022 and Samba\nover 100000 fsx operations.",
   "datePublished": "Oct 18, 2026, 3:45:52 PM",
-  "dateUpdated": "Oct 19, 2026, 9:23:54 AM",
+  "dateUpdated": "Nov 10, 2026, 6:15:17 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f82242fe3109a3ef72f429540b5bdde08fbfb0e4\nhttps://git.kernel.org/stable/c/bf84e44ff0ed802778eafd7ecb623635379cb506\nhttps://git.kernel.org/stable/c/aa994489bd835547c191827acc460192e147032d\n",
+  "references": "https://git.kernel.org/stable/c/6787575545cd8af1da3778d7c1ae43a4398a6b26\nhttps://git.kernel.org/stable/c/f82242fe3109a3ef72f429540b5bdde08fbfb0e4\nhttps://git.kernel.org/stable/c/bf84e44ff0ed802778eafd7ecb623635379cb506\nhttps://git.kernel.org/stable/c/aa994489bd835547c191827acc460192e147032d\n",
   "aliases": "CVE-2026-98684\nGHSA-6247-f99h-hr72\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "05eaf6c8-7cb6-3d27-9e3f-1952c9e87191",
@@ -101,6 +101,16 @@
       "product_version": "2f9f4a2d0e6fcf0673ed51195e06e47abe966900"
     },
     {
+      "id": "7750fbeb-0ddb-3e40-8a50-14053aece6bf",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "966a3cb7c7db786452a87afdc3b48858fc4d4d6b <6787575545cd8af1da3778d7c1ae43a4398a6b26"
+    },
+    {
       "id": "8305378a-7087-3df3-9840-9ff870d608d7",
       "product": {
         "name": "Linux",
@@ -149,6 +159,16 @@
         }
       },
       "product_version": "5.13.2 <5.14"
+    },
+    {
+      "id": "ed278329-54ab-3099-82fc-68dcc10c107c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.12.117"
     }
   ],
   "enisaIdVendor": [

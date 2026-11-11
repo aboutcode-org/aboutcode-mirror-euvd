@@ -3,7 +3,7 @@
   "enisaUuid": "3aee8f06-e334-31e0-a77f-d625158f822f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: seqiv - Do not use req->iv after crypto_aead_encrypt\n\nAs soon as crypto_aead_encrypt is called, the underlying request\nmay be freed by an asynchronous completion.  Thus dereferencing\nreq->iv after it returns is invalid.\n\nInstead of checking req->iv against info, create a new variable\nunaligned_info and use it for that purpose instead.",
   "datePublished": "Jan 14, 2026, 3:07:47 PM",
-  "dateUpdated": "Oct 19, 2026, 6:15:15 PM",
+  "dateUpdated": "Nov 10, 2026, 12:39:16 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
