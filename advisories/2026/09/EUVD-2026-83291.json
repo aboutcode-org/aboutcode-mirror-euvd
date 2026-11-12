@@ -3,15 +3,25 @@
   "enisaUuid": "18ac65ab-adbd-3079-9ef3-5176cb239d7f",
   "description": "A flaw was found in cockpit-files. A local unprivileged attacker can exploit a race condition during directory creation with owner assignment. By controlling a writable parent directory, the attacker can replace a newly created directory with a symbolic link (symlink) before the ownership change operation (chown) is applied. This allows the attacker to redirect the ownership change to an arbitrary file, potentially leading to information disclosure or unauthorized modification of sensitive files.",
   "datePublished": "Sep 18, 2026, 7:14:47 PM",
-  "dateUpdated": "Nov 6, 2026, 5:57:07 AM",
+  "dateUpdated": "Nov 11, 2026, 12:59:12 PM",
   "baseScore": 6.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:84595\nhttps://access.redhat.com/errata/RHSA-2026:95570\nhttps://access.redhat.com/security/cve/CVE-2026-91205\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2466442\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:84595\nhttps://access.redhat.com/errata/RHSA-2026:95570\nhttps://access.redhat.com/errata/RHSA-2026:98458\nhttps://access.redhat.com/errata/RHSA-2026:98566\nhttps://access.redhat.com/security/cve/CVE-2026-91205\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2466442\n",
   "aliases": "GHSA-5jj9-v4xp-h5h5\nCVE-2026-91205\n",
   "assigner": "redhat",
   "epss": 0.11,
   "enisaIdProduct": [
+    {
+      "id": "4e73e3a9-3561-3a6a-8927-920374c65094",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:43.1-1.el9_9"
+    },
     {
       "id": "6625dc44-a635-3835-ab80-5432bf545746",
       "product": {
@@ -31,6 +41,16 @@
         }
       },
       "product_version": "patch: 0:36.1-1.el9_8"
+    },
+    {
+      "id": "d7bc9540-4695-3217-b255-dd7d5e7a39f8",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:43.1-1.el10_3"
     }
   ],
   "enisaIdVendor": [

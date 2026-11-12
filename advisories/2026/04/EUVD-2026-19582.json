@@ -1,27 +1,17 @@
 {
   "id": "EUVD-2026-19582",
   "enisaUuid": "bdd20ec3-63d6-32e6-8a70-5a120fcc1b6f",
-  "description": "Generation of Predictable Numbers or Identifiers vulnerability in Erlang/OTP kernel (inet_res, inet_db modules) allows DNS Cache Poisoning.\n\nThe built-in DNS resolver (inet_res) uses a sequential, process-global 16-bit transaction ID for UDP queries and does not implement source port randomization. Response validation relies almost entirely on this ID, making DNS cache poisoning practical for an attacker who can observe one query or predict the next ID. This conflicts with RFC 5452 recommendations for mitigating forged DNS answers.\n\ninet_res is intended for use in trusted network environments and with trusted recursive resolvers. Earlier documentation did not clearly state this deployment assumption, which could lead users to deploy the resolver in environments where spoofed DNS responses are possible.\n\nThis vulnerability is associated with program files lib/kernel/src/inet_db.erl and lib/kernel/src/inet_res.erl.\n\nThis issue affects OTP from OTP 17.0 before OTP\u00a028.4.2, OTP\u00a027.3.4.10 and OTP\u00a026.2.5.19, corresponding to kernel from 3.0 before 10.6.2, 10.2.7.4 and 9.2.4.11.",
+  "description": "Generation of Predictable Numbers or Identifiers vulnerability in Erlang/OTP kernel (inet_res, inet_db modules) allows DNS Cache Poisoning.\n\nThe built-in DNS resolver (inet_res) uses a sequential, process-global 16-bit transaction ID for UDP queries and does not implement source port randomization. Response validation relies almost entirely on this ID, making DNS cache poisoning practical for an attacker who can observe one query or predict the next ID. This conflicts with RFC 5452 recommendations for mitigating forged DNS answers.\n\ninet_res is intended for use in trusted network environments and with trusted recursive resolvers. Earlier documentation did not clearly state this deployment assumption, which could lead users to deploy the resolver in environments where spoofed DNS responses are possible.\n\nThis vulnerability is associated with program files lib/kernel/src/inet_db.erl and lib/kernel/src/inet_res.erl.\n\nThis issue affects OTP from OTP\u00a017.0 before OTP\u00a026.2.5.19, OTP\u00a027.3.4.10, and OTP\u00a028.4.2, corresponding to kernel from 3.0 before 9.2.4.11, 10.2.7.4, and 10.6.2.",
   "datePublished": "Apr 7, 2026, 7:50:11 AM",
-  "dateUpdated": "Jul 24, 2026, 2:16:14 PM",
+  "dateUpdated": "Nov 11, 2026, 7:28:21 PM",
   "baseScore": 6.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
-  "references": "https://github.com/erlang/otp/security/advisories/GHSA-v884-5jg5-whj8\nhttps://cna.erlef.org/cves/CVE-2026-28810.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-28810\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/36f23c9d2cc54afe83671dd7343596d7972839a5\nhttps://github.com/erlang/otp/commit/dd15e8eb03548c5e55e9915f0e91389ec6bad9fd\nhttps://github.com/erlang/otp/commit/b057a9d995017b1be50d6dc02edd52382f3231b8\n",
+  "references": "https://github.com/erlang/otp/security/advisories/GHSA-v884-5jg5-whj8\nhttps://cna.erlef.org/cves/CVE-2026-28810.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-28810\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/07b8f441ca711f9812fad9e9115bab3c3aa92f79\nhttps://github.com/erlang/otp/commit/b057a9d995017b1be50d6dc02edd52382f3231b8\nhttps://github.com/erlang/otp/commit/dd15e8eb03548c5e55e9915f0e91389ec6bad9fd\nhttps://github.com/erlang/otp/commit/36f23c9d2cc54afe83671dd7343596d7972839a5\n",
   "aliases": "CVE-2026-28810\n",
   "assigner": "EEF",
   "epss": 0.27,
   "enisaIdProduct": [
-    {
-      "id": "2648caf4-383c-3cf4-aa35-757e49186c93",
-      "product": {
-        "name": "otp",
-        "vendor": {
-          "name": "erlang"
-        }
-      },
-      "product_version": "07b8f441ca711f9812fad9e9115bab3c3aa92f79 <*"
-    },
     {
       "id": "73c60b17-40d1-3cbc-ad9d-f1dcb6e1e553",
       "product": {
@@ -31,6 +21,16 @@
         }
       },
       "product_version": "3.0 <*"
+    },
+    {
+      "id": "77216f9d-7250-3eb6-b2df-c0985128a90e",
+      "product": {
+        "name": "otp",
+        "vendor": {
+          "name": "erlang"
+        }
+      },
+      "product_version": "07b8f441ca711f9812fad9e9115bab3c3aa92f79 <b057a9d995017b1be50d6dc02edd52382f3231b8"
     },
     {
       "id": "edf1334a-c3c7-3bd8-939e-922cd113fb53",

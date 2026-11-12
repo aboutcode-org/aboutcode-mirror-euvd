@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-11776",
   "enisaUuid": "d81be6f9-2a73-3f14-a00a-d7f4661f68f4",
-  "description": "Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in Erlang OTP (inets httpd module) allows HTTP Request Smuggling.\n\nThis vulnerability is associated with program files lib/inets/src/http_server/httpd_request.erl and program routines httpd_request:parse_headers/7.\n\nThe server does not reject or normalize duplicate Content-Length headers. The earliest Content-Length in the request is used for body parsing while common reverse proxies (nginx, Apache httpd, Envoy) honor the last Content-Length value. This violates RFC 9112 Section 6.3 and allows front-end/back-end desynchronization, leaving attacker-controlled bytes queued as the start of the next request.\n\nThis issue affects OTP from OTP 17.0 before OTP\u00a028.4.1, OTP\u00a027.3.4.9 and OTP\u00a026.2.5.18, corresponding to inets from 5.10 before 9.6.1, 9.3.2.3 and 9.1.0.5.",
+  "description": "Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in Erlang OTP (inets httpd module) allows HTTP Request Smuggling.\n\nThis vulnerability is associated with program files lib/inets/src/http_server/httpd_request.erl and program routines httpd_request:parse_headers/7.\n\nThe server does not reject or normalize duplicate Content-Length headers. The earliest Content-Length in the request is used for body parsing while common reverse proxies (nginx, Apache httpd, Envoy) honor the last Content-Length value. This violates RFC 9112 Section 6.3 and allows front-end/back-end desynchronization, leaving attacker-controlled bytes queued as the start of the next request.\n\nThis issue affects OTP from OTP\u00a017.0 before OTP\u00a026.2.5.18, OTP\u00a027.3.4.9, and OTP\u00a028.4.1, corresponding to inets from 5.10 before 9.1.0.5, 9.3.2.3, and 9.6.1. Whether OTP before OTP\u00a017.0, corresponding to inets before 5.10, is affected is unknown.",
   "datePublished": "Mar 13, 2026, 9:11:58 AM",
-  "dateUpdated": "Jul 24, 2026, 2:15:30 PM",
+  "dateUpdated": "Nov 11, 2026, 7:45:01 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:L",
-  "references": "https://github.com/erlang/otp/security/advisories/GHSA-w4jc-9wpv-pqh7\nhttps://cna.erlef.org/cves/CVE-2026-23941.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-23941\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/a4b46336fd25aa100ac602eb9a627aaead7eda18\nhttps://github.com/erlang/otp/commit/a761d391d8d08316cbd7d4a86733ba932b73c45b\nhttps://github.com/erlang/otp/commit/e775a332f623851385ab6ddb866d9b150612ddf6\n",
+  "references": "https://github.com/erlang/otp/security/advisories/GHSA-w4jc-9wpv-pqh7\nhttps://cna.erlef.org/cves/CVE-2026-23941.html\nhttps://osv.dev/vulnerability/EEF-CVE-2026-23941\nhttps://www.erlang.org/doc/system/versions.html#order-of-versions\nhttps://github.com/erlang/otp/commit/e775a332f623851385ab6ddb866d9b150612ddf6\nhttps://github.com/erlang/otp/commit/a761d391d8d08316cbd7d4a86733ba932b73c45b\nhttps://github.com/erlang/otp/commit/a4b46336fd25aa100ac602eb9a627aaead7eda18\n",
   "aliases": "CVE-2026-23941\n",
   "assigner": "EEF",
-  "epss": 0.53,
+  "epss": 0.51,
   "enisaIdProduct": [
     {
       "id": "31d7fcec-6d0e-3879-b109-d0b29b0c03e1",
