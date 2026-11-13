@@ -3,15 +3,35 @@
   "enisaUuid": "b7e99f91-63ee-3f78-b087-f065b55fd2bf",
   "description": "A use-after-free flaw was found in GStreamer core buffer value deserialization. When serialized buffer text contains an invalid character, an error path frees a mapped buffer before unmapping it. Applications that parse untrusted caps or structure data can reach a freed-buffer read and may crash. A network-facing GStreamer Data Protocol receiver can process such caps data without user interaction; further impact has not been established.",
   "datePublished": "Nov 10, 2026, 10:43:20 AM",
-  "dateUpdated": "Nov 11, 2026, 7:00:58 PM",
+  "dateUpdated": "Nov 12, 2026, 6:03:35 PM",
   "baseScore": 7.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:99090\nhttps://access.redhat.com/security/cve/CVE-2026-125704\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2569128\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11583.patch\nhttps://gstreamer.freedesktop.org/security/sa-2026-0028.html\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:99090\nhttps://access.redhat.com/errata/RHSA-2026:99129\nhttps://access.redhat.com/errata/RHSA-2026:99228\nhttps://access.redhat.com/security/cve/CVE-2026-125704\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2569128\nhttps://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11583.patch\nhttps://gstreamer.freedesktop.org/security/sa-2026-0028.html\n",
   "aliases": "GHSA-hc85-6x4f-g38q\nCVE-2026-125704\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.48,
   "enisaIdProduct": [
+    {
+      "id": "0e4f4f1c-ef78-3484-8228-3114494f65cf",
+      "product": {
+        "name": "Red Hat Enterprise Linux 9",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.22.12-3.el9_9.1"
+    },
+    {
+      "id": "32cd79e0-1ef2-3993-a528-87d3b8f59ac7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:1.26.7-5.el10_3.1"
+    },
     {
       "id": "40b0570b-8afc-3586-af3f-99b729127d71",
       "product": {

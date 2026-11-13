@@ -3,14 +3,14 @@
   "enisaUuid": "cb742396-9cc0-3a92-8108-331736c92e57",
   "description": "A flaw was found in GDB's STABS debug format parser. The\nread_member_functions() function in gdb/stabsread.c contains a linked\nlist removal bug in the code that separates destructor and non-destructor\nmember functions of C++ classes. The bug causes the destructor entries to\nremain in the main function list while the list length counter is\ndecremented, resulting in an out-of-bounds write when the function list\nis copied to its final allocated array. An attacker can craft an ELF\nbinary with malicious .stab and .stabstr sections that triggers this\nout-of-bounds write when a user opens the file in GDB and performs any\nsymbol-inspection operation such as setting a breakpoint. The inferior\nprocess does not need to be executed. Under controlled conditions, this\nwas demonstrated to achieve execution of arbitrary commands within the\nGDB process.",
   "datePublished": "Aug 31, 2026, 7:23:18 PM",
-  "dateUpdated": "Nov 9, 2026, 5:19:17 AM",
+  "dateUpdated": "Nov 12, 2026, 11:38:48 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
-  "references": "https://access.redhat.com/errata/RHSA-2026:73425\nhttps://access.redhat.com/errata/RHSA-2026:73426\nhttps://access.redhat.com/errata/RHSA-2026:73427\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:82447\nhttps://access.redhat.com/errata/RHSA-2026:82939\nhttps://access.redhat.com/errata/RHSA-2026:96095\nhttps://access.redhat.com/errata/RHSA-2026:96096\nhttps://access.redhat.com/errata/RHSA-2026:96097\nhttps://access.redhat.com/errata/RHSA-2026:96098\nhttps://access.redhat.com/security/cve/CVE-2026-13732\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494416\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:73425\nhttps://access.redhat.com/errata/RHSA-2026:73426\nhttps://access.redhat.com/errata/RHSA-2026:73427\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:82447\nhttps://access.redhat.com/errata/RHSA-2026:82939\nhttps://access.redhat.com/errata/RHSA-2026:96095\nhttps://access.redhat.com/errata/RHSA-2026:96096\nhttps://access.redhat.com/errata/RHSA-2026:96097\nhttps://access.redhat.com/errata/RHSA-2026:96098\nhttps://access.redhat.com/errata/RHSA-2026:99594\nhttps://access.redhat.com/errata/RHSA-2026:99596\nhttps://access.redhat.com/errata/RHSA-2026:99597\nhttps://access.redhat.com/security/cve/CVE-2026-13732\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494416\n",
   "aliases": "CVE-2026-13732\nGHSA-j2fm-9w3c-hpj9\n",
   "assigner": "redhat",
-  "epss": 0.13,
+  "epss": 0.14,
   "enisaIdProduct": [
     {
       "id": "04369da2-0738-3af2-90a6-b08c420ba82b",
@@ -23,6 +23,16 @@
       "product_version": "patch: 1791978528"
     },
     {
+      "id": "082a7123-34ae-3f5c-a3db-9e9072d35fb7",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-15.1.el8_4"
+    },
+    {
       "id": "086ee728-742a-3197-9514-8f66e029ac87",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -31,6 +41,26 @@
         }
       },
       "product_version": "patch: 1791964013"
+    },
+    {
+      "id": "0e5d1a09-a3fc-33e5-b205-7eeb4354509b",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Telecommunications Update Service",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-19.1.el8_8"
+    },
+    {
+      "id": "2ae38576-0b52-3b66-9dca-a4ab1eed10f6",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.4 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-15.1.el8_4"
     },
     {
       "id": "2dda7c80-8aea-3426-b129-1bebed622e0d",
@@ -73,6 +103,16 @@
       "product_version": "patch: 0:16.3-3.1.el9_8"
     },
     {
+      "id": "963f3127-9fe4-31bb-b313-847e25bfa965",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-19.1.el8_8"
+    },
+    {
       "id": "aacc3457-90ba-3fa8-8e52-0a3cbbff43ec",
       "product": {
         "name": "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions",
@@ -81,6 +121,26 @@
         }
       },
       "product_version": "patch: 0:10.2-13.1.el9_4"
+    },
+    {
+      "id": "b302c481-8e30-35d5-95b8-c928ac120c26",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-18.1.el8_6"
+    },
+    {
+      "id": "b4f2fe17-6c06-385c-807a-b6d07285d9da",
+      "product": {
+        "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 0:8.2-18.1.el8_6"
     },
     {
       "id": "bf446ccc-d36c-3c2b-8473-8f1e9e4dc408",
