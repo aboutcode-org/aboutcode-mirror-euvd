@@ -3,15 +3,25 @@
   "enisaUuid": "ce186785-cf1b-31a3-9fb8-3acc2c1a39fd",
   "description": "A flaw was found in Red Hat Quay. An unauthenticated client can obtain an anonymous registry token with an audience it controls, present that token to the service key rotation endpoint, and install its own approved signing key with no expiry. Registry tokens signed with that key are accepted for any repository, allowing read and write access to private images and replacement of repository tags.",
   "datePublished": "Nov 11, 2026, 3:02:31 PM",
-  "dateUpdated": "Nov 12, 2026, 11:36:40 PM",
+  "dateUpdated": "Nov 13, 2026, 8:50:57 PM",
   "baseScore": 9.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2026:99019\nhttps://access.redhat.com/errata/RHSA-2026:99021\nhttps://access.redhat.com/errata/RHSA-2026:99022\nhttps://access.redhat.com/errata/RHSA-2026:99023\nhttps://access.redhat.com/errata/RHSA-2026:99024\nhttps://access.redhat.com/errata/RHSA-2026:99025\nhttps://access.redhat.com/errata/RHSA-2026:99026\nhttps://access.redhat.com/errata/RHSA-2026:99027\nhttps://access.redhat.com/security/cve/CVE-2026-123710\nhttps://access.redhat.com/solutions/7149923\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2568072\n",
   "aliases": "GHSA-jw94-v4wp-236w\nCVE-2026-123710\n",
   "assigner": "redhat",
-  "epss": 0.0,
+  "epss": 0.43,
   "enisaIdProduct": [
+    {
+      "id": "0ae453e3-6457-397a-8fb3-98f7a15bf4ed",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.16.0 <3.16.7"
+    },
     {
       "id": "0d18b278-f467-319d-b52e-3c8eb98310cc",
       "product": {
@@ -21,6 +31,36 @@
         }
       },
       "product_version": "patch: 1793993848"
+    },
+    {
+      "id": "0d26018c-9670-3db6-8845-07484f712b43",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.12.0 <3.12.24"
+    },
+    {
+      "id": "162ad120-05c3-3cf0-a478-fa6ecba5024d",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "0 <3.9.28"
+    },
+    {
+      "id": "223629b2-98e1-3699-a311-0dd378b334b4",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.14.0 <3.14.10"
     },
     {
       "id": "3c3ff2ab-59d7-370c-bcc9-b360bad92055",
@@ -43,6 +83,16 @@
       "product_version": "patch: 1793993730"
     },
     {
+      "id": "49926bac-cc66-3b38-b1e0-e3a24508c82f",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.10.0 <3.10.28"
+    },
+    {
       "id": "546ea686-aa48-3946-990a-09dd59396430",
       "product": {
         "name": "Red Hat Quay 3.15",
@@ -51,6 +101,36 @@
         }
       },
       "product_version": "patch: 1793993771"
+    },
+    {
+      "id": "7e5f57d7-181b-350d-9e64-8e9d965bb2da",
+      "product": {
+        "name": "Red Hat Quay 3.12",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793993854"
+    },
+    {
+      "id": "98e291f2-1aee-3f09-a098-fc5bcb535abf",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.15.0 <3.15.9"
+    },
+    {
+      "id": "9d61a75c-5b09-3512-be8d-4ee3cd32a92c",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.17.0 <3.17.7"
     },
     {
       "id": "ac24f38f-538b-36ff-8b27-a6f096cd6427",
@@ -63,6 +143,16 @@
       "product_version": "patch: 1793993674"
     },
     {
+      "id": "bd9a4189-cd00-3399-bb82-92cd5df6a109",
+      "product": {
+        "name": "quay",
+        "vendor": {
+          "name": "Project Quay"
+        }
+      },
+      "product_version": "3.18.0 <3.18.3"
+    },
+    {
       "id": "cd693189-2928-39b0-90e4-a043eeb83d00",
       "product": {
         "name": "Red Hat Quay 3.16",
@@ -71,9 +161,25 @@
         }
       },
       "product_version": "patch: 1793993799"
+    },
+    {
+      "id": "e4f81243-d7bc-3b85-a315-9a8f9966e520",
+      "product": {
+        "name": "Red Hat Quay 3.17",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793993778"
     }
   ],
   "enisaIdVendor": [
+    {
+      "id": "2e3e0751-06bd-3ea4-b0ea-5d4c84fbeac6",
+      "vendor": {
+        "name": "Project Quay"
+      }
+    },
     {
       "id": "9963c197-a55d-31e4-8efd-193cdc79c69e",
       "vendor": {

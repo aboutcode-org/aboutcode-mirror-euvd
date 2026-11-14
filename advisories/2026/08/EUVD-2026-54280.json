@@ -3,7 +3,7 @@
   "enisaUuid": "07039390-a296-37c0-bee7-4cbe069748d4",
   "description": "llama.cpp builds b1886 through b7445 contain a race condition use-after-free vulnerability in the LLaMA-Android JNI wrapper where bench_1model() and free_1context() lack synchronization, allowing Thread A to operate on freed memory while Thread B concurrently frees the llama_context. Attackers can exploit this by performing heap spray with attacker-controlled data containing a fake vtable to hijack the vtable pointer at offset +0x30, causing llama_batch_allocr::clear() to dereference arbitrary memory and achieve remote code execution.",
   "datePublished": "Aug 6, 2026, 3:38:22 PM",
-  "dateUpdated": "Nov 8, 2026, 2:08:33 PM",
+  "dateUpdated": "Nov 13, 2026, 9:26:51 PM",
   "baseScore": 7.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",

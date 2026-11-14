@@ -3,12 +3,12 @@
   "enisaUuid": "82d37772-dbcc-3de2-bd51-108542bd88d2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: Fix UAF when reading statistics data\n\nThe network statistic data in the driver is protected by RCU.\nUnfortunately when tearing down the queues after an error during\nconnecting to the frontend (e.g. due to illegal Xenstore data filled\nin by the guest), the statistic data is being freed without\nsynchronizing the RCU state.  In case the data is being read via sysfs\nin this phase, access to already freed memory or memory being in new\nuse is possible.\n\nFix that by calling synchronize_net() before freeing the queue data.\n\nThis is XSA-526 / CVE-2026-100080",
   "datePublished": "Nov 6, 2026, 6:23:01 PM",
-  "dateUpdated": "Nov 6, 2026, 7:08:40 PM",
+  "dateUpdated": "Nov 13, 2026, 2:17:19 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/4223b33be49ee09acb6f1d26beb4a36dd3b8d63a\nhttps://git.kernel.org/stable/c/ab9cdf1291be551da999510b30216a2886074d7a\nhttps://git.kernel.org/stable/c/36f858f228e3f955b9336af7f94634747c221518\nhttps://git.kernel.org/stable/c/89e534265b62c94749639350200b10370564bb3a\nhttps://git.kernel.org/stable/c/6cd611d2abdd8623a554e14145f82c1cb4e4467a\nhttps://git.kernel.org/stable/c/37d5a73170579b30e67cc8b19ec69715eea3a6b6\nhttps://git.kernel.org/stable/c/4867687b6ad28ab84bc0811d8f8f9972e769da02\n",
+  "references": "https://git.kernel.org/stable/c/4223b33be49ee09acb6f1d26beb4a36dd3b8d63a\nhttps://git.kernel.org/stable/c/ab9cdf1291be551da999510b30216a2886074d7a\nhttps://git.kernel.org/stable/c/36f858f228e3f955b9336af7f94634747c221518\nhttps://git.kernel.org/stable/c/89e534265b62c94749639350200b10370564bb3a\nhttps://git.kernel.org/stable/c/6cd611d2abdd8623a554e14145f82c1cb4e4467a\nhttps://git.kernel.org/stable/c/37d5a73170579b30e67cc8b19ec69715eea3a6b6\nhttps://git.kernel.org/stable/c/4867687b6ad28ab84bc0811d8f8f9972e769da02\nhttps://git.kernel.org/stable/c/5fb756f1bbec7a3862dda5d79028bf656271804c\n",
   "aliases": "CVE-2026-100080\nGHSA-q39v-hr2r-27c9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.27,
   "enisaIdProduct": [
     {
       "id": "13d1f2a5-d43c-3bed-bcfa-d0f1521903eb",
@@ -81,6 +81,16 @@
       "product_version": "patch: 6.18.62"
     },
     {
+      "id": "46873c9f-8a34-3493-b326-812732a867b5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <5fb756f1bbec7a3862dda5d79028bf656271804c"
+    },
+    {
       "id": "46a6d896-2a05-37a3-930b-80173e745851",
       "product": {
         "name": "Linux",
@@ -89,6 +99,16 @@
         }
       },
       "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <6cd611d2abdd8623a554e14145f82c1cb4e4467a"
+    },
+    {
+      "id": "54f43f87-6c97-388f-b828-c600b48eca68",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.4-rc2"
     },
     {
       "id": "5bfe7c72-283a-3f28-b0ab-e48682f6feb1",

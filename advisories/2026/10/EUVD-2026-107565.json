@@ -3,11 +3,11 @@
   "enisaUuid": "041475e3-b98d-3f0e-a991-33f65af3ab27",
   "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
   "datePublished": "Oct 21, 2026, 8:56:26 PM",
-  "dateUpdated": "Nov 11, 2026, 5:51:46 AM",
+  "dateUpdated": "Nov 13, 2026, 2:55:05 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/errata/RHSA-2026:93043\nhttps://access.redhat.com/errata/RHSA-2026:93044\nhttps://access.redhat.com/errata/RHSA-2026:93045\nhttps://access.redhat.com/errata/RHSA-2026:93046\nhttps://access.redhat.com/errata/RHSA-2026:94459\nhttps://access.redhat.com/errata/RHSA-2026:94468\nhttps://access.redhat.com/errata/RHSA-2026:94474\nhttps://access.redhat.com/errata/RHSA-2026:94476\nhttps://access.redhat.com/errata/RHSA-2026:94562\nhttps://access.redhat.com/errata/RHSA-2026:94581\nhttps://access.redhat.com/errata/RHSA-2026:94583\nhttps://access.redhat.com/errata/RHSA-2026:94584\nhttps://access.redhat.com/errata/RHSA-2026:94631\nhttps://access.redhat.com/errata/RHSA-2026:94702\nhttps://access.redhat.com/errata/RHSA-2026:94709\nhttps://access.redhat.com/errata/RHSA-2026:94715\nhttps://access.redhat.com/errata/RHSA-2026:94717\nhttps://access.redhat.com/errata/RHSA-2026:94721\nhttps://access.redhat.com/errata/RHSA-2026:94738\nhttps://access.redhat.com/errata/RHSA-2026:94802\nhttps://access.redhat.com/errata/RHSA-2026:95058\nhttps://access.redhat.com/errata/RHSA-2026:95090\nhttps://access.redhat.com/errata/RHSA-2026:95264\nhttps://access.redhat.com/errata/RHSA-2026:95365\nhttps://access.redhat.com/errata/RHSA-2026:95745\nhttps://access.redhat.com/errata/RHSA-2026:96282\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/errata/RHSA-2026:93043\nhttps://access.redhat.com/errata/RHSA-2026:93044\nhttps://access.redhat.com/errata/RHSA-2026:93045\nhttps://access.redhat.com/errata/RHSA-2026:93046\nhttps://access.redhat.com/errata/RHSA-2026:94459\nhttps://access.redhat.com/errata/RHSA-2026:94468\nhttps://access.redhat.com/errata/RHSA-2026:94474\nhttps://access.redhat.com/errata/RHSA-2026:94476\nhttps://access.redhat.com/errata/RHSA-2026:94562\nhttps://access.redhat.com/errata/RHSA-2026:94581\nhttps://access.redhat.com/errata/RHSA-2026:94583\nhttps://access.redhat.com/errata/RHSA-2026:94584\nhttps://access.redhat.com/errata/RHSA-2026:94631\nhttps://access.redhat.com/errata/RHSA-2026:94702\nhttps://access.redhat.com/errata/RHSA-2026:94709\nhttps://access.redhat.com/errata/RHSA-2026:94715\nhttps://access.redhat.com/errata/RHSA-2026:94717\nhttps://access.redhat.com/errata/RHSA-2026:94721\nhttps://access.redhat.com/errata/RHSA-2026:94738\nhttps://access.redhat.com/errata/RHSA-2026:94802\nhttps://access.redhat.com/errata/RHSA-2026:95058\nhttps://access.redhat.com/errata/RHSA-2026:95090\nhttps://access.redhat.com/errata/RHSA-2026:95264\nhttps://access.redhat.com/errata/RHSA-2026:95365\nhttps://access.redhat.com/errata/RHSA-2026:95745\nhttps://access.redhat.com/errata/RHSA-2026:95872\nhttps://access.redhat.com/errata/RHSA-2026:96282\nhttps://access.redhat.com/errata/RHSA-2026:96323\nhttps://access.redhat.com/errata/RHSA-2026:96333\nhttps://access.redhat.com/errata/RHSA-2026:96391\nhttps://access.redhat.com/errata/RHSA-2026:96400\nhttps://access.redhat.com/errata/RHSA-2026:96403\nhttps://access.redhat.com/errata/RHSA-2026:96406\nhttps://access.redhat.com/errata/RHSA-2026:99044\nhttps://access.redhat.com/errata/RHSA-2026:99787\nhttps://access.redhat.com/errata/RHSA-2026:99792\nhttps://access.redhat.com/errata/RHSA-2026:99794\nhttps://access.redhat.com/errata/RHSA-2026:99796\nhttps://access.redhat.com/errata/RHSA-2026:99800\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
   "aliases": "GHSA-jrx5-4fv3-4mcq\nCVE-2026-114406\n",
   "assigner": "redhat",
   "epss": 0.31,
@@ -21,6 +21,66 @@
         }
       },
       "product_version": "patch: 2.2.4-2"
+    },
+    {
+      "id": "016f0252-e0fa-341b-97b0-b65021dbf821",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763316"
+    },
+    {
+      "id": "019acbe2-aa3a-3f2d-bfdf-054e282b9c81",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761401"
+    },
+    {
+      "id": "0385eebb-c670-3ec5-a5ae-0fef6e5d57cb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793767642"
+    },
+    {
+      "id": "08f6ecad-f7ed-3b72-87d9-53a7e5d42aed",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793770107"
+    },
+    {
+      "id": "09c3ee46-0d8d-3b68-a999-2f4fa23ce66a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793584398"
+    },
+    {
+      "id": "0a8c063d-b3f9-3fb5-9807-2c5515309d52",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793764826"
     },
     {
       "id": "0b3e89c2-3280-37eb-a5d5-4bc51436ee15",
@@ -43,6 +103,36 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_8"
     },
     {
+      "id": "0c797648-e503-3a83-87fc-68cf94c66243",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757463"
+    },
+    {
+      "id": "0de1ddab-ce96-3f0e-b789-057dea5df797",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793798983"
+    },
+    {
+      "id": "0e493c36-0e3d-38ca-b037-0eb48ea83620",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793777246"
+    },
+    {
       "id": "0f1e89e5-2ce2-3662-b9dc-0f54d8f1334d",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -63,6 +153,16 @@
       "product_version": "patch: 1793042074"
     },
     {
+      "id": "1005f997-74bd-39bd-82f1-133349900cdb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793799006"
+    },
+    {
       "id": "10bc17c5-9267-3db8-a1c0-29da36928e03",
       "product": {
         "name": "Red Hat OpenShift Builds 1.8.3",
@@ -71,6 +171,16 @@
         }
       },
       "product_version": "patch: 1792851895"
+    },
+    {
+      "id": "118dfaaf-360b-3780-aa2c-68b5dd5902a4",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793679560"
     },
     {
       "id": "12bbc000-64e1-3f54-aa07-8f43f211ba03",
@@ -133,6 +243,16 @@
       "product_version": "patch: 1793686175"
     },
     {
+      "id": "1f6f1092-ca56-3c52-895e-630233bb2259",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757264"
+    },
+    {
       "id": "1f93fc05-56ca-3514-af75-630785156646",
       "product": {
         "name": "Red Hat OpenShift Builds 1.8.3",
@@ -141,6 +261,26 @@
         }
       },
       "product_version": "patch: 1792837466"
+    },
+    {
+      "id": "215fc5d1-98fc-3f5a-b78a-e16a5481e01e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763787"
+    },
+    {
+      "id": "24261291-0e30-3921-a601-fa0041a96cb9",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793766233"
     },
     {
       "id": "24c15aed-614e-3810-9dc7-bb6e9a8553e8",
@@ -193,6 +333,36 @@
       "product_version": "patch: 0:1.27.89-3.el9ost"
     },
     {
+      "id": "2982d707-f424-36f9-b7f5-5bce493cfb7f",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793760043"
+    },
+    {
+      "id": "2a4c1b69-f7af-35a4-896b-6690d86d1c01",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793455001"
+    },
+    {
+      "id": "2b60a56a-f28b-3146-8a90-6d63a570e26c",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793300494"
+    },
+    {
       "id": "2dc1847f-05d9-38b4-9343-1a3cb6505933",
       "product": {
         "name": "Red Hat AI Inference Server 3.5",
@@ -201,6 +371,26 @@
         }
       },
       "product_version": "patch: 1793444554"
+    },
+    {
+      "id": "2e1328fa-cea5-3540-94be-d8235c55b85e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758732"
+    },
+    {
+      "id": "2f203eb9-d4ba-3e10-b3f1-f89da4988e40",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793768650"
     },
     {
       "id": "2f7139aa-1dde-3f37-b7d0-cbcdc8a81838",
@@ -221,6 +411,16 @@
         }
       },
       "product_version": "patch: 1793444510"
+    },
+    {
+      "id": "308e02a6-f594-374b-bfb3-f1b8ebf42126",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759522"
     },
     {
       "id": "30ff4d1a-8061-31a6-86b2-1f78bf4f52db",
@@ -263,6 +463,36 @@
       "product_version": "patch: 1793444456"
     },
     {
+      "id": "37698e8e-9de8-3397-9e31-f912d2ae3a9a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793760171"
+    },
+    {
+      "id": "382d12c5-6876-3fc8-9a37-bfa323c05e4e",
+      "product": {
+        "name": "Red Hat Enterprise Linux AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793973314"
+    },
+    {
+      "id": "39941a13-ee8e-3e5b-b4d8-07bffcf24f90",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793646667"
+    },
+    {
       "id": "3a6447b3-bef7-30f5-b603-5827571e05af",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.21",
@@ -293,6 +523,16 @@
       "product_version": "patch: 1793691784"
     },
     {
+      "id": "3d8963b4-6c1a-3457-813c-d5180e2b5d04",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793867964"
+    },
+    {
       "id": "3eccc9f8-4a36-3633-a794-c8a779af72cc",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.13",
@@ -313,6 +553,16 @@
       "product_version": "patch: 1793005764"
     },
     {
+      "id": "42870e44-4943-3cb3-805a-28b7290c4acb",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793777468"
+    },
+    {
       "id": "435bcff8-d9aa-3cd8-9265-8747589dbf46",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -323,6 +573,26 @@
       "product_version": "patch: 1793033165"
     },
     {
+      "id": "43962b85-12e0-3760-baa0-291e9559b133",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761723"
+    },
+    {
+      "id": "43a24212-f5c8-32df-a40a-11861a92efba",
+      "product": {
+        "name": "Red Hat Enterprise Linux AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793995863"
+    },
+    {
       "id": "4ac21cf9-5c8f-336c-a3db-a4373e2da80f",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.22",
@@ -331,6 +601,26 @@
         }
       },
       "product_version": "patch: 1793684783"
+    },
+    {
+      "id": "4afdda0f-8ef2-3403-91cd-b08be3477619",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793760703"
+    },
+    {
+      "id": "4b92af50-6c3e-332e-bbb9-793704933840",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759957"
     },
     {
       "id": "4c8dda99-06c4-3f80-9bd0-067b6c4b8b62",
@@ -363,6 +653,16 @@
       "product_version": "patch: 1792838794"
     },
     {
+      "id": "51e9af5b-6a0b-3bec-8768-b06267f6439b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757908"
+    },
+    {
       "id": "526b4e7d-3a97-37a9-b5a4-c879d5aa6c36",
       "product": {
         "name": "Red Hat OpenShift Builds 1.8.3",
@@ -371,6 +671,46 @@
         }
       },
       "product_version": "patch: 1792844269"
+    },
+    {
+      "id": "5310be09-b0d0-3c2b-8a44-392deaa1272f",
+      "product": {
+        "name": "Red Hat Enterprise Linux AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793973312"
+    },
+    {
+      "id": "54e5187d-de03-3c15-95f2-b14f996b8e29",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793776034"
+    },
+    {
+      "id": "550db017-7b27-3294-bc0c-96f5d6e91184",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794418334"
+    },
+    {
+      "id": "552de7e6-da0f-3fd0-a104-8324a96cbbd9",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793869589"
     },
     {
       "id": "55594e43-b979-3b0c-b8f9-e9f773490461",
@@ -403,6 +743,26 @@
       "product_version": "patch: 1793042093"
     },
     {
+      "id": "58646c1c-29fa-32e8-9a08-e708f0fc800a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793760437"
+    },
+    {
+      "id": "5af73af3-20a8-3cda-8674-cfd81f7b9c9d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793606223"
+    },
+    {
       "id": "5c78a995-072a-34ee-9d3b-bf449d26434e",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -411,6 +771,16 @@
         }
       },
       "product_version": "patch: 1793036500"
+    },
+    {
+      "id": "5cf1e6f6-608c-3c49-ab76-b1a903776193",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758949"
     },
     {
       "id": "5f5b1019-ad12-38be-9d52-1bc1853eb7c6",
@@ -423,6 +793,36 @@
       "product_version": "patch: 1792835571"
     },
     {
+      "id": "5f6468c9-811f-3f87-bf08-5349336251d4",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793680216"
+    },
+    {
+      "id": "5fc37b0c-ee08-3f4c-a517-3e16e4c44a4e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793691340"
+    },
+    {
+      "id": "605e702e-70df-3556-b748-f41f8942fb6b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763721"
+    },
+    {
       "id": "622fcc52-39fe-3893-9908-930332938788",
       "product": {
         "name": "Cost Management 4",
@@ -433,6 +833,16 @@
       "product_version": "patch: 1793202662"
     },
     {
+      "id": "64a9c5ec-e17d-301b-a3cf-d64a3dcb4926",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793776772"
+    },
+    {
       "id": "650cfd6f-68b7-3ffc-a5f4-77a551787c2c",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.12",
@@ -441,6 +851,16 @@
         }
       },
       "product_version": "patch: 412.86.202610250235-0"
+    },
+    {
+      "id": "65b33959-5ea5-3188-ac3e-040da0f04fa3",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793381112"
     },
     {
       "id": "68443df6-b776-3902-9783-a1c2fc0e413c",
@@ -463,6 +883,36 @@
       "product_version": "patch: 1793745312"
     },
     {
+      "id": "69a606f9-ab66-38db-b5f2-f7c1ac1c35b2",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793776192"
+    },
+    {
+      "id": "6c1bface-4ee6-334b-adf5-6023da05fdca",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761673"
+    },
+    {
+      "id": "6c782b0b-e2a3-3a9b-8996-289d5c25828e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793770093"
+    },
+    {
       "id": "6cd69c50-b952-39a9-a6ec-eb2ba1c7572a",
       "product": {
         "name": "Red Hat OpenShift Builds 1.9.2",
@@ -481,6 +931,16 @@
         }
       },
       "product_version": "patch: 1793041995"
+    },
+    {
+      "id": "6ed14c41-f962-3bc6-96ae-d07187e590f1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793602161"
     },
     {
       "id": "6f4b4f45-df2b-399c-8983-a72a5002df0a",
@@ -513,6 +973,26 @@
       "product_version": "patch: 1793033496"
     },
     {
+      "id": "7159c4f6-6fa1-3f02-ae59-559e0f1afe0a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793872681"
+    },
+    {
+      "id": "7378ff1c-c7af-30c2-b6f7-ca86e1756f80",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757981"
+    },
+    {
       "id": "75133f9c-a35f-3a4a-a411-4b78ab72b537",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -521,6 +1001,16 @@
         }
       },
       "product_version": "patch: 1793041480"
+    },
+    {
+      "id": "76aa5472-1d59-3cf0-981e-cb7e77efb234",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758359"
     },
     {
       "id": "78496d04-1953-3d62-a677-908873d3f800",
@@ -543,6 +1033,16 @@
       "product_version": "patch: 4.21.9.6.202610241345-0"
     },
     {
+      "id": "7c1a9152-991e-34d5-8594-70ca395cd341",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793630340"
+    },
+    {
       "id": "7d074209-d4c1-327f-b36c-06c12f171d3c",
       "product": {
         "name": "Red Hat Enterprise Linux 10",
@@ -553,6 +1053,16 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-100.3.el10_2"
     },
     {
+      "id": "7d2f71f8-4ad3-3583-bdcc-95539554cd0f",
+      "product": {
+        "name": "Red Hat Developer Hub 1.10",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794341043"
+    },
+    {
       "id": "7ea67a1f-6151-3395-9b57-f050047c73ee",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -561,6 +1071,16 @@
         }
       },
       "product_version": "patch: 1793037970"
+    },
+    {
+      "id": "80766210-96eb-337b-ad3b-866d07fc2050",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757717"
     },
     {
       "id": "81129db2-672c-3f2a-a200-35e9d3be4b18",
@@ -583,6 +1103,16 @@
       "product_version": "patch: 1793692079"
     },
     {
+      "id": "828170c1-bd99-3467-b6e7-e0b7753f93a1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793383222"
+    },
+    {
       "id": "82c35e51-052b-39fe-9339-15bf14316653",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -601,6 +1131,16 @@
         }
       },
       "product_version": "patch: 1793685996"
+    },
+    {
+      "id": "85cc2e94-263e-3f48-a277-7a29df872b94",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763220"
     },
     {
       "id": "8601295e-d4fa-3e5b-acff-d65af9fad8cc",
@@ -733,6 +1273,26 @@
       "product_version": "patch: 1793684716"
     },
     {
+      "id": "9654248e-f4e0-39b4-ae0d-105093a79d6d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763288"
+    },
+    {
+      "id": "96549549-1933-3a00-939b-2145df6d6a05",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793762624"
+    },
+    {
       "id": "97a9144e-b6a7-36a6-a77a-d9385bd9d0b6",
       "product": {
         "name": "Red Hat OpenShift Builds 1.9.2",
@@ -783,6 +1343,16 @@
       "product_version": "patch: 1793042086"
     },
     {
+      "id": "9fe4a6c5-800e-35b6-9f86-443943d7ca2c",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793962303"
+    },
+    {
       "id": "a0adebbd-dada-30c6-8200-553ebbe12482",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -793,6 +1363,16 @@
       "product_version": "patch: 1793005812"
     },
     {
+      "id": "a159b8c4-d7c0-36df-bcd2-d46781995bb3",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758906"
+    },
+    {
       "id": "a18e6726-4255-324a-8d79-d0ca9b0288cb",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.18",
@@ -801,6 +1381,16 @@
         }
       },
       "product_version": "patch: 418.94.202610242013-0"
+    },
+    {
+      "id": "a3568ec9-2c67-3567-87c8-8f939d176eb2",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793778341"
     },
     {
       "id": "a6beeb6a-ded7-36cb-8947-ff2485f6358d",
@@ -853,6 +1443,16 @@
       "product_version": "patch: 1792835365"
     },
     {
+      "id": "a7dd9152-3338-34f0-a77a-0a862c159e13",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763697"
+    },
+    {
       "id": "a81846c7-55a0-3f06-b87f-fd2b40e62bd8",
       "product": {
         "name": "Red Hat Enterprise Linux 8.4 Advanced Mission Critical Update Support",
@@ -873,6 +1473,46 @@
       "product_version": "patch: 1793328358"
     },
     {
+      "id": "a83bb57e-a888-3db3-9c6b-8fa7fe75dfca",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793760033"
+    },
+    {
+      "id": "a931f8d3-ea94-3d17-b6df-1bed69732efc",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761178"
+    },
+    {
+      "id": "a93eaa66-c5d3-3b63-b28b-44080a2d0b0b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761860"
+    },
+    {
+      "id": "abf1300c-0b85-34bc-8ab4-d5c220ca0a81",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759162"
+    },
+    {
       "id": "ad01f3d8-baa1-3a94-ab4f-232c9d707880",
       "product": {
         "name": "Red Hat OpenShift AI 3.4",
@@ -881,6 +1521,16 @@
         }
       },
       "product_version": "patch: 1793042008"
+    },
+    {
+      "id": "ad1c35cc-f1ae-39c4-9291-1e0ec1089be5",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794398147"
     },
     {
       "id": "aea5fa8d-78c7-3a54-83d0-6f17f1a49df5",
@@ -901,6 +1551,46 @@
         }
       },
       "product_version": "patch: 1793692526"
+    },
+    {
+      "id": "b01921db-750e-38a5-a0bc-4ff1c17dc2cd",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794398157"
+    },
+    {
+      "id": "b1b9ebf9-c4be-3816-8069-f4639ad3762d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793497091"
+    },
+    {
+      "id": "b219c435-378f-382a-92b1-a254ca5178e9",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793755520"
+    },
+    {
+      "id": "b2b54f05-0145-3a7d-92fb-012f443d696b",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758836"
     },
     {
       "id": "b2c60e71-342d-3ed3-aad3-d3c83e049966",
@@ -943,6 +1633,26 @@
       "product_version": "patch: 1793825318"
     },
     {
+      "id": "b58bd440-0d0d-3538-9128-45927c2b39ff",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793961309"
+    },
+    {
+      "id": "b60fb761-198d-375d-9835-468d50ceb915",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759883"
+    },
+    {
       "id": "b6ec377f-0687-38d7-9230-57c5afbc5efc",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.19",
@@ -973,6 +1683,16 @@
       "product_version": "patch: 1793691592"
     },
     {
+      "id": "b8f5d8db-1cec-37dd-9d31-48c1a3a6cb25",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793402315"
+    },
+    {
       "id": "bb154d81-5e30-3e08-b1e7-00a2895b3196",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.20",
@@ -981,6 +1701,16 @@
         }
       },
       "product_version": "patch: 4.20.9.6.202610242033-0"
+    },
+    {
+      "id": "bb35b85a-d827-333b-9e77-b8f6d6075c92",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793756253"
     },
     {
       "id": "bc5bcfe3-f8df-319f-8f92-b5b4d2a56242",
@@ -993,6 +1723,26 @@
       "product_version": "patch: 1793042088"
     },
     {
+      "id": "bcad69dc-acfd-3776-b01b-aba7460ec720",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793298535"
+    },
+    {
+      "id": "bd09f6fa-3143-3d80-a8b8-b66140b0f3cb",
+      "product": {
+        "name": "Red Hat Enterprise Linux AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793914504"
+    },
+    {
       "id": "bdb076e2-04eb-39d0-b872-536948a09768",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.20",
@@ -1001,6 +1751,16 @@
         }
       },
       "product_version": "patch: 1793682096"
+    },
+    {
+      "id": "be049bd2-b1e2-3fb8-902f-0776683e7490",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794398074"
     },
     {
       "id": "be17731e-8a51-32c7-811e-285e0e0073c8",
@@ -1013,6 +1773,16 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-90.3.el9_6"
     },
     {
+      "id": "bf4a7491-a062-3372-a04c-a7d59fe98233",
+      "product": {
+        "name": "Red Hat Enterprise Linux AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793914518"
+    },
+    {
       "id": "c035920d-6dbb-3186-8625-ad7a68aebf93",
       "product": {
         "name": "Red Hat Discovery 2",
@@ -1021,6 +1791,46 @@
         }
       },
       "product_version": "patch: 1793734080"
+    },
+    {
+      "id": "c065f66e-007e-3ad8-b9c1-4375eb62364a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793764752"
+    },
+    {
+      "id": "c1095ba1-8b92-3280-96ca-9ed768dd022e",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763734"
+    },
+    {
+      "id": "c1ee7395-291d-34e0-82ca-896a1ceb2ce6",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793776868"
+    },
+    {
+      "id": "c239e437-863f-365a-9d07-03c8d4439405",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793685856"
     },
     {
       "id": "c27108ef-8b92-37df-beff-7bc366d8ab3f",
@@ -1043,6 +1853,16 @@
       "product_version": "patch: 0:3.44.0-15.el6_10"
     },
     {
+      "id": "c3b8b21d-1740-3dfa-8f56-321aae7cb2d8",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793757743"
+    },
+    {
       "id": "c3bb7f98-be25-3ab1-a621-8093a151c053",
       "product": {
         "name": "Red Hat OpenShift Container Platform 4.16",
@@ -1061,6 +1881,16 @@
         }
       },
       "product_version": "patch: 1793682099"
+    },
+    {
+      "id": "c67da723-47a4-3878-bacb-10c0c96ec0c1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793756370"
     },
     {
       "id": "c7a66fd4-0bc6-3a3c-b92e-8ac260216219",
@@ -1093,6 +1923,46 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-81.3.el8_10"
     },
     {
+      "id": "c8973176-7303-3fce-ac5d-984753f98457",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793398367"
+    },
+    {
+      "id": "c9703530-d9c4-3a8b-9435-9e88922bbf94",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.4",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794398071"
+    },
+    {
+      "id": "cc4c8202-5c1e-35bf-8036-a54898d73b32",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758686"
+    },
+    {
+      "id": "cd45c710-1352-3719-8121-dc681a1fe662",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793765218"
+    },
+    {
       "id": "cea0bc90-2f3f-33d6-b687-161ad5021317",
       "product": {
         "name": "Red Hat OpenShift AI 3.0",
@@ -1101,6 +1971,46 @@
         }
       },
       "product_version": "patch: 1793041987"
+    },
+    {
+      "id": "ceb8f430-a60b-3cff-92a1-7f06bfe83ce1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759904"
+    },
+    {
+      "id": "cede7c2e-b158-3225-88fd-e7dcdb7e8386",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763148"
+    },
+    {
+      "id": "cf7c980a-0b1e-3dc3-97fe-5f3ac71a13f1",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793778378"
+    },
+    {
+      "id": "d0498f4c-cd74-3533-bb8a-75a1430cb511",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793403223"
     },
     {
       "id": "d1753f43-de3f-3dd0-be8a-5a848d51dfed",
@@ -1143,6 +2053,16 @@
       "product_version": "patch: 1793691749"
     },
     {
+      "id": "d4e863a8-1a6f-3214-9bea-e12f04f80a38",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761642"
+    },
+    {
       "id": "d59688da-92e6-3569-a159-cf3d36967e99",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.22",
@@ -1183,6 +2103,46 @@
       "product_version": "patch: 1793685138"
     },
     {
+      "id": "d8bc21d9-3932-3a27-b330-e6a12ea6cd8a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763216"
+    },
+    {
+      "id": "d9f8f50c-c8b0-3407-9c76-dad6eee30a82",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793715343"
+    },
+    {
+      "id": "dafa6bb0-f71d-35c0-863e-f977d1a99a53",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793776221"
+    },
+    {
+      "id": "db8770e4-73e7-3b70-b32e-6d8e39d1aa54",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793766456"
+    },
+    {
       "id": "dbc2ded5-7bfd-3242-99d9-07bc0d4ba3ff",
       "product": {
         "name": "agentic cluster security suite 0.2",
@@ -1193,6 +2153,16 @@
       "product_version": "patch: 1793102187"
     },
     {
+      "id": "dbfa5d87-f7ff-3469-ac17-434ff63e9bc8",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793758891"
+    },
+    {
       "id": "dd8bb14e-9664-31b7-ab48-7d1afa403c9c",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1201,6 +2171,36 @@
         }
       },
       "product_version": "patch: 1793042010"
+    },
+    {
+      "id": "ddc5df9b-e032-31a0-a4d2-af150b9054a7",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793759494"
+    },
+    {
+      "id": "dea24d2b-5982-3839-b5a9-24023d50a58d",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793607972"
+    },
+    {
+      "id": "e133d965-b3d9-395f-8be6-1e99b315e495",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793764886"
     },
     {
       "id": "e138ac46-518f-38bc-b172-77e1d5612de4",
@@ -1233,6 +2233,26 @@
       "product_version": "patch: 1793042072"
     },
     {
+      "id": "e5a65313-3b36-359c-8304-677b12d04705",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793677376"
+    },
+    {
+      "id": "e72cf20c-29fd-355f-96d2-89860c71bccf",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793369260"
+    },
+    {
       "id": "e7b2b46b-3330-3b22-a99c-aea2a023e012",
       "product": {
         "name": "Red Hat Enterprise Linux 8.6 Extended Update Support Long-Life Add-On",
@@ -1241,6 +2261,16 @@
         }
       },
       "product_version": "patch: 0:2026.2.92_v9.0.319-80.3.el8_6"
+    },
+    {
+      "id": "e862a5de-0341-322c-b448-57425fe6f277",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793756521"
     },
     {
       "id": "e8e4df6c-0a51-34bd-b8ac-897b286eb6b6",
@@ -1263,6 +2293,16 @@
       "product_version": "patch: 1793042067"
     },
     {
+      "id": "eb34ab70-f812-3b23-bff7-19910ede5d7a",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793763250"
+    },
+    {
       "id": "eb9c6fe7-f046-3c03-82fa-f4c94407627e",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.20",
@@ -1271,6 +2311,16 @@
         }
       },
       "product_version": "patch: 1793686180"
+    },
+    {
+      "id": "eca0408c-6bb5-3345-98d2-23bd63569f52",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793765658"
     },
     {
       "id": "ed99e2f3-1537-3562-a924-9fd697302ac1",
@@ -1293,6 +2343,16 @@
       "product_version": "patch: 1793685777"
     },
     {
+      "id": "ee767ea8-26fe-31e5-8e0c-22c9205f7cf5",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793764510"
+    },
+    {
       "id": "ee9c7a6a-cd53-36f1-8793-e21af7c85025",
       "product": {
         "name": "Red Hat Update Infrastructure 5",
@@ -1301,6 +2361,26 @@
         }
       },
       "product_version": "patch: 1793005771"
+    },
+    {
+      "id": "f126c456-aa7d-333c-a179-ff4ca1f0fc95",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793775975"
+    },
+    {
+      "id": "f255f33c-de50-3577-9dac-943c19f4e360",
+      "product": {
+        "name": "Red Hat AI Inference Server 3.2",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793961846"
     },
     {
       "id": "f35390db-0d3d-3fc4-9db0-fd22d80857e5",
@@ -1313,6 +2393,16 @@
       "product_version": "patch: 1793042117"
     },
     {
+      "id": "f564846e-6fff-3cdc-aed6-1ecaf53a0ebf",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793756751"
+    },
+    {
       "id": "f66b1d91-199f-3000-aa97-b12f1bf288d6",
       "product": {
         "name": "Red Hat OpenShift AI 3.0",
@@ -1321,6 +2411,16 @@
         }
       },
       "product_version": "patch: 1793329709"
+    },
+    {
+      "id": "f6819f3c-7f26-3b8b-a153-fe6b8ba876f9",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793761044"
     },
     {
       "id": "f70d3290-b5ac-342e-a4b7-1d3b75a6bb88",
@@ -1363,6 +2463,16 @@
       "product_version": "patch: 0:1.12.119-4.el8ost"
     },
     {
+      "id": "fa125758-8143-3a55-b898-99836203ea05",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793688471"
+    },
+    {
       "id": "fabe6477-bff9-308e-8f31-95090bf4a8c2",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1371,6 +2481,16 @@
         }
       },
       "product_version": "patch: 1793719302"
+    },
+    {
+      "id": "fbc8ffa1-7e0b-3c14-a8d9-a33096eff9aa",
+      "product": {
+        "name": "Red Hat OpenShift AI 3.5",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793762133"
     },
     {
       "id": "fbeea17b-0ec2-31cd-9740-225c191303a4",
@@ -1401,6 +2521,16 @@
         }
       },
       "product_version": "patch: 1793685284"
+    },
+    {
+      "id": "fd78a424-2715-325b-8fa0-4c954236b5e9",
+      "product": {
+        "name": "Red Hat Developer Hub 2.1",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794002463"
     },
     {
       "id": "fda0f442-2673-3f3b-860c-ca96f1d8d04c",
