@@ -1,0 +1,14 @@
+{
+  "id": "EUVD-2026-125918",
+  "enisaUuid": "13e21557-1c17-3989-9fee-944c695b3fa9",
+  "description": "JSON::XS versions before 4.05 for Perl allow stack exhaustion via nested tagged values under allow_tags in decode_tag.\n\nWith allow_tags, \"(\" starts a tagged value. Its tag and value are decoded recursively, and each can start another tagged value. Unlike arrays and objects, this nesting is not counted against max_depth.\n\nA run of \"(\" bytes exhausts the C stack and triggers an uncatchable segmentation fault regardless of max_depth.",
+  "datePublished": "Nov 14, 2026, 11:52:57 AM",
+  "dateUpdated": "Nov 14, 2026, 11:52:57 AM",
+  "baseScore": 0.0,
+  "references": "https://metacpan.org/release/MLEHMANN/JSON-XS-4.05/changes\n",
+  "aliases": "GHSA-r77g-jhw3-q6vc\nCVE-2026-124540\n",
+  "assigner": "CPANSec",
+  "epss": 0.0,
+  "enisaIdProduct": [],
+  "enisaIdVendor": []
+}
