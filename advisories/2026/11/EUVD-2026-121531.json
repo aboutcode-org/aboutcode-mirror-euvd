@@ -3,12 +3,12 @@
   "enisaUuid": "a0ed6f72-ee32-36d9-a07a-857985ef687b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: Zero out sring pointers on unmap\n\nIf xenvif_map_frontend_data_rings() fails when a ring is already mapped,\nit unmaps them via xenvif_unmap_frontend_data_rings() which keeps the\nring pointers unchanged. xenvif_connect_data()'s cleanup path calls\nxenvif_disconnect_queue() which in turn calls\nxenvif_unmap_frontend_data_rings() again, which will attempt to unmap the\npointers a second time.\n\nZero out the ring pointers after they are unmapped to avoid this issue.\n\nThis is XSA-532",
   "datePublished": "Nov 10, 2026, 6:16:54 PM",
-  "dateUpdated": "Nov 10, 2026, 9:05:27 PM",
+  "dateUpdated": "Nov 16, 2026, 10:01:18 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/87fd475dc4e354088f6534285388e7b061f54b35\nhttps://git.kernel.org/stable/c/c5f54af611ff6fe1d53fa05d8e87b469dc56122b\nhttps://git.kernel.org/stable/c/e7ba61734d6ad6adfd5bf617052e590743211669\n",
+  "references": "https://git.kernel.org/stable/c/87fd475dc4e354088f6534285388e7b061f54b35\nhttps://git.kernel.org/stable/c/c5f54af611ff6fe1d53fa05d8e87b469dc56122b\nhttps://git.kernel.org/stable/c/e7ba61734d6ad6adfd5bf617052e590743211669\nhttps://git.kernel.org/stable/c/f96f16592a32430a0582309d73a873b6d3ee2bdb\n",
   "aliases": "GHSA-w332-8qhm-mmxw\nCVE-2026-99287\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "3c00fe85-2dd9-32d8-9022-587758affc4e",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 6.12.117"
+    },
+    {
+      "id": "47323784-13f6-38ad-ba31-29e151a8cdcd",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2ac061ce97f413bfbbdd768f7d2e0fda2e8170df <f96f16592a32430a0582309d73a873b6d3ee2bdb"
     },
     {
       "id": "4b1a4e9c-7f95-319f-89ed-2842a60c38ba",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "2ac061ce97f413bfbbdd768f7d2e0fda2e8170df <e7ba61734d6ad6adfd5bf617052e590743211669"
+    },
+    {
+      "id": "c1aec638-6c73-3895-85db-1e64b9598cd8",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 7.4-rc3"
     },
     {
       "id": "c246bfd3-8d6b-3af6-a680-62c2e681fc88",

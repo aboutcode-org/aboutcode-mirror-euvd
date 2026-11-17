@@ -1,16 +1,16 @@
 {
   "id": "EUVD-2026-124729",
   "enisaUuid": "8b858c1d-7480-3899-a69f-0da1d0d8d470",
-  "description": "Addressable display_uri can show misleading hosts containing bidi and invisible characters",
-  "datePublished": "Nov 12, 2026, 10:44:15 PM",
-  "dateUpdated": "Nov 12, 2026, 10:44:16 PM",
+  "description": "Addressable is an alternative implementation to the URI implementation that is part of Ruby's standard library. From 2.0.0 until 2.9.1, Addressable::IDNA.to_unicode can decode Punycode labels that contain bidirectional controls, zero-width characters, control characters, or other default-ignorable format characters. Addressable::URI#display_uri can consequently show a reordered or visually indistinguishable hostname even though host, normalized_host, and network connections use the original encoded hostname. The pure-Ruby backend accepts the full prohibited set, while the native libidn backend is affected from 2.5.2 for characters added after Unicode 3.2. This issue is fixed in version 2.9.1.",
+  "datePublished": "Nov 12, 2026, 10:00:22 PM",
+  "dateUpdated": "Nov 16, 2026, 7:34:33 PM",
   "baseScore": 3.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
-  "references": "https://github.com/sporkmonger/addressable/security/advisories/GHSA-539f-xcgw-2gjg\nhttps://github.com/sporkmonger/addressable/commit/60455d32bb59fda2585a0e1865a9fcb21e8e55b1\nhttps://github.com/sporkmonger/addressable/releases/tag/addressable-2.9.1\nhttps://github.com/rubysec/ruby-advisory-db/blob/master/gems/addressable/GHSA-539f-xcgw-2gjg.yml\n",
+  "references": "https://github.com/sporkmonger/addressable/security/advisories/GHSA-539f-xcgw-2gjg\nhttps://github.com/sporkmonger/addressable/commit/60455d32bb59fda2585a0e1865a9fcb21e8e55b1\nhttps://github.com/sporkmonger/addressable/releases/tag/addressable-2.9.1\n",
   "aliases": "GHSA-539f-xcgw-2gjg\nCVE-2026-126349\n",
   "assigner": "GitHub_M",
-  "epss": 0.0,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "f00e7ef3-49f4-3277-9084-3752d3ce9b3e",
