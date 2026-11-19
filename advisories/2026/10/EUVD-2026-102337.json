@@ -1,26 +1,36 @@
 {
   "id": "EUVD-2026-102337",
   "enisaUuid": "02ef2b5a-190b-3114-a792-62b48a1cc30d",
-  "description": "Netgate pfSense CE 2.5.0 through 2.9.0 contains an OS command injection vulnerability in openvpn.learn-address.sh that allows authenticated VPN clients to execute commands as the unbound user. Attackers can embed shell metacharacters in the certificate common name or username, which is interpolated unquoted into su -c strings, when DNS Resolver client registration is enabled.",
+  "description": "Netgate pfSense CE 2.5.0 through 2.9.0 and Plus through 26.07 contains an OS command injection vulnerability in openvpn.learn-address.sh that allows authenticated VPN clients to execute commands as the unbound user. Attackers can embed shell metacharacters in the certificate common name or username, which is interpolated unquoted into su -c strings, when DNS Resolver client registration is enabled.",
   "datePublished": "Oct 15, 2026, 6:46:25 PM",
-  "dateUpdated": "Oct 15, 2026, 7:48:58 PM",
+  "dateUpdated": "Nov 18, 2026, 12:44:21 AM",
   "baseScore": 2.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N",
-  "references": "https://github.com/abraxas/pfsense-ovpn-learn-cn\nhttps://abraxaslabs.tech/research/pfsense-ce-leftovers\nhttps://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/usr/local/sbin/openvpn.learn-address.sh#L57-L62\nhttps://www.vulncheck.com/advisories/netgate-pfsense-ce-2.5.0-through-2.9.0-os-command-injection-via-openvpn-learn-address-sh\n",
-  "aliases": "CVE-2026-111225\n",
+  "references": "https://github.com/abraxas/pfsense-ovpn-learn-cn\nhttps://abraxaslabs.tech/research/pfsense-ce-leftovers\nhttps://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/usr/local/sbin/openvpn.learn-address.sh#L57-L62\nhttps://www.vulncheck.com/advisories/netgate-pfsense-ce-2.5.0-through-2.9.0-os-command-injection-via-openvpn-learn-address-sh\nhttps://docs.netgate.com/downloads/pfSense-SA-26_36.openvpn.asc\nhttps://redmine.pfsense.org/issues/17231\nhttps://docs.netgate.com/pfsense/en/latest/releases/26-07-1_2-9-1.html\n",
+  "aliases": "CVE-2026-111225\nGHSA-643j-4p8v-85c8\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 6.21,
   "enisaIdProduct": [
     {
-      "id": "2a03afdb-e9e2-3132-a355-a30cbbfb83c8",
+      "id": "a2d3a561-3bb0-3d0b-b59d-0eec84de6901",
+      "product": {
+        "name": "pfSense Plus",
+        "vendor": {
+          "name": "Netgate"
+        }
+      },
+      "product_version": "0 <26.07.1"
+    },
+    {
+      "id": "f39e3da7-7ff1-3282-beaf-df6befb8c0f4",
       "product": {
         "name": "pfSense CE",
         "vendor": {
           "name": "Netgate"
         }
       },
-      "product_version": "2.5.0 \u22642.9.0"
+      "product_version": "2.5.0 <2.9.1"
     }
   ],
   "enisaIdVendor": [
