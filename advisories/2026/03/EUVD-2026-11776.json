@@ -3,7 +3,7 @@
   "enisaUuid": "d81be6f9-2a73-3f14-a00a-d7f4661f68f4",
   "description": "Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in Erlang OTP (inets httpd module) allows HTTP Request Smuggling.\n\nThis vulnerability is associated with program files lib/inets/src/http_server/httpd_request.erl and program routines httpd_request:parse_headers/7.\n\nThe server does not reject or normalize duplicate Content-Length headers. The earliest Content-Length in the request is used for body parsing while common reverse proxies (nginx, Apache httpd, Envoy) honor the last Content-Length value. This violates RFC 9112 Section 6.3 and allows front-end/back-end desynchronization, leaving attacker-controlled bytes queued as the start of the next request.\n\nThis issue affects OTP from OTP\u00a017.0 before OTP\u00a026.2.5.18, OTP\u00a027.3.4.9, and OTP\u00a028.4.1, corresponding to inets from 5.10 before 9.1.0.5, 9.3.2.3, and 9.6.1. Whether OTP before OTP\u00a017.0, corresponding to inets before 5.10, is affected is unknown.",
   "datePublished": "Mar 13, 2026, 9:11:58 AM",
-  "dateUpdated": "Nov 11, 2026, 7:45:01 PM",
+  "dateUpdated": "Nov 19, 2026, 6:55:25 AM",
   "baseScore": 7.0,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:L",

@@ -3,11 +3,11 @@
   "enisaUuid": "041475e3-b98d-3f0e-a991-33f65af3ab27",
   "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
   "datePublished": "Oct 21, 2026, 8:56:26 PM",
-  "dateUpdated": "Nov 13, 2026, 2:55:05 PM",
+  "dateUpdated": "Nov 19, 2026, 1:34:57 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
-  "references": "https://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/errata/RHSA-2026:93043\nhttps://access.redhat.com/errata/RHSA-2026:93044\nhttps://access.redhat.com/errata/RHSA-2026:93045\nhttps://access.redhat.com/errata/RHSA-2026:93046\nhttps://access.redhat.com/errata/RHSA-2026:94459\nhttps://access.redhat.com/errata/RHSA-2026:94468\nhttps://access.redhat.com/errata/RHSA-2026:94474\nhttps://access.redhat.com/errata/RHSA-2026:94476\nhttps://access.redhat.com/errata/RHSA-2026:94562\nhttps://access.redhat.com/errata/RHSA-2026:94581\nhttps://access.redhat.com/errata/RHSA-2026:94583\nhttps://access.redhat.com/errata/RHSA-2026:94584\nhttps://access.redhat.com/errata/RHSA-2026:94631\nhttps://access.redhat.com/errata/RHSA-2026:94702\nhttps://access.redhat.com/errata/RHSA-2026:94709\nhttps://access.redhat.com/errata/RHSA-2026:94715\nhttps://access.redhat.com/errata/RHSA-2026:94717\nhttps://access.redhat.com/errata/RHSA-2026:94721\nhttps://access.redhat.com/errata/RHSA-2026:94738\nhttps://access.redhat.com/errata/RHSA-2026:94802\nhttps://access.redhat.com/errata/RHSA-2026:95058\nhttps://access.redhat.com/errata/RHSA-2026:95090\nhttps://access.redhat.com/errata/RHSA-2026:95264\nhttps://access.redhat.com/errata/RHSA-2026:95365\nhttps://access.redhat.com/errata/RHSA-2026:95745\nhttps://access.redhat.com/errata/RHSA-2026:95872\nhttps://access.redhat.com/errata/RHSA-2026:96282\nhttps://access.redhat.com/errata/RHSA-2026:96323\nhttps://access.redhat.com/errata/RHSA-2026:96333\nhttps://access.redhat.com/errata/RHSA-2026:96391\nhttps://access.redhat.com/errata/RHSA-2026:96400\nhttps://access.redhat.com/errata/RHSA-2026:96403\nhttps://access.redhat.com/errata/RHSA-2026:96406\nhttps://access.redhat.com/errata/RHSA-2026:99044\nhttps://access.redhat.com/errata/RHSA-2026:99787\nhttps://access.redhat.com/errata/RHSA-2026:99792\nhttps://access.redhat.com/errata/RHSA-2026:99794\nhttps://access.redhat.com/errata/RHSA-2026:99796\nhttps://access.redhat.com/errata/RHSA-2026:99800\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:100634\nhttps://access.redhat.com/errata/RHSA-2026:86595\nhttps://access.redhat.com/errata/RHSA-2026:88455\nhttps://access.redhat.com/errata/RHSA-2026:88459\nhttps://access.redhat.com/errata/RHSA-2026:88550\nhttps://access.redhat.com/errata/RHSA-2026:88560\nhttps://access.redhat.com/errata/RHSA-2026:88562\nhttps://access.redhat.com/errata/RHSA-2026:88563\nhttps://access.redhat.com/errata/RHSA-2026:88564\nhttps://access.redhat.com/errata/RHSA-2026:88662\nhttps://access.redhat.com/errata/RHSA-2026:88668\nhttps://access.redhat.com/errata/RHSA-2026:88669\nhttps://access.redhat.com/errata/RHSA-2026:88779\nhttps://access.redhat.com/errata/RHSA-2026:89081\nhttps://access.redhat.com/errata/RHSA-2026:89131\nhttps://access.redhat.com/errata/RHSA-2026:89197\nhttps://access.redhat.com/errata/RHSA-2026:89232\nhttps://access.redhat.com/errata/RHSA-2026:89333\nhttps://access.redhat.com/errata/RHSA-2026:89651\nhttps://access.redhat.com/errata/RHSA-2026:89714\nhttps://access.redhat.com/errata/RHSA-2026:89725\nhttps://access.redhat.com/errata/RHSA-2026:89838\nhttps://access.redhat.com/errata/RHSA-2026:89907\nhttps://access.redhat.com/errata/RHSA-2026:90272\nhttps://access.redhat.com/errata/RHSA-2026:90969\nhttps://access.redhat.com/errata/RHSA-2026:90985\nhttps://access.redhat.com/errata/RHSA-2026:91202\nhttps://access.redhat.com/errata/RHSA-2026:91204\nhttps://access.redhat.com/errata/RHSA-2026:91206\nhttps://access.redhat.com/errata/RHSA-2026:91207\nhttps://access.redhat.com/errata/RHSA-2026:91217\nhttps://access.redhat.com/errata/RHSA-2026:91218\nhttps://access.redhat.com/errata/RHSA-2026:91219\nhttps://access.redhat.com/errata/RHSA-2026:91224\nhttps://access.redhat.com/errata/RHSA-2026:91232\nhttps://access.redhat.com/errata/RHSA-2026:91233\nhttps://access.redhat.com/errata/RHSA-2026:91234\nhttps://access.redhat.com/errata/RHSA-2026:91235\nhttps://access.redhat.com/errata/RHSA-2026:91236\nhttps://access.redhat.com/errata/RHSA-2026:91237\nhttps://access.redhat.com/errata/RHSA-2026:91238\nhttps://access.redhat.com/errata/RHSA-2026:91241\nhttps://access.redhat.com/errata/RHSA-2026:91242\nhttps://access.redhat.com/errata/RHSA-2026:91243\nhttps://access.redhat.com/errata/RHSA-2026:91244\nhttps://access.redhat.com/errata/RHSA-2026:91245\nhttps://access.redhat.com/errata/RHSA-2026:91246\nhttps://access.redhat.com/errata/RHSA-2026:91248\nhttps://access.redhat.com/errata/RHSA-2026:91249\nhttps://access.redhat.com/errata/RHSA-2026:91997\nhttps://access.redhat.com/errata/RHSA-2026:92006\nhttps://access.redhat.com/errata/RHSA-2026:92342\nhttps://access.redhat.com/errata/RHSA-2026:93043\nhttps://access.redhat.com/errata/RHSA-2026:93044\nhttps://access.redhat.com/errata/RHSA-2026:93045\nhttps://access.redhat.com/errata/RHSA-2026:93046\nhttps://access.redhat.com/errata/RHSA-2026:94459\nhttps://access.redhat.com/errata/RHSA-2026:94468\nhttps://access.redhat.com/errata/RHSA-2026:94474\nhttps://access.redhat.com/errata/RHSA-2026:94476\nhttps://access.redhat.com/errata/RHSA-2026:94562\nhttps://access.redhat.com/errata/RHSA-2026:94581\nhttps://access.redhat.com/errata/RHSA-2026:94583\nhttps://access.redhat.com/errata/RHSA-2026:94584\nhttps://access.redhat.com/errata/RHSA-2026:94631\nhttps://access.redhat.com/errata/RHSA-2026:94702\nhttps://access.redhat.com/errata/RHSA-2026:94709\nhttps://access.redhat.com/errata/RHSA-2026:94715\nhttps://access.redhat.com/errata/RHSA-2026:94717\nhttps://access.redhat.com/errata/RHSA-2026:94721\nhttps://access.redhat.com/errata/RHSA-2026:94738\nhttps://access.redhat.com/errata/RHSA-2026:94802\nhttps://access.redhat.com/errata/RHSA-2026:95058\nhttps://access.redhat.com/errata/RHSA-2026:95090\nhttps://access.redhat.com/errata/RHSA-2026:95264\nhttps://access.redhat.com/errata/RHSA-2026:95365\nhttps://access.redhat.com/errata/RHSA-2026:95745\nhttps://access.redhat.com/errata/RHSA-2026:95872\nhttps://access.redhat.com/errata/RHSA-2026:96282\nhttps://access.redhat.com/errata/RHSA-2026:96323\nhttps://access.redhat.com/errata/RHSA-2026:96333\nhttps://access.redhat.com/errata/RHSA-2026:96391\nhttps://access.redhat.com/errata/RHSA-2026:96400\nhttps://access.redhat.com/errata/RHSA-2026:96403\nhttps://access.redhat.com/errata/RHSA-2026:96406\nhttps://access.redhat.com/errata/RHSA-2026:99044\nhttps://access.redhat.com/errata/RHSA-2026:99787\nhttps://access.redhat.com/errata/RHSA-2026:99792\nhttps://access.redhat.com/errata/RHSA-2026:99794\nhttps://access.redhat.com/errata/RHSA-2026:99796\nhttps://access.redhat.com/errata/RHSA-2026:99800\nhttps://access.redhat.com/security/cve/CVE-2026-114406\nhttps://access.redhat.com/security/vulnerabilities/RHSB-2026-012\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2556046\n",
   "aliases": "GHSA-jrx5-4fv3-4mcq\nCVE-2026-114406\n",
   "assigner": "redhat",
   "epss": 0.31,
@@ -243,6 +243,16 @@
       "product_version": "patch: 1793686175"
     },
     {
+      "id": "1c4ed0ad-1e74-30a7-a07c-f551753b68ed",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793342122"
+    },
+    {
       "id": "1f6f1092-ca56-3c52-895e-630233bb2259",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -281,6 +291,16 @@
         }
       },
       "product_version": "patch: 1793766233"
+    },
+    {
+      "id": "24b6f087-17ba-3544-8749-a84341c16a72",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793370982"
     },
     {
       "id": "24c15aed-614e-3810-9dc7-bb6e9a8553e8",
@@ -653,6 +673,16 @@
       "product_version": "patch: 1792838794"
     },
     {
+      "id": "51a6c77f-931f-3959-ba23-b28abd238acd",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793715956"
+    },
+    {
       "id": "51e9af5b-6a0b-3bec-8768-b06267f6439b",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -753,6 +783,16 @@
       "product_version": "patch: 1793760437"
     },
     {
+      "id": "58aa15f5-3108-3cc3-9a7b-67507e2139fc",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793342276"
+    },
+    {
       "id": "5af73af3-20a8-3cda-8674-cfd81f7b9c9d",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -761,6 +801,16 @@
         }
       },
       "product_version": "patch: 1793606223"
+    },
+    {
+      "id": "5c6a0a74-3baf-3ba8-bf03-29e494b2a0cd",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793679071"
     },
     {
       "id": "5c78a995-072a-34ee-9d3b-bf449d26434e",
@@ -893,6 +943,16 @@
       "product_version": "patch: 1793776192"
     },
     {
+      "id": "6a223133-bc7b-3375-9ff2-d8d94a7c52a4",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793357662"
+    },
+    {
       "id": "6c1bface-4ee6-334b-adf5-6023da05fdca",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -991,6 +1051,16 @@
         }
       },
       "product_version": "patch: 1793757981"
+    },
+    {
+      "id": "74685191-f4b9-371f-b3fc-1cb3a715fdbf",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793393037"
     },
     {
       "id": "75133f9c-a35f-3a4a-a411-4b78ab72b537",
@@ -1093,6 +1163,16 @@
       "product_version": "patch: 1793326837"
     },
     {
+      "id": "812ad672-efb8-373f-a276-dc506a021e8f",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793381978"
+    },
+    {
       "id": "812b1e3b-5dbf-348b-b8b4-8cb806b4aab1",
       "product": {
         "name": "Red Hat OpenShift GitOps 1.21",
@@ -1181,6 +1261,16 @@
         }
       },
       "product_version": "patch: 1793041345"
+    },
+    {
+      "id": "88da433f-bef6-3086-9f03-89375120f6b8",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793710777"
     },
     {
       "id": "89e8cbaa-410e-3cb9-8be5-c2f9f35305b0",
@@ -1303,6 +1393,16 @@
       "product_version": "patch: 1792837598"
     },
     {
+      "id": "9846ff0c-d20d-3063-bbf5-50166b3f32a3",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793355428"
+    },
+    {
       "id": "98966a28-3d4c-3121-81ec-2a27a926a535",
       "product": {
         "name": "Red Hat OpenShift Dev Spaces 3.31",
@@ -1321,6 +1421,26 @@
         }
       },
       "product_version": "patch: 1793043152"
+    },
+    {
+      "id": "9c880d9d-7690-3675-8a18-c7c6dc31a82f",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793340746"
+    },
+    {
+      "id": "9cd5964e-c89e-3c30-a21e-a5a4182f998e",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793673629"
     },
     {
       "id": "9d6353ea-c823-3c5a-957f-2de0d93540b0",
@@ -1423,6 +1543,16 @@
       "product_version": "patch: 1792840655"
     },
     {
+      "id": "a7753abb-a4ac-35d8-8616-2cbf1a46accc",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793681755"
+    },
+    {
       "id": "a79479e1-e3cd-35c9-98d8-ca288370e668",
       "product": {
         "name": "Red Hat OpenShift Builds 1.9.2",
@@ -1503,6 +1633,16 @@
       "product_version": "patch: 1793761860"
     },
     {
+      "id": "a977ba31-c562-39a4-b249-659f98ebd7e9",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793602608"
+    },
+    {
       "id": "abf1300c-0b85-34bc-8ab4-d5c220ca0a81",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1563,6 +1703,26 @@
       "product_version": "patch: 1794398157"
     },
     {
+      "id": "b040519e-32c2-3ebf-90e2-04aed5ad87bb",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793712902"
+    },
+    {
+      "id": "b0a6211a-904b-3600-857a-8b162e96d9fe",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793341700"
+    },
+    {
       "id": "b1b9ebf9-c4be-3816-8069-f4639ad3762d",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1621,6 +1781,16 @@
         }
       },
       "product_version": "patch: 1792835298"
+    },
+    {
+      "id": "b3684c08-8dbf-3b97-82f9-bd883649226f",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793376545"
     },
     {
       "id": "b4cc9729-c520-3494-89c2-e82e19ac4023",
@@ -1883,6 +2053,16 @@
       "product_version": "patch: 1793682099"
     },
     {
+      "id": "c4eb416d-8c01-3c02-bfeb-a6ff5a81714f",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793664963"
+    },
+    {
       "id": "c67da723-47a4-3878-bacb-10c0c96ec0c1",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1923,6 +2103,16 @@
       "product_version": "patch: 0:2026.2.92_v9.0.319-81.3.el8_10"
     },
     {
+      "id": "c86a1f77-63b9-3ca3-aa9d-84fe3357cd47",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793341129"
+    },
+    {
       "id": "c8973176-7303-3fce-ac5d-984753f98457",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1941,6 +2131,16 @@
         }
       },
       "product_version": "patch: 1794398071"
+    },
+    {
+      "id": "cc36fb84-02dd-32a3-a25d-03997f9d7688",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793712802"
     },
     {
       "id": "cc4c8202-5c1e-35bf-8036-a54898d73b32",
@@ -1973,6 +2173,16 @@
       "product_version": "patch: 1793041987"
     },
     {
+      "id": "ceaadea9-82ca-3404-b695-ccfe28cae61b",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793680511"
+    },
+    {
       "id": "ceb8f430-a60b-3cff-92a1-7f06bfe83ce1",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -1991,6 +2201,16 @@
         }
       },
       "product_version": "patch: 1793763148"
+    },
+    {
+      "id": "cf4438cb-b57d-3ae3-860f-c0c863955b07",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1794492228"
     },
     {
       "id": "cf7c980a-0b1e-3dc3-97fe-5f3ac71a13f1",
@@ -2051,6 +2271,16 @@
         }
       },
       "product_version": "patch: 1793691749"
+    },
+    {
+      "id": "d388ecf5-f0a6-3130-8664-20accc198201",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793678804"
     },
     {
       "id": "d4e863a8-1a6f-3214-9bea-e12f04f80a38",
@@ -2363,6 +2593,16 @@
       "product_version": "patch: 1793005771"
     },
     {
+      "id": "ef42a1fd-8a64-399a-a751-250a20c509dc",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793397682"
+    },
+    {
       "id": "f126c456-aa7d-333c-a179-ff4ca1f0fc95",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -2413,6 +2653,16 @@
       "product_version": "patch: 1793329709"
     },
     {
+      "id": "f6802f8e-7a26-386a-b646-1809b0e1c1da",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793702275"
+    },
+    {
       "id": "f6819f3c-7f26-3b8b-a153-fe6b8ba876f9",
       "product": {
         "name": "Red Hat OpenShift AI 3.5",
@@ -2441,6 +2691,16 @@
         }
       },
       "product_version": "patch: 1793733716"
+    },
+    {
+      "id": "f76dd89b-f5de-31c0-84eb-71b1468277a0",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793606889"
     },
     {
       "id": "f7739553-3806-3f21-984c-01cc0d5e8324",
@@ -2541,6 +2801,16 @@
         }
       },
       "product_version": "patch: 1793682120"
+    },
+    {
+      "id": "fe348384-89d9-3b71-969b-0a7d13c58b48",
+      "product": {
+        "name": "Red Hat OpenShift AI 2.25",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 1793341753"
     },
     {
       "id": "fe53d7e2-6a2d-38c0-b48d-f20f2334916a",

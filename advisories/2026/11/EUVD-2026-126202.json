@@ -3,12 +3,14 @@
   "enisaUuid": "4f14e2bc-01d0-3eb7-a6d8-7057bae80a15",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: bound mon_command ack decode to front len\n\nhandle_command_ack() bounds the decode with msg->front_alloc_len, the size\nof the reply buffer, instead of msg->front.iov_len, the number of bytes the\nmonitor sent.  mon_alloc_msg() routes every CEPH_MSG_MON_COMMAND_ACK to\nget_generic_reply(), which returns the preallocated ->reply of whichever\ngeneric request carries the same tid, so the buffer keeps its fixed size\nhowever short the reply is.  An ack with hdr.front_len below sizeof(struct\nceph_mon_request_header) + sizeof(u32), including 0, still passes\nceph_decode_need(), and ceph_decode_32() returns four bytes that were never\nreceived: uninitialized slab memory, stale bytes of an earlier message, or\nbytes the peer planted by sending a reply that lands in the same buffer and\nis then rejected.  The read stays within the allocation, so KASAN does not\nflag it.\n\nreq->result reaches userspace through ceph_monc_do_statfs(),\nceph_monc_get_version() and ceph_monc_blocklist_add(); rbd hands it back\nfrom write() on /sys/bus/rbd/add_single_major, and rbd_get_client() passes\nit to ERR_PTR() unchecked, which faults:\n\n  rbd: failed to get latest osdmap: -186318427\n  BUG: unable to handle page fault for address: fffffbfffe9ca034\n  Oops: Oops: 0000 [#1] SMP KASAN NOPTI\n  RIP: 0010:do_rbd_add (drivers/block/rbd.c:7105)\n  Call Trace:\n   ...\n   kernfs_fop_write_iter (fs/kernfs/file.c:345)\n   vfs_write (fs/read_write.c:595 fs/read_write.c:687)\n   ksys_write (fs/read_write.c:739)\n   do_syscall_64 (arch/x86/entry/syscall_64.c:61 arch/x86/entry/syscall_64.c:84)\n   entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:121)\n  Kernel panic - not syncing: Fatal exception\n\nUse msg->front.iov_len, matching handle_subscribe_ack(),\nhandle_statfs_reply(), handle_get_version_reply() and handle_auth_reply().\nA well-formed ack has front.iov_len >= 22 and is unaffected; a short one\ntakes the existing bad: path.  This applies commit d3c32939fa0e (\"libceph:\nbound get_version reply decode to front len\") to the last decode-side\nuse of front_alloc_len in this file.",
   "datePublished": "Nov 16, 2026, 9:59:23 AM",
-  "dateUpdated": "Nov 16, 2026, 9:59:23 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 19, 2026, 1:52:19 PM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/c6696ac94c8c3ad79a9fa57fc334af2dc1a1f72e\nhttps://git.kernel.org/stable/c/04a04953b4828bfd8efd4ea3e7e9ad7dac5b083b\nhttps://git.kernel.org/stable/c/be9fa57665efae4060d17ab21675c1c033d54a80\nhttps://git.kernel.org/stable/c/62b41a16d8603d4d809fda212f15c3e9c783a82b\n",
   "aliases": "CVE-2026-99296\nGHSA-p2cm-fx34-7984\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "05bd31de-8b60-334d-9554-088afd7e8632",
