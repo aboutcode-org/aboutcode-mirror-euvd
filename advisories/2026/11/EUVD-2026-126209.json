@@ -3,32 +3,22 @@
   "enisaUuid": "af74168a-e10f-3c25-91f3-f705cc9270e7",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspeakup: Fix NULL pointer dereference on VT switch + selection\n\nWhen selecting/pasting very quickly after VT switch, the tty is not set\nyet, leading to a NULL dereference. We can just abort the operation.",
   "datePublished": "Nov 16, 2026, 9:59:28 AM",
-  "dateUpdated": "Nov 16, 2026, 9:59:28 AM",
+  "dateUpdated": "Nov 20, 2026, 5:11:34 AM",
   "baseScore": 0.0,
   "references": "https://git.kernel.org/stable/c/0400bff986064836dd9e7adb4e1c19b0bf639af0\nhttps://git.kernel.org/stable/c/1a40cbb9d83ad8c669125554fcd73e626a00dc65\nhttps://git.kernel.org/stable/c/cb1b95b98b63f10f38fb96a2ba17a9919017f916\nhttps://git.kernel.org/stable/c/e1301ab8a8411fccc7effe0711fc09939a94953c\n",
   "aliases": "GHSA-x885-68p4-8246\nCVE-2026-99303\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
-      "id": "24955d32-9542-3f4c-8e29-7a00a5c98dd8",
+      "id": "18e1f06b-005f-3cc9-b662-fb925e01e5cb",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <cb1b95b98b63f10f38fb96a2ba17a9919017f916"
-    },
-    {
-      "id": "32368c75-7029-331e-b89a-c15b7f387cb5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <0400bff986064836dd9e7adb4e1c19b0bf639af0"
+      "product_version": "c6e3fd22cd538365bfeb82997d5b89562e077d42 <cb1b95b98b63f10f38fb96a2ba17a9919017f916"
     },
     {
       "id": "45c11b01-54e4-3ed5-8d0f-de50815b4889",
@@ -39,26 +29,6 @@
         }
       },
       "product_version": "patch: 7.4-rc1"
-    },
-    {
-      "id": "4c87228d-7308-3046-913a-f325a6e714f5",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <1a40cbb9d83ad8c669125554fcd73e626a00dc65"
-    },
-    {
-      "id": "6cbcd9ec-b20c-309e-af52-3c41f73aada2",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <6.18.63"
     },
     {
       "id": "70f2d60e-44d9-3ac8-9ed4-d9bdcba82da4",
@@ -81,14 +51,44 @@
       "product_version": "patch: 6.12.117"
     },
     {
-      "id": "926b3bb1-637c-3fea-ad0d-a20dc6e3150a",
+      "id": "a17e56cc-9376-3f40-9190-4a3c06aa94dc",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 <e1301ab8a8411fccc7effe0711fc09939a94953c"
+      "product_version": "patch: 0"
+    },
+    {
+      "id": "b056cf6d-3714-3a57-a70c-a0365174c78d",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2.6.37"
+    },
+    {
+      "id": "be4cd588-69cf-3a1d-b2b5-901fcbf720c0",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c6e3fd22cd538365bfeb82997d5b89562e077d42 <0400bff986064836dd9e7adb4e1c19b0bf639af0"
+    },
+    {
+      "id": "c75dc730-1b63-395f-9471-b213901b6581",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "c6e3fd22cd538365bfeb82997d5b89562e077d42 <e1301ab8a8411fccc7effe0711fc09939a94953c"
     },
     {
       "id": "d543af55-8133-3794-b8ed-eb8330e9079a",
@@ -101,24 +101,14 @@
       "product_version": "patch: 6.18.63"
     },
     {
-      "id": "e44e1c4d-10d1-338c-bd4c-4da36a5b1ca6",
+      "id": "ff09de7b-8c8f-3d63-89e5-71a3afd1d387",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "0 <6.12.117"
-    },
-    {
-      "id": "f18a411e-704e-31bb-bc90-6373b9ab1987",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "0 <7.3.4"
+      "product_version": "c6e3fd22cd538365bfeb82997d5b89562e077d42 <1a40cbb9d83ad8c669125554fcd73e626a00dc65"
     }
   ],
   "enisaIdVendor": [

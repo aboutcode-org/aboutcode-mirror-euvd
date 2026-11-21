@@ -3,7 +3,7 @@
   "enisaUuid": "1f07f206-8c1f-3096-8e5d-fcf8aa083665",
   "description": "Path traversal vulnerability in Gleam's dependency management allows arbitrary directory deletion via malicious build/packages/packages.toml content.\n\nPackage keys read from build/packages/packages.toml by LocalPackages::read_from_disc are passed without validation to paths.build_packages_package(), which constructs a filesystem path by joining the project build directory with the attacker-controlled key. The resulting path is then passed to fs::delete_directory (which calls remove_dir_all). No check is performed to ensure the path remains within the intended build/packages/ directory. Both absolute paths and relative traversal sequences (e.g. ../) are accepted as package keys, allowing deletion of arbitrary directories.\n\nAn attacker who can cause a victim to run gleam deps download on a project containing a malicious build/packages/packages.toml (e.g. by committing the normally-gitignored file to a repository) can cause arbitrary directories on the victim's system to be recursively deleted.\n\nThis issue affects gleam: from 0.18.0-rc1 before 1.17.0.",
   "datePublished": "Jun 2, 2026, 1:41:37 PM",
-  "dateUpdated": "Nov 19, 2026, 6:56:42 AM",
+  "dateUpdated": "Nov 20, 2026, 5:59:19 AM",
   "baseScore": 5.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",

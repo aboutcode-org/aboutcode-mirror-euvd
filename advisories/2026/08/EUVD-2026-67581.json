@@ -1,9 +1,9 @@
 {
   "id": "EUVD-2026-67581",
   "enisaUuid": "2934ea6c-9aad-30fa-b5c2-bd46ed935778",
-  "description": "gitoxide versions from 0.25.4 contain an HTTP credential leak vulnerability in the curl-based transport backend where credentials are sent to attacker-controlled servers after HTTP redirects. The vulnerability occurs because credential validation checks the original URL instead of the effective URL after redirect, allowing attackers to steal authentication tokens through cross-domain redirects or HTTPS-to-HTTP downgrades.",
+  "description": "gitoxide gix-transport crate versions from 0.25.4 before 0.56.0 contain an HTTP credential leak vulnerability in the curl-based transport backend where credentials are sent to attacker-controlled servers after HTTP redirects. The vulnerability occurs because credential validation checks the original URL instead of the effective URL after redirect, allowing attackers to steal authentication tokens through cross-domain redirects or HTTPS-to-HTTP downgrades.",
   "datePublished": "Aug 28, 2026, 10:49:38 AM",
-  "dateUpdated": "Sep 30, 2026, 5:20:31 PM",
+  "dateUpdated": "Nov 20, 2026, 2:31:30 PM",
   "baseScore": 7.6,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
@@ -13,14 +13,14 @@
   "epss": 0.38,
   "enisaIdProduct": [
     {
-      "id": "c9fe8099-f2ea-3f54-bf5c-e2896863f3fd",
+      "id": "198e81d5-f525-3f60-aedd-9b1633b03f23",
       "product": {
-        "name": "gitoxide",
+        "name": "gix-transport",
         "vendor": {
           "name": "GitoxideLabs"
         }
       },
-      "product_version": "0.25.4 \u22640.55.0"
+      "product_version": "0.25.4 <0.56.0"
     }
   ],
   "enisaIdVendor": [

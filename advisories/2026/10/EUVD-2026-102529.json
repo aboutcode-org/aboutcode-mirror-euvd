@@ -1,9 +1,9 @@
 {
   "id": "EUVD-2026-102529",
   "enisaUuid": "01aea1b1-bcbe-3dfb-9c2e-0d05d77182b5",
-  "description": "unarr through 1.1.1 contains a heap-based out-of-bounds read in zip_parse_extra_fields() in zip/parse-zip.c due to an incorrect ZIP64 extra field length check. Attackers can supply a crafted ZIP archive with 0xFFFFFFFF sentinel values and a truncated ZIP64 record to read past the heap buffer and crash the process.",
+  "description": "unarr before 1.2.0 contains a heap-based out-of-bounds read in zip_parse_extra_fields() in zip/parse-zip.c due to an incorrect ZIP64 extra field length check. Attackers can supply a crafted ZIP archive with 0xFFFFFFFF sentinel values and a truncated ZIP64 record to read past the heap buffer and crash the process.",
   "datePublished": "Oct 15, 2026, 9:43:20 PM",
-  "dateUpdated": "Nov 2, 2026, 2:21:48 AM",
+  "dateUpdated": "Nov 20, 2026, 12:29:21 PM",
   "baseScore": 6.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
@@ -13,14 +13,14 @@
   "epss": 0.2,
   "enisaIdProduct": [
     {
-      "id": "ee07fe6d-6db5-3532-8c18-def1ec5cda58",
+      "id": "7524665a-e2eb-344e-ad48-904eb2e1720e",
       "product": {
         "name": "unarr",
         "vendor": {
           "name": "selmf"
         }
       },
-      "product_version": "0 \u22641.1.1"
+      "product_version": "0 <1.2.0"
     }
   ],
   "enisaIdVendor": [

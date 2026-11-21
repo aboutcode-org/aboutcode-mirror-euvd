@@ -3,11 +3,11 @@
   "enisaUuid": "77c1d0ae-3fb8-3c2a-bcf6-ae4944cea64a",
   "description": "GeoNode versions 4.4.5 and 5.0.2 (and prior within their respective releases) contain a server-side request forgery vulnerability in the service registration endpoint that allows authenticated attackers to trigger outbound network requests to arbitrary URLs by submitting a crafted service URL during form validation. Attackers can probe internal network targets including loopback addresses, RFC1918 private IP ranges, link-local addresses, and cloud metadata services by exploiting insufficient URL validation in the WMS service handler without private IP filtering or allowlist enforcement.",
   "datePublished": "Apr 10, 2026, 7:53:05 PM",
-  "dateUpdated": "Nov 8, 2026, 2:02:35 PM",
+  "dateUpdated": "Nov 20, 2026, 2:31:18 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:L",
-  "references": "https://github.com/GeoNode/geonode/security/advisories/GHSA-hw9r-6m78-w6h3\nhttps://www.vulncheck.com/advisories/geonode-ssrf-via-service-registration\n",
+  "references": "https://github.com/GeoNode/geonode/security/advisories/GHSA-hw9r-6m78-w6h3\nhttps://github.com/GeoNode/geonode/commit/07fe6a0c3a87ac1d83dd28018f121968843fe40d\nhttps://www.vulncheck.com/advisories/geonode-ssrf-via-service-registration\n",
   "aliases": "GHSA-hw9r-6m78-w6h3\nCVE-2026-39922\nGHSA-v8f7-cg9p-w5jx\nPYSEC-2026-61\n",
   "assigner": "VulnCheck",
   "epss": 0.18,
@@ -23,14 +23,14 @@
       "product_version": "4.0.0 \u22644.4.5"
     },
     {
-      "id": "b514fa77-c6d6-3aa2-ac9e-7e82e60c6e86",
+      "id": "f524b885-8618-3d46-98b1-4aa8d3453c72",
       "product": {
         "name": "geonode",
         "vendor": {
           "name": "GeoNode"
         }
       },
-      "product_version": "5.0.0 \u22645.0.2"
+      "product_version": "5.0.0 <5.0.3"
     }
   ],
   "enisaIdVendor": [

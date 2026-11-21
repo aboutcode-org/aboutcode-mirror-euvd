@@ -1,0 +1,34 @@
+{
+  "id": "EUVD-2026-131377",
+  "enisaUuid": "a35959e5-f0aa-3b0c-af3d-8a0611258f39",
+  "description": "The FV Flowplayer Video Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 7.5.57.7212 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the plugin's 'Parse Vimeo and YouTube links' setting to be enabled, which wires do_shortcode into the comment_text filter chain and allows the [fvplayer] shortcode to be rendered from comment content.",
+  "datePublished": "Nov 20, 2026, 8:34:18 AM",
+  "dateUpdated": "Nov 20, 2026, 7:46:37 PM",
+  "baseScore": 7.2,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+  "references": "https://www.wordfence.com/threat-intel/vulnerabilities/id/84880d28-ca95-4a9e-b654-212a4115dda1?source=cve\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L1436\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L1411\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer.php#L1701\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L1332\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L621\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L627\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L347\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/controller/frontend.php#L664\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/controller/shortcodes.php#L42\nhttps://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/controller/class.fv-player-sanitize-user-input.php#L80\nhttps://github.com/foliovision/fv-wordpress-flowplayer/commit/ff7ed422e0609a6edd285a3e5a36ce9751923425\n",
+  "aliases": "CVE-2026-121985\nGHSA-36wp-2v7v-pjwx\n",
+  "assigner": "Wordfence",
+  "epss": 0.0,
+  "enisaIdProduct": [
+    {
+      "id": "87e6b983-3cdd-30b7-bf90-45e756087606",
+      "product": {
+        "name": "FV Flowplayer Video Player",
+        "vendor": {
+          "name": "FV Flowplayer Video Player"
+        }
+      },
+      "product_version": "0 \u22647.5.57.7212"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "5ec80e29-a40a-3d0e-8340-7e9e31b0d5cf",
+      "vendor": {
+        "name": "Foliovision"
+      }
+    }
+  ]
+}
