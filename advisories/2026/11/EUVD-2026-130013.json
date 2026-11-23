@@ -3,12 +3,14 @@
   "enisaUuid": "db1d0f24-27ea-3b45-9064-7beac134f719",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: fix oversized GSS proxy token copy\n\ngss_read_proxy_verf() allocates one page per token chunk, but it copies the\nentire linear head of an RPC request into in_token->pages[0]. A UDP datagram\ncan leave more than PAGE_SIZE bytes in the linear head, so a large\nRPCSEC_GSS INIT token overwrites following pages.\n\nCopy the linear head in page-sized chunks before switching to the request\npage array. The linear head itself can span multiple pages.",
   "datePublished": "Nov 19, 2026, 2:22:17 PM",
-  "dateUpdated": "Nov 19, 2026, 2:37:11 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:07:49 AM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/213fba11c0508f2e7d37ce8592072eed28ca0171\nhttps://git.kernel.org/stable/c/1cc4b3089eabec479b9cce2d6999ab2263d7def2\nhttps://git.kernel.org/stable/c/147a30e2e482c9764acf529ba22916cf1212d7ed\nhttps://git.kernel.org/stable/c/62319c2534b603b416fa2aa2f3ef18c311f75010\n",
   "aliases": "GHSA-x6wj-89wv-c85m\nCVE-2026-99355\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "1e87d395-2e0b-39a0-8d57-3610f8edfe81",

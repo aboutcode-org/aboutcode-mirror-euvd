@@ -3,12 +3,14 @@
   "enisaUuid": "2e63b083-a4c1-3234-a714-988077213a81",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\novl: set OVL_WHITEOUTS before publishing the upper dir\n\nListing a directory while it is copied up causes a use-after-free of\nthe readdir cache.\n\nA merge directory must never be iterated as a real upper directory:\nthat mode frees the cache in OVL_I(inode)->cache without looking at\nits refcount, while files opened in merged mode still use it.\novl_copy_up_workdir() publishes the upper dentry before it sets\nOVL_WHITEOUTS, and ovl_dir_open() samples both without a lock, so an\nopen between the two stores finds the upper directory and takes it\nfor a real one.\n\nWith a delay between the two stores, an unprivileged process that\nlisted a directory during its copy-up saw only \".\" and \"..\", and its\nnext getdents freed the readdir cache of another descriptor.\n\nFix this by setting OVL_WHITEOUTS before ovl_inode_update(), so that\novl_dir_reset() agrees with ovl_dir_open(), and by testing\nOVL_TYPE_MERGE() of the path type in ovl_dir_open(), so that an open\nthat observes the upper dentry never iterates a merge dir as a real\ndir, regardless of the order in which it observes the flag.\n\n[amir: test OVL_TYPE_MERGE() instead of smp_rmb() in ovl_dir_open()]",
   "datePublished": "Nov 19, 2026, 2:40:27 PM",
-  "dateUpdated": "Nov 19, 2026, 2:40:27 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:10 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/43ad4a3090e1c2a0c34e9802882b42c5c078d556\nhttps://git.kernel.org/stable/c/7805739ce4577f2c53f5a30be2d48e83e91c63bc\nhttps://git.kernel.org/stable/c/ea5327a9228bfd1609e54f1fca50786e8f963da5\nhttps://git.kernel.org/stable/c/cbec8610ec5aaf35df50094ff639febc23f20773\n",
   "aliases": "GHSA-php5-h7fx-pmgj\nCVE-2026-99424\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0118fe87-1624-3f4c-b485-ef7cd97a4bbb",

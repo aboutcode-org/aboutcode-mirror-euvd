@@ -3,12 +3,14 @@
   "enisaUuid": "a30ac766-83e2-3b9e-a56a-e40441488aed",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_qfq: prevent aggregate self-replacement\n\nqfq_change_class() snapshots the current aggregate settings while\nholding the qdisc tree lock, but drops the lock before selecting the\ndestination aggregate. During that gap, qfq_enqueue() can move the\nclass to an aggregate matching the requested settings.\n\nWhen qfq_change_class() resumes, qfq_find_agg() then returns cl->agg.\nIf it is a singleton, qfq_deact_rm_from_agg() frees the aggregate\nbefore qfq_add_to_agg() immediately accesses the same pointer, causing\na use-after-free.\n\nWhile holding the tree lock, skip the replacement when the destination\nis already the current aggregate. Any estimator replacement has already\ncompleted, so the class change can finish normally.",
   "datePublished": "Nov 20, 2026, 5:50:33 AM",
-  "dateUpdated": "Nov 20, 2026, 5:50:33 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:45 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/374ea8200331708ead0ba524b5c8cd9640515fd5\nhttps://git.kernel.org/stable/c/11c4ba0c976415176a6d82d6051457455d5b7e40\nhttps://git.kernel.org/stable/c/519f327c7fd1b67327de2e1cff6fbe85a02a151b\nhttps://git.kernel.org/stable/c/2e54b3e187300893688c2c7517894f5d96732e05\n",
   "aliases": "CVE-2026-99688\nGHSA-q3m9-g924-cj23\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "13ff6583-2eb3-3011-b29c-10906de20e26",

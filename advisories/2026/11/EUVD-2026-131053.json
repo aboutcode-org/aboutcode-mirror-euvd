@@ -3,12 +3,14 @@
   "enisaUuid": "e40d546e-425b-33a4-9df5-3494bccb1eb1",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: pm: kernel: use RCU to free endpoint listeners\n\nmptcp_pm_nl_create_listen_socket() starts the TCP listener directly\ninstead of going through mptcp_listen(). It consequently misses setting\nSOCK_RCU_FREE on the parent MPTCP socket.\n\ntcp_child_process() can invoke the listener's subflow_data_ready()\ncallback without holding the MPTCP parent lock or a reference to the\nparent. An authenticated MP_JOIN racing with endpoint teardown can\ntherefore access the parent after its last reference has been dropped.\nThe ADD_ADDR error path can also close an already published listener.\n\nSet SOCK_RCU_FREE before __inet_listen_sk() publishes the TCP listener,\nmatching mptcp_listen(). This protects the parent on every subsequent\nclose path, including a failed endpoint addition.",
   "datePublished": "Nov 20, 2026, 5:49:28 AM",
-  "dateUpdated": "Nov 20, 2026, 5:49:28 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:14 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/2004c8fdb1b588188f6a17398782da4551f22be5\nhttps://git.kernel.org/stable/c/c457824f76e95e10356c35c61ffc9d79b8c54228\nhttps://git.kernel.org/stable/c/78856ded7ec7995e8a05cdc9d08df4c5a62479aa\nhttps://git.kernel.org/stable/c/49b09ae0bf57b4230187d4cdd0a370558e44a6e8\n",
   "aliases": "GHSA-vr3w-7ppm-p793\nCVE-2026-99603\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0dc9f3b1-8360-3720-9c9c-a0cb0457f427",

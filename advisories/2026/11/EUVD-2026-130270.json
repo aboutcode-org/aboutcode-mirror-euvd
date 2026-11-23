@@ -3,12 +3,14 @@
   "enisaUuid": "643a6e9b-6082-3f26-a241-0ea400593c95",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_flower: avoid stale mask references after delete\n\nFlower releases a mask reference when a filter is removed from the\nclassifier. The filter object can remain alive while dump, walk, or\nhardware reoffload paths hold a reference to it. Those paths can then\ndereference f->mask after the mask has already been released.\n\nKeep the mask reference until the filter reference count reaches zero.\nRelease the mask synchronously from the final __fl_put() while the caller\nstill holds the tcf_proto reference, and leave the existing RCU work to\nfree the mask. This keeps the mask available to every reader that still\nholds the filter.\n\nThe filter is still removed from the classifier indexes immediately.\nTherefore, a deleted filter can temporarily retain an otherwise empty\nmask; fl_delete() uses the handle IDR, rather than the mask list, to\ndetermine whether the classifier has become empty.\n\nFailed mask assignment can leave fnew->mask as an error or borrowed\npointer without an owned mask reference. Clear it before the common\nfailure path so the final put cannot release an unowned reference.\n\nThis fix does not add fields, snapshots, or per-filter memory.",
   "datePublished": "Nov 19, 2026, 2:45:05 PM",
-  "dateUpdated": "Nov 19, 2026, 2:45:05 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:53 AM",
+  "baseScore": 7.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/47ae95cdcb9b1d6770c624ae778828b1d698801a\nhttps://git.kernel.org/stable/c/cdffcb89d84455158d057a6baa87a67225a7f062\nhttps://git.kernel.org/stable/c/0cc691a899a43e8ecbddfe657198b3f6935122f0\nhttps://git.kernel.org/stable/c/58f7989da6e715ce834ac861b7ba6ae9f9bdb098\n",
   "aliases": "CVE-2026-99546\nGHSA-4p3r-xwwr-whcw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "01e8a6cb-9849-3f19-9216-7134f4f3a1dd",

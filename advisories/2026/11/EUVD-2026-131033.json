@@ -3,12 +3,14 @@
   "enisaUuid": "292f7f89-e06b-38d6-b062-2933c586b219",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: hold shkey across socket migration\n\nsctp_sock_migrate() transfers queued DATA skbs from the old socket to the\nnew one. skb_orphan() invokes sctp_wfree() during that transfer and drops\nthe skb-owned shared-key reference.\n\nIf userspace has removed that key from the association, this can be the\nfinal reference. The following sctp_set_owner_w() then dereferences the\nfreed chunk->shkey while trying to take the new owner reference.\n\nTake a temporary shared-key reference before orphaning the skb and release\nit after the new owner has taken its reference. This preserves the selected\nauthentication key throughout the ownership transfer.\n\nBug found and triaged by OpenAI Security Research and\nvalidated by Trail of Bits.",
   "datePublished": "Nov 20, 2026, 5:49:14 AM",
-  "dateUpdated": "Nov 20, 2026, 5:49:14 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:04 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/bea7f19a12e68a670c7173aac1c52de12fd615e9\nhttps://git.kernel.org/stable/c/79e6577cada6a2d956042e3342ac2b2122ead6b0\nhttps://git.kernel.org/stable/c/9875dda4a2dbbbe259cd5f88f19d87b8721a98d0\nhttps://git.kernel.org/stable/c/ad1320865b1826ffa2e81e37c49535751e81335c\n",
   "aliases": "GHSA-pgrx-5j3p-phxc\nCVE-2026-99583\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "0d7aca9c-7e45-3e77-9493-bbeaae251d69",

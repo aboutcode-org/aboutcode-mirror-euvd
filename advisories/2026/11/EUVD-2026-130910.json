@@ -3,12 +3,14 @@
   "enisaUuid": "b8cca7ba-f775-3b88-befe-d713f7620445",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Only accept connection responses to outstanding requests\n\nAn outgoing channel waits in BT_CONNECT until security\nand the feature mask exchange complete, and only then\nsends its connection request. A peer can answer it\nbefore that with a connection response matching our\nsource CID. The channel then moves to BT_CONFIG,\ncompletes configuration and becomes connected before\nsecurity has completed. If security then fails,\nl2cap_security_cfm() leaves the connected channel\nalone, so it stays up on a link that did not reach\nthe required security level.\n\nA connection response with a zero source CID is\nmatched by identifier. Another channel can hold the\nsame identifier for a response it still has to send,\nso the lookup can pick the wrong channel.\n\nOnly accept a connection response while our request\nis outstanding, and only look at such channels when\nmatching by identifier.",
   "datePublished": "Nov 20, 2026, 5:51:53 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:53 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:10:09 AM",
+  "baseScore": 8.1,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
   "references": "https://git.kernel.org/stable/c/08ad7b94a31820eb3082851b924f76503fe66ebf\nhttps://git.kernel.org/stable/c/c6789ceaf6e28e97d73434e12c7ae60432f86dbb\nhttps://git.kernel.org/stable/c/bef1f610bc1f99b349368cb8d9025c2ff66d1fbe\nhttps://git.kernel.org/stable/c/a518b9a9ef6ee3b18ecdf6ba5360c608aaf969e9\n",
   "aliases": "CVE-2026-99793\nGHSA-g352-52x7-qph2\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "0f9783a1-e958-3f45-aeeb-42917e449230",

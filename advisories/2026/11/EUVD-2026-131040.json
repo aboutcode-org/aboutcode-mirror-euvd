@@ -3,12 +3,14 @@
   "enisaUuid": "683a289b-5061-3bb7-9c09-322f14e6c578",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: clamp the inline data length in ceph_fill_inline_data()\n\nThe MDS decides how much inline data to attach to a reply, and the\nclient parses inline_len without any upper bound: ceph_decode_need()\nonly verifies that the message actually carries that many bytes.\nceph_fill_inline_data() then copies the data into a single folio\nwith no length check, so a malicious or buggy MDS returning more\ninline data than the folio can hold writes past its end.\n\nClamp the length to folio_size() so both callers, handle_cap_grant()\nand fill_inode(), are covered.",
   "datePublished": "Nov 20, 2026, 5:49:19 AM",
-  "dateUpdated": "Nov 20, 2026, 5:49:19 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:08 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/b325a1f0d441bb1925ef3c1e09d1db05ecfcc12c\nhttps://git.kernel.org/stable/c/f07b16256d7041c60dd2e205783d5d3a7934f884\nhttps://git.kernel.org/stable/c/9d06011f8c5b4c9989397a501483fec0f4a149cb\nhttps://git.kernel.org/stable/c/9c1d14d3b66b3e1dd96ee664c0dd2548f2b77a52\n",
   "aliases": "GHSA-55q4-ccgm-63vh\nCVE-2026-99590\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "071101ea-b4a5-3ee0-8578-6d14244a09a9",

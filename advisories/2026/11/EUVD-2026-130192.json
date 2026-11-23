@@ -3,12 +3,14 @@
   "enisaUuid": "d37273fd-3749-3cb9-a656-dac797dc0fbf",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nlockd: Fix use-after-free in nlmsvc_retry_blocked\n\nnlmsvc_retry_blocked() examines the block at the head of nlm_blocked\nunder nlm_blocked_lock, then releases the lock before calling\nnlmsvc_grant_blocked() or retry_deferred_block(). The nlm_blocked list\nreference is all that keeps the block alive across that window.\nnlmsvc_grant_blocked() does take one of its own, but not until after\nthe lock has been dropped. Unmounting the nfsd filesystem while a lock\nrequest is still blocked reaches nlmsvc_traverse_blocks(), which drops\nthe list reference and frees the block along with the nlm_rqst hanging\noff it.\n\n  BUG: KASAN: slab-use-after-free in nlm_async_call+0xd6/0x230\n  Read of size 8 at addr ffff88811b04c808 by task lockd/8377\n    nlm_async_call+0xd6/0x230\n    nlmsvc_retry_blocked+0x61c/0x800\n    lockd+0x144/0x1c0\n  Freed by task 8392:\n    nlmsvc_release_block+0x231/0x290\n    nlmsvc_traverse_blocks+0x139/0x1b0\n    nlm_traverse_files+0x1aa/0xa00\n    nlmsvc_free_host_resources+0x12/0x60\n    nlm_shutdown_hosts_net+0x127/0x280\n    lockd_down+0xd5/0x1c0\n\nTake a reference before releasing nlm_blocked_lock and drop it once\nthe retry has run.",
   "datePublished": "Nov 19, 2026, 2:44:11 PM",
-  "dateUpdated": "Nov 19, 2026, 2:44:11 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:43 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/6506c27da6756c0c7590ef60774ee5d35f6a4100\nhttps://git.kernel.org/stable/c/70825b251e5f7855fd7bd93afc0b698154e00e70\nhttps://git.kernel.org/stable/c/25d0baa6adb4a0b3f6889d42033ce8df3232bea7\nhttps://git.kernel.org/stable/c/f5b7634f0f213299a07b461fb10385c8639a4ab8\n",
   "aliases": "GHSA-p68w-hqqq-m236\nCVE-2026-99513\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "09bb8a2c-c795-31db-84b8-1f5fc1d012c9",

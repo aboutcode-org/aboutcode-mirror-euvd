@@ -3,12 +3,14 @@
   "enisaUuid": "6c2854c6-4799-30a7-86a5-e10945bf2519",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\n9p/trans_virtio: reject mount tags longer than NAME_MAX at probe\n\np9_virtio_probe() reads a 16-bit mount tag length (tag_len) from the\ndevice config and kzalloc()s tag_len + 1 bytes for chan->tag with no\nupper bound. A malicious or compromised host can present a tag of up to\n65535 bytes; that tag is later copied into the single-page sysfs buffer\nby p9_mount_tag_show() (memcpy(buf, chan->tag, tag_len + 1)), a\nhost-controlled out-of-bounds write of up to ~64 KiB past the PAGE_SIZE\nattribute buffer.\n\nReject an overlong tag at probe time. A 9p mount tag is a name-like\nidentifier, so bound it by NAME_MAX (255): that limit is independent of\nthe sysfs/seq_file page size and is far above any legitimate mount tag,\nwhich keeps p9_mount_tag_show() safe at the root without hard-coding a\nseq_file implementation detail.",
   "datePublished": "Nov 20, 2026, 5:51:47 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:47 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:10:07 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/1b8a525573d15370d441c8a25fd27161f1d084c2\nhttps://git.kernel.org/stable/c/030cebd51fcfa46eeb916a599fee447c9d3d1170\nhttps://git.kernel.org/stable/c/b8779990399009d73f8d039a149c398a9b879839\nhttps://git.kernel.org/stable/c/5bfef2b6dafe83fe2d8d210d54093a8f48cfc97e\n",
   "aliases": "GHSA-c3hf-xpqv-x5gx\nCVE-2026-99785\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.19,
   "enisaIdProduct": [
     {
       "id": "04d9b6ed-101f-354f-a63c-a715b92186fd",

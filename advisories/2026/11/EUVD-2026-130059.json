@@ -3,12 +3,14 @@
   "enisaUuid": "d6fd8cf4-4191-3458-8e1a-cf046dfd487d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: reject out-of-range attribute value lengths in xfs_attr_copy_value\n\nxfs_attr_copy_value() takes the value length as a signed int and, for a\nremote xattr, is handed args->rmtvaluelen.  That field is filled from the\non-disk __be32 xfs_attr_leaf_name_remote.valuelen in\nxfs_attr3_leaf_getvalue(), so a crafted length such as 0x80000000 is\nstored into the signed rmtvaluelen as a negative number.\n\nThe \"buffer too small\" guard in xfs_attr_copy_value() is a signed\ncomparison:\n\n\tif (args->valuelen < valuelen)\n\t\treturn -ERANGE;\n\nA negative valuelen therefore compares as smaller than the caller's\nbuffer size, skips the -ERANGE path, and is then used as a copy length,\nleading to an out-of-bounds copy of a full remote block into a small\ngetxattr(2) buffer on a mounted crafted image.\n\nReject a value length that is negative or larger than the maximum xattr\nsize before it is used, so a bogus on-disk length can no longer slip\nthrough the value copier.",
   "datePublished": "Nov 19, 2026, 2:23:37 PM",
-  "dateUpdated": "Nov 19, 2026, 2:39:45 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:06 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/91d0cf6244280e67bdc2787a60a10f635ac064c0\nhttps://git.kernel.org/stable/c/c2cd6b3b480ef2ae9752ed924a2199c8c90569a1\nhttps://git.kernel.org/stable/c/c5c34a0a5a80ecd8fea9fff960907b2924d18cd9\nhttps://git.kernel.org/stable/c/0643549ffecaeb716c0b75590a9b76dfa5eb35b3\n",
   "aliases": "CVE-2026-99400\nGHSA-pp64-v6p6-8mv7\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0fd14447-4733-3140-a3f1-abadc66916a4",

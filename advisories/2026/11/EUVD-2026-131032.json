@@ -3,12 +3,14 @@
   "enisaUuid": "a868d139-a696-3e5f-ad0f-4d296feeba1f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: re-point retained control chunks on association migration\n\nsctp_sock_migrate() transfers DATA chunk ownership but leaves retained\ncontrol chunks pointing at the old socket. A later retransmission can\ntherefore access the socket after it has been freed.\n\nExtend the migration walk to cover retained control chunks and use\nsctp_control_set_owner_w() to assign their new owner. Reuse the DATA\nownership check so each chunk is processed once per pass, even when it\nis reachable through multiple lists or retained pointers.\n\nPreserve a control chunk's existing authentication key across migration\nso its final release can still generate SCTP_AUTH_FREE_KEY when needed.",
   "datePublished": "Nov 20, 2026, 5:49:13 AM",
-  "dateUpdated": "Nov 20, 2026, 5:49:13 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:03 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/830e0073d514eb666f0b7b6529e5e286529e9acf\nhttps://git.kernel.org/stable/c/0cc0f5ed58904cd7c55770d5108dea7125d020ae\nhttps://git.kernel.org/stable/c/2070e2a2095c892900d90a6dd609433ce0ad05e4\nhttps://git.kernel.org/stable/c/52ffeaa358d1f3d91aa87a26ad90d77769cff74b\n",
   "aliases": "CVE-2026-99582\nGHSA-f8v9-g56x-mmgw\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "01a11d77-3e06-3bdc-82c0-faaf65c6013f",

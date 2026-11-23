@@ -3,12 +3,14 @@
   "enisaUuid": "0b279590-7cb4-3867-8b8f-43f805cf60f3",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: cap the block count of xfs_iomap_write_direct() at one extent\n\nxfs_iomap_write_direct() reserves blocks for the whole count in an\nunsigned int. For a pNFS layout the client chooses that count, and an\nRW LAYOUTGET for 16 TiB wraps the reservation and shuts XFS down.\n\nxfs_bmapi_write() maps at most XFS_MAX_BMBT_EXTLEN blocks here, so cap\nthe count at that. nfsd asks again for the rest. The other callers get\nthe same mapping as before.",
   "datePublished": "Nov 20, 2026, 5:50:25 AM",
-  "dateUpdated": "Nov 20, 2026, 5:50:25 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:39 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/7f4972601b3faa66524e44df9e929fd491e35bfd\nhttps://git.kernel.org/stable/c/73b0f3d5201f741125061d8559e9631f1af4cb39\nhttps://git.kernel.org/stable/c/83e0edb26d05515083784db26a02a809371ccdb3\nhttps://git.kernel.org/stable/c/66d1ce09ebd72709f8d739630c39f440445173fd\n",
   "aliases": "CVE-2026-99678\nGHSA-4g46-722q-2hr9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "02f0a809-51fb-3441-802b-c1c7a9f2ee59",

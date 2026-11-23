@@ -3,12 +3,14 @@
   "enisaUuid": "67ab1720-c6bc-3310-b890-89888797b294",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-auth: serialize access to DH-HMAC-CHAP state to fix UAF\n\nA REPLY AUTH_SEND command can derive a dhchap_skey key while a\nconcurrent AUTH_RECEIVE command observing this REPLY state executes\nthe failure path and frees that key. The REPLY command then continues\nand writes into freed memory, causing a use-after-free. KASAN reports\nit as:\n\n  BUG: KASAN: slab-use-after-free in __sha256_final\n  Write of size 4 at addr ffff88800359c540\n  ...\n  nvmet_auth_sq_free (drivers/nvme/target/auth.c:237)\n  nvmet_execute_auth_receive (drivers/nvme/target/fabrics-cmd-auth.c:621)\n\nAdd a mutex to each submission queue to serialize authentication\ncommands and timeout handling. Unlock the mutex before completing\nrequests and ignore outdated timeout callbacks. Limit timeout delays\nto prevent immediate expiry on 32-bit kernels.",
   "datePublished": "Nov 19, 2026, 2:41:25 PM",
-  "dateUpdated": "Nov 19, 2026, 2:41:25 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:17 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/4074511c39abed4b763392f0430bf84f166abb4c\nhttps://git.kernel.org/stable/c/edb4f7bcffdb768103c561c588de310f34dd26ba\nhttps://git.kernel.org/stable/c/35f55810ee2410815d687ff00fb8412d63ab2899\nhttps://git.kernel.org/stable/c/53f6efe00cea0c0cf7bd99debe3cdac8567170b5\n",
   "aliases": "CVE-2026-99441\nGHSA-8383-mwhf-5pj9\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.25,
   "enisaIdProduct": [
     {
       "id": "2a2cd2b4-fa79-31d2-8eb9-e8a0429259fb",

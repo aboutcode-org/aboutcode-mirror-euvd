@@ -3,12 +3,14 @@
   "enisaUuid": "f8f936a6-ca6a-3bde-b997-ae94926b72bc",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/drm_crtc: ensure dma_fence_ops remain valid during device unbind\n\nIn [1], sashiko reported the following issue:\n\n=== snip ===\nLooking at how these fences are managed, drm_crtc_create_fence()\ncreates a dma_fence without taking a reference to the drm_device or\ndrm_crtc. Because the sync_file framework exposes this fence to\nuserspace, the fence can outlive the CRTC.\n\nThe dma_fence contract requires that data accessed by dma_fence_ops\n(like get_driver_name) must remain valid for an RCU grace period after\nthe fence is signaled. However, drm_crtc_cleanup() and the subsequent\nfreeing of the device do not wait for an RCU grace period via\nsynchronize_rcu().\n\nIf userspace calls ioctl(SYNC_IOC_FILE_INFO) concurrently with a device\nhot-unplug:\n\nCPU1 (Userspace)\nsync_file_get_name()\n  ops = rcu_dereference(fence->ops);\n  if (!dma_fence_test_signaled_flag())\n    // Preempted or delayed here\n\nCPU2 (Driver Teardown)\nSignals the fence (setting fence->ops = NULL)\nDestroys and frees the CRTC without waiting for an RCU grace period\n\nCPU1 (Resumes)\n  ops->get_driver_name(fence) -> drm_crtc_fence_get_driver_name()\n  crtc = fence_to_crtc(fence); // Casts to the freed CRTC\n  return crtc->dev->driver->name; // Use-after-free\n\n...\n\nDoes the CRTC or DRM device need to be kept alive for the RCU grace\nperiod, or should the fence hold a proper reference to prevent the\nuse-after-free when get_driver_name() and get_timeline_name() access\nthe freed CRTC structure?\n=== snap ===\n\nI believe this to be a correct observation and this patch implements\nthe suggestion of waiting for an RCU grace period before proceeding\nwith destruction of the drm_crtc, so that get_driver_name() and\nget_timeline_name() can still work.",
   "datePublished": "Nov 20, 2026, 5:51:37 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:37 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:10:05 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/dd9a96b2271e28340acf2e3764914fe5f32f6102\nhttps://git.kernel.org/stable/c/07b2d7a3f2b984c20f5f2630a94f43ede387a8dc\nhttps://git.kernel.org/stable/c/f8e6f4deb868fd9da3eda95db222609ab1edc18d\nhttps://git.kernel.org/stable/c/3be436cbd3d265fe4fcfbb5b650edad7b2108443\n",
   "aliases": "GHSA-378q-gq2q-w9vq\nCVE-2026-99773\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "1b07da09-4677-37ea-b385-19d98c16fa2d",

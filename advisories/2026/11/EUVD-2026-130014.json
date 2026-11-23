@@ -3,12 +3,14 @@
   "enisaUuid": "1bfa4655-1f4c-36e9-bb16-4827d713750c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: Do not credit control-record octets to the RPC stream\n\nsvc_tcp_sock_recv_cmsg() receives up to two octets into a local\nbuffer, and returns that count for any record type other than\nTLS_RECORD_TYPE_ALERT. Nothing reached the caller's buffer, but\nsvc_tcp_read_marker() adds the count to sk_tcplen and\nsvc_tcp_read_msg()'s caller adds it to sk_datalen. The RPC stream\nadvances over octets it never received. The fragment marker is\nassembled from stale sk_marker octets. The message body comes from\npages nothing wrote.\n\nA conforming client reaches this. RFC 8446 Section 4.6.3 lets either\npeer send KeyUpdate once it has sent its Finished, and svcsock has no\nrekey path. kTLS leaves the partially consumed record on ctx->rx_list,\nso the body drains two octets per svc_tcp_recvfrom() call. Each pair\nis credited the same way.\n\nReturn -EAGAIN for a record that is not an alert. That is what\nsvc_tcp_sock_process_cmsg()'s default arm returned before the receive\nmoved into a local buffer.",
   "datePublished": "Nov 19, 2026, 2:22:22 PM",
-  "dateUpdated": "Nov 19, 2026, 2:37:13 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:07:50 AM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/d784d46e19b52a553d5c772a18e13b4c6dc84708\nhttps://git.kernel.org/stable/c/67d36b376f76a71e52a5f8ed4a4d9d90b8b68133\nhttps://git.kernel.org/stable/c/99eb91d68e73a08bfc784eff6f5c02ecb6ea58ba\nhttps://git.kernel.org/stable/c/129e7107b971009bc81643d23f3ab949f540d321\n",
   "aliases": "GHSA-8c64-89jh-jj83\nCVE-2026-99356\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "2e73397e-8dab-360c-b308-3602ef5780a5",

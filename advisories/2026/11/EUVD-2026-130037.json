@@ -3,12 +3,14 @@
   "enisaUuid": "197da643-e81a-33d0-8fdb-80e4491bd1c5",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate SMB1 EA list bounds before parsing\n\nCIFSSMBQAllEAs() checks the server-provided EA list length by adding it\nto the response pointer. On 32-bit systems, a positive length can wrap\nthe pointer and pass the comparison. The parser then walks outside the\nreceived response while reading the next FEA header.\n\nA response with a list length of 0x40000000 reproduces this as a native\ni386 page fault and kernel panic from listxattr() against an SMB1\nserver.\n\nCheck that the EA list starts within the SMB byte area before reading\nits header. Keep its length unsigned and compare it with the bytes left\nin the response without pointer addition.\n\nSMB1 is not negotiated by default and requires an explicit vers=1.0\nmount.",
   "datePublished": "Nov 19, 2026, 2:23:19 PM",
-  "dateUpdated": "Nov 19, 2026, 2:38:19 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:07:55 AM",
+  "baseScore": 7.3,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/25b2cf78709cffcc04b2c576e7150d46b0cecef0\nhttps://git.kernel.org/stable/c/ccdd05f4573951164edd0390bb995fe6d2072441\nhttps://git.kernel.org/stable/c/8eec99e61b79bb5f698754dda8e8a1ff7e4ed7ff\nhttps://git.kernel.org/stable/c/ddc7a7e1eeb116ccaf010a6f1fb6ab927f3f888d\n",
   "aliases": "GHSA-px9j-vxff-4464\nCVE-2026-99379\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "20365a14-9669-3f5b-986a-a3ffef049b07",

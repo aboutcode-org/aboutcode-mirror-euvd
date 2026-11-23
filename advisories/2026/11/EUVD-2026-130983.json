@@ -3,12 +3,14 @@
   "enisaUuid": "c5099c19-84e4-3cbf-a814-3df4ccc73b22",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: cache the mount context for dentry lock callbacks\n\nocfs2_drop_dentry_lock() drops the inode reference before releasing the\nDENTRY lock.  This lets inode eviction release the local inode and open\nlocks before a remote unlink can proceed past the DENTRY lock.\n\nA DLM callback can still arrive before the DENTRY lock has been dropped.\nocfs2_get_dentry_osb() obtains the mount context through dl_inode->i_sb,\nwhich can access a freed inode when the downconvert thread drops the\nlast inode reference in its post-unlock callback:\n\n  Downconvert thread                     DLM callback thread\n  ------------------                     -------------------\n  ocfs2_process_blocked_lock()\n    ocfs2_dentry_post_unlock()\n      ocfs2_dentry_lock_put()\n        ocfs2_drop_dentry_lock()\n          iput(dl->dl_inode)\n          [inode reclaimed after RCU]\n                                         ocfs2_blocking_ast()\n                                           ocfs2_get_dentry_osb()\n                                             dl->dl_inode->i_sb\n          ocfs2_simple_drop_lockres()\n\nStore the mount context in the DENTRY lock resource's l_priv field and use\nthe default mount-context lookup.  Recover the containing dentry lock with\ncontainer_of(), as already done for refcount locks, and remove\nocfs2_get_dentry_osb().  ocfs2_dismount_volume() shuts down the DLM before\nfreeing the mount context, so callbacks can use it without accessing the\ninode.  Preserve the existing iput-before-unlock order to avoid delaying\nlocal inode and open lock release until after the DENTRY lock is released.",
   "datePublished": "Nov 20, 2026, 5:50:34 AM",
-  "dateUpdated": "Nov 20, 2026, 5:50:34 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:46 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/a392e0231b9d823f2e62e21fef68ad6145119dca\nhttps://git.kernel.org/stable/c/ee8997a4521964631d6cc0e511a186f69ce84dbd\nhttps://git.kernel.org/stable/c/85bc2a3b1bece826c908a31c34a4865a80136bee\nhttps://git.kernel.org/stable/c/5b4696e0bfc358619adaeab25ad35b4979af8331\n",
   "aliases": "CVE-2026-99690\nGHSA-2w86-w8w2-685q\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "564c808b-77ca-3c26-a692-3bcdab3783a6",

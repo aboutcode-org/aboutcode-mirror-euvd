@@ -3,12 +3,14 @@
   "enisaUuid": "2cc6e4af-c3e8-3358-b8ca-bcd96af4424c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: account for chunk padding in sctp_init_cause()\n\nsctp_init_cause() accepts a chunk when skb_tailroom() can hold the\ncause header and the payload. sctp_addto_chunk() then writes 0-3\nbytes of padding before that header so the chunk stays 4-byte\naligned. The check does not include the padding, and the following\nskb_put() calls skb_over_panic() from softirq.\n\nCount the padding sctp_addto_chunk() is about to write. The cause\nlength on the wire stays the header plus the payload.\n\nFound by LLM inspection, triggered and tested the fix.",
   "datePublished": "Nov 20, 2026, 5:51:26 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:26 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:10:02 AM",
+  "baseScore": 7.5,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://git.kernel.org/stable/c/28fb74ed3118cd3f59e1b0a5bdba691a2a4c7ea3\nhttps://git.kernel.org/stable/c/fb28092f5feec64f506f198f56d676ba752e700c\nhttps://git.kernel.org/stable/c/0ff27cefd26182be8366c414478967d667bd8e86\nhttps://git.kernel.org/stable/c/ed6c53b27be492643da2017c6f8e2732be5edf1a\n",
   "aliases": "CVE-2026-99758\nGHSA-78xc-95f7-rh7r\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "1f25305c-5400-3403-9001-b3327e271dd7",

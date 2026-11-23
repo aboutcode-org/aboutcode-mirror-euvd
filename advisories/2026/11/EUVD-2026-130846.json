@@ -3,12 +3,14 @@
   "enisaUuid": "310e57a5-c4db-3eec-8976-6add7f4c71a4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/filemap: finish fault cleanup before dropping the fault lock\n\nOn a retried fault, a fatal signal interrupting the folio lock wait\nmakes lock_folio_maybe_drop_mmap() drop the fault lock without pinning\nthe file. However, filemap_fault() may still need to release\nmapping->invalidate_lock. A concurrent munmap() can release the last\nfile reference and free the mapping before that unlock.\n\nDefer dropping the fault lock to filemap_fault()'s retry cleanup, after\nreleasing invalidate_lock. If the fault lock was already dropped for\nI/O, release the existing file reference instead. Keep the fault lock\nheld for FAULT_FLAG_RETRY_NOWAIT as before.",
   "datePublished": "Nov 20, 2026, 5:51:05 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:05 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:55 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/efa7aec3f30d79a7d35edd219c6f49235f331013\nhttps://git.kernel.org/stable/c/f1c149e651fd55edc0769b76ebd688ae6cbd48f0\nhttps://git.kernel.org/stable/c/8500faaa6ef7b4489294f2bf98c9017ee009986c\nhttps://git.kernel.org/stable/c/97156a6c355c21f7122421915f05461bd11699a4\n",
   "aliases": "CVE-2026-99730\nGHSA-w7p3-hv68-6j56\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "03030294-7b64-308e-ae32-1758a4192b47",

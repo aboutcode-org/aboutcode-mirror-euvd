@@ -3,12 +3,14 @@
   "enisaUuid": "303bb544-be59-32c1-b349-8decc05cb0a6",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/virtio: Reset device before deleting virtqueues on probe failure\n\nviommu_probe() marks the device DRIVER_OK before populating the event\nvirtqueue and registering the IOMMU device in sysfs.  viommu_fill_evtq()\nhands the device a set of device-writable buffers through\nvirtqueue_add_inbuf(), so from that point on the device may write into\nthem and into the rings.\n\nIf either step fails, the error path deletes the virtqueues without\nresetting the device first.  The event buffers are allocated with\ndevm_kmalloc_array() and are released as probe unwinds, so the device can\ngo on writing to memory that has been freed.\n\nReset the device before deleting the virtqueues, the way viommu_remove()\nalready does.",
   "datePublished": "Nov 20, 2026, 5:50:31 AM",
-  "dateUpdated": "Nov 20, 2026, 5:50:31 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:42 AM",
+  "baseScore": 8.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/e09d65fd554b78c7277f6379517c773ff36d55d1\nhttps://git.kernel.org/stable/c/e60e6db9d07b2ebaff2e055a086fa8e8d14f565c\nhttps://git.kernel.org/stable/c/cfdb3b6915299ebb6ffc98566f9cf73d4d1f1598\nhttps://git.kernel.org/stable/c/1f8efac19a0870cdfdf8477e447e5a07ddce9623\n",
   "aliases": "GHSA-h9vc-5hq5-2q9q\nCVE-2026-99685\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "07a07fdc-fb62-3bcf-b952-a7a405989313",

@@ -3,12 +3,14 @@
   "enisaUuid": "ab4e5520-8d22-3cdf-aec9-6b1a88b0e303",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: bound the SIT/NAT bitmaps by the checkpoint pack\n\nsit_ver_bitmap_bytesize and nat_ver_bitmap_bytesize are used as memcpy\nlengths into and out of sbi->ckpt, which is sized from cp_payload alone,\nand nothing compares either length against that allocation.\n\nsanity_check_ckpt() has checked these two fields since c77ec61ca0a4, which\nadded them after a crafted image overran build_sit_info(). That check ties\neach length to a segment count; it never compares either against the\nallocation, which is the half this adds.\n\nMounting over-reads in build_sit_info() and build_node_manager(), and the\nfirst checkpoint writes the same lengths back through the same pointers,\nso the over-read's contents reach the on-disk checkpoint. An unmount is\nenough; the filesystem does not have to be used.\n\nBound both ends the way __bitmap_ptr() lays them out. The three branches\ndiffer, so a single sum of the two lengths would still admit a small\noverflow when cp_payload is non-zero.",
   "datePublished": "Nov 20, 2026, 5:49:07 AM",
-  "dateUpdated": "Nov 20, 2026, 5:49:07 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:09:00 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/ddb9848fd6b2f4e9ed5ef78b20c9720c65a29df5\nhttps://git.kernel.org/stable/c/9b08fc2d092171af388f83030d54488b87453155\nhttps://git.kernel.org/stable/c/7f88cd38394a16c326073c8813e7f1f1445bf3ba\nhttps://git.kernel.org/stable/c/080833a32fd5dc10b3acf2fa9af9b3213e6cb617\n",
   "aliases": "CVE-2026-99574\nGHSA-x9rr-p26x-gmf8\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "12a64074-8442-3afa-8110-471b596a2928",

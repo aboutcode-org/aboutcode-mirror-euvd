@@ -3,12 +3,14 @@
   "enisaUuid": "08061faa-b2b8-3492-babd-5b7d2b55613d",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tt: ignore ROAM flag of received ADD changes\n\nA received TT change (OGM diff or full table response) with the ROAM flag\nbut without DEL is handled by batadv_tt_global_add() like a ROAMING_ADV:\n\n* a newly created global entry gets BATADV_TT_CLIENT_ROAM and is\n  therefore excluded from the global CRC. The sender has it in its local\n  CRC and the receiver has to request the full table again\n* batadv_tt_global_purge_local() removes the local entry of the\n  receiver. The receiver's own client is considered as roamed to the sender\n  and frames for it are rerouted\n\nThe ROAM flag only has a meaning together with DEL. Drop it on reception to\nkeep it from populating the global table with a temporary ROAMING entry\nwhich is not part of the CRC - and therefore causing a CRC mismatch.",
   "datePublished": "Nov 20, 2026, 5:51:28 AM",
-  "dateUpdated": "Nov 20, 2026, 5:51:28 AM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:10:03 AM",
+  "baseScore": 7.6,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/06d1e0a779c823c9299a1a59e882365732faa48d\nhttps://git.kernel.org/stable/c/08eef283c81a11da88d1159c17336c40d1834a42\nhttps://git.kernel.org/stable/c/1654eeaccde3bc9fd71b6b316bcc8eb6f4f9c012\nhttps://git.kernel.org/stable/c/c5d68abe6e7f1dbd132a602cb696fe1fff0389eb\n",
   "aliases": "CVE-2026-99760\nGHSA-mrcj-7rv9-rg93\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "20fcd2f7-84c1-360c-af52-6b83ed03f178",

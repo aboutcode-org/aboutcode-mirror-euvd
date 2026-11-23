@@ -3,12 +3,14 @@
   "enisaUuid": "a342aab0-f1cf-3d47-80e6-e27eeafce59a",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: smbdirect: fix buffer length underflow in RDMA transfers\n\nWhen a remote buffer descriptor is larger than the remaining local\nbuffer, smbdirect_connection_rdma_xmit() clamps its length and sets\nbuf_len to zero. The common accounting code then subtracts the clamped\nlength from buf_len, causing it to underflow. If another descriptor\nfollows, the loop processes it with a wrapped remaining length and\nincludes memory beyond the local buffer in the RDMA transfer.\n\nA client can trigger an out-of-bounds kernel write with an SMB WRITE\nrequest, or an out-of-bounds kernel read with an SMB READ request, by\nsupplying multiple RDMA buffer descriptors with an oversized descriptor\nbefore the last one.\n\nRemove the premature assignment to buf_len. Subtracting the clamped length\nalready consumes the remaining buffer, so the next iteration stops and\nonly descriptors within the local buffer are used to build work requests.",
   "datePublished": "Nov 19, 2026, 2:23:27 PM",
-  "dateUpdated": "Nov 19, 2026, 2:39:01 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:01 AM",
+  "baseScore": 8.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/5072f32330c71de91c1a844e7becaee48d743561\nhttps://git.kernel.org/stable/c/1f5c774488fa2dabe6667cb26888aaea39c4ead6\nhttps://git.kernel.org/stable/c/956968544ae647aa9a9534b58735f47922c85d44\nhttps://git.kernel.org/stable/c/7193241a49c958782ba4b8df06da3734d1e317d2\n",
   "aliases": "CVE-2026-99388\nGHSA-9g85-p863-gg44\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "073274b9-ad4f-369e-bb25-a182cc9245cb",

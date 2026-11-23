@@ -3,12 +3,14 @@
   "enisaUuid": "01069f10-1d81-3e5f-846d-3ea1fcc8a771",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: copy SETXATTR data from all XDR buffer segments\n\nnfsd4_vbuf_from_vector() manually copies the head followed by whole\npages starting at offset zero. This assumes that all remaining data\nstarts at the beginning of the page array and that no data is stored\nin the tail.\n\nHowever, nfsd4_decode_setxattr() passes an xdr_buf returned by\nxdr_stream_subsegment(). Such a sub-buffer can have a nonzero\npage_base and can span its page and tail segments. Ignoring that\nlayout can copy the wrong bytes into the value passed to\nvfs_setxattr().\n\nUse read_bytes_from_xdr_buf(), which observes the complete xdr_buf\nlayout.",
   "datePublished": "Nov 19, 2026, 2:23:06 PM",
-  "dateUpdated": "Nov 19, 2026, 2:37:59 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:07:54 AM",
+  "baseScore": 9.4,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
   "references": "https://git.kernel.org/stable/c/019cf7e0eebf6dc14b465cc984390b41c854da69\nhttps://git.kernel.org/stable/c/20b76bdbd029343ea98944cb88bf016da2371739\nhttps://git.kernel.org/stable/c/fea77ec4a37614cbbe4fb26c621227182439f487\nhttps://git.kernel.org/stable/c/b01319947c69b0e3ea0fcd4b675eb892f9cad8a0\n",
   "aliases": "CVE-2026-99370\nGHSA-wr7p-m5x2-fh88\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "03c53aaf-924c-315b-8ca8-4d44bd90a4dc",

@@ -3,12 +3,14 @@
   "enisaUuid": "8be27404-a73f-347c-8407-22b23349b07b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: fix use-after-free in hugetlb_mfill_atomic_pte()\n\nLet's fix another instance where we use a folio after dropping the PTL,\nwhere someone else could e.g., MADV_DONTNEED it once we drop the PTL,\nmaking us trigger a use-after-free on the folio.",
   "datePublished": "Nov 19, 2026, 2:44:01 PM",
-  "dateUpdated": "Nov 19, 2026, 2:44:01 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:41 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/cda6c4819b4a45dbeac92652eaaffb156b3f11b1\nhttps://git.kernel.org/stable/c/8b87fd23be5a816ad572e23eb4e1e2bea027db6c\nhttps://git.kernel.org/stable/c/83798e46a01c3139273cddcc634e96dfee980c42\nhttps://git.kernel.org/stable/c/d8a9cd7fd2fb01211430c933932da58839b8ca65\n",
   "aliases": "CVE-2026-99507\nGHSA-ccxp-pfhh-768h\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "05e0bb48-49da-3e19-81f1-32a09ff76b10",

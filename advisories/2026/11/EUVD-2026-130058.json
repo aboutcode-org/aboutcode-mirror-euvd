@@ -3,12 +3,14 @@
   "enisaUuid": "4f3ad87e-1e55-3646-9d5d-c2fb5f9856ae",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: reject remote xattr entries with an out-of-range value length\n\nxfs_attr3_leaf_verify_entry() validates a remote attribute entry's name\nbut never bounds its on-disk value length (xfs_attr_leaf_name_remote.\nvaluelen, a __be32). A crafted leaf with valuelen = 0x80000000 passes\nthe verifier and the CRC.\n\nThat length is later assigned into the signed int args->rmtvaluelen\n(xfs_attr3_leaf_getvalue), becoming negative, which slips past the signed\n-ERANGE check in xfs_attr_copy_value(); a getxattr() with a small buffer\nthen memcpy()s a full remote block into the small kvalue buffer\n(xfs_attr_rmtval_copyout) -- a heap out-of-bounds write with\nattacker-controlled content, from an unprivileged getxattr(2) on a\nmounted crafted image.\n\nReject remote entries whose value length exceeds XFS_XATTR_SIZE_MAX in\nthe leaf verifier, so the malicious block is rejected at read time.",
   "datePublished": "Nov 19, 2026, 2:23:36 PM",
-  "dateUpdated": "Nov 19, 2026, 2:39:39 PM",
-  "baseScore": 0.0,
+  "dateUpdated": "Nov 22, 2026, 11:08:05 AM",
+  "baseScore": 7.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://git.kernel.org/stable/c/56b701b3c272f143bb5f6a346bfbb1fe28ee14b1\nhttps://git.kernel.org/stable/c/97b85a593188f63e133883525c9159f77e660197\nhttps://git.kernel.org/stable/c/1481b4644cd640f0a603d97ced300a1fbd7d3a94\nhttps://git.kernel.org/stable/c/15ccd92a782a0253f4a17895f3d3f71e5c1d1973\n",
   "aliases": "GHSA-79xj-m62w-gwxc\nCVE-2026-99399\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "14f17341-1178-37e8-b1c3-6900b434135b",
