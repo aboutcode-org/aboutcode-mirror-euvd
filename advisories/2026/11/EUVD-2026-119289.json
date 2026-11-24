@@ -3,12 +3,12 @@
   "enisaUuid": "d30d8434-f7ed-35d5-ae82-f5a997554385",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: reserve space for the UTF-16 terminator in stream info\n\nsmb_strtoUTF16() always writes a terminating zero UTF-16 unit after the\nconverted characters, but get_file_stream_info() budgets only\nsizeof(struct smb2_file_stream_info) + streamlen * 2 for a stream entry\nand sizeof(struct smb2_file_stream_info) + 7 * 2 for the trailing\n\"::$DATA\" entry. When an entry exactly fills the 448-byte small response\nbuffer, the terminator is written two bytes past the allocation.\n\nReserve one extra UTF-16 unit in both budget checks. The terminator is\nnot part of the wire format, so the reported lengths are unchanged.",
   "datePublished": "Nov 7, 2026, 2:08:45 PM",
-  "dateUpdated": "Nov 20, 2026, 5:11:32 AM",
+  "dateUpdated": "Nov 23, 2026, 8:00:48 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/583ede545a14f275a959772b5e1e50fe3e14b861\nhttps://git.kernel.org/stable/c/06a751809ebd33e95b05bf733697318a17a4872b\nhttps://git.kernel.org/stable/c/0e64f89563164719ceb1aa33f2a8bfd6391fa340\nhttps://git.kernel.org/stable/c/a025c4991a7d83edc4dd339e3ea86d8ff6226eca\n",
+  "references": "https://git.kernel.org/stable/c/9703d2f43587570456712333fe04c2bdbc24cef3\nhttps://git.kernel.org/stable/c/a45a8d283bc5225a9b364c4f262a3cab9ced1018\nhttps://git.kernel.org/stable/c/d6642b5b031fb988e65b8e8bfe7ad130f728e955\nhttps://git.kernel.org/stable/c/583ede545a14f275a959772b5e1e50fe3e14b861\nhttps://git.kernel.org/stable/c/06a751809ebd33e95b05bf733697318a17a4872b\nhttps://git.kernel.org/stable/c/0e64f89563164719ceb1aa33f2a8bfd6391fa340\nhttps://git.kernel.org/stable/c/a025c4991a7d83edc4dd339e3ea86d8ff6226eca\n",
   "aliases": "GHSA-3jvj-587v-w544\nCVE-2026-99273\n",
   "assigner": "Linux",
-  "epss": 0.16,
+  "epss": 0.3,
   "enisaIdProduct": [
     {
       "id": "0a97d4ae-65e0-33da-8cac-7db17262bc9f",
@@ -29,6 +29,36 @@
         }
       },
       "product_version": "patch: 7.3.2"
+    },
+    {
+      "id": "2f94eda1-192d-3d00-989f-28b8663bc9b6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.226"
+    },
+    {
+      "id": "3f54517b-3565-3e5e-b103-0de879eb908b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <9703d2f43587570456712333fe04c2bdbc24cef3"
+    },
+    {
+      "id": "40c59ee8-df4e-3ce2-bcc5-62441d050cc5",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <a45a8d283bc5225a9b364c4f262a3cab9ced1018"
     },
     {
       "id": "5d423654-acaf-3c72-89ac-d920fcff0f3a",
@@ -101,6 +131,26 @@
       "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <583ede545a14f275a959772b5e1e50fe3e14b861"
     },
     {
+      "id": "e562f250-880f-3641-8f9b-4e10d5956073",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
+    },
+    {
+      "id": "edddce02-3b66-3d37-b2d6-761049c73a8e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.193"
+    },
+    {
       "id": "f17c42c0-d890-3201-899f-c3bddd5dedeb",
       "product": {
         "name": "Linux",
@@ -109,6 +159,16 @@
         }
       },
       "product_version": "patch: 6.18.61"
+    },
+    {
+      "id": "f7b567f0-774b-33c9-894e-83ef02e8cb6b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "e2f34481b24db2fd634b5edb0a5bd0e4d38cc6e9 <d6642b5b031fb988e65b8e8bfe7ad130f728e955"
     }
   ],
   "enisaIdVendor": [

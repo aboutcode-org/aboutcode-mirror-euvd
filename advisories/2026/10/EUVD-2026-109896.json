@@ -3,12 +3,12 @@
   "enisaUuid": "93cf5c0d-dd7f-34b2-90e0-22862c2b0838",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: serialize vblank counter reads against GPU reset\n\nThe vblank counter callback reads display registers and scanout\nposition without holding reset_domain->sem. During GPU recovery,\ndisplay commit work can call the callback while reset owns the\nsemaphore for writing. The hardware access then triggers the\nlockdep_assert_held() in amdgpu_device_skip_hw_access() and sets\nTAINT_WARN when lockdep is enabled.\n\nTry to acquire the reset semaphore for reading before accessing the\nhardware, and hold it across the counter and scanout-position reads.\nIf reset is already in progress, return DRM's cached software vblank\ncount instead. This avoids blocking behind reset and avoids accessing\ndisplay hardware while it is being reset.\n\nThe cached count is less accurate than the hardware count, but is\nused only when reset prevents a safe hardware read. This addresses\nthe reset-time warning from this vblank path; it does not suppress or\nfix unrelated lockdep warnings.\n\n(cherry picked from commit 51a4359f7431a4be5e42803c8bdaf7e0e5be2934)",
   "datePublished": "Oct 26, 2026, 2:51:59 PM",
-  "dateUpdated": "Oct 27, 2026, 3:53:00 PM",
+  "dateUpdated": "Nov 23, 2026, 8:00:33 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/037796d9ca1da97978deaefd88ca5649f6cb69f5\nhttps://git.kernel.org/stable/c/11b6193c8841a052b7907006ffb1e02468b1448e\nhttps://git.kernel.org/stable/c/8d6f773d7479034a574ecc3b585bcd07d46b4824\nhttps://git.kernel.org/stable/c/f4a0a1ce147d1a6e428d7cb5e3b99fd695139fc7\nhttps://git.kernel.org/stable/c/1a6023edfbb5673f55fab6348f135fb3b1428ea5\n",
+  "references": "https://git.kernel.org/stable/c/101571b7bca6f24bc72b90871db29d01591e03d5\nhttps://git.kernel.org/stable/c/037796d9ca1da97978deaefd88ca5649f6cb69f5\nhttps://git.kernel.org/stable/c/11b6193c8841a052b7907006ffb1e02468b1448e\nhttps://git.kernel.org/stable/c/8d6f773d7479034a574ecc3b585bcd07d46b4824\nhttps://git.kernel.org/stable/c/f4a0a1ce147d1a6e428d7cb5e3b99fd695139fc7\nhttps://git.kernel.org/stable/c/1a6023edfbb5673f55fab6348f135fb3b1428ea5\n",
   "aliases": "CVE-2026-99090\nGHSA-3hrf-vpmj-gj4m\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "0405a505-7391-33e1-8cbd-367982032e65",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <1a6023edfbb5673f55fab6348f135fb3b1428ea5"
+    },
+    {
+      "id": "21cce5c0-23ca-3254-81e0-83d044041a35",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.193"
     },
     {
       "id": "26240ad3-823a-3f5f-86a5-5c954a88ae38",
@@ -39,6 +49,16 @@
         }
       },
       "product_version": "patch: 6.12.113"
+    },
+    {
+      "id": "86c0f59e-018f-34ff-8013-ba35aadcba0b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "d38ceaf99ed015f2a0b9af3499791bd3a3daae21 <101571b7bca6f24bc72b90871db29d01591e03d5"
     },
     {
       "id": "94f0bdb4-3891-386e-9b53-be70f73e46d5",

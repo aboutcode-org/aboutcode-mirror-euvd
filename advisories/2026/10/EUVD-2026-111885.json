@@ -3,12 +3,12 @@
   "enisaUuid": "584f756d-8c06-3166-a96f-2aa4529f5dc4",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: fix the recvmsg window update\n\niucv_sock_recvmsg() sends the HiperSockets-only AF_IUCV_FLAG_WIN without\ntesting the transport, so on a classic z/VM socket iucv_send_ctrl() sizes\nthe skb through a NULL iucv->hs_dev. SO_MSGLIMIT accepts 1, so msglimit / 2\nis zero and one recvmsg() on its own socket is enough for an unprivileged\nprocess to take a spurious disconnect.\n\nIt also calls iucv_send_ctrl() under spin_lock_bh(&message_q.lock), which\nallocates GFP_KERNEL inside a section the code treats as atomic. Sending\noutside that lock lets two recvmsg() reach afiucv_hs_send() at once, where\nmsg_recv is sampled for the advertised window and subtracted after\ndev_queue_xmit() -- and sendmsg reaches that counter under lock_sock()\nwhile recvmsg holds no socket lock, so both can subtract the same value,\nthe counter goes negative and the credit reaches the peer twice.\n\nTest the transport, claim the credit with atomic_xchg() after the last\nerror exit and hand it back if the transmit fails, and send once the lock\nis dropped.",
   "datePublished": "Oct 28, 2026, 10:34:46 AM",
-  "dateUpdated": "Oct 30, 2026, 12:42:06 PM",
+  "dateUpdated": "Nov 23, 2026, 8:00:37 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/01123990f59ce32a1a5e690a4aeee002e932bb07\nhttps://git.kernel.org/stable/c/1ebe68bbf8e75eeccaca0c7bc9694f5bc0c3f00a\nhttps://git.kernel.org/stable/c/23e7fbbdca5aaba2a9a7bb9e4f2dc179c290ee76\nhttps://git.kernel.org/stable/c/ce8aac3eb57f5366fa082b7cb8a1ac5652274f37\nhttps://git.kernel.org/stable/c/8f2efa742f4cfe7dd756154f8bc07350dbe3ec92\nhttps://git.kernel.org/stable/c/fe7393a627db2d093e8c0cae69d619b30fefae5f\nhttps://git.kernel.org/stable/c/fa5acd038ea657ad5033713d6916214cbd349151\n",
+  "references": "https://git.kernel.org/stable/c/ff8c480210d6e73150f98462983014e52cf3e9a5\nhttps://git.kernel.org/stable/c/01123990f59ce32a1a5e690a4aeee002e932bb07\nhttps://git.kernel.org/stable/c/1ebe68bbf8e75eeccaca0c7bc9694f5bc0c3f00a\nhttps://git.kernel.org/stable/c/23e7fbbdca5aaba2a9a7bb9e4f2dc179c290ee76\nhttps://git.kernel.org/stable/c/ce8aac3eb57f5366fa082b7cb8a1ac5652274f37\nhttps://git.kernel.org/stable/c/8f2efa742f4cfe7dd756154f8bc07350dbe3ec92\nhttps://git.kernel.org/stable/c/fe7393a627db2d093e8c0cae69d619b30fefae5f\nhttps://git.kernel.org/stable/c/fa5acd038ea657ad5033713d6916214cbd349151\n",
   "aliases": "GHSA-j8jx-fcfm-v8gr\nCVE-2026-99133\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0910203d-bd74-35d9-9457-6c62b2419390",
@@ -41,6 +41,16 @@
       "product_version": "patch: 5.15.224"
     },
     {
+      "id": "2286fa3b-1939-3a32-a71f-682192d55cb9",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "3881ac441f642d56503818123446f7298442236b <ff8c480210d6e73150f98462983014e52cf3e9a5"
+    },
+    {
       "id": "2a6076fa-74e5-368b-b66e-9a3e055af078",
       "product": {
         "name": "Linux",
@@ -59,6 +69,16 @@
         }
       },
       "product_version": "patch: 6.1.191"
+    },
+    {
+      "id": "63528efa-7905-3da4-8c76-aa0f0b54632c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.275"
     },
     {
       "id": "6647e109-a2b8-3641-a41d-b5913951c7e6",

@@ -3,14 +3,14 @@
   "enisaUuid": "5d4819de-3830-3fb4-9649-92c231754683",
   "description": "GPAC MP4Box through 26.07.0 contains a heap use-after-free vulnerability in the XMT loader that leaves freed node URL fields in the pending object descriptor link list after SFNode replacement. Attackers can supply a crafted XMT scene that reassigns a single-node field, causing xmt_resolve_od_links() to read freed memory, crashing the process and potentially corrupting the heap.",
   "datePublished": "Nov 22, 2026, 2:02:29 AM",
-  "dateUpdated": "Nov 22, 2026, 2:02:29 AM",
+  "dateUpdated": "Nov 23, 2026, 2:19:13 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/gpac/gpac/issues/3864\nhttps://github.com/gpac/gpac/commit/2765ec5963ca93d750b47873e619cba98e17555a\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scene_manager/loader_xmt.c#L578-L585\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scene_manager/loader_xmt.c#L2081-L2083\nhttps://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/205/205_xmt_resolve_od_links_scene_manager_loader_xmt_c_597\nhttps://github.com/gpac/gpac/issues/3936\nhttps://github.com/gpac/gpac/commit/6a8ebb71b7e19d47023e4f91ee960f3636644403\nhttps://github.com/gpac/gpac/commit/7b9d197154c6039ac299fd8bb7ae085cec6b5338\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scene_manager/loader_xmt.c#L2081-L2084\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scene_manager/loader_xmt.c#L578-L590\nhttps://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/215/215_xmt_resolve_od_links_scene_manager_loader_xmt_c_596\nhttps://www.vulncheck.com/advisories/gpac-mp4box-through-26.07.0-use-after-free-in-xmt-resolve-od-links-via-sfnode-replacement\n",
   "aliases": "CVE-2026-134684\nGHSA-hf2q-4865-p39r\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "8bdd853e-5794-3519-bf1e-30b150be7667",

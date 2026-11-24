@@ -3,13 +3,23 @@
   "enisaUuid": "b7c6e9f7-2ec9-300f-8738-20d4f38a5d7f",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vmcp: Initialize full session info to zero\n\nThe cma_alloc bit as well as the response can contain old data.\ncma_release will not free the kmalloced memory in that case and\nthe response code might leak kernel stack data to CAP_SYS_ADMIN\nusers.",
   "datePublished": "Nov 19, 2026, 2:43:42 PM",
-  "dateUpdated": "Nov 20, 2026, 5:11:41 AM",
+  "dateUpdated": "Nov 23, 2026, 8:03:32 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/35254c6be12fb439be34a67dcba120bcb4542b3f\nhttps://git.kernel.org/stable/c/041c5072258525fd54a15247e6a59446a34a5a76\nhttps://git.kernel.org/stable/c/1653ab681d830fcc20d69334f36808765b4de3fd\nhttps://git.kernel.org/stable/c/f63eb4ee4a30fc5d8de07a229d92310e3c8d560c\n",
+  "references": "https://git.kernel.org/stable/c/da67881f5b2cd072616f9e5049a33827b7150f63\nhttps://git.kernel.org/stable/c/ddf4e41f95f71978c43fa78541da867ca68e5e1f\nhttps://git.kernel.org/stable/c/bba87142de33a82ad55ecab64038831634a35914\nhttps://git.kernel.org/stable/c/f9def674193e782936de0aabe2314faf02edaf3a\nhttps://git.kernel.org/stable/c/35254c6be12fb439be34a67dcba120bcb4542b3f\nhttps://git.kernel.org/stable/c/041c5072258525fd54a15247e6a59446a34a5a76\nhttps://git.kernel.org/stable/c/1653ab681d830fcc20d69334f36808765b4de3fd\nhttps://git.kernel.org/stable/c/f63eb4ee4a30fc5d8de07a229d92310e3c8d560c\n",
   "aliases": "GHSA-mq2g-q7vg-vw9h\nCVE-2026-99496\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.2,
   "enisaIdProduct": [
+    {
+      "id": "04af973e-fa89-37ee-8048-fcb56939db03",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.275"
+    },
     {
       "id": "111b1ecd-b93b-3444-82ae-41a787848c75",
       "product": {
@@ -29,6 +39,36 @@
         }
       },
       "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <041c5072258525fd54a15247e6a59446a34a5a76"
+    },
+    {
+      "id": "3debfb4f-d692-3842-b1e1-9695276d9856",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <f9def674193e782936de0aabe2314faf02edaf3a"
+    },
+    {
+      "id": "4bfe4621-c6b3-375e-b86b-8ab4d1d331f4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.226"
+    },
+    {
+      "id": "4ea8f679-b49c-3cef-ad2f-d9290a7b34e1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <da67881f5b2cd072616f9e5049a33827b7150f63"
     },
     {
       "id": "5274feb6-a05d-3125-b865-02685c0c6211",
@@ -61,6 +101,16 @@
       "product_version": "2.6.13"
     },
     {
+      "id": "7607f87c-6bb9-3898-b014-07a0c689e13f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
+    },
+    {
       "id": "854ea501-8e79-39f9-a129-65b0f256edbb",
       "product": {
         "name": "Linux",
@@ -91,6 +141,26 @@
       "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <35254c6be12fb439be34a67dcba120bcb4542b3f"
     },
     {
+      "id": "9ea4774a-5f31-3274-bb03-e0e6b5eeae41",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <ddf4e41f95f71978c43fa78541da867ca68e5e1f"
+    },
+    {
+      "id": "ab09cb47-6f34-3105-b51f-985d856e7c3a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6b979de395c7e1b7e59f74a870e1d1911853eccb <bba87142de33a82ad55ecab64038831634a35914"
+    },
+    {
       "id": "b10d5b8d-f0c5-3322-82f2-2a08954042d1",
       "product": {
         "name": "Linux",
@@ -109,6 +179,16 @@
         }
       },
       "product_version": "patch: 7.4-rc1"
+    },
+    {
+      "id": "f0d9baa6-a774-3b4a-bcd2-163360f71ad3",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.193"
     }
   ],
   "enisaIdVendor": [

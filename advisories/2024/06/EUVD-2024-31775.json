@@ -3,7 +3,7 @@
   "enisaUuid": "b1162e7d-91d6-373a-a0e8-8f00f4dba419",
   "description": "A vulnerability was found in FreeIPA in a way when a Kerberos TGS-REQ is encrypted using the client\u2019s session key. This key is different for each new session, which protects it from brute force attacks. However, the ticket it contains is encrypted using the target principal key directly. For user principals, this key is a hash of a public per-principal randomly-generated salt and the user\u2019s password.\r\n\r\nIf a principal is compromised it means the attacker would be able to retrieve tickets encrypted to any principal, all of them being encrypted by their own key directly. By taking these tickets and salts offline, the attacker could run brute force attacks to find character strings able to decrypt tickets when combined to a principal salt (i.e. find the principal\u2019s password).",
   "datePublished": "Jun 12, 2024, 8:18:51 AM",
-  "dateUpdated": "Nov 4, 2026, 9:11:46 PM",
+  "dateUpdated": "Nov 23, 2026, 1:58:30 PM",
   "baseScore": 8.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",

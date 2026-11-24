@@ -3,14 +3,14 @@
   "enisaUuid": "0f53f81e-714c-397a-9862-0a25344f7f3b",
   "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in gf_sg_proto_del that allows attackers to free PROTOs still owned by another scene command via the GF_SG_PROTO_DELETE handler. Attackers can craft an XMT scene that declares a PROTO in one command and deletes it by ID in another, crashing MP4Box and corrupting heap memory when opened.",
   "datePublished": "Nov 22, 2026, 2:02:08 AM",
-  "dateUpdated": "Nov 22, 2026, 2:02:08 AM",
+  "dateUpdated": "Nov 23, 2026, 3:39:45 PM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/gpac/gpac/issues/3881\nhttps://github.com/gpac/gpac/issues/3938\nhttps://github.com/gpac/gpac/commit/6d198eda188c0e813ac32a078ddb7546a2dc4368\nhttps://github.com/gpac/gpac/commit/a6954817dbdc4a5c9c2e9f7ea7d6b26ea8f057b1\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scenegraph/commands.c#L483-L502\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scenegraph/vrml_proto.c#L102-L111\nhttps://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/209/209_gf_sg_proto_del_scenegraph_vrml_proto_c_108\nhttps://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/217/217_gf_sg_proto_del_scenegraph_vrml_proto_c_108\nhttps://www.vulncheck.com/advisories/gpac-mp4box-through-26.07.0-use-after-free-in-gf-sg-proto-del-via-xmt-proto-delete\n",
   "aliases": "GHSA-gmvc-4qg8-w8gw\nCVE-2026-134696\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "5a4c2195-cb0c-3bab-a5ec-ede6280233bb",

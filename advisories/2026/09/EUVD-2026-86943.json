@@ -3,14 +3,14 @@
   "enisaUuid": "4e40b601-1b21-3441-adaa-131b3553c945",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix listener task lifetime on netdev events\n\nThe listener thread exits when its listening socket is shutdown. The\nnetdevice notifier shuts down the socket before calling kthread_stop(), so\nthe task_struct can be freed before kthread_stop() gets its reference.\n\nCreate the listener in a stopped state and hold an extra task_struct\nreference until kthread_stop_put() completes. Also stop and release\nlisteners before freeing their interface records during TCP teardown.",
   "datePublished": "Sep 25, 2026, 10:35:59 AM",
-  "dateUpdated": "Oct 19, 2026, 9:14:04 AM",
+  "dateUpdated": "Nov 23, 2026, 7:59:30 AM",
   "baseScore": 7.8,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/40581f10c1e56238b157af5f260b8f9518a0cbc1\nhttps://git.kernel.org/stable/c/a506290f59e1c6ce9ac0a13158640bb8fee93471\n",
+  "references": "https://git.kernel.org/stable/c/45c9926412526c776d5f035cd40cc0b4138f1bbb\nhttps://git.kernel.org/stable/c/40581f10c1e56238b157af5f260b8f9518a0cbc1\nhttps://git.kernel.org/stable/c/a506290f59e1c6ce9ac0a13158640bb8fee93471\n",
   "aliases": "CVE-2026-98112\nGHSA-x6gr-8p6h-h2g7\n",
   "assigner": "Linux",
-  "epss": 0.12,
+  "epss": 0.09,
   "enisaIdProduct": [
     {
       "id": "07d7f514-741b-3d67-8412-635c8115a355",
@@ -71,6 +71,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "f8dcf7c9-9abe-31cb-820f-a5d94ce795e2",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "efa5011add23319d6fbeeac2c03a3e3df35e99f3 <45c9926412526c776d5f035cd40cc0b4138f1bbb"
     }
   ],
   "enisaIdVendor": [

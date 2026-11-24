@@ -3,12 +3,12 @@
   "enisaUuid": "164c8a7f-315d-3a16-8749-a76860b77872",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: delete compound mids on send failure before unlock\n\nWhen sending a compound request fails, smb_send_rqst() kicks off a\nreconnect. compound_send_recv() still has those mids on pending_mid_q,\nbut it unlocks the server without removing them first.\n\nDuring reconnect, cifs_abort_connection() walks pending_mid_q and runs\neach mid callback. With no response yet, those callbacks return credits\nand drop in_flight. Then compound_send_recv()'s send-error path returns\nthe same credits again. in_flight ends up decremented twice and\nsmb2_add_credits() WARNs.\n\nsyzbot hits this during SMB2_negotiate when the socket send fails.\n\ncifs_call_async() already calls delete_mid() before unlock on send\nfailure. Do the same for compound chains and set cancelled_mid[] so the\nout: path does not delete them again.",
   "datePublished": "Oct 18, 2026, 3:14:59 PM",
-  "dateUpdated": "Nov 10, 2026, 6:15:14 PM",
+  "dateUpdated": "Nov 23, 2026, 7:59:53 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/36a2ba21d38a86bae84441e4c8d5b10653ef341a\nhttps://git.kernel.org/stable/c/59d30bdc3dd6fd3a8990f59bc7a137b1cbb3ed4e\nhttps://git.kernel.org/stable/c/70783946f3b5d0c06ec7df0f5e7bec2bfad24efb\nhttps://git.kernel.org/stable/c/8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9\n",
+  "references": "https://git.kernel.org/stable/c/4e9a1d5c763f751fcc2928f7131f143251e01760\nhttps://git.kernel.org/stable/c/ae288482a10fb0782b606f20ca4bf32d79efec2b\nhttps://git.kernel.org/stable/c/36a2ba21d38a86bae84441e4c8d5b10653ef341a\nhttps://git.kernel.org/stable/c/59d30bdc3dd6fd3a8990f59bc7a137b1cbb3ed4e\nhttps://git.kernel.org/stable/c/70783946f3b5d0c06ec7df0f5e7bec2bfad24efb\nhttps://git.kernel.org/stable/c/8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9\n",
   "aliases": "CVE-2026-98449\nGHSA-2758-q84j-4rxj\n",
   "assigner": "Linux",
-  "epss": 0.17,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "0b55a55e-fd8f-3424-8f18-0a09242bbc52",
@@ -51,6 +51,16 @@
       "product_version": "4.20.11 <4.21"
     },
     {
+      "id": "3b463ba5-0b4b-338e-af6e-a8f91f39d919",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <4e9a1d5c763f751fcc2928f7131f143251e01760"
+    },
+    {
       "id": "4e236f80-ca5e-3b15-8405-889a892fc901",
       "product": {
         "name": "Linux",
@@ -69,6 +79,16 @@
         }
       },
       "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <8f6f8a48399f82f4a83f7b9f25b9707e0062a4f9"
+    },
+    {
+      "id": "7846d74a-412b-3def-88b0-16da8321962f",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.193"
     },
     {
       "id": "8967a90c-7bc6-3f2d-80be-896590af4067",
@@ -111,6 +131,16 @@
       "product_version": "3c57a0be487088b08d9c88998f911eb4a7ba36e4"
     },
     {
+      "id": "c0507d0e-b8c6-3445-9ced-f3e2f57c37e6",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
+    },
+    {
       "id": "d872da52-af3b-3736-97f7-a607d6f6570d",
       "product": {
         "name": "Linux",
@@ -119,6 +149,16 @@
         }
       },
       "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <70783946f3b5d0c06ec7df0f5e7bec2bfad24efb"
+    },
+    {
+      "id": "f27bb157-a197-321a-b5ee-6eb2c695e038",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "ee258d79159afed52ca9372aeb9c1a51e89b32ee <ae288482a10fb0782b606f20ca4bf32d79efec2b"
     },
     {
       "id": "f4e4aa83-bc94-3b0d-a37c-38a14637ef1f",

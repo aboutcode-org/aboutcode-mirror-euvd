@@ -3,12 +3,12 @@
   "enisaUuid": "473f096a-643a-3667-ba05-967f009abfd2",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: register input device after capabilities are set\n\ninput_register_device() exposes the device to userspace immediately.\nIn joycon_input_create() it was called before joycon_config_rumble()\nconfigures the FF_RUMBLE capability and the memless force-feedback\ndevice, so a concurrent EVIOCSFF could dereference a NULL dev->ff.\n\nRegistering early also means the initial udev event lacks button and\naxis information, which can make input managers ignore the device.\n\nMove input_register_device() to the end of joycon_input_create(), after\nall capabilities, the IMU input device and the force-feedback callbacks\nhave been configured.",
   "datePublished": "Sep 4, 2026, 3:12:43 PM",
-  "dateUpdated": "Oct 30, 2026, 12:31:07 PM",
+  "dateUpdated": "Nov 23, 2026, 7:59:03 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/a2a46a705c1fa724aac158fd188273dd7ee8c171\nhttps://git.kernel.org/stable/c/3288bec1a21d582b504344380139cdc0e88ebe4d\nhttps://git.kernel.org/stable/c/268679f501386ad46405d42c2bcf89384cb5e256\nhttps://git.kernel.org/stable/c/a9fc7547f911ada09da33c5e204e5acda38e765a\nhttps://git.kernel.org/stable/c/27dc4b8eadac73b3c3cc526c8547d8b4ae8528be\nhttps://git.kernel.org/stable/c/d723bc1fe2e72b9252234e94c11af644ec477bf7\n",
+  "references": "https://git.kernel.org/stable/c/a2a46a705c1fa724aac158fd188273dd7ee8c171\nhttps://git.kernel.org/stable/c/4ba5d83bca1ad4d2a0a6bc9e210a91711695c347\nhttps://git.kernel.org/stable/c/3288bec1a21d582b504344380139cdc0e88ebe4d\nhttps://git.kernel.org/stable/c/268679f501386ad46405d42c2bcf89384cb5e256\nhttps://git.kernel.org/stable/c/a9fc7547f911ada09da33c5e204e5acda38e765a\nhttps://git.kernel.org/stable/c/27dc4b8eadac73b3c3cc526c8547d8b4ae8528be\nhttps://git.kernel.org/stable/c/d723bc1fe2e72b9252234e94c11af644ec477bf7\n",
   "aliases": "GHSA-x6pf-56pg-q32p\nCVE-2026-80771\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.22,
   "enisaIdProduct": [
     {
       "id": "20fe08ab-ae3e-3d7b-ac6d-a2791a20a8d0",
@@ -101,6 +101,16 @@
       "product_version": "patch: 7.3"
     },
     {
+      "id": "8610e66c-aa0b-3f76-b1b7-14bccabfd890",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <4ba5d83bca1ad4d2a0a6bc9e210a91711695c347"
+    },
+    {
       "id": "89a2c396-5a73-30d6-9566-83852e795019",
       "product": {
         "name": "Linux",
@@ -109,6 +119,16 @@
         }
       },
       "product_version": "2af16c1f846bd60240745bbd3afa13d5f040c61a <d723bc1fe2e72b9252234e94c11af644ec477bf7"
+    },
+    {
+      "id": "8bc9bb67-1570-38f8-841c-12c85f550a04",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
     },
     {
       "id": "c1fc082c-d1da-3b55-ac8c-95491ca42bcc",

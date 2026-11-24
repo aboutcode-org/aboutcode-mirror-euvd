@@ -3,9 +3,9 @@
   "enisaUuid": "393d161b-4eb9-3e83-bf5c-30391e28e6bb",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsrcu: Add list_splice_init_srcu()\n\nlist_splice_init_rcu() makes a list look empty to new readers, waits for\nthe current ones with the given sync function, and only then links the\nentries into the new list. The sync function takes no argument, so it\ncan wait for RCU readers but not for the readers of an srcu_struct.\n\nPassing synchronize_rcu() for a list read under SRCU still builds, but\nleaves SRCU readers on the entries while the last one's next pointer is\nmoved onto the new list head. nvme_remove_namespaces() does this today.\n\nAdd list_splice_init_srcu(), which waits for the readers of the given\nsrcu_struct instead.",
   "datePublished": "Nov 20, 2026, 5:49:23 AM",
-  "dateUpdated": "Nov 22, 2026, 11:06:52 AM",
+  "dateUpdated": "Nov 23, 2026, 8:04:50 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/89ffb3ea28fef005ae2bd105565c6010dc9deb67\nhttps://git.kernel.org/stable/c/2edd46589bf92f71a7c8474d84a7258eb13c2d06\nhttps://git.kernel.org/stable/c/b66e38c17e5e1e9095f9c3cd203458c2bb11ea5b\nhttps://git.kernel.org/stable/c/d06917d0ba226206dbd606330d73a8eb1e3029c1\n",
+  "references": "https://git.kernel.org/stable/c/8d2bc9fea74e4b24528410250e3a0a990915b201\nhttps://git.kernel.org/stable/c/89ffb3ea28fef005ae2bd105565c6010dc9deb67\nhttps://git.kernel.org/stable/c/2edd46589bf92f71a7c8474d84a7258eb13c2d06\nhttps://git.kernel.org/stable/c/b66e38c17e5e1e9095f9c3cd203458c2bb11ea5b\nhttps://git.kernel.org/stable/c/d06917d0ba226206dbd606330d73a8eb1e3029c1\n",
   "aliases": "GHSA-gh5m-c62j-v8v8\nCVE-2026-99597\n",
   "assigner": "Linux",
   "epss": 0.17,
@@ -21,24 +21,14 @@
       "product_version": "patch: 7.3.5"
     },
     {
-      "id": "091d4250-cd04-38c6-8cc9-daa365d35b15",
+      "id": "0634d99d-6442-31d4-9589-590a85b50353",
       "product": {
         "name": "Linux",
         "vendor": {
           "name": "Linux"
         }
       },
-      "product_version": "82f20194bf46d4393fb2c4337e1effbbbe95d9b9"
-    },
-    {
-      "id": "21c5b027-3d36-3628-b38b-97aa4bbf03a3",
-      "product": {
-        "name": "Linux",
-        "vendor": {
-          "name": "Linux"
-        }
-      },
-      "product_version": "6.6.48 <6.7"
+      "product_version": "82f20194bf46d4393fb2c4337e1effbbbe95d9b9 <8d2bc9fea74e4b24528410250e3a0a990915b201"
     },
     {
       "id": "27ce0524-2658-3602-b3ff-76fe5e5cca34",
@@ -81,6 +71,16 @@
       "product_version": "patch: 6.12.118"
     },
     {
+      "id": "671a652e-de25-3ee1-bde2-29d4d92e0c20",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "6.6.48 <6.6.163"
+    },
+    {
       "id": "68de7f90-f17e-3e05-b7ab-f282696ac00b",
       "product": {
         "name": "Linux",
@@ -99,6 +99,16 @@
         }
       },
       "product_version": "patch: 7.4-rc2"
+    },
+    {
+      "id": "c5cfb78d-8131-307e-a281-a2cf1437cb8e",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
     },
     {
       "id": "ca4d1c98-5197-33db-bb08-7aa9457994a5",

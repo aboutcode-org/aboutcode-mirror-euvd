@@ -3,12 +3,12 @@
   "enisaUuid": "817ad82a-d309-32d5-823f-ccb1ea8a4e50",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpm: bound altmode_desc[] per iteration in svdm_consume_modes()\n\nsvdm_consume_modes() checks pmdata->altmodes against the array size once\nbefore the loop over the count, but forgot to check the bound at every\npoint in the loop.\n\nIn the well-behaved SVDM discovery flow this is harmless because each of\nat most SVID_DISCOVERY_MAX SVIDs contributes at most MODE_DISCOVERY_MAX\nmodes, exactly filling altmode_desc[ALTMODE_DISCOVERY_MAX].  But the\nCMDT_RSP_ACK handler in tcpm_pd_svdm() does not correlate an incoming\nACK with any request the port actually sent.  Once port->partner is set,\nan unsolicited Discover Modes ACK is consumed unconditionally.  A broken\nor malicious port partner can therefore drive altmodes to\nALTMODE_DISCOVERY_MAX - 1 via the normal flow, and then send one extra\nDiscover Modes ACK with seven VDOs.  Because the pre-loop check passes,\nthe loop could then writes up to five entries past altmode_desc[].  For\nmode_data_prime the next field in struct tcpm_port is the\npartner_altmode[] pointer array, which then receives partner-chosen\nSVID/VDO bytes.\n\nMove the bound check inside the loop so the array can never be indexed\npast ALTMODE_DISCOVERY_MAX regardless of how many VDOs the partner\nsupplies or how the function was reached.",
   "datePublished": "Jul 19, 2026, 2:55:51 PM",
-  "dateUpdated": "Oct 30, 2026, 12:27:23 PM",
+  "dateUpdated": "Nov 23, 2026, 7:58:53 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/f6694bac643c7ae25c0634b63e67d573ed31e5b7\nhttps://git.kernel.org/stable/c/816c6251409db28f1b875988fcbd2ff1764a81f0\nhttps://git.kernel.org/stable/c/845598b154b9a92e9d279fafafa9405c121ae805\nhttps://git.kernel.org/stable/c/4505f33dab56c274e82f47f94bf60a8cbf8f4b42\nhttps://git.kernel.org/stable/c/cbad85b446c06adbc5e5bed565871bb918ce9d32\nhttps://git.kernel.org/stable/c/3389c149c68c3fea61910ad5d34f7bf3bff44e32\n",
+  "references": "https://git.kernel.org/stable/c/850f10f37a9dd874d34f31a66b29b7298c19a707\nhttps://git.kernel.org/stable/c/a449d1f86e7d93a58314bd4f3caa28c06ed0202b\nhttps://git.kernel.org/stable/c/f6694bac643c7ae25c0634b63e67d573ed31e5b7\nhttps://git.kernel.org/stable/c/816c6251409db28f1b875988fcbd2ff1764a81f0\nhttps://git.kernel.org/stable/c/845598b154b9a92e9d279fafafa9405c121ae805\nhttps://git.kernel.org/stable/c/4505f33dab56c274e82f47f94bf60a8cbf8f4b42\nhttps://git.kernel.org/stable/c/cbad85b446c06adbc5e5bed565871bb918ce9d32\nhttps://git.kernel.org/stable/c/3389c149c68c3fea61910ad5d34f7bf3bff44e32\n",
   "aliases": "GHSA-2qj8-cjv3-rxv7\nCVE-2026-63962\n",
   "assigner": "Linux",
-  "epss": 0.21,
+  "epss": 0.16,
   "enisaIdProduct": [
     {
       "id": "00992088-3497-3d8b-b049-5d00b8946ecf",
@@ -41,6 +41,16 @@
       "product_version": "4ab8c18d4d67321cc7b660559de17511d4fc0237 <4505f33dab56c274e82f47f94bf60a8cbf8f4b42"
     },
     {
+      "id": "12822e99-2603-34ce-9cdb-104506320e20",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.226"
+    },
+    {
       "id": "48197509-7dc7-3eaa-90f6-1e33487d22b1",
       "product": {
         "name": "Linux",
@@ -49,6 +59,26 @@
         }
       },
       "product_version": "4ab8c18d4d67321cc7b660559de17511d4fc0237 <f6694bac643c7ae25c0634b63e67d573ed31e5b7"
+    },
+    {
+      "id": "592eba29-2900-3c69-a6e5-480a980b75e1",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4ab8c18d4d67321cc7b660559de17511d4fc0237 <a449d1f86e7d93a58314bd4f3caa28c06ed0202b"
+    },
+    {
+      "id": "66167519-0a7c-3ee8-8c98-9275c24aeb6a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.275"
     },
     {
       "id": "66640356-49bf-3453-974d-35aca7252352",
@@ -119,6 +149,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "ea1d532f-43ed-3f10-8259-264c8b22a343",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "4ab8c18d4d67321cc7b660559de17511d4fc0237 <850f10f37a9dd874d34f31a66b29b7298c19a707"
     },
     {
       "id": "f60cdf8f-2749-3fa0-b2fa-0bc47d999e8f",

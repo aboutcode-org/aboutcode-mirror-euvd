@@ -3,9 +3,9 @@
   "enisaUuid": "ebe7b6a8-f1ba-3f06-9aed-6969752bca5c",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix out-of-bounds read in dp_get_eq_aux_rd_interval()\n\n[Why & How]\nThe aux_rd_interval array in struct dc_lttpr_caps is declared with\nMAX_REPEATER_CNT - 1 (7) elements, indexed 0..6. However, the offset\nparameter passed to dp_get_eq_aux_rd_interval() can be as large as\nMAX_REPEATER_CNT (8) when a sink reports 8 LTTPR repeaters via DPCD.\nThis leads to an out-of-bounds read of aux_rd_interval[7] when offset\nis 8.\n\nFix this by growing aux_rd_interval to MAX_REPEATER_CNT elements to\naccommodate the full range of valid repeater counts defined by the DP\nspec.\n\n(cherry picked from commit a55a458a8df37a65ffda5cf721d554a8f74f6b04)",
   "datePublished": "Jul 1, 2026, 1:32:15 PM",
-  "dateUpdated": "Oct 30, 2026, 12:26:59 PM",
+  "dateUpdated": "Nov 23, 2026, 7:58:48 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/7b310c6d82d782282085c9728dfe69e07d185b6c\nhttps://git.kernel.org/stable/c/a632474c793b7f2a9bbd3d8e3d0dd7d256989300\nhttps://git.kernel.org/stable/c/7c5f2d16a8f4464bf2a719ceb2316b8a6b87a3c0\nhttps://git.kernel.org/stable/c/454d3b3d499c18373f8960d31aea48338a3ca9e0\nhttps://git.kernel.org/stable/c/dc1490927d79fe9621e29f4a4f5d7b5ccb6aea3e\nhttps://git.kernel.org/stable/c/e8b4d37eba05141ee01794fc6b7f2da808cee83b\n",
+  "references": "https://git.kernel.org/stable/c/2c8ad3edafef81e033b6e99046ceb70802b69f59\nhttps://git.kernel.org/stable/c/a276dfedf85dcb4996068124185458c2e4693a1e\nhttps://git.kernel.org/stable/c/7b310c6d82d782282085c9728dfe69e07d185b6c\nhttps://git.kernel.org/stable/c/a632474c793b7f2a9bbd3d8e3d0dd7d256989300\nhttps://git.kernel.org/stable/c/7c5f2d16a8f4464bf2a719ceb2316b8a6b87a3c0\nhttps://git.kernel.org/stable/c/454d3b3d499c18373f8960d31aea48338a3ca9e0\nhttps://git.kernel.org/stable/c/dc1490927d79fe9621e29f4a4f5d7b5ccb6aea3e\nhttps://git.kernel.org/stable/c/e8b4d37eba05141ee01794fc6b7f2da808cee83b\n",
   "aliases": "GHSA-x86r-325j-5wq6\nCVE-2026-53330\n",
   "assigner": "Linux",
   "epss": 0.13,
@@ -91,6 +91,16 @@
       "product_version": "patch: 6.6.160"
     },
     {
+      "id": "9eb2d86c-e3c5-3b32-ae20-f92e228b061a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.226"
+    },
+    {
       "id": "a440431f-77d5-3943-a909-cab868c148f1",
       "product": {
         "name": "Linux",
@@ -101,6 +111,16 @@
       "product_version": "8e5100a575433cc185a2e224280fbd873b6692dd <dc1490927d79fe9621e29f4a4f5d7b5ccb6aea3e"
     },
     {
+      "id": "a55d3146-3730-3aba-854a-d1b5f1d0563b",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8e5100a575433cc185a2e224280fbd873b6692dd <2c8ad3edafef81e033b6e99046ceb70802b69f59"
+    },
+    {
       "id": "bc77285f-4e6f-3ac8-b0be-f29721561174",
       "product": {
         "name": "Linux",
@@ -109,6 +129,26 @@
         }
       },
       "product_version": "8e5100a575433cc185a2e224280fbd873b6692dd <e8b4d37eba05141ee01794fc6b7f2da808cee83b"
+    },
+    {
+      "id": "c3b2308d-4862-3ed8-9f9d-80e29322cd9a",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "8e5100a575433cc185a2e224280fbd873b6692dd <a276dfedf85dcb4996068124185458c2e4693a1e"
+    },
+    {
+      "id": "d7eb8945-2078-335a-9895-1446af7df8d4",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.10.275"
     },
     {
       "id": "d9db1de4-129b-3e4d-b2f4-5e0873e986df",

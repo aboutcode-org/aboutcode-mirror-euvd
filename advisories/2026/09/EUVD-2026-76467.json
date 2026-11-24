@@ -3,12 +3,12 @@
   "enisaUuid": "6be2a200-e208-3fc0-ab0b-9aebe90c6a22",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmodule: validate string table section types\n\nIn elf_validity_cache_sechdrs, section sizes and offsets are validated,\nunless the section type is SHT_NULL or SHT_NOBITS.\n\nLater, elf_validity_cache_secstrings and elf_validity_cache_index_str\naccess the section name table (.shstrtab) and symbol string table\n(.strtab) headers without first ensuring that their types are\nSHT_STRTAB. If a section type is SHT_NULL or SHT_NOBITS, sh_offset has\nnot been validated and may reference out-of-bounds memory when\ndereferenced in elf_validity_cache_secstrings or\nelf_validity_cache_strtab.\n\nValidate that both string section headers are of type SHT_STRTAB before\ncaching them.",
   "datePublished": "Sep 11, 2026, 7:44:29 PM",
-  "dateUpdated": "Nov 10, 2026, 6:15:09 PM",
+  "dateUpdated": "Nov 23, 2026, 7:59:05 AM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/db07e9b0320e480f05f5c12e8e4d6699f0d3acb7\nhttps://git.kernel.org/stable/c/50d0aa7d25ba4bc3606f150cd69755068e79f97f\nhttps://git.kernel.org/stable/c/e4496dda2c6d0acf7ba5fbce14a2723a8935ceee\nhttps://git.kernel.org/stable/c/9a5ff45689329835f874cefe5174e577d141d423\n",
+  "references": "https://git.kernel.org/stable/c/c7e99baf0310bd52187a6d5914948b8933e6c199\nhttps://git.kernel.org/stable/c/db07e9b0320e480f05f5c12e8e4d6699f0d3acb7\nhttps://git.kernel.org/stable/c/50d0aa7d25ba4bc3606f150cd69755068e79f97f\nhttps://git.kernel.org/stable/c/e4496dda2c6d0acf7ba5fbce14a2723a8935ceee\nhttps://git.kernel.org/stable/c/9a5ff45689329835f874cefe5174e577d141d423\n",
   "aliases": "CVE-2026-89556\nGHSA-whm7-hr5x-2m9w\n",
   "assigner": "Linux",
-  "epss": 0.2,
+  "epss": 0.21,
   "enisaIdProduct": [
     {
       "id": "29127105-4196-33f2-9ce9-de4038ef7a6b",
@@ -19,6 +19,16 @@
         }
       },
       "product_version": "patch: 7.3"
+    },
+    {
+      "id": "2ae2effc-0a1a-36c6-bbc1-38155bbec486",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "bb75bb70e131f2999df3924e0426eeb374615b63 <c7e99baf0310bd52187a6d5914948b8933e6c199"
     },
     {
       "id": "392181e4-14db-3554-8c51-70c963970a1c",

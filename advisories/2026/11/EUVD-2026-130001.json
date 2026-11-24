@@ -3,11 +3,11 @@
   "enisaUuid": "77a40b75-407d-3ada-a193-4a3c7755117e",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86/mmu: Bug the VM if KVM attempts to walk more levels than the MMU has\n\nExtend the \"EFER.LMA && !CR4.PAE\" check, which exists largely to guard\nagainst KVM configuring a paging32 MMU with more than 2 levels of paging,\nwith a very explicit check for exactly that: that KVM isn't trying to walk\nmore levels of paging than the MMU template provides.  I.e. harden KVM\nagainst all bugs that would cause KVM to generates accesses beyond the\nbounds of guest_walker's arrays, regardless of how KVM ended up with the\nmisconfigured MMU.\n\nNote, don't use w->cpu_role.base.level directly as the paging64 template\nonly provides two levels of page tables for PAE paging on 32-bit hosts, and\nhandles the third level by manually emulating the PDPTR access.",
   "datePublished": "Nov 19, 2026, 2:21:51 PM",
-  "dateUpdated": "Nov 22, 2026, 11:07:45 AM",
+  "dateUpdated": "Nov 23, 2026, 8:01:38 AM",
   "baseScore": 7.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-  "references": "https://git.kernel.org/stable/c/d6f3877eabf159167ee9972d627396412a04ac74\nhttps://git.kernel.org/stable/c/54afd548602bb96b3fbb0b4b11ccbbfeb5fb46fc\nhttps://git.kernel.org/stable/c/73f427e5afd94edd5d0e7cdddc2ecc794f28c492\nhttps://git.kernel.org/stable/c/115f9405a2ed6d78ee7ad8436bdd638743f6d1d4\n",
+  "references": "https://git.kernel.org/stable/c/5e355f718d31145946fbe62d31f642eb990a0076\nhttps://git.kernel.org/stable/c/40730c48b8ec666cfa65522beaeca681583a0991\nhttps://git.kernel.org/stable/c/eb9ad548e9b269172ff83719f75ffdce4df2e7cf\nhttps://git.kernel.org/stable/c/d6f3877eabf159167ee9972d627396412a04ac74\nhttps://git.kernel.org/stable/c/54afd548602bb96b3fbb0b4b11ccbbfeb5fb46fc\nhttps://git.kernel.org/stable/c/73f427e5afd94edd5d0e7cdddc2ecc794f28c492\nhttps://git.kernel.org/stable/c/115f9405a2ed6d78ee7ad8436bdd638743f6d1d4\n",
   "aliases": "GHSA-5jcw-q2q7-73j3\nCVE-2026-99343\n",
   "assigner": "Linux",
   "epss": 0.2,
@@ -41,6 +41,16 @@
         }
       },
       "product_version": "patch: 0"
+    },
+    {
+      "id": "3d865a32-4e86-334f-bed7-922cd630996c",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe660f7244d7e237ab7726813dc9aec8e94900d6 <40730c48b8ec666cfa65522beaeca681583a0991"
     },
     {
       "id": "48e62c8a-bbc8-36fc-83f6-0e475dd7fbb5",
@@ -93,6 +103,46 @@
       "product_version": "patch: 7.3.2"
     },
     {
+      "id": "7ffafc10-81f1-361e-9bef-30ff417ea346",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe660f7244d7e237ab7726813dc9aec8e94900d6 <eb9ad548e9b269172ff83719f75ffdce4df2e7cf"
+    },
+    {
+      "id": "943e8844-295e-30cb-92e3-e433df9b5744",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "fe660f7244d7e237ab7726813dc9aec8e94900d6 <5e355f718d31145946fbe62d31f642eb990a0076"
+    },
+    {
+      "id": "ab88097d-b248-3c74-9d26-b1afb83ffbeb",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.6.163"
+    },
+    {
+      "id": "c22d1fb0-b748-3f30-bd67-be285efca734",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 5.15.226"
+    },
+    {
       "id": "cf6812c9-f083-33a5-a532-9d617a153bb4",
       "product": {
         "name": "Linux",
@@ -111,6 +161,16 @@
         }
       },
       "product_version": "patch: 6.18.61"
+    },
+    {
+      "id": "febb51ac-3f2a-3799-922c-f2ef65a73c82",
+      "product": {
+        "name": "Linux",
+        "vendor": {
+          "name": "Linux"
+        }
+      },
+      "product_version": "patch: 6.1.193"
     }
   ],
   "enisaIdVendor": [
