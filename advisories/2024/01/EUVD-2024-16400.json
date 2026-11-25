@@ -3,7 +3,7 @@
   "enisaUuid": "d6703303-4391-3690-90d3-35eb2743c570",
   "description": "A flaw was found in the Netfilter subsystem in the Linux kernel. The issue is in the nft_byteorder_eval() function, where the code iterates through a loop and writes to the `dst` array. On each iteration, 8 bytes are written, but `dst` is an array of u32, so each element only has space for 4 bytes. That means every iteration overwrites part of the previous element corrupting this array of u32. This flaw allows a local user to cause a denial of service or potentially break NetFilter functionality.",
   "datePublished": "Jan 18, 2024, 3:41:14 PM",
-  "dateUpdated": "Nov 5, 2026, 11:39:14 AM",
+  "dateUpdated": "Nov 24, 2026, 3:56:57 AM",
   "baseScore": 6.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H",
