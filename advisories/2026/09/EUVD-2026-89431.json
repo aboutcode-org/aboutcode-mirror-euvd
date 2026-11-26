@@ -1,26 +1,36 @@
 {
   "id": "EUVD-2026-89431",
   "enisaUuid": "77493e6c-8d62-369c-a1d6-ca1802a946c1",
-  "description": "U-Boot before 2026.10-rc4 contains an integer overflow vulnerability in sqfs_read_directory_table() function when allocating the directory table buffer. Attackers can supply a crafted SquashFS image with an attacker-controlled superblock metablks_count value that causes heap buffer under-allocation and out-of-bounds writes, corrupting heap memory and crashing the bootloader.",
+  "description": "U-Boot versions 2020.10 before 2026.10-rc4 contains an integer overflow vulnerability in sqfs_read_directory_table() function when allocating the directory table buffer. Attackers can supply a crafted SquashFS image with an attacker-controlled superblock metablks_count value that causes heap buffer under-allocation and out-of-bounds writes, corrupting heap memory and crashing the bootloader.",
   "datePublished": "Sep 29, 2026, 9:29:21 PM",
-  "dateUpdated": "Oct 2, 2026, 12:29:17 PM",
+  "dateUpdated": "Nov 25, 2026, 3:45:59 PM",
   "baseScore": 5.2,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/u-boot/u-boot/commit/561ae28cb56a082cfa90c1c421c4955bc215470b\nhttps://github.com/u-boot/u-boot/blob/v2026.07/fs/squashfs/sqfs.c#L814\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc4-integer-overflow-in-squashfs-directory-table-allocation\n",
+  "references": "https://github.com/u-boot/u-boot/commit/561ae28cb56a082cfa90c1c421c4955bc215470b\nhttps://github.com/u-boot/u-boot/blob/v2026.07/fs/squashfs/sqfs.c#L814\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc4-integer-overflow-in-squashfs-directory-table-allocation\nhttps://www.legacymind.de/en/knowledge/u-boot-cves#cve-2026-71973\n",
   "aliases": "CVE-2026-71973\nGHSA-7rqg-q392-46rw\n",
   "assigner": "VulnCheck",
   "epss": 0.19,
   "enisaIdProduct": [
     {
-      "id": "c8004702-4c7f-3c70-96ac-baa2d0358331",
+      "id": "1ec668d3-0b96-386a-9120-1574ecc85188",
       "product": {
         "name": "U-Boot",
         "vendor": {
           "name": "DENX Software Engineering"
         }
       },
-      "product_version": "0 <2026.10-rc4"
+      "product_version": "2020.10 <2026.10-rc4"
+    },
+    {
+      "id": "65dcba89-754b-3835-afcb-ad3a419eccae",
+      "product": {
+        "name": "U-Boot",
+        "vendor": {
+          "name": "DENX Software Engineering"
+        }
+      },
+      "product_version": "c51006130370b48b7eb5a93ada745385aa27f6bf <561ae28cb56a082cfa90c1c421c4955bc215470b"
     }
   ],
   "enisaIdVendor": [

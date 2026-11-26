@@ -3,14 +3,14 @@
   "enisaUuid": "44b94a39-229e-30b4-b250-66e177ef189d",
   "description": "free5GC PCF through 1.4.6 contains a resource leak in postAppSessCtxProcedure that leaves PCC rules and QoS data in the SM policy decision after rejected Npcf_PolicyAuthorization create requests. Authenticated AFs knowing an active PDU session's UE address can send repeated failing requests with distinct AF application identifiers to grow PCF memory and pollute policy sent to the SMF.",
   "datePublished": "Nov 20, 2026, 12:17:13 PM",
-  "dateUpdated": "Nov 20, 2026, 12:17:13 PM",
+  "dateUpdated": "Nov 25, 2026, 4:02:51 AM",
   "baseScore": 5.3,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N",
   "references": "https://github.com/free5gc/free5gc/issues/1181\nhttps://github.com/free5gc/free5gc/issues/1184\nhttps://github.com/free5gc/pcf/commit/52c33ddff8e9a946c03b27c5d9b7a31c03030ca6\nhttps://github.com/free5gc/pcf/blob/v1.4.6/internal/sbi/processor/policyauthorization.go#L163-L385\nhttps://www.vulncheck.com/advisories/free5gc-pcf-through-1.4.6-orphaned-pcc-rules-via-rejected-application-session-creation\n",
   "aliases": "GHSA-rxvf-g4q7-cgcg\nCVE-2026-133702\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.42,
   "enisaIdProduct": [
     {
       "id": "97706377-4122-3396-8758-97e622acd4ea",

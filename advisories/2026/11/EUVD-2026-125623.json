@@ -3,14 +3,32 @@
   "enisaUuid": "4f73da1b-13fa-3bd8-8b0b-adf63a249b2e",
   "description": "A flaw was found in dnf5daemon-server. Unauthenticated D-Bus methods pass caller-controlled URL or .rpm path patterns into a root-privileged cmdline package loader that may store fetched content in a world-readable cache without size limits, or open local paths as root, allowing a local attacker to disclose privileged content and to deny service via disk exhaustion.",
   "datePublished": "Nov 13, 2026, 5:28:17 PM",
-  "dateUpdated": "Nov 13, 2026, 8:02:51 PM",
+  "dateUpdated": "Nov 25, 2026, 11:23:11 AM",
   "baseScore": 8.4,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:H",
-  "references": "https://access.redhat.com/security/cve/CVE-2026-123177\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2567426\n",
+  "references": "https://access.redhat.com/errata/RHSA-2026:101233\nhttps://access.redhat.com/security/cve/CVE-2026-123177\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2567426\n",
   "aliases": "GHSA-xp2x-qrcc-x752\nCVE-2026-123177\n",
   "assigner": "redhat",
-  "epss": 0.0,
-  "enisaIdProduct": [],
-  "enisaIdVendor": []
+  "epss": 0.13,
+  "enisaIdProduct": [
+    {
+      "id": "2080dc66-9191-3822-b548-e48ac9330dd1",
+      "product": {
+        "name": "Red Hat Hardened Images",
+        "vendor": {
+          "name": "Red Hat"
+        }
+      },
+      "product_version": "patch: 5.4.8.0-2.hum1"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "b3cd81ae-adf4-35f5-b5e1-78d18309270c",
+      "vendor": {
+        "name": "Red Hat"
+      }
+    }
+  ]
 }

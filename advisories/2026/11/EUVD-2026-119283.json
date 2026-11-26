@@ -3,12 +3,12 @@
   "enisaUuid": "b45556a8-1729-3bb5-9d0d-be83dbc988a0",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: reclaim ended sessions on logoff and expiration\n\nLOGOFF and previous-session replacement leave sessions Expired with a\nzero credential expiry. Ended sessions can retain their memory and\nconnection slots when no further setup arrives on the owning connection.\n\nUnpublish a logged-off session while the request reference keeps its\nresponse signing and encryption keys alive. Remove its procfs entry\nbefore dropping the table reference so a reader cannot remove its own\nentry on the last put. Clear proc_entry after removal to avoid removing\nit twice.\n\nReclaim ended sessions from the global table in the existing expiration\nworker before it acquires conn_list_lock. Only select Expired sessions\nwith zero credential expiry and no references beyond the table\nreference. Keep sessions whose Kerberos credentials expired available\nfor reauthentication.\n\nUnlink the session from its setup connection and all channel\nconnections, so SMB2 sessions and sessions with only secondary SMB3\nchannels are covered. The session already holds connection references,\nand sessions_table_lock prevents concurrent channel removal. Queue\nsessions on a separate disposal list, leaving their hash nodes unhashed,\nand remove procfs entries and drop table references outside the locks.\n\nKeep the pending setup check before allocating a new session so\nabandoned InProgress sessions can release their slots even at the\nconnection limit. Retain the timeout and reference checks and dispose of\nthose sessions outside the locks. Leave ended Expired sessions to the\nexpiration worker.",
   "datePublished": "Nov 7, 2026, 2:08:47 PM",
-  "dateUpdated": "Nov 7, 2026, 2:08:47 PM",
+  "dateUpdated": "Nov 25, 2026, 6:19:01 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/1767a5e45dbf6a3b12105196dda4fb0ef80b9698\nhttps://git.kernel.org/stable/c/26534ef335e92b028eb58e44d98d46a0e26af0ec\n",
+  "references": "https://git.kernel.org/stable/c/1767a5e45dbf6a3b12105196dda4fb0ef80b9698\nhttps://git.kernel.org/stable/c/26534ef335e92b028eb58e44d98d46a0e26af0ec\nhttps://github.com/suruurism/cve-writeups-and-pocs/blob/main/CVE-2026-99279/CVE-2026-99279.md\n",
   "aliases": "GHSA-5c46-592c-382g\nCVE-2026-99279\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.12,
   "enisaIdProduct": [
     {
       "id": "11eb1e6a-0785-3a51-ba32-87dae7d5d835",

@@ -3,12 +3,12 @@
   "enisaUuid": "ff95d2c8-bc56-379f-a9e9-d1df64f63d1b",
   "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: drain session procfs readers before dropping table references\n\nSession registration failure and connection cleanup can drop the table\nreference while the per-session procfs entry is still accessible. If a\nreader holds the last remaining reference, its final put calls\nproc_remove() from its own callback and waits for that callback to\nfinish.\n\nRemove the procfs entry before dropping the table reference in the\nregistration failure path. Queue sessions removed during connection\ncleanup and drain their procfs readers after releasing both session\nlocks, then return their table references. Keep the global hash node\nunhashed while a session is queued so a concurrent unregister cannot\ndrop the reference again.\n\nPrevious-session replacement also destroys the file table before the\nsession is finally freed. Detach the idr under the lock used by procfs\nfile counters, and report zero files after it has been detached. This\nprevents a reader from accessing the idr during or after its\ndestruction.",
   "datePublished": "Nov 7, 2026, 2:08:47 PM",
-  "dateUpdated": "Nov 7, 2026, 2:08:47 PM",
+  "dateUpdated": "Nov 25, 2026, 6:19:02 PM",
   "baseScore": 0.0,
-  "references": "https://git.kernel.org/stable/c/6789f0983f8e85ce3a5ed8c50fc05d613ead9c2c\nhttps://git.kernel.org/stable/c/1c087cf7d5386c708d8984b263280b42b3daada0\n",
+  "references": "https://git.kernel.org/stable/c/6789f0983f8e85ce3a5ed8c50fc05d613ead9c2c\nhttps://git.kernel.org/stable/c/1c087cf7d5386c708d8984b263280b42b3daada0\nhttps://github.com/suruurism/cve-writeups-and-pocs/blob/main/CVE-2026-99280/CVE-2026-99280.md\n",
   "aliases": "CVE-2026-99280\nGHSA-gwx7-q3hx-vf8w\n",
   "assigner": "Linux",
-  "epss": 0.0,
+  "epss": 0.15,
   "enisaIdProduct": [
     {
       "id": "3a00d2d8-a0d2-39bb-90e3-743ce7338733",

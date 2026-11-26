@@ -1,26 +1,36 @@
 {
   "id": "EUVD-2026-89436",
   "enisaUuid": "2f0a14e6-2b02-34d3-8466-411112339148",
-  "description": "U-Boot before 2026.10-rc5 contains out-of-bounds memory access in dhcp6_parse_options() that fails to validate SERVERID and CLIENTID option lengths from DHCPv6 packets. Attackers on the local network can send crafted DHCPv6 ADVERTISE or REPLY packets during netboot to corrupt memory and crash the bootloader.",
+  "description": "U-Boot versions 2023.07 before 2026.10-rc5 contain out-of-bounds memory access in dhcp6_parse_options() that fails to validate SERVERID and CLIENTID option lengths from DHCPv6 packets. Attackers on the local network can send crafted DHCPv6 ADVERTISE or REPLY packets during netboot to corrupt memory and crash the bootloader.",
   "datePublished": "Sep 29, 2026, 9:29:24 PM",
-  "dateUpdated": "Sep 30, 2026, 7:17:11 PM",
+  "dateUpdated": "Nov 25, 2026, 3:42:43 PM",
   "baseScore": 7.1,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/u-boot/u-boot/commit/20209a62bc8565fc1e040882bc03c71ff0d73076\nhttps://github.com/u-boot/u-boot/blob/v2026.07/net/dhcpv6.c#L304\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc5-out-of-bounds-write-via-dhcpv6\n",
+  "references": "https://github.com/u-boot/u-boot/commit/20209a62bc8565fc1e040882bc03c71ff0d73076\nhttps://github.com/u-boot/u-boot/blob/v2026.07/net/dhcpv6.c#L304\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc5-out-of-bounds-write-via-dhcpv6\nhttps://www.legacymind.de/en/knowledge/u-boot-cves#cve-2026-74225\n",
   "aliases": "CVE-2026-74225\nGHSA-c478-wgg8-3gvq\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.23,
   "enisaIdProduct": [
     {
-      "id": "1f29fd9e-b45a-3803-a7eb-01af972082e7",
+      "id": "3330318a-3402-3d38-a20a-af8fe93b6717",
       "product": {
         "name": "U-Boot",
         "vendor": {
           "name": "DENX Software Engineering"
         }
       },
-      "product_version": "0 <2026.10-rc5"
+      "product_version": "2023.07 <2026.10-rc5"
+    },
+    {
+      "id": "e0991f78-d44e-3f08-b233-41e34024a03f",
+      "product": {
+        "name": "U-Boot",
+        "vendor": {
+          "name": "DENX Software Engineering"
+        }
+      },
+      "product_version": "a0245818f7f8e375abc00f36ff88326331e4e2f9 <20209a62bc8565fc1e040882bc03c71ff0d73076"
     }
   ],
   "enisaIdVendor": [

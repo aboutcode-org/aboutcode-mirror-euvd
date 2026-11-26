@@ -1,26 +1,36 @@
 {
   "id": "EUVD-2026-89435",
   "enisaUuid": "0eaf577d-cb7a-377c-92bd-1b057ac94007",
-  "description": "U-Boot before 2026.10-rc5 contains a use-after-free vulnerability in the httpc_recv_cb() function within the lwIP wget implementation. When HTTP data storage fails, the callback frees the connection PCB but returns ERR_BUF instead of ERR_ABRT, causing the TCP input path to access released memory and crash the bootloader.",
+  "description": "U-Boot versions 2025.07 before 2026.10-rc5 contain a use-after-free vulnerability in the httpc_recv_cb() function within the lwIP wget implementation. When HTTP data storage fails, the callback frees the connection PCB but returns ERR_BUF instead of ERR_ABRT, causing the TCP input path to access released memory and crash the bootloader.",
   "datePublished": "Sep 29, 2026, 9:29:23 PM",
-  "dateUpdated": "Oct 2, 2026, 12:30:17 PM",
+  "dateUpdated": "Nov 25, 2026, 3:42:55 PM",
   "baseScore": 8.8,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N",
-  "references": "https://github.com/u-boot/u-boot/commit/2d94618a58aeb7630f18eee33419ce48d0fd3616\nhttps://github.com/u-boot/u-boot/blob/v2026.07/net/lwip/wget.c#L194\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc5-use-after-free-in-lwip-wget-receive-callback\n",
+  "references": "https://github.com/u-boot/u-boot/commit/2d94618a58aeb7630f18eee33419ce48d0fd3616\nhttps://github.com/u-boot/u-boot/blob/v2026.07/net/lwip/wget.c#L194\nhttps://github.com/u-boot/u-boot\nhttps://www.vulncheck.com/advisories/u-boot-before-2026.10-rc5-use-after-free-in-lwip-wget-receive-callback\nhttps://www.legacymind.de/en/knowledge/u-boot-cves#cve-2026-74222\n",
   "aliases": "GHSA-fm4f-g9jh-3qfq\nCVE-2026-74222\n",
   "assigner": "VulnCheck",
   "epss": 0.3,
   "enisaIdProduct": [
     {
-      "id": "b201c5d2-dfb8-3623-affc-29f39d9a2dfa",
+      "id": "9294561e-30b8-3a5a-bb8d-3872f2f436e8",
       "product": {
         "name": "U-Boot",
         "vendor": {
           "name": "DENX Software Engineering"
         }
       },
-      "product_version": "0 <2026.10-rc5"
+      "product_version": "e40c910e88a9a38ee1335ab1391dc2ee83993a65 <2d94618a58aeb7630f18eee33419ce48d0fd3616"
+    },
+    {
+      "id": "b0b1d58a-a077-3bb2-87ba-43c5d2a88bca",
+      "product": {
+        "name": "U-Boot",
+        "vendor": {
+          "name": "DENX Software Engineering"
+        }
+      },
+      "product_version": "2025.07 <2026.10-rc5"
     }
   ],
   "enisaIdVendor": [
