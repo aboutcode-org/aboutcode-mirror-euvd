@@ -3,14 +3,14 @@
   "enisaUuid": "d701a9ff-82c1-3834-86be-d7db116194d9",
   "description": "A Type Confusion vulnerability was found in Samba's mdssvc RPC service for Spotlight. When parsing Spotlight mdssvc RPC packets, one encoded data structure is a key-value style dictionary where the keys are character strings, and the values can be any of the supported types in the mdssvc protocol. Due to a lack of type checking in callers of the dalloc_value_for_key() function, which returns the object associated with a key, a caller may trigger a crash in talloc_get_size() when talloc detects that the passed-in pointer is not a valid talloc pointer. With an RPC worker process shared among multiple client connections, a malicious client or attacker can trigger a process crash in a shared RPC mdssvc worker process, affecting all other clients this worker serves.",
   "datePublished": "Jul 20, 2023, 2:57:45 PM",
-  "dateUpdated": "Nov 6, 2026, 8:25:12 PM",
+  "dateUpdated": "Nov 26, 2026, 5:05:21 PM",
   "baseScore": 5.3,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
   "references": "https://access.redhat.com/errata/RHSA-2023:6667\nhttps://access.redhat.com/errata/RHSA-2023:7139\nhttps://access.redhat.com/errata/RHSA-2024:0423\nhttps://access.redhat.com/errata/RHSA-2024:0580\nhttps://access.redhat.com/security/cve/CVE-2023-34967\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2222794\nhttps://www.samba.org/samba/security/CVE-2023-34967.html\n",
   "aliases": "GHSA-86p4-vhr6-2vv3\nCVE-2023-34967\n",
   "assigner": "redhat",
-  "epss": 61.2,
+  "epss": 1.98,
   "enisaIdProduct": [
     {
       "id": "87abcfa2-d0c4-3445-915e-cd9b3511b968",

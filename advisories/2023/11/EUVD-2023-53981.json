@@ -3,14 +3,14 @@
   "enisaUuid": "ac730619-2b03-32e9-aecd-2cf1c85f86c3",
   "description": "A vulnerability was discovered in Samba, where the flaw allows SMB clients to truncate files, even with read-only permissions when the Samba VFS module \"acl_xattr\" is configured with \"acl_xattr:ignore system acls = yes\". The SMB protocol allows opening files when the client requests read-only access but then implicitly truncates the opened file to 0 bytes if the client specifies a separate OVERWRITE create disposition request. The issue arises in configurations that bypass kernel file system permissions checks, relying solely on Samba's permissions.",
   "datePublished": "Nov 3, 2023, 7:56:35 AM",
-  "dateUpdated": "Nov 7, 2026, 1:41:34 PM",
+  "dateUpdated": "Nov 26, 2026, 8:05:57 PM",
   "baseScore": 6.5,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
   "references": "https://access.redhat.com/errata/RHSA-2023:6209\nhttps://access.redhat.com/errata/RHSA-2023:6744\nhttps://access.redhat.com/errata/RHSA-2023:7371\nhttps://access.redhat.com/errata/RHSA-2023:7408\nhttps://access.redhat.com/errata/RHSA-2023:7464\nhttps://access.redhat.com/errata/RHSA-2023:7467\nhttps://access.redhat.com/security/cve/CVE-2023-4091\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2241882\nhttps://bugzilla.samba.org/show_bug.cgi?id=15439\nhttps://www.samba.org/samba/security/CVE-2023-4091.html\n",
   "aliases": "CVE-2023-4091\nGHSA-f6jj-3gjw-frjm\n",
   "assigner": "redhat",
-  "epss": 1.33,
+  "epss": 1.61,
   "enisaIdProduct": [
     {
       "id": "074e600a-9471-3707-bf9e-b4e9be7975e1",

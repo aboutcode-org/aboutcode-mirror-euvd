@@ -3,14 +3,14 @@
   "enisaUuid": "3fb87de3-9a04-3245-909d-0d39e451a810",
   "description": "A flaw was found in Buildah (and subsequently Podman Build) which allows containers to mount arbitrary locations on the host filesystem into build containers. A malicious Containerfile can use a dummy image with a symbolic link to the root filesystem as a mount source and cause the mount operation to mount the host root filesystem inside the RUN step. The commands inside the RUN step will then have read-write access to the host filesystem, allowing for full container escape at build time.",
   "datePublished": "Mar 18, 2024, 2:23:44 PM",
-  "dateUpdated": "Nov 24, 2026, 4:28:26 PM",
+  "dateUpdated": "Nov 26, 2026, 1:26:36 PM",
   "baseScore": 8.6,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2024:2049\nhttps://access.redhat.com/errata/RHSA-2024:2055\nhttps://access.redhat.com/errata/RHSA-2024:2064\nhttps://access.redhat.com/errata/RHSA-2024:2066\nhttps://access.redhat.com/errata/RHSA-2024:2077\nhttps://access.redhat.com/errata/RHSA-2024:2084\nhttps://access.redhat.com/errata/RHSA-2024:2089\nhttps://access.redhat.com/errata/RHSA-2024:2090\nhttps://access.redhat.com/errata/RHSA-2024:2097\nhttps://access.redhat.com/errata/RHSA-2024:2098\nhttps://access.redhat.com/errata/RHSA-2024:2548\nhttps://access.redhat.com/errata/RHSA-2024:2645\nhttps://access.redhat.com/errata/RHSA-2024:2669\nhttps://access.redhat.com/errata/RHSA-2024:2672\nhttps://access.redhat.com/errata/RHSA-2024:2784\nhttps://access.redhat.com/errata/RHSA-2024:2877\nhttps://access.redhat.com/errata/RHSA-2024:3254\nhttps://access.redhat.com/errata/RHSA-2026:102524\nhttps://access.redhat.com/security/cve/CVE-2024-1753\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2265513\nhttps://github.com/containers/buildah/security/advisories/GHSA-pmf3-c36m-g5cf\nhttps://github.com/containers/podman/security/advisories/GHSA-874v-pj72-92f3\nhttps://pkg.go.dev/vuln/GO-2024-2658\n",
   "aliases": "CVE-2024-1753\nGHSA-874v-pj72-92f3\n",
   "assigner": "redhat",
-  "epss": 0.46,
+  "epss": 0.5,
   "enisaIdProduct": [
     {
       "id": "0faa90e2-fefa-3e39-82e4-64bfe30dd001",

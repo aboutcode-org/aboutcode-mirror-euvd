@@ -3,14 +3,14 @@
   "enisaUuid": "bdfdbe66-907f-3ee3-916c-4a15f404a325",
   "description": "A path traversal vulnerability was identified in Samba when processing client pipe names connecting to Unix domain sockets within a private directory. Samba typically uses this mechanism to connect SMB clients to remote procedure call (RPC) services like SAMR LSA or SPOOLSS, which Samba initiates on demand. However, due to inadequate sanitization of incoming client pipe names, allowing a client to send a pipe name containing Unix directory traversal characters (../). This could result in SMB clients connecting as root to Unix domain sockets outside the private directory. If an attacker or client managed to send a pipe name resolving to an external service using an existing Unix domain socket, it could potentially lead to unauthorized access to the service and consequential adverse events, including compromise or service crashes.",
   "datePublished": "Nov 3, 2023, 12:32:29 PM",
-  "dateUpdated": "Nov 7, 2026, 11:32:44 AM",
+  "dateUpdated": "Nov 26, 2026, 9:08:46 PM",
   "baseScore": 9.1,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2023:6209\nhttps://access.redhat.com/errata/RHSA-2023:6744\nhttps://access.redhat.com/errata/RHSA-2023:7371\nhttps://access.redhat.com/errata/RHSA-2023:7408\nhttps://access.redhat.com/errata/RHSA-2023:7464\nhttps://access.redhat.com/errata/RHSA-2023:7467\nhttps://access.redhat.com/security/cve/CVE-2023-3961\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2241881\nhttps://bugzilla.samba.org/show_bug.cgi?id=15422\nhttps://www.samba.org/samba/security/CVE-2023-3961.html\n",
   "aliases": "CVE-2023-3961\nGHSA-8m6h-6qw7-f6cg\n",
   "assigner": "redhat",
-  "epss": 2.69,
+  "epss": 3.05,
   "enisaIdProduct": [
     {
       "id": "0014573d-0b2f-3719-a6f7-141fc59ac982",

@@ -3,14 +3,14 @@
   "enisaUuid": "cb742396-9cc0-3a92-8108-331736c92e57",
   "description": "A flaw was found in GDB's STABS debug format parser. The\nread_member_functions() function in gdb/stabsread.c contains a linked\nlist removal bug in the code that separates destructor and non-destructor\nmember functions of C++ classes. The bug causes the destructor entries to\nremain in the main function list while the list length counter is\ndecremented, resulting in an out-of-bounds write when the function list\nis copied to its final allocated array. An attacker can craft an ELF\nbinary with malicious .stab and .stabstr sections that triggers this\nout-of-bounds write when a user opens the file in GDB and performs any\nsymbol-inspection operation such as setting a breakpoint. The inferior\nprocess does not need to be executed. Under controlled conditions, this\nwas demonstrated to achieve execution of arbitrary commands within the\nGDB process.",
   "datePublished": "Aug 31, 2026, 7:23:18 PM",
-  "dateUpdated": "Nov 13, 2026, 12:22:59 PM",
+  "dateUpdated": "Nov 26, 2026, 1:58:25 PM",
   "baseScore": 7.0,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2026:73425\nhttps://access.redhat.com/errata/RHSA-2026:73426\nhttps://access.redhat.com/errata/RHSA-2026:73427\nhttps://access.redhat.com/errata/RHSA-2026:79357\nhttps://access.redhat.com/errata/RHSA-2026:82447\nhttps://access.redhat.com/errata/RHSA-2026:82939\nhttps://access.redhat.com/errata/RHSA-2026:96095\nhttps://access.redhat.com/errata/RHSA-2026:96096\nhttps://access.redhat.com/errata/RHSA-2026:96097\nhttps://access.redhat.com/errata/RHSA-2026:96098\nhttps://access.redhat.com/errata/RHSA-2026:98414\nhttps://access.redhat.com/errata/RHSA-2026:98415\nhttps://access.redhat.com/errata/RHSA-2026:98416\nhttps://access.redhat.com/errata/RHSA-2026:98417\nhttps://access.redhat.com/errata/RHSA-2026:98419\nhttps://access.redhat.com/errata/RHSA-2026:98420\nhttps://access.redhat.com/errata/RHSA-2026:98421\nhttps://access.redhat.com/errata/RHSA-2026:98423\nhttps://access.redhat.com/errata/RHSA-2026:98427\nhttps://access.redhat.com/errata/RHSA-2026:98428\nhttps://access.redhat.com/errata/RHSA-2026:98429\nhttps://access.redhat.com/errata/RHSA-2026:98430\nhttps://access.redhat.com/errata/RHSA-2026:98431\nhttps://access.redhat.com/errata/RHSA-2026:98432\nhttps://access.redhat.com/errata/RHSA-2026:98434\nhttps://access.redhat.com/errata/RHSA-2026:98435\nhttps://access.redhat.com/errata/RHSA-2026:98436\nhttps://access.redhat.com/errata/RHSA-2026:98437\nhttps://access.redhat.com/errata/RHSA-2026:98438\nhttps://access.redhat.com/errata/RHSA-2026:98439\nhttps://access.redhat.com/errata/RHSA-2026:98440\nhttps://access.redhat.com/errata/RHSA-2026:98441\nhttps://access.redhat.com/errata/RHSA-2026:98443\nhttps://access.redhat.com/errata/RHSA-2026:99594\nhttps://access.redhat.com/errata/RHSA-2026:99596\nhttps://access.redhat.com/errata/RHSA-2026:99597\nhttps://access.redhat.com/security/cve/CVE-2026-13732\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2494416\n",
   "aliases": "CVE-2026-13732\nGHSA-j2fm-9w3c-hpj9\n",
   "assigner": "redhat",
-  "epss": 0.14,
+  "epss": 0.2,
   "enisaIdProduct": [
     {
       "id": "01e4038d-c49e-34d3-86f3-a5269f5630c2",

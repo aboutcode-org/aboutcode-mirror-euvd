@@ -3,14 +3,14 @@
   "enisaUuid": "142a4123-74a0-3f57-9ead-12d40c9bfeaf",
   "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that allows attackers to access freed heap memory by supplying a crafted XMT file. When xmt_parse_element() replaces an SFNode field child, the freed node stays cached in parser->peeked_nodes and a later DEF lookup passes it to gf_node_get_name(), crashing MP4Box.",
   "datePublished": "Nov 22, 2026, 2:02:58 AM",
-  "dateUpdated": "Nov 22, 2026, 2:02:58 AM",
+  "dateUpdated": "Nov 26, 2026, 2:28:25 AM",
   "baseScore": 6.9,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/gpac/gpac/issues/3786\nhttps://github.com/gpac/gpac/commit/3e535640b48ed3218e74929cbf3e42250fce3ddf\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scene_manager/loader_xmt.c#L2081-L2084\nhttps://github.com/gpac/gpac/blob/v26.07.0/src/scenegraph/base_scenegraph.c#L1336-L1340\nhttps://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/178/178_gf_node_get_name_scenegraph_base_scenegraph_c_1340.xmt\nhttps://www.vulncheck.com/advisories/gpac-mp4box-through-26.07.0-use-after-free-in-gf-node-get-name-via-xmt-parser\n",
   "aliases": "CVE-2026-134665\nGHSA-cqq5-hmhr-ph9j\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 0.17,
   "enisaIdProduct": [
     {
       "id": "845ef95a-9a49-3b76-8419-3995bcc87574",

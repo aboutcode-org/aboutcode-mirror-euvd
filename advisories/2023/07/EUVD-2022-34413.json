@@ -3,14 +3,14 @@
   "enisaUuid": "61418980-2921-3e83-9453-6552bcb6eb0a",
   "description": "An out-of-bounds read vulnerability was found in Samba due to insufficient length checks in winbindd_pam_auth_crap.c. When performing NTLM authentication, the client replies to cryptographic challenges back to the server. These replies have variable lengths, and Winbind fails to check the lan manager response length. When Winbind is used for NTLM authentication, a maliciously crafted request can trigger an out-of-bounds read in Winbind, possibly resulting in a crash.",
   "datePublished": "Jul 20, 2023, 2:49:49 PM",
-  "dateUpdated": "Nov 5, 2026, 8:57:19 AM",
+  "dateUpdated": "Nov 26, 2026, 4:39:27 PM",
   "baseScore": 5.9,
   "baseScoreVersion": "3.1",
   "baseScoreVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
   "references": "https://access.redhat.com/errata/RHSA-2023:6667\nhttps://access.redhat.com/errata/RHSA-2023:7139\nhttps://access.redhat.com/errata/RHSA-2024:0423\nhttps://access.redhat.com/errata/RHSA-2024:0580\nhttps://access.redhat.com/security/cve/CVE-2022-2127\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2222791\nhttps://www.samba.org/samba/security/CVE-2022-2127.html\n",
   "aliases": "CVE-2022-2127\nGHSA-mfwc-hx97-869v\n",
   "assigner": "redhat",
-  "epss": 1.72,
+  "epss": 1.92,
   "enisaIdProduct": [
     {
       "id": "12fa50d7-3869-3b38-8a12-bdb99beea399",
