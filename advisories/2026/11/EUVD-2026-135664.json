@@ -3,14 +3,14 @@
   "enisaUuid": "398863c7-bd59-383d-8420-73fbb4310b2a",
   "description": "Camunda 8.8.0 before 8.8.47, 8.9.0 before 8.9.29, 8.10.0 before 8.10.10, and 8.11.0-alpha1 contain an insecure deserialization vulnerability in the persistent web session feature, which stores session attributes as Java-serialized data in secondary storage and deserializes them via an ObjectInputStream without an ObjectInputFilter. Attackers with write access to the web session index, such as an unauthenticated Elasticsearch cluster deployed via Camunda's docker-compose files, can plant a crafted serialized object and trigger deserialization by presenting a matching session cookie, which combined with a gadget chain like the bundled Commons Collections 3.1-RC1 library can lead to code execution as the Camunda service account.",
   "datePublished": "Nov 25, 2026, 6:26:12 PM",
-  "dateUpdated": "Nov 25, 2026, 6:26:12 PM",
+  "dateUpdated": "Nov 27, 2026, 4:41:55 PM",
   "baseScore": 9.2,
   "baseScoreVersion": "4.0",
   "baseScoreVector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
   "references": "https://github.com/camunda/camunda/commit/aaf0498ec37dc9b43dbbab2616f3bf5303f911ce\nhttps://github.com/camunda/camunda/commit/82b490cd41a685118b63a378d8963334711b7d8d\nhttps://github.com/camunda/camunda/commit/fc363d6d0fc7999463f23d98700b292af1737916\nhttps://github.com/camunda/camunda/commit/5870c91d4ec8c2dae96db60f3261daed2273baf2\nhttps://github.com/camunda/camunda/releases/tag/8.10.10\nhttps://github.com/camunda/camunda/releases/tag/8.9.29\nhttps://github.com/camunda/camunda/releases/tag/8.8.47\nhttps://www.vulncheck.com/advisories/camunda-8-insecure-deserialization-via-web-session-storage\n",
   "aliases": "CVE-2026-77230\nGHSA-3r7p-3996-7mrq\n",
   "assigner": "VulnCheck",
-  "epss": 0.0,
+  "epss": 1.63,
   "enisaIdProduct": [
     {
       "id": "1063a57c-0a08-30ac-b934-b2a9911e2365",

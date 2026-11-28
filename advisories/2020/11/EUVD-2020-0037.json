@@ -1,0 +1,35 @@
+{
+  "id": "EUVD-2020-0037",
+  "enisaUuid": "ccdc42d5-3a46-32a6-99e2-c3b105d6710c",
+  "description": "The previous default setting for Airflow's Experimental API was to allow all API requests without authentication, but this poses security risks to users who miss this fact. From Airflow 1.10.11 the default has been changed to deny all requests by default and is documented at https://airflow.apache.org/docs/1.10.11/security.html#api-authentication. Note this change fixes it for new installs but existing users need to change their config to default `[api]auth_backend = airflow.api.auth.backend.deny_all` as mentioned in the Updating Guide: https://github.com/apache/airflow/blob/1.10.11/UPDATING.md#experimental-api-will-deny-all-request-by-default",
+  "datePublished": "Nov 10, 2020, 12:00:00 AM",
+  "dateUpdated": "Nov 27, 2026, 12:56:01 PM",
+  "baseScore": 9.8,
+  "baseScoreVersion": "3.1",
+  "baseScoreVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "references": "https://lists.apache.org/thread.html/r23a81b247aa346ff193670be565b2b8ea4b17ddbc7a35fc099c1aadd%40%3Cdev.airflow.apache.org%3E\nhttp://packetstormsecurity.com/files/162908/Apache-Airflow-1.10.10-Remote-Code-Execution.html\nhttp://packetstormsecurity.com/files/174764/Apache-Airflow-1.10.10-Remote-Code-Execution.html\n",
+  "aliases": "CVE-2020-13927\nGHSA-hhx9-p69v-cx2j\nPYSEC-2020-18\n",
+  "assigner": "apache",
+  "epss": 99.78,
+  "exploitedSince": "Jan 18, 2022, 12:00:00 AM",
+  "enisaIdProduct": [
+    {
+      "id": "1fabec22-a280-328c-847b-ed12109e15f9",
+      "product": {
+        "name": "Apache Airflow",
+        "vendor": {
+          "name": "Apache Software Foundation"
+        }
+      },
+      "product_version": "0 <1.10.11"
+    }
+  ],
+  "enisaIdVendor": [
+    {
+      "id": "f602145b-1cd9-3e88-b8e9-41a1d46410b5",
+      "vendor": {
+        "name": "n/a"
+      }
+    }
+  ]
+}
